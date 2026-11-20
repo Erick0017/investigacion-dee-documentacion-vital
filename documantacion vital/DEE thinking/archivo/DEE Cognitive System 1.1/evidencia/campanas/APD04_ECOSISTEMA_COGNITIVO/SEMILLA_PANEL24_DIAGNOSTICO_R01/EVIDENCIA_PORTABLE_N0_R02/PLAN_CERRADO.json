@@ -1,0 +1,95 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "CLOSED_FOR_EXECUTION",
+  "life": "APD04_SEMILLA_PANEL24_DIAG_R01",
+  "world_id": "APD04_SEMILLA_PANEL24_DIAG_R01",
+  "initial_snapshot_sha256": "a14d73288bcca77476f45f88b33748747ac9af37a7de3e137b06a4fdcbf103d5",
+  "initial_tick": 654959,
+  "proposed_identity_not_yet_imported": false,
+  "required_parent_complete_pair": "sistema/estado/fuentes_emparejadas/APD04_SEMILLA_COLABORADOR_R01_T654959_COMPLETO_N0_R01",
+  "required_parent_snapshot_sha256": "52a35b4062bc843a74a115679ba7c6f76c9db1eab145926ac9d01d22390723fc",
+  "required_parent_tick": 654959,
+  "required_posteffect_quality_contract": "APD04.posteffect_quality.relevant_gain_or_irrelevant_formed_wait.R03.v1",
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 300,
+  "closing_reserve_seconds": 180,
+  "material_wait_seconds": 30,
+  "result_limit_seconds": 1200,
+  "poll_heartbeat_seconds": 5,
+  "heartbeat_seconds": 30,
+  "stop_control_wait_seconds": 120,
+  "stop_process_wait_seconds": 120,
+  "supervision_wall_limit_seconds": 900,
+  "outer_guard_requires_existing_supervision_wrapper": true,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/usar_dee.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd03_r02.py",
+    "sistema/capacidades/ruta_adaptativa_apd02_04.py",
+    "sistema/capacidades/selector_acrecion_nativo.py",
+    "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/mente_acumulativa_r02.py",
+    "sistema/capacidades/lexico_generico_apd03_r02.py",
+    "sistema/capacidades/percepcion_cruda_fi01.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "command",
+      "request_id": "apd04_wait_real_r04_diagnostic_old22",
+      "argv": [
+        "panel",
+        "--nuevas",
+        "--memorias",
+        "--retorno",
+        "omit"
+      ]
+    },
+    {
+      "at_seconds": 210,
+      "kind": "material",
+      "request_id": "apd04_wait_real_r04_diagnostic_clasifica",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        }
+      ],
+      "feedback": "omit",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 240,
+      "kind": "material",
+      "request_id": "apd04_wait_real_r04_diagnostic_equilibra",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "equilibra"
+        }
+      ],
+      "feedback": "omit",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 280,
+      "kind": "checkpoint",
+      "tag": "diagnostic_post_material_retention_panel"
+    }
+  ],
+  "scope": "Root-authorized one diagnostic fork of full unprobed collaborator seed: old16+MA6 then two APD04 words. No development/seed material intervention. No retries or reader adjustment.",
+  "timing_is_a_new_N0_proposal_for_Root_not_an_existing_native_result": true,
+  "required_parent_life_after_actual_post10_STOP": "APD04_WAIT_R03_REAL_AUX_R05",
+  "no_original_mutation": true,
+  "matched_original_knowledge_not_acquisition_by_import": true,
+  "diagnostic_parent_must_be_assembled_after_original_closure": true,
+  "local_closing_start_seconds": 600,
+  "owner_cleanup_budget_seconds": 300
+}

@@ -1,0 +1,7 @@
+"""Stable recipe recalculation, frozen files only; no DEE/Owner/Native."""
+from pathlib import Path
+import argparse,hashlib,importlib.util,json
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,required=True);ap.add_argument('--out-dir',type=Path,required=True);a=ap.parse_args();root=a.root.resolve(strict=True);out=a.out_dir.absolute();assert not out.exists()and out.parent.is_dir(),'Explicit fresh output directory required';source=root/'recalcular_primarios_PI10_R03.py';spec=importlib.util.spec_from_file_location('PI10_stable_frozen_primary_recalc_R03',source);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);result=m.bundle(root/'primarios/INDEX.json');reference=json.loads((root/'REFERENCIA_RECALCULO_REAL12.json').read_text('utf8'));assert result==reference,'Frozen RAW/receipts/resource projection differs; no expected-answer repair';out.mkdir();file=out/'RESULTADO_RECALCULO_PI10_R02.json';file.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf8');proof={'schema':'DEE.PI10.stable_readonly_recalculation.actual.R02','Native_imports':0,'Native_ticks':0,'not_Native_replay':True,'result':str(file),'result_sha256':sha(file),'rows':len(result['rows']),'result_matches_frozen_reference':True};(out/'VERIFICACION_RECALCULO.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2)+'\n','utf8');print(json.dumps(proof,ensure_ascii=False))
+if __name__=='__main__':main()

@@ -1,0 +1,230 @@
+{
+  "schema": "DEE.PI10.formed_trace_cut_sham_comparison.R02",
+  "Native_executed": false,
+  "DEE_imported": false,
+  "source_index_sha256": "179833017e0b8aaee5e873bb11c93ec4c0cf339aa5e311b1c0dded3d0570d1ae",
+  "summaries": {
+    "cut": {
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_CUT2_01",
+      "opportunities": 3,
+      "physical": 1,
+      "attributed": 1,
+      "q1_reference_changes": [
+        0,
+        0,
+        0
+      ],
+      "q1_choices": [
+        1,
+        1,
+        0
+      ]
+    },
+    "sham": {
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_SHAM2_01",
+      "opportunities": 3,
+      "physical": 2,
+      "attributed": 2,
+      "q1_reference_changes": [
+        -1,
+        0,
+        0
+      ],
+      "q1_choices": [
+        1,
+        0,
+        -1
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "ordinal": 4,
+      "same_actual_STATE_bit": true,
+      "same_q1_q2_ticks": true,
+      "q1_choices": [
+        1,
+        1
+      ],
+      "q1_before": [
+        0,
+        0
+      ],
+      "q1_after": [
+        0,
+        -1
+      ],
+      "physical_products": [
+        false,
+        false
+      ],
+      "attributed_products": [
+        false,
+        false
+      ],
+      "contact_deltas": [
+        0,
+        -1
+      ]
+    },
+    {
+      "ordinal": 5,
+      "same_actual_STATE_bit": true,
+      "same_q1_q2_ticks": true,
+      "q1_choices": [
+        1,
+        0
+      ],
+      "q1_before": [
+        0,
+        -1
+      ],
+      "q1_after": [
+        0,
+        -1
+      ],
+      "physical_products": [
+        false,
+        true
+      ],
+      "attributed_products": [
+        false,
+        true
+      ],
+      "contact_deltas": [
+        0,
+        0
+      ]
+    },
+    {
+      "ordinal": 6,
+      "same_actual_STATE_bit": true,
+      "same_q1_q2_ticks": true,
+      "q1_choices": [
+        0,
+        -1
+      ],
+      "q1_before": [
+        0,
+        -1
+      ],
+      "q1_after": [
+        0,
+        -1
+      ],
+      "physical_products": [
+        true,
+        true
+      ],
+      "attributed_products": [
+        true,
+        true
+      ],
+      "contact_deltas": [
+        0,
+        0
+      ]
+    }
+  ],
+  "barrier_admission": {
+    "cut": {
+      "detected_barrier_requests": [
+        {
+          "channel": "PI10.Q1.TC.R01.cut.0",
+          "control_kind": "cut",
+          "id": 149739,
+          "not_selected_by_actual_choice": true,
+          "payload": 0,
+          "receipt": {
+            "channels": [
+              "PI10.Q1.TC.R01.cut.0"
+            ],
+            "effective_tick": 928984,
+            "id": 149739,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 928984,
+            "status": "applied"
+          },
+          "requested_tick": 928984
+        },
+        {
+          "channel": "PI10.Q1.TC.R01.cut.1",
+          "control_kind": "cut",
+          "id": 149740,
+          "not_selected_by_actual_choice": true,
+          "payload": 0,
+          "receipt": {
+            "channels": [
+              "PI10.Q1.TC.R01.cut.1"
+            ],
+            "effective_tick": 928984,
+            "id": 149740,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 928984,
+            "status": "applied"
+          },
+          "requested_tick": 928984
+        }
+      ],
+      "barrier_installed_reported": true,
+      "barrier_attempt_ordinal": 4,
+      "exact_all_two_applied": true
+    },
+    "sham": {
+      "detected_barrier_requests": [
+        {
+          "channel": "PI10.Q1.TC.R01.sham.0",
+          "control_kind": "sham",
+          "id": 149739,
+          "not_selected_by_actual_choice": true,
+          "payload": 0,
+          "receipt": {
+            "channels": [
+              "PI10.Q1.TC.R01.sham.0"
+            ],
+            "effective_tick": 928984,
+            "id": 149739,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 928984,
+            "status": "applied"
+          },
+          "requested_tick": 928984
+        },
+        {
+          "channel": "PI10.Q1.TC.R01.sham.1",
+          "control_kind": "sham",
+          "id": 149740,
+          "not_selected_by_actual_choice": true,
+          "payload": 0,
+          "receipt": {
+            "channels": [
+              "PI10.Q1.TC.R01.sham.1"
+            ],
+            "effective_tick": 928984,
+            "id": 149740,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 928984,
+            "status": "applied"
+          },
+          "requested_tick": 928984
+        }
+      ],
+      "barrier_installed_reported": true,
+      "barrier_attempt_ordinal": 4,
+      "exact_all_two_applied": true
+    }
+  },
+  "formed_choice_same_before_first_barrier": true,
+  "all_q2_and_FI_stable": true,
+  "selective_credit_interpretation_conditions": {
+    "paired_first_choice": true,
+    "matched_actual_samples_and_clocks": true,
+    "actual_two_barriers_each_admitted": true,
+    "q2_FI_stability": true
+  },
+  "qualification": "New cut/sham episodes4..6 only; copied earlier REAL2 experiences are shared history, not new independent trials. RAW preflight/sham-ray coverage is a separate bounded proof, not universal isolation. Observed carrier loads/directions are not unique particle lineage. This contrast does not establish truth-sensitive feedback, general agency or promotion."
+}

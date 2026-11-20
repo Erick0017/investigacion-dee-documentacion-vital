@@ -1,0 +1,274 @@
+{
+  "schema": "DEE.PI10.R02.inherited12.fixed_steps.v2",
+  "steps": [
+    {
+      "label": "habitat_off",
+      "literal": {
+        "modo": "eci01-pi02-pausar-habitat"
+      },
+      "max_ticks": 0,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "luma",
+      "literal": {
+        "modo": "apd04-palabra",
+        "texto": "luma"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": 1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "nara",
+      "literal": {
+        "modo": "apd04-palabra",
+        "texto": "nara"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": -1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "clasifica",
+      "literal": {
+        "modo": "apd04-palabra",
+        "texto": "clasifica"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": -1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "suma",
+      "literal": {
+        "modo": "apd04-palabra",
+        "texto": "suma"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": 1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "alfa",
+      "literal": {
+        "modo": "memoria",
+        "operacion_memoria": "usar",
+        "contexto": "alfa"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": -1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "FIplus",
+      "literal": {
+        "modo": "eci01-balance",
+        "izquierda": 14,
+        "derecha": 3
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ],
+      "expected": 1,
+      "max_ticks": 1300,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "FIminus",
+      "literal": {
+        "modo": "eci01-balance",
+        "izquierda": 2,
+        "derecha": 11
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ],
+      "expected": -1,
+      "max_ticks": 1300,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "FIzero",
+      "literal": {
+        "modo": "eci01-balance",
+        "izquierda": 6,
+        "derecha": 6
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ],
+      "expected": 0,
+      "max_ticks": 1300,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "number13",
+      "literal": {
+        "modo": "eci01-aritmetica-directa",
+        "operacion": "suma",
+        "izquierda": 6,
+        "derecha": 7
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ],
+      "expected": 13,
+      "max_ticks": 600,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "number8",
+      "literal": {
+        "modo": "eci01-aritmetica-directa",
+        "operacion": "diferencia",
+        "derecha": 5
+      },
+      "actual_integer_binding": {
+        "from_step": "number13",
+        "field": "izquierda"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ],
+      "expected": 8,
+      "max_ticks": 600,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "alfa_after",
+      "literal": {
+        "modo": "memoria",
+        "operacion_memoria": "usar",
+        "contexto": "alfa"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": -1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "label": "luma_after",
+      "literal": {
+        "modo": "apd04-palabra",
+        "texto": "luma"
+      },
+      "read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ],
+      "expected": 1,
+      "max_ticks": 512,
+      "feedback": "real",
+      "actuator": "closed"
+    }
+  ],
+  "source": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\codigo\\PLAN_PI09_PANEL_POST_D12_R03.json",
+    "sha256": "591260240f06d89ea2d94b79daa182c76bcaabc771dfdc6c9d3350127f40d31c"
+  },
+  "coverage": {
+    "total_scored": 12,
+    "critical_core10": [
+      "luma",
+      "nara",
+      "clasifica",
+      "suma",
+      "alfa",
+      "FIplus",
+      "FIminus",
+      "FIzero",
+      "alfa_after",
+      "luma_after"
+    ],
+    "numeric2": [
+      "number13",
+      "number8"
+    ],
+    "non_scored_zero_tick": [
+      "habitat_off"
+    ]
+  },
+  "prepared_transduction": "Only outer balance mode is routed by the exact PI10 permission to inherited FI8, same frozen body/reader and actual remaining stock. No internal PI10/C2C FI reroute. The second arithmetic left operand is the first actual integer output, including a wrong integer, never expected13. NULL/noninteger means explicit zero-tick dependent abstention; no guessed integer, resend or numerical repair.",
+  "numeric_scope": "P9 exact:6+7, then actual_integer-5. Expected13/8 are auditor-only. No wait36, reteaching, moved geometry, extra reader or rescue.",
+  "Native_executed": false,
+  "expected_values_are_auditor_only_not_literal": true,
+  "supersedes_unexecuted_wrong_draft": "PANEL_HEREDADO_12_PI10_R02_PASOS.json (independent9-1 was a corrected instruction, never executed)"
+}

@@ -1,0 +1,217 @@
+{
+  "schema": "DEE.PI07.R03.lateral_zero_deflection.prospective_source_math.v1",
+  "sealed_utc": "2026-11-10T15:32:34.784948+00:00",
+  "Native_ticks": 0,
+  "DEE_imports": 0,
+  "status": "PROSPECTIVE_BEFORE_ANY_R03_NATIVE",
+  "scientific_protocol_revision_not_heldout_validation": true,
+  "source_future_cut": {
+    "expected_tick": 846517,
+    "exists_or_validated_by_this_tool": false,
+    "preflight_status": "DEFERRED_until_Root_actual_closed_full_pair_no_fabricated_current_snapshot"
+  },
+  "fixed_hardware": {
+    "actuator": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "birth": "B=qsel+7=S+8"
+    },
+    "message": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "reader_site": [
+        54,
+        48,
+        56
+      ],
+      "reader_frame": "B+1"
+    },
+    "new_sink": {
+      "site": [
+        56,
+        48,
+        56
+      ],
+      "state": 0,
+      "semantic": 4,
+      "direction": [
+        0,
+        0,
+        0
+      ],
+      "require_actual_RAW0_before_legal_preparation": true
+    }
+  },
+  "conditional_inputs_at_B": {
+    "old_new_cue": {
+      "site": [
+        52,
+        48,
+        55
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "s_reg": 0
+    },
+    "actuator_after_birth_application": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "s_reg": 0
+    },
+    "destination_before_step": {
+      "site": [
+        52,
+        48,
+        56
+      ],
+      "RAW_required": "0"
+    }
+  },
+  "reducer_result_if_exactly_two_incoming": {
+    "sum_direction": [
+      -1,
+      0,
+      1
+    ],
+    "s_reg_sum": 0,
+    "new_state": 1,
+    "new_semantic": 1,
+    "contact_frame": "B+1=S+9=qsel+8",
+    "contact_site": [
+      52,
+      48,
+      56
+    ],
+    "description": "Diagonal redirection, NOT cancellation, disappearance or repair by definition."
+  },
+  "conditional_later_step": {
+    "frame": "B+2=S+10=qsel+9",
+    "expected_moving_site": [
+      51,
+      48,
+      57
+    ],
+    "prerequisites": "No interfering destination/other incoming/XNOR, subject to Native measurement."
+  },
+  "specific_neighbour_caution": {
+    "possible_old_residue_site": [
+      52,
+      48,
+      57
+    ],
+    "direction": [
+      0,
+      0,
+      1
+    ],
+    "points_to": [
+      52,
+      48,
+      58
+    ],
+    "direct_incoming_to56": false,
+    "scope": "Still a Moore neighbour of target56; it may affect activity/state/phase and later steps. Do not assert isolation from its non-contribution to the directional reducer."
+  },
+  "kernel_source": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\kernel_v27.cpp",
+    "bytes": 31596,
+    "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+    "coordinate_copy_reducer_lines": [
+      188,
+      226
+    ],
+    "vacancy_gate_and_copy_lines": [
+      300,
+      322
+    ],
+    "matter_lines": [
+      339,
+      348
+    ],
+    "post_DEMUX_lines": [
+      428,
+      445
+    ],
+    "extract": "188: static uint64_t buscar_fuente_demux(const uint64_t* gA, int x, int y, int z, int N) {\n189:     // v26-SYM1: reducer simetrico para TODAS las fuentes direccionales que apuntan al destino.\n190:     // - 0 fuentes: conserva el comportamiento nulo.\n191:     // - 1 fuente: conserva EXACTAMENTE el raw de v25.\n192:     // - >1 fuentes: suma s_reg con la misma cota P_KERNEL-1 ya usada por DEMUX,\n193:     //   y compone la direccion mediante signo de la suma vectorial.\n194:     // La reduccion es conmutativa y no depende del indice de MOORE_DXYZ.\n195:     int count = 0;\n196:     uint64_t only_source = 0;\n197:     uint32_t sum_sreg = 0;\n198:     int sum_dx = 0, sum_dy = 0, sum_dz = 0;\n199: \n200:     for (int k = 0; k < 26; ++k) {\n201:         int nx = wrap(x + MOORE_DXYZ[k][0], N);\n202:         int ny = wrap(y + MOORE_DXYZ[k][1], N);\n203:         int nz = wrap(z + MOORE_DXYZ[k][2], N);\n204:         size_t nidx = idx3d(nx, ny, nz, N);\n205:         uint64_t nv = gA[nidx];\n206:         int ndx = get_dir_x(nv), ndy = get_dir_y(nv), ndz = get_dir_z(nv);\n207:         if (ndx == 0 && ndy == 0 && ndz == 0) continue;\n208:         if (wrap(nx + ndx, N) == x && wrap(ny + ndy, N) == y && wrap(nz + ndz, N) == z) {\n209:             ++count;\n210:             only_source = nv;\n211:             sum_sreg += static_cast<uint32_t>(get_s_reg(nv));\n212:             sum_dx += ndx;\n213:             sum_dy += ndy;\n214:             sum_dz += ndz;\n215:         }\n216:     }\n217: \n218:     if (count == 0) return 0;\n219:     if (count == 1) return only_source;\n220: \n221:     const uint32_t cap = static_cast<uint32_t>(P_KERNEL - 1);\n222:     if (sum_sreg > cap) sum_sreg = cap;\n223:     const int out_dx = (sum_dx > 0) ? 1 : ((sum_dx < 0) ? -1 : 0);\n224:     const int out_dy = (sum_dy > 0) ? 1 : ((sum_dy < 0) ? -1 : 0);\n225:     const int out_dz = (sum_dz > 0) ? 1 : ((sum_dz < 0) ? -1 : 0);\n226:     return pack_voxel(1, static_cast<uint16_t>(sum_sreg), out_dx, out_dy, out_dz, SEM_NORMAL);"
+  },
+  "needed_observation": {
+    "before_birth_boundary": "qsel+7 complete exactRAW/clocks before scheduled application",
+    "contact": "qsel+8",
+    "next": "qsel+9/qsel+10",
+    "sites": [
+      [
+        52,
+        48,
+        55
+      ],
+      [
+        53,
+        48,
+        56
+      ],
+      [
+        52,
+        48,
+        56
+      ],
+      [
+        51,
+        48,
+        57
+      ],
+      [
+        52,
+        48,
+        57
+      ],
+      [
+        52,
+        48,
+        58
+      ]
+    ],
+    "region": "Complete Moore26 around contact56, source and old residue; existing31framecapture contains these times.",
+    "functional": "Compare fixedFIq4/q6 and actualNative message admission/delivery, not local colour/hash only."
+  },
+  "preparation_scope": "One final external fixed hardware revision before new Native/reserves. Preserve R01/R02 and the unused57-minusZ proposal; do not change a port by opportunity outcome or feed labels/future to selector.",
+  "not_demonstrated": [
+    "Efficacy in the accumulated current Native history",
+    "Learned selection or useful regulation with this new device",
+    "Any spontaneous construction of the prepared actuator",
+    "Kernel/binariy mutation or subjective pain"
+  ]
+}

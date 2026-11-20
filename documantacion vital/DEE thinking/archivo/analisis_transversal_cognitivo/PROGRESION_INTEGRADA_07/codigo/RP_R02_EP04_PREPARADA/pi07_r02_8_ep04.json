@@ -1,0 +1,889 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi07_r02_8_ep04",
+  "title": "PI07 R02: ocho episodios con adversos y observación externa fija EP04",
+  "revision": "R01_PREPARADA_REPLAY_NATIVE_PENDIENTE",
+  "prefix": "PI07_PREADQUISICION_TC_T824914",
+  "code_capsule_key": "PI07_RP_R02_EP04_R01",
+  "requires_explicit_material": true,
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_",
+  "reproduction_enabled": true,
+  "variants": {
+    "swap_global_ep04": {
+      "batches": [
+        [
+          {
+            "label": "INICIAR",
+            "literal": {
+              "modo": "eci01-pi07-iniciar",
+              "brazo": "real",
+              "registro_global": false
+            },
+            "require_zero_ticks": true,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "admitted"
+            ],
+            "expected": true
+          },
+          {
+            "label": "EP00",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP01",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": true,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP02",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP03",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": true,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP04",
+            "literal": {
+              "modo": "eci01-pi07-observar-episodio-04"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "original_result",
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "original_result",
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP05",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP06",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "EP07",
+            "literal": {
+              "modo": "eci01-pi07-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "EP00_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP00",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "EP00_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP00",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP00_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP00",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "EP00_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP00",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP01_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP01",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "EP01_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP01",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "EP01_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP01",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP01_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP01",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP02_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP02",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "EP02_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP02",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP02_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP02",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "EP02_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP02",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP03_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP03",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "EP03_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP03",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "EP03_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP03",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP03_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP03",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP04_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "original_result",
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "EP04_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "original_result",
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP04_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "original_result",
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP04_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "original_result",
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP05_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP05",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "EP05_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP05",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP05_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP05",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "EP05_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP05",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP06_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP06",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "EP06_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP06",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP06_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP06",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP06_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP06",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "EP07_reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP07",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "EP07_FI",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP07",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "EP07_message",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP07",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "message",
+                "delivered_exact"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "EP07_pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "EP07",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "complete5963ticks",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "EP07",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "INICIAR",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 5963
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 1464,
+        "applied": 1464,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "tick": 830877,
+        "RAW_sha256": "ec56b0f59bc860a40c01362ff0a2e7c6b28551b20af2c268e14e3fb7be1adfef",
+        "clocks_sha256": "5f0143d10a795574df4168a17797e426e8cf4f09a6fb68da174b655f45ad7a14"
+      }
+    }
+  },
+  "assistance": [
+    "Prepared new TC anatomy/sensor/query/readers/actuator and environment; same P0 prefix, real return and fixed Native outputs. Expected values are auditor-only.",
+    "InnerR02 global flag=false; an independent RP-only recorder wraps ONLYEP04. This is a recording-pattern swap, NOT absence of all global recording."
+  ],
+  "limitations": [
+    "Reference first8 has six successful FI uses and no learned protective pulse; matching its negatives is technical reproduction, not a cognitive PASS.",
+    "Native early choices include-1 and material0; effective motor remains-1. NULL is never a convenient no-pulse.",
+    "Shared prefix, not independent lives; original R01/R02 source and protocol are literal. No principal adoption or new body replay fromT0.",
+    "Expected comparisons were fixed after reference closure and BEFORE this cold Native run; original global windows differ as declared."
+  ],
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "Native_replay_verified": false,
+    "reference_execution": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\control\\PI07_ADQUISICION_R02.json",
+      "sha256": "da56f89654c344a6801e4fbb22567106f49905fbef9414bf7e42dcbc3a02fe2b",
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01",
+      "initial_tick": 824914,
+      "final_tick": 830877,
+      "Native_ticks": 5963
+    }
+  },
+  "expected_final_Native": {
+    "source_frozen_snapshot": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T830877.4c9256a82422.deetsnap.gz",
+    "source_snapshot_sha256": "c14696cf2617eaf833ae3fd79aa32ba8d35086ca776464c860615e72554c14d8",
+    "physical": {
+      "N": 67,
+      "tick": 830877,
+      "RAW_sha256": "ec56b0f59bc860a40c01362ff0a2e7c6b28551b20af2c268e14e3fb7be1adfef",
+      "clocks_sha256": "5f0143d10a795574df4168a17797e426e8cf4f09a6fb68da174b655f45ad7a14"
+    },
+    "causal_prefix_sha256": "bfcbe74dd4af71421c57eb27297749cf73eff4d176f3371385213720fb4d4391",
+    "interfaces": 1102,
+    "pending_native": 0,
+    "native_receipts": 130920,
+    "phase": "research_import",
+    "all_same_cut_candidates": [
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T830877.4c9256a82422.deetsnap.gz",
+        "sha256": "c14696cf2617eaf833ae3fd79aa32ba8d35086ca776464c860615e72554c14d8"
+      }
+    ]
+  },
+  "expected_EP04_Native": {
+    "source_frozen_snapshot": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T828531.9162d19eba9e.deetsnap.gz",
+    "source_snapshot_sha256": "6b11e2d8e4cf66b3f1fac41bc442f4a99338fe89f4eff4de1e1f8d126864c4b8",
+    "physical": {
+      "N": 67,
+      "tick": 828531,
+      "RAW_sha256": "14af646079746211232d1e77616a522b38eca565ca9a00b666aff1de20032432",
+      "clocks_sha256": "7efc5b142c54d4897904e17d11a113ea7816e96ad3290f964da5ff105b4440ca"
+    },
+    "causal_prefix_sha256": "9cd0d27642333e9a1eac4f644c5cf7b8612f2478f85e23e1a740a86ed9ff2d30",
+    "interfaces": 1102,
+    "pending_native": 0,
+    "native_receipts": 130371,
+    "phase": "research_import",
+    "all_same_cut_candidates": [
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T828531.9162d19eba9e.deetsnap.gz",
+        "sha256": "6b11e2d8e4cf66b3f1fac41bc442f4a99338fe89f4eff4de1e1f8d126864c4b8"
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T828531.b941a18d9253.deetsnap.gz",
+        "sha256": "0e8a321f1498a7b052fce910e4e85f8f0e9d76d54e7b3cdb2169190949d5503b"
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01.T828531.fe57713635b5.deetsnap.gz",
+        "sha256": "8a4d62977b71bb5b449c34686679d0c20d4febb3ba2b2943576a657186b344d8"
+      }
+    ]
+  },
+  "analysis": {
+    "interface": "DEE.recalculation.root_outdir.v1",
+    "product_relative": "reproducibilidad/materiales/PI07_ANALISIS_R02_8",
+    "manifest": "MANIFIESTO_ESTABLE.json",
+    "manifest_sha256": "87a3e9a297680a87fd202718f9a93ad9f9447d33031119e6e58db5b16a9cbae7",
+    "recalculation_script": "RECALCULAR_RP_PI07_R02.py"
+  }
+}

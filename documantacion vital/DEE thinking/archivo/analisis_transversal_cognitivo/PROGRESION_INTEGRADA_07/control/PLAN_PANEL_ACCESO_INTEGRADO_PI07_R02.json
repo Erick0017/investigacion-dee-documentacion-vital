@@ -1,0 +1,390 @@
+{
+  "schema": "DEE.PI07.integrated_FI_and_heritage.prospective_plan.R02",
+  "status": "SEALED_BEFORE_NEW_FI_TESTS",
+  "historical_recipe_sha256": "8efe577083013eac0cbfe5bc1ac661e7f7265f52f01de380492bb976c417d9fe",
+  "historical_failure_sha256": "c3f1f04599f43eef52626cdb80e31a2052b17904faba741b721c34e345f526b5",
+  "new_FI_protocol_sha256": "4f15e2c892ab067c46338a7d89c0c6714b68f1436f936568e723a6bc1a7ccbc6",
+  "required_R03_ordinal": 16,
+  "phases": {
+    "desarrollo": [
+      {
+        "label": "DEVplus",
+        "literal": {
+          "modo": "eci01-pi07-fi-regulada",
+          "izquierda": 14,
+          "derecha": 3
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "DEVminus",
+        "literal": {
+          "modo": "eci01-pi07-fi-regulada",
+          "izquierda": 2,
+          "derecha": 11
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      }
+    ],
+    "panel12": [
+      {
+        "label": "habitat_off",
+        "literal": {
+          "modo": "eci01-pi02-pausar-habitat"
+        },
+        "require_zero_ticks": true
+      },
+      {
+        "label": "luma",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "luma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "nara",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "nara"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "clasifica",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "suma",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "suma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "alfa",
+        "literal": {
+          "modo": "memoria",
+          "operacion_memoria": "usar",
+          "contexto": "alfa"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "FIplus",
+        "literal": {
+          "modo": "eci01-pi07-fi-regulada",
+          "izquierda": 13,
+          "derecha": 4
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "FIminus",
+        "literal": {
+          "modo": "eci01-pi07-fi-regulada",
+          "izquierda": 2,
+          "derecha": 12
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "FIzero",
+        "literal": {
+          "modo": "eci01-pi07-fi-regulada",
+          "izquierda": 6,
+          "derecha": 6
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": 0,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "number13",
+        "literal": {
+          "modo": "eci01-aritmetica-directa",
+          "operacion": "suma",
+          "izquierda": 6,
+          "derecha": 7
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "numeric_result"
+        ],
+        "expected": 13,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "native_operation",
+            "native_trial",
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "number8",
+        "literal": {
+          "modo": "eci01-aritmetica-directa",
+          "operacion": "diferencia",
+          "derecha": 5
+        },
+        "actual_integer_binding": {
+          "from_step": "number13",
+          "field": "izquierda"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "numeric_result"
+        ],
+        "expected": 8,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "native_operation",
+            "native_trial",
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "alfa_after",
+        "literal": {
+          "modo": "memoria",
+          "operacion_memoria": "usar",
+          "contexto": "alfa"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "luma_after",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "luma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      }
+    ],
+    "old_C2C_next": {
+      "label": "old_C2C_next",
+      "literal": {
+        "modo": "eci01-pi04-c2c-oportunidad"
+      },
+      "maximum_native_ticks": 1500,
+      "feedback": "real",
+      "actuator": "closed"
+    }
+  },
+  "development_criterion": "Two fixed material uses, preserving numeric errors without a retry or retuning. Stop only uncertainty/budget; Root reviews before reserved panel.",
+  "panel_criterion": "Twelve functional uses on the same actual candidate: nine original word/memory/actual integer uses plus three new reserved FI calls13/4,2/12,6/6. All twelve results and direct applied receipts must be documented; dose is explicitly new, not929byinertia.",
+  "native_bounds": {
+    "word_memory": 512,
+    "old_arithmetic": 600,
+    "new_FI": 1300,
+    "C2C": 1500
+  },
+  "expected_access_ordinal": {
+    "before_desarrollo": 0,
+    "after_desarrollo": 2,
+    "before_panel12": 2,
+    "after_panel12": 5
+  },
+  "scope": "Only Cognitive access integration/versioned test. R03environment counter remains16; no new R03offer, bank reset, old answer teaching, favorable retry, promotion or hidden target in actor input."
+}

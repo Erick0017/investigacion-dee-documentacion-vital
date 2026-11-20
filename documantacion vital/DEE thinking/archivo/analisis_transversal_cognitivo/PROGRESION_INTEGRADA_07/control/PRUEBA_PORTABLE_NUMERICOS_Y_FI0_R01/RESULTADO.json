@@ -1,0 +1,191 @@
+{
+  "schema": "DEE.PI07.portable_primary_recalculation.v1",
+  "status": "DOCUMENTARY_CHECKS_MATCHED",
+  "all_checks_passed": true,
+  "new_Native_ticks": 0,
+  "DEE_imports": 0,
+  "index_sha256": "4aef6afa134e25be4aae6b1f69f5fada70c973fb179670bc6b50f227304f5520",
+  "indexed_primaries": 3,
+  "indexed_product_files": 0,
+  "episodes_recalculated": 1,
+  "groups": {
+    "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01|DEE.PI07.fixed_regulated_FI_access.R01_PREPARED": {
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01",
+      "version": "DEE.PI07.fixed_regulated_FI_access.R01_PREPARED",
+      "actual_executed_opportunities_included": 1,
+      "stages": {
+        "regulated_FI_access": {
+          "opportunities": 1,
+          "FI_correct": 1,
+          "legitimate_packets_scheduled": 0,
+          "legitimate_packets_delivered": 0,
+          "complete_opportunities": 1,
+          "valid_Native_selections": 1,
+          "zero_Native_choices_not_NULL": 1,
+          "NULL_Native_choices": 0,
+          "pulse_requests_scheduled": 0,
+          "pulse_requests_applied": 0,
+          "actual_function_failures": 0,
+          "returned_failures": 0
+        }
+      },
+      "Native_ticks_included": 782,
+      "credit_contract_matches": 1,
+      "credit_contract_evaluable_valid_motors": 1,
+      "scope": "Paired descendants may share a prefix; these are not independent individuals or concept counts."
+    }
+  },
+  "episodes": [
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0002.json#row0",
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01",
+      "version": "DEE.PI07.fixed_regulated_FI_access.R01_PREPARED",
+      "ordinal": 4,
+      "stage": "regulated_FI_access",
+      "cue_fixture_not_actor_input": null,
+      "sensor_actual_state": 0,
+      "sensor_submitted_state": 0,
+      "before_tick": 862939,
+      "after_tick": 863721,
+      "query_tick": 863309,
+      "FI_query_tick": 863501,
+      "calendar": {
+        "action_to_collision_ticks": 403,
+        "collision_tick": 863718,
+        "contact_tick": 863719,
+        "delay_laps": 6,
+        "delay_ticks": 402,
+        "motor_efference_delay_ticks": 1,
+        "outcome_injection_tick": 863717,
+        "phase_rule": "Both reference clocks at contact are 391 modulo 782; calendar is prepared.",
+        "query_read_tick": 863315,
+        "query_tick": 863309,
+        "seed_tick": 863316,
+        "settled_after_tick": 863721
+      },
+      "FI_calendar": {
+        "C_tick": 863502,
+        "S_tick": 863504,
+        "before_tick": 863445,
+        "early_reader_tick": 863505,
+        "horizon_tick": 863643,
+        "input_tick": 863447,
+        "old_reader_tick": 863507,
+        "query_tick": 863501,
+        "timing": {
+          "critical_window_inclusive": [
+            863500,
+            863509
+          ],
+          "effective_query_tick": 863501,
+          "enabled": true,
+          "phase_selection_information": "Exact integer calendar only; no raw sensor value, target, expected response, reader output or memory content.",
+          "protocol": "MUFI01.sensor_calendar.R3P0",
+          "requested_query_tick": 863501,
+          "wait_ticks": 0
+        }
+      },
+      "selection": 0,
+      "actual_motor": -1,
+      "forced_operator_action": null,
+      "sensor_ablation": false,
+      "actuator_ablation": false,
+      "pulse_scheduled": false,
+      "pulse_applied": false,
+      "pulse_status": null,
+      "FI_q4": 0,
+      "FI_q6": null,
+      "FI_correct": true,
+      "public_operands": {
+        "left": 6,
+        "right": 6
+      },
+      "expected_afterwards_evaluator_only": 0,
+      "message_required": false,
+      "message_required_payload": null,
+      "message_actual_payload": null,
+      "message_status": null,
+      "message_delivered": false,
+      "complete_opportunity": true,
+      "actual_failed": false,
+      "returned_failed": false,
+      "feedback_arm": "real",
+      "reference_delta_before_return": 0,
+      "reference_delta_after": 0,
+      "observed_credit_increment": 0,
+      "expected_credit_increment_conditional_on_valid_motor": 0,
+      "credit_increment_contract_matched": true,
+      "unique_current_requests": 182,
+      "status_counts": {
+        "applied": 182
+      },
+      "aliases_not_new_events": 0,
+      "scope": "General access contract, not a consumed R03 environmental offer or an unchanged old198tick/176input API."
+    }
+  ],
+  "checks": [
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0000.json#row0",
+      "check": "inherited_numeric_RAW_without_operand_solution",
+      "passed": true
+    },
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0001.json#row0",
+      "check": "inherited_numeric_RAW_without_operand_solution",
+      "passed": true
+    },
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0002.json#row0",
+      "check": "general_access_fixed_calendar",
+      "passed": true
+    },
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0002.json#row0",
+      "check": "general_access_preserves_zero_NULL_and_postfunction_reference",
+      "passed": true
+    }
+  ],
+  "yoked_plans": [],
+  "rows_hash_verified_not_recalculated": [],
+  "no_complete_rows_or_technical_errors": [],
+  "external_observation_wrappers_not_double_counted": [],
+  "inherited_function_witnesses_recalculated_separately": [
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0000.json#row0",
+      "kind": "inherited_native_numeric_reader",
+      "operation": "suma",
+      "actual_numeric_result": 13,
+      "public_operands": [
+        6,
+        7
+      ],
+      "observation_tick": 863778,
+      "fixed_representation_bias": 0,
+      "unique_requests": 176,
+      "status_counts": {
+        "applied": 176
+      },
+      "aliases_not_new_events": 0,
+      "scope": "Actual Native C payload minus fixed representation bias only; operands are not added/subtracted by this decoder. Operator selection and affine representation remain prepared."
+    },
+    {
+      "source": "04_EVIDENCIAS/PRIMARIOS/primary_0001.json#row0",
+      "kind": "inherited_native_numeric_reader",
+      "operation": "diferencia",
+      "actual_numeric_result": 8,
+      "public_operands": [
+        13,
+        5
+      ],
+      "observation_tick": 863976,
+      "fixed_representation_bias": 32,
+      "unique_requests": 176,
+      "status_counts": {
+        "applied": 176
+      },
+      "aliases_not_new_events": 0,
+      "scope": "Actual Native C payload minus fixed representation bias only; operands are not added/subtracted by this decoder. Operator selection and affine representation remain prepared."
+    }
+  ],
+  "scope": "Frozen-record documentary recalculation. It does not run DEE, re-acquire a skill, validate omitted observations, demonstrate unrestricted observer passivity or promote any life. All source_reference fields were ignored."
+}

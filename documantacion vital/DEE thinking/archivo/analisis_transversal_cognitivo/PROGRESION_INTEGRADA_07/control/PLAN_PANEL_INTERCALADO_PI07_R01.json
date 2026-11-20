@@ -1,0 +1,354 @@
+{
+  "schema": "DEE.PI07.heritage.actual_result_binding.prepared_plan.R01",
+  "status": "PREPARADO_NO_EJECUTADO",
+  "authority": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\recetas\\panel_12.json",
+    "sha256": "8efe577083013eac0cbfe5bc1ac661e7f7265f52f01de380492bb976c417d9fe",
+    "variant": "principal",
+    "native_receipt_expectations": {
+      "unique_requested": 929,
+      "applied": 929,
+      "rejected": 0
+    }
+  },
+  "phases": {
+    "panel12": [
+      {
+        "label": "habitat_off",
+        "literal": {
+          "modo": "eci01-pi02-pausar-habitat"
+        },
+        "require_zero_ticks": true
+      },
+      {
+        "label": "luma",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "luma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "nara",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "nara"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "clasifica",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "suma",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "suma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "alfa",
+        "literal": {
+          "modo": "memoria",
+          "operacion_memoria": "usar",
+          "contexto": "alfa"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "FIplus",
+        "literal": {
+          "modo": "eci01-balance",
+          "izquierda": 14,
+          "derecha": 3
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "all_material_receipts"
+          ]
+        ]
+      },
+      {
+        "label": "FIminus",
+        "literal": {
+          "modo": "eci01-balance",
+          "izquierda": 2,
+          "derecha": 11
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "all_material_receipts"
+          ]
+        ]
+      },
+      {
+        "label": "FIzero",
+        "literal": {
+          "modo": "eci01-balance",
+          "izquierda": 6,
+          "derecha": 6
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "early_physical_choice"
+        ],
+        "expected": 0,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "all_material_receipts"
+          ]
+        ]
+      },
+      {
+        "label": "number13",
+        "literal": {
+          "modo": "eci01-aritmetica-directa",
+          "operacion": "suma",
+          "izquierda": 6,
+          "derecha": 7
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "numeric_result"
+        ],
+        "expected": 13,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "native_operation",
+            "native_trial",
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "number8",
+        "literal": {
+          "modo": "eci01-aritmetica-directa",
+          "operacion": "diferencia",
+          "derecha": 5
+        },
+        "actual_integer_binding": {
+          "from_step": "number13",
+          "field": "izquierda"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "numeric_result"
+        ],
+        "expected": 8,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "native_operation",
+            "native_trial",
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "alfa_after",
+        "literal": {
+          "modo": "memoria",
+          "operacion_memoria": "usar",
+          "contexto": "alfa"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": -1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      },
+      {
+        "label": "luma_after",
+        "literal": {
+          "modo": "apd04-palabra",
+          "texto": "luma"
+        },
+        "read_path": [
+          "result",
+          "rows",
+          0,
+          "reader",
+          "formed_native_command"
+        ],
+        "expected": 1,
+        "receipt_paths": [
+          [
+            "result",
+            "rows",
+            0,
+            "requests"
+          ]
+        ]
+      }
+    ],
+    "new_R03_next": {
+      "label": "new_R03_next",
+      "literal": {
+        "modo": "eci01-pi07-r03-episodio"
+      },
+      "maximum_native_ticks": 1300,
+      "feedback": "omit",
+      "actuator": "closed",
+      "not_extra_supply": true
+    },
+    "old_C2C_next": {
+      "label": "old_C2C_next",
+      "literal": {
+        "modo": "eci01-pi04-c2c-oportunidad"
+      },
+      "maximum_native_ticks": 1500,
+      "feedback": "real",
+      "actuator": "closed",
+      "not_extra_supply": true
+    }
+  },
+  "preconditions": [
+    "Root chooses exact phase placement before material use; no selection target or answer goes to the actor.",
+    "Use one existing candidate, same organization, no reset or old re-teaching.",
+    "The old PI05 C2C environment has only ordinal28/30 and two actual offers; consumption must be recorded without resetting counters.",
+    "Existing extension helper26to30 is NOT a30to32resupply and must never be replayed as such.",
+    "Check current R03 ordinal/remaining explicitly; a new use consumes an actual registered offer.",
+    "A material regression stops and preserves that future; no query reader/answer changes to force a pass."
+  ],
+  "scope": "Prepared Root plan only. Exact historical input/decoder contracts and actual integer binding; positive/negative/zero FI all included. New R03/C2C phases are optional explicit material uses, not completed tests or new opportunities.",
+  "Native_executed": false
+}

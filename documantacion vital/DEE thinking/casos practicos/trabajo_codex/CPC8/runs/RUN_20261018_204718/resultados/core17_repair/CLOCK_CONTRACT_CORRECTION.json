@@ -1,0 +1,181 @@
+{
+  "schema": "CPC8.CORE17.clock_label_correction.v1",
+  "source_contract": "Runtime4.5 apply_events_at_boundary writes RAW and explicitly preserves the existing full clock word; ChannelSpec does not select a fresh clock.",
+  "superseded_fields": [
+    "repair45.py docstring channel arm clock0",
+    "standard-channel MEASUREMENTS.input_clock_contract clock0 wording",
+    "standard-channel ledger.actual_input_clock = 0"
+  ],
+  "actual_contract": "PRESERVE_EXISTING_CLOCK_NOT_ZERO_ASSIGNMENT",
+  "capture_gap": "Prior clock was not retained in each standard-channel input ledger row. No per-input value has been invented or reconstructed retrospectively.",
+  "primary_preserved": true,
+  "physical_code_changed": false,
+  "native_trajectory_repeated_for_this_correction": false,
+  "result": "All24 paired saved boundaries have equal RAW; only4 T0 boundaries have equal clocks. The20 later clock arrays differ. Local published readouts and functional results coincide in these four finite pairs.",
+  "comparison": [
+    {
+      "reference_row": 0,
+      "boundaries": [
+        {
+          "label": "T0",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": true
+        },
+        {
+          "label": "T62_learned",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T100_before_damage",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T101_damaged",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T162_repair_arrival",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T193_query",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        }
+      ]
+    },
+    {
+      "reference_row": 3,
+      "boundaries": [
+        {
+          "label": "T0",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": true
+        },
+        {
+          "label": "T62_learned",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T100_before_damage",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T101_damaged",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T162_repair_arrival",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T193_query",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        }
+      ]
+    },
+    {
+      "reference_row": 4,
+      "boundaries": [
+        {
+          "label": "T0",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": true
+        },
+        {
+          "label": "T62_learned",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T100_before_damage",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T101_damaged",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T162_repair_arrival",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T193_query",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        }
+      ]
+    },
+    {
+      "reference_row": 7,
+      "boundaries": [
+        {
+          "label": "T0",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": true
+        },
+        {
+          "label": "T62_learned",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T99_before_damage",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T100_damaged",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T161_repair_arrival",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        },
+        {
+          "label": "T192_query",
+          "tick_equal": true,
+          "RAW_equal": true,
+          "clocks_equal": false
+        }
+      ]
+    }
+  ]
+}

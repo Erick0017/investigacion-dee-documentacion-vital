@@ -1,0 +1,40 @@
+{
+  "schema": "CPC9.independent.static.delivery.audit.supplement.v1",
+  "audit_date": "2026-10-19",
+  "status": "EXTERNAL_REVISIONS_REVIEWED_NO_STATIC_BLOCKER_FOR_SERIAL_PUBLICATION",
+  "supersedes_findings_for_external_script_versions_in": "HERRAMIENTAS_AUDITADAS_01.json",
+  "scientific_sources_or_sealed_tools_modified_by_auditor": false,
+  "runtime_or_simulations_executed_by_auditor": false,
+  "reviewed_revised_external_scripts": [
+    {
+      "path": "PUBLICAR_CPC9.py",
+      "sha256": "a961e7d4472692ad6d9d47aaf0c3ebe4f4586f7dce2b5dddb25250620032ce7e"
+    },
+    {
+      "path": "CERRAR_ENTREGA_CPC9.py",
+      "sha256": "b07a906943fe45c70fab52b5287365801fe80ad458a5781cb20c0a9faf62dd10"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "PUBLISH01",
+      "resolution": "Canonical and copied metadata publication now uses same-directory os.link then unlink. New generated metadata uses exclusive x/xb creation. Concurrent existing targets cannot be replaced."
+    },
+    {
+      "id": "CLOSE01",
+      "resolution": "Published receipt remains PENDING until index/notes/size checks and complete payload hashing succeed. Prospective final hash index includes the hash of exactly the staged final receipt bytes. Receipt replacement is the last commit. Stable existing index is accepted and external note append is idempotent."
+    },
+    {
+      "id": "CLOSE02",
+      "resolution": "Elapsed budget is measured again after report work and all payload hashing, immediately before two small metadata commits. This scope is stated explicitly in the receipt."
+    }
+  ],
+  "remaining_limits": [
+    "An I/O failure after exclusive hash-index creation but before final receipt commit leaves status PENDING. Recovery requires inspection of the existing index rather than silently issuing FINAL; this is a safe incomplete state.",
+    "One serial owner is assumed. The receipt compare-then-os.replace sequence is not a cross-process compare-and-swap transaction. No concurrent closure writers should be run.",
+    "PUBLISH02 remains a theoretical source-mutation race. The pending independent delivery check will bind published canonical hashes to the exact expected clean-proof identities, and closure rehashes the canonical bytes.",
+    "CLOSE03 remains a distinction between a genuine splitter-produced reconstruction record and an independent actual-byte audit; the pending actual-delivery phase supplies the latter.",
+    "PACK01/PACK02 remain unchanged because the tool is sealed. Exact clean verification hashes every extracted member and HASHES index, mitigating PACK01 for the actual candidate."
+  ],
+  "pending": "Await actual ten delivered parts, PARTES.json, exact proof receipts, final receipt and HASHES_ENTREGA.sha256 for an independent read-only byte identity check."
+}

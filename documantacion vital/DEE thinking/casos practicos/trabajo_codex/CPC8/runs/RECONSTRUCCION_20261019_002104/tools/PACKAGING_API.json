@@ -1,0 +1,29 @@
+{
+  "schema": "CPC8.reconstruction.packaging.api.v2",
+  "state": "TOOLS_READY_WAITING_ROOT_SCIENTIFIC_FREEZE_AND_EXACT_CLEAN_VALIDATION",
+  "scientific_candidate_built_by_tools_test": false,
+  "tests": "tools/PACKAGING_TOOLS_TEST.json:9/9 synthetic tooling tests PASS; not DEE functional approval",
+  "commands_from_WORK": {
+    "tools_test": "python -I -B tools/test_publication_tools.py",
+    "build_only_after_authorization": "python -I -B tools/publicar_cpc8.py build --ack-science-frozen --candidate ../entrega_reconstruccion/CPC8_CANDIDATO.zip",
+    "verify_exact_zip": "python -I -B tools/publicar_cpc8.py verify --zip ../entrega_reconstruccion/CPC8_CANDIDATO.zip --report ../entrega_reconstruccion/INTEGRIDAD_CANDIDATO.json",
+    "extract_new_path": "python -I -B tools/publicar_cpc8.py extract --zip ../entrega_reconstruccion/CPC8_CANDIDATO.zip --destination NUEVA_RUTA_CORTA --report ../entrega_reconstruccion/EXTRACCION.json",
+    "publish_only_after_root_exact_clean_PASS": "python -I -B tools/publicar_cpc8.py publish --candidate ../entrega_reconstruccion/CPC8_CANDIDATO.zip --canonical ../resultados/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS.zip --clean-report INFORME_LIMPIO_DEL_HASH_EXACTO.json --expected-previous-sha256 65164c939621464c7d4faa800240bb1c2e25538ba9d878a65863016f57387c00 --prior-backup ../historico/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS__65164c939621464c7d4faa800240bb1c2e25538ba9d878a65863016f57387c00.zip --prior-proofs ../historico/PRUEBAS_65164c939621464c7d4faa800240bb1c2e25538ba9d878a65863016f57387c00 --authorize",
+    "transport_exactly_two_binary_parts_if_compressed_over20MiB": "python -I -B tools/publicar_cpc8.py transport --zip ../resultados/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS.zip --output ../resultados"
+  },
+  "gates": [
+    "No current-tree inventory or build until science frozen and own jobs closed",
+    "Exactly one official4.5 WHL/PYD; no previous ZIP nested; no venv/cache/build",
+    "Reconstruction does not require B1/B2 operative comparators",
+    "CRC, manifest/hash scope, unique safe member names and complete expanded/category sizes",
+    "Clean report PASS must name exact closed candidate SHA; integrity alone is not functional validation",
+    "Current canonical hash must still equal declared predecessor and byte-exact historical backup must pass CRC",
+    "Historical external proofs must match their protected archived bytes before changing small delivery documents",
+    "Exclusive cooperating-publisher lock plus hash/file-identity recheck; atomic replacement, not partial write",
+    "If observed current-cut conflict, abort and preserve both candidate and prior delivery",
+    "Split only when compressedZIP exceeds20MiB; exactly2 sequential binary parts; actual temporary rebuild and hash/container check"
+  ],
+  "concurrency_limit": "The publication lock serializes this publisher; this is not a filesystem-wide CAS guarantee against unrelated noncooperating writers. All observed identity/hash conflicts abort.",
+  "root_final_closure_note": "Prior CIERRE_CPC8.json and TRANSPORTE_NO_REQUERIDO.json are preserved in historico. Root must make current closure/transport status explicit after the new exact ZIP and optional parts are verified; do not cite their old hashes as current.",
+  "external_hash_policy": "The final ZIP SHA is reported outside the ZIP; parts manifest stays outside the already divided container."
+}

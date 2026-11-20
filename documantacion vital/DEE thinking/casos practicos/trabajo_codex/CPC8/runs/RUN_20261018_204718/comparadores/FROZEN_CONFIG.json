@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "scope": "Opaque formID -> observed directional class, NOT 65 semantic meanings",
+  "count": 65,
+  "dimension": 131,
+  "native_backend": "LAZY",
+  "native_threads": 1,
+  "reserved_seeds": [
+    402817,
+    591307
+  ],
+  "blocks": [
+    {
+      "start": 0,
+      "stop": 8,
+      "experience_tick": 0,
+      "panel_tick": 131
+    },
+    {
+      "start": 8,
+      "stop": 16,
+      "experience_tick": 262,
+      "panel_tick": 393
+    },
+    {
+      "start": 16,
+      "stop": 32,
+      "experience_tick": 524,
+      "panel_tick": 655
+    },
+    {
+      "start": 32,
+      "stop": 65,
+      "experience_tick": 786,
+      "panel_tick": 917
+    }
+  ],
+  "revision": {
+    "form": 0,
+    "tick": 1048,
+    "panel_tick": 1179,
+    "method": "symmetric_counterflow"
+  },
+  "restored_panel_tick": 1310,
+  "query_payload": 5,
+  "mlp": {
+    "hidden": 24,
+    "updates": 256,
+    "learning_rate": 0.08
+  },
+  "criterion": {
+    "acquisition": "first physical/algorithmic response for newly experienced forms equals latest observed direction",
+    "retention": "response for previously acquired forms after later experience, without re-teaching that form",
+    "revision": "same form receives opposite current observation; revised form and unchanged forms assessed separately",
+    "missing": "None/rejected/uncovered remains distinct from wrong numeric prediction",
+    "denominator": "queries, with per-world/seed results; ticks are not independent samples"
+  },
+  "information_policy": "Participants receive only past/current explicit experience(form,observation) and query(form); evaluator labels never passed to query.",
+  "inequivalence": [
+    "DEE queries are physical consumable inputs and advance ticks; conventional query forward passes do not change stored knowledge.",
+    "DEE geometry and revision route are prepared; MLP architecture/optimizer/replay and dictionary update are prepared algorithms.",
+    "DEE has 2 physical training inputs/observation and 4 for revision; conventional event is one example and replay has separately counted cost.",
+    "No comparison of universal intelligence or energy efficiency; process memory and portable state size are different quantities."
+  ],
+  "source_hashes": {
+    "models.py": "2ffa2501c42eeb45b60066062f902aeee3e2f364b20174ab9f7a4f5e66d2d2a7",
+    "discovery.py": "95c4a7f23f781abf99f62ec65bacc4459ab17d4c85d53a19d92e9791017956f5",
+    "run_comparison.py": "c9188c8239eaef7681684150f587e222834807cf8cf459c1f9f3986dce9ae442"
+  }
+}

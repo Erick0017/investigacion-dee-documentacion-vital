@@ -1,0 +1,113 @@
+{
+  "schema": "CPC9.independent.static.delivery.audit.v1",
+  "audit_date": "2026-10-19",
+  "status": "STATIC_REVIEW_COMPLETE_ACTUAL_DELIVERY_PENDING",
+  "scope": "Read-only inspection of scientific sources and four delivery scripts. No simulations, native module loading, clean proof execution or scientific classifications. This report is outside the sealed WORK tree.",
+  "work": "RUN_20261019_165651",
+  "reviewed_tools": [
+    {
+      "path": "RUN_20261019_165651/tools/dividir_verificar_entrega.py",
+      "bytes": 10762,
+      "sha256": "5d79d52a344b1457d7998611232e47dc8c887b752acbdafbfb12f5ed8ea1cb5b"
+    },
+    {
+      "path": "RUN_20261019_165651/tools/pack_cpc9.py",
+      "bytes": 14076,
+      "sha256": "955549b87c914c8b7410127f563f5b301a594cefa3b56b1433ce7fda8f0f64ba"
+    },
+    {
+      "path": "PUBLICAR_CPC9.py",
+      "bytes": 8293,
+      "sha256": "234b5ec64c253522fa9a0069164c0e0a37948f965b5ebd00ee00e785541ec9de"
+    },
+    {
+      "path": "CERRAR_ENTREGA_CPC9.py",
+      "bytes": 6615,
+      "sha256": "92ddfb11925e77b6b8baa7150803242df7fb1f039c7dee293b41f90b5fa91797"
+    }
+  ],
+  "expected_canonicals_supplied_by_parent_not_independently_hashed_in_this_phase": [
+    {
+      "role": "Core",
+      "bytes": 73601685,
+      "sha256": "412a6819e36203a0086790003301a13722bd14fd3a3213b03681d827f7cca1a2",
+      "expected_part_bytes_at_default_limit": [14720337, 14720337, 14720337, 14720337, 14720337]
+    },
+    {
+      "role": "CPC9_candidate01",
+      "bytes": 65870122,
+      "sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+      "expected_part_bytes_at_default_limit": [13174025, 13174025, 13174025, 13174025, 13174022]
+    }
+  ],
+  "confirmed_static_properties": [
+    "Splitter enforces 1000000 <= maximum_part_bytes <= 16000000 and computes ceil-sized equal sequential segments. These source sizes yield five segments per ZIP, ten total.",
+    "Splitter computes every part SHA-256, actually writes a full reconstruction, checks its hash and length, compares every reconstructed byte with the source, and rehashes the source before issuing PARTES.json.",
+    "Segment and pack ZIP publication use same-directory os.link then unlink: existing destinations are not replaced even if created concurrently. Unsupported hardlink filesystems fail safely.",
+    "Splitter metadata uses exclusive creation; identical existing metadata/segments can be retained, conflicting ones fail.",
+    "Generated merger checks leaf names, consecutive part order, part hashes/sizes and complete reconstruction hash/size. Existing exact canonicals are verified; conflicting ones are protected. Temporary output is retained on failure.",
+    "Publisher checks passing clean-proof status and exact source ZIP hashes against Core and CPC9 proof identities; CRC checks precede publication. Supervision must report process completion, exit zero, worker wait and closed owned job.",
+    "CPC9 clean verifier lines438-451 hashes extracted members and checks exact HASHES coverage before any operational proof; this mitigates the pack tool member-identity gap when a genuine VERIFIED_EXACT_ZIP receipt is required.",
+    "Publisher checks protected historical archive SHA-256 values rather than relying on paths or filenames.",
+    "No tool reviewed modifies source scientific ZIP contents. Closure intentionally changes external receipt and external readable document copies."
+  ],
+  "findings": [
+    {
+      "id": "CLOSE01",
+      "priority": "P1",
+      "file": "CERRAR_ENTREGA_CPC9.py",
+      "lines": [17, 38, 54, 55, 58, 59, 61, 63],
+      "issue": "The final status is committed before creating the delivery index, appending external notes, checking noncanonical size limits and writing HASHES_ENTREGA.sha256. Any later failure leaves a final-looking receipt and rerunning is refused by the initial status guard.",
+      "recommendation": "Perform all validation/preflight and stage required outputs before the final commit. Make incomplete external closure recoverable, with final status issued only after every required delivery artifact is present and verified."
+    },
+    {
+      "id": "CLOSE02",
+      "priority": "P2",
+      "file": "CERRAR_ENTREGA_CPC9.py",
+      "lines": [27, 28, 29, 62, 63],
+      "issue": "The final elapsed budget value is measured before index/notes/hash-index work. The actual script finish may occur after the recorded close and after the deadline.",
+      "recommendation": "Measure and enforce final budget after all substantive closure work, immediately before issuing the final receipt."
+    },
+    {
+      "id": "CLOSE03",
+      "priority": "P2",
+      "file": "CERRAR_ENTREGA_CPC9.py",
+      "lines": [18, 22, 24, 26, 31, 32],
+      "issue": "Closure rehashes canonicals and individual parts but does not itself reconstruct their concatenation; it trusts reconstruction_verified/byte_comparison_verified manifest fields. It also does not recheck the proof-file hashes recorded at publication. The generated manifest is sufficient when it is known to come from the reviewed splitter, but closure alone is not an independent byte-reconstruction audit.",
+      "recommendation": "Use the pending independent current-delivery audit to stream all ordered parts, compare with each canonical and bind actual manifest/proof bytes. Do not claim this static review has already verified delivered bytes."
+    },
+    {
+      "id": "PUBLISH01",
+      "priority": "P2",
+      "file": "PUBLICAR_CPC9.py",
+      "lines": [17, 25, 65, 66, 91, 92],
+      "issue": "Path.rename protects a concurrent existing target on Windows, the present supported platform, but would overwrite on POSIX. Two generated metadata files use exists-then-write_text/write_bytes, which can truncate a file created between those operations. The claimed no-overwrite behavior is therefore not universal for metadata/concurrent writers.",
+      "recommendation": "Use exclusive creation or the same-directory no-clobber publication pattern for generated metadata and canonical copies if stronger concurrency guarantees are required."
+    },
+    {
+      "id": "PUBLISH02",
+      "priority": "P2",
+      "file": "PUBLICAR_CPC9.py",
+      "lines": [23, 33, 38, 50],
+      "issue": "Source/proof identity is checked before publication, while publish verifies its temporary copy against a fresh source hash rather than the proof-bound hash. A source changed in between can be copied under the earlier recorded identity. Sealed sources and a subsequent closure hash reject this in normal use, but publication alone does not bind the final destination to the proof hash atomically.",
+      "recommendation": "Rehash the published destination against the proof-bound expected hash before issuing the publication receipt."
+    },
+    {
+      "id": "PACK01",
+      "priority": "P2_WITH_CLEAN_VERIFIER_MITIGATION",
+      "file": "RUN_20261019_165651/tools/pack_cpc9.py",
+      "lines": [225, 235],
+      "issue": "Pack validates source fingerprints before and after copying and ZIP CRC, but does not hash each archived member against its sealed selection row. A transient source change reverted before the second choose call can publish a self-inconsistent archive.",
+      "mitigation": "The separately required exact clean verifier hashes the extracted members and complete HASHES coverage. Do not mutate the already sealed pack tool merely to fix this theoretical build race for the present candidate; require the exact clean verification of the actual final ZIP."
+    },
+    {
+      "id": "PACK02",
+      "priority": "P2",
+      "file": "RUN_20261019_165651/tools/pack_cpc9.py",
+      "lines": [238, 250],
+      "issue": "The ZIP is published before the BUILD receipt conflict check. A preexisting BUILD.json can produce command failure after ZIP publication; retry then fails because the ZIP exists.",
+      "recommendation": "For future pack tool revisions, preflight receipt paths or stage archive and receipt before publication. Preserve this candidate and its external exact clean receipt."
+    }
+  ],
+  "next_phase": "After the ten actual delivery segments exist: independently check canonical identities, all part lengths <=16000000, actual file hashes, manifest identities, concatenated byte identity and final receipt/hash-index consistency. No scientific/runtime execution is needed."
+}

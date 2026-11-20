@@ -1,0 +1,608 @@
+{
+  "schema": "CPC8R.input_delta.reconciliation.v1",
+  "script_sha256": "cba8320a22350d758a613255ecded6228e1bd8d8b1f4c3a525444bd8a3fed189",
+  "issue": "Old derived new_requests used list-tail slicing, but receipt presentation concatenates base+mode; appending base requests moves mode rows. Full requests/native receipts and physical trajectories were already correct. Existing primary files and their exact executed source remain unchanged. Future runner versions filter unique IDs.",
+  "affected_cases": 5,
+  "rows": [
+    {
+      "case_id": "EG2_L11_NEW_BA_OLD_WORD",
+      "primary": "resultados\\integracion\\EG2_L11_NEW_BA_OLD_WORD\\MEASUREMENTS.json",
+      "primary_sha256": "c2102c8dc77cea2add073ec2e36896a3b7ca466ef7b2fddb933ffbc7c6ebfa64",
+      "parent_measurements": "resultados\\integracion\\EG2_P01_ONPATH_AB_CONTACT\\MEASUREMENTS.json",
+      "parent_measurements_sha256": "f45010d9afe07699addcb65cc387f0a21f8adef7da8b5035a9cf8a413d25a935",
+      "formula": "child.requests filtered by id not in parent.requests; native receipt IDs are unique within this shared Runtime lineage",
+      "corrected_new_requests": [
+        {
+          "id": 85,
+          "port": "order.B",
+          "payload": 3,
+          "tick": 469,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_EVENT_ON_OLD_SENSOR_NO_TEACHING_MAP",
+          "call_tick": 415,
+          "receipt": {
+            "id": 85,
+            "status": "applied",
+            "channels": [
+              "order.B"
+            ],
+            "requested_tick": 469,
+            "effective_tick": 469,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 86,
+          "port": "order.A",
+          "payload": 3,
+          "tick": 470,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_EVENT_ON_OLD_SENSOR_NO_TEACHING_MAP",
+          "call_tick": 415,
+          "receipt": {
+            "id": 86,
+            "status": "applied",
+            "channels": [
+              "order.A"
+            ],
+            "requested_tick": 470,
+            "effective_tick": 470,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 87,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 472,
+          "kind": "probe",
+          "origin": "EXPLICIT_COMMON_ORDER_READER_LATE",
+          "call_tick": 415,
+          "receipt": {
+            "id": 87,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 472,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 88,
+          "port": "joint.query.minus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 88,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 89,
+          "port": "joint.query.minus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 89,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 90,
+          "port": "joint.query.plus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 90,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.plus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 91,
+          "port": "joint.query.plus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 91,
+            "status": "applied",
+            "channels": [
+              "joint.query.plus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": 479,
+            "kind": "probe",
+            "reason": ""
+          }
+        }
+      ],
+      "original_derived_field_equal": false,
+      "original_derived_field_preserved": true
+    },
+    {
+      "case_id": "EG2_L12_NEW_AB_OLD_WORD",
+      "primary": "resultados\\integracion\\EG2_L12_NEW_AB_OLD_WORD\\MEASUREMENTS.json",
+      "primary_sha256": "86476b738483cb352504f6830303e890cf8bed55a10424dfcf3b756ef43b9cdb",
+      "parent_measurements": "resultados\\integracion\\EG2_P01_ONPATH_AB_CONTACT\\MEASUREMENTS.json",
+      "parent_measurements_sha256": "f45010d9afe07699addcb65cc387f0a21f8adef7da8b5035a9cf8a413d25a935",
+      "formula": "child.requests filtered by id not in parent.requests; native receipt IDs are unique within this shared Runtime lineage",
+      "corrected_new_requests": [
+        {
+          "id": 85,
+          "port": "order.A",
+          "payload": 3,
+          "tick": 469,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_EVENT_ON_OLD_SENSOR_NO_TEACHING_MAP",
+          "call_tick": 415,
+          "receipt": {
+            "id": 85,
+            "status": "applied",
+            "channels": [
+              "order.A"
+            ],
+            "requested_tick": 469,
+            "effective_tick": 469,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 86,
+          "port": "order.B",
+          "payload": 3,
+          "tick": 470,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_EVENT_ON_OLD_SENSOR_NO_TEACHING_MAP",
+          "call_tick": 415,
+          "receipt": {
+            "id": 86,
+            "status": "applied",
+            "channels": [
+              "order.B"
+            ],
+            "requested_tick": 470,
+            "effective_tick": 470,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 87,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 472,
+          "kind": "probe",
+          "origin": "EXPLICIT_COMMON_ORDER_READER_LATE",
+          "call_tick": 415,
+          "receipt": {
+            "id": 87,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 472,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 88,
+          "port": "joint.query.minus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 88,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 89,
+          "port": "joint.query.minus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 89,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 90,
+          "port": "joint.query.plus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 90,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.plus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 91,
+          "port": "joint.query.plus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 91,
+            "status": "applied",
+            "channels": [
+              "joint.query.plus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": 479,
+            "kind": "probe",
+            "reason": ""
+          }
+        }
+      ],
+      "original_derived_field_equal": false,
+      "original_derived_field_preserved": true
+    },
+    {
+      "case_id": "EG2_L13_NO_NEW_EVENTS",
+      "primary": "resultados\\integracion\\EG2_L13_NO_NEW_EVENTS\\MEASUREMENTS.json",
+      "primary_sha256": "1c3f33b2e0678facd640965ca13470c29a922468521d1aa44ec2954a93dac83a",
+      "parent_measurements": "resultados\\integracion\\EG2_P01_ONPATH_AB_CONTACT\\MEASUREMENTS.json",
+      "parent_measurements_sha256": "f45010d9afe07699addcb65cc387f0a21f8adef7da8b5035a9cf8a413d25a935",
+      "formula": "child.requests filtered by id not in parent.requests; native receipt IDs are unique within this shared Runtime lineage",
+      "corrected_new_requests": [
+        {
+          "id": 85,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 472,
+          "kind": "probe",
+          "origin": "EXPLICIT_COMMON_ORDER_READER_LATE",
+          "call_tick": 415,
+          "receipt": {
+            "id": 85,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 472,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 86,
+          "port": "joint.query.minus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 86,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 87,
+          "port": "joint.query.minus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 87,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 88,
+          "port": "joint.query.plus.free",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 88,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.plus.free"
+            ],
+            "requested_tick": 479,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 89,
+          "port": "joint.query.plus.changed",
+          "payload": 11,
+          "tick": 479,
+          "kind": "probe",
+          "origin": "OLD_COMPOSITE_WORD_QUERY_AFTER_NEW_EVENTS_NO_RETEACHING",
+          "call_tick": 415,
+          "receipt": {
+            "id": 89,
+            "status": "applied",
+            "channels": [
+              "joint.query.plus.changed"
+            ],
+            "requested_tick": 479,
+            "effective_tick": 479,
+            "kind": "probe",
+            "reason": ""
+          }
+        }
+      ],
+      "original_derived_field_equal": false,
+      "original_derived_field_preserved": true
+    },
+    {
+      "case_id": "ENS_L01_RESTORE_NEW_QUERY",
+      "primary": "resultados\\integracion\\ENS_L01_RESTORE_NEW_QUERY\\MEASUREMENTS.json",
+      "primary_sha256": "3d07433551128f05482042af8cba293e5116b08b1ea63a8967cc1976cc00caad",
+      "parent_measurements": "resultados\\integracion\\ENS_P01_AB_CONTACT_MODEPLUS\\MEASUREMENTS.json",
+      "parent_measurements_sha256": "d17b85f6443b11d4165a9bd6ab96c1156a816a28cdf78db8fe6e3d2726c3ac37",
+      "formula": "child.requests filtered by id not in parent.requests; native receipt IDs are unique within this shared Runtime lineage",
+      "corrected_new_requests": [
+        {
+          "id": 81,
+          "port": "joint.query.minus.free",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 81,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.free"
+            ],
+            "requested_tick": 412,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 82,
+          "port": "joint.query.minus.changed",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 82,
+            "status": "applied",
+            "channels": [
+              "joint.query.minus.changed"
+            ],
+            "requested_tick": 412,
+            "effective_tick": 412,
+            "kind": "probe",
+            "reason": ""
+          }
+        },
+        {
+          "id": 83,
+          "port": "joint.query.plus.free",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 83,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.plus.free"
+            ],
+            "requested_tick": 412,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 84,
+          "port": "joint.query.plus.changed",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 84,
+            "status": "applied",
+            "channels": [
+              "joint.query.plus.changed"
+            ],
+            "requested_tick": 412,
+            "effective_tick": 412,
+            "kind": "probe",
+            "reason": ""
+          }
+        }
+      ],
+      "original_derived_field_equal": false,
+      "original_derived_field_preserved": true
+    },
+    {
+      "case_id": "ENS_L02_RESTORE_NEW_QUERY",
+      "primary": "resultados\\integracion\\ENS_L02_RESTORE_NEW_QUERY\\MEASUREMENTS.json",
+      "primary_sha256": "65e5ba588082a559a0a549ab3f4410b3a09406c2c88c87aab50a16b886ab3d74",
+      "parent_measurements": "resultados\\integracion\\ENS_P02_BA_FREE_MODEMINUS\\MEASUREMENTS.json",
+      "parent_measurements_sha256": "7a5410170a8e11368d08f7b62faf40f3a71faa8e6b2daaa15e8a866f3265f67b",
+      "formula": "child.requests filtered by id not in parent.requests; native receipt IDs are unique within this shared Runtime lineage",
+      "corrected_new_requests": [
+        {
+          "id": 81,
+          "port": "joint.query.minus.free",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 81,
+            "status": "applied",
+            "channels": [
+              "joint.query.minus.free"
+            ],
+            "requested_tick": 412,
+            "effective_tick": 412,
+            "kind": "probe",
+            "reason": ""
+          }
+        },
+        {
+          "id": 82,
+          "port": "joint.query.minus.changed",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 82,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.minus.changed"
+            ],
+            "requested_tick": 412,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 83,
+          "port": "joint.query.plus.free",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 83,
+            "status": "rejected_occupied",
+            "channels": [
+              "joint.query.plus.free"
+            ],
+            "requested_tick": 412,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 84,
+          "port": "joint.query.plus.changed",
+          "payload": 9,
+          "tick": 412,
+          "kind": "probe",
+          "origin": "NEW_INTERLOCUTOR_QUERY_AFTER_RESTORATION",
+          "call_tick": 348,
+          "receipt": {
+            "id": 84,
+            "status": "applied",
+            "channels": [
+              "joint.query.plus.changed"
+            ],
+            "requested_tick": 412,
+            "effective_tick": 412,
+            "kind": "probe",
+            "reason": ""
+          }
+        }
+      ],
+      "original_derived_field_equal": false,
+      "original_derived_field_preserved": true
+    }
+  ]
+}

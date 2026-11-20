@@ -1,0 +1,43 @@
+{
+  "schema": "CPC8.clean-validation.development-index.v1",
+  "scope": "Technical development evidence only. Neither report approves publication of a sealed candidate. Original scientific trajectories, states and reports are not replaced by these reproductions.",
+  "reports": [
+    {
+      "path": "DEV01_INSTRUMENTATION_FAILURE.json",
+      "sha256": "6bdc5b4d052c5de57c33e7a2c6c2107ff0356ee83db09adac3dc30b1a5ce875e",
+      "bytes": 12668,
+      "origin_relative_to_workspace_tests": "_cpc8_clean_validation_dev_20261018_2210/VALIDACION_LIMPIA.json",
+      "original_external_tree_files": 16,
+      "original_external_tree_stored_bytes": 1171506,
+      "external_bytes_not_copied": 1158838,
+      "status": "FAIL",
+      "preserved_error": "Validator instrumentation called the Runtime.receipts list property as a function. The tool reader was corrected; no app, recipe, native engine or scientific primary was modified."
+    },
+    {
+      "path": "DEV02_FULL_PASS.json",
+      "sha256": "2142f962b91a2df96bfcc25165fd10bd34e3d6a2c481cc9da42964631d37203b",
+      "bytes": 12965,
+      "origin_relative_to_workspace_tests": "_cpc8_clean_validation_dev2_20261018_2206/VALIDACION_LIMPIA.json",
+      "original_external_tree_files": 30,
+      "original_external_tree_stored_bytes": 5379797,
+      "external_bytes_not_copied": 5366832,
+      "status": "DEVELOPMENT_PASS",
+      "checks_passed": 9,
+      "elapsed_seconds": 91.59934049996082,
+      "validator_source_at_execution_sha256": "e3033e1a394fd2de9497c67d9152e72203033c7d9003fa4187a7b54a4c165fed",
+      "publication_eligible": false,
+      "coverage": "Installed4.5 identity, emptyRuntime, CP01/CP02, public integrated and control event trajectories, exact physical continuation657→690 plus operational state and decoded snapshot, and restored396 with newBquery416→419/423/428."
+    }
+  ],
+  "copied_report_bytes": 25633,
+  "external_stored_bytes_not_copied": 6525670,
+  "not_duplicated": ["Technical reproduction snapshots", "Fresh reference output directories", "App transcripts", "Temporary native snapshot materializations"],
+  "retained_primary_evidence": "Original CPC8 scientific snapshots, exact executed code and measurements remain in their scientific result directories; these development reports refer to them by hashes. No primary evidence is removed based on supposed regeneration.",
+  "final_tool_instrumentation": {
+    "path": "tools/validar_limpia.py",
+    "sha256": "438726e91386209196bb5e9b857a8b6f32f6d3e4767a48a12611300cd645b98d",
+    "additions_after_full_development_run": ["Included kernel_v27.cpp exact source hash and build_info match", "CPython isolated and ignore-environment flags with explicit PYTHONPATH provenance", "Production requires both exact sealed artifact file and supplied artifact SHA-256"],
+    "directed_identity_check": "Development-only isolated identity smoke passed with the final tool; the final sealed candidate still requires the complete clean functional gate.",
+    "publication_policy": "A production PASS requires --artifact, matching SHA-256 and all functional checks. Development and identity-only modes cannot publish."
+  }
+}

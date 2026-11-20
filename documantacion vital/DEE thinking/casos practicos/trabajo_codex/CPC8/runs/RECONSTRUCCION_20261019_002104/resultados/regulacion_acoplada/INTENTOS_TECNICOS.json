@@ -1,0 +1,45 @@
+{
+  "attempts": [
+    {
+      "case_id": "RCAM_D01_PLUS_HIGH",
+      "individual_id": "RCAM_D01_PLUS_HIGH",
+      "status": "TECHNICAL_ERROR_AFTER_RUNTIME_CONSTRUCTION",
+      "job": "jobs/coupled_regulation_mcts_P01",
+      "configuration": "resultados/regulacion_acoplada/RCAM_D01_PLUS_HIGH/CONFIG.json",
+      "error": "ValueError duplicate channel name in OrganizationalWorld.create before curriculum or advance",
+      "preserved_source": "resultados/regulacion_acoplada/RCAM_D01_PLUS_HIGH/executed_source/src/regulacion_acoplada/mcts.py",
+      "scientific_evolution_completed": false,
+      "Runtime_construction_before_exception": true,
+      "physical_preparation_attempt_count": 1,
+      "curriculum_calls": 0,
+      "advance_calls": 0,
+      "last_possible_physical_tick": 0,
+      "construction_provenance": "source/src/organizational.cpp::OrganizationalWorld::create constructs Runtime at line164 before registering interfaces at178. Duplicate embedded channels are rejected during registration. Temporary owner was destroyed by exception; no checkpoint was returned.",
+      "repair_number_for_error": 1,
+      "cause": "InterfaceSpec.name and embedded ChannelSpec.name are distinct contract fields; only first was prefixed.",
+      "correction": "Prefix both interface and embedded channel names R.; physical recipe, positions, RAW/clocks and input payloads unchanged.",
+      "next_attempt": "RCAM_D02_PLUS_HIGH"
+    },
+    {
+      "case_id": "RCAM_D02_PLUS_HIGH",
+      "individual_id": "RCAM_D02_PLUS_HIGH",
+      "continuation_case_id": "RCAM_D02_CONTINUED_FROM4",
+      "continuation_individual_id": "RCAM_D02_PLUS_HIGH",
+      "continuation_primary": "resultados/regulacion_acoplada/RCAM_D02_CONTINUED_FROM4/MEASUREMENTS.json",
+      "status": "PHYSICAL_PREPARATION_RECOVERED_FROM_LAST_FULL_CHECKPOINT",
+      "job": "jobs/coupled_regulation_mcts_D02",
+      "configuration": "resultados/regulacion_acoplada/RCAM_D02_PLUS_HIGH/CONFIG.json",
+      "error": "Session metadata exceeds its structural bound while saving passive frames; T0/T4 snapshots and subsequent incremental frames retained.",
+      "preserved_source": "resultados/regulacion_acoplada/RCAM_D02_PLUS_HIGH/executed_source/src/regulacion_acoplada/mcts.py",
+      "physical_preparation_count": 1,
+      "last_incremental_tick": 76,
+      "completed_recorded_frames": [0,2,3,4,5,9,10,11,15,31,53,54,69,70,73,76],
+      "saved_full_states": ["resultados/regulacion_acoplada/RCAM_D02_PLUS_HIGH/T0.deetsnap.gz", "resultados/regulacion_acoplada/RCAM_D02_PLUS_HIGH/T4.deetsnap.gz"],
+      "continuation_is_same_preparation": true,
+      "repair_number_for_error": 1,
+      "cause": "Detailed optional observer frames were duplicated inside the composed session metadata, exceeding the official finite structural limit.",
+      "correction": "Keep passive frames in primary result files, not in operative metadata. Physical state/queue/receipts/protocol requests are not cleared or changed. Resume complete saved T4 rather than prepare again.",
+      "next_attempt": "RCAM_D02_CONTINUED_FROM4"
+    }
+  ]
+}

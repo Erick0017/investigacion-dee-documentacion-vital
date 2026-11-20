@@ -1,0 +1,85 @@
+{
+  "schema": "CPC8.temporal_roles.frozen.v1",
+  "frozen_utc": "2026-10-18T21:26:00Z",
+  "question": "Physical A/B event order before linguistic cues, later cue-only query, inverse-role query after independent acquisition; event identities and gaps reserved.",
+  "decoder": "Exactly native order(+/-1,-1,0) at emission; first and inverse queries(+/-1,0,+1); no zero/silence as class.",
+  "attribution": "Designer-prepared inverse-role transformation is not learned grammar. New event_state_offset changes actual sensory states, not just ID strings.",
+  "cases": [
+    {
+      "id": "TMP_P11_AB",
+      "history": "AB",
+      "gap": 1,
+      "event_state_offset": 0,
+      "query_delay": 20,
+      "name_mode": "paired",
+      "new_experience": true,
+      "new_value": 1,
+      "role_inverse": true,
+      "horizon": 234
+    },
+    {
+      "id": "TMP_P12_BA",
+      "history": "BA",
+      "gap": 1,
+      "event_state_offset": 0,
+      "query_delay": 20,
+      "name_mode": "paired",
+      "new_experience": true,
+      "new_value": -1,
+      "role_inverse": true,
+      "horizon": 234
+    },
+    {
+      "id": "TMP_C11_NAME_OMITTED",
+      "history": "AB",
+      "gap": 1,
+      "event_state_offset": 0,
+      "query_delay": 20,
+      "name_mode": "omitted",
+      "new_experience": true,
+      "new_value": 1,
+      "role_inverse": true,
+      "horizon": 234
+    },
+    {
+      "id": "TMP_C12_NAME_UNPAIRED",
+      "history": "BA",
+      "gap": 1,
+      "event_state_offset": 0,
+      "query_delay": 20,
+      "name_mode": "unpaired",
+      "new_experience": true,
+      "new_value": -1,
+      "role_inverse": true,
+      "horizon": 234
+    },
+    {
+      "id": "TMP_R11_NEW_STATES_GAP2",
+      "history": "AB",
+      "gap": 2,
+      "event_state_offset": 100,
+      "query_delay": 23,
+      "name_mode": "paired",
+      "event_load": 5,
+      "query_payload": 13,
+      "new_experience": true,
+      "new_value": -1,
+      "role_inverse": true,
+      "horizon": 234
+    },
+    {
+      "id": "TMP_R12_NEW_STATES_GAP3",
+      "history": "BA",
+      "gap": 3,
+      "event_state_offset": 400,
+      "query_delay": 23,
+      "name_mode": "paired",
+      "event_load": 5,
+      "query_payload": 13,
+      "new_experience": true,
+      "new_value": 1,
+      "role_inverse": true,
+      "horizon": 234
+    }
+  ]
+}

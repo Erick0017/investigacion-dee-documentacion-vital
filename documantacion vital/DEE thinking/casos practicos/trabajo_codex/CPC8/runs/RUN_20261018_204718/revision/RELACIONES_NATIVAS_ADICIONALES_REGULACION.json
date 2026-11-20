@@ -1,0 +1,42 @@
+{
+  "schema": "CPC8.additional.native.relations.v1",
+  "entries": [
+    {
+      "id": "NR_REG_SCALAR_ALIAS",
+      "mechanism": "Equal max/sum scalar policy readings, different direction and useful delivery",
+      "cases": [
+        "REG_V2_P21",
+        "REG_V2_H21"
+      ],
+      "observed_scalars": [
+        97,
+        97
+      ],
+      "evidence": "revision/REGULACION_ADQUIRIDA.json#/data",
+      "scope": "Observational distinction in a finite controller, not a new semantic concept."
+    },
+    {
+      "id": "NR_ZERO_LOAD_CONTACT",
+      "mechanism": "state1 load0 material still contributes a direction to the current-world contact and permits later consequence routing",
+      "controls": [
+        "REG_V2_C21",
+        "REG_V2_C22",
+        "REG_V2_D21",
+        "REG_V2_D22",
+        "REG_V2_S21",
+        "REG_V2_S22"
+      ],
+      "scope": "Functional role of known v27 dynamics in a new preparation; not discovery of a new kernel law."
+    },
+    {
+      "id": "NR_UNUSED_LANE_INTERFERENCE",
+      "mechanism": "Two prepared zero-load turners from different comparison lanes point into the same EMPTY target atT1. Direction sum(0,-2,2) produces(0,-1,+1), rather than the intended surviving(+1,-1,+1) turner in the one-lane preparation.",
+      "cases": [
+        "REG_V1_H11",
+        "REG_V2_DISCOVERY_NEGATIVE"
+      ],
+      "causal_evidence": "resultados/regulacion/NR_PREMATURE_ZERO_JOIN/OBSERVACIONES.json: T0 Moore27, exact incoming directions, T1 posttarget, two native snapshots per preparation",
+      "scope": "The covered join is reconstructed from actual directed contributors, not proximity. The two preparations differ in resources; no global architecture superiority inferred."
+    }
+  ]
+}

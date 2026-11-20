@@ -1,0 +1,189 @@
+{
+  "schema": "CPC8R.campaign.map.v1",
+  "generated_utc": "2026-10-19T02:33:59.967340+00:00",
+  "groups": [
+    {
+      "id": "CPC1",
+      "capability_row_ids": [
+        "CP01_C01",
+        "CP01_C02",
+        "CP01_C03",
+        "CP01_C04",
+        "CP01_C05",
+        "CP01_C06",
+        "CP01_C07",
+        "CP01_C08"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC2",
+      "capability_row_ids": [
+        "CP02_B"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC3_SEM01",
+      "capability_row_ids": [
+        "CPC3_MAIN_AND_COMPARISON",
+        "CPC3_POLICY",
+        "SEM01"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC4",
+      "capability_row_ids": [
+        "CPC4_AB",
+        "CPC4_REGULATION_ABCD"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC5",
+      "capability_row_ids": [
+        "CPC5_COMPOUND",
+        "CPC5_CAPACITY65",
+        "CPC5_LONGITUDINAL65",
+        "CPC5_ORDER_AND_DIALOGUE"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC6",
+      "capability_row_ids": [
+        "CPC6_INTEGRATED",
+        "CPC6_TWO_FORMS",
+        "CPC6_RETENTION_CAUSAL",
+        "CPC6_ARCHITECTURES"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CORE_INGENIERIAS_PROCESOS_MBP_FISICA",
+      "capability_row_ids": [
+        "CORE06_RELEARNING",
+        "CORE07_REPROGRAMMING",
+        "ING01_R04_R14",
+        "ING02_RELATIVE",
+        "ING05_06_CONTEXT",
+        "PROCESOS_OBSERVERS",
+        "PROCESAMIENTO_NATIVO",
+        "FISICA_META_ROSETTA",
+        "CORE15_OBSERVER_SHADOW",
+        "CORE16_OBSERVER_INFORMATION",
+        "CORE17_COMPRESSED_OPERATOR_AND_REPAIR",
+        "ING05_HISTORY_FACTORIAL",
+        "ING06_POST_HOST_OPPORTUNITIES",
+        "PROC02_PREEXISTING_INTERFACE",
+        "PROC03_EXCHANGE_DISCOVERY",
+        "MBP4_CONTEXTUAL_REWRITE",
+        "FISICA_UNI1_LATER_REDUCTION"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "PRODUCTO",
+      "capability_row_ids": [
+        "PRODUCT4_CONTRACT",
+        "PRODUCT45_PORT_VALIDATION"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    },
+    {
+      "id": "CPC7",
+      "capability_row_ids": [
+        "CPC7_U0_CONTINUITY",
+        "CPC7_SELECTIVE_REVISION_M1_M2",
+        "CPC7_PREPARED_DISCREPANCY_REQUEST",
+        "CPC7_ABSENCE_APERTURE",
+        "CPC7_DIRECTIONAL_COMPOSITION_AND_POST_NAME",
+        "CPC7_NSM65_SCOPE"
+      ],
+      "new_status_source": "revision/MATRIZ_CAPACIDADES_ACUMULADAS.json",
+      "historical_source_lookup": "revision/INVENTARIO_FUENTES.json"
+    }
+  ],
+  "relations": [
+    {
+      "from": "CPC1/CPC2",
+      "to": "CPC3/SEM01",
+      "kind": "Earlierfiniteprotocols,association,currentMAINandforecastreferences; notoneindividual"
+    },
+    {
+      "from": "SEM01",
+      "to": "CPC4",
+      "kind": "Cue/consequenceacquisitionextendedtophysicalcommunication"
+    },
+    {
+      "from": "CPC4",
+      "to": "CPC5",
+      "kind": "Communication/regulationreferencesandarchitecturecomparisons; differentworlds"
+    },
+    {
+      "from": "CPC5",
+      "to": "CPC6",
+      "kind": "Acquiredrelationsandphysicalcompositionpatterns"
+    },
+    {
+      "from": "CPC6",
+      "to": "CPC7",
+      "kind": "NewsingleMAINcontinuity,accessandfiniteM1revision"
+    },
+    {
+      "from": "CPC7",
+      "to": "PRODUCT4.5",
+      "kind": "Compiledoptionalpreparationsandinstalledfiniteprotocolfacades"
+    },
+    {
+      "from": "PRODUCT4.5",
+      "to": "NEW_CPC8_RECONSTRUCTION",
+      "kind": "FrozeninstrumentfornewpostT0histories; noautomaticinheritanceofresults"
+    },
+    {
+      "from": "OLD_CPC8_SOC21",
+      "to": "NEW_CPC8_RESCUE",
+      "kind": "Fullsavedstate138→166replayonly; notnewE1"
+    },
+    {
+      "from": "ING02/SEM01/CPC7",
+      "to": "NEW_E1_LCE",
+      "kind": "Explicitboundedfamilyadaptationsandnewjointvalidation"
+    }
+  ],
+  "new_profile_links": {
+    "LCE": {
+      "measured": true,
+      "primary": "resultados/integracion/LCE_P01_FRESH_LONGITUDINAL/MEASUREMENTS.json"
+    },
+    "IUE": {
+      "measured": true,
+      "source": "src/integracion/initiative_use_e1.py",
+      "primary": "resultados/integracion/IUE_P01_RETURN_USED_PLUS/MEASUREMENTS.json",
+      "relation": "FreshT0successorprofile addsphysicalrequestandreturnuse; neverrelabelsLCEasifitalreadyhadthosefunctions."
+    },
+    "MCTS": {
+      "measured": true,
+      "primary": "resultados/transferencia_magnitud/MCTS_P01_SOURCE31/MEASUREMENTS.json",
+      "source": "src/transferencia_magnitud/cts_integrado.py",
+      "relation": "FreshT0successorofCTSwithseparatelyexperiencedmagnitudesourceandsevenrecipientcontexts; notretroactiveadditiontoLCE/IUE/CTSsavedindividuals."
+    }
+  },
+  "denominators_not_pooled": {
+    "65_catalogue": "SourcedNSMdocumentaryinventory,not65learnedmeanings",
+    "65_capacity": "HistoricalopaqueinterfacesN131",
+    "64_unchanged_if_one_of65_revised": "Arithmeticpaneldenominatoronly; notanobservednewE1score",
+    "63_old_SOC21": "Actuallyreportedcoveredoldoriginalinterfaces; historicalcut",
+    "13_old_CPC7": "Measuredunchangedothersafteroneof14revised",
+    "new_E1": "ItsownN67finiterepertoireandhorizon549oractuallaterextension; do not poolcohorts"
+  }
+}

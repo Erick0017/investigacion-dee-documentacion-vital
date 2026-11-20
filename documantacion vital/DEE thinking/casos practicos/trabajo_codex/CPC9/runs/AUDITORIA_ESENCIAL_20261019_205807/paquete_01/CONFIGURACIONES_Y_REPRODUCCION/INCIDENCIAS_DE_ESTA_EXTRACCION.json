@@ -1,0 +1,19 @@
+{
+  "scope": "Only technical audit-tool construction, never native CPC9 data changes",
+  "entries": [
+    {
+      "issue": "Console CP1252 could not print an arrow; explicitUTF8 configured.",
+      "effect": "No source data edited."
+    },
+    {
+      "issue": "Initial snapshot checksum parser used the standardFNVoffset; native container uses projectseed1469598103934665603.",
+      "correction": "Read documented container writer and used its exact seed;13original snapshots/arrays then matched.",
+      "effect": "Parser correction, not a change of physics or original scientific result."
+    },
+    {
+      "issue": "First generic historical fingerprint selector only recognized uppercaseRAW/pluralclocks keys.",
+      "correction": "Explicitly support the recorded lowercase/raw_sha256 and clock_sha256 layout; no target/expected fields used.",
+      "effect": "124paired contracts expose comparable exact fingerprints;24do not expose that format and are not called failed."
+    }
+  ]
+}

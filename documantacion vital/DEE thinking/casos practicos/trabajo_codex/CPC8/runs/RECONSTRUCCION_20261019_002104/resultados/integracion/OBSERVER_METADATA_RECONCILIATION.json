@@ -1,0 +1,8 @@
+{
+ "schema":"CPC8R.observer_metadata.reconciliation.v1",
+ "issue":"In the first version of run_longitudinal_fork.py, a parent was loadedat214 and advancedto267, then wrapperstate was copied without copying live child instrument caches mode.state/quantity.state back into parent.state. Native RAW/clocks, pendingqueue, receipts and all future interactions were correct; already-past instrument captures227/232/235 were not copied into quantityforks. This is not a loss of physical Bknowledge or a negative response.",
+ "affected_primaries":["resultados/integracion/LCE_F13_QUANTITY_REFERENCE_CUT/MEASUREMENTS.json","resultados/integracion/LCE_F14_QUANTITY_REFERENCE_SHAM/MEASUREMENTS.json"],
+ "interpretation":"The Bquery227 and use235 precede the quantityintervention267. Their evidence is the unmodified prefix in LCE_P01_FRESH_LONGITUDINAL, not newlyobserved postfork outputs in these two files. Do not interpret empty social_captures as Bsilence. The postfork quantity and old-word observations are direct; both shams match parent fullfinalRAW/clocks/tick and all native receiptfields.",
+ "prefix_reference":"resultados/integracion/LCE_P01_FRESH_LONGITUDINAL/MEASUREMENTS.json",
+ "preservation":"Original primaries and their exact executed source remain byte-unchanged. Current runner copies live mode.state and quantity.state explicitly before future forks; no native physics or inputs changed. No deterministic scientifictrajectory was rerun solely to hide this observer-cache issue."
+}

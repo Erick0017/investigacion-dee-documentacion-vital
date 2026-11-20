@@ -1,0 +1,10 @@
+{
+  "schema":"CPC8.configuration_timestamp_errata.v1",
+  "recorded_utc":"2026-10-18T21:28:20Z",
+  "issue":"Some configuration frozen_utc strings were manually estimated a few minutes ahead of actual execution. These strings are not authoritative measurements of freeze time.",
+  "affected_configurations":["SOCIAL_F3_L17_REAL_FROZEN.json","SOCIAL_F3_DIAGNOSTICS_FROZEN.json","TEMPORAL_F1_FROZEN.json","CONTACT_F1_VIABILITY_FROZEN.json","CONTACT_F2_SAME_CUE_FROZEN.json","CONTACT_F3_SEPARATED_USE_FROZEN.json","CONTACT_F3_ACCESS_REPAIR_FROZEN.json"],
+  "general_policy":"All hand-entered frozen_utc fields in this semantic cohort are approximate author annotations, not clock measurements. Use the supervisor timestamps and exact configuration hashes for chronology.",
+  "authoritative_boundary":"Each runner reads the complete configuration, hashes it, copies CONFIG.json and freezes executed_source before importing native preparation code and before creating or advancing its Runtime. The original supervisor started_utc and immutable per-case configuration_sha256 identify that boundary.",
+  "preservation":"Original configuration bytes and all primary results are retained. No results, decoder, reserve histories or acceptance conditions were altered to correct these clerical timestamp strings.",
+  "not_claimed":"No exact UTC configuration freeze earlier than the supervisor command is inferred from the erroneous manually entered field. Source/config ordering is established by executed runner control flow and matching hashes."
+}

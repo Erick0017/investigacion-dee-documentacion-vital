@@ -1,0 +1,95 @@
+{
+  "schema": "CPC8R.review.RETENCION_Y_PLASTICIDAD.v1",
+  "layer": "AUDITOR_RECALCULABLE_SYNTHESIS_NOT_PARTICIPANT_MEMORY",
+  "main_primary": {
+    "path": "resultados/transferencia_magnitud/MCTS_P01_SOURCE31/MEASUREMENTS.json",
+    "sha256": "10bde5693986bf3511a4117a10d80ea9628b0c276302ae47ca1519b19d185a53",
+    "locator": "Whole primary; exact field/tick named by associated claim"
+  },
+  "sources": [
+    {
+      "path": "resultados/integracion/IUE_P01_RETURN_USED_PLUS/MEASUREMENTS.json",
+      "sha256": "c932e8a2523f8fae8e47cd5003a9bb8c0ac70485de6ee65b20d0f004ac053951",
+      "locator": "Whole primary; exact field/tick named by associated claim"
+    },
+    {
+      "path": "resultados/integracion/PERFILES_IUE_RIE.json",
+      "sha256": "c5a31267fc30dbb30ee9f8d215089a276785a68997316d3edff89f44e762fe72",
+      "locator": "Whole primary; exact field/tick named by associated claim"
+    }
+  ],
+  "measured_retention": [
+    {
+      "relation": "Old order/contact opaque composite",
+      "uses": [
+        281,
+        348,
+        415,
+        549,
+        616
+      ],
+      "observed_loads": [
+        75,
+        82,
+        91,
+        102,
+        115
+      ],
+      "fixed_vector": [
+        0,
+        1,
+        1
+      ],
+      "interpretation": "Successive query products change load; these magnitudes do not measure conceptual depth."
+    },
+    {
+      "relation": "New contact function",
+      "experience": 340,
+      "association": 344,
+      "uses": [
+        411,
+        478
+      ],
+      "interpretation": "Real later experience with new states/dose; renewed access, not restoration of a favorable old state."
+    },
+    {
+      "relation": "B acquired mode message",
+      "acquisition": 160,
+      "first_query": 428,
+      "delay_ticks": 268,
+      "interpretation": "First query deferred, no re-teaching at227; current context later contributes to delivery436."
+    },
+    {
+      "relation": "Quantity reference",
+      "actual_update": 271,
+      "uses_after_update": [
+        338,
+        405,
+        472,
+        539
+      ],
+      "interpretation": "Old composite signal remains available after quantity update, not arbitrary overwrite of65relations."
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "Late temporal re-acquisition",
+      "source": {
+        "path": "resultados/integracion/ORDER_ACCESS_LECTURA.json",
+        "sha256": "56cb48bd7021a73249eea599cdb7c25ea87bbbf79476d39a79e505c2a309b2eb",
+        "locator": "Whole primary; exact field/tick named by associated claim"
+      },
+      "result": "Opening occupied port does not restore AB/BA output distinction; alternative reader exposes asymmetric local information. Old signal482 remains."
+    },
+    {
+      "case": "Repeated request reserve",
+      "source": {
+        "path": "resultados/integracion/PERFILES_IUE_RIE.json",
+        "sha256": "c5a31267fc30dbb30ee9f8d215089a276785a68997316d3edff89f44e762fe72",
+        "locator": "Whole primary; exact field/tick named by associated claim"
+      },
+      "result": "Second source experience admitted but downstream request has no qualified answer in held-out wholehistory; no general two-cycle availability claim."
+    }
+  ],
+  "evaluation_load": "First and later probes have different material histories. No identical deterministic replay is counted as independent learning, and no silent snapshot rollback occurs in MAIN."
+}

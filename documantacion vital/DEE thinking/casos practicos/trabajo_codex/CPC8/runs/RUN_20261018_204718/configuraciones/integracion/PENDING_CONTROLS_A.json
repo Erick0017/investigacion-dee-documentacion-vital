@@ -1,0 +1,15 @@
+{
+ "schema":"CPC8.integration.serial_owned_queue.v1",
+ "tasks":[
+  {"id":"AL_N12_OMITTED","script":"run_alias.py","config":"ALIAS_LEFT_FROZEN.json"},
+  {"id":"AL_R307_BA_MINUS","script":"run_alias.py","config":"ALIAS_LEFT_FROZEN.json"},
+  {"id":"AL_D11_CUT","script":"run_alias.py","config":"ALIAS_LEFT_FROZEN.json","parent":"AL_P11_BA/checkpoints/T20.deetsnap.gz","diagnostic":"cut"},
+  {"id":"AL_D12_SHAM","script":"run_alias.py","config":"ALIAS_LEFT_FROZEN.json","parent":"AL_P11_BA/checkpoints/T20.deetsnap.gz","diagnostic":"sham"},
+  {"id":"RL_N11_NO_CUE","script":"run_relocated.py","config":"RELOCATED_LEFT_FROZEN.json"},
+  {"id":"RL_H11_AB_MATCH","script":"run_relocated.py","config":"RELOCATED_LEFT_FROZEN.json"},
+  {"id":"RL_R709_BA_MINUS","script":"run_relocated.py","config":"RELOCATED_LEFT_FROZEN.json"},
+  {"id":"RL_D11_CUT","script":"run_relocated.py","config":"RELOCATED_LEFT_FROZEN.json","parent":"RL_P11_BA/checkpoints/T20.deetsnap.gz","diagnostic":"cut"},
+  {"id":"RL_D12_SHAM","script":"run_relocated.py","config":"RELOCATED_LEFT_FROZEN.json","parent":"RL_P11_BA/checkpoints/T20.deetsnap.gz","diagnostic":"sham"},
+  {"id":"E1_P11_LOCAL_REPLAY","script":"local_replay.py","config":"E1_CASES_FROZEN.json","case_id":"E1_P11_AB","initial":"E1_P11_AB/checkpoints/T0.deetsnap.gz","reference":"E1_P11_AB/MEASUREMENTS.json"}
+ ]
+}

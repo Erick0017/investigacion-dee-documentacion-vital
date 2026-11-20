@@ -1,0 +1,103 @@
+{
+  "case": {
+    "id": "COMP_MESSAGE_DIRECTION",
+    "architecture": "R1",
+    "stage": "DIAGNOSTIC",
+    "intervention": "direction",
+    "directions": {
+      "K1": 1,
+      "K2": 1,
+      "K3": -1,
+      "K4": 1
+    }
+  },
+  "geometry": {
+    "N": 67,
+    "hubs": {
+      "P1": [
+        50,
+        15,
+        8
+      ],
+      "P2": [
+        45,
+        15,
+        8
+      ],
+      "K1": [
+        50,
+        15,
+        20
+      ],
+      "K2": [
+        50,
+        15,
+        32
+      ],
+      "K3": [
+        50,
+        15,
+        44
+      ],
+      "K4": [
+        50,
+        15,
+        56
+      ]
+    },
+    "first_contact": [
+      50,
+      23,
+      8
+    ],
+    "second_contact": [
+      45,
+      28,
+      8
+    ],
+    "consequence_contact": [
+      40,
+      33,
+      8
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ],
+    "components": 6,
+    "prepared_material_sites": 0,
+    "physical_coupling": true,
+    "native_chain": [
+      "P1",
+      "P2",
+      "environment_resource"
+    ],
+    "relations": {
+      "K1": [
+        "P1",
+        "K1"
+      ],
+      "K2": [
+        "P2",
+        "K2"
+      ],
+      "K3": [
+        "K3"
+      ],
+      "K4": [
+        "K4"
+      ]
+    },
+    "redundancy": "Two separate paired exposures acquire each of K1/K2; no cloning or transplant"
+  },
+  "source_sha256": "94825eee4b1ee503f26313c0b6a7006fe0086f5d130367c9c019cbe21e5eddd3",
+  "criterion": "Fixed physical field decoder; evaluate history contrasts only after trajectory",
+  "horizon": 338,
+  "resource_budget": {
+    "components": 6,
+    "Runtime": 1,
+    "N": 67,
+    "native_threads": 1
+  }
+}

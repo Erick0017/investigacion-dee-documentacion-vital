@@ -1,0 +1,136 @@
+{
+  "version": "sem01.repertoire4.v1",
+  "frozen_utc": "2026-10-14T20:58:40.242518+00:00",
+  "subtask_start": "2026-10-14T20:55:58+00:00",
+  "subtask_deadline": "2026-10-14T21:25:58+00:00",
+  "N": 67,
+  "hubs": {
+    "S1": [
+      30,
+      30,
+      8
+    ],
+    "S2": [
+      30,
+      30,
+      24
+    ],
+    "S3": [
+      30,
+      30,
+      40
+    ],
+    "S4": [
+      30,
+      30,
+      56
+    ]
+  },
+  "training_emitters": {
+    "S1": [
+      8,
+      10,
+      64
+    ],
+    "S2": [
+      23,
+      10,
+      64
+    ],
+    "S3": [
+      39,
+      10,
+      64
+    ],
+    "S4": [
+      54,
+      10,
+      64
+    ]
+  },
+  "training_ticks": {
+    "S1": 17,
+    "S2": 45,
+    "S3": 73,
+    "S4": 101
+  },
+  "query_ticks": {
+    "S1": 151,
+    "S2": 179,
+    "S3": 207,
+    "S4": 235
+  },
+  "emission_ticks": {
+    "S1": 154,
+    "S2": 182,
+    "S3": 210,
+    "S4": 238
+  },
+  "signal": "Same single port/payload5/direction(-1,0,0) during teaching and evaluation",
+  "teachers": "Payload11 direction(1,+/-1,0), selected only by current physical function sensor and broadcastALL4",
+  "decoder": {
+    "-1,1,0": "U",
+    "-1,-1,0": "V"
+  },
+  "bank_version": "v2_delayed_supply",
+  "cases": [
+    {
+      "id": "paired_A_four",
+      "mode": "paired",
+      "generator_assignment": [
+        "U",
+        "U",
+        "V",
+        "V"
+      ]
+    },
+    {
+      "id": "paired_B_nonglobal_inversion",
+      "mode": "paired",
+      "generator_assignment": [
+        "U",
+        "V",
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "unpaired_A_four",
+      "mode": "unpaired",
+      "generator_assignment": [
+        "U",
+        "U",
+        "V",
+        "V"
+      ]
+    },
+    {
+      "id": "reserved_A_translation",
+      "mode": "paired",
+      "generator_assignment": [
+        "U",
+        "U",
+        "V",
+        "V"
+      ],
+      "translation": [
+        3,
+        5,
+        7
+      ],
+      "reserved": true
+    }
+  ],
+  "criterion": {
+    "signal_read_window": "Exactly prepared query+3, with RAW/clock and admission retained",
+    "primary_function": "Native delivered load7 direction+y at emission+14",
+    "optional_function": "Native delivered load3 direction+x at emission+7",
+    "errors_and_missing": "Included, no missing or rejected input becomes a correct zero response"
+  },
+  "resource_domain": "Same N67 but four memories and eight banks: enlarged resource arm, not equal-resource efficiency comparison",
+  "maximum_fresh_cohorts": 4,
+  "maximum_high_level_geometry_designs": 2,
+  "selected_geometry_design": 1,
+  "process_timeout_seconds": 180,
+  "native_threads": 1
+}

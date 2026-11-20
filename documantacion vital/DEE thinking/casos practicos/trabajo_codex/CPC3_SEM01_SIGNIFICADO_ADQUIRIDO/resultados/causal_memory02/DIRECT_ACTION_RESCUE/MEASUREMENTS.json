@@ -1,0 +1,1832 @@
+{
+  "id": "DIRECT_ACTION_RESCUE",
+  "modality": "DIAGNOSTIC_FORK",
+  "edit": {
+    "modality": "DIAGNOSTIC_FORK",
+    "label": "DIRECT_ACTION_RESCUE",
+    "tick": 83,
+    "site": [
+      30,
+      26,
+      12
+    ],
+    "before": {
+      "tick": 83,
+      "site": [
+        30,
+        26,
+        12
+      ],
+      "raw": 1157425172953694209,
+      "clock": 83,
+      "state": 1,
+      "semantic": 1,
+      "s_reg": 16,
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "active": true
+    },
+    "after": {
+      "tick": 83,
+      "site": [
+        30,
+        26,
+        12
+      ],
+      "raw": 0,
+      "clock": 83,
+      "state": 0,
+      "semantic": 0,
+      "s_reg": 0,
+      "direction": [
+        0,
+        0,
+        0
+      ],
+      "active": false
+    },
+    "changed_raw_sites": [
+      [
+        30,
+        26,
+        12
+      ]
+    ],
+    "raw_field_edited": true,
+    "clock_field_edited": false,
+    "clocks_sha256_parent_and_branch": "5b5d61f67c86051a9b0db2ead91df94b1452ec31324e888253f37740fd50c86f",
+    "parent_raw_sha256": "4fb7ba608ee52d0cde1743752168dc49b6b8461ef3baffc6b853bb50b0131ea9",
+    "branch_raw_sha256": "29551796681dfc3916c8e5df3d2a6ab11c4987ce30bae8b12cd3a9efca583c88",
+    "receipts_preserved": true,
+    "parent_unchanged_at_fork": true,
+    "native_external_operations": [
+      "CREATE_PREPARATION tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "DECLARE_INTERFACE tick=0",
+      "EXPERIENCE_PROTOCOL interface=train.S1.resource at=3 load=3 receipt=1",
+      "EXPERIENCE_PROTOCOL interface=train.S1.supply at=9 load=7 receipt=2",
+      "EXPERIENCE_PROTOCOL interface=train.S1.U at=4 load=11 receipt=3",
+      "EXPERIENCE_PROTOCOL interface=outcome.S1.U at=17 load=11 receipt=4",
+      "EXPERIENCE_PROTOCOL interface=outcome.S2.U at=17 load=11 receipt=5",
+      "EXPERIENCE_PROTOCOL interface=signal.S1 at=17 load=5 receipt=6",
+      "EXPERIENCE_PROTOCOL interface=train.S2.resource at=31 load=3 receipt=7",
+      "EXPERIENCE_PROTOCOL interface=train.S2.supply at=37 load=7 receipt=8",
+      "EXPERIENCE_PROTOCOL interface=train.S2.V at=32 load=11 receipt=9",
+      "EXPERIENCE_PROTOCOL interface=outcome.S1.V at=45 load=11 receipt=10",
+      "EXPERIENCE_PROTOCOL interface=outcome.S2.V at=45 load=11 receipt=11",
+      "EXPERIENCE_PROTOCOL interface=signal.S2 at=45 load=5 receipt=12"
+    ],
+    "scope": "One externally removed record in a complete diagnostic clone; no intervention is merged into the operational MAIN"
+  },
+  "reference_parent": {
+    "tick": 83,
+    "raw_sha256": "4fb7ba608ee52d0cde1743752168dc49b6b8461ef3baffc6b853bb50b0131ea9",
+    "clock_sha256": "5b5d61f67c86051a9b0db2ead91df94b1452ec31324e888253f37740fd50c86f"
+  },
+  "parent_unchanged_after_all_branch_evolution": true,
+  "uses": [
+    {
+      "signal": "S1",
+      "anticipation": {
+        "input_tick": 84,
+        "emission_tick": 87,
+        "before": {
+          "tick": 84,
+          "raw_sha256": "12d030687e8b6729b008ad15c3aa4357a6e9c5864fe821587c68ed7c99752381",
+          "clock_sha256": "41aa731eb8f20f07806c811adc689188079c24ad32096146a6c33453f0d1a347"
+        },
+        "receipt": {
+          "id": 13,
+          "kind": "experience",
+          "status": "applied",
+          "requested_tick": 84,
+          "effective_tick": 84,
+          "channels": [
+            "signal.S1"
+          ],
+          "reason": ""
+        },
+        "emission": {
+          "modality": "PASSIVE_FIXED_DIRECTION_DECODER",
+          "signal": "S1",
+          "physical": {
+            "tick": 87,
+            "site": [
+              30,
+              30,
+              12
+            ],
+            "raw": 1157143650732343297,
+            "clock": 87,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 5,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "anticipated_class": null,
+          "available": false,
+          "scope": "Only diagonal signature with dx=-1 is the tested acquired readout; scalar load alone never supplies the class"
+        },
+        "action_selection": "native direction of this same product; no host routing callback",
+        "attribution": "ENTE_NATIVE_EVOLUTION_WITH_FIXED_EXTERNAL_PRESENTATION"
+      },
+      "direct_action_challenge": {
+        "modality": "EXPERIENCE_PROTOCOL_DIRECT_ACTUATOR_CONTROL",
+        "operation": "submit",
+        "channel": "use.S1.reference_action",
+        "tick": 88,
+        "payload": 21,
+        "receipt_id": 14,
+        "scope": "External direct action challenge checks actuator availability; it is not an acquired or autonomous action"
+      },
+      "challenge_emission_tick": 88,
+      "one_native_tick_wait_to_admit_fixed_port": true,
+      "trace": [
+        {
+          "tick": 88,
+          "relative_to_action": 0,
+          "current": {
+            "emitter": {
+              "tick": 88,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 88,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 88,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 88,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 88,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 88,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 88,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 88,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 88,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 88,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 89,
+          "relative_to_action": 1,
+          "current": {
+            "emitter": {
+              "tick": 89,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 89,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 89,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 89,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 89,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 89,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 89,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 89,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 89,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 89,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 90,
+          "relative_to_action": 2,
+          "current": {
+            "emitter": {
+              "tick": 90,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 90,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 90,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 90,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 90,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 90,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 90,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 90,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 90,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 90,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 91,
+          "relative_to_action": 3,
+          "current": {
+            "emitter": {
+              "tick": 91,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 91,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 91,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 91,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 91,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 91,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 91,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 91,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 91,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 91,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 92,
+          "relative_to_action": 4,
+          "current": {
+            "emitter": {
+              "tick": 92,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 92,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 92,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 1157425207313432577,
+              "clock": 92,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 24,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "interception": {
+              "tick": 92,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 92,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 92,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 92,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 92,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 92,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 93,
+          "relative_to_action": 5,
+          "current": {
+            "emitter": {
+              "tick": 93,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 93,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 93,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 93,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 93,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 93,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 93,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 93,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 93,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 93,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 94,
+          "relative_to_action": 6,
+          "current": {
+            "emitter": {
+              "tick": 94,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 94,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 94,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 94,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 94,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 94,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 94,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 94,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 94,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 1157425207313432577,
+              "clock": 94,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 24,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            }
+          }
+        },
+        {
+          "tick": 95,
+          "relative_to_action": 7,
+          "current": {
+            "emitter": {
+              "tick": 95,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 95,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 95,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 95,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 95,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 95,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 95,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 95,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 95,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 95,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 96,
+          "relative_to_action": 8,
+          "current": {
+            "emitter": {
+              "tick": 96,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 96,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 96,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 96,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 96,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 1152921654930702337,
+              "clock": 96,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 35,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "cost_receiver": {
+              "tick": 96,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 96,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 96,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 96,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 97,
+          "relative_to_action": 9,
+          "current": {
+            "emitter": {
+              "tick": 97,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 97,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 97,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 97,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 97,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 97,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 97,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 97,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 97,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 97,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 98,
+          "relative_to_action": 10,
+          "current": {
+            "emitter": {
+              "tick": 98,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 98,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 98,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 98,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 98,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 98,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 98,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 98,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 98,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 98,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 99,
+          "relative_to_action": 11,
+          "current": {
+            "emitter": {
+              "tick": 99,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 99,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 99,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 99,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 99,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 99,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 99,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 99,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 99,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 99,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 100,
+          "relative_to_action": 12,
+          "current": {
+            "emitter": {
+              "tick": 100,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 100,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 100,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 1157425134298988545,
+              "clock": 100,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "interception": {
+              "tick": 100,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 100,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 100,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 100,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 100,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 100,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 101,
+          "relative_to_action": 13,
+          "current": {
+            "emitter": {
+              "tick": 101,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 101,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 101,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 101,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 101,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 101,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 101,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 101,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 101,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 0,
+              "clock": 101,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        {
+          "tick": 102,
+          "relative_to_action": 14,
+          "current": {
+            "emitter": {
+              "tick": 102,
+              "site": [
+                30,
+                30,
+                12
+              ],
+              "raw": 0,
+              "clock": 102,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_meeting": {
+              "tick": 102,
+              "site": [
+                26,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 102,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "interception": {
+              "tick": 102,
+              "site": [
+                26,
+                38,
+                12
+              ],
+              "raw": 0,
+              "clock": 102,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "cost_receiver": {
+              "tick": 102,
+              "site": [
+                29,
+                34,
+                12
+              ],
+              "raw": 0,
+              "clock": 102,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "function_receiver": {
+              "tick": 102,
+              "site": [
+                26,
+                36,
+                12
+              ],
+              "raw": 1157425134298988545,
+              "clock": 102,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            }
+          }
+        }
+      ],
+      "evaluation": {
+        "resource_delivery": false,
+        "function_delivery": true,
+        "profile": [
+          1,
+          0
+        ],
+        "external_utility_for_this_task": 2,
+        "utility_rule": "Auditor only:2*primary_supply+optional_resource; never a teacher/error or host control input",
+        "measurements": {
+          "cost_receiver": {
+            "tick": 95,
+            "site": [
+              29,
+              34,
+              12
+            ],
+            "raw": 0,
+            "clock": 95,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "function_receiver": {
+            "tick": 102,
+            "site": [
+              26,
+              36,
+              12
+            ],
+            "raw": 1157425134298988545,
+            "clock": 102,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 7,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      "actual_receipts": [
+        {
+          "id": 14,
+          "requested_tick": 88,
+          "effective_tick": 88,
+          "status": "applied",
+          "kind": "experience",
+          "channels": [
+            "use.S1.reference_action"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 15,
+          "requested_tick": 88,
+          "effective_tick": 88,
+          "status": "applied",
+          "kind": "experience",
+          "channels": [
+            "use.S1.resource"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 16,
+          "requested_tick": 94,
+          "effective_tick": 94,
+          "status": "applied",
+          "kind": "experience",
+          "channels": [
+            "use.S1.supply"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 17,
+          "requested_tick": 89,
+          "effective_tick": 89,
+          "status": "applied",
+          "kind": "experience",
+          "channels": [
+            "use.S1.U"
+          ],
+          "reason": ""
+        }
+      ],
+      "scope": "Direct external actuator availability after memory ablation, not restoration of the association"
+    }
+  ],
+  "final": {
+    "tick": 102,
+    "raw_sha256": "94f559c9131a1bebf1d36273de4865b9496a0befac41ff880c8819bcbb6ac18c",
+    "clock_sha256": "9c79c490cbdff491a2d52ae657cbe6ad04a62298adabc4f5d5a71bc0837a9f8e"
+  },
+  "external_operations_actual": [
+    "CREATE_PREPARATION tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "EXPERIENCE_PROTOCOL interface=train.S1.resource at=3 load=3 receipt=1",
+    "EXPERIENCE_PROTOCOL interface=train.S1.supply at=9 load=7 receipt=2",
+    "EXPERIENCE_PROTOCOL interface=train.S1.U at=4 load=11 receipt=3",
+    "EXPERIENCE_PROTOCOL interface=outcome.S1.U at=17 load=11 receipt=4",
+    "EXPERIENCE_PROTOCOL interface=outcome.S2.U at=17 load=11 receipt=5",
+    "EXPERIENCE_PROTOCOL interface=signal.S1 at=17 load=5 receipt=6",
+    "EXPERIENCE_PROTOCOL interface=train.S2.resource at=31 load=3 receipt=7",
+    "EXPERIENCE_PROTOCOL interface=train.S2.supply at=37 load=7 receipt=8",
+    "EXPERIENCE_PROTOCOL interface=train.S2.V at=32 load=11 receipt=9",
+    "EXPERIENCE_PROTOCOL interface=outcome.S1.V at=45 load=11 receipt=10",
+    "EXPERIENCE_PROTOCOL interface=outcome.S2.V at=45 load=11 receipt=11",
+    "EXPERIENCE_PROTOCOL interface=signal.S2 at=45 load=5 receipt=12",
+    "EXPERIENCE_PROTOCOL interface=signal.S1 at=84 load=5 receipt=13",
+    "EXPERIENCE_PROTOCOL interface=use.S1.reference_action at=88 load=21 receipt=14",
+    "EXPERIENCE_PROTOCOL interface=use.S1.resource at=88 load=3 receipt=15",
+    "EXPERIENCE_PROTOCOL interface=use.S1.supply at=94 load=7 receipt=16",
+    "EXPERIENCE_PROTOCOL interface=use.S1.U at=89 load=11 receipt=17"
+  ],
+  "scope": "Counterfactual branch; the operational parent is never resumed from this result"
+}

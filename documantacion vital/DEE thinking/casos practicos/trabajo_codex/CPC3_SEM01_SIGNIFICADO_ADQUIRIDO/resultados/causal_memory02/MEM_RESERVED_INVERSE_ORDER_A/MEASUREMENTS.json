@@ -1,0 +1,373 @@
+{
+  "id": "MEM_RESERVED_INVERSE_ORDER_A",
+  "scope": "MEMORY_ONLY_RESERVED; no future U/V or utility-use bank event is supplied during the signal-only panel",
+  "configuration": {
+    "id": "MEM_RESERVED_INVERSE_ORDER_A",
+    "translation": [
+      4,
+      7,
+      5
+    ],
+    "pairing": {
+      "S1": "U",
+      "S2": "V"
+    },
+    "order": [
+      "S2",
+      "S1"
+    ]
+  },
+  "initial_before_assignment": {
+    "tick": 0,
+    "raw_sha256": "8f7fcd4d78dc7994e8c1bcb33b8fe0e2595964cc683d9f3b4447c5a90fdae169",
+    "clock_sha256": "8f7fcd4d78dc7994e8c1bcb33b8fe0e2595964cc683d9f3b4447c5a90fdae169"
+  },
+  "training": [
+    {
+      "signal": "S2",
+      "signal_tick": 17,
+      "present_sensor": {
+        "observation": {
+          "tick": 17,
+          "site": [
+            50,
+            23,
+            63
+          ],
+          "raw": 1157425134298988545,
+          "clock": 17,
+          "state": 1,
+          "semantic": 1,
+          "s_reg": 7,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "observed_class": "V",
+        "scope": "current local delivery; absence is classified by an external fixed transducer, not a native absence detector"
+      },
+      "outcome_receipts": [
+        4,
+        5
+      ],
+      "signal_receipt": 6,
+      "modality": "EXPERIENCE_PROTOCOL_CURRENT_PHYSICAL_OUTCOME_SENSOR"
+    },
+    {
+      "signal": "S1",
+      "signal_tick": 45,
+      "present_sensor": {
+        "observation": {
+          "tick": 45,
+          "site": [
+            10,
+            23,
+            63
+          ],
+          "raw": 0,
+          "clock": 45,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "observed_class": "U",
+        "scope": "current local delivery; absence is classified by an external fixed transducer, not a native absence detector"
+      },
+      "outcome_receipts": [
+        10,
+        11
+      ],
+      "signal_receipt": 12,
+      "modality": "EXPERIENCE_PROTOCOL_CURRENT_PHYSICAL_OUTCOME_SENSOR"
+    }
+  ],
+  "predictions": [
+    {
+      "input_tick": 84,
+      "emission_tick": 87,
+      "before": {
+        "tick": 84,
+        "raw_sha256": "2877e426eb44629a6290b457fa90f8e25cbe31f69c7dd848c58d22ad046b067f",
+        "clock_sha256": "41aa731eb8f20f07806c811adc689188079c24ad32096146a6c33453f0d1a347"
+      },
+      "receipt": {
+        "id": 13,
+        "kind": "experience",
+        "status": "applied",
+        "requested_tick": 84,
+        "effective_tick": 84,
+        "channels": [
+          "signal.S2"
+        ],
+        "reason": ""
+      },
+      "emission": {
+        "modality": "PASSIVE_FIXED_DIRECTION_DECODER",
+        "signal": "S2",
+        "physical": {
+          "tick": 87,
+          "site": [
+            34,
+            37,
+            49
+          ],
+          "raw": 1224697713862377473,
+          "clock": 87,
+          "state": 1,
+          "semantic": 1,
+          "s_reg": 21,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "anticipated_class": "V",
+        "available": true,
+        "scope": "Only diagonal signature with dx=-1 is the tested acquired readout; scalar load alone never supplies the class"
+      },
+      "action_selection": "native direction of this same product; no host routing callback",
+      "attribution": "ENTE_NATIVE_EVOLUTION_WITH_FIXED_EXTERNAL_PRESENTATION"
+    },
+    {
+      "input_tick": 112,
+      "emission_tick": 115,
+      "before": {
+        "tick": 112,
+        "raw_sha256": "f58114fc072891b75387a358c10ca98595a1d53afd7131dc6691fb999fd3255f",
+        "clock_sha256": "05fba96602b30dc4fc2e23eb46e0b0201f51e731ec28d0cba4d4ab822a810590"
+      },
+      "receipt": {
+        "id": 14,
+        "kind": "experience",
+        "status": "applied",
+        "requested_tick": 112,
+        "effective_tick": 112,
+        "channels": [
+          "signal.S1"
+        ],
+        "reason": ""
+      },
+      "emission": {
+        "modality": "PASSIVE_FIXED_DIRECTION_DECODER",
+        "signal": "S1",
+        "physical": {
+          "tick": 115,
+          "site": [
+            34,
+            37,
+            17
+          ],
+          "raw": 1161647319079190529,
+          "clock": 115,
+          "state": 1,
+          "semantic": 1,
+          "s_reg": 21,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "anticipated_class": "U",
+        "available": true,
+        "scope": "Only diagonal signature with dx=-1 is the tested acquired readout; scalar load alone never supplies the class"
+      },
+      "action_selection": "native direction of this same product; no host routing callback",
+      "attribution": "ENTE_NATIVE_EVOLUTION_WITH_FIXED_EXTERNAL_PRESENTATION"
+    }
+  ],
+  "actual_receipts": [
+    {
+      "id": 1,
+      "requested_tick": 3,
+      "effective_tick": 3,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S2.resource"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 2,
+      "requested_tick": 9,
+      "effective_tick": 9,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S2.supply"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 3,
+      "requested_tick": 4,
+      "effective_tick": 4,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S2.V"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 4,
+      "requested_tick": 17,
+      "effective_tick": 17,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "outcome.S1.V"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 5,
+      "requested_tick": 17,
+      "effective_tick": 17,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "outcome.S2.V"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 6,
+      "requested_tick": 17,
+      "effective_tick": 17,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "signal.S2"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 7,
+      "requested_tick": 31,
+      "effective_tick": 31,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S1.resource"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 8,
+      "requested_tick": 37,
+      "effective_tick": 37,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S1.supply"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 9,
+      "requested_tick": 32,
+      "effective_tick": 32,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "train.S1.U"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 10,
+      "requested_tick": 45,
+      "effective_tick": 45,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "outcome.S1.U"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 11,
+      "requested_tick": 45,
+      "effective_tick": 45,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "outcome.S2.U"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 12,
+      "requested_tick": 45,
+      "effective_tick": 45,
+      "status": "applied",
+      "kind": "experience",
+      "channels": [
+        "signal.S1"
+      ],
+      "reason": ""
+    }
+  ],
+  "query_schedule_neutral_metadata": {
+    "S2": 17,
+    "S1": 45
+  },
+  "future_consequences_during_query": [],
+  "operational_forks": 0,
+  "final": {
+    "tick": 115,
+    "raw_sha256": "2dbac8bab401613592081a25c2e50fc291e4941bb59a8acaab6add1f56cd9624",
+    "clock_sha256": "6403fe82f09d09ac33c35cdea680e4cc1507894005274e0559d2f6f48f84a572"
+  },
+  "external_operations_actual": [
+    "CREATE_PREPARATION tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "DECLARE_INTERFACE tick=0",
+    "EXPERIENCE_PROTOCOL interface=train.S2.resource at=3 load=3 receipt=1",
+    "EXPERIENCE_PROTOCOL interface=train.S2.supply at=9 load=7 receipt=2",
+    "EXPERIENCE_PROTOCOL interface=train.S2.V at=4 load=11 receipt=3",
+    "EXPERIENCE_PROTOCOL interface=outcome.S1.V at=17 load=11 receipt=4",
+    "EXPERIENCE_PROTOCOL interface=outcome.S2.V at=17 load=11 receipt=5",
+    "EXPERIENCE_PROTOCOL interface=signal.S2 at=17 load=5 receipt=6",
+    "EXPERIENCE_PROTOCOL interface=train.S1.resource at=31 load=3 receipt=7",
+    "EXPERIENCE_PROTOCOL interface=train.S1.supply at=37 load=7 receipt=8",
+    "EXPERIENCE_PROTOCOL interface=train.S1.U at=32 load=11 receipt=9",
+    "EXPERIENCE_PROTOCOL interface=outcome.S1.U at=45 load=11 receipt=10",
+    "EXPERIENCE_PROTOCOL interface=outcome.S2.U at=45 load=11 receipt=11",
+    "EXPERIENCE_PROTOCOL interface=signal.S1 at=45 load=5 receipt=12",
+    "EXPERIENCE_PROTOCOL interface=signal.S2 at=84 load=5 receipt=13",
+    "EXPERIENCE_PROTOCOL interface=signal.S1 at=112 load=5 receipt=14"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Instrumentation only; no physics, public entity, language or recipe changed",
+  "package_sha256": "982d16db3fa85669eec938dc71402a0a438193f6b0a1badf5b2d2489b16c81ee",
+  "completed_reproduction_modes": 12,
+  "completed_mode_exit_codes": [0,0,0,0,0,0,0,0,0,0,0,0],
+  "expected_audited_invocations": 14,
+  "distinct_pid_summary_files": 13,
+  "reused_pid": 18976,
+  "evidence": "18976.events.jsonl contains two distinct sets of five SELF_TEST rejections and subsequent RUN events; its PID-named summary was overwritten by the later interpreter",
+  "limitation": "The first invocation's module-origin exit summary cannot be recovered exactly from the event-only file; the twelve physical/CLI/UI proofs remain preserved, but this audit close was not qualified",
+  "correction": "Audit event and summary filenames now use PID plus UUID generated once per interpreter invocation",
+  "next_execution_modality": "Technical qualification only, not new independent scientific samples",
+  "budget_reset": false
+}

@@ -1,0 +1,1911 @@
+DEE UNIVERSE
+DEE thinking
+4.0.0
+Documento Maestro deArquitectura y Reconstrucción
+Kernel v27 conservado. Sesiones cognitivas e informativas,interfaces, persistencia y experimentación reproducible.
+Ivan Erick Tlaltecatl MoralesAutor del proyecto DEE Universe
+DEET-MAR-400-01  |  Edición documental 1.0Corte técnico: 14 de octubre de 2026
+Cobertura acumulativa de 3.5 y ampliaciones verificadas de 4.0.Cápsula pasiva de recuperación incluida.
+Guía de lectura y recuperación
+Este maestro fija la constitución técnica de DEE thinking 4.0.0: qué ejecuta, cómo se organizan sus objetos, qué estado conserva y cómo instalar, reconstruir, comprobar y recuperar el producto. Las aplicaciones y experimentos sirven como recorridos concretos de esa arquitectura.
+Necesidad
+Recorrido
+Fundamentos y cobertura heredada
+Capítulos 1–25: identidad, historia, kernel, Runtime, catálogo, protocolos y nueve familias.
+Construir e instalar
+Capítulos 26–32: WHL, uso, rebuild, validación, migración y cápsula.
+Trabajar con 4.0
+Capítulos 33–37: sesiones, adquisición, aplicaciones y estado operativo.
+Entender los resultados nuevos
+Capítulos 38–40: BLOQUE II, SIGNAL_PREDICTION e interpretación vigente.
+Localizar firmas, límites y evidencia
+Anexos A–G y fuentes exactas de la cápsula.
+
+Los capítulos heredados se conservan en el cuerpo con su terminología y contratos. Las referencias de 3.5 mantienen su procedencia; los códigos 4- identifican archivos del producto 4.0 y ED- las comprobaciones editoriales nuevas. La tabla de continuidad del anexo E localiza todas las funciones documentales de la edición anterior.
+El ZIP oficial 4.0 se conserva byte-exacto dentro de la cápsula del Word. El maestro 3.5 original también permanece íntegro. La recuperación del software y la restauración de un individuo utilizan objetos distintos: artefactos de programa por una parte; snapshot y progreso operativo por otra. [4-AUD; ED-CAP]
+Las pruebas de Windows se describen con sus registros originales de Codex. Esta edición añade verificación completa de integridad, comparación de fuentes y cuatro tests nativos C++ recompilados en Linux. Las modalidades se indican junto al resultado. [4-VAL; ED-CPP]
+Índice navegable
+Capítulo o anexo
+Página
+1. Identidad de 4.0 y unidad de preservación
+5
+2. Análisis transversal: de la experiencia al producto 4.0
+6
+3. Fronteras de responsabilidad y modalidades
+8
+4. Arquitectura ejecutable y árbol de fuentes
+9
+5. Estado microscópico, packing y constantes
+10
+6. Transición v27: precedencia y selectividad
+11
+7. Runtime: admisión, recibos y tiempo
+12
+8. Backends, concurrencia y memoria de trabajo
+13
+9. Catálogo y composición heredados
+14
+10. Protocolos H1-H4 y F1-F2 preservados
+15
+11. BasalWorld 3.0: base conservada
+16
+12. OrganizationalWorld: propiedad y ciclo de vida
+17
+13. Recetas publicadas y dominios
+18
+14. F01: memoria histórica, relativa y latente
+19
+15. F02: transferencia y reconstrucción asistida
+20
+16. F03: cascadas y puentes entre familias
+21
+17. F04: plasticidad, fase y acceso temporal
+22
+18. F05: observadores, trazas y procedencia
+23
+19. F06: transducción de entradas y salidas
+24
+20. F07: acción nativa y entorno
+25
+21. F08: resiliencia, saturación y disponibilidad
+26
+22. F09: encuentros simultáneos y productos conjuntos
+27
+23. Consultas secuenciales y orquestación
+28
+24. Snapshot Runtime: formato y conservación
+29
+25. Persistencia organizacional y traza 3.5
+30
+26. Binding, tipos públicos y constitución del WHL 4.0
+31
+27. Instalar y comprobar el artefacto oficial
+32
+28. Reconstrucción desde las fuentes preservadas
+33
+29. Validación, cronología y niveles de evidencia
+34
+30. Recorridos de referencia para usar y reconstruir
+36
+31. Migración y resolución de incidencias
+37
+32. Custodia, cápsula y recuperación documental
+38
+33. CognitiveSession: continuidad y comparación
+39
+34. Sesiones informativas y revisión de política
+41
+35. Adquisición y composición online
+42
+36. Aplicaciones, gramática y comunicación verificable
+43
+37. Persistencia de sesiones y validación de restauración
+45
+38. BLOQUE II: fenómenos, contacto y experiencia
+46
+39. SIGNAL_PREDICTION: observación y pronóstico
+47
+40. Interpretación vigente y continuidad científica
+48
+Anexo A. Interfaces heredadas y sesiones 4.0
+50
+Anexo B. Parámetros heredados y límites 4.0
+54
+Anexo C. Pruebas: genealogía 3.5 y corte 4.0
+56
+Anexo D. Fuentes y referencias de reconstrucción
+61
+Anexo E. Continuidad y preservación de la edición 3.5
+66
+Anexo F. Identidades y extracción verificable
+69
+Anexo G. Matriz de resultados nuevos y atribución
+70
+
+1. Identidad de 4.0 y unidad de preservación
+DEE thinking 4.0.0 es una biblioteca C++20, una distribución nativa para CPython 3.13 / Windows x64 y un conjunto de aplicaciones de investigación. Ejecuta una misma ley microscópica: DEE v27. La actualización incorpora sesiones cognitivas e informativas, adquisición y composición online, persistencia operativa y comunicación mediante interfaces explícitas. [4-CON; 4-CMAKE; 4-COG; 4-INF]
+El corte que identifica este maestro es el ZIP final entregado el 14 de octubre de 2026. La biblioteca, los resultados nuevos y la genealogía del primer cierre parcial están conservados en ese mismo contenedor. La calificación vigente es RELEASE_VERIFIED en VALIDATION_REPORT.json; los estados parciales describen momentos anteriores de la misma construcción. [4-VAL; 4-BUILD]
+Elemento
+Identidad comprobada
+Producto
+DEE thinking 4.0.0; target C++ DEE::thinking; importación dee_thinking.
+Artefacto oficial
+9.932.002 bytes; 1.301 miembros; CRC completo correcto.
+Tamaño expandido
+1.179.024.141 bytes de miembros; prever espacio adicional para build y reproducciones.
+Integridad interna
+1.299 entradas de MANIFEST.json y 1.300 de HASHES.sha256 verificadas.
+WHL
+1.457.406 bytes; 15 miembros; cp313-cp313-win_amd64.
+Extensión nativa
+_native.cp313-win_amd64.pyd; 7.568.384 bytes.
+Núcleo
+source/src/kernel_v27.cpp, idéntico al de la referencia 3.5.
+Semilla basal
+OBP_FRESH_VALIDATED_T32.deetsnap; N47; tick absoluto 32.
+
+Las identidades SHA-256 completas aparecen en el anexo F y en los manifiestos de la cápsula. El hash del ZIP identifica el contenedor oficial; el del WHL identifica el paquete instalado; el del PYD identifica la implementación nativa; el de cada snapshot identifica una frontera concreta de una ejecución. [4-AUD]
+1.1. Cuatro operaciones de recuperación
+Recuperar el binario oficial consiste en extraer el WHL preservado y verificar su hash. Reconstruir el programa consiste en compilar las fuentes con un toolchain identificado. Restaurar un individuo exige su estado físico y el progreso operativo guardado. Reconstruir la genealogía experimental requiere además entradas, controles, trazas y resultados. Cada operación conserva un objeto diferente. [4-COGH; 4-INFH; RT]
+Una compilación puede reproducir la dinámica y obtener bytes distintos por su toolchain o entorno. La recuperación byte-exacta se hace desde el artefacto conservado; la equivalencia funcional de una reconstrucción se comprueba comparando estados y contratos. El maestro incorpora una cápsula pasiva con el producto oficial completo y el maestro 3.5 original, explicada en el capítulo 32.
+1.2. Cobertura acumulativa
+La cobertura de los 32 capítulos y cinco anexos de 3.5 se conserva mediante texto técnico heredado, actualizaciones explícitas y un mapa de continuidad. Los capítulos 33-40 desarrollan las nuevas sesiones y el bloque experimental. El Word 3.5 original también se conserva byte a byte para recuperar redacción, numeración, referencias y cápsula anteriores. El anexo E permite localizar ambas representaciones. [35-MAR; 4-AUD]
+2. Análisis transversal: de la experiencia al producto 4.0
+La continuidad de DEE se organiza alrededor de una cadena verificable: preparación, experiencia, estado organizado, respuesta posterior y controles. CORE, Ingenierías, Procesos y MBP aportan mecanismos y preguntas; las versiones de thinking los convierten en objetos reutilizables. La novedad de una versión se identifica en la superficie técnica y en sus realizaciones, manteniendo trazabilidad hacia las fuentes. [PN; OBP21; 4-MAP]
+Línea
+Contribución que conserva 4.0
+CORE05-07
+Transporte, fase, transducción temporal, relaciones adquiridas, consultas nuevas, composición y transferencia.
+Ingenierías 01-02
+Recurrencia, consecuencias que modifican acciones, memoria relativa y separación entre escritura, conservación y lectura.
+Ingenierías 04.5-06
+Accesibilidad de clases funcionales, transformación contextual e historia distribuida.
+Procesos y CORE15-17
+Continuidad, observación parcial, firmas funcionales y distinción entre información oculta y convergencia de estados.
+MBP1-3 y MBP4/OBP
+Individuos persistentes, adquisición, retención y atribución contextual de escritura y expresión.
+thinking 2.2 / 3.0 / 3.5
+Runtime, protocolos, catálogo, BasalWorld, nueve familias, interfaces y persistencia organizacional.
+CP01-C08 y CP02-B
+Experiencias y consultas continuadas; predicción prospectiva y actualización con lectura asistida.
+CPC3
+Lectura en MAIN, comparación física, acceso y revisión finita de política; asociaciones y composición.
+thinking 4.0
+Sesiones públicas C++/Python, conservación operativa y aplicaciones que ejecutan el WHL calificado.
+
+2.1. Lo que cambia al integrar CPC3
+CPC3 distinguió varias realizaciones. El cuerpo N47 mantiene una trayectoria desde T32; el comparador trabaja sobre una expectativa y una consecuencia; N67 realiza una revisión finita de política; N34 adquiere dos relaciones móviles; N127 compone relaciones. En 4.0 esas realizaciones quedan accesibles mediante clases y facilitadores. Crear una sesión identifica un individuo; una interfaz común permite operarlos sin confundir sus estados. [4-MAP; 4-COG; 4-INF]
+El bloque II añade otra contribución: en N47, el contacto ambiental produce un registro que se encuentra con un cue y participa después en dos consultas del mismo MAIN. El suplemento SIGNAL_PREDICTION enlaza dos runtimes mediante un sensor externo y registra una emisión anterior al detector objetivo. Las dos modalidades conservan su valor y su procedencia por separado. [4-EXP; 4-REV]
+2.2. Correcciones que se convierten en conocimiento
+En MBP4, NO_ACTION omitía desde T0 una consulta que también modificaba el contexto local. Los cortes tardíos de ciertos productos exteriores conservaron la reescritura particular de B. La lectura vigente sitúa esa escritura en la preparación y en su contexto, distinguiendo las intervenciones. Los rescates mostraron que A y B pueden aumentar juntos y conservar delta. [OBP21; BASAL]
+Delta = s_A - s_BDelta_nueva - Delta = (s_A_nueva - s_A) - (s_B_nueva - s_B)
+CP02-B realizaba las consultas en descendientes y las experiencias posteriores en MAIN; la copia nunca regresaba como estado corregido. CPC3 y CognitiveSession conservan la nueva modalidad de lectura directa. En una trayectoria final con delta igual a cero, la expresión puede diferir del control: el lector y su contexto forman parte de la función. [CPC3; 4-COG]
+La saturación se describe por campo, representación, observador e historia. Una igualdad de lecturas requiere comprobar qué distinciones sobreviven en el resto de la organización; una igualdad del estado completo bajo el mismo protocolo establece una convergencia más fuerte. Ambas situaciones tienen testigos en la genealogía y orientan la selección de métodos. [PN; FD; CPC3]
+3. Fronteras de responsabilidad y modalidades
+El WHL es un instrumento. Un Runtime representa un mundo en ejecución. Una receta prepara relaciones físicas antes de evolucionar. Una vista describe una organización dentro de ese mundo. Un snapshot conserva una frontera de esa ejecución. Esta separación permite utilizar términos organizacionales sin confundir un archivo instalado con un individuo que haya vivido todas las campañas. [RT-H; ORGH; CONTRACT]
+Modalidad
+Operación y efecto
+NATIVE_EVOLUTION
+Avanzar v27 sobre el estado y las condiciones ya presentes.
+EXPERIENCE_PROTOCOL
+Codificar y programar experiencias externas con recibos.
+PASSIVE_OBSERVATION
+Leer estado, relaciones, guardas y disponibilidad sin modificar el mundo.
+PHYSICAL_PROBE
+Programar una sonda física; puede consumir o transformar el soporte consultado.
+DIAGNOSTIC_FORK
+Editar campos declarados en una copia independiente y comparar su futuro.
+ASSISTED_RECONSTRUCTION
+Copiar campos seleccionados entre regiones mediante una intervención externa identificada.
+
+La atribución científica depende de esta modalidad. La transferencia con relay se realiza mediante encuentros nativos; el trasplante de registros desde una fuente a un receptor es una reconstrucción asistida. Las dos operaciones son reales y utilizables, pero responden a preguntas distintas. La API registra sus diferencias en tipos, permisos y ledgers. [ORG, L209-223]
+El contrato diferencia dominio representable y dominio comprobado. Una dimensión aceptada por Runtime no acredita la función de cualquier receta. Una conexión estáticamente aceptada no garantiza supervivencia, ausencia de interferencia ni exactitud de la lectura. La evolución y sus controles completan esa comprobación. [COMP; REC; SCOPE]
+La frontera de la organización puede incluir soporte, rutas y contexto. No por ello todo el Runtime constituye una sola mente: esa unidad se establece mediante funciones y dependencias comprobadas. La arquitectura permite varias vistas sobre el mismo Runtime sin crear una segunda transición ni copiar resultados entre ellas. [PN, cap. 8; ORG, L14-22 y L180-194]
+4. Arquitectura ejecutable y árbol de fuentes
+La arquitectura mantiene un único motor de evolución y añade capas de propiedad, protocolo y presentación. El target DEE::thinking compila catorce unidades nativas. Doce proceden de 3.5; cognitive.cpp e informative.cpp incorporan las sesiones nuevas. La comparación editorial de esas doce unidades con la cápsula 3.5 confirmó igualdad byte a byte. [4-CMAKE; 4-AUD]
+Capa
+Responsabilidad y fuentes
+Kernel
+Packing, vecinos, reducer, DEMUX, clocks y backends; kernel_v27.cpp.
+Runtime
+Buffers, tiempo, canales, entradas pendientes, recibos, snapshots y metadatos.
+Catálogo y composición
+organizations, organization_catalog y composition.
+Protocolos y base
+integrated_protocols y basal.
+Observación y diagnóstico
+observation, genealogy y diagnostics.
+Mundo organizacional
+organizational y organization_recipes: vistas, I/O, consultas y recetas.
+Sesiones cognitivas
+cognitive: continuidad, comparación, asociaciones y cascada adquirida.
+Sesiones informativas
+informative: FinitePolicySession y NativeInformationSession.
+Binding y facilitadores
+Cuatro bindings; cognition.py, dialogue.py, stubs y helpers.
+Aplicaciones
+app/conversar.py y app/mundo_nativo.py sobre la distribución instalada.
+
+Aplicacion C++ -> headers instalados -> DEE::thinkingAplicacion Python -> dee_thinking -> _native -> DEE::thinkingSesiones -> OrganizationalWorld -> Runtime -> kernel v27
+El módulo Python enlaza la misma biblioteca estática compilada. El C++ decide la transición; una capa nativa de protocolo puede programar experiencias de un entorno externo y registrar evaluaciones. La atribución de cada operación depende de su función y de sus entradas, no del lenguaje en el que esté escrita. [4-CMAKE; 4-COG; 4-INF]
+4.1. Propiedad del mundo y vistas
+Runtime es el propietario del estado mutable; las vistas mantienen su propietario mediante referencias compartidas. Un único escritor modifica cada mundo. Las sesiones son movibles; la copia profunda se solicita con fork. Un snapshot conserva estado y progreso. attach agrega una vista descriptiva sobre un Runtime existente y create prepara un mundo nuevo. [RT-H; ORGH; 4-COGH; 4-INFH]
+4.2. Producto instalado y laboratorio acompañante
+El WHL contiene la extensión, facilitadores, tipado, semilla y avisos. Las aplicaciones y runners de fenómenos pertenecen al paquete acompañante. mundo_nativo prepara una receta de investigación mediante APIs públicas; las transiciones siguen siendo del motor instalado. SIGNAL_PREDICTION es un experimento de dos runtimes y sensor externo, no un séptimo perfil de create_session. [4-WHL; 4-APP; 4-SIGNAL]
+5. Estado microscópico, packing y constantes
+Para una dimensión N, el dominio espacial es un toro tridimensional con N³ sitios. El estado causal físico preserva una palabra RAW uint64 y un clock uint64 por sitio. Runtime mantiene además buffers de salida, colas y metadatos; éstos deben distinguirse del estado microscópico cuando se analiza una función física. [K27-H; RT-H]
+Campo
+Bits y lectura
+state
+Bits 0-31; raw & 0xffffffff.
+s_reg
+Bits 32-47; registro uint16.
+dx, dy, dz
+Nibbles 48-51, 52-55 y 56-59; enteros con signo.
+semantic
+Bits 60-63; etiqueta de rama.
+clock
+Array uint64 separado; incremento modular por tick.
+
+raw = state | (s_reg << 32) | ((dx & 15) << 48) | ((dy & 15) << 52) | ((dz & 15) << 56) | (semantic << 60).
+Las direcciones de los aparatos publicados se restringen normalmente a componentes en {-1,0,1}, aunque el packing guarda nibbles. No cambiar la interpretación de un registro inactivo con dirección no nula: puede participar en transporte por una rama cuyo predicado no coincide con la actividad de vecindad. [K27; REC]
+Los tres predicados fundamentales son distintos: RAW no nulo, existencia state>0 y actividad state>0 con semantic distinto de 5. Un destino RAW no nulo puede rechazar una entrada del Runtime aunque su state sea cero. Una semántica orphan puede estar presente sin contar como vecino activo. [RT; K27]
+Constante
+Valor y papel
+Moore
+26 offsets, trece pares antipodales.
+P_KERNEL
+19665, umbral de overflow de la rama correspondiente.
+Cap ordinario
+19664 para reducer/DEMUX; distinto de 65535, máximo uint16.
+Cadencia
+Numerador 782 en el período de incremento material.
+Tensión local de regla
+2.5 o 16 según conteo y patrón tetraédrico.
+Clock
+Aritmética uint64; 2⁶⁴ como módulo.
+
+La indexación lineal utilizada es ((x*N)+y)*N+z. Las posiciones de vecindad se reducen módulo N; las coordenadas externas se validan. Los nombres de semantic, como OBSERVER u ORPHAN, identifican ramas del programa: no acreditan un observador cognitivo ni una partícula externa. [K27-H; K27]
+6. Transición v27: precedencia y selectividad
+Un tick lee el estado A, calcula salidas provisionales B y acumula deltas DEMUX. Sólo después de todas las actualizaciones locales aplica esos deltas y materializa el nuevo estado activo. Alterar el orden cambia el mecanismo. Los contadores de genesis y overflow describen acontecimientos, no seleccionan la respuesta que debería observarse. [K27, L237-439]
+6.1. Protección y vacío
+La excepción semantic=4 conserva literalmente RAW y avanza clock. No entra en las ramas siguientes; el postpaso DEMUX también preserva ese registro. Puede funcionar como soporte o fuente según su preparación, pero no como un registro libremente reescribible por una API de alto nivel. [K27, L252 y L406-439]
+Si state=0, se evalúa primero la condición de cristalización conservada en el código, después XNOR y por último las propuestas direccionales. El nacimiento XNOR requiere coincidencia de actividad en trece pares antipodales y al menos ocho vecinos activos. Genera state=1, s_reg=1, dirección nula y semantic=7. Una propuesta que apunta al destino no garantiza ganar frente a esa precedencia. [K27, L298-338]
+Con varias propuestas elegibles se suman las cargas con el cap ordinario y se aplica el signo a la suma direccional componente a componente. Con una sola propuesta se conserva su carga y dirección en el registro producido. El resultado ordinario del reducer es state=1, semantic=1. [K27, reducer]
+s_out = min(sum_j s_j, 19664);   d_out = sign(sum_j d_j).
+6.2. Materia y escritura
+La rama ocupada evalúa conteo activo y patrón tetraédrico para determinar supervivencia y state provisional. La tensión de regla es 16 cuando se satisface la condición tetraédrica fuerte del source y 2.5 en el caso ordinario; el nuevo state proviene de la conversión entera del escalar local. Si el registro no sobrevive, la rama devuelve el vacío correspondiente. [K27, L340-364]
+Cuando sobrevive y no está protegido frente a escritura, se evalúa k=8-n_active. Para 0<k<=8 se define period=782//k. El incremento ordinario exige clock_local % period=0. El inspector 3.5 puede describir esa ocasión, pero no sustituye toda la resolución de destino ni el postpaso. [K27; OBS]
+k = 8 - n_active;   P = floor(782/k);   incremento ordinario si clock mod P = 0, dentro de su rama.
+Los valores 195, 260, 391 y 782 son cadencias relevantes del dominio material superviviente. Una coincidencia de n_active y clock debe interpretarse con las demás guardas. En el caso contextual de referencia, n_active=6 y clock_B=391 coinciden con B:100->101; esa instancia no convierte al par de números en una ley universal de aprendizaje. [BASAL; OBP21]
+6.3. Overflow, selección y DEMUX
+Al alcanzar prov_total>=19665, el emisor examina vecinos admisibles: excluye semántica orphan, requiere menos de ocho vecinos activos en el candidato y elige el menor s_reg, conservando el primer mínimo estricto del orden de offsets. Si encuentra destino acumula un delta unitario y reinicia prov_total; si no lo encuentra no aplica ese reinicio. No reemplazar esa conversión por el clamp del reducer. [K27, L365-393]
+DEMUX mira el estado provisional del destino: preserva semantic=4; puede crear un registro vacío o sumar sobre otro ocupado conforme a sus reglas. La selección se hizo sobre A y la aplicación ocurre sobre B. Por ello un reporte de propuestas balísticas no agota la procedencia de todos los campos. [K27, L406-439]
+7. Runtime: admisión, recibos y tiempo
+Runtime(dimension) reserva cuatro buffers nulos. import_research_state instala RAW, clock y tick en una frontera explícita de investigación; no importa automáticamente los canales, recibos ni protocolos de otro Runtime. Para continuar una ejecución completa se utilizan fork o snapshot. El rango admitido es 1..512, sujeto a memoria y a límites de serialización. [RT-H; RT]
+ChannelSpec fija nombre, injection_site, state, direction, semantic y permisos de experience/probe. Runtime.experience(channel, at_tick, s_reg) tiene un orden de argumentos distinto al wrapper 3.5 submit(name, value, at_tick). Esta diferencia debe respetarse en adaptadores. [RT-H, L31-117; ORGH]
+Recibo
+Interpretación
+Scheduled
+Se encoló la solicitud; todavía no ocurrió la escritura.
+Applied
+Se aplicó el lote en su frontera efectiva.
+RejectedLate
+El tick solicitado ya pasó.
+RejectedInvalid
+Canal, permisos o composición de solicitud inválidos.
+RejectedOccupied
+Al aplicar, algún destino no es RAW-empty.
+RejectedConflict
+Hay destinos repetidos o solicitudes coincidentes en la misma frontera.
+RejectedQueueFull
+Se alcanzó el máximo de eventos pendientes.
+
+Los eventos de una frontera se contrastan antes de escribir. Dos solicitudes hacia el mismo sitio no se resuelven por «la primera gana»: ambas pueden ser rechazadas como conflicto según el contrato. Un lote rechazado no se aplica parcialmente. Este es un problema de admisión externa, distinto del encuentro nativo de portadores que v27 resolverá después. [RT, schedule/apply_events_at_boundary; INCIDENTS]
+Las escrituras ordinarias conservan el clock existente en el sitio. El recibo devuelto al programar es una copia: debe consultarse runtime.receipt(id) después de avanzar para conocer su estado actualizado. Carga cero no significa ausencia física. RAW cero y state cero tampoco son equivalentes. [RT]
+advance(count) aplica las entradas de la frontera y ejecuta los ticks; run_until(target_tick) usa tiempo absoluto y rechaza retroceso. advance(0) no aplica entradas pendientes. El estado pausado impide avanzar hasta resume. El contador global controla overflow de manera diferente del incremento modular de clocks locales. [RT, L405-444]
+Las observaciones y raw_copy/clock_copy no ofrecen una vista mutable oculta. metrics informa soporte RAW, ocupación y suma de s_reg; no mide por sí misma memoria, capacidad de aprendizaje o energía física. Las etiquetas del Runtime son metadatos operativos, no grados adicionales de v27. [RT-H; RT]
+8. Backends, concurrencia y memoria de trabajo
+DenseSequential evalúa todos los sitios en el hilo llamador. DenseParallel divide trabajo en bloques nativos. Lazy evalúa RAW no nulos y su halo relevante, conserva el orden de fases y avanza clocks. Un mundo sin tareas materiales todavía puede tener evolución de reloj. Elegir un backend no cambia la ley microscópica. [K27, L445-772]
+Estado activo RAW+clock: 16*N^3 bytes. Cuatro buffers básicos: 32*N^3 bytes.
+N
+Sitios
+Bytes de los cuatro buffers
+31
+29.791
+953.312
+34
+39.304
+1.257.728
+47
+103.823
+3.322.336
+127
+2.048.383
+65.548.256
+
+Esta cuenta se deriva de los tipos de dato y excluye scratch, deltas, candidatos, copias, trazas y snapshots. La agenda dispersa no elimina el almacenamiento del dominio completo. Una vista organizacional comparte Runtime, pero un fork duplica estado mutable y aumenta la necesidad de memoria. [RT-H; ORG]
+La política GIL de 3.0 se conserva. Los hilos C++ internos no autorizan llamadas Python concurrentes que muten una misma instancia. Debe existir un escritor mutable por mundo; varios procesos pueden ejecutar mundos independientes. Ni asyncio ni una etiqueta de backend certifican paralelismo arbitrario. [BIND; BUILD; CONTRACT]
+TickInfo es telemetría de ejecución, no estado físico. En OrganizationalWorld.run_until, el retorno es el último bloque nativo ejecutado cuando el wrapper divide el avance por capturas de protocolo o traza. No debe sumarse ni interpretarse como contabilidad completa de toda la llamada sin instrumentación adicional. Para resultados científicos, registrar ticks y ventanas explícitamente. [ORG, L194-202]
+La dependencia de un tick completo combina vecindades. La envolvente de causalidad no debe reducirse automáticamente a un desplazamiento de un sitio por tick para cualquier campo o rama. Para investigar una influencia deben conservarse el cono del mecanismo, los tiempos de intervención y el wrapping. [FD, cap. 6; K27]
+9. Catálogo y composición heredados
+La biblioteca conserva diez identificadores de OrganizationCatalog. Sus descriptores fijan parámetros, footprints, puertos, lecturas, contexto requerido y dominio. CompositionPlanner realiza el análisis estático; ComposedWorld instala un estado conjunto y conserva sus contratos. La comunicación entre componentes ocurre mediante v27, no copiando outputs desde Python. [CAT-H; CAT; COMP]
+Identificador
+Función de referencia
+transport.axis.v1
+Transporte axial entre puertos.
+relation_learning.c6h01.v1
+Escritura de una relación mediante encuentros.
+relation_query.c6h01.v1
+Utilización de la relación con una consulta posterior.
+mobile_lineage.c7h03.v1
+Linaje móvil susceptible de actualización.
+native_update_bridge.p01.v1
+Puente físico de consecuencia y actualización.
+query_recurrence.p01.v1
+Lecturas recurrentes de referencia.
+relative_history.i02.v1
+Memoria diferencial y lector con soporte.
+contextual_multichannel_recurrence.p02.v1
+Rutas renovadas dependientes del contexto.
+distributed_context.i05.v1
+Soporte contextual distribuido con ancla compartida.
+temporal_phase_memory.core05.v1
+Organización de memoria temporal y acceso por fase.
+
+Los roles ExperienceInput, QueryInput, UpdateInput, SupplyInput, PassiveReadout, InternalOutput y ContextInterface no son intercambiables. Cada puerto puede declarar dirección, ventana y rango de carga. ComposedWorld valida esos contratos y Runtime valida la admisión. La segunda comprobación no acredita haber cumplido la primera. [CAT-H; COMP]
+El resultado de analyze distingue StaticVerified, RequiresSimulation y Unsupported. Un build puede rechazar colisiones de preparación y conexiones incompatibles. No realiza fan-out copiando registros ni transforma una región descriptiva en una frontera física. Las conexiones son hipótesis de una preparación cuyo funcionamiento se comprueba ejecutándola. [COMP]
+La nueva función adopt de 3.5 transforma descriptores y landmarks del ComposedWorld en OrganizationSpec e InterfaceSpec. Conserva un detalle importante: la admisión temporal de Runtime se mantiene separada de las restricciones temporales del catálogo. Usar submit en una interfaz adoptada no certifica automáticamente todas las precondiciones del protocolo original. [REC, L25-41]
+10. Protocolos H1-H4 y F1-F2 preservados
+El registro integrado contiene protocolos finitos y analizadores; no todos son organizaciones insertables mediante el catálogo. Cada run_* crea y ejecuta un aparato. Para mantener un individuo interactivo se utiliza Runtime, ComposedWorld, BasalWorld u OrganizationalWorld, según la capa. [PROTO-H; PROTO]
+10.1. H1 y H2: representación temporal y repertorios
+H1, delay_position_bank.core05.nrh05.v1, transforma retardo discreto en lectura espacial. DelayPositionConfig conserva N=59 en la referencia, once etiquetas de -5 a +5 y las cargas 321/654. run_delay_position ejecuta el aparato; las funciones save/resume conservan la fase. Native, ReversedCalibration y TargetAbsent son brazos del testigo, no propiedades universales del tiempo DEE. [PROTO-H; MAR300, cap. 10]
+H2 conserva dos aparatos. SeparatedRepertoireConfig utiliza por defecto N=79, tres canales y base_offset=4096. OverlapRepertoireConfig utiliza N=71 y un encuentro compartido. Los resultados distinguen relaciones separadas, suma y mezcla; conservar una carga integrada no equivale a conservar una procedencia individual. La captura intermedia de merge forma parte del estado operativo que debe guardarse. [PROTO; MAR220, cap. 12]
+10.2. H3 y H4: recuperación y comparación
+H3, trained_redundancy_repair.core17.v1, requiere authorize_diagnostic_damage. Treatment, BackupUntrained, BackupDirectionReset, NoBackup, PathCut, OffpathCut y WrongReceiver separan condiciones del aparato. La reconstrucción utiliza redundancia preparada/entrenada y geometría adecuada; no es una orden de restauración universal. El booleano es una autorización de software explícita, no una pregunta conversacional. [PROTO-H; PROTO]
+H4, accessibility.history_conditioned_finite_response.v1, recibe lecturas baseline/challenged en un AccessibilityRequest. Compara el efecto de un desafío sobre historias distintas. No avanza un mundo, no decide una acción por el individuo y no convierte datos ilustrativos en un experimento nativo. Los pares deben compartir protocolo y edad pertinentes. [PROTO-H; PN, cap. 18]
+10.3. F1 y F2: revisión y mediación ambiental
+F1, reusable_lineage_revision.c7h03.v1, ejecuta revisiones de una continuidad móvil. Conserva el orden de las actualizaciones, consultas, cortes y snapshots específicos. Una nueva llamada run_reusable_revision crea otro aparato; reanudar exige el loader del protocolo. [PROTO-H; PROTO]
+F2, environmental_demux_return.v1, liga una respuesta, un umbral ambiental y el efecto de un delta DEMUX. La cadena es finita y usa su preparación particular. No se debe confundir con un actuador externo que escribe una respuesta tras consultar un resultado. La antigua familia F3 se conserva como antecedente, sin una API nueva equivalente publicada en este corte. [PROTO; MAR220, cap. 16]
+Los nombres save_*_checkpoint y resume_*_checkpoint corresponden a tipos de protocolo concretos. Cargar sólo su Runtime pierde cualquier estado que el wrapper requiera para continuar lecturas o etapas. La reconstrucción debe utilizar el recorrido correspondiente del ejemplo heredado. [PROTO-H; RT]
+11. BasalWorld 3.0: base conservada
+Los helpers create_relational_world y create_contextual_world permanecen disponibles. Usan la semilla OBP_FRESH_VALIDATED_T32.deetsnap, N=47 y tick absoluto 32; los centros pueden tener clocks locales distintos de ese tick. DomainMode.Validated admite los tres orígenes de referencia; Research representa otras traslaciones sin certificar su funcionamiento ni relajar todas las restricciones del preset. [BASAL-H; BASAL; PY]
+Sea c el origen. A=c+(-1,0,0), B=c+(1,0,0) y el comparador es c. A y B comienzan con s_reg=100, semantic=1, dirección nula, clock=260 y estados literales 1000/2000. No normalizar esos campos por analogía con otro testigo. [BASAL, L166-215]
+Papel
+Preparación relacional
+Soportes A
+(-1,0,0), (-1,1,1), (0,0,1), (0,1,0), relativos a A.
+Soportes B
+(0,-1,0), (0,0,-1), (1,-1,-1), (1,0,0), relativos a B.
+Soportes
+semantic=4; cargas y direcciones nulas; estados 3000+i/4000+i y clocks 31+i/41+i.
+Lector persistente
+c+(0,-2,0); state=6000, carga 7, dirección (0,1,0), semantic=4, clock=23.
+Evento A/B
+A+(0,-1,0) y B+(0,1,0), con direcciones opuestas en z.
+
+AB y BA intercambian un evento early y un evento late. Early tiene presencia activa en la ocasión de escritura; late empieza con state=0 y una trayectoria que llega después. Los controles H0, Simultaneous y Sham preservan las diferencias pertinentes. La adquisición se obtiene al avanzar, no leyendo el nombre de History. [BASAL]
+ContextualRewrite modifica esa preparación con consulta orphan, sinks y envolvente contextual. En el testigo, B escribe en t_rel=131->132; la relación pasa de +1 a 0 y su expresión tiene su propia evolución posterior. NoAction omite una consulta desde T0 y no equivale a retirar tardíamente la acción exterior. [BASAL, install_contextual; OBP21]
+BasalWorld mantiene su semántica heredada: sus Ports son descripciones de sitios y no canales registrados por defecto. La capa 3.5 agrega interfaces efectivas sobre estas recetas mediante OrganizationalWorld; no modifica retroactivamente el contrato del helper anterior. Los loaders basales reconstruyen los puertos del preset, mientras los objetos organizacionales 3.5 preservan sus descriptores específicos. [BASAL; REC, body_view; ORG]
+12. OrganizationalWorld: propiedad y ciclo de vida
+OrganizationalState reúne un shared_ptr de Runtime, la receta efectiva, protocolos, diagnósticos, operaciones externas, decodificadores y una TraceSession. OrganizationView conserva propiedad compartida sobre ese estado y un ID. Por ello una vista puede seguir siendo válida aunque se elimine la variable Python que nombraba al mundo; no depende de un wrapper temporal que ya fue destruido. [ORG, L11-22; ORGBIND]
+create(recipe) prepara la física, deriva descriptores y registra interfaces. En recetas con nombre, genera los descriptores nativos y fusiona las vistas/interfaces adicionales bajo las comprobaciones implementadas. Los placements no nulos incompatibles se rechazan. El resultado es una ejecución nueva, no la continuación de otra historia. [REC; ORG, L157-179]
+attach(runtime, recipe, specs) es inerte: retiene el Runtime compartido y valida sus descriptores. No instala registros ni registra canales por debajo. La aplicación debe suministrar una vista compatible con el mundo existente. Una lectura inerte no acredita por sí sola la función de una región arbitraria. [ORG, L180]
+Las vistas proporcionan spec, runtime, observe y resilience. Los mapas de puertos pueden describir sitios estáticos aunque el soporte funcional relevante sea móvil. Las lecturas y los protocolos deben interpretar esa geometría; una coordenada fija no persigue por sí sola al descendiente. [ORGH; ORG]
+fork copia el estado organizacional y sustituye el Runtime por una copia profunda. Los protocolos, codecs y trazas se copian; no comparten buffers mutables con el padre. Los diagnósticos añaden un ledger sobre la copia. Los objetos que desean compartir un mundo deben hacerlo mediante vistas, no mediante forks. [ORG, L209-223]
+El acceso público a runtime permite operaciones de bajo nivel. Si se avanza directamente ese Runtime mientras hay protocolos o trazas administrados por OrganizationalWorld, se evita el orquestador de capturas. Para preservar la continuidad de la capa alta debe avanzarse por world.advance/run_until. La interfaz nativa no intercepta mágicamente llamadas hechas a una referencia mutable externa. [ORG, L194-208; ORGH]
+13. Recetas publicadas y dominios
+OrganizationRecipe tiene ID y versión, dimensión, origen, parameters, options, placements, interfaces, organizations, actions, execution, t0_tick y domain. Es una preparación versionada, no una respuesta terminal. Las fábricas publicadas devuelven recetas y prepare_organizational_recipe realiza la instalación. [ORGH; REC]
+Receta
+N / T0
+Puertos/vistas
+Alcance
+mobile_pair
+34 / 0
+l0/l1.cue y teacher; q0/q1.query y response
+Dos relaciones; consultas independientes o secuenciales.
+relational
+47 / 32
+body.common_query; A/B/comparator
+AB/BA/H0; lector según keep_reader.
+contextual
+47 / 32
+body.common_query; guardas A/B
+Reescritura contextual de referencia.
+phase
+31 / 0
+phase.access_query y access_response
+Modos 0/1/2; acceso temporal.
+distributed
+127 / 0
+context, history, integration; history.common_query
+Soporte+relación+uso renovado.
+cascade
+127 / 0
+query; stagej.response
+depth 1..8 representable; 2/4/8 comprobados.
+native_transfer
+127 / 0
+query; receiver_query; stage0.receiver_response
+Relay de dos etapas y consulta receptora.
+mobile_basal
+47 / 32
+mobile.hub; body.comparator
+Puente móvil-basal en un Runtime.
+contingent
+47 / 32
+body.action, environment, return
+Acción y consecuencia preparada.
+information
+47 / 32
+body.conditional y downstream
+Contextos ocultos y canal específico.
+competition
+34 / 0
+joint_query, later_query; encounter.*
+Convergencia y uso del producto.
+predictive
+34 / 0
+signal0/1; predictive.*
+Trayectorias históricas y oportunidad.
+research
+1..512 / explícito
+Placements, vistas e interfaces declarados
+Preparación personalizada; función a medir.
+
+Las recetas mobile_pair, phase y distributed reutilizan OrganizationCatalog y CompositionPlanner; adopt recupera sus interfaces y descripciones sobre un Runtime. Las recetas basales reutilizan la semilla y el constructor 3.0. Las cascadas, transferencia, competencia y aparato predictivo preparan fuentes, trayectorias y interfaces nativas. research.v1 admite placements explícitos sin prometer una función. [REC, L103-298]
+Los parámetros desconocidos se rechazan en las recetas con nombre. Los flags booleanos admiten 0/1; se comprueban, entre otros, depth, direction, hidden, history y superposiciones. Los parámetros representables tienen rangos más amplios que algunos casos reservados: debe conservarse esa distinción al anunciar una configuración como comprobada. El anexo B enumera claves y rangos exactos. [REC; CONTRACT]
+La semilla basal es un estado fresh identificado y contiene el fondo físico usado por los presets, no todas las experiencias de MBP4. Guardar una receta permite reconstruir la preparación; guardar un snapshot conserva lo que esa instancia ha vivido. Los dos objetos deben custodiarse por separado. [META; MAR300; RT]
+14. F01: memoria histórica, relativa y latente
+F01 conserva dos familias principales. mobile_pair crea dos relaciones que se escriben mediante entradas cue y teacher; la consulta posterior encuentra el producto móvil. relational prepara dos centros con una diferencia histórica y permite leerla por interacciones posteriores. El mecanismo general no se reduce a un campo llamado memoria: se reconoce por la transformación de futuras respuestas. [REC; PN, caps. 8-15]
+La receta mobile_pair.v1 utiliza N=34 y dos anclas trasladables, inicialmente (10,10,8) y (10,10,24). Cada relación de catálogo se conecta a una consulta situada ocho pasos por y. Los nombres l0.cue, l0.teacher, l1.cue, l1.teacher, q0.query y q1.query permiten presentar datos sin calcular a mano cada coordenada. Las respuestas se leen en las vistas q0/q1. [REC, L131-149]
+En el recorrido publicado se presentan cue=5 y teachers=7/11 en t=0. Se avanza hasta t=6 y se consulta con 13. La respuesta física en t=11 es 25/29. Son valores de un testigo: la API somete las entradas a la dinámica y no contiene una tabla que devuelva esos resultados. La prueba contrasta también historias e interfaces. [EX-PY; TEST-PY35]
+experiencia -> relación producida -> consulta nueva -> transformación física observada.
+La ampliación probó consultas independientes y secuenciales hasta cincuenta entradas. El uso independiente clona la misma historia antes de cada pregunta; el uso secuencial transforma el mismo portador al preguntar. No se puede sumar el número de consultas como si fueran cincuenta memorias independientes ni comparar ambos recorridos sin declarar la continuidad. [SCI, P01 y P10; TEST-PY35]
+Para la memoria latente se utiliza el cuerpo sin lector persistente o una expresión ordinaria sin respuesta activa. A/B pueden conservar delta aunque el comparador no muestre su función. Una sonda común revela respuestas dependientes de AB/BA; igualar la relación o cambiar la ruta permite comprobar su contribución. La API distingue observar delta de activar una interacción que lo expresa. [SCI, P05; ORG, L145-156]
+14.1. Contrato reutilizable
+FunctionalReadout devuelve delta opcional, centers_available, reader_available, supports_intact, axis_projection y observaciones por puerto. delta se calcula sólo cuando ambos centros tienen state>0 y semantic=1. El lector requiere state>0 y semantic distinto de 5; su dirección dx es la proyección registrada. Esta lectura finita no certifica todas las funciones de la organización. [ORG, L145-154]
+Los tests F01/F06 ejecutan adquisición, consulta y reanudación. El registro de memoria latente incluye sondas posteriores y un centro ausente, comprobando que la falta de A/B no se representa como delta=0. La misma infraestructura permite investigar nuevos paneles sin introducirlos retroactivamente como capacidades validadas. [TEST-PY35; CONTRACT]
+15. F02: transferencia y reconstrucción asistida
+La transferencia nativa publicada conserva una relación que viaja mediante interacciones, un relay y una consulta posterior. native_transfer.v1 usa la geometría de dos etapas sobre N=127 y, por defecto, omite la segunda fuente entrenada para dejar el trayecto de relay. La entrada query se presenta con carga cero en t=6; receiver_query utiliza su puerto en t=16. El output se observa posteriormente en stage0.receiver_response. [REC, L231-256; TEST-PY35]
+Los testigos comparan dos historias, ruta cortada y fuente ausente. Conservan la diferencia entre que un mediador llegue a otra región y que ésta aplique una relación adquirida a una consulta nueva. En el ejemplo histórico, una relación de carga 12 se utiliza en una respuesta de 25; con otra historia, 16 se utiliza en 29. [SCI, P04; CASES]
+15.1. Reconstrucción asistida explícita
+ReconstructionSpec enumera source_sites y destination_sites, copy_raw, copy_clocks y authorize_assisted_reconstruction. La llamada se realiza sobre el receptor y devuelve una copia intervenida del receptor; la fuente y el receptor originales no se modifican. Deben coincidir las cardinalidades, existir al menos una región y seleccionarse algún campo. [ORGH; ORG, L213-221]
+La implementación rechaza destinos duplicados, admite hasta 65.536 sitios y conserva campos no seleccionados. Cada edición registra coordenada, etiqueta, tick, RAW y clock antes/después. Su modalidad se marca ASSISTED_RECONSTRUCTION. La correspondencia de regiones y el panel de suficiencia pertenecen al experimento. [ORG]
+Recorrido
+Evidencia que aporta
+Clon completo
+Preservación técnica del estado y de su continuación.
+Copia parcial de relación
+Suficiencia condicional de esos campos en el receptor preparado.
+Copia de RAW y clocks
+Conservación de una región más rica, declarada por el protocolo.
+Relay nativo
+Transferencia realizada por la evolución del mundo.
+
+La familia no publica una implementación nueva de reinstanciación corporal completa ORGREINSTANTIATE20CX/WARPORG146X: ese constructor figura como SOURCE_NOT_RECOVERED en el expediente. Se conserva el antecedente como genealogía y se publican los mecanismos que sí tienen fuentes y tests. El resultado positivo no depende de llamar equivalentes a una copia asistida y una transferencia nativa. [CONTRACT; VAL; SCI, P04]
+16. F03: cascadas y puentes entre familias
+cascade.v1 prepara varias relaciones adquiridas en un Runtime N=127. La dimensión está fijada y depth admite 1..8; las profundidades 2, 4 y 8 tienen testigos de referencia. El constructor usa h0=(40,30,30)+traslación, primer encuentro de consulta en t=11 y etapas separadas por cinco ticks. Los pares por defecto son cue=3 y teacher=9+2*j. [REC, L231-251; SCOPE]
+Consulta 13 -> 25 -> 39 -> 55 -> 73 -> 93 -> 115 -> 139 -> 165.
+La secuencia anterior es un oráculo de la preparación de ocho etapas. Su verificación exige evolucionar los portadores y leer stagej.response en la ocasión correspondiente. omit y los cortes de enlaces separan contribuciones. La profundidad de una cascada es una propiedad de la composición ensayada; no equivale por nombre a un nivel de abstracción cognitiva. [SCI, P09; TEST-PY35]
+16.1. Puente móvil-basal
+mobile_basal.v1 prepara un cuerpo relativo y fuentes de una relación móvil en N=47. El hub móvil es c+(0,-3,0); un desplazamiento offpath lo separa seis posiciones en z. El producto del encuentro puede alcanzar el comparador basal. mobile_only, body_only y paired permiten contrastar los componentes y la coincidencia de fuentes. [REC, L196-211]
+El cuerpo y el portador están en el mismo Runtime desde la preparación. No se lee una respuesta de un universo para escribirla en otro. En el recorrido del consumidor independiente, a seis ticks de la semilla se observa delta=1 y comparador=12; una sonda en un fork produce dx=-1. Es una confirmación concreta de integración entre mecanismos, con el horizonte y las interfaces declarados. [EX-CPP; AUD]
+16.2. Contexto distribuido y uso renovado
+distributed.v1 combina distributed_context.i05.v1, relative_history.i02.v1 y contextual_multichannel_recurrence.p02.v1 en N=127. with_history y with_recurrence permiten omisiones de preparación; history_mode fija la historia de referencia. Los enlaces expresan dependencias físicas en una geometría compartida. [REC, L155-167]
+Los testigos de P06 y P13 separan historia diferencial, carga del canal renovado y consulta posterior. Dos canales de carga pueden saturar en 19664 mientras las relaciones A/B siguen siendo distintas. Por eso la composición devuelve observaciones por organización en vez de una única puntuación de memoria. El soporte compartido no se duplica al crear una vista. [SCI; ORG]
+17. F04: plasticidad, fase y acceso temporal
+El inspector inspect_write_gate lee preestado, vecinos y condición de incremento. No abre una compuerta ni decide que una experiencia deba recordarse. contextual.v1 y phase.v1 ofrecen dos preparaciones diferentes: una relaciona escritura diferencial con contexto local; la otra permite consultar acceso dependiente de fase y trayectorias. [OBS; REC]
+En P07, una experiencia externa de carga cero situada en ruta y ocasión adecuadas modificó la escritura posterior de B. Sus controles separan presencia, ruta y timing. 3.5 permite presentar esa experiencia y observar sus consecuencias sin convertirla en una regulación autogenerada: submit sigue siendo EXPERIENCE_PROTOCOL. [SCI, P07; CONTRACT F04]
+phase.v1 usa N=31 y el descriptor temporal_phase_memory.core05.v1. Admite modos 0/1/2, distancia, permutación, signos, índice de fuente y partes alta/baja de clocks iniciales. Los clocks de preparación forman parte de la receta; cambiarlos desde fuera no es una acción que el individuo haya aprendido. [REC, L149-179; CAT]
+Los puertos phase.access_query y phase.access_response derivan de la fuente y la boca del aparato. Cuando la fuente falta, se recupera la dirección de la geometría declarada y no de una respuesta esperada. Las ocasiones 40/41 y el retorno toroidal son referencias del panel, no una garantía de acceso en cualquier tiempo. [REC; SCI, P13-P14]
+17.1. Interpretación de la disponibilidad
+La pregunta operacional es qué interacción vuelve accesible una diferencia histórica. Un mismo hub observado localmente puede pertenecer a contextos con respuestas distintas en otra fase. Esta propiedad se estudia manteniendo separados observación local, evento admitido, trayectoria y consulta final. [PN, caps. 7 y 18; SCI, P14]
+La API permite inspeccionar esas distinciones, conservar ventanas y ejecutar cortes en forks. No sustituye una explicación causal por el nombre de un modo. Si se interviene un clock, el ledger debe reflejarlo; si se retira un flujo toroidal, deben mantenerse los clocks no seleccionados. [ORG; TEST-PY35]
+18. F05: observadores, trazas y procedencia
+La capa heredada conserva PassiveTracker y compare_site_transition. PassiveTracker registra una lista declarada de sitios y compara capturas; no persigue automáticamente todos los descendientes. inspect_write_gate describe la rama material local, pero puede dejar VOID_PRECEDENCE_UNRESOLVED y DEMUX sin atribución desde ese preestado parcial. [GENE; OBS; MAR300]
+18.1. TraceSession
+TraceSession añade sitios declarados y MobileSegment. Un segmento especifica birth_site, direction, birth_tick, last_tick, expected_load/semantic opcionales y correspondence_stopped. La captura calcula la posición balística prevista, lee el estado real y contrasta dirección, existencia y campos esperados. [ORGH; ORG, L234-241]
+Si la observación concuerda, la cobertura indica OBSERVED_DECLARED_BALLISTIC_SEGMENT_NOT_UNIQUE_ANCESTRY. Si no concuerda, marca TRANSFORMATION_OR_ABSENCE_UNRESOLVED_CORRESPONDENCE_STOPPED y detiene esa correspondencia. El sistema no asigna un padre por cercanía ni hace pasar una predicción de ruta por genealogía única. [ORG]
+El presupuesto es de muestras, no de ticks: por defecto 4096 y hasta 65.536, con 128 sitios y 256 segmentos. Un tick puede consumir varias muestras. Al agotarlo se activa capture_stopped y el Runtime sigue evolucionando. relative_to_origin es una diferencia de coordenadas y unwrapped conserva la trayectoria algebraica; no deben confundirse con la mínima distancia toroidal. [ORG, L234-241]
+set_trace valida el instrumento; trace() devuelve una copia. Para reemplazar la sesión activa se utiliza set_trace. La captura puede ser explícita o producirse durante el avance de la capa organizacional. La carga desde archivo preserva sus frames y estado de correspondencia, no reconstruye capturas nunca realizadas. [ORG, L224-244]
+18.2. Encuentros y diagnósticos
+observe_encounter(before, after, destination) exige misma dimensión y ticks adyacentes. Guarda ambos registros, gate local y candidatos balísticos directos. La atribución declara que no certifica toda genealogía material o DEMUX. Los dos Runtime deben pertenecer al contraste que el investigador pretende analizar; la función no comprueba por sí sola una continuidad histórica completa. [ORG, L245-254]
+El diagnóstico se realiza mediante diagnostic_fork con ResearchStateEdit y autorización explícita. Los campos ausentes preservan su valor. Las etiquetas de la herramienta, IDs y grafos no se insertan en RAW. La lectura pasiva y la necesidad causal por intervención siguen siendo objetos diferentes. [ORG; DIAG]
+19. F06: transducción de entradas y salidas
+La capa I/O traduce valores y nombres de aplicación a cargas de canales físicos declarados. InputCodec define version, type, minimum, maximum y symbols. InterfaceSpec une ese codec con un ChannelSpec, una descripción de admisión y meaning_location. El significado asignado por la aplicación no se vuelve por ello una asociación aprendida por DEE. [ORGH; ORG, L132-144]
+CodecType
+Codificación implementada
+BoundedInteger
+Entero dentro del intervalo declarado, entre 0 y 65535.
+Boolean
+Sólo 0/1, además del intervalo declarado.
+Enumeration
+Nombre registrado -> carga uint16.
+RegisteredPattern
+Nombre registrado -> carga sobre el patrón de canal fijo declarado.
+
+RegisteredPattern no es un compilador arbitrario de conjuntos de vóxeles. El estado, dirección y semantic del canal son fijos en ChannelSpec; el mapa de símbolos selecciona la carga. Patrones más complejos deben prepararse como recetas o interfaces explícitas. Esta precisión evita atribuir al producto un diccionario semántico general. [ORGH; RT; ORG]
+InputCodec.injective detecta alias de nombres a una misma carga. No modifica el mapa. submit y submit_symbol codifican, programan y registran el recibo sin avanzar; probe y probe_symbol usan la modalidad de sonda. Sus coordenadas proceden del contrato, no de una salida esperada. [ORG, L185-190]
+19.1. Lectura y decodificación
+OutputDecoder conserva la observación física y produce un entero opcional o una lista de símbolos. La disponibilidad exige state>0 y semantic distinto de 5. El decoder entero devuelve s_reg; el booleano admite 0/1; los modos de símbolo buscan coincidencias de carga. La dirección sigue disponible en physical, pero no se convierte automáticamente en una palabra. [ORG, L136-143]
+Los estados incluyen NO_ACTIVE_RESPONSE, MEASURED, ORDINARY_CAP_OBSERVED, OUTSIDE_BOOLEAN_DECODER, UNMAPPED_PHYSICAL_RESPONSE y NONINJECTIVE_AMBIGUITY. Una respuesta sin mapa no es un error del kernel: informa el límite del decoder. La decodificación no avanza el mundo ni consulta una caché de soluciones. [ORG]
+Un nombre como Sensor_Activo es una interfaz de uso. La prueba científica de aprendizaje compara la misma codificación y el mismo decoder sobre historias distintas. Definir desde fuera todas las asociaciones de entrada y salida es transducción externa, no aprendizaje semántico atribuido al individuo. El producto registra esa separación en meaning_location y en las modalidades. [SCOPE; PN, cap. 10]
+20. F07: acción nativa y entorno
+ActionCoupling conserva ID, sitios, roles, observation_ticks y scope. Es una descripción de acoplamientos preparados por una receta; no es un callback que altera el universo cuando el observador detecta una intención. El procesamiento de la acción ocurre en las fuentes, rutas y encuentros instalados. [ORGH; REC, L55-65]
+contingent.v1 parte de un cuerpo basal con bucles ambientales. El caso independent retira determinadas fuentes de preparación y coloca un acontecimiento ambiental comparable; inverse cambia una dirección de la preparación. Esas opciones seleccionan aparatos físicos, no decisiones aprendidas durante la ejecución. [REC, L222-232]
+Los paneles P03 registran diferencias como carga 30/48 al cortar o conservar una acción. Los cortes tardíos distinguen la acción ya formada de una consulta omitida desde T0. 3.5 hace reutilizable el acoplamiento y sus observadores, manteniendo la diferencia entre efecto ambiental, respuesta de retorno y escritura de memoria. [SCI, P03; CONTRACT F07]
+information.v1 prepara una fuente oculta y una ruta de lectura posterior. hidden=23/25 produce en el testigo respuestas 43/45; cortar mediador o utilizar la ruta control conduce a 13. La interfaz ha adquirido selectividad experimental, pero no contiene un selector autónomo de experimentos por el mero nombre information. [REC, L211-221; SCI, P11]
+20.1. Acción en DEE y adaptación externa
+Una aplicación puede observar una salida y transmitirla a otro dispositivo. Ese adaptador es una capa externa y debe identificarse como tal. En los recorridos nativos publicados no se ejecuta «leer respuesta -> escoger efecto -> escribir entorno» desde Python. Las consecuencias son resultados de v27. [CONTRACT; REC]
+Los observation_ticks describen las ventanas de la receta. Cambiar geometría o preset exige revisar su significado; no son un detector universal de cada retorno. La evidencia de un enlace se conserva mediante eventos y controles, no por la presencia de tres nombres action/environment/return en una estructura de datos. [REC, body_view; SCI]
+21. F08: resiliencia, saturación y disponibilidad
+ResilienceObservation reúne FunctionalReadout, missing_supports y las listas ordinary_cap_sites/representable_cap_sites. Los sitios observados con carga 19664 se registran como cap ordinario; 65535 identifica el máximo representable. Estos flags son igualdad con un umbral, no una estimación universal de saturación informacional. [ORG, L155]
+El soporte se considera presente según la comprobación de la vista: RAW no nulo y semantic=4 en los sitios declarados. supports_intact no compara cada bit del soporte contra una huella original ni certifica todas sus funciones. Para una prueba de identidad o recuperación se requiere el panel funcional correspondiente. [ORG, L145-155]
+Las observaciones separan centros disponibles, delta, comparador activo y proyección. Si falta un centro, delta queda ausente; si falta el comparador, la relación puede seguir disponible. Así una lectura no convierte un dato ausente en cero ni una ruta sin salida en memoria destruida. [TEST-PY35; ORG]
+En los testigos distribuidos, dos canales renovados alcanzan la misma carga cap mientras las historias conservan relaciones distintas. Una consulta posterior puede volver a distinguirlas. La biblioteca facilita esa inspección multivariable sin normalizar registros, borrar historia o restaurar silenciosamente backups. [SCI, P06; CONTRACT F08]
+P08 incorpora intacto, contactos físicos y soporte retirado para localizar resistencia y dependencias. H3 permanece como recuperación desde redundancia en su aparato heredado. Una restauración de software desde snapshot y una recuperación funcional producida por el mundo son operaciones distintas y se documentan con modalidades diferentes. [SCI, P08; PROTO; SCOPE]
+22. F09: encuentros simultáneos y productos conjuntos
+competition.v1 usa N=34 y un encuentro de referencia en (12,16,15)+traslación. Prepara dos relaciones de cargas 12 y 24, con historias y direcciones identificadas. shift permite desfase -1/0/+1; second_y/second_z cambian una dirección admisible; arm selecciona ambas fuentes o un control individual. [REC, L257-277]
+El destino puede prepararse vacío, material o protegido. La opción material incluye un soporte tetraédrico; la protegida aplica la rama semantic=4. Estas diferencias pertenecen al estado inicial y dejan actuar al resolver. La capa alta no fuerza un ganador. [REC]
+El producto de referencia de A+B tiene carga 36 y dirección (0,1,1). joint_query y later_query lo utilizan posteriormente, produciendo las respuestas guardadas de 49 y 66 en los casos correspondientes. Su utilidad se comprueba después del encuentro: una suma instantánea no agota la función del descendiente. [SCI, P12; TEST-PY35]
+Preparaciones A y B -> encuentro nativo -> producto conjunto -> consulta posterior.
+La admisión de dos escrituras del host al mismo sitio/frontera y la convergencia nativa de dos portadores son problemas distintos. El primero puede rechazar ambas solicitudes; el segundo utiliza precedencia, ocupación, contexto y reglas v27. No debe implementarse uno mediante un ordenamiento Python que sustituya al otro. [RT; ORG; INCIDENTS]
+observe_encounter documenta el preestado, postestado, gate y candidatos balísticos directos. El resultado permite preparar un diagnóstico específico; no certifica sin más toda procedencia de una rama material o DEMUX. Para asignar una capacidad al producto conjunto se conserva el mismo panel de consultas y los controles A sola, B sola, desfase y destino alternativo. [ORG, L245-254; SCI]
+23. Consultas secuenciales y orquestación
+QueryProtocol guarda ID, kind, modalidad, steps y next_capture. Cada QueryStep conserva input_tick, read_tick, input, receipt_ids, targets y captured. Esta estructura vuelve persistente la continuidad de un protocolo de consultas: no basta que el estado físico sobreviva si se pierden las lecturas ya capturadas o las que todavía deben recogerse. [ORGH; ORG]
+start_mobile_sequence sólo admite mobile_pair.v1 en este corte. Tiene entre 1 y 1024 entradas, first_tick>=6 y no anterior al Runtime, y un intervalo exactamente igual a cinco. Comprueba desbordamiento uint64 antes de calcular el endpoint. Cada paso programa una sonda en dos interfaces y define un read_tick cinco ticks después. [ORG, L203-208]
+Las posiciones derivan del régimen de trayectorias de la receta: primero se ajusta el avance inicial por y y, tras consultas sucesivas, por (-1,1,0). Las cargas no seleccionan las preguntas siguientes; la lista es un protocolo externo congelado. Fuera de ese régimen debe comprobarse la correspondencia física de los targets. [ORG]
+run_until divide el avance en fronteras de lectura y, si hay traza activa, también por tick. En cada lectura acumula observaciones y actualiza next_capture. Las entradas conservan los recibos del Runtime; un rechazo puede existir aunque el protocolo capture después el sitio previsto. La evaluación debe inspeccionar ambos, no sólo el vector captured. [ORG, L194-208]
+En el recorrido de referencia, tres consultas 13,7,17 producen los pares 25/29, 32/36 y 49/53. Guardar a t=13 conserva una captura y solicitudes pendientes; cargar y avanzar a t=21 completa el mismo resultado. Esta continuidad fue reproducida también por el consumidor C++ de esta edición. [EX-CPP; VAL; AUD]
+El límite representable de 1024 entradas no implica que todos esos mensajes puedan encolarse en cualquier estado: el Runtime tiene su límite total de pendientes y puede contener otros eventos. Las interfaces con el mismo ID también se rechazan. Estas condiciones son contrato, no resultados negativos de aprendizaje. [RT-H; ORG]
+24. Snapshot Runtime: formato y conservación
+Runtime escribe versión 2 y conserva lectura de versiones 1/2. El magic sigue siendo DEETSNP1. Los enteros se codifican little-endian; strings guardan longitud u32 y bytes. La dimensión, tick y buffers activos se almacenan antes de la información operativa. [RT, serialización]
+Orden
+Contenido
+1
+Magic de ocho bytes; versión u32; N u32.
+2
+Tick u64, pausa u8, siguiente ID de evento y secuencia u64, fase de protocolo.
+3
+Cantidad N³, RAW activo y clocks activos, todos uint64.
+4
+Canales: nombres, sitios, state, direcciones, semantic y permisos.
+5
+Cola: frontera, ID, tipo, secuencia, canales y escrituras.
+6
+Recibos: estado, tiempos, canales y razón.
+7
+En v2: backend, threads y mapa de metadatos opacos.
+8
+Checksum uint64 del payload anterior.
+
+El checksum usa exactamente 1469598103934665603 como estado inicial, XOR por byte y multiplicación modular por 1099511628211. No sustituir el literal por otra constante de una implementación llamada FNV. Es detección de corrupción; la identidad externa se verifica mediante SHA-256. [RT]
+El parser limita snapshot a 2 GiB, strings a 1 MiB, eventos pendientes a 4096, metadatos a 4096 y aplica límites adicionales a canales, recibos y escrituras. Comprueba checksum, tipos, coherencia y consumo completo. Los buffers de salida se reconstruyen a partir de los activos. restore_snapshot carga primero un Runtime nuevo antes de reemplazar el anterior. [RT, validate_invariants y load_snapshot]
+La escritura usa un temporal en el mismo directorio; Windows utiliza FlushFileBuffers y ReplaceFileW/MoveFileExW y la rama POSIX sustituye por rename. El directorio padre debe existir. La sustitución atómica no equivale a inmunidad frente a toda avería de almacenamiento. Los originales deben conservarse antes de migrar o reconstruir. [RT, L110-180]
+ComposedWorld, BasalWorld y los protocolos integrados tienen loaders que reconstruyen su capa particular sobre Runtime. Un loader físico puede recuperar el mundo y aun no saber continuar una cola de capturas de otra capa. Para 3.5 debe emplearse OrganizationalWorld.load_snapshot cuando exista su metadata. [COMP; BASAL; PROTO; ORG]
+25. Persistencia organizacional y traza 3.5
+OrganizationalWorld conserva su estado como metadatos namespaced dentro de Runtime v2. El prefijo es dee_thinking.organizational.v1. El contenido binario interno comienza con schema_version=1; se codifica en hexadecimal y se divide en fragmentos de hasta 524.288 caracteres bajo claves numeradas y chunks. [ORG, L24 y L81-131, L226-232]
+El límite del binario es 64 MiB. El lector exige de 1 a 256 fragmentos, presencia de todos ellos, hexadecimal válido, schema conocido y consumo completo. Su codificación utiliza u64 little-endian, u8 para flags/enums, longitudes u64 y strings acotados. Las coordenadas guardan enteros con signo representados en 64 bits y se validan al leer. No usa pickle ni ejecuta funciones almacenadas. [ORG]
+Bloque
+Contenido conservado
+Receta
+ID, versión, dimensión, origen, tick inicial, dominio, backend/hilos, parámetros y opciones.
+Preparación
+Placements, vistas, puertos, centros, soportes, interfaces y acoplamientos de acción.
+Protocolos
+ID, tipo, modalidad, cursor, pasos, recibos, targets y lecturas capturadas.
+Diagnóstico
+Campos antes/después, origen de intervención y modalidad.
+I/O
+Decodificadores registrados y operaciones externas de la capa alta.
+Instrumentación
+TraceSession opcional, segmentos, muestras y flags.
+
+save_snapshot bifurca el Runtime para serializar; elimina en esa copia la metadata organizacional antigua, escribe la actual y utiliza el guardado Runtime. No cambia el mundo principal. load_snapshot no repite prepare_organizational_recipe: lee el estado existente, deserializa y valida descriptores. Una ruta seed almacenada puede conservar procedencia sin necesitar reinstalar el cuerpo al cargar. [ORG]
+Si falta metadata organizacional, el loader solicita Runtime.load_snapshot o attach explícito; no inventa una receta. Un Runtime anterior puede leer la envolvente física, pero no continuar QueryProtocol o TraceSession 3.5 sin conocer sus reglas. La compatibilidad de formato físico y la de continuación operativa son contratos distintos. [BUILD; ORG]
+TraceSession.export_trace utiliza un archivo separado con magic uint64 0x3533545241434531, sus campos serializados y el checksum del payload. load_trace valida tamaño, magic, límites, checksum y bytes sobrantes. Guardar el mundo con include_trace=False omite esa traza, no la convierte en recuperable desde el snapshot físico. [ORG, L242-244]
+26. Binding, tipos públicos y constitución del WHL 4.0
+La distribución cp313-cp313-win_amd64 contiene una extensión compilada nueva. El binding principal mantiene las APIs heredadas y registra las superficies organizacional, cognitiva e informativa. En C++ se publican CognitiveSession, NativeAssociationSession, FinitePolicySession y NativeInformationSession, además de las funciones de composición adquirida. [4-BIND; 4-COGH; 4-INFH]
+Miembro instalado
+Papel
+__init__.py, __init__.pyi
+Exportación de funciones y tipos, acceso a la semilla y facilitadores.
+_native.cp313-win_amd64.pyd
+Implementación compilada; 7.568.384 bytes.
+_native.pyi, py.typed
+Firmas y marcador de tipado.
+cognition.py / cognition.pyi
+Session, CascadeSession, create_session, load_session y exportación de lecturas.
+dialogue.py / dialogue.pyi
+Gramática y traducción de resultados con atribución.
+data/OBP_FRESH_VALIDATED_T32.deetsnap
+Semilla basal inicial conservada.
+THIRD_PARTY_NOTICES.md y dist-info
+Avisos, identidad de distribución, WHEEL, METADATA y RECORD.
+
+El paquete tiene quince miembros y 1.457.406 bytes. Los nombres de clase, enums, propiedades y métodos se verifican en bindings y stubs. Los enteros uint64 cruzan el binding sin conversión intermedia a float; optional se presenta mediante None. El dominio de ausencia se conserva como valor opcional o estado de disponibilidad. [4-WHL; 4-BIND]
+26.1. Facilitadores y seis perfiles
+create_session admite continuidad, comparacion, politica, informacion, relaciones y composicion. Los dos primeros preparan CognitiveSession; los siguientes, sus sesiones informativas; relaciones envuelve NativeAssociationSession y composicion usa CascadeSession sobre un OrganizationalWorld. load_session selecciona el cargador compatible con el perfil indicado. [4-PY]
+El facilitador transforma tuplas de origen en Coordinate, valida los parámetros reconocidos, localiza recursos y serializa lecturas. Una operación sin contrato en el perfil produce un mensaje de interfaz identificado. Los nombres externos se guardan en metadatos; los outputs conservan su registro físico. [4-PY]
+Las rutas Unicode se adaptan mediante una copia byte-exacta de un archivo guardado hacia una ruta temporal ASCII para los cargadores del build Windows. El procedimiento preserva la historia; sus requisitos de sistema de archivos se distinguen de los de la transición. La API C++ directa recibe una ruta accesible para su plataforma. [4-PY; 4-COG]
+27. Instalar y comprobar el artefacto oficial
+La ruta normal de uso consiste en extraer la entrega a una carpeta escribible, verificar el WHL e instalarlo en un entorno nuevo de CPython 3.13 estándar x64. El intérprete de ejecución debe pertenecer a ese entorno. Las rutas siguientes son ejemplos portables elegidos para esta guía. [4-READ; 4-BUILD]
+$ErrorActionPreference = 'Stop'$root = (Get-Location).Path$wheel = Join-Path $root `  'wheel\dee_thinking-4.0.0-cp313-cp313-win_amd64.whl'$expected = '17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623'$actual = (Get-FileHash $wheel -Algorithm SHA256).Hash.ToLower()if ($actual -ne $expected) { throw 'Identidad del WHL diferente' }py -3.13 -m venv .venv40$py = (Resolve-Path '.venv40\Scripts\python.exe').Path& $py -I -m pip install --no-index $wheelif ($LASTEXITCODE -ne 0) { throw 'Instalacion fallida' }& $py -I -c "import dee_thinking as d; print(d.__version__); print(d.__file__); print(d.build_info())"
+El resultado de identidad debe indicar versión 4.0.0, kernel 27 y una ruta en site-packages del entorno. La verificación del hash comprueba el artefacto; una ejecución posterior comprueba una operación del producto. Los ejemplos de este maestro son transcripciones técnicas derivadas del contrato; las ejecuciones Windows verificadas se localizan en 4-VAL y 4-CLEAN.
+27.1. Comprobación breve de adquisición
+import dee_thinking as dassert d.__version__ == "4.0.0"s = d.create_session("relaciones")s.train([7, 11], cue=5)print(s.query(13))
+En la preparación publicada, la consulta produce 25 y 29 en las dos vías. Es un resultado de la interacción cue, teacher y sonda; los números de este ejemplo pertenecen al testigo y al evaluador, no a una tabla de respuesta de la API. [4-COG; 4-TEST]
+27.2. Arrancar una aplicación
+& $py -I -B .\app\conversar.py --perfil continuidad `  --sesion .\sesiones\primera --json& $py -I -B .\app\mundo_nativo.py --sesion .\sesiones\mundo
+La interfaz de sesiones y la aplicación de mundo nativo tienen constructores distintos. Cada proceso conserva su MAIN. El capítulo 36 documenta comandos, ventanas y atribución. Para cerrar una sesión de interés, guardar es una operación explícita antes de salir.
+28. Reconstrucción desde las fuentes preservadas
+El artefacto final registra CPython 3.13.11 x64, pybind11 3.1.0, setuptools 81.0.0, wheel 0.48.0 y build 1.5.0. La construcción Windows utilizó una instancia de Visual Studio 18 Community, MSVC 14.50.35717, compilador 19.50.35729, C++20 y configuración Release con /O2 /Ob2 /DNDEBUG. Esas identidades describen la ejecución conservada. [4-BUILD; 4-MIG]
+28.1. Construir WHL y biblioteca C++
+Trabaje sobre una copia extraída del producto, dejando intacto el ZIP oficial. tools/build40.ps1 toma SourcePath, BuildRoot, ProductRoot, Stage y PythonExecutable. Su valor predeterminado de Python pertenece al equipo original; por eso los comandos siguientes pasan una ruta explícita. [4-BSCRIPT]
+$ErrorActionPreference = 'Stop'$root = (Get-Location).Pathpy -3.13 -m venv C:\DEE40\buildenv$py = 'C:\DEE40\buildenv\Scripts\python.exe'& $py -m pip install setuptools==81.0.0 wheel==0.48.0 `  pybind11==3.1.0 build==1.5.0if ($LASTEXITCODE -ne 0) { throw 'Dependencias de build' }.\tools\build40.ps1 -SourcePath (Join-Path $root 'source') `  -BuildRoot C:\DEE40\build -ProductRoot $root `  -PythonExecutable $py -Stage wheel.\tools\build40.ps1 -SourcePath (Join-Path $root 'source') `  -BuildRoot C:\DEE40\build -ProductRoot $root `  -PythonExecutable $py -Stage cpp
+El script obtiene el entorno x64 con vswhere y VsDevCmd.bat, fija PATH del compilador y utiliza CMake/Ninja de esa instancia. Stage wheel ejecuta build --wheel --no-isolation; Stage cpp configura, compila, ejecuta CTest e instala en install_cpp. La instalación de herramientas es un requisito del equipo, no contenido de la cápsula. [4-BSCRIPT]
+28.2. Consumidor independiente
+.\tools\build40.ps1 -SourcePath (Join-Path $root 'source') `  -BuildRoot C:\DEE40\consumer -ProductRoot $root `  -PythonExecutable $py -Stage consumer `  -ConsumerSource (Join-Path $root 'validation\consumer')
+El consumidor se enlaza con DEE::thinking desde la instalación. La prueba de reconstrucción exige que los headers, la biblioteca y la semilla pertenezcan al corte que se evalúa. La distribución original puede recuperarse de forma exacta; un nuevo build se identifica con sus propios hashes y se compara funcionalmente. [4-CLEAN; 4-CMAKE]
+28.3. Verificación editorial C++ en otra plataforma
+Para esta edición se compiló el source conservado en Linux x64 con GCC 14.2.0, CMake 3.31.6 y Ninja, sin editar las fuentes. Se ejecutaron kernel_whl_differential, runtime_contract, cognitive_4_0 e informative_4_0: cuatro tests aprobados. Los comandos, el XML de CTest y la auditoría se incluyen en la cápsula. Esta es una comprobación de reconstrucción nativa separada de la validación Windows del WHL. [ED-CPP]
+cmake -S source -B build_linux -G Ninja \  -DCMAKE_BUILD_TYPE=Release -DDEE_THINKING_BUILD_PYTHON=OFF \  -DDEE_THINKING_BUILD_TESTS=ON -DDEE_THINKING_BUILD_EXAMPLES=OFF \  -DDEE_THINKING_BUILD_BENCHMARKS=OFFcmake --build build_linux --parallel 2 --target \  dee_cognitive_tests dee_informative_tests \  dee_kernel_fixture_tests dee_runtime_testsctest --test-dir build_linux --output-on-failure --timeout 60 \  -R '^(kernel_whl_differential|runtime_contract|cognitive_4_0|informative_4_0)$'
+29. Validación, cronología y niveles de evidencia
+El estado RELEASE_VERIFIED resume un expediente compuesto por identidades, pruebas y reproducciones. La cronología distingue un primer cierre parcial de una continuación autorizada y conserva ambos sin reescribir sus registros. [4-VAL; 4-BUILD; 4-QUAL]
+Hito
+Registro y significado
+Presupuesto inicial
+14 octubre 2026, 05:21:05 UTC; plazo 09:21:05 UTC. BUDGET.json permanece intacto.
+Primer corte
+Cierre técnico parcial y bloque II pendiente; validation/partial_cut y results/CLOSURE.json conservan ese estado.
+Reanudación
+Inicio 11:04:22 UTC; autorización y presupuesto propios en RESUMPTION_BUDGET.json.
+WHL final
+Build registrado 11:04:39 UTC; integra correcciones de facilitadores/stubs. El PYD calificado conserva su identidad.
+Calificación previa
+BLOCK_I_QUALIFICATION.json, 11:09:50 UTC, antes de los nuevos casos físicos.
+Ciencia nueva
+24 casos de BLOQUE II y 6 de SIGNAL_PREDICTION; aplicaciones y restauraciones contadas aparte.
+Extracción limpia
+Instalación, consumidor y nuevas evoluciones desde un contenedor candidato identificado.
+Paquete recibido
+1.301 miembros y hash c78609a7...dbb16cf; verificación editorial completa de integridad.
+
+29.1. Pruebas de producto
+El expediente registra 22 tests C++ únicos. Dos tuvieron timeout en el intento inicial y finalizaron correctamente en el reintento dirigido; el nombre de un test se cuenta una vez, manteniendo ambos intentos. La validación Python contiene 61 métodos distribuidos en ocho módulos. La calificación conserva los fallos técnicos corregidos y la procedencia de cada prueba. [4-VAL]
+Módulo Python
+Métodos
+test_basal_api
+5
+test_cognition_facilitators
+9
+test_cognitive_api
+5
+test_informative4
+8
+test_integrated_protocols
+5
+test_wheel_api
+6
+test_mbp4_regressions
+9
+test_organizational_api
+14
+
+Las regresiones contra CPC3 comparan estados completos y progreso de los aparatos. La capa cognitiva conserva 24 checkpoints del recorrido de referencia; la capa informativa compara 13 configuraciones de acceso y 8 de política. Esos recuentos describen cobertura técnica, distinta de las preparaciones nuevas del bloque II. [4-COG; 4-MAP; 4-INF]
+29.2. Contenedor candidato y contenedor final
+FINAL_EXTRACTION_CHECK.json identifica el candidato 4a2566f2...28f2ec con 1.231 entradas de manifiesto y el mismo WHL final. Ese candidato fue extraído, instalado y utilizado para evoluciones y continuación. El ZIP recibido incorpora también evidencias posteriores y el suplemento de señal: tiene otra identidad y 1.299 entradas de manifiesto. Conservar las dos identidades evita atribuir al contenedor final un ensayo realizado sobre otro contenedor aunque el motor sea el mismo. [4-CLEAN; 4-AUD]
+29.3. Tres controles complementarios
+Integridad: CRC, tamaños y SHA-256 de miembros. Funcionamiento: ejecución de operaciones, contratos, recibos y continuidad. Ciencia: preparaciones, controles, reservas y atribución causal. La reconstrucción editorial añade cuatro pruebas C++ en Linux; las pruebas Windows de 22/61 permanecen como ejecuciones originales de Codex. [ED-CPP; 4-VAL]
+30. Recorridos de referencia para usar y reconstruir
+Los siguientes recorridos muestran objetos públicos concretos. Las salidas dependen de la preparación y del instante de consulta. Los ejemplos heredados completos siguen preservados en el maestro 3.5 original y su cápsula; la matriz del anexo E localiza su continuidad. [35-MAR; 4-PY]
+30.1. Mantener una historia y su sesión
+from pathlib import Pathimport dee_thinking as dif d.__version__ != "4.0.0":    raise RuntimeError("Se requiere el corte 4.0.0")s = d.create_session("continuidad", initial_open=False, change_tick=80)s.sense()print(s.predict())s.advance(30)path = Path("main_40.deetsnap").resolve()s.save_snapshot(path)r = d.load_session(path, profile="continuidad")print(r.observe())
+La primera predicción realiza una sonda y después utiliza la emisión actual. El horizonte es una configuración del protocolo. Guardar conserva además predicciones, muestras, progreso y metadatos inertes de interfaz. [4-COG]
+30.2. Relación y composición adquiridas
+import dee_thinking as dr = d.create_session("relaciones")r.train([7, 11], cue=5)print(r.query(13))             # testigo: 25 / 29c = d.create_session("composicion", depth=2)c.train_all([(3, 9), (3, 11)])print(c.query(13))             # etapas: 25 / 39
+Estos son dos individuos. El segundo instala una cascada vacía, presenta las experiencias y evoluciona una consulta por sus etapas. Una sonda puede transformar el estado que recibirá la siguiente. La secuencia móvil y la consulta fija tienen contratos de posición y tiempo diferentes. [4-COGH; 4-PY]
+30.3. Reproducción de un caso del mundo nativo
+& $py -I -B .\tools\reproduce40.py --root . `  --case online_contact_main --output C:\DEE40\rep_online& $py -I -B .\app\mundo_nativo.py `  --eventos .\app\ejemplos\mundo_nativo_principal.txt `  --sesion C:\DEE40\sesion_online --json
+El primer comando reproduce una trayectoria del bloque II, en una carpeta nueva. El segundo utiliza el demostrador; sus productos principales son 54 y 73 bajo las consultas del archivo de ejemplo. Los comandos no ejecutan los publicadores de campaña ni reanudan presupuestos vencidos. [4-REPRO; 4-APP]
+30.4. Consumidor C++ mínimo de la nueva capa
+#include <dee_thinking/cognitive.hpp>#include <iostream>int main(int argc, char** argv) {    if (argc != 2) return 2;    dee::thinking::CognitiveParameters p;    p.seed_path = argv[1];    auto s = dee::thinking::CognitiveSession::create(p);    s.sense();    auto result = s.predict();    std::cout << result.tick << "\n";    s.save_snapshot("main_cpp.deetsnap");    return 0;}
+El consumidor debe enlazar DEE::thinking y compilar con C++20. Antes de utilizar una semilla externa, su llamador verifica el hash del recurso. El contrato de creación C++ verifica estructura; el hash del recurso oficial se conserva por separado. [4-COGH; 4-COG]
+31. Migración y resolución de incidencias
+La migración se realiza sobre entornos y copias separados. El paquete 3.5 y el expediente CPC3 permanecen congelados; 4.0 incorpora sus mecanismos mediante clases nuevas. La actualización de un programa, la lectura de un snapshot y la continuación de un protocolo son acciones distintas que deben comprobarse por separado. [4-MIG; 4-MAP]
+Origen u operación
+Ruta de conservación
+Runtime v1/v2
+Cargador físico heredado y comprobación de avance posterior.
+OrganizationalWorld 3.5
+Cargador de receta, interfaces, protocolos y traza heredados.
+Entity Python de CPC3
+Conservar snapshot y metadata originales; importar estado físico de forma explícita o reproducir la preparación en la nueva sesión.
+Nueva sesión cognitiva
+load_session con perfil compatible y metadata cognitiva versionada.
+FinitePolicy / NativeInformation
+Sus propios cargadores conservan progreso, entradas debidas y journal.
+mundo_nativo
+Loader de aplicación verifica receta, interfaces, traslación, etapas y solicitudes antes de continuar.
+
+31.1. Historial de incidencias y correcciones
+La genealogía 3.5 conserva aprendizaje sobre toolchains, alias de Runtime, consultas transformativas y persistencia de cursores. El corte 4.0 añade correcciones de facilitadores Python y stubs, rutas Unicode, asociación de identificadores y metadatos del demostrador. Los archivos previos quedan en evidence/UNBUILT_CLOSURE_FIXES y validation/partial_cut; RESUMPTION_INTEGRATION.json registra su incorporación efectiva. [4-VAL; 4-MIG]
+El loader de mundo_nativo se reforzó al identificar una posible discrepancia entre la traslación de metadata y las interfaces físicas guardadas. Quince comprobaciones técnicas verificaron carga normal, avance, alias, observación y rechazo de estados operativos incompatibles. La versión del loader que produjo la evidencia final está preservada en el paquete. [4-APPTEST; 4-EXP]
+31.2. Fronteras que ayudan a diagnosticar
+Un recibo rechazado identifica un problema de admisión; una carga saturada identifica ese campo; una emisión ausente exige revisar ventana, soporte y lector; una igualdad RAW con clocks diferentes conserva distinciones del estado causal. La respuesta operativa se interpreta con esa información en lugar de atribuir un mismo significado a cualquier falta de salida. [PN; FD; 4-REV]
+Las funciones fuera de perfil, los parámetros fuera de contrato y los formatos incompatibles producen estados o excepciones identificables. Conservarlos facilita ampliar una preparación sin modificar retrospectivamente lo que ya se midió. [4-PY; 4-APP]
+32. Custodia, cápsula y recuperación documental
+Este Word contiene una cápsula pasiva en dee_payload/capsule.zip. Al abrir el documento se muestra texto; la extracción de la cápsula es una operación explícita. La cápsula conserva el ZIP oficial 4.0 byte-exacto, el maestro 3.5 original, el manual 3.5 de referencia, fuentes documentales seleccionadas y las comprobaciones editoriales de esta edición. [ED-CAP]
+El respaldo de entrega incluye este Word, la cápsula accesible por separado, extractores y un verificador. Su objetivo es recuperar una unidad técnica completa sin depender de rutas de conversaciones. El contenedor oficial conserva a su vez los artefactos necesarios para instalar y reconstruir 4.0. Un individuo concreto se recupera de su snapshot, con la metadata de la sesión que corresponda.
+32.1. Extraer la cápsula desde el Word
+from pathlib import Pathfrom zipfile import ZipFilep = Path("DEE_thinking_4_0_0_Maestro_Arquitectura_Reconstruccion.docx")with ZipFile(p) as z:    payload = z.read("dee_payload/capsule.zip")Path("capsule40.zip").write_bytes(payload)
+El archivo dee_payload/manifest.json dentro del Word identifica tamaño y SHA-256 de la cápsula. Su propio CAPSULE_MANIFEST.json identifica todos los miembros preservados, excluyendo el manifiesto mismo. Las herramientas del respaldo validan rutas, hashes y CRC antes de extraer a un destino vacío. [ED-CAP]
+32.2. Recuperación según el objetivo
+Objetivo
+Artefacto y comprobación
+Usar 4.0
+Extraer el ZIP oficial, verificar WHL e instalar en entorno compatible.
+Recompilar
+source/, dependencias y toolchain; ejecutar contratos y comparar estados.
+Recuperar un caso
+Configuración, runner, resultados y checkpoint correspondiente; reproducir a otro destino.
+Continuar un individuo
+Snapshot operativo y cargador de su perfil; consultar o avanzar posteriormente.
+Recuperar redacción 3.5
+DOCX original preservado byte a byte, con su cápsula anterior.
+Seguir una interpretación
+Matriz de continuidad, fuentes y evidencias originales junto a la síntesis vigente.
+
+32.3. Integridad y alcance de conservación
+La cápsula es un mecanismo de preservación de bytes y dependencias. Los comprobadores verifican integridad; las pruebas de producto verifican funciones. Los hashes del artefacto original permiten compararlo con otra copia. La metadata del documento y los registros de tiempo describen procedencia, mientras una firma o sello independiente requeriría su propio mecanismo. [4-AUD; ED-CAP]
+Los editores que eliminan partes personalizadas del formato DOCX pueden descartar una cápsula al guardar. Conserve el archivo entregado y su respaldo original; después de una edición, vuelva a verificar dee_payload/capsule.zip.
+La cápsula y el respaldo se han comprobado mediante extracción y recálculo. Los archivos originales de usuario se conservaron sin cambios. Las fuentes tipográficas del sistema de edición no forman parte de la entrega.
+33. CognitiveSession: continuidad y comparación
+CognitiveSession es el propietario operativo de un OrganizationalWorld y de los registros de una experiencia cognitiva acotada. Los perfiles nativos son continuity y comparison; el facilitador los expone como continuidad y comparacion. Ambos parten del cuerpo H0 N47 en T32, con interfaces instaladas antes de la experiencia. [4-COGH; 4-COGCPP]
+33.1. Parámetros y estado
+Campo
+Contrato publicado
+seed_path
+Ruta de semilla para create; el facilitador Python usa el recurso del WHL.
+origin
+Coordinate dentro de N47; valor predeterminado (15,15,15).
+initial_open / change_tick
+Barrera externa booleana, inversión opcional; cambio predeterminado 80.
+event_state
+uint32 positivo para eventos ocupados; predeterminado 1.
+execution
+Backend y número de hilos; Lazy/1 predeterminado.
+journal_limit
+64..262144; predeterminado 32768.
+prediction_limit
+1..32768; predeterminado 4096.
+
+La sesión conserva parámetros, lector establecido, pareja inicial presentada, índice de ocasión, etapa de comparación, expectativa pendiente, muestras, pronósticos y journal. Cada entrada deja recibo. La barrera pertenece al entorno instrumental; el decoder de pronóstico utiliza sólo la actividad y dirección del registro actual. [4-COGCPP, L10-25, L76-172]
+33.2. Ciclo de continuidad
+sense en T32 presenta observaciones y una rama de referencia invertida; la evolución lleva a T34. predict realiza la primera sonda de carga cero y avanza tres ticks. Con el lector establecido, las solicitudes posteriores leen su emisión actual. Las ocasiones posteriores son 163,292,554,812 y 945; la sesión conserva ese calendario explícito. [4-COG]
+registro activo y dx > 0 -> {verdadero}registro activo y dx < 0 -> {falso}dx = 0 o lectura no activa -> {falso, verdadero}
+Este conjunto es una decodificación fija de una emisión, no una probabilidad calibrada. El horizonte predeterminado de continuidad es 30. La evaluación ocurre cuando se alcanza el objetivo y pertenece al análisis externo, sin realimentar un error al estado. [4-COGH; 4-COGCPP]
+En la referencia BA_FULL, las emisiones 37/164/555/813/946 anticipan 67/194/585/843/976. Se registran tres coincidencias y dos discrepancias de transición. La expresión se vuelve positiva en 813. Las entradas admitidas 163/292/554 y sus contextos permiten localizar la actualización. El cambio local 6->7 vecinos en 163 modifica 391->782 la ocasión de escritura. Estos datos pertenecen a CPC3 y a su paridad 4.0, no a cinco adquisiciones independientes. [CPC3; 4-MAP]
+33.3. Una comparación representada en MAIN
+comparison mantiene la expectativa hasta su objetivo. Con la preparación de referencia, la emisión ocurre en 37, la consecuencia en 83 y el marcador en 84. El reporte actual se codifica en una diagonal de carga 1. El gradiente de v27 distingue coincidencia/discrepancia en la dirección del producto, conservando la lectura previa y el recibo. [4-COGCPP; 4-COG]
+El protocolo pasa por ready, pending y reported. Verifica que la expectativa singleton siga representada, que el reporte esté aplicado y que la lectura corresponda a la ventana. Después del encuentro, la salida se interpreta como comparación: el contrato distingue esa función de un pronóstico nuevo. La unidad publicada es un episodio de comparación por preparación.
+33.4. Observación y atribución
+observe devuelve centros, delta opcional, integridad del soporte, lector, RAW, clocks, dirección y condiciones de escritura. Esos paneles permiten encontrar contextos con delta igual y expresión distinta. El nombre de una emisión no contiene por sí solo su explicación; la cadena fuente, experiencia, lector y control permanece accesible en el expediente. [4-COGH; CPC3; FD]
+34. Sesiones informativas y revisión de política
+informative.cpp publica dos clases que comparten tipos de observación, pero preparan individuos diferentes. InformationReadout conserva comparaciones, políticas, acciones, información recibida, respuestas posteriores, recibos y outputs físicos. La presentación comprueba dirección, actividad y ventana. [4-INFH; 4-INFCPP]
+34.1. FinitePolicySession, N67
+Su configuración define origen, papel de fuentes, clase actual binaria, presencia del reporte y backend. La política inicial es P. El recorrido es acción 1, datoP 2, comparación 6, política 10, acción 11 y dato 14. La regla preparada conserva P si hay coincidencia y cambia aQ ante discrepancia. La experiencia determina la rama que toma esa organización. [4-INF]
+Elemento
+Preparación y evidencia
+Fuente inicial
+P, con roles declarados PInformative o QInformative.
+Reporte actual
+-1 o +1, presente en canales fijos; frontera 2.
+Fuentes del hábitat
+Complementarias binarias en este aparato.
+Revisión
+Una actualización finita de política y siguiente acción.
+Regresión
+Cuatro combinaciones, omisión, corte tardío y dos reservas trasladadas: ocho casos comparados con CPC3.
+
+El parámetro roles instala el entorno antes de evolucionar. El decoder no consulta ese campo para elegir la acción; lee los productos físicos correspondientes. Al cambiar el reporte, los encuentros alteran el estado de política y la ruta posterior. [4-INFCPP; 4-MAP]
+34.2. NativeInformationSession, N47
+Esta sesión prepara cuerpo H0, mediadores y rutas. El parámetro history selecciona el protocolo de entradas AB/BA en 32-33; H0 conserva la omisión explícita. Se presentan sonda 34, emisión 37, reporte 43, comparación 47, ruta 51, dato 56, consulta 61 y uso 64. La distancia publicada es 10 y las cargas informativas de referencia son 23/41. [4-INF; 4-MAP]
+Los controles varían contexto, reporte, fuente, query, corte de P/Q y traslación. Trece configuraciones preservan igualdad física con sus referencias. La información recibida participa en una transformación posterior; el corte selectivo de ese producto localiza su contribución. La sesión describe acceso y uso en ese circuito finito. [4-INFCPP]
+34.3. Fronteras de ejecución y persistencia
+process_boundary programa lo debido en la frontera actual sin avanzar; submit_actual admite el reporte sólo en la ocasión correspondiente. sense, compare y source avanzan hasta sus ventanas si aún son alcanzables. observe conserva los registros actuales. El calendario, los tokens de entradas ejecutadas y la cola se guardan junto al Runtime. [4-INFH; 4-INFCPP]
+import dee_thinking as dp = d.FinitePolicyParameters()p.roles = d.SourceRole.Q_INFORMATIVEp.actual_class = 1s = d.FinitePolicySession.create(p)print(s.sense().as_dict())print(s.compare().as_dict())print(s.source().as_dict())s.save_snapshot("policy_t11.deetsnap")r = d.FinitePolicySession.load_snapshot("policy_t11.deetsnap")print(r.sense().as_dict())
+El journal admite 8192 operaciones; al alcanzar su cobertura, marca journal_truncated y la evolución continúa. La metadata de interfaz tiene límites propios, detallados en 37 y el anexo B. fork y diagnostic_fork crean copias independientes para investigación; los protocolos ordinarios permanecen sobre su propietario. [4-INF]
+35. Adquisición y composición online
+NativeAssociationSession prepara dos vías móviles N34 con interfaces cue/teacher y query/response. train presenta referencias en la frontera inicial y deja que los encuentros produzcan la relación. Los modos paired, unpaired y omitted distinguen emparejamiento, desfase y omisión. [4-COGCPP; 4-COGH]
+35.1. Relación adquirida y consulta
+Una consulta común encuentra el producto aprendido y genera una salida. En el testigo cue 5, teachers 7/11 y consulta 13, las lecturas son 25/29. La misma consulta con experiencia invertida invierte el par; las omisiones pertinentes conservan la respuesta de la sonda sola. El efecto se atribuye al contacto que formó el portador y a su ruta posterior. [4-COG; CPC3]
+query y query_panel son sondas físicas. start_sequence instala un protocolo móvil con consultas separadas por cinco ticks; sus capturas conservan lo observado en cada ventana. Una serie de consultas modifica los portadores y puede incorporar contactos anteriores. La lectura independiente en un fork y la consulta secuencial en MAIN responden preguntas experimentales distintas. [4-COGH; ORG]
+35.2. Cascada adquirida
+create_learnable_cascade prepara N127, profundidad 1..8, vías de consulta y canales de enseñanza antes de T0. experience_composition presenta las parejas cue/teacher; query_composition avanza cinco ticks por etapa y devuelve capturas. La omisión de una pareja se identifica como control, preservando los participantes restantes. [4-COGCPP, L189-190]
+CPC3 / interfaz4, pares (3,9) y (3,11): 13 -> 25 -> 39BLOQUE II, pares (3,18) y (3,24):       17 -> 38 -> 65Reserva de BLOQUE II, consulta 23:     23 -> 44 -> 71
+Los ejemplos pertenecen a preparaciones diferentes y por eso conservan pares, cue y consulta. Una lectura 35/49 de un testigo de extracción no sustituye la 44/71 del bloque II: cambia la relación preparada. La reconstrucción debe seguir cada configuración completa. [4-EXP; 4-CLEAN]
+35.3. Nombres, información y aprendizaje
+Los nombres asignados a rutas son referencias de interfaz. La relación numérica se forma mediante experiencia y se utiliza en consultas nuevas. Invertir un alias y presentar una historia invertida son operaciones distintas. El expediente conserva ambas para separar accesibilidad lingüística y cambio funcional adquirido. [4-EXP; 4-PY]
+Un nuevo nombre puede identificar un fenómeno medido sin cambiar RAW/clocks. Una nueva experiencia puede cambiar esos estados y la respuesta. La distinción permite ampliar el sistema de comunicación manteniendo un criterio experimental para cada asociación. [CONV; 4-REV]
+36. Aplicaciones, gramática y comunicación verificable
+La entrega acompaña el WHL con dos entradas de uso. conversar.py expone los seis perfiles de sesión; mundo_nativo.py prepara una organización de contacto y consultas en un mismo Runtime. La interfaz evita que una persona deba calcular las coordenadas y ticks del protocolo, preservando su declaración en el código. [4-APP; 4-DIALOG]
+36.1. Sesiones públicas
+Perfil
+Propietario y función
+continuidad
+CognitiveSession N47: experiencias y pronósticos del lector actual.
+comparacion
+CognitiveSession N47: expectativa y encuentro con consecuencia.
+politica
+FinitePolicySession N67: comparación y revisión finita de fuente.
+informacion
+NativeInformationSession N47: acceso, dato recibido y uso posterior.
+relaciones
+NativeAssociationSession N34: dos relaciones y consultas.
+composicion
+CascadeSession sobre N127: adquisición y etapas.
+mundo_nativo
+Aplicación de receta research N47: contacto ambiental, cue y dos sondas.
+
+El último recorrido es una aplicación separada, no un valor adicional aceptado por create_session. El launcher iniciar_mente.ps1 decide qué programa iniciar; la sesión escogida conserva un único proceso hijo propietario. El timeout por orden es 60 segundos, configurable hasta 180; un cierre del propietario termina esa ejecución, y un snapshot permite una continuación expresamente solicitada. [4-APP]
+36.2. Operaciones de conversación
+La gramática normaliza mayúsculas y acentos. Incluye observar, mostrar estado, presentar experiencia A/B, predecir, comparar, consultar fuente, avanzar, asignar un nombre, guardar, cargar y salir. La operación disponible depende del perfil. Muestra el estado es pasiva; Observa otra vez puede realizar una interacción y avanzar hasta una ocasión declarada. [4-DIALOG]
+Instancia nuevaObserva otra vezQue pasara despues?Avanza 30 ticksMuestra el estadoGuarda la sesionSalir
+Los signos y acentos opcionales se normalizan por el parser. La lista completa vigente está en app/LEEME.md y en dialogue.py. Las respuestas se atribuyen como ENTE, INSTRUMENTO o EXPLICACION_DOCUMENTAL: producto medido, operación/estado de interfaz o explicación del contrato, respectivamente. [4-APP]
+36.3. Consultar un encuentro del propio mundo
+Instancia nuevaVive el encuentroA esto lo llamaremos encuentro diagonalPresenta consulta 13Observa respuestaPresenta consulta 19Observa respuestaGuarda sesion_online.deetsnapSalir
+La aplicación nativa principal produce 54 y 73. La reserva utiliza otra traslación y consultas 17/23, con 58/81. El nombre encuentro diagonal se conserva como metadata externa del referente; la respuesta procede del registro físico de la consulta correspondiente. El perfil implementa dos oportunidades de sonda consumible y valida la etapa al continuar. [4-ONLINE; 4-APPTEST]
+36.4. Observación, respuesta y explicación
+Por qué muestra una explicación documental del contrato junto a la lectura actual. Una inferencia causal del laboratorio exige sus intervenciones y sus resultados; una respuesta del ente se vincula a su emisión. La transcripción conserva texto, perfil, atribución, recibos, estado, hora y propietario. Esa procedencia permite utilizar lenguaje accesible sin trasladar silenciosamente al individuo conocimientos del auditor. [4-DIALOG; CONV]
+37. Persistencia de sesiones y validación de restauración
+La persistencia 4.0 se apoya en Runtime v2 y en la metadata organizacional heredada, y añade formatos de sesión explícitos. Se conserva estado físico, canales, cola, recibos, receta, vistas, progreso, capturas y metadata externa. El formato de la capa debe corresponder al cargador utilizado. [RT; ORG; 4-COGCPP; 4-INFCPP]
+37.1. Formatos cognitivo y de asociación
+Objeto
+Clave o identificador
+CognitiveSession
+Prefijo dee_thinking.cognitive.v1.
+Formato cognitivo
+Magic uint64 0x34434f474e495431.
+NativeAssociationSession
+dee_thinking.association.v1; magic 0x344153534f433031.
+Límite binario cognitivo
+32 MiB; codificación hexadecimal en fragmentos de 524.288 bytes, hasta 128 fragmentos.
+Enteros y flags
+uint64 little-endian; booleanos validados como 0/1.
+Comprobación
+Checksum serializado, consumo completo de bytes, conteos, enums y referencia de expectativa.
+
+La sesión cognitiva serializa primero configuración y estado de protocolo; después journal, muestras, predicciones y metadatos. pending_prediction debe referir a una predicción existente y corresponder a la etapa pending. Los cargadores validan los canales y la estructura ya guardada, sin reinstalar materia ausente. [4-COGCPP, L154-172]
+El checksum interno es el algoritmo específico preservado en la fuente, con valor inicial 1469598103934665603 y multiplicador 1099511628211. Para reproducir bytes se utiliza esa implementación exacta; para identidad externa del archivo se utiliza SHA-256. [4-COGCPP, L49-51]
+37.2. Formatos informativos
+Las claves son dee_thinking.informative.policy.v1 y dee_thinking.informative.native_information.v1. Su estado operativo binario admite 2 MiB. Los metadatos de interfaz admiten 128 claves, clave de hasta 1024 bytes, valor de hasta 65536 bytes y total 512 KiB. El journal tiene 8192 entradas y un indicador de truncamiento. Esas cotas son diferentes de las cognitivas y se validan por sesión. [4-INFCPP; 4-INF]
+37.3. Metadata de aplicación online
+mundo_nativo utiliza la clave dee4.application.native_online.v1. Guarda schema, preparación, traslación, etapa, alias y solicitudes. El loader verifica que esa metadata concuerde con el mundo, las interfaces y las oportunidades restantes. Los testigos guardan sondas pendientes y luego las aplican tras cargar; continuar es una evolución nueva del mismo estado, no mostrar una respuesta cacheada. [4-APPNATIVE; 4-APPTEST]
+37.4. Qué se compara al restaurar
+RAW y clocks comprueban estado físico; tick comprueba frontera temporal; canales/cola/recibos comprueban entradas; receta y vistas comprueban interpretación espacial; cursores y expectativas comprueban operación pendiente. Alias y texto comprueban la interfaz. Una restauración validada conserva esos objetos y produce la misma continuación bajo las mismas entradas. [4-VAL; 4-CLEAN]
+38. BLOQUE II: fenómenos, contacto y experiencia
+El bloque principal contiene 24 registros de caso: movimiento 3, contacto 5, adquisición 6, diagnóstico 1, composición 3, diálogo 2 y experiencia online 4. Se conservan 93 checkpoints de esos casos. Las demostraciones de interfaz reutilizan familias físicas identificadas y se cuentan aparte. [4-PHEN; 4-REV]
+38.1. Movimiento y contacto
+Tres preparaciones registraron primeras llegadas en 5 y 9 ticks, con clocks iniciales 0/11/7 y una traslación reservada. El pronóstico geométrico previo fue calculado por el instrumento a partir de las rutas declaradas. [4-EXP]
+Con inventario inicial 36, las cargas 12/24 se encontraron y produjeron 36 con direcciones(1,1,0) o(1,0,1). El codec fijo de dirección produjo 18 o24. El control fuera de contacto mantuvo una contribución 12 en la ventana observada y código 15. La igualdad del inventario convive con una respuesta distinta por su organización. [4-BII, contact_y/contact_z/no_contact]
+El intento de intercambio registra conteos regionales, actividad, cargas, direcciones y persistencia. Su resultado es un perfil finito de contacto y respuesta organizacional. En la familia térmica constituye una base de medición que conserva por separado la identificación de temperatura, calor y equilibrio. [4-REV; FD]
+38.2. Adquisición mediante replay externo declarado
+Un codec lee las direcciones actuales 18/24 de los contactos y las presenta como teachers a otro MAIN, con cue 5. Esa conexión es replay externo entre runtimes. La adquisición y las consultas siguientes se realizan nativamente en el receptor. [4-BII]
+Historia
+q13
+q17 posterior
+q21 posterior
+Emparejada
+36 / 42
+53 / 59
+74 / 80
+Invertida
+42 / 36
+59 / 53
+80 / 74
+Desacoplada
+13 / 13
+17 / 17
+21 / 21
+Omitida
+13 / 13
+17 / 17
+21 / 21
+
+La reserva con consultas 19/23/7 produjo 42/48, 65/71 y 72/78. Cambiar formas externas zuvi/pako preservó RAW/clocks. Una ablación diagnóstica del portador aprendido real cambió 42/48 por 19/48 y conservó la otra vía y el MAIN original. [4-EXP; 4-REV]
+38.3. Contacto y consultas dentro del mismo Runtime
+Tick
+Registro y papel
+5
+Contacto ambiental: 36 y dirección(1,1,0).
+8
+Encuentro con cue 5: 41 y dirección(0,1,0).
+16
+Consulta 13: 54 y dirección(-1,1,0).
+21
+Consulta 19 posterior: 73 y dirección(-1,1,0).
+
+El corte de ruta y el cue fuera de recorrido dieron 13/19 con dirección(-1,0,0); las sondas fueron admitidas. La reserva trasladada con consultas 17/23 dio 58/81. La restauración de T9 conservó el mundo y los recibos pendientes antes de aplicar las consultas. La unidad experimental es una relación móvil finita con dos sondas; su valor es la dependencia funcional de una experiencia ambiental que ocurre dentro del mismo MAIN. [4-ONLINE]
+38.4. Composición y diálogo del bloque
+Dos relaciones adquiridas coexistieron en N127 y transformaron 17 en 38 y 65. La omisión de la segunda produjo 38/38. Una pregunta nueva 23 después de guardar y cargar produjo 44/71; la reserva de interfaz 29 dio 50/77. Los nombres externos se conservaron como referencias. El código de gramática solicitó operaciones y presentó los productos actuales. [4-EXP]
+39. SIGNAL_PREDICTION: observación y pronóstico
+El suplemento añade seis preparaciones a los 24 casos del bloque principal. Su mundo de señal es N35 y el cuerpo H0 es N47, cada uno en su Runtime. Un sensor externo explícito lee la actividad local actual en 32/33 y la codifica como experiencias A/B del cuerpo. [4-SIGNAL]
+La emisión física del cuerpo se registró en 37 antes de observar el detector objetivo en 67. La condición oculta del objetivo y el obstáculo futuro no se transmiten al cuerpo. La dirección emitida depende de la historia accesible bajo el protocolo. [4-EXP]
+Preparación
+Resultado registrado
+present_then_absent
+Pronóstico singleton correcto.
+absent_then_present
+Pronóstico singleton correcto.
+reserved_present_minusY
+Pronóstico correcto en geometría reservada.
+reserved_absent_minusY
+Pronóstico correcto en geometría reservada.
+present_future_route_obstacle
+Mismas observaciones iniciales y emisión; detector futuro distinto; pronóstico incorrecto.
+omitted_history_same_present_world
+Emisión ambigua al omitir las experiencias A/B.
+
+El total es cuatro aciertos singleton, un error singleton y una respuesta ambigua. Los seis mundos son preparaciones deterministas; la restauración adicional es una comprobación técnica. No se suman los ticks ni varias lecturas de un mundo como nuevas réplicas. [4-SIGNAL]
+39.1. Qué representa cada tiempo
+El período 35 y el objetivo 67 pertenecen a la preparación y al protocolo del investigador. El horizonte 30 se fija desde la emisión 37. Lo adquirido es la distinción que modifica la memoria y la salida del cuerpo. El suplemento no utiliza la evaluación de la barrera propia de CognitiveSession como verdad de este mundo de señal. Cada evaluador conserva su entorno. [4-SIGNAL; 4-REV]
+39.2. Observadores complementarios
+Las muestras 32/33 conservan sólo cierta información local. El detector 67 conserva el resultado posterior. El auditor puede comparar ambos con el estado completo del mundo, mientras el cuerpo recibe únicamente las experiencias codificadas. El control del obstáculo mantiene las muestras y la emisión, y cambia el detector: identifica el alcance informativo de lo observado. [4-EXP; FD]
+Restaurar ambos runtimes desde 37 preservó RAW, clocks, lectura del cuerpo, detector y predicción frente a la continuación directa. Esa comprobación conserva una predicción pendiente y evalúa su futuro; no consiste en volver a presentar un resultado terminal. [4-SIGNAL]
+40. Interpretación vigente y continuidad científica
+DEE thinking 4.0 ofrece un conjunto verificable de organizaciones con historia y herramientas para interrogarlas. La lectura positiva del corte identifica qué función se realizó, qué mecanismo la sostiene, qué entradas tuvo y bajo qué observación se utiliza. Las analogías orientan preguntas; los resultados conservan su preparación, dominio y evidencia. [4-CON; 4-EXP; CONV]
+40.1. Estado, observador y conocimiento adquirido
+X_(t+1) = F_DEE(X_t)y_i(t)  = M_i(X_t)M_i(F_DEE^tau(X)) = G_i(M_i(X))   en un dominio de cierre exacto
+La microdinámica completa del modelo proporciona una referencia experimental. El observador conserva ciertas distinciones. La organización participante adquiere un estado que modifica sus respuestas futuras. Son objetos relacionados y medibles por operaciones diferentes. Física DEE desarrolla fibras, refinamientos y equivalencia predictiva como marco para ese cruce. [FD, caps. 12 y 29-31]
+Una firma más rica puede distinguir historias que un escalar no separa. CPC3 ofrece el caso de delta final igual con expresión distinta; BLOQUE II conserva direcciones diferentes con inventario 36. Ambos invitan a estudiar la organización completa pertinente antes de cerrar una interpretación sobre una sola lectura. [CPC3; 4-REV]
+40.2. Fenómenos y vocabulario
+Familia
+Resultado del corte
+Correspondencia que se conserva como pregunta
+Movimiento
+Arribos 5/9 y propagación en rutas declaradas.
+Ley de velocidad de un modo con métrica y escala explícitas.
+Señal
+Detección y pronóstico de presencia/ausencia con experiencias locales.
+Propiedades sectoriales que sustenten una analogía con luz.
+Contacto
+Inventario 36, productos y direcciones dependientes de geometría.
+Coordenadas que organicen intercambio y respuesta térmica.
+Materia/organización
+Persistencia de registros y respuesta distinta con inventario igual.
+Inercia o masa de respuesta bajo impulso y coordenada compatibles.
+Observadores
+Lectura local, captura temporal, consulta y auditoría diferenciadas.
+Relación con sectores efectivos cuánticos y geométricos documentados.
+Lenguaje
+Gramática de interfaz y relaciones numéricas adquiridas.
+Asociaciones semánticas y composiciones que se demuestren por experiencia.
+
+La temperatura no se reduce editorialmente a s_reg; el corte conserva el perfil de contacto que sí fue medido. La masa se estudia por la respuesta organizacional y las condiciones de su identificación. Los desarrollos cuánticos y relativistas del tratado permanecen como construcciones sectoriales con sus premisas. Esta distinción fortalece el puente entre una observación nueva y una afirmación física precisa. [FD, caps. 15-22; 4-REV]
+40.3. Lectura de las propuestas de las conversaciones
+Las conversaciones fijaron tres requisitos: mecanismos nativos antes de etiquetas, comunicación basada en experiencia y evidencia acumulativa. La propuesta de aprender categorías antes de nombrarlas conserva valor como diseño. En la implementación medida, los alias son metadata de interfaz y la transformación numérica se adquiere nativamente. Es la distinción que permite evaluar una asociación más amplia en otro ensayo. [CONV; 4-PHEN]
+Los nombres NSM orientaron un vocabulario accesible. La metáfora de la proyección parcial se precisa mediante observadores y conjuntos de estados compatibles. Las propuestas de llamar a una huella concepto o a una sonda colapso quedan como analogías de origen; una atribución funcional se apoya en predicción, uso, generalización e intervención del mecanismo pertinente. [CONV; FD]
+40.4. Unidad de ampliación
+El producto y el expediente tienen identidades separadas. Una ampliación de investigación puede añadir casos al expediente conservando los anteriores; una nueva versión del WHL exige compilar y validar sus interfaces. Un documento actualizado conserva la fuente original, explicita qué interpretación cambia y cita la evidencia que sostiene el cambio. [4-MAP; ED-CAP]
+La síntesis vigente es una plataforma interrogable de procesamiento histórico, comparación física, acceso informativo, relaciones adquiridas y comunicación trazable. El bloque nuevo demuestra cómo un contacto ambiental participa en consultas del mismo MAIN y cómo experiencias locales sustentan una emisión prospectiva en un acoplamiento definido. Esa es la base concreta desde la cual se continúa la investigación.
+Anexo A. Interfaces heredadas y sesiones 4.0
+Las tablas siguientes condensan las declaraciones de organizational.hpp y su binding. El header completo y los stubs exactos se conservan en la cápsula y en source. Las firmas utilizan nombres de C++; los métodos de acceso que Python convierte en propiedades se indican cuando son relevantes. [ORGH; ORGBIND; STUB]
+Tipo público
+Campos y operaciones principales
+OperationModality
+Seis modalidades; mapea a etiquetas de contrato.
+InputCodec
+version, type, minimum, maximum, symbols; validate(), encode_integer(), encode_symbol(), injective().
+InterfaceSpec
+name, ChannelSpec, codec, admission, meaning_location.
+OutputDecoder / DecodedOutput
+decode(Observation); physical, integer opcional, symbols, available, ambiguous, ordinary_cap_reached, status.
+InitialPlacement
+site, raw, clock, role; preparación explícita.
+OrganizationSpec
+id, recipe_id, ports, supports, a/b/comparator opcionales, t0_tick.
+OrganizationRecipe
+id/version, dimension/origin, parameters/options, placements, interfaces, organizations, actions, execution, t0_tick, domain.
+ActionCoupling
+id, sites, roles, observation_ticks, scope. Descripción; no callback físico.
+FunctionalReadout
+organization_id, tick/relative_tick, observations, delta opcional, centros/lector/soportes disponibles, axis_projection opcional.
+ResilienceObservation
+functional, missing_supports, ordinary_cap_sites, representable_cap_sites, recovery_claim.
+MobileSegment
+id, nacimiento/sitio/dirección/tick, last_tick, expected_load/semantic opcionales, correspondence_stopped.
+TraceSample / TraceSession
+Muestras con coverage, coordenadas relativas/unwrapped; presupuesto, sitios, segmentos; capture, export_trace, load_trace.
+EncounterObservation
+Ticks antes/después, destino, registros, candidatos balísticos, gate y alcance.
+DiagnosticEditReceipt
+site, label, tick, raw/clock antes y después, modality.
+ReconstructionSpec
+source_sites, destination_sites, copy_raw, copy_clocks, authorize_assisted_reconstruction.
+QueryStep / QueryProtocol
+Tiempos, input, recibos, targets, capturas; ID, kind, modalidad, steps, next_capture.
+
+OrganizationalWorld / funciones
+Contrato
+create(recipe)
+Nueva preparación física y Runtime propietario.
+attach(shared_ptr<Runtime>, recipe, specs)
+Vista inerte; no prepara ni registra canales.
+runtime(), recipe(), organization_ids()
+Acceso a estado/contrato e IDs; runtime y recipe son propiedades Python.
+view(id)
+OrganizationView con propiedad compartida.
+view.observe() / resilience()
+Lecturas pasivas de la organización declarada.
+declare_interface(InterfaceSpec)
+Registro explícito de canal y codec.
+submit(name, int64 value, uint64 at_tick)
+Experiencia externa; devuelve EventReceipt sin avanzar.
+submit_symbol(name, string value, at_tick)
+Experiencia mediante un codec de símbolos.
+probe(name, value, at_tick) / probe_symbol(...)
+Sonda física según permisos de canal.
+observe(org, port) / decode(org, port, decoder)
+Lectura de puerto y traducción pasiva.
+declare_decoder(name, decoder) / decoder(name)
+Registro versionado y recuperación de decoder.
+advance(count=1) / run_until(absolute_tick)
+Avance nativo coordinado con capturas y trazas.
+start_mobile_sequence(id, inputs, first_tick=6, interval=5)
+Protocolo finito para mobile_pair; interval publicado=5.
+protocols()
+Acceso a pasos, cursor, recibos y capturas; propiedad Python.
+fork()
+Copia profunda física y operativa.
+diagnostic_fork(edits, authorize)
+Ediciones explícitas sobre copia y ledger.
+assisted_reconstruction(source, spec)
+Nueva copia del receptor con campos seleccionados.
+diagnostic_edits() / external_operations()
+Trazabilidad de operaciones de la capa; no historia causal universal.
+set_trace(trace) / trace() / capture_trace()
+Instrumentación pasiva; trace() retorna copia.
+save_snapshot(path, include_trace=true)
+Runtime v2 y metadata organizacional v1.
+load_snapshot(path)
+Carga estática; no repite preparación.
+observe_encounter(before, after, site)
+Función externa sobre Runtime adyacentes; alcance parcial explícito.
+
+A.1. Nueva superficie cognitiva C++ / Python
+Objeto
+Operaciones públicas y resultado
+CognitiveSession
+create, load_snapshot, load_legacy_physical_snapshot; experience, sense, predict, compare; advance/run_until; observe; fork; save_snapshot; interface_metadata.
+NativeAssociationSession
+create/load_snapshot; train(teachers,cue,mode); query(port,payload), query_panel; start_sequence; observe; advance/run_until; fork; save_snapshot.
+Composición adquirida
+create_learnable_cascade(depth,translation,execution); experience_composition(world,pairs,omit); query_composition(world,payload).
+CognitiveParameters
+seed_path, profile, origin, initial_open, change_tick, event_state, execution, journal_limit, prediction_limit.
+CognitivePrediction
+id, emission_tick, target_tick, physical_output, prediction_set, receipt, evaluated, modality.
+CognitiveComparison
+physical_output, signed_comparison_marker_present, represented_expectation_before_report, report_applied, within_window, presentation, validity, scope.
+CognitiveReadout
+tick, memory, physical_output, a, b, gate_a/b, prediction_set, profile, comparison_stage, forecast_domain, domain_status, comparison.
+CognitiveResult
+kind, status, modality, detail, tick, readout, receipts, samples, evaluations, prediction, comparison.
+AssociationResponse
+operation, modality, scope, input_tick, tick, receipts, outputs, decoded.
+
+Declaraciones completas: source/include/dee_thinking/cognitive.hpp; binding: source/bindings/cognitive_pybind.cpp. Los métodos de acceso C++ como tick() aparecen como propiedades Python cuando lo establece el binding. [4-COGH; 4-BIND]
+A.2. Nueva superficie informativa
+Objeto
+Campos u operaciones
+FinitePolicyParameters
+origin, roles, actual_class, actual_enabled, execution.
+NativeInformationParameters
+seed_path, origin, history, context, actual_class, information_load, query_enabled, actual_enabled, source_enabled, post_query, source_cut, distance, execution.
+FinitePolicySession / NativeInformationSession
+create/load_snapshot; observe; advance/run_until; compare/source/sense; submit_actual; process_boundary; fork/diagnostic_fork; save_snapshot; interface_metadata.
+InformationReadout
+tick, profile, status, scope, modality; comparisons, policies, actions, information, later_responses, physical_outputs, receipts, current_prediction, delta, centers_available, supports_intact, journal_truncated.
+PhysicalCandidate
+port, source, presentation, physical, value opcional.
+InformativeOperation
+tick, operation, interface_name, value, receipt_id, modality.
+SourceRole
+PInformative / QInformative en C++; P_INFORMATIVE / Q_INFORMATIVE en Python.
+
+A.3. Facilitadores Python
+Elemento
+Contrato
+create_session(profile, **preparation)
+Seis perfiles. Resuelve semilla y crea su propietario.
+load_session(path, *, profile)
+Carga con perfil explícito. Conserva estado y metadata de la sesión.
+Session.native / world
+Acceso al objeto nativo y a su mundo para investigación explícita.
+Session.query / query_port / query_sequence
+Sondas y protocolo móvil según perfil. Capturas temporales con recibos.
+Session.set_interface_metadata(dict)
+Registro externo de etiquetas; el facilitador adapta la firma a la clase nativa.
+record(value)
+Exporta la medición nativa. FunctionalReadout se serializa con sus observaciones.
+dialogue.py
+Parser de intenciones, ejecución de operaciones y presentación con atribución.
+
+Anexo B. Parámetros heredados y límites 4.0
+Estas claves proceden de prepare_organizational_recipe. Son configuraciones de preparación, no respuestas deseadas. El origen es una traslación en algunas fábricas y un ancla absoluta en otras; no debe aplicarse el mismo ajuste a ciegas. Los controles y las variantes se comprueban con su receta concreta. [REC]
+Receta
+Claves
+Rango/condición
+mobile_pair
+anchor0_x/y/z, anchor1_x/y/z
+Coordenadas 0..33. Origin traslada las anclas por defecto.
+phase
+mode, distance, permutation, signs, source_index; sourcej_clock_high/low
+mode 0..2; el descriptor temporal valida distancia 3..8 y marcos.
+distributed
+history_mode, with_history, with_recurrence
+history_mode 0..2; flags 0/1; N=127.
+relational/contextual
+history, keep_reader, control; opción seed
+history 1..5; control explícito 1..8; restricciones finales en BasalConfig.
+mobile_basal
+Anteriores + mobile_only, body_only, offpath, paired
+Flags 0/1; N=47 y t0=32.
+contingent
+Basales + independent, inverse
+Flags 0/1; cambio declarado de preparación ambiental.
+information
+Basales + informative_side, hidden, extra_receiver
+Lado -1/+1, hidden 0..65535, flag 0/1.
+cascade/native_transfer
+depth, omit, source_absent, cue0..7, teacher0..7
+depth 1..8; relay exige 2; omit -1..depth-1; cargas 0..65535.
+competition
+shift, second_y, second_z; opciones arm, destination
+shift -1..1; y/z -1..1 y no ambos cero; both/A_only/B_only; empty/material/protected.
+predictive
+sign, consequence_tick, naive, paired, consequence
+sign -1/+1; horizonte 18..100; flags 0/1.
+research
+placements y descriptores explícitos
+Dimensión Runtime; validación de sitios, superposiciones y tipos.
+
+Los presets basales heredados y las recetas organizacionales no tienen defaults idénticos: relational de 3.5 usa keep_reader=False por defecto y deriva su preparación de ReadCut, mientras create_relational_world conserva su recorrido 3.0. Pedir «una relación» sin indicar API y modo no identifica una preparación única. [PY; REC; BASAL]
+Componente
+Límites relevantes
+Runtime
+N 1..512; pendientes 4096; metadata 4096.
+InputCodec
+Versión 1.0.0; carga 0..65535; hasta 65.536 símbolos.
+Secuencia móvil
+1..1024 consultas; first_tick>=6; intervalo fijo 5; control uint64.
+Reconstrucción
+1..65.536 sitios; destino no duplicado; al menos un campo.
+TraceSession
+Presupuesto 1..65.536 muestras; sitios<=128; segmentos<=256.
+Metadata organizacional
+Binario<=64 MiB; fragmentos hex<=256; esquema v1.
+Trace file
+Al menos 16 bytes, hasta 64 MiB; checksum y magic.
+Snapshot Runtime
+Hasta 2 GiB; strings<=1 MiB; validación estructural.
+
+B.1. Límites de las sesiones nuevas
+Objeto
+Contrato representable
+Dominio observado / uso
+Cognitivo
+N47; origin0..46; event_state>0.
+Continuidad T32→1032; comparación de un episodio.
+Journal cognitivo
+64..262144; por defecto 32768.
+Al alcanzar el límite se informa la condición; no se reinicia la organización.
+Predicciones
+1..32768; por defecto 4096.
+Emisión y objetivo uint64; control de overflow.
+Metadata cognitiva UI
+128 claves; clave 1..128 bytes; valor≤1 MiB; total≤2 MiB.
+Texto externo inerte.
+Policy
+N67; clase actual−1/+1; dos roles.
+Una revisión preparada P→P/Q, dato final T14.
+Information
+N47; history AB/BA/H0; context 0/1; distance 10.
+Cargas de referencia 23/41; uso posterior T64.
+Journal informativo
+8192 entradas; captura truncada se declara.
+Runtime sigue evolucionando.
+Metadata informativa UI
+128 claves; clave≤1024 bytes; valor≤65536; total≤512 KiB.
+Contenedor binario operativo≤2 MiB.
+Asociación
+N34; cue/teachers uint16; dos vías.
+paired/unpaired/omitted; secuencia a cinco ticks.
+Cascada adquirida
+N127; depth 1..8.
+Cada pareja en frontera inicial; capturas por etapa.
+Aplicación online
+N47; dos sondas consumibles.
+principal/reservada; validar interfaces y etapa al cargar.
+
+Los dominios representables y los testigos funcionales son capas complementarias del contrato. La misma firma admite parámetros que requieren un ensayo nuevo para conocer su comportamiento. [4-COG; 4-INF; 4-APP]
+Anexo C. Pruebas: genealogía 3.5 y corte 4.0
+El inventario nominal permite localizar qué se ejecutó. Los resultados siguientes proceden de VALIDATION_REPORT.json y FINAL_NATIVE_TESTS.xml del corte oficial. Los tiempos registrados son de aquella ejecución; no constituyen un benchmark comparativo. Las comprobaciones editoriales adicionales están separadas en el capítulo 29. [VAL; NATIVE-XML; AUD]
+Nº
+CTest
+Segundos registrados
+1
+organizational_3_5
+46.736
+2
+kernel_whl_differential
+0.131
+3
+runtime_contract
+0.194
+4
+reference_organizations
+125.565
+5
+integration_persistence
+0.161
+6
+execution_backends
+0.428
+7
+composition_catalog
+8.658
+8
+composition_snapshot_restore
+0.250
+9
+core05_phase_memory
+6.052
+10
+cross_process_persistence
+0.197
+11
+integrated_protocols
+412.201
+12
+basal_product_contract
+51.075
+13
+independent_consumer_e2e
+0.713
+14
+examples_smoke
+0.155
+15
+composition_a_e2e
+2.257
+16
+composition_b_e2e
+0.521
+17
+catalog_transport_e2e
+0.232
+18
+composition_c6_later_query_e2e
+0.373
+19
+integrated_protocols_e2e
+0.153
+20
+basal_product_e2e
+0.160
+
+Nº
+Método unittest Python
+1
+test_basal_api.BasalApiTests.test_attach_is_live_view_and_keeps_python_owner_alive
+2
+test_basal_api.BasalApiTests.test_contextual_write_gate_and_retention
+3
+test_basal_api.BasalApiTests.test_passive_tracker_and_fork_isolation
+4
+test_basal_api.BasalApiTests.test_relational_histories_and_validated_translations
+5
+test_basal_api.BasalApiTests.test_snapshot_round_trip_resumes_same_future
+6
+test_integrated_protocols.IntegratedProtocolTests.test_f1_panel_values_and_resume
+7
+test_integrated_protocols.IntegratedProtocolTests.test_f2_panel_values_and_resume
+8
+test_integrated_protocols.IntegratedProtocolTests.test_h1_delay_position
+9
+test_integrated_protocols.IntegratedProtocolTests.test_h2_separated_and_overlap_controls
+10
+test_integrated_protocols.IntegratedProtocolTests.test_h3_repair_requires_opt_in_and_resumes_exactly
+11
+test_mbp4_regressions.MBP4ProductRegressions.test_fixture_manifest_integrity
+12
+test_mbp4_regressions.MBP4ProductRegressions.test_r1_relational_recipe_histories_against_primary_oracles
+13
+test_mbp4_regressions.MBP4ProductRegressions.test_r2_section22_checkpoint_continuation_matches_full_state
+14
+test_mbp4_regressions.MBP4ProductRegressions.test_r3_contextual_recipe_and_checkpoint_continuation
+15
+test_mbp4_regressions.MBP4ProductRegressions.test_r4_selective_controls_execute_through_public_diagnostics
+16
+test_mbp4_regressions.MBP4ProductRegressions.test_r5_absolute_writes_are_not_collapsed_to_relational_delta
+17
+test_mbp4_regressions.MBP4ProductRegressions.test_r6_b12_checkpoint_continuation_and_primary_transition
+18
+test_mbp4_regressions.MBP4ProductRegressions.test_r7_protected_source_arrival_has_no_effect_on_target
+19
+test_mbp4_regressions.MBP4ProductRegressions.test_r8_translated_replicates_and_executed_interventions
+20
+test_organizational_api.OrganizationalApiTests.test_backends_passivity_fork_isolation
+21
+test_organizational_api.OrganizationalApiTests.test_cross_process_restoration
+22
+test_organizational_api.OrganizationalApiTests.test_f01_f06_named_io_history_and_sequential_resume
+23
+test_organizational_api.OrganizationalApiTests.test_f01_latent_memory_access_and_missing_center
+24
+test_organizational_api.OrganizationalApiTests.test_f02_native_transfer_and_assisted_reconstruction
+25
+test_organizational_api.OrganizationalApiTests.test_f03_cascades_and_interfamily_bridge
+26
+test_organizational_api.OrganizationalApiTests.test_f04_native_context_event_and_phase_access
+27
+test_organizational_api.OrganizationalApiTests.test_f05_tracking_budget_export_and_encounter
+28
+test_organizational_api.OrganizationalApiTests.test_f06_codecs_receipts_and_errors
+29
+test_organizational_api.OrganizationalApiTests.test_f07_action_and_information_interfaces
+30
+test_organizational_api.OrganizationalApiTests.test_f08_distributed_saturation_independent_availability
+31
+test_organizational_api.OrganizationalApiTests.test_f09_joint_product_reuse_and_pending_snapshot
+32
+test_organizational_api.OrganizationalApiTests.test_lifetimes_inert_attach_custom_recipe_uint64
+33
+test_organizational_api.OrganizationalApiTests.test_transfer_bridge_toroidal_tracking_and_explicit_bounds
+34
+test_wheel_api.WheelApiTests.test_catalog_and_protocol_registry
+35
+test_wheel_api.WheelApiTests.test_composition_world_experience_probe_and_snapshot
+36
+test_wheel_api.WheelApiTests.test_h4_finite_diagnostic
+37
+test_wheel_api.WheelApiTests.test_native_identity_and_platform
+38
+test_wheel_api.WheelApiTests.test_pause_and_explicit_errors
+39
+test_wheel_api.WheelApiTests.test_runtime_receipt_observe_snapshot_and_fork
+
+Familia
+APIs registradas
+Testigos de procedencia (selección)
+F01
+OrganizationRecipe.mobile_pair; OrganizationRecipe.relational; OrganizationalWorld.start_mobile_sequence; OrganizationView.observe; OrganizationalWorld.probe
+P01/independent50; P01/sequential50; P01/inverted5; P05/latent_AB
+F02
+OrganizationRecipe.native_transfer; OrganizationalWorld.fork; OrganizationalWorld.assisted_reconstruction; ReconstructionSpec
+P04/native_zero_relay; P04/native_zero_relay_other_history; P04/native_zero_relay_cut; P04/native_source_absent
+F03
+OrganizationRecipe.cascade; OrganizationRecipe.distributed; OrganizationRecipe.mobile_basal; CompositionPlanner; OrganizationalWorld
+P09/depth2_reference; P09/depth4; P09/depth8; P09/mobile_basal_full
+F04
+OrganizationRecipe.contextual; OrganizationRecipe.phase; inspect_write_gate; OrganizationalWorld.submit; OrganizationalWorld.probe
+P07/context_full_E; P07/context_cut_E; P07/external_E_offpath; P07/external_E_phase129
+F05
+PassiveTracker; TraceSession; MobileSegment; OrganizationView.observe; observe_encounter; diagnostic_fork; compare_site; compare_diagnostic_fork
+P13/reread_observer_coverage; P14/route_phase_ablation; P04/native_zero_relay; P09/mobile_basal_full
+F06
+InputCodec; InterfaceSpec; OutputDecoder; submit; submit_symbol; probe; probe_symbol; observe; decode
+P01/independent50; P01/inverted5; P11/P_hidden23
+F07
+ActionCoupling; OrganizationRecipe.contingent; OrganizationRecipe.information; OrganizationView.observe
+P03/contingent_d5; P03/contingent_d5_cut; P03/independent_d5; P03/contingency_reversed
+F08
+ResilienceObservation; OrganizationView.resilience; diagnostic_fork; run_trained_redundancy_repair
+P06/continued_distributed_HA; P06/continued_distributed_H0; P08/one_native_contact; P08/support_removed
+F09
+OrganizationRecipe.competition; observe_encounter; OrganizationalWorld.probe; Runtime.experience_batch
+P12/A_only; P12/B_only; P12/both_empty; P12/one_tick_miss
+
+C.1. Lectura de los recuentos heredados
+Las tablas anteriores conservan los tests de la edición 3.5: veinte CTest, treinta y nueve métodos Python y el mapa de nueve familias. Los recuentos de ciencia y checkpoints de esa edición conservan su corte original. La validación 4.0 se identifica por el nombre y resultado de sus propios tests; los recuentos no se suman para fabricar capacidades o réplicas nuevas. [35-MAR; 4-VAL]
+C.2. Tests C++ registrados para 4.0
+Nº
+Test
+Cierre registrado
+1
+organizational_3_5
+Aprobado
+2
+kernel_whl_differential
+Aprobado
+3
+runtime_contract
+Aprobado
+4
+reference_organizations
+Aprobado tras reintento por timeout
+5
+integration_persistence
+Aprobado
+6
+execution_backends
+Aprobado
+7
+composition_catalog
+Aprobado
+8
+composition_snapshot_restore
+Aprobado
+9
+core05_phase_memory
+Aprobado
+10
+cross_process_persistence
+Aprobado
+11
+integrated_protocols
+Aprobado tras reintento por timeout
+12
+basal_product_contract
+Aprobado
+13
+cognitive_4_0
+Aprobado
+14
+informative_4_0
+Aprobado
+15
+independent_consumer_e2e
+Aprobado
+16
+examples_smoke
+Aprobado
+17
+composition_a_e2e
+Aprobado
+18
+composition_b_e2e
+Aprobado
+19
+catalog_transport_e2e
+Aprobado
+20
+composition_c6_later_query_e2e
+Aprobado
+21
+integrated_protocols_e2e
+Aprobado
+22
+basal_product_e2e
+Aprobado
+
+Los XML originales conservan los dos intentos; las ventanas de ejecución y los logs permiten auditar su cierre. La calificación final registró 61 métodos Python en los módulos del capítulo 29. [4-VAL; 4-QUAL]
+C.3. Comprobaciones editoriales de esta edición
+Comprobación
+Resultado
+Contenedor 4.0
+1.301 miembros CRC; 1.299 hashes de manifiesto y 1.300 del archivo de hashes coincidentes.
+Fuente heredada
+Doce unidades C++ idénticas a la cápsula 3.5; dos unidades nuevas.
+Reconstrucción C++
+GCC 14.2 / CMake 3.31.6/Ninja, Release, kernel intacto.
+Cuatro tests dirigidos
+kernel_whl_differential, runtime_contract, cognitive_4_0, informative_4_0: aprobados.
+Documentos y preservación
+Maestro 3.5 original preservado; mapa de cobertura y extracción de cápsula.
+
+Anexo D. Fuentes y referencias de reconstrucción
+Las claves heredadas de las tablas siguientes conservan las referencias del corte 3.5. Para las doce unidades nativas preservadas, el contenido es también idéntico en 4.0. Las claves nuevas 4- y ED- se resuelven en D.1. Los números de línea remiten al source conservado; Fuentes_y_hashes.json en el respaldo registra identidades y rutas.
+Clave
+Fuente y papel
+META
+PROJECT_METADATA.jsonIdentidad del producto y procedencia
+CONTRACT
+PRODUCT_CONTRACT.jsonNueve familias, modalidades y dominios
+MAN
+MANIFEST.jsonInventario de la entrega oficial
+README
+README.mdRecorrido vigente y referencia heredada
+CMAKE
+source/CMakeLists.txtDoce unidades nativas, targets y tests
+K27-H
+source/include/dee_thinking/kernel_v27.hppConstantes, Record y TickOptions
+K27
+source/src/kernel_v27.cppLey microscópica v27 conservada
+RT-H
+source/include/dee_thinking/runtime.hppEstado, admisión y snapshots
+RT
+source/src/runtime.cppImplementación de Runtime
+CAT-H
+source/include/dee_thinking/organization_catalog.hppTipos de catálogo y puertos
+CAT
+source/src/organization_catalog.cppDiez descriptores y sus constructores
+COMP
+source/src/composition.cppComposición y persistencia de recetas
+PROTO-H
+source/include/dee_thinking/integrated_protocols.hppAPI H1-H4/F1-F2
+PROTO
+source/src/integrated_protocols.cppAparatos y continuaciones integrados
+BASAL-H
+source/include/dee_thinking/basal.hppTipos BasalWorld heredados
+BASAL
+source/src/basal.cppRecetas basal y contextual 3.0
+OBS
+source/src/observation.cppInspector material y comparación local
+GENE
+source/src/genealogy.cppPassiveTracker de sitios declarados
+DIAG
+source/src/diagnostics.cppDiagnósticos basales en forks
+ORGH
+source/include/dee_thinking/organizational.hppTipos y declaraciones nuevas 3.5
+ORG
+source/src/organizational.cppMundo organizacional, I/O, traza y snapshot
+REC
+source/src/organization_recipes.cppRecetas nativas y variantes
+BIND
+source/bindings/dee_thinking_pybind.cppBinding heredado y propiedad compartida
+ORGBIND
+source/bindings/organizational_pybind.cppBinding de API organizacional
+PY
+source/python/dee_thinking/__init__.pyHelpers de creación y semilla
+STUB
+source/python/dee_thinking/_native.pyiTipado del binding
+SETUP
+source/setup.pyConstrucción de extensión via CMake
+PYPROJECT
+source/pyproject.tomlMetadatos y build PEP517
+SCOPE
+docs/API_AND_SCOPE.mdAlcance declarado de las APIs
+BUILD
+docs/BUILD_AND_MIGRATION.mdEntorno, comandos y compatibilidad
+BUILD-SCRIPT
+source/tools/build_3_5.ps1Build comprobado y logs de comandos
+VAL
+validation/VALIDATION_REPORT.jsonInforme final de validación
+NATIVE-XML
+validation/FINAL_NATIVE_TESTS.xmlJUnit de veinte CTest
+RECIPE-COMP
+validation/NATIVE_RECIPE_COMPARISON_FINAL.json34 comparaciones de recetas
+CASES
+validation/VALIDATION_CASE_MATRIX.jsonClasificación de los 289 registros
+CLEAN
+validation/CLEAN_EXTRACTION_RESULT.jsonPrueba del paquete candidato extraído
+INCIDENTS
+validation/DEVELOPMENT_INCIDENTS.jsonIntentos y correcciones conservados
+TEST-PY35
+source/tests/python/test_organizational_api.pyCatorce pruebas nuevas Python
+TEST-CPP35
+source/tests/organizational_tests.cppTest nativo organizacional
+TEST-MBP4
+source/tests/python/test_mbp4_regressions.pyRegresiones R1-R8 y sus modalidades
+EX-PY
+source/examples/organizational_public.pyRecorrido público Python
+EX-CPP
+source/examples/external_3_5/main.cppConsumidor C++ externo
+TOOLS
+source/toolsHerramientas de build, replay y publicación
+VER
+source/tools/verify_delivery_3_5.pyVerificador del ZIP final
+WHL
+wheel/dee_thinking-3.5.0-cp313-cp313-win_amd64.whlDistribución nativa oficial
+SCI
+evidence/DEE_thinking_3_0_0_FRONTERAS_COGNITIVAS_MULTIRRAMA_01_RESULTADOS.zipExpediente científico acumulado intacto
+MAR300
+antecedentes/DEE_thinking_3_0_0_Maestro_Arquitectura_Reconstruccion.docxArquitectura 3.0 conservada
+LBM300
+antecedentes/DEE_thinking_3_0_0_Libro_Blanco_y_Manual_Tecnico.docxManual 3.0 complementario
+MAR220
+antecedentes/DEE_thinking_2_2_0_Maestro_Arquitectura_Reconstruccion(1).docxArquitectura y protocolos 2.2.0
+OBP21
+antecedentes/ORGANIZACION_BASAL_PERSISTENTE_DOCUMENTO_MAESTRO_V2_1.docxGenealogia MBP4 y relectura de secciones 23-24
+PN
+Procesamiento_Nativo_DEE_Libro_Manual_v1.docxCaps. 1, 7-20 y 21; fuente científica consultada en Proyecto/Biblioteca
+FD
+DEE_V4_0_1(1).docxFísica DEE 4.0.1; fuente contextual y marco de observadores
+CONV
+Conversacion del proyecto hasta 9 octubre 2026Decisiones de alcance, nueve familias y orden documental; no fuente primaria de estados
+AUD
+AUDITORIA_EDITORIAL_35.jsonVerificación de artefactos y pruebas C++ de esta edición
+CAPSULE
+dee_payload/capsule.zip dentro del DOCXFuentes, tests, semilla y herramientas pasivas de recuperación
+TOOLS-DOC
+herramientas/extract_capsule.py; verify_backup.pyExtracción y verificación del respaldo documental
+
+D.1. Códigos del corte 4.0
+Las claves heredadas de la tabla anterior remiten al maestro 3.5 y a su cápsula intactos. Para las doce unidades nativas preservadas, el contenido también es idéntico en 4.0. Las claves siguientes remiten a rutas relativas a DEE_thinking_4_0_0/, salvo ED- y documentos contextuales.
+Clave
+Fuente / objeto
+35-MAR
+Documentos_origen/DEE_thinking_3_5_0_Maestro_Arquitectura_Reconstruccion.docx (copia exacta del recibido).
+4-CON
+PRODUCT_CONTRACT.json
+4-CMAKE
+source/CMakeLists.txt
+4-WHL
+wheel/dee_thinking-4.0.0-cp313-cp313-win_amd64.whl
+4-COGH
+source/include/dee_thinking/cognitive.hpp
+4-COGCPP
+source/src/cognitive.cpp
+4-COG
+docs/COGNITIVE_API_4.md
+4-INFH
+source/include/dee_thinking/informative.hpp
+4-INFCPP
+source/src/informative.cpp
+4-INF
+docs/INFORMATIVE_API_4.md
+4-BIND
+source/bindings/cognitive_pybind.cpp; informative_pybind.cpp; organizacional y principal.
+4-PY
+source/python/dee_thinking/cognition.py y cognition.pyi; _native.pyi.
+4-DIALOG
+source/python/dee_thinking/dialogue.py; app/conversar.py.
+4-APP
+app/LEEME.md; iniciar_mente.ps1; app/conversar.py; app/mundo_nativo.py.
+4-APPNATIVE
+app/mundo_nativo.py
+4-APPTEST
+experiments/test_online_application.py; results/ y validation/ de aplicación.
+4-ONLINE
+experiments/BLOCK_II/online_contact_main, online_contact_route_cut, online_cue_offpath, reserved_online_contact.
+4-BII
+experiments/BLOCK_II/RESULTS.json y MEASUREMENTS.json por caso.
+4-SIGNAL
+experiments/SIGNAL_PREDICTION/RESULTS.json; run_signal_prediction40.py; configuración y medidas.
+4-EXP
+EXPERIMENT_REPORT.md
+4-REV
+docs/RESULTS_MECHANISM_REVIEW.json
+4-PHEN
+PHENOMENA_AND_LANGUAGE.json
+4-VAL
+VALIDATION_REPORT.json; ctest.xml; ctest_timeout_retry.xml; resultados Python.
+4-QUAL
+validation/BLOCK_I_QUALIFICATION.json
+4-CLEAN
+validation/FINAL_EXTRACTION_CHECK.json
+4-BUILD
+BUILD_PROVENANCE.json; BUDGET.json; RESUMPTION_BUDGET.json.
+4-BSCRIPT
+tools/build40.ps1
+4-MIG
+docs/BUILD_AND_MIGRATION_4.md; validation/RESUMPTION_INTEGRATION.json.
+4-MAP
+docs/CPC3_TO_4_MATRIX.json
+4-READ
+README.md; app/LEEME.md
+4-TEST
+source/tests/cognitive_tests.cpp; source/tests/python/test_cognitive_api.py y test_cognition_facilitators.py.
+4-REPRO
+tools/reproduce40.py
+4-AUD
+comprobacion_editorial/SOURCE_AUDIT.json, generado para esta edición.
+ED-CPP
+comprobacion_editorial/EDITORIAL_CTEST.xml y .log; cmake_configure.log; cmake_build.log.
+ED-CAP
+CAPSULE_MANIFEST.json; dee_payload/manifest.json; herramientas del respaldo.
+CONV
+Criterios_editoriales/CONTINUIDAD_INTERPRETATIVA.md y conversación aportada Texto pegado(20261013-210417).txt.
+PN
+Procesamiento_Nativo_DEE_Libro_Manual_v1.docx; contexto extraído preservado en la cápsula.
+FD
+Documentos_origen/DEE_V4_0_1.docx, edición científica recibida.
+OBP21
+Documentos_origen/ORGANIZACION_BASAL_PERSISTENTE_DOCUMENTO_MAESTRO_V2_1.docx.
+CPC3
+evidence/CPC3/; fuentes y resultados migrados, con origen en PARENTS.json.
+
+D.2. Grado de consulta y evidencia
+Producto 4.0: contenedor, contratos, código nuevo, aplicaciones, informes, registros y fuentes de verificación consultados directamente. Maestro 3.5: cuerpo completo y cápsula abierta. Contexto científico: pasajes pertinentes de Física DEE, Procesamiento Nativo y OBP; la genealogía CORE/Ingenierías/Procesos se conserva a través de esos documentos y del expediente seleccionado. Las comprobaciones nuevas se identifican como editoriales; los datos históricos conservan su atribución original.
+Anexo E. Continuidad y preservación de la edición 3.5
+Este maestro integra la arquitectura vigente sin borrar la genealogía. La matriz siguiente sitúa la cobertura principal del Documento Maestro 3.0 dentro de 3.5. Las declaraciones completas anteriores quedan preservadas como referencia junto con los headers actuales; el software fuente decide cualquier diferencia de firma. [MAR300; AUD]
+Cobertura del maestro 3.0
+Ubicación vigente
+1-4: identidad, genealogía, contrato y arquitectura
+Caps. 1-4; fuente 3.5 e historia 2.2/3.0.
+5-7: estado, transición, backends
+Caps. 5-8; kernel byte-exacto.
+8-10: Runtime, catálogo y protocolos
+Caps. 7, 9 y 10; headers completos en cápsula.
+11-14: BasalConfig, recetas y ciclo de vida
+Caps. 11-13; nuevas recetas detalladas en 14-22.
+15-16: observación y diagnóstico
+Caps. 18, 21-22 y anexo A; compatibilidad preservada.
+17: snapshots v1/v2
+Cap. 24; metadata organizacional nueva en 25.
+18: binding y WHL
+Cap. 26; nuevo binario y tipos adicionales.
+19-21: pruebas y alcance R1-R8
+Cap. 29 y anexo C; evidencia antigua más pruebas nuevas.
+22-26: instalación, ejemplos y reconstrucción
+Caps. 27-30; comandos 3.5 y pruebas entre lenguajes.
+27-28: migración y recuperación
+Caps. 31-32; respaldo y cápsula pasiva.
+Anexos: APIs, pruebas, fuentes y custodia
+Anexos A-E; fuentes exactas y documentos precedentes preservados.
+
+La misma lógica DEE se conserva: estado e historia presente, relaciones, contextos, fases, observadores y consecuencias. La versión 3.5 agrega instrumentos y preparaciones para utilizar esa variedad. Su identidad técnica reside en fuentes, interfaces, evidencia y continuación reproducible, no en el nombre de una analogía. [CONTRACT; PN; CONV]
+E.1. Mapa de los 32 capítulos de 3.5
+Origen 3.5
+Tratamiento en 4.0
+Preservación adicional
+1. Identidad del corte y unidad de preservación
+Actualizado en cap. 1
+DOCX 3.5 original y cápsula intactos
+2. Análisis transversal: de las experiencias al producto
+Actualizado en cap. 2; ampliación interpretativa en 40
+DOCX 3.5 original y cápsula intactos
+3. Fronteras de responsabilidad y modalidades
+Cuerpo técnico conservado en cap. 3
+DOCX 3.5 original y cápsula intactos
+4. Arquitectura ejecutable y árbol de fuentes
+Actualizado en cap. 4; capas nuevas 33–37
+DOCX 3.5 original y cápsula intactos
+5. Estado microscópico, packing y constantes
+Cuerpo técnico conservado en cap. 5
+DOCX 3.5 original y cápsula intactos
+6. Transición v27: precedencia y selectividad
+Cuerpo técnico conservado en cap. 6
+DOCX 3.5 original y cápsula intactos
+7. Runtime: admisión, recibos y tiempo
+Cuerpo técnico conservado en cap. 7
+DOCX 3.5 original y cápsula intactos
+8. Backends, concurrencia y memoria de trabajo
+Cuerpo técnico conservado en cap. 8
+DOCX 3.5 original y cápsula intactos
+9. Catálogo y composición heredados
+Cuerpo técnico conservado en cap. 9
+DOCX 3.5 original y cápsula intactos
+10. Protocolos H1-H4 y F1-F2 preservados
+Cuerpo técnico conservado en cap. 10
+DOCX 3.5 original y cápsula intactos
+11. BasalWorld 3.0: base conservada
+Cuerpo técnico conservado en cap. 11
+DOCX 3.5 original y cápsula intactos
+12. OrganizationalWorld: propiedad y ciclo de vida
+Cuerpo técnico conservado en cap. 12
+DOCX 3.5 original y cápsula intactos
+13. Recetas publicadas y dominios
+Cuerpo técnico conservado en cap. 13
+DOCX 3.5 original y cápsula intactos
+14. F01: memoria histórica, relativa y latente
+Cuerpo técnico conservado en cap. 14
+DOCX 3.5 original y cápsula intactos
+15. F02: transferencia y reconstrucción asistida
+Cuerpo técnico conservado en cap. 15
+DOCX 3.5 original y cápsula intactos
+16. F03: cascadas y puentes entre familias
+Cuerpo técnico conservado en cap. 16
+DOCX 3.5 original y cápsula intactos
+17. F04: plasticidad, fase y acceso temporal
+Cuerpo técnico conservado en cap. 17
+DOCX 3.5 original y cápsula intactos
+18. F05: observadores, trazas y procedencia
+Cuerpo técnico conservado en cap. 18
+DOCX 3.5 original y cápsula intactos
+19. F06: transducción de entradas y salidas
+Cuerpo técnico conservado en cap. 19
+DOCX 3.5 original y cápsula intactos
+20. F07: acción nativa y entorno
+Cuerpo técnico conservado en cap. 20
+DOCX 3.5 original y cápsula intactos
+21. F08: resiliencia, saturación y disponibilidad
+Cuerpo técnico conservado en cap. 21
+DOCX 3.5 original y cápsula intactos
+22. F09: encuentros simultáneos y productos conjuntos
+Cuerpo técnico conservado en cap. 22
+DOCX 3.5 original y cápsula intactos
+23. Consultas secuenciales y orquestación
+Cuerpo técnico conservado en cap. 23
+DOCX 3.5 original y cápsula intactos
+24. Snapshot Runtime: formato y conservación
+Cuerpo técnico conservado en cap. 24
+DOCX 3.5 original y cápsula intactos
+25. Persistencia organizacional y traza 3.5
+Cuerpo técnico conservado en cap. 25
+DOCX 3.5 original y cápsula intactos
+26. Binding, tipos públicos y constitución del WHL
+Actualizado en cap. 26
+DOCX 3.5 original y cápsula intactos
+27. Instalar el artefacto oficial
+Actualizado en cap. 27
+DOCX 3.5 original y cápsula intactos
+28. Reconstrucción Windows desde las fuentes
+Actualizado en cap. 28
+DOCX 3.5 original y cápsula intactos
+29. Validación: evidencia registrada y comprobación editorial
+Actualizado en cap. 29; anexo C y cuatro tests editoriales
+DOCX 3.5 original y cápsula intactos
+30. Recorridos de referencia para reconstruir y probar
+Actualizado en cap. 30
+DOCX 3.5 original y cápsula intactos
+31. Migración, incidencias y límites instrumentales
+Actualizado en cap. 31
+DOCX 3.5 original y cápsula intactos
+32. Custodia, cápsula y recuperación documental
+Actualizado en cap. 32
+DOCX 3.5 original y cápsula intactos
+
+Los cinco anexos anteriores se conservan como base de A–E y se amplían. Los bloques sustituidos en el cuerpo actual permanecen completos en el DOCX 3.5 incluido: instalación, comandos, identidad, pruebas, tablas e interpretación del corte anterior siguen recuperables sin reconstrucción editorial.
+E.2. Historial de interpretaciones
+Pregunta heredada
+Evidencia pertinente
+Lectura vigente
+Saturación y memoria
+Campos saturados con delta conservado; pares con convergencia RAW+clock.
+La función se estudia por organización, observador y protocolo.
+NO_ACTION y reescritura
+Omitir consulta desde T0 y retirar un producto tarde son intervenciones distintas.
+La escritura se atribuye al contexto identificado por el contraste.
+Lectura CP02-B
+Descendiente consultado; experiencias posteriores sobre MAIN.
+CPC3 incorpora una realización nueva de lectura directa.
+Comparación de cargas
+Misma suma 130 con códigos direccionales diferentes.
+Se caracteriza comparación de códigos, según el aparato.
+Selección revisable
+Regla preparada conservar P / cambiar Q; estado alterado por consecuencia.
+Revisión finita de política en N67, separada de N47.
+Palabras y experiencia
+Alias externos y transformaciones numéricas adquiridas.
+Traducción y aprendizaje tienen evidencias diferentes.
+Temperatura, luz, masa
+Contacto, propagación y respuesta organizacional medidos.
+Las correspondencias se apoyan en propiedades identificadas, no en etiquetas.
+Cierre parcial y final
+Primer presupuesto, reanudación, calificación y suplemento.
+El estado vigente se lee con la cronología de sus archivos.
+
+Anexo F. Identidades y extracción verificable
+Las cadenas siguientes se concatenan tal como aparecen, sin espacios. SHA-256 identifica los bytes del artefacto citado. El contenido original se conserva intacto; la copia editorial y su respaldo tienen identidades propias.
+ZIP oficial 4.0
+c78609a7d0d501324324408ed955f60f127965c77efbcbe3b3d04fc14dbb16cf
+WHL 4.0
+17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623
+PYD 4.0
+20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066
+kernel_v27.cpp
+fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31
+Semilla N47/T32
+cd09a4d94f72e00d9a5163c8dfd1d62e1528f1d146e4cb44ae23d261b3da09e6
+Maestro 3.5 recibido
+a33d0d9f285c76a435c28fe7c8f532a821d58c9e86ece7e3d23f27727678557a
+ZIP CPC3 de origen
+75ab357f41f6214c1798efbf69bd0708ab891038d30d770fdfe4a379208f793e
+El manifiesto de cápsula registra adicionalmente las identidades de los documentos de contexto y de las comprobaciones editoriales. El verificador del respaldo valida el Word y la cápsula; el verificador del producto valida su contenido original. Son niveles distintos de integridad.
+Anexo G. Matriz de resultados nuevos y atribución
+Familia
+IDs de evidencia
+Objeto medido
+movement
+native_arrival_routesnative_arrival_phasereserved_native_arrival
+Arribos 5/9; tres preparaciones.
+contact
+contact_ycontact_zno_contactreserved_contact_yreserved_contact_z
+Inventario 36 y direcciones/códigos; cinco preparaciones.
+acquired
+native_maininverted_historyswapped_external_formsunpaired_historyomitted_historyreserved_main
+Replay de teacher y relaciones móviles; seis historias.
+diagnostic
+observer_memory_cut
+Corte selectivo de portador en fork.
+composition
+new_combined_queryreserved_combined_queryomitted_combined_relation
+Etapas adquiridas y omisión.
+dialogue
+spanish_new_combined_questionspanish_reserved_combined_question
+Consultas de interfaz sobre composición.
+online
+online_contact_mainonline_contact_route_cutonline_cue_offpathreserved_online_contact
+Contacto y dos consultas en el mismo Runtime.
+signal_prediction
+present_then_absentabsent_then_presentomitted_history_same_present_worldpresent_future_route_obstaclereserved_present_minusYreserved_absent_minusY
+Emisión 37, detector 67; sensor externo entre dos runtimes.
+
+Cada ID remite a un MEASUREMENTS.json con preparación, lecturas y procedencia. Las tablas sintetizan evidencia ya registrada. Las dos demostraciones online y las continuaciones técnicas se identifican aparte para conservar el recuento de 30 preparaciones. [4-PHEN; 4-REV]
+G.1. Regla de lectura de una respuesta
+Una respuesta se interpreta mediante su propietario, preparación, historia, entrada admitida, instante, registro, decoder y modalidad. El mismo número puede tener otro significado en otra geometría. Una comparación requiere conservar esos campos; una actualización documental debe preservar los casos que dieron origen al resultado.

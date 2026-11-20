@@ -1,0 +1,64 @@
+{
+  "purpose": "SELECTIVE_MEMORY_DIAGNOSTICS_AND_TWO_MEMORY_ONLY_RESERVED_PREPARATIONS",
+  "scope": "No new reversal family; reserves test signal identity/order/translation and current-physical-outcome acquisition, not independent functional-use closure",
+  "parent_snapshot": "resultados/actual_sensor_v2_discovery01/BEFORE_SIGNAL_S1.deetsnap",
+  "parent_snapshot_sha256": "7e9666280c9bd2791c487961bc2aa22bc8bca37951517a738c0f2d2b3eceba04",
+  "reference_measurements": "resultados/actual_sensor_v2_discovery01/MEASUREMENTS.json",
+  "reference_sha256": "8e776b69a73ae41e1c3e7b5c514a2c7827442b3ba81d625e6ea9125c195271f9",
+  "parent_relative_tick": 83,
+  "arms": [
+    "MEM_REMOVE",
+    "SHAM_REMOVE",
+    "DIRECT_ACTION_RESCUE"
+  ],
+  "cut": "one actual learned S1 carrier RAW set0; clock field absent from edit",
+  "sham": "one actual unpaired second-broadcast carrier in S1 region RAW set0; clock unchanged",
+  "direct_action": "same S1 cut; after observing the failed diagonal read at87, advance1 so the ordinary query vacates the fixed port; fixed direct-action input21 and matched resources at88, event89; diagnostic actuator-availability control, not acquired response",
+  "decisive_samples": {
+    "S1": 87,
+    "S2": 115
+  },
+  "reserve_specifications": [
+    {
+      "id": "MEM_RESERVED_INVERSE_ORDER_A",
+      "translation": [
+        4,
+        7,
+        5
+      ],
+      "pairing": {
+        "S1": "U",
+        "S2": "V"
+      },
+      "order": [
+        "S2",
+        "S1"
+      ]
+    },
+    {
+      "id": "MEM_RESERVED_INVERSE_ORDER_B",
+      "translation": [
+        -7,
+        4,
+        -5
+      ],
+      "pairing": {
+        "S1": "V",
+        "S2": "U"
+      },
+      "order": [
+        "S2",
+        "S1"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "memory.py": "565f132df6ccde21d211eb0a3cd596b238b82ea1d92263de802c706b49ed7484",
+    "memory_counterfactuals.py": "d2723d6114d8fd4a7b29365cb5b875c655818b5b7b2fa4784d325314679896ea",
+    "participant.py": "3c71f9254300a3ea9ed1b9d7f271a867c647961ec97e3b5ce122847cca256ae9",
+    "experiment.py": "34f72ebef28ccea4a89a68dc3e94305f1c73b978ef63f353052ea0a55e53c5f2",
+    "habitat.py": "264ca10b7baa599a8427cca4e36f636185422ec0685d5c56b84945ba03255e22",
+    "run_memory_controls.py": "de6c2dd882a99268e0053fd7cf36923d48072c6b8365e9874c7f1b308d0b7207"
+  },
+  "configuration_frozen_before_execution": true
+}

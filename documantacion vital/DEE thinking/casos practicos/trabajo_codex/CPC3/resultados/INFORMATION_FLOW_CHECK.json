@@ -1,0 +1,837 @@
+{
+  "checks": [
+    {
+      "name": "predictor_no_future_or_result_or_sample_access",
+      "equal_physical_and_prediction": true,
+      "different_hidden_future_laws": true,
+      "forbidden_functions_raise_if_called": true
+    },
+    {
+      "name": "auditor_prediction_log_not_feedback",
+      "native_identical_after_different_evaluations": true,
+      "intervention": "one external prediction entry changed only; no RAW/clock edit",
+      "different_outcomes_after80": true
+    },
+    {
+      "name": "actual_report_not_computed_from_auditor_error",
+      "initial_native_expectation": [
+        -1,
+        0,
+        0
+      ],
+      "tampered_external_forecast": [
+        true
+      ],
+      "current_native_comparison": {
+        "tick": 84,
+        "site": [
+          15,
+          15,
+          15
+        ],
+        "raw": 2238007539826425857,
+        "clock": 84,
+        "state": 1,
+        "s_reg": 0,
+        "semantic": 1,
+        "direction": [
+          -1,
+          0,
+          -1
+        ],
+        "active": true
+      },
+      "actual_report": {
+        "tick": 83,
+        "arrived": true,
+        "reference_branch": false,
+        "observable": "packet_arrival_at_barrier_output",
+        "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+      },
+      "receipt": {
+        "id": 4,
+        "status": "applied",
+        "reason": "",
+        "effective_tick": 83
+      }
+    },
+    {
+      "name": "explicit_forwarded_native_calls",
+      "forbidden_python_native_entrypoints_observed": [],
+      "calls": [
+        {
+          "name": "probe",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "receipt",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "probe",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "receipt",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "probe",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "receipt",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "submit",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "receipt",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "run_until",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "OrganizationView",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "_pybind11_conduit_v1_",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "view",
+          "owner": "OrganizationalWorld",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "observe",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "raw_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        },
+        {
+          "name": "clock_copy",
+          "owner": "Runtime",
+          "method": "explicit forwarding boundary, native instance unchanged"
+        }
+      ],
+      "c_call_profile_count": 0,
+      "instrumental_revision": "The first sys.setprofile attempt captured no pybind calls; retained as INFORMATION_FLOW_PROFILE_ATTEMPT.json, not accepted as absence proof. Explicit forwarding now records actual probe/submit/run_until calls.",
+      "coverage": "Python-facing world/runtime/view calls forwarded unchanged; source review covers native internal evolution, not a generic whole-binary noninterference proof"
+    }
+  ],
+  "native_states": [
+    {
+      "left": {
+        "tick": 137,
+        "raw_sha256": "d3b494d8d5a302761f76a90eaf172edfb33eb8ae9cb32f33e904c8b070ab38c4",
+        "clock_sha256": "ffbec8887f908a733c6ff900df3d04da9ebc66dde434c807075b8bfe08560961"
+      },
+      "right": {
+        "tick": 137,
+        "raw_sha256": "d3b494d8d5a302761f76a90eaf172edfb33eb8ae9cb32f33e904c8b070ab38c4",
+        "clock_sha256": "ffbec8887f908a733c6ff900df3d04da9ebc66dde434c807075b8bfe08560961"
+      },
+      "actual_operations_left": [
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 32
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.B",
+          "value": 0,
+          "tick": 32,
+          "receipt_id": 1,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 33
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 33
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.A",
+          "value": 0,
+          "tick": 33,
+          "receipt_id": 2,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 34
+        },
+        {
+          "operation": "probe",
+          "channel": "body.common_query",
+          "value": 0,
+          "tick": 34,
+          "receipt_id": 3,
+          "source": "USER_QUERY"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 34,
+          "to": 37
+        },
+        {
+          "operation": "world.run_until",
+          "from": 37,
+          "to": 137
+        }
+      ],
+      "actual_operations_right": [
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 32
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.B",
+          "value": 0,
+          "tick": 32,
+          "receipt_id": 1,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 33
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 33
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.A",
+          "value": 0,
+          "tick": 33,
+          "receipt_id": 2,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 34
+        },
+        {
+          "operation": "probe",
+          "channel": "body.common_query",
+          "value": 0,
+          "tick": 34,
+          "receipt_id": 3,
+          "source": "USER_QUERY"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 34,
+          "to": 37
+        },
+        {
+          "operation": "world.run_until",
+          "from": 37,
+          "to": 137
+        }
+      ]
+    }
+  ],
+  "central_before": {
+    "tick": 37,
+    "raw_sha256": "bbaaf0abff2bf1c3cffcd5e9b47455be398ad898f35f6c4e82f14fe83e69264c",
+    "clock_sha256": "67e970e553ed5ae8e98dfce835594f890e626270d55a1474852e7b1e849a65bd"
+  },
+  "central_after": {
+    "tick": 84,
+    "raw_sha256": "81c4ecd2f6e97420f72da8a1866dd7219ccb89dc903446d87b853cb5f4a87d74",
+    "clock_sha256": "0cb37da5c3cef4bc97b3e72603fe09254b085def77256d5dcc1d6a6c0df0cbab"
+  },
+  "methods": "Runtime evolution and counterfactual auditor metadata; no hidden oracle supplied to DEE",
+  "source_sha256": {
+    "src\\core\\entity.py": "145a6c694e94f89edaa089265888bd6c3875a691e6e1c85f4a881fe902a404db",
+    "src\\core\\central_comparison.py": "1e2cf7cff3baf3532c386d43acc70730c16646c2ca73cfb182579bb0948309a3",
+    "src\\core\\comparison_entity.py": "e094aacff02d3d65f3d37433d8e266e053fc2cfecaf711b5c9e23ac41e65e63d"
+  },
+  "all_assertions": true
+}

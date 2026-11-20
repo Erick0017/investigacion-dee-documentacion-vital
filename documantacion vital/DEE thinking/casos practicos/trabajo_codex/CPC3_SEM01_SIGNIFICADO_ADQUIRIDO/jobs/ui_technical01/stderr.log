@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC3_SEM01_SIGNIFICADO_ADQUIRIDO\src\test_demonstration.py", line 131, in <module>
+    main()
+    ~~~~^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC3_SEM01_SIGNIFICADO_ADQUIRIDO\src\test_demonstration.py", line 45, in main
+    loaded = app.worker("validate", mutates=False, snapshot=snapshot)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC3_SEM01_SIGNIFICADO_ADQUIRIDO\demostracion.py", line 138, in worker
+    child = subprocess.Popen(argv, cwd=call, stdout=out, stderr=err, creationflags=subprocess.CREATE_NO_WINDOW)
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+NotADirectoryError: [WinError 267] El nombre del directorio no es válido

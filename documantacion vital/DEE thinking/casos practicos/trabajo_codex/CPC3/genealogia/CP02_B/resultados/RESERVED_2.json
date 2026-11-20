@@ -1,0 +1,908 @@
+{
+  "id": "RESERVED_2",
+  "type": "RESERVED",
+  "configuration": {
+    "origin": [
+      28,
+      26,
+      18
+    ],
+    "open_gate": true,
+    "event_state": 7,
+    "query_payload": 13,
+    "targets": [
+      70,
+      120,
+      170
+    ]
+  },
+  "training_receipts": [
+    {
+      "id": 1,
+      "status": "applied",
+      "requested_tick": 32,
+      "effective_tick": 32,
+      "channels": [
+        "sensor.A"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 2,
+      "status": "applied",
+      "requested_tick": 33,
+      "effective_tick": 33,
+      "channels": [
+        "sensor.B"
+      ],
+      "reason": ""
+    }
+  ],
+  "emission": {
+    "record_type": "EMISSION",
+    "run_id": "RESERVED_2",
+    "emission_tick": 37,
+    "target_ticks": [
+      70,
+      120,
+      170
+    ],
+    "horizons": [
+      33,
+      83,
+      133
+    ],
+    "observable": "packet_arrival_at_barrier_output",
+    "information_cut": [
+      {
+        "sensor": "A",
+        "tick": 32,
+        "load": 0,
+        "source_past_result_tick": 32,
+        "reference_branch": false,
+        "source_result_arrived": true,
+        "receipt_id": 1,
+        "codec": "past observed arrival -> A, no-arrival -> B; unpaired reverses delivery only"
+      },
+      {
+        "sensor": "B",
+        "tick": 33,
+        "load": 0,
+        "source_past_result_tick": 33,
+        "reference_branch": true,
+        "source_result_arrived": false,
+        "receipt_id": 2,
+        "codec": "past observed arrival -> A, no-arrival -> B; unpaired reverses delivery only"
+      }
+    ],
+    "physical_output": {
+      "tick": 37,
+      "coordinate": [
+        28,
+        26,
+        18
+      ],
+      "RAW": 1220757029828689921,
+      "clock": 37,
+      "state": 1,
+      "semantic": 1,
+      "s_reg": 13,
+      "direction": [
+        1,
+        -1,
+        0
+      ],
+      "active": true
+    },
+    "decoder": "direction_x positive -> arrival; negative -> absence; zero/missing -> unresolved set",
+    "prediction_set": [
+      true
+    ],
+    "receipt": {
+      "id": 3,
+      "status": "applied",
+      "requested_tick": 34,
+      "effective_tick": 34,
+      "channels": [
+        "body.common_query"
+      ],
+      "reason": ""
+    },
+    "panel_before": {
+      "tick": 34,
+      "delta": 1,
+      "centers_available": true,
+      "supports_intact": true,
+      "reader_available": false,
+      "axis_projection": null,
+      "observations": {
+        "A": {
+          "tick": 34,
+          "coordinate": [
+            27,
+            26,
+            18
+          ],
+          "RAW": 1152921938398543875,
+          "clock": 262,
+          "state": 3,
+          "semantic": 1,
+          "s_reg": 101,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "B": {
+          "tick": 34,
+          "coordinate": [
+            29,
+            26,
+            18
+          ],
+          "RAW": 1152921934103576579,
+          "clock": 262,
+          "state": 3,
+          "semantic": 1,
+          "s_reg": 100,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "action": {
+          "tick": 34,
+          "coordinate": [
+            33,
+            31,
+            18
+          ],
+          "RAW": 0,
+          "clock": 34,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "comparator": {
+          "tick": 34,
+          "coordinate": [
+            28,
+            26,
+            18
+          ],
+          "RAW": 0,
+          "clock": 34,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "environment": {
+          "tick": 34,
+          "coordinate": [
+            33,
+            31,
+            23
+          ],
+          "RAW": 0,
+          "clock": 34,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "reader_source": {
+          "tick": 34,
+          "coordinate": [
+            28,
+            24,
+            18
+          ],
+          "RAW": 0,
+          "clock": 34,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "return": {
+          "tick": 34,
+          "coordinate": [
+            32,
+            30,
+            22
+          ],
+          "RAW": 0,
+          "clock": 34,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        }
+      }
+    },
+    "panel_after": {
+      "tick": 37,
+      "delta": 1,
+      "centers_available": true,
+      "supports_intact": true,
+      "reader_available": true,
+      "axis_projection": 1,
+      "observations": {
+        "A": {
+          "tick": 37,
+          "coordinate": [
+            27,
+            26,
+            18
+          ],
+          "RAW": 1152921938398543876,
+          "clock": 265,
+          "state": 4,
+          "semantic": 1,
+          "s_reg": 101,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "B": {
+          "tick": 37,
+          "coordinate": [
+            29,
+            26,
+            18
+          ],
+          "RAW": 1152921934103576580,
+          "clock": 265,
+          "state": 4,
+          "semantic": 1,
+          "s_reg": 100,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "action": {
+          "tick": 37,
+          "coordinate": [
+            33,
+            31,
+            18
+          ],
+          "RAW": 0,
+          "clock": 37,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "comparator": {
+          "tick": 37,
+          "coordinate": [
+            28,
+            26,
+            18
+          ],
+          "RAW": 1220757029828689921,
+          "clock": 37,
+          "state": 1,
+          "semantic": 1,
+          "s_reg": 13,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "environment": {
+          "tick": 37,
+          "coordinate": [
+            33,
+            31,
+            23
+          ],
+          "RAW": 0,
+          "clock": 37,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "reader_source": {
+          "tick": 37,
+          "coordinate": [
+            28,
+            24,
+            18
+          ],
+          "RAW": 0,
+          "clock": 37,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "return": {
+          "tick": 37,
+          "coordinate": [
+            32,
+            30,
+            22
+          ],
+          "RAW": 0,
+          "clock": 37,
+          "state": 0,
+          "semantic": 0,
+          "s_reg": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        }
+      }
+    },
+    "action_condition": "forecast does not actuate the barrier",
+    "modality": "PHYSICAL_PROBE_ON_MAIN",
+    "remaining_limits": "decoder maps a persisted outcome class; precursor->arbitrary outcome correspondence was not learned",
+    "wall_utc": "2026-10-13T22:17:03.156119+00:00",
+    "monotonic_ns": 108771161738800
+  },
+  "evaluations": [
+    {
+      "record_type": "EVALUATION",
+      "run_id": "RESERVED_2",
+      "emission_tick": 37,
+      "target_tick": 70,
+      "current_tick": 70,
+      "outcome": {
+        "tick": 70,
+        "arrived": true,
+        "observable": "packet_arrival_at_barrier_output",
+        "world_law": "packet transmits iff mechanical barrier open; fixed optional flip; no forecast input"
+      },
+      "prediction_set": [
+        true
+      ],
+      "correct_when_resolved": true,
+      "coverage": true,
+      "set_contains_outcome": true,
+      "absolute_error_binary": 0,
+      "panel": {
+        "tick": 70,
+        "delta": 1,
+        "centers_available": true,
+        "supports_intact": true,
+        "reader_available": true,
+        "axis_projection": 1,
+        "observations": {
+          "A": {
+            "tick": 70,
+            "coordinate": [
+              27,
+              26,
+              18
+            ],
+            "RAW": 1152921938398543876,
+            "clock": 298,
+            "state": 4,
+            "semantic": 1,
+            "s_reg": 101,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "B": {
+            "tick": 70,
+            "coordinate": [
+              29,
+              26,
+              18
+            ],
+            "RAW": 1152921934103576580,
+            "clock": 298,
+            "state": 4,
+            "semantic": 1,
+            "s_reg": 100,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "action": {
+            "tick": 70,
+            "coordinate": [
+              33,
+              31,
+              18
+            ],
+            "RAW": 0,
+            "clock": 70,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "comparator": {
+            "tick": 70,
+            "coordinate": [
+              28,
+              26,
+              18
+            ],
+            "RAW": 1220757029828689921,
+            "clock": 70,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 13,
+            "direction": [
+              1,
+              -1,
+              0
+            ],
+            "active": true
+          },
+          "environment": {
+            "tick": 70,
+            "coordinate": [
+              33,
+              31,
+              23
+            ],
+            "RAW": 0,
+            "clock": 70,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "reader_source": {
+            "tick": 70,
+            "coordinate": [
+              28,
+              24,
+              18
+            ],
+            "RAW": 0,
+            "clock": 70,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "return": {
+            "tick": 70,
+            "coordinate": [
+              32,
+              30,
+              22
+            ],
+            "RAW": 0,
+            "clock": 70,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      },
+      "wall_utc": "2026-10-13T22:17:03.255402+00:00",
+      "monotonic_ns": 108771261022000
+    },
+    {
+      "record_type": "EVALUATION",
+      "run_id": "RESERVED_2",
+      "emission_tick": 37,
+      "target_tick": 120,
+      "current_tick": 120,
+      "outcome": {
+        "tick": 120,
+        "arrived": true,
+        "observable": "packet_arrival_at_barrier_output",
+        "world_law": "packet transmits iff mechanical barrier open; fixed optional flip; no forecast input"
+      },
+      "prediction_set": [
+        true
+      ],
+      "correct_when_resolved": true,
+      "coverage": true,
+      "set_contains_outcome": true,
+      "absolute_error_binary": 0,
+      "panel": {
+        "tick": 120,
+        "delta": 1,
+        "centers_available": true,
+        "supports_intact": true,
+        "reader_available": true,
+        "axis_projection": 1,
+        "observations": {
+          "A": {
+            "tick": 120,
+            "coordinate": [
+              27,
+              26,
+              18
+            ],
+            "RAW": 1152921938398543873,
+            "clock": 348,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 101,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "B": {
+            "tick": 120,
+            "coordinate": [
+              29,
+              26,
+              18
+            ],
+            "RAW": 1152921934103576577,
+            "clock": 348,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 100,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "action": {
+            "tick": 120,
+            "coordinate": [
+              33,
+              31,
+              18
+            ],
+            "RAW": 0,
+            "clock": 120,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "comparator": {
+            "tick": 120,
+            "coordinate": [
+              28,
+              26,
+              18
+            ],
+            "RAW": 1153203035418132481,
+            "clock": 120,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 13,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "environment": {
+            "tick": 120,
+            "coordinate": [
+              33,
+              31,
+              23
+            ],
+            "RAW": 0,
+            "clock": 120,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "reader_source": {
+            "tick": 120,
+            "coordinate": [
+              28,
+              24,
+              18
+            ],
+            "RAW": 0,
+            "clock": 120,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "return": {
+            "tick": 120,
+            "coordinate": [
+              32,
+              30,
+              22
+            ],
+            "RAW": 0,
+            "clock": 120,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      },
+      "wall_utc": "2026-10-13T22:17:03.427108+00:00",
+      "monotonic_ns": 108771432731300
+    },
+    {
+      "record_type": "EVALUATION",
+      "run_id": "RESERVED_2",
+      "emission_tick": 37,
+      "target_tick": 170,
+      "current_tick": 170,
+      "outcome": {
+        "tick": 170,
+        "arrived": true,
+        "observable": "packet_arrival_at_barrier_output",
+        "world_law": "packet transmits iff mechanical barrier open; fixed optional flip; no forecast input"
+      },
+      "prediction_set": [
+        true
+      ],
+      "correct_when_resolved": true,
+      "coverage": true,
+      "set_contains_outcome": true,
+      "absolute_error_binary": 0,
+      "panel": {
+        "tick": 170,
+        "delta": 1,
+        "centers_available": true,
+        "supports_intact": true,
+        "reader_available": true,
+        "axis_projection": 1,
+        "observations": {
+          "A": {
+            "tick": 170,
+            "coordinate": [
+              27,
+              26,
+              18
+            ],
+            "RAW": 1152921938398543873,
+            "clock": 398,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 101,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "B": {
+            "tick": 170,
+            "coordinate": [
+              29,
+              26,
+              18
+            ],
+            "RAW": 1152921934103576577,
+            "clock": 398,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 100,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "action": {
+            "tick": 170,
+            "coordinate": [
+              33,
+              31,
+              18
+            ],
+            "RAW": 0,
+            "clock": 170,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "comparator": {
+            "tick": 170,
+            "coordinate": [
+              28,
+              26,
+              18
+            ],
+            "RAW": 1153203035418132481,
+            "clock": 170,
+            "state": 1,
+            "semantic": 1,
+            "s_reg": 13,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "environment": {
+            "tick": 170,
+            "coordinate": [
+              33,
+              31,
+              23
+            ],
+            "RAW": 0,
+            "clock": 170,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "reader_source": {
+            "tick": 170,
+            "coordinate": [
+              28,
+              24,
+              18
+            ],
+            "RAW": 0,
+            "clock": 170,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "return": {
+            "tick": 170,
+            "coordinate": [
+              32,
+              30,
+              22
+            ],
+            "RAW": 0,
+            "clock": 170,
+            "state": 0,
+            "semantic": 0,
+            "s_reg": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      },
+      "wall_utc": "2026-10-13T22:17:03.649207+00:00",
+      "monotonic_ns": 108771654831500
+    }
+  ],
+  "baseline_prediction_set": [
+    true
+  ],
+  "baseline_errors": [
+    0,
+    0,
+    0
+  ]
+}

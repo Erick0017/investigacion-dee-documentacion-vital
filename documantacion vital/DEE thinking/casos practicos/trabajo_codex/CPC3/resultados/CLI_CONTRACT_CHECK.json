@@ -1,0 +1,55 @@
+{
+  "technical_assertions": true,
+  "cases": [
+    {
+      "arguments": [
+        "continuidad",
+        "--perfil",
+        "politica"
+      ],
+      "exit_code": 2,
+      "output_not_created": true,
+      "stderr": "usage: ejecutar.py [-h] [--output OUTPUT] [--snapshot SNAPSHOT]\n                   [--perfil {continuidad,comparacion,politica}] [--zip ZIP]\n                   [--abierto]\n                   {continuidad,comparacion,seleccion,politica,restaurar,verificar}\nejecutar.py: error: --perfil s\ufffdlo corresponde al recorrido restaurar; los otros recorridos ya declaran su preparaci\ufffdn\n"
+    },
+    {
+      "arguments": [
+        "comparacion",
+        "--perfil",
+        "politica"
+      ],
+      "exit_code": 2,
+      "output_not_created": true,
+      "stderr": "usage: ejecutar.py [-h] [--output OUTPUT] [--snapshot SNAPSHOT]\n                   [--perfil {continuidad,comparacion,politica}] [--zip ZIP]\n                   [--abierto]\n                   {continuidad,comparacion,seleccion,politica,restaurar,verificar}\nejecutar.py: error: --perfil s\ufffdlo corresponde al recorrido restaurar; los otros recorridos ya declaran su preparaci\ufffdn\n"
+    },
+    {
+      "arguments": [
+        "politica",
+        "--abierto"
+      ],
+      "exit_code": 2,
+      "output_not_created": true,
+      "stderr": "usage: ejecutar.py [-h] [--output OUTPUT] [--snapshot SNAPSHOT]\n                   [--perfil {continuidad,comparacion,politica}] [--zip ZIP]\n                   [--abierto]\n                   {continuidad,comparacion,seleccion,politica,restaurar,verificar}\nejecutar.py: error: --abierto s\ufffdlo configura los perfiles centrales continuidad/comparacion\n"
+    },
+    {
+      "arguments": [
+        "seleccion",
+        "--snapshot",
+        "unused.deetsnap"
+      ],
+      "exit_code": 2,
+      "output_not_created": true,
+      "stderr": "usage: ejecutar.py [-h] [--output OUTPUT] [--snapshot SNAPSHOT]\n                   [--perfil {continuidad,comparacion,politica}] [--zip ZIP]\n                   [--abierto]\n                   {continuidad,comparacion,seleccion,politica,restaurar,verificar}\nejecutar.py: error: --snapshot s\ufffdlo corresponde a restaurar\n"
+    },
+    {
+      "arguments": [
+        "continuidad",
+        "--zip",
+        "unused.zip"
+      ],
+      "exit_code": 2,
+      "output_not_created": true,
+      "stderr": "usage: ejecutar.py [-h] [--output OUTPUT] [--snapshot SNAPSHOT]\n                   [--perfil {continuidad,comparacion,politica}] [--zip ZIP]\n                   [--abierto]\n                   {continuidad,comparacion,seleccion,politica,restaurar,verificar}\nejecutar.py: error: --zip s\ufffdlo corresponde a verificar\n"
+    }
+  ],
+  "scope": "Parser only; these rejected configurations are not physical experiments"
+}

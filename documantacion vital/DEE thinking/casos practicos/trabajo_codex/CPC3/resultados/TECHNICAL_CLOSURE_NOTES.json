@@ -1,0 +1,7 @@
+{
+  "scope":"Packaging and closure helpers, not physical experiments",
+  "hotfixes":[
+    {"helper":"seal_cut.py","attempt":1,"exception":"ModuleNotFoundError: No module named 'supervise'","cause":"CPython -I does not add script directory to sys.path","correction":"Explicit __file__-relative shared-tools import path","previous_code":"compartido/seal_cut_isolated_import_attempt.py","physics_rerun":false},
+    {"helper":"package_cpc3.py --verify","attempt":1,"exception":"argparse required --root even for --verify","correction":"Default root is the helper's own CPC3 directory, so the documented standalone verifier works","physical_or_critical_public_source_changed":false,"physics_rerun":false}
+  ]
+}

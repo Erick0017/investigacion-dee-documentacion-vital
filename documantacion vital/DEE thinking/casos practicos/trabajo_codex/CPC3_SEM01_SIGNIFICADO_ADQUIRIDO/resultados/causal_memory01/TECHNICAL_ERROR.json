@@ -1,0 +1,12 @@
+{
+  "attempt": "causal_memory01",
+  "status": "TECHNICAL_ERROR_BEFORE_DIAGNOSTIC_FORK_OR_NATIVE_ADVANCE",
+  "error": "TypeError: 'list' object is not callable",
+  "cause": "Runtime.receipts is a Python binding property, not a method",
+  "repair": "Use Runtime.receipts property for immutable receipt-panel comparison",
+  "repair_number_for_this_error": 1,
+  "evidence": "jobs/memory_causal_mem_remove/stderr.log and job.json",
+  "source_preserved": ["FAILED_SOURCE_memory_counterfactuals.py", "FAILED_SOURCE_run_memory_controls.py"],
+  "scientific_expectations_changed": false,
+  "pending_next_cut": "causal_memory02 after root source freeze"
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "dee.v27.core07.holdout.v1",
+  "hypothesis_id": "C7H01_FUNCTIONAL_LEARNING_TRANSFER",
+  "hypothesis": "An ordinary DEE training collision writes an integer-translation response repertoire into a mobile memory carrier; a causal zero-s_reg relay can relocate that repertoire to a remote receiver, where it maps unseen queries n to n+delta. The trained source, memory lineage, on-path corridor, relay direction and receiver coupling are causally necessary, while source state and an off-path cut are irrelevant.",
+  "domain": {
+    "kernel": "sealed DEE v27",
+    "sector": "semantic-1 normal carriers in otherwise blank periodic cubic worlds",
+    "new_sizes": [53, 59, 67, 73],
+    "train_tick": 5,
+    "relay_tick": 12,
+    "query_tick": 23,
+    "query_path": 5,
+    "base_offset": 4096,
+    "new_deltas": [-5, 3, 6, 9],
+    "training_x": [7, 11, 15, 19],
+    "unseen_queries_by_cell": [[0, 4, 8, 13], [1, 6, 10, 17], [2, 5, 12, 18], [3, 9, 14, 20]],
+    "frames": [
+      {"permutation": [0, 1, 2], "signs": [1, 1, 1]},
+      {"permutation": [1, 2, 0], "signs": [-1, 1, 1]},
+      {"permutation": [2, 0, 1], "signs": [1, -1, 1]},
+      {"permutation": [0, 2, 1], "signs": [-1, -1, 1]}
+    ]
+  },
+  "preparation": "For each cell, cue B-x and teacher x+delta arrive synchronously at a training junction through normal carrier ports. Their ordinary reducer collision writes B+delta. After seven ticks the memory meets an ordinary semantic-1 relay with s_reg=0 and is redirected. Eleven ticks later an unseen query n meets the transferred carrier at a remote receiver. No hidden memory cell is edited and the decoder is fixed to receiver_s_reg-B.",
+  "observable": {
+    "primary": "exact receiver response direction and decoded value n+delta",
+    "mechanism": "training output, relay output, source consumption, cut target occupancy, empty injection port",
+    "identity": "response repertoire on queries excluded from the training input"
+  },
+  "model/rule": {
+    "memory_value": "B+(teacher-training_input)=B+delta",
+    "relay_value": "B+delta+0",
+    "receiver_value": "B+delta+n",
+    "decoder": "s_reg-B",
+    "direction_rule": "componentwise sign of the incoming directions"
+  },
+  "parameters": {
+    "threads": 1,
+    "seeds": [720101, 720202, 720303, 720404],
+    "modes": ["transferred", "no_transfer", "source_removed", "untrained_source", "label_shuffled_source", "memory_ablation", "corridor_cut", "off_path_cut", "direction_zero", "state_nuisance", "destination_sham"],
+    "cut_offset_after_relay": 5,
+    "off_path_offset": 2,
+    "wrong_label_offset": 4
+  },
+  "nulls": [
+    "The receiver response is supplied by the query encoder.",
+    "Any occupied source or arbitrary label yields the expected function.",
+    "The apparent transfer is a coordinate coincidence independent of the causal corridor.",
+    "The source state rather than the learned response value controls the output."
+  ],
+  "controls": ["no-transfer", "source removed", "untrained source", "label-shuffled source", "memory ablation", "on-path corridor cut", "off-path cut", "relay direction zeroed", "source-state nuisance", "destination sham"],
+  "minimum_relevance": {
+    "positive_exact_rate": 1.0,
+    "positive_wilson_95_lower": 0.90,
+    "negative_inexact_rate": 1.0,
+    "negative_any_exact_rate_max": 0.0,
+    "ports_empty_rate": 1.0,
+    "memory_ablation_target_present_rate": 1.0,
+    "corridor_cut_target_present_rate": 1.0,
+    "off_path_cut_target_empty_rate": 1.0,
+    "training_and_relay_exact_rate": 1.0
+  },
+  "PASS": "All preregistered thresholds pass. Promote FUNCTIONAL_LEARNING_TRANSFER_CONFIRMED within the sealed sector and tested domain; interpret as continuous carrier-mediated functional transfer, not instantaneous or physical teleportation.",
+  "FAIL": "Any preregistered threshold fails. Retain the discovery signal without promotion and report which causal/generalization condition failed.",
+  "INCONCLUSIVE": "Technical/kernel identity failure, occupied injection ports, missing planned cases, or corrupted result prevents adjudication.",
+  "seed/data split": "All sizes, frames, deltas, queries and seeds above are new and were frozen before execution; no external data are used.",
+  "falsifier": "A planned positive case loses the exact unseen-query repertoire, a causally necessary control retains it, nuisance state/off-path cut destroys it, or event accounting contradicts the frozen reducer chain.",
+  "frozen_utc": "2026-09-13T19:15:00Z"
+}

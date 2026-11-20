@@ -1,0 +1,52 @@
+{
+  "schema": "DEE.PI06.cloud_native_admission.clarified.R03",
+  "recorded_utc": "2026-11-10T05:37:37.527326+00:00",
+  "fixture_literal_unchanged": {
+    "file": "FIXTURE_PI06_AMBIENTE_R03_R02.json",
+    "sha256": "484b8efe0f0fbd53a815a4d33f17e0340e965370db44934aa99f35e4acbc1c7c"
+  },
+  "prior_protocol_literal_preserved": {
+    "file": "PROTOCOLO_PI06_AMBIENTE_R03_R02.json",
+    "sha256": "b3e673a9410c432b4c48c5441c4fc12853bc6b64fbfc0dccd31368b1d818979c"
+  },
+  "current_protocol": {
+    "file": "PROTOCOLO_PI06_AMBIENTE_R03_R03.json",
+    "sha256": "4320f90d7683378ac53e5d09678b861c4be656263e4047a8987b3ae1de216440"
+  },
+  "Native_admission_contract": {
+    "source_review_reported_by_Root": "Frozen runtime.cpp lines377–407: raw_a_[idx]!=0 givesRejectedOccupied; onlyApplied writes and preserves the priorclock.",
+    "all_fixed_requests_submitted_individually": 61,
+    "expected_applied_from_fixed_preflight": 58,
+    "expected_RejectedOccupied_from_fixed_preflight": 3,
+    "expected_rejection_sites": [
+      [
+        33,
+        35,
+        34
+      ],
+      [
+        33,
+        35,
+        35
+      ],
+      [
+        35,
+        35,
+        34
+      ]
+    ],
+    "counts_are_predictions_not_retrospective_selection": true,
+    "resolved_occupied_rejections_allowed_only_for_mode": "eci01-pi06-ambiente",
+    "allowed_terminal_receipt_states": [
+      "applied",
+      "rejected_occupied"
+    ],
+    "unexpected_or_nonterminal_receipts_stop_without_retry": true,
+    "report_fixture_density_and_real_admitted_density_separately": true,
+    "no_cognitive_regulation_credit_for_Runtime_admission_guard": true
+  },
+  "external_preflight_omission_suggestion_not_adopted": true,
+  "Root_review_resolved_safety_question_before_R03_Native": true,
+  "Native_executed_by_this_tool": false,
+  "new_Native_ticks": 0
+}

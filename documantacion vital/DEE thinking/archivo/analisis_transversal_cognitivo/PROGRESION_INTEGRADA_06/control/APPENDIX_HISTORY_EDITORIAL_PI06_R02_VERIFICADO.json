@@ -1,0 +1,97 @@
+{
+  "schema": "DEE.PI06.editorial_appendix_selector_fix.R02",
+  "cause": "R01 chose the first matching Appendix A text in the table of contents, so its range incorrectly included the new chapter49. R02 requires exactly one actual Heading1 Appendix A and compares every element from that heading through the body end literally.",
+  "tests": [
+    {
+      "name": "only_appendix_history_function_changed",
+      "passed": true
+    },
+    {
+      "name": "R01_reproduces_wrong_index_range",
+      "passed": true
+    },
+    {
+      "name": "real_appendix_nonempty",
+      "passed": true
+    },
+    {
+      "name": "real_appendix_complete_literal_elements_equal",
+      "passed": true
+    },
+    {
+      "name": "historical_chapters1_48_still_literal_equal",
+      "passed": true
+    },
+    {
+      "name": "index_duplicate_not_selected",
+      "passed": true
+    },
+    {
+      "name": "recognized_heading_style_Heading1",
+      "passed": true
+    },
+    {
+      "name": "recognized_heading_style_heading1",
+      "passed": true
+    },
+    {
+      "name": "recognized_heading_style_Ttulo1",
+      "passed": true
+    },
+    {
+      "name": "recognized_heading_style_Titulo1",
+      "passed": true
+    },
+    {
+      "name": "recognized_heading_style_Title1",
+      "passed": true
+    },
+    {
+      "name": "fail_closed_TOC_only",
+      "passed": true
+    },
+    {
+      "name": "fail_closed_no_exact_heading",
+      "passed": true
+    },
+    {
+      "name": "fail_closed_duplicate_H1",
+      "passed": true
+    },
+    {
+      "name": "all_original_staged_DOCX_and_R01_unchanged",
+      "passed": true
+    }
+  ],
+  "passed": 15,
+  "R01_source_sha256": "109510a3481e6f4c61b9958853467d8b1969645aad3468fa0b4bd1a6ef6faa9a",
+  "R02_source_sha256": "4bffff3932a2b882d9bdfea98cf6be33b8feb0030132ebe25930582683b20679",
+  "old_wrong_range_counts": [
+    1436,
+    1476
+  ],
+  "actual_appendix_elements": 110,
+  "actual_appendix_literal_equal": true,
+  "chapters1_48_literal_equal": true,
+  "original_and_staged_before": {
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\respaldo_1_32\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "2c7e32a1b246b84b8aa5811e3bc7ffea65ce63090bc6e023ba387c956f636fc1",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\staging_1_33_R01\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "55f77c470b2b442e8fce341dd0eb9d669a6e8e565d35b9ca9f3236f34459922d",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "2c7e32a1b246b84b8aa5811e3bc7ffea65ce63090bc6e023ba387c956f636fc1",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\CPC - Experimentos y mecanismos\\COMPENDIO_MAESTRO_DE_MECANISMOS_Y_RESULTADOS_DEE.docx": "5541e7a5b60cb507c2823e5523d55e1cd0406c97c9e0bed02f246b73463f47ee",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\staging_1_33_R01\\COMPENDIO_MAESTRO_DE_MECANISMOS_Y_RESULTADOS_DEE.docx": "34ae6c7eddb0a72afa846c720eaa0b1b30d990a354350d67d5402d00978aa559",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\codigo\\publicar_documentos_PI06_literal_R01.py": "109510a3481e6f4c61b9958853467d8b1969645aad3468fa0b4bd1a6ef6faa9a"
+  },
+  "original_and_staged_after": {
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\respaldo_1_32\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "2c7e32a1b246b84b8aa5811e3bc7ffea65ce63090bc6e023ba387c956f636fc1",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\staging_1_33_R01\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "55f77c470b2b442e8fce341dd0eb9d669a6e8e565d35b9ca9f3236f34459922d",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\DEE_Cognitive_2_0_Manual_Maestro_DCS11_MM_001_Edicion_1_21.docx": "2c7e32a1b246b84b8aa5811e3bc7ffea65ce63090bc6e023ba387c956f636fc1",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\CPC - Experimentos y mecanismos\\COMPENDIO_MAESTRO_DE_MECANISMOS_Y_RESULTADOS_DEE.docx": "5541e7a5b60cb507c2823e5523d55e1cd0406c97c9e0bed02f246b73463f47ee",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\documentos\\staging_1_33_R01\\COMPENDIO_MAESTRO_DE_MECANISMOS_Y_RESULTADOS_DEE.docx": "34ae6c7eddb0a72afa846c720eaa0b1b30d990a354350d67d5402d00978aa559",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\codigo\\publicar_documentos_PI06_literal_R01.py": "109510a3481e6f4c61b9958853467d8b1969645aad3468fa0b4bd1a6ef6faa9a"
+  },
+  "Native_executed": false,
+  "DOCX_authored_or_modified": false,
+  "product_modified": false,
+  "equality_requirement_not_weakened": true,
+  "visual_QA": false
+}

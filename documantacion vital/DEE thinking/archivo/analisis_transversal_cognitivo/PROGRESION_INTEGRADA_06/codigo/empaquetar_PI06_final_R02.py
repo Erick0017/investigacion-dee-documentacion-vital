@@ -1,0 +1,328 @@
+"""PI06 final analysis: read-only plan by default; explicit sealing only after closure.
+Derived from PI05 R02 (source SHA f56fc0792070fe82725dd4f0e3b8fba09326ac017c388aa7b2abe328f9eee522). No Native, GUI, engine imports,
+cleanup, operational edits or document authoring. Original complete Manual1.33.
+"""
+from pathlib import Path,PurePosixPath
+import argparse,collections,csv,datetime,hashlib,io,json,os,runpy,subprocess,sys
+import xml.etree.ElementTree as ET
+import zipfile
+P=Path(__file__).resolve().parent.parent;R=P.parents[2];W=P.parents[4]
+C=R/'DEE Cognitive 2.0';S=C/'sistema';RP=C/'reproducibilidad';D=P/'documentos'
+BUNDLE=P/'fuentes/RECALCULO_GLOBAL_PORTABLE_PI06_R01'
+LIMIT=15_000_000;MANIFEST='05_CONTROL/MANIFIESTO_SHA256.json'
+FORBIDDEN=('.deetsnap.gz','.deetsnap','.sqlite','.sqlite3','.sqlite3-wal','.sqlite3-shm','.whl','.pyd','.exe','.dll','.zip')
+RESOURCE_FIELDS=('peak_job_committed_bytes','peak_process_committed_bytes','job_memory_limit','working_set_bytes','peak_working_set_bytes','private_bytes','cpu_user_seconds','cpu_kernel_seconds')
+
+
+def need(v,message):
+    if not v:raise ValueError(message)
+
+def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+
+def sha(p):
+    h=hashlib.sha256()
+    with Path(p).open('rb')as f:
+        for b in iter(lambda:f.read(1048576),b''):h.update(b)
+    return h.hexdigest()
+
+def digest(b):return hashlib.sha256(b).hexdigest()
+
+def info(p):return {'path':str(Path(p).resolve()),'bytes':Path(p).stat().st_size,'sha256':sha(p)}
+
+def encode(v):return(json.dumps(v,ensure_ascii=False,indent=2,allow_nan=False)+'\n').encode('utf-8')
+
+def write_new(p,b):
+    p=Path(p);p.parent.mkdir(parents=True,exist_ok=True)
+    with p.open('xb')as f:f.write(b)
+
+def safe_name(n):
+    need(isinstance(n,str)and'\\'not in n and':'not in n and'\x00'not in n,'Unsafe ZIP member')
+    q=PurePosixPath(n);need(not q.is_absolute()and'..'not in q.parts and all(p not in('','.')for p in q.parts),'Unsafe ZIP member')
+    return q.as_posix()
+
+def regular(p):
+    p=Path(p).absolute();need(p.resolve(strict=True).is_relative_to(R.resolve()),'Source outside directed DEE scope')
+    for x in(p,*p.parents):
+        need(not x.is_symlink()and not(getattr(x.lstat(),'st_file_attributes',0)&1024),'Linked/reparse source')
+        if x==R:break
+    need(p.is_file(),'Regular file required');return p
+
+def validate_docx(b,manual=False):
+    with zipfile.ZipFile(io.BytesIO(b))as z:
+        need(z.testzip()is None,'DOCX CRC failure')
+        for n in z.namelist():
+            if n.endswith(('.xml','.rels')):ET.fromstring(z.read(n))
+        if manual:
+            core=ET.fromstring(z.read('docProps/core.xml'))
+            need('1.33'in[n.text for n in core if n.tag.endswith('}version')],'Full actual Manual must be internal1.33')
+            body=z.read('word/document.xml').decode('utf-8')
+            need('[[CIERRE_REAL_PENDIENTE]]'not in body and'[[PENDIENTE'not in body,'Unresolved authoring marker')
+
+def validate_content(n,b):
+    ext=Path(n).suffix.lower()
+    if ext=='.json':json.loads(b.decode('utf-8-sig'))
+    elif ext in('.csv','.tsv'):list(csv.reader(io.StringIO(b.decode('utf-8-sig')),delimiter='\t'if ext=='.tsv'else','))
+    elif ext=='.jsonl':
+        for line in b.decode('utf-8-sig').splitlines():
+            if line.strip():json.loads(line)
+    elif ext in('.txt','.md','.py','.srt'):b.decode('utf-8-sig')
+    elif ext=='.docx':validate_docx(b,'DCS11_MM_001'in n)
+
+def aggregate_resources(path):
+    before=info(path);seen=set();duplicates=0;groups={};requests={};aliases=0;conflicts=[];kinds=collections.Counter();lines=0
+    with Path(path).open('rt',encoding='utf-8-sig')as f:
+        for number,line in enumerate(f,1):
+            if not line.strip():continue
+            lines+=1;row=json.loads(line);finger=digest(json.dumps(row,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode())
+            if finger in seen:duplicates+=1;continue
+            seen.add(finger);kind=row.get('kind','UNKNOWN');kinds[kind]+=1
+            if kind not in('OWNED_PROCESS_RESOURCES','OWNER_STARTED','OWNER_CLOSED','MATERIAL_REQUEST'):continue
+            run=row.get('run');life=row.get('life');need(isinstance(run,str)and isinstance(life,str),'Owner log run/life missing')
+            g=groups.setdefault((run,life),{'run':run,'life':life,'pids':set(),'resource_samples':0,'started_records':0,'closed_records':0,'maxima':{},'duration_seconds_max':0.0,'exit_codes':set(),'material_request_ids':set()})
+            if type(row.get('pid'))is int:g['pids'].add(row['pid'])
+            if kind=='OWNED_PROCESS_RESOURCES':
+                g['resource_samples']+=1
+                for key in RESOURCE_FIELDS:
+                    value=row.get(key)
+                    if type(value)in(int,float):g['maxima'][key]=max(g['maxima'].get(key,value),value)
+            elif kind=='OWNER_STARTED':g['started_records']+=1
+            elif kind=='OWNER_CLOSED':g['closed_records']+=1;g['exit_codes'].add(row.get('exit_code'))
+            else:
+                identifier=row.get('id');need(isinstance(identifier,str),'Transport request ID missing');key=(life,identifier)
+                value={k:row.get(k)for k in('literal','status','before_tick','after_tick','sha256')}
+                if key in requests:
+                    aliases+=1
+                    if requests[key]!=value:conflicts.append({'life':life,'id':identifier,'line':number,'reason':'Same transport ID has different terminal record; not counted twice'})
+                else:requests[key]=value
+                g['material_request_ids'].add(identifier)
+            if type(row.get('elapsed_seconds'))in(int,float):g['duration_seconds_max']=max(g['duration_seconds_max'],row['elapsed_seconds'])
+    need(info(path)==before,'Owner resource log changed during closed aggregation')
+    output=[]
+    for key,g in sorted(groups.items()):
+        g['pids']=sorted(g['pids']);g['exit_codes']=sorted(g['exit_codes'],key=str);g['material_requests_unique_in_run']=len(g.pop('material_request_ids'));output.append(g)
+    need(not conflicts,'Conflicting transport aliases in owner log')
+    need(all(g['closed_records']>=1 for g in output if g['started_records']),'Owner started without a closed record; do not seal yet')
+    result={'schema':'DEE.PI06.owner_resources.closed_log_aggregate.R01','source_log':before,'mode':'PASSIVE_LOG_RECALCULATION_ONLY','Native_ticks_executed':0,'lines':lines,'unique_rows':len(seen),'exact_duplicate_rows_excluded':duplicates,'event_kind_counts':dict(kinds),'owners':output,'distinct_owner_runs':len(output),'material_transport_requests_unique':len(requests),'transport_aliases_not_counted_twice':aliases,'conflicting_aliases':conflicts,'max_observed_per_field':{key:max((g['maxima'].get(key,0)for g in output),default=0)for key in RESOURCE_FIELDS},'sum_distinct_owner_cpu_user_seconds':sum(g['maxima'].get('cpu_user_seconds',0)for g in output),'sum_distinct_owner_cpu_kernel_seconds':sum(g['maxima'].get('cpu_kernel_seconds',0)for g in output),'scope':'Per-run CPU counters use their maximum, never sum repeated samples. RAM maxima are host resources, not cognitive memory or simultaneous whole-machine peaks. MATERIAL_REQUEST counts transport operations, not Native inputs or concepts. Native scientific tick/input ledger remains separate.'}
+    result['RP_host_resource_coverage']='Only ENSAYOS.jsonl resource samples are aggregated here. A separate RP owner without these samples is not assigned0; its context/proofs are retained separately.'
+    return result
+
+
+def required(a):
+    return [a.cierre,a.publicacion,P/'INFORME_CIENTIFICO_PI06.md',P/'ENCARGO_PI06.txt',
+            P/'REGISTRO_CAMPANA.json',P/'ENSAYOS.jsonl']
+
+
+def prerequisites(a):
+    missing=[str(p)for p in required(a)if not p.is_file()]
+    need(not missing,'Missing actual closure prerequisites: '+', '.join(missing))
+    facts=read(a.cierre);need(facts.get('closed_for_authoring')is True,'Scientific closure not final')
+    active=read(S/'estado/ACTIVO.json');life=active['life_id']
+    need(read(C/'PROYECTO.json')['selected_life']==life and read(S/'estado/genesis/SELECCION_PERSONAL.json')['life_id']==life,'Actual current selectors disagree')
+    card=read(S/'estado/vidas'/life/'VIDA.json');need(card['physical']['N']==67,'N67 expected')
+    principal=facts.get('principal',facts.get('m',{}).get('principal',{}))
+    need(principal.get('life_id',principal.get('id'))==life,'Final facts do not describe actual selected principal')
+    tick=principal.get('tick',principal.get('T',principal.get('physical',{}).get('tick')))
+    need(tick==card['physical']['tick'],'Final facts/current physical tick differ')
+    # PI06 may close with the protected PI05 principal. No adoption is invented
+    # or required when the scientific result fails the integration criterion.
+    publication=read(a.publicacion)
+    need(publication.get('status')=='PUBLISHED_LITERAL_STRUCTURALLY_VERIFIED','Literal document publication not completed')
+    docs={}
+    for label in('Manual','Compendium'):
+        row=publication['documents'][label];p=regular(row['published']['path']);b=p.read_bytes()
+        need(row.get('literal_staging_equal')is True and len(b)==row['published']['bytes']and digest(b)==row['published']['sha256'],'Published literal differs:'+label)
+        validate_docx(b,label=='Manual');docs[label]=p
+    need((P/'mapas').is_dir(),'Final maps missing')
+    names=[p.name.upper()for p in(P/'mapas').iterdir()if p.is_file()]
+    need(any('CONTINUIDAD'in n for n in names)and any('MATRIZ'in n and n.endswith('.CSV')for n in names),'Final continuity and capacity matrix required')
+    return facts,publication,docs,life,card
+
+
+def add_capsules(items,add,explicit):
+    manifests={}
+    for p in explicit:manifests[str(Path(p).resolve())]={'path':Path(p),'proof':'explicit Root selection'}
+    # These are actual preservation proofs, not a scan of historical capsules.
+    for proof in sorted((P/'control').glob('MATERIALES_RP_PI06_R01_*.json')):
+        d=read(proof);cap=d.get('code_capsule',{})
+        if not cap:continue
+        mp=Path(cap.get('manifest')or'SISTEMA_CODIGO.json')
+        if not mp.is_absolute():mp=Path(cap['destination'])/mp
+        if cap.get('manifest_sha256'):need(sha(mp)==cap['manifest_sha256'],'Preserved code capsule manifest differs')
+        manifests[str(mp.resolve())]={'path':mp,'proof':str(proof)}
+    need(manifests,'No actual preserved PI06 code capsule supplied/found')
+    witnesses=[]
+    for entry in manifests.values():
+        manifest=regular(entry['path']);m=read(manifest);base=manifest.parent;rows=m.get('files')
+        need(isinstance(rows,list)and rows,'Code capsule file list missing')
+        alias=sha(manifest)[:12];target='06_CODIGO/CAPSULAS/'+alias
+        add(manifest,target+'/SISTEMA_CODIGO.json','Exact preserved code capsule manifest')
+        for row in rows:
+            rel=safe_name(row['file']);p=regular(base/rel)
+            need(p.resolve().is_relative_to(base.resolve()),'Code capsule escape')
+            need(sha(p)==row['sha256']and p.stat().st_size==row['bytes'],'Code capsule member differs:'+rel)
+            add(p,target+'/'+rel,'Exact code used for reproduction; no motor binary')
+        witnesses.append({'manifest':info(manifest),'proof':entry['proof'],'ZIP_directory':target,'files':len(rows)})
+    return witnesses
+
+
+def build_items(a,facts,publication,docs,life,card):
+    items={}
+    def add(source,name,reason):
+        source=regular(source);name=safe_name(name)
+        need(not source.name.lower().endswith(FORBIDDEN),'Large operational/binary/archive forbidden:'+str(source))
+        b=source.read_bytes();need(len(b)<=32_000_000,'Unexpected oversized member; do not truncate:'+str(source))
+        need(name.casefold()not in{n.casefold()for n in items},'Duplicate ZIP member:'+name)
+        items[name]={'source':str(source),'data':b,'reason':reason}
+    def generated(name,value,reason):
+        name=safe_name(name);need(name not in items,'Generated collision');items[name]={'source':'generated:closed_records','data':encode(value),'reason':reason}
+    def tree(source,target,reason):
+        need(Path(source).is_dir(),'Required tree missing:'+str(source))
+        for p in sorted(Path(source).rglob('*')):
+            if p.is_file()and'__pycache__'not in p.parts:add(p,target+'/'+p.relative_to(source).as_posix(),reason)
+    add(P/'INFORME_CIENTIFICO_PI06.md','01_INFORME_CIENTIFICO.md','Single actual scientific report, including negatives')
+    for name in('ENCARGO_PI06.txt','REGISTRO_CAMPANA.json'):add(P/name,'05_CONTROL/'+name,'Literal scope/budget/current campaign registry')
+    for label,p in docs.items():add(p,'02_MANUAL/'+p.name,'Complete literal current '+label)
+    for p in sorted((P/'mapas').iterdir()):
+        if p.is_file()and p.suffix.lower()in('.json','.csv','.tsv','.md','.txt'):add(p,'03_MAPAS/'+p.name,'Actual final scientific/continuity/coverage map')
+    primaries=list(sorted((P/'ensayos').glob('*.json')));need(primaries,'No actual primaries')
+    for p in primaries:
+        row=read(p);need(str(row.get('status','')).lower()in('completed','failed','rejected','cancelled'),'Nonterminal primary:'+str(p))
+        add(p,'04_EVIDENCIAS/PRIMARIOS/'+p.name,'Every PI06 primary, including adverse/technical/cold outcomes')
+    for p in sorted((P/'control').glob('*.json')):
+        if p.name.startswith('VERIFICACION_ZIP_FINAL_PI06'):continue
+        add(p,'04_EVIDENCIAS/CONTROL/'+p.name,'Actual top-level control/protocol/proof; prepared is not executed')
+    for p in sorted(D.iterdir()):
+        if p.is_file()and p.suffix.lower()in('.json','.md','.txt')and'RESPALDO'not in p.name.upper():add(p,'04_EVIDENCIAS/DOCUMENTOS/'+p.name,'Document publication and bounded render/structural witness')
+    for p in sorted((P/'fuentes').iterdir()):
+        if p.is_file()and p.suffix.lower()in('.py','.json','.md','.csv','.txt'):add(p,'04_EVIDENCIAS/FUENTES/'+p.name,'Directed sources, exact excerpts, static bound and pure historical recalculation')
+    frozen_kernel=R/'4.5/DEE_thinking_4_5_0/source/src/kernel_v27.cpp'
+    need(sha(frozen_kernel)=='fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31','Frozen static-proof source differs')
+    add(frozen_kernel,'06_CODIGO/FUENTE_KERNEL_CONGELADA/kernel_v27.cpp','Literal source read as text for static bound; not a compiled engine or modification')
+    tree(BUNDLE,'05_RECALCULO/GLOBAL_PORTABLE','One lossless sparse RAW/clocks export per actual closed capture')
+    tree(P/'codigo','06_CODIGO/CAMPANA','Exact localized protocols, runners, Root helpers and pure checks; no automatic execution')
+    caps=add_capsules(items,add,a.capsula)
+    add(RP/'RECURSOS.json','03_MAPAS/RECURSOS_REPRODUCIBILIDAD_ACTUALES.json','Current stable reproducibility resource catalog')
+    for p in sorted((RP/'recetas').glob('*pi06*.json')):add(p,'06_CODIGO/RECETAS/'+p.name,'Actual PI06 recipe with its true verification status')
+    pairloc=[];resources=read(RP/'RECURSOS.json')
+    for alias,entry in resources.get('pairs',{}).items():
+        if 'PI06'not in alias and alias!='PI03_PI05_FINAL_GUARD_T824911':continue
+        mp=regular(C/entry['product_relative']/'EXPORTACION_SERVICIO.json')
+        need(sha(mp)==entry['manifest_sha256'],'Stable full-pair manifest differs:'+alias)
+        add(mp,'03_MAPAS/PARES/'+alias+'/EXPORTACION_SERVICIO.json','Complete local operational pair manifest; payload remains local')
+        pairloc.append({'alias':alias,**entry,'manifest':info(mp)})
+    for rel in('PROYECTO.json','CONTINUIDAD_DEE_COGNITIVE_2_0.json','sistema/estado/ACTIVO.json','sistema/estado/genesis/SELECCION_PERSONAL.json','aplicacion/GENESIS/SELECCION_CANDIDATA.json','sistema/capacidades/CATALOGO_CAPACIDADES.json','sistema/estado/vidas/'+life+'/VIDA.json'):
+        add(C/rel,'03_MAPAS/PRODUCTO/'+rel,'Current actual pointer/card; not a full operational backup')
+    generated('04_EVIDENCIAS/RECURSOS_PROPIETARIOS_PI06.json',aggregate_resources(P/'ENSAYOS.jsonl'),'Deduplicated closed per-owner host-resource aggregate, not cognitive memory or Native input count')
+    generated('05_CONTROL/COBERTURA_OMISIONES_Y_LOCALIZADORES.json',{
+        'schema':'DEE.PI06.final_analysis.omissions.R01','deep_owner_log':info(P/'ENSAYOS.jsonl'),
+        'code_capsules':caps,'full_pair_locators':pairloc,
+        'omitted':['Full snapshots, SQLite and auxiliaries, queues/receipts/outbox/artifact/environment payloads remain in their coherent local pairs',
+        'Original compressed global captures remain local; every actual recorded buffer is reconstructed from the included sparse/lossless bundle and checked against its original hash',
+        'Engine/WHL/PYD, large Thinkingmanuals, whole historic ZIP corpus, video/Mac/business and private credentials'],
+        'scope':'Analysis evidence, not operational backup. All selected P6primaries retained. No cleanup performed.'},'Explicit exclusions and stable locators')
+    guide=P/'entrega/00_LEER_PRIMERO.txt'
+    if guide.is_file():add(guide,'00_LEER_PRIMERO.txt','Root actual final concise guide')
+    else:
+        text=('DEE PI06 — expediente científico\nPrincipal realmente seleccionado: '+life+' N67 T'+str(card['physical']['tick'])+'\nManual completo: '+docs['Manual'].name+'; edición interna1.33.\nLeer01_INFORME_CIENTIFICO.md,03_MAPAS,02_MANUAL y04_EVIDENCIAS.05_RECALCULO contiene recálculos puros: no ejecutanDEE. Los estados completos permanecen locales con sus manifiestos/localizadores. Este ZIP no es respaldo operativo ni prueba global de autonomía. La decisión de incorporación está en los hechos de cierre y selectores actuales, sin promoción inferida.\n')
+        items['00_LEER_PRIMERO.txt']={'source':'generated:actual_selection','data':text.encode('utf-8'),'reason':'Concise truthful reading guide'}
+    return items
+
+
+FENCE=r'''from pathlib import Path
+import json,os,runpy,sys
+extraction=Path(sys.argv[1]).resolve();dest=Path(sys.argv[2]).resolve();audit=Path(sys.argv[3]).resolve();stdlib=Path(sys.base_prefix).resolve();denied=[];imports=[];counts={'extraction':0,'destination':0,'stdlib':0}
+def inside(p,r):return p==r or r in p.parents
+def hook(event,args):
+ if event=='import'and(args[0]=='app'or args[0].startswith('app.')or args[0].startswith('dee_')):imports.append(args[0]);raise PermissionError('No DEE/app imports')
+ if event!='open'or not args or not isinstance(args[0],(str,bytes,os.PathLike)):return
+ p=Path(os.fsdecode(args[0])).resolve();mode=str(args[1]if len(args)>1 else'r');flags=args[2]if len(args)>2 and type(args[2])is int else 0;write=any(x in mode for x in('w','a','x','+'))or bool(flags&(os.O_WRONLY|os.O_RDWR|os.O_APPEND|os.O_CREAT|os.O_TRUNC))
+ if inside(p,extraction)and not write:counts['extraction']+=1;return
+ if inside(p,dest):counts['destination']+=1;return
+ if p==audit:return
+ if inside(p,stdlib)and not write:counts['stdlib']+=1;return
+ denied.append(str(p));raise PermissionError('Original source locator access refused')
+sys.addaudithook(hook);dest.mkdir()
+def run(script,args):
+ sys.argv=[str(script),*args];runpy.run_path(str(script),run_name='__main__')
+try:
+ bundle=extraction/'05_RECALCULO/GLOBAL_PORTABLE'
+ run(bundle/'recalcular.py',['--bundle',str(bundle),'--out',str(dest/'GLOBAL.json')])
+ sources=extraction/'04_EVIDENCIAS/FUENTES'
+ run(sources/'F1_RECALCULAR_ANTECEDENTES_PI06.py',['recalculate','--evidence',str(sources/'F1_ANTECEDENTES_PRIMARIOS_SELECCIONADOS_PI06.json'),'--out',str(dest/'HISTORICOS.json')])
+ run(sources/'F1_COTA_CRISTALIZACION_PI06.py',['--source',str(extraction/'06_CODIGO/FUENTE_KERNEL_CONGELADA/kernel_v27.cpp'),'--out',str(dest/'COTA.json')])
+finally:
+ with audit.open('x',encoding='utf-8')as f:json.dump({'denied':denied,'DEE_or_app_imports':imports,'open_counts':counts,'Native_ticks':0,'no_original_source_access':not denied},f,ensure_ascii=False,indent=2)
+'''
+
+
+def main():
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--crear-y-verificar',action='store_true')
+    ap.add_argument('--cierre',type=Path,default=P/'control/CIERRE_CIENTIFICO_PI06.json')
+    ap.add_argument('--publicacion',type=Path,default=D/'DOCUMENTOS_PUBLICADOS_PI06_1_33.json')
+    ap.add_argument('--capsula',type=Path,action='append',default=[])
+    ap.add_argument('--nombre',default='DEE_PROGRESION_INTEGRADA_06_'+datetime.datetime.now().astimezone().strftime('%Y_%m_%d')+'_ANALISIS.zip')
+    a=ap.parse_args()
+    if not a.crear_y_verificar:
+        print(json.dumps({'mode':'READ_ONLY_PLAN_NO_ZIP_NO_NATIVE','missing_required':[str(p)for p in required(a)if not p.is_file()],
+            'requires_before_create':['actual scientific closure and selected principal matching it','literal published complete Manual1.33+Compendium','final continuity+matrix','all owner log runs closed','actual preserved code capsule manifests','all captured primaries terminal; sparse buffer export verified'],
+            'creates_only_after_explicit_flag':['new portable bundle if absent','new staging and finalZIP','fresh extraction and pure verification'],
+            'future_output':str(P/'entrega'/a.nombre),'strict_limit':LIMIT,'Native_ticks':0},ensure_ascii=False));return
+    need(safe_name(a.nombre)==a.nombre and len(PurePosixPath(a.nombre).parts)==1 and a.nombre.lower().endswith('.zip'),'One safe ZIP leaf required')
+    facts,publication,docs,life,card=prerequisites(a)
+    if not BUNDLE.exists():
+        exporter=runpy.run_path(str(P/'codigo/preparar_global_portable_PI06_R01.py'),run_name='pure_closed_record_exporter')
+        exporter['prepare'](BUNDLE)
+    verifier=runpy.run_path(str(BUNDLE/'recalcular.py'),run_name='pure_bundle_preseal_check');bv=verifier['verify'](BUNDLE)
+    need(bv['all_complete_buffer_hashes_match'],'Bundle original hashes differ')
+    items=build_items(a,facts,publication,docs,life,card)
+    for n,v in items.items():validate_content(n,v['data'])
+    stamp=datetime.datetime.now().astimezone().strftime('%Y%m%d_%H%M%S');home=P/'entrega';home.mkdir(exist_ok=True)
+    stage=home/('staging_'+stamp);final=home/a.nombre;partial=home/(a.nombre+'.writing');proof=P/'control/VERIFICACION_ZIP_FINAL_PI06_R01.json'
+    need(not any(p.exists()for p in(stage,final,partial,proof)),'Prior attempt/delivery exists; preserve it and choose reviewed new name')
+    stage.mkdir();manifest={'schema':'DEE.PI06.final_analysis.content_manifest.R01','created_local':datetime.datetime.now().astimezone().isoformat(),
+        'content':[{'file':n,'bytes':len(v['data']),'sha256':digest(v['data']),'source':v['source'],'reason':v['reason']}for n,v in sorted(items.items())],
+        'self_hash_and_ZIP_hash_excluded':True};mb=encode(manifest)
+    for n,v in items.items():write_new(stage/Path(*PurePosixPath(n).parts),v['data'])
+    write_new(stage/Path(*PurePosixPath(MANIFEST).parts),mb)
+    with zipfile.ZipFile(partial,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=9,allowZip64=False)as z:
+        for n,v in sorted(items.items()):z.writestr(n,v['data'])
+        z.writestr(MANIFEST,mb)
+    need(partial.stat().st_size<=LIMIT,'ZIP exceeds15,000,000bytes; preserve candidate/staging, do not truncate evidence')
+    short=W/('pi06_verificacion_'+datetime.datetime.now().strftime('%H%M%S'));need(not short.exists(),'New short verification path required')
+    extraction=short/'x';recalc=short/'r';extraction.mkdir(parents=True)
+    with zipfile.ZipFile(partial)as z:
+        need(z.testzip()is None,'ZIP CRC failure');names=z.namelist()
+        need(len(names)==len(set(n.casefold()for n in names))and set(names)==set(items)|{MANIFEST},'Archive member set differs')
+        for n in names:
+            safe_name(n);b=z.read(n);dest=extraction/Path(*PurePosixPath(n).parts)
+            need(dest.resolve().is_relative_to(extraction.resolve())and len(str(dest))<255,'Extraction path escape/Windows length')
+            write_new(dest,b)
+            if n!=MANIFEST:need(b==items[n]['data'],'Literal member mismatch');validate_content(n,b)
+    need((extraction/'02_MANUAL'/docs['Manual'].name).read_bytes()==docs['Manual'].read_bytes(),'Full current Manual differs after extraction')
+    launcher=short/'fence.py';audit=short/'AUDIT.json';write_new(launcher,FENCE.encode('utf-8'))
+    command=[sys.executable,'-I','-B','-X','utf8',str(launcher),str(extraction),str(recalc),str(audit)]
+    process=subprocess.run(command,cwd=extraction,capture_output=True,text=True,encoding='utf-8',errors='strict',timeout=900,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+    write_new(short/'stdout.txt',process.stdout.encode('utf-8'));write_new(short/'stderr.txt',process.stderr.encode('utf-8'))
+    need(process.returncode==0,'Clean extraction recalculation failed; retained:'+process.stderr[-2000:])
+    av=read(audit);need(not av['denied']and not av['DEE_or_app_imports']and av['no_original_source_access'],'Read/import fence violated')
+    gv=read(recalc/'GLOBAL.json');hv=read(recalc/'HISTORICOS.json');cv=read(recalc/'COTA.json')
+    need(gv['all_complete_buffer_hashes_match']and gv['captures']==bv['captures']and gv['total_frames']==bv['total_frames'],'Extracted global coverage differs')
+    need(hv['D7']['all28_match_at1e_12']and hv['native_ticks_executed']==0,'Extracted historical recalculation differs')
+    need(cv['proof']['conservative_integer_quotient_max']==259 and cv['constants']['threshold_cast']==966 and cv['proof']['necessary_test_can_be_true']is False and cv['native_ticks_executed']==0,'Extracted source bound differs')
+    for n,v in items.items():
+        if not v['source'].startswith('generated:'):need(sha(v['source'])==digest(v['data']),'Selected source changed:'+v['source'])
+    need(sha(P/'ENSAYOS.jsonl')==read(stage/'04_EVIDENCIAS/RECURSOS_PROPIETARIOS_PI06.json')['source_log']['sha256'],'Owner log changed')
+    prerequisites(a);need(not final.exists(),'Concurrent delivery appeared');partial.rename(final)
+    result={'schema':'DEE.PI06.final_analysis.verified.R01','status':'SEALED_AND_CLEAN_EXTRACTION_VERIFIED','zip':info(final),
+        'strict_limit_bytes':LIMIT,'content_members':len(items),'ZIP_members':len(items)+1,'manifest_sha256':digest(mb),
+        'staging':str(stage),'clean_extraction':str(extraction),'pure_recalculation_output':str(recalc),'command':command,
+        'access_fence':av,'global_recalculation':{'captures':gv['captures'],'frames':gv['total_frames'],'all_complete_buffer_hashes_match':True},
+        'historical_recalculation':{'D7_comparisons':28,'max_error':hv['D7']['max_abs_error']},
+        'static_source_recalculation':{'source_sha256':cv['source']['sha256'],'quotient_upper_bound':259,'threshold':966,'binary_measurement':False},
+        'actual_Manual':info(docs['Manual']),'manual_copy_literal':True,
+        'principal_at_sealing':{'life_id':life,'physical':card['physical'],'snapshot_sha256':card['snapshot_sha256']},
+        'new_Native_ticks':0,'no_originals_modified_by_packager':True,'no_cleanup_performed':True,
+        'scope':'Frozen data recalculation only, no Native replay. Complete DOCXCRC/XML is not visualQA; publication witness is authoritative.'}
+    write_new(proof,encode(result));print(json.dumps({'zip':result['zip'],'proof':info(proof),'Native_ticks':0,'members':len(items)+1},ensure_ascii=False,indent=2))
+if __name__=='__main__':main()

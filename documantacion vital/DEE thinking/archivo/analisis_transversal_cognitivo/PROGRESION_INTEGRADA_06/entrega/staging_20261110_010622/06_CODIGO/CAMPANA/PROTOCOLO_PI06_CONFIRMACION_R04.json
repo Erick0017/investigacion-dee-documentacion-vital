@@ -1,0 +1,179 @@
+{
+  "schema": "DEE.PI06.material_confirmation.fine_safety.R04",
+  "status": "SEALED_BEFORE_R04_NATIVE",
+  "registered_utc": "2026-11-10T06:25:21.731399+00:00",
+  "source": {
+    "proof": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\control\\PI06_DISC_IZQ0_R01.json",
+    "proof_sha256": "aae2149ca4741d29d48bcbdc352d76fd92a1ce0b5dd939d4da9de67f857bfec8",
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI06_DISC_01",
+    "snapshot": "estado/checkpoints/ECI02_PI03_REPRO_PI04_PI05_PI06_DISC_01.T826449.2c9d0d60c05e.deetsnap.gz",
+    "snapshot_sha256": "b6256f5da505e2673e2c4e26e6f0b856c7989ccffc8a731fc222d60b82ae9c95"
+  },
+  "N": 67,
+  "source_tick": 826449,
+  "source_physical": {
+    "N": 67,
+    "tick": 826449,
+    "RAW_sha256": "acb6354a6c3acd711a0cd0047dc493fe12bdd6582ce5f29a8625d89f615acffc",
+    "clocks_sha256": "fc27f3df436cf69c8ab3fc4adff873b8859eaaa08b674c76c8a2874c29166dfd"
+  },
+  "fixture_literal_unchanged": {
+    "file": "FIXTURE_PI06_AMBIENTE_R03_R02.json",
+    "sha256": "484b8efe0f0fbd53a815a4d33f17e0340e965370db44934aa99f35e4acbc1c7c",
+    "births": 61,
+    "seed": 61001,
+    "Bernoulli_probability": 0.4,
+    "payload": 7
+  },
+  "coarse_negative_preserved": {
+    "file": "PI06_AMBIENTE_NUBE_R06.json",
+    "sha256": "24920f3ef7ec6976f64c8cbcc694fae695d5449944ad9b7ad131226019969f10",
+    "Native_ticks": 67,
+    "status": "HOST_SAFETY_STOP_CLOSED",
+    "FI_or_C2C_executed": false
+  },
+  "question": "Locate the first declaredRawSupportSafety crossing with the exact same materialpulse and determine whether the samefineobserver preserves the earliercoarsecapturedprefix. Do not search a seed/dose that avoids thelimit or continueafterit.",
+  "fine_arm": {
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI06_R03_FINE_01",
+    "new_world": true,
+    "last_allowed_world_number": 12,
+    "literal": {
+      "modo": "eci01-pi06-ambiente-fino",
+      "captura": "global"
+    },
+    "declared_interfaces": 61,
+    "requested_births": 61,
+    "birth_delay_ticks": 2,
+    "expected_Applied": 58,
+    "expected_RejectedOccupied": 3,
+    "counts_are_predictions_not_forced": true,
+    "maximum_horizon_ticks": 67,
+    "FI_or_C2C_after_stop_or_horizon": false
+  },
+  "control_arm": {
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI06_DISC_01",
+    "new_world": false,
+    "exact_existing_coherent_source_required": true,
+    "literal": {
+      "modo": "eci01-pi06-control67",
+      "captura": "global"
+    },
+    "declared_interfaces": 61,
+    "requested_births": 0,
+    "horizon_ticks": 67,
+    "functional_followup_if_no_host_stop": [
+      {
+        "modo": "eci01-pi06-fiplus",
+        "condicion": "intacto",
+        "izquierda": 14,
+        "derecha": 3,
+        "captura": "normal"
+      },
+      {
+        "modo": "eci01-pi04-c2c-oportunidad"
+      }
+    ],
+    "feedback_for_C2C": "real",
+    "actuator": "closed",
+    "source_ordinal": 28,
+    "do_not_consume_offer29": true
+  },
+  "matched_instrument": {
+    "support_check_cadence_ticks": 1,
+    "RAW_nonzero_stop_above": 3000,
+    "capture_offsets": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67
+    ],
+    "anchor_offsets": [
+      0,
+      67
+    ],
+    "max_frames": 68,
+    "max_anchors": 2,
+    "stop_at_first_observed_crossing": true,
+    "HostSafety_is_not_Native_regulation": true,
+    "partial_capture_and_missing_planned_ticks_must_be_reported": true
+  },
+  "rules": [
+    "All61interfaces are declared in botharms; controlhasno materialpulse.",
+    "Every fixedbirth is submitted individually. ResolvedRejectedOccupied remains evidence, with nooverwrite, skip, resampling or retry.",
+    "No furtherNativeadvance after aHostSafetyStop in the same scientificrun. Preserve the reached fullstate.",
+    "The finearm has nofunctionaltest; the stoppedcoarsecloud also has noFI/C2Cevidence.",
+    "A controlFI/C2C success is only the availability of the no-supplycomparison, not a cloudsuccess or a learnedregulator.",
+    "Compare only equalrecordedticks for passivefine/coarseRaw/clocks reconstruction. A mismatch questionsinstrumentpassivity and must not be hidden."
+  ],
+  "superseded_original_control_plan": {
+    "file": "PLAN_AMBIENTE_CONTROL_PI06_R06.json",
+    "sha256": "7f9218875bbce7ea37dc602e917db6870f313b7552c09fe82a1686088e3709b4",
+    "status": "PREPARADO_NO_EJECUTADO_SUPERADO_POR_CONFIRMACION_DE_SAFETY"
+  },
+  "Native_executed_by_this_tool": false,
+  "new_Native_ticks": 0
+}

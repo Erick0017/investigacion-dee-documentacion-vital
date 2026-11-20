@@ -1,0 +1,85 @@
+{
+  "schema": "DEE.PI06.static_crystallization_bound.v1",
+  "mode": "STATIC_SOURCE_RECALCULATION_ONLY",
+  "source": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\kernel_v27.cpp",
+    "bytes": 31596,
+    "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+    "excerpts": [
+      {
+        "first_line": 26,
+        "last_line": 36,
+        "text": "static constexpr double K_LIMIT = 9.887;\nstatic constexpr double V_NODES = 8.0;\nstatic constexpr double E_EDGES = 12.0;\nstatic constexpr double F_FACES = 6.0;\nstatic constexpr double D_MOORE = 26.0;\nstatic constexpr double V_TETRA = 4.0;\n\nstatic constexpr double TENSION_ELECTROWEAK = (D_MOORE - F_FACES) / V_NODES;\nstatic constexpr double TENSION_STRONG = (E_EDGES * V_TETRA) / (V_TETRA - 1.0);\nstatic constexpr int UMBRAL_CRISTALIZACION = (int)(K_LIMIT * K_LIMIT * K_LIMIT);\nstatic constexpr uint64_t P_KERNEL = 19665ULL;"
+      },
+      {
+        "first_line": 64,
+        "last_line": 70,
+        "text": "static const int MOORE_DXYZ[26][3] = {\n    {-1,-1,-1}, {-1,-1,0}, {-1,-1,1}, {-1,0,-1}, {-1,0,0}, {-1,0,1},\n    {-1,1,-1},  {-1,1,0},  {-1,1,1},  {0,-1,-1}, {0,-1,0}, {0,-1,1},\n    {0,0,-1},              {0,0,1},   {0,1,-1},  {0,1,0},  {0,1,1},\n    {1,-1,-1},  {1,-1,0},  {1,-1,1},  {1,0,-1},  {1,0,0},  {1,0,1},\n    {1,1,-1},   {1,1,0},   {1,1,1}\n};"
+      },
+      {
+        "first_line": 99,
+        "last_line": 100,
+        "text": "static inline uint32_t get_estado(uint64_t v) { return (uint32_t)(v & MASK_ESTADO); }\nstatic inline uint16_t get_s_reg(uint64_t v) { return (uint16_t)((v >> SHIFT_SREG) & 0xFFFFULL); }"
+      },
+      {
+        "first_line": 248,
+        "last_line": 301,
+        "text": "    if (sem == SEM_OBSERVER) { gB[i] = v; clkB[i] = tick + 1; return; }\n\n    int n_active = 0;\n    int sum_x = 0, sum_y = 0, sum_z = 0;\n    int grad_x = 0, grad_y = 0, grad_z = 0;\n    int suma_s_reg_vecinos = 0;\n    uint8_t sem_heredada = SEM_NORMAL;\n    bool tiene_vecino_vivo = false;\n    bool hay_vecino_orphan = false;\n    int max_sreg = 0;\n    int max_off_x = 0, max_off_y = 0, max_off_z = 0;\n\n    for (int k_v = 0; k_v < 26; ++k_v) {\n        int nx = wrap(x + MOORE_DXYZ[k_v][0], N);\n        int ny = wrap(y + MOORE_DXYZ[k_v][1], N);\n        int nz = wrap(z + MOORE_DXYZ[k_v][2], N);\n        size_t nidx = idx3d(nx, ny, nz, N);\n        uint64_t nv = gA[nidx];\n\n        if (get_sem(nv) == SEM_ORPHAN_BIT) hay_vecino_orphan = true;\n\n        if (is_alive_for_rule(nv)) {\n            n_active++;\n            sum_x += get_dir_x(nv);\n            sum_y += get_dir_y(nv);\n            sum_z += get_dir_z(nv);\n            if (!tiene_vecino_vivo) {\n                sem_heredada = get_sem(nv);\n                tiene_vecino_vivo = true;\n            }\n        }\n        if (exists(nv)) {\n            int s_v = (int)get_s_reg(nv);\n            suma_s_reg_vecinos += s_v;\n            grad_x -= MOORE_DXYZ[k_v][0] * s_v;\n            grad_y -= MOORE_DXYZ[k_v][1] * s_v;\n            grad_z -= MOORE_DXYZ[k_v][2] * s_v;\n        }\n        int s_v_total = (int)get_s_reg(nv);\n        if (s_v_total > max_sreg) {\n            max_sreg = s_v_total;\n            max_off_x = MOORE_DXYZ[k_v][0];\n            max_off_y = MOORE_DXYZ[k_v][1];\n            max_off_z = MOORE_DXYZ[k_v][2];\n        }\n    }\n\n    int grad_mag = std::abs(grad_x) + std::abs(grad_y) + std::abs(grad_z);\n\n    // =========================================================\n    // REGLA DEL VACIO\n    // =========================================================\n    if (estado == 0) {\n        if (tiene_vecino_vivo && (grad_mag / P_KERNEL) >= UMBRAL_CRISTALIZACION && !hay_vecino_orphan) {"
+      },
+      {
+        "first_line": 311,
+        "last_line": 320,
+        "text": "        if (verificar_genesis_xnor(gA, x, y, z, N)) {\n            gB[i] = pack_voxel(1, 1, 0, 0, 0, SEM_NACIDO_XNOR);\n            clkB[i] = tick + 1;\n            genesis_count->fetch_add(1, std::memory_order_relaxed);\n            return;\n        }\n\n        uint64_t fuente = buscar_fuente_demux(gA, x, y, z, N);\n        if (fuente != 0) {\n            gB[i] = pack_voxel(1, get_s_reg(fuente), get_dir_x(fuente), get_dir_y(fuente), get_dir_z(fuente), SEM_NORMAL);"
+      }
+    ]
+  },
+  "domain": {
+    "raw_word": "uint64_t",
+    "sreg_getter": "uint16_t, mask 0xFFFF",
+    "sreg_min": 0,
+    "sreg_max": 65535,
+    "gradient_accumulators": "int",
+    "assumed_int_bits": 32,
+    "abi_scope": "Windows x64 C++ int32; mathematical source proof under this ABI",
+    "neighbourhood": "26 Moore offsets, each coordinate -1/0/+1",
+    "exists_filter": "May omit contributions; cannot increase the stated bound",
+    "N_scope": "Any positive valid N; wrap/alias does not exceed26 loop contributions"
+  },
+  "constants": {
+    "K_LIMIT_literal": "9.887",
+    "decimal_cube": "966.481627103",
+    "threshold_cast": 966,
+    "P_KERNEL_uint64": 19665,
+    "floating_point_note": "966.481627103 is far from an integer boundary; ordinary IEEE double rounding does not change cast966."
+  },
+  "proof": {
+    "per_term_abs_max": 65535,
+    "conservative_axis_abs_max": 1703910,
+    "conservative_l1_max": 5111730,
+    "conservative_integer_quotient_max": 259,
+    "threshold_times_divisor": 18996390,
+    "int32_signed_overflow_possible_in_bound": false,
+    "sharper_moore_sign_weights": {
+      "(-1, -1, -1)": 15,
+      "(-1, -1, 1)": 15,
+      "(-1, 1, -1)": 15,
+      "(-1, 1, 1)": 15,
+      "(1, -1, -1)": 15,
+      "(1, -1, 1)": 15,
+      "(1, 1, -1)": 15,
+      "(1, 1, 1)": 15
+    },
+    "sharper_l1_max": 983025,
+    "sharper_integer_quotient_max": 49,
+    "necessary_test_can_be_true": false,
+    "deduction": "The source branch at line301 cannot be reached by any valid16-bit sreg neighbourhood under the stated ABI."
+  },
+  "limitations": [
+    "Not a binary execution, disassembly, compiler-equivalence or empirical test.",
+    "Does not apply without checking the same constants/types to other historical kernels.",
+    "Does not rule out XNOR genesis, directed-source demux, material evolution, clock effects or other kinds of organization.",
+    "No claim of general impossibility of memory, learning, recovery or self-organization."
+  ],
+  "native_ticks_executed": 0,
+  "binary_measurement": false
+}

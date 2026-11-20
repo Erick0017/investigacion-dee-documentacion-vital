@@ -1,0 +1,262 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi06_transitorio_izq0_y_continuacion_R01",
+  "title": "PI06: reproducción de interferencia transitoria y uso posterior -1,+1,-1",
+  "revision": "R01_PREPARADA_REPLAY_NATIVE_PENDIENTE",
+  "prefix": "PI06_POST_BASE_T825849",
+  "code_capsule_key": "PI06_ORGANIZACION_DIAGNOSTICO_R01",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI06_",
+  "reproduction_enabled": true,
+  "requires_explicit_material": true,
+  "variants": {
+    "izq0_sin_captura": {
+      "batches": [
+        [
+          {
+            "label": "FI1_IZQ0",
+            "literal": {
+              "modo": "eci01-pi06-fiplus",
+              "condicion": "izq0",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "stop_on_NULL": true
+          },
+          {
+            "label": "FI2_INTACTO",
+            "literal": {
+              "modo": "eci01-pi06-fiplus",
+              "condicion": "intacto",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "stop_on_NULL": true
+          },
+          {
+            "label": "EVOLUCION6",
+            "literal": {
+              "modo": "eci01-pi06-evolucion",
+              "ticks": 6,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "after_tick"
+            ],
+            "expected": 826251
+          },
+          {
+            "label": "FI3_INTACTO",
+            "literal": {
+              "modo": "eci01-pi06-fiplus",
+              "condicion": "intacto",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "stop_on_NULL": true
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "FI1_IZQ0_fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI1_IZQ0",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "FI2_INTACTO_fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI2_INTACTO",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "FI3_INTACTO_fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI3_INTACTO",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "complete600ticks",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "FI3_INTACTO",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "FI1_IZQ0",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 600
+        },
+        {
+          "label": "actualfinaltick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI3_INTACTO",
+              "path": [
+                "after_tick"
+              ]
+            }
+          ],
+          "expected": 826449
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 529,
+        "applied": 529,
+        "rejected": 0,
+        "pending_or_other": 0
+      }
+    }
+  },
+  "assistance": [
+    "Operator supplies the complete frozen prefix, opportunity schedule, fixed FI128 queries/readers and one legal SEM1 zero packet.",
+    "The environment and host advance the official world; no correction, new SEM4 guard, clearing, target-aware action or response substitution."
+  ],
+  "limitations": [
+    "Technical replay of the observed local transient vulnerability: only1/3 FI14>3 comparisons was useful (-1,+1,-1). Reproduction coincidence is not3/3 cognitive success.",
+    "The replay fixes captura=normal for all three FI calls, while the original discovery captured globally. This is a preregistered material passivity contrast plus replay, not a byte-identical repetition of instrumentation. Inputs/readers/calendars/perturbation remain fixed.",
+    "The variants share history; not independent organisms or a new acquisition. Expected values are evaluator-only after each original fixed Native output.",
+    "No spontaneous repair, regulation, autonomy or promotion is certified. Inspect complete final Native fields/prefix and every metadata difference after replay; no universal observer claim."
+  ],
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "original_execution": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\control\\PI06_DISC_IZQ0_R01.json",
+      "sha256": "aae2149ca4741d29d48bcbdc352d76fd92a1ce0b5dd939d4da9de67f857bfec8",
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI06_DISC_01",
+      "initial_tick": 825849,
+      "final_tick": 826449,
+      "Native_ticks": 600,
+      "inputs_unique_applied": 529
+    },
+    "Native_replay_verified": false
+  },
+  "expected_final_physical": {
+    "N": 67,
+    "tick": 826449,
+    "RAW_sha256": "acb6354a6c3acd711a0cd0047dc493fe12bdd6582ce5f29a8625d89f615acffc",
+    "clocks_sha256": "fc27f3df436cf69c8ab3fc4adff873b8859eaaa08b674c76c8a2874c29166dfd"
+  },
+  "fixed_reader": "Original FI128 q+4 early and q+6 original; material zero remains0, NULL remainsNone. No retrospective reader selection.",
+  "expected_final_Native": {
+    "source_frozen_snapshot": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\estados\\candidato\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI06_DISC_01.T826449.2c9d0d60c05e.deetsnap.gz",
+    "source_snapshot_sha256": "b6256f5da505e2673e2c4e26e6f0b856c7989ccffc8a731fc222d60b82ae9c95",
+    "physical": {
+      "N": 67,
+      "tick": 826449,
+      "RAW_sha256": "acb6354a6c3acd711a0cd0047dc493fe12bdd6582ce5f29a8625d89f615acffc",
+      "clocks_sha256": "fc27f3df436cf69c8ab3fc4adff873b8859eaaa08b674c76c8a2874c29166dfd"
+    },
+    "causal_prefix_sha256": "c750b4cc1c8adc1b0f81f1e07f99c253d28890d11167db6cd6cae54e28a060c9",
+    "interfaces": 1058,
+    "pending_native": 0,
+    "native_receipts": 129952,
+    "scope": "Predetermined before cold replay. Compare actual complete Native fields/prefix; list every metadata change separately, not blanket acceptance."
+  }
+}

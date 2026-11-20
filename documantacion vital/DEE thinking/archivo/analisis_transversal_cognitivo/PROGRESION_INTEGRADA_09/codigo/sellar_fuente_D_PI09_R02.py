@@ -1,0 +1,16 @@
+"""Seal actual closed immutable D prefix; no live-world reads or Native."""
+from pathlib import Path
+from datetime import datetime,timezone
+import hashlib,json
+P=Path(__file__).resolve().parents[1];H=P/'codigo';PAIR=P/'pares/DISCOVERY_POSTPANEL_T907543';F=H/'SELLO_PI09_D_R02.json';PRE='ECI02_PI03_REPRO_PI04_PI05_PI07_PI09_'
+def read(p):return json.loads(p.read_text('utf-8-sig'))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+assert not F.exists();m=read(PAIR/'EXPORTACION_SERVICIO.json');proof=read(PAIR.with_name(PAIR.name+'_PRESERVACION.json'));a=P/'control/ADOPCION_PRODUCTO_PI09.json';ad=read(a);supply=P/'control/ADMISION_FI8_DISCOVERY_PI09_R01.json';v=read(supply)
+assert sha(PAIR/'EXPORTACION_SERVICIO.json')==proof['manifest_sha256']=='8500dafda573afb48ca631b1a7cd3f2cdb1131769485f49811f4f1cfac5fe067'
+assert ad['phase']=='COMMITTED'and ad['life_id']==PRE+'NATIVE_01'and ad['source_history_not_rewritten']and ad['commit_witness']['phase']=='COMMITTED'
+assert v['closed']and v['new_ticks']==0 and v['new_environmental_offers']==8 and v['old_FI_ordinal_preserved']==7 and v['snapshot_sha256']==m['snapshot_sha256']
+assert m['life_id']==PRE+'DISCOVERY_01'and m['physical']['tick']==907543 and sha(PAIR/'VIDA.deetsnap.gz')==m['snapshot_sha256']
+names=('pi09_entorno_persistente_D_R02.py','PROTOCOLO_PI09_D_R02.json','pi09_consulta_selectiva_R02.py','pi09_transporte_D_R02.py','pi09_antecedente_R02_readonly_D_R01.py','pi09_FI8_D_alias_R01.py','pi09_dispatcher_D_R02.py','pi09_lote_FI8_R01.py')
+p=read(H/'PROTOCOLO_PI09_D_R02.json');assert p['max_ticks_per_C_opportunity']==2110 and p['max_ticks_per_whole_D_opportunity']==2510 and len(p['schedule'])==12
+seal={'schema':'DEE.PI09.persistent_environment.D.source_seal.R02','recorded_utc':datetime.now(timezone.utc).isoformat(),'protocol_sha256':sha(H/'PROTOCOLO_PI09_D_R02.json'),'source_parent_R02_ordinal':12,'source_prefix':{'path':str(PAIR),'life_id':m['life_id'],'N':67,'tick':907543,'manifest_sha256':sha(PAIR/'EXPORTACION_SERVICIO.json'),'snapshot_sha256':m['snapshot_sha256'],'physical':{k:m['physical'][k]for k in('N','tick','RAW_sha256','clocks_sha256')}},'extra_physical_metrics_not_passed_as_source_identity':{k:z for k,z in m['physical'].items()if k not in('N','tick','RAW_sha256','clocks_sha256')},'arms':{'real':PRE+'DISCOVERY_01','none':PRE+'STAGE3_NONE_01','yoked':PRE+'STAGE3_YOKE_01'},'native_reproduction_ids':[PRE+'DREPRO_01'],'operational_native_id':PRE+'DISCOVERY_01','first_milestone_committed':True,'first_milestone_adoption_sha256':sha(a),'first_milestone_adoption':str(a),'files_sha256':{n:sha(H/n)for n in names},'environmental_FI8_admission':{'path':str(supply),'sha256':sha(supply)},'Root_prospective_execution_scope':{'real_evaluation':6,'real_future_uses':4,'real_until_ordinal':10,'real_remaining_after10':2,'controls_until_ordinal':6,'material_replay_until_ordinal_if_needed':10,'optional_WSLS_separate_seal_required':True,'post_D_conservation_and_public_use_reserved':True},'old_R02_stock6_preserved_readonly':True,'Native_executed_by_sealing':False,'no_Actor_solution_or_expected_response':True}
+F.write_text(json.dumps(seal,ensure_ascii=False,indent=2)+'\n','utf8');print(json.dumps({'seal':str(F),'sha256':sha(F),'Native_executed':False,'source_tick':907543}))

@@ -1,0 +1,387 @@
+{
+  "schema": "DEE.PI09.manual_source.arithmetic_access.R01",
+  "created_utc": "2026-11-11T09:39:40.277983+00:00",
+  "closed_for_authoring": false,
+  "edition_target": "1.37",
+  "does_not_define_principal_or_adoption": true,
+  "status": "AR diagnostics closed; new paired P0 validation not yet read or scored",
+  "title": "Disponibilidad aritmética, historia temporal y acceso preparado",
+  "sections": [
+    {
+      "title": "Qué se encontró",
+      "paragraphs": [
+        "Se localizó una condición de acceso a la aritmética preparada. Una misma descendencia produjo correctamente unas operaciones y falló en otras ventanas temporales. Los fallos no prueban pérdida general de memoria: la misma función volvió a estar disponible sin restaurar un estado ni reenseñar los operandos.",
+        "En PI08, tanto la trayectoria B real como el control sin retorno produjeron 7 al solicitar 6+7. La diferencia siguiente utilizó ese 7 real y produjo 2 al restar 5. Un clon completo de A produjo 13 y después 8. El segundo error transporta el primero; no son dos pérdidas independientes acreditadas."
+      ]
+    },
+    {
+      "title": "Mecanismo y nivel de asistencia",
+      "paragraphs": [
+        "La operación utiliza el árbol sensorial Native existente, una representación fija e independiente para cada operando y el mismo lector numérico. El anfitrión selecciona suma o diferencia y proporciona las entradas; no calcula la respuesta ni sustituye un resultado fallido. La operación binaria y su acceso son preparados, no una aritmética inventada por el ente.",
+        "Las observaciones nuevas conservan la contribución izquierda en una hoja temprana, pero en dos consultas registran RAW0 en un nodo intermedio y después un registro de carga 0 en la raíz izquierda. La contribución derecha se conserva y el lector final forma sólo su valor. Esta discrepancia muestreada acota dónde investigar el acceso; no identifica una partícula por su número ni observa una pérdida global."
+      ]
+    },
+    {
+      "title": "Contrastes de fase ya ejecutados",
+      "paragraphs": [
+        "Root ejecutó tres copias emparejadas del mismo prefijo completo C884835, con esperas externas de 0, 36 o 64 ticks antes de cada operación. La secuencia fija fue 6+7, 4+5, 8+3 y la diferencia del último resultado real menos2. Los enteros fueron 13, 5, 11, 9; 13, 9, 11, 9; y 7, 9, 11, 9, respectivamente. Se conservaron los dos negativos.",
+        "Los tres brazos aportan 10/12 usos normativos dentro del dominio ensayado. Compartir el prefijo no los convierte en individuos independientes. Cambiar la espera modifica edad, fase y encuentros; estos datos no aíslan una causa universal ni demuestran que esperar 36 ticks funcione indefinidamente."
+      ]
+    },
+    {
+      "title": "El observador y sus efectos",
+      "paragraphs": [
+        "Una cuarta copia usó el acceso anterior sin el registro detallado de nodos y produjo 13, 5, 11, 9. Los cuatro checkpoints emparejados coinciden exactamente en RAW, clocks, fase, interfaces, agenda Native y recibos. Las consultas materiales y sus consecuencias fueron las mismas.",
+        "El estado operativo completo no es idéntico. El puente PI02 desactivado registra los segmentos de avance y su lista de los últimos intervalos difiere al añadir ventanas de observación. Esa discrepancia se conserva: la lectura no es literalmente pasiva sobre toda la documentación operativa. El alcance positivo se limita al estado Native y a las cuatro operaciones comparadas."
+      ]
+    },
+    {
+      "title": "Revisión P0 sometida a reserva nueva",
+      "paragraphs": [
+        "Se preparó una guardia de acceso que pronostica una ventana temporal con el reloj operativo. Ante la ventana prefijada avanza legalmente un tick y vuelve a pronosticar, hasta un máximo de 11 ticks. No consulta operandos, respuestas esperadas ni resultados de controles para elegir la demora. El lector y el circuito permanecen fijados.",
+        "La revisión es asistencia externa P0, no autorregulación aprendida. Se evaluará en dos copias del prefijo real posterior a las doce oportunidades de consulta: primero los mismos doce testigos publicados y después cuatro sumas nuevas con una diferencia enlazada al último resultado real. Los criterios fueron registrados antes de las pruebas nuevas: 5/5 con guardia, al menos dos aciertos más que el control y conservación no inferior. Hasta leer los cierres, no se atribuye a esta revisión una mejora validada ni una incorporación."
+      ]
+    }
+  ],
+  "closed_AR_summary": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\CIERRE_ARITMETICA_DIAGNOSTICA_PI09_R01.json",
+    "bytes": 4719,
+    "sha256": "0890a509b03f08a338f3c584dfa132285d214ace48c07acd42f9104f355f2c9a"
+  },
+  "observer_scope": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\OBSERVACION_AR_ALCANCE_PI09_R02.json",
+    "bytes": 22281,
+    "sha256": "ff62599a531610c86b50fb14c3237c6cd32f678eff3111fb79e9fcf838335c9c"
+  },
+  "portable_fence": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\PRUEBA_FENCE_AR_PORTABLE_PI09_R03.json",
+    "bytes": 1181,
+    "sha256": "e4b064fc3a39aaceeb81c7a3c9d7db3c07561ac25f9c1249f92324a55cc4c8e3"
+  },
+  "new_gate": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\GATE_P0_ARITMETICA_PRE_NATIVE_PI09_R01.json",
+    "bytes": 4726,
+    "sha256": "3c5e1de201241935750e008513fae0f24c6fa7346bf4f304858276c05c68f05d"
+  },
+  "bound_protocol": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\codigo\\PROTOCOLO_PI09_ARITMETICA_TEMPORAL_P0_R02.json",
+    "bytes": 7657,
+    "sha256": "c85d858ecea923a94ee7ce3c933d48b33683ff0a91b7317cea608c2b5bb0ad6e"
+  },
+  "before_after_published_12": [
+    {
+      "label": "luma",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "nara",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "clasifica",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "suma",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "alfa",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "FIplus",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "FIminus",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "FIzero",
+      "expected_auditor_only": 0,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "number13",
+      "expected_auditor_only": 13,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ]
+    },
+    {
+      "label": "number8",
+      "expected_auditor_only": 8,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ]
+    },
+    {
+      "label": "alfa_after",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "luma_after",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY_after": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    }
+  ],
+  "five_new_reserved_cases": [
+    {
+      "label": "CHALLENGE_0_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 2,
+        "derecha": 8
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 10,
+      "PANEL": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY": {
+        "status": "AWAIT_CLOSED_PROOF"
+      }
+    },
+    {
+      "label": "CHALLENGE_1_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 9,
+        "derecha": 7
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 16,
+      "PANEL": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY": {
+        "status": "AWAIT_CLOSED_PROOF"
+      }
+    },
+    {
+      "label": "CHALLENGE_2_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 5,
+        "derecha": 11
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 16,
+      "PANEL": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY": {
+        "status": "AWAIT_CLOSED_PROOF"
+      }
+    },
+    {
+      "label": "CHALLENGE_3_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 3,
+        "derecha": 4
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 7,
+      "PANEL": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY": {
+        "status": "AWAIT_CLOSED_PROOF"
+      }
+    },
+    {
+      "label": "CHALLENGE_4_DIF_ACTUAL_MINUS2",
+      "literal_operands": {
+        "operacion": "diferencia",
+        "izquierda": 0,
+        "derecha": 2
+      },
+      "actual_binding": {
+        "from_step": "CHALLENGE_3_SUM",
+        "field": "izquierda"
+      },
+      "expected_auditor_only": 5,
+      "PANEL": {
+        "status": "AWAIT_CLOSED_PROOF"
+      },
+      "DISCOVERY": {
+        "status": "AWAIT_CLOSED_PROOF"
+      }
+    }
+  ],
+  "coverage": {
+    "new_Native_by_Root": "Cuatro ramas diagnósticas cerradas por Root: 3577 ticks y 2816 solicitudes aplicadas, cero NULL. Tres brazos de fase con doce usos y un control emparejado del observador con cuatro usos.",
+    "documentary_read": "Six actual PI08 arithmetic primaries; complete installed arithmetic/direct/raw-perception code; targeted calendar and R04 interval-recording branches.",
+    "reused": "PI08 directed synthesis of Ingeniería01/02, CORE06/07, Thinking M1/M2/U0; not a new blind full-corpus read.",
+    "F1_Native_execution": 0
+  },
+  "three_limits": [
+    "La aritmética y el orden de uso son preparados; no hay prueba de planificación autónoma ni descubrimiento de una operación binaria.",
+    "El efecto temporal es local. La guardia P0 requiere reservas nuevas, costes medidos y conservación; evitar una ventana no garantiza todos los accesos futuros.",
+    "Los nodos son muestras y el observador cambia metadatos de registro. No se afirma desaparición global, ascendencia única por payload ni igualdad de todo el estado operativo."
+  ],
+  "Word_or_product_written": false
+}

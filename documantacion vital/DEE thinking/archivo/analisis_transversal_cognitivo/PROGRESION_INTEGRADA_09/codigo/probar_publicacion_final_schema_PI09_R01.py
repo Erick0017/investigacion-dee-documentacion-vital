@@ -1,0 +1,7 @@
+"""Comprueba publicación real ya cerrada; no lee mundos ni ejecuta cierre."""
+from pathlib import Path
+import ast,hashlib,importlib.util,json
+H=Path(__file__).resolve().parent;P=H.parent;p=H/'sincronizar_cierre_actual_PI09_R04.py';sp=importlib.util.spec_from_file_location('PI09_actual_DOCX_publication_alias_only',p);m=importlib.util.module_from_spec(sp);sp.loader.exec_module(m);publication=P/'documentos/PUBLICACION_EDICION_1_38_PI09.json';manual,comp=m.publication(publication);assert manual['internal_edition']==comp['internal_edition']=='1.38';checks=['actual_R02_publication_read','actual_two_DOCX_current_hashes_and_bytes_PASS']
+for name in('sincronizar_cierre_actual_PI09_R04.py','cerrar_presupuesto_y_estado_PI09_R03.py'):
+ text=(H/name).read_text('utf8');ast.parse(text);assert "in('DEE.PI09.actual_complete_DOCX_publication.R01','DEE.PI09.actual_complete_DOCX_publication.R02')"in text;checks.append('exact_schema_pair_'+name)
+out=P/'control/PRUEBA_PUBLICACION_PARA_CIERRE_PI09_R01.json';assert not out.exists();data={'passed':True,'checks':checks,'actual_publication':{'path':str(publication),'sha256':hashlib.sha256(publication.read_bytes()).hexdigest()},'actual_DOCX':[manual,comp],'Native_executed':False,'state_SQL_or_card_reads':False,'product_writes':False,'visual_validation_not_invented':True};out.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n','utf8');print(json.dumps({'proof':str(out),'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'passed':True,'Manual_bytes':manual['bytes'],'Compendium_bytes':comp['bytes']}))

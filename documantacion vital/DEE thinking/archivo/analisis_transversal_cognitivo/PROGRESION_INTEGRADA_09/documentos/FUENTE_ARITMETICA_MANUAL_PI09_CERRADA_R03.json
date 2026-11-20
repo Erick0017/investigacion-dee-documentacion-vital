@@ -1,0 +1,770 @@
+{
+  "schema": "DEE.PI09.manual_source.arithmetic_access.R01",
+  "created_utc": "2026-11-11T09:39:40.277983+00:00",
+  "closed_for_authoring": false,
+  "edition_target": "1.37",
+  "does_not_define_principal_or_adoption": true,
+  "status": "AR y pareja P0 cerrados. Ambos paneles12/12 y reservas5/5; ganancia0, gateP0negativo. Acceso público legado; guardia no habilitada.",
+  "title": "Disponibilidad aritmética, historia temporal y acceso preparado",
+  "sections": [
+    {
+      "title": "Qué se encontró",
+      "paragraphs": [
+        "Se localizó una condición de acceso a la aritmética preparada. Una misma descendencia produjo correctamente unas operaciones y falló en otras ventanas temporales. Los fallos no prueban pérdida general de memoria: la misma función volvió a estar disponible sin restaurar un estado ni reenseñar los operandos.",
+        "En PI08, tanto la trayectoria B real como el control sin retorno produjeron 7 al solicitar 6+7. La diferencia siguiente utilizó ese 7 real y produjo 2 al restar 5. Un clon completo de A produjo 13 y después 8. El segundo error transporta el primero; no son dos pérdidas independientes acreditadas."
+      ]
+    },
+    {
+      "title": "Mecanismo y nivel de asistencia",
+      "paragraphs": [
+        "La operación utiliza el árbol sensorial Native existente, una representación fija e independiente para cada operando y el mismo lector numérico. El anfitrión selecciona suma o diferencia y proporciona las entradas; no calcula la respuesta ni sustituye un resultado fallido. La operación binaria y su acceso son preparados, no una aritmética inventada por el ente.",
+        "Las observaciones nuevas conservan la contribución izquierda en una hoja temprana, pero en dos consultas registran RAW0 en un nodo intermedio y después un registro de carga 0 en la raíz izquierda. La contribución derecha se conserva y el lector final forma sólo su valor. Esta discrepancia muestreada acota dónde investigar el acceso; no identifica una partícula por su número ni observa una pérdida global."
+      ]
+    },
+    {
+      "title": "Contrastes de fase ya ejecutados",
+      "paragraphs": [
+        "Root ejecutó tres copias emparejadas del mismo prefijo completo C884835, con esperas externas de 0, 36 o 64 ticks antes de cada operación. La secuencia fija fue 6+7, 4+5, 8+3 y la diferencia del último resultado real menos 2. Los enteros fueron 13, 5, 11, 9; 13, 9, 11, 9; y 7, 9, 11, 9, respectivamente. Se conservaron los dos negativos.",
+        "Los tres brazos aportan 10/12 usos normativos dentro del dominio ensayado. Compartir el prefijo no los convierte en individuos independientes. Cambiar la espera modifica edad, fase y encuentros; estos datos no aíslan una causa universal ni demuestran que esperar 36 ticks funcione indefinidamente."
+      ]
+    },
+    {
+      "title": "El observador y sus efectos",
+      "paragraphs": [
+        "Una cuarta copia usó el acceso anterior sin el registro detallado de nodos y produjo 13, 5, 11, 9. Los cuatro checkpoints emparejados coinciden exactamente en RAW, clocks, fase, interfaces, agenda Native y recibos. Las consultas materiales y sus consecuencias fueron las mismas.",
+        "El estado operativo completo no es idéntico. El puente PI02 desactivado registra los segmentos de avance y su lista de los últimos intervalos difiere al añadir ventanas de observación. Esa discrepancia se conserva: la lectura no es literalmente pasiva sobre toda la documentación operativa. El alcance positivo se limita al estado Native y a las cuatro operaciones comparadas."
+      ]
+    },
+    {
+      "title": "Revisión P0 evaluada: sin ganancia sobre el control",
+      "paragraphs": [
+        "La revisión preparada pronostica una ventana con el reloj operativo y, cuando se cumple la regla fija, avanza legalmente un tick y vuelve a pronosticar, con una cota de 11 ticks. El circuito, los operandos independientes y el lector C permanecen sin cambios. El reloj y esta guardia pertenecen al acceso externo P0; no son una regulación aprendida por el ente.",
+        "Los dos brazos partieron del mismo prefijo completo Native posterior a doce oportunidades de consulta, T903603. Cada uno ejecutó una pausa administrativa sin avance, los doce testigos publicados y cinco pruebas nuevas: 2+8, 9+7, 5+11, 3+4 y la diferencia del último entero real menos 2. Ambos conservaron 12/12 testigos y produjeron 10, 16, 16, 7, 5 en las pruebas nuevas. Las entradas de cada operación numérica fueron las 176 solicitudes originales, sin resultados esperados entregados al actor.",
+        "Los criterios habían quedado fijados antes del lote: 5/5 con guardia, al menos dos aciertos más que el control y conservación no inferior. El control sin guardia ya obtuvo 5/5; la diferencia final fue 0. Se conserva el criterio negativo y no se habilita esta guardia como mejora demostrada. La disponibilidad funcional de la aritmética se comprobó en ambos futuros sin restauración ni reenseñanza de 13."
+      ]
+    },
+    {
+      "title": "Costes, estado físico y alcance final",
+      "paragraphs": [
+        "PANEL añadió 3939 ticks y terminó en T907542; DISCOVERY añadió 3940 y terminó en T907543. Cada brazo realizó 1827 solicitudes Native nuevas, todas aplicadas. La guardia pagó cinco ticks en cinco avances unitarios. La espera de alineación sumó 102 ticks en el control y 98 con guardia, de modo que la diferencia total de edad fue un tick. Esos costes pertenecen al protocolo temporal; no son energía ni una decisión cognitiva de supervivencia.",
+        "Antes de las cinco pruebas nuevas, los dos brazos tenían exactamente el mismo RAW global, los mismos clocks y el mismo tick. Después difieren en RAW, clocks y edad, pero sus cinco resultados útiles son iguales. Una diferencia física no acredita por sí misma memoria útil o aprendizaje. Ambos brazos conservaron el mismo lector detallado; la diferencia registral del puente PI02 continúa declarada.",
+        "En el prefijo más antiguo, una fila de 67 sitios contenía cinco registros activos de carga 0 y dirección +Z. En el prefijo Native posterior a doce oportunidades había tres registros de esa clase en la fila, y después del panel legado quedaba uno. Son fotografías de lugares, sin ascendencia única demostrada: la ausencia local no prueba destrucción global. El nuevo control muestra que la fase temporal por sí sola es insuficiente para predecir el fallo. No se atribuye la recuperación de acceso exclusivamente a una valencia, a una acción o a un portador."
+      ]
+    }
+  ],
+  "closed_AR_summary": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\CIERRE_ARITMETICA_DIAGNOSTICA_PI09_R01.json",
+    "bytes": 4719,
+    "sha256": "0890a509b03f08a338f3c584dfa132285d214ace48c07acd42f9104f355f2c9a"
+  },
+  "observer_scope": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\OBSERVACION_AR_ALCANCE_PI09_R02.json",
+    "bytes": 22281,
+    "sha256": "ff62599a531610c86b50fb14c3237c6cd32f678eff3111fb79e9fcf838335c9c"
+  },
+  "portable_fence": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\PRUEBA_FENCE_AR_PORTABLE_PI09_R03.json",
+    "bytes": 1181,
+    "sha256": "e4b064fc3a39aaceeb81c7a3c9d7db3c07561ac25f9c1249f92324a55cc4c8e3"
+  },
+  "new_gate": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\GATE_P0_ARITMETICA_PRE_NATIVE_PI09_R01.json",
+    "bytes": 4726,
+    "sha256": "3c5e1de201241935750e008513fae0f24c6fa7346bf4f304858276c05c68f05d"
+  },
+  "bound_protocol": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\codigo\\PROTOCOLO_PI09_ARITMETICA_TEMPORAL_P0_R02.json",
+    "bytes": 7657,
+    "sha256": "c85d858ecea923a94ee7ce3c933d48b33683ff0a91b7317cea608c2b5bb0ad6e"
+  },
+  "before_after_published_12": [
+    {
+      "label": "luma",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_001.json",
+          "bytes": 92987,
+          "sha256": "a11ffde7e546b5bc32709a54254d39ee6993452e9f2e11fcfe7cb6d79690f30d"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_001.json",
+          "bytes": 93987,
+          "sha256": "b1e8e497cc82cd96b787d655f4357e6821ec5a65cef4db22c6345725b981f9b6"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "nara",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_002.json",
+          "bytes": 92989,
+          "sha256": "651fbbe3e26526f026fbef2c075753c9dfba6ecd3fae5632efd0ab7eb1f9f1f5"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_002.json",
+          "bytes": 93990,
+          "sha256": "5d2e805237f3fe45099d8949fa0f0d2fca05bae3d269fe84858c7bf765964918"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "clasifica",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_003.json",
+          "bytes": 93075,
+          "sha256": "35c57751c8db792ab596d893169f3bd682b66b5e602c86f998455a3be37724ac"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_003.json",
+          "bytes": 94075,
+          "sha256": "cfeef5feefa645c94066e641567998d6252c2bc4919c7c9a08fc9e59c33699a8"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "suma",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_004.json",
+          "bytes": 92997,
+          "sha256": "0eac0e74dcc3bca311d3928ba0c24b76da4ef12290d8a5fd7488a37a7d2a4dcd"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_004.json",
+          "bytes": 93997,
+          "sha256": "ce13ec014c1ca40a9fa4ff851a0dbada86ca9a4a9122737ca10cc5ceda99e1f9"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "alfa",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_005.json",
+          "bytes": 91556,
+          "sha256": "12eedba7b63a8f4920ee5138075dbd178550e7efa806871f44e6d2c9481f1749"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_005.json",
+          "bytes": 92556,
+          "sha256": "4d4bfebc81ce50704d8e8b5c23202739b7e2c3909c76adc968d9b56e36d3fede"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "FIplus",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_006.json",
+          "bytes": 322412,
+          "sha256": "bbd1220146c2b50a140608db6d10cead0ab08bf968fa39ee75624834dc156cf2"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_006.json",
+          "bytes": 323417,
+          "sha256": "1db1d00045bdd69d74a025c3705fd22f4956e7c827859f05c11a3d350837a669"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "FIminus",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_007.json",
+          "bytes": 322416,
+          "sha256": "25e369077ae62a9a7a3b697564395dfe7bb2f2998197cf1381e096eafb997109"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_007.json",
+          "bytes": 323420,
+          "sha256": "482aeb529d2cb52cf9da85e51507d96b4c60999b421ce45034fe465133ef31ec"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "FIzero",
+      "expected_auditor_only": 0,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 0,
+        "expected_auditor_only": 0,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_008.json",
+          "bytes": 322203,
+          "sha256": "132641584ecdf5a290269ffc581e813aa8c7b23811b3383b4f7bfa435094d9a4"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 0,
+        "expected_auditor_only": 0,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_008.json",
+          "bytes": 323206,
+          "sha256": "2fa01c1e53c2c59dc83a0d5c2d65b63c7496b8dd7689e996cfa3d0ec692903cb"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "early_physical_choice"
+      ]
+    },
+    {
+      "label": "number13",
+      "expected_auditor_only": 13,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 13,
+        "expected_auditor_only": 13,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_009.json",
+          "bytes": 144725,
+          "sha256": "485696247e6fdbe76ec211c8bdbf464729a88b97c363fc6f25c8c570bd82409c"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 13,
+        "expected_auditor_only": 13,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_009.json",
+          "bytes": 145725,
+          "sha256": "544311cbee76bed26da7fead1984ae4e6091ca41dcba6d8fd32812352b4c8bd7"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ]
+    },
+    {
+      "label": "number8",
+      "expected_auditor_only": 8,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 8,
+        "expected_auditor_only": 8,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_010.json",
+          "bytes": 144744,
+          "sha256": "8b89c151a07d831b38fdf8c08b9156a3cc769917bbb7690494b5244ecb6431b0"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 8,
+        "expected_auditor_only": 8,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_010.json",
+          "bytes": 145743,
+          "sha256": "aef624e2f208d49c60c48f112788748ac4286ca5d70d19cc230c849561088165"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "numeric_result"
+      ]
+    },
+    {
+      "label": "alfa_after",
+      "expected_auditor_only": -1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_011.json",
+          "bytes": 91555,
+          "sha256": "cbef1ed1bdd9b94bfef6e07da45a2fbeb233f58b348933c02bd30806f32c58fc"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": -1,
+        "expected_auditor_only": -1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_011.json",
+          "bytes": 92557,
+          "sha256": "dd67e988f5cf6cdd938ec41f7c10961a0b23858b33d3b0f617b05024823b75c4"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    },
+    {
+      "label": "luma_after",
+      "expected_auditor_only": 1,
+      "before": "Clon completo de A: 12/12. B real y control sin retorno: 10/12, con la cadena aritmética adversa 7→2. No es un panel material nuevo realizado sobre MAIN.",
+      "PANEL_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_012.json",
+          "bytes": 92987,
+          "sha256": "1f668f8215622765ec09874ff33960fd1997566750ace764d4ed218ee05f5cb4"
+        }
+      },
+      "DISCOVERY_after": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 1,
+        "expected_auditor_only": 1,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_012.json",
+          "bytes": 93986,
+          "sha256": "dd80c218e8be2324c4919eb5c5f07a25626ddc96e4af6516b25e143f972dea9b"
+        }
+      },
+      "source_read_path": [
+        "result",
+        "rows",
+        0,
+        "reader",
+        "formed_native_command"
+      ]
+    }
+  ],
+  "five_new_reserved_cases": [
+    {
+      "label": "CHALLENGE_0_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 2,
+        "derecha": 8
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 10,
+      "PANEL": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 10,
+        "expected_auditor_only": 10,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_013.json",
+          "bytes": 211413,
+          "sha256": "e511c0233c24d26d1376820e72503395128029699088c5025fabc9c83601b3c4"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906450,
+          "legal_wait_ticks": 23,
+          "unchanged_nominal_query": 906529,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 0,
+        "explicit_prewait_ticks": 23
+      },
+      "DISCOVERY": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 10,
+        "expected_auditor_only": 10,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_013.json",
+          "bytes": 212428,
+          "sha256": "9a7b001a293aad35086d5bb5555ba2d1618dfb5bdc6df6ceab401518db66228d"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906450,
+          "legal_wait_ticks": 23,
+          "unchanged_nominal_query": 906529,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 1,
+        "explicit_prewait_ticks": 23
+      }
+    },
+    {
+      "label": "CHALLENGE_1_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 9,
+        "derecha": 7
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 16,
+      "PANEL": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 16,
+        "expected_auditor_only": 16,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_014.json",
+          "bytes": 211413,
+          "sha256": "6c5111e132476d3d53b9ad561e3d628a513680c49eccb34149961239e16a9456"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906671,
+          "legal_wait_ticks": 70,
+          "unchanged_nominal_query": 906797,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 0,
+        "explicit_prewait_ticks": 70
+      },
+      "DISCOVERY": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 16,
+        "expected_auditor_only": 16,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_014.json",
+          "bytes": 212429,
+          "sha256": "b90000c7e556ebacee999530149a60abe3d6ea48234e1753d44b075d41b31de9"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906672,
+          "legal_wait_ticks": 69,
+          "unchanged_nominal_query": 906797,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 1,
+        "explicit_prewait_ticks": 69
+      }
+    },
+    {
+      "label": "CHALLENGE_2_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 5,
+        "derecha": 11
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 16,
+      "PANEL": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 16,
+        "expected_auditor_only": 16,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_015.json",
+          "bytes": 211416,
+          "sha256": "cee5c09e48d04e358d48e3f61bc18080bb37e30ccc07b218bea1a42013541e71"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906939,
+          "legal_wait_ticks": 3,
+          "unchanged_nominal_query": 906998,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 0,
+        "explicit_prewait_ticks": 3
+      },
+      "DISCOVERY": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 16,
+        "expected_auditor_only": 16,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_015.json",
+          "bytes": 212432,
+          "sha256": "45c7207d91767aa8fb62b3824214448aa64af32091d1c5bc6e58b4fb6d574f6a"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 906940,
+          "legal_wait_ticks": 2,
+          "unchanged_nominal_query": 906998,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 1,
+        "explicit_prewait_ticks": 2
+      }
+    },
+    {
+      "label": "CHALLENGE_3_SUM",
+      "literal_operands": {
+        "operacion": "suma",
+        "izquierda": 3,
+        "derecha": 4
+      },
+      "actual_binding": null,
+      "expected_auditor_only": 7,
+      "PANEL": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 7,
+        "expected_auditor_only": 7,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_016.json",
+          "bytes": 211400,
+          "sha256": "0d520f464d2bf2f2e33c5f5810a2f6dc46ceda3e54c667101cea0a160ce78f56"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 907140,
+          "legal_wait_ticks": 3,
+          "unchanged_nominal_query": 907199,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 0,
+        "explicit_prewait_ticks": 3
+      },
+      "DISCOVERY": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 7,
+        "expected_auditor_only": 7,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_016.json",
+          "bytes": 212415,
+          "sha256": "7f95e5aa8387a6d8d35b0bf52a37c708bb5d607a3dab868e0ea2e3c203e0c536"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 907141,
+          "legal_wait_ticks": 2,
+          "unchanged_nominal_query": 907199,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 1,
+        "explicit_prewait_ticks": 2
+      }
+    },
+    {
+      "label": "CHALLENGE_4_DIF_ACTUAL_MINUS2",
+      "literal_operands": {
+        "operacion": "diferencia",
+        "izquierda": 0,
+        "derecha": 2
+      },
+      "actual_binding": {
+        "from_step": "CHALLENGE_3_SUM",
+        "field": "izquierda"
+      },
+      "expected_auditor_only": 5,
+      "PANEL": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 5,
+        "expected_auditor_only": 5,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_PANEL_P0_R01_017.json",
+          "bytes": 211426,
+          "sha256": "dfe3418efafff71de4973c554fe55b2a06d95e3d1798dcf3b8389d655dcd609b"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 907341,
+          "legal_wait_ticks": 3,
+          "unchanged_nominal_query": 907400,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 0,
+        "explicit_prewait_ticks": 3
+      },
+      "DISCOVERY": {
+        "status": "ACTUAL_CLOSED",
+        "actual": 5,
+        "expected_auditor_only": 5,
+        "typed_correct": true,
+        "primary": {
+          "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\ensayos\\PI09_DISCOVERY_P0_R01_017.json",
+          "bytes": 212440,
+          "sha256": "f57e2f76addd8c48c54a6e1f321859d5bb9f511277a4ee1c264f1947698ab6ae"
+        },
+        "clock_alignment": {
+          "source_actual_tick": 907342,
+          "legal_wait_ticks": 2,
+          "unchanged_nominal_query": 907400,
+          "expected_values_or_outcomes_used": false
+        },
+        "guard_paid_ticks": 1,
+        "explicit_prewait_ticks": 2
+      }
+    }
+  ],
+  "coverage": {
+    "new_Native_by_Root": "Cuatro ramas diagnósticas cerradas por Root: 3577 ticks y 2816 solicitudes aplicadas, cero NULL. Tres brazos de fase con doce usos y un control emparejado del observador con cuatro usos.",
+    "documentary_read": "Six actual PI08 arithmetic primaries; complete installed arithmetic/direct/raw-perception code; targeted calendar and R04 interval-recording branches.",
+    "reused": "PI08 directed synthesis of Ingeniería01/02, CORE06/07, Thinking M1/M2/U0; not a new blind full-corpus read.",
+    "F1_Native_execution": 0
+  },
+  "three_limits": [
+    "La aritmética y el orden de uso son preparados. El transporte del último entero real es integración asistida, no planificación ni una operación binaria descubierta.",
+    "La guardia P0 no mejoró el control en las cinco reservas nuevas y no se habilita como avance. El dominio funcional comprobado sigue siendo local; no implica acceso indefinido o aritmética general.",
+    "Las rutas son muestreadas y el observador cambia registros de intervalos. No se afirma desaparición global, ascendencia única por payload ni igualdad de todo el estado operativo."
+  ],
+  "Word_or_product_written": false,
+  "PANEL_closed_source": {
+    "file": "documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\PI09_PANEL_P0_R01.json",
+    "bytes": 4685398,
+    "sha256": "0293b61331ff8939573d3a3470730ebfece23beee3afbd13fe2c6a5a46ba3944",
+    "Native_ticks": 3939,
+    "final_tick": 907542
+  },
+  "gate_status_before_DISCOVERY": "Cerrado: diferencia0; el criterio>=2 permanece negativo.",
+  "prior_source_sha256": "1df628f2dfda489c365f49349fb505624465f55028dc612584f426a548d8dc6d",
+  "arithmetic_section_science_closed": true,
+  "closed_for_authoring_scope": "Root debe fusionar con el cierre real C1/principal; esta fuente no autoriza ni ejecuta Word.",
+  "paired_closed_recalculation": {
+    "file": "documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_09\\control\\RECALCULO_PAREJA_P0_ARITMETICA_PI09_R01.json",
+    "bytes": 4587221,
+    "sha256": "e22898150527dd3180908e4a00de1131a8b21c160bb603de410b35a1b3017cf3"
+  },
+  "P0_gate_actual": {
+    "guard5of5": true,
+    "fresh_gain_at_least2": false,
+    "published_not_worse": true
+  },
+  "P0_gain_gate_passed": false
+}

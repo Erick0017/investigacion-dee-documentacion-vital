@@ -1,0 +1,2790 @@
+{
+  "cases": [
+    {
+      "actual_observations": [
+        {
+          "arm": "real",
+          "rows": [
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 8,
+              "offline_numeric_correct": true,
+              "opportunity": 0
+            },
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 0,
+              "actual_numeric": 9,
+              "offline_numeric_correct": true,
+              "opportunity": 1
+            },
+            {
+              "actual_action": "native",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 1,
+              "actual_native_emission": -1,
+              "actual_numeric": 13,
+              "offline_numeric_correct": true,
+              "opportunity": 2
+            }
+          ],
+          "total_actual_modelled_cost": 11
+        },
+        {
+          "arm": "omit",
+          "rows": [
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 8,
+              "offline_numeric_correct": true,
+              "opportunity": 0
+            },
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 9,
+              "offline_numeric_correct": true,
+              "opportunity": 1
+            },
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 13,
+              "offline_numeric_correct": true,
+              "opportunity": 2
+            }
+          ],
+          "total_actual_modelled_cost": 15
+        },
+        {
+          "arm": "sham",
+          "rows": [
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 8,
+              "offline_numeric_correct": true,
+              "opportunity": 0
+            },
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 9,
+              "offline_numeric_correct": true,
+              "opportunity": 1
+            },
+            {
+              "actual_action": "external",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": 1,
+              "actual_numeric": 13,
+              "offline_numeric_correct": true,
+              "opportunity": 2
+            }
+          ],
+          "total_actual_modelled_cost": 15
+        }
+      ],
+      "analytical_references": [
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 1
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 2,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 3
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 11
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 11
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 7
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 11
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 7
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 7
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 3
+            }
+          ],
+          "all_completion_patterns_count": 8,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 15,
+            "min": 3
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_native",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 5
+              },
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "external",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 5
+              },
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 2,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "external",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 5
+              }
+            ],
+            "total_modelled_cost": 15
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            }
+          ],
+          "all_completion_patterns_count": 8,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 15,
+            "min": 15
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_external",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 5
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "external",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 1
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 2,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 7
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 11
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 7
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 15
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 11
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 2,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 7
+            }
+          ],
+          "all_completion_patterns_count": 8,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 15,
+            "min": 7
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "stay_until_last_cost_exceeds_budget_then_alternate",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        }
+      ],
+      "id": "O2_INITIAL",
+      "initial_reference_action": "external",
+      "initialization_scope": "Reference initial action matches the first observed route of this existing prefix, not selected using which route is cheaper; policy carries no hidden law or answer.",
+      "public_opportunities": [
+        [
+          3,
+          5
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          9,
+          4
+        ]
+      ],
+      "published_environmental_law": {
+        "external_price": 5,
+        "missing_artifact_rule": "fixed_deadline5",
+        "native_price": 1
+      }
+    },
+    {
+      "actual_observations": [
+        {
+          "arm": "SAME_LAW",
+          "rows": [
+            {
+              "actual_action": "native",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 1,
+              "actual_native_emission": -1,
+              "actual_numeric": 17,
+              "offline_numeric_correct": true,
+              "opportunity": 0
+            },
+            {
+              "actual_action": "native",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 1,
+              "actual_native_emission": -1,
+              "actual_numeric": 17,
+              "offline_numeric_correct": true,
+              "opportunity": 1
+            }
+          ],
+          "total_actual_modelled_cost": 2
+        }
+      ],
+      "analytical_references": [
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 1
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 2
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 10
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 2
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 10,
+            "min": 2
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_native",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 5
+              },
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "external",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 5
+              }
+            ],
+            "total_modelled_cost": 10
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 18
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 10
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 18,
+            "min": 10
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_external",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 1
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 2
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 10
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 2
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 14,
+            "min": 2
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "stay_until_last_cost_exceeds_budget_then_alternate",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        }
+      ],
+      "id": "SAME_LAW",
+      "initial_reference_action": "native",
+      "initialization_scope": "Reference initial action matches the first observed route of this existing prefix, not selected using which route is cheaper; policy carries no hidden law or answer.",
+      "public_opportunities": [
+        [
+          11,
+          6
+        ],
+        [
+          14,
+          3
+        ]
+      ],
+      "published_environmental_law": {
+        "external_price": 5,
+        "missing_artifact_rule": "price_plus4",
+        "native_price": 1
+      }
+    },
+    {
+      "actual_observations": [
+        {
+          "arm": "REVERSE",
+          "rows": [
+            {
+              "actual_action": "native",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": -1,
+              "actual_numeric": 17,
+              "offline_numeric_correct": true,
+              "opportunity": 0
+            },
+            {
+              "actual_action": "native",
+              "actual_artifact_produced": true,
+              "actual_modelled_cost": 5,
+              "actual_native_emission": -1,
+              "actual_numeric": 17,
+              "offline_numeric_correct": true,
+              "opportunity": 1
+            }
+          ],
+          "total_actual_modelled_cost": 10
+        }
+      ],
+      "analytical_references": [
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 5
+              },
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 5
+              }
+            ],
+            "total_modelled_cost": 10
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 18
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 5
+                }
+              ],
+              "total_modelled_cost": 10
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 18,
+            "min": 10
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_native",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 1
+              },
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "external",
+                  "previous_own_observed_cost": 1
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 2
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 10
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            },
+            {
+              "rows": [
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 1
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "external",
+                    "previous_own_observed_cost": 1
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 2
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 10,
+            "min": 2
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "always_external",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        },
+        {
+          "all_actions_complete_conditional_trace": {
+            "rows": [
+              {
+                "action": "native",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 5,
+                "opportunity": 0,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": null,
+                  "previous_own_observed_cost": null
+                },
+                "published_price": 5
+              },
+              {
+                "action": "external",
+                "assumed_completed": true,
+                "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                "environment_cost_after_action": 1,
+                "opportunity": 1,
+                "policy_information_before_action": {
+                  "budget": 2,
+                  "previous_action": "native",
+                  "previous_own_observed_cost": 5
+                },
+                "published_price": 1
+              }
+            ],
+            "total_modelled_cost": 6
+          },
+          "all_completion_patterns": [
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 14
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 9,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 9
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 10
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": false,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 10
+            },
+            {
+              "rows": [
+                {
+                  "action": "native",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 5,
+                  "opportunity": 0,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": null,
+                    "previous_own_observed_cost": null
+                  },
+                  "published_price": 5
+                },
+                {
+                  "action": "external",
+                  "assumed_completed": true,
+                  "counterfactual_DEE_internal_effects": "NOT_MODELLED",
+                  "counterfactual_numeric_correctness": "INDETERMINATE_NOT_EXECUTED",
+                  "environment_cost_after_action": 1,
+                  "opportunity": 1,
+                  "policy_information_before_action": {
+                    "budget": 2,
+                    "previous_action": "native",
+                    "previous_own_observed_cost": 5
+                  },
+                  "published_price": 1
+                }
+              ],
+              "total_modelled_cost": 6
+            }
+          ],
+          "all_completion_patterns_count": 4,
+          "classification": "ANALYTICAL_COUNTERFACTUAL_NOT_EXECUTED_NO_DEE_CONTROLLER",
+          "modelled_cost_bounds_over_binary_completion_assumptions": {
+            "max": 14,
+            "min": 6
+          },
+          "numeric_correctness": "INDETERMINATE: corresponding counterfactual DEE histories were not executed",
+          "policy": "stay_until_last_cost_exceeds_budget_then_alternate",
+          "utility_comparison_scope": "Conditional published task price only; no CPU, energy, real elapsed time, phase/retention, tool availability or cognitive superiority inferred."
+        }
+      ],
+      "id": "REVERSE",
+      "initial_reference_action": "native",
+      "initialization_scope": "Reference initial action matches the first observed route of this existing prefix, not selected using which route is cheaper; policy carries no hidden law or answer.",
+      "public_opportunities": [
+        [
+          11,
+          6
+        ],
+        [
+          14,
+          3
+        ]
+      ],
+      "published_environmental_law": {
+        "external_price": 1,
+        "missing_artifact_rule": "price_plus4",
+        "native_price": 5
+      }
+    }
+  ],
+  "controller_used_on_MAIN": false,
+  "effective_information_used": "Only previous own action and whether its post-action cost exceeded2. The native apparatus conveyed excess by material presence at S2 and absence below threshold; the external reference receives that bit directly as an idealized auditor algorithm. Physical decoding, calendars and memory costs are NOT matched.",
+  "interpretation": "An ordinary external cost-responsive rule is an analytical reference, never a DEE capacity. Its next action is computed only after its preceding hypothetical action receives an environmental cost. Fixed price laws belong to the auditor environment, not policy information. Full binary completion branches bound assumptions, not actual DEE-reachable states or confidence intervals. Counterfactual numerical correctness and internal dynamics remain unmeasured.",
+  "issues": [],
+  "native_ticks": 0,
+  "new_DEE_runs": 0,
+  "policy_fixed_budget": 2,
+  "policy_inputs": [
+    "policy_id",
+    "previous_action",
+    "previous_own_observed_cost",
+    "initial_action"
+  ],
+  "schema": "APD01.auditor_only_causal_policy_references.v1",
+  "sources": [
+    {
+      "bytes": 2295,
+      "file": "PROTOCOLO_RUTA_O2_R3.json",
+      "sha256": "81da023e25e22de348dd2efeee47141284c0fc18d6fde4902c13a1e770e3e351"
+    },
+    {
+      "bytes": 1413,
+      "file": "PROTOCOLO_REVERSION_O2_R3.json",
+      "sha256": "f05ac163088960be4d68870b61016ab3137c023326e19941abbbf9fa4deb9bea"
+    },
+    {
+      "bytes": 16415,
+      "file": "O2_real.json.gz",
+      "sha256": "256b0badbbe867839ade55365727b678119ecf839f6839cf83e79b4bc6d230f9"
+    },
+    {
+      "bytes": 10255,
+      "file": "O2_omit.json.gz",
+      "sha256": "1665ecd1b7f6eaa01067852b154474ca9dc9b2a2602f6d2078778de8b507c636"
+    },
+    {
+      "bytes": 10364,
+      "file": "O2_sham.json.gz",
+      "sha256": "520a2df343392ad4e44f93e07e28b99435acd4191959af6f949ae82776f654ea"
+    },
+    {
+      "bytes": 20568,
+      "file": "REV_SAME_LAW.json.gz",
+      "sha256": "558e30700214b48864a0a1a7d8971e891362c185dee8b67e7be1b3d9e84a8e20"
+    },
+    {
+      "bytes": 20704,
+      "file": "REV_REVERSE.json.gz",
+      "sha256": "0077deff6c59e6be42af3271c7bd36bb64f9aaa66fa2d2df103f256eb4d4d994"
+    }
+  ],
+  "unit_tests": [
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_native_0",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_native_1",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_native_2",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_native_3",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_native_5",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_native_32",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_external_0",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_external_1",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "one_past_cost_external_2",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_external_3",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_external_5",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "native",
+      "name": "one_past_cost_external_32",
+      "obtained": "native"
+    },
+    {
+      "equal": true,
+      "expected": "external",
+      "name": "no_observation_does_not_guess_law",
+      "obtained": "external"
+    },
+    {
+      "equal": true,
+      "expected": [
+        [
+          "external",
+          5
+        ],
+        [
+          "native",
+          1
+        ],
+        [
+          "native",
+          1
+        ]
+      ],
+      "name": "source_law",
+      "obtained": [
+        [
+          "external",
+          5
+        ],
+        [
+          "native",
+          1
+        ],
+        [
+          "native",
+          1
+        ]
+      ]
+    },
+    {
+      "equal": true,
+      "expected": [
+        [
+          "native",
+          5
+        ],
+        [
+          "external",
+          1
+        ]
+      ],
+      "name": "reversed_law",
+      "obtained": [
+        [
+          "native",
+          5
+        ],
+        [
+          "external",
+          1
+        ]
+      ]
+    }
+  ]
+}

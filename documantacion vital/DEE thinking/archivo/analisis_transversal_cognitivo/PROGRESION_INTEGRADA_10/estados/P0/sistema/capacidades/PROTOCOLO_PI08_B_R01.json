@@ -1,0 +1,555 @@
+{
+  "schema": "DEE.PI08.successive_contextual_regulation.protocol.B.R01",
+  "version": "PI08.B.R01",
+  "status": "SEALED_BEFORE_B_NATIVE",
+  "campaign": "PROGRESION_INTEGRADA_08",
+  "N": 67,
+  "origin": [
+    8,
+    40,
+    50
+  ],
+  "initial_reference_payloads": {
+    "A": 0,
+    "B": 2
+  },
+  "delay_laps": 6,
+  "max_ticks_per_episode": 1300,
+  "dependencies_sha256": {
+    "pi03_credito_generico_R01_BORRADOR.py": "cc46721530303f2de5ff8c10c8b1ba6b4b8eb47f0faadedb19345d4a134debcb",
+    "pi07_regulacion_R01.py": "8e6ccfc2d9463c46d2312cc81108ba7e481c5cb31026f05c6d349409f8a09499",
+    "PROTOCOLO_PI07_R01.json": "1db513e8f38607ed9e41929fc49afada1be584875d6744e718ccdd9b628cb949",
+    "observador_global_PI05_R01.py": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "pi07_regulacion_R02.py": "4a8ee4f8d0b4aa738d76492b609d5fb36d8e1ad7d1d44f59c213e5351a56a133",
+    "PROTOCOLO_PI07_R02.json": "44ff1cc6a9f0634edcf56273b5956e39665c0dbb89f21e5bf36c1650b730b544"
+  },
+  "physical_environment": {
+    "cue_birth_relative_query": -2,
+    "threat": {
+      "site": [
+        52,
+        48,
+        46
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "message_payload": null
+    },
+    "falsecue": {
+      "site": [
+        51,
+        48,
+        47
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "sink": [
+        55,
+        48,
+        47
+      ]
+    },
+    "none": {
+      "cue_inputs": 0
+    },
+    "pulse": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "tick_relative_query": 7
+    },
+    "legitimate_packet": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "tick_relative_query": 7,
+      "reader_site": [
+        54,
+        48,
+        56
+      ],
+      "reader_tick_relative_birth": 1,
+      "sink": [
+        56,
+        48,
+        56
+      ],
+      "payload_domain": [
+        5,
+        8,
+        11
+      ]
+    },
+    "message_cost": "When a legitimate packet and a selected pulse are scheduled at the same site/tick, Native admission resolves the conflict. Both terminal conflict receipts and actual delivery are retained; never infer delivery from the intended action.",
+    "action_mapping": {
+      "+1": "one fixed perpendicular -X pulse",
+      "0": "no pulse",
+      "-1": "no pulse",
+      "NULL": "no pulse; invalid selection"
+    },
+    "new_actuator_conditional_prediction": {
+      "sensor_S": "q-1",
+      "observed_threat_site_at_S": [
+        52,
+        48,
+        47
+      ],
+      "pulse_birth_q7": "S+8",
+      "uninterrupted_threat_site_at_birth": [
+        52,
+        48,
+        55
+      ],
+      "pulse_site_at_birth": [
+        53,
+        48,
+        56
+      ],
+      "conditional_contact_tick": "S+9=q+8",
+      "conditional_contact_site": [
+        52,
+        48,
+        56
+      ],
+      "conditional_local_result": {
+        "state": 1,
+        "semantic": 1,
+        "payload": 0,
+        "direction": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "scope": "Frozen directed-copy combination predicts diversion into a diagonal, not annihilation. Destination occupation/other incoming/context can alter it; actual Native interaction and fixed FI comparison decide."
+    }
+  },
+  "observer": {
+    "kind": "Fixed passive snapshot sensor plus material Native query; query is an intervention.",
+    "sensor_site": [
+      52,
+      48,
+      47
+    ],
+    "sensor_tick_relative_query": -1,
+    "sensor_codec": "Identity of actual state low two bits, including 0; never fixture cue, action target or future.",
+    "datum_relative_query": 3,
+    "selector_read_relative_query": 4,
+    "hold_until_relative_query": 6,
+    "selector_signature": "Active SEM1, y=+1, x in {-1,0,+1}, z in {0,-1}; otherwise NULL.",
+    "zero_action": "No pulse, canonical -1 efference, fixed before evaluation.",
+    "NULL_action": "No pulse, no fabricated binary efference; record invalid selection and continue the finite registered schedule unless transport, safety or budget is uncertain."
+  },
+  "calendar": {
+    "reference_period": 391,
+    "reference_double_period": 782,
+    "planning_lead_ticks": 16,
+    "query_lead_before_efference": 7,
+    "efference_relative_query": 7,
+    "FI_start_relative_query": 136,
+    "FI_query_expected_relative_query_if_no_normalizer_wait": 192,
+    "FI_horizon_expected_relative_query_if_no_normalizer_wait": 334,
+    "result_deadline_relative_query": 407,
+    "generic_return_relative_query": 408,
+    "eligibility_collision_relative_query": 409,
+    "reference_contact_relative_query": 410,
+    "settled_relative_query": 412,
+    "require_actual_FI_calendar_and_effects_recorded": true,
+    "stop_before_unavailable_outcome_deadline": true
+  },
+  "schedule": [
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 20,
+      "right": 7
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 17,
+      "right": 4
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 19,
+      "right": 6
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 12,
+      "right": 5
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 16,
+      "right": 7
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 18,
+      "right": 5
+    },
+    {
+      "stage": "T1",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 18,
+      "right": 5
+    },
+    {
+      "stage": "T1",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 13,
+      "right": 4
+    },
+    {
+      "stage": "T1",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 16,
+      "right": 7
+    },
+    {
+      "stage": "T1",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 19,
+      "right": 6
+    },
+    {
+      "stage": "F1",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 12,
+      "right": 3
+    },
+    {
+      "stage": "F1",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 17,
+      "right": 8
+    },
+    {
+      "stage": "F1",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 15,
+      "right": 4
+    },
+    {
+      "stage": "F1",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 20,
+      "right": 9
+    },
+    {
+      "stage": "F1",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 14,
+      "right": 5
+    },
+    {
+      "stage": "T2",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 18,
+      "right": 7
+    },
+    {
+      "stage": "T2",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 11,
+      "right": 2
+    },
+    {
+      "stage": "T2",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 16,
+      "right": 5
+    },
+    {
+      "stage": "F2",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 19,
+      "right": 8
+    },
+    {
+      "stage": "F2",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 17,
+      "right": 4
+    },
+    {
+      "stage": "F2",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 15,
+      "right": 6
+    },
+    {
+      "stage": "F2",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 20,
+      "right": 7
+    },
+    {
+      "stage": "F2",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 13,
+      "right": 2
+    },
+    {
+      "stage": "F2",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 18,
+      "right": 9
+    },
+    {
+      "stage": "future_unscored",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 17,
+      "right": 6
+    },
+    {
+      "stage": "future_unscored",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 19,
+      "right": 8
+    }
+  ],
+  "instrumentation": {
+    "episode_indices": [
+      12,
+      16,
+      21,
+      24,
+      29
+    ],
+    "viability_episode_indices": [],
+    "codec_sha256": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "maximum_frames_per_recorded_episode": 31,
+    "anchor_relative_query": [
+      -3,
+      144,
+      412
+    ],
+    "centres_relative_query": [
+      -1,
+      4,
+      8,
+      72,
+      144,
+      408,
+      410
+    ],
+    "neighbour_tick_offsets": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "scope": "Same fixed31-frame codec and three anchors on globalordinals12,16,21,24,29; all arms use same request/reader protocol. Global mode must be prospective and bounded. Existing passivity evidence is scoped, not universal.",
+    "actor_receives_recording": false,
+    "max_captures_all_arms": 20
+  },
+  "controls": {
+    "arms": [
+      "real",
+      "none",
+      "yoked",
+      "reference"
+    ],
+    "yoke_permutation": [
+      14,
+      16,
+      6,
+      17,
+      10,
+      13,
+      0,
+      12,
+      2,
+      11,
+      9,
+      3,
+      1,
+      4,
+      7,
+      5,
+      15,
+      8
+    ],
+    "permutation_algorithm": "Python stdlib Random(81008), descending Sattolo i17..1, j=randrange(i), literal vector fixed before any B result",
+    "values_rule": "values[i]=actual_real_failed[yoke_permutation[i]]",
+    "same_true_false_count": true,
+    "no_retrospective_permutation_search": true,
+    "none_return": "one materialFalse generic return at every same planned boundary, not absence of return",
+    "reference": "Separate material clone only. Initial external actions[-1,-1,-1,-1]; actual visitedSTATE and ownactualfailed only; reverse executedaction on failure. No native candidate policy table."
+  },
+  "start_ordinal": 12,
+  "evaluated_opportunities": 18,
+  "future_unscored_offers": 2,
+  "B_criteria": {
+    "history_revision_supported": "At least one real costly-to-useful revision and one useful-to-costly revision, each followed by useful actualSTATE1 use. Require comparison with constant-return behavior; first errors at a switch are allowed.",
+    "finite_horizon": "All18 opportunities retained. Report everyblock, first adjustment costs and subsequent successes; a missingcue or insufficientSTATE1exposure limits the corresponding claim, not a retrospective rescue.",
+    "functional_advantage": "Report FI and message components separately and joint opportunities. A local contingency-dependent improvement or matched simple reference can be progress; no universal superiority or utility of unexecuted reference is claimed.",
+    "B_adoption": "Only after preservingA and a current representative availability/reopen check. A remains main ifBfails; never merge control experiences.",
+    "causal_contingency": "Compare actual real, constantFalse and exactdose-permuted returns; audit mismatches and anticipatory residual alignment. No universal contingency advantage required or presumed.",
+    "reference": "Utility measured by actual device/FI/message in its own material clone, never scored from counterfactual replay of real history."
+  },
+  "budget_B": {
+    "max_per_episode1300": 1300,
+    "evaluated_episodes18_per_arm": 18,
+    "arms": 4,
+    "Native_bound_all_arms": 93600,
+    "typical782_per_trial_all_arms": 56304,
+    "max_global_captures": 20,
+    "max_global_anchors": 60,
+    "max_global_delta_frames": 560
+  },
+  "administrative_continuation": {
+    "old_R01_R02_R03_metadata": "literal unchanged",
+    "consumed_original_R03_rows_preserved": 12,
+    "new_B_KEY": "DEE.Cognitive.PI08.successive_contextual_regulation.B.R01",
+    "no_bank_birth_or_RAW_or_clock_edits": true,
+    "no_reinstallation_or_memory_merge": true,
+    "replaces_only_unconsumed_environment_offers": true,
+    "requires_complete_actual_A_adoption_prefix": true,
+    "A_remains_principal_if_B_fails": true
+  },
+  "original_sources_literal": {
+    "pi07_regulacion_R03.py": "40648fd81c5b1f278ee9c18d0d464c5a4b5e9fd808054afe6ff072a10fda0ac5",
+    "PROTOCOLO_PI07_R03.json": "f69e8558799558a1ccceb70e0684a061a971b9521ad8985205d1662aea55d269"
+  },
+  "evaluation_authorized_by_this_draft": false,
+  "source_A": {
+    "alias": "PI08_A_CONSOLIDADA_T861426",
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\materiales\\PI08_A_CONSOLIDADA_T861426",
+    "manifest_sha256": "dfadc5037b804f3c6112263eb0af84f6215d53fd3cb138ae143676a56dfcc00c",
+    "snapshot_sha256": "2eeef08e3bebac4e218178ed379fd99aa5fdeb03650c0454ad55c6534824c133",
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01",
+    "N": 67,
+    "T": 861426,
+    "physical": {
+      "N": 67,
+      "tick": 861426,
+      "RAW_sha256": "056d2d6482136a28b1893bee926477a44160d9dd8b938a37d88d3c62249b28ae",
+      "clocks_sha256": "a9354c0fca7ffbcb8486042026a9f9ab4356870fa28e90c6fa4462290efd21b6"
+    },
+    "members_verified": 4569,
+    "bytes_verified": 307271917
+  },
+  "feedback": {
+    "configuration": "Own zero-Native B admission, explicit external control per world; actor and fixed actuator receive no future return or private case label.",
+    "return_boundary_relative_TCquery": 408,
+    "actual_failed": "Actual unchangedFI.old_q6_choice !=+1 OR an offered message is not delivered with ownAppliedreceipt and exact Native value.",
+    "failure_port": "Original fixed generic failure port; no prior-action or bank argument",
+    "nonfailure_port": "Original fixed generic nonfailure port; same fixed schedule"
+  },
+  "scope": "Same continuing inherited Native TC. Prepared two-bit sensor, opportunities, fixed actuator and six-lap efference/return. Selection and refchanges can depend on history; this does not show learned scheduling, discovered composition or general agency.",
+  "stop_policy": {
+    "uncertain_or_pending": "Stop, preserve and do not retry an ambiguous operation.",
+    "resolved_conflict": "Record known simultaneous actuator/message conflict as actual functional cost; preserve numeric FI errors and all episodes.",
+    "NULL": "Distinct from materialzero, never substituted. Record Native_selection_valid false; a coherent terminal episode can complete but cannot count as valid learned selection.",
+    "external_safety": "Original SafeAdapter checks every<=32ticks and stops RAWsupport>3000. Host safety is not learned regulation."
+  },
+  "A_adoption_proof_sha256": "9b42529320b50c441660ba2f2e7f2db1c96bd615e27e9df01213743610d4a47f"
+}

@@ -1,0 +1,73 @@
+{
+  "all_passed": true,
+  "checks": {
+    "replay_exact": true,
+    "restore_continue_exact": true,
+    "second_writer_rejected": true,
+    "test_world_stopped_safe": true,
+    "writer_lock_free_after": true
+  },
+  "created_utc": "2026-10-05T18:19:53.788+00:00",
+  "replay": {
+    "exact": true,
+    "expected": {
+      "clock_sha256_uint64_le": "00d99ad918df0ba4b0ce4532c634c052feaba7bffeabe52e2e669db7c6e1ac06",
+      "path": "test_campaign/worlds/A/world/checkpoints/tick_000000000608_collect_FINAL_MBP2-ABC-TRIAL-60S_A_e93d2352.deetsnap",
+      "raw_sha256_uint64_le": "96801f6186c2e361c2111d91a0dbad9090e8d87442080b625f8f02506b3f1bf9",
+      "receipt_count": 0,
+      "tick": 608
+    },
+    "operation": {
+      "clock_exact": null,
+      "events_replayed": 0,
+      "logged_receipt_ids": [],
+      "output_checkpoint": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\validation\\trial_replay_A_t608.deetsnap",
+      "raw_exact": null,
+      "receipt_ids_exact": true,
+      "receipts_exact": null,
+      "replayed_receipt_ids": [],
+      "start_tick": 0,
+      "target_tick": 608,
+      "tick_exact": null
+    },
+    "replayed": {
+      "clock_sha256_uint64_le": "00d99ad918df0ba4b0ce4532c634c052feaba7bffeabe52e2e669db7c6e1ac06",
+      "path": "validation/trial_replay_A_t608.deetsnap",
+      "raw_sha256_uint64_le": "96801f6186c2e361c2111d91a0dbad9090e8d87442080b625f8f02506b3f1bf9",
+      "receipt_count": 0,
+      "tick": 608
+    }
+  },
+  "restore_continue": {
+    "continued": {
+      "clock_sha256_uint64_le": "00d99ad918df0ba4b0ce4532c634c052feaba7bffeabe52e2e669db7c6e1ac06",
+      "path": "validation/trial_restore_continue_B_t608.deetsnap",
+      "raw_sha256_uint64_le": "6ab5b063b682aa4034b6163886b7f6fb9c80b91cf03cd1948fc9c17debb6a08f",
+      "receipt_count": 0,
+      "tick": 608
+    },
+    "exact": true,
+    "expected": {
+      "clock_sha256_uint64_le": "00d99ad918df0ba4b0ce4532c634c052feaba7bffeabe52e2e669db7c6e1ac06",
+      "path": "test_campaign/worlds/B/world/checkpoints/tick_000000000608_collect_FINAL_MBP2-ABC-TRIAL-60S_B_18494cb1.deetsnap",
+      "raw_sha256_uint64_le": "6ab5b063b682aa4034b6163886b7f6fb9c80b91cf03cd1948fc9c17debb6a08f",
+      "receipt_count": 0,
+      "tick": 608
+    },
+    "start": "test_campaign/worlds/B/world/checkpoints/tick_000000000144_common_tick_144_3d85a64f.deetsnap"
+  },
+  "schema": "mbp2.trial-targeted-validation.v1",
+  "sealed_trial_unchanged": true,
+  "writer_exclusion": {
+    "collect_stop_ok": true,
+    "first_pid": 19564,
+    "first_returncode": 0,
+    "first_state_when_contested": "PAUSED",
+    "second_returncode": 1,
+    "second_stderr": "Traceback (most recent call last):\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\habitat_base.py\", line 660, in __init__\n    msvcrt.locking(self.stream.fileno(), msvcrt.LK_NBLCK, 1)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\mbp2.py\", line 633, in <module>\n    raise SystemExit(cli())\n                     ~~~^^\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\mbp2.py\", line 629, in cli\n    return base.cli()\n           ~~~~~~~~^^\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\habitat_base.py\", line 1804, in cli\n    return worker(args.root)\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\habitat_base.py\", line 1212, in worker\n    with WriterLock(paths[\"lock\"]):\n         ~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\mente basal\\mente basal persistente 2\\app\\habitat_base.py\", line 663, in __init__\n    raise RuntimeError(\"another writer owns this lineage\") from error\nRuntimeError: another writer owns this lineage\n",
+    "second_stdout": "",
+    "second_writer_rejected": true,
+    "terminal_state": "STOPPED_SAFE",
+    "writer_lock_free_after": true
+  }
+}

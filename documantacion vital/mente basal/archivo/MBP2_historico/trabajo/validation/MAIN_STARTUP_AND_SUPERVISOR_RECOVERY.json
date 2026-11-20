@@ -1,0 +1,46 @@
+{
+  "schema": "mbp2.main-startup-verification.v1",
+  "campaign_id": "MBP2-ABC-2H",
+  "experiment_start_utc": "2026-10-05T18:23:29.130+00:00",
+  "experiment_start_local": "2026-10-05T12:23:29.130-06:00",
+  "experiment_deadline_utc": "2026-10-05T20:23:29.130+00:00",
+  "experiment_deadline_local": "2026-10-05T14:23:29.130-06:00",
+  "worlds_never_restarted_during_supervisor_recovery": true,
+  "workers": {
+    "A": {"world_id": "MBP2-A-AISLAMIENTO", "pid": 20248},
+    "B": {"world_id": "MBP2-B-INTERACTIVO", "pid": 19848},
+    "C": {"world_id": "MBP2-C-CONTROL", "pid": 18744}
+  },
+  "post_recovery_progress_readings": [
+    {
+      "observed_utc": "2026-10-05T18:26:26.155+00:00",
+      "ticks": {"A": 2296, "B": 2304, "C": 2320},
+      "states": {"A": "RUNNING", "B": "RUNNING", "C": "RUNNING"},
+      "pids_alive": {"A": true, "B": true, "C": true},
+      "writer_locks_held": {"A": true, "B": true, "C": true}
+    },
+    {
+      "observed_utc": "2026-10-05T18:27:08.168+00:00",
+      "ticks": {"A": 2768, "B": 2784, "C": 2784},
+      "states": {"A": "RUNNING", "B": "RUNNING", "C": "RUNNING"},
+      "pids_alive": {"A": true, "B": true, "C": true},
+      "writer_locks_held": {"A": true, "B": true, "C": true}
+    }
+  ],
+  "progress_confirmed": {"A": true, "B": true, "C": true},
+  "supervisor": {
+    "initial_pid": 17616,
+    "initial_launch_utc": "2026-10-05T18:23:25.127+00:00",
+    "initial_failure": "A passive status read raced atomic Windows publication and received transient PermissionError for world C status.json.",
+    "world_effect": "none; all three worker PIDs remained alive and their ticks continued increasing",
+    "instrumentation_fix": "campaign _world_status retries only diagnosed transient PermissionError/Access is denied reads; other failures still propagate",
+    "replacement_pid": 20236,
+    "replacement_launch_utc": "2026-10-05T18:26:05.234+00:00",
+    "inherited_parent_job": false,
+    "alive_after_launcher_exit": true,
+    "last_health_utc_at_verification": "2026-10-05T18:27:05.863+00:00",
+    "phase_at_verification": "RUNNING"
+  },
+  "official_zip_exists_at_verification": false,
+  "official_zip_will_be_published_only_after_stop_analysis_compression_and_validation": true
+}

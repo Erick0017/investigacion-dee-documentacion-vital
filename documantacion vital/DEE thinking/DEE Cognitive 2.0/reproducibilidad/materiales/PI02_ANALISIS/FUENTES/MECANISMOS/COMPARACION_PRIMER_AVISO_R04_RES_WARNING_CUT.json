@@ -1,0 +1,404 @@
+{
+  "schema": "PI02.R04.first_common_warning.paired_control.v1",
+  "calculated_utc": "2026-11-08T23:33:43.644099+00:00",
+  "new_ticks": 0,
+  "DEE_imports": 0,
+  "main": "ECI02_PI02_MAIN",
+  "control": "ECI02_PI02_R04_WARNING_CUT",
+  "fixed_question": "First configured post-training warning slot episode5, not a selected successful case",
+  "source_files": [
+    {
+      "role": "main_summary",
+      "file": "summary.json.gz",
+      "decoded_sha256": "cdb7c175a03d4582b8ec976fed9b5fd7b599c2d7277c2dba6443beb7f83dd033"
+    },
+    {
+      "role": "main_journal",
+      "file": "eventos.jsonl.gz",
+      "decoded_sha256": "11051d6678739ba1d3aba2140ea82d3b588b1c528f067d6ffb61dbee16c4b010"
+    },
+    {
+      "role": "control_summary",
+      "file": "summary.json.gz",
+      "decoded_sha256": "2bd89e72be48c9557f3a29d820762e3f71164476acb92e670be76acc15163b4b"
+    },
+    {
+      "role": "control_journal",
+      "file": "eventos.jsonl.gz",
+      "decoded_sha256": "41cce8aa3bb5f34dc53c68025bf3af75d12620f07517070ce7514a1b65c1b8f7"
+    }
+  ],
+  "prior_observed_FI_prefix": [
+    {
+      "episode": 0,
+      "requests_176_exact_equal": true,
+      "recorded_FI_frames_exact_equal": true,
+      "early_RAW_clock_observation_exact_equal": true
+    },
+    {
+      "episode": 2,
+      "requests_176_exact_equal": true,
+      "recorded_FI_frames_exact_equal": true,
+      "early_RAW_clock_observation_exact_equal": true
+    },
+    {
+      "episode": 3,
+      "requests_176_exact_equal": true,
+      "recorded_FI_frames_exact_equal": true,
+      "early_RAW_clock_observation_exact_equal": true
+    },
+    {
+      "episode": 5,
+      "requests_176_exact_equal": true,
+      "recorded_FI_frames_exact_equal": true,
+      "early_RAW_clock_observation_exact_equal": true
+    }
+  ],
+  "first_warning": {
+    "episode": 5,
+    "q": 744711,
+    "W_G_receipts_exact_equal": true,
+    "admitted_input_receipts": [
+      {
+        "channel": "PI02.R03.warning",
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "id": 115171,
+        "modality": "LEGAL_EXPERIENCE_INPUT",
+        "nominal_arrival_tick": 744711,
+        "payload": 7,
+        "receipt": {
+          "channels": [
+            "PI02.R03.warning"
+          ],
+          "effective_tick": 744703,
+          "id": 115171,
+          "kind": "experience",
+          "reason": "",
+          "requested_tick": 744703,
+          "status": "applied"
+        },
+        "requested_tick": 744703,
+        "semantic": 1,
+        "site": [
+          12,
+          34,
+          24
+        ],
+        "state": 1
+      },
+      {
+        "channel": "PI02.R03.normalizer",
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "id": 115172,
+        "modality": "LEGAL_EXPERIENCE_INPUT",
+        "nominal_arrival_tick": 744778,
+        "payload": 0,
+        "receipt": {
+          "channels": [
+            "PI02.R03.normalizer"
+          ],
+          "effective_tick": 744775,
+          "id": 115172,
+          "kind": "experience",
+          "reason": "",
+          "requested_tick": 744775,
+          "status": "applied"
+        },
+        "requested_tick": 744775,
+        "semantic": 1,
+        "site": [
+          1,
+          34,
+          24
+        ],
+        "state": 1
+      }
+    ],
+    "main_H": {
+      "active": true,
+      "clock": "744711",
+      "direction": [
+        -1,
+        1,
+        0
+      ],
+      "raw": "1161647336259059713",
+      "s_reg": 25,
+      "semantic": 1,
+      "site": [
+        4,
+        34,
+        24
+      ],
+      "state": 1,
+      "tick": 744711
+    },
+    "control_H": {
+      "active": true,
+      "clock": "744711",
+      "direction": [
+        -1,
+        1,
+        0
+      ],
+      "raw": "1161647336259059713",
+      "s_reg": 25,
+      "semantic": 1,
+      "site": [
+        4,
+        34,
+        24
+      ],
+      "state": 1,
+      "tick": 744711
+    },
+    "main_close_device": {
+      "actual_control_packet": {
+        "bytes": 64,
+        "file": "0002.bin",
+        "index": 2,
+        "sha256": "f60125657287606a3b1f359f0ce091de2d365df6e27d250558e82ee039856e08"
+      },
+      "applied": true,
+      "command": "CLOSE",
+      "guard_after": true,
+      "guard_before": true,
+      "guard_until": 746185,
+      "index": 140,
+      "kind": "DEVICE_COMMAND",
+      "native_tick": 744711,
+      "origin": "learned_warning",
+      "resource_cost_bytes": 64,
+      "tick": 744711,
+      "wiring": "normal"
+    },
+    "control_CLOSE_at_q_recorded": true,
+    "control_close_device_at_q": [
+      {
+        "applied": false,
+        "command": "CLOSE",
+        "guard_before": true,
+        "index": 140,
+        "kind": "DEVICE_COMMAND",
+        "native_tick": 744711,
+        "origin": "learned_warning",
+        "reason": "Declared post-emission actuator cut",
+        "tick": 744711,
+        "wiring": "normal"
+      }
+    ],
+    "prior_device_main": {
+      "actual_control_packet": {
+        "bytes": 64,
+        "file": "0001.bin",
+        "index": 1,
+        "sha256": "4af9b3e4c946780e8ee616a4662f9424dcdc2e460b440e57346e81ae0edb939c"
+      },
+      "applied": true,
+      "command": "TOGGLE",
+      "guard_after": true,
+      "guard_before": false,
+      "guard_until": 745384,
+      "index": 111,
+      "kind": "DEVICE_COMMAND",
+      "native_tick": 743910,
+      "origin": "native_return_B",
+      "resource_cost_bytes": 64,
+      "tick": 743910,
+      "wiring": "normal"
+    },
+    "prior_device_control": {
+      "actual_control_packet": {
+        "bytes": 64,
+        "file": "0001.bin",
+        "index": 1,
+        "sha256": "4af9b3e4c946780e8ee616a4662f9424dcdc2e460b440e57346e81ae0edb939c"
+      },
+      "applied": true,
+      "command": "TOGGLE",
+      "guard_after": true,
+      "guard_before": false,
+      "guard_until": 745384,
+      "index": 111,
+      "kind": "DEVICE_COMMAND",
+      "native_tick": 743910,
+      "origin": "native_return_B",
+      "resource_cost_bytes": 64,
+      "tick": 743910,
+      "wiring": "normal"
+    },
+    "same_useful_current_work_and_gate": true,
+    "scope": "Same paired training; formed warning-device actuation cut in control. Same current W/G admissions, phase and recorded FI prefix. Compare the formed signal separately from its applied effect."
+  },
+  "next_work": {
+    "episode": 6,
+    "source_tick": 745509,
+    "main_gate": {
+      "at_tick": 745508,
+      "guard_closed": true,
+      "native_submit": false,
+      "offered": true,
+      "source_tick": 745509
+    },
+    "control_gate": {
+      "at_tick": 745508,
+      "guard_closed": false,
+      "native_submit": true,
+      "offered": true,
+      "source_tick": 745509
+    },
+    "main_raw0_receipt": {
+      "channels": [
+        "MU.raw.L128.left.root.0.0.raw.0"
+      ],
+      "effective_tick": 745509,
+      "id": 115173,
+      "kind": "experience",
+      "reason": "",
+      "requested_tick": 745509,
+      "status": "applied"
+    },
+    "control_raw0_receipt": {
+      "channels": [
+        "MU.raw.L128.left.root.0.0.raw.0"
+      ],
+      "effective_tick": null,
+      "id": 115173,
+      "kind": "experience",
+      "reason": "simultaneous events target the same register",
+      "requested_tick": 745509,
+      "status": "rejected_conflict"
+    },
+    "main_early_observation": {
+      "active": true,
+      "clock": "745567",
+      "direction": [
+        1,
+        1,
+        -1
+      ],
+      "raw": "2238570511254683649",
+      "s_reg": 5,
+      "semantic": 1,
+      "site": [
+        15,
+        15,
+        15
+      ],
+      "state": 1,
+      "tick": 745567
+    },
+    "control_early_observation": {
+      "active": true,
+      "clock": "745567",
+      "direction": [
+        -1,
+        1,
+        -1
+      ],
+      "raw": "2242511160928632833",
+      "s_reg": 5,
+      "semantic": 1,
+      "site": [
+        15,
+        15,
+        15
+      ],
+      "state": 1,
+      "tick": 745567
+    },
+    "main_effect": {
+      "applied_command": 1,
+      "blocked_by_external_capacity": false,
+      "kind": "WORK_EFFECT",
+      "loads_after": [
+        18,
+        9
+      ],
+      "loads_before": [
+        19,
+        8
+      ],
+      "physical_choice": 1,
+      "resource": {
+        "bytes": 64,
+        "episode": 6,
+        "file": "0006.bin",
+        "sha256": "0bd736010dfe26839900600ee462cffd00e204b372c3d9cebeac19c8c23e1b04"
+      },
+      "useful": true,
+      "zero_is_not_NULL": true
+    },
+    "control_effect": {
+      "applied_command": -1,
+      "blocked_by_external_capacity": false,
+      "kind": "WORK_EFFECT",
+      "loads_after": [
+        20,
+        7
+      ],
+      "loads_before": [
+        19,
+        8
+      ],
+      "physical_choice": -1,
+      "resource": null,
+      "useful": false,
+      "zero_is_not_NULL": true
+    },
+    "old_device_TTL_before_next_input": true,
+    "warning_device_refreshes_before_gate": [
+      {
+        "actual_control_packet": {
+          "bytes": 64,
+          "file": "0002.bin",
+          "index": 2,
+          "sha256": "f60125657287606a3b1f359f0ce091de2d365df6e27d250558e82ee039856e08"
+        },
+        "applied": true,
+        "command": "CLOSE",
+        "guard_after": true,
+        "guard_before": true,
+        "guard_until": 746185,
+        "index": 140,
+        "kind": "DEVICE_COMMAND",
+        "native_tick": 744711,
+        "origin": "learned_warning",
+        "resource_cost_bytes": 64,
+        "tick": 744711,
+        "wiring": "normal"
+      },
+      {
+        "actual_control_packet": {
+          "bytes": 64,
+          "file": "0003.bin",
+          "index": 3,
+          "sha256": "f014cba0251857ff61764bf29be14dff8b10557252e69f1af61a9a523669f4b0"
+        },
+        "applied": true,
+        "command": "CLOSE",
+        "guard_after": true,
+        "guard_before": true,
+        "guard_until": 746922,
+        "index": 169,
+        "kind": "DEVICE_COMMAND",
+        "native_tick": 745448,
+        "origin": "learned_warning",
+        "resource_cost_bytes": 64,
+        "tick": 745448,
+        "wiring": "normal"
+      }
+    ],
+    "causal_limit": "Both CLOSE5 and CLOSE6 precede this input. These records do not establish necessity of CLOSE5 alone. A cut of all formed warning actuations tests the sequence/channel, not a single necessary refresh."
+  },
+  "inconsistencies": [],
+  "interpretation_scope": "Observed history->signature->device-state/TTL->input-admission->FI-action chain. This is the first predefined common warning comparison; aggregate outcomes are analyzed separately, including negative reversed-device and valence-omission results."
+}

@@ -1,0 +1,346 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "panel_12",
+  "title": "Twelve historical witnesses and actual arithmetic result transport",
+  "revision": "PI03_R01",
+  "prefix": "PI02_BASE_T753346",
+  "modalities": {
+    "B": "Use from preserved learned state",
+    "C": "Not acquisition replay",
+    "D": "Diagnostic use of the current principal cut, never material use on protected original",
+    "E": "Not a general recovery procedure"
+  },
+  "variants": {
+    "principal": {
+      "batches": [
+        [
+          {
+            "label": "habitat_off",
+            "literal": {
+              "modo": "eci01-pi02-pausar-habitat"
+            },
+            "require_zero_ticks": true
+          },
+          {
+            "label": "luma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "nara",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "nara"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "clasifica",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "clasifica"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "suma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "suma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "alfa",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "FIplus",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 14,
+              "derecha": 3
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "FIminus",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 2,
+              "derecha": 11
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "FIzero",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 6,
+              "derecha": 6
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 0,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "number13",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "suma",
+              "izquierda": 6,
+              "derecha": 7
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 13,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "number8",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "diferencia",
+              "derecha": 5
+            },
+            "actual_integer_binding": {
+              "from_step": "number13",
+              "field": "izquierda"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 8,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "alfa_after",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "luma_after",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 929,
+        "applied": 929,
+        "rejected": 0
+      }
+    }
+  },
+  "assistance": "Operator fixes twelve queries, order, decoders and subtract5 after the actual Native sum. Feedback omitted. Habitat bridge explicitly paused without stopping Native evolution.",
+  "limitations": "Not twelve independent individuals, general language, learned arithmetic algorithm or autonomous multistep planning. Material0 differs from NULL. Historical full panel ended751546; this source is753346 and needs its own diagnostic verification.",
+  "sources": [
+    "historico_PI02/panel_retencion_PI02.py",
+    "PI02_ANALISIS/EVIDENCIA/E_FINAL"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

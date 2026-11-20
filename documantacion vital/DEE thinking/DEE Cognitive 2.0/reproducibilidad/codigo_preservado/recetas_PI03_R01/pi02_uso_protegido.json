@@ -1,0 +1,132 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi02_uso_protegido",
+  "title": "Protected comparison work using inherited H association and existing environment",
+  "revision": "PI03_R01",
+  "prefix": "PI02_BASE_T753346",
+  "modalities": {
+    "B": "Use from complete learned current state",
+    "C": "No re-teaching U or content",
+    "D": "Protected old principal remains unchanged; diagnostic continuation consumes two explicit environmental opportunities",
+    "E": "Fixed learned protection with consumables, not general automatic recovery"
+  },
+  "variants": {
+    "dos_trabajos": {
+      "batches": [
+        [
+          {
+            "label": "initial",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            }
+          },
+          {
+            "label": "offer_plus",
+            "literal": {
+              "modo": "eci01-pi02-habitat-trabajo",
+              "izquierda": 13,
+              "derecha": 5,
+              "aviso": true,
+              "perturbacion": true,
+              "adelanto": 128
+            }
+          },
+          {
+            "label": "offer_minus",
+            "literal": {
+              "modo": "eci01-pi02-habitat-trabajo",
+              "izquierda": 7,
+              "derecha": 16,
+              "aviso": true,
+              "perturbacion": true,
+              "adelanto": 195
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 1800
+            }
+          },
+          {
+            "label": "final",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            }
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "new_actual_products",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "final",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "resources"
+              ]
+            },
+            {
+              "step": "initial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "resources"
+              ]
+            }
+          ],
+          "expected": 2
+        },
+        {
+          "label": "new_opportunities_completed",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "final",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "episode"
+              ]
+            },
+            {
+              "step": "initial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "episode"
+              ]
+            }
+          ],
+          "expected": 2
+        }
+      ]
+    }
+  },
+  "assistance": "Operator supplies two public load pairs, availability flags, warning leads and1800genericticks. Existing Native O/H outputs drive prepared work/valve transducers.",
+  "limitations": "Source already has8products,14consumedopportunities and6availablecontrolpackets. No counter/reset/refill is hidden. Supply of new work/material is external. Success depends on actual collected artifacts and their journal, not a score alone.",
+  "sources": [
+    "PI02_ANALISIS/EVIDENCIA/E_FINAL",
+    "codigo_preservado/PI02_R04_OP1/capacidades/pi02_habitat_R04.py"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

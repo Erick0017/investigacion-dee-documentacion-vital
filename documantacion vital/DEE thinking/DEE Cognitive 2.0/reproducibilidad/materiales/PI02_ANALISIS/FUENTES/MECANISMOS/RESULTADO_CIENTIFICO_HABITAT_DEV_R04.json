@@ -1,0 +1,695 @@
+{
+  "schema": "PI02.R04.passive_journal_recalculation.v1",
+  "calculated_utc": "2026-11-08T23:16:49.105758+00:00",
+  "life": "ECI02_PI02_DEV_HAB",
+  "series": "development",
+  "history": "paired",
+  "arm": "real",
+  "new_ticks": 0,
+  "DEE_imports": 0,
+  "source_summary": {
+    "file": "RESUMEN_PI02_R04_DEV_HAB.json",
+    "bytes": 38155,
+    "sha256": "ef15b14b110982224a81996ffee5912ab890de662fdea81294a2e14667df4ae9"
+  },
+  "source_journal": {
+    "file": "eventos.jsonl",
+    "available_decoded_bytes": 308685,
+    "used_prefix_bytes": 308685,
+    "used_events": 168,
+    "sha256": "015dea9cbccfe09e77cc5acadaa8676daef30a63c5d3bc0a97fe6ee468151a8a",
+    "chained_sha256": "322f7d66aba630410faad3d229f315c67ce6143807adf8cc00add23a6ca0f121",
+    "trailing_events_outside_this_historical_cut": 0
+  },
+  "reported_native_interval": 4600,
+  "before_tick": 740937,
+  "after_tick": 745537,
+  "global_before_after_reported": {
+    "before": {
+      "N": 67,
+      "RAW_sha256": "8fb61ea4914e47f7134a02f8d227cb38d172a8dd703a27411dbf6174dfda9503",
+      "basic_buffers_bytes": 9624416,
+      "clocks_sha256": "1ca0aeb9c1c616ed9510c7864e4b5d0c5462127db187a02d4b94cf5ea353591f",
+      "max_s_reg": 4530,
+      "occupied": 91,
+      "sites": 300763,
+      "tick": 740937
+    },
+    "after": {
+      "N": 67,
+      "RAW_sha256": "54416eff074ed5567cabdf494f24e4b5862daadbcadffa1a5c79f455a08a007f",
+      "basic_buffers_bytes": 9624416,
+      "clocks_sha256": "00b8b7dd55c5deaf5ac339909ce9c26a641bd34c7e41bd6b4df9a742c442ecd3",
+      "max_s_reg": 4530,
+      "occupied": 95,
+      "sites": 300763,
+      "tick": 745537
+    }
+  },
+  "event_kinds": {
+    "WORKBENCH_ADMITTED": 1,
+    "FIXED_PORT_OBSERVATIONS": 136,
+    "NATIVE_RETURN_ADMITTED": 6,
+    "PERIPHERAL_GATE": 4,
+    "ACTUAL_INPUT_FAILURE_SENSOR": 1,
+    "FI_EMISSION_AND_EFFECT": 4,
+    "FI_FRAME_FINISHED": 4,
+    "NEGATIVE_VALENCE_SUBMITTED": 4,
+    "OPPORTUNITY_COMPLETED": 6,
+    "DEVICE_COMMAND": 2,
+    "LEARNED_WARNING_SIGNATURE": 0
+  },
+  "Native_receipts_unique": 713,
+  "receipt_aliases_not_recounted": 1,
+  "Native_receipt_statuses": {
+    "rejected_conflict": 6,
+    "applied": 695,
+    "rejected_occupied": 12
+  },
+  "observation_serializations_RAW_checked_not_independent_events": 461,
+  "returns": 69,
+  "busy_returns_reconciled": 60,
+  "busy_returns_from_event_timeline": 60,
+  "exhausted_returns_reported": 3,
+  "exhausted_returns_from_event_timeline": 3,
+  "false_CLOSE_conditions_from_events": 0,
+  "completed_opportunities": 6,
+  "actual_work_frames": 4,
+  "actual_resources": 2,
+  "actual_device_commands": 2,
+  "actual_applied_device_commands": 2,
+  "device_cost_bytes": 128,
+  "CLOSE_signatures": 0,
+  "training_report_events": [
+    {
+      "U_request": {
+        "channel": "PI02.R03.alteration_report",
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "id": 114637,
+        "modality": "LEGAL_EXPERIENCE_INPUT",
+        "nominal_arrival_tick": 741093,
+        "payload": 11,
+        "requested_tick": 741090,
+        "semantic": 1,
+        "site": [
+          1,
+          31,
+          24
+        ],
+        "state": 1
+      },
+      "episode": 0,
+      "index": 5,
+      "kind": "ACTUAL_INPUT_FAILURE_SENSOR",
+      "raw0_receipt": {
+        "channels": [
+          "MU.raw.L128.left.root.0.0.raw.0"
+        ],
+        "effective_tick": null,
+        "id": 114459,
+        "kind": "experience",
+        "reason": "simultaneous events target the same register",
+        "requested_tick": 741087,
+        "status": "rejected_conflict"
+      },
+      "tick": 741088,
+      "training_anchor": 741093
+    }
+  ],
+  "first_recorded_positive_H": [
+    {
+      "H": {
+        "active": true,
+        "clock": "741093",
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "raw": "1157425181543628801",
+        "s_reg": 18,
+        "semantic": 1,
+        "site": [
+          4,
+          34,
+          24
+        ],
+        "state": 1,
+        "tick": 741093
+      },
+      "O": {
+        "active": false,
+        "clock": "741093",
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "raw": "0",
+        "s_reg": 0,
+        "semantic": 0,
+        "site": [
+          0,
+          5,
+          20
+        ],
+        "state": 0,
+        "tick": 741093
+      },
+      "index": 6,
+      "kind": "FIXED_PORT_OBSERVATIONS",
+      "tick": 741093
+    }
+  ],
+  "opportunities": [
+    {
+      "episode": 0,
+      "q": 740962,
+      "completed_tick": 741672,
+      "route": 0,
+      "configured_warning_offered": false,
+      "actual_W_requested": 1,
+      "actual_W_applied": 1,
+      "is_training": true,
+      "warning_receipts": [
+        {
+          "channel": "PI02.R03.warning",
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "id": 114635,
+          "modality": "LEGAL_EXPERIENCE_INPUT",
+          "nominal_arrival_tick": 741093,
+          "payload": 7,
+          "receipt": {
+            "channels": [
+              "PI02.R03.warning"
+            ],
+            "effective_tick": 741085,
+            "id": 114635,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 741085,
+            "status": "applied"
+          },
+          "requested_tick": 741085,
+          "semantic": 1,
+          "site": [
+            12,
+            34,
+            24
+          ],
+          "state": 1
+        },
+        {
+          "channel": "PI02.R03.alteration_report",
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "id": 114637,
+          "modality": "LEGAL_EXPERIENCE_INPUT",
+          "nominal_arrival_tick": 741093,
+          "payload": 11,
+          "receipt": {
+            "channels": [
+              "PI02.R03.alteration_report"
+            ],
+            "effective_tick": 741090,
+            "id": 114637,
+            "kind": "experience",
+            "reason": "",
+            "requested_tick": 741090,
+            "status": "applied"
+          },
+          "requested_tick": 741090,
+          "semantic": 1,
+          "site": [
+            1,
+            31,
+            24
+          ],
+          "state": 1
+        }
+      ],
+      "work": {
+        "physical_choice": -1,
+        "applied_command": -1,
+        "useful": false,
+        "loads_before": [
+          10,
+          4
+        ],
+        "loads_after": [
+          11,
+          3
+        ],
+        "input_gate": {
+          "at_tick": 741086,
+          "guard_closed": false,
+          "native_submit": true,
+          "offered": true,
+          "source_tick": 741087
+        },
+        "raw0_status": "rejected_conflict",
+        "FI_requests": 176,
+        "FI_statuses": {
+          "rejected_conflict": 1,
+          "applied": 173,
+          "rejected_occupied": 2
+        },
+        "noise_receipt": {
+          "channels": [
+            "PI02.R03.FI.noise.raw0"
+          ],
+          "effective_tick": null,
+          "id": 114636,
+          "kind": "experience",
+          "reason": "simultaneous events target the same register",
+          "requested_tick": 741087,
+          "status": "rejected_conflict"
+        },
+        "early_observation": {
+          "active": true,
+          "clock": "741145",
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "raw": "2242511160928632833",
+          "s_reg": 5,
+          "semantic": 1,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "state": 1,
+          "tick": 741145
+        }
+      },
+      "device": null,
+      "feedback": {
+        "channels": [
+          "PI01.R03.penalty0"
+        ],
+        "effective_tick": 741631,
+        "id": 114638,
+        "kind": "experience",
+        "reason": "",
+        "requested_tick": 741631,
+        "status": "applied"
+      },
+      "resources_total": 0
+    },
+    {
+      "episode": 1,
+      "q": 741699,
+      "completed_tick": 742409,
+      "route": 1,
+      "configured_warning_offered": false,
+      "actual_W_requested": 0,
+      "actual_W_applied": 0,
+      "is_training": false,
+      "warning_receipts": [],
+      "work": null,
+      "device": {
+        "actual_control_packet": {
+          "bytes": 64,
+          "file": "0000.bin",
+          "index": 0,
+          "sha256": "9e9d4abfe042cd70bbcaac7106e8932d30b0f3276a34477759306343a353632a"
+        },
+        "applied": true,
+        "command": "TOGGLE",
+        "guard_after": true,
+        "guard_before": false,
+        "guard_until": 743173,
+        "kind": "DEVICE_COMMAND",
+        "native_tick": 741699,
+        "origin": "native_return_B",
+        "resource_cost_bytes": 64,
+        "wiring": "normal"
+      },
+      "feedback": {
+        "channels": [
+          "PI01.R03.penalty1"
+        ],
+        "effective_tick": 742368,
+        "id": 114639,
+        "kind": "experience",
+        "reason": "",
+        "requested_tick": 742368,
+        "status": "applied"
+      },
+      "resources_total": 0
+    },
+    {
+      "episode": 2,
+      "q": 742436,
+      "completed_tick": 743146,
+      "route": 0,
+      "configured_warning_offered": false,
+      "actual_W_requested": 0,
+      "actual_W_applied": 0,
+      "is_training": false,
+      "warning_receipts": [],
+      "work": {
+        "physical_choice": 0,
+        "applied_command": 0,
+        "useful": true,
+        "loads_before": [
+          6,
+          6
+        ],
+        "loads_after": [
+          6,
+          6
+        ],
+        "input_gate": {
+          "at_tick": 742694,
+          "guard_closed": true,
+          "native_submit": false,
+          "offered": true,
+          "source_tick": 742695
+        },
+        "raw0_status": "applied",
+        "FI_requests": 176,
+        "FI_statuses": {
+          "applied": 173,
+          "rejected_occupied": 3
+        },
+        "noise_receipt": null,
+        "early_observation": {
+          "active": true,
+          "clock": "742753",
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "raw": "2238289036277972993",
+          "s_reg": 5,
+          "semantic": 1,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "state": 1,
+          "tick": 742753
+        }
+      },
+      "device": null,
+      "feedback": null,
+      "resources_total": 1
+    },
+    {
+      "episode": 3,
+      "q": 743173,
+      "completed_tick": 743883,
+      "route": 0,
+      "configured_warning_offered": false,
+      "actual_W_requested": 0,
+      "actual_W_applied": 0,
+      "is_training": false,
+      "warning_receipts": [],
+      "work": {
+        "physical_choice": -1,
+        "applied_command": -1,
+        "useful": true,
+        "loads_before": [
+          3,
+          12
+        ],
+        "loads_after": [
+          4,
+          11
+        ],
+        "input_gate": {
+          "at_tick": 743297,
+          "guard_closed": false,
+          "native_submit": true,
+          "offered": true,
+          "source_tick": 743298
+        },
+        "raw0_status": "rejected_conflict",
+        "FI_requests": 176,
+        "FI_statuses": {
+          "rejected_conflict": 1,
+          "applied": 173,
+          "rejected_occupied": 2
+        },
+        "noise_receipt": {
+          "channels": [
+            "PI02.R03.FI.noise.raw0"
+          ],
+          "effective_tick": null,
+          "id": 114992,
+          "kind": "experience",
+          "reason": "simultaneous events target the same register",
+          "requested_tick": 743298,
+          "status": "rejected_conflict"
+        },
+        "early_observation": {
+          "active": true,
+          "clock": "743356",
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "raw": "2242511160928632833",
+          "s_reg": 5,
+          "semantic": 1,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "state": 1,
+          "tick": 743356
+        }
+      },
+      "device": null,
+      "feedback": null,
+      "resources_total": 2
+    },
+    {
+      "episode": 4,
+      "q": 743910,
+      "completed_tick": 744620,
+      "route": 0,
+      "configured_warning_offered": false,
+      "actual_W_requested": 0,
+      "actual_W_applied": 0,
+      "is_training": false,
+      "warning_receipts": [],
+      "work": {
+        "physical_choice": -1,
+        "applied_command": -1,
+        "useful": false,
+        "loads_before": [
+          14,
+          6
+        ],
+        "loads_after": [
+          15,
+          5
+        ],
+        "input_gate": {
+          "at_tick": 744101,
+          "guard_closed": false,
+          "native_submit": true,
+          "offered": true,
+          "source_tick": 744102
+        },
+        "raw0_status": "rejected_conflict",
+        "FI_requests": 176,
+        "FI_statuses": {
+          "rejected_conflict": 1,
+          "applied": 170,
+          "rejected_occupied": 5
+        },
+        "noise_receipt": {
+          "channels": [
+            "PI02.R03.FI.noise.raw0"
+          ],
+          "effective_tick": null,
+          "id": 115169,
+          "kind": "experience",
+          "reason": "simultaneous events target the same register",
+          "requested_tick": 744102,
+          "status": "rejected_conflict"
+        },
+        "early_observation": {
+          "active": true,
+          "clock": "744160",
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "raw": "2242511160928632833",
+          "s_reg": 5,
+          "semantic": 1,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "state": 1,
+          "tick": 744160
+        }
+      },
+      "device": null,
+      "feedback": {
+        "channels": [
+          "PI01.R03.penalty0"
+        ],
+        "effective_tick": 744579,
+        "id": 115170,
+        "kind": "experience",
+        "reason": "",
+        "requested_tick": 744579,
+        "status": "applied"
+      },
+      "resources_total": 2
+    },
+    {
+      "episode": 5,
+      "q": 744647,
+      "completed_tick": 745357,
+      "route": 1,
+      "configured_warning_offered": true,
+      "actual_W_requested": 0,
+      "actual_W_applied": 0,
+      "is_training": false,
+      "warning_receipts": [],
+      "work": null,
+      "device": {
+        "actual_control_packet": {
+          "bytes": 64,
+          "file": "0001.bin",
+          "index": 1,
+          "sha256": "4af9b3e4c946780e8ee616a4662f9424dcdc2e460b440e57346e81ae0edb939c"
+        },
+        "applied": true,
+        "command": "TOGGLE",
+        "guard_after": true,
+        "guard_before": false,
+        "guard_until": 746121,
+        "kind": "DEVICE_COMMAND",
+        "native_tick": 744647,
+        "origin": "native_return_B",
+        "resource_cost_bytes": 64,
+        "wiring": "normal"
+      },
+      "feedback": {
+        "channels": [
+          "PI01.R03.penalty1"
+        ],
+        "effective_tick": 745316,
+        "id": 115171,
+        "kind": "experience",
+        "reason": "",
+        "requested_tick": 745316,
+        "status": "applied"
+      },
+      "resources_total": 2
+    }
+  ],
+  "device_commands": [
+    {
+      "actual_control_packet": {
+        "bytes": 64,
+        "file": "0000.bin",
+        "index": 0,
+        "sha256": "9e9d4abfe042cd70bbcaac7106e8932d30b0f3276a34477759306343a353632a"
+      },
+      "applied": true,
+      "command": "TOGGLE",
+      "guard_after": true,
+      "guard_before": false,
+      "guard_until": 743173,
+      "index": 30,
+      "kind": "DEVICE_COMMAND",
+      "native_tick": 741699,
+      "origin": "native_return_B",
+      "resource_cost_bytes": 64,
+      "tick": 741699,
+      "wiring": "normal"
+    },
+    {
+      "actual_control_packet": {
+        "bytes": 64,
+        "file": "0001.bin",
+        "index": 1,
+        "sha256": "4af9b3e4c946780e8ee616a4662f9424dcdc2e460b440e57346e81ae0edb939c"
+      },
+      "applied": true,
+      "command": "TOGGLE",
+      "guard_after": true,
+      "guard_before": false,
+      "guard_until": 746121,
+      "index": 138,
+      "kind": "DEVICE_COMMAND",
+      "native_tick": 744647,
+      "origin": "native_return_B",
+      "resource_cost_bytes": 64,
+      "tick": 744647,
+      "wiring": "normal"
+    }
+  ],
+  "warning_signatures": [],
+  "artifacts": [
+    {
+      "folder": "collected",
+      "bytes": 64,
+      "episode": 2,
+      "file": "0002.bin",
+      "sha256": "bfb62995b511346692724d0ce79b73cead02704f0012fa80c34d8dccf2028dff",
+      "bytes_checked": true
+    },
+    {
+      "folder": "collected",
+      "bytes": 64,
+      "episode": 3,
+      "file": "0003.bin",
+      "sha256": "312179c846dbb721bfd404703102e7e010edb497ca06fc4985b33d8f2763ae5f",
+      "bytes_checked": true
+    },
+    {
+      "folder": "control_spent",
+      "bytes": 64,
+      "file": "0000.bin",
+      "index": 0,
+      "sha256": "9e9d4abfe042cd70bbcaac7106e8932d30b0f3276a34477759306343a353632a",
+      "bytes_checked": true
+    },
+    {
+      "folder": "control_spent",
+      "bytes": 64,
+      "file": "0001.bin",
+      "index": 1,
+      "sha256": "4af9b3e4c946780e8ee616a4662f9424dcdc2e460b440e57346e81ae0edb939c",
+      "bytes_checked": true
+    }
+  ],
+  "inconsistencies": [],
+  "limits": [
+    "Recalculation of stored evidence, not Native reproduction or a full backup",
+    "Configured warning slots and actual W inputs are different denominators; routeB can leave the configured warning unpresented",
+    "A raw0 rejection can coexist with a useful FI action; do not make it a universal failure definition",
+    "A prepared recurring return and fixed transducer do not prove learned timing or unrestricted autonomy",
+    "Useful regulation or anticipation requires paired controls and actual effects, not the CLOSE label alone"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi02_H_adquisicion_R03",
+  "title": "R03 prototype warning association: acquisition and unpaired control",
+  "revision": "PI03_R01",
+  "prefix": "PI02_PRE_H_T740937",
+  "modalities": {
+    "B": "Fixed reader Native use after lived warning experience",
+    "C": "Prototype H acquisition from full pre-H prefix",
+    "D": "Not a new acquisition of current principal; one diagnostic descendant per history",
+    "E": "No"
+  },
+  "variants": {
+    "paired": {
+      "batches": [
+        [
+          {
+            "label": "prepare",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-preparar"
+            }
+          },
+          {
+            "label": "experience",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-adquirir",
+              "historia": "paired"
+            }
+          },
+          {
+            "label": "probe",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-usar",
+              "periodos": 2,
+              "aviso": true
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "fixed_command"
+            ],
+            "expected": "CLOSE",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "unpaired": {
+      "batches": [
+        [
+          {
+            "label": "prepare",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-preparar"
+            }
+          },
+          {
+            "label": "experience",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-adquirir",
+              "historia": "unpaired"
+            }
+          },
+          {
+            "label": "probe",
+            "literal": {
+              "modo": "eci01-pi02-advertencia-usar",
+              "periodos": 2,
+              "aviso": true
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "fixed_command"
+            ],
+            "expected": null,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  },
+  "assistance": "Prepared W/U/G geometry and phase calendar; paired/unpaired inputs and generic normalization. Fixed exactq signature. No expected command is supplied.",
+  "limitations": "This prototype has no valve or jobs. CLOSE versusNULL is not by itself regulation, pain or functional benefit. It is distinct from full R04 habitat acquisition/use.",
+  "sources": [
+    "PI02_ANALISIS/CODIGO/C_ADVERTENCIA/pi02_advertencia_R03.py",
+    "PI02_ANALISIS/EVIDENCIA/C_ADVERTENCIA"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

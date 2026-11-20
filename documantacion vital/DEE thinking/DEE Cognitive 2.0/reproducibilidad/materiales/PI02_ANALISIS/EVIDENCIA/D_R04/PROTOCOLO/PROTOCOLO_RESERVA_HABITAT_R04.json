@@ -1,0 +1,126 @@
+{
+  "schema": "PI02.R04.reserved.integrated.workbench.v1",
+  "frozen_utc": "2026-11-08T23:14:11.016148+00:00",
+  "prefix": {
+    "life": "ECI02_PI02_MAIN",
+    "tick": 740937,
+    "descriptor": "control/PAR_POST_B_MAIN.json"
+  },
+  "candidate": "ECI02_PI02_MAIN",
+  "horizon_each_arm_ticks": 9200,
+  "opportunities_each_arm": 12,
+  "new_native_tick_budget_this_reserve": 55200,
+  "arms": [
+    {
+      "name": "MAIN",
+      "life": "ECI02_PI02_MAIN",
+      "history": "paired",
+      "arm": "real"
+    },
+    {
+      "name": "UNPAIRED",
+      "life": "ECI02_PI02_R04_UNPAIRED",
+      "history": "unpaired",
+      "arm": "real"
+    },
+    {
+      "name": "NO_TRAIN",
+      "life": "ECI02_PI02_R04_NO_TRAIN",
+      "history": "no_training",
+      "arm": "real"
+    },
+    {
+      "name": "WARNING_CUT",
+      "life": "ECI02_PI02_R04_WARNING_CUT",
+      "history": "paired",
+      "arm": "warning_cut"
+    },
+    {
+      "name": "VALENCE_OMIT",
+      "life": "ECI02_PI02_R04_VALENCE_OMIT",
+      "history": "paired",
+      "arm": "valence_omit"
+    },
+    {
+      "name": "ACTUATOR_NULL",
+      "life": "ECI02_PI02_R04_ACTUATOR_NULL",
+      "history": "paired",
+      "arm": "actuator_null"
+    }
+  ],
+  "fixed_readers": {
+    "O": "Same activeSEM1 X/Y vector at(0,5,20), rising edge, every Native tick",
+    "H": "Same activeSEM1(-1,+1,0) at(4,34,24), rising edge, every Native tick, no expected-time rescue",
+    "FI": "E at fixed query+4, legacy+6 diagnostic only; zero material differs NULL"
+  },
+  "fixture_function": "fixtures(reserved) exact body in frozen code; two independent loads, fixed peripheral availability/warning/wiring by external opportunity. Not revealed as labels to decoders.",
+  "primary_regulation_criterion": {
+    "resources_minimum_main": 6,
+    "gain_vs_warning_cut_minimum": 2,
+    "anticipatory_CLOSE_normal_hazard_minimum": 3,
+    "claim_requires": "At least two measured losses avoided relative to post-formation warning actuator cut, interpreted with earlier divergent guard history, admitted inputs, actual action and cost. If not met, do not claim this combined regulation target."
+  },
+  "operational_adoption_criterion": "At least one useful new/local capability sustained by its causal controls, representative12/12 prior-use conservation, complete coherent save/reopen and a valid new-function use after reopen. No aggregate PASS or requirement of every autonomy target. Losses/costs outside claim remain explicit.",
+  "no_general_policy_claim": "A prepared recurrence, phase-compatible cues, fixed sensor/decoder/device and environment are P0. History changes in native O/H are measured separately. Myopic valence does not prove delayed-credit policy or general regulation.",
+  "comparisons": "Related branches from one complete prefix, not independent samples. Warning cut occurs after H signature forms. Actuator-null preserves Native outputs. Unpaired keeps2initialcontacts, no_training changes dose explicitly. Omit-valence is not dose-equal to real. Subsequent warnings may teach, count first and later uses separately.",
+  "references": "Independent external WSLS/fixed-route replay for interpretation only; no reference controls the evaluated world.",
+  "retention": "Same12witnesses as PI01 frozen separately, after completed stableR04 bank; operator may disable external bridge, never freeze/rebuild Native. Reopen new process, add only2declared external opportunities(13,5)/(7,16), no U report or old Native snapshot.",
+  "stop": "Finite horizon,100000 total Native ticks,6hour hardstop unchanged,512MiB ownedJob. Preserve receipt uncertainty/failure without replay, do not select a favourable state per function.",
+  "code": [
+    {
+      "file": "capacidades/progresion_integrada_02.py",
+      "bytes": 4811,
+      "sha256": "41bb92653bd23004381d4aea6a216bef1f6dba158e5bbad0b2801ed92745df34"
+    },
+    {
+      "file": "capacidades/pi02_habitat_R04.py",
+      "bytes": 22238,
+      "sha256": "787398a9279ae9f435b2cdd49eab5f69031bca447bc24c38a48f82c2b54f8152"
+    },
+    {
+      "file": "capacidades/fi_async_R04.py",
+      "bytes": 12155,
+      "sha256": "2dc2447000882bc4f404679b5616ad276605d395c6146b38637e24e176cc1261"
+    },
+    {
+      "file": "capacidades/adapter_habitat_R04.py",
+      "bytes": 1822,
+      "sha256": "81b7f98e4702e0d637f5dd6c75befc1fb1e74e20fa0aacf7e733df48b7775c5b"
+    },
+    {
+      "file": "capacidades/pi02_advertencia_R03.py",
+      "bytes": 15918,
+      "sha256": "b7fb74f53f7e9c1384f88718bf07819bdb00a731429fc848f7b34f6739b42e90"
+    },
+    {
+      "file": "capacidades/pi02_desarrollo_base.py",
+      "bytes": 2910,
+      "sha256": "fd945dddfe1b6dd176bb2be185916df02be212a517a01811bd9e360bba9ab8ad"
+    },
+    {
+      "file": "capacidades/pi02_retornos_base.py",
+      "bytes": 9727,
+      "sha256": "dd3d62ebb663fd8a13dcb3915ec5ecc15149d6455dd658df413f83279a7b839c"
+    },
+    {
+      "file": "capacidades/pi02_diagnostico_base.py",
+      "bytes": 4349,
+      "sha256": "565e268cab6e2725010fcb7d3d32b38e8451c23658a11644adf3bbc58047b87e"
+    },
+    {
+      "file": "capacidades/diagnostico_puertos_OH_R04.py",
+      "bytes": 3096,
+      "sha256": "cf7191e631dade7606731962ffd0210cd7d3175610f8bb0416fcacec4a42c9fa"
+    },
+    {
+      "file": "app/mundo_genesis_apd05.py",
+      "bytes": 7355,
+      "sha256": "4f6abd53bb1ec1455efde5bb526a2ed7a50872d166a087e0a1f3a3b376bc443c"
+    },
+    {
+      "file": "app/cola_local.py",
+      "bytes": 18634,
+      "sha256": "3a21da996f17325c1da89ff5ebe74a87c9c1254253188bc730c39250bf54851e"
+    }
+  ]
+}

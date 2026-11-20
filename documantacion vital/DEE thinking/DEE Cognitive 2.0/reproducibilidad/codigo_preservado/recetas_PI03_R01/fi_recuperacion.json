@@ -1,0 +1,151 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "fi_recuperacion",
+  "title": "FI admission interference and use after removing the external competing input",
+  "revision": "PI03_R01",
+  "prefix": "PI02_PRE_FI_T740343",
+  "modalities": {
+    "B": "Three sequential Native trials on same diagnostic descendant",
+    "C": "No new reference acquisition",
+    "D": "Local comparison mechanism inherited from principal genealogy",
+    "E": "Access/use returns after experimenter removes perturbation, without restore/re-teaching; externally assisted recovery"
+  },
+  "variants": {
+    "interferencia_retirada": {
+      "batches": [
+        [
+          {
+            "label": "interfered",
+            "literal": {
+              "modo": "eci01-pi02-fi-prueba",
+              "izquierda": 12,
+              "derecha": 4,
+              "asincrono": true,
+              "ruido": "active"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_FI_receipts"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "noise_requests"
+              ]
+            ]
+          },
+          {
+            "label": "clean_after",
+            "literal": {
+              "modo": "eci01-pi02-fi-prueba",
+              "izquierda": 12,
+              "derecha": 4,
+              "asincrono": true,
+              "ruido": "none"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_FI_receipts"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "noise_requests"
+              ]
+            ]
+          },
+          {
+            "label": "material_zero",
+            "literal": {
+              "modo": "eci01-pi02-fi-prueba",
+              "izquierda": 6,
+              "derecha": 6,
+              "asincrono": true,
+              "ruido": "none"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 0,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_FI_receipts"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "noise_requests"
+              ]
+            ]
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "zero_is_not_legacy_NULL",
+          "operation": "value",
+          "values": [
+            {
+              "step": "material_zero",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "legacy_q6_choice"
+              ]
+            }
+          ],
+          "expected": null
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 529,
+        "applied": 525,
+        "rejected": 4
+      }
+    }
+  },
+  "assistance": "Fixed earlyq+4reader; the laterq+6NULL remains separately reported. Host supplies or omits a legal competing pulse; removal is not learned regulation.",
+  "limitations": "A local admission conflict explains this fixture. It does not prove globally erased memory, repair from every failure, or absence of other activity. All conflict rejections are retained.",
+  "sources": [
+    "PI02_ANALISIS/EVIDENCIA/B_R03",
+    "codigo_preservado/PI02_R04_OP1/capacidades/diagnostico_FI_R03.py"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

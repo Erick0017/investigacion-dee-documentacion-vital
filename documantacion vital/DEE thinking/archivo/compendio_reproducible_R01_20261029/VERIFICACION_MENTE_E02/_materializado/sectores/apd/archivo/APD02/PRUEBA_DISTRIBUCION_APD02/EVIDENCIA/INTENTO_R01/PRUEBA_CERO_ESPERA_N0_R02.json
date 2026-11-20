@@ -1,0 +1,68 @@
+{
+  "actions_requeued": 0,
+  "cases": [
+    {
+      "accepted": true,
+      "error": null,
+      "expected_accepted": true,
+      "matches": true,
+      "name": "real_row_after_summary"
+    },
+    {
+      "accepted": true,
+      "error": null,
+      "expected_accepted": true,
+      "matches": true,
+      "name": "row_direct_not_wrapped"
+    },
+    {
+      "accepted": false,
+      "error": "Same literal ID is not actually queued; absence is not pending",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "summary_alone_is_not_pending"
+    },
+    {
+      "accepted": false,
+      "error": "No new queued admission; do not retry or impute pending",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "capacity_rejection_is_not_pending"
+    },
+    {
+      "accepted": false,
+      "error": "Same literal ID is not actually queued; absence is not pending",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "processing_is_not_paused_queued"
+    },
+    {
+      "accepted": false,
+      "error": "Same literal ID is not actually queued; absence is not pending",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "different_ID_is_not_same_pending"
+    },
+    {
+      "accepted": false,
+      "error": "Same literal ID is not actually queued; absence is not pending",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "different_literal_payload_rejected"
+    },
+    {
+      "accepted": false,
+      "error": "Queued literal payload checksum differs",
+      "expected_accepted": false,
+      "matches": true,
+      "name": "bad_payload_sha_rejected"
+    }
+  ],
+  "helper_sha256": "8a346d38e26e9da3fac29d06993caccf395b9422cf0a12a0fed80564ee519c05",
+  "issues": [],
+  "new_native_ticks": 0,
+  "owner_starts": 0,
+  "queue_reads_or_writes": 0,
+  "schema": "APD02.zero_wait_summary_vs_actual_row.synthetic.N0",
+  "scope": "Synthetic admission/row validation only. A real incomplete native goal and a queued transport row remain separate assertions in the unchanged material proof."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "APD04.Full.numeric.functional_criteria.prospective.N0.R01",
+  "closed_clock_utc": "2026-10-27T01:24:41Z",
+  "status": "CLOSED_BEFORE_ANY_FULL_NATIVE_PROOF",
+  "selection_protocol": "PROTOCOLO_FULL_APD04_CERRADO_R02.json",
+  "purpose": "Independent post-run recalculation of the new numerical probes, in addition to archive integrity, finite sign acquisition, retention and exact pending-ID continuity. The prepared Full helper checks that numerical observations exist; that alone is not numerical correctness or task competence.",
+  "not_accessible_as_an_actor_input": true,
+  "no_actor_or_shipped_helper_change": true,
+  "nominal_inherited_relative_reference": 20,
+  "balance_fixed_affine_bias": 20,
+  "criteria": [
+    {"probe": "DOCENCIA_NUEVA_scalar43", "tipo": "clasifica", "valor": 43, "expected_native_sign": 1},
+    {"probe": "DOCENCIA_NUEVA_balance9_3", "tipo": "equilibra", "cargas": [9, 3], "expected_native_sign": 1},
+    {"probe": "EXACT_PENDING_scalar47", "tipo": "clasifica", "valor": 47, "expected_native_sign": 1}
+  ],
+  "reader": "Use the frozen six-site exact uint64 RAW decoder already present in probar_full_apd04_entrada_r01.py. A sign requires exactly one formed candidate with its state, semantic and direction; NULL/ambiguous is not zero. Recalculate from original primary responses, not from an automatic PASS.",
+  "failure_accounting": "Missing, rejected, unexecuted, NULL, wrong sign and changed reference remain distinct. If another physical reference is measured, record that change and its arithmetic consequence without changing these prospective nominal-retention criteria. A failure here does not invalidate a separately demonstrated finite association or archive import, and a successful numeric probe does not demonstrate autonomous choice or learned arithmetic."
+}

@@ -1,0 +1,30 @@
+{
+  "jobs": [
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "REFERENCIAS_HOST_REALMENTE_EJECUTADAS",
+      "reference": "REFERENCIAS/ACTOS_REFERENCIA.json",
+      "script": "RECALCULO/recalcular_referencias_ejecutadas_o2_r1.py"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "COMPARACION_REFERENCIAS_CON_LEARNER_EXISTENTE",
+      "reference": "REFERENCIAS/COMPARACION.json",
+      "script": "RECALCULO/comparar_referencias_ejecutadas_r1.py"
+    }
+  ],
+  "native_ticks": 0,
+  "schema": "APD01.executed_host_reference.closed_portable_plan.v1"
+}

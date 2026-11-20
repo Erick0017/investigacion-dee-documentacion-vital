@@ -1,0 +1,53 @@
+"""Deterministic final service report: pilot, two technical negatives and R03."""
+import argparse,json
+from pathlib import Path
+def read(path):return json.loads(path.read_bytes())
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--r01',type=Path,required=True);p.add_argument('--r02',type=Path,required=True);p.add_argument('--r03',type=Path,required=True);p.add_argument('--salida',type=Path,required=True);a=p.parse_args()
+    n1=read(a.r01/'RECALCULO_INTERRUPCION.json');n2=read(a.r02/'RECALCULO_INTERRUPCION.json');c=read(a.r03/'RECALCULO_SERVICIO_APD.json');f=read(a.r03/'PANELES_Y_FUNCIONES.json');t=read(a.r03/'RECALCULO_TIEMPO_APD.json');cut=read(a.r03/'CORTE_PARA_MANUAL.json');pro=read(a.r03/'PROTOCOLO.json');prefix=pro['request_prefix']
+    primitives=[r for r in f['APD_primitive_uses_including_composition_stages']if r['id'].startswith(prefix)];mem=f['memory_uses'];raw=f['raw128'];novel=[r for r in primitives if r.get('literal_pair_reserved_before_R03')];native=c['native_receipts'];den=c['transport_admission_denominators'];service=cut['persistent_service']
+    lines=['# APD01: servicio continuo y alcance funcional','',
+      'Una misma genealogía ASISTENTE_MAIN conserva el piloto y los futuros R01, R02 y R03. Son ventanas de una vida, no aprendices independientes. Ningún minuto de los dos ensayos interrumpidos cuenta hacia R03. El componente contiene recálculo archivado y primarios; no reemplaza los estados operativos emparejados.','',
+      '## Negativos instrumentales conservados','',
+      f"R01: {n1['observed_mode_enabled_seconds']:.6f}s observados con evolución habilitada, no60min. La medición pasiva del tamaño de un WAL sufrió una carrera de desaparición del archivo. Se cerró T188466 con siete filas genuinas todavía queued. No es un fallo cognitivo demostrado.",
+      f"R02: {n2['observed_mode_enabled_seconds']:.6f}s descontando también la pausa que no se reanudó, no60min. BEGIN seguía en FIFO cuando PAUSAR obtuvo prioridad técnica; el control congelado exigía una cascada ya formada y falló. STOP explícito preservó T257480 y ocho filas queued. Tres docencias se intentaron y ninguna se ejecutó; no se presentan como aprendizaje ni olvido.",
+      'R03 reduce prospectivamente la tasa a120oportunidades en4500s y ya no confunde transporte queued con preparación material. Primero consume los ocho IDs heredados una vez y, sólo si el BEGIN realmente forma un pendiente, ofrece un FINISH explícito único. El mismo ID nunca se reemite como una experiencia nueva. Las pausas concluyen reanudadas o se aborta explícitamente. No se cambian respuestas, lectores o precios según aciertos.','',
+      '## Tiempo, recursos y corte real','',
+      f"Horizonte observado R03: {t['fixed_horizon_seconds']:.6f}s; descuento completo pausa/recarga: {t['conservative_pause_reload_discount_seconds']:.6f}s; tiempo habilitado conservador: {t['unpaused_operational_seconds']}s. Al menos60min de evolución de esta ventana, sumando sus dos propietarios separados por recarga: {t['checks']['at_least_sixty_unpaused_operational_minutes']}. No acredita un único propietario continuo de60min. Tiempo habilitado no significa CPU ocupada sin interrupción ni estabilidad24/7.",
+      f"Corte: {cut['main']['life_id']} T{cut['main']['tick']} N{cut['main']['N']}, snapshot `{cut['main']['snapshot']}`, SHA-256 `{cut['main']['snapshot_sha256']}`. Propietario detenido={service['owner_stopped']}; pendiente/incierto={service['pending_or_uncertain']}. Continuar requiere snapshot, SQLite, outbox, artefactos y protocolo emparejados. No hay promoción global del E1 protegido.",
+      'Cada propietario estuvo en un Job Windows propio con límite duro512MiB y OMP1. Los recursos reales de sus árboles de procesos se registran antes de cerrar cada Job; cualquier terminación forzada se informa, no acredita limpieza íntegra ni aprendizaje. Recursos/tiempo de CPU no son energía nativa de DEE.','',
+      '## Denominadores R03','',
+      '```json',json.dumps(den,ensure_ascii=False,sort_keys=True,indent=2),'```','',
+      'Las ejecuciones de los ocho pendientes heredados y el FINISH declarado aparecen separadas de los120nominales. El diario original de admisión conserva también rechazos por capacidad sin fila SQLite. El contador total heredado del dueño no se presenta como cantidad nueva de esta reserva.','',
+      '| Dimensión | Resultado nuevo R03 |','|---|---|',
+      f"| Entradas nativas de la ventana, incluidas continuaciones heredadas | {native.get('applied',0)}/{native['requested']} aplicadas; {native.get('rejected',0)} rechazadas |",
+      f"| Usos de memoria/historia documentada, incluyendo usos dentro de trabajo | {sum(r['matches_expected']for r in mem)}/{len(mem)} |",
+      f"| Pasos APD nuevos, incluidos intermediarios de composición | {len(primitives)} |",
+      f"| Palabra emitida coincide con historia docente admitida | {sum(r['word_matches_history']for r in primitives)}/{len(primitives)} |",
+      f"| Número correcto dado el operador realmente emitido | {sum(r['correct_given_actual_operator']is True for r in primitives)}/{len(primitives)} |",
+      f"| Artefactos materiales completados | {sum(r['real_artifact_completed']for r in primitives)}/{len(primitives)} |",
+      f"| Artefactos completados dentro del presupuesto modelado2 | {sum(r['completed_within_prepared_modeled_budget2']for r in primitives)}/{len(primitives)} |",
+      f"| Rutas físicas −/0/+/sin respuesta | {json.dumps({str(v):sum(r['route']==v for r in primitives)for v in(-1,0,1,None)},sort_keys=True)} |",
+      f"| Conteo preparado: numéricos correctos / nominales | {f['native_count']['numeric_correct_given_actual_operator']}/{f['native_count']['scheduled']} |",
+      f"| Composiciones asistidas completas / nominales | {f['composition']['numeric_correct_given_actual_operator']}/{f['composition']['scheduled']} |",
+      f"| Crudos128 coincide con relación fija / nominales | {sum(r['matches_expected']for r in raw)}/{len(raw)} |",
+      f"| Pares nuevos utilizados: numéricos correctos condicionados / usos observados | {sum(r['correct_given_actual_operator']is True for r in novel)}/{len(novel)} |",'',
+      'Una palabra correcta por historia, un número correcto condicionado a la operación física, un archivo completado y un coste bajo son cuatro hechos distintos. No se sustituyen por un veredicto global. Las ocho parejas nuevas se eligieron por enumeración literal antes de ejecutar, excluyendo P01–P26 y todos los casos planificados de R01/R02; RESERVA_PARES_NUEVOS conserva algoritmo, conjuntos e índiceSHA. Las composiciones públicas repetidas no son nuevas reservas.','',
+      '## Docencia, regímenes y retención','',
+      '```json',json.dumps(f['explicit_teaching'],ensure_ascii=False,sort_keys=True,indent=2),'```','',
+      'Las horas1900/1910/2000 no demuestran enseñanza por sí solas. PANELES_Y_FUNCIONES contrasta recibos docentes, emisiones posteriores e historia realmente admitida para total/quita y beta. Seis formas españolas invocan dos clases de operador preparadas; no son seis conceptos nuevos ni un repertorioNSM65.','',
+      '| Régimen | Nominales | Transporte real | Memoria/historia | Palabra/historia | Número/operador |','|---|---:|---|---:|---:|---:|']
+    for r in f['regimes']:lines.append(f"| {r['regime']} | {r['nominal_scheduled']} | {json.dumps(r['nominal_transport'],sort_keys=True)} | {r['memory_matches_history']}/{r['memory_uses']} | {r['APD_word_matches_history']}/{r['APD_primitive_executions']} | {r['APD_numeric_correct_given_actual_operator']}/{r['APD_primitive_executions']} |")
+    lines+=['','## Primera oportunidad de las ocho parejas','',
+      'Todas tienen primer operando17: cobertura deliberadamente estrecha. La primera solicitud se conserva aunque sea rechazada o no emita respuesta. La primera observación física posterior, si la primera no se admitió, se lista aparte y nunca sustituye ese negativo. Las repeticiones posteriores no son nuevas reservas independientes.','',
+      '```json',json.dumps(f.get('novel_pair_first_opportunities',[]),sort_keys=True,ensure_ascii=False,indent=2),'```','',
+      'El último panel observado precede al ocio posterior; sólo una consulta nueva en una copia puede acreditar accesibilidad después. No se suman recuerdos de controles ni futuros incompatibles.','',
+      '## Atribución y reproducibilidad','',
+      'Aparato, canales, lectores comunes, aritmética espacial, conteo, calendarioP0, actuador y reglas ambientales son preparados. Las asociaciones y transformaciones nativas se leen de RAW. El calculador externo es una herramienta explícita sólo cuando la salida DEE la invoca; no se ejecutan ambas rutas para elegir un acierto. La composición sigue el orden solicitado por el operador y transporta el intermedio realmente producido; no es planificación aprendida. Esta hora sola no demuestra una política general ni R2.','',
+      'Los descriptores históricos de audit-hook que afirmaban bloqueo universal de diarios se conservan como fueron emitidos. Antes de R03 se corrigieron sólo esas descripciones, con AST que acredita algoritmos/permisos idénticos. S/estado seguía siendo legible para continuidad. No es un sandboxOS; la revisión del decisor y los controles físicos son evidencia separada sobre ausencia de ayuda decisional.','',
+      'El mapa de fuentes de R03 monitorizó26 archivos declarados, no todo el sistema: omitió asistente_proposito_01.py. Sus bytes exactos de13866B, SHA fb93ee43d34ea88fb053f0b6a4e996d9aaf63981ec6edf76607c7271f1c4f86d, están preservados y vinculados a P26 en el componente científico anterior. Esto no reconstruye una monitorización continua retroactiva. R04 añade explícitamente ese actor a su mapa27 antes de ejecutar.','',
+      f"El recálculo R03 comprueba {c['serialized_RAW_observations_checked']} observacionesRAW serializadas, {c['complete_uint64_checked']} uint64 de campos completos y bytes reales de artefactos; discrepancias={len(c['issues'])}. Las observaciones repetidas no son individuos independientes. PLAN_RECALCULO usa sólo Python estándar sin Runtime, nuevo cálculo del trabajador ni nuevas experiencias.",
+      'Los estados completos, SQLite, outbox y telemetría profunda permanecen locales y en el paquete operativo. El análisis exporta cada fila propia y heredada declarada con todos sus campos, registros de admisión íntegros y proyección completaRAW/clocks. La igualdad de filas de JSON proyectado no es identidad binaria del gzip original. Manifiestos e INDICE_OMISIONES dan sus localizadores y hashes.','']
+    with a.salida.open('x',encoding='utf8')as out:out.write('\n'.join(lines))
+    print(json.dumps({'file':str(a.salida),'new_native_ticks':0}))
+if __name__=='__main__':main()

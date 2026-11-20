@@ -1,0 +1,41 @@
+"""R04 one-owner wall/progress proof from records, never another native run."""
+import argparse,gzip,hashlib,json
+from datetime import datetime
+from pathlib import Path
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def load(path):return json.loads(gzip.decompress(path.read_bytes())if path.suffix=='.gz'else path.read_bytes())
+def stamp(value):return datetime.fromisoformat(value)
+def calculate(root):
+    r=load(root/'RESULTADO.json');p=load(root/'PROTOCOLO.json');events=[json.loads(line)for line in(root/'ADMISIONES_Y_EVENTOS.jsonl').read_text(encoding='utf8').splitlines()if line];rows=load(root/'REGISTROS_APD.json.gz');checks={};issues=[];criteria={}
+    def check(name,condition):
+        checks[name]=bool(condition)
+        if not condition:issues.append(name)
+    controls={e['id']:json.loads(e['record']['result'])for e in events if e['kind']=='technical_control_result'};resume=controls.get('apd63_initial_resume');pause=controls.get('apd63_final_pause');start=stamp(resume['finished_execution_utc'])if resume else None
+    samples=[e for e in events if e['kind']=='passive_resource_and_cached_owner'];fresh=[e for e in samples if start and stamp(e['status']['wall_utc'])>start];old=[e for e in samples if start and stamp(e['status']['wall_utc'])<=start];timeline=[e['status']for e in fresh];pids={s['pid']for s in timeline};native_pid=r.get('initial_owner',{}).get('pid');duration=r.get('host_seconds_from_owner_ready_to_horizon',0)
+    before_horizon=[]
+    horizon=stamp(r['horizon_reached_utc'])if r.get('horizon_reached_utc')else None
+    for e in events:
+        if e['kind']=='technical_control_admission'and e['operation']in('pausar','detener','exportar')and horizon and stamp(e['utc'])<horizon:before_horizon.append({'id':e['id'],'op':e['operation']})
+    no_pauses=all(s.get('paused')is False for s in timeline);monotonic=all(b['tick']>=a['tick']and b['idle_ticks']>=a['idle_ticks']and b['material_calls']>=a['material_calls']for a,b in zip(timeline,timeline[1:]));advanced=len(timeline)>=2and timeline[-1]['tick']>timeline[0]['tick'];idle_delta=r.get('final_owner',{}).get('idle_ticks',0)-r.get('initial_owner',{}).get('idle_ticks',0);sampled_idle_delta=timeline[-1]['idle_ticks']-timeline[0]['idle_ticks']if len(timeline)>=2 else None;one=pids=={native_pid}and native_pid is not None and r.get('final_owner',{}).get('pid')==native_pid
+    criteria.update(fixed3720_horizon_recorded=duration>=3720,one_native_PID_across_all_fresh_samples=one,at_least_two_fresh_samples=len(timeline)>=2,strictly_positive_native_tick_progress=advanced,strictly_positive_idle_tick_progress_inside_horizon=sampled_idle_delta is not None and sampled_idle_delta>0,all_fresh_samples_running=bool(timeline)and all(s.get('running')is True for s in timeline),all_cached_tick_idle_material_nondecreasing=monotonic,all_samples_loaded_one_Runtime=bool(timeline)and all(s.get('runtime_loads_in_this_process')==1 for s in timeline),no_intermediate_pause_stop_or_export=not before_horizon,no_fresh_paused_samples=no_pauses,no_auto_pausing_failed_rows=not r.get('failed_or_uncertain_new_rows'))
+    hour=all(criteria.values());criteria['sixty_minutes_one_native_owner_proved']=hour
+    check('exact_frozen_protocol',sha(root/'PROTOCOLO.json')==r['protocol_sha256']);check('one_owner_R04_schema',p['schema']=='DEE.APD01.single_owner_reserve.R04.v1'and p['seconds']==3720and len(p['events'])==23and len(p['final_panels'])==2);check('no_native_claim_from_old_minutes',r['pause_intervals']==[]and r['conservative_pause_reload_discount_seconds']==0)
+    if r.get('sixty_unpaused_minutes_reached')and not hour:check('harness_hour_flag_supported_by_full_progress_evidence',False)
+    check('fresh_cached_progress_matches_exported_timeline',r.get('observed_native_progress')==[{k:s.get(k)for k in('pid','wall_utc','tick','idle_ticks','material_calls','runtime_loads_in_this_process','paused','running')}for s in timeline])
+    check('actor_source_is_now_captured',any(s['file']=='capacidades/asistente_proposito_01.py'and s['sha256']=='fb93ee43d34ea88fb053f0b6a4e996d9aaf63981ec6edf76607c7271f1c4f86d'and s['bytes']==13866for s in r['sources']))
+    for s in r['sources']:check('archived_source_'+s['file'],sha(root/'codigo'/s['file'])==s['sha256'])
+    job=r.get('actual_owned_job_resources',[{}])[0].get('resource')or{};closure_seconds=r.get('host_closure_seconds_after_fixed_horizon');bounded_closure=isinstance(closure_seconds,(int,float))and not isinstance(closure_seconds,bool)and 0<=closure_seconds<=600 and r.get('global_closure_limit_seconds')==600
+    cpu_measured=all(isinstance(job.get(key),(int,float))and not isinstance(job.get(key),bool)for key in('cpu_user_seconds','cpu_kernel_seconds'))
+    clean=bounded_closure and not r.get('forced_owned_job_termination')and not r.get('owned_job_wait_error')and job.get('job_active_processes')==0and r.get('owner_returncode')==0and r.get('final_owner',{}).get('running')is False and not r.get('pending_preserved')and not r.get('error')
+    check('hard_job_budget512MiB',job.get('job_memory_limit')==536870912);check('clean_flag_not_overclaim',not r.get('clean_closure')or clean)
+    wall_to_pause=(stamp(pause['started_utc'])-start).total_seconds()if start and pause else None
+    if hour:check('wall_clock_to_first_pause_also_exceeds3720',wall_to_pause is not None and wall_to_pause>=3720)
+    windows=[]
+    for left,right in((0,900),(900,2100),(2100,3600),(3600,3720)):
+        chunk=[e for e in fresh if left<=e['at_seconds']<right];windows.append({'seconds':[left,right],'fresh_samples':len(chunk),'first_tick':chunk[0]['status']['tick']if chunk else None,'last_tick':chunk[-1]['status']['tick']if chunk else None,'first_cached_utc':chunk[0]['status']['wall_utc']if chunk else None,'last_cached_utc':chunk[-1]['status']['wall_utc']if chunk else None})
+    ram=[e['process']['working_set_bytes']for e in samples if'working_set_bytes'in e['process']];size=[e['VIDA_bytes']for e in samples]
+    return {'schema':'DEE.APD01.R04.one_owner_time_recalculation.v1','sources':[{'file':name,'sha256':sha(root/name)}for name in('RESULTADO.json','PROTOCOLO.json','ADMISIONES_Y_EVENTOS.jsonl','REGISTROS_APD.json.gz')],'checks':checks,'issues':issues,'operational_criteria':criteria,'fixed_horizon_seconds':duration,'unpaused_operational_seconds':duration if hour else None,'conservative_pause_reload_discount_seconds':0,'pause_intervals':[],'one_native_pid':native_pid,'wall_initial_resume_to_first_final_pause_seconds':wall_to_pause,'strict_native_tick_advance_between_fresh_end_samples':timeline[-1]['tick']-timeline[0]['tick']if len(timeline)>=2 else None,'idle_ticks_added':sampled_idle_delta,'total_idle_ticks_including_drain_and_closure':idle_delta,'fresh_sample_windows':windows,'cached_samples_before_initial_resume':len(old),'intermediate_forbidden_controls':before_horizon,'clean_closure':clean,'closure_bound':{'recorded_seconds':closure_seconds,'recorded_limit':r.get('global_closure_limit_seconds'),'within600_seconds':bounded_closure},'actual_owned_job_resources':job,'sampled_memory':{'maximum_working_set_bytes':max(ram)if ram else None,'budget_bytes':536870912,'CPU_integral_measured_for_owned_process_job':cpu_measured},'VIDA_sizes':{'minimum_sampled_bytes':min(size)if size else None,'maximum_sampled_bytes':max(size)if size else None,'final_bytes':r.get('final_VIDA_bytes')},'scope':'Only this prospective3720s one-PID reserve. World-enabled wall time, actual clock/idle progress, numeric usefulness and clean closure are separate; no old sessions or later closure minutes are added. Failed operational criteria are legitimate negatives, not automatically corrupted evidence. No Runtime or new requests are executed.'}
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--evidencia',type=Path,required=True);p.add_argument('--salida',type=Path,required=True);a=p.parse_args();value=calculate(a.evidencia)
+    with a.salida.open('x',encoding='utf8')as f:json.dump(value,f,sort_keys=True,ensure_ascii=False,indent=2);f.write('\n')
+    print(json.dumps({'issues':value['issues'],'criteria':value['operational_criteria'],'clean_closure':value['clean_closure']}));raise SystemExit(bool(value['issues']))

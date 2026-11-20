@@ -1,0 +1,130 @@
+{
+  "schema": "DEE.SDK.K4.Contract.R06",
+  "version": "0.1.1",
+  "fixedBeforeNewNative": true,
+  "status": "CRITERION_FROZEN_NOT_VALIDATED",
+  "firstRequiredEpisode": "NEW complete from fullPAR28T991187 freshlife",
+  "secondRequiredEpisode": "CONTINUE sameinstance/life/session/localcursor after closedpair, one newcompleteepisode",
+  "sourceOldSdkLife": "Existing0.1.0lifeT992751 untouched; never replay itsQ1/Q2",
+  "comparisonBeforeNewObserve": {
+    "expectedFromPair": [
+      "namespace",
+      "scenarioFingerprint",
+      "bindings",
+      "state",
+      "actions",
+      "tools",
+      "body",
+      "world"
+    ],
+    "allFieldsAndKeySetsRequired": true,
+    "onlyAllowedStateTransition": "state.closeRequested=true -> false",
+    "poseTolerance": 0.00001,
+    "toleranceOnlyUnderSegments": [
+      "pose",
+      "cframe",
+      "c0",
+      "c1",
+      "transform"
+    ],
+    "everythingElse": "literal exact including counters/signals/stock/versions/collide/receipts/rawRequest/oldoperationIDs",
+    "toleranceOnlyInSubtrees": [
+      "body",
+      "world"
+    ],
+    "noToleranceWithinSubtrees": [
+      "actions",
+      "tools",
+      "bindings",
+      "state",
+      "namespace",
+      "scenarioFingerprint"
+    ],
+    "poseFieldMatch": "exactc0/c1 orsemanticfieldendswithpose/cframe/transform,caseinsensitive;nevercontainsUUID/path"
+  },
+  "bodyScope": {
+    "fields": [
+      "pose",
+      "rootName",
+      "rootAnchored",
+      "all own BasePart state rows",
+      "all own JointInstance C0/C1/Transform and bindings"
+    ],
+    "rootMustRemainAnchoredAtCaptureRestore": true,
+    "partFields": [
+      "name",
+      "className",
+      "cframe",
+      "size",
+      "anchored",
+      "canCollide",
+      "canQuery",
+      "canTouch",
+      "massless",
+      "transparency",
+      "color",
+      "material",
+      "collisionGroup",
+      "linearVelocity",
+      "angularVelocity",
+      "attributes"
+    ]
+  },
+  "worldScope": {
+    "fields": [
+      "entire adapter state inclworldTimeMs/stock/inventories/signal/counters/failure/motorEvents",
+      "entiredevicePartState",
+      "everyphysicalpanelPartState",
+      "allmotorExportFields"
+    ],
+    "motorFields": [
+      "schema",
+      "active=false",
+      "rootAnchored=true",
+      "walkSpeed",
+      "hipHeight",
+      "autoRotate",
+      "parameters"
+    ],
+    "restore": "Apply allcapturedfields; no reset or regenerate counter/history."
+  },
+  "bindings": [
+    "packageRelease0.1.1",
+    "wireConnectorR01",
+    "scenarioFingerprint",
+    "map/adapter/motorModule",
+    "geometry/settings",
+    "MaxOpportunities3",
+    "MaxActions6"
+  ],
+  "nativeAndLedger": {
+    "privateFullState": "Runtime seals fullNative+VIDA/snapshot/DB+closedproof, validates beforelease andbeforeOwner; physical/metadata scope stated bybackend",
+    "getOldIds": "Read-only GET everyoldNativeactionId+lastFeedbackOperationId; completed/valuecorrelated, backendACKIDs; noPOSTreplay",
+    "proofEndpoint": "/v1/restoration-proof authenticated, independentlyverified anddurable beforefirstnewobserve; noNativecalls"
+  },
+  "scopeExclusions": [
+    "Not a general backupofall RobloxDataModel, players, plugins, GUI, networkconnections or credentials",
+    "Static floor/obstacle topology is recreated frombound configuration; not a full instancearchive",
+    "Automatic transient engine/Humanoid internal state not explicitly captured is not certified",
+    "Native memories/RAW/clocks stay in privatewholeRuntime; publicState is not a substitute"
+  ],
+  "normalFlow": [
+    "Nativeoutput->bodyACK->actualfeedback->AgentBOUNDARY",
+    "Runtimecloseandquiescenceproof->Agent.capture->checkpointSEALED",
+    "newRunDataModel->sameidentity+pair->restorebody/world/agent/receipts",
+    "localexactROcomparison->GEToldledgers->durabletechnicalrestorationproof",
+    "onlythennewobserve/nativeepisode->ordinaryclose/checkpoint"
+  ],
+  "failRule": "Any mismatch,missingcapture,uncertainmaterial,ResourceWaitExpiredorNativeprooferror stops before newobserve wherepossible; preserve IDs/state; no fakeBOUNDARY or implicitretry.",
+  "autoEnd": "Optional defaultfalse. Only afterCLOSED_SEALED; emitsdiagnosticcompletionmetadata and durableproofID. No Native answers given.",
+  "result": "K4 requires actual reopening+match+newcompleteepisode; static/Preview roundtrip never provesK4.",
+  "prospectiveHorizon": {
+    "maxOpportunities": 3,
+    "maxActions": 6,
+    "runCyclesPerSession": 1,
+    "coreRequired": 2,
+    "reservedThird": 1,
+    "noAutomaticThirdAdmission": true,
+    "bindingsFixedBeforeFirstNewNative": true
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "DEE.SDK.DerivedNativeReceipt.R06.v1",
+  "derived": true,
+  "kind": "query_sensor",
+  "source": {
+    "relativePrivateLocator": "ensayos/sdk_query_sensor_cec1d30f-8a28-472c-810f-ac54117adf11.json",
+    "bytes": 89772,
+    "sha256": "c361a33fb4402288c4fda269eca1fb9caf095d8d01a5797f7cabfddb146bc07a"
+  },
+  "queue": {
+    "id": "sdk_query_sensor_cec1d30f-8a28-472c-810f-ac54117adf11",
+    "seq": 3735,
+    "status": "completed",
+    "is_control": 0,
+    "arrived_utc": "2026-11-18T15:29:53.858461+00:00",
+    "started_utc": "2026-11-18T15:29:54.857604+00:00",
+    "finished_utc": "2026-11-18T15:32:22.045464+00:00",
+    "payload_sha": "e907cabeeff009699dd3400c0e275617ce1851c413f338004b62e19a955ae08b"
+  },
+  "execution": {
+    "before_tick": 993107,
+    "after_tick": 993129,
+    "host_elapsed_seconds": 557.4518830000306,
+    "owner_idle_ticks_after": 138355,
+    "owner_material_calls_after": 2385,
+    "started_utc": "2026-11-18T15:29:55.052662+00:00",
+    "finished_execution_utc": "2026-11-18T15:30:12.482974+00:00"
+  },
+  "outputsLiteral": [
+    {
+      "action": "EXIT_1",
+      "codec": "Q2 +1->EXIT_1; -1/0->EXIT_0; NULL->SAFE_WAIT",
+      "evidence": {
+        "Native_inputs": {
+          "aliases_deduplicated": 0,
+          "all_terminal": true,
+          "applied": 11,
+          "pending_or_other": 0,
+          "rejected": 0,
+          "status_counts": {
+            "applied": 11
+          },
+          "unique_requested": 11
+        },
+        "actual_tag": 2,
+        "all_requested_applied": true,
+        "copy_receipt": {
+          "channels": [
+            "PI07.TC.R01.copy.plus"
+          ],
+          "effective_tick": 993128,
+          "id": 155173,
+          "kind": "experience",
+          "reason": "",
+          "requested_tick": 993128,
+          "status": "applied"
+        },
+        "datum_omitted": false,
+        "datum_request": {
+          "channel": "PI07.TC.R01.datum",
+          "id": 155172,
+          "payload": 7,
+          "requested_tick": 993124
+        },
+        "input_scope": "Only fresh paid local stationSignal0/1/2 direct datum; NoQuery omits datum, no goal/route/inventory/coordinate input",
+        "physical_datum": 7,
+        "q2_sensor_arm": "local_tag",
+        "q2_sensor_codec": "price_tag_v1",
+        "raw_price": 1,
+        "reader": {
+          "choice": 1,
+          "fixed_signature": "activeSEM1 direction[dx,+1,z], dx-1/0/+1,z-1/0",
+          "observation": {
+            "active": true,
+            "clock": "993125",
+            "direction": [
+              1,
+              1,
+              -1
+            ],
+            "raw": "2238570489779847169",
+            "s_reg": 0,
+            "semantic": 1,
+            "site": [
+              8,
+              40,
+              50
+            ],
+            "state": 1,
+            "tick": 993125
+          },
+          "site": [
+            8,
+            40,
+            50
+          ],
+          "tick": 993125,
+          "zero_is_not_NULL": true
+        },
+        "station_sample": {
+          "observationId": "obs_ce6b2f2d-f48a-4c2c-a1db-fc8d13868c2f",
+          "phase": "ROUTE_CHOICE",
+          "previousActionId": "sdk_decision_61912bd4-836f-4cc1-84b1-dc9ca6b2cd4f",
+          "sampleTimeMs": 6114,
+          "sensors": {
+            "codeBCurrent": false,
+            "codeBPresent": false,
+            "contact": 0,
+            "goalDelivery": true,
+            "inventoryKey": true,
+            "inventoryResource": false,
+            "lastFailure": false,
+            "numberAPresent": true,
+            "numberAVersion": 5,
+            "permissionStock": 162,
+            "publicContactCode": 2,
+            "queryAvailable": true,
+            "stage": 1,
+            "station": 2,
+            "stationSignal": 1
+          },
+          "seq": 60,
+          "worldTimeMs": 6114
+        },
+        "submitted_tag": 2
+      },
+      "nativeTick": 993129,
+      "nativeTicks": 22,
+      "null": false,
+      "reader": "PI07 fixed central q+4",
+      "version": "DEE.Roblox.SDK.native.0.1.0"
+    }
+  ],
+  "omitted": [
+    "committed_snapshot and its physical/state/operational dependencies",
+    "private life/card/database",
+    "kernel and runtime"
+  ],
+  "scope": "Source output extract, not a full private state or independent new experiment"
+}

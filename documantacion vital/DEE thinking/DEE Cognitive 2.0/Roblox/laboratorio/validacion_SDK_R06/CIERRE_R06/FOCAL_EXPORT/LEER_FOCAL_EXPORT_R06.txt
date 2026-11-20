@@ -1,0 +1,66 @@
+FOCAL R06: EXPORTACION CERRADA Y RECALCULO DESCRIPTIVO
+
+Herramienta stdlib; no importa Native/DEE/SQLite, no usa HTTP/Studio/MCP y no
+abre propietarios. Prepararla o probar fixtures no ejecuta el experimento.
+Root debe confirmar el cierre del brazo ANTES de llamar export. No ejecutar
+sobre OSCILANTE/CONTROL activos, ni capturar una SQLite viva.
+
+Entrada: runtime CORTO real, ID y condicion exactos, JSON prospectivo explicito.
+El protocolo real es backend/focal_r06/EXPERIMENTO_FOCAL_R06.json. Se copian
+literalmente ese archivo, VENTANA_FOCAL_R06 y FUENTES_FOCAL_R06, sin renovarlos.
+
+IDs asignados por Root:
+OSCILANTE = SDK_DEMO_4072F463AD7868BB
+CONTROL   = SDK_DEMO_D48B1D97DBF3E85A
+RUNTIME = tests/_sdk_r06_valid_20261118/RUNTIME_PRIVADO_LOCAL
+Ambos son descendientes del prefijo completo PAR28 N67/T991187; no T0.
+
+Desde VALIDACION/CIERRE_R06, usar Python estandar y destinos NUEVOS. Sustituir
+<RUNTIME_ABSOLUTO> por el localizador real anterior, sin abrir otra instalacion:
+
+python -I -S -B FOCAL_EXPORT/exportar_recalcular_focal_R06.py export --runtime "<RUNTIME_ABSOLUTO>" --instance SDK_DEMO_4072F463AD7868BB --condition OSCILANTE --protocol "<RUNTIME_ABSOLUTO>/backend/focal_r06/EXPERIMENTO_FOCAL_R06.json" --output EXPORT_CHATGPT/FOCAL_OSC_R06
+
+python -I -S -B FOCAL_EXPORT/exportar_recalcular_focal_R06.py export --runtime "<RUNTIME_ABSOLUTO>" --instance SDK_DEMO_D48B1D97DBF3E85A --condition CONTROL --protocol "<RUNTIME_ABSOLUTO>/backend/focal_r06/EXPERIMENTO_FOCAL_R06.json" --output EXPORT_CHATGPT/FOCAL_CONTROL_R06
+
+No hacen falta copia del backend ni binarios Native para correr esta herramienta.
+Los locks/futuro/ACTIVO deben estar ausentes; ledger intents{} y reserva0. Exige
+SDK_PAIR realmente sellado, card/snapshotSHA y proof cerrados concordantes,
+ultimo OWNER_CLOSED exit0/runningfalse y ningun HTTP pendiente/incierto. Comprueba
+de nuevo hashes/locks/anclajes al terminar; nunca arregla entradas para exportar.
+Si falla, el intento se conserva. No se completa un ciclo ni se fabrica pareja.
+
+Miembros seleccionados: SDK_PAIR Agent/World, BACKEND_CLOSED, ACTION_ACKS,
+HTTPops y journal Native literales; protocolo/ventana/fuentes; indice y hechos.
+No contiene DB, snapshot Native completo, runtime, token ni conexion privada.
+La copia SDK_PAIR es estado Agent/World y descriptor, no un backup ejecutable
+del Native completo. No afirma reapertura/K4 focal ni inventa bindings ausentes.
+
+Desde cada export extraido, sin rutas originales operativas:
+
+python -I -S -B RECALCULAR_FOCAL_R06.py recalculate --package-root . --output RECALCULO_NUEVO
+
+Comparacion descriptiva desde CIERRE_R06, una vez exportados ambos brazos:
+
+python -I -S -B FOCAL_EXPORT/exportar_recalcular_focal_R06.py compare --osc EXPORT_CHATGPT/FOCAL_OSC_R06 --control EXPORT_CHATGPT/FOCAL_CONTROL_R06 --output DEMOSTRACION/COMPARACION_FOCAL_R06_NUEVA
+
+El recuento usa feedbacks aceptados: no asume dos secuencias por ciclo porque
+SAFE_WAIT puede saltarQ2. Native usa local+56; ACK/Agent conservan local. Q1puede
+quedar ACKNOWLEDGED; el ultimo acto del feedback debe estar COMMITTED.
+Los recibos acumulativos finales se usan una vez por ciclo y se unen por ID;
+no se suman denominadores Q1+Q2+FB. NULL,0 y omission quedan diferenciados.
+
+PaidASKApplied procede del panel realmente pagado en World y su ACK.querySpent.
+NativeQuestionReleased exige receipt aplicado, state>0, semantic1 y firma [1,0,0]. ExposicionQ2
+exige dato noomitido y su ID con receipt aplicado. El contenido de paneles no
+consultados nunca se acredita como exposicion Native. rawPrice es el codigo
+literal del sensor, no se confunde con el peaje del puerto elegido.
+
+Costes/stock proceden de ACK/World, se concilian con feedback y con stock final.
+Se conservan disponibilidad, pasos libres/repuestos y retorno generico real.
+Peaje por si solo NO prueba retorno adverso; coste o conducta distinta NO prueba
+aprendizaje de politica. Desarrollo1..4/reserva5..6 son particiones prospectivas.
+Reporta numero REAL completado 0..6 y si son6; no rellena oportunidades ausentes.
+
+Cada condicion tiene un descendiente: n=1 emparejado, no replicas independientes
+ni validacion externa. La comparacion muestra decisiones, exposicion y costes
+observados sin calcular acciones deseadas ni seleccionar resultados favorables.

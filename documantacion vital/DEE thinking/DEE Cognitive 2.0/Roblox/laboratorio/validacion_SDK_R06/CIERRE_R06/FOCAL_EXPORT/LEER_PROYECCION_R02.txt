@@ -1,0 +1,40 @@
+FOCAL EXPORT R02 — DTO HTTP CONCISO Y RESULTADO NATIVE COMPLETO
+
+El exportador R01 se conserva. Su primera llamada sobre OSC cerrado rechazo
+DURABLE_HTTP_NATIVE_RESULT_MISMATCH antes de crear el destino. No hubo Native,
+modificacion de estado ni recálculo posterior de ese intento.
+
+Causa: backend/focal_r06/native_adapter.py conserva el resultado RAW completo
+en el journal Native; HTTP devuelve todas sus claves excepto evidence y sustituye
+evidence por native_request_id + SHA256 del JSON canonico del RAW completo +
+full_evidence. El texto full_evidence conserva el nombre historico Core; NO es
+un localizador operativo y este exportador no intenta abrir esa ruta textual.
+
+R02 compara el DTO EXACTO de ese adaptador. Exige version Native FOCAL literal,
+mismo ID, SHA del RAW completo y todos los demas campos iguales. Tick, accion,
+null, reader, codec y version no se omiten. Los datos cientificos se recalculan
+desde RAW Native, ACK y World; no desde una evidencia recortada. Ambos registros
+originales se conservan literales en el paquete. No cambia actor/adapter real,
+escena, lector, memoria, decisiones, costes, protocolo ni SourceScope.
+
+La conciliacion RO de OSC encontro18 fases completas,18/18 proyecciones exactas
+y18/18 payload/context iguales. Es verificacion documental, no18nuevasacciones.
+
+CLI R02, mismos argumentos y guardas de cierre, destino NUEVO:
+
+python -I -S -B FOCAL_EXPORT/exportar_recalcular_focal_R06_R02.py export --runtime "<RUNTIME_ABSOLUTO>" --instance SDK_DEMO_4072F463AD7868BB --condition OSCILANTE --protocol "<RUNTIME_ABSOLUTO>/backend/focal_r06/EXPERIMENTO_FOCAL_R06.json" --output EXPORT_CHATGPT/FOCAL_OSC_R06_R02
+
+Para CONTROL usar SDK_DEMO_D48B1D97DBF3E85A/CONTROL y FOCAL_CONTROL_R06_R02,
+solo DESPUES de su cierre confirmado. No leerlo mientras se ejecuta.
+
+Desde cada export cerrado extraido, sin originales operativos:
+
+python -I -S -B RECALCULAR_FOCAL_R06_R02.py recalculate --package-root . --output RECALCULO_NUEVO
+
+Comparacion descriptiva posterior:
+
+python -I -S -B FOCAL_EXPORT/exportar_recalcular_focal_R06_R02.py compare --osc EXPORT_CHATGPT/FOCAL_OSC_R06_R02 --control EXPORT_CHATGPT/FOCAL_CONTROL_R06_R02 --output DEMOSTRACION/COMPARACION_FOCAL_R06_R02_NUEVA
+
+Rigen las demas guardas/limites descritos en LEER_FOCAL_EXPORT_R06.txt. El paquete
+no incluye DB ni snapshot Native completo; SDK_PAIR contiene Agent/World y el
+descriptor Native. No es respaldo ejecutable independiente ni prueba de K4 focal.

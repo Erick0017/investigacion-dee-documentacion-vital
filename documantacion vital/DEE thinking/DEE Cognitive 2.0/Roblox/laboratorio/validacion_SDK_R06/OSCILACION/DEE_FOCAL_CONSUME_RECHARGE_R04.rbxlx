@@ -1,0 +1,1207 @@
+<?xml version='1.0' encoding='utf-8'?>
+<roblox version="4"><External>null</External><External>nil</External><Item class="Workspace" referent="RBX_CLEAN_WORKSPACE"><Properties><string name="Name">Workspace</string><Ref name="CurrentCamera">RBX_CLEAN_CAMERA</Ref></Properties><Item class="Camera" referent="RBX_CLEAN_CAMERA"><Properties><string name="Name">Camera</string><CoordinateFrame name="CFrame"><X>12</X><Y>12</Y><Z>24</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item></Item><Item class="ServerScriptService" referent="RBX_CLEAN_SCRIPTS"><Properties><string name="Name">ServerScriptService</string></Properties><Item class="Model" referent="RBX_DEE_PACKAGE"><Properties><string name="Name">DEEConnector_R07</string></Properties><Item class="ModuleScript" referent="RBX_Main"><Properties><string name="Name">Main</string><ProtectedString name="Source">-- DEE reusable server connector. Backend decisions remain outside this module.
+-- No HTTP, secret, Native query, target solver, player kick or auto-start.
+local Http=game:GetService("HttpService")
+local Storage=game:GetService("ServerStorage")
+local Tags=game:GetService("CollectionService")
+local Run=game:GetService("RunService")
+local Binding=require(script.Parent.BackendBinding)
+local M={Schema="DEE.RBX.Connector.R01"}
+local runtimes={}
+local Agent={};Agent.__index=Agent
+local Runtime={};Runtime.__index=Runtime
+local function copy(v)return Http:JSONDecode(Http:JSONEncode(v))end
+local function id(v)
+    assert(type(v)=="string"and #v&gt;0 and #v&lt;=96 and not string.find(v,"[^%w_%-]"),"DEE_SAFE_ID_REQUIRED")
+    return v
+end
+local function integer(v)return type(v)=="number"and v%1==0 and v&gt;=0 end
+local function guid(prefix)return prefix.."_"..Http:GenerateGUID(false)end
+local function value(parent,class,name,initial)
+    local v=Instance.new(class);v.Name=name;v.Value=initial;v.Parent=parent;return v
+end
+local function folder(parent,name)
+    local f=Instance.new("Folder");f.Name=name;f.Parent=parent;return f
+end
+local function decode(raw)
+    assert(type(raw)=="string"and #raw&lt;=65536,"DEE_MESSAGE_BOUND")
+    local ok,v=pcall(Http.JSONDecode,Http,raw);assert(ok and type(v)=="table","DEE_JSON_OBJECT_REQUIRED");return v
+end
+function Agent:_save()
+    self.node.State.Value=Http:JSONEncode(self.s)
+    self.node.ActionCursor.Value=self.s.actionCursor
+    self.node.OpportunityCursor.Value=self.s.completedOpportunities
+    self.node.Sequence.Value=self.s.sequence
+    self.node:SetAttribute("Phase",self.s.phase)
+end
+function Agent:_exclusive(fn)
+    assert(not self.busy,"DEE_CONCURRENT_ENTITY_CALL")
+    self.busy=true;local ok,result=pcall(fn);self.busy=false
+    if not ok then error(result,0)end;return result
+end
+function Agent:_identity(message)
+    assert(message.protocol==M.Schema and message.namespace==self.namespace,"DEE_TRANSPORT_NAMESPACE")
+    assert(message.sessionId==self.s.sessionId,"DEE_TRANSPORT_SESSION")
+end
+function Agent:bindSession(context)
+    return self:_exclusive(function()
+        assert(self.s.phase=="PREPARED"and self.s.sessionId=="","DEE_NO_SESSION_OVERWRITE")
+        self.s.sessionId=id(context.sessionId);self.s.lifeId=id(context.lifeId)
+        assert(integer(context.nativeTick),"DEE_TICK_REQUIRED")
+        self.s.nativeTick=context.nativeTick;self.s.phase="BOUNDARY";self:_save()
+        return self:status()
+    end)
+end
+function Agent:observe(phase)
+    return self:_exclusive(function()
+        local continuation=self.s.phase=="ACTION_ACKNOWLEDGED"and self.s.observation.phase=="QUERY_CHOICE"
+            and self.s.lastActionName~="SAFE_WAIT"and phase=="ROUTE_CHOICE"
+        assert(self.s.phase=="BOUNDARY"or continuation,"DEE_OBSERVE_PHASE")
+        assert(not self.s.closeRequested,"DEE_CLOSE_REQUESTED")
+        assert(phase=="QUERY_CHOICE"or phase=="ROUTE_CHOICE","DEE_OBSERVATION_PHASE")
+        assert(self.s.completedOpportunities&lt;self.config.MaxOpportunities,"DEE_HORIZON_CLOSED")
+        local observation=self.adapters.sensors:observe(phase)
+        assert(type(observation)=="table"and type(observation.sensors)=="table","DEE_SENSOR_CONTRACT")
+        self.s.sequence+=1
+        observation.protocol=M.Schema;observation.namespace=self.namespace;observation.sessionId=self.s.sessionId
+        observation.observationId=guid("obs");observation.seq=self.s.sequence
+        observation.opportunity=self.s.completedOpportunities+1;observation.phase=phase
+        observation.previousActionId=self.s.lastActionId
+        self.s.observation=copy(observation);self.s.phase="AWAIT_ACTION"
+        self.node.Observation.Value=Http:JSONEncode(observation);self:_save();return copy(observation)
+    end)
+end
+function Agent:deliverAction(raw)
+    return self:_exclusive(function()
+        local message=decode(raw);self:_identity(message)
+        local actionId=id(message.actionId);local operationId=id(message.operationId)
+        local prior=self.node.Actions:FindFirstChild(actionId)
+        if prior then
+            local receipt=decode(prior.Value)
+            assert(receipt.rawRequest==raw,"DEE_ACTION_ID_CONFLICT")
+            assert(receipt.status=="EXECUTED"or receipt.status=="ACKNOWLEDGED"or receipt.status=="COMMITTED","DEE_PARTIAL_ACTION_PRESERVED")
+            return copy(receipt.ack) -- no physical replay, no new ACK fabricated
+        end
+        assert(self.s.phase=="AWAIT_ACTION","DEE_ACTION_PHASE")
+        assert(message.observationId==self.s.observation.observationId and message.seq==self.s.sequence,"DEE_OBSERVATION_CORRELATION")
+        assert(type(message.action)=="table"and type(message.action.name)=="string","DEE_ACTION_CONTRACT")
+        local technical=message.sourceKind=="MCP_TECHNICAL_CONTROL"
+        assert(message.sourceKind==self.binding.sourceKind or(technical and self.config.AllowTechnicalTest==true),"DEE_DECISION_SOURCE")
+        assert(#self.node.Actions:GetChildren()&lt;self.config.MaxActions,"DEE_ACTION_LEDGER_BOUND")
+        local receipt={status="PREPARED",rawRequest=raw,operationId=operationId,technical=technical}
+        local entry=value(self.node.Actions,"StringValue",actionId,Http:JSONEncode(receipt))
+        self.s.phase="EXECUTING";self.s.pendingActionId=actionId;self.s.pendingOperationId=operationId;self:_save()
+        local ok,result=pcall(self.adapters.body.execute,self.adapters.body,copy(message.action))
+        if not ok then
+            receipt.status="UNCERTAIN";receipt.error=tostring(result);entry.Value=Http:JSONEncode(receipt)
+            self.s.phase="FAILED_PRESERVED";self.s.lastError=tostring(result);self:_save()
+            error("DEE_BODY_EXECUTION_PRESERVED:"..tostring(result),0)
+        end
+        assert(type(result)=="table","DEE_BODY_RESULT_REQUIRED")
+        local ack={protocol=M.Schema,namespace=self.namespace,sessionId=self.s.sessionId,
+            actionId=actionId,operationId=operationId,observationId=message.observationId,seq=message.seq,
+            executionStatus="EXECUTED",result=copy(result),technicalControl=technical}
+        receipt.status="EXECUTED";receipt.ack=ack;entry.Value=Http:JSONEncode(receipt)
+        self.node.ActionInbox.Value=raw;self.node.ActionAck.Value=Http:JSONEncode(ack)
+        self.s.result=copy(result);self.s.lastActionName=message.action.name
+        self.s.phase="AWAIT_ACTION_ACK";self:_save();return copy(ack)
+    end)
+end
+function Agent:confirmActionAck(actionId,operationId)
+    return self:_exclusive(function()
+        assert(self.s.phase=="AWAIT_ACTION_ACK"and actionId==self.s.pendingActionId and operationId==self.s.pendingOperationId,"DEE_EXACT_ACTION_ACK")
+        local entry=assert(self.node.Actions:FindFirstChild(actionId));local receipt=decode(entry.Value)
+        receipt.status="ACKNOWLEDGED";entry.Value=Http:JSONEncode(receipt)
+        self.s.lastActionId=actionId;self.s.actionCursor+=1
+        self.s.phase="ACTION_ACKNOWLEDGED";self.node.ActionAck.Value="";self.node.ActionInbox.Value="";self:_save()
+        return self:status()
+    end)
+end
+function Agent:toolRequest()
+    assert(self.s.phase=="ACTION_ACKNOWLEDGED","DEE_TOOL_ORDER")
+    if type(self.adapters.body.toolRequest)~="function"then return nil end
+    local tool=self.adapters.body:toolRequest(copy(self.s.result),copy(self.s.observation))
+    return tool and copy(tool)or nil
+end
+function Agent:deliverTool(raw)
+    return self:_exclusive(function()
+        local message=decode(raw);self:_identity(message);local operationId=id(message.operationId)
+        assert(message.actionId==self.s.lastActionId,"DEE_TOOL_ACTION_CORRELATION")
+        local old=self.node.Tools:FindFirstChild(operationId)
+        if old then local item=decode(old.Value);assert(item.rawRequest==raw and item.status=="APPLIED","DEE_TOOL_ID_CONFLICT_OR_PARTIAL");return copy(item.ack)end
+        assert(self.s.phase=="ACTION_ACKNOWLEDGED"and type(self.adapters.body.applyTool)=="function","DEE_TOOL_NOT_AVAILABLE")
+        assert(type(message.toolResult)=="table","DEE_TOOL_RESULT_REQUIRED")
+        local record={status="PREPARED",rawRequest=raw};local entry=value(self.node.Tools,"StringValue",operationId,Http:JSONEncode(record))
+        self.s.phase="APPLYING_TOOL";self:_save()
+        local ok,result=pcall(self.adapters.body.applyTool,self.adapters.body,copy(message.toolResult),self.s.result)
+        if not ok then self.s.phase="FAILED_PRESERVED";record.status="UNCERTAIN";record.error=tostring(result);entry.Value=Http:JSONEncode(record);self:_save();error(result,0)end
+        assert(result=="APPLIED"or result=="NO_RESULT","DEE_TOOL_APPLICATION_STATUS")
+        record.ack={protocol=M.Schema,namespace=self.namespace,sessionId=self.s.sessionId,operationId=operationId,actionId=message.actionId,executionStatus=result}
+        record.status="APPLIED";entry.Value=Http:JSONEncode(record)
+        self.s.toolOperationId=operationId;self.s.phase="AWAIT_TOOL_ACK";self.node.ToolAck.Value=Http:JSONEncode(record.ack);self:_save();return copy(record.ack)
+    end)
+end
+function Agent:confirmToolAck(operationId)
+    return self:_exclusive(function()
+        assert(self.s.phase=="AWAIT_TOOL_ACK"and self.s.toolOperationId==operationId,"DEE_EXACT_TOOL_ACK")
+        self.node.ToolAck.Value="";self.s.phase="TOOL_ACKNOWLEDGED";self:_save();return self:status()
+    end)
+end
+function Agent:completeFeedback(context)
+    return self:_exclusive(function()
+        assert(self.s.phase=="ACTION_ACKNOWLEDGED"or self.s.phase=="TOOL_ACKNOWLEDGED","DEE_FEEDBACK_PHASE")
+        assert(context.actionId==self.s.lastActionId,"DEE_FEEDBACK_ACTION")
+        if self.s.observation.phase=="QUERY_CHOICE"then assert(self.s.lastActionName=="SAFE_WAIT","DEE_QUERY_NEEDS_ROUTE_OR_WAIT")end
+        self.s.lastFeedbackOperationId=id(context.feedbackOperationId)
+        assert(integer(context.nativeTick),"DEE_FEEDBACK_TICK")
+        self.s.nativeTick=context.nativeTick;self.s.completedOpportunities+=1
+        local entry=assert(self.node.Actions:FindFirstChild(context.actionId));local r=decode(entry.Value);r.status="COMMITTED";entry.Value=Http:JSONEncode(r)
+        self.s.pendingActionId=nil;self.s.pendingOperationId=nil;self.s.toolOperationId=nil
+        self.s.phase="BOUNDARY";self.s.result=nil;self.node.Observation.Value="";self:_save();return self:status()
+    end)
+end
+function Agent:requestClose()
+    self.s.closeRequested=true;self:_save();return self:status()
+end
+function Agent:status()return copy(self.s)end
+function Agent:capture(context)
+    assert(self.s.phase=="BOUNDARY"and self.node.ActionAck.Value==""and self.node.ToolAck.Value=="","DEE_CHECKPOINT_BOUNDARY_ONLY")
+    assert(context.backendWriterClosed==true and context.bridgeQuiescent==true,"DEE_CLOSED_PAIR_PROOF_REQUIRED")
+    assert(context.sessionId==self.s.sessionId and context.lifeId==self.s.lifeId and context.nativeTick==self.s.nativeTick,"DEE_PAIR_CONTEXT")
+    local actions,tools={},{}
+    for _,entry in ipairs(self.node.Actions:GetChildren())do
+        local item=decode(entry.Value);assert(item.status=="ACKNOWLEDGED"or item.status=="COMMITTED","DEE_PENDING_RECEIPT_PRESERVED")
+        actions[entry.Name]=item
+    end
+    for _,entry in ipairs(self.node.Tools:GetChildren())do tools[entry.Name]=decode(entry.Value)end
+    return {schema="DEE.RBX.AgentWorldCheckpoint.R01",namespace=self.namespace,scenarioFingerprint=self.runtime.config.ScenarioFingerprint,
+        state=copy(self.s),actions=actions,tools=tools,body=self.adapters.body:capture(),world=self.adapters.world:capture(),
+        scope="WORLD_AND_TRANSPORT_ONLY_REQUIRES_COMPLETE_MATCHING_NATIVE_SERVICE",backend=copy(context)}
+end
+function Agent:restore(state,expected)
+    return self:_exclusive(function()
+        assert(self.s.phase=="PREPARED"and self.s.actionCursor==0 and #self.node.Actions:GetChildren()==0,"DEE_FRESH_RESTORE_ONLY")
+        assert(state.schema=="DEE.RBX.AgentWorldCheckpoint.R01"and state.namespace==self.namespace and state.scenarioFingerprint==self.runtime.config.ScenarioFingerprint,"DEE_CHECKPOINT_IDENTITY")
+        assert(expected.backendWriterClosed==true and expected.bridgeQuiescent==true and type(expected.checkpointSha256)=="string"and #expected.checkpointSha256==64 and not string.find(expected.checkpointSha256,"[^0-9a-f]"),"DEE_EXTERNAL_PAIR_ANCHOR")
+        assert(expected.sessionId==state.state.sessionId and expected.lifeId==state.state.lifeId and expected.nativeTick==state.state.nativeTick,"DEE_RESTORE_PAIR_CONTEXT")
+        assert(state.state.phase=="BOUNDARY"and state.state.pendingActionId==nil,"DEE_RESTORE_BOUNDARY")
+        self.adapters.world:restore(copy(state.world));self.adapters.body:restore(copy(state.body))
+        for key,item in pairs(state.actions)do id(key);value(self.node.Actions,"StringValue",key,Http:JSONEncode(item))end
+        for key,item in pairs(state.tools)do id(key);value(self.node.Tools,"StringValue",key,Http:JSONEncode(item))end
+        self.s=copy(state.state);self.s.closeRequested=false;self:_save();return self:status()
+    end)
+end
+function Runtime:register(model)
+    assert(model:IsA("Model")and model.PrimaryPart and model:IsDescendantOf(self.config.RegistryRoot),"DEE_REGISTERED_MODEL_SCOPE")
+    assert(Tags:HasTag(model,"DEE_Agent"),"DEE_AGENT_TAG_REQUIRED")
+    local agentId=id(model:GetAttribute("DEE_AgentId"));assert(not self.agents[agentId],"DEE_DUPLICATE_AGENT_ID")
+    local cfg=assert(self.config.Agents[agentId],"DEE_UNCONFIGURED_AGENT")
+    local binding=Binding.resolve(cfg.Participant)
+    assert(integer(cfg.MaxOpportunities)and cfg.MaxOpportunities&gt;0 and cfg.MaxOpportunities&lt;=1000,"DEE_FINITE_HORIZON")
+    cfg=copy(cfg);cfg.MaxActions=cfg.MaxActions or cfg.MaxOpportunities*2
+    assert(integer(cfg.MaxActions)and cfg.MaxActions&gt;0 and cfg.MaxActions&lt;=2000,"DEE_FINITE_ACTION_LEDGER")
+    assert(not self.node:FindFirstChild(agentId),"DEE_EXISTING_RUNTIME_PRESERVED")
+    local adapters=self.config.MakeAdapters(model,cfg)
+    for _,name in ipairs({"body","sensors","world"})do assert(type(adapters[name])=="table","DEE_INJECTED_ADAPTER_REQUIRED")end
+    local node=folder(self.node,agentId);node:SetAttribute("Protocol",M.Schema)
+    local namespace=self.config.ExperienceId.."/"..self.config.SceneId.."/"..agentId
+    node:SetAttribute("Namespace",namespace);node:SetAttribute("Participant",binding.mode)
+    for _,name in ipairs({"State","Observation","ActionInbox","ActionAck","ToolAck"})do value(node,"StringValue",name,"")end
+    for _,name in ipairs({"ActionCursor","OpportunityCursor","Sequence"})do value(node,"IntValue",name,0)end
+    folder(node,"Actions");folder(node,"Tools")
+    local a=setmetatable({runtime=self,namespace=namespace,node=node,config=cfg,binding=binding,adapters=adapters,busy=false,
+        s={phase="PREPARED",sessionId="",lifeId="",nativeTick=0,sequence=0,actionCursor=0,completedOpportunities=0,closeRequested=false}},Agent)
+    self.agents[agentId]=a;a:_save();return a
+end
+function Runtime:scanTagged()
+    local candidates={}
+    for _,model in ipairs(Tags:GetTagged("DEE_Agent"))do if model:IsDescendantOf(self.config.RegistryRoot)then table.insert(candidates,model)end end
+    table.sort(candidates,function(a,b)return tostring(a:GetAttribute("DEE_AgentId"))&lt;tostring(b:GetAttribute("DEE_AgentId"))end)
+    for _,model in ipairs(candidates)do if not self.agents[model:GetAttribute("DEE_AgentId")]then self:register(model)end end
+    return self.agents
+end
+function Runtime:get(agentId)return assert(self.agents[agentId],"DEE_AGENT_NOT_REGISTERED")end
+function Runtime:watchTagged()
+    assert(not self.connections,"DEE_REGISTRY_ALREADY_WATCHING")
+    self.connections={
+        Tags:GetInstanceAddedSignal("DEE_Agent"):Connect(function(model)
+            if model:IsDescendantOf(self.config.RegistryRoot)then
+                local ok,err=pcall(self.register,self,model)
+                if not ok then self.node:SetAttribute("RegistrationError",tostring(err))end
+            end
+        end),
+        Tags:GetInstanceRemovedSignal("DEE_Agent"):Connect(function(model)
+            local a=self.agents[model:GetAttribute("DEE_AgentId")]
+            if a then a:requestClose()end -- preserve receipts, no cancellation/replay
+        end),
+    }
+end
+function Runtime:stopWatching()
+    for _,connection in ipairs(self.connections or{})do connection:Disconnect()end
+    self.connections=nil
+end
+function M.lookupRuntime(experienceId,sceneId)
+    return assert(runtimes[id(experienceId).."/"..id(sceneId)],"DEE_RUNTIME_NOT_MOUNTED")
+end
+function M.mount(config)
+    assert(Run:IsServer()and Run:IsStudio(),"DEE_LOCAL_STUDIO_SERVER_ONLY")
+    id(config.ExperienceId);id(config.SceneId)
+    assert(type(config.ScenarioFingerprint)=="string"and #config.ScenarioFingerprint==64,"DEE_SCENARIO_FINGERPRINT")
+    assert(typeof(config.RegistryRoot)=="Instance"and type(config.MakeAdapters)=="function"and type(config.Agents)=="table","DEE_INJECTED_CONFIGURATION")
+    local root=Storage:FindFirstChild("DEE_Runtime")
+    if root then assert(root:IsA("Folder")and root:GetAttribute("Protocol")==M.Schema,"DEE_RUNTIME_CONFLICT")
+    else root=folder(Storage,"DEE_Runtime");root:SetAttribute("Protocol",M.Schema)end
+    local exp=root:FindFirstChild(config.ExperienceId)or folder(root,config.ExperienceId)
+    assert(not exp:FindFirstChild(config.SceneId),"DEE_EXISTING_SCENE_RUNTIME_PRESERVED")
+    local key=config.ExperienceId.."/"..config.SceneId
+    assert(not runtimes[key],"DEE_RUNTIME_ALREADY_MOUNTED")
+    local runtime=setmetatable({config=config,node=folder(exp,config.SceneId),agents={}},Runtime)
+    runtimes[key]=runtime;return runtime
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_BackendBinding"><Properties><string name="Name">BackendBinding</string><ProtectedString name="Source">-- Transport bindings only; no policy, dictionary, arithmetic or Native world.
+local B={}
+local modes={DEE="LIVE_NATIVE",PROGRAMMED="PROGRAMMED",AI="CONVENTIONAL_AI"}
+local origins={DEE="DEE_NATIVE",PROGRAMMED="PROGRAMMED",AI="CONVENTIONAL_AI"}
+function B.resolve(name)
+    assert(modes[name],"DEE_BACKEND_BINDING_UNKNOWN")
+    return {participant=name,mode=modes[name],sourceKind=origins[name]}
+end
+return B
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_MinimalAdapters"><Properties><string name="Name">MinimalAdapters</string><ProtectedString name="Source">-- An explicit small scene adapter. Prepared kinematic offsets are actuators,
+-- never choices or learned routes. No private goal or expected answer is read.
+local A={}
+local function pose(model)return {model:GetPivot():GetComponents()}end
+function A.new(actor,options)
+    assert(actor:IsA("Model")and actor.PrimaryPart,"DEE_MINIMAL_ACTOR")
+    local root=assert(options.worldRoot,"DEE_WORLD_ROOT_REQUIRED")
+    assert(actor:IsDescendantOf(root),"DEE_ACTOR_OUTSIDE_DECLARED_WORLD")
+    local offsets=options.portOffsets or {[0]=Vector3.new(6,0,0),[1]=Vector3.new(-6,0,0)}
+    local world={logicalTimeMs=0,contactCount=0}
+    function world:capture()
+        return {schema="DEE.MinimalWorld.v1",logicalTimeMs=self.logicalTimeMs,
+            contactCount=self.contactCount,rng={algorithm="NONE"}}
+    end
+    function world:restore(state)
+        assert(state.schema=="DEE.MinimalWorld.v1"and state.rng.algorithm=="NONE","DEE_MINIMAL_WORLD_SCHEMA")
+        self.logicalTimeMs=state.logicalTimeMs;self.contactCount=state.contactCount
+    end
+    local body={}
+    function body:execute(action)
+        local before=pose(actor);local moved=false;local collision=false
+        if action.name=="EXIT_0"or action.name=="EXIT_1"then
+            local port=action.name=="EXIT_0"and 0 or 1
+            local delta=assert(offsets[port],"DEE_UNAVAILABLE_PORT")
+            if options.obstacleRoot then
+                local ray=RaycastParams.new();ray.FilterType=Enum.RaycastFilterType.Include
+                ray.FilterDescendantsInstances={options.obstacleRoot}
+                collision=workspace:Blockcast(actor.PrimaryPart.CFrame,actor.PrimaryPart.Size*.9,delta,ray)~=nil
+            end
+            if not collision then actor:PivotTo(actor:GetPivot()+delta);moved=true end
+        else
+            assert(action.name=="ASK_STATION"or action.name=="SKIP_STATION"or action.name=="SAFE_WAIT","DEE_ACTION_NOT_SUPPORTED")
+        end
+        world.logicalTimeMs+=1
+        return {outcome=collision and"BLOCKED"or moved and"MOVED"or"WAITED",moved=moved,
+            collision=collision,before=before,after=pose(actor),worldTimeMs=world.logicalTimeMs,
+            preparedKinematicActuator=true,noNativeExecutedByAdapter=true}
+    end
+    function body:capture()return {schema="DEE.MinimalBody.v1",pose=pose(actor)}end
+    function body:restore(state)
+        assert(state.schema=="DEE.MinimalBody.v1"and #state.pose==12,"DEE_BODY_STATE")
+        actor:PivotTo(CFrame.new(table.unpack(state.pose)))
+    end
+    local sensors={}
+    function sensors:observe(phase)
+        local p=actor.PrimaryPart.Position
+        return {phase=phase,sampleTimeMs=world.logicalTimeMs,
+            sensors={position={p.X,p.Y,p.Z},contact=world.contactCount,
+                availablePorts={0,1},source="LOCAL_MINIMAL_SCENE"}}
+    end
+    return {body=body,sensors=sensors,world=world}
+end
+return A
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_ExampleConfig"><Properties><string name="Name">ExampleConfig</string><ProtectedString name="Source">-- Public technical example. Not credentials, Native memories or a goal oracle.
+return {
+    ExperienceId="R06_CLEAN",SceneId="scene_01",Tag="DEE_Agent",
+    Agents={agent_01={Participant="DEE",MaxOpportunities=2,MaxActions=4,
+        AllowTechnicalTest=true}},
+    transport="STUDIO_SERVER_MAILBOX",autostart=false,
+    exampleScope="MCP_TECHNICAL_CONTROL_ONLY_NOT_A_NATIVE_EXPERIMENT",
+}
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_R07_PILOT_LiveAdapters_R07"><Properties><string name="Name">LiveAdapters_R07</string><ProtectedString name="Source">-- Another-map pilot: fixed sensors/ports and a geometry-only Humanoid motor.
+-- No target selection, anti-loop, arithmetic, teacher or Native memory edit.
+local Motor=require(script.Parent.MotorPathfinding_R07)
+local A={}
+local function pose(actor)return{actor:GetPivot():GetComponents()}end
+function A.new(actor,o)
+ local source=assert(o.inherited);local points=assert(o.points);local device=assert(o.device)
+ local state={stock=source.permissionStock,worldTimeMs=0,signal=-1,
+  inventoryKey=source.inventoryKey,inventoryResource=source.inventoryResource,
+  numberAPresent=source.numberAPresent,codeBPresent=source.codeBPresent,codeBCurrent=source.codeBCurrent,
+  numberAVersion=source.numberAVersion,lastFailure=false,queries=0,skips=0,moves=0,waits=0,
+  sourceEnvironment=o.sourceEnvironment,rng={algorithm="NONE"},motorEvents={},contactCertain=true}
+ local motor=Motor.new(actor,o.motor,function(kind,data)table.insert(state.motorEvents,{kind=kind,data=data})end,
+  function(dt)state.worldTimeMs+=math.floor(dt*1000)end)
+ local function contactCode()
+  for code,p in pairs(points)do
+   local d=motor.root.Position-p
+   if Vector3.new(d.X,0,d.Z).Magnitude&lt;=o.motor.ArrivalRadius then return code end
+  end
+  error("R07_PILOT_PHYSICAL_CONTACT_UNKNOWN_NO_SENSOR_FABRICATED")
+ end
+ local world={}
+ function world:capture()
+  assert(not motor.active,"R07_PILOT_CAPTURE_NOT_MOVING")
+  return{schema="DEE.R07.PilotWorld.R01",state=table.clone(state),
+   device={value=device:GetAttribute("ActuatorValue"),canCollide=device.CanCollide,
+    color={device.Color.R,device.Color.G,device.Color.B},transparency=device.Transparency},
+   panels={price0=0,price1=0,signal=1},motor=motor:export(),
+   declaredTask="TRANSFER_OF_CONNECTOR_TO_ANOTHER_MAP_NOT_FREE_MISSION_OR_NEW_LEARNING"}
+ end
+ function world:restore(saved)
+  assert(saved.schema=="DEE.R07.PilotWorld.R01"and saved.state.rng.algorithm=="NONE","R07_PILOT_WORLD_SCHEMA")
+  state=table.clone(saved.state);device:SetAttribute("ActuatorValue",saved.device.value)
+  device.CanCollide=saved.device.canCollide;device.Transparency=saved.device.transparency
+  device.Color=Color3.new(table.unpack(saved.device.color))
+ end
+ local body={}
+ function body:execute(action)
+  local started=os.clock();local r={before=pose(actor),collision=false,invalidAction=false,
+   resourceCollected=false,resourceDelivered=false,permissionSpent=0,querySpent=0,tollSpent=0,
+   outcome="WAITED",deviceBefore=device:GetAttribute("ActuatorValue")}
+  if action.name=="ASK_STATION"then
+   local code=contactCode();local panel=assert(o.panels[code])
+   if state.stock&lt;1 or(panel.Position-motor.root.Position).Magnitude&gt;8 then
+    r.invalidAction=true;r.outcome="QUERY_UNAVAILABLE"
+   else
+    assert(panel:GetAttribute("Signal")==1 and panel:GetAttribute("Price0")==0 and panel:GetAttribute("Price1")==0,"R07_PILOT_FIXED_PANEL")
+    state.stock-=1;state.signal=1;state.queries+=1;r.permissionSpent=1;r.querySpent=1;r.outcome="PANEL_OBSERVED"
+    task.wait(.1);state.worldTimeMs+=100
+   end
+  elseif action.name=="SKIP_STATION"then state.signal=-1;state.skips+=1;r.outcome="QUERY_OMITTED"
+  elseif action.name=="SAFE_WAIT"then state.waits+=1;task.wait(.1);state.worldTimeMs+=100
+  elseif action.name=="EXIT_0"or action.name=="EXIT_1"then
+   local port=action.name=="EXIT_0"and 0 or 1
+   -- Absolute endpoints are fixed actuator anatomy. The motor cannot substitute one.
+   local result=motor:moveTo(points[port+1],action.actionId or"R07_PILOT_TRANSPORT")
+   r.motor=result
+   if result.status=="ARRIVED"then
+    state.moves+=1;state.contactCertain=true;r.outcome="MOVED"
+    device:SetAttribute("ActuatorValue",port);device.CanCollide=port==0
+    device.Transparency=port==0 and .15 or .8
+    device.Color=port==0 and Color3.fromRGB(220,150,70)or Color3.fromRGB(60,210,175)
+    r.deviceActuation={port=port,value=device:GetAttribute("ActuatorValue"),actualCanCollide=device.CanCollide,
+     semantic_choice_in_motor=false,prepared_fixed_actuator=true}
+   else state.contactCertain=false;r.invalidAction=true;r.outcome="MOTOR_NO_PATH"end
+   state.signal=-1
+  else r.invalidAction=true;r.outcome="UNSUPPORTED_ACTION"end
+  state.lastFailure=r.invalidAction or r.collision
+  r.after=pose(actor);r.durationMs=math.floor((os.clock()-started)*1000);r.worldTimeMs=state.worldTimeMs
+  r.deviceAfter=device:GetAttribute("ActuatorValue");r.materialConsequence=state.lastFailure
+  r.preparedKinematicActuator=false;r.preparedHumanoidPathfinding=true
+  return r
+ end
+ function body:capture()assert(not motor.active);return{schema="DEE.R07.PilotBody.R01",pose=pose(actor)}end
+ function body:restore(saved)
+  assert(saved.schema=="DEE.R07.PilotBody.R01"and not motor.active)
+  actor:PivotTo(CFrame.new(table.unpack(saved.pose))) -- coherent restore only, never a motor waypoint.
+ end
+ local sensors={}
+ function sensors:observe(phase)
+  assert(state.contactCertain,"R07_PILOT_NO_NEW_EPISODE_AFTER_UNCERTAIN_PATH")
+  if phase=="QUERY_CHOICE"then state.signal=-1 end
+  local code=contactCode()
+  return{phase=phase,worldTimeMs=state.worldTimeMs,sampleTimeMs=state.worldTimeMs,
+   sensors={station=code,stage=state.inventoryResource and 2 or 1,contact=0,
+    inventoryKey=state.inventoryKey,inventoryResource=state.inventoryResource,queryAvailable=state.stock&gt;=1,
+    stationSignal=state.signal,permissionStock=state.stock,publicContactCode=code,lastFailure=state.lastFailure,
+    numberAPresent=state.numberAPresent,codeBPresent=state.codeBPresent,numberAVersion=state.numberAVersion,
+    codeBCurrent=state.codeBCurrent,goalDelivery=true}}
+ end
+ return{body=body,sensors=sensors,world=world}
+end
+return A
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_R07_PILOT_MotorPathfinding_R07"><Properties><string name="Name">MotorPathfinding_R07</string><ProtectedString name="Source">-- Motor geometry only. The caller supplies ONE already selected destination.
+-- No graph search for goals, inventory policy, novelty, anti-loop or target swap.
+local PathfindingService=game:GetService("PathfindingService")
+local RunService=game:GetService("RunService")
+local Motor={};Motor.__index=Motor
+
+local function part(parent,name,size,frame,color,collide)
+    local p=parent:FindFirstChild(name)
+    if p then assert(p:IsA("Part"),"R07_RIG_PART_CLASS");return p end
+    p=Instance.new("Part");p.Name=name;p.Size=size;p.CFrame=frame;p.Color=color
+    p.Anchored=false;p.CanCollide=collide;p.CanTouch=true;p.CanQuery=true
+    p:SetAttribute("R07PreparedBody",true);p.Parent=parent;return p
+end
+local function joint(parent,name,a,b,c0,c1)
+    local old=parent:FindFirstChild(name)
+    if old then assert(old:IsA("Motor6D"),"R07_JOINT_CLASS");return old end
+    local m=Instance.new("Motor6D");m.Name=name;m.Part0=a;m.Part1=b
+    m.C0=c0;m.C1=c1;m.Parent=parent;return m
+end
+function Motor.new(body,config,emit,onFrame)
+    local self=setmetatable({},Motor)
+    self.body=body;self.C=config;self.emit=emit;self.onFrame=onFrame;self.active=false
+    local before=body:GetPivot();local existing={}
+    for _,p in ipairs(body:GetDescendants())do if p:IsA("BasePart")then table.insert(existing,p)end end
+    local root=part(body,"HumanoidRootPart",Vector3.new(2,2,1),before,Color3.fromRGB(70,205,230),false)
+    root.Transparency=1;root.Anchored=true
+    local torso=part(body,"Torso",Vector3.new(2,2,1),before,Color3.fromRGB(55,150,190),true)
+    local head=part(body,"Head",Vector3.new(2,1,1),before*CFrame.new(0,1.5,0),Color3.fromRGB(130,225,225),false)
+    local ll=part(body,"Left Leg",Vector3.new(1,2,1),before*CFrame.new(-.5,-2,0),Color3.fromRGB(55,90,130),true)
+    local rl=part(body,"Right Leg",Vector3.new(1,2,1),before*CFrame.new(.5,-2,0),Color3.fromRGB(55,90,130),true)
+    local la=part(body,"Left Arm",Vector3.new(1,2,1),before*CFrame.new(-1.5,0,0),Color3.fromRGB(75,175,200),false)
+    local ra=part(body,"Right Arm",Vector3.new(1,2,1),before*CFrame.new(1.5,0,0),Color3.fromRGB(75,175,200),false)
+    joint(root,"RootJoint",root,torso,CFrame.identity,CFrame.identity)
+    joint(torso,"Neck",torso,head,CFrame.new(0,1,0),CFrame.new(0,-.5,0))
+    joint(torso,"Left Hip",torso,ll,CFrame.new(-.5,-1,0),CFrame.new(0,1,0))
+    joint(torso,"Right Hip",torso,rl,CFrame.new(.5,-1,0),CFrame.new(0,1,0))
+    joint(torso,"Left Shoulder",torso,la,CFrame.new(-1.5,0,0),CFrame.identity)
+    joint(torso,"Right Shoulder",torso,ra,CFrame.new(1.5,0,0),CFrame.identity)
+    for _,p in ipairs(existing)do
+        if p~=root and not p:GetAttribute("R07PreparedBody")then
+            p.CanCollide=false;p.Massless=true
+            if not p:FindFirstChild("R07OldVisualWeld")then
+                local w=Instance.new("Weld");w.Name="R07OldVisualWeld";w.Part0=root;w.Part1=p
+                w.C0=root.CFrame:ToObjectSpace(p.CFrame);w.C1=CFrame.identity;w.Parent=p
+            end
+        end
+    end
+    for _,p in ipairs(body:GetDescendants())do if p:IsA("BasePart")and p~=root then p.Anchored=false end end
+    local h=body:FindFirstChildOfClass("Humanoid")or Instance.new("Humanoid")
+    h.Name="Humanoid";h.RequiresNeck=false;h.BreakJointsOnDeath=false
+    h.WalkSpeed=config.WalkSpeed;h.HipHeight=0;h.AutoRotate=true
+    h.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None;h.Parent=body
+    body.PrimaryPart=root;self.root=root;self.humanoid=h
+    root.AssemblyLinearVelocity=Vector3.zero;root.AssemblyAngularVelocity=Vector3.zero
+    self.emit("MOTOR_PREPARED",{kind="HUMANOID_PATHFINDING",preservedPivot={before:GetComponents()},
+        semantic_destination_selected_by_motor=false})
+    return self
+end
+
+function Motor:moveTo(destination,actionId)
+    assert(not self.active and typeof(destination)=="Vector3","R07_SINGLE_FIXED_MOTOR_TARGET")
+    self.active=true
+    local selected=destination;local started=os.clock();local totalDistance=0;local old=self.root.Position
+    local recomputes=0;local status="NO_PATH";local reason="NOT_COMPUTED";local pathRows={}
+    self.emit("MOTOR_TARGET_ADMITTED",{actionId=actionId,selectedDestination={selected.X,selected.Y,selected.Z},
+        walkSpeed=self.C.WalkSpeed,no_goal_substitution=true})
+    while recomputes&lt;=self.C.MaxRecomputes and os.clock()-started&lt;self.C.MaxWallSeconds do
+        local path=PathfindingService:CreatePath({AgentRadius=self.C.AgentRadius,AgentHeight=self.C.AgentHeight,
+            AgentCanJump=self.C.AgentCanJump,AgentCanClimb=false,WaypointSpacing=self.C.WaypointSpacing})
+        -- No semantic Costs/modifiers or desired goal can enter this service.
+        local ok,err=pcall(function()path:ComputeAsync(self.root.Position,selected)end)
+        if not ok or path.Status~=Enum.PathStatus.Success then reason=ok and"PATH_STATUS_NO_PATH"or tostring(err);break end
+        local waypoints=path:GetWaypoints();local blocked=nil;local waypointIndex=1
+        local connection=path.Blocked:Connect(function(index)if index&gt;=waypointIndex then blocked=index end end)
+        self.root.Anchored=false;pcall(function()self.root:SetNetworkOwner(nil)end)
+        local completed=true
+        for index,waypoint in ipairs(waypoints)do
+            waypointIndex=index
+            if blocked or os.clock()-started&gt;=self.C.MaxWallSeconds then completed=false;reason="BLOCKED_OR_MOTOR_TIMEOUT";break end
+            if waypoint.Action==Enum.PathWaypointAction.Jump then self.humanoid:ChangeState(Enum.HumanoidStateType.Jumping)end
+            self.humanoid:MoveTo(waypoint.Position)
+            local stepStart=os.clock();local reached=false
+            while os.clock()-stepStart&lt;self.C.WaypointTimeout and os.clock()-started&lt;self.C.MaxWallSeconds do
+                local dt=RunService.Heartbeat:Wait()
+                totalDistance+=(self.root.Position-old).Magnitude;old=self.root.Position
+                self.onFrame(dt)
+                local delta=self.root.Position-waypoint.Position
+                if Vector3.new(delta.X,0,delta.Z).Magnitude&lt;=self.C.ArrivalRadius then reached=true;break end
+                if blocked then break end
+            end
+            table.insert(pathRows,{attempt=recomputes,waypoint=index,reached=reached,
+                position={waypoint.Position.X,waypoint.Position.Y,waypoint.Position.Z}})
+            if not reached then completed=false;reason=blocked and"PATH_BLOCKED"or"WAYPOINT_TIMEOUT";break end
+        end
+        connection:Disconnect()
+        local delta=self.root.Position-selected
+        if completed and Vector3.new(delta.X,0,delta.Z).Magnitude&lt;=self.C.ArrivalRadius then status="ARRIVED";reason="SELECTED_TARGET_REACHED";break end
+        recomputes+=1
+        -- Recompute only to selected, never a different station or useful tool.
+    end
+    self.humanoid:Move(Vector3.zero);self.root.Anchored=true
+    self.root.AssemblyLinearVelocity=Vector3.zero;self.root.AssemblyAngularVelocity=Vector3.zero
+    self.active=false
+    local result={status=status,reason=reason,actionId=actionId,selectedDestination={selected.X,selected.Y,selected.Z},
+        finalPosition={self.root.Position.X,self.root.Position.Y,self.root.Position.Z},recomputes=recomputes,
+        wallSeconds=os.clock()-started,distance=totalDistance,waypoints=pathRows,no_alternate_goal=true}
+    self.emit("MOTOR_RESULT",result);return result
+end
+
+function Motor:export()
+    assert(not self.active and self.root.Anchored,"R07_NO_CAPTURE_DURING_MOTOR")
+    return {schema="DEE.R07.prepared_motor.R01",active=false,rootAnchored=true,
+        walkSpeed=self.humanoid.WalkSpeed,hipHeight=self.humanoid.HipHeight,
+        autoRotate=self.humanoid.AutoRotate,parameters=self.C}
+end
+return Motor
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_SDK_MapaEjemplo"><Properties><string name="Name">MapaEjemplo</string><ProtectedString name="Source">-- Aparato geométrico únicamente. No elige rutas ni abre Native.
+local M={}
+local function v(a) assert(type(a)=="table"and #a==3,"SDK_VECTOR3");return Vector3.new(a[1],a[2],a[3])end
+function M.build(cfg)
+ local c=cfg.Map;assert(not workspace:FindFirstChild(c.RootName),"SDK_SCENE_EXISTS_PRESERVED")
+ local world=Instance.new("Folder");world.Name=c.RootName;world:SetAttribute("DEE_SDK_Version",cfg.Version);world:SetAttribute("ScenarioFingerprint",cfg.ScenarioFingerprint);world.Parent=workspace
+ local function part(name,pos,size,parent,collide)
+  local p=Instance.new("Part");p.Name=name;p.Anchored=true;p.CanCollide=collide;p.CanQuery=true;p.Size=v(size);p.Position=v(pos);p.Parent=parent or world;return p
+ end
+ local points={[0]=v(c.Start),[1]=v(c.Port0),[2]=v(c.Port1)}
+ local floor=part("Suelo",c.FloorCenter,c.FloorSize,world,true);floor.Color=Color3.fromRGB(45,55,70)
+ local obstacles=Instance.new("Folder");obstacles.Name="Obstaculos";obstacles.Parent=world
+ for i,o in ipairs(c.Obstacles)do local p=part("Obstaculo"..i,o.Position,o.Size,obstacles,true);p.Color=Color3.fromRGB(105,115,130)end
+ local panels={}
+ for code,p in pairs(points)do
+  local panel=part("PanelLocal"..code,{p.X,p.Y+2,p.Z},{3,1,1},world,false);panel:SetAttribute("Signal",c.Panel.Signal);panel:SetAttribute("Price0",c.Panel.Price0);panel:SetAttribute("Price1",c.Panel.Price1);panel.Color=Color3.fromRGB(80,170,240);panels[code]=panel
+  local mark=part("PuertoFijo"..code,{p.X,p.Y-2.8,p.Z},{7,.2,7},world,false);mark.Color=Color3.fromRGB(80,205,190)
+ end
+ local device=part("Dispositivo",c.Device,{5,6,1},world,false);device:SetAttribute("ActuatorValue",-1);device.Color=Color3.fromRGB(150,160,175)
+ local actor=Instance.new("Model");actor.Name="DEE_Demo";actor.Parent=world
+ local root=part("CoreInicial",c.Start,{2,2,1},actor,false);actor.PrimaryPart=root;actor:SetAttribute("DEE_AgentId",cfg.AgentId);game:GetService("CollectionService"):AddTag(actor,"DEE_Agent")
+ return{world=world,actor=actor,points=points,panels=panels,device=device}
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_SDK_SDKConfig"><Properties><string name="Name">SDKConfig</string><ProtectedString name="Source">-- Configuración focal separada; default Preview no abre Native.
+return game:GetService("HttpService"):JSONDecode([=[
+{
+  "Schema": "DEE.SDK.Config.v0.1.0",
+  "Version": "0.1.0",
+  "Mode": "PREVIEW",
+  "ExperienceId": "DEE_SDK_FOCAL",
+  "SceneId": "CONSUME_RECHARGE",
+  "AgentId": "FOCAL",
+  "ScenarioFingerprint": "88c9583e47ea89bf2b4da429db3441c21775b4187ea928e33a9ad36cb9a9972c",
+  "MaxOpportunities": 6,
+  "MaxActions": 12,
+  "Map": {
+    "RootName": "DEE_FOCAL_SEIS_ZONAS",
+    "Positions": {
+      "0": [
+        -54,
+        8,
+        38
+      ],
+      "1": [
+        -54,
+        8,
+        -32
+      ],
+      "2": [
+        -5,
+        8,
+        54
+      ],
+      "3": [
+        0,
+        8,
+        -38
+      ],
+      "4": [
+        51,
+        8,
+        38
+      ],
+      "5": [
+        53,
+        8,
+        -29
+      ]
+    },
+    "Obstacles": [
+      {
+        "Position": [
+          0,
+          8,
+          10
+        ],
+        "Size": [
+          12,
+          6,
+          18
+        ]
+      },
+      {
+        "Position": [
+          27,
+          8,
+          -5
+        ],
+        "Size": [
+          8,
+          6,
+          13
+        ]
+      }
+    ],
+    "Motor": {
+      "WalkSpeed": 16,
+      "AgentRadius": 2,
+      "AgentHeight": 5,
+      "AgentCanJump": false,
+      "WaypointSpacing": 4,
+      "ArrivalRadius": 2,
+      "WaypointTimeout": 8,
+      "MaxRecomputes": 2,
+      "MaxWallSeconds": 45
+    }
+  },
+  "PreviewPublicState": {
+    "permissionStock": 18,
+    "inventoryKey": false,
+    "inventoryResource": false,
+    "numberAPresent": false,
+    "codeBPresent": false,
+    "numberAVersion": 0,
+    "codeBCurrent": false
+  },
+  "Scope": "SEPARATE FOCAL ENVIRONMENT; Preview counter18 is technical, not Native. Scope6 private backend required; no SDKdemo use.",
+  "RunCycles": 6,
+  "PrivateConnectionFolder": "DEE_FOCAL_PrivateConnection",
+  "Transport": {
+    "OperationPollSeconds": 900,
+    "PollIntervalSeconds": 2,
+    "MaxOperationRecords": 128,
+    "StartupWaitSeconds": 900
+  },
+  "MapModule": "MapaFocal",
+  "AdapterModule": "FocalAdapters",
+  "Focal": {
+    "schema": "DEE.SDK.FocalAvailability.Config.R01",
+    "version": "0.1.0-focal-candidate",
+    "frozenRule": "LOCAL_PORT_PASS_CONSUME_RECHARGE_3_ENVIRONMENT_EPOCHS",
+    "maxCyclesPerArm": 6,
+    "arms": [
+      "CONSUME_RECHARGE",
+      "NONCONSUMING_CONTROL"
+    ],
+    "startStation": 0,
+    "rechargeEpochs": 3,
+    "capacityPerPort": 1,
+    "queryCost": 1,
+    "emptyPortToll": 2,
+    "initialStockFromBackend": true,
+    "minimumPermissionStock": 18,
+    "tagModeBothArms": "local_tag",
+    "startEveryPortAvailable": true,
+    "positions": {
+      "0": [
+        -54,
+        8,
+        38
+      ],
+      "1": [
+        -54,
+        8,
+        -32
+      ],
+      "2": [
+        -5,
+        8,
+        54
+      ],
+      "3": [
+        0,
+        8,
+        -38
+      ],
+      "4": [
+        51,
+        8,
+        38
+      ],
+      "5": [
+        53,
+        8,
+        -29
+      ]
+    },
+    "edges": {
+      "0": {
+        "0": 1,
+        "1": 3
+      },
+      "1": {
+        "0": 2,
+        "1": 0
+      },
+      "2": {
+        "0": 4,
+        "1": 3
+      },
+      "3": {
+        "0": 5,
+        "1": 2
+      },
+      "4": {
+        "0": 5,
+        "1": 1
+      },
+      "5": {
+        "0": 0,
+        "1": 4
+      }
+    },
+    "developmentOpportunities": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "sealedReserveOpportunities": [
+      5,
+      6
+    ],
+    "nativePolicy": "UNCHANGED_OFFICIAL_ACTOR_ONLY",
+    "tools": "NONE_FOR_FOCAL; no lessons or arithmetic; inherited product state not forged",
+    "panelCodes": {
+      "bothFree": 1,
+      "onlyPort0Free": 0,
+      "onlyPort1Free": 2,
+      "bothPaid": "NOT_ENCODABLE; must never be current-station sample; stop if encountered"
+    },
+    "Arm": "CONSUME_RECHARGE"
+  }
+}
+]=])
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_SDK_SDKBootstrap"><Properties><string name="Name">SDKBootstrap</string><ProtectedString name="Source">-- Construcción+registro. Este módulo nunca abre un backend ni emite una decisión.
+local M={}
+local H=game:GetService("HttpService")
+local API=require(script.Parent.Main)
+local Adapters=require(script.Parent.LiveAdapters_R07)
+local DefaultMap=require(script.Parent.MapaEjemplo)
+local function clone(v)return H:JSONDecode(H:JSONEncode(v))end
+function M.prepare(cfg,contract)
+ assert(game:GetService("RunService"):IsStudio()and game:GetService("RunService"):IsServer(),"SDK_STUDIO_SERVER_REQUIRED")
+ assert(cfg.Version=="0.1.0"and(cfg.Mode=="PREVIEW"or cfg.Mode=="NATIVE"),"SDK_CONFIG_VERSION_MODE")
+ local initial,participant,source
+ if cfg.Mode=="NATIVE"then
+  assert(type(contract)=="table"and type(contract.initialPublicState)=="table","SDK_NATIVE_CONTRACT_REQUIRED")
+  initial=clone(contract.initialPublicState);source=assert(contract.sourceWorldSha256,"SDK_SOURCE_WORLD_REQUIRED");participant="DEE"
+ else initial=clone(cfg.PreviewPublicState);source="PREVIEW_NOT_NATIVE_STATE";participant="PROGRAMMED"end
+ local Map=cfg.MapModule and require(assert(script.Parent:FindFirstChild(cfg.MapModule),"SDK_MAP_MODULE_REQUIRED"))or DefaultMap
+ local AdapterFactory=cfg.AdapterModule and require(assert(script.Parent:FindFirstChild(cfg.AdapterModule),"SDK_ADAPTER_MODULE_REQUIRED"))or Adapters
+ local scene=Map.build(cfg)
+ local runtime=API.mount({ExperienceId=cfg.ExperienceId,SceneId=cfg.SceneId,ScenarioFingerprint=cfg.ScenarioFingerprint,RegistryRoot=scene.world,Agents={[cfg.AgentId]={Participant=participant,MaxOpportunities=cfg.MaxOpportunities,MaxActions=cfg.MaxActions,AllowTechnicalTest=false}},MakeAdapters=function(model)
+  return AdapterFactory.new(model,{worldRoot=scene.world,panels=scene.panels,device=scene.device,points=scene.points,inherited=initial,sourceEnvironment=source,motor=clone(cfg.Map.Motor)})
+ end})
+ runtime:scanTagged();local agent=runtime:get(cfg.AgentId)
+ local state=Instance.new("StringValue");state.Name="SDK_STATUS";state.Value=cfg.Mode=="PREVIEW"and"PREVIEW_PREPARED_NO_NATIVE_K2_K3_PENDING"or"NATIVE_CONTRACT_PREPARED_NOT_YET_BOUND";state.Parent=scene.world
+ scene.world:SetAttribute("Mode",cfg.Mode);scene.world:SetAttribute("NativeBackendOpenedByBootstrap",false)
+ return{runtime=runtime,agent=agent,scene=scene,status=state}
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_SDK_HttpTransport"><Properties><string name="Name">HttpTransport</string><ProtectedString name="Source">-- Revision TRANSPORT_R02: IDs already validated URL-unreserved; preserve literalpath/query.
+-- HTTP local privado; sólo transporte/idempotencia. Nunca decide ni rePOSTea material.
+local H=game:GetService("HttpService")
+local Storage=game:GetService("ServerStorage")
+local M={};local Client={};Client.__index=Client
+local function id(v)assert(type(v)=="string"and #v&gt;0 and #v&lt;=160 and not string.find(v,"[^%w_%-%.]"),"SDK_IDENTIFIER");return v end
+local function folder(parent,name)local n=parent:FindFirstChild(name);if n then assert(n:IsA("Folder"),"SDK_STORAGE_CONFLICT");return n end;n=Instance.new("Folder");n.Name=name;n.Parent=parent;return n end
+local function text(parent,name)local n=parent:FindFirstChild(name);if n then assert(n:IsA("StringValue"),"SDK_STORAGE_CONFLICT");return n end;n=Instance.new("StringValue");n.Name=name;n.Value="";n.Parent=parent;return n end
+local function childValue(parent,name)local v=parent and parent:FindFirstChild(name);assert(v and v:IsA("StringValue")and #v.Value&gt;0,"SDK_PRIVATE_CONNECTION_REQUIRED_"..name);return v.Value end
+function M.readPrivateConnection(cfg)
+ local p=Storage:FindFirstChild(cfg.PrivateConnectionFolder or"DEE_SDK_PrivateConnection")
+ return{BaseUrl=childValue(p,"BaseUrl"),InstanceId=childValue(p,"InstanceId"),Token=childValue(p,"Token")}
+end
+function M.new(connection,cfg)
+ local base=assert(connection.BaseUrl);assert(type(base)=="string"and not string.find(base,"@"),"SDK_ENDPOINT_NO_EMBEDDED_CREDENTIALS")
+ assert(string.match(base,"^http://127%.0%.0%.1:%d+$")or string.match(base,"^http://localhost:%d+$"),"SDK_LOCAL_ENDPOINT_ONLY_0_1_0")
+ local instance=id(connection.InstanceId);assert(type(connection.Token)=="string"and #connection.Token&gt;0,"SDK_PRIVATE_TOKEN_REQUIRED")
+ local root=folder(Storage,"DEE_SDK_Transport");local node=folder(root,instance)
+ local self=setmetatable({base=base,instanceId=instance,token=connection.Token,cfg=cfg,node=node,ledger=folder(node,"Operations"),status=text(node,"Status")},Client)
+ self.status.Value="CLIENT_PREPARED_NO_NATIVE_REQUEST";return self
+end
+function Client:_request(method,path,body)
+ local options={Url=self.base..path,Method=method,Headers={Authorization="Bearer "..self.token,["Content-Type"]="application/json"}}
+ if body~=nil then options.Body=H:JSONEncode(body)end
+ local reply=H:RequestAsync(options)
+ local ok,decoded=pcall(function()return H:JSONDecode(reply.Body)end)
+ assert(ok and type(decoded)=="table","SDK_HTTP_NON_JSON_PRESERVED")
+ if not reply.Success or decoded.ok~=true then
+  local code=type(decoded.error)=="table"and decoded.error.code or tostring(reply.StatusCode)
+  error("SDK_HTTP_"..tostring(code),0)
+ end
+ assert(decoded.result~=nil,"SDK_HTTP_RESULT_REQUIRED");return decoded.result
+end
+function Client:handshake()return self:_request("GET","/v1/instances/"..id(self.instanceId).."/handshake")end
+function Client:waitReadyHandshake()
+ local started=os.clock();local limit=self.cfg.StartupWaitSeconds or 900
+ assert(type(limit)=="number"and limit&gt;=1 and limit&lt;=3600,"SDK_FINITE_STARTUP_DEADLINE")
+ while os.clock()-started&lt;limit do
+  local contract=self:handshake()
+  if contract.status=="READY"then self.status.Value="BACKEND_READY_NO_NATIVE_REQUEST";return contract end
+  assert(contract.status=="STARTING","SDK_BACKEND_HANDSHAKE_STATE")
+  self.status.Value="WAITING_BACKEND_READY_NO_NATIVE_REQUEST";task.wait(self.cfg.PollIntervalSeconds or 2)
+ end
+ error("SDK_BACKEND_STARTUP_DEADLINE_NO_NATIVE_REQUEST",0)
+end
+function Client:getStatus()return self:_request("GET","/v1/instances/"..id(self.instanceId).."/status")end
+function Client:operationStatus(operationId)return self:_request("GET","/v1/operations/"..id(operationId).."?instanceId="..id(self.instanceId))end
+function Client:newOperation(kind)return id("sdk_"..kind.."_"..H:GenerateGUID(false))end
+function Client:_save(operationId,value)text(self.ledger,id(operationId)).Value=H:JSONEncode(value)end
+function Client:_read(operationId)local n=self.ledger:FindFirstChild(operationId);return n and H:JSONDecode(n.Value)or nil end
+function Client:assertQuiescent()
+ for _,entry in ipairs(self.ledger:GetChildren())do
+  local r=H:JSONDecode(entry.Value)
+  assert(r.status=="ACKNOWLEDGED"or r.status=="COMMITTED"or r.status=="SEALED","SDK_EXISTING_OPERATION_REQUIRES_RECONCILIATION_"..entry.Name)
+ end
+end
+function Client:waitOperation(operationId)
+ local started=os.clock();local limit=self.cfg.OperationPollSeconds or 900;assert(type(limit)=="number"and limit&gt;=1 and limit&lt;=3600,"SDK_FINITE_POLL_DEADLINE")
+ while os.clock()-started&lt;limit do
+  local ok,r=pcall(function()return self:operationStatus(operationId)end)
+  if ok then
+   assert(r.operationId==operationId,"SDK_OPERATION_ID_MISMATCH")
+   local saved=self:_read(operationId)or{operationId=operationId};saved.status=r.status;saved.value=r.value;saved.error=r.error;self:_save(operationId,saved)
+   if r.status=="COMPLETED"then assert(r.value~=nil,"SDK_COMPLETED_WITHOUT_VALUE");self.status.Value="COMPLETED_"..operationId;return r.value end
+   if r.status=="FAILED_KNOWN"or r.status=="UNCERTAIN"then self.status.Value=r.status.."_PRESERVED_"..operationId;error("SDK_OPERATION_"..r.status.."_PRESERVED",0)end
+   assert(r.status=="PENDING"or r.status=="RUNNING","SDK_UNKNOWN_OPERATION_STATE")
+  else self.status.Value="STATUS_READ_FAILED_PRESERVED_"..operationId end
+  task.wait(self.cfg.PollIntervalSeconds or 2)
+ end
+ self.status.Value="POLL_DEADLINE_PRESERVED_"..operationId;error("SDK_OPERATION_DEADLINE_UNKNOWN_PRESERVED_"..operationId,0)
+end
+function Client:postOperation(path,body)
+ local op=id(body.operationId);assert(self:_read(op)==nil,"SDK_OPERATION_ALREADY_RECORDED_NO_REPOST")
+ assert(#self.ledger:GetChildren()&lt;(self.cfg.MaxOperationRecords or 128),"SDK_FINITE_OPERATION_LEDGER")
+ self:_save(op,{operationId=op,status="POST_INTENT",path=path,body=body}) -- headers/token never stored
+ self.status.Value="POST_INTENT_"..op
+ local ok,r=pcall(function()return self:_request("POST",path,body)end)
+ if ok then assert(r.operationId==op,"SDK_SUBMIT_OPERATION_ID")
+ else self.status.Value="POST_UNKNOWN_PRESERVED_"..op end
+ -- Even after a network/HTTP error only GET reconciliation is allowed here.
+ return self:waitOperation(op)
+end
+function Client:postRecorded(path,body,finalStatus)
+ local op=id(body.operationId);assert(self:_read(op)==nil,"SDK_OPERATION_ALREADY_RECORDED_NO_REPOST")
+ self:_save(op,{operationId=op,status="POST_INTENT",path=path,body=body})
+ local ok,r=pcall(function()return self:_request("POST",path,body)end)
+ if not ok then self.status.Value="SYNC_POST_UNKNOWN_PRESERVED_"..op;error("SDK_SYNC_POST_UNKNOWN_PRESERVED_"..op,0)end
+ self:_save(op,{operationId=op,status=finalStatus or"ACKNOWLEDGED",path=path,result=r});return r
+end
+function Client:mark(operationId,status)local r=assert(self:_read(operationId));r.status=status;self:_save(operationId,r)end
+M.Client=Client;return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_SDK_HttpLoop"><Properties><string name="Name">HttpLoop</string><ProtectedString name="Source">-- Plomería de fases: jamás selecciona un puerto ni corrige una salidaNative.
+local H=game:GetService("HttpService")
+local Transport=require(script.Parent.HttpTransport)
+local Bootstrap=require(script.Parent.SDKBootstrap)
+local M={};local running={}
+local allowed={ASK_STATION=true,SKIP_STATION=true,EXIT_0=true,EXIT_1=true,SAFE_WAIT=true}
+local function copy(v)return H:JSONDecode(H:JSONEncode(v))end
+local function setStatus(handle,value)handle.phase=value;handle.prepared.status.Value=value end
+local function executeChoice(handle,kind,observation)
+ local client=handle.client;local agent=handle.prepared.agent;local contract=handle.contract
+ local op=client:newOperation(kind)
+ setStatus(handle,"WAITING_NATIVE_"..string.upper(kind))
+ local value=client:postOperation("/v1/native/"..kind,{instanceId=client.instanceId,operationId=op,sessionId=contract.sessionId,payload={observation=copy(observation)}})
+ assert(type(value)=="table"and allowed[value.action]and type(value.nativeTick)=="number","SDK_UNSUPPORTED_NATIVE_RESULT_PRESERVED")
+ assert(value.operation_id==nil or value.operation_id==op,"SDK_NATIVE_OPERATION_ID")
+ local raw={protocol="DEE.RBX.Connector.R01",namespace=agent.namespace,sessionId=contract.sessionId,seq=observation.seq,observationId=observation.observationId,actionId=op,operationId=op,sourceKind="DEE_NATIVE",action={name=value.action,nativeTick=value.nativeTick,null=value.null,actionId=op}}
+ setStatus(handle,"EXECUTING_NATIVE_"..value.action)
+ local ack=agent:deliverAction(H:JSONEncode(raw))
+ assert(ack.actionId==op and ack.operationId==op and ack.observationId==observation.observationId,"SDK_BODY_ACK_ID")
+ local ackOp=client:newOperation("action_ack")
+ local registered=client:postRecorded("/v1/action-ack",{instanceId=client.instanceId,operationId=ackOp,sessionId=contract.sessionId,actionId=op,observationId=observation.observationId,localSequence=observation.seq,ack=copy(ack)},"ACKNOWLEDGED")
+ assert(registered.status=="ACKNOWLEDGED"and registered.actionId==op,"SDK_RUNTIME_ACK_REQUIRED")
+ agent:confirmActionAck(op,op);client:mark(op,"ACKNOWLEDGED")
+ return value,ack,op
+end
+local function cycle(handle)
+ local agent=handle.prepared.agent;local client=handle.client;local contract=handle.contract
+ assert(agent:status().phase=="BOUNDARY","SDK_BOUNDARY_BEFORE_CYCLE")
+ local obs=agent:observe("QUERY_CHOICE");local choice,ack,actionId=executeChoice(handle,"decision",obs)
+ local spent=assert(ack.result.permissionSpent,"SDK_COST_MEASUREMENT")
+ if choice.action~="SAFE_WAIT"then
+  obs=agent:observe("ROUTE_CHOICE");choice,ack,actionId=executeChoice(handle,"query_sensor",obs);spent+=assert(ack.result.permissionSpent)
+ end
+ assert(agent:toolRequest()==nil,"SDK_DEFAULT_MAP_TOOL_UNSUPPORTED_PRESERVED")
+ local result=ack.result
+ local payload={actionId=actionId,seq=obs.seq,observationId=obs.observationId,worldTimeMs=result.worldTimeMs,durationMs=result.durationMs,outcome=result.outcome,collision=result.collision,resourceCollected=result.resourceCollected,resourceDelivered=result.resourceDelivered,permissionSpent=spent,materialConsequence=result.materialConsequence,lastObservation=copy(obs)}
+ local op=client:newOperation("feedback");setStatus(handle,"WAITING_NATIVE_FEEDBACK")
+ local returned=client:postOperation("/v1/native/feedback",{instanceId=client.instanceId,operationId=op,sessionId=contract.sessionId,payload=payload})
+ assert(type(returned)=="table"and returned.accepted==true,"SDK_FEEDBACK_NOT_ACCEPTED_PRESERVED")
+ agent:completeFeedback({actionId=actionId,feedbackOperationId=op,nativeTick=returned.nativeTick});client:mark(op,"COMMITTED")
+ setStatus(handle,"CYCLE_BOUNDARY_"..agent:status().completedOpportunities)
+end
+local function saveClose(handle)
+ local agent=handle.prepared.agent;local client=handle.client;local contract=handle.contract
+ assert(agent:status().phase=="BOUNDARY","SDK_CLOSE_BOUNDARY_ONLY");agent:requestClose();setStatus(handle,"WAITING_NATIVE_SAVE_CLOSE")
+ local closeId=client:newOperation("close")
+ local result=client:postOperation("/v1/session/close",{instanceId=client.instanceId,operationId=closeId,sessionId=contract.sessionId})
+ local proof=assert(result.backendProof,"SDK_NATIVE_CLOSED_PROOF_REQUIRED")
+ assert(proof.backendWriterClosed==true and proof.bridgeQuiescent==true,"SDK_NATIVE_NOT_CLOSED")
+ local snapshot=agent:capture(proof);client:mark(closeId,"COMMITTED")
+ local checkpointId=client:newOperation("checkpoint")
+ local sealed=client:postRecorded("/v1/checkpoint",{instanceId=client.instanceId,operationId=checkpointId,sessionId=contract.sessionId,snapshot=snapshot},"SEALED")
+ assert(sealed.status=="SEALED"and sealed.nativeTick==proof.nativeTick and type(sealed.checkpointSha256)=="string","SDK_CHECKPOINT_NOT_SEALED")
+ handle.checkpoint=sealed;handle.closed=true;setStatus(handle,"CLOSED_SEALED_"..sealed.checkpointId)
+end
+function M.start(cfg)
+ assert(cfg.Mode=="NATIVE","SDK_NATIVE_MODE_EXPLICIT_REQUIRED")
+ local client=Transport.new(Transport.readPrivateConnection(cfg),cfg.Transport or{})
+ assert(not running[client.instanceId],"SDK_INSTANCE_LOOP_ALREADY_EXISTS");client:assertQuiescent()
+ local contract=client:waitReadyHandshake()
+ assert(contract.instanceId==client.instanceId and contract.protocolVersion=="DEE.RBX.Connector.R01"and contract.runtimeVersion=="0.1.0","SDK_RUNTIME_CONTRACT_VERSION")
+ assert(contract.backendKind=="NATIVE_REAL"and contract.technicalControl==false,"SDK_REAL_NATIVE_BACKEND_REQUIRED")
+ local prepared=Bootstrap.prepare(cfg,contract);local agent=prepared.agent
+ if contract.snapshot~=nil then
+  assert(contract.backendProof~=nil and type(contract.checkpointSha256)=="string","SDK_PAIRED_RESTORE_PROOF_REQUIRED")
+  local expected=copy(contract.backendProof);expected.checkpointSha256=contract.checkpointSha256
+  agent:restore(contract.snapshot,expected) -- explicit continuation, no bindfresh or counter reset
+ else
+  assert(contract.localSequence==0,"SDK_NEW_WITH_NONZERO_CURSOR_REJECTED")
+  agent:bindSession({sessionId=contract.sessionId,lifeId=contract.lifeId,nativeTick=contract.nativeTick})
+ end
+ assert(agent:status().sequence==contract.localSequence,"SDK_LOCAL_CURSOR_MISMATCH")
+ local handle={client=client,contract=contract,prepared=prepared,closed=false};running[client.instanceId]=handle
+ function handle:requestClose()self.requestedClose=true;return self.prepared.agent:status()end
+ function handle:status()return{phase=self.phase,closed=self.closed,error=self.error,checkpoint=self.checkpoint,agent=self.prepared.agent:status()}end
+ task.spawn(function()
+  local ok,err=xpcall(function()
+   local count=cfg.RunCycles or 1;assert(type(count)=="number"and count%1==0 and count&gt;=1 and count&lt;=cfg.MaxOpportunities,"SDK_FINITE_RUN_CYCLES")
+   for _=1,count do
+    local s=agent:status();if handle.requestedClose or s.closeRequested or s.completedOpportunities&gt;=cfg.MaxOpportunities then break end
+    cycle(handle)
+   end
+   saveClose(handle)
+  end,function(e)return tostring(e)end)
+  if not ok then handle.error=err;setStatus(handle,"ERROR_PRESERVED_OWNER_RECONCILIATION_REQUIRED");warn("DEE_SDK: "..err)end
+ end)
+ return handle
+end
+function M.get(instanceId)return running[instanceId]end
+return M
+</ProtectedString></Properties></Item><Item class="Script" referent="RBX_SDK_SDK_Arranque"><Properties><string name="Name">SDK_Arranque</string><ProtectedString name="Source">-- Arranque visible del ejemplo. PREVIEW no emite acciones niabreNative.
+local package=script.Parent
+local cfg=require(package.SDKConfig)
+if cfg.Mode=="PREVIEW"then
+ local ok,err=pcall(function()require(package.SDKBootstrap).prepare(cfg,nil)end)
+ if not ok then warn("DEE_SDK_PREVIEW: "..tostring(err))end
+elseif cfg.Mode=="NATIVE"then
+ local ok,err=pcall(function()require(package.FocalHttpLoop).start(cfg)end)
+ if not ok then warn("DEE_SDK_NATIVE_PRESERVED: "..tostring(err))end
+else error("SDK_MODE_MUST_BE_PREVIEW_OR_NATIVE")end
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_FOCAL_MapaFocal"><Properties><string name="Name">MapaFocal</string><ProtectedString name="Source">-- Anatomía fija de seis zonas R07. No selecciona puertos ni resuelve objetivos.
+local H=game:GetService("HttpService")
+local M={}
+local function v(a)return Vector3.new(a[1],a[2],a[3])end
+function M.build(cfg)
+ local c=cfg.Map;assert(not workspace:FindFirstChild(c.RootName),"FOCAL_WORLD_EXISTS_PRESERVED")
+ local w=Instance.new("Folder");w.Name=c.RootName;w:SetAttribute("FocalConfig",H:JSONEncode(cfg.Focal));w:SetAttribute("ScenarioFingerprint",cfg.ScenarioFingerprint);w.Parent=workspace
+ local function part(parent,name,pos,size,collide)
+  local p=Instance.new("Part");p.Name=name;p.Anchored=true;p.CanCollide=collide;p.CanQuery=true;p.Size=v(size);p.Position=pos;p.Parent=parent;return p
+ end
+ local floor=part(w,"Suelo",Vector3.new(0,4.5,10),{220,1,220},true);floor.Color=Color3.fromRGB(45,55,70)
+ for i,o in ipairs(c.Obstacles)do local p=part(w,"Obstaculo"..i,v(o.Position),o.Size,true);p.Color=Color3.fromRGB(100,115,130)end
+ local markers=Instance.new("Folder");markers.Name="Markers";markers.Parent=w
+ local gatesFolder=Instance.new("Folder");gatesFolder.Name="Gates";gatesFolder.Parent=w
+ local points,panels={},{}
+ for s=0,5 do
+  local p=v(c.Positions[tostring(s)]);points[s]=p
+  local marker=part(markers,"Contacto"..s,p,{9,8,9},false);marker.Transparency=.9;marker:SetAttribute("ContactCode",s)
+  local panel=part(w,"Panel_"..s,p+Vector3.new(0,2,0),{3,1,1},false);panel.Color=Color3.fromRGB(90,180,240);panels[s]=panel
+  for port=0,1 do
+   local gate=part(gatesFolder,"Gate_"..s.."_"..port,p+Vector3.new(port==0 and -3 or 3,0,0),{2,3,1},false)
+   gate:SetAttribute("Station",s);gate:SetAttribute("Port",port);gate:SetAttribute("FocalCapacity",1);gate.Color=Color3.fromRGB(80,210,170)
+  end
+ end
+ local actor=Instance.new("Model");actor.Name="DEE_Focal";actor.Parent=w
+ local root=part(actor,"CoreInicial",points[cfg.Focal.startStation],{2,2,1},false);actor.PrimaryPart=root
+ actor:SetAttribute("DEE_AgentId",cfg.AgentId);game:GetService("CollectionService"):AddTag(actor,"DEE_Agent")
+ local device=part(w,"UltimoPuertoObservado",Vector3.new(0,10,10),{2,2,2},false);device:SetAttribute("ActuatorValue",-1)
+ return{world=w,actor=actor,points=points,panels=panels,device=device}
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_FOCAL_FocalAdapters"><Properties><string name="Name">FocalAdapters</string><ProtectedString name="Source">-- Sólo anatomía+sensores/consecuencias ambientales. Elección proviene de Native.
+local H=game:GetService("HttpService")
+local Motor=require(script.Parent.MotorPathfinding_R07)
+local Availability=require(script.Parent.DisponibilidadLocal)
+local A={}
+local function clone(x)return H:JSONDecode(H:JSONEncode(x))end
+local function pose(actor)return{actor:GetPivot():GetComponents()}end
+function A.new(actor,o)
+ local source=assert(o.inherited);local cfg=H:JSONDecode(assert(o.worldRoot:GetAttribute("FocalConfig")))
+ assert(type(source.permissionStock)=="number"and source.permissionStock&gt;=cfg.minimumPermissionStock and source.permissionStock&lt;=200,"FOCAL_REAL_STOCK_AT_LEAST18_REQUIRED")
+ local state={stock=source.permissionStock,worldTimeMs=0,signal=-1,station=cfg.startStation,epoch=0,
+  inventoryKey=source.inventoryKey,inventoryResource=source.inventoryResource,numberAPresent=source.numberAPresent,
+  codeBPresent=source.codeBPresent,codeBCurrent=source.codeBCurrent,numberAVersion=source.numberAVersion,
+  lastFailure=false,queries=0,skips=0,moves=0,waits=0,tollSpent=0,freePassesUsed=0,
+  sourceEnvironment=o.sourceEnvironment,contactCertain=true,motorEvents={},environmentEvents={}}
+ local function emit(kind,data)table.insert(state.environmentEvents,{kind=kind,data=data})end
+ local motor=Motor.new(actor,o.motor,function(kind,data)table.insert(state.motorEvents,{kind=kind,data=data})end,
+  function(dt)state.worldTimeMs+=math.floor(dt*1000)end)
+ local gates={};for s=0,5 do gates[s]={};for p=0,1 do gates[s][p]=assert(o.worldRoot.Gates:FindFirstChild("Gate_"..s.."_"..p))end end
+ local law=Availability.new(gates,o.panels,cfg,emit)
+ local function contactCode(required)
+  local params=OverlapParams.new();params.FilterType=Enum.RaycastFilterType.Include;params.FilterDescendantsInstances={o.worldRoot.Markers}
+  local found=nil
+  for _,p in ipairs(workspace:GetPartsInPart(motor.root,params))do
+   local tag=p:GetAttribute("ContactCode")
+   if tag~=nil then assert(type(tag)=="number"and tag%1==0 and tag&gt;=0 and tag&lt;=5 and(found==nil or found==tag),"FOCAL_AMBIGUOUS_CONTACT");found=tag end
+  end
+  if required then assert(found~=nil,"FOCAL_NO_PHYSICAL_CONTACT_PRESERVED")end
+  return found
+ end
+ local world={}
+ function world:capture()
+  assert(not motor.active,"FOCAL_NO_CAPTURE_DURING_ACTION")
+  return{schema="DEE.Focal.World.R02",state=clone(state),availability=law:capture(),motor=motor:export(),
+   device={value=o.device:GetAttribute("ActuatorValue"),canCollide=o.device.CanCollide,color={o.device.Color.R,o.device.Color.G,o.device.Color.B},transparency=o.device.Transparency},
+   scope="Focal six-zone apparatus only; paired full Native required separately"}
+ end
+ function world:restore(saved)
+  assert(saved.schema=="DEE.Focal.World.R02"and not motor.active,"FOCAL_WORLD_RESTORE")
+  state=clone(saved.state);law:restore(saved.availability)
+  o.device:SetAttribute("ActuatorValue",saved.device.value);o.device.CanCollide=saved.device.canCollide
+  o.device.Color=Color3.new(table.unpack(saved.device.color));o.device.Transparency=saved.device.transparency
+ end
+ local body={}
+ function body:execute(action)
+  local started=os.clock();local r={before=pose(actor),collision=false,invalidAction=false,resourceCollected=false,resourceDelivered=false,
+   permissionSpent=0,querySpent=0,tollSpent=0,outcome="WAITED",deviceBefore=o.device:GetAttribute("ActuatorValue")}
+  local station=contactCode(true);assert(station==state.station,"FOCAL_STATION_PHYSICAL_MISMATCH")
+  if action.name=="ASK_STATION"then
+   if state.stock&lt;1 then r.invalidAction=true;r.outcome="QUERY_UNAVAILABLE"
+   else
+    local sample=law:quoteLocal(station,motor.root);state.stock-=1;state.signal=sample.signal;state.queries+=1
+    r.permissionSpent=1;r.querySpent=1;r.outcome="PANEL_OBSERVED";r.panelAudit=sample
+    emit("PAID_LOCAL_PANEL",{actionId=action.actionId,station=station,epoch=state.epoch,sample=sample})
+   end
+   task.wait(.1);state.worldTimeMs+=100
+  elseif action.name=="SKIP_STATION"then state.signal=-1;state.skips+=1;r.outcome="QUERY_OMITTED"
+  elseif action.name=="SAFE_WAIT"then state.waits+=1;task.wait(.1);state.worldTimeMs+=100
+  elseif action.name=="EXIT_0"or action.name=="EXIT_1"then
+   local port=action.name=="EXIT_0"and 0 or 1;local target=assert(cfg.edges[tostring(station)][tostring(port)])
+   local price=gates[station][port]:GetAttribute("TollCost_C02");assert(price==0 or price==2,"FOCAL_PHYSICAL_PRICE")
+   assert((gates[station][port].Position-motor.root.Position).Magnitude&lt;=12,"FOCAL_SELECTED_GATE_NOT_LOCAL")
+   r.selectedPort=port;r.originStation=station;r.selectedTarget=target
+   if state.stock&lt;price then r.invalidAction=true;r.outcome="DEVICE_BLOCKED"
+   else
+    state.stock-=price;state.tollSpent+=price;r.permissionSpent=price;r.tollSpent=price
+    emit("PORT_ATTEMPT_TOLL",{actionId=action.actionId,station=station,port=port,target=target,price=price})
+    local moved=motor:moveTo(o.points[target],action.actionId);r.motor=moved
+    if moved.status=="ARRIVED"then
+     assert(contactCode(true)==target,"FOCAL_ARRIVAL_CONTACT_MISMATCH_PRESERVED")
+     local passage=law:recordVerifiedPassage(station,port,action.actionId,true)
+     if passage.freePassUsed then state.freePassesUsed+=1 end
+     state.station=target;state.moves+=1;state.contactCertain=true;r.outcome="MOVED";r.passage=passage
+     o.device:SetAttribute("ActuatorValue",port);o.device.CanCollide=port==0
+     o.device.Color=port==0 and Color3.fromRGB(220,150,70)or Color3.fromRGB(60,210,175)
+    else
+     r.invalidAction=true;r.outcome="MOTOR_NO_PATH";state.contactCertain=contactCode(false)==station
+    end
+   end
+   state.signal=-1
+  else r.invalidAction=true;r.outcome="UNSUPPORTED_ACTION"end
+  state.lastFailure=r.invalidAction or r.collision;r.materialConsequence=state.lastFailure
+  r.after=pose(actor);r.durationMs=math.floor((os.clock()-started)*1000);r.worldTimeMs=state.worldTimeMs
+  r.deviceAfter=o.device:GetAttribute("ActuatorValue");emit("ACTION_EXECUTED",{actionId=action.actionId,name=action.name,result=r})
+  return r
+ end
+ function body:capture()assert(not motor.active);return{schema="DEE.Focal.Body.R02",pose=pose(actor)}end
+ function body:restore(saved)assert(saved.schema=="DEE.Focal.Body.R02"and not motor.active);actor:PivotTo(CFrame.new(table.unpack(saved.pose)))end
+ local sensors={}
+ function sensors:observe(phase)
+  assert(state.contactCertain,"FOCAL_UNCERTAIN_CONTACT_NO_NEW_OBSERVATION")
+  local station=contactCode(true);assert(station==state.station,"FOCAL_ACTUAL_STATION_ONLY")
+  if phase=="QUERY_CHOICE"then state.epoch+=1;law:beginEpoch(state.epoch);state.signal=-1 end
+  return{phase=phase,worldTimeMs=state.worldTimeMs,sampleTimeMs=state.worldTimeMs,
+   sensors={station=station,stage=state.inventoryResource and 2 or 1,contact=0,
+    inventoryKey=state.inventoryKey,inventoryResource=state.inventoryResource,queryAvailable=state.stock&gt;=1,
+    stationSignal=state.signal,permissionStock=state.stock,publicContactCode=station,lastFailure=state.lastFailure,
+    numberAPresent=state.numberAPresent,codeBPresent=state.codeBPresent,numberAVersion=state.numberAVersion,
+    codeBCurrent=state.codeBCurrent,goalDelivery=true}}
+ end
+ return{body=body,sensors=sensors,world=world}
+end
+return A
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_FOCAL_DisponibilidadLocal"><Properties><string name="Name">DisponibilidadLocal</string><ProtectedString name="Source">-- Candidato focal aislado. Sólo disponibilidad física local; no Native ni selección de salida.
+-- No se instala en KIT_DESARROLLADOR ni modifica el adapter aprobado.
+local M={};local Law={};Law.__index=Law
+local function checkPort(station,port)assert(type(station)=="number"and station%1==0 and station&gt;=0 and station&lt;=5 and(port==0 or port==1),"FOCAL_PORT")end
+function M.new(gates,panels,cfg,emit)
+ assert(cfg.rechargeEpochs==3 and cfg.capacityPerPort==1 and cfg.emptyPortToll==2 and cfg.maxCyclesPerArm==6,"FOCAL_FROZEN_LAW")
+ assert(cfg.Arm=="CONSUME_RECHARGE"or cfg.Arm=="NONCONSUMING_CONTROL","FOCAL_ARM")
+ local self=setmetatable({gates=gates,panels=panels,cfg=cfg,epoch=0,ports={},actions={},emit=emit or function()end},Law)
+ for s=0,5 do
+  assert(panels[s]and panels[s]:IsA("BasePart"),"FOCAL_PHYSICAL_PANEL_REQUIRED")
+  self.ports[s]={}
+  for p=0,1 do assert(gates[s]and gates[s][p]and gates[s][p]:IsA("BasePart"),"FOCAL_PHYSICAL_GATE_REQUIRED");self.ports[s][p]={available=true,rechargeAt=nil}end
+ end
+ self:_publish();return self
+end
+function Law:_publish()
+ for s=0,5 do
+  local costs={}
+  for p=0,1 do
+   local token=self.ports[s][p];local gate=self.gates[s][p]
+   costs[p]=token.available and 0 or self.cfg.emptyPortToll
+   gate:SetAttribute("FocalPassAvailable",token.available);gate:SetAttribute("FocalRechargeAt",token.rechargeAt)
+   gate:SetAttribute("TollCost_C02",costs[p])
+  end
+  local panel=self.panels[s];local signal=nil
+  if costs[0]==0 then signal=costs[1]==0 and 1 or 0 elseif costs[1]==0 then signal=2 end
+  panel:SetAttribute("Price0_C02",costs[0]);panel:SetAttribute("Price1_C02",costs[1]);panel:SetAttribute("EncodedSignal_C02",signal)
+  panel:SetAttribute("FocalPanelReadable",signal~=nil)
+ end
+end
+function Law:beginEpoch(epoch)
+ assert(epoch==self.epoch+1 and epoch&lt;=6,"FOCAL_EXACT_FINITE_EPOCH");self.epoch=epoch
+ for s=0,5 do for p=0,1 do local v=self.ports[s][p]
+  if not v.available and epoch&gt;=v.rechargeAt then v.available=true;v.rechargeAt=nil;self.emit("FOCAL_PASS_REPLENISHED",{station=s,port=p,epoch=epoch})end
+ end end
+ self:_publish()
+end
+function Law:quoteLocal(station,root)
+ checkPort(station,0);assert(root and root:IsA("BasePart"),"FOCAL_REAL_BODY_REQUIRED")
+ local panel=self.panels[station]
+ assert((panel.Position-root.Position).Magnitude&lt;=12,"FOCAL_PANEL_NOT_LOCAL")
+ assert(panel:GetAttribute("FocalPanelReadable")==true,"FOCAL_BOTH_PAID_UNENCODABLE_STOP_BEFORE_NATIVE")
+ return {signal=panel:GetAttribute("EncodedSignal_C02"),price0=panel:GetAttribute("Price0_C02"),price1=panel:GetAttribute("Price1_C02"),epoch=self.epoch}
+end
+function Law:recordVerifiedPassage(station,port,actionId,arrivalVerified)
+ checkPort(station,port);assert(arrivalVerified==true and type(actionId)=="string"and #actionId&gt;0,"FOCAL_ACTUAL_PASSAGE_ONLY")
+ assert(self.actions[actionId]==nil,"FOCAL_ACTION_ALREADY_RECORDED_NO_REPLAY");self.actions[actionId]=true
+ local v=self.ports[station][port];local used=v.available
+ if used and self.cfg.Arm=="CONSUME_RECHARGE"then v.available=false;v.rechargeAt=self.epoch+3 end
+ self.emit("FOCAL_PASSAGE",{actionId=actionId,station=station,port=port,epoch=self.epoch,freePassUsed=used,arm=self.cfg.Arm,rechargeAt=v.rechargeAt})
+ self:_publish();return {freePassUsed=used,rechargeAt=v.rechargeAt}
+end
+function Law:capture()
+ local rows={}
+ for s=0,5 do for p=0,1 do local v=self.ports[s][p];table.insert(rows,{station=s,port=p,available=v.available,rechargeAt=v.rechargeAt})end end
+ return{schema="DEE.Focal.LocalAvailability.R02",arm=self.cfg.Arm,epoch=self.epoch,ports=rows,actions=table.clone(self.actions)}
+end
+function Law:restore(saved)
+ assert(saved.schema=="DEE.Focal.LocalAvailability.R02"and saved.arm==self.cfg.Arm and type(saved.epoch)=="number"and saved.epoch%1==0 and saved.epoch&gt;=0 and saved.epoch&lt;=6,"FOCAL_RESTORE_IDENTITY")
+ assert(type(saved.ports)=="table"and #saved.ports==12 and type(saved.actions)=="table","FOCAL_RESTORE_COMPLETE")
+ local ports={};for s=0,5 do ports[s]={}end
+ for _,row in ipairs(saved.ports)do
+  checkPort(row.station,row.port);assert(ports[row.station][row.port]==nil and type(row.available)=="boolean","FOCAL_RESTORE_PORT")
+  if row.available then assert(row.rechargeAt==nil,"FOCAL_RESTORE_READY")else assert(type(row.rechargeAt)=="number"and row.rechargeAt&gt;saved.epoch,"FOCAL_RESTORE_DEADLINE")end
+  ports[row.station][row.port]={available=row.available,rechargeAt=row.rechargeAt}
+ end
+ for id,value in pairs(saved.actions)do assert(type(id)=="string"and value==true,"FOCAL_RESTORE_RECEIPT")end
+ self.ports=ports;self.epoch=saved.epoch;self.actions=table.clone(saved.actions);self:_publish()
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_FOCAL_HttpLoop"><Properties><string name="Name">FocalHttpLoop</string><ProtectedString name="Source">-- Guarda de enlaceFOCAL antes de cualquierPOST; no decide acciones ni cambiaDTOs.
+local Transport=require(script.Parent.HttpTransport)
+local OriginalLoop=require(script.Parent.HttpLoop)
+local M={}
+function M.start(cfg)
+ assert(cfg.Mode=="NATIVE"and cfg.MaxOpportunities==6 and cfg.RunCycles==6 and cfg.MaxActions==12,"FOCAL_FIXED_6_12_HORIZON")
+ local expected={CONSUME_RECHARGE="OSCILANTE",NONCONSUMING_CONTROL="CONTROL"}
+ local condition=assert(expected[cfg.Focal.Arm],"FOCAL_SCENE_ARM")
+ local client=Transport.new(Transport.readPrivateConnection(cfg),cfg.Transport or{})
+ client:assertQuiescent()
+ local contract=client:waitReadyHandshake() -- GET only, no Native request/phase advancement
+ assert(contract.profile=="FOCAL","FOCAL_PROFILE_REQUIRED_NOT_DEMO3")
+ assert(contract.focalCondition==condition,"FOCAL_BACKEND_SCENE_CONDITION_MISMATCH")
+ assert(contract.sequenceOffset==56 and type(contract.localSequence)=="number"and contract.localSequence&gt;=0 and contract.localSequence&lt;=12,"FOCAL_CURSOR_CONTRACT")
+ -- OriginalLoop does exact pairedNEW/CONTINUE checks and retains every original ID.
+ return OriginalLoop.start(cfg)
+end
+return M
+</ProtectedString></Properties></Item></Item></Item><Item class="ServerStorage" referent="RBX_CLEAN_STORAGE"><Properties><string name="Name">ServerStorage</string></Properties></Item><Item class="ReplicatedStorage" referent="RBX_CLEAN_REPLICATED"><Properties><string name="Name">ReplicatedStorage</string></Properties></Item></roblox>

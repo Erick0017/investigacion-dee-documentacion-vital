@@ -1,0 +1,102 @@
+{
+  "schema": "DEE.R07.E5.ProspectiveHostSafety.R06",
+  "status": "PREPARED_NOT_MATERIAL_EXECUTED",
+  "frozen_utc": "2026-11-16T22:10:05.608015+00:00",
+  "approved_physical_start_minimum_bytes": 3758096384,
+  "applies_to": [
+    "PROGRAMMED",
+    "CONVENTIONAL_AI"
+  ],
+  "boundary_stop_available_physical_below_bytes": 1073741824,
+  "deadline_new_episodes_utc": "2026-11-17T02:00:00Z",
+  "hard_finish_utc": "2026-11-17T03:07:00Z",
+  "administrative_start_unchanged": "2026-11-16T15:07:00Z",
+  "budget_reset": false,
+  "host_measurements": {
+    "physical": "Win32.GlobalMemoryStatusEx ullAvailPhys/ullTotalPhys",
+    "reported_process_commit_fields": "ullAvailPageFile/ullTotalPageFile raw; may be process-limited, not physical RAM",
+    "system_commit": "Win32.GetPerformanceInfo CommitTotal/CommitLimit times PageSize, available=(limit-total)*PageSize",
+    "sampling": [
+      "INITIAL_PRECHECK before World/policy opening",
+      "BEFORE_BEGIN for every prospective episode"
+    ],
+    "measurement_failure": "Fail closed; no invented available-memory number"
+  },
+  "stop_contract": {
+    "initial_below_minimum": "PREFLIGHT_RAM_REJECTED.json and samples; no World/policy opened",
+    "boundary_below_1GiB": "Break before BEGIN; normal policy checkpoint, World export and closure; actual completed cursor and denominator only",
+    "reason": "HOST_FREE_RAM_BELOW_1GiB",
+    "daemon_stop_written": false,
+    "automatic_retry": false,
+    "zero_episode_block": "Valid administrative closed baseline, not an experimental failure or successful new opportunity"
+  },
+  "unchanged": {
+    "policy": "comparadores/backends_v3_R05.py",
+    "client": "comparadores/cliente_modelo_v3_R05.py",
+    "daemon": "comparadores/servidor_modelo_v3_R05.py",
+    "model": "llama3.2:latest",
+    "model_manifest_sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "temperature": 0,
+    "seed": 404271,
+    "context": 8192,
+    "num_predict": 128,
+    "threads": 4,
+    "global_quota": "comparadores/CUOTA_LLM_V3.json",
+    "global_call_limit": 160,
+    "daemon_job_limit_bytes": 6442450944,
+    "Native_policy_decoder_or_criteria_changed": false
+  },
+  "memory_interpretation": "R06 model peak_job_committed_bytes3619258368 was Job commitment, not RSS. It does not establish physical RAM minimum. Fixed3.5GiB start margin is prospective host administration, not a scientific claim.",
+  "synthetic_verification": {
+    "tests": 5,
+    "passed": 5,
+    "observed_seconds": 2.857,
+    "cases": [
+      "No implicit/lowered margin",
+      "Normal requested horizon",
+      "Prestart rejection without opening World/policy",
+      "Clean stop after one without beginning second",
+      "Clean zero-episode stop without BEGIN"
+    ],
+    "Native_calls": 0,
+    "MCP_calls": 0,
+    "model_calls": 0
+  },
+  "members": [
+    {
+      "file": "control/runner_comparador_v3_R06_RAM.py",
+      "bytes": 14623,
+      "sha256": "2ae529519d7a41fbfcf76710eef4be3c985d6408a4a864855b72800578c2af03"
+    },
+    {
+      "file": "control/test_runner_RAM_R06_sintetico.py",
+      "bytes": 6429,
+      "sha256": "1138b10d38933a3a6b0774ac0eb9df9b45f660745d37115fc116e19c7cecdbdc"
+    },
+    {
+      "file": "control/runner_comparador_v3_R05.py",
+      "bytes": 9111,
+      "sha256": "76bdd69a2768c42a3f2758b414408362672568d54f1f5f40da341962e75aa72d"
+    },
+    {
+      "file": "control/world_comprimido_v3_R05.py",
+      "bytes": 11202,
+      "sha256": "407dd8967a40162458f06081ad90eb3a522a214728324a4a4e693a9a1f9d9d85"
+    },
+    {
+      "file": "comparadores/backends_v3_R05.py",
+      "bytes": 30099,
+      "sha256": "eb038a35eb85a89e892224d92e53c8dc23c971080baed669afc0242a418f4902"
+    },
+    {
+      "file": "comparadores/cliente_modelo_v3_R05.py",
+      "bytes": 9100,
+      "sha256": "35d42a7db52fe049867888ced98176eefc4d671f097b544d32f4e17d64bea8d1"
+    },
+    {
+      "file": "comparadores/servidor_modelo_v3_R05.py",
+      "bytes": 5922,
+      "sha256": "1262a1005da76ffc11336afb77f653ab2fece8849c7c5705cbbde2c0706ec301"
+    }
+  ]
+}

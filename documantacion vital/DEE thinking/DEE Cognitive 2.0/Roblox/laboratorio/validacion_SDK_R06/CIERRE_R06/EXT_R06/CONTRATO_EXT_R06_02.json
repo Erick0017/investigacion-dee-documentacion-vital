@@ -1,0 +1,135 @@
+{
+  "schema": "DEE.SDK.EXT_R06.ApiContract.02",
+  "status": "API_AGREED_IMPLEMENTATION_PREPARED_NOT_MATERIAL_VALIDATED",
+  "extensionVersion": "DEE.Roblox.SDK.assisted_capabilities.R06",
+  "envelope": {
+    "ok": true,
+    "result": "DTO"
+  },
+  "routes": {
+    "handshake": {
+      "method": "GET",
+      "path": "/v1/capabilities/handshake"
+    },
+    "submit": {
+      "method": "POST",
+      "path": "/v1/capabilities/submit",
+      "body": [
+        "instanceId",
+        "sessionId",
+        "operationId",
+        "request"
+      ],
+      "response": "202 status; noautomaticresubmit"
+    },
+    "operation": {
+      "method": "GET",
+      "path": "/v1/capability-operations/<id>?instanceId=<id>"
+    },
+    "close": {
+      "method": "POST",
+      "path": "/v1/capabilities/close",
+      "body": [
+        "instanceId",
+        "sessionId",
+        "operationId"
+      ],
+      "response": "202,pollsameGET; closedNativeDescriptor,noWorldpair"
+    }
+  },
+  "handshakeFields": [
+    "instanceId",
+    "sessionId",
+    "lifeId",
+    "extensionVersion",
+    "status",
+    "capabilities",
+    "nativeTick",
+    "capabilitySequence",
+    "limits",
+    "postK4Guard",
+    "worldBinding",
+    "preCapDescriptor"
+  ],
+  "worldBinding": "PRE_CAP_SDK_PAIR_NOT_CURRENT_AFTER_NATIVE_ADVANCE",
+  "limits": {
+    "maxEvents": 12,
+    "maxTicksPerEvent": 4096,
+    "globalNativeTicks": 40000,
+    "lastNewUtcEpoch": "actualRuntimevalue",
+    "hardFinishUtcEpoch": "actualRuntimevalue"
+  },
+  "statuses": [
+    "PENDING_RESOURCE",
+    "PENDING",
+    "RUNNING",
+    "COMPLETED",
+    "FAILED_KNOWN",
+    "UNCERTAIN"
+  ],
+  "completedValue": "wholeNativeJSON{nativeValue:literalmechanicaloutput,Native_inputs,primary,nativeTick,nativeTicks,assisted:true,...};rawHTTPbodypreservedtoavoidnullnormalization",
+  "requestKinds": {
+    "RECALL": {
+      "form": "luma|nara"
+    },
+    "LESSON": {
+      "form": "luma|nara",
+      "observedSign": "-1|1",
+      "revision": "boolean",
+      "teacherMode": "paired|omitted|desync"
+    },
+    "NUMERIC": {
+      "operation": "suma|diferencia",
+      "left": "integer0..32",
+      "right": "integer0..32"
+    },
+    "SOLVE": {
+      "form": "luma|nara",
+      "left": "integer0..32",
+      "right": "integer0..32"
+    },
+    "COMPOSE": {
+      "forms": "two literal forms",
+      "data": "three rawintegers0..32"
+    },
+    "COMPARE": {
+      "left": "int0..20",
+      "right": "int0..20",
+      "source": "Nativeacceso_eci01.balance;onlyadvertisedkindallowed"
+    }
+  },
+  "compareSource": "capacidades/acceso_eci01.balance fixedq+4/q+6/raw/clock/receipts,advertisedbycanonicalbackend; nohostcomparison",
+  "privateFolder": "DEE_SDK_CAPABILITIES_PrivateConnection_R06",
+  "attribution": "DEVELOPER_INITIATED_ASSISTED_NATIVE,notautonomousNativefunctionchoice",
+  "normalVmBindables": {
+    "readOnly": [
+      "GetCapabilitiesRO",
+      "GetOperationRO",
+      "ReadResultRO",
+      "GetLocalRecordInfoRO",
+      "ReadRawChunkRO"
+    ],
+    "material": [
+      "SubmitCapability",
+      "CloseCapabilities"
+    ]
+  },
+  "guards": [
+    "actualK4closedPAIRbeforecap",
+    "NativeActorIDLE/pendingNone/uncertainFalse",
+    "exactSDKlifeallowlist/ACTIVOabsent",
+    "oneNativeownerserial/global40k",
+    "Core26andMax3immutable"
+  ],
+  "noNativeExecutedByAgent": true,
+  "coreSourceChanges": 0,
+  "localResultStorage": {
+    "folderPerOperation": true,
+    "chunkBytesMaximum": 16000,
+    "utf8Boundary": true,
+    "headerWrittenLast": true,
+    "rawHttpBodyAuthoritative": true,
+    "originalTruncated": false
+  },
+  "localConcurrency": "Reserve before handshake yield; one operation; reconciliation GET only"
+}

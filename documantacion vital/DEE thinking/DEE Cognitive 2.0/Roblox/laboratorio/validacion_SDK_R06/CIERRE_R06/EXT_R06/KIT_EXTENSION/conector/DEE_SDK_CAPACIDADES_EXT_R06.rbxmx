@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<roblox version="4"><Item class="Model" referent="RBX_EXT_R06"><Properties><string name="Name">DEE_SDK_Capabilities_EXT_R06</string></Properties><Item class="ModuleScript" referent="RBX_EXT_Config_EXT_R06"><Properties><string name="Name">Config_EXT_R06</string><ProtectedString name="Source">-- Public disabled bydefault; no secrets/Nativefactory.
+return game:GetService("HttpService"):JSONDecode([=[
+{
+  "Schema": "DEE.SDK.EXT_R06.Config.01",
+  "ExtensionVersion": "DEE.Roblox.SDK.assisted_capabilities.R06",
+  "Enabled": false,
+  "PrivateConnectionFolder": "DEE_SDK_CAPABILITIES_PrivateConnection_R06",
+  "RuntimeFolder": "DEE_SDK_EXT_R06",
+  "NoAutomaticMaterial": true,
+  "PollDeadlineSeconds": 1800,
+  "PollIntervalSeconds": 2,
+  "MaxLocalOperations": 64,
+  "View": {
+    "Enabled": true,
+    "Position": [
+      20,
+      9,
+      20
+    ],
+    "Size": [
+      28,
+      18,
+      1
+    ],
+    "CanvasSize": [
+      1120,
+      720
+    ],
+    "MaxDisplayCharacters": 14000
+  }
+}
+]=])
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_EXT_CapabilitiesClient_EXT_R06"><Properties><string name="Name">CapabilitiesClient_EXT_R06</string><ProtectedString name="Source">-- ASSISTED Native client: developer inputs and literal Native outputs. No host answers.
+local H=game:GetService("HttpService");local SS=game:GetService("ServerStorage")
+local M={};local C={};C.__index=C
+local terminal={COMPLETED=true,FAILED_KNOWN=true,UNCERTAIN=true}
+local function identifier(v)assert(type(v)=="string"and #v&gt;0 and #v&lt;=90 and not string.find(v,"[^%w_%-]"),"EXT_IDENTIFIER");return v end
+local function exact(t,keys)
+ assert(type(t)=="table","EXT_REQUEST_OBJECT");local wanted={};for _,k in ipairs(keys)do wanted[k]=true;assert(t[k]~=nil,"EXT_REQUIRED_"..k)end
+ for k in pairs(t)do assert(wanted[k],"EXT_UNEXPECTED_FIELD_"..tostring(k))end
+end
+local function array(t,n)
+ assert(type(t)=="table"and #t==n,"EXT_ARRAY_LENGTH")
+ for k in pairs(t)do assert(type(k)=="number"and k%1==0 and k&gt;=1 and k&lt;=n,"EXT_ARRAY_KEYS")end
+end
+local function form(v)assert(v=="luma"or v=="nara","EXT_FORM")end
+local function integer(v,low,high)assert(type(v)=="number"and v%1==0 and v&gt;=low and v&lt;=high,"EXT_INTEGER_RANGE")end
+function M.validateRequest(r)
+ assert(type(r)=="table"and type(r.kind)=="string","EXT_REQUEST_KIND")
+ if r.kind=="RECALL"then exact(r,{"kind","form"});form(r.form)
+ elseif r.kind=="LESSON"then exact(r,{"kind","form","observedSign","revision","teacherMode"});form(r.form);assert(r.observedSign==1 or r.observedSign==-1,"EXT_SIGN");assert(type(r.revision)=="boolean","EXT_REVISION_BOOL");assert(r.teacherMode=="paired"or r.teacherMode=="omitted"or r.teacherMode=="desync","EXT_TEACHER_MODE")
+ elseif r.kind=="NUMERIC"then exact(r,{"kind","operation","left","right"});assert(r.operation=="suma"or r.operation=="diferencia","EXT_OPERATION");integer(r.left,0,32);integer(r.right,0,32)
+ elseif r.kind=="SOLVE"then exact(r,{"kind","form","left","right"});form(r.form);integer(r.left,0,32);integer(r.right,0,32)
+ elseif r.kind=="COMPOSE"then exact(r,{"kind","forms","data"});array(r.forms,2);array(r.data,3);for _,v in ipairs(r.forms)do form(v)end;for _,v in ipairs(r.data)do integer(v,0,32)end
+ elseif r.kind=="COMPARE"then exact(r,{"kind","left","right"});integer(r.left,0,20);integer(r.right,0,20)
+ else error("EXT_KIND_NOT_IMPLEMENTED",0)end
+ return r
+end
+local function text(parent,name)local v=parent:FindFirstChild(name);if v then assert(v:IsA("StringValue"),"EXT_STORAGE_CONFLICT");return v end;v=Instance.new("StringValue");v.Name=name;v.Parent=parent;return v end
+function M.new(cfg,node,onEvent)
+ assert(cfg.NoAutomaticMaterial==true and cfg.Enabled==true,"EXT_EXPLICIT_ENABLE_REQUIRED")
+ local p=assert(SS:FindFirstChild(cfg.PrivateConnectionFolder),"EXT_PRIVATE_CONNECTION_REQUIRED")
+ local function read(k)local v=p:FindFirstChild(k);assert(v and v:IsA("StringValue")and #v.Value&gt;0,"EXT_CONNECTION_"..k);return v.Value end
+ local base=read("BaseUrl");assert(string.match(base,"^http://127%.0%.0%.1:%d+$"),"EXT_AUTHORIZED_LOOPBACK_ONLY")
+ local id=identifier(read("InstanceId"));local token=read("Token");assert(#token&gt;=32,"EXT_TOKEN_REQUIRED")
+ local ops=node:FindFirstChild("Operations");if ops then assert(ops:IsA("Folder"),"EXT_OPERATION_STORAGE")else ops=Instance.new("Folder");ops.Name="Operations";ops.Parent=node end
+ for _,v in ipairs(ops:GetChildren())do local header=v:FindFirstChild("Header");assert(v:IsA("Folder")and header,"EXT_OPERATION_LAYOUT");local row=H:JSONDecode(header.Value);assert(row.status=="COMPLETED"or row.status=="FAILED_KNOWN","EXT_PRESERVED_OPERATION_NO_REOPEN")end
+ return setmetatable({cfg=cfg,node=node,ops=ops,instanceId=id,base=base,token=token,onEvent=onEvent,busy=false,records={}},C)
+end
+function C:_request(method,path,body)
+ local opts={Url=self.base..path,Method=method,Headers={Authorization="Bearer "..self.token,["Content-Type"]="application/json"}}
+ if body~=nil then opts.Body=H:JSONEncode(body)end
+ local reply=H:RequestAsync(opts);local ok,decoded=pcall(function()return H:JSONDecode(reply.Body)end)
+ assert(ok and type(decoded)=="table","EXT_HTTP_NON_JSON")
+ if not reply.Success or decoded.ok~=true then local code=type(decoded.error)=="table"and decoded.error.code or tostring(reply.StatusCode);error("EXT_HTTP_"..tostring(code),0)end
+ assert(decoded.result~=nil,"EXT_HTTP_RESULT");return decoded.result,reply.Body
+end
+function C:_save(id,row)
+ id=identifier(id);self.records[id]=row
+ local op=self.ops:FindFirstChild(id)
+ if op then assert(op:IsA("Folder"),"EXT_OPERATION_FOLDER")else op=Instance.new("Folder");op.Name=id;op.Parent=self.ops end
+ if not op:FindFirstChild("POST_INTENT")then local intent=H:JSONEncode(row.body);assert(#intent&lt;=8192,"EXT_INTENT_BYTE_BOUND");text(op,"POST_INTENT").Value=intent end
+ local encoded=H:JSONEncode(row);local first=1;local count=0
+ while first&lt;=#encoded do
+  local last=math.min(first+15999,#encoded)
+  while last&lt;#encoded do local b=string.byte(encoded,last+1);if b&gt;=128 and b&lt;=191 then last-=1 else break end end
+  assert(last&gt;=first,"EXT_UTF8_CHUNK_BOUNDARY");count+=1
+  text(op,string.format("Chunk_%05d",count)).Value=string.sub(encoded,first,last);first=last+1
+ end
+ -- Header is written last. Read callbacks run in thisnormalVM and see onecompletecurrentrecord.
+ text(op,"Header").Value=H:JSONEncode({operationId=id,status=row.status,kind=row.kind,chunkCount=count,byteCount=#encoded,chunkBytesMaximum=16000,originalTruncated=false})
+ if self.onEvent then pcall(self.onEvent,row)end
+end
+function C:localInfo(id)
+ local op=self.ops:FindFirstChild(identifier(id));if not op then return nil end
+ return H:JSONDecode(assert(op:FindFirstChild("Header")).Value)
+end
+function C:readChunk(id,index)
+ local info=assert(self:localInfo(id),"EXT_LOCAL_OPERATION_NOT_FOUND");integer(index,1,info.chunkCount)
+ return assert(self.ops:FindFirstChild(id):FindFirstChild(string.format("Chunk_%05d",index))).Value
+end
+function C:readLocal(id)
+ id=identifier(id);if self.records[id]then return self.records[id]end
+ local info=self:localInfo(id);if not info then return nil end
+ local chunks={};for i=1,info.chunkCount do chunks[i]=self:readChunk(id,i)end
+ local encoded=table.concat(chunks);assert(#encoded==info.byteCount,"EXT_LOCAL_CHUNK_LENGTH");return H:JSONDecode(encoded)
+end
+function C:getCapabilities()
+ local h,raw=self:_request("GET","/v1/capabilities/handshake")
+ assert(h.instanceId==self.instanceId and h.extensionVersion==self.cfg.ExtensionVersion,"EXT_WRONG_INSTANCE_OR_VERSION")
+ assert(type(h.sessionId)=="string"and type(h.lifeId)=="string"and type(h.limits)=="table","EXT_HANDSHAKE_CONTEXT")
+ assert(h.postK4Guard==true and h.worldBinding=="PRE_CAP_SDK_PAIR_NOT_CURRENT_AFTER_NATIVE_ADVANCE","EXT_POST_K4_PRE_CAP_REQUIRED")
+ assert(type(h.capabilities)=="table"and type(h.limits.hardFinishUtcEpoch)=="number"and type(h.limits.lastNewUtcEpoch)=="number","EXT_LIMITS_REQUIRED")
+ assert(h.limits.maxTicksPerEvent==4096 and h.limits.globalNativeTicks==40000 and type(h.limits.maxEvents)=="number"and h.limits.maxEvents%1==0 and h.limits.maxEvents&gt;=1 and h.limits.maxEvents&lt;=12,"EXT_FIXED_LIMITS")
+ self.contract=h;return h,raw
+end
+function C:getOperation(id)
+ return self:_request("GET","/v1/capability-operations/"..identifier(id).."?instanceId="..identifier(self.instanceId))
+end
+function C:reconcileOperation(id)
+ local answer,raw=self:getOperation(id);assert(answer.operationId==id,"EXT_RECONCILE_ID")
+ local row=self:readLocal(id)
+ if row then
+  row.status=answer.status;row.responseRaw=raw;row.value=answer.value;row.error=answer.error;self:_save(id,row)
+  if self.activeId==id and terminal[answer.status]then self.busy=answer.status=="UNCERTAIN";if not self.busy then self.activeId=nil end end
+ end
+ return answer,raw
+end
+function C:_start(path,request,close)
+ assert(not self.busy,"EXT_ONE_OPERATION_AT_A_TIME")
+ self.busy=true -- reserve before the handshake yields; no concurrent submit can pass.
+ local prepared,packet=pcall(function()
+ if not close then M.validateRequest(request);request=H:JSONDecode(H:JSONEncode(request))end
+ local h=self:getCapabilities();assert(h.status=="READY","EXT_BACKEND_NOT_READY_NO_POST")
+ assert(os.time()&lt;h.limits.hardFinishUtcEpoch and(close or os.time()&lt;h.limits.lastNewUtcEpoch),"EXT_ADMISSION_DEADLINE_NO_POST")
+ if not close then assert(type(h.capabilitySequence)=="number"and h.capabilitySequence&lt;h.limits.maxEvents,"EXT_EVENT_LIMIT_NO_POST");local found=false;for _,kind in ipairs(h.capabilities)do if kind==request.kind then found=true end end;assert(found,"EXT_KIND_NOT_ADVERTISED")end
+ assert(#self.ops:GetChildren()&lt;self.cfg.MaxLocalOperations,"EXT_LOCAL_LEDGER_LIMIT")
+ local id=identifier("ext_"..(close and"close_"or"cap_")..H:GenerateGUID(false))
+ local body={instanceId=self.instanceId,sessionId=h.sessionId,operationId=id};if not close then body.request=request end
+ local row={operationId=id,status="POST_INTENT",kind=close and"CLOSE"or request.kind,body=body,assisted=true,source="DEVELOPER_INITIATED",material=true}
+ self.activeId=id;self:_save(id,row) -- ID+literalbody existbefore firstPOST; noheader/tokenstored.
+ return{h=h,id=id,body=body,row=row}
+ end)
+ if not prepared then self.busy=false;self.activeId=nil;error(packet,0)end
+ local h,id,body,row=packet.h,packet.id,packet.body,packet.row
+ task.spawn(function()
+  local flowOK,flowError=xpcall(function()
+  local posted,result=pcall(function()return self:_request("POST",path,body)end)
+  if posted then assert(result.operationId==id,"EXT_SUBMIT_ID")else row.status="SUBMIT_UNKNOWN_PRESERVED";self:_save(id,row)end
+  local began=os.clock();local limit=self.cfg.PollDeadlineSeconds;assert(type(limit)=="number"and limit&gt;0 and limit&lt;=3600,"EXT_FINITE_POLL")
+  while os.clock()-began&lt;limit and os.time()&lt;h.limits.hardFinishUtcEpoch do
+   local ok,answer,raw=pcall(function()return self:getOperation(id)end)
+   if ok then
+    assert(answer.operationId==id,"EXT_OPERATION_ID_MISMATCH")
+    row.status=answer.status;row.responseRaw=raw;row.value=answer.value;row.error=answer.error
+    row.preNativeAdmissionGuaranteed=answer.preNativeAdmissionGuaranteed;self:_save(id,row)
+    if terminal[answer.status]then self.busy=answer.status=="UNCERTAIN";if not self.busy then self.activeId=nil end;return end
+    assert(answer.status=="PENDING"or answer.status=="PENDING_RESOURCE"or answer.status=="RUNNING","EXT_UNKNOWN_STATUS_PRESERVED")
+   else row.lastReadError="STATUS_GET_FAILED";self:_save(id,row)end
+   task.wait(self.cfg.PollIntervalSeconds)
+  end
+  row.status="POLL_DEADLINE_UNKNOWN_PRESERVED";self:_save(id,row) -- busy stays true, noautomaticnewID/rePOST
+  end,function(e)return tostring(e)end)
+  if not flowOK then row.status="CLIENT_ERROR_PRESERVED";row.errorCode=tostring(flowError);self:_save(id,row)end
+ end)
+ return{operationId=id,status="POST_INTENT",assisted=true,material=true,source="DEVELOPER_INITIATED"}
+end
+function C:submit(request)return self:_start("/v1/capabilities/submit",request,false)end
+function C:close()return self:_start("/v1/capabilities/close",nil,true)end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_EXT_VistaES_EXT_R06"><Properties><string name="Name">VistaES_EXT_R06</string><ProtectedString name="Source">-- Presentación solamente: nunca calcula respuestas ni manda solicitudes.
+local H=game:GetService("HttpService")
+local M={}
+local NL=string.char(10)
+function M.create(cfg)
+ local view={}
+ function view:state(text)end;function view:operation(row)end;function view:capabilities(h)end
+ if not cfg.View.Enabled then return view end
+ local name="DEE_SDK_EXT_R06_PANEL";assert(not workspace:FindFirstChild(name),"EXT_VIEW_EXISTS_PRESERVE")
+ local p=Instance.new("Part");p.Name=name;p.Anchored=true;p.CanCollide=false;p.CanQuery=false;p.CanTouch=false
+ p.Size=Vector3.new(table.unpack(cfg.View.Size));p.Position=Vector3.new(table.unpack(cfg.View.Position));p.Color=Color3.fromRGB(13,22,38);p.Parent=workspace
+ local gui=Instance.new("SurfaceGui");gui.Name="VistaCapacidadesES";gui.Face=Enum.NormalId.Front;gui.CanvasSize=Vector2.new(table.unpack(cfg.View.CanvasSize));gui.Parent=p
+ local frame=Instance.new("Frame");frame.Size=UDim2.fromScale(1,1);frame.BackgroundColor3=Color3.fromRGB(13,22,38);frame.BorderSizePixel=0;frame.Parent=gui
+ local function label(name,y,height,size,color)
+  local t=Instance.new("TextLabel");t.Name=name;t.Position=UDim2.new(0,24,0,y);t.Size=UDim2.new(1,-48,0,height)
+  t.BackgroundTransparency=1;t.Font=Enum.Font.Code;t.TextSize=size;t.TextColor3=color or Color3.fromRGB(225,234,245)
+  t.TextXAlignment=Enum.TextXAlignment.Left;t.TextYAlignment=Enum.TextYAlignment.Top;t.TextWrapped=true;t.RichText=false;t.Parent=frame;return t
+ end
+ label("Titulo",20,40,29).Text="Capacidades Native · invocación asistida"
+ label("Modo",66,44,18,Color3.fromRGB(245,197,85)).Text="El desarrollador inicia el experimento; DEE produce el resultado. Sin respuestas del host."
+ local status=label("Estado",120,52,19);local request=label("Entrada",180,120,16)
+ local identity=label("Identidad",306,80,16,Color3.fromRGB(150,207,239));local result=label("Resultado",392,258,15)
+ label("Limite",662,42,15,Color3.fromRGB(245,197,85)).Text="Tras avance Native: la pareja SDK anterior queda PRE_CAP, no representa un World actual."
+ function view:state(text)status.Text="Estado: "..tostring(text)end
+ function view:capabilities(h)
+  status.Text="Estado del servicio: "..tostring(h.status)
+  identity.Text="Instancia: "..tostring(h.instanceId)..NL.."Vida: "..tostring(h.lifeId).." · tick del último handshake: "..tostring(h.nativeTick)
+  request.Text="Capacidades anunciadas: "..table.concat(h.capabilities,", ")..NL.."Sólo entradas explícitas suministradas por el desarrollador."
+ end
+ function view:operation(row)
+  status.Text="Estado: "..tostring(row.status).." · ID: "..tostring(row.operationId)
+  request.Text="Entrada suministrada (ASSISTED):"..NL..H:JSONEncode(row.body and row.body.request or{kind="CIERRE_EXPLICITO"})
+  local raw=row.responseRaw or"Sin respuesta Native todavía. PENDING no es resultado."
+  if #raw&gt;cfg.View.MaxDisplayCharacters then local last=cfg.View.MaxDisplayCharacters;while last&lt;#raw do local b=string.byte(raw,last+1);if b&gt;=128 and b&lt;=191 then last-=1 else break end end;raw=string.sub(raw,1,last)..NL.."[VISTA RECORTADA; la respuesta original está en Operations y en el primario privado.]"end
+  result.Text="Respuesta literal del servicio (incluye valor Native / NULL):"..NL..raw
+ end
+ view:state("Extensión instalada; deshabilitada por defecto. No Native.");return view
+end
+return M
+</ProtectedString></Properties></Item><Item class="ModuleScript" referent="RBX_EXT_API_EXT_R06"><Properties><string name="Name">API_EXT_R06</string><ProtectedString name="Source">-- Normal serverVM/Bindable API. RO yMATERIAL separados; noCoreMain/actor/motor dependencies.
+local H=game:GetService("HttpService");local SS=game:GetService("ServerStorage");local Run=game:GetService("RunService")
+local Client=require(script.Parent.CapabilitiesClient_EXT_R06);local View=require(script.Parent.VistaES_EXT_R06)
+local M={}
+function M.mount(cfg)
+ assert(Run:IsServer()and Run:IsStudio(),"EXT_NORMAL_STUDIO_SERVER_REQUIRED")
+ assert(cfg.ExtensionVersion=="DEE.Roblox.SDK.assisted_capabilities.R06"and cfg.NoAutomaticMaterial==true,"EXT_CONFIG_VERSION")
+ assert(not SS:FindFirstChild(cfg.RuntimeFolder),"EXT_RUNTIME_EXISTS_PRESERVE")
+ local node=Instance.new("Folder");node.Name=cfg.RuntimeFolder;node:SetAttribute("ExtensionVersion",cfg.ExtensionVersion);node:SetAttribute("AssistedOnly",true);node.Parent=SS
+ local view=View.create(cfg);local client=nil
+ local function getClient()
+  assert(cfg.Enabled==true,"EXT_DISABLED_NO_NATIVE")
+  if not client then client=Client.new(cfg,node,function(row)view:operation(row)end)end;return client
+ end
+ local function bind(name,material,fn)
+  local b=Instance.new("BindableFunction");b.Name=name;b:SetAttribute("MaterialNativeAdmissionPossible",material)
+  b.OnInvoke=function(...)
+   local ok,result=pcall(fn,...)
+   if not ok then view:state("Bloqueado / conservado: "..tostring(result));return{ok=false,error={code="PRESERVED_NO_AUTOMATIC_RETRY",message=tostring(result)},materialNativeAdmissionPossible=material}end
+   return{ok=true,result=result,materialNativeAdmissionPossible=material}
+  end;b.Parent=node
+ end
+ bind("GetCapabilitiesRO",false,function()
+  if not cfg.Enabled then return{status="DISABLED",extensionVersion=cfg.ExtensionVersion,native=false,help="Configurar endpoint privado y habilitar explícitamente; no hay fallback."}end
+  local h=getClient():getCapabilities();view:capabilities(h);return h
+ end)
+ bind("SubmitCapability",true,function(request)return getClient():submit(request)end)
+ bind("GetOperationRO",false,function(id)local value,raw=getClient():reconcileOperation(id);return{operation=value,responseRaw=raw}end)
+ bind("ReadResultRO",false,function(id)return assert(getClient():readLocal(id),"EXT_LOCAL_OPERATION_NOT_FOUND")end)
+ bind("GetLocalRecordInfoRO",false,function(id)return assert(getClient():localInfo(id),"EXT_LOCAL_OPERATION_NOT_FOUND")end)
+ bind("ReadRawChunkRO",false,function(id,index)return getClient():readChunk(id,index)end)
+ bind("CloseCapabilities",true,function()return getClient():close()end)
+ local status=Instance.new("StringValue");status.Name="ALCANCE";status.Value="ASSISTED developer initiated; no autonomous tool choice; GET is readonly; Submit/Close explicit. Core unchanged.";status.Parent=node
+ return node
+end
+return M
+</ProtectedString></Properties></Item><Item class="Script" referent="RBX_EXT_START"><Properties><string name="Name">Arranque_EXT_R06</string><ProtectedString name="Source">-- Install-only default; never autoSubmit or createsNativeowner.
+local cfg=require(script.Parent.Config_EXT_R06)
+require(script.Parent.API_EXT_R06).mount(cfg)
+</ProtectedString></Properties></Item></Item></roblox>

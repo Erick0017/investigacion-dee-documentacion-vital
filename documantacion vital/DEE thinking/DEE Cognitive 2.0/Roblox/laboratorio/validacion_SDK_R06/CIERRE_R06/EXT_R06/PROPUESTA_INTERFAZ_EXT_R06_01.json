@@ -1,0 +1,99 @@
+{
+  "schema": "DEE.SDK.EXT_R06.Draft.01",
+  "status": "API_NEGOTIATION_ONLY_NO_EXECUTABLE_CLIENT_YET",
+  "coreFrozenUnchanged": true,
+  "nativeExecutedByAgent": false,
+  "studioOrMcpExecutedByAgent": false,
+  "extraProcessCreatedByAgent": false,
+  "mode": "DEVELOPER_INITIATED_ASSISTED_NATIVE_STANDALONE_AFTER_K4",
+  "developerFlow": [
+    "Instalar paqueteEXT_R06separado, sinSDK_Arranque ni nuevo motor",
+    "Configurar conexión privada autorizada; GetCapabilitiesRO sólo consulta metadatos",
+    "Suministrar kind/cue/operandosobservados, nunca respuestaesperada",
+    "SubmitCapability genera yregistraIDantesPOST yretornainmediatamente; GETconsulta mismoID",
+    "Ver resultadoNativeliteral/NULL/ticks/recibos enpanelES; no respuesta calculada porLua/Python",
+    "Cerrar explícitamente sesiónCAP; conservar descriptorNative yparejaSDKpreviaPRE_CAP"
+  ],
+  "proposalRoutes": {
+    "handshake": "GET /v1/capabilities/handshake",
+    "submit": "POST /v1/capabilities/submit",
+    "operation": "GET /v1/capability-operations/<operationId>?instanceId=<id>",
+    "close": "POST /v1/capabilities/close (pendingAPIconfirmation)"
+  },
+  "proposedRequests": {
+    "RECALL": {
+      "form": "luma|nara"
+    },
+    "LESSON": {
+      "form": "luma|nara",
+      "observedSign": "-1|1",
+      "revision": "boolean",
+      "teacherMode": "paired|omitted|desync"
+    },
+    "NUMERIC": {
+      "operation": "suma|diferencia",
+      "left": "integer0..32",
+      "right": "integer0..32"
+    },
+    "SOLVE": {
+      "form": "luma|nara",
+      "left": "integer0..32",
+      "right": "integer0..32"
+    },
+    "COMPOSE": {
+      "forms": "two literal forms",
+      "data": "three rawintegers0..32"
+    },
+    "COMPARE": {
+      "left": "integer0..20",
+      "right": "integer0..20",
+      "status": "BLOCKED_UNTIL_REAL_NATIVE_ENTRY_SOURCE_AND_ADVERTISEMENT_CONFIRMED"
+    }
+  },
+  "sourceScope": "Existing inherited functions only; no Native retune, clocks/RAW/banks edit or answer repair.",
+  "normalServerInterface": {
+    "folder": "ServerStorage/DEE_SDK_EXT_R06",
+    "readOnly": [
+      "GetCapabilitiesRO",
+      "GetOperationRO",
+      "ReadResultRO"
+    ],
+    "material": [
+      "SubmitCapability",
+      "CloseCapabilities"
+    ],
+    "cacheVmIndependent": "BindableFunction callbacks owned by normal serverScript"
+  },
+  "spanishView": {
+    "labels": [
+      "Extensión Native asistida",
+      "Experimento solicitado por el desarrollador",
+      "Entradas suministradas",
+      "Estado e ID de operación",
+      "Resultado Native real / sin emisión",
+      "Tics y primarios",
+      "Estado de cierre y PRE_CAP"
+    ],
+    "noPlayerRequired": true,
+    "noNewMotor": true,
+    "showZeroAsZero": true,
+    "neverRenderExpectedAnswer": true,
+    "credentialsNeverShown": true
+  },
+  "lifecycle": {
+    "requiresPostK4ClosedCorePair": true,
+    "requiresNativeActorIdlePendingNoneUncertainFalse": true,
+    "oneWriterSerial": true,
+    "maxTicksPerCapability": 4096,
+    "sharedGlobalTicks": 40000,
+    "doNotIncrementCoreEpisodeCounter": true,
+    "scopeAfterAdvance": "SDK_PAIR previo conservado como PRE_CAP; no afirmarparejaWorldactual ni autoreanudarcore"
+  },
+  "remainingApiDecisions": [
+    "Exact handshake fields/status/limits/capabilityadvertisement",
+    "Envelope/resultshape andterminalresourceerrorfields",
+    "ExactcapcloseDTO/pollvaluecloseddescriptor",
+    "NativeCOMPARE entry andliteralreturnshape",
+    "Rootauthorization foractualEXTmaterial runs afterK4; agentsneverexecute"
+  ]
+}

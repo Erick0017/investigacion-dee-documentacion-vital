@@ -1,0 +1,32 @@
+-- Public disabled bydefault; no secrets/Nativefactory.
+return game:GetService("HttpService"):JSONDecode([=[
+{
+  "Schema": "DEE.SDK.EXT_R06.Config.01",
+  "ExtensionVersion": "DEE.Roblox.SDK.assisted_capabilities.R06",
+  "Enabled": false,
+  "PrivateConnectionFolder": "DEE_SDK_CAPABILITIES_PrivateConnection_R06",
+  "RuntimeFolder": "DEE_SDK_EXT_R06",
+  "NoAutomaticMaterial": true,
+  "PollDeadlineSeconds": 1800,
+  "PollIntervalSeconds": 2,
+  "MaxLocalOperations": 64,
+  "View": {
+    "Enabled": true,
+    "Position": [
+      20,
+      9,
+      20
+    ],
+    "Size": [
+      28,
+      18,
+      1
+    ],
+    "CanvasSize": [
+      1120,
+      720
+    ],
+    "MaxDisplayCharacters": 14000
+  }
+}
+]=])

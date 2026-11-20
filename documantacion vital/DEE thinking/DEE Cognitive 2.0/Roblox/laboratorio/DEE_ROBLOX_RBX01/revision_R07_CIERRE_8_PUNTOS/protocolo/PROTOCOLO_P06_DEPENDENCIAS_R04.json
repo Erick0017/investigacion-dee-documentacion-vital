@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.R07.P06.FullDependenciesProspective.R04",
+  "status": "Prospective Root-only instrument benchmark; separate from the lease renewal",
+  "parent_campaign_start_utc": "2026-11-16T15:07:00Z",
+  "campaign_hard_close_utc": "2026-11-17T00:07:00Z",
+  "execution_precondition": "After Main34 closes, one imported closed CTRL1 or PILOT; no concurrent import0 or other owner of the selected world",
+  "question": "Does batching repeated stat/lstat/resolve for source paths already held by the original immutable deny-write cache reduce checkpoint witness overhead without changing the full witness or Native state?",
+  "pass_order": ["BASE_1", "PROTO", "BASE_2"],
+  "same_world_no_reset": true,
+  "Native_requests_allowed": 0,
+  "Native_ticks_allowed": 0,
+  "service_loop_allowed": false,
+  "queue_writer_allowed": false,
+  "save_or_checkpoint_allowed": false,
+  "limits": {"job_bytes": 536870912, "maximum_wall_seconds": 1800, "closing_margin_seconds": 1200},
+  "prototype_sha256": "a94fb1a65f6578def4b39c9d5387b65b97f3ae3370b50f14e1f7bb05300c8928",
+  "immutable_cache_original_sha256": "e4621d4875376a910511cadd55503daccadbd0a9787be8d99516417bf2e02adf",
+  "prototype_scope": "Only stat/lstat/resolve for already whitelisted immutable source files under Windows deny-write/delete leases, first call fresh, final physical recheck, reset finally. Other threads and all nonwhitelisted paths remain fresh.",
+  "never_cached": ["operational state", "Native RAW/clocks", "mutable artifacts", "journals", "projected identity metadata", "operational_dependencies results"],
+  "criterion": {
+    "complete_canonical_dependencies_equal_all_three": true,
+    "RAW_clocks_N_tick_identical_all_checks": true,
+    "metadata_identical_all_checks": true,
+    "critical_and_operational_file_bytes_identical": true,
+    "no_operational_add_delete": true,
+    "minimum_fraction_reduction": 0.20,
+    "reference": "Prototype wall time compared with the faster of both baseline passes",
+    "if_not_met": "No deployment; preserve the measured negative or inconclusive result"
+  },
+  "interpretation": "One controlled technical comparison on one closed history; no new cognitive learning, no kernel change and no general efficiency ranking. Concurrent host load and order are recorded limits.",
+  "activation": "Even a positive benchmark does not auto-install. Root must declare versioned source/code_scope migration at a closed boundary; Main live source remains untouched."
+}

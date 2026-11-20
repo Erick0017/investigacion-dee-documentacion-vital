@@ -1,0 +1,699 @@
+{
+  "case": {
+    "id": "RING_A2_SENT_MESSAGE_CUT",
+    "participants": 2,
+    "message_intervention": {
+      "loop": 0,
+      "kind": "remove"
+    }
+  },
+  "geometry": {
+    "N": 67,
+    "loops": [
+      {
+        "index": 0,
+        "requester": "U1",
+        "responder": "U2",
+        "geometry": {
+          "N": 67,
+          "stages": [
+            {
+              "id": "U2.memory",
+              "participant": "U2",
+              "target": [
+                30,
+                20,
+                8
+              ],
+              "time": 55,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "response acquired from local experience",
+              "hub": [
+                30,
+                35,
+                8
+              ]
+            },
+            {
+              "id": "U2.turn1",
+              "participant": "U2",
+              "target": [
+                35,
+                25,
+                8
+              ],
+              "time": 60,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "train": [
+                [
+                  0,
+                  -1,
+                  0
+                ],
+                [
+                  -1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "zero-load acquired routing support",
+              "hub": [
+                25,
+                25,
+                8
+              ]
+            },
+            {
+              "id": "U2.turn2",
+              "participant": "U2",
+              "target": [
+                35,
+                30,
+                8
+              ],
+              "time": 65,
+              "direction": [
+                -1,
+                -1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "role": "zero-load acquired routing support",
+              "hub": [
+                30,
+                25,
+                8
+              ]
+            },
+            {
+              "id": "U1.context",
+              "participant": "U1",
+              "target": [
+                30,
+                30,
+                8
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  -1,
+                  1
+                ]
+              ],
+              "role": "acquired context for using returned answer",
+              "hub": [
+                30,
+                30,
+                8
+              ]
+            }
+          ],
+          "backups": [
+            {
+              "id": "U2.memory.backup",
+              "participant": "U2",
+              "target": [
+                40,
+                15,
+                40
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "independently experienced retained support",
+              "hub": [
+                40,
+                15,
+                40
+              ]
+            },
+            {
+              "id": "U1.context.backup",
+              "participant": "U1",
+              "target": [
+                50,
+                15,
+                52
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  -1,
+                  1
+                ]
+              ],
+              "role": "independently experienced retained support",
+              "hub": [
+                50,
+                15,
+                52
+              ]
+            }
+          ],
+          "request_site": [
+            25,
+            20,
+            8
+          ],
+          "request_tick": 50,
+          "request_direction": [
+            1,
+            0,
+            0
+          ],
+          "banks": {
+            "lower": [
+              25,
+              25,
+              13
+            ],
+            "upper": [
+              25,
+              35,
+              13
+            ]
+          },
+          "access_shift": 44,
+          "context_z": 1,
+          "late_sender_tick": 0,
+          "bank_tick": 75,
+          "name_hubs": {
+            "lower": [
+              25,
+              14,
+              24
+            ],
+            "upper": [
+              25,
+              46,
+              24
+            ]
+          },
+          "name_learning_tick": 86,
+          "name_probe_tick": 147,
+          "name_interval": 61,
+          "name_query_targets": {
+            "lower": [
+              31,
+              20,
+              18
+            ],
+            "upper": [
+              31,
+              40,
+              18
+            ]
+          },
+          "participants": {
+            "U1": {
+              "functions": [
+                "request",
+                "context",
+                "use",
+                "retained backup"
+              ],
+              "component_ids": [
+                "U1.context",
+                "U1.context.backup"
+              ]
+            },
+            "U2": {
+              "functions": [
+                "local experience",
+                "response",
+                "return routing",
+                "retained backup"
+              ],
+              "component_ids": [
+                "U2.memory",
+                "U2.turn1",
+                "U2.turn2",
+                "U2.memory.backup"
+              ]
+            }
+          },
+          "prepared_material_sites": 0,
+          "translation": [
+            0,
+            0,
+            0
+          ],
+          "scope": "Two finite communicating candidate compounds. Geometry and routing opportunities are designed; memory content and directional effects are acquired by submitted experiences. Not autonomous selection of interlocutor."
+        },
+        "prefix": "L0.",
+        "source_teaching_tick": 0
+      },
+      {
+        "index": 1,
+        "requester": "U2",
+        "responder": "U1",
+        "geometry": {
+          "N": 67,
+          "stages": [
+            {
+              "id": "U2.memory",
+              "participant": "U2",
+              "target": [
+                45,
+                20,
+                24
+              ],
+              "time": 55,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "response acquired from local experience",
+              "hub": [
+                45,
+                35,
+                24
+              ]
+            },
+            {
+              "id": "U2.turn1",
+              "participant": "U2",
+              "target": [
+                50,
+                25,
+                24
+              ],
+              "time": 60,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "train": [
+                [
+                  0,
+                  -1,
+                  0
+                ],
+                [
+                  -1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "zero-load acquired routing support",
+              "hub": [
+                40,
+                25,
+                24
+              ]
+            },
+            {
+              "id": "U2.turn2",
+              "participant": "U2",
+              "target": [
+                50,
+                30,
+                24
+              ],
+              "time": 65,
+              "direction": [
+                -1,
+                -1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  -1,
+                  0
+                ]
+              ],
+              "role": "zero-load acquired routing support",
+              "hub": [
+                45,
+                25,
+                24
+              ]
+            },
+            {
+              "id": "U1.context",
+              "participant": "U1",
+              "target": [
+                45,
+                30,
+                24
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  -1,
+                  1
+                ]
+              ],
+              "role": "acquired context for using returned answer",
+              "hub": [
+                45,
+                30,
+                24
+              ]
+            }
+          ],
+          "backups": [
+            {
+              "id": "U2.memory.backup",
+              "participant": "U2",
+              "target": [
+                55,
+                15,
+                56
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0
+                ]
+              ],
+              "role": "independently experienced retained support",
+              "hub": [
+                55,
+                15,
+                56
+              ]
+            },
+            {
+              "id": "U1.context.backup",
+              "participant": "U1",
+              "target": [
+                65,
+                15,
+                1
+              ],
+              "time": 70,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "train": [
+                [
+                  -1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  -1,
+                  1
+                ]
+              ],
+              "role": "independently experienced retained support",
+              "hub": [
+                65,
+                15,
+                1
+              ]
+            }
+          ],
+          "request_site": [
+            40,
+            20,
+            24
+          ],
+          "request_tick": 50,
+          "request_direction": [
+            1,
+            0,
+            0
+          ],
+          "banks": {
+            "lower": [
+              40,
+              25,
+              29
+            ],
+            "upper": [
+              40,
+              35,
+              29
+            ]
+          },
+          "access_shift": 44,
+          "context_z": 1,
+          "late_sender_tick": 0,
+          "bank_tick": 75,
+          "name_hubs": {
+            "lower": [
+              40,
+              14,
+              40
+            ],
+            "upper": [
+              40,
+              46,
+              40
+            ]
+          },
+          "name_learning_tick": 86,
+          "name_probe_tick": 147,
+          "name_interval": 61,
+          "name_query_targets": {
+            "lower": [
+              46,
+              20,
+              34
+            ],
+            "upper": [
+              46,
+              40,
+              34
+            ]
+          },
+          "participants": {
+            "U1": {
+              "functions": [
+                "request",
+                "context",
+                "use",
+                "retained backup"
+              ],
+              "component_ids": [
+                "U1.context",
+                "U1.context.backup"
+              ]
+            },
+            "U2": {
+              "functions": [
+                "local experience",
+                "response",
+                "return routing",
+                "retained backup"
+              ],
+              "component_ids": [
+                "U2.memory",
+                "U2.turn1",
+                "U2.turn2",
+                "U2.memory.backup"
+              ]
+            }
+          },
+          "prepared_material_sites": 0,
+          "translation": [
+            15,
+            0,
+            16
+          ],
+          "scope": "Two finite communicating candidate compounds. Geometry and routing opportunities are designed; memory content and directional effects are acquired by submitted experiences. Not autonomous selection of interlocutor."
+        },
+        "prefix": "L1.",
+        "source_teaching_tick": 0
+      }
+    ],
+    "actors": [
+      {
+        "id": "U1",
+        "context_and_backup_in_loop": 0,
+        "response_relays_and_backup_in_loop": 1,
+        "components": 6,
+        "scope": "Prepared distributed two-role candidate, not evidence of unified agency or an internally recurrent policy"
+      },
+      {
+        "id": "U2",
+        "context_and_backup_in_loop": 1,
+        "response_relays_and_backup_in_loop": 0,
+        "components": 6,
+        "scope": "Prepared distributed two-role candidate, not evidence of unified agency or an internally recurrent policy"
+      }
+    ],
+    "prepared_material_sites": 0,
+    "source_site_overlaps": [
+      {
+        "site": [
+          43,
+          15,
+          40
+        ],
+        "first": "L0.U2.memory.backup.cue",
+        "second": "L0.U2.memory.backup.query",
+        "scope": "Shared injection site; Runtime admission, not last-write-wins, decides actual inputs"
+      },
+      {
+        "site": [
+          53,
+          15,
+          52
+        ],
+        "first": "L0.U1.context.backup.cue",
+        "second": "L0.U1.context.backup.query",
+        "scope": "Shared injection site; Runtime admission, not last-write-wins, decides actual inputs"
+      },
+      {
+        "site": [
+          58,
+          15,
+          56
+        ],
+        "first": "L1.U2.memory.backup.cue",
+        "second": "L1.U2.memory.backup.query",
+        "scope": "Shared injection site; Runtime admission, not last-write-wins, decides actual inputs"
+      },
+      {
+        "site": [
+          1,
+          15,
+          1
+        ],
+        "first": "L1.U1.context.backup.cue",
+        "second": "L1.U1.context.backup.query",
+        "scope": "Shared injection site; Runtime admission, not last-write-wins, decides actual inputs"
+      }
+    ],
+    "physical_components": 12,
+    "loop_translations": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        15,
+        0,
+        16
+      ]
+    ],
+    "scope": "Native response/context couplings across participants in one Runtime. Actor role assignment is prepared and distributed across loop regions; its two functions are not asserted to form a renewable universal individual."
+  },
+  "source_sha256": "3769ad5162edaa4401e43f8c386db26c4cfb4b60094281fc6080dbd611f2d406",
+  "template_source_sha256": "475a1dfad61c88b9f5494f25afc06963e4bf99de7e90e1b5ba26e7f5005dad62",
+  "criterion": "Record native transport/returned load and direction, transformed environmental banks, old/new backup availability and receipts. Increasing components/resources is separate from architecture advantage.",
+  "horizon": 204,
+  "modalities": [
+    "EXPERIENCE_PROTOCOL",
+    "NATIVE_EVOLUTION",
+    "PASSIVE_OBSERVATION"
+  ]
+}

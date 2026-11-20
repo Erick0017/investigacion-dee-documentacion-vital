@@ -1,0 +1,24 @@
+{
+  "schema":"CPC6.U0.controls.frozen.v1",
+  "frozen_before_execution":true,
+  "parent_reference":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q",
+  "criterion":"Fixed exact active semantic1 directions. Action20 and information23 remain separate from latephysicalquery33. No hidden target used during trajectory.",
+  "cases":[
+    {"id":"IC01_ACTUAL_OMITTED","history":"AB","actual_omitted":true},
+    {"id":"IC02_SOURCES_OMITTED","history":"AB","actual":-1,"omit_sources":["P","Q"]},
+    {"id":"IC03_SOURCE_EXPERIENCE_UNPAIRED","history":"AB","actual":-1,"source_mode":"unpaired"},
+    {"id":"IC04_U0_VIRGIN","history":"NONE","actual":-1},
+    {"id":"IC05_LATE_QUERY_OMITTED","history":"AB","actual":-1,"late_omitted":true},
+    {"id":"IC06_REVERSED_SOURCE_CONTENT","history":"AB","actual":-1,"source_values":{"P":-1,"Q":1}},
+    {"id":"IC07_RESERVED_LOAD_QUERY","history":"AB","actual":-1,"event_load":5,"late_payload":13,"source_values":{"P":-1,"Q":1}},
+    {"id":"IC08_RESERVED_TEMPORAL_GAP","history":"AB","actual":-1,"gap":2,"event_load":5,"late_payload":13,"source_values":{"P":-1,"Q":1}},
+    {"id":"IC09_FORECAST_CUT","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"forecast","operation":"raw_cut"},
+    {"id":"IC10_FORECAST_REVERSE_SAME_LOAD","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"forecast","operation":"reverse_direction"},
+    {"id":"IC11_FORECAST_EXACT_SHAM","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"forecast","operation":"sham_exact"},
+    {"id":"IC12_ACQUIRED_QSOURCE_CUT","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"source_Q","operation":"raw_cut"},
+    {"id":"IC13_UNUSED_PSOURCE_SHAM","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"source_P","operation":"raw_cut"},
+    {"id":"IC14_ACQUIRED_QSOURCE_SAME_LOAD_WRONG_DIRECTION","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T5.deetsnap","target":"source_Q","operation":"reverse_z"},
+    {"id":"IC15_RECEIVED_INFORMATION_CUT","mode":"diagnostic","parent_case":"resultados/D01_INTEGRATED_DISCOVERY/U0_D01_AB_error_Q","checkpoint":"T23.deetsnap","target":"information","operation":"raw_cut"}
+  ],
+  "reserve_policy":"Load5/query13 and gap2 are frozen new input conditions, not asserted functional before measurement. Diagnosticsham preserves clocks and unusedsource is a same-load acquiredcarrier, not a global shutdown."
+}

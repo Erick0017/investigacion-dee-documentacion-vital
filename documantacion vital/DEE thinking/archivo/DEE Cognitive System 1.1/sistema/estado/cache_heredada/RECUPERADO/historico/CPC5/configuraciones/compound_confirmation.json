@@ -1,0 +1,22 @@
+{
+  "schema": "CPC5.compound.freeze.v1",
+  "frozen_before_confirmation": true,
+  "based_on": "compound_D02 only; no reserve used to adjust design",
+  "criterion": "Read actual active carrier at the fixed contact. For retention, actual y direction matches actual acquired direction; report admission and silence separately. Joint and environmental outputs are fields, not a global verdict.",
+  "cases": [
+    {"id":"COMP_UNCOUPLED_SIX","architecture":"R4.resource_matched","stage":"CONTROL","coupled":false,"directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_K2_VIRGIN","architecture":"R1","stage":"CONTROL","lesson_modes":{"K2":"omitted"},"directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_K2_UNPAIRED","architecture":"R1","stage":"CONTROL","lesson_modes":{"K2":"unpaired"},"directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_K1_OPPOSITE","architecture":"R1","stage":"CONTROL","directions":{"K1":-1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_K2_OPPOSITE","architecture":"R1","stage":"CONTROL","directions":{"K1":1,"K2":-1,"K3":-1,"K4":1}},
+    {"id":"COMP_NO_COMMON_QUERY","architecture":"R1","stage":"CONTROL","omit_common":true,"directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_MESSAGE_REMOVE","architecture":"R1","stage":"DIAGNOSTIC","intervention":"remove","directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_MESSAGE_DIRECTION","architecture":"R1","stage":"DIAGNOSTIC","intervention":"direction","directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_MESSAGE_SHAM","architecture":"R1","stage":"DIAGNOSTIC","intervention":"sham","directions":{"K1":1,"K2":1,"K3":-1,"K4":1}},
+    {"id":"COMP_RESERVED_ORDER_QUERY7","architecture":"R1","stage":"RESERVED","lesson_order":["K2","K1","K4","K3"],"query_payload":7,"translation":[3,5,7],"directions":{"K1":1,"K2":1,"K3":1,"K4":-1}},
+    {"id":"COMP_RESERVED_CONTEXT_QUERY9","architecture":"R1","stage":"RESERVED","query_payload":9,"translation":[-4,2,3],"directions":{"K1":1,"K2":-1,"K3":1,"K4":-1}},
+    {"id":"COMP_QUIET_RETENTION1008","architecture":"R1","stage":"EXTENSION","late_query_cycle":15,"directions":{"K1":1,"K2":1,"K3":-1,"K4":1}}
+  ],
+  "resources": {"N":67,"components":6,"Runtime_per_trajectory":1,"native_threads":1,"worker_timeout_seconds":900},
+  "scope": "Two duplicated relations + two additional relations. Geometry-coupled primary route versus same-count disconnected placement. Physical redundancy costs are explicit; not all functions assigned to one scalar or four NSM meanings."
+}

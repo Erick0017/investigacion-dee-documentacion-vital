@@ -1,0 +1,146 @@
+{
+  "method": "directional_complement_v1",
+  "cases": [
+    {
+      "id": "equal_positive",
+      "spec": {
+        "expected": 1,
+        "consequence": 1
+      }
+    },
+    {
+      "id": "equal_negative",
+      "spec": {
+        "expected": -1,
+        "consequence": -1
+      }
+    },
+    {
+      "id": "positive_discrepancy",
+      "spec": {
+        "expected": 1,
+        "consequence": -1
+      }
+    },
+    {
+      "id": "negative_discrepancy",
+      "spec": {
+        "expected": -1,
+        "consequence": 1
+      }
+    },
+    {
+      "id": "same_sum_equal",
+      "spec": {
+        "expected": 1,
+        "consequence": 1,
+        "loads": [
+          65,
+          65
+        ]
+      }
+    },
+    {
+      "id": "same_sum_unequal",
+      "spec": {
+        "expected": 1,
+        "consequence": -1,
+        "loads": [
+          30,
+          100
+        ]
+      }
+    },
+    {
+      "id": "expectation_omitted",
+      "spec": {
+        "expected": 1,
+        "consequence": 1,
+        "omit": "expectation"
+      }
+    },
+    {
+      "id": "consequence_omitted",
+      "spec": {
+        "expected": 1,
+        "consequence": 1,
+        "omit": "consequence"
+      }
+    },
+    {
+      "id": "one_tick_miss",
+      "spec": {
+        "expected": 1,
+        "consequence": -1,
+        "phase_miss": 1
+      }
+    },
+    {
+      "id": "branch_equal",
+      "spec": {
+        "expected": 1,
+        "consequence": 1,
+        "context_payloads": {
+          "equal": 7,
+          "higher": 11,
+          "lower": 13
+        }
+      }
+    },
+    {
+      "id": "branch_discrepancy",
+      "spec": {
+        "expected": 1,
+        "consequence": -1,
+        "context_payloads": {
+          "equal": 7,
+          "higher": 11,
+          "lower": 13
+        }
+      }
+    },
+    {
+      "id": "reserved_translation",
+      "spec": {
+        "expected": -1,
+        "consequence": 1,
+        "hub": [
+          12,
+          14,
+          17
+        ],
+        "loads": [
+          9,
+          21
+        ]
+      }
+    },
+    {
+      "id": "reserved_timing",
+      "spec": {
+        "expected": 1,
+        "consequence": 1,
+        "hub": [
+          31,
+          19,
+          29
+        ],
+        "arrival_tick": 13,
+        "expectation_tick": 2,
+        "consequence_tick": 7,
+        "loads": [
+          17,
+          43
+        ]
+      }
+    }
+  ],
+  "reserved": [
+    "reserved_translation",
+    "reserved_timing"
+  ],
+  "decoder": "Native product direction x=0 same; +/- mismatch; only when dy=dz=1",
+  "invalidity": "Missing participants/timing misses are not automatically assigned an error value",
+  "maximum_cases": 13,
+  "postT0": "Only declared experience submissions; no RAW/clock edits"
+}

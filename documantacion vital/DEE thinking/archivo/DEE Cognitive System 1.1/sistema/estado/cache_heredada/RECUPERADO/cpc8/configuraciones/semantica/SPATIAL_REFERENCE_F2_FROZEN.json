@@ -1,0 +1,67 @@
+{
+  "schema": "CPC8R.spatial_reference.config.v1",
+  "freeze_basis": "A real reference object at diagonalXY produces native gradientXYZ. RecordZ− captures acquiredX/Y. New current objects at different YZ positions/states/doses generate nativeY/Z gradients. Fixed array sends no match bit. Newsecondobjectsafterotheracquisition test intraindividual transfer with no feedback. Decoder inherited unchanged from MODE_F2. Sensors and geometry fixed before run.",
+  "criterion": "Reference+ expectsLIKE thenDIFFERENT; reference− expectsDIFFERENT thenLIKE for actualYgradient[+1,−1]. Virgin/unpaired controls must show whether sensor biases create spurious X. Each sensor array copy is one declared current physical object, not an independent sample.",
+  "cases": [
+    {
+      "id": "SPR_P11_REFERENCE_PLUS",
+      "reference_axis": 1,
+      "reference_mode": "paired",
+      "objects": [
+        1,
+        -1
+      ],
+      "loads": [
+        11,
+        11,
+        19
+      ],
+      "horizon": 208
+    },
+    {
+      "id": "SPR_P12_REFERENCE_MINUS",
+      "reference_axis": -1,
+      "reference_mode": "paired",
+      "objects": [
+        1,
+        -1
+      ],
+      "loads": [
+        11,
+        11,
+        19
+      ],
+      "horizon": 208
+    },
+    {
+      "id": "SPR_C11_REFERENCE_VIRGIN",
+      "reference_axis": 1,
+      "reference_mode": "virgin",
+      "objects": [
+        1,
+        -1
+      ],
+      "loads": [
+        11,
+        11,
+        19
+      ],
+      "horizon": 208
+    },
+    {
+      "id": "SPR_C12_RECORD_UNPAIRED",
+      "reference_axis": 1,
+      "reference_mode": "unpaired",
+      "objects": [
+        1,
+        -1
+      ],
+      "loads": [
+        11,
+        11,
+        19
+      ],
+      "horizon": 208
+    }
+  ]
+}

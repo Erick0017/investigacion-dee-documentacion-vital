@@ -1,0 +1,166 @@
+{
+  "schema": "CPC5.compound.core-reuse.freeze.v1",
+  "frozen_before_execution": true,
+  "based_on": "COMP_REUSE_CORE_D01 discovery only",
+  "question": "Can the old common carrier incorporate later acquired relations while all four backup functions remain usable?",
+  "criterion": "Actual RAW/direction/load at planned physical encounters; Applied queries and directions consistent with observed acquisition. No target read by any participant.",
+  "cases": [
+    {
+      "id": "CORE_UNCOUPLED_MATCHED",
+      "architecture": "R4.same_six_components",
+      "stage": "CONTROL",
+      "reuse_core": true,
+      "coupled": false,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_K3_OPPOSITE",
+      "architecture": "R1",
+      "stage": "CONTROL",
+      "reuse_core": true,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": -1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_K4_OPPOSITE",
+      "architecture": "R1",
+      "stage": "CONTROL",
+      "reuse_core": true,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": -1
+      }
+    },
+    {
+      "id": "CORE_K3_UNPAIRED",
+      "architecture": "R1",
+      "stage": "CONTROL",
+      "reuse_core": true,
+      "lesson_modes": {
+        "K3": "unpaired"
+      },
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_LATE_MESSAGE_REMOVE147",
+      "architecture": "R1",
+      "stage": "DIAGNOSTIC",
+      "reuse_core": true,
+      "intervention": "remove",
+      "intervention_tick": 147,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_LATE_MESSAGE_DIRECTION147",
+      "architecture": "R1",
+      "stage": "DIAGNOSTIC",
+      "reuse_core": true,
+      "intervention": "direction",
+      "intervention_tick": 147,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_LATE_MESSAGE_SHAM147",
+      "architecture": "R1",
+      "stage": "DIAGNOSTIC",
+      "reuse_core": true,
+      "intervention": "sham",
+      "intervention_tick": 147,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_RESERVED_ORDER_QUERY7",
+      "architecture": "R1",
+      "stage": "RESERVED",
+      "reuse_core": true,
+      "lesson_order": [
+        "K2",
+        "K1",
+        "K4",
+        "K3"
+      ],
+      "query_payload": 7,
+      "translation": [
+        3,
+        5,
+        7
+      ],
+      "extra_native_ticks": [
+        149,
+        150,
+        211,
+        212
+      ],
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_RESERVED_CONTEXT_QUERY9",
+      "architecture": "R1",
+      "stage": "RESERVED",
+      "reuse_core": true,
+      "query_payload": 9,
+      "translation": [
+        -4,
+        2,
+        3
+      ],
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": -1,
+        "K4": 1
+      }
+    },
+    {
+      "id": "CORE_QUIET_RETENTION1008",
+      "architecture": "R1",
+      "stage": "EXTENSION",
+      "reuse_core": true,
+      "late_query_cycle": 15,
+      "directions": {
+        "K1": 1,
+        "K2": 1,
+        "K3": 1,
+        "K4": 1
+      }
+    }
+  ],
+  "explicit_resource_difference_from_D02": "K3 and K4 each receive a second actual exposure in reused P1/P2 plus a later resource7. The matched disconnected and opposite-history controls receive the same doses.",
+  "scope": "One continuously evolving common product, not arithmetic combination performed by Python; arbitrary directional relations, not four fully acquired NSM primitives"
+}

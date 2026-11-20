@@ -1,0 +1,54 @@
+RECURSOS R06 — RECÁLCULO PASIVO Y PORTÁTIL
+
+El script RECURSOS_RECALCULO_R06.py usa sólo Python stdlib y archivos explícitos.
+No importa Native, consulta SQLite, abre Studio/modelo, ejecuta procesos ni sigue
+localizadores D: guardados como procedencia. Los datos deben estar congelados o
+leerse expresamente como parciales con --allow-partial.
+
+Ejemplo de corte parcial ya ejecutado (sin ensayos nuevos):
+python -I -B analisis/RECURSOS_RECALCULO_R06.py --allow-partial --owner-journal MAIN=native/MAIN/ENSAYOS.jsonl --phase-events LIVE_NATIVE=evidencia/NATIVE_BLOQUE_01/EVENTS.jsonl --phase-events LIVE_NATIVE=evidencia/NATIVE_BLOQUE_02_R02/EVENTS.jsonl --phase-events LIVE_NATIVE=evidencia/NATIVE_CONTINUACION_C16_R01/EVENTS.jsonl --import-job LOAD3=native/LOAD3/IMPORT0_JOB.json --import-job CTRL1=native/CTRL1/IMPORT0_JOB.json --output analisis/RECURSOS_PARCIAL_R06_R01
+El destino de ese ejemplo ya existe: no repetirlo ni sobrescribirlo. Es una
+fotografía PARCIAL; no es el resultado final de MAIN ni fija su techo de ticks.
+
+Para cierre final: usar otro --output nuevo, quitar --allow-partial y aportar los
+journals cerrados de las vidas realmente ejecutadas. Añadir --phase-events por
+bloque/participante y --import-job por importación que se quiera medir. Las opciones
+repetibles --load-stage, --model-log y --model-service también reciben LABEL=ruta.
+--phase-events requiere LIVE_NATIVE, PROGRAMMED o CONVENTIONAL_AI como etiqueta.
+No hay búsquedas recursivas de todo el proyecto ni lecturas del estado del ente.
+
+Interpretación:
+* Sólo runs R06_ del journal Owner. Un prefijo C02 heredado nunca se suma.
+* Agrupar por vida/run y verificar un único PID/Job; OWNER_CLOSED exit0 y
+  final_status.running=false son necesarios antes de sumar un resultado final.
+* CPU de Job es acumulada: máximo user y kernel por Job/run, una sola vez.
+  No sumar muestras sucesivas. Un Job puede incluir propietario e hijo; no es
+  CPU exclusiva del kernel DEE. La cobertura de la muestra posterior a la salida
+  se muestra explícitamente.
+* OWNER_CLOSED.elapsed_seconds es duración del propietario (arranque/espera/cierre).
+  NATIVE_COMPLETED/BACKEND_COMPLETED.wall_seconds mide otra ventana y nunca se
+  convierte en CPU ni se añade a esa duración. IDs repetidos se deduplican.
+* PeakCommit de Job/proceso, working set, private bytes y RAM física libre del
+  anfitrión son magnitudes distintas. No se suman picos para fingir simultaneidad.
+* Import0 con0ticks nuevos sigue costando CPU/RAM del host: se informa aparte.
+  LOAD3/CTRL1 coincidieron aproximadamente con MAIN00:41–00:50UTC según Root;
+  es un confusor de carga/paginación, no un mecanismo de DEE. Sin timestamps
+  suficientes no se inventa una asignación temporal precisa del coste.
+* Backend sin instrumentación CPU conserva CPU=null. En el modelo, tokens y
+  duraciones API en nanosegundos se convierten sólo a sus unidades declaradas;
+  ausencia de métrica queda null y conserva su cobertura. El servicio Ollama
+  entero incluye espera/warmup y no se atribuye retrospectivamente por llamada.
+* No se mide energía, coste eléctrico, FPS, sufrimiento ni una capacidad teórica.
+
+El resultado conserva PRIMARIOS/ con todos los eventos de recursos relevantes y
+proyecciones explícitas de campos de medición, hash/procedencia de cada entrada
+y REPETIR_PORTABLE.json. Para repetir desde la extracción, sustituir
+{resource_primary_root} por la carpeta entregada de resultados y {new_output}
+por un destino nuevo. No abrir ninguna ruta original guardada como texto.
+El nuevo informe comparará los mismos campos y puede perder sólo el recuento
+de filas heredadas omitidas, que no es un coste ni un resultado Native.
+
+Fixtures sintéticos ejecutados:
+python -I -B analisis/test_recursos_recalculo_offline_R06.py
+No son experimentos Native. El QA de extracción admite este script concreto y
+bloquea aperturas externas, red, procesos e importaciones Native.

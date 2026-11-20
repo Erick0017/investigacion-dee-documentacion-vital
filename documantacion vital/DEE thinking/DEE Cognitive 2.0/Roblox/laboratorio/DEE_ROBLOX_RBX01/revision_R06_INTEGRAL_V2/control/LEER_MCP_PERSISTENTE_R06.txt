@@ -1,0 +1,33 @@
+Cliente Root persistente — sólo transporte oficial StudioMCP
+
+Importar no abre nada. Session(...) dentro de with abre un único StudioMCP.exe,
+reutilizando MCPClient del RelayR07 preservado. Inicializa, lista herramientas y
+comprueba el ID+nombre de Studio una sola vez por conexión. run conserva el
+formato status=REPLIED / reply.result que utiliza decode del runner existente.
+No cambiar el runner que ya está ejecutándose: adaptar una versión nueva.
+
+with Session(studio_id, expected_place, salida_sesion_NUEVA, seconds=7200) as s:
+    report=s.run('execute_luau', {'studio_id':studio_id,'datamodel_type':'Server','code':codigo}, salida_call_NUEVA, timeout=180)
+
+Cada call escribe intención antes de enviar, tiene un ID RPC y un logical_call_id,
+es serial y no se reintenta automáticamente. Un timeout bloquea nuevas llamadas.
+reconcile_pending(salida_NUEVA,timeout=60) espera la MISMA respuesta sin enviar nada.
+Una mutación incierta no puede usar reconnect_read_only ni un ID de sustitución.
+
+Sólo un read_only declarado por Root puede tener reconexión explícita:
+ticket=s.reconnect_read_only(); s.repeat_read_explicit(ticket,salida_NUEVA).
+Esto repite una lectura, no una mutación; conserva logical_call_id/argumentos y
+registra otro RPC/epoch. Una muestra posterior no es automáticamente el mismo
+instante del mundo. No existe un retry general de lecturas ni de errores SDK.
+
+Prueba real Root de dos lecturas del mismo servidor (código sólo lectura elegido
+antes, por ejemplo return {probe='R06',running=game:GetService('RunService'):IsRunning()}):
+python -I -B control/mcp_persistente_R06.py --probe-read-only --studio-id <ID> --expected-place <ARCHIVO_EXACTO.rbxlx> --code <LECTURA.luau> --output <DIRECTORIO_NUEVO>
+
+El archivo PROBE_RESULT.json conserva PID SDK, igualdad semántica y latencias.
+No mide por sí mismo equivalencia de una nueva captura ni rendimiento Native.
+El cierre termina exclusivamente su propio SDK, nunca Studio o un propietario.
+
+Pruebas offline: python -I -B control/test_mcp_persistente_offline_R06.py.
+Usan un SDK falso de contrato sin subprocess, socket, Native ni Studio. Sus
+resultados no son la prueba real de las dos lecturas que hará Root.

@@ -1,0 +1,16 @@
+{
+  "logical_call_id": "CALL_3d9537c967a045bcbdf6a38d06cf1968",
+  "rpc_id": 76,
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "48e4a6bc-213e-4df5-b997-f85c221c6dde",
+    "datamodel_type": "Server",
+    "code": "local enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal raw=(function()\nlocal h=game:GetService(\"HttpService\");return h:JSONEncode(require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R06).checkpoint(\"R06_PAIR_R06_MAIN_bb7e2b08e4ab445ca8bd_C28\"))\nend)();assert(type(raw)==\"string\"and #raw>0 and #raw<5000000,\"RAW_BOUND\");assert(not ss:FindFirstChild(\"R06Zstd_EXPORT_f98afce64c154148\"),\"EXISTING_TRANSFER_PRESERVED\");local compressed=enc:CompressBuffer(buffer.fromstring(raw),Enum.CompressionAlgorithm.Zstd,3);assert(buffer.len(compressed)>0 and #raw<=buffer.len(compressed)*1024,\"RATIO_BOUND\");local encoded=buffer.tostring(enc:Base64Encode(compressed));local f=Instance.new(\"Folder\");f.Name=\"R06Zstd_EXPORT_f98afce64c154148\";f:SetAttribute(\"Schema\",\"DEE.R06.ZstdFrozenBytes.R01\");for i=1,#encoded,4664 do local v=Instance.new(\"StringValue\");v.Name=string.format(\"c%04d\",math.floor((i-1)/4664));v.Value=encoded:sub(i,i+4663);v.Parent=f end;f:SetAttribute(\"Complete\",true);f.Parent=ss;return{schema=\"DEE.R06.ZstdFrozenBytes.R01\",folder=f.Name,rawBytes=#raw,rawSha256=hash(raw),compressedBytes=buffer.len(compressed),compressedSha256=hash(buffer.tostring(compressed)),base64Chars=#encoded,chunkCount=math.ceil(#encoded/4664),algorithm=\"Zstd\",level=3}"
+  },
+  "read_only": false,
+  "attempt": 1,
+  "utc": "2026-11-16T01:17:52.508129+00:00",
+  "session_id": "MCP_SESSION_35f86782a0164dbbbec363792b292505",
+  "transport_epoch": 1,
+  "no_automatic_retry": true
+}

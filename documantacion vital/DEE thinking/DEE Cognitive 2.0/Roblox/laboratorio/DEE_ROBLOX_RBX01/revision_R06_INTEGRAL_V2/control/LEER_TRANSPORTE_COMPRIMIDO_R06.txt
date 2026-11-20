@@ -1,0 +1,46 @@
+Transporte R06 posterior al bloque1: persistente y Zstd de bytes congelados
+
+Archivos nuevos; no modifican run_integrated_R06.py que ya estaba en uso.
+run_integrated_R06_R02.py reutiliza su MISMO execute/experimento y cambia sólo
+World por world_comprimido_R06.CompressedWorld. El actor, cuerpo, clocks, lector,
+criterios, IDs materiales y ley ambiental permanecen los de la versión original.
+
+Root comprobó EncodingService y un roundtrip real del paquete congelado:
+277036 bytes compactos, SHA37a35ec7072ca225f402731455cfcc94c612045f32445eae9607eb751e3041f1.
+El fichero original JSON de procedencia mide277074B y tiene otro SHA por su
+serialización. No se confunden ambos hashes. La compresión no cambia el estado.
+
+API del compañero transporte_comprimido_R06.py:
+- compressed_import(session,studio,raw_bytes,transfer_id,salida_nueva): sólo sube
+  bytes privados a un Folder. Host Zstd3→base64; slots<=4664 caracteres. Servidor
+  exige tamaño descomprimido<5.000.000, ratio<=1024, bytes y SHA de ambos niveles.
+  Devuelve metadatos; todavía NO aplica World ni hace una consulta Native.
+- import_apply_code(meta,expected,identity): genera la única llamada posterior a
+  WorldAPI_R06.initialize, sin cambiar esa API. Es una mutación de mundo que Root
+  envía una vez. No la reintenta si falta el recibo.
+- compressed_export(...,raw_source_body,...): comprime una fuente congelada
+  aprobada por Root, crea un nuevo Folder y obtiene el contenido por lecturas.
+  Verifica SHA/tamaño/ventana Zstd y guarda FROZEN_RAW.json literal. La captura
+  World actual se llama sólo tras el cierre del propietario y en BOUNDARY.
+- frozen_hex_folder_source(...) permite leer un antiguo Folder hexadecimal ya
+  completo sin consultar B actual. Se declara como transporte congelado0Native.
+
+El API oficial consultado es EncodingService CompressBuffer/DecompressBuffer,
+Base64Encode/Decode, ComputeStringHash y GetDecompressedBufferSize:
+https://create.roblox.com/docs/reference/engine/classes/EncodingService
+Root ya validó disponibilidad real; la prueba del helper en Studio sigue separada
+de los fixtures host. Ningún helper busca automáticamente otra Studio ni otra API.
+
+Use el Python host que ya tiene zstandard0.24.0:
+D:\Descargas\ANACONDA MINICONDA\python.exe
+No se instaló una dependencia ni un motor nuevo. El cliente MCP es stdlib; sólo
+la transformación local de bytes utiliza ese codec ya existente.
+
+CLI del próximo bloque: mismos parámetros que el runner original, pero archivo
+control/run_integrated_R06_R02.py. Se añade --expected-place si no se usa el nombre
+DEE_RBX01_INTEGRAL_V2_NATIVE.rbxlx. Necesita destino/output NUEVOS y el mismo ledger
+global, sesión/cursor/World de la continuación real. No repetir un bloque admitido.
+La sesión MCP se cierra en finally y nunca cierra Studio ni un propietario Native.
+
+No importa cuántos chunks ahorre: se contabiliza como optimización de transporte,
+no como aceleración del kernel, aprendizaje o un nuevo ensayo cognitivo.

@@ -1,0 +1,32 @@
+{
+  "utc": "2026-11-15T22:36:29.023Z",
+  "Native_experiences_new": 0,
+  "items": [
+    {
+      "file": "PROTOCOLO_INTEGRAL_V2_R01.json",
+      "field": "sensors.extended_fields",
+      "written": "codeBFresh",
+      "actual_ABI": "codeBCurrent",
+      "meaning": "same fixed bit: B present and same A version",
+      "action": "WorldAPI key corrected before Native; Native decoder unchanged"
+    },
+    {
+      "field": "sensors.codec",
+      "written": "min(Aversion,31)",
+      "actual": "real A version must be0..31; no clamping is implemented",
+      "expected_max_new_A_versions": 24
+    },
+    {
+      "file": "build_world_R06.py",
+      "issue": "XML encoding alias utf8 failed offline roundtrip",
+      "correction": "utf-8; no output scene or Native run existed at failure"
+    },
+    {
+      "file": "preparar_descendiente_integral_v2.py",
+      "issue": "agent changed source during running preparation; compiled source provenance is prior version",
+      "compiled_source_preserved": "analisis/preservado/preparar_R01_compilado.py",
+      "compiled_sha256": "121f812984feb44c316ad76cc2b7cf0fc03920be2bc870c37632c7d18ba7ab14",
+      "extra_check": "separate read-only full artifact verifier required"
+    }
+  ]
+}

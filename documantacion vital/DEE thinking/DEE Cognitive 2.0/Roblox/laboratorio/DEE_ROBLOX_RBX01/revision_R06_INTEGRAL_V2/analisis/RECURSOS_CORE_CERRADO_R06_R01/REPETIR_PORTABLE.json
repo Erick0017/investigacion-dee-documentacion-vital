@@ -1,0 +1,31 @@
+{
+  "script": "analisis/RECURSOS_RECALCULO_R06.py",
+  "args": [
+    "--owner-journal",
+    "MAIN={resource_primary_root}/PRIMARIOS/01_owner.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/02_phases.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/03_phases.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/04_phases.jsonl",
+    "--phase-events",
+    "PROGRAMMED={resource_primary_root}/PRIMARIOS/05_phases.jsonl",
+    "--phase-events",
+    "PROGRAMMED={resource_primary_root}/PRIMARIOS/06_phases.jsonl",
+    "--phase-events",
+    "CONVENTIONAL_AI={resource_primary_root}/PRIMARIOS/07_phases.jsonl",
+    "--phase-events",
+    "CONVENTIONAL_AI={resource_primary_root}/PRIMARIOS/08_phases.jsonl",
+    "--import-job",
+    "MAIN={resource_primary_root}/PRIMARIOS/09_import0.json",
+    "--model-log",
+    "AI={resource_primary_root}/PRIMARIOS/10_model_calls.jsonl",
+    "--model-service",
+    "LOCAL_MODEL={resource_primary_root}/PRIMARIOS/11_model_service.jsonl",
+    "--output",
+    "{new_output}"
+  ],
+  "root_placeholder": "resource_primary_root is this delivered result directory, not any original source path",
+  "scope": "Recalculates the selected exact resource events/measurement projections; omitted unrelated science rows are outside this resource calculation."
+}

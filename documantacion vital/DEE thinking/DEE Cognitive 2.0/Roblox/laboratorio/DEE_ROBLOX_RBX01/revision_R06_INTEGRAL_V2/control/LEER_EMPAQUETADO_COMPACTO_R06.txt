@@ -1,0 +1,79 @@
+HERRAMIENTAS PREPARADAS; NINGÚN ZIP CIENTÍFICO FINAL CONSTRUIDO POR ESTE TEXTO
+
+1. Selección explícita y cierre
+Crear control/EXPORT_FINAL_R06.json con schema
+DEE.INTEGRAL.V2.explicit_export_plan.R01, finalized:false, source_roots:[] y
+files:[{source:"ruta relativa a R06",archive:"ruta/interna.ext",role:"..."}].
+La única raíz adicional admitida es ../revision_R05_C02 para primarios históricos
+pequeños. No hay comodines ni inclusión recursiva de estados, SDK o bases.
+
+Incluir el informe final escrito por Root, guía de lectura, continuidad, omisiones,
+protocolos y variantes realmente congeladas, código exacto usado, primarios
+positivos/negativos y controles, los módulos exportados (rbxmx 22.578 bytes),
+las escenas mínimas y pruebas reales, manifiestos de estados grandes, resultados
+recalculados y código de recálculo. Los originales del Manual y motor se protegen
+mediante los once hashes; no se copian al expediente por defecto.
+
+Para la cadena MAIN basta transportar: WORLD inicial DEV4 literal con su hash,
+EVENTS.jsonl y RESULTADO.json completos de cada bloque/cierre y continuación,
+registros de conciliación PREqueue conocidos (incluidos los dos formatos del
+FUNCTION16), primarios function completos y el diario actor cerrado que los
+correlaciona, World(s) de reapertura/finales relevantes y comparación de restore.
+No sumar ventanas superpuestas ni contar Q1/Q2 copiados como ejecuciones nuevas.
+
+Para referencias: sus propios EVENTS/RESULTADO y World final completos, configuración
+pública, código de política/cliente, modelo/cuota/lifecycle resumidos. Nada de
+tokens, configuración privada, bases completas ni pesos. Para carga y conector:
+protocolos/worker/supervisor exactos y cada cierre/progreso realmente ejecutado;
+preparación de código no sustituye una prueba material. Se permiten World completos
+de hasta 2.000.000 bytes por archivo; si crecen más, conservar el original local y
+explicar la selección/derivación sin llamarla World completo.
+Excepción prospectiva: hasta cuatro primarios Native/control decisivos pueden
+llevar role="native_primary" o "native_control_primary" y max_bytes:8000000.
+No se amputan recibos para pasar un límite; esta excepción no permite más de
+15.000.000 bytes en el ZIP ni más de40.000.000 bytes seleccionados sin comprimir.
+
+Definir recalculations:[{id:"integral",script:"analisis/RECALCULO_INTEGRAL_V2_R03.py",
+args:["--dataset","LIVE_NATIVE={root}/evidencia/NATIVE_BLOQUE_01",...,
+"--parent-world","{root}/EVIDENCIA_PADRE/WORLD_DEV4.json",
+"--protocol","{root}/protocolo/PROTOCOLO_INTEGRAL_V2_R01.json",
+"--output","{out}"],timeout_seconds:120,
+expected_outputs:["HECHOS_RECALCULADOS.json","CRITERIOS_E1_E6.json"]}].
+Usar la versión de recálculo final realmente comprobada. Añadir explícitamente
+todos los bloques y primarios que necesita; el QA no descubre fuentes por rutas D:.
+El script R03 acepta --partial-result repetido para los cierres interrumpidos y
+--native-functions/--actor-events para dosis/recibos. Sus números pueden recalcularse
+sin Native ni telemetría SDK profunda; la reproducción Native sigue requiriendo
+los estados completos y el runtime locales fuera del ZIP.
+
+2. Congelar sólo al acabar las fuentes
+python -I -B control/expediente_compacto_R06.py freeze --plan control/EXPORT_FINAL_R06.json --output control/EXPORT_FINAL_R06_CON_HASHES.json
+Revisar el conjunto y fijar finalized:true en la copia congelada. No cambiar una
+fuente después de ese punto: build rehúsa cualquier byte/hash diferente.
+
+3. Crear una sola entrega nueva y comprobar once críticos
+python -I -B control/expediente_compacto_R06.py build --plan control/EXPORT_FINAL_R06_CON_HASHES.json --output entregas/DEE_ROBLOX_INTEGRAL_V2_ANALISIS_FECHA_REAL.zip
+El padre entregas/ debe existir. No se sobrescribe ningún archivo. ZIP Deflate sin
+contraseña, límite estricto 15.000.000 bytes; si excede se preserva como fallido y
+no se anuncia entregable. Los miembros se escriben con sus nombres explícitos,
+incluido CONTROL/MANIFIESTO_SHA256.json (evita confusión control/CONTROL en Windows).
+El manifiesto incluye todos los miembros de contenido y un control generado con
+los once críticos. No incluye un hash de sí mismo ni del ZIP dentro del ZIP.
+
+4. Extracción nueva y recálculo aislado
+python -I -B control/expediente_compacto_R06.py verify --zip entregas/DEE_ROBLOX_INTEGRAL_V2_ANALISIS_FECHA_REAL.zip --extract entregas/EXTRACCION_FINAL_NUEVA
+python -I -B entregas/EXTRACCION_FINAL_NUEVA/control/qa_extraida_R06.py --root entregas/EXTRACCION_FINAL_NUEVA --output entregas/EXTRACCION_FINAL_NUEVA/QA_RECALCULOS_NUEVOS
+Incluir qa_extraida_R06.py y expediente_compacto_R06.py en el plan. Los hijos del
+QA usan Python stdlib, sin importar Native, consultar SQLite, modelo o Studio.
+Su audit hook rehúsa aperturas de originales fuera de la extracción/Python runtime,
+procesos y red. Registra cobertura limitada, no una afirmación de auditoría global.
+No reusa una extracción existente; los outputs derivados van a carpetas nuevas,
+sin modificar ningún primario entregado. El recálculo terminado no es aprobación
+científica ni reproducción con motor.
+
+5. Entrega
+Informar bytes y SHA-256 externos del ZIP, cobertura real, negativos y faltantes,
+ID/N/T finales de candidata y principal protegido separados. El ZIP no es respaldo
+ejecutable, clon completo ni prueba de incorporación al principal. Esquema detallado
+de continuidad y omisiones: ESQUEMA_CONTINUIDAD_Y_OMISIONES_R06.json; sus placeholders
+deben sustituirse con hechos cerrados antes de incluir un documento final.

@@ -1,0 +1,22 @@
+{
+  "script": "analisis/RECURSOS_RECALCULO_R06.py",
+  "args": [
+    "--owner-journal",
+    "MAIN={resource_primary_root}/PRIMARIOS/01_owner.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/02_phases.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/03_phases.jsonl",
+    "--phase-events",
+    "LIVE_NATIVE={resource_primary_root}/PRIMARIOS/04_phases.jsonl",
+    "--import-job",
+    "LOAD3={resource_primary_root}/PRIMARIOS/05_import0.json",
+    "--import-job",
+    "CTRL1={resource_primary_root}/PRIMARIOS/06_import0.json",
+    "--allow-partial",
+    "--output",
+    "{new_output}"
+  ],
+  "root_placeholder": "resource_primary_root is this delivered result directory, not any original source path",
+  "scope": "Recalculates the selected exact resource events/measurement projections; omitted unrelated science rows are outside this resource calculation."
+}

@@ -1,0 +1,249 @@
+{
+  "schema": "CPC5.extension.clean-reproduction-plan.v1",
+  "scope": "Technical deterministic replays and new process continuation. Expected states are opened only by explicit external comparison commands after the relevant trajectories, never by participants.",
+  "checkpoints": [
+    "ampliaciones/01_SEMANTICA_RELACIONAL_Y_DIALOGO/resultados/dialogue_longitudinal/LONGITUDINAL_LOWER/T338.deetsnap",
+    "ampliaciones/01_SEMANTICA_RELACIONAL_Y_DIALOGO/resultados/demo_orden_01/ORDEN_T92.deetsnap"
+  ],
+  "commands": [
+    {
+      "id": "principal_native_replay",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/ejecutar.py",
+        "dialogo",
+        "--config",
+        "{extension}/configuraciones/clean_principal_batch.json",
+        "--salida",
+        "{out}/principal"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "public_longitudinal_demo",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/ejecutar.py",
+        "demostracion",
+        "--eventos",
+        "{extension}/configuraciones/demo_longitudinal.json",
+        "--salida",
+        "{out}/longitudinal"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "public_order_demo",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/ejecutar.py",
+        "demostracion",
+        "--eventos",
+        "{extension}/configuraciones/demo_orden.json",
+        "--salida",
+        "{out}/orden"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "another_process_new_query",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/ejecutar.py",
+        "demostracion",
+        "--eventos",
+        "{extension}/configuraciones/demo_longitudinal_continuacion.json",
+        "--checkpoint",
+        "{out}/longitudinal/LONGITUDINAL_T338.deetsnap",
+        "--salida",
+        "{out}/continuado"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "prior_SEM01_reference",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/references.py",
+        "--case",
+        "SEM01_A_future_UV",
+        "--output",
+        "{out}/referencia"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "selective_causal_contrast",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/src/order_forks.py",
+        "--config",
+        "{extension}/configuraciones/clean_causal.json",
+        "--output",
+        "{out}/causal"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "short_capacity8_replay",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/src/capacity.py",
+        "worker",
+        "--case",
+        "{extension}/configuraciones/clean_capacity8.json",
+        "--out",
+        "{out}/capacidad"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "public_three_actor_network",
+      "argv": [
+        "{python}", "-I", "-B", "-X", "utf8",
+        "{extension}/ejecutar.py", "demostracion",
+        "--eventos", "{extension}/configuraciones/demo_red3.json",
+        "--salida", "{out}/red"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "network_another_process_continuation",
+      "argv": [
+        "{python}", "-I", "-B", "-X", "utf8",
+        "{extension}/ejecutar.py", "demostracion",
+        "--eventos", "{extension}/configuraciones/demo_red3_continuacion.json",
+        "--checkpoint", "{out}/red/RED3_T204.deetsnap",
+        "--salida", "{out}/red_continuado"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "network_posttrajectory_comparisons",
+      "argv": [
+        "{python}", "-I", "-B", "-X", "utf8",
+        "{extension}/src/demo_network_checks.py",
+        "--generated", "{out}", "--output", "{out}/NETWORK_CHECKS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "minimal_application_isolation",
+      "argv": [
+        "{python}", "-I", "-B", "-X", "utf8",
+        "{extension}/src/minimal_app_check.py",
+        "--output", "{out}/aislamiento",
+        "--full-demo", "{out}/longitudinal",
+        "--staging", "{out}/minimal"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "posttrajectory_primary_comparisons",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/src/clean_checks.py",
+        "--generated",
+        "{out}",
+        "--output",
+        "{out}/PRIMARY_COMPARISONS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "posttrajectory_extra_comparisons",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{extension}/src/clean_extra_checks.py",
+        "--generated",
+        "{out}",
+        "--output",
+        "{out}/EXTRA_COMPARISONS.json"
+      ],
+      "timeout_seconds": 300
+    }
+  ],
+  "required_outputs": [
+    "principal/LONGITUDINAL_LOWER/MEASUREMENTS.json",
+    "longitudinal/DEMO_RESULT.json",
+    "orden/DEMO_RESULT.json",
+    "continuado/DEMO_RESULT.json",
+    "continuado/CONTINUADO_T405.deetsnap",
+    "referencia/MEASUREMENTS.json",
+    "causal/NAME_CF_REMOVE/MEASUREMENTS.json",
+    "causal/NAME_CF_SHAM/MEASUREMENTS.json",
+    "capacidad/MEASUREMENTS.json",
+    "red/DEMO_RESULT.json",
+    "red_continuado/DEMO_RESULT.json",
+    "NETWORK_CHECKS.json",
+    "aislamiento/MINIMAL_REPORT.json",
+    "PRIMARY_COMPARISONS.json",
+    "EXTRA_COMPARISONS.json"
+  ],
+  "asserted_json_outputs": [
+    {
+      "path": "NETWORK_CHECKS.json",
+      "field_equals": {
+        "verified": true,
+        "comparisons_after_trajectories_only": true
+      }
+    },
+    {
+      "path": "PRIMARY_COMPARISONS.json",
+      "field_equals": {
+        "verified": true,
+        "comparisons_after_trajectories_only": true
+      }
+    },
+    {
+      "path": "aislamiento/MINIMAL_REPORT.json",
+      "field_equals": {
+        "verified": true,
+        "comparisons_after_trajectories_only": true
+      }
+    },
+    {
+      "path": "EXTRA_COMPARISONS.json",
+      "field_equals": {
+        "verified": true,
+        "comparisons_after_trajectories_only": true
+      }
+    }
+  ]
+}

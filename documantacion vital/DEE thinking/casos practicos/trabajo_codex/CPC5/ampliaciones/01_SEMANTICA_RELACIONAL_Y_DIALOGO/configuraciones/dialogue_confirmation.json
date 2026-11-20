@@ -1,0 +1,21 @@
+{
+  "schema":"CPC5.extension.dialogue.confirmation.v1",
+  "frozen_after_discovery":"DIALOGUE_D01",
+  "frozen_before_execution":true,
+  "reader":"Exact physical fields at fixed targets/time. Bank7/+x is environmental resource alone; combined packet is identified by actual changed direction/load, not mere presence.",
+  "hypotheses":"Paired emitter history is required for the prepared return path. U1 learned context changes which bank uses the same returned message. Removing an already emitted message changes future use while independently learned backups remain accessible. Equal-load direction changes distinguish information from dose.",
+  "cases":[
+    {"id":"DIALOGUE_EMITTER_OPPOSITE","architecture":"A2","emitter_sign":-1,"receiver_sign":-1,"query":13},
+    {"id":"DIALOGUE_RECEIVER_OPPOSITE","architecture":"A2","emitter_sign":1,"receiver_sign":1,"query":13},
+    {"id":"DIALOGUE_EMITTER_NAIVE","architecture":"A2","modes":{"U2.memory":"omitted"},"query":13},
+    {"id":"DIALOGUE_EMITTER_UNPAIRED","architecture":"A2","modes":{"U2.memory":"unpaired"},"query":13},
+    {"id":"DIALOGUE_RECEIVER_NAIVE","architecture":"A2","modes":{"U1.context":"omitted"},"query":13},
+    {"id":"DIALOGUE_RECEIVER_UNPAIRED","architecture":"A2","modes":{"U1.context":"unpaired"},"query":13},
+    {"id":"DIALOGUE_REQUEST_OMITTED","architecture":"A2","omit_request":true,"query":13},
+    {"id":"DIALOGUE_MESSAGE_REMOVE","architecture":"A2","query":13,"intervention":"remove"},
+    {"id":"DIALOGUE_MESSAGE_SHAM","architecture":"A2","query":13,"intervention":"sham"},
+    {"id":"DIALOGUE_EQUAL_LOAD_OTHER_DIRECTION","architecture":"A2","query":13,"intervention":"direction"},
+    {"id":"DIALOGUE_RESERVED_NEW_LOADS_UPPER","architecture":"A2","emitter_sign":1,"receiver_sign":1,"query":17,"late_query":7,"loads":{"U2.memory":[4,10],"U1.context":[7,13]},"translation":[5,-3,7],"reserved":true},
+    {"id":"DIALOGUE_RESERVED_NEW_LOADS_LOWER","architecture":"A2","emitter_sign":1,"receiver_sign":-1,"query":19,"late_query":9,"loads":{"U2.memory":[6,10],"U1.context":[3,11]},"translation":[-7,6,12],"reserved":true}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema":"CPC5.extension.ordered-composition.confirmation.v1",
+  "frozen_after_discovery_before_confirmation":"2026-10-17T21:13:00Z",
+  "discovery_basis":["ORDERED_D01_AB","ORDERED_D02_BA"],
+  "criterion":"Fixed interfaces within each prepared AB/BA apparatus. Evaluate exact vector, charge, native bank contact and retained backup queries. Equal charge alone is not a successful order readout.",
+  "auditor_frozen_predictions_not_consumed_by_world":{
+    "paired_AB":{"second_load":39,"second_direction":[0,1,0],"bank_V_load":46,"bank_D_load":7},
+    "paired_BA":{"second_load":39,"second_direction":[1,1,0],"bank_V_load":7,"bank_D_load":46},
+    "reserved_AB":{"second_load":55,"second_direction":[0,1,0],"bank_V_load":62},
+    "reserved_BA":{"second_load":45,"second_direction":[1,1,0],"bank_D_load":52},
+    "diagnostic":"Remove the already formed first product at12, not an initial cue; compare equal-RAW sham and retained backup/perception/environment capacity."
+  },
+  "cases":[
+    {"id":"ORDERED_C01_AB_OMIT_A","phase":"CONFIRMATION_CONTROL","order":"AB","training_modes":{"A":"omitted"}},
+    {"id":"ORDERED_C02_AB_OMIT_B","phase":"CONFIRMATION_CONTROL","order":"AB","training_modes":{"B":"omitted"}},
+    {"id":"ORDERED_C03_AB_UNPAIRED_A","phase":"CONFIRMATION_CONTROL","order":"AB","training_modes":{"A":"unpaired"}},
+    {"id":"ORDERED_C04_AB_OPPOSITE_A","phase":"CONFIRMATION_CONTROL","order":"AB","directions":{"A":-1,"B":-1}},
+    {"id":"ORDERED_C05_AB_REMOVE_PRODUCT","phase":"DIAGNOSTIC_CONTROL","order":"AB","edit":"remove"},
+    {"id":"ORDERED_C06_AB_SHAM_PRODUCT","phase":"DIAGNOSTIC_CONTROL","order":"AB","edit":"sham"},
+    {"id":"ORDERED_C07_BA_REMOVE_PRODUCT","phase":"DIAGNOSTIC_CONTROL","order":"BA","edit":"remove"},
+    {"id":"ORDERED_C08_BA_SHAM_PRODUCT","phase":"DIAGNOSTIC_CONTROL","order":"BA","edit":"sham"},
+    {"id":"ORDERED_R01_AB_NEW_LOADS_TRANSLATED","phase":"RESERVED","order":"AB","query":17,"loads":{"A":[7,11],"B":[8,12]},"translation":[3,4,9]},
+    {"id":"ORDERED_R02_BA_NEW_LOADS_TRANSLATED","phase":"RESERVED","order":"BA","query":19,"loads":{"A":[2,8],"B":[4,12]},"translation":[6,-3,5]}
+  ]
+}

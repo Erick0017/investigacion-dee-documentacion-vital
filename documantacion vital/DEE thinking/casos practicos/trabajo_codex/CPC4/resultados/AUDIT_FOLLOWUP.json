@@ -1,0 +1,45 @@
+{
+  "status": "RESOLVED_IN_PUBLIC_UI",
+  "verification_type": "READ_ONLY_SOURCE_AND_EXISTING_TEST_EVIDENCE_REVIEW",
+  "audit_initial_preserved": "resultados/AUDIT_SUMMARY_INITIAL.json",
+  "initial_audit_sha256": "cd6efa2d59996ae544224f60e6976bcfcbab412729f40cf7c55e8926410191ea",
+  "existing_technical_test": "resultados/DEMO_PAUSE_AND_OBSERVERS/RESULTS.json",
+  "existing_test_sha256": "83e964fddb7026473ac4e39002c7e650ab59ba023c683a1b608ca0d98f37908a",
+  "checks": {
+    "two_observations_no_native_advance": true,
+    "both_passivity_guards_true": true,
+    "same_current_multiscale_panel": true,
+    "actual_integer_clock_panel": true,
+    "coverage_budget_explicit": true,
+    "four_graph_scales_current": true,
+    "paused_snapshot_rejected_without_replacing_main": true,
+    "paused_query_rejected_before_input_or_nominal_emission": true,
+    "explicit_test_resume_preserves_physical_state": true,
+    "source_unchanged": true
+  },
+  "final_UI_source_sha256": {
+    "src/app_worker.py": "399d3e5f924f7614087a6bb7711988a64fb7fb520d0c28b8144cfcff50932a0a",
+    "demostracion.py": "98014c56638d170f0c30654a85530b72bbb9d91aa7c3b214b8e64452585aa0d1"
+  },
+  "source_guards_reviewed": [
+    {
+      "source": "src/app_worker.py:59",
+      "guard": "Reject paused candidate before replacing MAIN"
+    },
+    {
+      "source": "src/app_worker.py:176",
+      "guard": "Reject paused query before metadata or input submission"
+    },
+    {
+      "source": "src/app_worker.py:189",
+      "guard": "Verify actual input boundary reached before query"
+    },
+    {
+      "source": "src/app_worker.py:195",
+      "guard": "Verify actual emission boundary and physical_output tick before presentation"
+    }
+  ],
+  "scope_remaining": "The frozen phase_language experiment helpers were not changed. Their published continuation domain remains an unpaused Runtime with the fixed declared boundaries. The UI guards do not broaden that helper domain or certify arbitrary paused snapshots as application sessions.",
+  "audit_native_jobs": 0,
+  "no_new_scientific_trajectories": true
+}

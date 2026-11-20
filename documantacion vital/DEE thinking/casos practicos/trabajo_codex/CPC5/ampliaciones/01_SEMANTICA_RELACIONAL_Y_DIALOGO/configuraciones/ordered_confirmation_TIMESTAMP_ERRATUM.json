@@ -1,0 +1,13 @@
+{
+  "schema":"CPC5.extension.metadata-correction.v1",
+  "affected_file":"configuraciones/ordered_confirmation.json",
+  "affected_field":"frozen_after_discovery_before_confirmation",
+  "original_value_preserved":"2026-10-17T21:13:00Z",
+  "correction":"That manually assigned metadata clock is not the actual freeze time. The saved configuration was already read by the confirmation worker whose logs were created at2026-10-17T21:12:35Z. Use the file hash and supervisor job evidence for identity/order, not that metadata clock.",
+  "job_evidence":"jobs/ordered_confirmation/COMMAND.json and stdout/stderr logs",
+  "physical_inputs_changed":false,
+  "reader_changed":false,
+  "predictions_changed":false,
+  "cases_rerun_for_this_correction":0,
+  "reason_for_retaining_original_file":"Preserve the exact configuration bytes consumed by the execution. This erratum corrects a timing label, not a scientific criterion."
+}

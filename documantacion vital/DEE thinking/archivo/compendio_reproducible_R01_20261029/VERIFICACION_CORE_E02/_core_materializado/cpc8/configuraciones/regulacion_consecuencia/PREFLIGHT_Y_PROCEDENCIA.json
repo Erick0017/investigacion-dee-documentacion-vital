@@ -1,0 +1,47 @@
+{
+  "schema": "CPC8R.consequenceMCTS.preflight.v1",
+  "Runtime_created": 0,
+  "N": 67,
+  "fixed_translation": [
+    -25,
+    -25,
+    -20
+  ],
+  "initial_material_count": 59,
+  "MCTS_initial_material": 35,
+  "V2_initial_material_added": 24,
+  "interfaces": 131,
+  "V2_interfaces_added": 0,
+  "material_overlap_count": 0,
+  "source_initial_clocks_directions_payloads_preserved": true,
+  "original_source_sha256": "207340cbf82f1464d328041c840a2a6e2b223751d19cb29c40b41fd56563aad7",
+  "inert_adapter_sha256": "30feadce7c8c9a8bc5d33b65697651d7d5ea12815dc102ac9a5d40035f16bf5c",
+  "exact_normalized_diff": [
+    "--- native_feedback.py",
+    "+++ native_feedback_component.py",
+    "@@ -11,7 +11,7 @@",
+    " ",
+    " def move(q,v,t=1,n=67):return tuple((q[i]+v[i]*t)%n for i in range(3))",
+    " ",
+    "-def prepare(*,medium=1,mode='intact',translation=(0,0,0),n=67,lanes=(-1,1)):",
+    "+def prepare_component(*,medium=1,mode='intact',translation=(0,0,0),n=67,lanes=(-1,1)):",
+    "     if medium not in (-1,1) or mode not in ('intact','omit_actuator','sham_actuator','cut_feedback','cut_negative_return'):",
+    "         raise ValueError('Frozen physical condition outside domain')",
+    "     if n not in (67,131):raise ValueError('Only declared two research geometries')",
+    "@@ -79,7 +79,7 @@",
+    "     org.ports={k:d.Coordinate(*v) for k,v in ports.items()}",
+    "     recipe.organizations=[org]",
+    "     recipe.domain='Finite prepared R14 + native current-contact consequence + regulatory interception; new research apparatus, not a general reinforcement learner.'",
+    "-    world=d.OrganizationalWorld.create(recipe)",
+    "+    world=recipe  # Inert recipe; the caller creates the sole owner Runtime.",
+    "     geometry={'N':n,'revision':revision,'lanes':list(lanes),'ports':{k:list(v) for k,v in ports.items()},'regulators':regulators,'initial_placements':records,",
+    "         'medium':medium,'mode':mode,'translation':list(translation),'ticks':{'world_contact':2,'comparison':5,'policy':9,'action':10,'interception':12,'delivery':15},",
+    "         'resources':{'initial_records':len(placements),'physical_base_buffers':32*n**3},"
+  ],
+  "changes": [
+    "Builder name prepare -> prepare_component",
+    "Return inertrecipe instead of constructing an auxiliaryRuntime",
+    "Explanatory commentheader and trailing blank line only"
+  ],
+  "scope": "Preflight proves initial material compatibility and literal spatialtranslation only, NOT noninterference of later trajectories."
+}

@@ -1,0 +1,1277 @@
+{
+  "edges": [
+    {
+      "claim_id": "CORE01:X01",
+      "family": "CLOCK_PHASE",
+      "scope": "La igualdad ordinaria requiere no cruzar wrap o desenvolver el clock.",
+      "source": "clock",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Cada clock local satisface c_i(t)=c_i(0)+t módulo 2^64; F_DEE es un skew-product con base clock autónoma."
+    },
+    {
+      "claim_id": "CORE01:X02",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "No es simetría del estado completo ni acción global al cruzar uint64.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Sin wrap, el período universal mínimo causalmente activo de la proyección raw es L_raw=304980; 1094573220 también es período, pero no mínimo."
+    },
+    {
+      "claim_id": "CORE01:X03",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "El aparato histórico V7-C operó en un régimen que no excitó el camino overflow de radio 3.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El raw de salida a un tick depende a lo sumo de raws a distancia Chebyshev toroidal 3, la cota es alcanzable y por composición r_infinity(t)<=3t."
+    },
+    {
+      "claim_id": "CORE01:X04",
+      "family": "LEARNING",
+      "scope": "Supone buffers válidos y ejecución dentro del contrato binario.",
+      "source": "training_event",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Las traslaciones toroidales son simetrías exactas; dense y lazy implementan el mismo mapa y el raw/clock no depende de n_hilos positivo."
+    },
+    {
+      "claim_id": "CORE01:X05",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "La constante 966 está compilada, pero no constituye un mecanismo ejecutable en el dominio raw válido.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "La rama de cristalización por gradiente es inalcanzable: grad_mag<=983025 frente al requisito 18996390."
+    },
+    {
+      "claim_id": "CORE01:X06",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "No es una caracterización incondicional de supervivencia/nacimiento final de F_DEE: la etapa DEMUX posterior puede modificar la salida base.",
+      "source": "interaction",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Para cada sitio no observer, E6 caracteriza la salida base de actualizar_voxel antes de aplicar_demux; un delta overflow entrante puede reactivar una base con state=0 o reescribir "
+    },
+    {
+      "claim_id": "CORE01:X07",
+      "family": "CLOCK_PHASE",
+      "scope": "La no-inyectividad global no elimina sectores inyectivos o permutacionales.",
+      "source": "clock",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "F_DEE no es inyectiva: singletons normales sin dirección con state 1 y 2 y clocks iguales tienen la misma imagen."
+    },
+    {
+      "claim_id": "CORE01:X08",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Son invariantes nativos programados; no se identifican automáticamente con carga, masa o energía física.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Todo raw semantic=4 queda fijado, no se crean nuevos semantic=4 y Q_f=sum_i 1[sem_i=4]f(raw_i) es una familia no trivial de invariantes aditivos de rango 0."
+    },
+    {
+      "claim_id": "CORE01:X09",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "Sector exacto restringido; no demuestra que todo objeto, basin o materia DEE sea balístico.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Para N>=5 un singleton normal direccional se traslada exactamente por d cada tick; transporta s_reg y d, y su raw tiene período N."
+    },
+    {
+      "claim_id": "CORE01:X10",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "La separación >=3 excluye vecindad, XNOR y colisión y se conserva por traslación. La reversibilidad/Koopman son sectoriales; F_DEE global sigue no inyectiva.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Para N>=5, singletons normales state=1 con dirección Moore común no nula, cargas arbitrarias y separación Chebyshev toroidal por pares >=3 se trasladan rígidamente; F_raw es una pe"
+    },
+    {
+      "claim_id": "CORE01:X11",
+      "family": "MATTER_INTERACTION",
+      "scope": "Un delta overflow entrante puede aumentar después s_reg. Los 1300 pares aislados T8 satisfacen el dominio: XNOR falso y sin overflow entrante.",
+      "source": "persistent_organization",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "Para un blanco raw exactamente cero con XNOR falso y k>1 entradas Moore, el reducer produce antes de aplicar_demux state=1, semantic=1, s_reg=min(sum s_j,19664) y d_out=sign(sum d_"
+    },
+    {
+      "claim_id": "CORE01:X12",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "El dominio exige d en {-1,0,1}^3\\{0} y 1<=t<N, antes del cierre toroidal. Dirección cero y direcciones codificables fuera de Moore no emiten en el aparato aislado.",
+      "source": "interaction",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Para N>=5, un único semantic=4 con dirección Moore no nula permanece fijo y, incluso con state=0, emite para 1<=t<N el tren balístico de paridad alternante descrito en E12."
+    },
+    {
+      "claim_id": "CORE01:X13",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No se ha probado estabilidad frente a huecos o perturbaciones.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El toro totalmente ocupado con state=3, dirección cero, semantic preservable y s_reg arbitrario es raw-fijo."
+    },
+    {
+      "claim_id": "CORE01:X15",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "Es suficiencia de un tick para el kernel, no minimalidad ontológica ni observabilidad física.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Para predecir (raw'_y,clock'_y) basta raw en B3(y) y clocks en B1(y); occupancy no es causalmente suficiente."
+    },
+    {
+      "claim_id": "CORE01:C02",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Confirma el panel congelado; la universalidad procede además de las pruebas estáticas X09-X11.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "T8 ejecutó 1872 trayectorias, 50544 ticks primarios, 2704 cocientes Fourier, 624 variantes de motor, 12 casos de dos cuerpos y 1300 colisiones con cero mismatches."
+    },
+    {
+      "claim_id": "CORE01:C03",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Confirma el aparato aislado congelado; no atribuye capacidad de medición al semantic observer.",
+      "source": "native_state",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "T9 ejecutó 936 casos factoriales, 208 comparaciones de motor, 18 controles de dirección cero y 12782 ticks con cero mismatches."
+    },
+    {
+      "claim_id": "CORE01:L05",
+      "family": "LEARNING",
+      "scope": "Antecedente sectorial en una familia preparada: no es ley universal de F_DEE, teoría física externa ni sustituto del teorema v27 T8.",
+      "source": "training_event",
+      "source_core": 1,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "v25.5-C/F-189 registró 60/60 preparaciones direccionales y 2226 pasos con shift_hamming=0 y translation_exact_fraction=1; P=L_sym para packed/state/direction/semantic y s_reg tuvo "
+    },
+    {
+      "claim_id": "HISTORY:DOCUMENTARY:T2",
+      "family": "CLOCK_PHASE",
+      "scope": "NOT_RECORDED",
+      "source": "clock",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Every local clock advances by one at every tick"
+    },
+    {
+      "claim_id": "HISTORY:DOCUMENTARY:CONST-P",
+      "family": "KERNEL_IDENTITY",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "P_KERNEL and UMBRAL_FUSION equal 19665 and cap equals 19664"
+    },
+    {
+      "claim_id": "CORE02:R001",
+      "family": "CLOCK_PHASE",
+      "scope": "No implica reversibilidad ni fisica externa.",
+      "source": "clock",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Para N>=3, el estado completo X=(raw,clock) define un mapa determinista sincrono, many-to-one y traslacionalmente equivariante sobre el toro."
+    },
+    {
+      "claim_id": "CORE02:R002",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No existe un minimo independiente de observable, horizonte y dominio.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Para O,H fijados, X/ker(W_H^+) es el cociente predictivo exacto mas grueso."
+    },
+    {
+      "claim_id": "CORE02:R004",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "D_* admite orphan activo sparse; para la extension densa se requiere marca orphan-activa o semantic completo.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El cociente de cinco campos no es global: semantic=5 activo separa fibras con igual (q,d,s,a,p) cuando se activa la rama XNOR densa."
+    },
+    {
+      "claim_id": "CORE02:R005",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No dice que el target alcance la rama de routing.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Una propuesta existe exactamente por la congruencia modular fuente+d=target; en D_* equivale a d Moore no nula."
+    },
+    {
+      "claim_id": "CORE02:R006",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "No es occupancy viva ni fuente persistente.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Un raw normal state=0 con direccion Moore no nula es una fuente causal efimera."
+    },
+    {
+      "claim_id": "CORE02:R007",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Descarta occupancy, no toda representacion coarse-grained.",
+      "source": "interaction",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Occupancy no es estado causal suficiente: vacio, router latente y observer state-zero pueden compartir occupancy cero y divergir."
+    },
+    {
+      "claim_id": "CORE02:R008",
+      "family": "CLOCK_PHASE",
+      "scope": "Clock completo no tiene periodo N; no identifica particula fisica.",
+      "source": "clock",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Un singleton normal se traslada q(t)=q0+t d, conserva d,s y tiene periodo raw N."
+    },
+    {
+      "claim_id": "CORE02:R009",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Modo colectivo sectorial, no onda fisica universal.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "K_free es una permutacion, compone como semigrupo y posee modos Fourier de adveccion por capa d."
+    },
+    {
+      "claim_id": "CORE02:R010",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Observer es frontera/fuente, no aparato de medicion.",
+      "source": "interaction",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Semantic observer fija su raw y con d no nula actua como fuente persistente de un tren alternante pre-wrap."
+    },
+    {
+      "claim_id": "CORE02:R011",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Prediccion inversa condicional a la clase de historias probada.",
+      "source": "interaction",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Una oclusion inicial de la boca del observer causa retraso unitario coherente, paridad opuesta y crecimiento Hamming lineal."
+    },
+    {
+      "claim_id": "CORE02:R012",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "s no pondera direccion; no es momentum fisico.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El reducer simultaneo usa u=sign(sum d_j), S=min(sum s_j,19664); es conmutativo, no lineal y many-to-one."
+    },
+    {
+      "claim_id": "CORE02:R013",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "F completo si compone; falla el monoide atemporal reducido.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "La composicion binaria de direcciones ya comprimidas por sign no es asociativa."
+    },
+    {
+      "claim_id": "CORE02:R014",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Inversion correcta es conjuntista.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "En colision binaria, cada salida no nula tiene 12 pares-preimagen y la salida cero 13."
+    },
+    {
+      "claim_id": "CORE02:R017",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Minimalidad conjunta/sectorial, no global.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "H10.2 paso: q,d,s,a,p tienen testigos requeridos y los nuisances congelados colapsan en el panel."
+    },
+    {
+      "claim_id": "CORE02:R018",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No implica superposicion en colisiones guardadas.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "H10.3 paso 1872/1872 checks de composicion K_free."
+    },
+    {
+      "claim_id": "CORE02:R019",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Aridad impar evita d_out=0; caveat de secuencias de perfiles documentado.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "T11 confirmo mayoria coordenada de cinco fuentes y ocho fibras inversas de siete subconjuntos."
+    },
+    {
+      "claim_id": "CORE02:R020",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No repara retrospectivamente T10 ni demuestra cierre global.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "T12 probo prospectivamente la reparacion estado-evento G_dagger/J_dagger en aridades nuevas."
+    },
+    {
+      "claim_id": "CORE02:R021",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No hay identidad fisica asignada al evento.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Separar estado predictivo canonico y evento transitorio preserva S en J_dagger aunque d_out=0 y cierra el futuro en D_*."
+    },
+    {
+      "claim_id": "CORE02:R022",
+      "family": "CLOCK_PHASE",
+      "scope": "La igualdad entera ordinaria requiere no-wrap.",
+      "source": "clock",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "clock_i(t)=clock_i(0)+t mod 2^64 y sus diferencias son invariantes modulares."
+    },
+    {
+      "claim_id": "CORE02:R023",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "No es periodo del full-state ni tiempo SI.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El periodo causal raw minimo comun sin wrap es 304980, no 1094573220."
+    },
+    {
+      "claim_id": "CORE02:R024",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "En toros pequenos satura el diametro; no es automaticamente cono de luz fisico.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "La dependencia raw satisface r_Cheb(t)<=min(3t,diam_infty(T_N)); la velocidad 3 por tick es aguda cuando el diametro toroidal permite distancia 3."
+    },
+    {
+      "claim_id": "CORE02:R025",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No todo raw aislado colapsa.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "F_DEE no es inyectiva para N>=3."
+    },
+    {
+      "claim_id": "CORE02:R026",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "No implica energia global.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Raws semantic=4 son fijos punto a punto y generan una familia de invariantes aditivos de rango cero."
+    },
+    {
+      "claim_id": "CORE02:R028",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Teorema estatico condicionado al embedding; no es ley de F_DEE ni cubre geometria emergente.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Todo embedding lineal euclideo directo de D26 tiene ratio de velocidades al menos sqrt(3)."
+    },
+    {
+      "claim_id": "CORE02:R040",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Implementacion no demuestra naturalidad externa.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "19665/19664,782,966 y 194422 descienden de una misma cadena constitutiva y no son predicciones independientes."
+    },
+    {
+      "claim_id": "CORE02:R041",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Prueba codigo muerto, no relacion con alpha.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "El threshold 966 tiene sensibilidad runtime cero en v27 porque el cociente maximo alcanzable es 49."
+    },
+    {
+      "claim_id": "CORE02:R045",
+      "family": "MULTISCALE_HIERARCHY",
+      "scope": "Esa identidad no puede deducirse interrogando solo F_DEE.",
+      "source": "native_state",
+      "source_core": 2,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Bajo H_DEE falta un mapa independiente de preparacion/medicion y una geometria/escala coarse-grained que haga predicciones cruzadas nuevas."
+    },
+    {
+      "claim_id": "CORE03:MSC-C001",
+      "family": "CLOCK_PHASE",
+      "scope": "Imports sealed v27 result; no claim that raw is physically observable.",
+      "source": "clock",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Q0=(raw,clock) is the exact microscopic Markov state."
+    },
+    {
+      "claim_id": "CORE03:MSC-C002",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "T10 original formulation remains FAIL; no extension beyond D_*.",
+      "source": "native_state",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Q1=(Z,G_dagger,J_dagger) closes only in certified sparse D_* and separates predictive state from instantaneous event."
+    },
+    {
+      "claim_id": "CORE03:MSC-C003",
+      "family": "CLOCK_PHASE",
+      "scope": "Finite apparatus result; does not identify the minimal descriptor.",
+      "source": "clock",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Same raw+clock inventory with different spatial organization changes response in the V7-C apparatus."
+    },
+    {
+      "claim_id": "CORE03:MSC-C005",
+      "family": "MULTISCALE_HIERARCHY",
+      "scope": "Predictive and compressed within the frozen domain; not a global causal closure or physical identification.",
+      "source": "native_state",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "A compact Q2 predictive level exists for the frozen MSH02 natural-preparation/raw/horizon domain."
+    },
+    {
+      "claim_id": "CORE03:MSC-C014",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Binary endpoint changed after opening; MSH02 later tested a separately frozen asymmetric endpoint.",
+      "source": "native_state",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "q_N separates dense versus all non-dense outcomes in MSH01."
+    },
+    {
+      "claim_id": "CORE03:MSC-C019",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Exact for tested bit fields and contexts; not a theorem for arbitrary raw configurations or physical preparability.",
+      "source": "native_state",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "After deleting state at t=N while retaining the routing complement, the t=N+1 positive mask equals the exact union of encoded routing destinations in all eight MSD06 contexts."
+    },
+    {
+      "claim_id": "CORE03:MSC-C022",
+      "family": "MATTER_INTERACTION",
+      "scope": "Phase-dependent finite-panel model; individual R fields were not all separately ablated; P is not identified with matter and R is not identified with momentum.",
+      "source": "persistent_organization",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "The current parsimonious tested Q2 candidate is phase-dependent positive support P plus routing complement R plus destination geometry and collision multiplicity; its minimality is"
+    },
+    {
+      "claim_id": "CORE03:MSC-C024",
+      "family": "CLOCK_PHASE",
+      "scope": "Raw finite horizons and declared natural family only; q_N remains an order parameter, not sole carrier, matter or energy.",
+      "source": "clock",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "The unchanged integer q_N rule predicts dense raw-fixation by4N versus sparse minimal exact raw period N by16N on the declared unopened natural preparations, including a separate p"
+    },
+    {
+      "claim_id": "CORE03:MSC-C025",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Prospective row-level subset inside the same frozen preparation family; not an asymptotic or universal result.",
+      "source": "native_state",
+      "source_core": 3,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "The prospectively defined no-crossing-by-N cohort preserves the frozen q_N prediction before macroscopic dense crossing."
+    },
+    {
+      "claim_id": "CORE04:C04-I001",
+      "family": "CLOCK_PHASE",
+      "scope": "NOT_RECORDED",
+      "source": "clock",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Q0=(raw,clock) is the exact Markov state of F_DEE v27."
+    },
+    {
+      "claim_id": "CORE04:C04-I003",
+      "family": "CLOCK_PHASE",
+      "scope": "NOT_RECORDED",
+      "source": "clock",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "The frozen MSH02 q_N rule predicts dense raw fixation by 4N versus sparse minimal raw period N by 16N in 60/60 declared worlds, including 22/22 pre-crossing rows."
+    },
+    {
+      "claim_id": "CORE04:C04-E001",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "NOT_RECORDED",
+      "source": "interaction",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "For every non-observer target with state=0 that has at least one Moore-neighbor directional record pointing exactly to it, F_DEE makes the target positive at the next tick; earlier"
+    },
+    {
+      "claim_id": "CORE04:C04-H003",
+      "family": "MATTER_INTERACTION",
+      "scope": "NOT_RECORDED",
+      "source": "persistent_organization",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "The temporal coarse-grained interface bar_kappa=mean_{floor(N/4)..floor(N/2)} B6/P predicts the eventual dense basin and adds information beyond same-window support and arm identit"
+    },
+    {
+      "claim_id": "CORE04:C04-E002",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "NOT_RECORDED",
+      "source": "interaction",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "When no s_reg overflow deposit occurs, the exact next positive-support mask is the disjoint priority union of local survivors S, crystallization births C, XNOR births X, and routed"
+    },
+    {
+      "claim_id": "CORE04:C04-H006",
+      "family": "MULTISCALE_HIERARCHY",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "The confirmed Q2 gate selects a scale-coarse N/8 flow in z=(q,kappa/6): sparse worlds are approximately identity, while dense worlds follow a frozen triangular polynomial with six "
+    },
+    {
+      "claim_id": "CORE04:C04-E003",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "In the zero-overflow sector the support count has the exact reproduction balance q_(t+1)=q_t A_t with A_t=(S+R+C+X)/P, equivalently Delta q=(R+C+X-D)/N^3 and D=P-S."
+    },
+    {
+      "claim_id": "CORE04:C04-E004",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Whenever P remains positive, DEE support reproduction factors compose exactly across temporal scale: A_t^(h)=P(t+h)/P(t)=product from j=0 to h-1 of A_(t+j), and Gamma_t^(h)=log A_t"
+    },
+    {
+      "claim_id": "CORE04:C04-H008",
+      "family": "MULTISCALE_HIERARCHY",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "The sign of Gamma=log[P(N/2)/P(N/4)] predicts the 6N dense basin across untouched nested and compact preparation families."
+    },
+    {
+      "claim_id": "CORE04:C04-H009",
+      "family": "MATTER_INTERACTION",
+      "scope": "NOT_RECORDED",
+      "source": "persistent_organization",
+      "source_core": 4,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "The active-interface conjunction bar_kappa<=5.60 and mean(routed_positive/P)>=0.50 predicts the 6N dense basin across untouched nested and compact preparation families."
+    },
+    {
+      "claim_id": "CORE05:INH_Q0_MARKOV",
+      "family": "CLOCK_PHASE",
+      "scope": "This does not make every decoded raw field a physical observable.",
+      "source": "clock",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "X=(raw,clock) is the complete microscopic Markov state."
+    },
+    {
+      "claim_id": "CORE05:INH_COLLISION_REDUCER",
+      "family": "MATTER_INTERACTION",
+      "scope": "Guards, semantic sources and occupied targets add branches outside this formula.",
+      "source": "persistent_organization",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "For a blank isolated destination fiber, d_out=sign(sum_j d_j) componentwise and s_out=min(sum_j s_j,19664)."
+    },
+    {
+      "claim_id": "CORE05:NRH03_DESTINATION_FIBER_CLOSURE",
+      "family": "GENERAL_DYNAMICS",
+      "scope": "Not a clock predictor, multi-step global closure or replacement for Q0.",
+      "source": "native_state",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Z[y]=(incoming multiplicity, integer direction-vector sum, s_reg sum) is sufficient to reconstruct the complete next raw array in the frozen latent-router, semantic1, state0, blank"
+    },
+    {
+      "claim_id": "CORE05:NRH01_INTERNAL_OBSERVER",
+      "family": "LEARNING",
+      "scope": "Consumptive detector; neither consciousness nor quantum measurement nor nondemolition readout.",
+      "source": "training_event",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "A routed probe plus downstream output port operationally detects coincidence with a target process and decodes eight transverse direction classes."
+    },
+    {
+      "claim_id": "CORE05:NRH02_RECURSIVE_OBSERVER",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Finite composability, not an infinite hierarchy or spontaneous scale law.",
+      "source": "interaction",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "The response of one detector can become the measured process of the next detector under the same frozen reducer."
+    },
+    {
+      "claim_id": "CORE05:NRH05_DELAY_MEASUREMENT_SCALE",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Kernel update index, not calibrated physical time.",
+      "source": "interaction",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "A detector bank defines an internal ordinal measurement m_B(A) that maps relative arrival offset to the unique collision channel."
+    },
+    {
+      "claim_id": "CORE05:NRH04_DISTRIBUTED_PHASE_MEMORY",
+      "family": "MATTER_INTERACTION",
+      "scope": "No adaptive repair, learning, homeostasis or biological identity.",
+      "source": "persistent_organization",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "A one-tick local mouth obstruction can disappear while leaving a distributed phase change whose hub record equals a persistent-source ablation over the certified horizon."
+    },
+    {
+      "claim_id": "CORE05:NRH06_TOROIDAL_PHASE_PARITY",
+      "family": "MATTER_INTERACTION",
+      "scope": "The even timing follows the return path and phase; indefinite odd-N persistence is not claimed.",
+      "source": "persistent_organization",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "For the frozen toroidal source-hub family, even N predicts first departure from ablation-equivalence at N+L, while odd N preserves equivalence through 3N+L."
+    },
+    {
+      "claim_id": "CORE05:NRD03_SREG_BALANCE",
+      "family": "MATTER_INTERACTION",
+      "scope": "Global worlds include sources, guards and branches that create or remove s_reg; this is not physical energy conservation.",
+      "source": "persistent_organization",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "Below saturation, s_reg is additive across an isolated blank destination fiber; at the cap, the exact fiber loss is sum_j s_j-19664."
+    },
+    {
+      "claim_id": "CORE05:NRD03_COLLISION_INFORMATION_LOSS",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "Logical coarse irreversibility, not thermodynamic entropy production.",
+      "source": "interaction",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "The binary direction-pair collision map is many-to-one and loses 3.5896 bits of input identity under the stated uniform unordered-pair census."
+    },
+    {
+      "claim_id": "CORE05:RSH01_PROCESS_ROSETTA",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "No physical-unit calibration, biological distribution, external subject or novel external prediction.",
+      "source": "interaction",
+      "source_core": 5,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "The same low-complexity map sends two routed streams, path-delay differences, destination-fiber coincidence and output channel to an ideal delay-line/coincidence place-code process"
+    },
+    {
+      "claim_id": "CORE06:INH_Q0",
+      "family": "CLOCK_PHASE",
+      "scope": "NOT_RECORDED",
+      "source": "clock",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "phase/history",
+      "text": "Q0=(raw,clock) is the complete microscopic Markov state."
+    },
+    {
+      "claim_id": "CORE06:INH_Q2",
+      "family": "MULTISCALE_HIERARCHY",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Basin organization is prospectively predictable in the certified multiscale preparations."
+    },
+    {
+      "claim_id": "CORE06:INH_Q3",
+      "family": "MATTER_INTERACTION",
+      "scope": "NOT_RECORDED",
+      "source": "persistent_organization",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "Productive histories and active interfaces define a bounded predictive class, not a global autonomous state."
+    },
+    {
+      "claim_id": "CORE06:INH_RELATIONAL_ARCHITECTURE",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "NOT_RECORDED",
+      "source": "interaction",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Proposal graphs, destination fibers, guards, phase/history, observers and measurements jointly explain multiple CORE05 phenomena."
+    },
+    {
+      "claim_id": "CORE06:C06_ASSOCIATIVE_LEARNING",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "An ordinary paired cue+teacher collision writes a routed memory lineage that persistently and context-specifically changes a later cue response; the result generalized prospectivel"
+    },
+    {
+      "claim_id": "CORE06:C06_CLASS_GENERALIZATION_REVERSAL",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "The collision-written memory acts as a frozen reducer operator on direction classes absent from training and can be replaced or reacquired through ordinary reset and paired experie"
+    },
+    {
+      "claim_id": "CORE06:C06_NATIVE_TRANSLATION_ARITHMETIC",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "With the pre-frozen code x->B-x, label y->y, query n->n and readout s_reg-B, ordinary examples write delta=y-x and the learner applies n->n+delta to unseen values; SUCCESSOR is the"
+    },
+    {
+      "claim_id": "CORE06:C06_COMPOSITIONAL_TRANSLATION_LEARNING",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Two independently learned translation memories compose sequentially as n->n+d1+d2 in either tested causal order in the nonsaturating domain."
+    },
+    {
+      "claim_id": "CORE06:C06_INTERNAL_KINEMATICS",
+      "family": "OBSERVER_MEASUREMENT",
+      "scope": "NOT_RECORDED",
+      "source": "interaction",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "A DEE graph ruler/carrier clock measures speed one for free carriers; a semantic-4 source clock has period two; moving consumptive observers measure ||u-w||_infinity and therefore "
+    },
+    {
+      "claim_id": "CORE06:C06_DEE_MATTER_OPERATIONAL_MECHANICS",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Operational DEE organizations exhibit sector-specific persistence, directed transport, capped nonlinear composition, coarse consumptive detection and stable-interface occlusion; no"
+    },
+    {
+      "claim_id": "CORE06:C06_FREE_CARRIER_IDENTITY_QUOTIENT",
+      "family": "PROPAGATION_CAUSALITY",
+      "scope": "NOT_RECORDED",
+      "source": "native_state",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "For free normal carriers, operational transported identity is the moving support plus (direction,s_reg,semantic); arbitrary tested initial state is normalized to state=1 at the fir"
+    },
+    {
+      "claim_id": "CORE06:C06_DISSIPATIVE_ENSEMBLE_RELAXATION",
+      "family": "THERMODYNAMICS_RESOURCE",
+      "scope": "NOT_RECORDED",
+      "source": "resource_state",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "future_capacity",
+      "text": "Matched mixed-direction normal-carrier ensembles exhibit monotone support and total-s_reg loss, finite-horizon relaxation to constant coarse windows and stronger contraction at hig"
+    },
+    {
+      "claim_id": "CORE06:C06_UNIFIED_NATIVE_MECHANISM",
+      "family": "LEARNING",
+      "scope": "NOT_RECORDED",
+      "source": "training_event",
+      "source_core": 6,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Destination fibers, the local reducer and transported history jointly explain associative memory, learned translation/composition, material collision, consumptive observation, Bell"
+    },
+    {
+      "claim_id": "CORE07:C7_FUNCTIONAL_LEARNING_TRANSFER",
+      "family": "LEARNING_TRANSFER_MATTER",
+      "scope": "continuous causal carrier transfer; not instantaneous transfer, material teleportation or external physical identity",
+      "source": "training_event",
+      "source_core": 7,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "A collision-written learned integer-translation response repertoire can be continuously transferred through a zero-load relay and recovered at a remote receiver on unseen queries."
+    },
+    {
+      "claim_id": "CORE07:C7_DESTINATION_FIBER_CAPACITY",
+      "family": "LEARNING_RESOURCE_THERMODYNAMICS",
+      "scope": "K=40 is a lower bound, not maximum; source/preoccupied/special-semantic branches outside theorem",
+      "source": "training_event",
+      "source_core": 7,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Collision-separated destination fibers preserve independent learned translation repertoires, while shared-fiber memories reduce to one summed carrier and lose separate identity under the fixed decoder."
+    },
+    {
+      "claim_id": "CORE07:C7_REPROGRAMMABLE_FUNCTIONAL_MATTER",
+      "family": "MATTER_LEARNING_REPAIR",
+      "scope": "lineage/functional quotient only; monotonic additive reprogramming; not autonomous adaptation, strict microidentity or physical matter",
+      "source": "training_event",
+      "source_core": 7,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "A learned normal-carrier lineage can be monotonically reprogrammed by an ordinary positive-load interaction and retain its updated response repertoire after redirection; state and clock are nuisance in this apparatus."
+    },
+    {
+      "claim_id": "CORE07:C7_ONE_PASS_INTERNAL_FEEDBACK",
+      "family": "OBSERVER_PROCESSING_RESOURCE",
+      "scope": "preconfigured one-pass circuit, not agency or homeostasis; semantic-source regeneration outside claim",
+      "source": "interaction",
+      "source_core": 7,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "A preconfigured DEE apparatus can route sensing through learned memory and action interactions back to the sensing location without Python decisions, but source-free reducer accounting makes it one-pass rather than reusable."
+    },
+    {
+      "claim_id": "CORE07:EXTRA02_CAUSAL_MULTICLASS",
+      "family": "LEARNING_COMPUTATION",
+      "scope": "explicit categorical histogram/reducer; 81.11% trails kNN 86.67% and logistic 83.06%; engineering result, not H_DEE evidence",
+      "source": "training_event",
+      "source_core": 7,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "A label-blind 64-bit encoder plus DEE teacher-port destination-fiber memory causally generalizes to unseen ten-class digits under 10/64 zero-pixel damage."
+    },
+    {
+      "claim_id": "CORE08:C8_CRYSTALLIZATION_UNREACHABLE",
+      "family": "KERNEL_THEORY",
+      "scope": "implementation-specific; future kernel change can invalidate",
+      "source": "native_state",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "The crystallization vacuum branch is unreachable under the v27 s_reg cap"
+    },
+    {
+      "claim_id": "CORE08:C8_GUARDED_DESTINATION_OBSERVER",
+      "family": "OBSERVER",
+      "scope": "minimal only within the declared aggregate coordinate-deletion family and one-destination task; not a global quotient of F_DEE",
+      "source": "interaction",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "detector_record",
+      "text": "Z_update exactly predicts guarded void-destination raw"
+    },
+    {
+      "claim_id": "CORE08:C8_REPEATED_SCAFFOLD_REGENERATION",
+      "family": "REPAIR_AUTONOMY",
+      "scope": "R2,R5-fixed,R6 and R7 only for this immutable XNOR scaffold; not learned repair, general morphogenesis, biological homeostasis or resource conservation",
+      "source": "native_state",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Persistent cubic scaffold regenerates exact center across repeated damage"
+    },
+    {
+      "claim_id": "CORE08:C8_TRAINED_REDUNDANCY_RECOVERY",
+      "family": "REPAIR_LEARNING",
+      "scope": "R5 functional learned-memory recovery by finite pre-trained redundancy; explicitly not R6 damage detection, R7 repeated learned-memory regeneration, or reconstruction from the damaged carrier",
+      "source": "training_event",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Finite trained redundancy recovers learned response on unseen queries"
+    },
+    {
+      "claim_id": "CORE08:C8_BOUNDARY_FINITE_LAW",
+      "family": "DIMENSIONALITY",
+      "scope": "restricted area-indexed ballistic family only; the time-bearing code is Theta(N^2 log N), not a demonstrated O(N^2)-bit code for arbitrary volumetric state",
+      "source": "native_state",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Boundary place-delay code closes collision-free area-indexed ray family"
+    },
+    {
+      "claim_id": "CORE08:C8_TRAINED_REDUNDANCY_RECOVERY_H06",
+      "family": "REPAIR_LEARNING",
+      "scope": "R5 by finite independently trained redundancy; not R6 learned damage detection or R7 learned-memory regeneration",
+      "source": "training_event",
+      "source_core": 8,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "learned_state",
+      "text": "Finite trained redundancy recovers learned response on explicitly disjoint queries"
+    },
+    {
+      "claim_id": "C9H02_ADAPTIVE_POLICY_A6",
+      "family": "adaptive",
+      "scope": "frozen archived apparatus",
+      "source": "native_state",
+      "source_core": 9,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "C9H02 ADAPTIVE POLICY A6"
+    },
+    {
+      "claim_id": "C10H01_BIDIRECTIONAL_CAUSAL_POLICY_EXCHANGE",
+      "family": "bidirectional",
+      "scope": "frozen archived apparatus",
+      "source": "native_state",
+      "source_core": 10,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "C10H01 BIDIRECTIONAL CAUSAL POLICY EXCHANGE"
+    },
+    {
+      "claim_id": "C10H02_LEARNED_POLICY_FUNCTIONAL_REINSTANTIATION",
+      "family": "learned",
+      "scope": "frozen archived apparatus",
+      "source": "native_state",
+      "source_core": 10,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "C10H02 LEARNED POLICY FUNCTIONAL REINSTANTIATION"
+    },
+    {
+      "claim_id": "C10H03_JOINT_INTERFACE_HOMEOSTASIS",
+      "family": "joint",
+      "scope": "frozen archived apparatus",
+      "source": "native_state",
+      "source_core": 10,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "C10H03 JOINT INTERFACE HOMEOSTASIS"
+    },
+    {
+      "claim_id": "C10H05_FUNCTIONAL_OBSERVER_AND_INTERIOR_BOUNDARY_COUNTEREXAMPLE",
+      "family": "functional",
+      "scope": "frozen archived apparatus",
+      "source": "native_state",
+      "source_core": 10,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "C10H05 FUNCTIONAL OBSERVER AND INTERIOR BOUNDARY COUNTEREXAMPLE"
+    },
+    {
+      "claim_id": "C12C01",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 12,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "A source-supported semantic-4 process emits a non-dispersive period-two train whose detector phase is arrival parity; a t0 mouth obstruction shifts that parity by one tick while an off-path sham does not."
+    },
+    {
+      "claim_id": "C12C02",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 12,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "For equal convergent period-two paths, relative phase changes the detector record: coherent arrivals reduce to s_reg=a+b; the one-tick-shifted B lineage is excluded by prior target occupancy, leaving A-only records. This is phase-sensitive but not a spatial interference-fringe law."
+    },
+    {
+      "claim_id": "C12C03",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 12,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "With zero-direction semantic-4 records at the eight corners, a present center is retained iff k>=6, while an absent center is created iff k=8, in the tested local sector."
+    },
+    {
+      "claim_id": "C12C04",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 12,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "The k>=6 semantic-4 guard produces an organization-specific sustained capture interface for a period-two train; k=5, semantic-1 equal inventory, and spatially shuffled semantic-4 controls transmit."
+    },
+    {
+      "claim_id": "C12C05",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 12,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "No Theta_DEE candidate or zeroth-law screen was earned within three causally distinct ensemble classes."
+    },
+    {
+      "claim_id": "C13C01",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 13,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "M_EVENT_CAUSAL is the smallest tested observer with greatest cross-core convergence"
+    },
+    {
+      "claim_id": "C13C02",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 13,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "frozen shared observer predicts route/phase/interface holdout"
+    },
+    {
+      "claim_id": "C13C03",
+      "family": "unclassified",
+      "scope": "bounded to archived claim",
+      "source": "native_state",
+      "source_core": 13,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "same observer predicts singleton resolving relation"
+    },
+    {
+      "claim_id": "C14R01",
+      "family": "structured_memory/capture",
+      "scope": "associative lineage apparatus; fresh N41-57/frames/delays",
+      "source": "memory",
+      "source_core": 14,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "response",
+      "text": "Paired collision writes a history-bearing routed lineage that causally changes a later fresh query; history shuffle, reset and mediator ablation abolish the response."
+    },
+    {
+      "claim_id": "C14R02",
+      "family": "matter_loading",
+      "scope": "semantic4 scaffold; single-site deletion; four fresh worlds",
+      "source": "persistent_organization",
+      "source_core": 14,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "matter_response",
+      "text": "A fixed eight-corner scaffold restores repeated center deletion in one tick; missing-corner controls fail."
+    },
+    {
+      "claim_id": "C14R03",
+      "family": "relaxation",
+      "scope": "semantic1 normal ensemble N20/23/26 and tested fills/horizon",
+      "source": "native_state",
+      "source_core": 14,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "Mixed sparse ensembles contract monotonically to a finite plateau while aligned controls translate exactly."
+    },
+    {
+      "claim_id": "C14R04",
+      "family": "coupling/conversion",
+      "scope": "compatible lanes/receivers/scaffolds, fresh N33-39",
+      "source": "system_A",
+      "source_core": 14,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "system_B",
+      "text": "Bidirectional exchange, corridor-mediated destructive functional reinstantiation and shared-interface joint recovery form three connected controlled arrows."
+    },
+    {
+      "claim_id": "C14R05",
+      "family": "environment",
+      "scope": "matched-age EMPTY/GUARD, fresh N47/49/55, removal/wait protocol",
+      "source": "native_state",
+      "source_core": 14,
+      "status": "HOLDOUT_CONFIRMED",
+      "target": "native_response",
+      "text": "After complete marked-lineage removal, EMPTY and k6-GUARD raw buffers equal matched controls but both clock buffers retain an exact persistent trace."
+    },
+    {
+      "claim_id": "C15R01",
+      "family": "observer",
+      "source": "hidden residual",
+      "status": "FRESH_REVALIDATED",
+      "target": "interaction-dependent observable divergence"
+    },
+    {
+      "claim_id": "C15R02",
+      "family": "dissipation",
+      "source": "direction distribution",
+      "status": "FRESH_REVALIDATED",
+      "target": "ensemble response"
+    },
+    {
+      "claim_id": "C15R03",
+      "family": "clock/observer",
+      "source": "clock residual",
+      "status": "BOUNDED_NEGATIVE",
+      "target": "same singleton raw trajectory"
+    },
+    {
+      "claim_id": "C15R04",
+      "family": "observer",
+      "source": "coupled shadow family",
+      "status": "FRESH_REVALIDATED",
+      "target": "eight-domain prediction"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "clock"
+    },
+    {
+      "id": "detector_record"
+    },
+    {
+      "id": "future_capacity"
+    },
+    {
+      "id": "interaction"
+    },
+    {
+      "id": "learned_state"
+    },
+    {
+      "id": "matter_response"
+    },
+    {
+      "id": "memory"
+    },
+    {
+      "id": "native_response"
+    },
+    {
+      "id": "native_state"
+    },
+    {
+      "id": "persistent_organization"
+    },
+    {
+      "id": "phase/history"
+    },
+    {
+      "id": "resource_state"
+    },
+    {
+      "id": "response"
+    },
+    {
+      "id": "system_A"
+    },
+    {
+      "id": "system_B"
+    },
+    {
+      "id": "training_event"
+    },
+    {
+      "id": "hidden residual"
+    },
+    {
+      "id": "coupled shadow family"
+    }
+  ],
+  "reliability_legend": [
+    "EXACT",
+    "FRESH_REVALIDATED",
+    "HOLDOUT_CONFIRMED",
+    "REPLAY_ONLY",
+    "CANDIDATE",
+    "BOUNDED_NEGATIVE",
+    "UNKNOWN"
+  ]
+}

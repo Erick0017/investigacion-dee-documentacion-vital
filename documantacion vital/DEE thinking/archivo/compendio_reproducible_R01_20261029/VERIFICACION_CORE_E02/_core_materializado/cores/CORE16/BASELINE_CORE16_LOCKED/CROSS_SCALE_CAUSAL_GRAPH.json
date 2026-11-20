@@ -1,0 +1,120 @@
+{
+  "edges": [
+    {
+      "from": "X_FULL",
+      "status": "FRESH_CONFIRMED_TASK_RELATIVE",
+      "to": "E1",
+      "type": "reduction"
+    },
+    {
+      "from": "E1",
+      "status": "FRESH_CONFIRMED_TASK_RELATIVE",
+      "to": "E2",
+      "type": "relational_compression"
+    },
+    {
+      "from": "E1",
+      "status": "FRESH_CONFIRMED",
+      "to": "E3",
+      "type": "ensemble_coarse_graining"
+    },
+    {
+      "from": "FIBERS",
+      "status": "128/128",
+      "to": "E1",
+      "type": "predictive"
+    },
+    {
+      "from": "RELATION",
+      "status": "64/64",
+      "to": "SELECTIVE_COLLISION",
+      "type": "causal"
+    },
+    {
+      "from": "BULK",
+      "status": "256 worlds",
+      "to": "E3",
+      "type": "probabilistic"
+    },
+    {
+      "from": "E2",
+      "status": "12/12",
+      "to": "ORDERED_REDUCER",
+      "type": "predictive"
+    },
+    {
+      "from": "E2",
+      "status": "8/8 plus 24/24 canaries",
+      "to": "TRANSFER",
+      "type": "predictive"
+    },
+    {
+      "from": "E3",
+      "status": "alpha=-0.500296",
+      "to": "CLASSICAL_CONCENTRATION",
+      "type": "effective_law"
+    },
+    {
+      "from": "E1",
+      "status": "CHSH=-2 both regimes",
+      "to": "BELL_LOCAL",
+      "type": "outcome"
+    },
+    {
+      "from": "E2",
+      "status": "payload relation revealed",
+      "to": "E1",
+      "type": "hidden_reemergent"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "X_FULL",
+      "type": "native_state"
+    },
+    {
+      "id": "E1",
+      "type": "effective_level"
+    },
+    {
+      "id": "E2",
+      "type": "effective_level"
+    },
+    {
+      "id": "E3",
+      "type": "effective_level"
+    },
+    {
+      "id": "FIBERS",
+      "type": "observer"
+    },
+    {
+      "id": "RELATION",
+      "type": "observer"
+    },
+    {
+      "id": "BULK",
+      "type": "observer"
+    },
+    {
+      "id": "SELECTIVE_COLLISION",
+      "type": "intervention"
+    },
+    {
+      "id": "ORDERED_REDUCER",
+      "type": "phenomenon"
+    },
+    {
+      "id": "TRANSFER",
+      "type": "phenomenon"
+    },
+    {
+      "id": "CLASSICAL_CONCENTRATION",
+      "type": "phenomenon"
+    },
+    {
+      "id": "BELL_LOCAL",
+      "type": "phenomenon"
+    }
+  ]
+}

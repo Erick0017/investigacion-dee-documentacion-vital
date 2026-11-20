@@ -1,0 +1,194 @@
+{
+  "buffer_boundary": "Only A plus topology is the pre-tick state; B and delta_demux are implementation/transient state during a tick.",
+  "created_utc": "2026-09-18T02:58:30Z",
+  "entries": [
+    {
+      "altered_by": [
+        "local update",
+        "injection",
+        "demux post-update"
+      ],
+      "information": "state",
+      "later_revealable": true,
+      "loss": "isolated nonzero zero-direction states can collapse many-to-one",
+      "read_by": [
+        "exists",
+        "alive rule",
+        "matter rule",
+        "census"
+      ],
+      "stored_in": "grid_raw_A bits 0..31",
+      "transported": "single-source directional copy can discard original state by writing state=1 at destination"
+    },
+    {
+      "altered_by": [
+        "clock-gated increment",
+        "fusion reset",
+        "reducer sum/cap",
+        "demux delta"
+      ],
+      "copied": true,
+      "information": "s_reg",
+      "later_revealable": true,
+      "loss": "cap/reset/many-to-one",
+      "read_by": [
+        "gradients",
+        "fusion threshold",
+        "incoming reducer",
+        "candidate selection"
+      ],
+      "stored_in": "grid_raw_A bits 32..47",
+      "transported": true
+    },
+    {
+      "altered_by": [
+        "incoming reducer sign composition",
+        "gradient response",
+        "death"
+      ],
+      "copied": true,
+      "information": "direction",
+      "later_revealable": true,
+      "loss": "sum/sign composition and death",
+      "read_by": [
+        "destination routing",
+        "vector symmetry",
+        "response anchoring"
+      ],
+      "stored_in": "grid_raw_A bits 48..59",
+      "transported": true
+    },
+    {
+      "altered_by": [
+        "birth/injection",
+        "ordinary local survival",
+        "death"
+      ],
+      "copied": "semantic 4 is fixed in place",
+      "information": "semantic",
+      "later_revealable": true,
+      "loss": "transport normalization/death",
+      "read_by": [
+        "observer immutability",
+        "orphan exclusion",
+        "rule selection",
+        "census"
+      ],
+      "stored_in": "grid_raw_A bits 60..63",
+      "transported": "directional arrivals become semantic 1"
+    },
+    {
+      "altered_by": [
+        "universal +1 mod 2^64",
+        "apparatus injection/reset"
+      ],
+      "copied": false,
+      "information": "local_clock",
+      "later_revealable": true,
+      "loss": "not destroyed by ordinary tick; raw accessibility is interaction-conditioned",
+      "read_by": [
+        "clock-gated s_reg increment"
+      ],
+      "stored_in": "clock_A",
+      "transported": false
+    },
+    {
+      "altered_by": [
+        "not dynamically rewritten; occupancy patterns move"
+      ],
+      "copied": false,
+      "information": "position/topology",
+      "later_revealable": true,
+      "loss": "coarse observers may quotient translations/routes",
+      "read_by": [
+        "all local neighborhoods",
+        "routing",
+        "interfaces"
+      ],
+      "stored_in": "array index and toroidal N",
+      "transported": false
+    },
+    {
+      "altered_by": [
+        "state evolution"
+      ],
+      "copied": false,
+      "information": "destination multiplicity",
+      "later_revealable": true,
+      "loss": "coarse bulk observer hides it",
+      "read_by": [
+        "empty-destination reducer"
+      ],
+      "stored_in": "not persistent; relation of positions and directions",
+      "transported": false
+    },
+    {
+      "altered_by": [
+        "interaction and training"
+      ],
+      "copied": "not generally",
+      "information": "history/lineage",
+      "later_revealable": "mechanism-specific",
+      "loss": "some distinctions erased by many-to-one update",
+      "read_by": [
+        "history-conditioned apparatuses",
+        "learning/memory mechanisms"
+      ],
+      "stored_in": "trajectory plus persistent raw/clock/organization",
+      "transported": "mechanism-specific"
+    },
+    {
+      "altered_by": [
+        "evolution",
+        "coupling",
+        "coarse observation"
+      ],
+      "copied": "not established universally",
+      "information": "phase",
+      "later_revealable": true,
+      "loss": "can become inaccessible without being destroyed",
+      "read_by": [
+        "phase-sensitive routes and detectors"
+      ],
+      "stored_in": "relations among clocks/events/periodic organizations",
+      "transported": "by phase-bearing organization/event"
+    },
+    {
+      "altered_by": [
+        "damage",
+        "regeneration",
+        "reinstantiation",
+        "coupling"
+      ],
+      "copied": "raw identity not necessarily",
+      "information": "functional_identity",
+      "later_revealable": true,
+      "loss": "functional failure threshold",
+      "read_by": [
+        "standardized interventions"
+      ],
+      "stored_in": "distributed organization and response law",
+      "transported": "reconstructed in validated mechanisms"
+    }
+  ],
+  "parent_mechanism_claim_frequencies": {
+    "clock": 443,
+    "coupling": 85,
+    "destination_reduction": 315,
+    "ensemble_statistics": 129,
+    "environment": 452,
+    "geometry_topology": 267,
+    "history": 710,
+    "interface": 351,
+    "learning": 476,
+    "matter_response": 336,
+    "observer": 813,
+    "organization": 389,
+    "phase": 457,
+    "reinstantiation": 309,
+    "relaxation_dissipation": 127,
+    "transport": 478
+  },
+  "rule": "Kernel fields are named by executed causal role, not assigned external physical nouns.",
+  "schema": "DEE_INFORMATION_CAUSAL_ATLAS_V1"
+}

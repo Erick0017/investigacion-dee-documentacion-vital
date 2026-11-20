@@ -1,0 +1,112 @@
+{
+  "schema": "APD05.bounded_rest_and_access.prospective.R04",
+  "status": "FROZEN_AWAITING_ROOT_NATIVE_GO",
+  "new_Native_ticks_at_freeze": 0,
+  "purpose": "Separate continued native dynamics without new tasks from ordinary task exposure; distinguish prevention at the functional complete parent from recovery of a different, genuinely adverse complete parent.",
+  "parents": {
+    "functional": {
+      "pair_relative_to_system": "estado/fuentes_emparejadas/APD04_SEMILLA_COLABORADOR_R01_T654959_COMPLETO_N0_R01",
+      "manifest_sha256": "0658ca4404f1d676cb9d496f2c1d4f5fbdfee98188a5c717db68e760088f9b2c",
+      "snapshot_sha256": "52a35b4062bc843a74a115679ba7c6f76c9db1eab145926ac9d01d22390723fc",
+      "tick": 654959,
+      "occupied": 89,
+      "scope": "Selected complete APD04 post10 descendant. The catalog is previous evidence, not an invisible baseline material query."
+    },
+    "continued_omit_R03": {
+      "pair_relative_to_system": "estado/servicios_persistentes/APD05_CTL_PREV_ORD_OMIT_R03/exportaciones/APD05_CONTROL_FALLO_COMPLETO_R01",
+      "manifest_sha256": "165038c09caa1455719ac143c13509fb9ba5afa8ab361998e1dbb1477cb30a85",
+      "snapshot_sha256": "82c5173265e7ddfd613b707c682abc5c0b95059250508473630cdf720282a299",
+      "tick": 661196,
+      "occupied": 297442,
+      "scope": "Complete actually reached R03 OMIT future after exactly three task opportunities. Its fourth fixed start was missed by93ticks, therefore was NOT executed; no post-interval panel was sent. This is a declared continuation of that adverse future, not a healthy restart or a repair retroactively attributed to R03."
+    },
+    "adverse": {
+      "pair_relative_to_system": "estado/fuentes_emparejadas/APD04_CONTINUABLE_R01_T658754_ADVERSO_R04",
+      "manifest_sha256": "c680118e63611ba767eabae3af3449dea2464174b7c11d70a14e06e1e59051a7",
+      "snapshot_sha256": "582f7eb19ceb63909754c6ba9bc1e573f956795c97a8f90c3e4170a5e22a1577",
+      "tick": 658754,
+      "occupied": 297706,
+      "scope": "Full postSTOP paired state, not the partial early reserve or R02 timeout. Its own adverse history is preserved."
+    }
+  },
+  "prevention_arms": [
+    {"life": "APD05_CTL_PREV_OMIT_CONT_R04", "parent_key": "continued_omit_R03", "condition": "CONTINUE_OMIT_AFTER_THREE_R03_TASKS", "duration_native_ticks": 1955, "task_offsets": [], "ancestral_origin_tick": 654959, "historical_task_offsets": [0, 2048, 4096], "historical_completed_tasks": 3},
+    {"life": "APD05_CTL_PREV_ORD_REAL_R04", "parent_key": "functional", "condition": "ORD_REAL", "duration_native_ticks": 8192, "task_offsets": [0, 2048, 4096], "ancestral_origin_tick": 654959, "historical_completed_tasks": 0}
+  ],
+  "recovery_arms": [
+    {"life": "APD05_CTL_REC_REST_R04", "parent_key": "adverse", "condition": "REST", "duration_native_ticks": 4096, "task_offsets": []},
+    {"life": "APD05_CTL_REC_ORD_REAL_R04", "parent_key": "adverse", "condition": "ORD_REAL", "duration_native_ticks": 4096, "task_offsets": [0]}
+  ],
+  "existing_reference_not_reexecuted": {
+    "life": "APD05_CTL_PREV_REST_R03",
+    "interval_origin_tick": 654959,
+    "interval_end_tick": 663151,
+    "duration_native_ticks": 8192,
+    "post_panel_tick": 663722,
+    "result_relative_to_root": "evidencia/campanas/APD05_GENESIS_SIN_LLM/controles/REPOSO_Y_ACCESO_R03/APD05_CTL_PREV_REST_R03/NATIVE/RESULTADO.json",
+    "result_sha256": "51b45c1ebe6d4621729b265ed560777ee510c977bdec5aed289afa81f68187dd",
+    "pair_manifest_sha256": "055c12057c9c1181fcc0bfda3caeac59ae3392563b1248029adc7eef4fcdbc6f",
+    "snapshot_sha256": "1625cedef0e52d4677a375b777038899e71e6b1c92666ceaf070fcd84033ca17",
+    "scope": "Already completed exact8192 native task-off reference with its first8/8 panel. Reused as an existing outcome, not re-run, not recounted as an independent new ancestry. R04 compares exactly three task opportunities rather than the original uncompleted four."
+  },
+  "frozen_source_hashes": {
+    "app/servicio_persistente.py": "7a82135f39d2e40b5ef18e8a1c94197b8e9a3d8b4707dcc748585cc0516cd53e",
+    "app/cola_local.py": "f04a0a7d5921a0af42128a4083d9cd5d875b6bf08c8867ca26537316306d9ee7",
+    "app/importacion_emparejada.py": "3c11cd84ae18a1ccd6d872d72bf04b852a31816c27b1f266d74e021a35019ecb",
+    "app/protocolo_apd04.py": "f66989c3d9fb6779029d6ba626f4c366633d4f9d97006ae5e42f910dac3f0fe5",
+    "app/protocolo_apd05.py": "3e98a461a1ac8a04491ded00c82c79d23ee3bfdea915572f0bac864f2fbb0a31",
+    "capacidades/ecosistema_apd04.py": "6e829bc1ec7c5920613878718068b5b158d99993cec56fafa7c79e3ba5a31013",
+    "capacidades/acciones_nativas_apd04.py": "f0fb1a3616c668d48bee8865956f12bd6c53367b7b2062a9a33f6ff966bf3f3a"
+  },
+  "ordinary_literal_opportunity": {"operacion": "sesion", "situaciones": [{"modo": "apd04-vivir", "oportunidades": 1, "lexico": true, "sensor": "independent_balanced", "desacoplado": false}], "actuador": "closed", "retorno": "real"},
+  "omit_difference_only": "The same literal opportunity sets retorno=omit. The evaluator does not alter source, cursor, cache, tags, correct action or the existing reference. Real/omit may change native history and therefore later admissions; report them rather than forcing equality.",
+  "rest_definition": {
+    "tasks_off": "No APD04 opportunity, lexical query, teacher, numerical probe or feedback is submitted during the rest interval.",
+    "dynamics_on": "Use the already installed NativeWorld.advance through a validated avanzar transport request and OrganizationalWorld.run_until. All physical material, existing sources, pending native agenda and v27 dynamics remain in place.",
+    "not_done": ["No RAW edits", "No clock reset or pause", "No snapshot restore during an arm", "No cursor reset", "No manufactured decay or metabolism", "No owner idle driven by host wall cadence between operations"],
+    "technical_paused_owner": "The owner runs only explicit queued operations at fixed tick boundaries; this suppresses unplanned host-cadence idle, not native time during avanzar. It is not presented as a learned initiative."
+  },
+  "common_post_interval_panel": [
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "alfa"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "beta"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "luma"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "nara"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "clasifica"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "equilibra"}], "retorno": "omit"},
+    {"operacion": "sesion", "situaciones": [{"modo": "apd04-calibrar", "casos": [{"tipo": "clasifica", "valor": 27}, {"tipo": "equilibra", "cargas": [3, 7]}]}], "retorno": "omit"}
+  ],
+  "frozen_evaluation": {
+    "lexical_expected_RAW_signs": {"alfa": -1, "beta": 1, "luma": 1, "nara": -1, "clasifica": 1, "equilibra": -1},
+    "prospective_oracle_correction": "R01 was never executed. Root checked prior exact APD04 seed-panel primaries and corrected alfa-/beta+ before any APD05 control ticks. This is an evaluator correction, not new teaching, an actor input or a new result.",
+    "oracle_source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/SEMILLA_PANEL24_DIAGNOSTICO_R01/EVIDENCIA_PORTABLE_N0_R02/RECALCULO_R02.json",
+    "oracle_source_sha256": "e0906dfc1c5d934980ad3415fc3c9bab129f9fc41fe01b1661d18b67626bb266",
+    "numeric_expected_RAW_signs": [1, -1],
+    "numeric_scope": "Nominal comparison reference20 and prepared balance bias20. A changed reference is reported, not silently retargeted.",
+    "decoders": "Use exact RAW 64-bit fields and fixed existing lexical36/numerical6 reader geometry. Unique coherent emission only; NULL or ambiguous is not zero, WAIT or a correct sign.",
+    "denominators": ["scheduled", "sent", "completed", "Native requests unique", "applied", "rejected", "formed", "correct", "incorrect", "null", "ambiguous"],
+    "retention_claim": "Only the first common post-interval use of the declared functions. Subsequent panel requests themselves may change state. No blanket claim for all18forms or arbitrary order.",
+    "recovery_claim": "Requires a first usable post-adverse response without re-teaching. Less occupancy alone is not recovery. A functional prefix fork is prevention, not repair of the adverse life."
+  },
+  "timing": {
+    "offsets_relative_to_actual_import_tick": true,
+    "age_fill": "Before each fixed opportunity, submit avanzar chunks<=4096 to its exact scheduled tick; after the final opportunity fill to target tick. If any operation overruns a later scheduled boundary, preserve the overrun and do not backdate or extend the horizon to force a match.",
+    "material_request_wall_limit_seconds": 1200,
+    "per_arm_wall_limit_seconds": 3000,
+    "outer_all_arms_limit_seconds": 13500,
+    "stop_starting_new_arms_UTC": "2026-10-27T10:30:00Z",
+    "campaign_absolute_deadline_UTC": "2026-10-27T12:54:51Z"
+  },
+  "api_and_ownership": {
+    "import": "app.importacion_emparejada.verify_export + import_pair(Store(system), complete_pair, unused_life)",
+    "one_owner": "app.servicio_persistente.NativeWorld(system, life, backend=mente_unificada).open() obtains Store.writer; PersistentService.restore_transport() and QueueDB.next/perform preserve exact ID/receipt/checkpoint semantics. The recorder writes under sistema/estado/observatorios/APD05_CONTROLES_R04/<life>, an allowed instrument output only. Its records never feed actor inputs. After owner closure the supervisor copies them into evidence; no access-guard relaxation or second Runtime is introduced.",
+    "R03_import_instrument_correction": "The R02 assertion wrongly required imported encoded bytes to equal the parent despite the official import changing documentary life identity. R02 stopped before owner start or any ticks. R03 uses entirely new life IDs and checks identity.source_snapshot_sha256 plus exact N/tick/RAW/clocks against the verified complete parent manifest. R02 originals and any interrupted import remain preserved. No physical/evaluation criterion changed.",
+    "operation": "QueueDB.put(id,payload) once; QueueDB.next(paused=False); PersistentService.perform(row) synchronously; no direct Runtime.run and no new Runtime per request.",
+    "save_and_stop": "Use queued guardar and detener, a final PERSISTENT_GRACEFUL_CLOSE checkpoint, publish running=false, and export_pair while the owner holds the same state; close the world once.",
+    "limits": "At most one control Native owner at a time, 512MiB Native process/job, 1GiB outer owned tree, one requested OMP/OpenBLAS/MKL thread. No original Source or ACTIVO changes. All original campaign deadlines remain fixed. The R03 uncertain REAL future is never resumed or substituted for the new R04 REAL.",
+    "visor_equality": "Delegated separately to GUI integration; not counted as completed by these controls."
+  },
+  "maintenance": {
+    "third_mechanism_arm": "NOT_EXECUTED_UNLESS_NEW_FROZEN_REVISION",
+    "reason": "Existing clear/divert/flatten support is already part of ordinary v27 protocol and can itself be rejected. No independently validated restorative maintenance distinct from this apparatus has been identified at this freeze. Do not rename arbitrary interventions as cleaning."
+  }
+}

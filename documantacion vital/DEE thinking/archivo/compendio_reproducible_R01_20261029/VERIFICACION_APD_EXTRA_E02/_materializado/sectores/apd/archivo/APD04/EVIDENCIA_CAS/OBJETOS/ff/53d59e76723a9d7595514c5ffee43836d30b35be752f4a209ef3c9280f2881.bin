@@ -1,0 +1,33 @@
+{
+  "schema": "APD04.actuator_R02.driver.N0.preparation.v1",
+  "created_utc": "2026-10-26T22:11:24.912345+00:00",
+  "source_sha256": "fe7d35f268adc8a94da383f3168220d58b653ec3e403e873052d74b3145dbe9c",
+  "plan_sha256": "4839416a235cd82c51b237f6fc618da0c51f3c9c51eaa765d64fb4349c71dfbf",
+  "AUX_identities": [
+    "APD04_ACTUADOR_REAL_R02",
+    "APD04_ACTUADOR_OMIT_R02"
+  ],
+  "ten_individual_opportunities_each": true,
+  "sensor": "R03 independent_balanced",
+  "new_native_ticks": 0,
+  "Runtime_created": false,
+  "shared_system_modified": false,
+  "full_pair_manifest_sha256": "5d938d56497571fb4af8ac814eac0cde59214814afb7f3d9280543ea074ca6db",
+  "native_execution_guard": "Requires later Root GO and installed proposal hashes exactly",
+  "Native_owner_wall_limit_per_AUX_seconds": 900,
+  "start_STOP_by_owner_wall_seconds": 740,
+  "memory_limit_bytes": 536870912,
+  "threads": 1,
+  "stop_rules": [
+    "10 opportunities completed then old16+6 only if no pending and budget remains",
+    "transport terminal non-completion or uncertain state: preserve, no next material",
+    "unexpected owner exit or source mutation: preserve, no replacement",
+    "budget stop: one STOP, at900s terminate only own Job if needed"
+  ],
+  "not_stop_rules": [
+    "wrong/unhelpful action alone",
+    "NULL emission alone",
+    "favorable/unfavorable branch score"
+  ],
+  "scope": "Software preparation only. No guarantee that the two Native histories will finish within the limit."
+}

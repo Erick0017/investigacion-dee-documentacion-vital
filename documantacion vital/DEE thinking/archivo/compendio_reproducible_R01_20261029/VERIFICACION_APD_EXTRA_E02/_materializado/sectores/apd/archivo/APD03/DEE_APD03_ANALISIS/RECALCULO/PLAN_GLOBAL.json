@@ -1,0 +1,258 @@
+{
+  "full_status": "SEPARATE_CLOSED_PROOF_INCLUDED_NOT_REEXECUTED_BY_ASSEMBLER",
+  "jobs": [
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA_MAIN",
+        "--io-evidence",
+        "RECURSOS_OS_NATIVE",
+        "--quality-artifacts",
+        "ARCHIVOS_CALIDAD_REALES",
+        "--out",
+        "{output}"
+      ],
+      "base": "MAIN",
+      "expected": "RESULTADOS/RECALCULO_MAIN_FINAL.json",
+      "expected_sha256": "2f4208e4d1fc4575772685672640ecff66e0b7092b6c9fd3e680feda24917ab8",
+      "name": "MAIN",
+      "script": "CODIGO_Y_RECALCULO/recalcular_main_integrado_n0.py",
+      "script_sha256": "f6a56f96da30a29abfc7b19e3fa7bb20d98da72d8e12b0f97e67d49386d2eaaa"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA/SENSOR_MOVIL_R01",
+        "--out",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "expected": "REFERENCIAS/SENSOR_MOVIL_R01.json",
+      "expected_sha256": "ae141976bd12cc2e93d1ae272d31bec8de4b7df5752a5631d17cbcb03820d4d9",
+      "name": "MECANISMO_SENSOR_MOVIL_R01",
+      "script": "RECALCULO/recalcular_cribados_sensores_n0.py",
+      "script_sha256": "7fc0a62e64fdd12d9ed58dbb2b72c769ae6640e6ee161da897352fb91c59bb4c"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA/SENSOR_BALANCEADO_R02",
+        "--out",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "expected": "REFERENCIAS/SENSOR_BALANCEADO_R02.json",
+      "expected_sha256": "53e5b2c61bf9a9759194689e17a5f3a886b103b068d3f463572e0692946f5cef",
+      "name": "MECANISMO_SENSOR_BALANCEADO_R02",
+      "script": "RECALCULO/recalcular_cribados_sensores_n0.py",
+      "script_sha256": "7fc0a62e64fdd12d9ed58dbb2b72c769ae6640e6ee161da897352fb91c59bb4c"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA/APLICACION_CONTEXTUAL_R03",
+        "--out",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "expected": "REFERENCIAS/APLICACION_CONTEXTUAL_R03.json",
+      "expected_sha256": "3f7c4adfd0313969e0c925ca0e3d040ae5a2b0c53a5584eaa1678495446b73b8",
+      "name": "MECANISMO_APLICACION_CONTEXTUAL_R03",
+      "script": "RECALCULO/recalcular_aplicacion_contextual_n0.py",
+      "script_sha256": "6669ac5e918cf7ed0cc0d717a27e23885eaaef10f6659b7109cd2ad1ae04236b"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--out",
+        "{output}"
+      ],
+      "base": "CURVAS",
+      "expected": "REFERENCIAS/CURVAS_LEXICO.json",
+      "expected_sha256": "3de2b6bf687ed0a0901a9a0c1a5d0292070b682f990a52942423d00a453858d4",
+      "name": "CURVAS_CURVAS_LEXICO_R01_R03",
+      "script": "RECALCULO/recalcular_curvas_completas_apd03_n0.py",
+      "script_sha256": "e2cef5b44ba4308ee88814e2395c5d18fc322958acd55151dae413da4ff52230"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--out",
+        "{output}"
+      ],
+      "base": "R04",
+      "expected": "REFERENCIAS/RECALCULO.json",
+      "expected_sha256": "c2ab97b51707de6cbc4282a499633dd5a9952b19070c21430875da3bb2942189",
+      "name": "R04_HISTORIA_ACCESO_R04",
+      "script": "RECALCULO/recalcular_historia_acceso_lexico_apd03_r04.py",
+      "script_sha256": "306b958a283a75293b01cdfa2596433df7da130d1f7a475eab583b35e50d097e"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--out",
+        "{output}"
+      ],
+      "base": "R04",
+      "expected": "REFERENCIAS/DIAGNOSTICO_ENCUENTROS.json",
+      "expected_sha256": "8e3b3b988c5aed62e98cfade0d69ce3793b9d37724ba85dc56520d5bf6391f1c",
+      "name": "R04_ENCUENTROS_HISTORIA_R04",
+      "script": "RECALCULO/diagnosticar_encuentros_historia_r04_n0.py",
+      "script_sha256": "707380c029b013470f859253e0213ec2ed5f87f906f68ccaf027ca47a386a1e2"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--policy",
+        "fijo",
+        "--out",
+        "{output}"
+      ],
+      "base": "REFERENCIAS",
+      "expected": "REFERENCIAS/fijo.json",
+      "expected_sha256": "601d089062ec947e6d65b8911ef8278548f944e72e81c2965a023ea02b6c7c5c",
+      "name": "REFERENCIAS_REFERENCIA_fijo",
+      "script": "RECALCULO/recalcular_referencias_apd03_r02.py",
+      "script_sha256": "2026fcfa9ba4439b0e79f0a506535ff33de8c75a376c09e891b985d172fab221"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--policy",
+        "tabla_contextual",
+        "--out",
+        "{output}"
+      ],
+      "base": "REFERENCIAS",
+      "expected": "REFERENCIAS/tabla_contextual.json",
+      "expected_sha256": "f322af2b1310a86f7eb048b9f92461c89fb20844c74c0c8725fc9434853975d1",
+      "name": "REFERENCIAS_REFERENCIA_tabla_contextual",
+      "script": "RECALCULO/recalcular_referencias_apd03_r02.py",
+      "script_sha256": "2026fcfa9ba4439b0e79f0a506535ff33de8c75a376c09e891b985d172fab221"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--policy",
+        "wsls",
+        "--out",
+        "{output}"
+      ],
+      "base": "REFERENCIAS",
+      "expected": "REFERENCIAS/wsls.json",
+      "expected_sha256": "b5496840ae230046ddeada0dc599dababe1e8728063734ee689b2aef28efd461",
+      "name": "REFERENCIAS_REFERENCIA_wsls",
+      "script": "RECALCULO/recalcular_referencias_apd03_r02.py",
+      "script_sha256": "2026fcfa9ba4439b0e79f0a506535ff33de8c75a376c09e891b985d172fab221"
+    },
+    {
+      "args": [
+        "--evidence",
+        "EVIDENCIA",
+        "--out",
+        "{output}"
+      ],
+      "base": "WSLS_ESTANDAR",
+      "expected": "REFERENCIAS/RECALCULO.json",
+      "expected_sha256": "1d0d92cf4d530e2da6c01e069129f4716c33c29586fc43ffba4e968950848502",
+      "name": "WSLS_ESTANDAR_WSLS_ESTANDAR_R03",
+      "script": "RECALCULO/recalcular_wsls_estandar_apd03_r03.py",
+      "script_sha256": "9d572b2441853b7d107edf1889cf521e7e500b43e9b8b51e4ea74158e4a730b5"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "ENTRADA_UI",
+      "expected": "REFERENCIA_UI_APD03.json",
+      "expected_sha256": "0cfafc19f11cc72d014708c7943b6ce5c130c841262ab6ce4de27c987d261d4a",
+      "name": "ENTRADA_UI_UI_SINGLE_TERMINAL_OPERATIONAL",
+      "script": "CODIGO_Y_RECALCULO/recalcular_ui_apd03_n0.py",
+      "script_sha256": "43ec4bfc805dee7c97405ce775bb09be27fa6408de5931a362ad55a8c4105a08"
+    },
+    {
+      "args": [
+        "--evidencia",
+        ".",
+        "--salida",
+        "{output}"
+      ],
+      "base": "VALIDACION_FULL",
+      "expected": "RECALCULO_FULL.json",
+      "expected_sha256": "80c4d6bcd3757742d5acc3a625809b9f151691f677e1c4631e067c245a1fb50b",
+      "name": "VALIDACION_FULL_Exact Full R02 archived proof, with R01 pre-Native failure preserved; no Native",
+      "script": "RECALCULO/recalcular_full_apd03_n0.py",
+      "script_sha256": "5444f4d506342b6e68566dbb01c1108e9f5cd33ebd8bc1d437b7ab923df7dbdc"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}",
+        "--requiere-cierre"
+      ],
+      "base": "SERVICIO_MAIN",
+      "expected": "RECALCULO_SERVICIO_CERRADO.json",
+      "expected_sha256": "54d8b38fd249d5289c5535d72ed2b6eef7008115adeb8172859ba042141673d9",
+      "name": "SERVICIO_MAIN",
+      "script": "RECALCULO/recalcular_servicio_hora_apd03_n0.py",
+      "script_sha256": "aacb9deee53207afa7945b1c0d04cb77a03bd1b7ce04217de018497513a54dab"
+    },
+    {
+      "args": [
+        "recalcular",
+        "--evidence",
+        ".",
+        "--out",
+        "{output}"
+      ],
+      "base": "COMPLEMENTOS/ARCHIVOS_GOAL_REALES",
+      "expected": "RECALCULO_ARCHIVOS_GOAL.json",
+      "expected_sha256": "ad6da2942bc972fa5f19ed842db3770484c822cbff0c7ed6956e3ae7833a02fc",
+      "name": "ARCHIVOS_GOAL_REALES",
+      "script": "desnormalizar_goal_archivos_apd03_n0.py",
+      "script_sha256": "2e5db252503bb52a34efc7ac779bb4cb1a8c784fc9cba2bffdcd9b2c18b9b162"
+    },
+    {
+      "args": [
+        "--evidence",
+        ".",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "expected": "RECURSOS/REFERENCIA_TOTAL.json",
+      "expected_sha256": "d5d6f106a5d0fbe7f749012efa349b703206929335c33dc95bd34cb3ca7a55cc",
+      "name": "RECURSOS_TOTAL",
+      "script": "RECURSOS/TOTAL_TREE/recalcular_recursos_apd03_n0.py",
+      "script_sha256": "512a492aa2bb9cdeb1ce5d41aa15515b14d2f174741b2e80a7286c09bf9738a1"
+    },
+    {
+      "args": [
+        "--evidence",
+        ".",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "expected": "COMPARACION_FUNCIONAL_Y_COSTE_MAIN_REFERENCIAS.json",
+      "expected_sha256": "5144fad1f70c2d9ba43d6ae90741e35a45fe29bc163976cf6d40b1d3f9d5cb1f",
+      "name": "COMPARACION_FUNCIONAL",
+      "script": "RECALCULO/recalcular_comparacion_portable_apd03_n0.py",
+      "script_sha256": "ba26dd772ff028495d8850c2c19f754d7be4bbafa793135cab798bba117ca39b"
+    }
+  ],
+  "new_native_ticks": 0,
+  "not_a_scientific_or_Full_PASS": true,
+  "schema": "APD03.global_relative_recalculation_plan.R01"
+}

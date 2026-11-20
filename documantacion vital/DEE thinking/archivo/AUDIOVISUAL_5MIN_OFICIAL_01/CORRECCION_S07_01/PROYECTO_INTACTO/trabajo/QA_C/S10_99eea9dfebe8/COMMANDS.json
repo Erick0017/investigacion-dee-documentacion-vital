@@ -1,0 +1,37 @@
+{
+  "ffprobe": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\video_publico_definitivo\\herramientas\\ffprobe.exe",
+    "-v",
+    "error",
+    "-show_streams",
+    "-show_format",
+    "-of",
+    "json",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\clips\\S10.mp4"
+  ],
+  "ffmpeg": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\presentacion_clara\\herramientas\\ffmpeg.exe",
+    "-v",
+    "error",
+    "-nostdin",
+    "-threads",
+    "1",
+    "-filter_complex_threads",
+    "1",
+    "-i",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\clips\\S10.mp4",
+    "-filter_complex",
+    "[0:v]select=eq(n\\,12)+eq(n\\,90)+eq(n\\,192)+eq(n\\,225)+eq(n\\,282)+eq(n\\,330)+eq(n\\,402)+eq(n\\,495),split=2[native][small];[small]scale=360:-2:flags=lanczos[mobile]",
+    "-map",
+    "[native]",
+    "-vsync",
+    "0",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\QA_C\\S10_99eea9dfebe8\\1080_%03d.png",
+    "-map",
+    "[mobile]",
+    "-vsync",
+    "0",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\QA_C\\S10_99eea9dfebe8\\360_%03d.png"
+  ],
+  "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo"
+}

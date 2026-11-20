@@ -1,0 +1,618 @@
+{
+  "case": {
+    "id": "GUARD2_C05_MISSING_SHAM",
+    "history": "AB",
+    "actual_omitted": true,
+    "source_value": 1,
+    "guard_mode": "barrier_sham",
+    "center": [
+      33,
+      25,
+      42
+    ],
+    "phase": "CONTROL"
+  },
+  "geometry": {
+    "body": {
+      "n": 67,
+      "center": [
+        33,
+        25,
+        42
+      ],
+      "A": [
+        32,
+        25,
+        42
+      ],
+      "B": [
+        34,
+        25,
+        42
+      ],
+      "emission_site": [
+        33,
+        24,
+        42
+      ],
+      "emission_tick": 5,
+      "initial_phase": 260,
+      "initial_relation": 0,
+      "resource_sites": 11
+    },
+    "need": {
+      "schema": "CPC7.native_need.comparison.v2",
+      "N": 67,
+      "prefix": "need",
+      "origin": [
+        33,
+        24,
+        42
+      ],
+      "ticks": {
+        "emission": 5,
+        "comparison": 15,
+        "question": 19,
+        "information": 24,
+        "use": 29
+      },
+      "comparison_hubs": {
+        "left": [
+          23,
+          14,
+          42
+        ],
+        "right": [
+          43,
+          14,
+          42
+        ]
+      },
+      "branches": {
+        "left.equal": {
+          "lane": "left",
+          "dx": 0,
+          "request_site": [
+            23,
+            10,
+            46
+          ],
+          "comparison_direction": [
+            0,
+            -1,
+            1
+          ]
+        },
+        "left.different": {
+          "lane": "left",
+          "dx": -1,
+          "request_site": [
+            19,
+            10,
+            46
+          ],
+          "comparison_direction": [
+            -1,
+            -1,
+            1
+          ],
+          "source_contact": [
+            14,
+            10,
+            46
+          ]
+        },
+        "right.equal": {
+          "lane": "right",
+          "dx": 0,
+          "request_site": [
+            43,
+            10,
+            46
+          ],
+          "comparison_direction": [
+            0,
+            -1,
+            1
+          ]
+        },
+        "right.different": {
+          "lane": "right",
+          "dx": 1,
+          "request_site": [
+            47,
+            10,
+            46
+          ],
+          "comparison_direction": [
+            1,
+            -1,
+            1
+          ],
+          "source_contact": [
+            52,
+            10,
+            46
+          ]
+        },
+        "left.missing_actual": {
+          "lane": "left",
+          "dx": -1,
+          "request_site": [
+            19,
+            10,
+            42
+          ],
+          "source_contact": [
+            14,
+            10,
+            42
+          ],
+          "comparison_direction": [
+            -1,
+            -1,
+            0
+          ],
+          "trigger": "Expected carrier remains in original z plane only without current actual-induced transduction"
+        },
+        "right.missing_actual": {
+          "lane": "right",
+          "dx": 1,
+          "request_site": [
+            47,
+            10,
+            42
+          ],
+          "source_contact": [
+            52,
+            10,
+            42
+          ],
+          "comparison_direction": [
+            1,
+            -1,
+            0
+          ],
+          "trigger": "Expected carrier remains in original z plane only without current actual-induced transduction"
+        }
+      },
+      "source_codecs": {
+        "need.source.left.-1": {
+          "lane": "left",
+          "value": -1,
+          "hub": [
+            14,
+            31,
+            46
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            46
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.left.1": {
+          "lane": "left",
+          "value": 1,
+          "hub": [
+            14,
+            56,
+            46
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            46
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.right.-1": {
+          "lane": "right",
+          "value": -1,
+          "hub": [
+            52,
+            31,
+            46
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            46
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.right.1": {
+          "lane": "right",
+          "value": 1,
+          "hub": [
+            52,
+            56,
+            46
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            46
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.left.missing_actual.-1": {
+          "lane": "left",
+          "value": -1,
+          "hub": [
+            14,
+            31,
+            42
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            42
+          ],
+          "scope": "Extra separately experienced source ray, not a clone or correct answer"
+        },
+        "need.source.left.missing_actual.1": {
+          "lane": "left",
+          "value": 1,
+          "hub": [
+            14,
+            56,
+            42
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            42
+          ],
+          "scope": "Extra separately experienced source ray, not a clone or correct answer"
+        },
+        "need.source.right.missing_actual.-1": {
+          "lane": "right",
+          "value": -1,
+          "hub": [
+            52,
+            31,
+            42
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            42
+          ],
+          "scope": "Extra separately experienced source ray, not a clone or correct answer"
+        },
+        "need.source.right.missing_actual.1": {
+          "lane": "right",
+          "value": 1,
+          "hub": [
+            52,
+            56,
+            42
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            42
+          ],
+          "scope": "Extra separately experienced source ray, not a clone or correct answer"
+        }
+      },
+      "later_queries": {
+        "need.use.left.-1": {
+          "site": [
+            9,
+            5,
+            46
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": -1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.left.1": {
+          "site": [
+            9,
+            15,
+            46
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": 1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.right.-1": {
+          "site": [
+            57,
+            5,
+            46
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": -1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.right.1": {
+          "site": [
+            57,
+            15,
+            46
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": 1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.left.missing_actual.-1": {
+          "site": [
+            9,
+            5,
+            42
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": -1,
+          "scope": "Common physical probe on every possible data route"
+        },
+        "need.use.left.missing_actual.1": {
+          "site": [
+            9,
+            15,
+            42
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": 1,
+          "scope": "Common physical probe on every possible data route"
+        },
+        "need.use.right.missing_actual.-1": {
+          "site": [
+            57,
+            5,
+            42
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": -1,
+          "scope": "Common physical probe on every possible data route"
+        },
+        "need.use.right.missing_actual.1": {
+          "site": [
+            57,
+            15,
+            42
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": 1,
+          "scope": "Common physical probe on every possible data route"
+        }
+      },
+      "incoming_contract": "Actual learned order-body carrier (s,-1,0) at origin5; never a predicted answer calculated here",
+      "mechanism": "Comparison (dx,-1,1) + common opportunity(0,1,-1) produces (dx,0,0). Equal cancels X; discrepancy emits native horizontal request.",
+      "limits": "Finite prepared opportunities. Missing represented expectation or missing actual report is outside singleton-comparison domain; no generic uncertainty detector.",
+      "fallback": {
+        "missing_actual": true,
+        "criterion": "A represented expectation without the finite on-time actual report follows original-z route into the request opportunity.",
+        "timing": "Report is encoded at11 to arrive15. The branch tests this aperture, not all earlier/later events or unbounded absence.",
+        "extra_cost": "Two additional prepared mediators, two extra source cue/event pairs per current value, four later probes; inputs are explicitly enumerated."
+      },
+      "regulation": {
+        "schema": "CPC7.need_regulation.v2",
+        "mode": "barrier_sham",
+        "N": 67,
+        "guards": {
+          "left.equal": {
+            "normalizer_direction": [
+              0,
+              1,
+              -1
+            ],
+            "question_site": [
+              23,
+              10,
+              46
+            ],
+            "nominal_interception_site": [
+              23,
+              18,
+              38
+            ],
+            "nominal_interception_tick": 27,
+            "guard_initial_site": [
+              23,
+              18,
+              47
+            ],
+            "guard_direction": [
+              0,
+              0,
+              0
+            ],
+            "semantic": 4,
+            "scope": "Fixed barrier at residual step8; does not mean the kernel must absorb its carrier."
+          },
+          "left.different": {
+            "normalizer_direction": [
+              0,
+              1,
+              -1
+            ],
+            "question_site": [
+              19,
+              10,
+              46
+            ],
+            "nominal_interception_site": [
+              19,
+              18,
+              38
+            ],
+            "nominal_interception_tick": 27,
+            "guard_initial_site": [
+              19,
+              18,
+              47
+            ],
+            "guard_direction": [
+              0,
+              0,
+              0
+            ],
+            "semantic": 4,
+            "scope": "Fixed barrier at residual step8; does not mean the kernel must absorb its carrier."
+          },
+          "right.equal": {
+            "normalizer_direction": [
+              0,
+              1,
+              -1
+            ],
+            "question_site": [
+              43,
+              10,
+              46
+            ],
+            "nominal_interception_site": [
+              43,
+              18,
+              38
+            ],
+            "nominal_interception_tick": 27,
+            "guard_initial_site": [
+              43,
+              18,
+              47
+            ],
+            "guard_direction": [
+              0,
+              0,
+              0
+            ],
+            "semantic": 4,
+            "scope": "Fixed barrier at residual step8; does not mean the kernel must absorb its carrier."
+          },
+          "right.different": {
+            "normalizer_direction": [
+              0,
+              1,
+              -1
+            ],
+            "question_site": [
+              47,
+              10,
+              46
+            ],
+            "nominal_interception_site": [
+              47,
+              18,
+              38
+            ],
+            "nominal_interception_tick": 27,
+            "guard_initial_site": [
+              47,
+              18,
+              47
+            ],
+            "guard_direction": [
+              0,
+              0,
+              0
+            ],
+            "semantic": 4,
+            "scope": "Fixed barrier at residual step8; does not mean the kernel must absorb its carrier."
+          }
+        },
+        "guards_count": 4,
+        "barrier_residual_steps": 8,
+        "modality": "Fixed initial physical resources; no learned attention attribution",
+        "correction": "The v1 equal branch barrier at+4 coincided with its comparison hub. At+8 it is four Chebyshev sites beyond that hub and intercepts at27.",
+        "known_geometry_risk": "A local barrier can still affect other routes/guards. Compare actual native request/source/use and later integrated repertoire, not only disappearance on the nominal ray."
+      }
+    }
+  },
+  "source_sha256": "892cf1600061b5dd73ec88ae1f53691d7dcea6fd2858ca55ba398946d3232ca7",
+  "criterion": "Actual native X request after comparison, followed by different source-dependent fields and later common physical use. Emission precedes source contact.",
+  "horizon": 35,
+  "no_global_uncertainty_classifier": true
+}

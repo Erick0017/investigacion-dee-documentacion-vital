@@ -1,0 +1,36 @@
+{
+  "schema": "APD04.P0_admission.outcome_correction.v1",
+  "life": "APD04_CALIB_R02",
+  "actual_outcome": "REJECTED_BEFORE_ANY_NEW_PREPARATION_WRITE",
+  "admitted": false,
+  "new_lexical_preparation_requests": 0,
+  "new_ticks_inside_admission_operation": 0,
+  "word_teaching_episodes": 0,
+  "word_query_episodes": 0,
+  "operation_tick": 605493,
+  "final_postSTOP_tick": 605501,
+  "primary": {
+    "file": "sistema/estado/servicios_persistentes/APD04_CALIB_R02/resultados/ui_m_1bf448c1179a4382b9598ea62d2f05ac.json",
+    "sha256": "40b4d5fb2c681011a8e62858eba1d529da2fc73ce17f06e2c3a059de91a3d1db",
+    "kind": "APD04_P0_admission_rejected_without_material_write"
+  },
+  "physical_conflicts": [
+    {"site": [47, 13, 46], "raw": "4611686018427387905", "role": "equilibra select minus"},
+    {"site": [47, 13, 45], "raw": "4611686018427387905", "role": "equilibra back minus"},
+    {"site": [47, 13, 44], "raw": "4611686018427387905", "role": "equilibra teacher plus"}
+  ],
+  "complete_reached_state": {
+    "snapshot_sha256": "daeafab436a2b9aed2029b6c91744b6f7677b66fc676bd16f6975b5aa21a5a91",
+    "paired_directory": "PREFIJO_LEX_P0_POSTSTOP",
+    "paired_manifest_sha256": "b93bf151e30e2e84a1ad12e19743bced22a2aecb367901a3a552811df548c069",
+    "paired_members": 2748,
+    "new_ticks_in_export": 0
+  },
+  "instrument_label_correction": {
+    "affected": ["EJECUCION.json classification", "PREFIJO_LEX_P0_POSTSTOP/EXPORTACION_SERVICIO.json scope", "driver final stdout classification"],
+    "reason": "The pre-written driver described planned P0 preparation, but the scientific operation returned admitted:false. Those logistical labels are not evidence that preparation occurred.",
+    "correct_interpretation": "Exact stopped state after rejected P0 admission; not a newly prepared or learned lexical prefix.",
+    "original_bytes_and_hashes_preserved": true
+  },
+  "scope": "Only the prior inherited state and the calibration history exist physically. No partial clasifica admission, cleaning, relocation, teacher or favorable retry occurred."
+}

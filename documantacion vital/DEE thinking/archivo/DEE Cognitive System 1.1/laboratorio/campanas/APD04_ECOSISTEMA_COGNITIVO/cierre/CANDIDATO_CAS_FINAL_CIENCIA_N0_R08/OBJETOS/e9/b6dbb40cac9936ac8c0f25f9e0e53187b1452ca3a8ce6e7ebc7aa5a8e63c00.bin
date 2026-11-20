@@ -1,0 +1,20 @@
+# Continuación identificada desdeMOBILE3022; no reinstala memorias.
+bifurcar DCS11_MOBILE_R1_ACCESS E1_SOCIAL_11 --modalidad CANDIDATE
+experiencia --vida E1_SOCIAL_11 portador --parametros '{"read_tick":3060,"axis":-1,"payload":7}'
+guardar --vida E1_SOCIAL_11
+experiencia --vida E1_SOCIAL_11 magnitud --parametros '{"value":50,"round_index":45}'
+entrada --vida E1_SOCIAL_11 quantity.reader 7 3084 --sonda
+entrada --vida E1_SOCIAL_11 TM.quantity.reader 7 3086 --sonda
+continuar --vida E1_SOCIAL_11 --hasta 3085
+observar --vida E1_SOCIAL_11 45 35 28
+continuar --vida E1_SOCIAL_11 --hasta 3087
+observar --vida E1_SOCIAL_11 8 52 10
+experiencia --vida E1_SOCIAL_11 portador --parametros '{"read_tick":3127,"axis":1,"payload":7}'
+experiencia --vida E1_SOCIAL_11 magnitud --parametros '{"value":73,"round_index":46}'
+entrada --vida E1_SOCIAL_11 quantity.reader 7 3151 --sonda
+entrada --vida E1_SOCIAL_11 TM.quantity.reader 7 3153 --sonda
+continuar --vida E1_SOCIAL_11 --hasta 3152
+observar --vida E1_SOCIAL_11 45 35 28
+continuar --vida E1_SOCIAL_11 --hasta 3154
+observar --vida E1_SOCIAL_11 8 52 10
+guardar --vida E1_SOCIAL_11

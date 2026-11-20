@@ -1,0 +1,224 @@
+{
+  "jobs": [
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/CIERRE_SENSOR_R04_N0_R04"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/CIERRE_SENSOR_R04_N0_R04/RECALCULO_CIERRE_R04_N0.json",
+      "expected_sha256": "97e9392cd63433ce4fcac9c6e7a36b4005cd93a48ae23c341b34a14eb64a715f",
+      "id": "R04_CERRADO",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/exportar_cierre_r04_n0_r04.py",
+      "script_sha256": "06cd3239dac280f522358a81f0889b8596edde97611df5fc603a23aa20bd5772",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_PREFIJO_WORK02_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_PREFIJO_WORK02_N0_R01/RECALCULO_PREFIJO_RESERVA_N0.json",
+      "expected_sha256": "7e0f8667d61608a4905c65b46b05869f2ff51de6379386f110694beb146c6412",
+      "id": "RESERVA_PREFIJO02",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/exportar_reserva_prefijo_completado_n0_r01.py",
+      "script_sha256": "84a44dbf0838b1515c0a37dbd004ab64f530decbdd89e86ec988dd5e066bd215",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/PANEL_HEREDADO_RAW_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/PANEL_HEREDADO_RAW_N0_R01/RECALCULO_PANEL_HEREDADO.json",
+      "expected_sha256": "476302e6c43446052c76ba884401c0e8cb76863db24b1fdafa1ca0632c5199a8",
+      "id": "PANEL_HEREDADO",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/extraer_panel_heredado_apd04_n0_r01.py",
+      "script_sha256": "0551d59549caaef6a215eba4d598ebae54acddb91b1203c139f7d8cfcb791a16",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CERRADOS_N0_R01"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/RECALCULO_CAS_PORTABLE_NIVELES_BREVES_N0_R02.json",
+      "expected_sha256": "ed8a309efbe620a7a88e4400d9aaeeea4fbd5d457dd651834a16cc2ecfdccd00",
+      "id": "FOUR_BRIEF_LEVELS",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CERRADOS_N0_R01/recalcular_niveles_breves_n0_r01.py",
+      "script_sha256": "0b7989db6670304857e97a72721abb5e73df7170bdbebd9ac8a5b260456bca13",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/RECALCULO_CIERRE_RESERVA_N0.json",
+      "expected_sha256": "3e64965c028b60cbef17a65e67cf7d033d850458bcc11bf6b28f2be2dad787fe",
+      "id": "GUARD_90MIN_PRIMARY",
+      "script": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/CODIGO/cerrar_reserva_guard_ro_n0_r01.py",
+      "script_sha256": "a759533a947e935e4e03c30bf3192d38f920e871df3aacd1f41fe06ae3b7d399",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/RECALCULO_CALENDARIO_Y_CONCILIACION_R02.json",
+      "expected_sha256": "4f9e71501073e65c817ae4e441b1a544e7165feb5e7f4842f4c4c6aa39f66e67",
+      "id": "GUARD_90MIN_CALENDAR",
+      "script": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/CODIGO/completar_calendario_reserva_ro_n0_r03.py",
+      "script_sha256": "1bc5e9cff6b8228ac4ed03dfde5a04b029398801d272692949132a31eb06f77b",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_POST10_EVIDENCIA_PORTABLE_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_POST10_EVIDENCIA_PORTABLE_N0_R01/RECALCULO.json",
+      "expected_sha256": "e222471c7e696136052d69eb6cf8ebc479f1ee7a41476c20d1b81ded6601b25e",
+      "id": "WAIT_R03_POST10",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_wait_post10_n0_r01.py",
+      "script_sha256": "58cf236a4ba78702ef0058f79cacf831e5d5b7ce2acecbbb2934b6971c4f22dc",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_PRIMERA_DIVERGENCIA_N0_R01"
+        },
+        "--script",
+        "dossier_primera_divergencia_wait_r03_n0_r01.py",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_PRIMERA_DIVERGENCIA_N0_R01/RECALCULO_GLOBAL.json",
+      "expected_sha256": "dfb47aa99c279a3d47159ed946d7683ac307b9814174d4e9689edf337379176d",
+      "id": "WAIT_R03_FIRST_DIFFERENCE",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_archivado_apd04_n0_r02.py",
+      "script_sha256": "7e672690a02ab7625a1ab0bbfdf14636ded43fc946f7539e5a2c33ede28f8f09",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--evidence",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03/RECALCULO_INDEPENDIENTE.json",
+      "expected_sha256": "6c23c257138529a0b022b33fabc1af26636e8335ae81535b08e21155c684553d",
+      "id": "CONVENTIONAL_48_ARCHIVED",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_referencias_apd04_n0_r01.py",
+      "script_sha256": "89ef896b1789fc73d78d6d623c62d0fcc71a61d88fdc60bbf15701e9dbccf61c",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03/RECALCULO_CIENTIFICO.json",
+      "expected_sha256": "7483fc6ffdddb1b7b19c449e82e6943b65185e6f4a7e11d3aec5e56142d91463",
+      "id": "LATE_VIEWS_3",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03/recalcular_vistas_y_reserva_r03_n0_r01.py",
+      "script_sha256": "b00fcaeed859f2e3219693883f446004d170b203139655e6d8a997b15758adda",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--cas",
+        {
+          "input": "."
+        },
+        "--source-root",
+        {
+          "input": "."
+        },
+        "--source-index",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R03/RUTAS_Y_HASHES.json"
+        },
+        "--comparator",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03/RESULTADOS_Y_RECURSOS.json"
+        },
+        "--json-only",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/COSTOS_POR_ETAPA_N0_R03/COSTOS_POR_ETAPA_APD04.json",
+      "expected_sha256": "1618f9de0dfa53b0c8fe092ec24fc03a1f52bc5eb4aed375f57696ef7b43b877",
+      "id": "COSTS_SELECTED_CLOSED_STAGES",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_costos_por_etapa_apd04_n0_r04.py",
+      "script_sha256": "4a1d928a22c63f1cf2887205750285f836af9a981f167c9403936599d810fcd2",
+      "timeout_seconds": 900
+    }
+  ],
+  "schema": "APD04.CAS.selected_archived_recalculations.N0.R01",
+  "scope": "Archived exact evidence only, no Native, no Full proof, no final reserve closure"
+}

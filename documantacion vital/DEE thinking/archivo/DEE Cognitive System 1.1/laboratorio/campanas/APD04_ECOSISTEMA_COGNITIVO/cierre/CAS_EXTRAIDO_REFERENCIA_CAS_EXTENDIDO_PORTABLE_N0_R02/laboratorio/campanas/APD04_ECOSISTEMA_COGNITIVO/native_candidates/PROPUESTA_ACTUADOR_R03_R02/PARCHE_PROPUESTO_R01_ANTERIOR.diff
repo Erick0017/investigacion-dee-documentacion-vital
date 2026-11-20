@@ -1,0 +1,160 @@
+--- sistema/app/protocolo_apd04.py
++++ sistema/app/protocolo_apd04.py
+@@ -20,7 +20,7 @@
+     if set(row)-allowed or not required<=set(row):raise ValueError('Campos literales APD04; no target, archivo, plan o respuesta en uso')
+     for name in ('lexico','desacoplado','revision','retirar_observados'):
+         if name in row and type(row[name])is not bool:raise ValueError('Booleano explicito: '+name)
+-    if mode=='apd04-actuador' and(type(row['version'])is not str or row['version']not in('R01','R02')):raise ValueError('Codec P0 fijo R01/R02; no decision por caso')
++    if mode=='apd04-actuador' and(type(row['version'])is not str or row['version']not in('R01','R02','R03')):raise ValueError('Codec P0 fijo R01/R02/R03; no decision por caso')
+     if 'texto'in row:
+         forms=('clasifica','equilibra')if mode=='apd04-docencia'else('alfa','beta','gamma','delta','epsilon','zeta','suma','diferencia','agrega','resta','total','quita','compara','recuerda','luma','nara','clasifica','equilibra')
+         if row['texto']not in forms:raise ValueError('Forma literal finita; no respuestas del catalogo')
+--- sistema/capacidades/ecosistema_apd04.py
++++ sistema/capacidades/ecosistema_apd04.py
+@@ -19,9 +19,11 @@
+ KEY='DEE.Cognitive.System.1.1.APD04.ecosystem.R01'
+ VERSION='APD04.shared_workshop.sequential_sources.R01'
+ ACTION_CODECS={'R01':{-1:'USE',0:'INSPECT',1:'INSPECT'},
+-               'R02':{-1:'INSPECT',0:'INSPECT',1:'USE'}}
++               'R02':{-1:'INSPECT',0:'INSPECT',1:'USE'},
++               'R03':{-1:'INSPECT',0:'WAIT',1:'USE'}}
+ SELECT_CODEC=ACTION_CODECS['R01']  # Historical public constant; retained for existing callers.
+ TOOL_CODEC={1:'clasifica',-1:'equilibra'}
++QUALITY_R03='APD04.posteffect_quality.relevant_gain_or_irrelevant_formed_wait.R03.v1'
+ 
+ def save(a,m):a.world.runtime.set_snapshot_metadata(KEY,encode_metadata(m))
+ def get(a):
+@@ -30,6 +32,7 @@
+     m=decode_metadata(entries[KEY])
+     if m['version']!=VERSION:raise ValueError('Otro contrato de taller; no migracion silenciosa')
+     if m.get('action_codec','R01')not in ACTION_CODECS:raise ValueError('Codec de actuacion desconocido; no reparar silenciosamente')
++    if m.get('action_codec','R01')=='R03'and m.get('quality_contract')!=QUALITY_R03:raise ValueError('Contrato posteffect R03 ausente o distinto; no reparar')
+     return m
+ 
+ def validate(a,row):
+@@ -100,19 +103,54 @@
+         'scope':'External environment initialization only. Raw tag and goal tag are independently transduced; criterion is evaluator only. No Native state reset.'}
+ 
+ def state(a):
+-    m=get(a);return {'version':VERSION,'physical':physical(a.world),'sources':len(m['objects']),'cursor_environment':m['cursor'],
++    m=get(a);result={'version':VERSION,'physical':physical(a.world),'sources':len(m['objects']),'cursor_environment':m['cursor'],
+        'world_serial':m['world_serial'],'episode':m['episode'],'counters':m['counters'],'in_progress':m['in_progress'],
+        'action_codec':m.get('action_codec','R01'),'fixed_signed_action_map':dict(ACTION_CODECS[m.get('action_codec','R01')]),
+        'memory_scope':'Cache and cursor belong to simulated environment. Not Native retained numbers or autonomous source-address learning.'}
++    if m.get('action_codec','R01')=='R03':result.update(quality_contract=QUALITY_R03,quality_domain_actuator='closed')
++    return result
+ 
+ def configure_actuator(a,row):
+     """Explicit external P0 transducer preparation; no learned association."""
+     m=get(a);before=m.get('action_codec','R01');version=row['version']
+-    if version not in ACTION_CODECS:raise ValueError('Codec fijo R01/R02')
+-    m['action_codec']=version;save(a,m)
+-    return {'kind':'explicit_prepared_actuator_codec','before':before,'after':version,
++    if version not in ACTION_CODECS:raise ValueError('Codec fijo R01/R02/R03')
++    m['action_codec']=version
++    if version=='R03':
++        m['quality_contract']=QUALITY_R03;m['counters'].setdefault('wait',0);m['counters'].setdefault('quality_success',0)
++    else:m.pop('quality_contract',None)
++    save(a,m)
++    result={'kind':'explicit_prepared_actuator_codec','before':before,'after':version,
+        'fixed_signed_map':dict(ACTION_CODECS[version]),'new_native_ticks_in_operation':0,
+        'scope':'External transduction preparation only. No RAW, clock, source cache, world reset, target or learned-policy edit.'}
++    if version=='R03':result.update(quality_contract=QUALITY_R03,quality_domain_actuator='closed',old_work_gain_still_separate=True)
++    return result
++
++
++def task_env_signature(m):
++    """Exact environmental objects/loads audit copy, never an actor input."""
++    return json.loads(json.dumps({'objects':m['objects'],'loads':m['loads']},sort_keys=True,separators=(',',':')))
++
++
++def formed_native_choice(sign,reader):
++    candidates=reader.get('candidates',[])
++    return type(sign)is int and sign in(-1,0,1) and reader.get('choice')==sign and len(candidates)==1 and candidates[0].get('choice')==sign
++
++
++def posteffect_quality_r03(sign,action,reader,old_gain,tag,goal,before,after,actuator):
++    """Postemission environment score. No strategy/content is returned to Native."""
++    formed=formed_native_choice(sign,reader)
++    if actuator!='closed':
++        return {'contract':QUALITY_R03,'status':'out_of_domain','old_work_gain':bool(old_gain),'new_quality':None,
++            'actuator':actuator,'no_feedback_category_is_defined':True}
++    quality=False
++    if formed:
++        if action=='WAIT':quality=sign==0 and tag!=goal and before==after
++        elif action in('INSPECT','USE'):quality=bool(old_gain)
++    return {'contract':QUALITY_R03,'status':'in_domain','old_work_gain':bool(old_gain),'new_quality':quality,
++        'formed_unique':formed,'formed_native_sign':sign,'transduced_action':action,'actuator':actuator,
++        'tag_auditor_after_effect':tag,'goal_auditor_after_effect':goal,
++        'task_env_before':before,'task_env_after':after,'task_env_unchanged':before==after,
++        'not_an_actor_input':True,'SUCCESS_adds_no_new_positive_reinforcement_port':True}
+ 
+ 
+ def change(a,row):
+@@ -140,18 +178,22 @@
+ 
+ def live(a,count,directory,*,use_lexicon=True,sensor_mode='independent',actuator='closed',feedback='real',decoupled=False,detailed=False):
+     m=get(a);codec_version=m.get('action_codec','R01');action_codec=ACTION_CODECS[codec_version]
++    if codec_version=='R03'and actuator!='closed':return {'kind':'APD04_R03_quality_out_of_domain','out_of_domain':True,'rows':[],'new_native_ticks_in_operation':0,'actuator':actuator,'no_feedback_or_native_answer_substituted':True}
+     before=physical(a.world);rows=[];folder=Path(directory)/'synthetic_workshop';folder.mkdir(parents=True,exist_ok=True)
+     for _ in range(count):
+         m['episode']+=1;ep=m['episode'];obj=m['objects'][m['cursor']]
++        task_before=task_env_signature(m)if codec_version=='R03'else None;quality_witness=None
+         public={'source_id':obj['id'],'tag':obj['tag'],'goal_tag':m['goal_tag'],'word':m['word'],
+            'cached_value':None if obj['observed']is None else obj['observed']['value'],'loads':list(m['loads'])}
+         m['in_progress']={'episode':ep,'tick':int(a.tick)};save(a,m)
+         bit0=obj['tag']if sensor_mode!='zero'else 0;bit1=m['goal_tag']if sensor_mode in('independent','independent_balanced','independent_two_pairs')else bit0 if sensor_mode=='tag_only'else 0
+-        selected={'independent_balanced':balanced_sensor,'independent_two_pairs':two_pair_sensor}.get(sensor_mode,sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];action=action_codec.get(sign)
+-        effect={'action':action,'actuator':actuator,'prepared_action_codec':codec_version,'new_fact':False,'useful':False,'valid_native':sign is not None}
++        selected={'independent_balanced':balanced_sensor,'independent_two_pairs':two_pair_sensor}.get(sensor_mode,sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];actuator_sign=sign if codec_version!='R03'or formed_native_choice(sign,selected['reader'])else None;action=action_codec.get(actuator_sign)
++        effect={'action':action,'actuator':actuator,'prepared_action_codec':codec_version,'new_fact':False,'useful':False,'valid_native':actuator_sign is not None}
+         operation=None;word=None;artifact=None;expected=None
+         if action is None:m['counters']['invalid']+=1
+         elif actuator=='nulled':effect['reason']='post_emission_action_nulled'
++        elif action=='WAIT':
++            m['counters']['wait']+=1;effect['reason']='formed_zero_WAIT_no_task_environment_change'
+         elif action=='INSPECT':
+             previous=obj['observed'];obj['observed']={'value':obj['value'],'version':obj['version']}
+             effect['new_fact']=previous!=obj['observed']
+@@ -186,11 +228,17 @@
+             artifact=folder/('world'+str(m['world_serial'])+'_episode'+str(ep)+'.json')
+             with artifact.open('x',encoding='utf8') as f:json.dump(body,f,ensure_ascii=False,sort_keys=True);f.write('\n')
+         # Evaluation happens after the physical emission and the real local effect.
+-        category='SUCCESS'if effect['useful']else'FAILURE'
++        feedback_success=effect['useful']
++        if codec_version=='R03':
++            quality_witness=posteffect_quality_r03(sign,action,selected['reader'],effect['useful'],obj['tag'],m['goal_tag'],task_before,task_env_signature(m),actuator)
++            effect.update(old_work_gain=effect['useful'],new_quality=quality_witness['new_quality'],quality_contract=QUALITY_R03)
++            feedback_success=quality_witness['new_quality']
++            if feedback_success:m['counters']['quality_success']+=1
++        category='SUCCESS'if feedback_success else'FAILURE'
+         returned=sensor.finish(a,category if not decoupled else ('SUCCESS'if ep%2 else'FAILURE'),mode=feedback)
+         if effect['useful']:m['counters']['useful']+=1
+         m['cursor']=(m['cursor']+1)%len(m['objects']);m['in_progress']=None;save(a,m)
+-        rows.append({'episode':ep,'public_before':public,'raw_sensor_components':[bit0,bit1],'selection':selected,
++        result_row={'episode':ep,'public_before':public,'raw_sensor_components':[bit0,bit1],'selection':selected,
+              'physical_action':action,'word':word,'native_operation':operation,'committed_effect':effect,
+              'auditor_only_after_effect':{'actual_source_value':obj['value'],'source_version':obj['version'],
+                  'observed_version':None if obj['observed']is None else obj['observed']['version'],
+@@ -198,7 +246,9 @@
+                  'criterion':m['criterion_auditor_only'],'not_an_actor_input':True},
+              'feedback':{'category':category,'modality':feedback,'decoupled':decoupled},'native_return':returned,
+              'artifact':None if artifact is None else str(artifact),'expected_class_auditor_only_after_action':expected,
+-             'cursor_rule':'Prepared circular view after any opportunity; Native decides INSPECT/USE, not an arbitrary numeric source address'})
++             'cursor_rule':'Prepared circular view after any opportunity; Native decides INSPECT/USE, not an arbitrary numeric source address'}
++        if quality_witness is not None:result_row['posteffect_quality']=quality_witness
++        rows.append(result_row)
+     return {'kind':VERSION,'before':before,'rows':rows,'after':physical(a.world),'state':state(a),
+         'assistance':'Fixed sequential view, tool pipeline, cadence, codecs and postaction verifier. No target-aware source filter. Not simultaneous full20-input attention, learned planner or free language.'}
+ 
+--- sistema/app/usar_dee.py
++++ sistema/app/usar_dee.py
+@@ -474,7 +474,7 @@
+     eco_teach.add_argument("--docente", choices=("paired", "omitted", "desync"), default="paired")
+     eco_teach.add_argument("--revision", action="store_true")
+     eco_actuator = sub.add_parser("configurar-actuador-ecosistema", help="Preparacion P0 fija; no aprende ni elige por respuesta")
+-    eco_actuator.add_argument("version", choices=("R01", "R02"))
++    eco_actuator.add_argument("version", choices=("R01", "R02", "R03"))
+     eco_r04 = sub.add_parser("admitir-sensor-r04", help="Preparacion P0 explicita de dos puertos; no ensena contenido")
+     eco_sensor = sub.add_parser("calibrar-sensor-ecosistema", help="Entradas elementales literales; no retorno de calidad de tarea")
+     eco_sensor.add_argument("--familia", choices=("R02", "R03", "R04"), required=True)

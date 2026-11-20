@@ -1,0 +1,39 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "CLOSED_FOR_EXECUTION",
+  "life": "APD04_CONTINUABLE_R01",
+  "world_id": "APD04_CONTINUABLE_R01",
+  "initial_snapshot_sha256": "843289fb5a150e4ba23bce37ce6abb0890816125338ad1925c59af2e4c7be4ab",
+  "initial_tick": 639847,
+  "resume_pending_id": "apd04continuable_exact_pending_r01",
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 800,
+  "closing_reserve_seconds": 180,
+  "material_wait_seconds": 30,
+  "result_limit_seconds": 1200,
+  "poll_heartbeat_seconds": 5,
+  "heartbeat_seconds": 30,
+  "supervision_wall_limit_seconds": 2600,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py", "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py", "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/ecosistema_apd04.py", "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py", "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py", "sistema/capacidades/sensor_dos_pares_apd04.py"
+  ],
+  "events": [
+    {"at_seconds": 0, "kind": "command", "request_id": "apd04continuable_r04_admitir_r01", "argv": ["admitir-sensor-r04", "--retorno", "omit"]},
+    {"at_seconds": 10, "kind": "command", "request_id": "apd04continuable_r04_pair00_r01", "argv": ["calibrar-sensor-ecosistema", "--familia", "R04", "00", "--retorno", "omit"]},
+    {"at_seconds": 100, "kind": "command", "request_id": "apd04continuable_r04_pair01_r01", "argv": ["calibrar-sensor-ecosistema", "--familia", "R04", "01", "--retorno", "omit"]},
+    {"at_seconds": 190, "kind": "command", "request_id": "apd04continuable_r04_pair10_r01", "argv": ["calibrar-sensor-ecosistema", "--familia", "R04", "10", "--retorno", "omit"]},
+    {"at_seconds": 280, "kind": "command", "request_id": "apd04continuable_r04_pair11_r01", "argv": ["calibrar-sensor-ecosistema", "--familia", "R04", "11", "--retorno", "omit"]},
+    {"at_seconds": 370, "kind": "material", "request_id": "apd04continuable_r04_environment_r01", "situations": [{"modo": "apd04-cambio", "etiqueta_objetivo": 0, "palabra": "clasifica", "cargas": [7, 3], "mutaciones": [{"fuente": 0, "valor": 18}, {"fuente": 1, "valor": 24}]}], "feedback": "omit"},
+    {"at_seconds": 380, "kind": "command", "request_id": "apd04continuable_r04_work01_r01", "argv": ["ecosistema-vivir", "1", "--sensor", "independent_two_pairs"]},
+    {"at_seconds": 480, "kind": "command", "request_id": "apd04continuable_r04_work02_r01", "argv": ["ecosistema-vivir", "1", "--sensor", "independent_two_pairs"]},
+    {"at_seconds": 580, "kind": "command", "request_id": "apd04continuable_r04_goal1_r01", "argv": ["ecosistema-cambio", "--goal", "1", "--retorno", "omit"]},
+    {"at_seconds": 590, "kind": "command", "request_id": "apd04continuable_r04_work03_r01", "argv": ["ecosistema-vivir", "1", "--sensor", "independent_two_pairs"]},
+    {"at_seconds": 690, "kind": "command", "request_id": "apd04continuable_r04_work04_r01", "argv": ["ecosistema-vivir", "1", "--sensor", "independent_two_pairs"]},
+    {"at_seconds": 770, "kind": "command", "request_id": "apd04continuable_r04_old_panel_r01", "argv": ["panel", "--nuevas", "--memorias", "--retorno", "omit"]}
+  ],
+  "scope": "One prospective P0 sensory candidate on an explicitly imported continuous branch, same fixed historical action reader and unchanged INSPECT/USE codec. Four independent raw-bit pairs without task feedback, then four actual workshop opportunities across a context inversion. No geometric search, target supplied in query, autonomous anatomy or learned contextual selection is assumed. Resume the exact queued ID first, with no new PUT. This is exploration, not the final sixty-minute reserve."
+}

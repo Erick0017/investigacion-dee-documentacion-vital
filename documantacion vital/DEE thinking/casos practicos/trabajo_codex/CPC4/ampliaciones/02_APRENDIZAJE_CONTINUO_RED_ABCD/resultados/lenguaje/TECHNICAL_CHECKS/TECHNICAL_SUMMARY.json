@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "mode": "first_process",
+      "checks": {
+        "restored_actual1434": true,
+        "passive_observation_preserves_RAW_clocks_tick": true,
+        "new_experience_after_restore_presented": true,
+        "new_query_evolved_to1501": true
+      }
+    },
+    {
+      "mode": "second_process",
+      "checks": {
+        "other_process_restored1501": true,
+        "new_question_after_restore_used_native_future": true,
+        "full_RAW_clocks_tick_equal_direct_future": true,
+        "third_query_rejected_without_mutation": true
+      }
+    },
+    {
+      "mode": "guards",
+      "checks": {
+        "paused_query_rejected_before_mutation": true,
+        "paused_snapshot_rejected_without_resume": true,
+        "invalid_word_order_rejected": true,
+        "invalid_tick_rejected": true
+      }
+    }
+  ],
+  "all_technical_checks": true,
+  "scientific_samples_added": 0,
+  "source_sha256": {
+    "src/lenguaje/protocol.py": "4944889fbd0937e471588227c68f4aa6bf0aa03f6b18e0f52db69c868e641f4d",
+    "src/lenguaje/session.py": "f58f85cc360337b88f954b71edfd31e519a26b197ae5aeaea7612fd3a390de5e",
+    "src/lenguaje/validate.py": "4f1c7511fdabfc6321d03471fddb1b08662f39c55c2840c3b34ffe37900458c1"
+  }
+}

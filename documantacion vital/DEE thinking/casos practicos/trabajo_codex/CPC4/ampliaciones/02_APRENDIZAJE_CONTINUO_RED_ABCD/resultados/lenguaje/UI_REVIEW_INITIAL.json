@@ -1,0 +1,74 @@
+{
+  "review_mode": "READ_ONLY_CODE_AND_PASSIVE_NATIVE_LOADS",
+  "new_learning_or_native_advance": false,
+  "source_hashes_at_passive_review": {
+    "src/interactive_worker.py": "3e56c5348fab6138fd1bc01032b6252cc073ffd8d365064f5d12a08ed9a60b13",
+    "demostracion.py": "49f0358c453687e89a06ab0cf8344657bfadd35e82a63d7d803c7d278181aff5",
+    "src/lenguaje/session_safe.py": "83e7c0d231b3928bfe0c087a47a1e756acb5b58b68f4097351ecd6da6426ec2b",
+    "src/lenguaje/ui_review.py": "36ecad35b727fe20417a507de920d140aea7de41119c44fb11fb061c40cdbc9f"
+  },
+  "proofs": {
+    "language1501": {
+      "checkpoint": "resultados/demo/CENTRAL_V3_01/RED_LENGUAJE_T1501.deetsnap",
+      "sha256": "315a68240f3ac80c02cd6d28ce89fd6385f347f6ea1fda58232b66f1bb88775e",
+      "tick": 1501,
+      "loader": "safeGroundedSession",
+      "passive_RAW_clocks_tick_unchanged": true,
+      "physical": {
+        "tick": 1501,
+        "raw_sha256": "3315b30697dfc91e81140048cb929c79049c614de9ab2b3ecca1ec934514e4a1",
+        "clock_sha256": "a7b6cee4c9ad415d9848704b7a047b85e7584a84962ac27c267d01f1b0f4bb5f"
+      },
+      "direction_metadata_present": false
+    },
+    "directions1634": {
+      "checkpoint": "resultados/demo/DIRECCIONES_V3_03/RED_T1634.deetsnap",
+      "sha256": "86c8c30ed94fdb0a0d0202a97b7d38d74b53094121e5ff168c27e1518cf2dabd",
+      "tick": 1634,
+      "loader": "NetworkSessionV3",
+      "passive_RAW_clocks_tick_unchanged": true,
+      "physical": {
+        "tick": 1634,
+        "raw_sha256": "9cef72ec1c4c78e68c26641f6ddd0e215322811e52f0e7778448f627882c77d1",
+        "clock_sha256": "ad6acb811b6e38b5e6d2f4a33090e042718f27502b32afcb361ebce6275462cc"
+      },
+      "direction_metadata_present": true
+    }
+  },
+  "supported_semantics": [
+    "User seed chooses a toroidal translation, not an expected answer.",
+    "New preparation is explicit; curriculum passes the same native object to the experience protocol.",
+    "Language attaches inertly and teaches current physical F7/R3 classes, never metadata-case answers.",
+    "SafeGroundedSession is imported for attach/load; after directions the archived old language view must not resume at stale1529.",
+    "Direction snapshot1634 is loaded as NetworkSessionV3 and observed at its actual current state.",
+    "Scheduled and Applied are distinguished; manual input has explicit modality and receipt.",
+    "Native queries may consume state; supported windows are finite, not unlimited dialogue."
+  ],
+  "findings_reported_to_root": [
+    {
+      "id": "UI_LOAD_TRANSACTION",
+      "severity": "P1",
+      "basis": "Code review of initial root worker: self.language cleared and self.session assigned before safe-loader completion.",
+      "risk": "A rejected candidate snapshot can replace the live MAIN or drop the previous view.",
+      "requested_fix": "Load into candidate local variables and commit all self fields only after full validation.",
+      "dynamic_adversarial_test": "NOT_RUN_HERE; parent owns final UI fix/test"
+    },
+    {
+      "id": "CURRICULUM_WRONG_PHASE_SIDE_EFFECT",
+      "severity": "P2",
+      "basis": "continue_session freezes its output config before checking actual431; initial UI did not check current tick.",
+      "risk": "Repeated wrong-phase curriculum may rewrite the session's configuration before rejecting, although native RAW is unchanged.",
+      "requested_fix": "Validate exact actual431 and fresh output before invoking the helper.",
+      "dynamic_adversarial_test": "NOT_RUN_HERE"
+    },
+    {
+      "id": "PUBLIC_ENGINE_IDENTITY",
+      "severity": "P2_SCOPE",
+      "basis": "Demo CLI accepts --python while initial worker has no local version/PYD assertion; campaign-level identity was verified separately.",
+      "risk": "A manually selected different interpreter should not silently be presented as official4.",
+      "requested_fix": "At worker startup validate version4.0.0/kernel27/officialPYD hash or explicitly reject another engine.",
+      "dynamic_adversarial_test": "NOT_RUN_HERE"
+    }
+  ],
+  "followup": "Root may amend UI only; frozen scientific sources and32measured trajectories remain unchanged."
+}

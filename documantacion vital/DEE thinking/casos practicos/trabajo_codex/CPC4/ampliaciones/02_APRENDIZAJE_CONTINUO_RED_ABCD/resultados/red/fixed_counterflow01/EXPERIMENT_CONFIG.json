@@ -1,0 +1,129 @@
+{
+  "frozen_utc": "2026-10-17T06:14:24.899146+00:00",
+  "source_sha256": {
+    "recipe_v3.py": "4837b0e705dd56a3522dd4234349f2e518fab67c680e8ecf14e87ad66a36be43",
+    "common_helpers.py": "cba98d71498941b949e749dcda587357b421740ecf0ccc414f44c751820c2aeb",
+    "dual_session.py": "5beaa006c2a292d48e94ffffc3b65159810c621acc83790361c95b41e1aef3a6",
+    "dual_habitat.py": "d594c8c8c6f031889ad8d1912b8ce73867af92a0eceadb775da25a2a9abd1198",
+    "residual_diagnostic.py": "9d575dc0df992009ab8526c69e9c93ff11ffd2e4f78d3566ffd461e526ca4f45",
+    "regulated_session.py": "55c89e692fe6165c88146d5cea6171b5cfebd6899df79d60a94d6fe012ce265a",
+    "regulated_habitat.py": "dd6b74803145fecb6b87f25d8ad0d12bd6a687d9124bba42f64ed897927332bd",
+    "regulated_experiment.py": "b5a8b865489755b4cb95f90e2f2337515e956faf517aae6f5ebcf8020c13f6d9"
+  },
+  "source_mechanism": "resultados\\red\\residual425_diagnostic01\\MEASUREMENTS.json",
+  "source_mechanism_sha256": "01b8b894b5ccfacdfbada930fd5ab028c30aee10ba32b0af85ca7afd8d52fda8",
+  "cases": [
+    {
+      "id": "FILTER_FLAT",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "neutralizer": "counterflow",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "NO_FILTER_FLAT",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "neutralizer": "none",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "SHAM_ZERO_FLAT",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "neutralizer": "sham",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "FILTER_N",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "neutralizer": "counterflow",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "FILTER_BENIGN_C_MINUS",
+      "roles": true,
+      "A_history": -1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "neutralizer": "counterflow",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "FILTER_BENIGN_C_PLUS",
+      "roles": true,
+      "A_history": -1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "neutralizer": "counterflow",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "RESERVED_FILTER_FLAT",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "neutralizer": "counterflow",
+      "translation": [
+        37,
+        9,
+        53
+      ]
+    }
+  ],
+  "hypothesis": "A zero+Z carrier from R-5Z at290 meets unused5-Z atR-2Z293. The sum5dir0 has no neighbors and disappears294. If D already consumed the useful relay, zero continues alone and should not change D-to-B89xy.",
+  "modality": "Fixed physical regulation with experience protocol, not learned regulation or a diagnostic MAIN deletion",
+  "selection": "Run FILTER_FLAT once. If Native outputs or admissions do not support its intended profile, stop and preserve. No geometry/timing/decoder search. Otherwise run6 frozen contrasts/reserve exactly once.",
+  "evaluation_only": {
+    "FILTER_FLAT": 5,
+    "NO_FILTER_FLAT": 4,
+    "SHAM_ZERO_FLAT": 4,
+    "FILTER_N": 5,
+    "FILTER_BENIGN_C_MINUS": 6,
+    "FILTER_BENIGN_C_PLUS": 6,
+    "RESERVED_FILTER_FLAT": 5
+  },
+  "controls": "Both physical interfaces are preT0 in every condition. None omits only the counterflow packet; sham supplies load0 with same direction/time on a declared displaced route. The sham is measured, not presumed irrelevant.",
+  "resource_bound": "Seven fresh finite preparations at most; one one-site diagnostic was already preserved separately. No fourth alternative or parameter search."
+}

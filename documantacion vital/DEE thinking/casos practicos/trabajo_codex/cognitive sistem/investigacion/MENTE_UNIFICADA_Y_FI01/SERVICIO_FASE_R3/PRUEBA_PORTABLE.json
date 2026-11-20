@@ -1,0 +1,70 @@
+{
+  "DEE_imports": false,
+  "all_byte_identical": true,
+  "checks": [
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/PREPARACION_R3.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/RECALCULO_PREPARACION_R3.json",
+      "reference_sha256": "147113527c204002d631300e0e39c3a9a5ea12319ddd4b35d996f99fb3ffd6b2",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_preparacion_r3.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"checks\": 14}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/FASE_R3.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/RECALCULO_FASE_R3.json",
+      "reference_sha256": "99e9c5d11a00c36e09ed660f729a81768c93eecf8b22da79cdc00285bc6711a8",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_ensayo_fase_r3.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"RAW\": 4774, \"complete_uint64\": 1203052, \"workers\": {\"actual_executions\": 251, \"accepted\": 125, \"rejected\": 126, \"transaction_commits\": 18}}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/TIEMPO_FASE_R3.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/RECALCULO_TIEMPO_FASE_R3.json",
+      "reference_sha256": "69bbf665d4a35af24422ea0909edbabb477e90761e8bd99236041770a7333d48",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_tiempo_fase_r3.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"unpaused_seconds\": 3684.000645800042}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/PANELES_Y_FUNCIONES_R3.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/PANELES_Y_FUNCIONES.json",
+      "reference_sha256": "1911f2c9a3ea60e1601d3a17c62a03fbd6a609e4fba215e6197b7e03d13e56c4",
+      "returncode": 0,
+      "script": "RECALCULO/resumir_funciones_fase_r3.py",
+      "stderr": "",
+      "stdout": "{\"regimes\": [{\"regime\": 1, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 4, \"raw128_matches_frozen_test\": 4}, {\"regime\": 2, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 4, \"raw128_matches_frozen_test\": 4}, {\"regime\": 3, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 4, \"raw128_matches_frozen_test\": 4}], \"teaching\": [{\"id\": \"fi60r3_00269\", \"status\": \"completed\", \"before_tick\": 88074, \"after_tick\": 88108, \"context\": \"beta\", \"signal\": -1, \"requests\": 3, \"admitted\": 3, \"hub\": {\"active\": true, \"clock\": \"88108\", \"direction\": [0, 0, -1], \"raw\": \"2233792978613174273\", \"s_reg\": 1761, \"semantic\": 1, \"site\": [33, 36, 33], \"state\": 1, \"tick\": 88108}, \"scope\": \"Explicit operator teaching; not autonomous consequence-policy learning.\"}], \"individual_work\": {\"nominal_opportunities\": 217, \"actual_executions\": 215, \"useful_under_declared_environmental_law\": 89, \"not_useful_under_declared_environmental_law\": 126, \"native_choices\": {\"-1\": 215}}}\n"
+    }
+  ],
+  "new_native_ticks": 0,
+  "schema": "DEE.unified.R3.portable_stage.v1",
+  "scope": "Four archived stdlib calculations from a separate path. No native replay, policy training or claim of independent physical replication.",
+  "temporary_copy": "C:\\Users\\Erik\\AppData\\Local\\Temp\\MUFI-phase-R3-portable-jfqmefgi\\SERVICIO_FASE_R3"
+}

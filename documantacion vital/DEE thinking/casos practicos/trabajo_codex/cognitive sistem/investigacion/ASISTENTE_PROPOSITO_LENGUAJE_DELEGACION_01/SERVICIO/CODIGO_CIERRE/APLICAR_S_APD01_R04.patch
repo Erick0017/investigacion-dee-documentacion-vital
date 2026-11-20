@@ -1,0 +1,33 @@
+--- a/sistema/app/cola_local.py
++++ b/sistema/app/cola_local.py
+@@ -32,6 +32,9 @@
+             raise ValueError('Declared actuator/return modes only.')
+         allowed={'contexto','modo','senal','aceptar_consumo','dominio','valores','lado','operacion_memoria','valor','componentes'}
+         for row in rows:
++            if row.get('modo')=='apd-conteo':
++                if set(row)!={'modo','presencias'}or not isinstance(row['presencias'],list)or len(row['presencias'])not in(2,3)or any(type(v)is not int or v not in(0,1)for v in row['presencias']):raise ValueError('APD count receives exactly two or three independent literal presence integers0/1, not booleans, dose totals or evaluator answers.')
++                continue
+             if row.get('modo')=='apd-ambiente':
+                 if set(row)!={'modo','configuracion'}or not isinstance(row['configuracion'],dict)or set(row['configuracion'])!={'precios','demora','disponibilidad','presupuesto'}:raise ValueError('APD environment requires exactly declared prices/delay/availability/budget, never a route or evaluator answer.')
+                 cfg=row['configuracion']
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -68,13 +68,16 @@
+         for row in payload['situaciones']:
+             mode=row.get('modo','usar')
+             if self.backend=='mente_unificada':
+-                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente'):raise ValueError('Operation outside declared unified backend.')
+-                if mode in('apd','apd-docencia','apd-ambiente'):
++                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente','apd-conteo'):raise ValueError('Operation outside declared unified backend.')
++                if mode in('apd','apd-docencia','apd-ambiente','apd-conteo'):
+                     # Passive preparation/domain check only. The literal word
+                     # and operands are forwarded unchanged by session; no host
+                     # operation, useful route or correct result is selected.
+                     from capacidades import asistente_proposito_01 as apd
+                     apd.state(self.a)
++                    if mode=='apd-conteo':
++                        from capacidades import percepcion_cruda_fi01 as pc
++                        if pc.get(self.a).get('level')!=128:raise ValueError('Count requires the already admitted128-component frontend; no automatic preparation or level switch.')
+                     continue
+                 if mode=='crudos':
+                     from capacidades import percepcion_cruda_fi01 as pc

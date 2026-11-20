@@ -1,0 +1,115 @@
+{
+  "DEE_imports": false,
+  "all_byte_identical": true,
+  "checks": [
+    {
+      "args": [
+        "--primario",
+        "EVIDENCIA/PILOTO_R01/PILOTO.json.gz",
+        "--salida",
+        "RECALCULADO/PILOTO.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/PILOTO_R01/RECALCULO_PILOTO.json",
+      "reference_sha256": "e6c00f6808fd2538864a2eba7114961b29f1c3776e58c04c3e30000ffebff8bb",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_piloto.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"idle_ticks\": 9, \"next_process_ticks\": 18, \"receipts\": {\"requested\": 14, \"applied\": 14}}\n"
+    },
+    {
+      "args": [
+        "--primario",
+        "EVIDENCIA/EMPAREJADO_R03/EMPAREJADO.json.gz",
+        "--salida",
+        "RECALCULADO/EMPAREJADO.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/EMPAREJADO_R03/RECALCULO_EMPAREJADO.json",
+      "reference_sha256": "ff850cd96055d0dfa5a416b1f02e1c851e4f958b710f4f77045121c3a9c839aa",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_emparejado.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"native_receipts\": {\"requested\": 14, \"applied\": 14}, \"next_process_idle_ticks\": 16}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/SERVICIO_A.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/RECALCULO_SERVICIO_A.json",
+      "reference_sha256": "63de3c0893c9267575dfbd8a1fe2d4172ebe2b65b9270d666a36b08d32a535dc",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_servicio_a.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"RAW\": 45, \"receipts\": {\"requested\": 30, \"applied\": 30}, \"workers\": [{\"request_id\": \"mu_a50_work1\", \"native_choice\": -1, \"actual_output_bytes\": 32, \"accepted\": true, \"public_values\": [3, 11], \"no_result_reexecution\": true}, {\"request_id\": \"mu_a50_work2\", \"native_choice\": -1, \"actual_output_bytes\": 32, \"accepted\": true, \"public_values\": [8, 19], \"no_result_reexecution\": true}]}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/INTERRUPCION_REAL_R09",
+        "--salida",
+        "RECALCULADO/INTERRUPCION.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/INTERRUPCION_REAL_R09/RECALCULO_INTERRUPCION.json",
+      "reference_sha256": "9f3f76ebf6b70413542ff51a17cfb612f03f3f7166189ae0a2fa4659584b9fa1",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_interrupcion.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"complete_uint64\": 601526}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/SERVICIO_60MIN.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/RECALCULO_60MIN.json",
+      "reference_sha256": "aaecd6b3c75e38e039a94abd8fc4f0c0457aedbb303e26c902447abcc30d498b",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_ensayo_60min.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"RAW\": 4778, \"complete_uint64\": 1203052, \"workers\": {\"actual_executions\": 252, \"accepted\": 125, \"rejected\": 127, \"transaction_commits\": 18}}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/TIEMPO_TOTAL.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/RECALCULO_TIEMPO_TOTAL.json",
+      "reference_sha256": "f3fa3f84acbde9c7f932d226bf9a939289cbfadd21c1539ff31a1bcf47d0fd30",
+      "returncode": 0,
+      "script": "RECALCULO/recalcular_tiempo_suplementario.py",
+      "stderr": "",
+      "stdout": "{\"issues\": [], \"combined_active_seconds\": 3637.8004496999984}\n"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/PANELES_Y_FUNCIONES.json"
+      ],
+      "byte_identical": true,
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/PANELES_Y_FUNCIONES.json",
+      "reference_sha256": "e359b352ba95134283041b94e573e4abba3f49294bcd1b8f3789fbef9a8a48aa",
+      "returncode": 0,
+      "script": "RECALCULO/resumir_funciones_servicio.py",
+      "stderr": "",
+      "stdout": "{\"regimes\": [{\"regime\": 1, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 4, \"raw128_matches_frozen_test\": 4}, {\"regime\": 2, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 4, \"raw128_matches_frozen_test\": 4}, {\"regime\": 3, \"scheduled_opportunities\": 160, \"memory_uses_including_chain_starts\": 40, \"memory_unique_signs\": 40, \"memory_matches_declared_history\": 40, \"raw128_requests\": 4, \"raw128_unique_signs\": 2, \"raw128_matches_frozen_test\": 2}], \"teaching\": [{\"id\": \"fi60_00269\", \"status\": \"completed\", \"before_tick\": 52465, \"after_tick\": 52531, \"context\": \"beta\", \"signal\": 1, \"requests\": 3, \"admitted\": 3, \"hub\": {\"active\": true, \"clock\": \"52531\", \"direction\": [0, 0, 1], \"raw\": \"1224984536073371649\", \"s_reg\": 1266, \"semantic\": 1, \"site\": [33, 36, 33], \"state\": 1, \"tick\": 52531}, \"scope\": \"Explicit operator teaching; not autonomous consequence-policy learning.\"}], \"individual_work\": {\"nominal_opportunities\": 217, \"actual_executions\": 216, \"useful_under_declared_environmental_law\": 89, \"not_useful_under_declared_environmental_law\": 127, \"native_choices\": {\"-1\": 216}}}\n"
+    }
+  ],
+  "new_native_ticks": 0,
+  "schema": "DEE.unified.service.portable_staging.v1",
+  "scope": "Separate-path archived arithmetic; code inspection confirms stdlib only. Final combined audit adds its no-DEE/no-network/history-access guard. Not native reproduction or a second computer.",
+  "temporary_copy": "C:\\Users\\Erik\\AppData\\Local\\Temp\\MUFI-service-portable-p3m6i9p7\\SERVICIO"
+}

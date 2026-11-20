@@ -1,0 +1,41 @@
+--- a/sistema/app/cola_local.py
++++ b/sistema/app/cola_local.py
+@@ -32,6 +32,9 @@
+             raise ValueError('Declared actuator/return modes only.')
+         allowed={'contexto','modo','senal','aceptar_consumo','dominio','valores','lado','operacion_memoria','valor','componentes'}
+         for row in rows:
++            if row.get('modo')=='apd-ruta-docencia':
++                if set(row)!={'modo','lado'}or row['lado']not in('A','B'):raise ValueError('Explicit route teaching requires exactly the declared material sideA/B, never a target, learned choice or hidden evaluation correction.')
++                continue
+             if row.get('modo')=='apd-componer':
+                 if set(row)!={'modo','formas','datos'}:raise ValueError('Assisted APD composition receives only literal forms and public data, never a plan, route or answer.')
+                 forms=row['formas'];values=row['datos']
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -55,7 +55,7 @@
+         memory=self.capability if self.backend=='ma02'else self.capability.ma
+         enabled=memory.get(self.a).get('enabled_contexts',list(memory.BASE_TOKENS))
+         if self.backend=='mente_unificada':
+-            preparation=[row for row in payload['situaciones']if row.get('modo')in('apd-docencia','apd-ambiente')]
++            preparation=[row for row in payload['situaciones']if row.get('modo')in('apd-docencia','apd-ambiente','apd-ruta-docencia')]
+             if preparation and len(payload['situaciones'])!=1:raise ValueError('APD teaching/environment configuration are explicit separate requests, never hidden fields or mixed evaluation rows.')
+             stages=[row for row in payload['situaciones']if row.get('modo')in('cadena-iniciar','cadena-finalizar')]
+             if stages:
+@@ -68,14 +68,14 @@
+         for row in payload['situaciones']:
+             mode=row.get('modo','usar')
+             if self.backend=='mente_unificada':
+-                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer'):raise ValueError('Operation outside declared unified backend.')
+-                if mode in('apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer'):
++                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer','apd-ruta-docencia'):raise ValueError('Operation outside declared unified backend.')
++                if mode in('apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer','apd-ruta-docencia'):
+                     # Passive preparation/domain check only. The literal word
+                     # and operands are forwarded unchanged by session; no host
+                     # operation, useful route or correct result is selected.
+                     from capacidades import asistente_proposito_01 as apd
+                     apd.state(self.a)
+-                    if mode in('apd','apd-docencia','apd-componer','apd-ambiente'):
++                    if mode in('apd','apd-docencia','apd-componer','apd-ambiente','apd-ruta-docencia'):
+                         validator=getattr(apd,'validate_literal',None)
+                         if not callable(validator):raise ValueError('Declared APD literal-admission preflight is absent; no material request or tool action submitted.')
+                         validator(self.a,row)

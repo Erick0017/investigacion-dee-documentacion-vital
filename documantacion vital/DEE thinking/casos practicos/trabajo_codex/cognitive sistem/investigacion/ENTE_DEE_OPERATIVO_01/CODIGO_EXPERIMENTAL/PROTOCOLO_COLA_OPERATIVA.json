@@ -1,0 +1,56 @@
+{
+  "schema": "EO01.queue_service.prospective.v1",
+  "before_any_new_queue_ticks": true,
+  "reason": "Make the existing CF01 work-queue modality use the validated actual-external-consequence core, not old native j0 feedback. Thin reuse of same manager/body/readers, not another architecture or a solver.",
+  "main": "EO01_MAIN",
+  "prefix_tick": 113861,
+  "world": {
+    "reference": 12,
+    "reset": "External fixture calibration changes10→12; DEE never reset",
+    "jobs": [
+      [
+        3,
+        15
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        9,
+        23
+      ],
+      [
+        12,
+        24
+      ],
+      [
+        16,
+        31
+      ]
+    ],
+    "law": "Current raw job remains pending until actual executed action passes its gate. Then environment advances FIFO cursor. No next correct command or target is provided to native input."
+  },
+  "schedule": "One fixed R02-core opportunity per attempt. New raw job supplied only after prior actual completion; repeats are environmental, not native initiative.",
+  "native_learning": "Feedback describes only actual post-action contact/pose; fields never written byhost. Native plasticity remains active.",
+  "fixed_limits": {
+    "main_attempts": 12,
+    "control_without_return_attempts": 12
+  },
+  "controls": "Exact complete fork before queue and same external initial calibration/jobs/resources; only feedback omit differs. No rollback/import of controls.",
+  "metrics": [
+    "requested jobs",
+    "attempts",
+    "first attempt completions",
+    "completed jobs",
+    "native valid/silence/conflict",
+    "actually executed useful/incorrect actions",
+    "inputs requested/applied/rejected/pending",
+    "queue remainder"
+  ],
+  "no_reclassification": "Old reserves5/8,6/8,5/8 and social4/6x3 stay first-attempt results. Queue completion with retries is a separate operational capability."
+}

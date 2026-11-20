@@ -1,0 +1,27 @@
+--- a/sistema/app/cola_local.py
++++ b/sistema/app/cola_local.py
+@@ -44,10 +44,10 @@
+             if row.get('modo')=='apd-ambiente':
+                 if set(row)!={'modo','configuracion'}or not isinstance(row['configuracion'],dict)or set(row['configuracion'])!={'precios','demora','disponibilidad','presupuesto'}:raise ValueError('APD environment requires exactly declared prices/delay/availability/budget, never a route or evaluator answer.')
+                 cfg=row['configuracion']
+-                for field in('precios','demora'):
+-                    if not isinstance(cfg[field],list)or len(cfg[field])!=2 or any(type(v)is not int or not 0<=v<=4096 for v in cfg[field]):raise ValueError('Native/external prices and DEE-tick delays require two integers0..4096.')
++                for field,maximum in(('precios',28),('demora',4096)):
++                    if not isinstance(cfg[field],list)or len(cfg[field])!=2 or any(type(v)is not int or not 0<=v<=maximum for v in cfg[field]):raise ValueError('Native/external prices0..28 and DEE-tick delays0..4096 require two exact integers.')
+                 if not isinstance(cfg['disponibilidad'],list)or len(cfg['disponibilidad'])!=2 or any(type(v)is not bool for v in cfg['disponibilidad']):raise ValueError('Native/external availability requires two explicit booleans.')
+-                if type(cfg['presupuesto'])is not int or not 0<=cfg['presupuesto']<=4096:raise ValueError('Modelled environmental budget must be integer0..4096, not native energy.')
++                if type(cfg['presupuesto'])is not int or cfg['presupuesto']!=2:raise ValueError('This declared common-return profile has fixed modelled budget2; not native energy or an arbitrary learnt threshold.')
+                 continue
+             if row.get('modo')=='apd-docencia':
+                 if set(row)-{'modo','texto','senal','revision'}or not{'modo','texto','senal'}<=set(row):raise ValueError('Explicit APD teaching is separate from use: literal form, signed teacher signal and optional revision flag.')
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -75,7 +75,7 @@
+                     # operation, useful route or correct result is selected.
+                     from capacidades import asistente_proposito_01 as apd
+                     apd.state(self.a)
+-                    if mode in('apd','apd-docencia','apd-componer'):
++                    if mode in('apd','apd-docencia','apd-componer','apd-ambiente'):
+                         validator=getattr(apd,'validate_literal',None)
+                         if not callable(validator):raise ValueError('Declared APD literal-admission preflight is absent; no material request or tool action submitted.')
+                         validator(self.a,row)

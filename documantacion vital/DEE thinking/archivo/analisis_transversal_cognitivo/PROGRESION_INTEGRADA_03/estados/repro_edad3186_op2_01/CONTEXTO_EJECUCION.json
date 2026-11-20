@@ -1,0 +1,214 @@
+{
+  "schema": "DEE.reproduction.explicit_diagnostic.v1",
+  "life": "ECI02_PI03_REPRO_EDAD3186_OP2_01",
+  "recipe": "pi03_tarea_edad3186_OP2",
+  "variant": "edad_igualada",
+  "prefix": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\materiales\\PI03_CANDIDATA_T768317",
+  "prefix_manifest_sha256": "0c8992b417c142357907881260950d13217bc47e45a24fde8a00f40a643ac6b5",
+  "system": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_edad3186_op2_01\\sistema",
+  "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\motor\\python313\\python.exe",
+  "product": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0",
+  "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_edad3186_op2_01",
+  "created_utc": "2026-11-09T03:45:49.742266+00:00",
+  "recipe_sha256": "da067434687ef67fac99cf367ada79912040cdb2ab28aef51300747b75214202",
+  "fixed_recipe": {
+    "schema": "DEE.reproduction.recipe.v1",
+    "id": "pi03_tarea_edad3186_OP2",
+    "title": "Control de edad3186ticks sin usos anteriores, seguido de la misma consulta fija de tarea",
+    "revision": "PI03_OP2_EDAD3186_CONGELADA",
+    "prefix": "PI03_CANDIDATA_T768317",
+    "code_capsule_key": "PI03_R04_OP2",
+    "reproduction_enabled": true,
+    "variants": {
+      "edad_igualada": {
+        "batches": [
+          [
+            {
+              "label": "before",
+              "literal": {
+                "modo": "eci01-pi03-tarea-estado"
+              },
+              "feedback": "omit"
+            },
+            {
+              "label": "age_only",
+              "literal": {
+                "modo": "eci01-pi02-tiempo",
+                "ticks": 3186
+              },
+              "feedback": "omit",
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "after_tick"
+              ],
+              "expected": 771503
+            },
+            {
+              "label": "before_query",
+              "literal": {
+                "modo": "eci01-pi03-tarea-estado"
+              },
+              "feedback": "omit"
+            },
+            {
+              "label": "next",
+              "literal": {
+                "modo": "eci01-pi03-tarea-oportunidad"
+              },
+              "feedback": "omit",
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ],
+              "receipt_paths": [
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "requests"
+                ]
+              ],
+              "stop_on_NULL": true
+            },
+            {
+              "label": "after",
+              "literal": {
+                "modo": "eci01-pi03-tarea-estado"
+              },
+              "feedback": "omit"
+            }
+          ]
+        ],
+        "final_checks": [
+          {
+            "label": "actual_useful_product",
+            "operation": "value",
+            "values": [
+              {
+                "step": "next",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "useful_product"
+                ]
+              }
+            ],
+            "expected": true
+          },
+          {
+            "label": "one_actual_opportunity",
+            "operation": "difference",
+            "values": [
+              {
+                "step": "after",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "progress",
+                  "opportunity"
+                ]
+              },
+              {
+                "step": "before",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "progress",
+                  "opportunity"
+                ]
+              }
+            ],
+            "expected": 1
+          },
+          {
+            "label": "remaining_original_stock",
+            "operation": "value",
+            "values": [
+              {
+                "step": "after",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "remaining_opportunities"
+                ]
+              }
+            ],
+            "expected": 1
+          }
+        ]
+      }
+    },
+    "modalities": {
+      "B": "Direct Native use from real learned candidate cut768317",
+      "C": "Not acquisition or reset",
+      "D": "Explicit diagnostic descendant; principal not changed",
+      "E": "Directory scaffold is external import support, not acquired repair or recovered content"
+    },
+    "assistance": "Root predefines3186generic ticks from the same768317full prefix, with the legacy bridge already paused. No old panel, H/O opportunities, word/memory/arithmetic queries or new supply are performed. The same next-task literal and fixed Native reader then run;0remains material andNULLis preserved.",
+    "limitations": "Age/tick are matched to the composite pre-task point771503; material exposure intentionally differs and this is not an equal-dose sham. A failed useful-effect criterion orNULLis legitimate evidence, not an invitation to change reader/phase. OP2 only restores missing empty external directories; no memory/content correction is made.",
+    "source_cut": {
+      "life": "ECI02_PI03_MAIN",
+      "N": 67,
+      "tick": 768317,
+      "resource_count": 21,
+      "consumed": 19,
+      "products": 15,
+      "rejections": 4,
+      "remaining": 2,
+      "not_adopted_by_this_recipe": true
+    },
+    "sources": [
+      "codigo_preservado/PI03_R04_OP2/SISTEMA_CODIGO.json",
+      "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+    ],
+    "verification": {
+      "state": "PREPARED_PENDING_NATIVE_CONTROL",
+      "new_native_ticks_by_preparation": 0,
+      "not_a_principal_promotion": true
+    },
+    "hypothesis_test": "Does the fixed next-task access fail after equal autonomous Native ageing alone, or specifically after the composite functional-input history? This control does not itself identify every microcause.",
+    "comparison_source": {
+      "recipe": "pi03_panel_integrado_OP1",
+      "initial_tick": 768317,
+      "pre_task_tick": 771503,
+      "matched_delta": 3186,
+      "filesystem_difference": "OP2externaldirectoryfix; the prior missing-directory failure is kept separately",
+      "same_readers": true
+    }
+  },
+  "source_code_manifest_sha256": "353ce3e4b6b832d444320f7e9d486165bd508e7ff7e80537172dea7f43f480bb",
+  "source_code_capsule_key": "PI03_R04_OP2",
+  "tool_sources": [
+    {
+      "file": "reproducir.py",
+      "sha256": "063f949a26f8ea7fa6e19858d68cdb70a77250c8dd127a8f061dfdc9fe4013d5"
+    },
+    {
+      "file": "importar_diagnostico.py",
+      "sha256": "591c4a16ec2c498c68f4866ec0cc62c420fe87956fbc606d1e5a67473e348ce3"
+    },
+    {
+      "file": "ejecutar_diagnostico.py",
+      "sha256": "e906f9d98fc313171e2b6b144810686c4d1de6f6ccfdaa64153404ebae2ced01"
+    },
+    {
+      "file": "propietario_diagnostico.py",
+      "sha256": "e7053088b6492d9d10abe1c861da560de1fb1f4a9d00468661df53782523e52b"
+    },
+    {
+      "file": "observador_pasivo.py",
+      "sha256": "dbb2a5e15d70c64112d36505197f4aebf6ff7d4092972923e17cd60c10a1c873"
+    }
+  ],
+  "never_select_or_promote": true,
+  "evaluation_expected_values_never_passed_to_world": true
+}

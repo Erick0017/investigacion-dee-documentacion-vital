@@ -1,0 +1,183 @@
+{
+  "schema": "DEE.reproduction.explicit_diagnostic.v1",
+  "life": "ECI02_PI03_REPRO_DIRECTA_OP2_02",
+  "recipe": "pi03_tarea_directa_OP2",
+  "variant": "una_oportunidad",
+  "prefix": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\materiales\\PI03_CANDIDATA_T768317",
+  "prefix_manifest_sha256": "0c8992b417c142357907881260950d13217bc47e45a24fde8a00f40a643ac6b5",
+  "system": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_directa_op2_02\\sistema",
+  "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\motor\\python313\\python.exe",
+  "product": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0",
+  "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_directa_op2_02",
+  "created_utc": "2026-11-09T03:42:24.159868+00:00",
+  "recipe_sha256": "131534fa77749cea6e1c867f25259dc14fda076fc616051ec94cb6fdb7abdbec",
+  "fixed_recipe": {
+    "schema": "DEE.reproduction.recipe.v1",
+    "id": "pi03_tarea_directa_OP2",
+    "title": "Uso directo posterior desde768317 con estructura externa importada OP2",
+    "revision": "PI03_OP2_DIRECTA_CONGELADA",
+    "prefix": "PI03_CANDIDATA_T768317",
+    "code_capsule_key": "PI03_R04_OP2",
+    "reproduction_enabled": true,
+    "variants": {
+      "una_oportunidad": {
+        "batches": [
+          [
+            {
+              "label": "before",
+              "literal": {
+                "modo": "eci01-pi03-tarea-estado"
+              },
+              "feedback": "omit"
+            },
+            {
+              "label": "next",
+              "literal": {
+                "modo": "eci01-pi03-tarea-oportunidad"
+              },
+              "feedback": "omit",
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ],
+              "receipt_paths": [
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "requests"
+                ]
+              ],
+              "stop_on_NULL": true
+            },
+            {
+              "label": "after",
+              "literal": {
+                "modo": "eci01-pi03-tarea-estado"
+              },
+              "feedback": "omit"
+            }
+          ]
+        ],
+        "final_checks": [
+          {
+            "label": "actual_useful_product",
+            "operation": "value",
+            "values": [
+              {
+                "step": "next",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "useful_product"
+                ]
+              }
+            ],
+            "expected": true
+          },
+          {
+            "label": "one_actual_opportunity",
+            "operation": "difference",
+            "values": [
+              {
+                "step": "after",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "progress",
+                  "opportunity"
+                ]
+              },
+              {
+                "step": "before",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "progress",
+                  "opportunity"
+                ]
+              }
+            ],
+            "expected": 1
+          },
+          {
+            "label": "remaining_original_stock",
+            "operation": "value",
+            "values": [
+              {
+                "step": "after",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "remaining_opportunities"
+                ]
+              }
+            ],
+            "expected": 1
+          }
+        ]
+      }
+    },
+    "modalities": {
+      "B": "Direct Native use from real learned candidate cut768317",
+      "C": "Not acquisition or reset",
+      "D": "Explicit diagnostic descendant; principal not changed",
+      "E": "Directory scaffold is external import support, not acquired repair or recovered content"
+    },
+    "assistance": "The operator offers one fixed next opportunity; current finite21resource device and learned banks are inherited. OP2 recreates only missing known empty scaffold directories before Native opens. No old panel, H/O interval, new resource supply, reader change or expected motor is introduced.",
+    "limitations": "Predetermined useful-effect criterion may fail. A fixed-reader NULL is preserved through its real consequence and generic return, then stops; it is not converted to zero or repaired. Compare later with Root’s separately frozen age/exposure controls; this direct case alone does not explain OP1 interleaving failure.",
+    "source_cut": {
+      "life": "ECI02_PI03_MAIN",
+      "N": 67,
+      "tick": 768317,
+      "resource_count": 21,
+      "consumed": 19,
+      "products": 15,
+      "rejections": 4,
+      "remaining": 2,
+      "not_adopted_by_this_recipe": true
+    },
+    "sources": [
+      "codigo_preservado/PI03_R04_OP2/SISTEMA_CODIGO.json",
+      "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+    ],
+    "verification": {
+      "state": "PREPARED_PENDING_NATIVE_DIAGNOSTIC",
+      "no_Native_execution_by_builder": true,
+      "no_automatic_promotion": true
+    }
+  },
+  "source_code_manifest_sha256": "353ce3e4b6b832d444320f7e9d486165bd508e7ff7e80537172dea7f43f480bb",
+  "source_code_capsule_key": "PI03_R04_OP2",
+  "tool_sources": [
+    {
+      "file": "reproducir.py",
+      "sha256": "063f949a26f8ea7fa6e19858d68cdb70a77250c8dd127a8f061dfdc9fe4013d5"
+    },
+    {
+      "file": "importar_diagnostico.py",
+      "sha256": "591c4a16ec2c498c68f4866ec0cc62c420fe87956fbc606d1e5a67473e348ce3"
+    },
+    {
+      "file": "ejecutar_diagnostico.py",
+      "sha256": "e906f9d98fc313171e2b6b144810686c4d1de6f6ccfdaa64153404ebae2ced01"
+    },
+    {
+      "file": "propietario_diagnostico.py",
+      "sha256": "e7053088b6492d9d10abe1c861da560de1fb1f4a9d00468661df53782523e52b"
+    },
+    {
+      "file": "observador_pasivo.py",
+      "sha256": "dbb2a5e15d70c64112d36505197f4aebf6ff7d4092972923e17cd60c10a1c873"
+    }
+  ],
+  "never_select_or_promote": true,
+  "evaluation_expected_values_never_passed_to_world": true
+}

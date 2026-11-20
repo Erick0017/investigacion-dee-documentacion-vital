@@ -1,0 +1,69 @@
+{
+  "schema": "DEE.C02.R02.lesson_admission_offline_fixtures.v1",
+  "fixtures": [
+    {
+      "fixture": "all6_admitted_not_yet_recalled",
+      "output_fields": {
+        "formed": false,
+        "reason": "EXPERIENCE_ADMITTED_NOT_YET_RECALLED",
+        "capability_execution_admitted": true
+      },
+      "expected_NO_RESULT": false,
+      "actual_extracted_predicate": false,
+      "expected_execution_status": "APPLIED",
+      "matches": true
+    },
+    {
+      "fixture": "partial_reason_is_actual_failure",
+      "output_fields": {
+        "formed": false,
+        "reason": "NATIVE_PARTIAL_ADMISSION",
+        "capability_execution_admitted": null
+      },
+      "expected_NO_RESULT": true,
+      "actual_extracted_predicate": true,
+      "expected_execution_status": "NO_RESULT",
+      "matches": true
+    },
+    {
+      "fixture": "explicit_admission_false_is_actual_failure",
+      "output_fields": {
+        "formed": null,
+        "reason": "OTHER",
+        "capability_execution_admitted": false
+      },
+      "expected_NO_RESULT": true,
+      "actual_extracted_predicate": true,
+      "expected_execution_status": "NO_RESULT",
+      "matches": true
+    },
+    {
+      "fixture": "program_or_model_visible_lesson_no_formed_field",
+      "output_fields": {
+        "formed": null,
+        "reason": null,
+        "capability_execution_admitted": null
+      },
+      "expected_NO_RESULT": false,
+      "actual_extracted_predicate": false,
+      "expected_execution_status": "APPLIED",
+      "matches": true
+    },
+    {
+      "fixture": "numeric_declared_unformed_remains_NULL_but_real_zero_valid",
+      "formed_false_value4_present": false,
+      "formed_true_value0_present": true,
+      "source_guard_present": true,
+      "matches": true
+    }
+  ],
+  "all5_passed": true,
+  "test_scope": "Extracted lesson predicate translated/AST restricted and numeric contract static guard; NOT a Luau VM or Native reproduction.",
+  "body_sha256": "e4a7ee99e6928b2096721c791cdde8468ed0ba000015c7eff8694847b69f15a5",
+  "preserved_before_sha256": "b7f7f5e5dbfae9c9d655c8f09410a4486b548b85648f9674d47b1ded6f73e449",
+  "R01_frozen_body_sha256": "da9892c7ea78ad06867238d52933494ec4a5f6239f171f4a6d1ede9ac5e783d2",
+  "Native_calls": 0,
+  "Roblox_calls": 0,
+  "model_calls": 0,
+  "new_R02_material_opportunities": 0
+}

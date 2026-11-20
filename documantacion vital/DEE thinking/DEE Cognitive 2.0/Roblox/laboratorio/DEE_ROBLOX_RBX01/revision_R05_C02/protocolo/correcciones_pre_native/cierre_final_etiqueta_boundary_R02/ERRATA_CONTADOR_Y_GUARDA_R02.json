@@ -1,0 +1,29 @@
+{
+  "NativeCalls": 0,
+  "ProcessCloseCalls": 0,
+  "Schema": "DEE.RBX01.C02.final_progress_counter_erratum.R02",
+  "VerificationSha256": "f47c5fa0f4a25c79f052212822de26a66de5383278f83fcf294f71d461cf9c36",
+  "Cause": "Frozen compare_states reports completed_cycles from the last suspended boundary table. The terminal STOPPED transition after18 retains the earlier six-cycle boundary record.",
+  "CorrectedValidatorSha256": "6523cf6221547f8da57edc987d2267f430ef8a1cf3752d45f44b074e8c785ec6",
+  "Observed": {
+    "BridgeCompletedFeedbackOperations": 18,
+    "FinalWorldCompletedCycles": 18,
+    "NativeFinalTick": 975547,
+    "FinalBridgeStatus": "STOPPED",
+    "RawFrozenClosureCoherenceCycles": 6,
+    "LastSuspendedBoundaryCycles": 6,
+    "FinalWorldNextOpportunity": 19,
+    "LastSuspendedBoundaryNextOpportunity": 7,
+    "PolicyCacheAndBridgeOperations": 66
+  },
+  "All18ReadOnlyPrerequisitesPassed": true,
+  "Correction": "The cleanup prerequisite labels the raw6 as last suspended boundary and independently requires full World18, feedback18, 66 reconciled policy operations, exact session IDs, closed writers and pending0. It does not rewrite the frozen runner, policy, original closures, World or DB.",
+  "VerificationFile": "VERIFICACION_SOLO_LECTURA_R02.json",
+  "InspectedUtc": "2026-11-15T10:06:31.8153880Z",
+  "OriginalScientificFilesUnmodified": true,
+  "SourceLocalizer": "puente/run_comparador_C02_R02.py::compare_states return.completed_cycles = db.boundary.completed_cycles",
+  "FrozenRunnerSha256": "4c4210dd2b88a95afd5ae68b8682463c4bd0c95738cae939605207c288411a6e",
+  "PriorValidatorSha256": "4943007f08df006754ce8fec380a9517f7414c2712fad721e8e076c9476ec67a",
+  "HTTPCalls": 0,
+  "MCPCalls": 0
+}

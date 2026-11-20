@@ -1,0 +1,227 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi03_guardia_cola_R05c",
+  "title": "Guardia preparada y lector q+6 original tras envejecimiento: reproducción R05c",
+  "revision": "PI03_R05C_PREPARADA",
+  "prefix": "PI03_CANDIDATA_T768317",
+  "code_capsule_key": "PI03_DIAGNOSTICO_COLA_R05C",
+  "reproduction_enabled": true,
+  "variants": {
+    "guard": {
+      "batches": [
+        [
+          {
+            "label": "guard",
+            "literal": {
+              "modo": "eci01-pi03-diagnostico-cola",
+              "condicion": "guard"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_task_result",
+              "reader",
+              "choice"
+            ],
+            "expected": 0,
+            "stop_on_NULL": true,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "actual_task_result",
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "actual_useful_product",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "actual_task_result",
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "guard_receipt_applied_separately",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "guard_preparation",
+                "receipt",
+                "status"
+              ]
+            }
+          ],
+          "expected": "applied"
+        },
+        {
+          "label": "fixed_guard_offset",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "guard_preparation",
+                "offset"
+              ]
+            }
+          ],
+          "expected": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "label": "original_q6_read_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "actual_task_result",
+                "reader",
+                "tick"
+              ]
+            }
+          ],
+          "expected": 771955
+        },
+        {
+          "label": "fixed_query_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "calendar",
+                "query_tick"
+              ]
+            }
+          ],
+          "expected": 771949
+        },
+        {
+          "label": "closed_material_final_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "final_tick"
+              ]
+            }
+          ],
+          "expected": 772227
+        },
+        {
+          "label": "actual_native_ticks",
+          "operation": "value",
+          "values": [
+            {
+              "step": "guard",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "new_native_ticks"
+              ]
+            }
+          ],
+          "expected": 3910
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 5,
+        "applied": 5,
+        "rejected": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "tick": 772227,
+        "RAW_sha256": "e5c959a9d31e0cdb2980cf8b7e78b458d99eaf4142329eed33c9b3c6b172efc5",
+        "clocks_sha256": "39a65b1448bbf388fa5eee8e8cb4cae6b32dc4fa58d22371d740055b2e5c440c"
+      },
+      "expected_final_physical_source": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\control\\DIAGNOSTICO_COLA_R05B_GUARD.json",
+        "sha256": "f01a9ca158f28fa85c15a1ba47a7fec451b37350d85404225880447e38490c5e",
+        "source_life": "ECI02_PI03_DIAG_R05B_GUARD_02",
+        "scope": "Predetermined actual B N/tick/RAW/clocks; C may differ in metadata identity/version/folder only. Compare passively after owner closure, never use as an action input."
+      }
+    }
+  },
+  "native_accounting": {
+    "task_receipts_counted_by_frozen_runner": 5,
+    "additional_guard_receipt_checked_applied": 1,
+    "whole_material_total_requires_deduplication": 6,
+    "scope": "The runner count5 is task-only. One explicit guard receipt is validated separately; preserve all primaries and deduplicate six IDs in the passive scientific proof. No sum of aliases."
+  },
+  "modalities": {
+    "B": "Material use from complete learned candidate768317 after a declared prepared support and fixed age",
+    "C": "Not acquisition replay",
+    "D": "New explicit diagnostic descendant; never a promotion",
+    "E": "P0 prepared access protection, not learned regulation or self-repair"
+  },
+  "assistance": "One fixed generic support at Q+(0,3,0), +3 legal ticks, age3183, original opportunity/actuator/feedback and q+6 reader. All interventions prepared before the outcome; no expected answer, new decoder, resource reset or phase search.",
+  "limitations": "A copied B body with explicitly different diagnostic identity/metadata is a new instrument revision. This prepared recipe is not Native-verified until Root executes it. Exact physical coincidence does not imply full metadata/causal equality, general autonomous regulation or unlimited retention.",
+  "observation": {
+    "query_tick": 771949,
+    "read_tick": 771955,
+    "offset": 6,
+    "passive_record_offsets": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "no_new_reader": true
+  },
+  "sources": [
+    "codigo_preservado/PI03_DIAGNOSTICO_COLA_R05C/capacidades/pi03_diagnostico_cola_R05c.py",
+    "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+  ],
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_REPRODUCTION",
+    "historical_B_source_proof": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\control\\DIAGNOSTICO_COLA_R05B_GUARD.json",
+    "new_native_ticks_by_builder": 0
+  },
+  "blockers": []
+}

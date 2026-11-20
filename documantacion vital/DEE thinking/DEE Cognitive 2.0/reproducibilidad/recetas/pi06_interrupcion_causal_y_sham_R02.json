@@ -1,0 +1,243 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi06_interrupcion_causal_y_sham_R02",
+  "title": "PI06 R02: intervención legal contraflujo y sham, FI posterior",
+  "revision": "R01_PREPARADA_REPLAY_NATIVE_PENDIENTE",
+  "prefix": "PI06_POST_INTERFERENCIA_T826449",
+  "code_capsule_key": "PI06_ORGANIZACION_INSTRUMENTOS_CIERRE_R04",
+  "requires_explicit_material": true,
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "Native_replay_verified": false
+  },
+  "assistance": [
+    "Operator chooses the frozen prefix, source geometry, timing, FI128 protocol and fixed readers. Every result is Native; references are evaluator-only.",
+    "This is a diagnostic mechanism, not a learned intervention, autonomous repair or principal acquisition."
+  ],
+  "limitations": [
+    "A recipe is not an executed replay. Only R01 has a separate actual Native cold-replay verification.",
+    "The complete prefix is shared history, not independent organisms. Material0 and NULL stay distinct.",
+    "The principal PI05 N67 T824911 is unchanged and has not acquired PI06 diagnostic histories.",
+    "Prepared normal-capture replay differs from the original global capture; it is not already validated passivity for this R02 intervention."
+  ],
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI06_",
+  "reproduction_enabled": true,
+  "variants": {
+    "contraflujo": {
+      "batches": [
+        [
+          {
+            "label": "INTERVENIR",
+            "literal": {
+              "modo": "eci01-pi06-interrupcion",
+              "condicion": "contraflujo",
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "after_tick"
+            ],
+            "expected": 826452,
+            "stop_on_NULL": true
+          },
+          {
+            "label": "FI_INTACTO",
+            "literal": {
+              "modo": "eci01-pi06-fiplus",
+              "condicion": "intacto",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "stop_on_NULL": true
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI_INTACTO",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "201ticks",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "FI_INTACTO",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "INTERVENIR",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 201
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 177,
+        "applied": 177,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "original_execution": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\control\\PI06_CUT_CONTRA_R02.json",
+        "sha256": "e7b2b14347f1c9260a05def23d333f3ab30325c2a20154615afc3017ab937463",
+        "primary": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\ensayos\\PI06_CUT_CONTRA_R02_FI_INTACTO.json",
+        "primary_sha256": "cbde4cb466ba4aaed264b5183a268b1fc0c06fdcf92ec962681c60f88d82927b"
+      }
+    },
+    "sham": {
+      "batches": [
+        [
+          {
+            "label": "INTERVENIR",
+            "literal": {
+              "modo": "eci01-pi06-interrupcion",
+              "condicion": "sham",
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "after_tick"
+            ],
+            "expected": 826452,
+            "stop_on_NULL": true
+          },
+          {
+            "label": "FI_INTACTO",
+            "literal": {
+              "modo": "eci01-pi06-fiplus",
+              "condicion": "intacto",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "normal"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "stop_on_NULL": true
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "FI_INTACTO",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "201ticks",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "FI_INTACTO",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "INTERVENIR",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 201
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 177,
+        "applied": 177,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "original_execution": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\control\\PI06_CUT_SHAM_R02.json",
+        "sha256": "20d8d6ef925078e45e712be66101bfdd42651f842b6e33460fc0dfff90881700",
+        "primary": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_06\\ensayos\\PI06_CUT_SHAM_R02_FI_INTACTO.json",
+        "primary_sha256": "c4bfc09bcfe460304b48d602c551daf52249580cabac73de6f965e434605dd48"
+      }
+    }
+  }
+}

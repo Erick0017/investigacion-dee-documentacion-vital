@@ -1,0 +1,173 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi02_H_habitat_adquisicion_R04",
+  "title": "Full R04 warning acquisition, O/H coupling and protected work with causal controls",
+  "revision": "PI03_R02_REFERENCIAS",
+  "prefix": "PI02_PRE_H_T740937",
+  "modalities": {
+    "B": "Full fixed environmental reproduction",
+    "C": "Full R04 acquisition/use from pre-H complete state, distinct from R03 prototype",
+    "D": "Diagnostic histories do not become MAIN automatically",
+    "E": "Prepared valve and acquired association, not general self-repair"
+  },
+  "variants": {
+    "paired": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-habitat-preparar",
+              "serie": "reserved",
+              "historia": "paired",
+              "brazo": "real"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 9200
+            }
+          },
+          {
+            "label": "final",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "habitat",
+              "resources"
+            ],
+            "expected": 6
+          }
+        ]
+      ]
+    },
+    "unpaired": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-habitat-preparar",
+              "serie": "reserved",
+              "historia": "unpaired",
+              "brazo": "real"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 9200
+            }
+          },
+          {
+            "label": "final",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "habitat",
+              "resources"
+            ],
+            "expected": 4
+          }
+        ]
+      ]
+    },
+    "warning_cut": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-habitat-preparar",
+              "serie": "reserved",
+              "historia": "paired",
+              "brazo": "warning_cut"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 9200
+            }
+          },
+          {
+            "label": "final",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "habitat",
+              "resources"
+            ],
+            "expected": 4
+          }
+        ]
+      ]
+    },
+    "valence_omit": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-habitat-preparar",
+              "serie": "reserved",
+              "historia": "paired",
+              "brazo": "valence_omit"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 9200
+            }
+          },
+          {
+            "label": "final",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "habitat",
+              "resources"
+            ],
+            "expected": 7
+          }
+        ]
+      ]
+    }
+  },
+  "assistance": "Prepared Native interfaces, recurrence, public loads, warning, device, work availability and generic return law. One finite9200tickwindow; no host decision per opportunity.",
+  "limitations": "6/12 versus7/12withoutvalence does not prove universal superiority, delayed-credit learning, adaptive hypervigilance or subjective pain. Benefit/cost and false alarms must be examined in the journal.",
+  "sources": [
+    "materiales/PI02_ANALISIS/EVIDENCIA/D_R04",
+    "codigo_preservado/PI02_R04_OP1/capacidades/pi02_habitat_R04.py"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

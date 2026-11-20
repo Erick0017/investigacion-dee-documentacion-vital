@@ -1,0 +1,168 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi03_uso_final_OP3",
+  "revision": "FINAL_T775355_PREPARADA_SIN_NATIVE",
+  "title": "Consultar progreso y ofrecer una oportunidad desde el corte final775355, sólo en copia diagnóstica",
+  "prefix": "PI03_FINAL_T775355",
+  "code_capsule_key": "PI03_DIAGNOSTICO_COLA_R05C",
+  "reproduction_enabled": true,
+  "variants": {
+    "una_oportunidad": {
+      "batches": [
+        [
+          {
+            "label": "before",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit",
+            "require_zero_ticks": true
+          },
+          {
+            "label": "next",
+            "literal": {
+              "modo": "eci01-pi03-tarea-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "after",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit",
+            "require_zero_ticks": true
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "initial_actual_stock",
+          "operation": "value",
+          "values": [
+            {
+              "step": "before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "remaining_opportunities"
+              ]
+            }
+          ],
+          "expected": 2
+        },
+        {
+          "label": "actual_useful_effect",
+          "operation": "value",
+          "values": [
+            {
+              "step": "next",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "one_consumed_opportunity",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            },
+            {
+              "step": "before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "remaining_finite_stock",
+          "operation": "value",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "remaining_opportunities"
+              ]
+            }
+          ],
+          "expected": 1
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 5,
+        "applied": 5,
+        "rejected": 0
+      }
+    }
+  },
+  "modalities": {
+    "B": "Future Native use from a genuinely learned final complete pair",
+    "C": "Not acquisition replay",
+    "D": "Diagnostic descendant of775355, not a new panel materially executed on MAIN",
+    "E": "Ordinary prepared-interface use; not recovery or restoration"
+  },
+  "assistance": "Operator offers one opportunity after reading progress. Anatomy, preventive guard, existing finite stock, codec/calendar and delayed-return law are inherited. No re-teaching, new supply, reader substitution, old panel or H/O dispatch is inserted.",
+  "limitations": "Prepared executable recipe, not Native-verified at the final775355 prefix. MAIN really retained useful use through775355, but the recipe asks about a later diagnostic future. It may fail or returnNULL; preserve that result without reset or favourable phase search. No promise of indefinite use or general control.",
+  "observation": "Same installed fixed q+6 task reader and silence contract. Material0 differs fromNULL. State operators require0ticks; next is a material intervention.",
+  "source_cut": {
+    "life": "ECI02_PI03_MAIN",
+    "N": 67,
+    "tick": 775355,
+    "prepared": 26,
+    "consumed": 24,
+    "products": 19,
+    "rejections": 5,
+    "stock": 2
+  },
+  "verification": {
+    "state": "PREPARED_REQUIREMENTS_IDENTIFIED_NOT_NATIVE_VERIFIED",
+    "new_native_ticks_by_preparer": 0,
+    "actual_MAIN_retained_use_primary": "ensayos/PI03_MAIN_OP3_RETENCION_retained_new_use.json",
+    "same_cut_full_panel_not_claimed": true
+  },
+  "sources": [
+    "materiales/PI03_FINAL_T775355/EXPORTACION_SERVICIO.json",
+    "codigo_preservado/PI03_DIAGNOSTICO_COLA_R05C/SISTEMA_CODIGO.json"
+  ],
+  "blockers": []
+}

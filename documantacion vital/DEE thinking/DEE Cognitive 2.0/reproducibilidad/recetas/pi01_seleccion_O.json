@@ -1,0 +1,146 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi01_seleccion_O",
+  "title": "PI01 selection reused by the prepared O-recurrence apparatus",
+  "revision": "PI03_R02_REFERENCIAS",
+  "prefix": "PI01_O_T735843",
+  "modalities": {
+    "B": "Use/reproduction from learned PI01 state in R02 environmental apparatus",
+    "C": "Not replay of PI01 acquisition",
+    "D": "History originally in PI01 parent; preserved as a prefix, not another principal",
+    "E": "No"
+  },
+  "variants": {
+    "real": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-iniciar",
+              "serie": "reservaA",
+              "brazo": "real"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-vivir",
+              "ticks": 4500
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_resources"
+            ],
+            "expected": 10
+          }
+        ]
+      ],
+      "historical_scope": "Prepared O recurrence and translation0MA/1FI, acquired PI01 selector state. Same shared prefix, not an independent replicate."
+    },
+    "omit": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-iniciar",
+              "serie": "reservaA",
+              "brazo": "omit"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-vivir",
+              "ticks": 4500
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_resources"
+            ],
+            "expected": 7
+          }
+        ]
+      ],
+      "historical_scope": "Prepared O recurrence and translation0MA/1FI, acquired PI01 selector state. Same shared prefix, not an independent replicate."
+    },
+    "sham": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-iniciar",
+              "serie": "reservaA",
+              "brazo": "sham"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-vivir",
+              "ticks": 4500
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_resources"
+            ],
+            "expected": 7
+          }
+        ]
+      ],
+      "historical_scope": "Prepared O recurrence and translation0MA/1FI, acquired PI01 selector state. Same shared prefix, not an independent replicate."
+    },
+    "nulled": {
+      "batches": [
+        [
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi02-iniciar",
+              "serie": "reservaA",
+              "brazo": "nulled"
+            }
+          },
+          {
+            "label": "live",
+            "literal": {
+              "modo": "eci01-pi02-vivir",
+              "ticks": 4500
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_resources"
+            ],
+            "expected": 0
+          }
+        ]
+      ],
+      "historical_scope": "Prepared O recurrence and translation0MA/1FI, acquired PI01 selector state. Same shared prefix, not an independent replicate."
+    }
+  },
+  "assistance": "Prepared recurrence, calendar, opportunity admission, codecs and return delays. Native physical state selects the access. Host supplies one finite4500tick interval.",
+  "limitations": "Resource counts refer to real64byte environment products, not biological energy. Sham has different admission/rejection exposure and is not an equal-dose control. Learning and initiative remain bounded.",
+  "sources": [
+    "materiales/PI02_ANALISIS/EVIDENCIA/PROTOCOLO_RESERVA_R02A.json",
+    "codigo_preservado/PI02_R04_OP1/capacidades/pi02_retornos_base.py",
+    "materiales/PI02_ANALISIS/EVIDENCIA/RECURSOS_R02A"
+  ],
+  "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+  "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+    "new_Native_execution_by_this_generator": false,
+    "A": "Historical records preserved; documentary recalculation available separately",
+    "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+  }
+}

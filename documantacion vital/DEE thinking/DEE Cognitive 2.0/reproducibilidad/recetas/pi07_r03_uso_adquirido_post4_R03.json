@@ -1,0 +1,503 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi07_r03_uso_adquirido_post4_R03",
+  "title": "PI07 R03: acquired-state useful protection and fixed information/actuator cuts",
+  "revision": "R03_PRE34_FULL_CPC_DEPENDENCIES_CLI_REPLAY_PENDING",
+  "supersedes_incomplete_recipe": "pi07_r03_uso_adquirido_post4_R02",
+  "prefix": "PI07_R03_POST4_T849645",
+  "code_capsule_key": "PI07_R03_LOCAL_FI_PRE34_R03",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_",
+  "requires_explicit_material": true,
+  "reproduction_enabled": true,
+  "variants": {
+    "normal_op4": {
+      "batches": [
+        [
+          {
+            "label": "R03_OP04",
+            "literal": {
+              "modo": "eci01-pi07-r03-episodio"
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "stop_on_unapplied_receipt": false
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "sensor",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "sensor",
+                "actual_state_datum"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "FI_q4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "early_physical_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "FI_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": true
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 184,
+        "applied": 184,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "RAW_sha256": "c55c4f8a40e799bc8f2262a70313dd83de2bf8414381d589a47497efd8e9079e",
+        "clocks_sha256": "be34593ccfd6b679b9392008067e4cf7dbfb017469998d7d83abead2e4ff5602",
+        "tick": 850427
+      }
+    },
+    "sensor_cut_op4": {
+      "batches": [
+        [
+          {
+            "label": "R03_OP04",
+            "literal": {
+              "modo": "eci01-pi07-r03-episodio",
+              "sensor_ablation": true
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": true,
+            "stop_on_unapplied_receipt": false
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "sensor",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "sensor",
+                "actual_state_datum"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "FI_q4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "early_physical_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "FI_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 183,
+        "applied": 183,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "RAW_sha256": "95bc64698d5b083314625620740c67b63bbc4015a29320691ef51c0fe0ac9b95",
+        "clocks_sha256": "be34593ccfd6b679b9392008067e4cf7dbfb017469998d7d83abead2e4ff5602",
+        "tick": 850427
+      }
+    },
+    "actuator_cut_op4": {
+      "batches": [
+        [
+          {
+            "label": "R03_OP04",
+            "literal": {
+              "modo": "eci01-pi07-r03-episodio",
+              "actuator_ablation": true
+            },
+            "feedback": "omit",
+            "actuator": "closed",
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": true,
+            "stop_on_unapplied_receipt": false
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "reader",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "reader",
+                "choice"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "sensor",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "sensor",
+                "actual_state_datum"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "FI_q4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "early_physical_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "FI_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "FI",
+                "old_q6_choice"
+              ]
+            }
+          ],
+          "expected": -1
+        },
+        {
+          "label": "pulse",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_OP04",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "pulse_applied"
+              ]
+            }
+          ],
+          "expected": false
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 183,
+        "applied": 183,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "RAW_sha256": "ef8a816a44fd1cf7df621c1a6590e1afae77ac1a911ec37bf7b599546166d1c2",
+        "clocks_sha256": "be34593ccfd6b679b9392008067e4cf7dbfb017469998d7d83abead2e4ff5602",
+        "tick": 850427
+      }
+    }
+  },
+  "modalities": {
+    "A": "Actual frozen primary/signature/receipt recalculation available in campaign; no world advance.",
+    "B": "Explicit acquired POST4 diagnostic use; one next fixed opportunity and two causal link-cut variants. Native reference material procedures actually ran.",
+    "C": "This recipe does not replay acquisition or install a policy; it inherits real history through the complete source pair.",
+    "D": "Not a capability possessed by the protected PI05 principal. No PI07 main adoption asserted.",
+    "E": "No general recovery or unlimited-use promise."
+  },
+  "assistance": [
+    "Prepared Native TC anatomy/identity sensor/fixed perpendicular tool/six-lap calendar/environmental offer; host initiates one opportunity and evaluates only after the actual Native function.",
+    "Expected observations are auditor-only. No expected action, private future, control history or answer is sent to the actor."
+  ],
+  "limitations": [
+    "Three variants are paired controls from a shared complete prefix, not independent organisms. Sensor cut submits material0; actuator cut omits one pulse and has the declared dose difference.",
+    "Same R03 actor40648f/protof69e remains literal; enclosing source may include later dormant FI access. Historical old-FI198tick regression is preserved; no intact-legacy or general-agency claim.",
+    "Executable existing RP facade is registered; no additional Native CLI cold world was run in the exhausted14-world campaign. Do not label this new frontdoor end-to-end verified."
+  ],
+  "verification": {
+    "state": "PROCEDIMIENTO_NATIVE_REFERENCIA_PROBADO_CLI_REPLAY_PENDIENTE",
+    "Native_replay_verified": false,
+    "source_native_procedure_executed": true,
+    "new_frontdoor_CLI_executed": false,
+    "reference_executions": [
+      {
+        "variant": "normal_op4",
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\ensayos\\PI07_RESERVA_A_R03_EP04.json",
+        "sha256": "23ced5c583285139ec5525c1acad474520077293c2eff96daaba8a181adbbd88",
+        "source_life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01",
+        "before_tick": 849645,
+        "after_tick": 850427,
+        "literal": {
+          "modo": "eci01-pi07-r03-episodio"
+        },
+        "actual_failed": false,
+        "Native_inputs": {
+          "aliases_deduplicated": 0,
+          "all_terminal": true,
+          "applied": 184,
+          "pending_or_other": 0,
+          "rejected": 0,
+          "status_counts": {
+            "applied": 184
+          },
+          "unique_requested": 184
+        }
+      },
+      {
+        "variant": "sensor_cut_op4",
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\ensayos\\PI07_CORTE_SENSOR_04_05_R03_EP04.json",
+        "sha256": "d74d5cfbd9e588fb17fbef9e73c0455b26900786febf3b4c4fd25f08769a0255",
+        "source_life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_R3_CUT_SENSOR",
+        "before_tick": 849645,
+        "after_tick": 850427,
+        "literal": {
+          "modo": "eci01-pi07-r03-episodio",
+          "sensor_ablation": true
+        },
+        "actual_failed": true,
+        "Native_inputs": {
+          "aliases_deduplicated": 0,
+          "all_terminal": true,
+          "applied": 183,
+          "pending_or_other": 0,
+          "rejected": 0,
+          "status_counts": {
+            "applied": 183
+          },
+          "unique_requested": 183
+        }
+      },
+      {
+        "variant": "actuator_cut_op4",
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_07\\ensayos\\PI07_CORTE_ACTUADOR_04_05_R03_EP04.json",
+        "sha256": "593ecab664543b4612d2c524e43ce0b72af3026ff9505e90b1739bfe1d6b8ca4",
+        "source_life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_R3_CUT_ACT",
+        "before_tick": 849645,
+        "after_tick": 850427,
+        "literal": {
+          "modo": "eci01-pi07-r03-episodio",
+          "actuator_ablation": true
+        },
+        "actual_failed": true,
+        "Native_inputs": {
+          "aliases_deduplicated": 0,
+          "all_terminal": true,
+          "applied": 183,
+          "pending_or_other": 0,
+          "rejected": 0,
+          "status_counts": {
+            "applied": 183
+          },
+          "unique_requested": 183
+        }
+      }
+    ]
+  },
+  "last_verified_source_scope": "Actual reference one-op normal/sensor/actuator material runs; recipe transport read-only requirements checked separately.",
+  "analysis": {
+    "interface": "DEE.recalculation.root_outdir.v1",
+    "product_relative": "reproducibilidad/materiales/PI07_R03_ANALISIS_POST4_R03",
+    "manifest": "MANIFIESTO_ESTABLE.json",
+    "manifest_sha256": "77d7415c3ea70307eeb3dc9dd285faff2a6eeab385542a9b62603d6416cbb850",
+    "recalculation_script": "RECALCULAR_RP_PI07_R02.py"
+  }
+}

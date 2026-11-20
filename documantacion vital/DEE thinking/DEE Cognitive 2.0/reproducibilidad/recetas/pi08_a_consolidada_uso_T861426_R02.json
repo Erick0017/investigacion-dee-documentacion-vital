@@ -1,0 +1,228 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi08_a_consolidada_uso_T861426_R02",
+  "title": "PI08 A: complete current acquired state and a prospective next R03 use",
+  "revision": "R01_CURRENT_A_311_SOURCES_PLUS_EXPLICIT_DIRECTORY_TRANSPORT",
+  "prefix": "PI08_A_CONSOLIDADA_T861426",
+  "code_capsule_key": "PI08_A_CONSOLIDADA_TRANSPORTE_R02",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI08_ARP_",
+  "requires_explicit_material": true,
+  "reproduction_enabled": true,
+  "modalities": [
+    "B_complete_acquired_state_use",
+    "A_selected_public_records_recalculation",
+    "E_prepared_future_use"
+  ],
+  "variants": {
+    "estado_operativo": {
+      "batches": [
+        [
+          {
+            "label": "R03_STATE",
+            "literal": {
+              "modo": "eci01-pi07-r03-estado"
+            },
+            "require_zero_ticks": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "progress",
+              "ordinal"
+            ],
+            "expected": 12
+          },
+          {
+            "label": "C2C_STATE",
+            "literal": {
+              "modo": "eci01-pi04-c2c-estado"
+            },
+            "require_zero_ticks": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "progress",
+              "ordinal"
+            ],
+            "expected": 31
+          },
+          {
+            "label": "FI_STATE",
+            "literal": {
+              "modo": "eci01-pi07-fi-acceso-estado"
+            },
+            "require_zero_ticks": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "progress",
+              "ordinal"
+            ],
+            "expected": 4
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "physical_N",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_STATE",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "physical",
+                "N"
+              ]
+            }
+          ],
+          "expected": 67
+        },
+        {
+          "label": "physical_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_STATE",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "physical",
+                "tick"
+              ]
+            }
+          ],
+          "expected": 861426
+        },
+        {
+          "label": "physical_RAW_sha256",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_STATE",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "physical",
+                "RAW_sha256"
+              ]
+            }
+          ],
+          "expected": "056d2d6482136a28b1893bee926477a44160d9dd8b938a37d88d3c62249b28ae"
+        },
+        {
+          "label": "physical_clocks_sha256",
+          "operation": "value",
+          "values": [
+            {
+              "step": "R03_STATE",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "physical",
+                "clocks_sha256"
+              ]
+            }
+          ],
+          "expected": "a9354c0fca7ffbcb8486042026a9f9ab4356870fa28e90c6fa4462290efd21b6"
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 0,
+        "applied": 0,
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "expected_final_physical": {
+        "N": 67,
+        "tick": 861426,
+        "RAW_sha256": "056d2d6482136a28b1893bee926477a44160d9dd8b938a37d88d3c62249b28ae",
+        "clocks_sha256": "a9354c0fca7ffbcb8486042026a9f9ab4356870fa28e90c6fa4462290efd21b6"
+      }
+    },
+    "siguiente_regulacion": {
+      "batches": [
+        [
+          {
+            "label": "R03_STATE",
+            "literal": {
+              "modo": "eci01-pi07-r03-estado"
+            },
+            "require_zero_ticks": true,
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "progress",
+              "ordinal"
+            ],
+            "expected": 12
+          },
+          {
+            "label": "R03_OP12",
+            "literal": {
+              "modo": "eci01-pi07-r03-episodio"
+            },
+            "feedback": "real",
+            "actuator": "closed",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "actual_failed"
+            ],
+            "expected": false,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_unapplied_receipt": true
+          }
+        ]
+      ],
+      "interpretation": "Prospective resource12 in a new descendant. expected=false is an evaluator criterion, not an observed result at this current cut. No frozen expected physical final state or exact dose is invented."
+    }
+  },
+  "analysis": {
+    "product_relative": "reproducibilidad/materiales/PI08_A_ANALISIS_PUBLICO_R02",
+    "manifest": "MANIFIESTO_ESTABLE.json",
+    "manifest_sha256": "8fb598792442850fb17a01354134d7a10b7183dfa6e1566960cff36e81c62c1d",
+    "recalculation_script": "RECALCULAR_A_PUBLICA_RP_PI08_R01.py",
+    "interface": "DEE.recalculation.root_outdir.v1"
+  },
+  "assistance": [
+    "Fixed operator schedule and inherited codecs/readers; only literal modes reach the owner.",
+    "The code capsule preserves 308current product source files plus3 historical beforeimages; the isolated importer has an explicit empty-directory transport adaptation before opening Native.",
+    "The current selected public FI alias belongs exactly to A; this descendant recipe does not claim that alias is selected on the clone."
+  ],
+  "limitations": [
+    "Shared complete acquired prefix, not T0 acquisition or independent history.",
+    "New recipe has not had an end-to-end material CLI replay. Historical normal_op4 replay ended850427 and was registered separately.",
+    "Documentary analysis recalculates only the actual selected public FI18/7 and alfa records; it does not verify future OP12.",
+    "State has R03ordinal12/18, C2Cordinal31/32 and regulatedFIordinal4/8. Diagnostic uses consume resources only in their clone."
+  ],
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "Native_replay_verified": false,
+    "requirements_only_until_actual_completed_record": true
+  },
+  "sources": {
+    "current_full_manifest_sha256": "dfadc5037b804f3c6112263eb0af84f6215d53fd3cb138ae143676a56dfcc00c",
+    "code_capsule_manifest_sha256": "dd1d065ecbb8f9ad40224fb0446baaad89ea09eef506ed407ed4a521038a20c0",
+    "actual_selected_use_proof": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\control\\PI08_USO_PUBLICO_PRINCIPAL_R01.json",
+      "sha256": "bd6d82342575277fca9b351cdcd43aa7ecfb78771e2562a946b251ac4de6e68a"
+    }
+  }
+}

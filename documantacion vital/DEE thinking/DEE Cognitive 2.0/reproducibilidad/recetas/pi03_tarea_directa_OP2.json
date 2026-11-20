@@ -1,0 +1,143 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi03_tarea_directa_OP2",
+  "title": "Uso directo posterior desde768317 con estructura externa importada OP2",
+  "revision": "PI03_OP2_DIRECTA_CONGELADA",
+  "prefix": "PI03_CANDIDATA_T768317",
+  "code_capsule_key": "PI03_R04_OP2",
+  "reproduction_enabled": true,
+  "variants": {
+    "una_oportunidad": {
+      "batches": [
+        [
+          {
+            "label": "before",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "next",
+            "literal": {
+              "modo": "eci01-pi03-tarea-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "after",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "actual_useful_product",
+          "operation": "value",
+          "values": [
+            {
+              "step": "next",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "one_actual_opportunity",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            },
+            {
+              "step": "before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "remaining_original_stock",
+          "operation": "value",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "remaining_opportunities"
+              ]
+            }
+          ],
+          "expected": 1
+        }
+      ]
+    }
+  },
+  "modalities": {
+    "B": "Direct Native use from real learned candidate cut768317",
+    "C": "Not acquisition or reset",
+    "D": "Explicit diagnostic descendant; principal not changed",
+    "E": "Directory scaffold is external import support, not acquired repair or recovered content"
+  },
+  "assistance": "The operator offers one fixed next opportunity; current finite21resource device and learned banks are inherited. OP2 recreates only missing known empty scaffold directories before Native opens. No old panel, H/O interval, new resource supply, reader change or expected motor is introduced.",
+  "limitations": "Predetermined useful-effect criterion may fail. A fixed-reader NULL is preserved through its real consequence and generic return, then stops; it is not converted to zero or repaired. Compare later with Root’s separately frozen age/exposure controls; this direct case alone does not explain OP1 interleaving failure.",
+  "source_cut": {
+    "life": "ECI02_PI03_MAIN",
+    "N": 67,
+    "tick": 768317,
+    "resource_count": 21,
+    "consumed": 19,
+    "products": 15,
+    "rejections": 4,
+    "remaining": 2,
+    "not_adopted_by_this_recipe": true
+  },
+  "sources": [
+    "codigo_preservado/PI03_R04_OP2/SISTEMA_CODIGO.json",
+    "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+  ],
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_DIAGNOSTIC",
+    "no_Native_execution_by_builder": true,
+    "no_automatic_promotion": true
+  }
+}

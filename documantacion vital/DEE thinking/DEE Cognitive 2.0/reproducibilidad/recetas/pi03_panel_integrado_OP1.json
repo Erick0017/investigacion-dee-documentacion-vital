@@ -1,0 +1,566 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi03_panel_integrado_OP1",
+  "title": "Candidata PI03: doce usos anteriores, dos trabajos protegidos y uso posterior del nuevo dispositivo en una sola trayectoria diagnóstica",
+  "revision": "PI03_OP1_DIAGNOSTICO_CONGELADO",
+  "prefix": "PI03_CANDIDATA_T768317",
+  "code_capsule_key": "PI03_R04_OP1",
+  "reproduction_enabled": true,
+  "variants": {
+    "consecutivo": {
+      "batches": [
+        [
+          {
+            "label": "habitat_off",
+            "literal": {
+              "modo": "eci01-pi02-pausar-habitat"
+            },
+            "require_zero_ticks": true
+          },
+          {
+            "label": "luma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "nara",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "nara"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "clasifica",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "clasifica"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "suma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "suma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "alfa",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "FIplus",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 14,
+              "derecha": 3
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "FIminus",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 2,
+              "derecha": 11
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "FIzero",
+            "literal": {
+              "modo": "eci01-balance",
+              "izquierda": 6,
+              "derecha": 6
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 0,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "all_material_receipts"
+              ]
+            ]
+          },
+          {
+            "label": "number13",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "suma",
+              "izquierda": 6,
+              "derecha": 7
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 13,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "number8",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "diferencia",
+              "derecha": 5
+            },
+            "actual_integer_binding": {
+              "from_step": "number13",
+              "field": "izquierda"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 8,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "alfa_after",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "luma_after",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          },
+          {
+            "label": "legacy_before",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_resume",
+            "literal": {
+              "modo": "eci01-pi02-reactivar-habitat"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_offer_plus",
+            "literal": {
+              "modo": "eci01-pi02-habitat-trabajo",
+              "izquierda": 13,
+              "derecha": 5,
+              "aviso": true,
+              "perturbacion": true,
+              "adelanto": 128
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_offer_minus",
+            "literal": {
+              "modo": "eci01-pi02-habitat-trabajo",
+              "izquierda": 7,
+              "derecha": 16,
+              "aviso": true,
+              "perturbacion": true,
+              "adelanto": 195
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_live",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 1800
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_after",
+            "literal": {
+              "modo": "eci01-pi02-habitat-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "legacy_pause",
+            "literal": {
+              "modo": "eci01-pi02-pausar-habitat"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "task_before",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "task_next",
+            "literal": {
+              "modo": "eci01-pi03-tarea-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "task_after",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "two_real_legacy_products",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "legacy_after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "resources"
+              ]
+            },
+            {
+              "step": "legacy_before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "resources"
+              ]
+            }
+          ],
+          "expected": 2
+        },
+        {
+          "label": "two_legacy_opportunities",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "legacy_after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "episode"
+              ]
+            },
+            {
+              "step": "legacy_before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "habitat",
+                "episode"
+              ]
+            }
+          ],
+          "expected": 2
+        },
+        {
+          "label": "new_task_useful_effect",
+          "operation": "value",
+          "values": [
+            {
+              "step": "task_next",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "one_new_task_opportunity",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "task_after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            },
+            {
+              "step": "task_before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "remaining_explicit_task_stock",
+          "operation": "value",
+          "values": [
+            {
+              "step": "task_after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "remaining_opportunities"
+              ]
+            }
+          ],
+          "expected": 1
+        }
+      ]
+    }
+  },
+  "modalities": {
+    "B": "Use from the genuine complete learned candidate768317",
+    "C": "Not acquisition replay; no state/resource reset between blocks",
+    "D": "A diagnostic descendant, not a material test on the protected principal or automatic adoption",
+    "E": "No implicit recovery, retelling or favourable reader substitution"
+  },
+  "assistance": "Operator chooses the fixed12uses and actual-result arithmetic chain, explicitly resumes the old prepared bridge, supplies two public comparison opportunities, provides1800generic ticks, pauses that bridge, then offers one generic next R02 task opportunity. Native selects/produces physical outputs; expected outcomes are evaluator-only.",
+  "limitations": "One connected diagnostic history, not three successful worlds summed. Current task stock is preserved from Root’s explicit two remaining resources; no supply/reset is performed here. The old bridge is paused while material panel/new task execute. A fixed-reader NULL stops after preservation. Numeric0 is material and maps through the source’s declared default; it is not NULL. Native receipt totals in the runner cover declared paths only; old H/O interval dose is in its complete journal.",
+  "criteria_frozen_before_this_diagnostic": {
+    "panel_first_responses": 12,
+    "panel_expected_values_preserved": true,
+    "old_protected_useful_products": 2,
+    "new_task_useful_products": 1,
+    "no_restore_reteach_or_reset": true
+  },
+  "source_cut": {
+    "life": "ECI02_PI03_MAIN",
+    "N": 67,
+    "tick": 768317,
+    "adopted": false,
+    "actual_remaining_task_offers": 2
+  },
+  "sources": [
+    "codigo_preservado/PI03_R04_OP1/SISTEMA_CODIGO.json",
+    "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+  ],
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_DIAGNOSTIC",
+    "no_new_Native_execution_by_this_builder": true,
+    "not_a_principal_promotion": true
+  }
+}

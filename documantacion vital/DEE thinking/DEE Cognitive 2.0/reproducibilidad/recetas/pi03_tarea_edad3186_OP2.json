@@ -1,0 +1,174 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi03_tarea_edad3186_OP2",
+  "title": "Control de edad3186ticks sin usos anteriores, seguido de la misma consulta fija de tarea",
+  "revision": "PI03_OP2_EDAD3186_CONGELADA",
+  "prefix": "PI03_CANDIDATA_T768317",
+  "code_capsule_key": "PI03_R04_OP2",
+  "reproduction_enabled": true,
+  "variants": {
+    "edad_igualada": {
+      "batches": [
+        [
+          {
+            "label": "before",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "age_only",
+            "literal": {
+              "modo": "eci01-pi02-tiempo",
+              "ticks": 3186
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "after_tick"
+            ],
+            "expected": 771503
+          },
+          {
+            "label": "before_query",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          },
+          {
+            "label": "next",
+            "literal": {
+              "modo": "eci01-pi03-tarea-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "after",
+            "literal": {
+              "modo": "eci01-pi03-tarea-estado"
+            },
+            "feedback": "omit"
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "actual_useful_product",
+          "operation": "value",
+          "values": [
+            {
+              "step": "next",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "one_actual_opportunity",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            },
+            {
+              "step": "before",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "progress",
+                "opportunity"
+              ]
+            }
+          ],
+          "expected": 1
+        },
+        {
+          "label": "remaining_original_stock",
+          "operation": "value",
+          "values": [
+            {
+              "step": "after",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "remaining_opportunities"
+              ]
+            }
+          ],
+          "expected": 1
+        }
+      ]
+    }
+  },
+  "modalities": {
+    "B": "Direct Native use from real learned candidate cut768317",
+    "C": "Not acquisition or reset",
+    "D": "Explicit diagnostic descendant; principal not changed",
+    "E": "Directory scaffold is external import support, not acquired repair or recovered content"
+  },
+  "assistance": "Root predefines3186generic ticks from the same768317full prefix, with the legacy bridge already paused. No old panel, H/O opportunities, word/memory/arithmetic queries or new supply are performed. The same next-task literal and fixed Native reader then run;0remains material andNULLis preserved.",
+  "limitations": "Age/tick are matched to the composite pre-task point771503; material exposure intentionally differs and this is not an equal-dose sham. A failed useful-effect criterion orNULLis legitimate evidence, not an invitation to change reader/phase. OP2 only restores missing empty external directories; no memory/content correction is made.",
+  "source_cut": {
+    "life": "ECI02_PI03_MAIN",
+    "N": 67,
+    "tick": 768317,
+    "resource_count": 21,
+    "consumed": 19,
+    "products": 15,
+    "rejections": 4,
+    "remaining": 2,
+    "not_adopted_by_this_recipe": true
+  },
+  "sources": [
+    "codigo_preservado/PI03_R04_OP2/SISTEMA_CODIGO.json",
+    "materiales/PI03_CANDIDATA_T768317/EXPORTACION_SERVICIO.json"
+  ],
+  "verification": {
+    "state": "PREPARED_PENDING_NATIVE_CONTROL",
+    "new_native_ticks_by_preparation": 0,
+    "not_a_principal_promotion": true
+  },
+  "hypothesis_test": "Does the fixed next-task access fail after equal autonomous Native ageing alone, or specifically after the composite functional-input history? This control does not itself identify every microcause.",
+  "comparison_source": {
+    "recipe": "pi03_panel_integrado_OP1",
+    "initial_tick": 768317,
+    "pre_task_tick": 771503,
+    "matched_delta": 3186,
+    "filesystem_difference": "OP2externaldirectoryfix; the prior missing-directory failure is kept separately",
+    "same_readers": true
+  }
+}

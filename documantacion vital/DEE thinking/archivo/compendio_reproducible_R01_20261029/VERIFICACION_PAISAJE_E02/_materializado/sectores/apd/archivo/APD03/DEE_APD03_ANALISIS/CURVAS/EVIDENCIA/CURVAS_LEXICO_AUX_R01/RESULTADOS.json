@@ -1,0 +1,930 @@
+{
+  "branches": [],
+  "elapsed_seconds": 14.139241900062189,
+  "old14_common_panel": "OLD14_PREFIJO_COMUN.json.gz",
+  "plan": {
+    "OMP_NUM_THREADS_required": "1",
+    "arms": [
+      {
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "paired",
+        "B_sign_auditor": -1,
+        "history": "related"
+      },
+      {
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "paired",
+        "B_sign_auditor": -1,
+        "history": "opposite"
+      },
+      {
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "omitted",
+        "B_sign_auditor": -1,
+        "history": "omitted"
+      },
+      {
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "paired",
+        "B_sign_auditor": 1,
+        "history": "related"
+      },
+      {
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "paired",
+        "B_sign_auditor": 1,
+        "history": "opposite"
+      },
+      {
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "omitted",
+        "B_sign_auditor": 1,
+        "history": "omitted"
+      }
+    ],
+    "budget_seconds": 1800,
+    "criterion": {
+      "consecutive_correct_material_queries": 2,
+      "criterion_not_changed_after_results": true,
+      "max_B_lessons": 3
+    },
+    "curriculum": [
+      "one old14 material panel in the common parent only;4representative forms before/after in each branch",
+      "A one paired/opposite/omitted explicit lesson, followed by2common-reader queries",
+      "B first common-reader query before B teaching (initial transfer, not meta-learning)",
+      "B three signed paired lessons, each followed by2common-reader queries; do not stop early or add lessons",
+      "B functional use with datum23/contextgamma via the same fixed sign transduction",
+      "A post-course common-reader query and final old14 material panel"
+    ],
+    "dose_limit": "Omitted A teacher has fewer material inputs; cue count/age/query count are matched and actual admission/rejection must be reported. No claim of perfectly equal material dose.",
+    "evidence_persistence": "Each completed lesson/query/use is emitted through on_event before the next material call; partial failed future is saved by the owner runner.",
+    "geometry": {
+      "N": 67,
+      "common_reader": [
+        {
+          "form": "alfa",
+          "sign_arm": -1,
+          "site": [
+            37,
+            33,
+            32
+          ]
+        },
+        {
+          "form": "alfa",
+          "sign_arm": 1,
+          "site": [
+            37,
+            33,
+            34
+          ]
+        },
+        {
+          "form": "beta",
+          "sign_arm": -1,
+          "site": [
+            33,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "beta",
+          "sign_arm": 1,
+          "site": [
+            33,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "gamma",
+          "sign_arm": -1,
+          "site": [
+            37,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "gamma",
+          "sign_arm": 1,
+          "site": [
+            37,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "delta",
+          "sign_arm": -1,
+          "site": [
+            29,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "delta",
+          "sign_arm": 1,
+          "site": [
+            29,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "epsilon",
+          "sign_arm": -1,
+          "site": [
+            37,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "epsilon",
+          "sign_arm": 1,
+          "site": [
+            37,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "zeta",
+          "sign_arm": -1,
+          "site": [
+            29,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "zeta",
+          "sign_arm": 1,
+          "site": [
+            29,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "suma",
+          "sign_arm": -1,
+          "site": [
+            29,
+            33,
+            32
+          ]
+        },
+        {
+          "form": "suma",
+          "sign_arm": 1,
+          "site": [
+            29,
+            33,
+            34
+          ]
+        },
+        {
+          "form": "diferencia",
+          "sign_arm": -1,
+          "site": [
+            33,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "diferencia",
+          "sign_arm": 1,
+          "site": [
+            33,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "agrega",
+          "sign_arm": -1,
+          "site": [
+            43,
+            47,
+            46
+          ]
+        },
+        {
+          "form": "agrega",
+          "sign_arm": 1,
+          "site": [
+            43,
+            47,
+            48
+          ]
+        },
+        {
+          "form": "resta",
+          "sign_arm": -1,
+          "site": [
+            47,
+            43,
+            46
+          ]
+        },
+        {
+          "form": "resta",
+          "sign_arm": 1,
+          "site": [
+            47,
+            43,
+            48
+          ]
+        },
+        {
+          "form": "total",
+          "sign_arm": -1,
+          "site": [
+            51,
+            47,
+            46
+          ]
+        },
+        {
+          "form": "total",
+          "sign_arm": 1,
+          "site": [
+            51,
+            47,
+            48
+          ]
+        },
+        {
+          "form": "quita",
+          "sign_arm": -1,
+          "site": [
+            47,
+            51,
+            46
+          ]
+        },
+        {
+          "form": "quita",
+          "sign_arm": 1,
+          "site": [
+            47,
+            51,
+            48
+          ]
+        },
+        {
+          "form": "compara",
+          "sign_arm": -1,
+          "site": [
+            51,
+            17,
+            46
+          ]
+        },
+        {
+          "form": "compara",
+          "sign_arm": 1,
+          "site": [
+            51,
+            17,
+            48
+          ]
+        },
+        {
+          "form": "recuerda",
+          "sign_arm": -1,
+          "site": [
+            47,
+            21,
+            46
+          ]
+        },
+        {
+          "form": "recuerda",
+          "sign_arm": 1,
+          "site": [
+            47,
+            21,
+            48
+          ]
+        },
+        {
+          "form": "luma",
+          "sign_arm": -1,
+          "site": [
+            43,
+            17,
+            46
+          ]
+        },
+        {
+          "form": "luma",
+          "sign_arm": 1,
+          "site": [
+            43,
+            17,
+            48
+          ]
+        },
+        {
+          "form": "nara",
+          "sign_arm": -1,
+          "site": [
+            47,
+            13,
+            46
+          ]
+        },
+        {
+          "form": "nara",
+          "sign_arm": 1,
+          "site": [
+            47,
+            13,
+            48
+          ]
+        }
+      ],
+      "new_ports": [
+        {
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "cue",
+          "site": [
+            47,
+            17,
+            47
+          ]
+        },
+        {
+          "direction": [
+            1,
+            0,
+            -1
+          ],
+          "form": "luma",
+          "role": "teacher",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            50
+          ]
+        },
+        {
+          "arrival_offset": 4,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "select",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            46
+          ]
+        },
+        {
+          "arrival_offset": 5,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "back",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            45
+          ]
+        },
+        {
+          "arrival_offset": 6,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "restore",
+          "sign_arm": -1,
+          "site": [
+            46,
+            17,
+            44
+          ]
+        },
+        {
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "form": "luma",
+          "role": "teacher",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            44
+          ]
+        },
+        {
+          "arrival_offset": 4,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "select",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            48
+          ]
+        },
+        {
+          "arrival_offset": 5,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "back",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            49
+          ]
+        },
+        {
+          "arrival_offset": 6,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "form": "luma",
+          "role": "restore",
+          "sign_arm": 1,
+          "site": [
+            46,
+            17,
+            50
+          ]
+        },
+        {
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "form": "nara",
+          "role": "cue",
+          "site": [
+            47,
+            17,
+            47
+          ]
+        },
+        {
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "form": "nara",
+          "role": "teacher",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            50
+          ]
+        },
+        {
+          "arrival_offset": 4,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "form": "nara",
+          "role": "select",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            46
+          ]
+        },
+        {
+          "arrival_offset": 5,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "form": "nara",
+          "role": "back",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            45
+          ]
+        },
+        {
+          "arrival_offset": 6,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "form": "nara",
+          "role": "restore",
+          "sign_arm": -1,
+          "site": [
+            47,
+            16,
+            44
+          ]
+        },
+        {
+          "direction": [
+            0,
+            1,
+            1
+          ],
+          "form": "nara",
+          "role": "teacher",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            44
+          ]
+        },
+        {
+          "arrival_offset": 4,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "form": "nara",
+          "role": "select",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            48
+          ]
+        },
+        {
+          "arrival_offset": 5,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "form": "nara",
+          "role": "back",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            49
+          ]
+        },
+        {
+          "arrival_offset": 6,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "form": "nara",
+          "role": "restore",
+          "sign_arm": 1,
+          "site": [
+            47,
+            16,
+            50
+          ]
+        }
+      ],
+      "new_preparation_duplicate_count": 0,
+      "new_preparation_overlap_injection_sources": [],
+      "new_preparation_overlap_legacy_readers": [],
+      "new_slots": [
+        "luma",
+        "nara"
+      ],
+      "origin": [
+        47,
+        17,
+        47
+      ],
+      "physical_occupancy_not_checked": true,
+      "preparation_sites": [
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            45,
+            17,
+            46
+          ]
+        },
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            45,
+            17,
+            45
+          ]
+        },
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            42,
+            17,
+            44
+          ]
+        },
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            45,
+            17,
+            48
+          ]
+        },
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            45,
+            17,
+            49
+          ]
+        },
+        {
+          "form": "luma",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            42,
+            17,
+            50
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            47,
+            15,
+            46
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            47,
+            15,
+            45
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": -1,
+          "site": [
+            47,
+            12,
+            44
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            47,
+            15,
+            48
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            47,
+            15,
+            49
+          ]
+        },
+        {
+          "form": "nara",
+          "prepared_semantic": 4,
+          "prepared_state": 0,
+          "prepared_value": 0,
+          "sign_arm": 1,
+          "site": [
+            47,
+            12,
+            50
+          ]
+        }
+      ],
+      "scope": "Design geometry only. Lack of static overlap does not establish dynamic isolation or vacancy.",
+      "version": "APD03.generic_lexicon.R01.common32"
+    },
+    "maximum_simultaneous_Native_owners": 1,
+    "memory_limit_bytes": 536870912,
+    "module_sha256": "2a91c62763b8f6309c6905829fe33c8972a79dd7261090eafb43aad132d02277",
+    "new_ticks_authorized_by_this_file": false,
+    "no_anatomy_changes_after_prefix": true,
+    "old_sample": [
+      "suma",
+      "resta",
+      "compara",
+      "recuerda"
+    ],
+    "prefix": "A complete APD02 parent copy after one common old14 panel, then exactly one preparation of both empty generic slots; no taught A/B content.",
+    "sampling_limit": "Per-branch4forms cover two arithmetic signs and two prepared functional requests, not full14retention. Only the prefix has an old14panel; MAIN final requires its own full panel.",
+    "schema": "DEE.APD03.generic_lexicon_curve.prospective.R02.incremental",
+    "scope": "Six branches share a prefix, not six independent learners. A related/opposite sign can produce transfer or interference; an initial advantage alone does not demonstrate learning-to-learn."
+  },
+  "prefix_error": null,
+  "preflight_admissible": false,
+  "resources": {
+    "actual_python_pid": 86172,
+    "actual_worker_peak_working_set_bytes": 232521728,
+    "actual_worker_private_bytes": 32272384,
+    "actual_worker_working_set_bytes": 43859968,
+    "cpu_kernel_seconds": 2.40625,
+    "cpu_user_seconds": 10.96875,
+    "job_active_processes": 1,
+    "job_memory_limit": 536870912,
+    "job_total_processes": 1,
+    "parent_pid": 83700,
+    "peak_job_committed_bytes": 235585536,
+    "peak_process_committed_bytes": 235585536
+  },
+  "schema": "APD03.lexical_curve.executed.R01",
+  "scope": "Six finite related diagnostic branches at most, not independent learners; only4representative old forms tested per branch, no complete14retention claim. No result transferred to MAIN.",
+  "sources": [
+    {
+      "bytes": 10907,
+      "file": "CODIGO_EJECUTADO/000_ejecutar_curvas_lexico_apd03_r01.py",
+      "sha256": "7084b8d32561bbc03fa65659d0154c572636e5ab153f26ca206fbd785dd04aad",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD03_AUTONOMIA_DESARROLLO_DEMOSTRACION\\comparacion\\ejecutar_curvas_lexico_apd03_r01.py"
+    },
+    {
+      "bytes": 7043,
+      "file": "CODIGO_EJECUTADO/001_protocolo_curvas_lexico_apd03_r01.py",
+      "sha256": "df0694618d6902b6d5c5250dfd1f43f1a568217d432b87c167abf9aa4fcd7f37",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD03_AUTONOMIA_DESARROLLO_DEMOSTRACION\\comparacion\\protocolo_curvas_lexico_apd03_r01.py"
+    },
+    {
+      "bytes": 13299,
+      "file": "CODIGO_EJECUTADO/002_lexico_generico_apd03_r01.py",
+      "sha256": "2a91c62763b8f6309c6905829fe33c8972a79dd7261090eafb43aad132d02277",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD03_AUTONOMIA_DESARROLLO_DEMOSTRACION\\comparacion\\lexico_generico_apd03_r01.py"
+    },
+    {
+      "bytes": 4750,
+      "file": "CODIGO_EJECUTADO/003_recalcular_curvas_lexico_apd03_r01.py",
+      "sha256": "1a6d9a75a4cbbe4edc25d0ee4e324ad82123f984c62aa5eee0e9ed3d6e33ff2f",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD03_AUTONOMIA_DESARROLLO_DEMOSTRACION\\comparacion\\recalcular_curvas_lexico_apd03_r01.py"
+    },
+    {
+      "bytes": 6709,
+      "file": "CODIGO_EJECUTADO/004_lexico_apd02_01.py",
+      "sha256": "fb45e54f4bf877405c837db143f245254732b06047699f048f801494373c6883",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\lexico_apd02_01.py"
+    },
+    {
+      "bytes": 15820,
+      "file": "CODIGO_EJECUTADO/005_mente_acumulativa_r02.py",
+      "sha256": "052b1b69abd54b73fa261e8f9ba2ac34553dd22354e207758b08a5ec40610ea8",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\mente_acumulativa_r02.py"
+    },
+    {
+      "bytes": 25198,
+      "file": "CODIGO_EJECUTADO/006_mente_unificada_01.py",
+      "sha256": "fdea4309b27ac146b5fdecac598d63d96b6d7a30d8a629fd44e5b618d34434a1",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\mente_unificada_01.py"
+    },
+    {
+      "bytes": 18891,
+      "file": "CODIGO_EJECUTADO/007_lives.py",
+      "sha256": "dd5487a6c454207f0c50e2c20cf9d304f3490f70c14cdd5710450799516fd5a6",
+      "source": "documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\lives.py"
+    },
+    {
+      "bytes": 2924,
+      "file": "CODIGO_EJECUTADO/008_native_tools.py",
+      "sha256": "83e817119b7ec939c67729521e8c846a7d1441dcc0fe9cda71dcc1a328bf49e9",
+      "source": "documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\native_tools.py"
+    },
+    {
+      "bytes": 7101,
+      "file": "CODIGO_EJECUTADO/009_process_control.py",
+      "sha256": "f3c22937694d9a0ee2b0d20aab112b9af27f57949674a32fe036c595a60ee5b4",
+      "source": "documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\process_control.py"
+    },
+    {
+      "bytes": 78,
+      "file": "CODIGO_EJECUTADO/010___init__.py",
+      "sha256": "7f29ed38c3705030f04dd0fd27ad0a033496ae76ad53bf40b35ed974e3c7f0a4",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\__init__.py"
+    },
+    {
+      "bytes": 2924,
+      "file": "CODIGO_EJECUTADO/011_native_tools.py",
+      "sha256": "83e817119b7ec939c67729521e8c846a7d1441dcc0fe9cda71dcc1a328bf49e9",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\native_tools.py"
+    },
+    {
+      "bytes": 18891,
+      "file": "CODIGO_EJECUTADO/012_lives.py",
+      "sha256": "dd5487a6c454207f0c50e2c20cf9d304f3490f70c14cdd5710450799516fd5a6",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\lives.py"
+    },
+    {
+      "bytes": 7101,
+      "file": "CODIGO_EJECUTADO/013_process_control.py",
+      "sha256": "f3c22937694d9a0ee2b0d20aab112b9af27f57949674a32fe036c595a60ee5b4",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\app\\process_control.py"
+    },
+    {
+      "bytes": 7595,
+      "file": "CODIGO_EJECUTADO/014_lexico_apd_extendido_04.py",
+      "sha256": "79ea7b54f09873b8a6d5045726584eeba441498240415c3734a05f992f865fcd",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\lexico_apd_extendido_04.py"
+    },
+    {
+      "bytes": 3751,
+      "file": "CODIGO_EJECUTADO/015_selector_acrecion_nativo.py",
+      "sha256": "e5e78021fc7c2218064ada2f69db6b70bc73cd40325304e1140a9e07cd9752b7",
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\selector_acrecion_nativo.py"
+    }
+  ],
+  "stopped": "Complete preflight rejected; no lexical installation or branches"
+}

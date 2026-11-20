@@ -1,0 +1,18 @@
+{
+  "schema": "CPC6.word_bus.controls.frozen.v1",
+  "freeze": "before these four late selective forks; discovery decoder polarity is not used",
+  "cases": [
+    {"id": "WB01_bus_cut", "parent": "WB01_remote_Qminus", "mechanism": "late_bus_carrier", "arm": "selective_cut"},
+    {"id": "WB01_bus_sham", "parent": "WB01_remote_Qminus", "mechanism": "late_bus_carrier", "arm": "identical_RAW_sham"},
+    {"id": "WB02_memory_equalized", "parent": "WB02_remote_Qplus", "mechanism": "R2_relative_memory", "arm": "selective_cut"},
+    {"id": "WB02_memory_sham", "parent": "WB02_remote_Qplus", "mechanism": "R2_relative_memory", "arm": "identical_RAW_sham"}
+  ],
+  "fork_tick": 160,
+  "bus_cut_site": [44, 53, 28],
+  "bus_cut": "Remove only RAW of the already emitted neutral query carrier approaching right target; preserve its clock and all other fields/sites.",
+  "memory_cut": "Replace only right R2.A.s_reg by R2.B.s_reg, preserve state/direction/semantic/clock. No additional probe or query is supplied.",
+  "windows": [160, 161, 162, 163],
+  "criterion": "Compare exact live target RAW/vector at162, R2 delta, carrier state and local Moore context with matched parent/sham; never compare an earlier decoder's class label.",
+  "maximum_forks": 4,
+  "modality": "DIAGNOSTIC_FORK; all original parent snapshots remain unchanged"
+}

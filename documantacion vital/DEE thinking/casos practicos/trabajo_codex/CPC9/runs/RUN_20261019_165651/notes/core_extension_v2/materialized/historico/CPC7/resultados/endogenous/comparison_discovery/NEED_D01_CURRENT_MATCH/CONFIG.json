@@ -1,0 +1,290 @@
+{
+  "case": {
+    "id": "NEED_D01_CURRENT_MATCH",
+    "history": "AB",
+    "actual": 1,
+    "source_value": 1,
+    "phase": "DISCOVERY"
+  },
+  "geometry": {
+    "body": {
+      "n": 67,
+      "center": [
+        33,
+        25,
+        33
+      ],
+      "A": [
+        32,
+        25,
+        33
+      ],
+      "B": [
+        34,
+        25,
+        33
+      ],
+      "emission_site": [
+        33,
+        24,
+        33
+      ],
+      "emission_tick": 5,
+      "initial_phase": 260,
+      "initial_relation": 0,
+      "resource_sites": 11
+    },
+    "need": {
+      "schema": "CPC7.native_need.comparison.v1",
+      "N": 67,
+      "prefix": "need",
+      "origin": [
+        33,
+        24,
+        33
+      ],
+      "ticks": {
+        "emission": 5,
+        "comparison": 15,
+        "question": 19,
+        "information": 24,
+        "use": 29
+      },
+      "comparison_hubs": {
+        "left": [
+          23,
+          14,
+          33
+        ],
+        "right": [
+          43,
+          14,
+          33
+        ]
+      },
+      "branches": {
+        "left.equal": {
+          "lane": "left",
+          "dx": 0,
+          "request_site": [
+            23,
+            10,
+            37
+          ],
+          "comparison_direction": [
+            0,
+            -1,
+            1
+          ]
+        },
+        "left.different": {
+          "lane": "left",
+          "dx": -1,
+          "request_site": [
+            19,
+            10,
+            37
+          ],
+          "comparison_direction": [
+            -1,
+            -1,
+            1
+          ],
+          "source_contact": [
+            14,
+            10,
+            37
+          ]
+        },
+        "right.equal": {
+          "lane": "right",
+          "dx": 0,
+          "request_site": [
+            43,
+            10,
+            37
+          ],
+          "comparison_direction": [
+            0,
+            -1,
+            1
+          ]
+        },
+        "right.different": {
+          "lane": "right",
+          "dx": 1,
+          "request_site": [
+            47,
+            10,
+            37
+          ],
+          "comparison_direction": [
+            1,
+            -1,
+            1
+          ],
+          "source_contact": [
+            52,
+            10,
+            37
+          ]
+        }
+      },
+      "source_codecs": {
+        "need.source.left.-1": {
+          "lane": "left",
+          "value": -1,
+          "hub": [
+            14,
+            31,
+            37
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            37
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.left.1": {
+          "lane": "left",
+          "value": 1,
+          "hub": [
+            14,
+            56,
+            37
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            14,
+            10,
+            37
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.right.-1": {
+          "lane": "right",
+          "value": -1,
+          "hub": [
+            52,
+            31,
+            37
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            37
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        },
+        "need.source.right.1": {
+          "lane": "right",
+          "value": 1,
+          "hub": [
+            52,
+            56,
+            37
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "loads": [
+            5,
+            18
+          ],
+          "source_contact": [
+            52,
+            10,
+            37
+          ],
+          "scope": "A current data carrier acquired by two real experience inputs"
+        }
+      },
+      "later_queries": {
+        "need.use.left.-1": {
+          "site": [
+            9,
+            5,
+            37
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": -1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.left.1": {
+          "site": [
+            9,
+            15,
+            37
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "left",
+          "value": 1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.right.-1": {
+          "site": [
+            57,
+            5,
+            37
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": -1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        },
+        "need.use.right.1": {
+          "site": [
+            57,
+            15,
+            37
+          ],
+          "request_tick": 26,
+          "read_tick": 29,
+          "lane": "right",
+          "value": 1,
+          "scope": "All alternatives receive the same later physical probe; no host routing by selected branch"
+        }
+      },
+      "incoming_contract": "Actual learned order-body carrier (s,-1,0) at origin5; never a predicted answer calculated here",
+      "mechanism": "Comparison (dx,-1,1) + common opportunity(0,1,-1) produces (dx,0,0). Equal cancels X; discrepancy emits native horizontal request.",
+      "limits": "Finite prepared opportunities. Missing represented expectation or missing actual report is outside singleton-comparison domain; no generic uncertainty detector."
+    }
+  },
+  "source_sha256": "892cf1600061b5dd73ec88ae1f53691d7dcea6fd2858ca55ba398946d3232ca7",
+  "criterion": "Actual native X request after comparison, followed by different source-dependent fields and later common physical use. Emission precedes source contact.",
+  "horizon": 35,
+  "no_global_uncertainty_classifier": true
+}

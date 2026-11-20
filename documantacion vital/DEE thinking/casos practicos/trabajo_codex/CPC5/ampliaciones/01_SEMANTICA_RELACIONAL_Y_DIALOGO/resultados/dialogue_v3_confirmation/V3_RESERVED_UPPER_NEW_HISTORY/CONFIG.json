@@ -1,0 +1,336 @@
+{
+  "case": {
+    "id": "V3_RESERVED_UPPER_NEW_HISTORY",
+    "architecture": "A2",
+    "access_shift": 44,
+    "context_z": 1,
+    "names": true,
+    "name_interval": 61,
+    "emitter_sign": 1,
+    "receiver_sign": 1,
+    "query": 17,
+    "late_query": 7,
+    "name_payload": 3,
+    "name_probe_payload": 7,
+    "loads": {
+      "U2.memory": [
+        4,
+        10
+      ],
+      "U1.context": [
+        7,
+        13
+      ]
+    },
+    "translation": [
+      5,
+      -3,
+      7
+    ],
+    "reserved": true
+  },
+  "geometry": {
+    "N": 67,
+    "stages": [
+      {
+        "id": "U2.memory",
+        "participant": "U2",
+        "target": [
+          35,
+          17,
+          15
+        ],
+        "time": 55,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "role": "response acquired from local experience",
+        "hub": [
+          35,
+          32,
+          15
+        ]
+      },
+      {
+        "id": "U2.turn1",
+        "participant": "U2",
+        "target": [
+          40,
+          22,
+          15
+        ],
+        "time": 60,
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "train": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            1,
+            0
+          ]
+        ],
+        "role": "zero-load acquired routing support",
+        "hub": [
+          30,
+          22,
+          15
+        ]
+      },
+      {
+        "id": "U2.turn2",
+        "participant": "U2",
+        "target": [
+          40,
+          27,
+          15
+        ],
+        "time": 65,
+        "direction": [
+          -1,
+          -1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ],
+        "role": "zero-load acquired routing support",
+        "hub": [
+          35,
+          22,
+          15
+        ]
+      },
+      {
+        "id": "U1.context",
+        "participant": "U1",
+        "target": [
+          35,
+          27,
+          15
+        ],
+        "time": 70,
+        "direction": [
+          0,
+          -1,
+          1
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            1
+          ]
+        ],
+        "role": "acquired context for using returned answer",
+        "hub": [
+          35,
+          27,
+          15
+        ]
+      }
+    ],
+    "backups": [
+      {
+        "id": "U2.memory.backup",
+        "participant": "U2",
+        "target": [
+          45,
+          12,
+          47
+        ],
+        "time": 70,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "role": "independently experienced retained support",
+        "hub": [
+          45,
+          12,
+          47
+        ]
+      },
+      {
+        "id": "U1.context.backup",
+        "participant": "U1",
+        "target": [
+          55,
+          12,
+          59
+        ],
+        "time": 70,
+        "direction": [
+          0,
+          -1,
+          1
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            1
+          ]
+        ],
+        "role": "independently experienced retained support",
+        "hub": [
+          55,
+          12,
+          59
+        ]
+      }
+    ],
+    "request_site": [
+      30,
+      17,
+      15
+    ],
+    "request_tick": 50,
+    "request_direction": [
+      1,
+      0,
+      0
+    ],
+    "banks": {
+      "lower": [
+        30,
+        22,
+        20
+      ],
+      "upper": [
+        30,
+        32,
+        20
+      ]
+    },
+    "access_shift": 44,
+    "context_z": 1,
+    "bank_tick": 75,
+    "name_hubs": {
+      "lower": [
+        30,
+        11,
+        31
+      ],
+      "upper": [
+        30,
+        43,
+        31
+      ]
+    },
+    "name_learning_tick": 86,
+    "name_probe_tick": 147,
+    "name_interval": 61,
+    "name_query_targets": {
+      "lower": [
+        36,
+        17,
+        25
+      ],
+      "upper": [
+        36,
+        37,
+        25
+      ]
+    },
+    "participants": {
+      "U1": {
+        "functions": [
+          "request",
+          "context",
+          "use",
+          "retained backup"
+        ],
+        "component_ids": [
+          "U1.context",
+          "U1.context.backup"
+        ]
+      },
+      "U2": {
+        "functions": [
+          "local experience",
+          "response",
+          "return routing",
+          "retained backup"
+        ],
+        "component_ids": [
+          "U2.memory",
+          "U2.turn1",
+          "U2.turn2",
+          "U2.memory.backup"
+        ]
+      }
+    },
+    "prepared_material_sites": 0,
+    "translation": [
+      5,
+      -3,
+      7
+    ],
+    "scope": "Two finite communicating candidate compounds. Geometry and routing opportunities are designed; memory content and directional effects are acquired by submitted experiences. Not autonomous selection of interlocutor."
+  },
+  "source_sha256": "3f349ea2c2ae9214602e1388eb289b7ac88b1f893a56aa29004310bc78ecfec1",
+  "criterion": "Fixed physical fields and arrival windows; direction/content/history contrasts evaluated after trajectories. No expected value supplied to session.",
+  "resources": {
+    "Runtime": 1,
+    "N": 67,
+    "basic_buffer_bytes": 9624416,
+    "components": 6,
+    "top_entities": 2,
+    "prepared_material_sites": 0
+  },
+  "horizon": 204
+}

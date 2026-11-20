@@ -1,0 +1,910 @@
+{
+  "configuration": {
+    "schema": "CPC5.extension.network_dialogue.confirmation.v1",
+    "frozen_after_screen": "RING_A1_SELF/RING_A2_DUPLEX/RING_A3/RING_A4",
+    "frozen_before_execution": true,
+    "criterion": "Fixed native encounters and two bank readouts, preservation of other conversation and acquired backups. Cut only already emitted response in diagnostic fork; compare sham. Role variation keeps both contexts fromT0, introduces other actor's response-side memory at134 and uses opposite request direction of social role without permuting arrays or decoders.",
+    "reserved_before_execution": "Two actors, new17/19 requests and private16/18 acquired response loads, reversed context signs; U1 requestsU2 at50, U2 requestsU1 at184, both old contexts queried67 and all retained supports335/338. New experience is actual inputs, not copied memory.",
+    "cases": [
+      {
+        "id": "RING_A2_SOURCE_U2_OMITTED",
+        "participants": 2,
+        "omit_memory_actor": 2
+      },
+      {
+        "id": "RING_A2_SENT_MESSAGE_CUT",
+        "participants": 2,
+        "message_intervention": {
+          "loop": 0,
+          "kind": "remove"
+        }
+      },
+      {
+        "id": "RING_A2_SENT_MESSAGE_SHAM",
+        "participants": 2,
+        "message_intervention": {
+          "loop": 0,
+          "kind": "sham"
+        }
+      },
+      {
+        "id": "RING_A2_RESERVED_ROLE_EXCHANGE",
+        "participants": 2,
+        "staggered_roles": true,
+        "context_signs": [
+          1,
+          -1
+        ],
+        "memory_loads": [
+          [
+            4,
+            12
+          ],
+          [
+            5,
+            13
+          ]
+        ],
+        "queries": [
+          17,
+          19
+        ],
+        "reserved": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "RING_A2_SOURCE_U2_OMITTED",
+      "file": "resultados\\network_dialogue_confirmation\\RING_A2_SOURCE_U2_OMITTED\\MEASUREMENTS.json",
+      "sha256": "42007116a1a9d022d4cb16057c151514d773677d5602643a9d69a0936042942d",
+      "calculations": [
+        {
+          "loop": 0,
+          "requester": "U1",
+          "responder": "U2",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                25,
+                25,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                25,
+                35,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 50,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "matches_full_history_reference": [],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                40,
+                15,
+                40
+              ],
+              "raw": "1157143650732343297",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 5,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                50,
+                15,
+                52
+              ],
+              "raw": "1296755307900305409",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        },
+        {
+          "loop": 1,
+          "requester": "U2",
+          "responder": "U1",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                40,
+                25,
+                29
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                40,
+                35,
+                29
+              ],
+              "raw": "1229482904430575617",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 48,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 48,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.upper"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                55,
+                15,
+                56
+              ],
+              "raw": "1161647301899321345",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 17,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                65,
+                15,
+                1
+              ],
+              "raw": "1233704913117118465",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        }
+      ],
+      "resources": {
+        "N": 67,
+        "Runtime": 1,
+        "basic_buffer_bytes": 9624416,
+        "top_level_candidates": 2,
+        "physical_components": 12,
+        "input_calls": 30,
+        "API_probes": 6,
+        "native_ticks": 204,
+        "prepared_material_sites": 0,
+        "training_and_query_information": "Per-actor private histories; costs scale with population, not an equal-inventory advantage comparison"
+      },
+      "elapsed_seconds": 6.4624563999823295
+    },
+    {
+      "id": "RING_A2_SENT_MESSAGE_CUT",
+      "file": "resultados\\network_dialogue_confirmation\\RING_A2_SENT_MESSAGE_CUT\\MEASUREMENTS.json",
+      "sha256": "32d577c23c28e34d737de9abbe7ba34407c6cc4aecdf1e5a66aa0ca5844503a6",
+      "calculations": [
+        {
+          "loop": 0,
+          "requester": "U1",
+          "responder": "U2",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                25,
+                25,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                25,
+                35,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 50,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "matches_full_history_reference": [],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                40,
+                15,
+                40
+              ],
+              "raw": "1161647310489255937",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 19,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                50,
+                15,
+                52
+              ],
+              "raw": "1296755307900305409",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        },
+        {
+          "loop": 1,
+          "requester": "U2",
+          "responder": "U1",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                40,
+                25,
+                29
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                40,
+                35,
+                29
+              ],
+              "raw": "1229482904430575617",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 48,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 48,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.upper"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                55,
+                15,
+                56
+              ],
+              "raw": "1161647301899321345",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 17,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                65,
+                15,
+                1
+              ],
+              "raw": "1233704913117118465",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        }
+      ],
+      "resources": {
+        "N": 67,
+        "Runtime": 1,
+        "basic_buffer_bytes": 9624416,
+        "top_level_candidates": 2,
+        "physical_components": 12,
+        "input_calls": 34,
+        "API_probes": 6,
+        "native_ticks": 204,
+        "prepared_material_sites": 0,
+        "training_and_query_information": "Per-actor private histories; costs scale with population, not an equal-inventory advantage comparison"
+      },
+      "elapsed_seconds": 7.150873999984469
+    },
+    {
+      "id": "RING_A2_SENT_MESSAGE_SHAM",
+      "file": "resultados\\network_dialogue_confirmation\\RING_A2_SENT_MESSAGE_SHAM\\MEASUREMENTS.json",
+      "sha256": "d837059353f803066bac6366631d8d1879b2a6278221dd746af08b11512b313b",
+      "calculations": [
+        {
+          "loop": 0,
+          "requester": "U1",
+          "responder": "U2",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                25,
+                25,
+                13
+              ],
+              "raw": "1292533307803697153",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 50,
+              "semantic": 1,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                25,
+                35,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 50,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.lower"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                40,
+                15,
+                40
+              ],
+              "raw": "1161647310489255937",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 19,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                50,
+                15,
+                52
+              ],
+              "raw": "1296755307900305409",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        },
+        {
+          "loop": 1,
+          "requester": "U2",
+          "responder": "U1",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                40,
+                25,
+                29
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                40,
+                35,
+                29
+              ],
+              "raw": "1229482904430575617",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 48,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 48,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.upper"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 204,
+              "site": [
+                55,
+                15,
+                56
+              ],
+              "raw": "1161647301899321345",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 17,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 204,
+              "site": [
+                65,
+                15,
+                1
+              ],
+              "raw": "1233704913117118465",
+              "clock": "204",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        }
+      ],
+      "resources": {
+        "N": 67,
+        "Runtime": 1,
+        "basic_buffer_bytes": 9624416,
+        "top_level_candidates": 2,
+        "physical_components": 12,
+        "input_calls": 34,
+        "API_probes": 6,
+        "native_ticks": 204,
+        "prepared_material_sites": 0,
+        "training_and_query_information": "Per-actor private histories; costs scale with population, not an equal-inventory advantage comparison"
+      },
+      "elapsed_seconds": 7.386731399979908
+    },
+    {
+      "id": "RING_A2_RESERVED_ROLE_EXCHANGE",
+      "file": "resultados\\network_dialogue_confirmation\\RING_A2_RESERVED_ROLE_EXCHANGE\\MEASUREMENTS.json",
+      "sha256": "3650609998a093151f5ce481e716281db5cb633ed8e7b1a107c33a244236ab46",
+      "calculations": [
+        {
+          "loop": 0,
+          "requester": "U1",
+          "responder": "U2",
+          "bank_tick": 75,
+          "banks": {
+            "bank.lower": {
+              "tick": 75,
+              "site": [
+                25,
+                25,
+                13
+              ],
+              "raw": "1153203009648328705",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 75,
+              "site": [
+                25,
+                35,
+                13
+              ],
+              "raw": "1229482947380248577",
+              "clock": "75",
+              "state": 1,
+              "s_reg": 58,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 58,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.upper"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 338,
+              "site": [
+                40,
+                15,
+                40
+              ],
+              "raw": "1161647349143961601",
+              "clock": "338",
+              "state": 1,
+              "s_reg": 28,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 338,
+              "site": [
+                50,
+                15,
+                52
+              ],
+              "raw": "1233704934591954945",
+              "clock": "338",
+              "state": 1,
+              "s_reg": 26,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        },
+        {
+          "loop": 1,
+          "requester": "U2",
+          "responder": "U1",
+          "bank_tick": 209,
+          "banks": {
+            "bank.lower": {
+              "tick": 209,
+              "site": [
+                40,
+                25,
+                29
+              ],
+              "raw": "1292533342163435521",
+              "clock": "209",
+              "state": 1,
+              "s_reg": 58,
+              "semantic": 1,
+              "direction": [
+                0,
+                -1,
+                1
+              ],
+              "active": true
+            },
+            "bank.upper": {
+              "tick": 209,
+              "site": [
+                40,
+                35,
+                29
+              ],
+              "raw": "1153203009648328705",
+              "clock": "209",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            }
+          },
+          "full_history_additive_reference": 58,
+          "reference_formula": "request + two independently acquired local relation loads + environmental7, after native directional routing",
+          "full_history_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "matches_full_history_reference": [
+            "bank.lower"
+          ],
+          "backup_readouts": {
+            "U2.memory.backup": {
+              "tick": 338,
+              "site": [
+                55,
+                15,
+                56
+              ],
+              "raw": "1161647319079190529",
+              "clock": "338",
+              "state": 1,
+              "s_reg": 21,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "U1.context.backup": {
+              "tick": 338,
+              "site": [
+                65,
+                15,
+                1
+              ],
+              "raw": "1296755329375141889",
+              "clock": "338",
+              "state": 1,
+              "s_reg": 26,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                1
+              ],
+              "active": true
+            }
+          },
+          "scope": "Reference is evaluation only; missing/altered-history controls need not match it. This is not a semantic depth score."
+        }
+      ],
+      "resources": {
+        "N": 67,
+        "Runtime": 1,
+        "basic_buffer_bytes": 9624416,
+        "top_level_candidates": 2,
+        "physical_components": 12,
+        "input_calls": 37,
+        "API_probes": 9,
+        "native_ticks": 338,
+        "prepared_material_sites": 0,
+        "training_and_query_information": "Per-actor private histories; costs scale with population, not an equal-inventory advantage comparison"
+      },
+      "elapsed_seconds": 16.63728299998911
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+# Arquitectura distribuida MI02 y alcance funcional
+
+Proyecto privado INVESTIGACION DEE. Autor: Ivan Erick Tlaltecatl Morales. Motor oficial DEE thinking 4.5.0 y kernel v27 sin modificaciones. Campaña iniciada el22/10/2026 a14:58 UTC, límite absoluto22:58 UTC.
+
+## Conclusión
+
+Se construyeron y ejecutaron las dos realizaciones solicitadas. La heredada continúa un snapshot real MI01 T24752; la alternativa aprendió sus propios contenidos desde T0. Hubo selección local modificada por consecuencias, iniciación material de solicitudes, utilización de información privada, composición de campos adquiridos y actuación externa. **La integración sigue dependiendo de asistencia y condiciones físicas relevantes.** La evaluación fijada de MAIN no sostuvo todos los accesos. No se declara una mente general, regulación R2 general, comprensión española ni control aprendido competente de Pendulum.
+
+Un avance posterior quedó incorporado como alternativa R9: el lector de B puede vaciarse, conservar la referencia privada en otros soportes y responder a solicitudes nativas posteriores sin limpieza ni reactivación manual. No sustituye retrospectivamente al MAIN fijado. Los fallos anteriores y los futuros adversos permanecen.
+
+Los nombres de los experimentos que siguen son localizadores exactos del índice y de la extracción primaria. El paquete incluye sus resultados, los archivos originales con SHA256 referenciados y el código ejecutado por contenido. Las proyecciones JSON no se presentan como bytes idénticos de los originales ni como archivo histórico íntegro.
+
+## Organizaciones y genealogía
+
+La realizaciónA es **E1_MI02_HEREDADA_R8**, N67, bifurcación exacta del snapshot `E1_MI01_MAIN.T24752.bec543681d6d.deetsnap.gz`, SHA256 `23114e8445f2b651ce9dfd53011b9749b357e1fa9a4191e87982b0fafec081a4`. Se añadió una preparación periférica mediante entradas legales después de comprobar RAW cero en todos los sitios que se iban a preparar. No se borraron campos heredados ni se reiniciaron clocks. Llegó a T36366. El nuevo aprendizaje local no demuestra que conocimientos anteriores MI01 participaran en sus decisiones. No se suman sus capacidades a las de otra vida.
+
+La realizaciónB principal es **D1_MI02_MAIN**, N26, preparación nueva T0. A tiene campos locales adquiridos y un mecanismo de actuación por consecuencias; B tiene referencias privadas adquiridas y canales de respuesta. Fuentes, soporte, límites físicos, sensores y rutas son preparados. Son regiones y un participante de un mismo mundo, no dos mentes generales ni vistas duplicadas de materia.
+
+La arquitectura R6 y la secuencia completa se fijaron antes de crear MAIN (`MAIN_EVALUACION_FIJADA_29`). El programa terminó realmente en T64749. Tras conservar ese corte adverso, una continuación exploratoria declarada, no una corrección retrospectiva de la reserva, llevó la misma vida a T81207. La rama `D1_MI02_LEXICO_CONSERVADO` procede de T60839; `D1_MI02_POST_CAMBIO34` conserva el corte posterior de T81207. Ninguna memoria de una rama se devolvió a MAIN.
+
+**MI02_SOCIAL_REUSABLE_240** es una vida nueva de la alternativa R9. No hereda aprendizaje de MAIN. Llegó a T15329; su copia operativa `MI02_R9_OPERATIVA47` continuó hasta T20021 mediante usos nativos y16 pasos externos. El activo **E1_SOCIAL_11 T3154** y **E1_MI01_MAINT28169** permanecen protegidos y no se promovió otra vida por su mejor resultado aislado.
+
+Las fichas y la continuidad identifican padres, perfiles, Runtime, N, interfaces, snapshots completos, colas, límites y asistencia. Se guarda el mundo compartido una sola vez por checkpoint. Los cortes microscópicos tomados dentro de un protocolo se consideran diagnósticos, no fronteras operativas completas.
+
+## Aprendizaje por consecuencias y utilidad
+
+En el perfil local R8, la actuación entra materialmente en una condición ambiental de disponibilidad. Un producto de fallo vuelve por un recorrido preparado y modifica condiciones de vecindad de los campos adquiridos. La evolución posterior altera una actuación. Python programa la disponibilidad exógena y suministros de acuerdo con una ley fija; no lee la salida para escribir la referencia correcta ni decide la acción.
+
+`MI02_CONTROLADOR_90` continuó durante24 oportunidades. Las primeras seis incluyeron cinco errores. En las18 posteriores, `ACUMULACION13_90` tuvo16 contactos útiles frente a7 sin retorno y7 con corte selectivo del retorno. Reservas16: intacto14113/19, sham14213/19, corte de acción1430/19 y otra historia14415/20. Son trayectorias deterministas, no19 o20 individuos independientes. No se extrapolan fuera de la preparación, fase y calendario declarados.
+
+La rama heredada (`HEREDADA_R8_VIVIR23_intact`) produjo10/15 contactos útiles; el control de igual prefijo sin retorno dio5/15. Esto acredita que el mecanismo añadido opera en ese mundo heredado, no integración causal con toda su memoria anterior.
+
+En MAIN, tras la recuperación asistida descrita más abajo, `CONT34_MAIN_PRIOR` volvió a utilizar la relación anterior sin reenseñarla. En `CONT34_MAIN_CHANGE`, ante veinte oportunidades del régimen opuesto, hubo diez errores iniciales seguidos por diez contactos útiles. El control sin retorno mantuvo su emisión anterior y no tuvo contactos útiles. **No estaba en silencio:** había salidas por la rama incorrecta que, sin los suministros del retorno, no se reflejaban como producto de fallo. El recálculo distingue emisión incorrecta sin retorno, fallo reflejado y ausencia real.
+
+El resultado es adquisición de estado y modificación local de actuaciones por consecuencias, con utilidad en ese problema. No se convierte automáticamente en una política flexible de recuperación R2 ni en aprendizaje competente de control externo.
+
+## Solicitud nativa información privada y composición
+
+En R6, las experiencias locales modificaron A hasta producir una corriente equilibrada. Ésta atravesó la ruta de solicitud y activó B sin una llamada del anfitrión que dijera cuándo preguntar. B había recibido sus muestras privadas antes de disponer de lector activo. Su relación privada determinó el signo de la respuesta, que se transportó por encuentros del mismo Runtime y modificó un receptor de contexto de A.
+
+Los testigos26 conservan el cambio desde T1174, el paso por los giros de consulta, la activación de B en T1205, su salida dependiente de contenido y la llegada al receptor en T1228. No se atribuye linaje sólo por coincidir la carga. Los cortes de consulta, mensaje y retorno y la historia privada opuesta delimitan los enlaces. El mundo completo, no sólo los puertos, está referenciado por sus snapshots.
+
+La salida posterior combina campos locales adquiridos con una contribución social derivada de otra adquisición. En reservas31, las historias privadas61/19 y19/61 cambiaron la actuación de la tercera oportunidad. Al retirar el mensaje se pierde la contribución necesaria para el caso que requería derecha. La alternativa por defecto ya podía resolver el otro caso: no se utiliza éste como prueba independiente de necesidad del mensaje.
+
+La contribución social tiene costes: en la continuidad24, la vida180 obtuvo8/11 contactos útiles, frente a10/11 en los cortes de consulta o mensaje y7/11 con la historia privada opuesta. El contexto puede facilitar una oportunidad temprana y ralentizar una inversión posterior. No hay ganadora universal por añadir composición.
+
+La corriente equilibrada tiene dos papeles preparados: solicitud y actuación izquierda por defecto. **No es una elección exclusiva aprendida entre actuar, esperar y preguntar.** B no es una segunda mente completa. A recibe una distinción relativa codificada, no ambos valores privados completos. El primer contexto persiste; no se acreditó actualización arbitraria de información social.
+
+## Evaluación fijada de una sola vida
+
+MAIN conservó el mismo estado físico a través de adquisiciones, oportunidades sociales y locales, tres ventanas externas, señales y nuevas experiencias. No hubo reinicios entre bloques.
+
+| Bloque | Oportunidades o pasos | Resultado pertinente |
+|---|---:|---|
+| MAIN29_A | 4 nativas | 2 contactos útiles |
+| MAIN29_B | 8 nativas | 3 contactos útiles |
+| MAIN29_C | 6 nativas | 0 útiles |
+| MAIN29_D | 8 nativas | 0 útiles |
+| MAIN29_EXT_A y EXT_B | 32 y32 externos | Misma instancia ambiental persistida entre ventanas |
+| MAIN29_EXT_C | 48 externos | Reinicio ambiental explícito, sin reiniciar DEE |
+| MAIN29_WORD_RESERVED | 16 señales | 16 salidas coincidentes con las etiquetas previstas, con confusión causal señalada abajo |
+| MAIN29_RETENTION e INTERFERENCE | 3 y5 nativas | No produjeron los contactos útiles esperados; no se cuentan como nuevas adquisiciones exitosas |
+| CONT34_MAIN_CHANGE | 20 nativas | 10 errores seguidos de10 útiles tras asistenciaP0 declarada |
+
+Las ventanas con0 útiles no se borraron ni se sustituyeron por otro checkpoint. La presencia de un código y la disponibilidad de un contacto funcional no resultaron equivalentes. La vida actual no posee simultáneamente todo el máximo histórico de las ramas.
+
+## Acceso ruido y recuperación sin reenseñar
+
+Los registros tardíos mostraron una diferencia de fase local del tránsito: el selector emitía, pero el contacto se muestreaba en otra mitad del ciclo de exclusión de transporte. No era agotamiento geométrico global ni un máximo numérico del campo. La interpretación se apoyó en las trazas de puertos y en una intervención material genérica, no sólo en la dirección de Q.
+
+FASE33 compara igual horizonte con ninguna intervención, dos paquetes dirigidos fuera del cuerpo y dos paquetes simétricos hacia los sensores. El tratamiento mantuvo exactamente los RAW de las referencias 174/162 durante esos19 ticks y recuperó un contacto útil; ninguno y sham no lo recuperaron. No entraron la palabra, el signo recordado, la referencia original ni un snapshot favorable. Los clocks avanzaron legítimamente.
+
+El procedimiento se fijó y se ensayó en otro historial. ESTRES37 R2 usó el mismo prefijo, ventanas320 ticks y ruido legal por los sensores. Nominal:32 entradas, todas aplicadas; alta amplitud:32 aplicadas; ráfaga:320 aplicadas; sham periférico:320 aplicadas. Después hubo cinco contactos útiles de seis en el control sin ruido, cero con perturbaciones espaciadas, cinco con ráfaga densa y cinco en el sham. Los campos de referencia conservaban la misma diferencia. Dosis, tasa y efecto no fueron monotónicos.
+
+En RESERVA38, después del historial nominal y seis oportunidades bloqueadas, el mismo recurso genérico recuperó5/6 contactos útiles, frente a0/6 sin recurso y0/6 sham. El diseño se incorporó como **recuperación asistidaP0**. El operador inicia el procedimiento; el ente no aprendió a detectar el fallo y escogerlo. Retirar el estrés tampoco se presenta como autorregulación.
+
+El primer intento37 falló después de320 ticks por consultar una propiedad inexistente de la API. Su vida alcanzada y sus fuentes permanecen; la revisión R2 corrigió la instrumentación en nuevas ramas. No se contabiliza el error de proceso como fallo cognitivo.
+
+## Funciones reutilizables y nueva alternativa R9
+
+El perfil auxiliar32/35 mostró una separación útil entre referencia y lector. MI02_EFIMERO_210 adquirió32/10, respondió repetidamente y dejó el lector en RAW0 por evolución nativa. Conservó la referencia tras845 ticks sin consultas. En valores reservados24/26/22/33/1/ausente respondió0/−1/+1/−1/+1/indeterminado; sin sonda no respondió. Una referencia opuesta alteró las salidas; sin enseñanza las consultas no fabricaron una referencia. La vida212 aprendió explícitamente después de esas consultas iniciales: adquisición tardía, no recuperación. La reserva65/11 dio+1/0/−1 para55/56/57;80 quedó fuera del cono de lectura, sin corregirlo desde Python.
+
+Es un perfil auxiliar de cómputo relativo, con sesgo preparado y dominio de salida; no demuestra igualdad imparcial, significadoNSMni consulta autónoma. Se incorporó al mismo gestor con sus estados reales, no como habilidad de MAIN.
+
+Su integración social necesitó tres revisiones identificadas. R7 y R8 no liberaron el lector de B; sus hipótesis fallidas permanecen. El cálculo de estados43 encontró ocho vecinos vivos, no los cinco basales previstos: entre ellos apareció un soporte en un hueco inicialmente RAW0. En R9 se prepararon límites inertes desde T0 en los huecos retirados, sin limpiar una vida aprendida. El control48 cerró sólo el hueco central o, como sham, otro hueco. Cerrar el central reprodujo49 muestras activas de Bfrente a655 con el sham y655 en la referencia R8 bajo las mismas ventanas; conservó el uso social y las referencias. Es una causa de persistencia delimitada en esta preparación, no una ley general sobre todo residuo.
+
+En R9, B utiliza un recurso genérico de lectura cero; ambos giros posibles aportan el mismo5 después de formarse la dirección dependiente de su referencia. No hay una fuente que contenga el signo privado correcto. Sin historia privada no aparece el uso pertinente. El lector puede liberar su sitio y conservar la referencia en otros soportes.
+
+La continuación45 de la misma vida240 mostró episodios activos de B en T6679–9788, T9791–9806 y T12935–15329, separados por estados vacíos. El intervalo T9807–12934 estuvo vacío. Tres ticks antes de cada activación registrada había un portador nativo en el último giro de solicitud. Los trenes de solicitudes pueden mantener al lector activo; no son tres consultas independientes ni prueba de que se vacíe después de cada paquete. Las referencias privadas61/19 permanecieron y hubo9/12 contactos útiles sin llamada de reactivación o limpieza.
+
+En la reserva46, con valores nuevos13/13 propios y91/29 o29/91 privados, las dos terceras actuaciones previstas fueron útiles. El corte de mensaje y la ausencia de historia privada eliminaron el caso que requería esa información; el sham lo conservó. Al cierre T2035, B ya estaba vacío, sin perder sus referencias privadas. R9 quedó incorporada como alternativa ejecutable. No se importó a MAIN ni se afirma que resuelva actualización arbitraria del receptor de contexto.
+
+## Español y alcance semántico
+
+Se fijó un codificador izquierda→9 y derecha→16 por el mismo puerto, con lector físico en una ventana fija. En enseñanza se presentaron señales y consecuencias ambientales; en consulta sólo se presentó la señal, sin docente, respuesta esperada o referencia de refresco.
+
+Antes de las lecciones MAIN dio2/4 salidas previstas. Después de48 lecciones, la reserva dio16/16, la primera retención8/8 y la posterior8/8. **El control con consecuencias desacopladas también dio16/16.** Sin retorno dio8/16 y con docente invertido8/16. Por tanto, los datos sostienen un cambio de sesgo físico que separa dos señales, no adquisición específica de sus significados españoles.
+
+Las cinco oportunidades posteriores que parecían comprobar retención estaban desfasadas y no enseñaron mediante el contacto esperado. No se usaron para afirmar retención durante nuevas adquisiciones exitosas. Cuando se recuperó el contacto y se aprendió el nuevo régimen, ambas señales pasaron a provocar derecha:4/8 coincidencias. El mecanismo compartido produjo interferencia real entre uso de señales y nueva actuación.
+
+No se añade ningún significado a NSM65. Izquierda/derechaen este ensayo son vocabulario adicional y códigos, no primitivas nuevas. Continúan abiertas las entradas difíciles, YO/TÚfuncional, negación, temporalidad general, gramática y productividad semántica. Una señal fija no equivale a una respuesta Python: aquí la emisión es nativa, pero eso no basta para otorgarle significado adquirido.
+
+## Entorno externo y transducción
+
+Se reutilizó el entorno publicado Pendulum-v1 ya instalado, en proceso separado del runtime compatible. La transducción fija cuantiza seno/coseno; descarta velocidad angular. Una dirección nativa calificada produce±2 de torque; ausencia o salida fuera de dominio produce el cero fijo del puente, no una espera inteligente. No hay PID, LLM, red entrenada, política externa o tabla que escoja el torque conveniente.
+
+Una primera revisión del lector en+8 ticks no mostró sensibilidad en los casos examinados. La reproducción de entradas grabadas27 localizó el efecto en+7 y la salida del paquete antes de+8. Ese ensayo fue reproducción instrumental, no interacción externa nueva. El lector+7 se fijó antes de reservas con semillas nuevas82281 y82282. Con sensores emitió ambos signos; omitirlos produjo−2 en todos los pasos. El puente ejecutó la salida y devolvió consecuencias reales. Esto acredita sensibilidad causal y actuación, no control competente.
+
+Recompensas por trayectoria de32 pasos: semilla 82281, cerrado−205.824 frente a−150.155 con actuador anulado; semilla 82282, cerrado−234.458 frente a−245.943 anulado. Los controles de omisión y retardo también alteraron comandos o trayectorias con resultados mixtos. No se oculta la condición donde actuar fue peor. Las trayectorias comparten estado ambiental inicial y perturbaciones, no futuros impuestos después de acciones diferentes.
+
+MAIN ejecutó112 pasos entre dos episodios, manteniendo su historia nativa. La copia operativa39 guardó y continuó siete pasos en dos procesos, sin reiniciar el entorno. La alternativa R9 operativa47 ejecutó16 pasos en dos procesos y volvió a una tarea nativa, con2/4 contactos útiles posteriores. No se cambia de perfil para responder cada pregunta. Los bloques nativos dejan el entorno externo pausado por protocolo; no se afirma funcionamiento robótico industrial ni tiempo real simultáneo.
+
+## Incorporación y conservación operativa
+
+Se mantuvo el mismo gestor. Quedaron contratos y comandos para retorno local, organización R6, lectura auxiliar, recurso de faseP0 y lector social R9. Las revisiones fallidas permanecen como fuentes y vidas experimentales; no se declaran capacidades integradas por existir en el código.
+
+Los recorridos operativos15,36,39,47 y49 cargaron estados, utilizaron funciones, guardaron y continuaron en procesos nuevos. El constructor normal R9 reprodujo los mismos RAW, clocks, interfaces, agenda y recibos que la reserva técnica equivalente, con diferencias documentales de identidad declaradas. No es otra muestra científica independiente. La ruta normal está cercada contra lecturas de laboratorio, evidencia e historial para resolver respuestas.
+
+El Manual Maestro Word fue actualizado realmente desde1.7 a1.8: portada, control, encabezado/pie, índice y capítulo 25. La edición anterior quedó intacta y las partes no modificadas conservan sus bytes XML. **No tiene validación visual:** el helper de render falló porque no existe `soffice.exe`enPATH. Se comprobó estructura, XML y CRC; eso no se presenta como comprobación de paginación o apariencia.
+
+El ZIP es análisis transportable, no copia autosuficiente del sistema. Mantiene resultados de todos los ensayos exportados, controles negativos, código exacto, recálculo y estados seleccionados. El motor, la instalación base, la mayoría de checkpoints y las historias repetidas completas quedan localmente, con localizadores y hashes. La continuidad real se obtiene del sistema local y de snapshots operativos completos, nunca de arrays o resúmenes incompletos.
+
+## Qué demuestran los datos y qué no
+
+**Hecho computacional:** se ejecutaron trayectorias oficiales; los campos exactos, recibos y resultados pueden recalcularse sin ejecutar DEE. La reproducción técnica del registro pasivo igualó física, agenda y recibos, no sólo el texto.
+
+**Mecanismo físico interno:** encuentros, condiciones locales de soporte, transporte y cambios adquiridos alteran direcciones y accesos. Un código puede conservarse y perder uso por su encuentro o fase; un lector vacío puede coexistir con referencias privadas conservadas.
+
+**Capacidad funcional:** selección local por consecuencias, solicitud condicionada, uso de información privada, composición acotada, reutilización de lectura y actuación externa con continuidad. Sus dominios y pérdidas son diferentes por vida.
+
+**Interpretación:** la distribución selectiva permitió conservar y reutilizar algunas funciones, pero no produjo integración sostenida de todo el repertorio. R9 es una alternativa útil, no superioridad universal de la distribución.
+
+**Hipótesis abiertas:** acceso flexible iniciado por pérdida de uso, actualización social general, conservación de múltiples políticas, significado específico de señales y aprendizaje competente externo. No se consideran demostradas por ocupar pocos sitios o vivir más ticks.
+
+**Analogía:** vocablos como memoria, selección o participante describen funciones delimitadas. No acreditan conciencia, cerebro humano o mente general. Los fallos de estas preparaciones no prueban imposibilidad de v27.

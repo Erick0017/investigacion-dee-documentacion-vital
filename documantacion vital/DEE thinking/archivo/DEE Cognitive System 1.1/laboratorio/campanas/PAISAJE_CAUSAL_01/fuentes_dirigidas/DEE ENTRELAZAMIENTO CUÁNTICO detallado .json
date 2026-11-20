@@ -1,0 +1,5131 @@
+{
+  "source": "documantacion vital\\entrelazamiento cuantico explicacion y kernel completo\\por separado\\DEE ENTRELAZAMIENTO CUÁNTICO detallado .docx",
+  "sha256": "aecee512d93d6970ba7911a1b6760d4a322f85989a05a4cc15b7036393fbaf87",
+  "paragraphs": [
+    {
+      "paragraph": 0,
+      "style": "Title",
+      "text": "El entrelazamiento en la Dinámica de Eficiencia Entrópica"
+    },
+    {
+      "paragraph": 1,
+      "style": "",
+      "text": "Ivan Erick Tlaltecatl Morales"
+    },
+    {
+      "paragraph": 2,
+      "style": "",
+      "text": "Autor · Dinámica de Eficiencia Entrópica (DEE)"
+    },
+    {
+      "paragraph": 3,
+      "style": "",
+      "text": "https://dee-universe.com  ·  erick.eglobal@gmail.com  ·  222 207 0912 (México)"
+    },
+    {
+      "paragraph": 5,
+      "style": "Heading1",
+      "text": "Preámbulo — Definiciones operacionales y arquitectura de lectura"
+    },
+    {
+      "paragraph": 6,
+      "style": "BodyText",
+      "text": "Este preámbulo fija el significado de los términos propios de DEE antes de utilizarlos y establece cómo se conectan las tres capas del manuscrito: la formulación relacional del entrelazamiento, la representación cuántica efectiva de sectores reversibles y la traducción algebraica del kernel v27. No sustituye ni modifica las ecuaciones del cuerpo principal; proporciona el diccionario necesario para leerlas de forma autocontenida."
+    },
+    {
+      "paragraph": 7,
+      "style": "",
+      "text": "Convención de lecturaCuando aquí se usa “microscópico” se significa “estado interno de máxima resolución disponible en el modelo DEE”. No se afirma por esa palabra una escala física concreta, subatómica o de Planck. Del mismo modo, “efectivo” indica una descripción reducida o representada a partir del estado DEE; no una variable adicional almacenada en el kernel."
+    },
+    {
+      "paragraph": 8,
+      "style": "Heading2",
+      "text": "0.1 Qué contiene el manuscrito y cómo se conectan sus tres partes"
+    },
+    {
+      "paragraph": 9,
+      "style": "",
+      "text": "Parte"
+    },
+    {
+      "paragraph": 10,
+      "style": "",
+      "text": "Contenido"
+    },
+    {
+      "paragraph": 11,
+      "style": "",
+      "text": "Función dentro del argumento"
+    },
+    {
+      "paragraph": 12,
+      "style": "",
+      "text": "I. Estado conjunto y entrelazamiento"
+    },
+    {
+      "paragraph": 13,
+      "style": "",
+      "text": "Define la lectura relacional: un estado completo puede contener dos regiones observables A y B sin que la descripción fundamental deba separarse en dos estados independientes."
+    },
+    {
+      "paragraph": 14,
+      "style": "",
+      "text": "Pregunta que responde: qué estructura DEE se propone como antecedente microscópico de un estado conjunto."
+    },
+    {
+      "paragraph": 15,
+      "style": "",
+      "text": "II. Régimen cuántico efectivo"
+    },
+    {
+      "paragraph": 16,
+      "style": "",
+      "text": "Restringe la dinámica a sectores reversibles, construye su representación lineal unitaria U y, a partir de U, un generador H y el límite continuo de Schrödinger."
+    },
+    {
+      "paragraph": 17,
+      "style": "",
+      "text": "Pregunta que responde: cómo puede aparecer una descripción cuántica efectiva sin introducir una función de onda como variable elemental del voxel."
+    },
+    {
+      "paragraph": 18,
+      "style": "",
+      "text": "III. Cierre desde el kernel v27"
+    },
+    {
+      "paragraph": 19,
+      "style": "",
+      "text": "Traduce las reglas C++ a funciones, indicadores, ramas y composición global F_DEE."
+    },
+    {
+      "paragraph": 20,
+      "style": "",
+      "text": "Pregunta que responde: de qué regla ejecutable concreta proceden los objetos matemáticos usados en las dos partes anteriores."
+    },
+    {
+      "paragraph": 21,
+      "style": "BodyText",
+      "text": "La cadena completa que organiza el documento es:"
+    },
+    {
+      "paragraph": 22,
+      "style": "",
+      "text": "kernel v27  →  F_DEE  →  sector reversible F_Q  →  U_Q  →  H_Q  →  Schrödinger  →  estado conjunto efectivo"
+    },
+    {
+      "paragraph": 23,
+      "style": "BodyText",
+      "text": "La última flecha no significa que toda relación interna de DEE sea automáticamente entrelazamiento cuántico. El criterio cuántico aparece sólo cuando la descripción efectiva admite una factorización de Hilbert H_A ⊗ H_B y el estado conjunto resultante no factoriza."
+    },
+    {
+      "paragraph": 24,
+      "style": "Heading2",
+      "text": "0.2 Espacio, sitio, voxel, retícula y frontera periódica"
+    },
+    {
+      "paragraph": 25,
+      "style": "BodyText",
+      "text": "Para un tamaño lineal N, el dominio espacial interno es una retícula cúbica tridimensional periódica:"
+    },
+    {
+      "paragraph": 26,
+      "style": "",
+      "text": "Λ_N = Z_N³ = {(x,y,z) : x,y,z ∈ {0,…,N−1}}  con coordenadas módulo N"
+    },
+    {
+      "paragraph": 27,
+      "style": "BodyText",
+      "text": "Un sitio o voxel es una posición i=(x,y,z) de Λ_N. “Voxel” nombra la unidad de indexación del autómata; no implica que el elemento físico real sea un cubo sólido. La palabra “cúbica” describe la conectividad y el sistema de coordenadas del sustrato discreto. Las condiciones periódicas identifican los extremos: avanzar fuera de un borde reaparece por el borde opuesto, de modo que la topología computacional es toroidal."
+    },
+    {
+      "paragraph": 28,
+      "style": "BodyText",
+      "text": "La vecindad primaria utilizada por v27 es la vecindad tridimensional de Moore, no la de von Neumann:"
+    },
+    {
+      "paragraph": 29,
+      "style": "",
+      "text": "M_26 = {−1,0,1}³ \\ {(0,0,0)},     |M_26| = 26"
+    },
+    {
+      "paragraph": 30,
+      "style": "BodyText",
+      "text": "Por tanto, un sitio puede consultar los 6 vecinos axiales, 12 vecinos de arista y 8 vecinos de esquina. La expresión “Moore-26” se refiere exactamente a esos 26 desplazamientos."
+    },
+    {
+      "paragraph": 31,
+      "style": "Heading2",
+      "text": "0.3 Qué es un estado y qué significa “microestado” en DEE"
+    },
+    {
+      "paragraph": 32,
+      "style": "BodyText",
+      "text": "Un estado es la información suficiente para determinar, junto con la regla de evolución, el siguiente estado. Para N fijo, el estado microscópico completo utilizado por el kernel está formado por dos campos sobre toda la retícula: un campo raw de 64 bits y un campo clock de 64 bits por sitio. Esquemáticamente:"
+    },
+    {
+      "paragraph": 33,
+      "style": "",
+      "text": "X_t = (R_t, C_t),     R_t = {r_i(t)}_(i∈Λ_N),     C_t = {c_i(t)}_(i∈Λ_N)"
+    },
+    {
+      "paragraph": 34,
+      "style": "BodyText",
+      "text": "El subíndice t indica el número de actualizaciones globales ya ejecutadas. X_t es el estado antes del tick siguiente y X_(t+1) el estado después de aplicarlo. “Microestado” significa una configuración X concreta con todos esos grados internos; una observación reducida puede conservar sólo una parte de ellos."
+    },
+    {
+      "paragraph": 35,
+      "style": "",
+      "text": "Objeto"
+    },
+    {
+      "paragraph": 36,
+      "style": "",
+      "text": "Representación"
+    },
+    {
+      "paragraph": 37,
+      "style": "",
+      "text": "Lectura"
+    },
+    {
+      "paragraph": 38,
+      "style": "",
+      "text": "raw_i o r_i"
+    },
+    {
+      "paragraph": 39,
+      "style": "",
+      "text": "uint64 por sitio"
+    },
+    {
+      "paragraph": 40,
+      "style": "",
+      "text": "Registro de 64 bits que empaqueta state, s_reg, tres componentes de dirección y semantic."
+    },
+    {
+      "paragraph": 41,
+      "style": "",
+      "text": "clock_i o c_i"
+    },
+    {
+      "paragraph": 42,
+      "style": "",
+      "text": "uint64 por sitio"
+    },
+    {
+      "paragraph": 43,
+      "style": "",
+      "text": "Reloj causal local. En cada tick válido: c_i(t+1)=c_i(t)+1 módulo 2^64."
+    },
+    {
+      "paragraph": 44,
+      "style": "",
+      "text": "state_i"
+    },
+    {
+      "paragraph": 45,
+      "style": "",
+      "text": "bits 0–31 de raw"
+    },
+    {
+      "paragraph": 46,
+      "style": "",
+      "text": "Campo entero de estado/ocupación interna usado por las ramas del kernel."
+    },
+    {
+      "paragraph": 47,
+      "style": "",
+      "text": "s_reg,i"
+    },
+    {
+      "paragraph": 48,
+      "style": "",
+      "text": "bits 32–47 de raw"
+    },
+    {
+      "paragraph": 49,
+      "style": "",
+      "text": "Registro interno de 16 bits; el almacenamiento llega a 65535, aunque reducer/DEMUX saturan operativamente en 19664."
+    },
+    {
+      "paragraph": 50,
+      "style": "",
+      "text": "d_i=(d_x,d_y,d_z)"
+    },
+    {
+      "paragraph": 51,
+      "style": "",
+      "text": "bits 48–59"
+    },
+    {
+      "paragraph": 52,
+      "style": "",
+      "text": "Tres nibbles con signo que codifican dirección."
+    },
+    {
+      "paragraph": 53,
+      "style": "",
+      "text": "semantic_i"
+    },
+    {
+      "paragraph": 54,
+      "style": "",
+      "text": "bits 60–63"
+    },
+    {
+      "paragraph": 55,
+      "style": "",
+      "text": "Etiqueta de 4 bits que selecciona roles de implementación. Sus nombres son etiquetas del motor, no identificaciones físicas por sí solas."
+    },
+    {
+      "paragraph": 56,
+      "style": "BodyText",
+      "text": "En el cuerpo principal aparece en ocasiones la expresión “palabra espacial”. Debe leerse simplemente como el registro raw_i de 64 bits asociado a un sitio; no tiene un significado lingüístico."
+    },
+    {
+      "paragraph": 57,
+      "style": "Heading2",
+      "text": "0.4 Qué es un tick y qué es F_DEE"
+    },
+    {
+      "paragraph": 58,
+      "style": "BodyText",
+      "text": "Un tick es una aplicación completa de la regla del motor a todo el estado. No es, por sí solo, un segundo ni una unidad física de tiempo. La evolución se representa mediante un mapa determinista:"
+    },
+    {
+      "paragraph": 59,
+      "style": "",
+      "text": "F_DEE : S_N → S_N,        X_(t+1) = F_DEE(X_t)"
+    },
+    {
+      "paragraph": 60,
+      "style": "BodyText",
+      "text": "Aquí S_N es el conjunto de todos los estados completos permitidos para el tamaño N. “Mapa” significa función: a cada entrada X asigna una única salida F_DEE(X). No se presupone que F_DEE sea lineal. De hecho, el kernel contiene ramas, umbrales, conteos y reducciones, por lo que su forma global es no lineal y por partes."
+    },
+    {
+      "paragraph": 61,
+      "style": "BodyText",
+      "text": "Internamente el tick tiene dos etapas causales: primero cada sitio calcula su salida base y las contribuciones DEMUX a partir del estado de entrada; después las contribuciones acumuladas se aplican a las salidas base. No existe una cascada recursiva dentro del mismo tick. Esta separación es la razón por la que la sección 22 escribe F_DEE como composición de una actualización base y una aplicación posterior de DEMUX."
+    },
+    {
+      "paragraph": 62,
+      "style": "",
+      "text": "Sobre el tiempo físicoCuando el manuscrito introduce τ* (o τ en algunas fórmulas), τ* es una escala física asignada a un tick para construir una correspondencia continua. El kernel únicamente cuenta ticks; τ* no es una constante numérica fijada por v27."
+    },
+    {
+      "paragraph": 63,
+      "style": "Heading2",
+      "text": "0.5 Qué es un observador o mapa M"
+    },
+    {
+      "paragraph": 64,
+      "style": "BodyText",
+      "text": "DEE distingue el estado completo de aquello que una medición conserva. Esta distinción se formaliza por un mapa de observación o reducción:"
+    },
+    {
+      "paragraph": 65,
+      "style": "",
+      "text": "M : S_N → O,        y = M(X)"
+    },
+    {
+      "paragraph": 66,
+      "style": "BodyText",
+      "text": "O es el espacio de registros observables elegidos y y es el registro obtenido. M puede ser una extracción, un coarse-graining, un detector temporal o una función más general; no se supone lineal salvo que se declare explícitamente para un caso particular."
+    },
+    {
+      "paragraph": 67,
+      "style": "BodyText",
+      "text": "Si dos microestados distintos producen el mismo registro, M(X_1)=M(X_2), el observador no los distingue en ese nivel. Para que exista una dinámica autónoma exacta G sobre los observables debe cumplirse el cierre por fibras:"
+    },
+    {
+      "paragraph": 68,
+      "style": "",
+      "text": "M(X_1)=M(X_2)  ⇒  M(F_DEE(X_1))=M(F_DEE(X_2))"
+    },
+    {
+      "paragraph": 69,
+      "style": "BodyText",
+      "text": "Cuando esa condición se cumple en un dominio, existe G tal que M∘F_DEE = G∘M. Cuando falla, el registro M ha descartado información causal necesaria y debe enriquecerse. Esta es la razón formal por la que “lo que se observa” y “el estado que realmente evoluciona” se mantienen separados a lo largo del manuscrito."
+    },
+    {
+      "paragraph": 70,
+      "style": "Heading2",
+      "text": "0.6 Qué significa “sector”, “reversible” y “unitario”"
+    },
+    {
+      "paragraph": 71,
+      "style": "BodyText",
+      "text": "Un sector S_Q es un subconjunto de estados seleccionado por propiedades dinámicas. Para que el sector sea cerrado, iniciar dentro de él debe mantener la evolución dentro de él. Para que sea reversible, la restricción F_Q de F_DEE al sector debe ser biyectiva:"
+    },
+    {
+      "paragraph": 72,
+      "style": "",
+      "text": "S_Q ⊆ S_N,      F_DEE(S_Q) ⊆ S_Q,      F_Q = F_DEE|_(S_Q) : S_Q → S_Q  biyectiva"
+    },
+    {
+      "paragraph": 73,
+      "style": "BodyText",
+      "text": "La palabra “unitario” se aplica a la representación lineal U_Q de esa dinámica reversible, no al conjunto S_Q por sí mismo ni a toda la dinámica global de DEE. Si a cada estado X_j de un sector finito se le asigna un vector base ortogonal |X_j⟩, entonces:"
+    },
+    {
+      "paragraph": 74,
+      "style": "",
+      "text": "U_Q |X_j⟩ = |F_Q(X_j)⟩,        U_Q† U_Q = I"
+    },
+    {
+      "paragraph": 75,
+      "style": "BodyText",
+      "text": "Esto es una construcción matemática exacta para una permutación. La dinámica global F_DEE no es inyectiva en todos sus estados y, por tanto, no se identifica con un único operador unitario global."
+    },
+    {
+      "paragraph": 76,
+      "style": "Heading2",
+      "text": "0.7 Función de onda, Hamiltoniano y por qué se denominan “efectivos”"
+    },
+    {
+      "paragraph": 77,
+      "style": "BodyText",
+      "text": "En el manuscrito la función de onda no se introduce como un campo elemental almacenado en cada voxel. Aparece como representación de un sector reversible en un espacio vectorial complejo:"
+    },
+    {
+      "paragraph": 78,
+      "style": "",
+      "text": "|Ψ⟩ = Σ_j ψ_j |X_j⟩"
+    },
+    {
+      "paragraph": 79,
+      "style": "BodyText",
+      "text": "Los coeficientes ψ_j son amplitudes de esa representación. Si U_Q describe un tick dentro del sector y se asigna una escala temporal τ* y una escala de acción ħ*, puede definirse un generador mediante una rama del logaritmo:"
+    },
+    {
+      "paragraph": 80,
+      "style": "",
+      "text": "U_Q = exp(−i H_Q τ*/ħ*),        H_Q = (i ħ*/τ*) log U_Q"
+    },
+    {
+      "paragraph": 81,
+      "style": "BodyText",
+      "text": "Para el sistema discreto, U_Q ya proporciona la evolución exacta en los instantes separados por un tick. El paso a una ecuación diferencial de Schrödinger se refiere al límite continuo de una familia escalada en la que τ* se hace pequeño; no cambia la regla microscópica del kernel."
+    },
+    {
+      "paragraph": 82,
+      "style": "",
+      "text": "i ħ* ∂_t Ψ = H_Q Ψ"
+    },
+    {
+      "paragraph": 83,
+      "style": "BodyText",
+      "text": "Los símbolos a*, τ* y ħ* son escalas de correspondencia. No aparecen como constantes físicas universales fijadas por el C++ y no deben confundirse automáticamente con una longitud, un segundo o la constante de Planck física sin una calibración externa."
+    },
+    {
+      "paragraph": 84,
+      "style": "Heading2",
+      "text": "0.8 Qué significa el estado conjunto A–B y dónde empieza el criterio de entrelazamiento"
+    },
+    {
+      "paragraph": 85,
+      "style": "BodyText",
+      "text": "A y B designan dos regiones o subsistemas identificados en una descripción. El estado microscópico relevante es X_AB, que contiene toda la información DEE necesaria para evolucionar la organización conjunta. Las lecturas locales se obtienen mediante mapas parciales:"
+    },
+    {
+      "paragraph": 86,
+      "style": "",
+      "text": "A_obs = M_A(X_AB),        B_obs = M_B(X_AB)"
+    },
+    {
+      "paragraph": 87,
+      "style": "BodyText",
+      "text": "Que A_obs y B_obs estén espacialmente separados no obliga a que X_AB sea la composición de dos microestados autónomos. Esta es la tesis relacional del primer bloque del manuscrito. Sin embargo, relación microscópica y entrelazamiento cuántico no son sinónimos."
+    },
+    {
+      "paragraph": 88,
+      "style": "BodyText",
+      "text": "El criterio cuántico se formula sólo después de definir un mapa efectivo M_Q hacia una descripción de Hilbert y una partición efectiva en dos subsistemas:"
+    },
+    {
+      "paragraph": 89,
+      "style": "",
+      "text": "M_Q(X_AB) = |Ψ_AB⟩,        H_AB = H_A ⊗ H_B"
+    },
+    {
+      "paragraph": 90,
+      "style": "BodyText",
+      "text": "En ese nivel, para un estado puro, la no separabilidad se expresa por:"
+    },
+    {
+      "paragraph": 91,
+      "style": "",
+      "text": "|Ψ_AB⟩ ≠ |ψ_A⟩ ⊗ |ψ_B⟩"
+    },
+    {
+      "paragraph": 92,
+      "style": "BodyText",
+      "text": "Por tanto, la estructura relacional de DEE proporciona el candidato microscópico; la identificación como entrelazamiento cuántico exige además que el mapa efectivo, el espacio bipartito y los observables correspondientes estén bien definidos. El manuscrito mantiene separados esos dos pasos."
+    },
+    {
+      "paragraph": 93,
+      "style": "Heading2",
+      "text": "0.9 Qué significan las constantes del kernel y las escalas efectivas"
+    },
+    {
+      "paragraph": 94,
+      "style": "",
+      "text": "Símbolo/valor"
+    },
+    {
+      "paragraph": 95,
+      "style": "",
+      "text": "Naturaleza"
+    },
+    {
+      "paragraph": 96,
+      "style": "",
+      "text": "Interpretación"
+    },
+    {
+      "paragraph": 97,
+      "style": "",
+      "text": "N"
+    },
+    {
+      "paragraph": 98,
+      "style": "",
+      "text": "entrada del sistema"
+    },
+    {
+      "paragraph": 99,
+      "style": "",
+      "text": "Tamaño lineal de la retícula; no es una constante universal."
+    },
+    {
+      "paragraph": 100,
+      "style": "",
+      "text": "26"
+    },
+    {
+      "paragraph": 101,
+      "style": "",
+      "text": "geometría exacta"
+    },
+    {
+      "paragraph": 102,
+      "style": "",
+      "text": "Número de desplazamientos de Moore-26."
+    },
+    {
+      "paragraph": 103,
+      "style": "",
+      "text": "P_KERNEL = 19665"
+    },
+    {
+      "paragraph": 104,
+      "style": "",
+      "text": "constante exacta v27"
+    },
+    {
+      "paragraph": 105,
+      "style": "",
+      "text": "Valor canónico usado por las ramas que lo invocan; reducer/DEMUX saturan s_reg en P_KERNEL−1 = 19664."
+    },
+    {
+      "paragraph": 106,
+      "style": "",
+      "text": "966"
+    },
+    {
+      "paragraph": 107,
+      "style": "",
+      "text": "constante exacta v27"
+    },
+    {
+      "paragraph": 108,
+      "style": "",
+      "text": "Umbral de cristalización presente en la rama de gradiente."
+    },
+    {
+      "paragraph": 109,
+      "style": "",
+      "text": "782"
+    },
+    {
+      "paragraph": 110,
+      "style": "",
+      "text": "constante exacta v27"
+    },
+    {
+      "paragraph": 111,
+      "style": "",
+      "text": "Numerador de la cadencia p=floor(782/a) en la rama temporal de s_reg."
+    },
+    {
+      "paragraph": 112,
+      "style": "",
+      "text": "2.5 y 16"
+    },
+    {
+      "paragraph": 113,
+      "style": "",
+      "text": "constantes exactas v27"
+    },
+    {
+      "paragraph": 114,
+      "style": "",
+      "text": "Valores TENSION_ELECTROWEAK y TENSION_STRONG usados en la rama material."
+    },
+    {
+      "paragraph": 115,
+      "style": "",
+      "text": "a*, τ*, ħ*"
+    },
+    {
+      "paragraph": 116,
+      "style": "",
+      "text": "escalas efectivas"
+    },
+    {
+      "paragraph": 117,
+      "style": "",
+      "text": "Parámetros de correspondencia espacial, temporal y de acción; no son valores físicos externos fijados por el kernel."
+    },
+    {
+      "paragraph": 118,
+      "style": "",
+      "text": "ω(k), m*, V(x)"
+    },
+    {
+      "paragraph": 119,
+      "style": "",
+      "text": "cantidades derivadas"
+    },
+    {
+      "paragraph": 120,
+      "style": "",
+      "text": "Se obtienen de la estructura espectral/continua del sector considerado; no son constantes universales de v27."
+    },
+    {
+      "paragraph": 121,
+      "style": "Heading2",
+      "text": "0.10 Cómo leer la sección 22: del C++ a la formulación cerrada"
+    },
+    {
+      "paragraph": 122,
+      "style": "BodyText",
+      "text": "La sección 22 no introduce una segunda teoría. Reescribe algebraicamente el mismo tick del kernel v27. Sus objetos se leen así: r_i es el raw de 64 bits, c_i el reloj, E_i y A_i son indicadores de existencia/actividad, n_i cuenta vecinos activos, los vectores de gradiente y dirección resumen contribuciones locales, y W_N implementa el wrap toroidal."
+    },
+    {
+      "paragraph": 123,
+      "style": "BodyText",
+      "text": "La actualización distingue primero la rama de vacío de la rama material, calcula nacimientos, transporte, reglas de densidad, acumulación de s_reg y emisiones DEMUX, y finalmente aplica los deltas DEMUX. La ecuación global F_DEE compacta exactamente esa composición. Las etiquetas semánticas ELECTRON_SEED y PROTON_SEED son nombres de preparación del kernel y no constituyen por sí mismas una identificación con electrones o protones físicos."
+    },
+    {
+      "paragraph": 124,
+      "style": "BodyText",
+      "text": "Cuando el texto pasa de F_DEE a U_Q y H_Q, no se afirma que todas las ramas microscópicas sean reversibles. Se selecciona un sector donde la evolución sí es biyectiva y sólo allí se construye la representación unitaria. Este punto separa la dinámica global many-to-one de la dinámica reversible que admite tratamiento Hamiltoniano."
+    },
+    {
+      "paragraph": 125,
+      "style": "Heading2",
+      "text": "0.11 Niveles de afirmación que aparecen en el documento"
+    },
+    {
+      "paragraph": 126,
+      "style": "",
+      "text": "Nivel"
+    },
+    {
+      "paragraph": 127,
+      "style": "",
+      "text": "Significado"
+    },
+    {
+      "paragraph": 128,
+      "style": "",
+      "text": "Regla exacta del kernel"
+    },
+    {
+      "paragraph": 129,
+      "style": "",
+      "text": "Definición extraída de la implementación v27: packing, Moore-26, ramas, constantes, DEMUX, clock y composición del tick."
+    },
+    {
+      "paragraph": 130,
+      "style": "",
+      "text": "Resultado matemático exacto"
+    },
+    {
+      "paragraph": 131,
+      "style": "",
+      "text": "Consecuencia demostrable de una regla o sector especificado: por ejemplo, una permutación finita admite representación unitaria."
+    },
+    {
+      "paragraph": 132,
+      "style": "",
+      "text": "Resultado experimental interno"
+    },
+    {
+      "paragraph": 133,
+      "style": "",
+      "text": "Regularidad obtenida al ejecutar configuraciones/experimentos DEE bajo condiciones declaradas."
+    },
+    {
+      "paragraph": 134,
+      "style": "",
+      "text": "Representación o límite efectivo"
+    },
+    {
+      "paragraph": 135,
+      "style": "",
+      "text": "Cambio de variables o aproximación que traduce un sector a lenguaje espectral/continuo, como U→H o una expansión de dispersión."
+    },
+    {
+      "paragraph": 136,
+      "style": "",
+      "text": "Correspondencia física propuesta"
+    },
+    {
+      "paragraph": 137,
+      "style": "",
+      "text": "Identificación entre una estructura DEE y una magnitud/fenómeno de la física observada; requiere que el mapa de correspondencia esté especificado y validado en el dominio pertinente."
+    },
+    {
+      "paragraph": 138,
+      "style": "BodyText",
+      "text": "Esta separación es semántica y lógica: evita leer como “constante física medida” lo que es una constante de implementación, o como “regla microscópica” lo que es una representación efectiva. El cuerpo principal conserva sus derivaciones originales; este preámbulo fija el significado con el que deben leerse."
+    },
+    {
+      "paragraph": 139,
+      "style": "Heading2",
+      "text": "0.12 Notación mínima de consulta rápida"
+    },
+    {
+      "paragraph": 140,
+      "style": "",
+      "text": "Símbolo"
+    },
+    {
+      "paragraph": 141,
+      "style": "",
+      "text": "Significado"
+    },
+    {
+      "paragraph": 142,
+      "style": "",
+      "text": "X_t"
+    },
+    {
+      "paragraph": 143,
+      "style": "",
+      "text": "estado microscópico completo en el tick t"
+    },
+    {
+      "paragraph": 144,
+      "style": "",
+      "text": "F_DEE"
+    },
+    {
+      "paragraph": 145,
+      "style": "",
+      "text": "mapa determinista de un tick completo"
+    },
+    {
+      "paragraph": 146,
+      "style": "",
+      "text": "M, M_A, M_B"
+    },
+    {
+      "paragraph": 147,
+      "style": "",
+      "text": "mapas de observación/reducción"
+    },
+    {
+      "paragraph": 148,
+      "style": "",
+      "text": "M_Q"
+    },
+    {
+      "paragraph": 149,
+      "style": "",
+      "text": "mapa hacia la descripción cuántica efectiva cuando dicha reducción está definida"
+    },
+    {
+      "paragraph": 150,
+      "style": "",
+      "text": "S_Q, F_Q"
+    },
+    {
+      "paragraph": 151,
+      "style": "",
+      "text": "sector reversible y restricción de F_DEE a ese sector"
+    },
+    {
+      "paragraph": 152,
+      "style": "",
+      "text": "U_Q"
+    },
+    {
+      "paragraph": 153,
+      "style": "",
+      "text": "representación unitaria de F_Q"
+    },
+    {
+      "paragraph": 154,
+      "style": "",
+      "text": "H_Q o H_eff"
+    },
+    {
+      "paragraph": 155,
+      "style": "",
+      "text": "generador asociado a U_Q mediante el logaritmo"
+    },
+    {
+      "paragraph": 156,
+      "style": "",
+      "text": "|Ψ⟩, |Ψ_AB⟩"
+    },
+    {
+      "paragraph": 157,
+      "style": "",
+      "text": "estado efectivo en la representación de Hilbert"
+    },
+    {
+      "paragraph": 158,
+      "style": "",
+      "text": "a*, τ*, ħ*"
+    },
+    {
+      "paragraph": 159,
+      "style": "",
+      "text": "escalas efectivas espacial, temporal y de acción"
+    },
+    {
+      "paragraph": 160,
+      "style": "",
+      "text": "N"
+    },
+    {
+      "paragraph": 161,
+      "style": "",
+      "text": "tamaño lineal de la retícula; hay N³ sitios"
+    },
+    {
+      "paragraph": 162,
+      "style": "",
+      "text": "raw, clock"
+    },
+    {
+      "paragraph": 163,
+      "style": "",
+      "text": "dos campos que componen el estado microscópico del kernel"
+    },
+    {
+      "paragraph": 166,
+      "style": "FirstParagraph",
+      "text": "En la Dinámica de Eficiencia Entrópica, la aparente separación entre dos objetos no implica necesariamente que ambos constituyan sistemas fundamentales independientes. La descripción observable de la realidad puede representar únicamente una proyección parcial de un estado subyacente mucho más rico, distribuido sobre una retícula tridimensional de información."
+    },
+    {
+      "paragraph": 167,
+      "style": "BodyText",
+      "text": "Bajo esta formulación, aquello que en mecánica cuántica se describe mediante un estado conjunto entrelazado puede interpretarse en DEE como una organización distribuida única, de la cual los objetos observados constituyen únicamente manifestaciones locales."
+    },
+    {
+      "paragraph": 168,
+      "style": "BodyText",
+      "text": "La idea fundamental puede expresarse como:"
+    },
+    {
+      "paragraph": 170,
+      "style": "FirstParagraph",
+      "text": "Dos regiones pueden aparecer espacialmente separadas y, sin embargo, continuar perteneciendo a un mismo estado físico del sustrato."
+    },
+    {
+      "paragraph": 171,
+      "style": "Heading2",
+      "text": "1. El sustrato fundamental"
+    },
+    {
+      "paragraph": 172,
+      "style": "FirstParagraph",
+      "text": "DEE define un universo discreto tridimensional:"
+    },
+    {
+      "paragraph": 174,
+      "style": "FirstParagraph",
+      "text": "con condiciones periódicas de frontera."
+    },
+    {
+      "paragraph": 175,
+      "style": "BodyText",
+      "text": "Cada posición de la retícula posee una vecindad tridimensional de Moore:"
+    },
+    {
+      "paragraph": 177,
+      "style": "FirstParagraph",
+      "text": "de modo que cada sitio puede relacionarse localmente con hasta:"
+    },
+    {
+      "paragraph": 179,
+      "style": "FirstParagraph",
+      "text": "posiciones circundantes."
+    },
+    {
+      "paragraph": 180,
+      "style": "BodyText",
+      "text": "Sin embargo, una posición DEE no se reduce a una variable binaria de ocupado o vacío."
+    },
+    {
+      "paragraph": 181,
+      "style": "BodyText",
+      "text": "Su estado contiene distintos grados internos de información."
+    },
+    {
+      "paragraph": 182,
+      "style": "BodyText",
+      "text": "En la representación actual, una palabra espacial de 64 bits puede descomponerse conceptualmente como:"
+    },
+    {
+      "paragraph": 184,
+      "style": "FirstParagraph",
+      "text": "La distribución utilizada es:"
+    },
+    {
+      "paragraph": 188,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 190,
+      "style": "FirstParagraph",
+      "text": "Además, cada posición posee un reloj causal:"
+    },
+    {
+      "paragraph": 192,
+      "style": "FirstParagraph",
+      "text": "Por tanto, el estado microscópico completo del universo puede representarse esquemáticamente mediante:"
+    },
+    {
+      "paragraph": 194,
+      "style": "FirstParagraph",
+      "text": "donde  representa la topología del espacio."
+    },
+    {
+      "paragraph": 195,
+      "style": "BodyText",
+      "text": "Así, aquello que un observador identifica simplemente como una posición vacía puede conservar información interna distinta de cero."
+    },
+    {
+      "paragraph": 196,
+      "style": "BodyText",
+      "text": "En particular:"
+    },
+    {
+      "paragraph": 198,
+      "style": "FirstParagraph",
+      "text": "no implica necesariamente:"
+    },
+    {
+      "paragraph": 200,
+      "style": "FirstParagraph",
+      "text": "Una región sin ocupación visible puede conservar:"
+    },
+    {
+      "paragraph": 202,
+      "style": "FirstParagraph",
+      "text": "Este hecho es esencial para comprender la interpretación DEE del entrelazamiento."
+    },
+    {
+      "paragraph": 203,
+      "style": "Heading2",
+      "text": "2. Evolución causal"
+    },
+    {
+      "paragraph": 204,
+      "style": "FirstParagraph",
+      "text": "El universo DEE evoluciona mediante una transformación:"
+    },
+    {
+      "paragraph": 206,
+      "style": "FirstParagraph",
+      "text": "aplicada sucesivamente."
+    },
+    {
+      "paragraph": 207,
+      "style": "BodyText",
+      "text": "Cada vóxel modifica su estado a partir de su microestado actual y de las relaciones accesibles desde su vecindad."
+    },
+    {
+      "paragraph": 208,
+      "style": "BodyText",
+      "text": "En una primera capa local:"
+    },
+    {
+      "paragraph": 210,
+      "style": "FirstParagraph",
+      "text": "La actualización completa del tick queda descrita globalmente por  e incorpora la fase posterior DEMUX."
+    },
+    {
+      "paragraph": 211,
+      "style": "BodyText",
+      "text": "La dinámica no requiere que cada sitio conozca la configuración global."
+    },
+    {
+      "paragraph": 212,
+      "style": "BodyText",
+      "text": "Toda organización macroscópica surge de la reiteración de estas operaciones locales."
+    },
+    {
+      "paragraph": 213,
+      "style": "BodyText",
+      "text": "Algunos parámetros discretos característicos del kernel actual incluyen:"
+    },
+    {
+      "paragraph": 215,
+      "style": "FirstParagraph",
+      "text": "y la cota operacional de saturación utilizada por reducer/DEMUX:"
+    },
+    {
+      "paragraph": 217,
+      "style": "FirstParagraph",
+      "text": "En sectores de transporte direccional, una excitación puede seguir una evolución de la forma:"
+    },
+    {
+      "paragraph": 219,
+      "style": "FirstParagraph",
+      "text": "donde:"
+    },
+    {
+      "paragraph": 221,
+      "style": "FirstParagraph",
+      "text": "Cuando varias contribuciones alcanzan una misma posición, su información direccional puede combinarse mediante:"
+    },
+    {
+      "paragraph": 223,
+      "style": "FirstParagraph",
+      "text": "mientras que la regulación resultante queda limitada por:"
+    },
+    {
+      "paragraph": 225,
+      "style": "FirstParagraph",
+      "text": "La dinámica fundamental, por tanto, posee un mecanismo concreto de propagación, combinación, regulación y transformación."
+    },
+    {
+      "paragraph": 226,
+      "style": "Heading2",
+      "text": "3. El observador no ve necesariamente el estado completo"
+    },
+    {
+      "paragraph": 227,
+      "style": "FirstParagraph",
+      "text": "La diferencia fundamental entre el universo microscópico y la realidad observada puede describirse mediante un operador:"
+    },
+    {
+      "paragraph": 229,
+      "style": "FirstParagraph",
+      "text": "donde  representa el espacio completo de estados DEE y  el conjunto de observaciones accesibles."
+    },
+    {
+      "paragraph": 230,
+      "style": "BodyText",
+      "text": "El universo se encuentra realmente en:"
+    },
+    {
+      "paragraph": 232,
+      "style": "FirstParagraph",
+      "text": "pero el observador registra únicamente:"
+    },
+    {
+      "paragraph": 234,
+      "style": "FirstParagraph",
+      "text": "Esto permite una situación fundamental:"
+    },
+    {
+      "paragraph": 236,
+      "style": "FirstParagraph",
+      "text": "aunque:"
+    },
+    {
+      "paragraph": 238,
+      "style": "FirstParagraph",
+      "text": "Es decir, dos estados microscópicamente diferentes pueden resultar indistinguibles para un observador particular."
+    },
+    {
+      "paragraph": 239,
+      "style": "BodyText",
+      "text": "Sin embargo, como sus microestados son diferentes:"
+    },
+    {
+      "paragraph": 241,
+      "style": "FirstParagraph",
+      "text": "y, posteriormente:"
+    },
+    {
+      "paragraph": 243,
+      "style": "FirstParagraph",
+      "text": "De esta forma, dos configuraciones que aparentemente poseen el mismo presente pueden tener futuros distintos porque el observador no conserva toda la información necesaria para distinguirlas."
+    },
+    {
+      "paragraph": 244,
+      "style": "BodyText",
+      "text": "DEE introduce así una separación fundamental entre:"
+    },
+    {
+      "paragraph": 246,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 248,
+      "style": "Heading2",
+      "text": "4. El estado conjunto"
+    },
+    {
+      "paragraph": 249,
+      "style": "FirstParagraph",
+      "text": "Consideremos ahora dos regiones que un observador denomina:"
+    },
+    {
+      "paragraph": 251,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 253,
+      "style": "FirstParagraph",
+      "text": "Desde el nivel observable pueden aparecer como dos objetos separados:"
+    },
+    {
+      "paragraph": 255,
+      "style": "FirstParagraph",
+      "text": "Sin embargo, en DEE el estado fundamental no necesita factorizarse simplemente como:"
+    },
+    {
+      "paragraph": 257,
+      "style": "FirstParagraph",
+      "text": "El estado completo puede ser:"
+    },
+    {
+      "paragraph": 259,
+      "style": "FirstParagraph",
+      "text": "donde:"
+    },
+    {
+      "paragraph": 260,
+      "style": "Compact",
+      "text": " representa las relaciones del medio;"
+    },
+    {
+      "paragraph": 261,
+      "style": "Compact",
+      "text": ", su organización geométrica;"
+    },
+    {
+      "paragraph": 262,
+      "style": "Compact",
+      "text": ", la información direccional;"
+    },
+    {
+      "paragraph": 263,
+      "style": "Compact",
+      "text": ", los estados de reloj;"
+    },
+    {
+      "paragraph": 264,
+      "style": "Compact",
+      "text": ", la historia relevante del sistema."
+    },
+    {
+      "paragraph": 265,
+      "style": "FirstParagraph",
+      "text": "En consecuencia,  y  no constituyen necesariamente entidades fundamentales independientes."
+    },
+    {
+      "paragraph": 266,
+      "style": "BodyText",
+      "text": "Son dos manifestaciones locales de:"
+    },
+    {
+      "paragraph": 268,
+      "style": "FirstParagraph",
+      "text": "El observador obtiene:"
+    },
+    {
+      "paragraph": 270,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 272,
+      "style": "FirstParagraph",
+      "text": "pero ninguna de las dos observaciones tiene por qué contener toda la información presente en ."
+    },
+    {
+      "paragraph": 273,
+      "style": "BodyText",
+      "text": "Éste es el punto central de la interpretación DEE."
+    },
+    {
+      "paragraph": 274,
+      "style": "Heading2",
+      "text": "5. El análogo DEE del entrelazamiento"
+    },
+    {
+      "paragraph": 275,
+      "style": "FirstParagraph",
+      "text": "El entrelazamiento puede entonces interpretarse como la persistencia de una identidad relacional conjunta incluso después de que sus manifestaciones observables se encuentren separadas."
+    },
+    {
+      "paragraph": 276,
+      "style": "BodyText",
+      "text": "No se requiere imaginar:"
+    },
+    {
+      "paragraph": 278,
+      "style": "FirstParagraph",
+      "text": "como una partícula enviando una señal misteriosa."
+    },
+    {
+      "paragraph": 279,
+      "style": "BodyText",
+      "text": "La estructura fundamental es:"
+    },
+    {
+      "paragraph": 281,
+      "style": "FirstParagraph",
+      "text": "Por tanto, cuando se modifica o interroga una parte de esa organización, la respuesta de la otra parte depende del estado conjunto al que ambas pertenecen."
+    },
+    {
+      "paragraph": 282,
+      "style": "BodyText",
+      "text": "Una representación más apropiada sería:"
+    },
+    {
+      "paragraph": 284,
+      "style": "FirstParagraph",
+      "text": "en vez de:"
+    },
+    {
+      "paragraph": 286,
+      "style": "FirstParagraph",
+      "text": "La correlación no necesita pertenecer exclusivamente a  ni exclusivamente a ."
+    },
+    {
+      "paragraph": 287,
+      "style": "BodyText",
+      "text": "Pertenece a:"
+    },
+    {
+      "paragraph": 289,
+      "style": "Heading2",
+      "text": "6. La analogía de la sábana"
+    },
+    {
+      "paragraph": 290,
+      "style": "FirstParagraph",
+      "text": "Esta estructura puede visualizarse mediante una sábana tensada."
+    },
+    {
+      "paragraph": 291,
+      "style": "BodyText",
+      "text": "Dos puntos de una sábana pueden encontrarse muy separados cuando sólo se observan sus coordenadas superficiales."
+    },
+    {
+      "paragraph": 292,
+      "style": "BodyText",
+      "text": "Sin embargo, ninguno de ellos constituye un sistema independiente de la tela."
+    },
+    {
+      "paragraph": 293,
+      "style": "BodyText",
+      "text": "Ambos son estados locales de:"
+    },
+    {
+      "paragraph": 295,
+      "style": "FirstParagraph",
+      "text": "y modificar una región modifica las condiciones internas de la organización que también contiene a la otra."
+    },
+    {
+      "paragraph": 296,
+      "style": "BodyText",
+      "text": "DEE añade a esa analogía algo más preciso."
+    },
+    {
+      "paragraph": 297,
+      "style": "BodyText",
+      "text": "La “tensión” no es una única variable continua."
+    },
+    {
+      "paragraph": 298,
+      "style": "BodyText",
+      "text": "Está distribuida entre:"
+    },
+    {
+      "paragraph": 300,
+      "style": "FirstParagraph",
+      "text": "Por ello, dos universos con el mismo número de elementos pueden evolucionar de forma diferente si cambia:"
+    },
+    {
+      "paragraph": 302,
+      "style": "FirstParagraph",
+      "text": "Formalmente, pueden existir:"
+    },
+    {
+      "paragraph": 304,
+      "style": "FirstParagraph",
+      "text": "pero:"
+    },
+    {
+      "paragraph": 306,
+      "style": "FirstParagraph",
+      "text": "de modo que:"
+    },
+    {
+      "paragraph": 308,
+      "style": "FirstParagraph",
+      "text": "La geometría y las relaciones son, por tanto, parte del estado físico."
+    },
+    {
+      "paragraph": 309,
+      "style": "Heading2",
+      "text": "7. Distancia observada y distancia fundamental"
+    },
+    {
+      "paragraph": 310,
+      "style": "FirstParagraph",
+      "text": "La separación espacial observada tampoco tiene por qué contener toda la información acerca de la relación causal fundamental."
+    },
+    {
+      "paragraph": 311,
+      "style": "BodyText",
+      "text": "Podemos distinguir:"
+    },
+    {
+      "paragraph": 313,
+      "style": "FirstParagraph",
+      "text": "de una distancia o relación nativa del sustrato:"
+    },
+    {
+      "paragraph": 315,
+      "style": "FirstParagraph",
+      "text": "En general:"
+    },
+    {
+      "paragraph": 317,
+      "style": "FirstParagraph",
+      "text": "Dos regiones que parecen distantes en la representación observable pueden continuar perteneciendo a una organización cuya conectividad fundamental no queda reflejada completamente en esa distancia."
+    },
+    {
+      "paragraph": 318,
+      "style": "BodyText",
+      "text": "Así, aquello que desde el nivel macroscópico parece una relación entre objetos separados puede corresponder microscópicamente a:"
+    },
+    {
+      "paragraph": 320,
+      "style": "FirstParagraph",
+      "text": "La aparente no localidad puede surgir entonces de aplicar un mapa de observación que conserva la posición de los objetos pero pierde parte de las relaciones que constituyen el sustrato."
+    },
+    {
+      "paragraph": 321,
+      "style": "Heading2",
+      "text": "8. La fase puede existir aunque el observador no la vea"
+    },
+    {
+      "paragraph": 322,
+      "style": "FirstParagraph",
+      "text": "Otra consecuencia natural de esta arquitectura es que una variable puede desaparecer de una observación sin desaparecer del estado físico."
+    },
+    {
+      "paragraph": 323,
+      "style": "BodyText",
+      "text": "Sean dos microestados:"
+    },
+    {
+      "paragraph": 325,
+      "style": "FirstParagraph",
+      "text": "con diferente fase interna."
+    },
+    {
+      "paragraph": 326,
+      "style": "BodyText",
+      "text": "Un observador reducido puede producir:"
+    },
+    {
+      "paragraph": 328,
+      "style": "FirstParagraph",
+      "text": "Para él, la fase ha desaparecido."
+    },
+    {
+      "paragraph": 329,
+      "style": "BodyText",
+      "text": "Sin embargo, una interacción posterior puede actuar sobre el estado completo:"
+    },
+    {
+      "paragraph": 331,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 333,
+      "style": "FirstParagraph",
+      "text": "produciendo:"
+    },
+    {
+      "paragraph": 335,
+      "style": "FirstParagraph",
+      "text": "Así:"
+    },
+    {
+      "paragraph": 337,
+      "style": "FirstParagraph",
+      "text": "Esta distinción resulta especialmente importante cuando se intenta interpretar una teoría cuántica efectiva desde un sustrato más profundo."
+    },
+    {
+      "paragraph": 338,
+      "style": "Heading2",
+      "text": "9. El origen de la probabilidad efectiva"
+    },
+    {
+      "paragraph": 339,
+      "style": "FirstParagraph",
+      "text": "El universo DEE puede evolucionar mediante una transformación determinista:"
+    },
+    {
+      "paragraph": 341,
+      "style": "FirstParagraph",
+      "text": "Sin embargo, si el observador sólo conoce:"
+    },
+    {
+      "paragraph": 343,
+      "style": "FirstParagraph",
+      "text": "pueden existir numerosos estados:"
+    },
+    {
+      "paragraph": 345,
+      "style": "FirstParagraph",
+      "text": "compatibles con exactamente la misma observación."
+    },
+    {
+      "paragraph": 346,
+      "style": "BodyText",
+      "text": "Si el observador no conoce cuál de ellos constituye el estado real, aparece una distribución:"
+    },
+    {
+      "paragraph": 348,
+      "style": "FirstParagraph",
+      "text": "La probabilidad de observar posteriormente un resultado  será:"
+    },
+    {
+      "paragraph": 350,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 352,
+      "style": "FirstParagraph",
+      "text": "La incertidumbre del observador no requiere necesariamente que el microestado fundamental sea igualmente indeterminado."
+    },
+    {
+      "paragraph": 353,
+      "style": "BodyText",
+      "text": "El fenómeno probabilístico aparece al proyectar una dinámica de dimensión mayor sobre una descripción reducida."
+    },
+    {
+      "paragraph": 354,
+      "style": "Heading2",
+      "text": "10. La medición"
+    },
+    {
+      "paragraph": 355,
+      "style": "FirstParagraph",
+      "text": "En este marco, una medición deja de necesitar una posición ontológica especial."
+    },
+    {
+      "paragraph": 356,
+      "style": "BodyText",
+      "text": "El aparato de medición también pertenece al universo."
+    },
+    {
+      "paragraph": 357,
+      "style": "BodyText",
+      "text": "Puede describirse mediante una intervención:"
+    },
+    {
+      "paragraph": 359,
+      "style": "FirstParagraph",
+      "text": "dependiente de la configuración  del aparato."
+    },
+    {
+      "paragraph": 360,
+      "style": "BodyText",
+      "text": "El estado conjunto pasa de:"
+    },
+    {
+      "paragraph": 362,
+      "style": "FirstParagraph",
+      "text": "a:"
+    },
+    {
+      "paragraph": 364,
+      "style": "FirstParagraph",
+      "text": "Después:"
+    },
+    {
+      "paragraph": 366,
+      "style": "FirstParagraph",
+      "text": "Finalmente el observador registra:"
+    },
+    {
+      "paragraph": 368,
+      "style": "FirstParagraph",
+      "text": "Así, medir significa:"
+    },
+    {
+      "paragraph": 370,
+      "style": "FirstParagraph",
+      "text": "No existe una frontera fundamental entre “sistema cuántico” y “aparato clásico”."
+    },
+    {
+      "paragraph": 371,
+      "style": "BodyText",
+      "text": "Ambos son subconjuntos del mismo estado DEE."
+    },
+    {
+      "paragraph": 372,
+      "style": "Heading2",
+      "text": "11. El entrelazamiento como identidad distribuida"
+    },
+    {
+      "paragraph": 373,
+      "style": "FirstParagraph",
+      "text": "La expresión más compacta de la propuesta puede construirse de la siguiente manera."
+    },
+    {
+      "paragraph": 374,
+      "style": "BodyText",
+      "text": "En el nivel observable:"
+    },
+    {
+      "paragraph": 376,
+      "style": "FirstParagraph",
+      "text": "En el nivel fundamental:"
+    },
+    {
+      "paragraph": 378,
+      "style": "FirstParagraph",
+      "text": "Las mediciones locales son:"
+    },
+    {
+      "paragraph": 380,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 382,
+      "style": "FirstParagraph",
+      "text": "Entonces la correlación observada:"
+    },
+    {
+      "paragraph": 384,
+      "style": "FirstParagraph",
+      "text": "no necesita proceder de:"
+    },
+    {
+      "paragraph": 386,
+      "style": "FirstParagraph",
+      "text": "ni de:"
+    },
+    {
+      "paragraph": 388,
+      "style": "FirstParagraph",
+      "text": "Puede proceder de:"
+    },
+    {
+      "paragraph": 390,
+      "style": "FirstParagraph",
+      "text": "Ambos resultados son expresiones distintas de una única organización."
+    },
+    {
+      "paragraph": 391,
+      "style": "BodyText",
+      "text": "En este sentido, el entrelazamiento DEE puede definirse como:"
+    },
+    {
+      "paragraph": 392,
+      "style": "BodyText",
+      "text": "la persistencia de información relacional distribuida entre regiones cuya descripción observable individual no contiene el estado completo que determina su comportamiento conjunto."
+    },
+    {
+      "paragraph": 393,
+      "style": "Heading2",
+      "text": "12. Complementariedad con la mecánica cuántica"
+    },
+    {
+      "paragraph": 394,
+      "style": "FirstParagraph",
+      "text": "La relación entre ambas descripciones puede expresarse como dos niveles."
+    },
+    {
+      "paragraph": 395,
+      "style": "BodyText",
+      "text": "La mecánica cuántica proporciona un estado efectivo:"
+    },
+    {
+      "paragraph": 397,
+      "style": "FirstParagraph",
+      "text": "o una matriz de densidad:"
+    },
+    {
+      "paragraph": 399,
+      "style": "FirstParagraph",
+      "text": "a partir de los cuales calcula observables y probabilidades."
+    },
+    {
+      "paragraph": 400,
+      "style": "BodyText",
+      "text": "DEE añadiría una descripción microscópica:"
+    },
+    {
+      "paragraph": 402,
+      "style": "FirstParagraph",
+      "text": "y un mapa:"
+    },
+    {
+      "paragraph": 404,
+      "style": "FirstParagraph",
+      "text": "o, en términos generales:"
+    },
+    {
+      "paragraph": 406,
+      "style": "FirstParagraph",
+      "text": "Así:"
+    },
+    {
+      "paragraph": 408,
+      "style": "FirstParagraph",
+      "text": "mientras:"
+    },
+    {
+      "paragraph": 410,
+      "style": "FirstParagraph",
+      "text": "No existe contradicción necesaria entre ambas capas."
+    },
+    {
+      "paragraph": 411,
+      "style": "BodyText",
+      "text": "Una teoría puede ser correcta en su dominio sin describir cada variable microscópica del sistema."
+    },
+    {
+      "paragraph": 412,
+      "style": "BodyText",
+      "text": "La relación conceptual sería análoga a:"
+    },
+    {
+      "paragraph": 414,
+      "style": "FirstParagraph",
+      "text": "La temperatura no es incorrecta porque debajo existan moléculas."
+    },
+    {
+      "paragraph": 415,
+      "style": "BodyText",
+      "text": "Es una descripción emergente de ellas."
+    },
+    {
+      "paragraph": 416,
+      "style": "BodyText",
+      "text": "De la misma forma, bajo la hipótesis DEE:"
+    },
+    {
+      "paragraph": 418,
+      "style": "FirstParagraph",
+      "text": "sería una representación efectiva del comportamiento de familias de microestados:"
+    },
+    {
+      "paragraph": 420,
+      "style": "Heading2",
+      "text": "13. Qué completa DEE"
+    },
+    {
+      "paragraph": 421,
+      "style": "FirstParagraph",
+      "text": "La información adicional proporcionada por DEE se encuentra precisamente en aquello que el estado efectivo no especifica explícitamente:"
+    },
+    {
+      "paragraph": 430,
+      "style": "FirstParagraph",
+      "text": "y, sobre todo:"
+    },
+    {
+      "paragraph": 432,
+      "style": "FirstParagraph",
+      "text": "El estado observado deja de ser necesariamente una descripción completa de la ontología del sistema."
+    },
+    {
+      "paragraph": 433,
+      "style": "BodyText",
+      "text": "Se convierte en:"
+    },
+    {
+      "paragraph": 435,
+      "style": "FirstParagraph",
+      "text": "una proyección de ella."
+    },
+    {
+      "paragraph": 436,
+      "style": "Heading2",
+      "text": "14. Formulación final"
+    },
+    {
+      "paragraph": 437,
+      "style": "FirstParagraph",
+      "text": "La secuencia completa del fenómeno puede escribirse como:"
+    },
+    {
+      "paragraph": 441,
+      "style": "FirstParagraph",
+      "text": "una organización distribuida única,"
+    },
+    {
+      "paragraph": 444,
+      "style": "FirstParagraph",
+      "text": "sin destrucción necesariamente de la relación microscópica,"
+    },
+    {
+      "paragraph": 447,
+      "style": "FirstParagraph",
+      "text": "conservando estado, geometría, fase, clocks e historia,"
+    },
+    {
+      "paragraph": 456,
+      "style": "FirstParagraph",
+      "text": "Por tanto, en esta formulación el fenómeno denominado entrelazamiento no necesita representar una comunicación instantánea entre dos entidades fundamentalmente separadas."
+    },
+    {
+      "paragraph": 457,
+      "style": "BodyText",
+      "text": "Representa que la separación pertenece al nivel de observación, mientras la relación pertenece al nivel del estado fundamental."
+    },
+    {
+      "paragraph": 458,
+      "style": "BodyText",
+      "text": "La formulación DEE puede resumirse mediante:"
+    },
+    {
+      "paragraph": 460,
+      "style": "FirstParagraph",
+      "text": "o, de manera todavía más compacta:"
+    },
+    {
+      "paragraph": 462,
+      "style": "FirstParagraph",
+      "text": "donde el observador ve las partes, pero el universo evoluciona sobre el todo."
+    },
+    {
+      "paragraph": 463,
+      "style": "Heading1",
+      "text": "Anexo — Emergencia del Régimen Cuántico Efectivo y Límite Continuo en Sectores Reversibles de Representación Unitaria de DEE"
+    },
+    {
+      "paragraph": 464,
+      "style": "FirstParagraph",
+      "text": "Este anexo debe leerse como continuación natural de “El entrelazamiento en la Dinámica de Eficiencia Entrópica”. Allí se describe cómo un estado distribuido profundo puede aparecer ante un observador como varios subsistemas separados. Aquí se desarrolla la otra mitad del problema: cómo una dinámica discreta DEE puede admitir una descripción efectiva mediante función de onda y, bajo determinadas condiciones, adquirir la forma de la ecuación de Schrödinger."
+    },
+    {
+      "paragraph": 465,
+      "style": "BodyText",
+      "text": "La traducción matemática completa del kernel C++ v27 a una función cerrada  se desarrolla en la sección 22, “Cierre microscópico desde el kernel v27”. Para el desarrollo presente basta partir de una propiedad ya definida por el sistema:"
+    },
+    {
+      "paragraph": 467,
+      "style": "FirstParagraph",
+      "text": "donde  representa el estado microscópico completo del universo DEE."
+    },
+    {
+      "paragraph": 468,
+      "style": "Heading2",
+      "text": "1. Dinámica fundamental y dinámica efectiva"
+    },
+    {
+      "paragraph": 469,
+      "style": "FirstParagraph",
+      "text": "DEE considera fundamental una dinámica discreta."
+    },
+    {
+      "paragraph": 470,
+      "style": "BodyText",
+      "text": "El universo no evoluciona inicialmente mediante una función de onda continua, sino mediante una sucesión:"
+    },
+    {
+      "paragraph": 472,
+      "style": "FirstParagraph",
+      "text": "con:"
+    },
+    {
+      "paragraph": 474,
+      "style": "FirstParagraph",
+      "text": "Cada estado contiene mucho más que una ocupación espacial. En términos esquemáticos:"
+    },
+    {
+      "paragraph": 476,
+      "style": "FirstParagraph",
+      "text": "El campo raw contiene internamente:"
+    },
+    {
+      "paragraph": 478,
+      "style": "FirstParagraph",
+      "text": "mientras que cada posición posee además su correspondiente estado de reloj."
+    },
+    {
+      "paragraph": 479,
+      "style": "BodyText",
+      "text": "La palabra espacial utilizada por el kernel es de 64 bits, distribuida en:"
+    },
+    {
+      "paragraph": 481,
+      "style": "FirstParagraph",
+      "text": "Por tanto, el objeto fundamental de DEE es:"
+    },
+    {
+      "paragraph": 483,
+      "style": "FirstParagraph",
+      "text": "y no:"
+    },
+    {
+      "paragraph": 485,
+      "style": "FirstParagraph",
+      "text": "La función de onda aparecerá posteriormente como una representación efectiva de determinados sectores de la dinámica de ."
+    },
+    {
+      "paragraph": 486,
+      "style": "Heading2",
+      "text": "2. No toda la dinámica DEE necesita pertenecer al mismo régimen"
+    },
+    {
+      "paragraph": 487,
+      "style": "FirstParagraph",
+      "text": "El kernel completo puede contener evolución irreversible o many-to-one:"
+    },
+    {
+      "paragraph": 489,
+      "style": "FirstParagraph",
+      "text": "pero:"
+    },
+    {
+      "paragraph": 491,
+      "style": "FirstParagraph",
+      "text": "Por consiguiente, la evolución global de DEE no tiene por qué ser unitaria."
+    },
+    {
+      "paragraph": 492,
+      "style": "BodyText",
+      "text": "Esto no impide que existan subconjuntos del espacio de estados donde la dinámica sí sea reversible."
+    },
+    {
+      "paragraph": 493,
+      "style": "BodyText",
+      "text": "Definamos uno de ellos como:"
+    },
+    {
+      "paragraph": 495,
+      "style": "FirstParagraph",
+      "text": "y exijamos:"
+    },
+    {
+      "paragraph": 497,
+      "style": "FirstParagraph",
+      "text": "Es decir: una vez que la dinámica entra en , permanece dentro de él."
+    },
+    {
+      "paragraph": 498,
+      "style": "BodyText",
+      "text": "Además, para un régimen reversible:"
+    },
+    {
+      "paragraph": 500,
+      "style": "FirstParagraph",
+      "text": "debe ser biyectivo:"
+    },
+    {
+      "paragraph": 502,
+      "style": "FirstParagraph",
+      "text": "Entonces cada estado posee exactamente un sucesor y un predecesor."
+    },
+    {
+      "paragraph": 503,
+      "style": "BodyText",
+      "text": "Éste será denominado sector reversible DEE cuya representación lineal es unitaria."
+    },
+    {
+      "paragraph": 504,
+      "style": "Heading2",
+      "text": "3. De una permutación DEE a un operador unitario"
+    },
+    {
+      "paragraph": 505,
+      "style": "FirstParagraph",
+      "text": "Supongamos que el sector  contiene un número finito de microestados:"
+    },
+    {
+      "paragraph": 507,
+      "style": "FirstParagraph",
+      "text": "Asociamos a cada uno un vector ortogonal:"
+    },
+    {
+      "paragraph": 509,
+      "style": "FirstParagraph",
+      "text": "La dinámica microscópica induce entonces un operador:"
+    },
+    {
+      "paragraph": 511,
+      "style": "FirstParagraph",
+      "text": "Como  es una permutación de los estados de ,  es una matriz de permutación."
+    },
+    {
+      "paragraph": 512,
+      "style": "BodyText",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 514,
+      "style": "FirstParagraph",
+      "text": "Es decir:"
+    },
+    {
+      "paragraph": 516,
+      "style": "FirstParagraph",
+      "text": "Aquí aparece el primer puente matemático importante."
+    },
+    {
+      "paragraph": 517,
+      "style": "BodyText",
+      "text": "DEE sigue siendo completamente discreto y determinista:"
+    },
+    {
+      "paragraph": 519,
+      "style": "FirstParagraph",
+      "text": "pero la misma evolución admite una representación lineal unitaria:"
+    },
+    {
+      "paragraph": 521,
+      "style": "Heading2",
+      "text": "4. Nacimiento de la función de onda efectiva"
+    },
+    {
+      "paragraph": 522,
+      "style": "FirstParagraph",
+      "text": "En esta representación, un estado efectivo puede escribirse:"
+    },
+    {
+      "paragraph": 524,
+      "style": "FirstParagraph",
+      "text": "Los coeficientes:"
+    },
+    {
+      "paragraph": 526,
+      "style": "FirstParagraph",
+      "text": "constituyen la representación compleja del estado sobre el sector."
+    },
+    {
+      "paragraph": 527,
+      "style": "BodyText",
+      "text": "La función de onda no necesita interpretarse entonces como el objeto fundamental del universo."
+    },
+    {
+      "paragraph": 528,
+      "style": "BodyText",
+      "text": "Es una representación de:"
+    },
+    {
+      "paragraph": 530,
+      "style": "FirstParagraph",
+      "text": "La distinción ontológica es:"
+    },
+    {
+      "paragraph": 532,
+      "style": "FirstParagraph",
+      "text": "mientras:"
+    },
+    {
+      "paragraph": 534,
+      "style": "FirstParagraph",
+      "text": "Esto conecta directamente con la formulación del entrelazamiento: un observador puede trabajar con  aun cuando debajo exista una organización microscópica  mucho más rica."
+    },
+    {
+      "paragraph": 535,
+      "style": "Heading2",
+      "text": "5. El caso elemental: una órbita periódica"
+    },
+    {
+      "paragraph": 536,
+      "style": "FirstParagraph",
+      "text": "Consideremos una órbita DEE de período :"
+    },
+    {
+      "paragraph": 538,
+      "style": "FirstParagraph",
+      "text": "Definimos:"
+    },
+    {
+      "paragraph": 540,
+      "style": "FirstParagraph",
+      "text": "En la base microscópica,  simplemente desplaza el estado un paso."
+    },
+    {
+      "paragraph": 541,
+      "style": "BodyText",
+      "text": "Sin embargo, podemos cambiar a una base de Fourier:"
+    },
+    {
+      "paragraph": 543,
+      "style": "FirstParagraph",
+      "text": "Aplicando :"
+    },
+    {
+      "paragraph": 545,
+      "style": "FirstParagraph",
+      "text": "Por tanto los modos propios ya no aparecen como posiciones individuales del ciclo, sino como fases."
+    },
+    {
+      "paragraph": 546,
+      "style": "BodyText",
+      "text": "Los valores propios son:"
+    },
+    {
+      "paragraph": 548,
+      "style": "FirstParagraph",
+      "text": "Y poseen módulo:"
+    },
+    {
+      "paragraph": 550,
+      "style": "FirstParagraph",
+      "text": "Ésta es exactamente la estructura matemática de una evolución unitaria de fase."
+    },
+    {
+      "paragraph": 551,
+      "style": "Heading2",
+      "text": "6. Del tick discreto al Hamiltoniano"
+    },
+    {
+      "paragraph": 552,
+      "style": "FirstParagraph",
+      "text": "Sea:"
+    },
+    {
+      "paragraph": 554,
+      "style": "FirstParagraph",
+      "text": "la duración física efectiva asociada a un tick."
+    },
+    {
+      "paragraph": 555,
+      "style": "BodyText",
+      "text": "La evolución puede escribirse:"
+    },
+    {
+      "paragraph": 557,
+      "style": "FirstParagraph",
+      "text": "Todo operador unitario puede representarse, escogiendo una rama apropiada del logaritmo, como:"
+    },
+    {
+      "paragraph": 559,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 561,
+      "style": "FirstParagraph",
+      "text": "Aquí  es el Hamiltoniano efectivo del sector y  fija la escala entre fase y acción en esa descripción."
+    },
+    {
+      "paragraph": 562,
+      "style": "BodyText",
+      "text": "Para el ciclo de período :"
+    },
+    {
+      "paragraph": 564,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 566,
+      "style": "FirstParagraph",
+      "text": "módulo la periodicidad asociada al logaritmo."
+    },
+    {
+      "paragraph": 567,
+      "style": "BodyText",
+      "text": "Esto proporciona una interpretación precisa:"
+    },
+    {
+      "paragraph": 568,
+      "style": "BodyText",
+      "text": "la energía efectiva corresponde a una frecuencia de fase de la dinámica microscópica recurrente."
+    },
+    {
+      "paragraph": 569,
+      "style": "Heading2",
+      "text": "7. Aparición de la ecuación de Schrödinger"
+    },
+    {
+      "paragraph": 570,
+      "style": "FirstParagraph",
+      "text": "Partimos de:"
+    },
+    {
+      "paragraph": 572,
+      "style": "FirstParagraph",
+      "text": "Para una familia escalada de evoluciones"
+    },
+    {
+      "paragraph": 574,
+      "style": "FirstParagraph",
+      "text": "y para  pequeño:"
+    },
+    {
+      "paragraph": 576,
+      "style": "FirstParagraph",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 578,
+      "style": "FirstParagraph",
+      "text": "Dividiendo por :"
+    },
+    {
+      "paragraph": 580,
+      "style": "FirstParagraph",
+      "text": "En el límite continuo de esa familia escalada:"
+    },
+    {
+      "paragraph": 582,
+      "style": "FirstParagraph",
+      "text": "se obtiene:"
+    },
+    {
+      "paragraph": 584,
+      "style": "FirstParagraph",
+      "text": "Ésta es la forma general de la ecuación de Schrödinger."
+    },
+    {
+      "paragraph": 585,
+      "style": "BodyText",
+      "text": "Dentro de DEE su interpretación es:"
+    },
+    {
+      "paragraph": 587,
+      "style": "FirstParagraph",
+      "text": "No constituye la regla microscópica del kernel."
+    },
+    {
+      "paragraph": 588,
+      "style": "BodyText",
+      "text": "Constituye la ecuación que aparece cuando determinada dinámica microscópica se describe mediante las variables y escalas apropiadas."
+    },
+    {
+      "paragraph": 589,
+      "style": "Heading2",
+      "text": "8. Introducción del espacio continuo"
+    },
+    {
+      "paragraph": 590,
+      "style": "FirstParagraph",
+      "text": "Hasta aquí solamente se ha hecho continuo el tiempo efectivo."
+    },
+    {
+      "paragraph": 591,
+      "style": "BodyText",
+      "text": "Para obtener una teoría espacial, introducimos el tamaño físico de un vóxel:"
+    },
+    {
+      "paragraph": 593,
+      "style": "FirstParagraph",
+      "text": "Una posición discreta:"
+    },
+    {
+      "paragraph": 595,
+      "style": "FirstParagraph",
+      "text": "corresponde entonces a:"
+    },
+    {
+      "paragraph": 597,
+      "style": "FirstParagraph",
+      "text": "El límite continuo requiere:"
+    },
+    {
+      "paragraph": 600,
+      "style": "FirstParagraph",
+      "text": "manteniendo una escala física macroscópica apropiada."
+    },
+    {
+      "paragraph": 601,
+      "style": "BodyText",
+      "text": "Una excitación efectiva puede describirse:"
+    },
+    {
+      "paragraph": 603,
+      "style": "FirstParagraph",
+      "text": "y en el límite:"
+    },
+    {
+      "paragraph": 605,
+      "style": "Heading2",
+      "text": "9. Modos espaciales"
+    },
+    {
+      "paragraph": 606,
+      "style": "FirstParagraph",
+      "text": "Para un sector aproximadamente homogéneo y traslacionalmente simétrico, pueden definirse modos:"
+    },
+    {
+      "paragraph": 608,
+      "style": "FirstParagraph",
+      "text": "Cada modo evoluciona:"
+    },
+    {
+      "paragraph": 610,
+      "style": "FirstParagraph",
+      "text": "La cantidad fundamental que debe extraerse del kernel es entonces:"
+    },
+    {
+      "paragraph": 612,
+      "style": "FirstParagraph",
+      "text": "la relación de dispersión del sector."
+    },
+    {
+      "paragraph": 613,
+      "style": "BodyText",
+      "text": "Ésta representa la frecuencia temporal de cada modo espacial."
+    },
+    {
+      "paragraph": 614,
+      "style": "BodyText",
+      "text": "Todo el problema del límite continuo puede reformularse como:"
+    },
+    {
+      "paragraph": 615,
+      "style": "BodyText",
+      "text": "¿Qué función  produce DEE en el sector  a longitudes de onda grandes?"
+    },
+    {
+      "paragraph": 616,
+      "style": "Heading2",
+      "text": "10. Régimen de baja energía"
+    },
+    {
+      "paragraph": 617,
+      "style": "FirstParagraph",
+      "text": "Supongamos que el sector posee una dispersión:"
+    },
+    {
+      "paragraph": 619,
+      "style": "FirstParagraph",
+      "text": "Aquí:"
+    },
+    {
+      "paragraph": 621,
+      "style": "FirstParagraph",
+      "text": "es una frecuencia propia incluso cuando:"
+    },
+    {
+      "paragraph": 623,
+      "style": "FirstParagraph",
+      "text": "mientras:"
+    },
+    {
+      "paragraph": 625,
+      "style": "FirstParagraph",
+      "text": "define una velocidad característica del régimen."
+    },
+    {
+      "paragraph": 626,
+      "style": "BodyText",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 628,
+      "style": "FirstParagraph",
+      "text": "Para:"
+    },
+    {
+      "paragraph": 630,
+      "style": "FirstParagraph",
+      "text": "podemos expandir:"
+    },
+    {
+      "paragraph": 632,
+      "style": "FirstParagraph",
+      "text": "Utilizando:"
+    },
+    {
+      "paragraph": 634,
+      "style": "FirstParagraph",
+      "text": "resulta:"
+    },
+    {
+      "paragraph": 636,
+      "style": "Heading2",
+      "text": "11. Separación de la fase rápida"
+    },
+    {
+      "paragraph": 637,
+      "style": "FirstParagraph",
+      "text": "La componente:"
+    },
+    {
+      "paragraph": 639,
+      "style": "FirstParagraph",
+      "text": "produce una oscilación común."
+    },
+    {
+      "paragraph": 640,
+      "style": "BodyText",
+      "text": "Definimos:"
+    },
+    {
+      "paragraph": 642,
+      "style": "FirstParagraph",
+      "text": "La función:"
+    },
+    {
+      "paragraph": 644,
+      "style": "FirstParagraph",
+      "text": "representa la envolvente lenta."
+    },
+    {
+      "paragraph": 645,
+      "style": "BodyText",
+      "text": "Su frecuencia residual es:"
+    },
+    {
+      "paragraph": 647,
+      "style": "FirstParagraph",
+      "text": "En espacio real:"
+    },
+    {
+      "paragraph": 649,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 651,
+      "style": "FirstParagraph",
+      "text": "Multiplicando por :"
+    },
+    {
+      "paragraph": 653,
+      "style": "Heading2",
+      "text": "12. Emergencia de la masa"
+    },
+    {
+      "paragraph": 654,
+      "style": "FirstParagraph",
+      "text": "Definamos:"
+    },
+    {
+      "paragraph": 656,
+      "style": "FirstParagraph",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 658,
+      "style": "FirstParagraph",
+      "text": "Y obtenemos:"
+    },
+    {
+      "paragraph": 660,
+      "style": "FirstParagraph",
+      "text": "Ésta es exactamente la ecuación libre de Schrödinger."
+    },
+    {
+      "paragraph": 661,
+      "style": "BodyText",
+      "text": "La masa efectiva satisface:"
+    },
+    {
+      "paragraph": 663,
+      "style": "FirstParagraph",
+      "text": "Esto proporciona una interpretación especialmente importante para DEE."
+    },
+    {
+      "paragraph": 664,
+      "style": "BodyText",
+      "text": "La masa no necesita introducirse inicialmente como una propiedad independiente."
+    },
+    {
+      "paragraph": 665,
+      "style": "BodyText",
+      "text": "Puede aparecer como:"
+    },
+    {
+      "paragraph": 667,
+      "style": "FirstParagraph",
+      "text": "expresada en unidades macroscópicas."
+    },
+    {
+      "paragraph": 668,
+      "style": "Heading2",
+      "text": "13. Interpretación DEE de la masa efectiva"
+    },
+    {
+      "paragraph": 669,
+      "style": "FirstParagraph",
+      "text": "En esta formulación:"
+    },
+    {
+      "paragraph": 671,
+      "style": "FirstParagraph",
+      "text": "representa la frecuencia propia del patrón incluso en reposo espacial."
+    },
+    {
+      "paragraph": 672,
+      "style": "BodyText",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 674,
+      "style": "FirstParagraph",
+      "text": "Y:"
+    },
+    {
+      "paragraph": 676,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 678,
+      "style": "FirstParagraph",
+      "text": "Una organización DEE puede encontrarse espacialmente estacionaria y, sin embargo, seguir realizando actividad microscópica."
+    },
+    {
+      "paragraph": 679,
+      "style": "BodyText",
+      "text": "La ausencia de desplazamiento no implica ausencia de dinámica."
+    },
+    {
+      "paragraph": 680,
+      "style": "BodyText",
+      "text": "La masa efectiva representa entonces una propiedad espectral de esa dinámica interna."
+    },
+    {
+      "paragraph": 681,
+      "style": "Heading2",
+      "text": "14. Introducción de un potencial"
+    },
+    {
+      "paragraph": 682,
+      "style": "FirstParagraph",
+      "text": "Si la frecuencia interna depende lentamente de la posición:"
+    },
+    {
+      "paragraph": 684,
+      "style": "FirstParagraph",
+      "text": "podemos separar:"
+    },
+    {
+      "paragraph": 686,
+      "style": "FirstParagraph",
+      "text": "La corrección energética es:"
+    },
+    {
+      "paragraph": 688,
+      "style": "FirstParagraph",
+      "text": "La ecuación efectiva pasa entonces a:"
+    },
+    {
+      "paragraph": 690,
+      "style": "FirstParagraph",
+      "text": "Así, en una interpretación DEE:"
+    },
+    {
+      "paragraph": 692,
+      "style": "FirstParagraph",
+      "text": "No necesita ser una entidad fundamental independiente."
+    },
+    {
+      "paragraph": 693,
+      "style": "Heading2",
+      "text": "15. Relación con el observador"
+    },
+    {
+      "paragraph": 694,
+      "style": "FirstParagraph",
+      "text": "El estado profundo continúa siendo:"
+    },
+    {
+      "paragraph": 696,
+      "style": "FirstParagraph",
+      "text": "Pero un observador puede utilizar una transformación:"
+    },
+    {
+      "paragraph": 698,
+      "style": "FirstParagraph",
+      "text": "La descripción cuántica efectiva será válida cuando exista aproximadamente un operador cerrado:"
+    },
+    {
+      "paragraph": 700,
+      "style": "FirstParagraph",
+      "text": "tal que:"
+    },
+    {
+      "paragraph": 702,
+      "style": "FirstParagraph",
+      "text": "En el régimen de representación unitaria:"
+    },
+    {
+      "paragraph": 704,
+      "style": "FirstParagraph",
+      "text": "Y en el límite continuo:"
+    },
+    {
+      "paragraph": 706,
+      "style": "FirstParagraph",
+      "text": "Esta condición es fundamental."
+    },
+    {
+      "paragraph": 707,
+      "style": "BodyText",
+      "text": "Significa que el observador ya no necesita conocer todos los bits de  para describir el futuro relevante."
+    },
+    {
+      "paragraph": 708,
+      "style": "BodyText",
+      "text": "El estado efectivo:"
+    },
+    {
+      "paragraph": 710,
+      "style": "FirstParagraph",
+      "text": "se vuelve suficientemente cerrado."
+    },
+    {
+      "paragraph": 711,
+      "style": "Heading2",
+      "text": "16. Por qué un coarse-graining trivial no es suficiente"
+    },
+    {
+      "paragraph": 712,
+      "style": "FirstParagraph",
+      "text": "No cualquier mapa:"
+    },
+    {
+      "paragraph": 714,
+      "style": "FirstParagraph",
+      "text": "funciona."
+    },
+    {
+      "paragraph": 715,
+      "style": "BodyText",
+      "text": "Por ejemplo, conservar únicamente:"
+    },
+    {
+      "paragraph": 717,
+      "style": "FirstParagraph",
+      "text": "puede borrar:"
+    },
+    {
+      "paragraph": 718,
+      "style": "Compact",
+      "text": "dirección;"
+    },
+    {
+      "paragraph": 719,
+      "style": "Compact",
+      "text": "fase;"
+    },
+    {
+      "paragraph": 720,
+      "style": "Compact",
+      "text": ";"
+    },
+    {
+      "paragraph": 721,
+      "style": "Compact",
+      "text": "clocks;"
+    },
+    {
+      "paragraph": 722,
+      "style": "Compact",
+      "text": "historia;"
+    },
+    {
+      "paragraph": 723,
+      "style": "Compact",
+      "text": "relaciones internas."
+    },
+    {
+      "paragraph": 724,
+      "style": "FirstParagraph",
+      "text": "Entonces pueden existir:"
+    },
+    {
+      "paragraph": 726,
+      "style": "FirstParagraph",
+      "text": "pero:"
+    },
+    {
+      "paragraph": 728,
+      "style": "FirstParagraph",
+      "text": "En ese caso no existe una ecuación autónoma:"
+    },
+    {
+      "paragraph": 730,
+      "style": "FirstParagraph",
+      "text": "Por ello, el límite continuo correcto de DEE probablemente necesite un observador enriquecido:"
+    },
+    {
+      "paragraph": 732,
+      "style": "FirstParagraph",
+      "text": "donde podrían sobrevivir:"
+    },
+    {
+      "paragraph": 733,
+      "style": "Compact",
+      "text": "densidad ;"
+    },
+    {
+      "paragraph": 734,
+      "style": "Compact",
+      "text": "fase ;"
+    },
+    {
+      "paragraph": 735,
+      "style": "Compact",
+      "text": "corriente ;"
+    },
+    {
+      "paragraph": 736,
+      "style": "Compact",
+      "text": "variables internas ."
+    },
+    {
+      "paragraph": 737,
+      "style": "FirstParagraph",
+      "text": "La función de onda:"
+    },
+    {
+      "paragraph": 739,
+      "style": "FirstParagraph",
+      "text": "sería entonces una representación compacta de algunos de esos grados efectivos."
+    },
+    {
+      "paragraph": 740,
+      "style": "Heading2",
+      "text": "17. Conexión con el entrelazamiento DEE"
+    },
+    {
+      "paragraph": 741,
+      "style": "FirstParagraph",
+      "text": "Este desarrollo encaja directamente con “El entrelazamiento en la Dinámica de Eficiencia Entrópica”."
+    },
+    {
+      "paragraph": 742,
+      "style": "BodyText",
+      "text": "Allí el estado fundamental de dos regiones se representa:"
+    },
+    {
+      "paragraph": 744,
+      "style": "FirstParagraph",
+      "text": "La descripción efectiva correspondiente sería:"
+    },
+    {
+      "paragraph": 746,
+      "style": "FirstParagraph",
+      "text": "Si la organización profunda permite separar completamente las dos regiones:"
+    },
+    {
+      "paragraph": 748,
+      "style": "FirstParagraph",
+      "text": "y el observador respeta esa separación, entonces:"
+    },
+    {
+      "paragraph": 750,
+      "style": "FirstParagraph",
+      "text": "En cambio, si las relaciones fundamentales forman parte inseparable de , puede ocurrir:"
+    },
+    {
+      "paragraph": 752,
+      "style": "FirstParagraph",
+      "text": "Ésta es precisamente la estructura matemática de un estado efectivo no factorizable."
+    },
+    {
+      "paragraph": 753,
+      "style": "BodyText",
+      "text": "Desde DEE, la no factorización tendría una interpretación microscópica:"
+    },
+    {
+      "paragraph": 755,
+      "style": "FirstParagraph",
+      "text": "Por tanto, la función de onda conjunta no se factoriza porque el estado subyacente tampoco puede describirse correctamente mediante dos objetos independientes."
+    },
+    {
+      "paragraph": 756,
+      "style": "Heading2",
+      "text": "18. Estado conjunto y función de onda conjunta"
+    },
+    {
+      "paragraph": 757,
+      "style": "FirstParagraph",
+      "text": "La cadena conceptual sería:"
+    },
+    {
+      "paragraph": 759,
+      "style": "FirstParagraph",
+      "text": "estado microscópico distribuido,"
+    },
+    {
+      "paragraph": 762,
+      "style": "FirstParagraph",
+      "text": "estado cuántico efectivo."
+    },
+    {
+      "paragraph": 763,
+      "style": "BodyText",
+      "text": "Cuando:"
+    },
+    {
+      "paragraph": 765,
+      "style": "FirstParagraph",
+      "text": "el observador habla de un estado entrelazado."
+    },
+    {
+      "paragraph": 766,
+      "style": "BodyText",
+      "text": "La interpretación DEE es:"
+    },
+    {
+      "paragraph": 767,
+      "style": "BodyText",
+      "text": "la no separabilidad de la función de onda constituye la imagen efectiva de una no separabilidad relacional del microestado."
+    },
+    {
+      "paragraph": 768,
+      "style": "BodyText",
+      "text": "No es necesario introducir una comunicación posterior misteriosa entre  y ."
+    },
+    {
+      "paragraph": 769,
+      "style": "BodyText",
+      "text": "La relación estaba contenida desde el principio en:"
+    },
+    {
+      "paragraph": 771,
+      "style": "Heading2",
+      "text": "19. Fase, relación y geometría"
+    },
+    {
+      "paragraph": 772,
+      "style": "FirstParagraph",
+      "text": "En DEE, una fase efectiva:"
+    },
+    {
+      "paragraph": 774,
+      "style": "FirstParagraph",
+      "text": "puede emerger de ciclos, clocks, recurrencias y relaciones entre estados."
+    },
+    {
+      "paragraph": 775,
+      "style": "BodyText",
+      "text": "Dos partes de una estructura pueden poseer una relación de fase:"
+    },
+    {
+      "paragraph": 777,
+      "style": "FirstParagraph",
+      "text": "Aunque un observador local no conserve toda esa información, la dinámica microscópica sí puede hacerlo."
+    },
+    {
+      "paragraph": 778,
+      "style": "BodyText",
+      "text": "Así, un estado efectivo complejo:"
+    },
+    {
+      "paragraph": 780,
+      "style": "FirstParagraph",
+      "text": "puede interpretarse como una compresión de dos componentes:"
+    },
+    {
+      "paragraph": 782,
+      "style": "FirstParagraph",
+      "text": "DEE proporciona candidatos microscópicos para ambas mediante organización, recurrencia, clocks y relaciones."
+    },
+    {
+      "paragraph": 783,
+      "style": "Heading2",
+      "text": "20. Arquitectura completa"
+    },
+    {
+      "paragraph": 784,
+      "style": "FirstParagraph",
+      "text": "Puede resumirse la construcción en tres niveles."
+    },
+    {
+      "paragraph": 785,
+      "style": "BodyText",
+      "text": "Nivel I — Ontología DEE"
+    },
+    {
+      "paragraph": 787,
+      "style": "FirstParagraph",
+      "text": "Microestado discreto, local y causal."
+    },
+    {
+      "paragraph": 788,
+      "style": "BodyText",
+      "text": "Nivel II — Sector cuántico efectivo"
+    },
+    {
+      "paragraph": 790,
+      "style": "FirstParagraph",
+      "text": "con:"
+    },
+    {
+      "paragraph": 792,
+      "style": "FirstParagraph",
+      "text": "reversible."
+    },
+    {
+      "paragraph": 793,
+      "style": "BodyText",
+      "text": "Su representación lineal:"
+    },
+    {
+      "paragraph": 795,
+      "style": "FirstParagraph",
+      "text": "con:"
+    },
+    {
+      "paragraph": 797,
+      "style": "FirstParagraph",
+      "text": "Nivel III — Límite continuo"
+    },
+    {
+      "paragraph": 798,
+      "style": "BodyText",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 800,
+      "style": "FirstParagraph",
+      "text": "y existe una dispersión adecuada:"
+    },
+    {
+      "paragraph": 802,
+      "style": "FirstParagraph",
+      "text": "entonces:"
+    },
+    {
+      "paragraph": 804,
+      "style": "FirstParagraph",
+      "text": "En el límite no relativista con dispersión cuadrática:"
+    },
+    {
+      "paragraph": 806,
+      "style": "Heading2",
+      "text": "21. La cadena DEE → Schrödinger"
+    },
+    {
+      "paragraph": 807,
+      "style": "FirstParagraph",
+      "text": "La construcción completa queda:"
+    },
+    {
+      "paragraph": 825,
+      "style": "Heading2",
+      "text": "22. Cierre microscópico desde el kernel v27"
+    },
+    {
+      "paragraph": 826,
+      "style": "FirstParagraph",
+      "text": "Hasta este punto se ha utilizado la transformación fundamental"
+    },
+    {
+      "paragraph": 828,
+      "style": "FirstParagraph",
+      "text": "como punto de partida."
+    },
+    {
+      "paragraph": 829,
+      "style": "BodyText",
+      "text": "El kernel completo permite ahora hacer explícita esa transformación y cerrar el enlace que permanecía pendiente entre la implementación microscópica y la construcción efectiva desarrollada en las secciones anteriores."
+    },
+    {
+      "paragraph": 830,
+      "style": "Heading3",
+      "text": "22.1 Estado microscópico"
+    },
+    {
+      "paragraph": 831,
+      "style": "FirstParagraph",
+      "text": "El universo está definido sobre:"
+    },
+    {
+      "paragraph": 833,
+      "style": "FirstParagraph",
+      "text": "Para cada posición:"
+    },
+    {
+      "paragraph": 835,
+      "style": "FirstParagraph",
+      "text": "existen dos palabras de 64 bits:"
+    },
+    {
+      "paragraph": 837,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 839,
+      "style": "FirstParagraph",
+      "text": "correspondientes respectivamente a raw y clock."
+    },
+    {
+      "paragraph": 840,
+      "style": "BodyText",
+      "text": "Por tanto, para  fijo, el estado causal puede escribirse como:"
+    },
+    {
+      "paragraph": 842,
+      "style": "FirstParagraph",
+      "text": "Los buffers utilizados para calcular el siguiente tick no constituyen grados adicionales del estado; implementan la transformación síncrona."
+    },
+    {
+      "paragraph": 843,
+      "style": "Heading3",
+      "text": "22.2 Descomposición exacta de raw"
+    },
+    {
+      "paragraph": 844,
+      "style": "FirstParagraph",
+      "text": "Sea:"
+    },
+    {
+      "paragraph": 846,
+      "style": "FirstParagraph",
+      "text": "Se definen:"
+    },
+    {
+      "paragraph": 848,
+      "style": "FirstParagraph",
+      "text": "para state;"
+    },
+    {
+      "paragraph": 850,
+      "style": "FirstParagraph",
+      "text": "para ;"
+    },
+    {
+      "paragraph": 851,
+      "style": "BodyText",
+      "text": "y los cuatro bits direccionales:"
+    },
+    {
+      "paragraph": 855,
+      "style": "FirstParagraph",
+      "text": "Cada nibble se interpreta como entero con signo mediante:"
+    },
+    {
+      "paragraph": 857,
+      "style": "FirstParagraph",
+      "text": "De modo que:"
+    },
+    {
+      "paragraph": 859,
+      "style": "FirstParagraph",
+      "text": "Finalmente:"
+    },
+    {
+      "paragraph": 861,
+      "style": "FirstParagraph",
+      "text": "representa semantic."
+    },
+    {
+      "paragraph": 862,
+      "style": "BodyText",
+      "text": "La operación inversa es:"
+    },
+    {
+      "paragraph": 864,
+      "style": "FirstParagraph",
+      "text": "Así, el microestado de cada posición queda matemáticamente determinado por:"
+    },
+    {
+      "paragraph": 866,
+      "style": "Heading3",
+      "text": "22.3 Topología y vecindad"
+    },
+    {
+      "paragraph": 867,
+      "style": "FirstParagraph",
+      "text": "Toda coordenada se evalúa módulo :"
+    },
+    {
+      "paragraph": 869,
+      "style": "FirstParagraph",
+      "text": "La vecindad primaria es:"
+    },
+    {
+      "paragraph": 871,
+      "style": "FirstParagraph",
+      "text": "Definimos dos indicadores:"
+    },
+    {
+      "paragraph": 873,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 875,
+      "style": "FirstParagraph",
+      "text": "El primero indica existencia state>0."
+    },
+    {
+      "paragraph": 876,
+      "style": "BodyText",
+      "text": "El segundo reproduce exactamente el criterio utilizado por las reglas de vecindad: un ORPHAN no cuenta como vecino activo."
+    },
+    {
+      "paragraph": 877,
+      "style": "BodyText",
+      "text": "El número de vecinos activos de  es:"
+    },
+    {
+      "paragraph": 879,
+      "style": "FirstParagraph",
+      "text": "La suma direccional es:"
+    },
+    {
+      "paragraph": 881,
+      "style": "FirstParagraph",
+      "text": "Y el gradiente regulatorio utilizado por el kernel es:"
+    },
+    {
+      "paragraph": 883,
+      "style": "FirstParagraph",
+      "text": "Su magnitud interna es:"
+    },
+    {
+      "paragraph": 885,
+      "style": "Heading3",
+      "text": "22.4 Firma tetraédrica"
+    },
+    {
+      "paragraph": 886,
+      "style": "FirstParagraph",
+      "text": "Sea:"
+    },
+    {
+      "paragraph": 888,
+      "style": "FirstParagraph",
+      "text": "Para cada elección de signos se consideran las cuatro posiciones:"
+    },
+    {
+      "paragraph": 893,
+      "style": "FirstParagraph",
+      "text": "La firma tetraédrica existe cuando alguna de las ocho combinaciones posee sus cuatro posiciones activas:"
+    },
+    {
+      "paragraph": 895,
+      "style": "Heading3",
+      "text": "22.5 Génesis XNOR"
+    },
+    {
+      "paragraph": 896,
+      "style": "FirstParagraph",
+      "text": "Los 26 vecinos forman 13 pares antipodales."
+    },
+    {
+      "paragraph": 897,
+      "style": "BodyText",
+      "text": "Sea  un representante de cada par:"
+    },
+    {
+      "paragraph": 899,
+      "style": "FirstParagraph",
+      "text": "Se define:"
+    },
+    {
+      "paragraph": 901,
+      "style": "FirstParagraph",
+      "text": "Y:"
+    },
+    {
+      "paragraph": 903,
+      "style": "FirstParagraph",
+      "text": "El nacimiento XNOR ocurre exactamente cuando:"
+    },
+    {
+      "paragraph": 905,
+      "style": "FirstParagraph",
+      "text": "Su resultado es:"
+    },
+    {
+      "paragraph": 907,
+      "style": "Heading3",
+      "text": "22.6 Transporte y reducción direccional"
+    },
+    {
+      "paragraph": 908,
+      "style": "FirstParagraph",
+      "text": "Para una posición vacía , definimos el conjunto de fuentes que apuntan exactamente hacia ella:"
+    },
+    {
+      "paragraph": 910,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 912,
+      "style": "FirstParagraph",
+      "text": "con fuente , la nueva posición recibe:"
+    },
+    {
+      "paragraph": 914,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 916,
+      "style": "FirstParagraph",
+      "text": "se define:"
+    },
+    {
+      "paragraph": 918,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 920,
+      "style": "FirstParagraph",
+      "text": "aplicando el signo componente por componente."
+    },
+    {
+      "paragraph": 921,
+      "style": "BodyText",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 923,
+      "style": "FirstParagraph",
+      "text": "Ésta es la forma algebraica exacta del reducer direccional."
+    },
+    {
+      "paragraph": 924,
+      "style": "Heading3",
+      "text": "22.7 Rama del vacío"
+    },
+    {
+      "paragraph": 925,
+      "style": "FirstParagraph",
+      "text": "Cuando:"
+    },
+    {
+      "paragraph": 927,
+      "style": "FirstParagraph",
+      "text": "la actualización provisional sigue este orden."
+    },
+    {
+      "paragraph": 928,
+      "style": "BodyText",
+      "text": "Primero se evalúa la condición de gradiente:"
+    },
+    {
+      "paragraph": 930,
+      "style": "FirstParagraph",
+      "text": "Si además existe al menos un vecino activo y no existe un vecino ORPHAN, la posición nace con dirección:"
+    },
+    {
+      "paragraph": 932,
+      "style": "FirstParagraph",
+      "text": "En el dominio generado normalmente por el propio kernel esta rama resulta inalcanzable, porque incluso una cota superior conservadora de  permanece muy por debajo del umbral requerido."
+    },
+    {
+      "paragraph": 933,
+      "style": "BodyText",
+      "text": "Si esa condición no se satisface, se evalúa XNOR."
+    },
+    {
+      "paragraph": 934,
+      "style": "BodyText",
+      "text": "Si XNOR tampoco se satisface, se evalúa ."
+    },
+    {
+      "paragraph": 935,
+      "style": "BodyText",
+      "text": "Y si no existe fuente:"
+    },
+    {
+      "paragraph": 937,
+      "style": "FirstParagraph",
+      "text": "Por tanto, la rama del vacío queda completamente expresada mediante funciones por tramos de las variables microscópicas."
+    },
+    {
+      "paragraph": 938,
+      "style": "Heading3",
+      "text": "22.8 Rama material"
+    },
+    {
+      "paragraph": 939,
+      "style": "FirstParagraph",
+      "text": "Para:"
+    },
+    {
+      "paragraph": 941,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 943,
+      "style": "FirstParagraph",
+      "text": "se define:"
+    },
+    {
+      "paragraph": 945,
+      "style": "FirstParagraph",
+      "text": "La densidad efectiva utilizada por el kernel es:"
+    },
+    {
+      "paragraph": 947,
+      "style": "FirstParagraph",
+      "text": "Y el siguiente state provisional es:"
+    },
+    {
+      "paragraph": 949,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 951,
+      "style": "FirstParagraph",
+      "text": "el resultado provisional es simplemente:"
+    },
+    {
+      "paragraph": 953,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 955,
+      "style": "FirstParagraph",
+      "text": "se evalúa la protección:"
+    },
+    {
+      "paragraph": 957,
+      "style": "Heading3",
+      "text": "22.9 Evolución de "
+    },
+    {
+      "paragraph": 958,
+      "style": "FirstParagraph",
+      "text": "Inicialmente:"
+    },
+    {
+      "paragraph": 960,
+      "style": "FirstParagraph",
+      "text": "Cuando la celda no está protegida:"
+    },
+    {
+      "paragraph": 962,
+      "style": "FirstParagraph",
+      "text": "se define:"
+    },
+    {
+      "paragraph": 964,
+      "style": "FirstParagraph",
+      "text": "Para:"
+    },
+    {
+      "paragraph": 966,
+      "style": "FirstParagraph",
+      "text": "el período del mecanismo es:"
+    },
+    {
+      "paragraph": 968,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 970,
+      "style": "FirstParagraph",
+      "text": "entonces:"
+    },
+    {
+      "paragraph": 972,
+      "style": "FirstParagraph",
+      "text": "De aquí aparecen directamente, según , cadencias como:"
+    },
+    {
+      "paragraph": 974,
+      "style": "Heading3",
+      "text": "22.10 Emisión DEMUX"
+    },
+    {
+      "paragraph": 975,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 977,
+      "style": "FirstParagraph",
+      "text": "la posición busca un destino entre sus 26 vecinos."
+    },
+    {
+      "paragraph": 978,
+      "style": "BodyText",
+      "text": "Para cada candidato  se calcula de nuevo:"
+    },
+    {
+      "paragraph": 980,
+      "style": "FirstParagraph",
+      "text": "El candidato es admisible cuando:"
+    },
+    {
+      "paragraph": 982,
+      "style": "FirstParagraph",
+      "text": "Entre todos los admisibles se selecciona el de menor:"
+    },
+    {
+      "paragraph": 984,
+      "style": "FirstParagraph",
+      "text": "utilizando el orden fijo del kernel para resolver empates."
+    },
+    {
+      "paragraph": 985,
+      "style": "BodyText",
+      "text": "Sea ese destino:"
+    },
+    {
+      "paragraph": 987,
+      "style": "FirstParagraph",
+      "text": "Entonces se acumula:"
+    },
+    {
+      "paragraph": 989,
+      "style": "FirstParagraph",
+      "text": "y el emisor reinicia:"
+    },
+    {
+      "paragraph": 991,
+      "style": "FirstParagraph",
+      "text": "Si no existe destino admisible:"
+    },
+    {
+      "paragraph": 993,
+      "style": "Heading3",
+      "text": "22.11 Dirección material"
+    },
+    {
+      "paragraph": 994,
+      "style": "FirstParagraph",
+      "text": "La dirección provisional de la materia es:"
+    },
+    {
+      "paragraph": 996,
+      "style": "FirstParagraph",
+      "text": "El semantic provisional es:"
+    },
+    {
+      "paragraph": 998,
+      "style": "FirstParagraph",
+      "text": "Y:"
+    },
+    {
+      "paragraph": 1000,
+      "style": "Heading3",
+      "text": "22.12 Observer"
+    },
+    {
+      "paragraph": 1001,
+      "style": "FirstParagraph",
+      "text": "El código semántico:"
+    },
+    {
+      "paragraph": 1003,
+      "style": "FirstParagraph",
+      "text": "constituye una excepción anterior a las ramas anteriores."
+    },
+    {
+      "paragraph": 1004,
+      "style": "BodyText",
+      "text": "Su raw permanece exactamente fijo durante el paso:"
+    },
+    {
+      "paragraph": 1006,
+      "style": "FirstParagraph",
+      "text": "El reloj, sin embargo, continúa avanzando."
+    },
+    {
+      "paragraph": 1007,
+      "style": "Heading3",
+      "text": "22.13 Aplicación final de DEMUX"
+    },
+    {
+      "paragraph": 1008,
+      "style": "FirstParagraph",
+      "text": "Las actualizaciones anteriores producen un estado provisional:"
+    },
+    {
+      "paragraph": 1010,
+      "style": "FirstParagraph",
+      "text": "y un campo de acumuladores:"
+    },
+    {
+      "paragraph": 1012,
+      "style": "FirstParagraph",
+      "text": "La segunda fase del tick aplica:"
+    },
+    {
+      "paragraph": 1014,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 1016,
+      "style": "FirstParagraph",
+      "text": "entonces:"
+    },
+    {
+      "paragraph": 1018,
+      "style": "FirstParagraph",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 1020,
+      "style": "FirstParagraph",
+      "text": "el raw permanece igualmente inalterado."
+    },
+    {
+      "paragraph": 1021,
+      "style": "BodyText",
+      "text": "Si:"
+    },
+    {
+      "paragraph": 1023,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 1025,
+      "style": "FirstParagraph",
+      "text": "se obtiene:"
+    },
+    {
+      "paragraph": 1027,
+      "style": "FirstParagraph",
+      "text": "Si el destino estaba vacío:"
+    },
+    {
+      "paragraph": 1029,
+      "style": "FirstParagraph",
+      "text": "entonces:"
+    },
+    {
+      "paragraph": 1031,
+      "style": "FirstParagraph",
+      "text": "En cualquier otro caso:"
+    },
+    {
+      "paragraph": 1033,
+      "style": "FirstParagraph",
+      "text": "y los demás campos permanecen iguales:"
+    },
+    {
+      "paragraph": 1035,
+      "style": "Heading3",
+      "text": "22.14 Evolución exacta del reloj"
+    },
+    {
+      "paragraph": 1036,
+      "style": "FirstParagraph",
+      "text": "En todas las ramas:"
+    },
+    {
+      "paragraph": 1038,
+      "style": "FirstParagraph",
+      "text": "Por tanto:"
+    },
+    {
+      "paragraph": 1040,
+      "style": "FirstParagraph",
+      "text": "Las diferencias de clock entre posiciones se conservan mientras no exista una intervención externa que las modifique."
+    },
+    {
+      "paragraph": 1041,
+      "style": "Heading3",
+      "text": "22.15 La transformación fundamental completa"
+    },
+    {
+      "paragraph": 1042,
+      "style": "FirstParagraph",
+      "text": "Definamos:"
+    },
+    {
+      "paragraph": 1044,
+      "style": "FirstParagraph",
+      "text": "como la primera fase que calcula simultáneamente:"
+    },
+    {
+      "paragraph": 1046,
+      "style": "FirstParagraph",
+      "text": "y:"
+    },
+    {
+      "paragraph": 1048,
+      "style": "FirstParagraph",
+      "text": "como la aplicación posterior del campo DEMUX."
+    },
+    {
+      "paragraph": 1049,
+      "style": "BodyText",
+      "text": "Entonces el kernel completo puede escribirse:"
+    },
+    {
+      "paragraph": 1051,
+      "style": "FirstParagraph",
+      "text": "Ésta es la traducción matemática de:"
+    },
+    {
+      "paragraph": 1053,
+      "style": "FirstParagraph",
+      "text": "a:"
+    },
+    {
+      "paragraph": 1055,
+      "style": "FirstParagraph",
+      "text": "No se introduce ninguna ley adicional."
+    },
+    {
+      "paragraph": 1056,
+      "style": "BodyText",
+      "text": "Cada cantidad de la expresión procede de una operación presente en el kernel."
+    },
+    {
+      "paragraph": 1057,
+      "style": "Heading3",
+      "text": "22.16 Alcance causal exacto"
+    },
+    {
+      "paragraph": 1058,
+      "style": "FirstParagraph",
+      "text": "La primera etapa consulta Moore-26, pero la selección DEMUX de un emisor compara candidatos vecinos y, para cada candidato, vuelve a inspeccionar su propia vecindad."
+    },
+    {
+      "paragraph": 1059,
+      "style": "BodyText",
+      "text": "Por ello, la dependencia final de un raw no queda limitada simplemente a Moore-26."
+    },
+    {
+      "paragraph": 1060,
+      "style": "BodyText",
+      "text": "Puede escribirse:"
+    },
+    {
+      "paragraph": 1062,
+      "style": "FirstParagraph",
+      "text": "En consecuencia:"
+    },
+    {
+      "paragraph": 1064,
+      "style": "FirstParagraph",
+      "text": "y, por composición:"
+    },
+    {
+      "paragraph": 1066,
+      "style": "FirstParagraph",
+      "text": "La causalidad sigue siendo estrictamente finita y local, pero la fórmula exacta del tick final posee un radio compuesto mayor que la primera vecindad Moore."
+    },
+    {
+      "paragraph": 1067,
+      "style": "Heading3",
+      "text": "22.17 Unión con el régimen cuántico efectivo"
+    },
+    {
+      "paragraph": 1068,
+      "style": "FirstParagraph",
+      "text": "Con  ya explicitada, el puente utilizado en las secciones anteriores deja de partir de una caja negra."
+    },
+    {
+      "paragraph": 1069,
+      "style": "BodyText",
+      "text": "Sea:"
+    },
+    {
+      "paragraph": 1071,
+      "style": "FirstParagraph",
+      "text": "un sector cerrado en el que:"
+    },
+    {
+      "paragraph": 1073,
+      "style": "FirstParagraph",
+      "text": "es reversible."
+    },
+    {
+      "paragraph": 1074,
+      "style": "BodyText",
+      "text": "Entonces:"
+    },
+    {
+      "paragraph": 1076,
+      "style": "FirstParagraph",
+      "text": "define su representación unitaria."
+    },
+    {
+      "paragraph": 1077,
+      "style": "BodyText",
+      "text": "Y:"
+    },
+    {
+      "paragraph": 1079,
+      "style": "FirstParagraph",
+      "text": "Por tanto, la cadena completa queda ahora:"
+    },
+    {
+      "paragraph": 1091,
+      "style": "Heading1",
+      "text": "Conclusión"
+    },
+    {
+      "paragraph": 1092,
+      "style": "FirstParagraph",
+      "text": "DEE no necesita considerar la ecuación de Schrödinger como la ley microscópica fundamental."
+    },
+    {
+      "paragraph": 1093,
+      "style": "BodyText",
+      "text": "Su arquitectura permite una interpretación diferente:"
+    },
+    {
+      "paragraph": 1095,
+      "style": "FirstParagraph",
+      "text": "mientras:"
+    },
+    {
+      "paragraph": 1097,
+      "style": "FirstParagraph",
+      "text": "Una órbita reversible de DEE admite naturalmente una representación unitaria. Una representación unitaria admite un Hamiltoniano. Un sector espacial con modos de Fourier posee una dispersión. Y una dispersión con:"
+    },
+    {
+      "paragraph": 1099,
+      "style": "FirstParagraph",
+      "text": "produce, en el régimen de baja frecuencia espacial:"
+    },
+    {
+      "paragraph": 1101,
+      "style": "FirstParagraph",
+      "text": "con:"
+    },
+    {
+      "paragraph": 1103,
+      "style": "FirstParagraph",
+      "text": "La masa aparece entonces como una propiedad espectral de una organización recurrente; la función de onda como representación de un sector del microestado; el potencial como modificación espacial de su fase o dinámica; y el entrelazamiento efectivo como la no factorización de una organización distribuida:"
+    },
+    {
+      "paragraph": 1105,
+      "style": "FirstParagraph",
+      "text": "Así, los dos textos quedan unidos por una sola arquitectura:"
+    },
+    {
+      "paragraph": 1106,
+      "style": "BodyText",
+      "text": "microestado DEE → organización relacional →"
+    },
+    {
+      "paragraph": 1107,
+      "style": "BodyText",
+      "text": "sector reversible de representación unitaria →"
+    },
+    {
+      "paragraph": 1108,
+      "style": "BodyText",
+      "text": "función de onda → dinámica de Schrödinger →"
+    },
+    {
+      "paragraph": 1109,
+      "style": "BodyText",
+      "text": "estados conjuntos no factorizables."
+    },
+    {
+      "paragraph": 1111,
+      "style": "Heading1",
+      "text": "Apéndice A — Glosario de notación y objetos matemáticos"
+    },
+    {
+      "paragraph": 1112,
+      "style": "BodyText",
+      "text": "Este apéndice fija el significado de la notación utilizada en el manuscrito. No introduce nuevas reglas de evolución: distingue estados, mapas, operadores, parámetros de escala y constantes del kernel para que las derivaciones puedan seguirse sin ambigüedad."
+    },
+    {
+      "paragraph": 1113,
+      "style": "Heading2",
+      "text": "A.1 Estado fundamental, espacio y evolución"
+    },
+    {
+      "paragraph": 1114,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1115,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1116,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1117,
+      "style": "",
+      "text": "N"
+    },
+    {
+      "paragraph": 1118,
+      "style": "",
+      "text": "entero positivo"
+    },
+    {
+      "paragraph": 1119,
+      "style": "",
+      "text": "Tamaño lineal de la retícula. El espacio discreto contiene N³ posiciones."
+    },
+    {
+      "paragraph": 1120,
+      "style": "",
+      "text": "Λ_N = Z_N³"
+    },
+    {
+      "paragraph": 1121,
+      "style": "",
+      "text": "retícula toroidal"
+    },
+    {
+      "paragraph": 1122,
+      "style": "",
+      "text": "Espacio microscópico tridimensional con coordenadas evaluadas módulo N."
+    },
+    {
+      "paragraph": 1123,
+      "style": "",
+      "text": "i = (x,y,z)"
+    },
+    {
+      "paragraph": 1124,
+      "style": "",
+      "text": "índice espacial"
+    },
+    {
+      "paragraph": 1125,
+      "style": "",
+      "text": "Posición individual de la retícula."
+    },
+    {
+      "paragraph": 1126,
+      "style": "",
+      "text": "M_26"
+    },
+    {
+      "paragraph": 1127,
+      "style": "",
+      "text": "conjunto de desplazamientos"
+    },
+    {
+      "paragraph": 1128,
+      "style": "",
+      "text": "Vecindad de Moore tridimensional: los 26 desplazamientos de {-1,0,1}³ excepto (0,0,0)."
+    },
+    {
+      "paragraph": 1129,
+      "style": "",
+      "text": "X_t"
+    },
+    {
+      "paragraph": 1130,
+      "style": "",
+      "text": "estado microscópico completo"
+    },
+    {
+      "paragraph": 1131,
+      "style": "",
+      "text": "Estado causal del sistema en el tick t. En el cierre microscópico se representa por los campos raw y clock sobre toda la retícula; N y la topología fijan el dominio."
+    },
+    {
+      "paragraph": 1132,
+      "style": "",
+      "text": "F_DEE"
+    },
+    {
+      "paragraph": 1133,
+      "style": "",
+      "text": "mapa determinista"
+    },
+    {
+      "paragraph": 1134,
+      "style": "",
+      "text": "Transformación fundamental de un tick: X_(t+1) = F_DEE(X_t). Es el objeto matemático que representa la evolución ejecutada por el motor."
+    },
+    {
+      "paragraph": 1135,
+      "style": "",
+      "text": "T (en X_t)"
+    },
+    {
+      "paragraph": 1136,
+      "style": "",
+      "text": "topología / estructura del dominio"
+    },
+    {
+      "paragraph": 1137,
+      "style": "",
+      "text": "En la formulación esquemática inicial identifica la topología espacial; no debe confundirse con T_i, la tensión local usada en la rama material."
+    },
+    {
+      "paragraph": 1138,
+      "style": "",
+      "text": "q(t)"
+    },
+    {
+      "paragraph": 1139,
+      "style": "",
+      "text": "posición de un portador"
+    },
+    {
+      "paragraph": 1140,
+      "style": "",
+      "text": "Coordenada de un portador en el sector balístico. En ese sector q(t)=q_0+t d (mod N)."
+    },
+    {
+      "paragraph": 1141,
+      "style": "",
+      "text": "d = (d_x,d_y,d_z)"
+    },
+    {
+      "paragraph": 1142,
+      "style": "",
+      "text": "dirección discreta"
+    },
+    {
+      "paragraph": 1143,
+      "style": "",
+      "text": "Vector direccional almacenado en el microestado y utilizado por el transporte/routing."
+    },
+    {
+      "paragraph": 1145,
+      "style": "Heading2",
+      "text": "A.2 Observación, reducción y estado conjunto"
+    },
+    {
+      "paragraph": 1146,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1147,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1148,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1149,
+      "style": "",
+      "text": "M : S → O"
+    },
+    {
+      "paragraph": 1150,
+      "style": "",
+      "text": "mapa de observación"
+    },
+    {
+      "paragraph": 1151,
+      "style": "",
+      "text": "Proyección o coarse-graining desde el espacio de estados completos S hacia un espacio observable O."
+    },
+    {
+      "paragraph": 1152,
+      "style": "",
+      "text": "y = M(X)"
+    },
+    {
+      "paragraph": 1153,
+      "style": "",
+      "text": "estado observable"
+    },
+    {
+      "paragraph": 1154,
+      "style": "",
+      "text": "Registro que obtiene un observador a partir del microestado completo."
+    },
+    {
+      "paragraph": 1155,
+      "style": "",
+      "text": "G"
+    },
+    {
+      "paragraph": 1156,
+      "style": "",
+      "text": "dinámica efectiva"
+    },
+    {
+      "paragraph": 1157,
+      "style": "",
+      "text": "Mapa que cierra la evolución al nivel observado cuando M∘F_DEE = G∘M en el dominio considerado."
+    },
+    {
+      "paragraph": 1158,
+      "style": "",
+      "text": "M_A, M_B"
+    },
+    {
+      "paragraph": 1159,
+      "style": "",
+      "text": "observadores parciales"
+    },
+    {
+      "paragraph": 1160,
+      "style": "",
+      "text": "Mapas que extraen respectivamente los registros observables asociados a las regiones A y B."
+    },
+    {
+      "paragraph": 1161,
+      "style": "",
+      "text": "A_obs, B_obs"
+    },
+    {
+      "paragraph": 1162,
+      "style": "",
+      "text": "registros observables"
+    },
+    {
+      "paragraph": 1163,
+      "style": "",
+      "text": "Resultados locales de M_A(X_AB) y M_B(X_AB). No se identifican automáticamente con el estado fundamental completo."
+    },
+    {
+      "paragraph": 1164,
+      "style": "",
+      "text": "X_A, X_B"
+    },
+    {
+      "paragraph": 1165,
+      "style": "",
+      "text": "microestados/subestructuras"
+    },
+    {
+      "paragraph": 1166,
+      "style": "",
+      "text": "Descripciones de las regiones A y B cuando una separación de subsistemas es válida."
+    },
+    {
+      "paragraph": 1167,
+      "style": "",
+      "text": "X_AB"
+    },
+    {
+      "paragraph": 1168,
+      "style": "",
+      "text": "estado conjunto"
+    },
+    {
+      "paragraph": 1169,
+      "style": "",
+      "text": "Estado completo de la organización que contiene A, B y las relaciones relevantes entre ellas."
+    },
+    {
+      "paragraph": 1170,
+      "style": "",
+      "text": "R, G, D, C, H en X_AB"
+    },
+    {
+      "paragraph": 1171,
+      "style": "",
+      "text": "componentes relacionales"
+    },
+    {
+      "paragraph": 1172,
+      "style": "",
+      "text": "R: relaciones del medio; G: organización geométrica; D: información direccional; C: estados de reloj; H: historia relevante. La letra G aquí es componente geométrica y se distingue por contexto del mapa efectivo G."
+    },
+    {
+      "paragraph": 1173,
+      "style": "",
+      "text": "Inv(X)"
+    },
+    {
+      "paragraph": 1174,
+      "style": "",
+      "text": "inventario/coarse descriptor"
+    },
+    {
+      "paragraph": 1175,
+      "style": "",
+      "text": "Conjunto de características inventariables comparadas entre configuraciones; puede coincidir aunque cambie la organización relacional."
+    },
+    {
+      "paragraph": 1176,
+      "style": "",
+      "text": "Rel(X)"
+    },
+    {
+      "paragraph": 1177,
+      "style": "",
+      "text": "estructura relacional"
+    },
+    {
+      "paragraph": 1178,
+      "style": "",
+      "text": "Organización de relaciones entre componentes. Dos estados con inventario similar pueden tener Rel distinto y evolucionar de forma distinta."
+    },
+    {
+      "paragraph": 1179,
+      "style": "",
+      "text": "d_obs, d_DEE"
+    },
+    {
+      "paragraph": 1180,
+      "style": "",
+      "text": "distancias"
+    },
+    {
+      "paragraph": 1181,
+      "style": "",
+      "text": "d_obs es distancia definida por el observador; d_DEE representa distancia/relación causal nativa. El manuscrito no las supone idénticas."
+    },
+    {
+      "paragraph": 1182,
+      "style": "",
+      "text": "μ(X|m)"
+    },
+    {
+      "paragraph": 1183,
+      "style": "",
+      "text": "medida condicional"
+    },
+    {
+      "paragraph": 1184,
+      "style": "",
+      "text": "Peso asignado a microestados compatibles con un macroregistro m=M(X)."
+    },
+    {
+      "paragraph": 1185,
+      "style": "",
+      "text": "P(y|m)"
+    },
+    {
+      "paragraph": 1186,
+      "style": "",
+      "text": "probabilidad efectiva"
+    },
+    {
+      "paragraph": 1187,
+      "style": "",
+      "text": "Pushforward de μ por la evolución y la observación: cuantifica la distribución de resultados y al desconocer el microestado compatible."
+    },
+    {
+      "paragraph": 1188,
+      "style": "",
+      "text": "I_a"
+    },
+    {
+      "paragraph": 1189,
+      "style": "",
+      "text": "intervención"
+    },
+    {
+      "paragraph": 1190,
+      "style": "",
+      "text": "Transformación asociada a una acción o medición a aplicada sobre el estado antes de continuar la evolución."
+    },
+    {
+      "paragraph": 1192,
+      "style": "Heading2",
+      "text": "A.3 Sector reversible y representación cuántica efectiva"
+    },
+    {
+      "paragraph": 1193,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1194,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1195,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1196,
+      "style": "",
+      "text": "S_Q"
+    },
+    {
+      "paragraph": 1197,
+      "style": "",
+      "text": "subconjunto de estados DEE"
+    },
+    {
+      "paragraph": 1198,
+      "style": "",
+      "text": "Sector cerrado y reversible: F_DEE(S_Q)⊆S_Q y F_Q=F_DEE|_(S_Q) es biyectivo."
+    },
+    {
+      "paragraph": 1199,
+      "style": "",
+      "text": "F_Q"
+    },
+    {
+      "paragraph": 1200,
+      "style": "",
+      "text": "restricción reversible"
+    },
+    {
+      "paragraph": 1201,
+      "style": "",
+      "text": "Dinámica de F_DEE limitada al sector S_Q."
+    },
+    {
+      "paragraph": 1202,
+      "style": "",
+      "text": "|X_j⟩"
+    },
+    {
+      "paragraph": 1203,
+      "style": "",
+      "text": "vector base"
+    },
+    {
+      "paragraph": 1204,
+      "style": "",
+      "text": "Vector ortogonal asociado a un microestado X_j del sector reversible. El ket es notación de espacio de Hilbert, no un nuevo campo microscópico del voxel."
+    },
+    {
+      "paragraph": 1205,
+      "style": "",
+      "text": "U_Q / U_F"
+    },
+    {
+      "paragraph": 1206,
+      "style": "",
+      "text": "operador unitario"
+    },
+    {
+      "paragraph": 1207,
+      "style": "",
+      "text": "Representación lineal de F_Q: U_Q|X⟩=|F_Q(X)⟩. Al ser F_Q una permutación, U_Q†U_Q=I."
+    },
+    {
+      "paragraph": 1208,
+      "style": "",
+      "text": "|Ψ⟩"
+    },
+    {
+      "paragraph": 1209,
+      "style": "",
+      "text": "estado efectivo"
+    },
+    {
+      "paragraph": 1210,
+      "style": "",
+      "text": "Vector de la representación lineal del sector, por ejemplo |Ψ⟩=Σ_j ψ_j|X_j⟩."
+    },
+    {
+      "paragraph": 1211,
+      "style": "",
+      "text": "ψ_j"
+    },
+    {
+      "paragraph": 1212,
+      "style": "",
+      "text": "amplitud compleja"
+    },
+    {
+      "paragraph": 1213,
+      "style": "",
+      "text": "Coeficiente complejo de |X_j⟩ en la representación efectiva."
+    },
+    {
+      "paragraph": 1214,
+      "style": "",
+      "text": "τ*"
+    },
+    {
+      "paragraph": 1215,
+      "style": "",
+      "text": "escala temporal efectiva"
+    },
+    {
+      "paragraph": 1216,
+      "style": "",
+      "text": "Tiempo físico asignado a un tick al construir una descripción continua. El manuscrito no fija por sí solo un valor externo universal."
+    },
+    {
+      "paragraph": 1217,
+      "style": "",
+      "text": "ħ*"
+    },
+    {
+      "paragraph": 1218,
+      "style": "",
+      "text": "escala de acción efectiva"
+    },
+    {
+      "paragraph": 1219,
+      "style": "",
+      "text": "Constante de conversión entre fase/frecuencia y energía en la representación efectiva. No debe identificarse automáticamente con ħ físico sin un mapa de unidades."
+    },
+    {
+      "paragraph": 1220,
+      "style": "",
+      "text": "H_eff / H_Q"
+    },
+    {
+      "paragraph": 1221,
+      "style": "",
+      "text": "generador efectivo"
+    },
+    {
+      "paragraph": 1222,
+      "style": "",
+      "text": "Hamiltoniano asociado al unitario, mediante U=exp(-iHτ*/ħ*) y H=(iħ*/τ*)log U, con la elección de rama correspondiente en tiempo discreto."
+    },
+    {
+      "paragraph": 1223,
+      "style": "",
+      "text": "E_k"
+    },
+    {
+      "paragraph": 1224,
+      "style": "",
+      "text": "cuasienergía / energía efectiva"
+    },
+    {
+      "paragraph": 1225,
+      "style": "",
+      "text": "Valor espectral asociado a un modo del operador unitario; se define módulo de la periodicidad de fase propia de la evolución discreta."
+    },
+    {
+      "paragraph": 1227,
+      "style": "Heading2",
+      "text": "A.4 Límite espacial, dispersión, masa y potencial"
+    },
+    {
+      "paragraph": 1228,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1229,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1230,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1231,
+      "style": "",
+      "text": "a*"
+    },
+    {
+      "paragraph": 1232,
+      "style": "",
+      "text": "escala espacial efectiva"
+    },
+    {
+      "paragraph": 1233,
+      "style": "",
+      "text": "Longitud física asignada a una separación de una celda al construir el límite continuo. No tiene un valor externo fijado por el manuscrito."
+    },
+    {
+      "paragraph": 1234,
+      "style": "",
+      "text": "n"
+    },
+    {
+      "paragraph": 1235,
+      "style": "",
+      "text": "índice entero 3D"
+    },
+    {
+      "paragraph": 1236,
+      "style": "",
+      "text": "Coordenada discreta utilizada para escribir x=a* n."
+    },
+    {
+      "paragraph": 1237,
+      "style": "",
+      "text": "x"
+    },
+    {
+      "paragraph": 1238,
+      "style": "",
+      "text": "coordenada continua"
+    },
+    {
+      "paragraph": 1239,
+      "style": "",
+      "text": "Variable espacial del límite continuo."
+    },
+    {
+      "paragraph": 1240,
+      "style": "",
+      "text": "k"
+    },
+    {
+      "paragraph": 1241,
+      "style": "",
+      "text": "vector de onda"
+    },
+    {
+      "paragraph": 1242,
+      "style": "",
+      "text": "Índice/momento espacial de los modos de Fourier del sector."
+    },
+    {
+      "paragraph": 1243,
+      "style": "",
+      "text": "ω(k)"
+    },
+    {
+      "paragraph": 1244,
+      "style": "",
+      "text": "relación de dispersión"
+    },
+    {
+      "paragraph": 1245,
+      "style": "",
+      "text": "Frecuencia efectiva de cada modo espacial. Es el objeto que conecta la dinámica discreta con su descripción continua."
+    },
+    {
+      "paragraph": 1246,
+      "style": "",
+      "text": "ω₀"
+    },
+    {
+      "paragraph": 1247,
+      "style": "",
+      "text": "frecuencia propia"
+    },
+    {
+      "paragraph": 1248,
+      "style": "",
+      "text": "Frecuencia del modo en k=0 en el régimen considerado; representa recurrencia interna del patrón efectivo."
+    },
+    {
+      "paragraph": 1249,
+      "style": "",
+      "text": "c*"
+    },
+    {
+      "paragraph": 1250,
+      "style": "",
+      "text": "velocidad característica efectiva"
+    },
+    {
+      "paragraph": 1251,
+      "style": "",
+      "text": "Coeficiente de la expansión de dispersión. Es una velocidad del régimen efectivo; no se identifica automáticamente con la velocidad física de la luz."
+    },
+    {
+      "paragraph": 1252,
+      "style": "",
+      "text": "m*"
+    },
+    {
+      "paragraph": 1253,
+      "style": "",
+      "text": "masa efectiva"
+    },
+    {
+      "paragraph": 1254,
+      "style": "",
+      "text": "Parámetro espectral definido en el régimen cuadrático por m*=ħ*ω₀/c*²."
+    },
+    {
+      "paragraph": 1255,
+      "style": "",
+      "text": "V(x)"
+    },
+    {
+      "paragraph": 1256,
+      "style": "",
+      "text": "potencial efectivo"
+    },
+    {
+      "paragraph": 1257,
+      "style": "",
+      "text": "Corrección espacial de energía/fase. En el manuscrito V(x)=ħ* δω(x) para una variación lenta de la frecuencia interna."
+    },
+    {
+      "paragraph": 1258,
+      "style": "",
+      "text": "∇²"
+    },
+    {
+      "paragraph": 1259,
+      "style": "",
+      "text": "Laplaciano"
+    },
+    {
+      "paragraph": 1260,
+      "style": "",
+      "text": "Operador espacial continuo que aparece al pasar del comportamiento k² de Fourier a espacio real."
+    },
+    {
+      "paragraph": 1261,
+      "style": "",
+      "text": "ψ(x,t)"
+    },
+    {
+      "paragraph": 1262,
+      "style": "",
+      "text": "función de onda efectiva"
+    },
+    {
+      "paragraph": 1263,
+      "style": "",
+      "text": "Envolvente continua del sector, no variable elemental del kernel."
+    },
+    {
+      "paragraph": 1265,
+      "style": "Heading2",
+      "text": "A.5 Estado conjunto y no factorización"
+    },
+    {
+      "paragraph": 1266,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1267,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1268,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1269,
+      "style": "",
+      "text": "M_Q"
+    },
+    {
+      "paragraph": 1270,
+      "style": "",
+      "text": "mapa de reducción cuántica"
+    },
+    {
+      "paragraph": 1271,
+      "style": "",
+      "text": "Mapa desde un microestado DEE hacia la descripción efectiva usada en el régimen cuántico: M_Q(X)=ψ o, para el estado conjunto, M_Q(X_AB)=Ψ_AB."
+    },
+    {
+      "paragraph": 1272,
+      "style": "",
+      "text": "Ψ_AB"
+    },
+    {
+      "paragraph": 1273,
+      "style": "",
+      "text": "estado efectivo conjunto"
+    },
+    {
+      "paragraph": 1274,
+      "style": "",
+      "text": "Representación del estado conjunto X_AB en el espacio efectivo."
+    },
+    {
+      "paragraph": 1275,
+      "style": "",
+      "text": "ψ_A, ψ_B"
+    },
+    {
+      "paragraph": 1276,
+      "style": "",
+      "text": "estados efectivos locales"
+    },
+    {
+      "paragraph": 1277,
+      "style": "",
+      "text": "Representaciones asociadas a A y B cuando una descripción separada es válida."
+    },
+    {
+      "paragraph": 1278,
+      "style": "",
+      "text": "⊗"
+    },
+    {
+      "paragraph": 1279,
+      "style": "",
+      "text": "producto tensorial"
+    },
+    {
+      "paragraph": 1280,
+      "style": "",
+      "text": "Operación estándar para construir el espacio/estado conjunto de dos subsistemas en la representación cuántica."
+    },
+    {
+      "paragraph": 1281,
+      "style": "",
+      "text": "Ψ_AB = ψ_A⊗ψ_B"
+    },
+    {
+      "paragraph": 1282,
+      "style": "",
+      "text": "factorización"
+    },
+    {
+      "paragraph": 1283,
+      "style": "",
+      "text": "Caso separable: el estado conjunto puede escribirse como producto de dos estados locales."
+    },
+    {
+      "paragraph": 1284,
+      "style": "",
+      "text": "Ψ_AB ≠ ψ_A⊗ψ_B"
+    },
+    {
+      "paragraph": 1285,
+      "style": "",
+      "text": "no factorización"
+    },
+    {
+      "paragraph": 1286,
+      "style": "",
+      "text": "Criterio matemático de no separabilidad del estado efectivo conjunto. En la propuesta DEE se interpreta como imagen efectiva de una organización relacional conjunta."
+    },
+    {
+      "paragraph": 1287,
+      "style": "",
+      "text": "φ, Δφ"
+    },
+    {
+      "paragraph": 1288,
+      "style": "",
+      "text": "fase y fase relativa"
+    },
+    {
+      "paragraph": 1289,
+      "style": "",
+      "text": "φ es fase efectiva; Δφ=φ_A-φ_B representa una relación de fase entre dos partes del estado."
+    },
+    {
+      "paragraph": 1290,
+      "style": "",
+      "text": "ρ (cuántico)"
+    },
+    {
+      "paragraph": 1291,
+      "style": "",
+      "text": "operador/matriz de densidad"
+    },
+    {
+      "paragraph": 1292,
+      "style": "",
+      "text": "Representación estándar de un estado estadístico cuántico. No debe confundirse con ρ_i de la regla local del kernel."
+    },
+    {
+      "paragraph": 1294,
+      "style": "Heading2",
+      "text": "A.6 Notación microscópica del kernel v27"
+    },
+    {
+      "paragraph": 1295,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1296,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1297,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1298,
+      "style": "",
+      "text": "r_i / raw_i"
+    },
+    {
+      "paragraph": 1299,
+      "style": "",
+      "text": "uint64"
+    },
+    {
+      "paragraph": 1300,
+      "style": "",
+      "text": "Palabra microscópica de 64 bits de la posición i."
+    },
+    {
+      "paragraph": 1301,
+      "style": "",
+      "text": "c_i / clock_i"
+    },
+    {
+      "paragraph": 1302,
+      "style": "",
+      "text": "uint64"
+    },
+    {
+      "paragraph": 1303,
+      "style": "",
+      "text": "Reloj causal local. Evoluciona c_i(t+1)=c_i(t)+1 mod 2^64."
+    },
+    {
+      "paragraph": 1304,
+      "style": "",
+      "text": "e_i / state_i"
+    },
+    {
+      "paragraph": 1305,
+      "style": "",
+      "text": "uint32"
+    },
+    {
+      "paragraph": 1306,
+      "style": "",
+      "text": "Campo state extraído de los bits 0–31 de raw."
+    },
+    {
+      "paragraph": 1307,
+      "style": "",
+      "text": "s_i / s_reg,i"
+    },
+    {
+      "paragraph": 1308,
+      "style": "",
+      "text": "uint16"
+    },
+    {
+      "paragraph": 1309,
+      "style": "",
+      "text": "Registro interno extraído de los bits 32–47. Su almacenamiento permite 0…65535; 19664 es la cota operacional de saturación usada por reducer/DEMUX."
+    },
+    {
+      "paragraph": 1310,
+      "style": "",
+      "text": "d_i"
+    },
+    {
+      "paragraph": 1311,
+      "style": "",
+      "text": "tres enteros con signo"
+    },
+    {
+      "paragraph": 1312,
+      "style": "",
+      "text": "Dirección codificada en tres nibbles de raw (x,y,z)."
+    },
+    {
+      "paragraph": 1313,
+      "style": "",
+      "text": "σ_i / semantic_i"
+    },
+    {
+      "paragraph": 1314,
+      "style": "",
+      "text": "uint4"
+    },
+    {
+      "paragraph": 1315,
+      "style": "",
+      "text": "Etiqueta semántica de 4 bits. Valores usados por el kernel: 0 VOID, 1 NORMAL, 2 ELECTRON_SEED, 3 PROTON_SEED, 4 OBSERVER, 5 ORPHAN_BIT, 6 HORIZON, 7 NACIDO_XNOR. Los nombres de preparación no constituyen por sí solos identificaciones con partículas físicas externas."
+    },
+    {
+      "paragraph": 1316,
+      "style": "",
+      "text": "P(e,s,d_x,d_y,d_z,σ)"
+    },
+    {
+      "paragraph": 1317,
+      "style": "",
+      "text": "función de empaquetado"
+    },
+    {
+      "paragraph": 1318,
+      "style": "",
+      "text": "Reconstruye la palabra raw a partir de sus campos. Esta P no es la probabilidad P(y|m); se distinguen por contexto."
+    },
+    {
+      "paragraph": 1319,
+      "style": "",
+      "text": "W_N(q)"
+    },
+    {
+      "paragraph": 1320,
+      "style": "",
+      "text": "wrap toroidal"
+    },
+    {
+      "paragraph": 1321,
+      "style": "",
+      "text": "Reducción de una coordenada módulo N."
+    },
+    {
+      "paragraph": 1322,
+      "style": "",
+      "text": "E_i"
+    },
+    {
+      "paragraph": 1323,
+      "style": "",
+      "text": "indicador"
+    },
+    {
+      "paragraph": 1324,
+      "style": "",
+      "text": "E_i=1 si state_i>0; indica existencia para operaciones que sólo requieren ocupación."
+    },
+    {
+      "paragraph": 1325,
+      "style": "",
+      "text": "A_i"
+    },
+    {
+      "paragraph": 1326,
+      "style": "",
+      "text": "indicador de actividad"
+    },
+    {
+      "paragraph": 1327,
+      "style": "",
+      "text": "A_i=1 si state_i>0 y semantic_i≠5; un ORPHAN no cuenta como vecino activo."
+    },
+    {
+      "paragraph": 1328,
+      "style": "",
+      "text": "n_i"
+    },
+    {
+      "paragraph": 1329,
+      "style": "",
+      "text": "conteo entero"
+    },
+    {
+      "paragraph": 1330,
+      "style": "",
+      "text": "Número de vecinos activos en M_26."
+    },
+    {
+      "paragraph": 1331,
+      "style": "",
+      "text": "u_i"
+    },
+    {
+      "paragraph": 1332,
+      "style": "",
+      "text": "vector"
+    },
+    {
+      "paragraph": 1333,
+      "style": "",
+      "text": "Suma direccional de vecinos activos."
+    },
+    {
+      "paragraph": 1334,
+      "style": "",
+      "text": "g_i, G_i"
+    },
+    {
+      "paragraph": 1335,
+      "style": "",
+      "text": "gradiente y magnitud"
+    },
+    {
+      "paragraph": 1336,
+      "style": "",
+      "text": "g_i es el gradiente regulatorio construido con s_reg vecino; G_i es su magnitud L1."
+    },
+    {
+      "paragraph": 1337,
+      "style": "",
+      "text": "h_i"
+    },
+    {
+      "paragraph": 1338,
+      "style": "",
+      "text": "indicador tetraédrico"
+    },
+    {
+      "paragraph": 1339,
+      "style": "",
+      "text": "Vale 1 cuando alguna de las ocho firmas tetraédricas definidas por el kernel está completamente activa."
+    },
+    {
+      "paragraph": 1340,
+      "style": "",
+      "text": "P_13"
+    },
+    {
+      "paragraph": 1341,
+      "style": "",
+      "text": "13 pares antipodales"
+    },
+    {
+      "paragraph": 1342,
+      "style": "",
+      "text": "Conjunto de pares opuestos de Moore usado por la condición XNOR."
+    },
+    {
+      "paragraph": 1343,
+      "style": "",
+      "text": "S_i, N_i^pair"
+    },
+    {
+      "paragraph": 1344,
+      "style": "",
+      "text": "conteos XNOR"
+    },
+    {
+      "paragraph": 1345,
+      "style": "",
+      "text": "S_i cuenta pares antipodales con igualdad alive/dead; N_i^pair cuenta actividad total. La génesis XNOR requiere S_i=13 y N_i^pair≥8."
+    },
+    {
+      "paragraph": 1346,
+      "style": "",
+      "text": "J_i"
+    },
+    {
+      "paragraph": 1347,
+      "style": "",
+      "text": "conjunto de fuentes"
+    },
+    {
+      "paragraph": 1348,
+      "style": "",
+      "text": "Fuentes vecinas cuya dirección apunta exactamente a la posición vacía i."
+    },
+    {
+      "paragraph": 1349,
+      "style": "",
+      "text": "T_i"
+    },
+    {
+      "paragraph": 1350,
+      "style": "",
+      "text": "tensión local de regla"
+    },
+    {
+      "paragraph": 1351,
+      "style": "",
+      "text": "Vale 16 en la rama tetraédrica fuerte bajo la condición indicada por el kernel y 2.5 en el caso ordinario."
+    },
+    {
+      "paragraph": 1352,
+      "style": "",
+      "text": "ρ_i (kernel)"
+    },
+    {
+      "paragraph": 1353,
+      "style": "",
+      "text": "escalar de regla"
+    },
+    {
+      "paragraph": 1354,
+      "style": "",
+      "text": "Densidad efectiva local ρ_i=n_i T_i/26 usada para determinar el state provisional. No es una matriz de densidad cuántica."
+    },
+    {
+      "paragraph": 1355,
+      "style": "",
+      "text": "w_i"
+    },
+    {
+      "paragraph": 1356,
+      "style": "",
+      "text": "booleano"
+    },
+    {
+      "paragraph": 1357,
+      "style": "",
+      "text": "Bandera de write-protection del registro s_reg bajo la condición de vecindad y suma direccional nula."
+    },
+    {
+      "paragraph": 1358,
+      "style": "",
+      "text": "a_i, p_i"
+    },
+    {
+      "paragraph": 1359,
+      "style": "",
+      "text": "enteros"
+    },
+    {
+      "paragraph": 1360,
+      "style": "",
+      "text": "a_i=8-n_i; cuando aplica, p_i=floor(782/a_i) fija la cadencia temporal de la rama s_reg."
+    },
+    {
+      "paragraph": 1361,
+      "style": "",
+      "text": "Δ_i"
+    },
+    {
+      "paragraph": 1362,
+      "style": "",
+      "text": "entero acumulado"
+    },
+    {
+      "paragraph": 1363,
+      "style": "",
+      "text": "Número de deltas DEMUX que llegan a la posición i en la segunda etapa del tick."
+    },
+    {
+      "paragraph": 1364,
+      "style": "",
+      "text": "j*"
+    },
+    {
+      "paragraph": 1365,
+      "style": "",
+      "text": "índice de destino"
+    },
+    {
+      "paragraph": 1366,
+      "style": "",
+      "text": "Destino DEMUX elegido entre candidatos admisibles, minimizando s_reg y usando el orden fijo del kernel para empates."
+    },
+    {
+      "paragraph": 1367,
+      "style": "",
+      "text": "r_i†, r_i′"
+    },
+    {
+      "paragraph": 1368,
+      "style": "",
+      "text": "raw provisional / final"
+    },
+    {
+      "paragraph": 1369,
+      "style": "",
+      "text": "r_i† es la salida de la primera etapa; r_i′ es la salida tras aplicar los deltas DEMUX."
+    },
+    {
+      "paragraph": 1370,
+      "style": "",
+      "text": "A_r, A_Δ (caligráficas en el texto)"
+    },
+    {
+      "paragraph": 1371,
+      "style": "",
+      "text": "operadores de primera etapa"
+    },
+    {
+      "paragraph": 1372,
+      "style": "",
+      "text": "Calculan simultáneamente el raw provisional y el campo de deltas DEMUX a partir del estado anterior."
+    },
+    {
+      "paragraph": 1373,
+      "style": "",
+      "text": "D_post (D caligráfica en el texto)"
+    },
+    {
+      "paragraph": 1374,
+      "style": "",
+      "text": "operador de segunda etapa"
+    },
+    {
+      "paragraph": 1375,
+      "style": "",
+      "text": "Aplica el campo de deltas al raw provisional para producir el raw final."
+    },
+    {
+      "paragraph": 1376,
+      "style": "",
+      "text": "B_∞(i,r)"
+    },
+    {
+      "paragraph": 1377,
+      "style": "",
+      "text": "bola de Chebyshev"
+    },
+    {
+      "paragraph": 1378,
+      "style": "",
+      "text": "Conjunto de posiciones a distancia Chebyshev ≤r de i; se usa para expresar el alcance causal compuesto."
+    },
+    {
+      "paragraph": 1379,
+      "style": "",
+      "text": "R_raw(t)"
+    },
+    {
+      "paragraph": 1380,
+      "style": "",
+      "text": "radio causal"
+    },
+    {
+      "paragraph": 1381,
+      "style": "",
+      "text": "Cota del radio de dependencia del raw tras t ticks; el manuscrito obtiene R_raw(1)≤3 y R_raw(t)≤3t."
+    },
+    {
+      "paragraph": 1383,
+      "style": "Heading2",
+      "text": "A.7 Constantes y cantidades: qué tiene valor fijo y qué es una escala"
+    },
+    {
+      "paragraph": 1384,
+      "style": "",
+      "text": "Símbolo / objeto"
+    },
+    {
+      "paragraph": 1385,
+      "style": "",
+      "text": "Tipo / dominio"
+    },
+    {
+      "paragraph": 1386,
+      "style": "",
+      "text": "Significado en el manuscrito"
+    },
+    {
+      "paragraph": 1387,
+      "style": "",
+      "text": "26"
+    },
+    {
+      "paragraph": 1388,
+      "style": "",
+      "text": "constante geométrica"
+    },
+    {
+      "paragraph": 1389,
+      "style": "",
+      "text": "Número de posiciones de la vecindad Moore tridimensional."
+    },
+    {
+      "paragraph": 1390,
+      "style": "",
+      "text": "13"
+    },
+    {
+      "paragraph": 1391,
+      "style": "",
+      "text": "constante geométrica"
+    },
+    {
+      "paragraph": 1392,
+      "style": "",
+      "text": "Número de pares antipodales dentro de Moore-26."
+    },
+    {
+      "paragraph": 1393,
+      "style": "",
+      "text": "P_KERNEL = 19665"
+    },
+    {
+      "paragraph": 1394,
+      "style": "",
+      "text": "constante del kernel v27"
+    },
+    {
+      "paragraph": 1395,
+      "style": "",
+      "text": "Umbral/canon numérico utilizado por las ramas que lo invocan en la implementación descrita."
+    },
+    {
+      "paragraph": 1396,
+      "style": "",
+      "text": "19664"
+    },
+    {
+      "paragraph": 1397,
+      "style": "",
+      "text": "cota operacional"
+    },
+    {
+      "paragraph": 1398,
+      "style": "",
+      "text": "Saturación usada por reducer/DEMUX para s_reg; no es el máximo representable del campo uint16."
+    },
+    {
+      "paragraph": 1399,
+      "style": "",
+      "text": "966"
+    },
+    {
+      "paragraph": 1400,
+      "style": "",
+      "text": "umbral de cristalización"
+    },
+    {
+      "paragraph": 1401,
+      "style": "",
+      "text": "Umbral presente en la rama de gradiente descrita por el kernel."
+    },
+    {
+      "paragraph": 1402,
+      "style": "",
+      "text": "782"
+    },
+    {
+      "paragraph": 1403,
+      "style": "",
+      "text": "constante de cadencia"
+    },
+    {
+      "paragraph": 1404,
+      "style": "",
+      "text": "Numerador entero del período p_i=floor(782/a_i) en la rama temporal de s_reg."
+    },
+    {
+      "paragraph": 1405,
+      "style": "",
+      "text": "2^64"
+    },
+    {
+      "paragraph": 1406,
+      "style": "",
+      "text": "módulo de clock"
+    },
+    {
+      "paragraph": 1407,
+      "style": "",
+      "text": "Período aritmético del reloj uint64 antes de wrap."
+    },
+    {
+      "paragraph": 1408,
+      "style": "",
+      "text": "a*, τ*, ħ*"
+    },
+    {
+      "paragraph": 1409,
+      "style": "",
+      "text": "escalas de correspondencia"
+    },
+    {
+      "paragraph": 1410,
+      "style": "",
+      "text": "No son constantes numéricas fijadas por el kernel en este manuscrito. Sirven para convertir la descripción adimensional/discreta a unidades espaciales, temporales y de acción en un modelo efectivo."
+    },
+    {
+      "paragraph": 1411,
+      "style": "",
+      "text": "ω(k), ω₀, c*, m*, V(x)"
+    },
+    {
+      "paragraph": 1412,
+      "style": "",
+      "text": "cantidades derivadas del sector"
+    },
+    {
+      "paragraph": 1413,
+      "style": "",
+      "text": "No son constantes universales del kernel: se obtienen de la estructura espectral o de la correspondencia efectiva del sector que se esté estudiando."
+    },
+    {
+      "paragraph": 1415,
+      "style": "BodyText",
+      "text": "Lectura recomendada: para comprobar una derivación, primero identifique si el símbolo pertenece al nivel microscópico (kernel/F_DEE), al nivel de observación (M/G), al sector reversible (S_Q/U/H) o al límite continuo (a*, τ*, ħ*, ω, m*, V). La misma letra puede aparecer con significados distintos sólo cuando el contexto y el subíndice los distinguen; este apéndice explicita esos casos."
+    }
+  ]
+}

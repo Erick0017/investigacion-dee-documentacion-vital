@@ -1,0 +1,3 @@
+Primer arranque de `calibrar_endpoint_b02_r1.py`: falló en la consulta Windows GetProcessMemoryInfo por conversión incorrecta del HANDLE x64, antes de importar DEE, cargar un mundo o crear protocolo de ensayo. Cero ticks nuevos y ninguna vida creada en ese intento.
+
+Se conserva la dependencia exacta anterior como `arbol_umbral_adquirido_b01_PRE_RSS_FIX.py`. La corrección únicamente fija argtypes/restype ctypes de esa API pública. No cambia el protocolo físico ni el lector. El siguiente arranque utiliza el mismo experimento R1 con la corrección de infraestructura, sin renombrar un fallo cognitivo ni ocultar una trayectoria.

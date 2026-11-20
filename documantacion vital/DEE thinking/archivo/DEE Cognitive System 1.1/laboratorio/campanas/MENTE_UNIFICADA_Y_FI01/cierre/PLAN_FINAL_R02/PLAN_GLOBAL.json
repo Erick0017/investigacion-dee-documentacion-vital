@@ -1,0 +1,484 @@
+{
+  "schema": "MUFI01.final.archived_global_recalculation.v1",
+  "status": "CLOSED_APPROVED_FOR_PACKAGING",
+  "native_ticks": 0,
+  "requires": "Python3 standard library only; exact arithmetic/decoding and archived tool-byte verification, not native replay",
+  "cases": [
+    {
+      "case": "MECANISMO_SELECCION_MUFI01",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_seleccion_mufi01.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/seleccion",
+        "--salida",
+        "RECALCULADO/SELECCION.json"
+      ],
+      "reference": "EVIDENCIA/seleccion/RECALCULO_SELECCION_FINAL.json",
+      "reference_expanded_sha256": "f7296f3248cb705baa37fcf8af20cfd415cd12e57e1f73e5df2cb31c74451864",
+      "script_sha256": "c762ae3534139913552379e94f4bf5663f1b2623718b01ff7894ca318e95fd67",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_MAIN_U",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_main_u.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/contraste_main_u/MAIN_U_COMPLETO_FINAL.json.gz",
+        "--salida",
+        "RECALCULADO/MAIN_U_A.json"
+      ],
+      "reference": "EVIDENCIA/contraste_main_u/RECALCULO_MAIN_U_FINAL.json",
+      "reference_expanded_sha256": "766ff18144e37630d890739207d0e4491946d79f6db90cc3fa6e97fa2d463f78",
+      "script_sha256": "684d9b83c858aefe2ac55c5102f23266e9b610f527689f50c58a801783d80bfd",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_TRANSFERENCIA",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_transferencia.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/transferencia_b",
+        "--salida",
+        "RECALCULADO/TRANSFERENCIA_B.json"
+      ],
+      "reference": "EVIDENCIA/transferencia_b/RECALCULO_TRANSFERENCIA_FINAL.json",
+      "reference_expanded_sha256": "f6a2dfe1aae2ad2ba380c83bc0c26683fd30677ecce79b7deb44045f23c56d50",
+      "script_sha256": "e7be817e835aebfec4ffb86520c08622ffbbb6bc0c7203a2820940db91562c05",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_CONTROLES_CADENA",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_controles_cadena.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/composicion_b",
+        "--salida",
+        "RECALCULADO/COMPOSICION_B.json"
+      ],
+      "reference": "EVIDENCIA/composicion_b/RECALCULO_CONTROLES_FINAL.json",
+      "reference_expanded_sha256": "7fa3353131532a63b2a66ee49db0fa5bbbb23a5d91ec300faf4f61ea83088bd6",
+      "script_sha256": "73636e0d81abf011e352241572edb3fd3d80f03d4c77929f8137e1cd4e49901c",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_PREPARADAS",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_preparadas.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/comparacion_cadena_b/MAIN_U_T31765_COMPLETO.json.gz",
+        "--salida",
+        "RECALCULADO/PREPARADAS_B.json"
+      ],
+      "reference": "EVIDENCIA/comparacion_cadena_b/RECALCULO_PREPARADAS_FINAL.json",
+      "reference_expanded_sha256": "dd5d34d9e7eaad8ea5744df7ca68346bb1fbb4ccc240e29b487a41d2c49dfc12",
+      "script_sha256": "7bfef3494941b12f93fd222e3ba29d03de51ae86edd1f5ea57927249c6e0c211",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_ACCESO_NATIVO",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_acceso_nativo.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/acceso_nativo_b",
+        "--salida",
+        "RECALCULADO/ACCESO_NATIVO_B.json"
+      ],
+      "reference": "EVIDENCIA/acceso_nativo_b/RECALCULO_ACCESO_FINAL.json",
+      "reference_expanded_sha256": "ec6a238f27ad47b7f2d2d06d33d0a3663121921252dba8615f40ddff678d2ff1",
+      "script_sha256": "6ba3460a445e9031257ccd0d16faae652c7f0f3a9b351e0fe5969af654c1068b",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_PILOTO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_piloto.py",
+      "args": [
+        "--primario",
+        "EVIDENCIA/PILOTO_R01/PILOTO.json.gz",
+        "--salida",
+        "RECALCULADO/PILOTO.json"
+      ],
+      "reference": "EVIDENCIA/PILOTO_R01/RECALCULO_PILOTO.json",
+      "reference_expanded_sha256": "e6c00f6808fd2538864a2eba7114961b29f1c3776e58c04c3e30000ffebff8bb",
+      "script_sha256": "44df710aef5305ba215d39ffd823baea9a6014b249d751bc43a202ecb3f85405",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_EMPAREJADO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_emparejado.py",
+      "args": [
+        "--primario",
+        "EVIDENCIA/EMPAREJADO_R03/EMPAREJADO.json.gz",
+        "--salida",
+        "RECALCULADO/EMPAREJADO.json"
+      ],
+      "reference": "EVIDENCIA/EMPAREJADO_R03/RECALCULO_EMPAREJADO.json",
+      "reference_expanded_sha256": "ff850cd96055d0dfa5a416b1f02e1c851e4f958b710f4f77045121c3a9c839aa",
+      "script_sha256": "36cc8a32a7b85f756da95b4f5deda999a58a7a02f965e66e0a27b43932910a7f",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_SERVICIO_A",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_servicio_a.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/SERVICIO_A.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO_SERVICIO_A.json",
+      "reference_expanded_sha256": "63de3c0893c9267575dfbd8a1fe2d4172ebe2b65b9270d666a36b08d32a535dc",
+      "script_sha256": "39bfc099d3977e7e91b6b967e32ff5ff3d7b8e71834e65e22c37d4fb0346fdc7",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_INTERRUPCION",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_interrupcion.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/INTERRUPCION_REAL_R09",
+        "--salida",
+        "RECALCULADO/INTERRUPCION.json"
+      ],
+      "reference": "EVIDENCIA/INTERRUPCION_REAL_R09/RECALCULO_INTERRUPCION.json",
+      "reference_expanded_sha256": "9f3f76ebf6b70413542ff51a17cfb612f03f3f7166189ae0a2fa4659584b9fa1",
+      "script_sha256": "96b7da945904d618ae01f11aaa755ed62e6074e4057ac006854059e47c8adcd9",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_ENSAYO_60MIN",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_ensayo_60min.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/SERVICIO_60MIN.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/RECALCULO_60MIN.json",
+      "reference_expanded_sha256": "aaecd6b3c75e38e039a94abd8fc4f0c0457aedbb303e26c902447abcc30d498b",
+      "script_sha256": "b5f987945f2e1e9eb53f8f9dac9bdfbf78a9b6d05b4962dc40b09995d96b6391",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_TIEMPO_SUPLEMENTARIO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_tiempo_suplementario.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/TIEMPO_TOTAL.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO_TIEMPO_TOTAL.json",
+      "reference_expanded_sha256": "f3fa3f84acbde9c7f932d226bf9a939289cbfadd21c1539ff31a1bcf47d0fd30",
+      "script_sha256": "50a1c96357b806801a95c12cb7438d1052fdb03ef3a5b2a31964faf56a61a224",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_RESUMIR_FUNCIONES_SERVICIO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/resumir_funciones_servicio.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/PANELES_Y_FUNCIONES.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/PANELES_Y_FUNCIONES.json",
+      "reference_expanded_sha256": "e359b352ba95134283041b94e573e4abba3f49294bcd1b8f3789fbef9a8a48aa",
+      "script_sha256": "85270880ac71183a535450e0a564c301be7f5a654ab76971aeae6cae2389eaf7",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "AUXILIAR_AUXILIAR_OPERATIVO",
+      "base": "AUXILIAR",
+      "script": "RECALCULO/recalcular_auxiliar_operativo.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECORRIDO/RECALCULO_AUXILIAR.json"
+      ],
+      "reference": "RECALCULADO/RECALCULO_AUXILIAR.json",
+      "reference_expanded_sha256": "d6eab4e674b0c753a116239e24455ae7b0e7913590d0db859005fcf2693a3ccb",
+      "script_sha256": "efd94be0c301bd976f52643f3f94f56a304706708a80a45ba22e9de0a69a52f8",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ADAPTACION_ADAPTACION",
+      "base": "ADAPTACION",
+      "script": "RECALCULO/recalcular_adaptacion.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECORRIDO/RECALCULO_ADAPTACION.json"
+      ],
+      "reference": "RECALCULADO/RECALCULO_ADAPTACION.json",
+      "reference_expanded_sha256": "792c8c17b02aef78e3a4973a650e420ba74fcae62cab618ded5809f86fd5f2e3",
+      "script_sha256": "d32c9b5eb32320202dddd6733e5f40d8585d0ec3e8c0d33c46334b81b8078593",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ESCALAMIENTO_B_B05",
+      "base": "ESCALAMIENTO_B",
+      "script": "CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "args": [
+        "B05",
+        "--evidence",
+        "EVIDENCIA_ESENCIAL/escalamiento",
+        "--out",
+        "RECALCULADO_B05.json"
+      ],
+      "reference": "RECALCULO_REFERENCIAS/RECALCULO_B05_FINAL.json.gz",
+      "reference_expanded_sha256": "476be53c81001c069bed2be26ef6ea642e599ccaff12c70d7c66a2963faee24e",
+      "script_sha256": "b236cb772d9f4caf1522b210865035e102a537b2c07f44ddb023c38d2771b7a6",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ESCALAMIENTO_B_B06_B07",
+      "base": "ESCALAMIENTO_B",
+      "script": "CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "args": [
+        "B06_B07",
+        "--evidence",
+        "EVIDENCIA_ESENCIAL/escalamiento",
+        "--out",
+        "RECALCULADO_B06_B07.json"
+      ],
+      "reference": "RECALCULO_REFERENCIAS/RECALCULO_B06_B07_FINAL.json.gz",
+      "reference_expanded_sha256": "6c5fa024b99162ac717c0f066866dd5cf4e551ebb5e8e8872ba8f2f45586ff26",
+      "script_sha256": "b236cb772d9f4caf1522b210865035e102a537b2c07f44ddb023c38d2771b7a6",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "AUTOPSIA_R15_AUTOPSIA_R15",
+      "base": "AUTOPSIA_R15",
+      "script": "CODIGO/recalcular_autopsia_r15.py",
+      "args": [
+        "EVIDENCIA",
+        "--out",
+        "RECALCULO_NUEVO.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO.json",
+      "reference_expanded_sha256": "27250c592cdd9bc406455c67cb869f4be8c1252d398b5c50333b89156f5f3964",
+      "script_sha256": "866c40a58320e812bbe413f0d48f406c645624cac1c7803d277dedfaa34bad7e",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "PROTECCION_FASE_R16_FASE_R16",
+      "base": "PROTECCION_FASE_R16",
+      "script": "CODIGO/recalcular_fase_r16.py",
+      "args": [
+        "EVIDENCIA",
+        "--out",
+        "RECALCULO_NUEVO.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO.json",
+      "reference_expanded_sha256": "0edca5fbe6b9f10841f7b63bd62850378cbd0c4efc2119adedad50c89cc70de0",
+      "script_sha256": "60be18882502fe8e204436957d478fffd5dd410db99f19a29673ff7b11efccb4",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "PREFLIGHT_R3_1",
+      "base": "PREFLIGHT_R3",
+      "script": "RECALCULO/recalcular_preflight_r3.py",
+      "args": [
+        "--evidencia",
+        "PRIMARIOS",
+        "--salida",
+        "RECALCULADO/PREFLIGHT_R3.json"
+      ],
+      "reference": "RECALCULO_REFERENCIA.json",
+      "script_sha256": "fc394fe7c81c3ce16db6e84a60500fc5124cf6bee6c8abe2144094cd3401fac0",
+      "reference_expanded_sha256": "eda94c8df7aa7853e7fe8861fcf266c62f3104b9b56c21dad407d4ff42d3a5ad",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "SERVICIO_FASE_R3_1",
+      "base": "SERVICIO_FASE_R3",
+      "script": "RECALCULO/recalcular_preparacion_r3.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/PREPARACION_R3.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO_PREPARACION_R3.json",
+      "script_sha256": "f572e0de403b2145783d7550e29db2a87386caf91267325e0fe6a915dd515d5b",
+      "reference_expanded_sha256": "147113527c204002d631300e0e39c3a9a5ea12319ddd4b35d996f99fb3ffd6b2",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "SERVICIO_FASE_R3_2",
+      "base": "SERVICIO_FASE_R3",
+      "script": "RECALCULO/recalcular_ensayo_fase_r3.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/FASE_R3.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/RECALCULO_FASE_R3.json",
+      "script_sha256": "2c74c2cbfd9f568150aef624d3710882cb9675a88ee3484da3a771213561c42e",
+      "reference_expanded_sha256": "99e9c5d11a00c36e09ed660f729a81768c93eecf8b22da79cdc00285bc6711a8",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "SERVICIO_FASE_R3_3",
+      "base": "SERVICIO_FASE_R3",
+      "script": "RECALCULO/recalcular_tiempo_fase_r3.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/TIEMPO_FASE_R3.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/RECALCULO_TIEMPO_FASE_R3.json",
+      "script_sha256": "2104bc7126c5c330ee17da96729fb1fca5a6f797658ee3c83c3cbccc26508ab9",
+      "reference_expanded_sha256": "69bbf665d4a35af24422ea0909edbabb477e90761e8bd99236041770a7333d48",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "SERVICIO_FASE_R3_4",
+      "base": "SERVICIO_FASE_R3",
+      "script": "RECALCULO/resumir_funciones_fase_r3.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FASE_R17",
+        "--salida",
+        "RECALCULADO/PANELES_Y_FUNCIONES_R3.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FASE_R17/PANELES_Y_FUNCIONES.json",
+      "script_sha256": "40f709eed82f2c694ad70b1780a6db9132c9981be3b27238d4936c9c182f1efa",
+      "reference_expanded_sha256": "1911f2c9a3ea60e1601d3a17c62a03fbd6a609e4fba215e6197b7e03d13e56c4",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "PRUEBA_DISTRIBUCION_1",
+      "base": "PRUEBA_DISTRIBUCION",
+      "script": "RECALCULO/recalcular_entrega_mufi.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--prueba",
+        "VERIFICACION_FULLZIP_EXACTO_R3.json",
+        "--esperado",
+        "completed",
+        "--salida",
+        "RECALCULADO/distribucion_1.json"
+      ],
+      "reference": "REFERENCIAS/ENTREGA_FINAL.json",
+      "script_sha256": "74a4c1ca58d2fed57896b9b64ded64e8400d5d1c664076914d960003b1405207",
+      "reference_expanded_sha256": "58336fd968b95298e510d70a6de31834d76ec8a8870196d16e414ff30f7e253c",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "PRUEBA_DISTRIBUCION_2",
+      "base": "PRUEBA_DISTRIBUCION",
+      "script": "RECALCULO/recalcular_entrega_mufi.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--prueba",
+        "PRIMER_INTENTO_FALLO_ESPERA.json",
+        "--esperado",
+        "instrument_timeout",
+        "--salida",
+        "RECALCULADO/distribucion_2.json"
+      ],
+      "reference": "REFERENCIAS/PRIMER_INTENTO.json",
+      "script_sha256": "74a4c1ca58d2fed57896b9b64ded64e8400d5d1c664076914d960003b1405207",
+      "reference_expanded_sha256": "a78dcad48d99ce250952870f7dd1bce82f513b5d2f821a2c078464f018f6dafe",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "PRUEBA_DISTRIBUCION_3",
+      "base": "PRUEBA_DISTRIBUCION",
+      "script": "RECALCULO/recalcular_entrega_mufi.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--prueba",
+        "CONTINUACION_MISMA_COPIA.json",
+        "--esperado",
+        "continued",
+        "--salida",
+        "RECALCULADO/distribucion_3.json"
+      ],
+      "reference": "REFERENCIAS/CONTINUACION.json",
+      "script_sha256": "74a4c1ca58d2fed57896b9b64ded64e8400d5d1c664076914d960003b1405207",
+      "reference_expanded_sha256": "b1dceee199b0981a68065d9b2901f2768fe0ace420a3501f97b3aed125da5584",
+      "native_ticks": 0,
+      "timeout_seconds": 240
+    },
+    {
+      "case": "MAIN_A",
+      "base": ".",
+      "script": "CODIGO_MAIN/recalcular_corte_A.py",
+      "args": [
+        "--evidencia",
+        "TRAYECTORIA_MAIN",
+        "--salida",
+        "unused_A.json"
+      ],
+      "reference": "TRAYECTORIA_MAIN/RECALCULO_CORTE_A.json",
+      "timeout_seconds": 180
+    },
+    {
+      "case": "MAIN_B_128",
+      "base": ".",
+      "script": "CODIGO_MAIN/recalcular_aplicacion_B.py",
+      "args": [
+        "--evidencia",
+        "TRAYECTORIA_MAIN",
+        "--salida",
+        "unused_B.json"
+      ],
+      "reference": "TRAYECTORIA_MAIN/RECALCULO_APLICACION_B_CON_128.json",
+      "timeout_seconds": 180
+    }
+  ],
+  "scope_limits": [
+    "Correlated forks are not independent learners",
+    "A recalculation does not continue a learned life",
+    "Deep complete worlds and official engine are deliberately outside this analysis ZIP",
+    "The full collaboration ZIP has a separate exact-extraction native verification"
+  ]
+}

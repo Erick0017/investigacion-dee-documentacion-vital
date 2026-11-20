@@ -1,0 +1,20 @@
+# Mecanismos y contrastes: A y B, sin sumar biografías
+
+Este staging privado conserva los primarios decisivos completos, positivos y negativos, de seis frentes. No contiene motor, ZIP históricos ni snapshots operativos completos. Las seis verificaciones stdlib se ejecutaron desde esta copia y produjeron exactamente los mismos bytes que sus referencias; no se reprodujo física al preparar el staging.
+
+## Hechos que sostiene
+
+- **Selección A:** en una preparación auxiliar propia se adquirieron referencias relativas mediante encuentros. El mismo query obtuvo elecciones diferentes por historia. Dos retornos de fracaso de un trabajador real modificaron respuestas futuras; el efecto fue útil bajo una ley y perjudicial al invertirla. Es adaptación local con anatomía/canal/calendario preparados, no regulación general.
+- **MAIN/U A:** los snapshots emparejados tienen un intervalo inicial de igualdad RAW/clocks y diferencias posteriores localizadas. Un portador residual adicional estuvo presente en T16033 y no debe confundirse con causa única, basura o memoria automática. Se conservan el contexto y las limitaciones de seguimiento.
+- **Transferencia B:** T/U/H recibieron el mismo frontend escalar nuevo. Sólo la historia T adquirió D−20 y respondió −/+/−/+ a tamaños reales12/32/13/32; U/H dieron+/+/+/+. La asociación circulante gamma se revisó y se emitió mediante un codec digital fijo. Son dos mecanismos distintos bajo representación compartida preparada, no abstracción general. Un rechazo docente H y la sobreescritura de headers anfitriones se declaran, con bytes históricos registrados y regenerados exactos, no falsos originales.
+- **Composición B:** un control sin el nuevo currículo preparó correctamente un artefacto, pero falló su verificación en otro proceso. Omitir el dato32 o trasladarlo a un sham periférico también impidió el commit que MAIN realizó con el dato real. Los pendientes adversos permanecen guardados.
+- **Comparación MAIN/U T31765:** antes de la verificación, ambas ramas sólo difieren en un RAW de referencia A; todos los clocks, interfaces, protocolos, colas pendientes y el artefacto externo preparado completo coinciden. Sus biografías y recibos terminales no se declaran idénticos. Esto precisa el contraste de la aplicación, sin inferir un pasado único.
+- **Acceso nativo R1/R2:** R1 transforma físicamente qué contenido se consulta según el selector adquirido, sobre una consulta basal P0 producida por recursos. Los controles T sin actor, corte con dosis compensada, sham y contenido opuesto delimitan esa capacidad. No se demostró iniciativa. Hay pérdidas de acceso después del uso. R2 queda adverso: un puerto crítico era inadmisible y su nueva geometría también cruza rutas de restauración anteriores. No se convierte ese defecto de interfaz en incompetencia universal ni en destrucción demostrada de recuerdos.
+
+## Atribución y continuidad
+
+Los datos de preparaciones auxiliares no se suman a MAIN. Las historias T/U/H y los controles de composición/acceso conservan sus propios padres, estados y futuros. La representación, cronogramas, sensores, traductores y oportunidades son preparados; el contenido adquirido y los signos atribuidos al ente proceden de evolución nativa. Los diarios del investigador no alimentan al actor.
+
+La propuesta operativa nueva es `CODIGO/acceso_nativo_b/acceso_nativo_un_uso.py`: APIadmit/state/use para una utilización destructiva, guardas de compatibilidad y lector12gates fijo; sin imports de laboratorio/evidencia ni tabla de respuestas. Se entrega al coordinador para registrar el auxiliar y comprobarlo brevemente al cerrar el servicio actual. No está atribuida por anticipado al activo ni es una habilidad repetible estable.
+
+Consulte los informes de cada carpeta `CODIGO/`, los controles en `EVIDENCIA/`, los92localizadores extraídos de primarios en `ESTADOS_COMPLETOS_LOCALES.json` y las omisiones explícitas. Las equivalencias de campos o contenido regenerado no se presentan como identidad de bytes de una representación histórica omitida. El paquete permite recalcular, no continuar vidas sin sus snapshots locales.

@@ -1,0 +1,712 @@
+{
+  "schema": "MUFI01.global_archived_recalculation_draft.v1",
+  "status": "DRAFT_SUBPLANS_STATICALLY_VALIDATED_NOT_FINAL_SEAL",
+  "scope": "Seven closed evidence stages, nineteen archived calculations. Root MAIN/A/B trajectory cases and later R3/R17 operational evidence must be added by the final coordinator; no omission is disguised as coverage.",
+  "native_ticks": 0,
+  "requires": "Python3 standard library only; no DEE imports, snapshots loaded, native reproduction or life continuation.",
+  "namespace_policy": "Copy each indicated closed source tree under its package_base without flattening. All executable case paths are relative to the extracted analysis root.",
+  "stages": [
+    {
+      "namespace": "MECANISMO",
+      "source_tree_relative_to_lab": "cierre/MECANISMO",
+      "package_base": "MECANISMO",
+      "source_plan_sha256": "c03e1fa5ae3fda115f53c7f1e0b3856b88dc95813f1330c27c9b7b3ced08be25",
+      "job_count": 6
+    },
+    {
+      "namespace": "SERVICIO",
+      "source_tree_relative_to_lab": "cierre/SERVICIO",
+      "package_base": "SERVICIO",
+      "source_plan_sha256": "549697dead61aa863c8e7757698aca5d6637db55dfe323b3967635e7b41a636c",
+      "job_count": 7
+    },
+    {
+      "namespace": "AUXILIAR",
+      "source_tree_relative_to_lab": "cierre/AUXILIAR",
+      "package_base": "AUXILIAR",
+      "source_plan_sha256": "8483fedb1e81e53b91f41b56aea30e034fb3ce0c011c805de32e830358b01dd7",
+      "job_count": 1
+    },
+    {
+      "namespace": "ADAPTACION",
+      "source_tree_relative_to_lab": "cierre/ADAPTACION",
+      "package_base": "ADAPTACION",
+      "source_plan_sha256": "990714609b9c68424cb021bd3e4daf594d7081a879f2484d6be06511778b8046",
+      "job_count": 1
+    },
+    {
+      "namespace": "ESCALAMIENTO_B",
+      "source_tree_relative_to_lab": "escalamiento/ANALISIS_B_CERRADO_R2",
+      "package_base": "ESCALAMIENTO_B",
+      "source_plan_sha256": "a4e2dcf38f837c25625808a1606a7095eec9e246719c8a495652b2f01746a986",
+      "job_count": 2
+    },
+    {
+      "namespace": "AUTOPSIA_R15",
+      "source_tree_relative_to_lab": "escalamiento/ANALISIS_AUTOPSIA_R15",
+      "package_base": "AUTOPSIA_R15",
+      "source_plan_sha256": "82fd5af8816569ca1907e34e4bc1c774e480e2fe3e96ec5fbbd165985f8aaa94",
+      "job_count": 1
+    },
+    {
+      "namespace": "PROTECCION_FASE_R16",
+      "source_tree_relative_to_lab": "escalamiento/ANALISIS_PROTECCION_FASE_R16",
+      "package_base": "PROTECCION_FASE_R16",
+      "source_plan_sha256": "0c30b4efa3933ad9b3a23cfe6e4ed02323ab89f2cfc9c4bed893e33709a5c932",
+      "job_count": 1
+    }
+  ],
+  "cases": [
+    {
+      "case": "MECANISMO_SELECCION_MUFI01",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_seleccion_mufi01.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/seleccion",
+        "--salida",
+        "RECALCULADO/SELECCION.json"
+      ],
+      "reference": "EVIDENCIA/seleccion/RECALCULO_SELECCION_FINAL.json",
+      "reference_expanded_sha256": "f7296f3248cb705baa37fcf8af20cfd415cd12e57e1f73e5df2cb31c74451864",
+      "script_sha256": "c762ae3534139913552379e94f4bf5663f1b2623718b01ff7894ca318e95fd67",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_MAIN_U",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_main_u.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/contraste_main_u/MAIN_U_COMPLETO_FINAL.json.gz",
+        "--salida",
+        "RECALCULADO/MAIN_U_A.json"
+      ],
+      "reference": "EVIDENCIA/contraste_main_u/RECALCULO_MAIN_U_FINAL.json",
+      "reference_expanded_sha256": "766ff18144e37630d890739207d0e4491946d79f6db90cc3fa6e97fa2d463f78",
+      "script_sha256": "684d9b83c858aefe2ac55c5102f23266e9b610f527689f50c58a801783d80bfd",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_TRANSFERENCIA",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_transferencia.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/transferencia_b",
+        "--salida",
+        "RECALCULADO/TRANSFERENCIA_B.json"
+      ],
+      "reference": "EVIDENCIA/transferencia_b/RECALCULO_TRANSFERENCIA_FINAL.json",
+      "reference_expanded_sha256": "f6a2dfe1aae2ad2ba380c83bc0c26683fd30677ecce79b7deb44045f23c56d50",
+      "script_sha256": "e7be817e835aebfec4ffb86520c08622ffbbb6bc0c7203a2820940db91562c05",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_CONTROLES_CADENA",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_controles_cadena.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/composicion_b",
+        "--salida",
+        "RECALCULADO/COMPOSICION_B.json"
+      ],
+      "reference": "EVIDENCIA/composicion_b/RECALCULO_CONTROLES_FINAL.json",
+      "reference_expanded_sha256": "7fa3353131532a63b2a66ee49db0fa5bbbb23a5d91ec300faf4f61ea83088bd6",
+      "script_sha256": "73636e0d81abf011e352241572edb3fd3d80f03d4c77929f8137e1cd4e49901c",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_PREPARADAS",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_preparadas.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/comparacion_cadena_b/MAIN_U_T31765_COMPLETO.json.gz",
+        "--salida",
+        "RECALCULADO/PREPARADAS_B.json"
+      ],
+      "reference": "EVIDENCIA/comparacion_cadena_b/RECALCULO_PREPARADAS_FINAL.json",
+      "reference_expanded_sha256": "dd5d34d9e7eaad8ea5744df7ca68346bb1fbb4ccc240e29b487a41d2c49dfc12",
+      "script_sha256": "7bfef3494941b12f93fd222e3ba29d03de51ae86edd1f5ea57927249c6e0c211",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "MECANISMO_ACCESO_NATIVO",
+      "base": "MECANISMO",
+      "script": "RECALCULO/recalcular_acceso_nativo.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/acceso_nativo_b",
+        "--salida",
+        "RECALCULADO/ACCESO_NATIVO_B.json"
+      ],
+      "reference": "EVIDENCIA/acceso_nativo_b/RECALCULO_ACCESO_FINAL.json",
+      "reference_expanded_sha256": "ec6a238f27ad47b7f2d2d06d33d0a3663121921252dba8615f40ddff678d2ff1",
+      "script_sha256": "6ba3460a445e9031257ccd0d16faae652c7f0f3a9b351e0fe5969af654c1068b",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_PILOTO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_piloto.py",
+      "args": [
+        "--primario",
+        "EVIDENCIA/PILOTO_R01/PILOTO.json.gz",
+        "--salida",
+        "RECALCULADO/PILOTO.json"
+      ],
+      "reference": "EVIDENCIA/PILOTO_R01/RECALCULO_PILOTO.json",
+      "reference_expanded_sha256": "e6c00f6808fd2538864a2eba7114961b29f1c3776e58c04c3e30000ffebff8bb",
+      "script_sha256": "44df710aef5305ba215d39ffd823baea9a6014b249d751bc43a202ecb3f85405",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_EMPAREJADO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_emparejado.py",
+      "args": [
+        "--primario",
+        "EVIDENCIA/EMPAREJADO_R03/EMPAREJADO.json.gz",
+        "--salida",
+        "RECALCULADO/EMPAREJADO.json"
+      ],
+      "reference": "EVIDENCIA/EMPAREJADO_R03/RECALCULO_EMPAREJADO.json",
+      "reference_expanded_sha256": "ff850cd96055d0dfa5a416b1f02e1c851e4f958b710f4f77045121c3a9c839aa",
+      "script_sha256": "36cc8a32a7b85f756da95b4f5deda999a58a7a02f965e66e0a27b43932910a7f",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_SERVICIO_A",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_servicio_a.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/SERVICIO_A.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO_SERVICIO_A.json",
+      "reference_expanded_sha256": "63de3c0893c9267575dfbd8a1fe2d4172ebe2b65b9270d666a36b08d32a535dc",
+      "script_sha256": "39bfc099d3977e7e91b6b967e32ff5ff3d7b8e71834e65e22c37d4fb0346fdc7",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_INTERRUPCION",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_interrupcion.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/INTERRUPCION_REAL_R09",
+        "--salida",
+        "RECALCULADO/INTERRUPCION.json"
+      ],
+      "reference": "EVIDENCIA/INTERRUPCION_REAL_R09/RECALCULO_INTERRUPCION.json",
+      "reference_expanded_sha256": "9f3f76ebf6b70413542ff51a17cfb612f03f3f7166189ae0a2fa4659584b9fa1",
+      "script_sha256": "96b7da945904d618ae01f11aaa755ed62e6074e4057ac006854059e47c8adcd9",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_ENSAYO_60MIN",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_ensayo_60min.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/SERVICIO_60MIN.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/RECALCULO_60MIN.json",
+      "reference_expanded_sha256": "aaecd6b3c75e38e039a94abd8fc4f0c0457aedbb303e26c902447abcc30d498b",
+      "script_sha256": "b5f987945f2e1e9eb53f8f9dac9bdfbf78a9b6d05b4962dc40b09995d96b6391",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_TIEMPO_SUPLEMENTARIO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/recalcular_tiempo_suplementario.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECALCULADO/TIEMPO_TOTAL.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO_TIEMPO_TOTAL.json",
+      "reference_expanded_sha256": "f3fa3f84acbde9c7f932d226bf9a939289cbfadd21c1539ff31a1bcf47d0fd30",
+      "script_sha256": "50a1c96357b806801a95c12cb7438d1052fdb03ef3a5b2a31964faf56a61a224",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "SERVICIO_RESUMIR_FUNCIONES_SERVICIO",
+      "base": "SERVICIO",
+      "script": "RECALCULO/resumir_funciones_servicio.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/SERVICIO_60MIN_FINAL_R11",
+        "--salida",
+        "RECALCULADO/PANELES_Y_FUNCIONES.json"
+      ],
+      "reference": "EVIDENCIA/SERVICIO_60MIN_FINAL_R11/PANELES_Y_FUNCIONES.json",
+      "reference_expanded_sha256": "e359b352ba95134283041b94e573e4abba3f49294bcd1b8f3789fbef9a8a48aa",
+      "script_sha256": "85270880ac71183a535450e0a564c301be7f5a654ab76971aeae6cae2389eaf7",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "AUXILIAR_AUXILIAR_OPERATIVO",
+      "base": "AUXILIAR",
+      "script": "RECALCULO/recalcular_auxiliar_operativo.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECORRIDO/RECALCULO_AUXILIAR.json"
+      ],
+      "reference": "RECALCULADO/RECALCULO_AUXILIAR.json",
+      "reference_expanded_sha256": "d6eab4e674b0c753a116239e24455ae7b0e7913590d0db859005fcf2693a3ccb",
+      "script_sha256": "efd94be0c301bd976f52643f3f94f56a304706708a80a45ba22e9de0a69a52f8",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ADAPTACION_ADAPTACION",
+      "base": "ADAPTACION",
+      "script": "RECALCULO/recalcular_adaptacion.py",
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "RECORRIDO/RECALCULO_ADAPTACION.json"
+      ],
+      "reference": "RECALCULADO/RECALCULO_ADAPTACION.json",
+      "reference_expanded_sha256": "792c8c17b02aef78e3a4973a650e420ba74fcae62cab618ded5809f86fd5f2e3",
+      "script_sha256": "d32c9b5eb32320202dddd6733e5f40d8585d0ec3e8c0d33c46334b81b8078593",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ESCALAMIENTO_B_B05",
+      "base": "ESCALAMIENTO_B",
+      "script": "CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "args": [
+        "B05",
+        "--evidence",
+        "EVIDENCIA_ESENCIAL/escalamiento",
+        "--out",
+        "RECALCULADO_B05.json"
+      ],
+      "reference": "RECALCULO_REFERENCIAS/RECALCULO_B05_FINAL.json.gz",
+      "reference_expanded_sha256": "476be53c81001c069bed2be26ef6ea642e599ccaff12c70d7c66a2963faee24e",
+      "script_sha256": "b236cb772d9f4caf1522b210865035e102a537b2c07f44ddb023c38d2771b7a6",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "ESCALAMIENTO_B_B06_B07",
+      "base": "ESCALAMIENTO_B",
+      "script": "CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "args": [
+        "B06_B07",
+        "--evidence",
+        "EVIDENCIA_ESENCIAL/escalamiento",
+        "--out",
+        "RECALCULADO_B06_B07.json"
+      ],
+      "reference": "RECALCULO_REFERENCIAS/RECALCULO_B06_B07_FINAL.json.gz",
+      "reference_expanded_sha256": "6c5fa024b99162ac717c0f066866dd5cf4e551ebb5e8e8872ba8f2f45586ff26",
+      "script_sha256": "b236cb772d9f4caf1522b210865035e102a537b2c07f44ddb023c38d2771b7a6",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "AUTOPSIA_R15_AUTOPSIA_R15",
+      "base": "AUTOPSIA_R15",
+      "script": "CODIGO/recalcular_autopsia_r15.py",
+      "args": [
+        "EVIDENCIA",
+        "--out",
+        "RECALCULO_NUEVO.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO.json",
+      "reference_expanded_sha256": "27250c592cdd9bc406455c67cb869f4be8c1252d398b5c50333b89156f5f3964",
+      "script_sha256": "866c40a58320e812bbe413f0d48f406c645624cac1c7803d277dedfaa34bad7e",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    },
+    {
+      "case": "PROTECCION_FASE_R16_FASE_R16",
+      "base": "PROTECCION_FASE_R16",
+      "script": "CODIGO/recalcular_fase_r16.py",
+      "args": [
+        "EVIDENCIA",
+        "--out",
+        "RECALCULO_NUEVO.json"
+      ],
+      "reference": "EVIDENCIA/RECALCULO.json",
+      "reference_expanded_sha256": "0edca5fbe6b9f10841f7b63bd62850378cbd0c4efc2119adedad50c89cc70de0",
+      "script_sha256": "60be18882502fe8e204436957d478fffd5dd410db99f19a29673ff7b11efccb4",
+      "timeout_seconds": 180,
+      "native_ticks": 0
+    }
+  ],
+  "required_source_files": [
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_seleccion_mufi01.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_seleccion_mufi01.py",
+      "sha256": "c762ae3534139913552379e94f4bf5663f1b2623718b01ff7894ca318e95fd67",
+      "bytes": 11829,
+      "imports": [
+        "argparse",
+        "base64",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_main_u.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_main_u.py",
+      "sha256": "684d9b83c858aefe2ac55c5102f23266e9b610f527689f50c58a801783d80bfd",
+      "bytes": 5613,
+      "imports": [
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_transferencia.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_transferencia.py",
+      "sha256": "e7be817e835aebfec4ffb86520c08622ffbbb6bc0c7203a2820940db91562c05",
+      "bytes": 10345,
+      "imports": [
+        "argparse",
+        "base64",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_controles_cadena.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_controles_cadena.py",
+      "sha256": "73636e0d81abf011e352241572edb3fd3d80f03d4c77929f8137e1cd4e49901c",
+      "bytes": 4790,
+      "imports": [
+        "argparse",
+        "base64",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_preparadas.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_preparadas.py",
+      "sha256": "7bfef3494941b12f93fd222e3ba29d03de51ae86edd1f5ea57927249c6e0c211",
+      "bytes": 3156,
+      "imports": [
+        "argparse",
+        "base64",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "MECANISMO/RECALCULO/recalcular_acceso_nativo.py",
+      "source_relative_to_lab": "cierre/MECANISMO/RECALCULO/recalcular_acceso_nativo.py",
+      "sha256": "6ba3460a445e9031257ccd0d16faae652c7f0f3a9b351e0fe5969af654c1068b",
+      "bytes": 5252,
+      "imports": [
+        "argparse",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_piloto.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_piloto.py",
+      "sha256": "44df710aef5305ba215d39ffd823baea9a6014b249d751bc43a202ecb3f85405",
+      "bytes": 5220,
+      "imports": [
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_emparejado.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_emparejado.py",
+      "sha256": "36cc8a32a7b85f756da95b4f5deda999a58a7a02f965e66e0a27b43932910a7f",
+      "bytes": 5069,
+      "imports": [
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_servicio_a.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_servicio_a.py",
+      "sha256": "39bfc099d3977e7e91b6b967e32ff5ff3d7b8e71834e65e22c37d4fb0346fdc7",
+      "bytes": 8717,
+      "imports": [
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_interrupcion.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_interrupcion.py",
+      "sha256": "96b7da945904d618ae01f11aaa755ed62e6074e4057ac006854059e47c8adcd9",
+      "bytes": 4802,
+      "imports": [
+        "argparse",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_ensayo_60min.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_ensayo_60min.py",
+      "sha256": "b5f987945f2e1e9eb53f8f9dac9bdfbf78a9b6d05b4962dc40b09995d96b6391",
+      "bytes": 14055,
+      "imports": [
+        "argparse",
+        "base64",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/recalcular_tiempo_suplementario.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/recalcular_tiempo_suplementario.py",
+      "sha256": "50a1c96357b806801a95c12cb7438d1052fdb03ef3a5b2a31964faf56a61a224",
+      "bytes": 5232,
+      "imports": [
+        "argparse",
+        "datetime",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "SERVICIO/RECALCULO/resumir_funciones_servicio.py",
+      "source_relative_to_lab": "cierre/SERVICIO/RECALCULO/resumir_funciones_servicio.py",
+      "sha256": "85270880ac71183a535450e0a564c301be7f5a654ab76971aeae6cae2389eaf7",
+      "bytes": 6203,
+      "imports": [
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "AUXILIAR/RECALCULO/recalcular_auxiliar_operativo.py",
+      "source_relative_to_lab": "cierre/AUXILIAR/RECALCULO/recalcular_auxiliar_operativo.py",
+      "sha256": "efd94be0c301bd976f52643f3f94f56a304706708a80a45ba22e9de0a69a52f8",
+      "bytes": 3888,
+      "imports": [
+        "argparse",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "ADAPTACION/RECALCULO/recalcular_adaptacion.py",
+      "source_relative_to_lab": "cierre/ADAPTACION/RECALCULO/recalcular_adaptacion.py",
+      "sha256": "d32c9b5eb32320202dddd6733e5f40d8585d0ec3e8c0d33c46334b81b8078593",
+      "bytes": 8933,
+      "imports": [
+        "argparse",
+        "base64",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "zlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "ESCALAMIENTO_B/CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "source_relative_to_lab": "escalamiento/ANALISIS_B_CERRADO_R2/CODIGO_Y_RECALCULO/escalamiento/RUN_RECALCULO_B.py",
+      "sha256": "b236cb772d9f4caf1522b210865035e102a537b2c07f44ddb023c38d2771b7a6",
+      "bytes": 726,
+      "imports": [
+        "pathlib",
+        "runpy",
+        "sys"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "ESCALAMIENTO_B/CODIGO_Y_RECALCULO/escalamiento/recalcular_escalamiento_b_R3_B05_FINAL.py",
+      "source_relative_to_lab": "escalamiento/ANALISIS_B_CERRADO_R2/CODIGO_Y_RECALCULO/escalamiento/recalcular_escalamiento_b_R3_B05_FINAL.py",
+      "sha256": "acf109225d91bea988e6c2e5c7aa7545ef2013ae77875cf7834694344c029360",
+      "bytes": 9637,
+      "imports": [
+        "argparse",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "ESCALAMIENTO_B/CODIGO_Y_RECALCULO/escalamiento/recalcular_b06_b07_R2_FINAL.py",
+      "source_relative_to_lab": "escalamiento/ANALISIS_B_CERRADO_R2/CODIGO_Y_RECALCULO/escalamiento/recalcular_b06_b07_R2_FINAL.py",
+      "sha256": "ff4e6709ce34ef0808fb3359243aa79bd792ce6c96c964ebd37cfb979e4ed878",
+      "bytes": 5208,
+      "imports": [
+        "argparse",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "recalcular_escalamiento_b_R3_B05_FINAL",
+        "struct"
+      ],
+      "dependency_class": "stdlib_plus_explicit_bundled_local_module"
+    },
+    {
+      "package_path": "AUTOPSIA_R15/CODIGO/recalcular_autopsia_r15.py",
+      "source_relative_to_lab": "escalamiento/ANALISIS_AUTOPSIA_R15/CODIGO/recalcular_autopsia_r15.py",
+      "sha256": "866c40a58320e812bbe413f0d48f406c645624cac1c7803d277dedfaa34bad7e",
+      "bytes": 5622,
+      "imports": [
+        "argparse",
+        "array",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "dependency_class": "stdlib_only"
+    },
+    {
+      "package_path": "PROTECCION_FASE_R16/CODIGO/recalcular_fase_r16.py",
+      "source_relative_to_lab": "escalamiento/ANALISIS_PROTECCION_FASE_R16/CODIGO/recalcular_fase_r16.py",
+      "sha256": "60be18882502fe8e204436957d478fffd5dd410db99f19a29673ff7b11efccb4",
+      "bytes": 5764,
+      "imports": [
+        "argparse",
+        "array",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "dependency_class": "stdlib_only"
+    }
+  ],
+  "required_packaging_helpers": [
+    {
+      "source_relative_to_lab": "cierre/repetir_todo.py",
+      "to": "RECALCULO/repetir_todo.py",
+      "sha256": "c2e64d845f20cda94a31985f50ac03393a66c3221c21faac5d8e648f84c3aab6",
+      "bytes": 3136
+    },
+    {
+      "source_relative_to_lab": "cierre/extraer_revision.py",
+      "to": "RECALCULO/extraer_revision.py",
+      "sha256": "3ed10bd83160f853c5b8478c4d414b4acf4320892562e17c8aee8d379f6b651e",
+      "bytes": 924
+    }
+  ],
+  "validation": {
+    "kind": "Read-only AST/dependency/path/reference-digest review; no calculators executed for this draft",
+    "normalized_cases": 19,
+    "input_plan_formats_accepted": [
+      "array of script/args/reference",
+      "object.jobs argv",
+      "object.cases",
+      "single script/args/reference"
+    ],
+    "all_script_and_reference_files_found": true,
+    "all_frozen_reference_expanded_hashes_exact": true,
+    "nonstdlib_dependencies_outside_stage": [],
+    "static_issues": []
+  },
+  "output_policy": "Runner replaces the single --salida/--out argument with a fresh result path. Use a fresh result directory OUTSIDE all packaged evidence trees; do not write results into EVIDENCIA and then recalculate a folder scanner.",
+  "reference_policy": "reference_expanded_sha256 is SHA256 after gzip decompression only for .gz references. Every script and every local imported calculator is listed explicitly. Whole-package manifest must cover them and the evidence before running.",
+  "coverage_limits": [
+    "Archived recalc is not native re-execution or proof of snapshot continuation.",
+    "Absolute historical locators can remain inside immutable records, but none is an executable path or required read by these calculators.",
+    "Complete operational snapshots and deep omitted evidence remain at indexed local locations; this draft does not copy or replace them.",
+    "Preserve all negative primaries and original code objects when constructing the final builder plan; do not package whole live laboratory trees."
+  ]
+}

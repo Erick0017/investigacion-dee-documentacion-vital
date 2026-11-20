@@ -1,0 +1,93 @@
+--- sealed_1_1/gestionar.py
++++ campaign_current/gestionar.py
+@@ -29,7 +29,20 @@
+     q=sub.add_parser('observar-componente');q.add_argument('--vida');q.add_argument('componente',choices=['quantity.center','two_memory.center','joint.forms','repertoire.forms']);q.add_argument('--vecindad',action='store_true')
+     q=sub.add_parser('puertos');q.add_argument('--vida');q.add_argument('--contiene',default='')
+     q=sub.add_parser('guardar');q.add_argument('--vida')
+-    q=sub.add_parser('experiencia');q.add_argument('--vida');q.add_argument('tipo',choices=['curriculo_integral','forma','bloque','orden','consecuencia','recurso-accion','ensenar-forma','magnitud','magnitud-revisar','preparar-puente','ensenar-puente','consulta-puente','portador','revision-fisica']);q.add_argument('--parametros',default='{}')
++    q=sub.add_parser('experiencia');q.add_argument('--vida')
++    q.add_argument('tipo',choices=[
++        'curriculo_integral','forma','bloque','orden','consecuencia','recurso-accion',
++        'ensenar-forma','magnitud','magnitud-revisar','preparar-puente','ensenar-puente',
++        'consulta-puente','portador','revision-fisica',
++        'espanol-preparar','espanol-ensenar','espanol-formas','espanol-contexto',
++        'espanol-contacto-preparar','espanol-contacto-ensenar','espanol-contacto-consultar',
++        'espanol-tiempo-preparar','espanol-tiempo-ensenar','espanol-tiempo-consultar',
++        'espanol-social-transmitir','espanol-social-consultar','espanol-componer',
++        'espanol-igual-preparar','espanol-igual-presentar','espanol-igual-forma','espanol-igual-contexto',
++        'espanol-lexico-preparar','espanol-lexico-ensenar','espanol-lexico-formas','espanol-lexico-contexto','espanol-lexico-usar','espanol-lexico-regular',
++        'espanol-puente-preparar','espanol-puente-ensenar','espanol-puente-forma','espanol-puente-contexto','espanol-puente-usar','espanol-palabra-social',
++        'espanol-relaciones-producir','espanol-magnitud-recuperar'])
++    q.add_argument('--parametros',default='{}')
+     q=sub.add_parser('consultar-forma');q.add_argument('--vida');q.add_argument('--tick',type=int,default=139);q.add_argument('--carga',type=int,default=5)
+     q=sub.add_parser('consultar');q.add_argument('--vida');q.add_argument('formas',nargs='+');q.add_argument('--tick',required=True,type=int);q.add_argument('--carga',type=int,default=5)
+     q=sub.add_parser('revisar');q.add_argument('--vida');q.add_argument('forma');q.add_argument('consecuencia',type=int);q.add_argument('tick',type=int);q.add_argument('--metodo',choices=['double_teacher','counterflow'],default='double_teacher');q.add_argument('--control',choices=['treatment','offpath_sham'],default='treatment')
+@@ -94,6 +107,46 @@
+     if cmd=='experiencia':
+         options=json.loads(args.parametros)
+         def experience(a):
++            if args.tipo.startswith('espanol-'):
++                import importlib.util
++                extra={
++                    'espanol-magnitud-recuperar':('recuperacion_magnitud_26','reacquire'),
++                    'espanol-igual-preparar':('igualdad_fisica_03','prepare'),
++                    'espanol-igual-presentar':('igualdad_fisica_03','present'),
++                    'espanol-igual-forma':('igualdad_fisica_03','query'),
++                    'espanol-igual-contexto':('igualdad_fisica_03','context'),
++                    'espanol-lexico-preparar':('ensenanza_lexica_03','prepare'),
++                    'espanol-lexico-ensenar':('ensenanza_lexica_03','teach'),
++                    'espanol-lexico-formas':('ensenanza_lexica_03','query'),
++                    'espanol-lexico-contexto':('ensenanza_lexica_03','context'),
++                    'espanol-lexico-usar':('ensenanza_lexica_03','comprehend'),
++                    'espanol-lexico-regular':('ensenanza_lexica_03','regulate_queries'),
++                    'espanol-puente-preparar':('puente_lexico_10','prepare'),
++                    'espanol-puente-ensenar':('puente_lexico_10','teach'),
++                    'espanol-puente-forma':('puente_lexico_10','query'),
++                    'espanol-puente-contexto':('puente_lexico_10','context'),
++                    'espanol-puente-usar':('puente_lexico_10','comprehend'),
++                    'espanol-palabra-social':('puente_lexico_10','communicate')}
++                if args.tipo in extra:
++                    name,method=extra[args.tipo];path=s.root/('capacidades/'+name+'.py')
++                    spec=importlib.util.spec_from_file_location('_dcs11_'+name,path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
++                    if args.tipo=='espanol-puente-preparar':options.setdefault('phase_shift',8)
++                    return getattr(module,method)(a,**options)
++                path=s.root/'capacidades/espanol_funcional_01.py';spec=importlib.util.spec_from_file_location('_dcs11_espanol_01',path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
++                action={
++                    'espanol-preparar':module.prepare,'espanol-ensenar':module.teach,
++                    'espanol-formas':module.query_words,'espanol-contexto':module.context,
++                    'espanol-contacto-preparar':module.contact_prepare,
++                    'espanol-contacto-ensenar':module.contact_teach,
++                    'espanol-contacto-consultar':module.contact_query,
++                    'espanol-tiempo-preparar':module.temporal_prepare,
++                    'espanol-tiempo-ensenar':module.temporal_experience,
++                    'espanol-tiempo-consultar':module.temporal_query,
++                    'espanol-social-transmitir':module.contact_social,
++                    'espanol-social-consultar':module.contact_social_query,
++                    'espanol-componer':module.compose_contact_temporal,
++                    'espanol-relaciones-producir':module.produce_relations}[args.tipo]
++                return action(a,**options)
+             if args.tipo=='curriculo_integral':a.curriculum(**options);return{'scheduled':'Declared external pedagogical curriculum','receipts':len(a.receipts())}
+             if args.tipo=='forma':return a.acquire(**options)
+             if args.tipo=='bloque':return a.acquire_block(**options)
+--- sealed_1_1/capacidades/CATALOGO_CAPACIDADES.json
++++ campaign_current/capacidades/CATALOGO_CAPACIDADES.json
+@@ -6246,5 +6246,18 @@
+     "integration",
+     "knowledge"
+   ],
+-  "historical_pending_not_silently_promoted": true
++  "historical_pending_not_silently_promoted": true,
++  "campaign_extensions": [
++    {
++      "id": "ESPANOL_FUNCIONAL_01",
++      "version": "experimental.2026-10-20",
++      "availability": "EJECUTABLE_REVALIDADA_EN_DOMINIOS_DECLARADOS",
++      "integration": "Explicit lived branches of cpc9_integral_n67; not all historical profiles or all experimental variants in one individual",
++      "knowledge": "Per-life access and losses are recorded separately from installed code and prepared geometries",
++      "contract": "contratos/ESPANOL_FUNCIONAL_01.json",
++      "nsm_evidence_overlay": "capacidades/NSM65_ACTUALIZACIONES_ESPANOL_01.json",
++      "does_not_change_previous_entries": true,
++      "no_general_spanish_claim": true
++    }
++  ]
+ }

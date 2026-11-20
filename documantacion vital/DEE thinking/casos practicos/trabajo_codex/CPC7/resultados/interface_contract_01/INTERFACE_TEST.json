@@ -1,0 +1,178 @@
+{
+  "schema": "CPC7.interface_test.v1",
+  "status": "VERIFIED",
+  "help": {
+    "tipo": "INTERFAZ",
+    "gramatica": [
+      "nuevo u0|repertorio",
+      "historia AB|BA [u0, T0]",
+      "experiencia L01 +1 0",
+      "consecuencia -1 [u0, antes T11]",
+      "accion [u0, antes T69]",
+      "ensenar-forma [u0, antes T72]",
+      "preguntar-forma 139 [u0]",
+      "observar-red [u0]",
+      "consultar L01,L02 67",
+      "actualizar L01 -1 268 [repertorio]",
+      "hasta 70",
+      "observar L01",
+      "recibos",
+      "guardar \"archivo\"",
+      "cargar \"archivo\"",
+      "reiniciar confirmar",
+      "salir"
+    ],
+    "alcance": "Comandos estructurados y ventanas finitas; no conversación libre ni control ilimitado."
+  },
+  "initial": {
+    "tipo": "INSTRUMENTO",
+    "operacion": "PREPARACION_NUEVA",
+    "perfil": "U0",
+    "estado": {
+      "tick": 0,
+      "raw_sha256": "451885aa7c0a6ed194eec53c1fbf4f2819cf3002a3c9d5d71136db5ab1a6142d",
+      "clock_sha256": "b60ac381c3f51dae48b0b92a8c82543979dda88a972a474584950ae908cb3d3a"
+    },
+    "identity": {
+      "library": "4.0.0",
+      "kernel": {
+        "kernel_version": 27,
+        "kernel_modulus": 19665,
+        "reducer_cap": 19664,
+        "native_module": true
+      },
+      "wheel_sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623",
+      "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+      "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC7\\.venv\\Lib\\site-packages\\dee_thinking\\__init__.py",
+      "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC7\\.venv\\Scripts\\python.exe"
+    }
+  },
+  "invalid_commands": [
+    {
+      "command": "nuevo u0",
+      "error": "Ya existe un individuo; use reiniciar explícitamente para comenzar otro",
+      "unchanged": true
+    },
+    {
+      "command": "experiencia L99 +1 0",
+      "error": "Forma fuera de la interfaz preparada",
+      "unchanged": true
+    },
+    {
+      "command": "experiencia L03 0 0",
+      "error": "experiencia|actualizar Lnn ±1 tick_absoluto",
+      "unchanged": true
+    },
+    {
+      "command": "experiencia L03 -1 -1",
+      "error": "No se programa experiencia en el pasado",
+      "unchanged": true
+    },
+    {
+      "command": "consultar L03,L03 67",
+      "error": "Formas inválidas o repetidas",
+      "unchanged": true
+    },
+    {
+      "command": "consultar L99 67",
+      "error": "Formas inválidas o repetidas",
+      "unchanged": true
+    },
+    {
+      "command": "actualizar L03 +1 268",
+      "error": "Doble docente publicado sólo para L01 del perfil repertorio; los otros accesos no se simulan",
+      "unchanged": true
+    },
+    {
+      "command": "hasta -1",
+      "error": "Interfaz finita hasta T1024; no es una restricción del motor",
+      "unchanged": true
+    },
+    {
+      "command": "hasta 1025",
+      "error": "Interfaz finita hasta T1024; no es una restricción del motor",
+      "unchanged": true
+    },
+    {
+      "command": "historia XX",
+      "error": "historia AB|BA sólo antes de evolucionar desde T0",
+      "unchanged": true
+    },
+    {
+      "command": "consecuencia 0",
+      "error": "consecuencia ±1 antes de T11; se programa el sensor en T11",
+      "unchanged": true
+    },
+    {
+      "command": "observar-red extra",
+      "error": "observar-red no acepta argumentos",
+      "unchanged": true
+    },
+    {
+      "command": "reiniciar",
+      "error": "reiniciar confirmar descarta la instancia en memoria; no borra archivos",
+      "unchanged": true
+    },
+    {
+      "command": "ordena-la-respuesta-correcta",
+      "error": "Comando fuera de gramática; use ayuda",
+      "unchanged": true
+    }
+  ],
+  "scheduled_receipts": {
+    "tipo": "INSTRUMENTO",
+    "recibos": [
+      {
+        "id": 1,
+        "status": "scheduled",
+        "channels": [
+          "L03.event.minus"
+        ],
+        "requested_tick": 0,
+        "effective_tick": null,
+        "kind": "experience",
+        "reason": ""
+      },
+      {
+        "id": 2,
+        "status": "scheduled",
+        "channels": [
+          "L03.signal"
+        ],
+        "requested_tick": 0,
+        "effective_tick": null,
+        "kind": "experience",
+        "reason": ""
+      }
+    ]
+  },
+  "observed_after_evolution": {
+    "tipo": "INSTRUMENTO",
+    "operacion": "LECTURA_PASIVA",
+    "forma": "L03",
+    "physical": {
+      "tick": 3,
+      "site": [
+        30,
+        30,
+        5
+      ],
+      "raw": "1220475567736881153",
+      "clock": "3",
+      "state": 1,
+      "s_reg": 16,
+      "semantic": 1,
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "active": true
+    }
+  },
+  "invalid_commands_preserve_full_physics_and_queue": true,
+  "passive_observation_preserves_full_physics": true,
+  "console_sha256": "ab97d63395916333c26109cd92cc9b240459628cf13f8d881d0f0ca126812037",
+  "technical_preparations": 1,
+  "not_scientific_replica": true
+}

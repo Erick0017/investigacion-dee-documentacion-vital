@@ -1,0 +1,20 @@
+{
+  "schema": "mente-basal.validation.regression.v1",
+  "defect": "the launcher initially attempted int(null) on the immutable cut status before the restored worker published its PID",
+  "before": {
+    "reproduced": true,
+    "error": "TypeError converting null status PID",
+    "worker_itself_started": true
+  },
+  "correction": "ignore a null frozen-cut PID during handshake and continue waiting for the child PID",
+  "after": {
+    "clean_extraction": "mb_extract_test2",
+    "bootstrap_from_bundled_wheel": true,
+    "independent_handshake": true,
+    "worker_pid": 7912,
+    "loaded_tick": 64,
+    "worker_kill_on_job_close": false,
+    "controlled_stop": true,
+    "final_state": "STOPPED_SAFE"
+  }
+}

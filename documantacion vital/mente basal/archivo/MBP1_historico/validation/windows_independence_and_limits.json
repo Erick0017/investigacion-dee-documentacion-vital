@@ -1,0 +1,57 @@
+{
+  "schema": "mente-basal.validation.windows-ops.v1",
+  "executed_utc_interval": [
+    "2026-10-05T03:45:24Z",
+    "2026-10-05T03:47:07Z"
+  ],
+  "test_world_id": "MENTE-BASAL-OPS-TEST",
+  "test_root": "mb_ops_test_v2 (isolated from production)",
+  "checks": {
+    "I_launcher_parent_ended_worker_alive": {
+      "passed": true,
+      "launcher_reported_pid": 9608,
+      "worker_job_limit_flags": 0,
+      "worker_kill_on_job_close": false,
+      "observation": "the launcher command returned; a later process observed the same worker alive"
+    },
+    "J_live_collection_rotates_to_new_segment": {
+      "passed": true,
+      "cut_tick": 64,
+      "closed_segment": "history/segments/segment_000_t0_t64.jsonl",
+      "new_segment": "history/segments/segment_001.active.jsonl",
+      "new_segment_later_recorded_tick": 80,
+      "package_sha256": "94c1fff10d84aa6a08905dd8dc8bbc501db95dd56aa30a5b33bb763620184cf4"
+    },
+    "K_reduced_budget_safe_stop": {
+      "passed": true,
+      "reference_tick": 64,
+      "tick_budget_end": 80,
+      "final_tick": 80,
+      "final_state": "STOPPED_SAFE",
+      "reason": "max_ticks_after_reference_reached",
+      "checkpoint": "world/checkpoints/tick_000000000080_safe_pause_max_ticks_after_reference_reached_b7870216.deetsnap"
+    },
+    "L_second_writer_rejected": {
+      "passed": true,
+      "second_writer_exit_code": 1,
+      "diagnostic": "another writer owns this lineage",
+      "original_worker_remained_alive": true
+    },
+    "clean_package_replay": {
+      "passed": true,
+      "events_replayed": 23,
+      "receipt_ids_exact": true,
+      "raw_exact": true,
+      "clock_exact": true,
+      "tick_exact": true,
+      "receipts_exact": true
+    },
+    "clean_package_continue_isolated": {
+      "passed": true,
+      "loaded_tick": 64,
+      "continued_tick": 65,
+      "final_state": "STOPPED_SAFE"
+    }
+  },
+  "scope": "local Windows process independence only; not persistence across logoff, sleep, reboot, shutdown, disk failure, or process termination"
+}

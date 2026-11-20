@@ -1,0 +1,20 @@
+{
+  "schema": "mente-basal.observation-coupling-003.corrections.v1",
+  "corrections": [
+    {
+      "artifact": "RESERVED_CUT002_CONFIRMATION.json",
+      "original_field": "purpose",
+      "original_text": "reserved covariant confirmation at CUT_002, frozen before OBS_003 design",
+      "correction": "The same frozen protocol was applied after the primary run to an earlier checkpoint. This is covariant same-lineage evidence, not proof of preregistration or an independent replicate.",
+      "data_changed": false
+    },
+    {
+      "artifact": "historical tools/analyze_cut_interval.py",
+      "issue": "used P_KERNEL=19665 as if it were a clock modulus",
+      "correction": "v27 clocks are full uint64 counters and advanced by the full tick delta. P_KERNEL remains a reducer threshold/context constant.",
+      "validation": "all 2048383 clocks changed by exactly 134792 between T64 and T134856",
+      "historical_snapshots_changed": false
+    }
+  ]
+}
+

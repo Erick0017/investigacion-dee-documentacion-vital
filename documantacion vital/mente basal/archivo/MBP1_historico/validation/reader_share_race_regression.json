@@ -1,0 +1,18 @@
+{
+  "schema": "mente-basal.validation.regression.v1",
+  "defect": "a transient Windows sharing violation while a reader opened status.json could terminate the sole worker during os.replace",
+  "before": {
+    "reproduced": true,
+    "error": "PermissionError WinError 5 replacing status.json",
+    "failed_test_lineage": "mb_ops_test",
+    "tick": 0
+  },
+  "correction": "atomic_text retains its complete temporary file and retries PermissionError for a bounded interval; no physics or DEE state transition changed",
+  "after": {
+    "test_lineage": "mb_ops_test_v2",
+    "concurrent_status_reads": 100,
+    "worker_alive_after_stress": true,
+    "worker_stderr_bytes": 0,
+    "subsequent_full_test_reached_tick": 80
+  }
+}

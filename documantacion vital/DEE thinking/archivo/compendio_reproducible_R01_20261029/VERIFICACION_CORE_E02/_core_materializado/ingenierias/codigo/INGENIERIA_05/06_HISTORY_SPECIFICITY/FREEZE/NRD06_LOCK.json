@@ -1,0 +1,65 @@
+{
+  "experiment_id": "NRD06_HISTORY_SPECIFICITY",
+  "freeze_version": "1.0",
+  "kernel": "DEE_UNIVERSE_V27_FROZEN",
+  "question": "Does the identity of prior DEE history change the exact transformation produced by the same later physical probe?",
+  "histories": {
+    "H0": "NO_EVENT",
+    "HA": "AB",
+    "HB": "BA"
+  },
+  "common_checkpoint_ticks": 4,
+  "probe": "BA physical carrier experience exactly as validated in NRD05",
+  "branches_per_history": [
+    "CONTROL_NO_PROBE",
+    "PROBE_BA"
+  ],
+  "post_probe_ticks": 4,
+  "retention_ticks": 64,
+  "diagnostic_panel": {
+    "challenges": [
+      "C0",
+      "C3"
+    ],
+    "horizons": [
+      32,
+      64
+    ],
+    "reference_state": [
+      "raw_a",
+      "clock_a"
+    ]
+  },
+  "execution_gate": {
+    "main": "MAIN_S0 always",
+    "alternate_route": "Only after a positive conditioned result; use the prevalidated NRD05 spatial transform without tuning",
+    "fresh": "Only after retained history specificity; use FRESH_V1 and FRESH_V2 unchanged",
+    "recurrent_F3": "Only after retained specificity passes both fresh configurations"
+  },
+  "recurrent_pilot": {
+    "accumulated_histories": {
+      "G0": "NO_EVENT",
+      "G1": "AB",
+      "G2": "AB then BA"
+    },
+    "third_probe": "same frozen BA construction under the prevalidated separated geometry",
+    "future_capacity_challenge": {
+      "id": "C4_SIX_AXIS_RADIUS3",
+      "definition_frozen_before_execution": true,
+      "positions": "six axial offsets at radius 3 around the transformed origin",
+      "raw": "pack(state=8000,s_reg=0,direction=inward,semantic=1)",
+      "clock": 0,
+      "horizons": [
+        32,
+        64
+      ]
+    }
+  },
+  "host_policy": "Python may initiate only the frozen physical experiences, tick, clone diagnostic branches, checkpoint, observe, log, and stop. It may not copy discovered causal support or construct an adaptive state.",
+  "adjudication": {
+    "all_three_pairwise_distinct": "DEE_NATIVE_HISTORY_SPECIFIC_TRANSFORMATION",
+    "HA_HB_equivalent_but_both_distinct_from_H0": "GENERIC_HISTORY_CONDITIONING",
+    "all_three_equivalent": "NO_HISTORY_SPECIFIC_EFFECT",
+    "other_reproducible_relation": "UNEXPECTED_NATIVE_HISTORY_MECHANISM"
+  }
+}

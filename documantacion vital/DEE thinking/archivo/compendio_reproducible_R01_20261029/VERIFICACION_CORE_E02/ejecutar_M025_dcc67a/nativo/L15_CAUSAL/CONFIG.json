@@ -1,0 +1,123 @@
+{
+  "schema": "CPC8R.heritage.L15.causal.frozen.v1",
+  "frozen_utc": "2026-10-29T03:13:57.008333+00:00",
+  "modality": "HERITAGE_DIAGNOSTIC_FORKS_NOT_NEW_E1",
+  "base": "resultados/diagnostico_L15_r1/passive_original_PRE_JOIN_T78.deetsnap.gz",
+  "base_sha256": "5a45ec48133db2c7196964d3ad617087bf95dbacd57c3d2fe11b08976ede8d27",
+  "N": 131,
+  "parent_tick": 78,
+  "horizon": 134,
+  "parent_run": "RL_P11_BA, earlier CPC8 cut, already copied selectively",
+  "conditions": [
+    "unaltered_fork",
+    "cut_extraneous7",
+    "identical_RAW_sham",
+    "cut_equal_dose_offpath7",
+    "late_alternative_reader",
+    "late_reader_cut_memory16"
+  ],
+  "edits": {
+    "cut_extraneous7": {
+      "site": [
+        89,
+        15,
+        29
+      ],
+      "raw": "0",
+      "clock": "PRESERVE"
+    },
+    "identical_RAW_sham": {
+      "site": [
+        89,
+        15,
+        29
+      ],
+      "raw": "IDENTICAL_CURRENT_RAW",
+      "clock": "PRESERVE"
+    },
+    "cut_equal_dose_offpath7": {
+      "site": [
+        91,
+        13,
+        29
+      ],
+      "raw": "0",
+      "clock": "PRESERVE"
+    },
+    "late_reader_cut_memory16": {
+      "site": [
+        90,
+        15,
+        29
+      ],
+      "raw": "0",
+      "clock": "PRESERVE"
+    }
+  },
+  "alternative_reader": {
+    "site": [
+      96,
+      11,
+      29
+    ],
+    "direction": [
+      -1,
+      0,
+      0
+    ],
+    "payload": 9,
+    "input_tick": 79,
+    "meeting_site": [
+      93,
+      11,
+      29
+    ],
+    "read_tick": 82,
+    "API": "Runtime.probe(channel,at_tick,s_reg)",
+    "state": 1,
+    "semantic": 1,
+    "clock_on_admission": "Runtime standard0"
+  },
+  "prediction_before_run": {
+    "uncut79": {
+      "s_reg": 23,
+      "direction": [
+        1,
+        -1,
+        0
+      ]
+    },
+    "cut7_79": {
+      "s_reg": 16,
+      "direction": [
+        0,
+        -1,
+        0
+      ]
+    },
+    "late_reader82": {
+      "s_reg": 32,
+      "direction": [
+        0,
+        -1,
+        0
+      ]
+    },
+    "late_reader_cut_memory82": {
+      "s_reg": 16,
+      "direction": [
+        0,
+        -1,
+        0
+      ]
+    },
+    "scope": "Mechanism hypotheses/evaluation only; predictions are never input into the participant or decoder."
+  },
+  "kernel_reducer_reference": {
+    "path": "genealogia/product45/kernel_v27.cpp",
+    "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+    "lines": "189-226 and empty-destination318-322",
+    "important": "Directional sources are not filtered by state or active flag. No scalar arithmetic is used to generate native outputs."
+  },
+  "bounds": "Six independent audit continuations from one historical parent; zero new preparations and zero new E1 histories; no attribution of autonomous source selection."
+}

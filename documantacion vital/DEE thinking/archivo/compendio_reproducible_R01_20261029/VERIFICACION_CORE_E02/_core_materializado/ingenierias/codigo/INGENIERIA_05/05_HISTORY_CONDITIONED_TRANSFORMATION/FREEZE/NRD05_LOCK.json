@@ -1,0 +1,59 @@
+{
+  "experiment_id": "NRD05_HISTORY_CONDITIONED_LANDSCAPE_TRANSFORMATION",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "kernel_sha256": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+  "factorial_worlds": {
+    "W00": "NO_E1 then NO_E2",
+    "W10": "E1_AB then NO_E2",
+    "W01": "NO_E1 then E2_BA",
+    "W11": "E1_AB then E2_BA"
+  },
+  "timing": {
+    "E1": 0,
+    "pre_E2_checkpoint": 4,
+    "E2": 4,
+    "D0_post_E2_checkpoint": 8,
+    "D64_retention_checkpoint": 72
+  },
+  "consistency": ["W00 == W01 before E2", "W10 == W11 before E2"],
+  "diagnostic_panel": ["C0_NONE", "C3_BLIND_PULSE"],
+  "diagnostic_horizons": [32, 64],
+  "primary_effects": {
+    "without_history": "W01 versus W00",
+    "with_history": "W11 versus W10"
+  },
+  "effect_signature": [
+    "exact raw_a XOR and difference mask",
+    "exact clock_a XOR and difference mask",
+    "field differences",
+    "C0 future pair effect",
+    "C3 future pair effect",
+    "C3-versus-C0 response pair effect"
+  ],
+  "principal_configuration": {
+    "id": "MAIN_S0",
+    "n": 23,
+    "origin": [11, 11, 11],
+    "permutation": [0, 1, 2],
+    "signs": [1, 1, 1],
+    "E2_geometry": "same validated canonical BA entry geometry"
+  },
+  "direct_path_exclusion": {
+    "id": "SEPARATED_S0",
+    "gate": "run if MAIN_S0 shows conditioning at D0",
+    "E2_secondary_transform": {"permutation": [1, 0, 2], "signs": [1, -1, 1]},
+    "source": "previously validated V1 spatial transform",
+    "requirement": "E2 direct entry route set must be disjoint from E1 direct entry route set before execution"
+  },
+  "fresh_validation": {
+    "gate": "run if MAIN_S0 conditioning persists at D64",
+    "configurations": [
+      {"id": "FRESH_V1", "n": 19, "origin": [9, 9, 9], "permutation": [1, 0, 2], "signs": [1, -1, 1]},
+      {"id": "FRESH_V2", "n": 25, "origin": [12, 12, 12], "permutation": [2, 1, 0], "signs": [-1, 1, 1]}
+    ],
+    "E2_geometry": "canonical BA in each frozen apparatus frame"
+  },
+  "host_guard": "Host only initiates the frozen physical E1/E2 carriers at their boundaries, ticks, checkpoints, clones for the frozen panel, observes and stops. No causal RAW configuration is copied.",
+  "runtime_estimate": "seconds to a few minutes",
+  "stop_rule": "No third experience and no L4/RW promotion in NRD05."
+}

@@ -1,0 +1,19 @@
+--- existing_driver_R03
++++ LAB_driver_R04
+@@ -225,6 +225,8 @@
+     def check_clock():
+         if time.time() >= deadline-closing_reserve:
+             raise TimeoutError('Campaign closing reserve reached; no automatic extension.')
++        if time.monotonic()-began >= plan['supervision_wall_limit_seconds']-closing_reserve:
++            raise TimeoutError('Declared local closing reserve reached; preserve the current ID, no extension.')
+ 
+     def heartbeat(force=False):
+         nonlocal heartbeat_at
+@@ -237,6 +239,7 @@
+                   'cached_tick': ui.observation(status['ESTADO_PUBLICADO']).get('tick')}, ensure_ascii=False), flush=True)
+ 
+     def wait_until(offset):
++        check_clock()  # Budget applies even when an earlier Native operation made this event late.
+         target = window_start+offset
+         while time.monotonic() < target:
+             check_clock()

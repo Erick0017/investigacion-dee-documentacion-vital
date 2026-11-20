@@ -1,0 +1,77 @@
+{
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R05",
+  "base_manifest_sha256": "cf628b0c0b8c8085f71288178e6524d03c486996fff5d0920e94ce493af22da1",
+  "components": [
+    {
+      "id": "EXACT_SEED_DIAGNOSTIC_PANEL24",
+      "manifest": "MANIFIESTO_R02.json",
+      "manifest_sha256": "3140483d85644aa8dc3425fe60e1588dde0257c14e4fcc3efdf8d5fadfdf0080",
+      "source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/SEMILLA_PANEL24_DIAGNOSTICO_R01/EVIDENCIA_PORTABLE_N0_R02"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 751,
+      "id": "PORTABLE_PANEL_0",
+      "sha256": "1563dc5c126fb5127ec86a929cdf174c8b221fa115eb722c95c6d32c36e0aa35",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_archivado_apd04_n0_r03.py"
+    },
+    {
+      "bytes": 29433,
+      "id": "PORTABLE_PANEL_1",
+      "sha256": "4b97e1f126654b25633c0f1699074a217e97ca9a1e971c6dc58cf1d51297b1ac",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/recalcular_vistas_y_reserva_r03_n0_r04.py"
+    }
+  ],
+  "jobs": [
+    {
+      "args": [
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/SEMILLA_PANEL24_DIAGNOSTICO_R01/EVIDENCIA_PORTABLE_N0_R02"
+        },
+        "--script",
+        "recalcular_panel24_r02.py",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/SEMILLA_PANEL24_DIAGNOSTICO_R01/EVIDENCIA_PORTABLE_N0_R02/RECALCULO_R02.json",
+      "id": "EXACT_SEED_DIAGNOSTIC_PANEL24",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_archivado_apd04_n0_r03.py",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03/RECALCULO_CIENTIFICO.json",
+      "id": "LATE_VIEWS_SHORT_PATH_ENTRYPOINT_R04",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/recalcular_vistas_y_reserva_r03_n0_r04.py",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    {
+      "id": "EARLY_FINAL_RESERVE",
+      "status": "WAITING_CLOSED_PRIMARY"
+    },
+    {
+      "id": "FULL_EXACT_PROOF",
+      "status": "WAITING_ROOT"
+    },
+    {
+      "id": "WORD_1_18",
+      "status": "NOT_EDITED_BY_THIS_AGENT"
+    }
+  ],
+  "schema": "APD04.CAS.explicit_closed_extension_spec.N0.R06"
+}

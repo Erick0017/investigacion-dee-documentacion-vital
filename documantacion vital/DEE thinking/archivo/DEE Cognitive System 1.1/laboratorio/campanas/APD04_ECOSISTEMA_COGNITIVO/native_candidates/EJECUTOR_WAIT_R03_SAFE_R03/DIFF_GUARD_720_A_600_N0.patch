@@ -1,0 +1,11 @@
+--- LAB720_NOT_EXECUTED
++++ LAB600_NOT_EXECUTED
+@@ -225,7 +225,7 @@
+     def check_clock():
+         if time.time() >= deadline-closing_reserve:
+             raise TimeoutError('Campaign closing reserve reached; no automatic extension.')
+-        if time.monotonic()-began >= plan['supervision_wall_limit_seconds']-closing_reserve:
++        if time.monotonic()-began >= plan['local_closing_start_seconds']:
+             raise TimeoutError('Declared local closing reserve reached; preserve the current ID, no extension.')
+ 
+     def heartbeat(force=False):

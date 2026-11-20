@@ -1,0 +1,95 @@
+{
+  "schema": "APD04.N0.prepared_generator_and_packaging_review.R03",
+  "status": "RECOMMENDATIONS_ONLY_NOT_A_CLOSED_RELEASE",
+  "scope": "Lectura de herramientas de cierre y metadatos existentes. No ejecución Native, no ensamblado/sello ZIP, no Word, no edición de contratos, de S o de distribuciones.",
+  "reviewed_sources": [
+    {
+      "file": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/GUIA_CIERRE_ANALISIS_APD04_R01.md",
+      "sha256": "d63012c6c4a92909cc56b5d6184017d7f6d8c1a761feaa208f8e568b0071e23f",
+      "coverage": "Guía íntegra: selección cerrada, atribución, componentes, jobs, sello, Full y Word."
+    },
+    {
+      "file": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/RESULTADOS_FINAL.schema.json",
+      "sha256": "cd03cc9117e79d138145ba3b740d6460585571d7636f527b2a081f8348b20b86",
+      "coverage": "Esquema íntegro: intents, claims, lives, revisions, sources, jobs y omissions."
+    },
+    {
+      "file": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/preparar_entrega_apd04_r01.py",
+      "sha256": "f149a81de2e257b9a10926b5ff19377978062fc4b5bcd2282cc9ed2168af4cb4",
+      "coverage": "Lectura dirigida: selección, exportación por hash, componentes, omisiones, miembro seguro, sello y recálculo desde extracción; no ejecutado."
+    },
+    {
+      "file": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/COMPROBACION_RUTAS_R01.json",
+      "coverage": "Comprobante existente de sintaxis/JSON y transformaciones sólo en memoria. Declara explícitamente cero Native y ninguna liberación cerrada. No repetir ni elevar su alcance."
+    }
+  ],
+  "generator_R03": {
+    "file": "controles_diseno/preparar_plan_reserva60_apd04_n0_r03.py",
+    "sha256": "8c119591132264c654df0f94a9e6190b47a86476d7c76d09d58846a692e7b07c",
+    "proof": "controles_diseno/PRUEBA_N0_GENERADOR_RESERVA60_R03.json",
+    "cases": 4,
+    "sensors_validated_not_selected": ["independent_balanced", "independent_two_pairs"],
+    "codec_options_validated_not_selected": ["R01", "R02"],
+    "R01_default": "Sin evento de configuración añadido. No demuestra por sí solo qué codec guarda un estado operativo.",
+    "R02_proposed_event": {
+      "at_seconds": 0,
+      "kind": "command",
+      "request_id": "apd04_reserve_r03_prepare_actuator_codec_R02",
+      "argv": ["configurar-actuador-ecosistema", "R02"]
+    },
+    "events_R01": 64,
+    "events_R02": 65,
+    "work_opportunities_each": 43,
+    "duration_seconds_each": 3600,
+    "original64_events_and_offsets_exactly_preserved": true,
+    "timing_limit": "El comando inicial puede retrasar el evento ambiental de t=0 y las oportunidades posteriores. El calendario no se compensa ni el instante de inicio se redefine: conservar duración nominal, offsets y lateness real.",
+    "current_UI_contract": "PENDING_CURRENT_UI_CONTRACT: configurar-actuador-ecosistema no figura en el parser leído. La validación del schema del driver sólo reconoce una lista literal de argumentos; no demuestra ejecución ni admisión de este comando.",
+    "closure_authorization": "R03 sólo produce DRAFT; no contiene --root-go. Root deberá aprobar y cerrar por separado un plan con identidad/snapshot/genealogía reales y contrato implementado, si procede.",
+    "failed_N0_attempt_preserved": {
+      "source": "controles_diseno/preparar_plan_reserva60_apd04_n0_r03_INTENTO01.py",
+      "error_type": "argparse.ArgumentError",
+      "cause": "La primera versión no capturaba ArgumentError del parser con exit_on_error=False al consultar el comando futuro. Ningún Runtime abrió ni avanzó.",
+      "correction": "Sólo el generador propio captura el error y registra contrato pendiente; no se alteró la UI ni se simuló aceptación."
+    }
+  },
+  "packaging_instructions": [
+    {
+      "item": "Planes versus hechos",
+      "instruction": "Incluir R03 y su N0 proof sólo como herramienta/preparación. No añadir sus 43 oportunidades a denominadores de ensayos ejecutados ni describirlas como reserva realizada. El mismo límite aplica a cualquier DRAFT R01/R02."
+    },
+    {
+      "item": "Revisión física y codec",
+      "instruction": "Si Root acepta posteriormente ACTUADOR_R02, conservar bytes exactos de su implementación y revisión, el comando material admitido, estado previo/posterior y contraste correspondiente. Clasificar la conversión como aparato P0; separar el estado adquirido que produce la emisión. NULL no se convierte en cero ni INSPECT."
+    },
+    {
+      "item": "Componentes esenciales ya cerrados",
+      "instruction": "Seleccionar por manifiesto los componentes EVIDENCIA_CONTROLES_CERRADOS_R01, REFERENCIAS_CUATRO_NIVELES_CERRADO_R03 y ESCENA_MAIN_Y_LECTURAS_N0_R03, con sus jobs portátiles reales. Evitar duplicar los 22 lectores del panel que la escena reutiliza. Conservar errores instrumentales y los ocho controles dependientes del prefijo común."
+    },
+    {
+      "item": "Futuros y genealogía",
+      "instruction": "Distinguir MAIN adverso, prefijo cerrado T639374, fork continuable y futuras ramas de codec. Elegir una vida para reservar no permite sumar experiencias de AUX ni fusionar estados. Los cortes futuros aún no sellados permanecen pendientes."
+    },
+    {
+      "item": "Metadatos finales",
+      "instruction": "RESULTADOS_FINAL requiere fuentes cerradas reales, hashes exactos, localizadores, alcance de numerador/denominador y null cuando no se calculó. Mantener native_work_closed=false hasta el cierre de los escritores relevantes. Sólo Root autoriza FINAL_RESULTS_APPROVED_FOR_ANALYSIS."
+    },
+    {
+      "item": "Análisis versus distribución operativa",
+      "instruction": "El análisis excluye motor, WHL, SQLite y snapshots completos. Los pares operativos, colas y manifiestos permanecen en el sistema local y se enlazan mediante localizadores/hash. El comprobante de rutas de distribución no demuestra que el Full haya sido actualizado, extraído ni continuado."
+    },
+    {
+      "item": "Verificación de cierre",
+      "instruction": "Después de Root GO: ensamblar por hashes y ejecutar jobs desde una extracción nueva del ZIP exacto. Distinguir igualdad JSON de identidad de bytes. El SHA del ZIP se guarda fuera del contenedor. No declarar realizada esta fase porque existan herramientas preparadas."
+    }
+  ],
+  "executed_here": {
+    "N0_generator_self_check": true,
+    "new_Native_ticks": 0,
+    "new_lives": 0,
+    "reserve_plans_closed": 0,
+    "zip_generated": false,
+    "Word_edited": false,
+    "contracts_edited": false,
+    "S_edited": false
+  }
+}

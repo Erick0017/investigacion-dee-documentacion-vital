@@ -1,0 +1,7505 @@
+{
+  "schema": "APD04.ui.literal_parser.N0.v1",
+  "candidate_sha256": "d411dc55d889d88e0de00d2163cf3da9c82687597f10d225433af0d81c1718bd",
+  "baseline_sha256": "771a56a7dd15c72febbc9d416ddc0ed113fcdb95ffe4d6ffc4e42ea47a7319c4",
+  "protocol_sha256": "3775cbbd2d121dad1ab1ee8ad50387d0e2e71895bafe189a8b86f98cb8af9075",
+  "old_material_cases_unchanged": 17,
+  "old_control_parser_cases_unchanged": 12,
+  "new_valid_transport_cases": 252,
+  "invalid_cli_rejected": 14,
+  "hidden_answer_fields_rejected": 5,
+  "valid_cases": [
+    {
+      "argv": [
+        "usar",
+        "suma",
+        "8",
+        "3"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02",
+          "texto": "suma",
+          "operandos": [
+            8,
+            3
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "ensenar",
+        "suma",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-docencia",
+          "texto": "suma",
+          "senal": 1,
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "ensenar",
+        "diferencia",
+        "-1",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-docencia",
+          "texto": "diferencia",
+          "senal": -1,
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "lenguaje",
+        "suma",
+        "17",
+        "alfa"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-lenguaje",
+          "texto": "suma",
+          "valor": 17,
+          "contexto": "alfa"
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "acumular",
+        "8",
+        "--demora",
+        "2"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-acumular",
+          "valor": 8,
+          "demora_periodos": 2
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "componer",
+        "suma",
+        "total",
+        "--datos",
+        "3",
+        "5",
+        "7"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-componer",
+          "formas": [
+            "suma",
+            "total"
+          ],
+          "datos": [
+            3,
+            5,
+            7
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "meta",
+        "suma",
+        "8",
+        "3",
+        "--oculto"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-meta-iniciar",
+          "texto": "suma",
+          "operandos": [
+            8,
+            3
+          ],
+          "segundo_visible": false
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "meta-paso",
+        "4"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd02-meta-paso",
+          "oportunidades": 4
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "admitir-apd03"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-admitir",
+          "consecuencia": "local_useful"
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "admitir-apd03",
+        "--consecuencia",
+        "file_only"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-admitir",
+          "consecuencia": "file_only"
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "ensenar-nueva",
+        "luma",
+        "-1",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-docencia",
+          "texto": "luma",
+          "senal": -1,
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "lenguaje-nuevo",
+        "nara",
+        "8",
+        "delta"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-lenguaje",
+          "texto": "nara",
+          "valor": 8,
+          "contexto": "delta"
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "objetivo",
+        "suma",
+        "11",
+        "7",
+        "--oculto",
+        "--contexto-ambiente",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-tarea-iniciar",
+          "texto": "suma",
+          "operandos": [
+            11,
+            7
+          ],
+          "segundo_visible": false,
+          "contexto_ambiente": 1
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "paso",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-paso",
+          "oportunidades": 1
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "panel"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-panel",
+          "nuevas": false,
+          "memorias": false
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "panel",
+        "--nuevas",
+        "--memorias",
+        "--retorno",
+        "omit",
+        "--actuador",
+        "nulled"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd03-panel",
+          "nuevas": true,
+          "memorias": true
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "evento",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\apd04_literal_parser_N0_39h0y71x\\EVENTO_SINTETICO_N0.json"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-estado"
+        }
+      ],
+      "one_fake_call": true,
+      "old_unchanged": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "2",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "5",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 5,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "10",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 10,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "0",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 0,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "clasifica",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "0",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            0
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "8",
+        "4",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "-4071",
+        "--fuentes",
+        "20",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "20",
+        "20",
+        "--criterio",
+        "40"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": -4071,
+          "fuentes": 20,
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            20,
+            20
+          ],
+          "criterio": 40
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "independent",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "independent",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "zero",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "zero",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "independent"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "independent",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "tag_only"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "tag_only",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "zero"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--sensor",
+        "zero",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "independent",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "independent",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "zero",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "zero",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "independent"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "independent",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "tag_only"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "tag_only",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "zero"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "2",
+        "--sensor",
+        "zero",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 2,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "independent",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "independent",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "zero",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "zero",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "independent"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "independent",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "tag_only"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "tag_only",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "zero"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "3",
+        "--sensor",
+        "zero",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 3,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "independent",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "independent",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "tag_only",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "zero",
+        "--sin-lexico"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "zero",
+        "--sin-lexico",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "independent"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "independent",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "tag_only"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "tag_only",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "tag_only",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "zero"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "4",
+        "--sensor",
+        "zero",
+        "--desacoplado"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "zero",
+          "desacoplado": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio"
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--cargas",
+        "0",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "cargas": [
+            0,
+            20
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--cargas",
+        "0",
+        "20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "cargas": [
+            0,
+            20
+          ],
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra"
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--cargas",
+        "0",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "cargas": [
+            0,
+            20
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--cargas",
+        "0",
+        "20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "cargas": [
+            0,
+            20
+          ],
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra"
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ]
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-cambio",
+        "--goal",
+        "1",
+        "--palabra",
+        "equilibra",
+        "--cargas",
+        "0",
+        "20",
+        "--rotar",
+        "-20",
+        "--retirar-observados"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            0,
+            20
+          ],
+          "rotar": -20,
+          "retirar_observados": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "paired"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "paired",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "paired",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "paired",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "omitted"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "omitted",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "omitted",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "omitted",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "desync"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "desync",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "-1",
+        "--docente",
+        "desync",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": -1,
+          "docente": "desync",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "paired"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "paired",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "paired",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "paired",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "omitted"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "omitted",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "omitted",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "omitted",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "desync"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "desync",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "clasifica",
+        "1",
+        "--docente",
+        "desync",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1,
+          "docente": "desync",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "paired"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "paired",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "paired",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "paired",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "omitted"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "omitted",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "omitted",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "omitted",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "desync"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "desync",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "-1",
+        "--docente",
+        "desync",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1,
+          "docente": "desync",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "paired"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "paired",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "paired",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "paired",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "omitted"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "omitted",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "omitted",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "omitted",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "desync"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "desync",
+          "revision": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ensenar-ecosistema",
+        "equilibra",
+        "1",
+        "--docente",
+        "desync",
+        "--revision"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": 1,
+          "docente": "desync",
+          "revision": true
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "palabra-ecosistema",
+        "clasifica"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "palabra-ecosistema",
+        "equilibra"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "equilibra"
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-iniciar",
+        "--semilla",
+        "4071",
+        "--fuentes",
+        "2"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": 4071,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ],
+          "criterio": 20
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    },
+    {
+      "argv": [
+        "ecosistema-vivir",
+        "1",
+        "--retorno",
+        "omit",
+        "--actuador",
+        "nulled"
+      ],
+      "literal_rows": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "lexico": true,
+          "sensor": "independent",
+          "desacoplado": false
+        }
+      ],
+      "one_fake_call": true,
+      "APD04_contract_accepted": true
+    }
+  ],
+  "invalid_cases": [
+    [
+      "ecosistema-iniciar",
+      "--fuentes",
+      "2"
+    ],
+    [
+      "ecosistema-iniciar",
+      "--semilla",
+      "1",
+      "--fuentes",
+      "3"
+    ],
+    [
+      "ecosistema-iniciar",
+      "--semilla",
+      "1",
+      "--fuentes",
+      "2",
+      "--goal",
+      "2"
+    ],
+    [
+      "ecosistema-iniciar",
+      "--semilla",
+      "1",
+      "--fuentes",
+      "2",
+      "--cargas",
+      "-1",
+      "4"
+    ],
+    [
+      "ecosistema-iniciar",
+      "--semilla",
+      "1",
+      "--fuentes",
+      "2",
+      "--criterio",
+      "41"
+    ],
+    [
+      "ecosistema-vivir",
+      "0"
+    ],
+    [
+      "ecosistema-vivir",
+      "5"
+    ],
+    [
+      "ecosistema-vivir",
+      "1",
+      "--sensor",
+      "correcto"
+    ],
+    [
+      "ecosistema-cambio",
+      "--rotar",
+      "21"
+    ],
+    [
+      "ecosistema-cambio",
+      "--cargas",
+      "0",
+      "21"
+    ],
+    [
+      "ensenar-ecosistema",
+      "clasifica",
+      "0"
+    ],
+    [
+      "ensenar-ecosistema",
+      "clasifica",
+      "1",
+      "--docente",
+      "respuesta"
+    ],
+    [
+      "palabra-ecosistema",
+      "libre"
+    ],
+    [
+      "palabra-ecosistema",
+      "clasifica",
+      "--respuesta",
+      "1"
+    ]
+  ],
+  "new_native_ticks": 0,
+  "real_actor_calls": 0,
+  "fake_actor_calls": 269,
+  "scientific_files_unchanged": true,
+  "candidate_not_installed_in_system": true,
+  "scope": "Parser, field preservation, literal protocol validation and exactly-one mock transport only; not physical validation or acquisition."
+}

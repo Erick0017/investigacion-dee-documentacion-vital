@@ -1,0 +1,129 @@
+--- sistema/app/protocolo_apd04.py
++++ sistema/app/protocolo_apd04.py
+@@ -11,6 +11,7 @@
+       'apd04-estado':({'modo'},{'modo'}),
+       'apd04-leccion-referencia':({'modo','lado'},{'modo','lado'}),
+       'apd04-lex-admitir':({'modo'},{'modo'}),
++      'apd04-r04-admitir':({'modo'},{'modo'}),
+       'apd04-docencia':({'modo','texto','senal','docente','revision'},{'modo','texto','senal'}),
+       'apd04-palabra':({'modo','texto'},{'modo','texto'})}
+     if mode not in fields:raise ValueError('Modo literal APD04 desconocido')
+@@ -24,8 +25,8 @@
+     if 'senal'in row and(type(row['senal'])is not int or row['senal']not in(-1,1)):raise ValueError('Docente explicito -1/+1')
+     if 'lado'in row and row['lado']not in('A','B'):raise ValueError('Experiencia explicita A/B')
+     if 'docente'in row and row['docente']not in('paired','omitted','desync'):raise ValueError('Modalidad docente declarada')
+-    if 'sensor'in row and row['sensor']not in('independent','independent_balanced','tag_only','zero'):raise ValueError('Sensor prospectivo')
+-    if 'familia'in row and row['familia']not in('R02','R03'):raise ValueError('Sensor identificado sin seleccion postrespuesta')
++    if 'sensor'in row and row['sensor']not in('independent','independent_balanced','independent_two_pairs','tag_only','zero'):raise ValueError('Sensor prospectivo')
++    if 'familia'in row and row['familia']not in('R02','R03','R04'):raise ValueError('Sensor identificado sin seleccion postrespuesta')
+     if 'pares'in row and(not isinstance(row['pares'],list)or not 1<=len(row['pares'])<=8 or any(not isinstance(p,list)or len(p)!=2 or any(type(b)is not int or b not in(0,1)for b in p)for p in row['pares'])):raise ValueError('1..8 pares de dos propiedades elementales')
+     if 'oportunidades'in row and(type(row['oportunidades'])is not int or not 1<=row['oportunidades']<=4):raise ValueError('1..4 oportunidades genericas')
+     if 'semilla'in row and type(row['semilla'])is not int:raise ValueError('Semilla ambiental exacta')
+--- sistema/capacidades/ecosistema_apd04.py
++++ sistema/capacidades/ecosistema_apd04.py
+@@ -11,6 +11,7 @@
+ from capacidades import acciones_nativas_apd04 as native
+ from capacidades import sensor_componentes_apd04 as sensor
+ from capacidades import sensor_balanceado_apd04 as balanced_sensor
++from capacidades import sensor_dos_pares_apd04 as two_pair_sensor
+ from capacidades import lexico_compartido_apd04 as lex
+ from capacidades import mente_unificada_01 as mu
+ from capacidades import ruta_adaptativa_apd02_04 as route
+@@ -32,11 +33,14 @@
+     from app.protocolo_apd04 import validate_literal
+     validate_literal(row)
+     mode=row.get('modo')
+-    allowed={'apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
++    allowed={'apd04-r04-admitir','apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
+     if mode not in allowed:raise ValueError('Modo APD04 no admitido')
+     route.get(a)
+     if route.get(a)['pending_window'] is not None:raise ValueError('Traza R04 pendiente; no reemplazar futuro')
+-    if mode=='apd04-sensor-calibrar':return
++    if mode=='apd04-r04-admitir':return
++    if mode=='apd04-sensor-calibrar':
++        if row['familia']=='R04':two_pair_sensor._get(a)
++        return
+     if mode=='apd04-calibrar':
+         if set(row)!={'modo','casos'} or not isinstance(row['casos'],list) or not 1<=len(row['casos'])<=8:raise ValueError('1..8casos literales, sin targets')
+         for c in row['casos']:
+@@ -69,12 +73,13 @@
+     if mode=='apd04-palabra':
+         if set(row)!={'modo','texto'} or row['texto']not in lex.FORM_CODEC:raise ValueError('Consulta literal sin target')
+         return
++    if mode=='apd04-vivir' and row.get('sensor')=='independent_two_pairs':two_pair_sensor._get(a)
+     m=get(a)
+     if m.get('in_progress'):raise ValueError('Futuro incierto conservado; no reintentar')
+     if mode=='apd04-ampliar' and row['fuentes']<=len(m['objects']):raise ValueError('Ampliar agrega objetos; no elimina ni reinicia mundo/cursor/cache')
+     if mode=='apd04-cambio' and any(x['fuente']not in{o['id']for o in m['objects']}for x in row.get('mutaciones',[])):raise ValueError('Fuente no existente; no crearla silenciosamente')
+     if mode=='apd04-vivir' and (set(row)-{'modo','oportunidades','lexico','sensor','actuador','retorno','desacoplado'} or type(row.get('oportunidades'))is not int or not 1<=row['oportunidades']<=4):raise ValueError('1..4oportunidades genericas')
+-    if mode=='apd04-vivir' and row.get('sensor','independent')not in('independent','independent_balanced','tag_only','zero'):raise ValueError('Sensor prospectivo fijo')
++    if mode=='apd04-vivir' and row.get('sensor','independent')not in('independent','independent_balanced','independent_two_pairs','tag_only','zero'):raise ValueError('Sensor prospectivo fijo')
+     if mode=='apd04-vivir' and any(type(row.get(k,v))is not bool for k,v in [('lexico',True),('desacoplado',False)]):raise ValueError('Controles booleanos explicitos')
+ 
+ def start(a,row):
+@@ -126,8 +131,8 @@
+         public={'source_id':obj['id'],'tag':obj['tag'],'goal_tag':m['goal_tag'],'word':m['word'],
+            'cached_value':None if obj['observed']is None else obj['observed']['value'],'loads':list(m['loads'])}
+         m['in_progress']={'episode':ep,'tick':int(a.tick)};save(a,m)
+-        bit0=obj['tag']if sensor_mode!='zero'else 0;bit1=m['goal_tag']if sensor_mode in('independent','independent_balanced')else bit0 if sensor_mode=='tag_only'else 0
+-        selected=(balanced_sensor if sensor_mode=='independent_balanced'else sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];action=SELECT_CODEC.get(sign)
++        bit0=obj['tag']if sensor_mode!='zero'else 0;bit1=m['goal_tag']if sensor_mode in('independent','independent_balanced','independent_two_pairs')else bit0 if sensor_mode=='tag_only'else 0
++        selected={'independent_balanced':balanced_sensor,'independent_two_pairs':two_pair_sensor}.get(sensor_mode,sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];action=SELECT_CODEC.get(sign)
+         effect={'action':action,'actuator':actuator,'new_fact':False,'useful':False,'valid_native':sign is not None}
+         operation=None;word=None;artifact=None;expected=None
+         if action is None:m['counters']['invalid']+=1
+@@ -191,11 +196,16 @@
+     if mode=='apd04-sensor-calibrar':
+         rows=[]
+         for bits in row['pares']:
+-            selected=(sensor if row['familia']=='R02'else balanced_sensor).selecciona(a,*bits,detail=detailed)
++            selected={'R02':sensor,'R03':balanced_sensor,'R04':two_pair_sensor}[row['familia']].selecciona(a,*bits,detail=detailed)
+             diagnostic=balanced_sensor.diagnostic_gates9(a)
+             returned=sensor.finish(a,'SUCCESS',mode='omit')
+             rows.append({'raw_components':bits,'selection':selected,'auditor_only_gates9':diagnostic,'return':returned})
+         return {'kind':'explicit_auxiliary_sensor_calibration_without_quality_feedback','family':row['familia'],'rows':rows,'no_task_success_or_attention_claim':True}
++    if mode=='apd04-r04-admitir':
++        screen=two_pair_sensor.preflight(a)
++        if not screen['admissible']:
++            return {'kind':'APD04_R04_P0_admission_rejected_without_material_write','admitted':False,'preflight':screen,'new_native_ticks_in_operation':0}
++        return two_pair_sensor.prepare(a)
+     if mode=='apd04-calibrar':
+         return {'kind':'explicit_auxiliary_native_calibration','rows':[native.classify(a,c['valor'],detail=detailed)if c['tipo']=='clasifica'else native.balance(a,*c['cargas'],detail=detailed)for c in row['casos']]}
+     if mode=='apd04-leccion-referencia':return mu.experience(a,row['lado'])
+--- sistema/app/usar_dee.py
++++ sistema/app/usar_dee.py
+@@ -460,7 +460,7 @@
+     eco_live = sub.add_parser("ecosistema-vivir", help="Ofrece oportunidades; la selección y la respuesta pertenecen al mecanismo DEE")
+     eco_live.add_argument("oportunidades", type=int, choices=(1, 2, 3, 4))
+     eco_live.add_argument("--sin-lexico", action="store_false", dest="lexico", default=True)
+-    eco_live.add_argument("--sensor", choices=("independent", "independent_balanced", "tag_only", "zero"), default="independent")
++    eco_live.add_argument("--sensor", choices=("independent", "independent_balanced", "independent_two_pairs", "tag_only", "zero"), default="independent")
+     eco_live.add_argument("--desacoplado", action="store_true", help="Control explícito de consecuencias desacopladas")
+     eco_change = sub.add_parser("ecosistema-cambio", help="Cambia condiciones externas declaradas, sin editar memorias o lectores")
+     eco_change.add_argument("--goal", type=int, choices=(0, 1))
+@@ -473,10 +473,14 @@
+     eco_teach.add_argument("senal", type=int, choices=(-1, 1))
+     eco_teach.add_argument("--docente", choices=("paired", "omitted", "desync"), default="paired")
+     eco_teach.add_argument("--revision", action="store_true")
++    eco_r04 = sub.add_parser("admitir-sensor-r04", help="Preparacion P0 explicita de dos puertos; no ensena contenido")
++    eco_sensor = sub.add_parser("calibrar-sensor-ecosistema", help="Entradas elementales literales; no retorno de calidad de tarea")
++    eco_sensor.add_argument("--familia", choices=("R02", "R03", "R04"), required=True)
++    eco_sensor.add_argument("pares", nargs="+", choices=("00", "01", "10", "11"))
+     eco_word = sub.add_parser("palabra-ecosistema", help="Consulta MATERIAL de una señal finita; no conversación libre")
+     eco_word.add_argument("texto", choices=("alfa", "beta", "gamma", "delta", "epsilon", "zeta", "suma", "diferencia", "agrega", "resta", "total", "quita", "compara", "recuerda", "luma", "nara", "clasifica", "equilibra"))
+     for item in (use, teach, language, accumulate, composition, goal, step, admit_new, teach_new, language_new, new_goal, new_step, panel, event,
+-                 eco_start, eco_live, eco_change, eco_teach, eco_word):
++                 eco_start, eco_live, eco_change, eco_teach, eco_word, eco_r04, eco_sensor):
+         item.add_argument("--retorno", choices=("real", "omit"), default="real")
+         item.add_argument("--actuador", choices=("closed", "nulled"), default="closed")
+     return parser
+@@ -499,6 +503,9 @@
+     if a == "panel": return [{"modo": "apd03-panel", "nuevas": options.nuevas, "memorias": options.memorias}]
+     if a == "ecosistema-iniciar": return [{"modo": "apd04-iniciar", "semilla": options.semilla, "fuentes": options.fuentes,
+         "etiqueta_objetivo": options.goal, "palabra": options.palabra, "cargas": options.cargas, "criterio": options.criterio}]
++    if a == "admitir-sensor-r04": return [{"modo": "apd04-r04-admitir"}]
++    if a == "calibrar-sensor-ecosistema": return [{"modo": "apd04-sensor-calibrar", "familia": options.familia,
++        "pares": [[int(pair[0]), int(pair[1])] for pair in options.pares]}]
+     if a == "ecosistema-vivir": return [{"modo": "apd04-vivir", "oportunidades": options.oportunidades,
+         "lexico": options.lexico, "sensor": options.sensor, "desacoplado": options.desacoplado}]
+     if a == "ecosistema-cambio":

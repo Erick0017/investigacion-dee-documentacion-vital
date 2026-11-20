@@ -1,0 +1,28 @@
+--- accepted_ACT_R03/sistema/app/usar_dee.py
++++ proposed_persistent_view/sistema/app/usar_dee.py
+@@ -473,6 +473,8 @@
+     eco_teach.add_argument("senal", type=int, choices=(-1, 1))
+     eco_teach.add_argument("--docente", choices=("paired", "omitted", "desync"), default="paired")
+     eco_teach.add_argument("--revision", action="store_true")
++    eco_view = sub.add_parser("configurar-vista-ecosistema", help="Oportunidad P0 fija de retener tras INSPECT; no elige la fuente por utilidad")
++    eco_view.add_argument("politica", choices=("circular_R01", "inspeccion_persistente"))
+     eco_actuator = sub.add_parser("configurar-actuador-ecosistema", help="Preparacion P0 fija; no aprende ni elige por respuesta")
+     eco_actuator.add_argument("version", choices=("R01", "R02", "R03"))
+     eco_r04 = sub.add_parser("admitir-sensor-r04", help="Preparacion P0 explicita de dos puertos; no ensena contenido")
+@@ -482,7 +484,7 @@
+     eco_word = sub.add_parser("palabra-ecosistema", help="Consulta MATERIAL de una señal finita; no conversación libre")
+     eco_word.add_argument("texto", choices=("alfa", "beta", "gamma", "delta", "epsilon", "zeta", "suma", "diferencia", "agrega", "resta", "total", "quita", "compara", "recuerda", "luma", "nara", "clasifica", "equilibra"))
+     for item in (use, teach, language, accumulate, composition, goal, step, admit_new, teach_new, language_new, new_goal, new_step, panel, event,
+-                 eco_start, eco_live, eco_change, eco_teach, eco_word, eco_r04, eco_sensor, eco_actuator):
++                 eco_start, eco_live, eco_change, eco_teach, eco_word, eco_r04, eco_sensor, eco_actuator, eco_view):
+         item.add_argument("--retorno", choices=("real", "omit"), default="real")
+         item.add_argument("--actuador", choices=("closed", "nulled"), default="closed")
+     return parser
+@@ -505,6 +507,7 @@
+     if a == "panel": return [{"modo": "apd03-panel", "nuevas": options.nuevas, "memorias": options.memorias}]
+     if a == "ecosistema-iniciar": return [{"modo": "apd04-iniciar", "semilla": options.semilla, "fuentes": options.fuentes,
+         "etiqueta_objetivo": options.goal, "palabra": options.palabra, "cargas": options.cargas, "criterio": options.criterio}]
++    if a == "configurar-vista-ecosistema": return [{"modo": "apd04-vista", "politica": options.politica}]
+     if a == "configurar-actuador-ecosistema": return [{"modo": "apd04-actuador", "version": options.version}]
+     if a == "admitir-sensor-r04": return [{"modo": "apd04-r04-admitir"}]
+     if a == "calibrar-sensor-ecosistema": return [{"modo": "apd04-sensor-calibrar", "familia": options.familia,

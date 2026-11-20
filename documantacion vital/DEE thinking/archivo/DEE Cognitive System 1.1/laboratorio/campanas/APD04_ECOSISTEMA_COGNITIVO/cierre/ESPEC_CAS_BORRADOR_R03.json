@@ -1,0 +1,171 @@
+{
+  "schema": "APD04.CAS.explicit_closed_extension_spec.N0.R03",
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_BASE_N0_R01",
+  "base_manifest_sha256": "1e356771788adc92ba838d56673c35867a31fd70aee6fccbe30935b2de74e688",
+  "components": [
+    {
+      "id": "FOUR_BRIEF_LEVELS",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CERRADOS_N0_R01",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "d73ad9f03348d20a9dca9fea43447422e0e92243ac326c0168358515dcf23273"
+    },
+    {
+      "id": "GUARD_90MIN",
+      "source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03",
+      "manifest": "MANIFIESTO_R03.json",
+      "manifest_sha256": "ffe419fdc4e6f1b1a21df81df8e3197fd872b42ca91e4b114bcdc19f2ebc8b26"
+    },
+    {
+      "id": "WAIT_R03_POST10",
+      "source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_POST10_EVIDENCIA_PORTABLE_N0_R01",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "cfab3641b178b5234f2ad63af2421a1681a7c96cb74a1afa0efc3ec670526db3"
+    },
+    {
+      "id": "WAIT_R03_LOCAL_FOOTPRINT",
+      "source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_PRIMERA_DIVERGENCIA_N0_R01",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "98e9f91775ec6f926bc8c20099c040a3b75160266f3774d13a9bbc937a17ae2b"
+    }
+  ],
+  "files": [
+    {
+      "id": "WAIT_RECALC_WRAPPER",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_wait_post10_n0_r01.py",
+      "sha256": "58cf236a4ba78702ef0058f79cacf831e5d5b7ce2acecbbb2934b6971c4f22dc",
+      "bytes": 668
+    },
+    {
+      "id": "BRIEF_REFERENCE158",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/RECALCULO_CAS_PORTABLE_NIVELES_BREVES_N0_R02.json",
+      "bytes": 424680,
+      "sha256": "ed8a309efbe620a7a88e4400d9aaeeea4fbd5d457dd651834a16cc2ecfdccd00"
+    },
+    {
+      "id": "BRIEF_SUMMARY",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CAS_N0_R02/RESUMEN_RESULTADOS.json",
+      "bytes": 13333,
+      "sha256": "73e113b5dff3e7f0f8880b06888305e597229ee9d8c9b6dba303536e50f370e5"
+    },
+    {
+      "id": "ARCHIVED_RECALC_WRAPPER",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_archivado_apd04_n0_r02.py",
+      "bytes": 723,
+      "sha256": "7e672690a02ab7625a1ab0bbfdf14636ded43fc946f7539e5a2c33ede28f8f09"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "FOUR_BRIEF_LEVELS",
+      "base": ".",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CERRADOS_N0_R01/recalcular_niveles_breves_n0_r01.py",
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_NIVELES_BREVES_CERRADOS_N0_R01"
+        },
+        "--output",
+        "{output}"
+      ],
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/RECALCULO_CAS_PORTABLE_NIVELES_BREVES_N0_R02.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    },
+    {
+      "id": "GUARD_90MIN_PRIMARY",
+      "base": ".",
+      "script": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/CODIGO/cerrar_reserva_guard_ro_n0_r01.py",
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/RECALCULO_CIERRE_RESERVA_N0.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    },
+    {
+      "id": "GUARD_90MIN_CALENDAR",
+      "base": ".",
+      "script": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/CODIGO/completar_calendario_reserva_ro_n0_r03.py",
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_CIERRE_GUARDA_N0_R03/RECALCULO_CALENDARIO_Y_CONCILIACION_R02.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    },
+    {
+      "id": "WAIT_R03_POST10",
+      "base": ".",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_wait_post10_n0_r01.py",
+      "args": [
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_POST10_EVIDENCIA_PORTABLE_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_POST10_EVIDENCIA_PORTABLE_N0_R01/RECALCULO.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    },
+    {
+      "id": "WAIT_R03_FIRST_DIFFERENCE",
+      "base": ".",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_archivado_apd04_n0_r02.py",
+      "args": [
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_PRIMERA_DIVERGENCIA_N0_R01"
+        },
+        "--script",
+        "dossier_primera_divergencia_wait_r03_n0_r01.py",
+        "--out",
+        "{output}"
+      ],
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_PRIMERA_DIVERGENCIA_N0_R01/RECALCULO_GLOBAL.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    {
+      "id": "THREE_VIEW_ARMS",
+      "status": "NOT_CLOSED_NOT_COUNTED",
+      "locator": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/VISTA_POST10_*_R02"
+    },
+    {
+      "id": "NEW_FINAL_RESERVE",
+      "status": "NOT_CLOSED_NOT_COUNTED"
+    },
+    {
+      "id": "WORD_1_18",
+      "status": "NOT_EDITED_BY_THIS_AGENT"
+    },
+    {
+      "id": "FULL_EXACT",
+      "status": "NOT_EXECUTED_BY_THIS_AGENT"
+    }
+  ],
+  "documentation_correction": {
+    "brief_original_reference_checks": 96,
+    "brief_postmanifest_reference_checks": 158,
+    "extra_checks": 62,
+    "all_scientific_fields_equal": true,
+    "old_reference_preserved": true,
+    "postmanifest_expected_sha256": "ed8a309efbe620a7a88e4400d9aaeeea4fbd5d457dd651834a16cc2ecfdccd00",
+    "not_claimed_byte_equal_old_reference": true
+  }
+}

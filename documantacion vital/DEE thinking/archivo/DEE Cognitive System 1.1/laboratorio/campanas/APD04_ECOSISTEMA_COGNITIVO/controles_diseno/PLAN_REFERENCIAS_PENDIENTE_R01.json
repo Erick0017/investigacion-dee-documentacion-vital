@@ -1,0 +1,17 @@
+{
+  "schema":"APD04.conventional_comparison_plan.N0.R01",
+  "status":"BORRADOR_NO_EJECUTAR_HASTA_AGENDA_NATIVE_CONGELADA",
+  "new_native_ticks":0,
+  "executed_reference_trajectories":0,
+  "policies":["fija_ciclo_INSPECT_INSPECT_USE","WSLS_estandar_global","WSLS_adaptativa_por_dos_bits_publicos"],
+  "selector_information":{"permitted":["tag0/1","goal_tag0/1","propia acción anterior","retorno binario posterior"],"not_delivered_to_choose":["source_id","cached_value","loads","criterion_auditor_only","semilla","valor oculto","clase correcta","versión del objeto"]},
+  "downstream_executor_information":{"permitted":["la palabra del objetivo","valor realmente cacheado después de INSPECT","dos cargas actuales"],"supplied_preparation":["función convencional de comparar con20","mapeo correcto palabra-herramienta","regla de mover una unidad por signo de diferencia"],"acquisition_cost_not_matched":true},
+  "frozen_policy_definition":{"fixed":"Ciclo I,I,U de período3, coprimo con2/5/10/20, para no confundir permanentemente acción con paridad de fuente.","global_WSLS":"Primera INSPECT; conservar última acción trasSUCCESS y alternar trasFAILURE.","context_WSLS":"Cuatro estados posibles indexados sólo por(tag,goal_tag); cada uno inicia INSPECT, conserva trasSUCCESS y alterna trasFAILURE. No conoce igualdad/relevancia privada ni el dato cacheado."},
+  "required_matching_before_run":["estado inicial y semilla de cada ambiente realmente ensayado en DEE","fuentes/cargas/criterio/palabra iniciales","agenda exógena completa por oportunidad o tick ambiental","mutaciones y versiones de objetos","cambios de objetivo/palabra/cargas/rotación","oportunidades totales y presupuesto","cache legítima y no reiniciada para favorecer un comparador","si E1 recibió docencia de las dos palabras, registrar costo y preparación equivalente de referencias"],
+  "trials":[],
+  "illustrative_fixture_not_a_reserve":{"seed":4104,"sources":5,"word":"clasifica","loads":[8,4],"goal_tag":0,"criterion":20,"opportunities":60,"agenda":[{"at":21,"goal_tag":1,"word":"equilibra","loads":[4,12]},{"at":41,"goal_tag":0,"word":"clasifica","replace_values":true}]},
+  "comparison_scope":"El comparador prueba el mismo trabajo y selección de información una vez recibida su preparación; no pretende medir adquisición física ni igualar automáticamente coste de CPU con DEE.",
+  "resource_definitions":{"cpu":"time.process_time_ns del proceso convencional completo, sin hijos","RAM":"GetProcessMemoryInfo working set y pico acumulado del proceso; el pico de una trayectoria comparte el historial de asignaciones de ese proceso","IO":"GetProcessIoCounters lógico, puede incluir caché","bytes":"tamaños reales de primarios/artefactos escritos","energy":"NO MEDIDA"},
+  "execution_command_after_closure":"python referencias_taller_n0.py PLAN_CERRADO.json SALIDA_NUEVA",
+  "recalculation_command_after_primaries":"python compactar_recalcular_taller_n0.py --life VIDA --input PRIMARIO.json.gz --output RECALCULO_NUEVO"
+}

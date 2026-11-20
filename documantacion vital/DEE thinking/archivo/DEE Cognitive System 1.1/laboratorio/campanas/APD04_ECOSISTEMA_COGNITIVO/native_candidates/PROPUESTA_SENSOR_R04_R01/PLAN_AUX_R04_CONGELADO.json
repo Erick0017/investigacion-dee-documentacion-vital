@@ -1,0 +1,79 @@
+{
+  "schema": "APD04.prospective_R04_single_AUX_plan.v1",
+  "parent": "APD04_MAIN_T639374_EXPLORACION_R01",
+  "stages": [
+    {
+      "row": {
+        "modo": "apd04-r04-admitir"
+      },
+      "feedback": "omit",
+      "scope": "P0, reject rather than clean occupied source"
+    },
+    {
+      "row": {
+        "modo": "apd04-sensor-calibrar",
+        "familia": "R04",
+        "pares": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "feedback": "omit",
+      "scope": "Four fixed pairs, SUCCESS/omit only; no task-quality learning claim"
+    },
+    {
+      "row": {
+        "modo": "apd04-cambio",
+        "etiqueta_objetivo": 0,
+        "palabra": "clasifica",
+        "cargas": [
+          7,
+          3
+        ],
+        "mutaciones": [
+          {
+            "fuente": 0,
+            "valor": 18
+          },
+          {
+            "fuente": 1,
+            "valor": 24
+          }
+        ]
+      },
+      "feedback": "omit"
+    },
+    {
+      "row": {
+        "modo": "apd04-vivir",
+        "oportunidades": 4,
+        "sensor": "independent_two_pairs",
+        "lexico": true
+      },
+      "feedback": "real",
+      "scope": "First four live opportunities, same decoder and stale-cache treatment"
+    }
+  ],
+  "fixed_choice_codec": {
+    "-1": "USE",
+    "0": "INSPECT",
+    "1": "INSPECT"
+  },
+  "diagnostic9_not_an_action_reader": true,
+  "no_other_geometric_candidates": true,
+  "no_native_execution_by_this_builder": true
+}

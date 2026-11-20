@@ -1,0 +1,65 @@
+{
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R04",
+  "base_manifest_sha256": "b971ced2b1302ad4cb1bbd93c67b6d6fd36f299335b1b9f42260c384da981779",
+  "components": [],
+  "files": [
+    {
+      "bytes": 438056,
+      "id": "COST_PORTABLE_0",
+      "sha256": "480303b75b2859b931037e8bab775c734c4fba665a1a25eb32e90f0e7425389f",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R03/RUTAS_Y_HASHES.json"
+    },
+    {
+      "bytes": 12991,
+      "id": "COST_PORTABLE_1",
+      "sha256": "4a1d928a22c63f1cf2887205750285f836af9a981f167c9403936599d810fcd2",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_costos_por_etapa_apd04_n0_r04.py"
+    }
+  ],
+  "jobs": [
+    {
+      "args": [
+        "--cas",
+        {
+          "input": "."
+        },
+        "--source-root",
+        {
+          "input": "."
+        },
+        "--source-index",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R03/RUTAS_Y_HASHES.json"
+        },
+        "--comparator",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03/RESULTADOS_Y_RECURSOS.json"
+        },
+        "--json-only",
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/COSTOS_POR_ETAPA_N0_R03/COSTOS_POR_ETAPA_APD04.json",
+      "id": "COSTS_SELECTED_CLOSED_STAGES",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_costos_por_etapa_apd04_n0_r04.py",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    {
+      "id": "EARLY_FINAL_RESERVE",
+      "status": "WAITING_CLOSED_PRIMARY"
+    },
+    {
+      "id": "FULL_EXACT_PROOF",
+      "status": "WAITING_ROOT"
+    },
+    {
+      "id": "WORD_1_18",
+      "status": "NOT_EDITED_BY_THIS_AGENT"
+    }
+  ],
+  "schema": "APD04.CAS.explicit_closed_extension_spec.N0.R05"
+}

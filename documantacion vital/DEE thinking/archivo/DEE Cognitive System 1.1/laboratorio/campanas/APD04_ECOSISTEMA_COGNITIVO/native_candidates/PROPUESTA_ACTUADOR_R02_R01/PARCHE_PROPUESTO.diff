@@ -1,0 +1,131 @@
+--- sistema/app/protocolo_apd04.py
++++ sistema/app/protocolo_apd04.py
+@@ -9,6 +9,7 @@
+       'apd04-cambio':({'modo','etiqueta_objetivo','palabra','cargas','mutaciones','rotar','retirar_observados','criterio'},{'modo'}),
+       'apd04-vivir':({'modo','oportunidades','lexico','sensor','desacoplado'},{'modo','oportunidades'}),
+       'apd04-estado':({'modo'},{'modo'}),
++      'apd04-actuador':({'modo','version'},{'modo','version'}),
+       'apd04-leccion-referencia':({'modo','lado'},{'modo','lado'}),
+       'apd04-lex-admitir':({'modo'},{'modo'}),
+       'apd04-r04-admitir':({'modo'},{'modo'}),
+@@ -19,6 +20,7 @@
+     if set(row)-allowed or not required<=set(row):raise ValueError('Campos literales APD04; no target, archivo, plan o respuesta en uso')
+     for name in ('lexico','desacoplado','revision','retirar_observados'):
+         if name in row and type(row[name])is not bool:raise ValueError('Booleano explicito: '+name)
++    if mode=='apd04-actuador' and(type(row['version'])is not str or row['version']not in('R01','R02')):raise ValueError('Codec P0 fijo R01/R02; no decision por caso')
+     if 'texto'in row:
+         forms=('clasifica','equilibra')if mode=='apd04-docencia'else('alfa','beta','gamma','delta','epsilon','zeta','suma','diferencia','agrega','resta','total','quita','compara','recuerda','luma','nara','clasifica','equilibra')
+         if row['texto']not in forms:raise ValueError('Forma literal finita; no respuestas del catalogo')
+--- sistema/capacidades/ecosistema_apd04.py
++++ sistema/capacidades/ecosistema_apd04.py
+@@ -18,7 +18,9 @@
+ 
+ KEY='DEE.Cognitive.System.1.1.APD04.ecosystem.R01'
+ VERSION='APD04.shared_workshop.sequential_sources.R01'
+-SELECT_CODEC={-1:'USE',0:'INSPECT',1:'INSPECT'}
++ACTION_CODECS={'R01':{-1:'USE',0:'INSPECT',1:'INSPECT'},
++               'R02':{-1:'INSPECT',0:'INSPECT',1:'USE'}}
++SELECT_CODEC=ACTION_CODECS['R01']  # Historical public constant; retained for existing callers.
+ TOOL_CODEC={1:'clasifica',-1:'equilibra'}
+ 
+ def save(a,m):a.world.runtime.set_snapshot_metadata(KEY,encode_metadata(m))
+@@ -27,13 +29,14 @@
+     if KEY not in entries:raise ValueError('El taller no esta admitido; no se reconstruye otra vida')
+     m=decode_metadata(entries[KEY])
+     if m['version']!=VERSION:raise ValueError('Otro contrato de taller; no migracion silenciosa')
++    if m.get('action_codec','R01')not in ACTION_CODECS:raise ValueError('Codec de actuacion desconocido; no reparar silenciosamente')
+     return m
+ 
+ def validate(a,row):
+     from app.protocolo_apd04 import validate_literal
+     validate_literal(row)
+     mode=row.get('modo')
+-    allowed={'apd04-r04-admitir','apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
++    allowed={'apd04-actuador','apd04-r04-admitir','apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
+     if mode not in allowed:raise ValueError('Modo APD04 no admitido')
+     route.get(a)
+     if route.get(a)['pending_window'] is not None:raise ValueError('Traza R04 pendiente; no reemplazar futuro')
+@@ -91,7 +94,7 @@
+        'episode':0,'world_serial':1 if old is None else old['world_serial']+1,
+        'previous_worlds':[] if old is None else old['previous_worlds']+[{'serial':old['world_serial'],'episodes':old['episode'],'counters':old['counters']}],
+        'counters':{'inspect':0,'use':0,'invalid':0,'useful':0,'correct_classifications':0,'moves':0},'in_progress':None,
+-       'native_answers_in_metadata':False,'environment_cache_is_not_native_memory':True}
++       'action_codec':'R01','native_answers_in_metadata':False,'environment_cache_is_not_native_memory':True}
+     save(a,m)
+     return {'kind':'prepared_local_workshop','native_ticks':0,'world_serial':m['world_serial'],'sources':len(objects),
+         'scope':'External environment initialization only. Raw tag and goal tag are independently transduced; criterion is evaluator only. No Native state reset.'}
+@@ -99,7 +102,18 @@
+ def state(a):
+     m=get(a);return {'version':VERSION,'physical':physical(a.world),'sources':len(m['objects']),'cursor_environment':m['cursor'],
+        'world_serial':m['world_serial'],'episode':m['episode'],'counters':m['counters'],'in_progress':m['in_progress'],
++       'action_codec':m.get('action_codec','R01'),'fixed_signed_action_map':dict(ACTION_CODECS[m.get('action_codec','R01')]),
+        'memory_scope':'Cache and cursor belong to simulated environment. Not Native retained numbers or autonomous source-address learning.'}
++
++def configure_actuator(a,row):
++    """Explicit external P0 transducer preparation; no learned association."""
++    m=get(a);before=m.get('action_codec','R01');version=row['version']
++    if version not in ACTION_CODECS:raise ValueError('Codec fijo R01/R02')
++    m['action_codec']=version;save(a,m)
++    return {'kind':'explicit_prepared_actuator_codec','before':before,'after':version,
++       'fixed_signed_map':dict(ACTION_CODECS[version]),'new_native_ticks_in_operation':0,
++       'scope':'External transduction preparation only. No RAW, clock, source cache, world reset, target or learned-policy edit.'}
++
+ 
+ def change(a,row):
+     """Explicit exogenous event; keeps the actual world, effects and Native life."""
+@@ -125,15 +139,16 @@
+         'scope':'New environmental sources only; same Native N67, history, cursor, old objects, bins and cache. Sequential two-bit view, not20simultaneous full records.'}
+ 
+ def live(a,count,directory,*,use_lexicon=True,sensor_mode='independent',actuator='closed',feedback='real',decoupled=False,detailed=False):
+-    m=get(a);before=physical(a.world);rows=[];folder=Path(directory)/'synthetic_workshop';folder.mkdir(parents=True,exist_ok=True)
++    m=get(a);codec_version=m.get('action_codec','R01');action_codec=ACTION_CODECS[codec_version]
++    before=physical(a.world);rows=[];folder=Path(directory)/'synthetic_workshop';folder.mkdir(parents=True,exist_ok=True)
+     for _ in range(count):
+         m['episode']+=1;ep=m['episode'];obj=m['objects'][m['cursor']]
+         public={'source_id':obj['id'],'tag':obj['tag'],'goal_tag':m['goal_tag'],'word':m['word'],
+            'cached_value':None if obj['observed']is None else obj['observed']['value'],'loads':list(m['loads'])}
+         m['in_progress']={'episode':ep,'tick':int(a.tick)};save(a,m)
+         bit0=obj['tag']if sensor_mode!='zero'else 0;bit1=m['goal_tag']if sensor_mode in('independent','independent_balanced','independent_two_pairs')else bit0 if sensor_mode=='tag_only'else 0
+-        selected={'independent_balanced':balanced_sensor,'independent_two_pairs':two_pair_sensor}.get(sensor_mode,sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];action=SELECT_CODEC.get(sign)
+-        effect={'action':action,'actuator':actuator,'new_fact':False,'useful':False,'valid_native':sign is not None}
++        selected={'independent_balanced':balanced_sensor,'independent_two_pairs':two_pair_sensor}.get(sensor_mode,sensor).selecciona(a,bit0,bit1,detail=detailed);sign=selected['physical_choice'];action=action_codec.get(sign)
++        effect={'action':action,'actuator':actuator,'prepared_action_codec':codec_version,'new_fact':False,'useful':False,'valid_native':sign is not None}
+         operation=None;word=None;artifact=None;expected=None
+         if action is None:m['counters']['invalid']+=1
+         elif actuator=='nulled':effect['reason']='post_emission_action_nulled'
+@@ -190,6 +205,7 @@
+ def dispatch(a,row,directory,*,feedback='real',actuator='closed',detailed=False):
+     validate(a,row);mode=row['modo']
+     if mode=='apd04-iniciar':return start(a,row)
++    if mode=='apd04-actuador':return configure_actuator(a,row)
+     if mode=='apd04-cambio':return change(a,row)
+     if mode=='apd04-ampliar':return expand(a,row)
+     if mode=='apd04-estado':return state(a)
+--- sistema/app/usar_dee.py
++++ sistema/app/usar_dee.py
+@@ -473,6 +473,8 @@
+     eco_teach.add_argument("senal", type=int, choices=(-1, 1))
+     eco_teach.add_argument("--docente", choices=("paired", "omitted", "desync"), default="paired")
+     eco_teach.add_argument("--revision", action="store_true")
++    eco_actuator = sub.add_parser("configurar-actuador-ecosistema", help="Preparacion P0 fija; no aprende ni elige por respuesta")
++    eco_actuator.add_argument("version", choices=("R01", "R02"))
+     eco_r04 = sub.add_parser("admitir-sensor-r04", help="Preparacion P0 explicita de dos puertos; no ensena contenido")
+     eco_sensor = sub.add_parser("calibrar-sensor-ecosistema", help="Entradas elementales literales; no retorno de calidad de tarea")
+     eco_sensor.add_argument("--familia", choices=("R02", "R03", "R04"), required=True)
+@@ -480,7 +482,7 @@
+     eco_word = sub.add_parser("palabra-ecosistema", help="Consulta MATERIAL de una señal finita; no conversación libre")
+     eco_word.add_argument("texto", choices=("alfa", "beta", "gamma", "delta", "epsilon", "zeta", "suma", "diferencia", "agrega", "resta", "total", "quita", "compara", "recuerda", "luma", "nara", "clasifica", "equilibra"))
+     for item in (use, teach, language, accumulate, composition, goal, step, admit_new, teach_new, language_new, new_goal, new_step, panel, event,
+-                 eco_start, eco_live, eco_change, eco_teach, eco_word, eco_r04, eco_sensor):
++                 eco_start, eco_live, eco_change, eco_teach, eco_word, eco_r04, eco_sensor, eco_actuator):
+         item.add_argument("--retorno", choices=("real", "omit"), default="real")
+         item.add_argument("--actuador", choices=("closed", "nulled"), default="closed")
+     return parser
+@@ -503,6 +505,7 @@
+     if a == "panel": return [{"modo": "apd03-panel", "nuevas": options.nuevas, "memorias": options.memorias}]
+     if a == "ecosistema-iniciar": return [{"modo": "apd04-iniciar", "semilla": options.semilla, "fuentes": options.fuentes,
+         "etiqueta_objetivo": options.goal, "palabra": options.palabra, "cargas": options.cargas, "criterio": options.criterio}]
++    if a == "configurar-actuador-ecosistema": return [{"modo": "apd04-actuador", "version": options.version}]
+     if a == "admitir-sensor-r04": return [{"modo": "apd04-r04-admitir"}]
+     if a == "calibrar-sensor-ecosistema": return [{"modo": "apd04-sensor-calibrar", "familia": options.familia,
+         "pares": [[int(pair[0]), int(pair[1])] for pair in options.pares]}]

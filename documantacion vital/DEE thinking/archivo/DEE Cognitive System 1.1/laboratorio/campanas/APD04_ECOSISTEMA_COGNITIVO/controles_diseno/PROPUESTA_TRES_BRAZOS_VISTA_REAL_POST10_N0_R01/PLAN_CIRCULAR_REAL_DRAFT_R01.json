@@ -1,0 +1,215 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "DRAFT_NOT_AUTHORIZED_FOR_NATIVE",
+  "life": "APD04_WAIT_R03_REAL_AUX_R05",
+  "world_id": "APD04_WAIT_R03_REAL_AUX_R05",
+  "initial_snapshot_sha256": null,
+  "initial_tick": null,
+  "required_P0_action_codec": "R03",
+  "required_posteffect_quality_contract": "APD04.posteffect_quality.relevant_gain_or_irrelevant_formed_wait.R03.v1",
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 240,
+  "closing_reserve_seconds": 300,
+  "material_wait_seconds": 30,
+  "result_limit_seconds": 1200,
+  "poll_heartbeat_seconds": 5,
+  "heartbeat_seconds": 30,
+  "stop_control_wait_seconds": 120,
+  "stop_process_wait_seconds": 120,
+  "supervision_wall_limit_seconds": 900,
+  "outer_guard_requires_existing_supervision_wrapper": true,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/usar_dee.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd03_r02.py",
+    "sistema/capacidades/ruta_adaptativa_apd02_04.py",
+    "sistema/capacidades/selector_acrecion_nativo.py",
+    "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/mente_acumulativa_r02.py",
+    "sistema/capacidades/lexico_generico_apd03_r02.py",
+    "sistema/capacidades/percepcion_cruda_fi01.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "command",
+      "request_id": "apd04_vista_circular_real_post10_r01_configure_generic_P0_view",
+      "argv": [
+        "configurar-vista-ecosistema",
+        "circular_R01",
+        "--retorno",
+        "omit"
+      ]
+    },
+    {
+      "at_seconds": 1,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_exogenous_new_values_goal0",
+      "situations": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "criterio": 20,
+          "cargas": [
+            7,
+            3
+          ],
+          "mutaciones": [
+            {
+              "fuente": 0,
+              "valor": 11
+            },
+            {
+              "fuente": 1,
+              "valor": 34
+            }
+          ]
+        }
+      ],
+      "feedback": "omit",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 15,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_01",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 45,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_02",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 75,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_03",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 105,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_04",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 135,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_05",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 165,
+      "kind": "material",
+      "request_id": "apd04_vista_circular_real_post10_r01_opportunity_06",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 1,
+          "sensor": "independent_balanced",
+          "lexico": true,
+          "desacoplado": false
+        }
+      ],
+      "feedback": "real",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 210,
+      "kind": "checkpoint",
+      "tag": "post6_actual_original_before_material_panels"
+    }
+  ],
+  "scope": "Prospective six opportunities only. All three begin from the EXACT SAME actual post10 REAL FULL cut, never post10 OMIT. Two factors: P0 body opportunity (fixed circular versus retain-after-formed-INSPECT), then consequences under the same persistent body (REAL versus OMIT). No source-address, cache/goal-aware view policy, automaticUSE, world reset, NativeN change, memory transplant or favorable checkpoint. Material old22/new2 panels only on later diagnostic descendants.",
+  "timing_is_a_new_N0_proposal_for_Root_not_an_existing_native_result": true,
+  "diagnostic_panels_removed_from_original": true,
+  "required_postSTOP_complete_pair": "Actual reached original FULL, with confirmed owner stopped and queue state preserved; never substitute an earlier favorable cut.",
+  "native_GO_still_required": true,
+  "n0_import_proof": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/WAIT_R03_IMPORTACIONES_N0_R01/REAL_IMPORTACION.json",
+  "local_closing_start_seconds": 600,
+  "local_closing_hard_guard_seconds": 900,
+  "owner_cleanup_budget_seconds": 300,
+  "prior_720_guard_revision": "Preserved N0 only; never executed Native.",
+  "required_exact_installed_source_hashes": {
+    "sistema/app/protocolo_apd04.py": "f66989c3d9fb6779029d6ba626f4c366633d4f9d97006ae5e42f910dac3f0fe5",
+    "sistema/capacidades/ecosistema_apd04.py": "6e829bc1ec7c5920613878718068b5b158d99993cec56fafa7c79e3ba5a31013",
+    "sistema/app/usar_dee.py": "a63e4a9fba9b675c9beac7a4fabfc11c852b36aa508d00ba257052f87451e594"
+  },
+  "code_revision": "ACT_R03 plus optional persistent view present but NOT configured",
+  "view_policy_for_this_original": "circular_R01 by missing metadata, unchanged from earlier histories",
+  "earlier_executor_R02_status": "N0 preserved, not Native executed",
+  "required_actual_parent": {
+    "life": "APD04_WAIT_R03_REAL_AUX_R05",
+    "milestone": "actual REAL R03 post-ten-work BEFORE material old22/new2 standalone panels",
+    "snapshot_sha256": null,
+    "complete_pair_manifest_sha256": null,
+    "tick": null,
+    "pair_local_path": null,
+    "not_yet_exists_as_post10": true,
+    "NOT_OMIT_parent": true,
+    "no_alternative_favorable_checkpoint_or_reconstructed_recipe": true
+  },
+  "branch_mode": "CONTINUE_REAL_ORIGINAL_FROM_THIS_EXACT_CUT",
+  "required_prepared_view_policy": "circular_R01",
+  "root_execution_authorization": null,
+  "prospective_new_trial_not_a_rewrite_of_R03_short_or_reserve": true
+}

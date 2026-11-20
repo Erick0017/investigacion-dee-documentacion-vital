@@ -1,0 +1,87 @@
+--- accepted_ACT_R03/sistema/capacidades/ecosistema_apd04.py
++++ proposed_persistent_view/sistema/capacidades/ecosistema_apd04.py
+@@ -21,6 +21,7 @@
+ ACTION_CODECS={'R01':{-1:'USE',0:'INSPECT',1:'INSPECT'},
+                'R02':{-1:'INSPECT',0:'INSPECT',1:'USE'},
+                'R03':{-1:'INSPECT',0:'WAIT',1:'USE'}}
++VIEW_POLICIES=('circular_R01','inspeccion_persistente')
+ SELECT_CODEC=ACTION_CODECS['R01']  # Historical public constant; retained for existing callers.
+ TOOL_CODEC={1:'clasifica',-1:'equilibra'}
+ QUALITY_R03='APD04.posteffect_quality.relevant_gain_or_irrelevant_formed_wait.R03.v1'
+@@ -33,13 +34,14 @@
+     if m['version']!=VERSION:raise ValueError('Otro contrato de taller; no migracion silenciosa')
+     if m.get('action_codec','R01')not in ACTION_CODECS:raise ValueError('Codec de actuacion desconocido; no reparar silenciosamente')
+     if m.get('action_codec','R01')=='R03'and m.get('quality_contract')!=QUALITY_R03:raise ValueError('Contrato posteffect R03 ausente o distinto; no reparar')
++    if m.get('view_policy','circular_R01')not in VIEW_POLICIES:raise ValueError('Vista desconocida; no reparar cursor o cache')
+     return m
+ 
+ def validate(a,row):
+     from app.protocolo_apd04 import validate_literal
+     validate_literal(row)
+     mode=row.get('modo')
+-    allowed={'apd04-actuador','apd04-r04-admitir','apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
++    allowed={'apd04-vista','apd04-actuador','apd04-r04-admitir','apd04-sensor-calibrar','apd04-calibrar','apd04-iniciar','apd04-ampliar','apd04-cambio','apd04-vivir','apd04-estado','apd04-leccion-referencia','apd04-lex-admitir','apd04-docencia','apd04-palabra'}
+     if mode not in allowed:raise ValueError('Modo APD04 no admitido')
+     route.get(a)
+     if route.get(a)['pending_window'] is not None:raise ValueError('Traza R04 pendiente; no reemplazar futuro')
+@@ -108,6 +110,7 @@
+        'action_codec':m.get('action_codec','R01'),'fixed_signed_action_map':dict(ACTION_CODECS[m.get('action_codec','R01')]),
+        'memory_scope':'Cache and cursor belong to simulated environment. Not Native retained numbers or autonomous source-address learning.'}
+     if m.get('action_codec','R01')=='R03':result.update(quality_contract=QUALITY_R03,quality_domain_actuator='closed')
++    if 'view_policy'in m:result['view_policy']=m['view_policy']
+     return result
+ 
+ def configure_actuator(a,row):
+@@ -124,6 +127,24 @@
+        'scope':'External transduction preparation only. No RAW, clock, source cache, world reset, target or learned-policy edit.'}
+     if version=='R03':result.update(quality_contract=QUALITY_R03,quality_domain_actuator='closed',old_work_gain_still_separate=True)
+     return result
++
++
++def next_cursor_prepared_view(policy,cursor,source_count,action,formed_unique,actuator):
++    """P0 environment transition only; no object, cache, value, goal or score input."""
++    if policy not in VIEW_POLICIES:raise ValueError('Unknown fixed view')
++    if type(cursor)is not int or type(source_count)is not int or source_count<1 or not 0<=cursor<source_count:raise ValueError('Invalid current cursor; never reset it')
++    retain=policy=='inspeccion_persistente'and action=='INSPECT'and formed_unique is True and actuator=='closed'
++    return cursor if retain else(cursor+1)%source_count
++
++
++def configure_view(a,row):
++    """External P0 affordance selection, not learned source addressing."""
++    m=get(a);policy=row['politica'];before=m.get('view_policy','circular_R01')
++    if policy not in VIEW_POLICIES:raise ValueError('Fixed view enum only')
++    m['view_policy']=policy;save(a,m)
++    return {'kind':'explicit_prepared_environment_view','before':before,'after':policy,
++        'new_native_ticks_in_operation':0,'cursor_preserved':m['cursor'],
++        'scope':'P0 affordance only. No RAW/clock, cache, object, loads or cursor reset. Only later formed INSPECT may retain the current source; Native selects the emission.'}
+ 
+ 
+ def task_env_signature(m):
+@@ -237,7 +258,8 @@
+         category='SUCCESS'if feedback_success else'FAILURE'
+         returned=sensor.finish(a,category if not decoupled else ('SUCCESS'if ep%2 else'FAILURE'),mode=feedback)
+         if effect['useful']:m['counters']['useful']+=1
+-        m['cursor']=(m['cursor']+1)%len(m['objects']);m['in_progress']=None;save(a,m)
++        cursor_before=m['cursor'];view_policy=m.get('view_policy','circular_R01')
++        m['cursor']=next_cursor_prepared_view(view_policy,cursor_before,len(m['objects']),action,formed_native_choice(sign,selected['reader']),actuator);m['in_progress']=None;save(a,m)
+         result_row={'episode':ep,'public_before':public,'raw_sensor_components':[bit0,bit1],'selection':selected,
+              'physical_action':action,'word':word,'native_operation':operation,'committed_effect':effect,
+              'auditor_only_after_effect':{'actual_source_value':obj['value'],'source_version':obj['version'],
+@@ -250,6 +272,9 @@
+         if quality_witness is not None:
+             result_row['posteffect_quality']=quality_witness
+             result_row['cursor_rule']='Prepared circular view after any opportunity; Native emits INSPECT/WAIT/USE through the fixed R03 map, not an arbitrary numeric source address.'
++        if view_policy=='inspeccion_persistente':
++            result_row.update(view_policy=view_policy,cursor_before=cursor_before,cursor_after=m['cursor'],
++                cursor_rule='P0 persistent view retains only formed native INSPECT with closed actuator; USE/WAIT advance. NULL, ambiguity or nulled output advance by declared environmental default, not intelligent Native choice.')
+         rows.append(result_row)
+     return {'kind':VERSION,'before':before,'rows':rows,'after':physical(a.world),'state':state(a),
+         'assistance':'Fixed sequential view, tool pipeline, cadence, codecs and postaction verifier. No target-aware source filter. Not simultaneous full20-input attention, learned planner or free language.'}
+@@ -257,6 +282,7 @@
+ def dispatch(a,row,directory,*,feedback='real',actuator='closed',detailed=False):
+     validate(a,row);mode=row['modo']
+     if mode=='apd04-iniciar':return start(a,row)
++    if mode=='apd04-vista':return configure_view(a,row)
+     if mode=='apd04-actuador':return configure_actuator(a,row)
+     if mode=='apd04-cambio':return change(a,row)
+     if mode=='apd04-ampliar':return expand(a,row)

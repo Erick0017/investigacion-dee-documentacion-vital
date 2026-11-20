@@ -1,0 +1,93 @@
+{
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R03",
+  "base_manifest_sha256": "51dfe2e4bb2dfcf5cea2359652e3b8dea9b30d844e801bfb31eecb5b536538a5",
+  "components": [
+    {
+      "id": "CONVENTIONAL_48",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "40d72eda08a2ccbb2427a8432c736c78e7922fe95428bcfa45b039587f3289ff",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03"
+    },
+    {
+      "id": "LATE_VIEWS_3",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "1765fe9408e7b6cc51b150d130479ceda059eaa6de893062d8777b0f26e755c0",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 662,
+      "id": "EXPLICIT_0",
+      "sha256": "89ef896b1789fc73d78d6d623c62d0fcc71a61d88fdc60bbf15701e9dbccf61c",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_referencias_apd04_n0_r01.py"
+    },
+    {
+      "bytes": 12596,
+      "id": "EXPLICIT_1",
+      "sha256": "9dc598e345fc616ec3daa1b3e6d79b5366aefd02ffe5af25471ff9819e043f3b",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_costos_por_etapa_apd04_n0_r03.py"
+    },
+    {
+      "bytes": 85162,
+      "id": "EXPLICIT_2",
+      "sha256": "1618f9de0dfa53b0c8fe092ec24fc03a1f52bc5eb4aed375f57696ef7b43b877",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/COSTOS_POR_ETAPA_N0_R03/COSTOS_POR_ETAPA_APD04.json"
+    },
+    {
+      "bytes": 8557,
+      "id": "EXPLICIT_3",
+      "sha256": "b5b2129fd02bf4d54390a018dd84df480c07444af7e55bbab2441d305714ec6b",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/COSTOS_POR_ETAPA_N0_R03/COSTOS_POR_ETAPA_APD04.md"
+    }
+  ],
+  "jobs": [
+    {
+      "args": [
+        "--evidence",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/REFERENCIAS_CUATRO_NIVELES_CERRADO_R03/RECALCULO_INDEPENDIENTE.json",
+      "id": "CONVENTIONAL_48_ARCHIVED",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/envolver_recalculo_referencias_apd04_n0_r01.py",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03/RECALCULO_CIENTIFICO.json",
+      "id": "LATE_VIEWS_3",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_TRES_VISTAS_CERRADAS_N0_R03/recalcular_vistas_y_reserva_r03_n0_r01.py",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    {
+      "id": "EARLY_FINAL_RESERVE",
+      "status": "WAITING_CLOSED_PRIMARY"
+    },
+    {
+      "id": "FULL_EXACT_PROOF",
+      "status": "WAITING_ROOT"
+    },
+    {
+      "id": "WORD_1_18",
+      "status": "NOT_EDITED_BY_THIS_AGENT"
+    }
+  ],
+  "schema": "APD04.CAS.explicit_closed_extension_spec.N0.R04"
+}

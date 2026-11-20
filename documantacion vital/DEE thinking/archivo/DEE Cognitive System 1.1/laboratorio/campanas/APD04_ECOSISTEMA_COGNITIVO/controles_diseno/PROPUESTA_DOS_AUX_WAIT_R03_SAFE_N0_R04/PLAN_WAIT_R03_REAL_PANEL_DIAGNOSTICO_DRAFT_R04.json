@@ -1,0 +1,93 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "DRAFT_NOT_AUTHORIZED_FOR_NATIVE",
+  "life": "APD04_WAIT_R03_REAL_AUX_R04_PANEL_DIAGNOSTICO",
+  "world_id": "APD04_WAIT_R03_REAL_AUX_R04_PANEL_DIAGNOSTICO",
+  "initial_snapshot_sha256": null,
+  "initial_tick": null,
+  "proposed_identity_not_yet_imported": true,
+  "required_parent_complete_pair": null,
+  "required_parent_snapshot_sha256": null,
+  "required_parent_tick": null,
+  "required_posteffect_quality_contract": "APD04.posteffect_quality.relevant_gain_or_irrelevant_formed_wait.R03.v1",
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 300,
+  "closing_reserve_seconds": 180,
+  "material_wait_seconds": 30,
+  "result_limit_seconds": 1200,
+  "poll_heartbeat_seconds": 5,
+  "heartbeat_seconds": 30,
+  "stop_control_wait_seconds": 120,
+  "stop_process_wait_seconds": 120,
+  "supervision_wall_limit_seconds": 900,
+  "outer_guard_requires_existing_supervision_wrapper": true,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/usar_dee.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd03_r02.py",
+    "sistema/capacidades/ruta_adaptativa_apd02_04.py",
+    "sistema/capacidades/selector_acrecion_nativo.py",
+    "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/mente_acumulativa_r02.py",
+    "sistema/capacidades/lexico_generico_apd03_r02.py",
+    "sistema/capacidades/percepcion_cruda_fi01.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "command",
+      "request_id": "apd04_wait_real_r04_diagnostic_old22",
+      "argv": [
+        "panel",
+        "--nuevas",
+        "--memorias",
+        "--retorno",
+        "omit"
+      ]
+    },
+    {
+      "at_seconds": 210,
+      "kind": "material",
+      "request_id": "apd04_wait_real_r04_diagnostic_clasifica",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        }
+      ],
+      "feedback": "omit",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 240,
+      "kind": "material",
+      "request_id": "apd04_wait_real_r04_diagnostic_equilibra",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "equilibra"
+        }
+      ],
+      "feedback": "omit",
+      "actuator": "closed"
+    },
+    {
+      "at_seconds": 280,
+      "kind": "checkpoint",
+      "tag": "diagnostic_post_material_retention_panel"
+    }
+  ],
+  "scope": "Material old16+MA6 and two new-word retention on a FULL diagnostic descendant of the actual post10 original only. No teaching; queries can change its physical future. Do not attribute this separate future to original, MAIN or another arm.",
+  "timing_is_a_new_N0_proposal_for_Root_not_an_existing_native_result": true,
+  "required_parent_life_after_actual_post10_STOP": "APD04_WAIT_R03_REAL_AUX_R04",
+  "no_original_mutation": true,
+  "matched_original_knowledge_not_acquisition_by_import": true,
+  "diagnostic_parent_must_be_assembled_after_original_closure": true
+}

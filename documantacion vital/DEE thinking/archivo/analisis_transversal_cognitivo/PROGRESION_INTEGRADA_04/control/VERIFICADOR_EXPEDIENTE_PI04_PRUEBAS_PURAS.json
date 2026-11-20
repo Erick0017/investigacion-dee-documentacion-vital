@@ -1,0 +1,31 @@
+{
+  "schema": "DEE.PI04.verifier_safety_pure.v1",
+  "Native_ticks": 0,
+  "DEE_modules_imported": false,
+  "actor_code_executed": false,
+  "cases": [
+    {
+      "input": "../outside.txt",
+      "rejected": true
+    },
+    {
+      "input": "/absolute.txt",
+      "rejected": true
+    },
+    {
+      "input": "C:/outside.txt",
+      "rejected": true
+    },
+    {
+      "input": "a/../../x",
+      "rejected": true
+    },
+    {
+      "input": "bad\\path",
+      "rejected": true
+    }
+  ],
+  "verifier_bytes": 6400,
+  "verifier_sha256": "620af4dd2e42412e5ce4d594a85f7be1c6ac59491fb798693380e1572542156c",
+  "scope": "Path traversal/absolute-source guard in the standalone documentary verifier. This is not a Native experiment or a successful full package verification."
+}

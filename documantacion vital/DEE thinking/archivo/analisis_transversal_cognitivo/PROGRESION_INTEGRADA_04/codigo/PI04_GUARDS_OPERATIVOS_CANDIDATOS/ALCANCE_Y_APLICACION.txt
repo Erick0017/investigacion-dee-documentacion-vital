@@ -1,0 +1,54 @@
+REVISIÓN CANDIDATA DE PERMISOS — NO INSTALADA, NO NATIVAMENTE VALIDADA
+
+Dos archivos candidatos: pi04_coordinacion_simetrica_C2B.py y
+pi04_e3_contingencia.py. Los originales exactos están en ANTES/.
+No se modificaron S2, producto, motor, snapshots, contratos ni selectores.
+
+B: ACTIVO sólo admite el ID exacto ECI02_PI03_REPRO_PI04_MAIN_02 y los modos
+oportunidad/estado de B ya ready/admitted, brazo real, sin pending/uncertain/
+halt, sin historia de calibración y con el mismo protocolo sellado. Cuando hay
+directorio, debe ser el home local existente exacto del sistema instalado,
+sin enlaces/uniones. Oportunidades agotadas siguen siendo rechazadas por el
+protocolo original. No se añaden suministros ni se resetean contadores.
+
+La guarda de hardware original se invoca sin directorio para validar identidad;
+la autorización exacta y el home se comprueban en B. Los clones diagnósticos
+inactivos conservan la ruta original con directorio. PREPARE, ADMIT, CUT y CAL
+siguen prohibidos en ACTIVO, incluso mediante llamada directa a sus funciones.
+El modo estado B también exige futuro cerrado en ACTIVO, según el alcance
+pedido; ante incertidumbre queda disponible la inspección administrativa de
+snapshot/propietario/dependencias, sin reejecutar una oportunidad.
+
+E3: sólo operacional_dependencies usa el guard ya existente material=False.
+Es lectura de coherencia del pasado E3 cerrado. Admisión/material/COUNT18 siguen
+intactos; no se abre un nuevo horizonte E3 ni se puntúan controles como MAIN.
+
+No cambiar pi04_selector_contextual_C2_R01.py: su _guard no tiene parámetro
+material ni chequea ACTIVO; el ID transportado exacto ya cumple su prefijo y N.
+No cambiar progresion_integrada_03_R01.py, pi03_tarea_diferida_R02.py ni el viejo
+C2. Este último lee sus dependencias sin llamar a _identity y permite preservar
+el episodio NULL como evidencia cerrada, sin reabrirlo ni borrar halted_reason.
+
+Los dos archivos candidatos NO son dependencias listadas por el protocolo B.
+Por tanto no hay que cambiar sus bytes/hash ni la metadata aprendida para esta
+revisión de permisos. Las dependencias físicas declaradas quedan exactamente
+iguales. VERSION científica se conserva por compatibilidad; la constante nueva
+OPERATIONAL_GUARD_REVISION identifica la adaptación operativa. El código exacto
+experimental anterior debe permanecer en su cápsula/receta para reproducciones.
+
+PRUEBAS REALIZADAS: 23 casos Fake, con las funciones originales de hardware y
+sensor importadas como texto/módulos stdlib y sus decodificadores reemplazados
+por JSON ficticio; cero módulos DEE/app. El cuerpo científico B es AST idéntico
+salvo el keyword de permiso en _identity. No son una prueba Native de apertura,
+actuación o reapertura postpromoción. PRUEBAS_FAKE_AST.json detalla cada caso.
+
+APLICACIÓN PENDIENTE DE ROOT: sólo después de que los estados cumplan criterios,
+preservar/atestiguar las dos fuentes actuales; copiar literalmente los dos
+candidatos; registrar el delta de permisos y nuevas identidades de código en
+el gestor/cápsula operativa sin reemplazar el código científico histórico.
+Comprobar primero una copia completa seleccionada como ACTIVO con el mismo ID,
+dependencias, modo estado, una oportunidad preparada ya disponible y guardado/
+reapertura. No duplicar la experiencia validada sobre MAIN sólo por instalar el
+delta; validar únicamente lo que cambió. El segundo paso requiere Native y
+corresponde exclusivamente a Root. Si cambia el ID final, no ampliar prefijos:
+preparar otra revisión explícita con ese único ID y repetir los Fakes.

@@ -1,0 +1,167 @@
+{
+  "schema": "PI04.operational_guards.fake_AST_verified.NOT_DEPLOYED.v1",
+  "tests": [
+    {
+      "name": "actual_old_hardware_none_validates_identity",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "actual_old_hardware_owned_home_refuses_ACTIVO",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Material calibration refuses the currently selected main"
+    },
+    {
+      "name": "adopted_exact_closed_eci01-pi04-c2b-oportunidad",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "adopted_exact_closed_eci01-pi04-c2b-estado",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "adopted_forbidden_eci01-pi04-c2b-preparar",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "adopted_forbidden_eci01-pi04-c2b-admitir",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "adopted_forbidden_eci01-pi04-c2b-calibrar",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "adopted_forbidden_eci01-pi04-c2b-cortar-contexto",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "adopted_forbidden_None",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "adopted_rejects_not_admitted",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_not_ready",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_uncertain",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_pending",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_halted",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_yoked",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_protocol_mismatch",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_rejects_calibration_history",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact adopted B must be admitted real, ready, closed and protocol-consistent"
+    },
+    {
+      "name": "adopted_wrong_home_rejected",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: Exact existing owned local-service home required for adopted B"
+    },
+    {
+      "name": "inactive_diagnostic_original_path_preserved",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "different_ACTIVO_id_not_whitelisted",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO permits only exact adopted B opportunity/state; preparation/admission/cuts/calibration remain forbidden"
+    },
+    {
+      "name": "unchanged_sensor_identity_prefix_already_accepts_exact_id",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "E3_readonly_dependency_identity_allowed",
+      "allowed": true,
+      "expected": true,
+      "error": null
+    },
+    {
+      "name": "E3_material_identity_still_refused",
+      "allowed": false,
+      "expected": false,
+      "error": "ValueError: ACTIVO still refused for E3 material"
+    }
+  ],
+  "count": 23,
+  "scientific_B_opportunity_AST_equal_except_permission_keyword": true,
+  "E3_guard_material_flags": [
+    false,
+    true
+  ],
+  "fixed_sources_unchanged": {
+    "pi04_selector_contextual_C2_R01.py": "0634e034e556b15f97babfc1b38c85cb8e92219d306af4c58794ea94be38394f",
+    "pi04_sensor_simetrico_C2B_R01.py": "aa94c438ee93809b9ec11cc2387dcc3674496f191425e2f3de343899268be1df",
+    "progresion_integrada_03_R01.py": "bd165913142825a509f1e01731a374d14cb02a484ef94276fdde450aba83c42d",
+    "pi03_tarea_diferida_R02.py": "b136e79abb6e07efcd8b69da0a37cc8d667d7140788e18c490975f8e2a88e40b",
+    "pi04_coordinacion_adquirida.py": "1559aa44a39e93daf196ee38359846757972d27c5f6838bf54c3d7f94228761c",
+    "PROTOCOLO_PI04_C2B_R01.json": "7e954cd23e93551968e2de1ed11d68b3268cb718dd6fd645700650037f7dfdb7",
+    "PROTOCOLO_PI04_C2_R01.json": "c8c2ecc5a5881fd736b9b2792795c8b103b3fe09ce9dcb0039945af0893edef2"
+  },
+  "candidate_source_hashes": {
+    "pi04_coordinacion_simetrica_C2B.py": "9a63ac2287b56d0b4d3110dad1523a30b5d461c475ae8b5e03d40d18f875bff1",
+    "pi04_e3_contingencia.py": "4b622eb751df231f9225c72d0786bd525ea8b44e76cff17ec772124d9bf647ba"
+  },
+  "DEE_or_app_modules": [],
+  "Native_ticks": 0,
+  "product_or_S2_modified": false,
+  "Native_postpromotion_use_verified": false,
+  "scope": "Permission logic only with fake metadata, fake owned home and unchanged hardware/sensor function bodies. Native current-state compatibility and complete-home continuity remain Root verification after valid adoption."
+}

@@ -1,0 +1,21 @@
+--- PRODUCTO_OP4_ANTES
++++ S2_ACTUAL
+@@ -20,16 +20,10 @@
+     for node in (script,script.parent,product):
+         if node.is_symlink()or getattr(node.lstat(),'st_file_attributes',0)&0x400:
+             raise ValueError('No se reenvía hacia un enlace/reparse: '+str(node))
+     command=[sys.executable,'-I','-B','-X','utf8',str(script),*arguments]
+-    completed=subprocess.run(command,cwd=product,shell=False,
+-          capture_output=True,text=True,encoding='utf-8',errors='strict',
+-          creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+-    # CREATE_NO_WINDOW does not reliably inherit console handles on Windows.
+-    # Capture pipes explicitly, then forward the exact structured output.
+-    if completed.stdout:sys.stdout.write(completed.stdout);sys.stdout.flush()
+-    if completed.stderr:sys.stderr.write(completed.stderr);sys.stderr.flush()
+-    return completed.returncode
++    return subprocess.run(command,cwd=product,shell=False,
++          creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0)).returncode
+ 
+ # Debe estar ANTES de cualquier import app/DEE, incluso en los modos de lectura.
+ if len(sys.argv)>1 and sys.argv[1]=='reproducibilidad':
+     raise SystemExit(_reproducibilidad_frontend(sys.argv[2:]))

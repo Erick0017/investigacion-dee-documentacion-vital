@@ -1,0 +1,85 @@
+{
+  "schema": "DEE.reproduction.fixed_recipe.result.v1",
+  "recipe": "pi02_H_adquisicion_R03",
+  "variant": "paired",
+  "life": "ECI02_PI03_REPRO_H_PAIR_01",
+  "source_manifest_sha256": "234c774cdb19205338d98fb2731de30b6c0b93a33ad967783e81a0ecfa6e984a",
+  "started_utc": "2026-11-09T02:00:17.929325+00:00",
+  "rows": [
+    {
+      "step": "prepare",
+      "literal": {
+        "modo": "eci01-pi02-advertencia-preparar"
+      },
+      "transport_id": "ECI02_PI03_REPRO_H_PAIR_01_prepare",
+      "before_tick": 740937,
+      "after_tick": 740937,
+      "response": null,
+      "response_is_NULL": true,
+      "formed_integer": false,
+      "native_ids_unique_in_step": [],
+      "primary": "ensayos/ECI02_PI03_REPRO_H_PAIR_01_prepare.json"
+    },
+    {
+      "step": "experience",
+      "literal": {
+        "modo": "eci01-pi02-advertencia-adquirir",
+        "historia": "paired"
+      },
+      "transport_id": "ECI02_PI03_REPRO_H_PAIR_01_experience",
+      "before_tick": 740937,
+      "after_tick": 741084,
+      "response": null,
+      "response_is_NULL": true,
+      "formed_integer": false,
+      "native_ids_unique_in_step": [],
+      "primary": "ensayos/ECI02_PI03_REPRO_H_PAIR_01_experience.json"
+    },
+    {
+      "step": "probe",
+      "literal": {
+        "modo": "eci01-pi02-advertencia-usar",
+        "periodos": 2,
+        "aviso": true
+      },
+      "transport_id": "ECI02_PI03_REPRO_H_PAIR_01_probe",
+      "before_tick": 741084,
+      "after_tick": 741352,
+      "response": "CLOSE",
+      "response_is_NULL": false,
+      "formed_integer": false,
+      "native_ids_unique_in_step": [
+        114461,
+        114462
+      ],
+      "primary": "ensayos/ECI02_PI03_REPRO_H_PAIR_01_probe.json",
+      "expected_auditor_only": "CLOSE",
+      "criterion_met": true
+    }
+  ],
+  "batches_closed": 1,
+  "status": "COMPLETED",
+  "source_principal_modified": false,
+  "assistance": "Prepared W/U/G geometry and phase calendar; paired/unpaired inputs and generic normalization. Fixed exactq signature. No expected command is supplied.",
+  "scope": "This prototype has no valve or jobs. CLOSE versusNULL is not by itself regulation, pain or functional benefit. It is distinct from full R04 habitat acquisition/use.",
+  "last_tick": 741352,
+  "native_receipts": {
+    "unique_requested": 2,
+    "applied": 2,
+    "rejected": 0,
+    "pending_or_other": 0,
+    "scope": "Only explicit receipt_paths frozen in recipe; aliases deduplicated by Native ID."
+  },
+  "final_checks": [],
+  "denominators": {
+    "planned_material_requests": 3,
+    "completed_material_requests": 3,
+    "evaluated_step_responses": 1,
+    "correct": 1,
+    "incorrect_formed": 0,
+    "NULL_among_evaluated": 0
+  },
+  "criteria_met": true,
+  "owner_closed_coherently": true,
+  "finished_utc": "2026-11-09T02:01:32.508394+00:00"
+}

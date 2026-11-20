@@ -1,0 +1,29 @@
+{
+  "schema": "DEE.PI04.actual_scoped_windows_process_observation.v1",
+  "recorded_utc": "2026-11-09T19:54:06.747753+00:00",
+  "scope": "Actual Get-CimInstance Win32_Process command-line inspection scoped to exact DEE product/candidate/campaign paths and affected PI03/PI04 life IDs. No claim about unrelated processes or inaccessible command lines.",
+  "affected_life_ids": [
+    "ECI02_PI03_REPRO_PI04_MAIN_02",
+    "ECI02_PI03_MAIN"
+  ],
+  "query_success": false,
+  "query_returncode": 1,
+  "query_error": "Get-CimInstance : Acceso denegado \nEn línea: 1 Carácter: 652\n+ ... 02','ECI02_PI03_MAIN'); $rows=@(Get-CimInstance Win32_Process | Where ...\n+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2:Win32_Process:String) [Get-CimInstance], CimException\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \n",
+  "observer_pid": 6236,
+  "evidence": [
+    {
+      "kind": "PROCESS_QUERY_FAILED",
+      "returncode": 1
+    }
+  ],
+  "blockers": [],
+  "no_live_affected_writers": false,
+  "criterion": "No scoped Native owner, GUI or unknown Python/PowerShell runner, excluding this explicitly named readonly helper and known readonly decision/static-review tools. Cached running:false is not used as process evidence.",
+  "limitations": [
+    "Command-line scope does not prove absence of all conceivable writers. Incorporation also checks world locks, coherent queue state, source hashes and current selectors.",
+    "A proof with blockers or query failure must not be rewritten as a no-writer result. Generate a new observation after ordinary owners close."
+  ],
+  "Native_imports": 0,
+  "processes_stopped": 0,
+  "locks_or_caches_modified": false
+}

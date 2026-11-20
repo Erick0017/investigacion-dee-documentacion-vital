@@ -1,0 +1,260 @@
+{
+  "schema": "PI04.manager_bounded_client.pure_check.OP1",
+  "status": "FAKE_ONLY_NO_NATIVE_OR_LIVE_TRANSPORT",
+  "Native_ticks": 0,
+  "official_DEE_imports": [],
+  "fake_cases": [
+    {
+      "command": "pi04-coordinacion-estado",
+      "result": {
+        "version": "PI04.bounded_existing_queue_client.OP1_CANDIDATE",
+        "life_id": "SYNTHETIC_LIFE",
+        "id": "fake_estado_action",
+        "status": "completed",
+        "admission": {
+          "admission": "accepted",
+          "id": "fake_estado_action"
+        },
+        "request": {
+          "id": "fake_estado_action",
+          "status": "completed",
+          "result": "{\"before_tick\": 100, \"after_tick\": 100, \"SYNTHETIC\": true}"
+        },
+        "native_result": {
+          "before_tick": 100,
+          "after_tick": 100,
+          "SYNTHETIC": true
+        },
+        "pause": {
+          "id": "fake_estado_action_pause",
+          "status": "completed",
+          "result": null
+        },
+        "save": {
+          "id": "fake_estado_action_save",
+          "status": "completed",
+          "result": null
+        },
+        "saved_and_paused": true,
+        "owner_started": false,
+        "selection_modified": false,
+        "automatic_retry": false,
+        "scope": "Operator-triggered fixed protocol use through the existing queue; not learned initiative or an external decision policy."
+      },
+      "events": [
+        [
+          "put",
+          "fake_estado_action",
+          {
+            "operacion": "sesion",
+            "situaciones": [
+              {
+                "modo": "eci01-pi04-c2c-estado"
+              }
+            ],
+            "actuador": "closed",
+            "retorno": "omit"
+          }
+        ],
+        [
+          "put",
+          "fake_estado_action_resume",
+          {
+            "operacion": "reanudar"
+          }
+        ],
+        [
+          "processing",
+          "fake_estado_action"
+        ],
+        [
+          "put",
+          "fake_estado_action_pause",
+          {
+            "operacion": "pausar"
+          }
+        ],
+        [
+          "pause_queued_while",
+          "processing"
+        ],
+        [
+          "put",
+          "fake_estado_action_save",
+          {
+            "operacion": "guardar"
+          }
+        ]
+      ]
+    },
+    {
+      "command": "pi04-coordinacion-oportunidad",
+      "result": {
+        "version": "PI04.bounded_existing_queue_client.OP1_CANDIDATE",
+        "life_id": "SYNTHETIC_LIFE",
+        "id": "fake_oportunidad_action",
+        "status": "completed",
+        "admission": {
+          "admission": "accepted",
+          "id": "fake_oportunidad_action"
+        },
+        "request": {
+          "id": "fake_oportunidad_action",
+          "status": "completed",
+          "result": "{\"before_tick\": 100, \"after_tick\": 882, \"SYNTHETIC\": true}"
+        },
+        "native_result": {
+          "before_tick": 100,
+          "after_tick": 882,
+          "SYNTHETIC": true
+        },
+        "pause": {
+          "id": "fake_oportunidad_action_pause",
+          "status": "completed",
+          "result": null
+        },
+        "save": {
+          "id": "fake_oportunidad_action_save",
+          "status": "completed",
+          "result": null
+        },
+        "saved_and_paused": true,
+        "owner_started": false,
+        "selection_modified": false,
+        "automatic_retry": false,
+        "scope": "Operator-triggered fixed protocol use through the existing queue; not learned initiative or an external decision policy."
+      },
+      "events": [
+        [
+          "put",
+          "fake_oportunidad_action",
+          {
+            "operacion": "sesion",
+            "situaciones": [
+              {
+                "modo": "eci01-pi04-c2c-oportunidad"
+              }
+            ],
+            "actuador": "closed",
+            "retorno": "omit"
+          }
+        ],
+        [
+          "put",
+          "fake_oportunidad_action_resume",
+          {
+            "operacion": "reanudar"
+          }
+        ],
+        [
+          "processing",
+          "fake_oportunidad_action"
+        ],
+        [
+          "put",
+          "fake_oportunidad_action_pause",
+          {
+            "operacion": "pausar"
+          }
+        ],
+        [
+          "pause_queued_while",
+          "processing"
+        ],
+        [
+          "put",
+          "fake_oportunidad_action_save",
+          {
+            "operacion": "guardar"
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "timeout_no_resubmit_or_clear",
+      "result": {
+        "version": "PI04.bounded_existing_queue_client.OP1_CANDIDATE",
+        "life_id": "SYNTHETIC_LIFE",
+        "id": "fake_timeout_action",
+        "status": "WAITING_OR_UNCERTAIN_PRESERVED",
+        "request": {
+          "id": "fake_timeout_action",
+          "status": "queued",
+          "result": null
+        },
+        "pause": {
+          "id": "fake_timeout_action_pause",
+          "status": "completed",
+          "result": null
+        },
+        "automatic_retry": false,
+        "pending_cleared": false,
+        "owner_started": false,
+        "selection_modified": false,
+        "inspect_same_id": "mente-unificada-resultado --vida SYNTHETIC_LIFE --id fake_timeout_action"
+      },
+      "events": [
+        [
+          "put",
+          "fake_timeout_action",
+          {
+            "operacion": "sesion",
+            "situaciones": [
+              {
+                "modo": "eci01-pi04-c2c-oportunidad"
+              }
+            ],
+            "actuador": "closed",
+            "retorno": "omit"
+          }
+        ],
+        [
+          "put",
+          "fake_timeout_action_resume",
+          {
+            "operacion": "reanudar"
+          }
+        ],
+        [
+          "put",
+          "fake_timeout_action_pause",
+          {
+            "operacion": "pausar"
+          }
+        ],
+        [
+          "pause_queued_while",
+          "queued"
+        ]
+      ]
+    },
+    {
+      "kind": "failed_resume_no_action_repeated",
+      "result": {
+        "version": "PI04.bounded_existing_queue_client.OP1_CANDIDATE",
+        "life_id": "SYNTHETIC_LIFE",
+        "id": "fake_resume_action",
+        "status": "RESUME_FAILED_REQUEST_PRESERVED",
+        "resume": {
+          "id": "fake_resume_action_resume",
+          "status": "failed_preserved",
+          "result": null
+        },
+        "request": {
+          "id": "fake_resume_action",
+          "status": "queued",
+          "result": null
+        },
+        "automatic_retry": false,
+        "owner_started": false,
+        "selection_modified": false
+      }
+    }
+  ],
+  "manager_help_route_before_Store_Native": true,
+  "owner_auto_started": false,
+  "selection_modified": false,
+  "client_sha256": "87492f1ab0ed317462a4ee9d9dd80a36c78dc1e8386dc7a4afa9c5eca4b0b27c",
+  "root_must_test_actual_postfinal_clone": true,
+  "CS_or_product_modified": false
+}

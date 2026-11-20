@@ -1,0 +1,168 @@
+{
+  "schema": "DEE.reproduction.explicit_diagnostic.v1",
+  "life": "ECI02_PI03_REPRO_FI_01",
+  "recipe": "fi_recuperacion",
+  "variant": "interferencia_retirada",
+  "prefix": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\materiales\\PI02_PRE_FI_T740343",
+  "prefix_manifest_sha256": "72ed389b0e213a00a49a7cf396996314d2e4b471224e83a8829828ce597d49ce",
+  "system": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_fi_01\\sistema",
+  "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\motor\\python313\\python.exe",
+  "product": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0",
+  "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_03\\estados\\repro_fi_01",
+  "created_utc": "2026-11-09T02:04:01.108080+00:00",
+  "recipe_sha256": "c9325aecf8a38590cfa737c8002a107fb3a9d807b5b9a0480623ba8ed4381ae8",
+  "fixed_recipe": {
+    "schema": "DEE.reproduction.recipe.v1",
+    "id": "fi_recuperacion",
+    "title": "FI admission interference and use after removing the external competing input",
+    "revision": "PI03_R01",
+    "prefix": "PI02_PRE_FI_T740343",
+    "modalities": {
+      "B": "Three sequential Native trials on same diagnostic descendant",
+      "C": "No new reference acquisition",
+      "D": "Local comparison mechanism inherited from principal genealogy",
+      "E": "Access/use returns after experimenter removes perturbation, without restore/re-teaching; externally assisted recovery"
+    },
+    "variants": {
+      "interferencia_retirada": {
+        "batches": [
+          [
+            {
+              "label": "interfered",
+              "literal": {
+                "modo": "eci01-pi02-fi-prueba",
+                "izquierda": 12,
+                "derecha": 4,
+                "asincrono": true,
+                "ruido": "active"
+              },
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "early_physical_choice"
+              ],
+              "expected": -1,
+              "receipt_paths": [
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "all_FI_receipts"
+                ],
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "noise_requests"
+                ]
+              ]
+            },
+            {
+              "label": "clean_after",
+              "literal": {
+                "modo": "eci01-pi02-fi-prueba",
+                "izquierda": 12,
+                "derecha": 4,
+                "asincrono": true,
+                "ruido": "none"
+              },
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "early_physical_choice"
+              ],
+              "expected": 1,
+              "receipt_paths": [
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "all_FI_receipts"
+                ],
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "noise_requests"
+                ]
+              ]
+            },
+            {
+              "label": "material_zero",
+              "literal": {
+                "modo": "eci01-pi02-fi-prueba",
+                "izquierda": 6,
+                "derecha": 6,
+                "asincrono": true,
+                "ruido": "none"
+              },
+              "read_path": [
+                "result",
+                "rows",
+                0,
+                "early_physical_choice"
+              ],
+              "expected": 0,
+              "receipt_paths": [
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "all_FI_receipts"
+                ],
+                [
+                  "result",
+                  "rows",
+                  0,
+                  "noise_requests"
+                ]
+              ]
+            }
+          ]
+        ],
+        "final_checks": [
+          {
+            "label": "zero_is_not_legacy_NULL",
+            "operation": "value",
+            "values": [
+              {
+                "step": "material_zero",
+                "path": [
+                  "result",
+                  "rows",
+                  0,
+                  "legacy_q6_choice"
+                ]
+              }
+            ],
+            "expected": null
+          }
+        ],
+        "native_receipt_expectations": {
+          "unique_requested": 529,
+          "applied": 525,
+          "rejected": 4
+        }
+      }
+    },
+    "assistance": "Fixed earlyq+4reader; the laterq+6NULL remains separately reported. Host supplies or omits a legal competing pulse; removal is not learned regulation.",
+    "limitations": "A local admission conflict explains this fixture. It does not prove globally erased memory, repair from every failure, or absence of other activity. All conflict rejections are retained.",
+    "sources": [
+      "PI02_ANALISIS/EVIDENCIA/B_R03",
+      "codigo_preservado/PI02_R04_OP1/capacidades/diagnostico_FI_R03.py"
+    ],
+    "observation": "Fixed readers/windows/codec in preserved Cognitive source capsule. Queries are material. No phase/port search after answers.",
+    "stop": "Stop on uncertain/failed transport, missing formed integer required by chain, process failure or declared finite horizon. Preserve future; no retry or restore.",
+    "verification": {
+      "state": "PREPARED_PENDING_NATIVE_VERIFICATION",
+      "new_Native_execution_by_this_generator": false,
+      "A": "Historical records preserved; documentary recalculation available separately",
+      "B_C_D_E": "See modalities; not newly verified merely by preparing this recipe"
+    }
+  },
+  "source_code_manifest_sha256": "c17837199c2a7291cf85af1ca76f8cb06587802e31eece5863b8257a15953143",
+  "never_select_or_promote": true,
+  "evaluation_expected_values_never_passed_to_world": true
+}

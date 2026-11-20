@@ -1,0 +1,40 @@
+{
+  "schema": "DEE.PI04.actual_scoped_windows_process_observation.v1",
+  "recorded_utc": "2026-11-09T20:19:45.900725+00:00",
+  "scope": "Actual Get-Process observation of all CPython/PythonW/py interpreter IDs; command-line attribution unavailable after WMI access denial. Every interpreter other than this observer is conservatively an unknown blocker. All authorized DEE Native owners use the official CPython process; this is not attribution of other interpreters to DEE.",
+  "query_method": "CONSERVATIVE_GET_PROCESS_ALL_CPYTHON_IDS_NO_COMMANDLINE",
+  "CIM_attempt": {
+    "returncode": 1,
+    "error": "Get-CimInstance : Acceso denegado \nEn línea: 1 Carácter: 652\n+ ... 02','ECI02_PI03_MAIN'); $rows=@(Get-CimInstance Win32_Process | Where ...\n+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2:Win32_Process:String) [Get-CimInstance], CimException\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \n"
+  },
+  "affected_life_ids": [
+    "ECI02_PI03_REPRO_PI04_MAIN_02",
+    "ECI02_PI03_MAIN"
+  ],
+  "query_success": true,
+  "query_returncode": 0,
+  "query_error": null,
+  "observer_pid": 16408,
+  "evidence": [
+    {
+      "ProcessId": 16408,
+      "ParentProcessId": null,
+      "Name": "python.exe",
+      "ExecutablePath": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\motor\\python313\\python.exe",
+      "CommandLine": null,
+      "CreationDateUtc": "2026-11-09T20:19:44.9192941Z",
+      "classification": "EXPLICIT_READONLY_HELPER",
+      "blocks_material_migration": false
+    }
+  ],
+  "blockers": [],
+  "no_live_affected_writers": true,
+  "criterion": "No observed affected/unknown interpreter under the declared query method. Only the actual observer PID is exempt under the conservative fallback. Cached running:false is not process evidence.",
+  "limitations": [
+    "Command-line scope does not prove absence of all conceivable writers. Incorporation also checks world locks, coherent queue state, source hashes and current selectors.",
+    "A proof with blockers or query failure must not be rewritten as a no-writer result. Generate a new observation after ordinary owners close."
+  ],
+  "Native_imports": 0,
+  "processes_stopped": 0,
+  "locks_or_caches_modified": false
+}

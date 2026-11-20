@@ -1,0 +1,60 @@
+{
+  "schema": "PI04.C2.query5.pure_check.R03",
+  "status": "STATIC_ONLY_NOT_NATIVE",
+  "Native_ticks": 0,
+  "official_DEE_imports": [],
+  "fake_interface_calls": [
+    [
+      "PI03.TC.R01.query",
+      5,
+      12345
+    ],
+    [
+      "PI03.TC.R01.support.plus",
+      0,
+      12345
+    ],
+    [
+      "PI03.TC.R01.support.minus",
+      0,
+      12345
+    ]
+  ],
+  "normalized_requests": [
+    {
+      "id": 101,
+      "channel": "PI03.TC.R01.query",
+      "payload": 5,
+      "requested_tick": 12345
+    },
+    {
+      "id": 102,
+      "channel": "PI03.TC.R01.support.plus",
+      "payload": 0,
+      "requested_tick": 12345
+    },
+    {
+      "id": 103,
+      "channel": "PI03.TC.R01.support.minus",
+      "payload": 0,
+      "requested_tick": 12345
+    }
+  ],
+  "changed_existing_functions": [
+    "_opportunity_body",
+    "calibrate",
+    "prepare"
+  ],
+  "new_function": [
+    "_submit_query"
+  ],
+  "Device_and_guards_unchanged_AST": true,
+  "sensor_reader_same_source": true,
+  "source_sha256": "35139ad25b63941916ce3449884b2e6dd836ec57c1d4db5ada5e1fe5f39f037e",
+  "protocol_modified_by_this_test": false,
+  "unverified": [
+    "Native sensitivity to query5",
+    "functional threshold",
+    "learning"
+  ]
+}

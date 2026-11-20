@@ -1,0 +1,324 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi04_c2b_fallo_admision_3_R01",
+  "title": "PI04 C2B: reproducción acotada del cierre adverso tras3ofertas; no capacidad positiva validada",
+  "revision": "PREPARED_BLOCKED_PENDING_ROOT_EXACT_CAPSULE",
+  "prefix": "PI03_PI04_C2_NULL_T798033",
+  "code_capsule_key": "PI04_C2B_R01_NEGATIVA_ROOT_PENDING",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_",
+  "reproduction_enabled": false,
+  "variants": {
+    "real_tres_con_rechazos": {
+      "batches": [
+        [
+          {
+            "label": "prepare",
+            "literal": {
+              "modo": "eci01-pi04-c2b-preparar"
+            },
+            "feedback": "omit",
+            "require_zero_ticks": true
+          },
+          {
+            "label": "admit",
+            "literal": {
+              "modo": "eci01-pi04-c2b-admitir",
+              "brazo": "real"
+            },
+            "feedback": "omit",
+            "require_zero_ticks": true
+          },
+          {
+            "label": "opportunity_00",
+            "literal": {
+              "modo": "eci01-pi04-c2b-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "first_reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "native_arithmetic",
+                "native_operation",
+                "native_trial",
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "second_native_use",
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "opportunity_01",
+            "literal": {
+              "modo": "eci01-pi04-c2b-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "first_reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "native_arithmetic",
+                "native_operation",
+                "native_trial",
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "second_native_use",
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          },
+          {
+            "label": "opportunity_02",
+            "literal": {
+              "modo": "eci01-pi04-c2b-oportunidad"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "first_reader",
+              "choice"
+            ],
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "native_arithmetic",
+                "native_operation",
+                "native_trial",
+                "requests"
+              ],
+              [
+                "result",
+                "rows",
+                0,
+                "second_native_use",
+                "requests"
+              ]
+            ],
+            "stop_on_NULL": true
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "actual_product_00",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_00",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "actual_product_01",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_01",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "actual_product_02",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_02",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "useful_product"
+              ]
+            }
+          ],
+          "expected": false
+        },
+        {
+          "label": "exact_negative_final_N",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_02",
+              "path": [
+                "committed_snapshot",
+                "physical",
+                "N"
+              ]
+            }
+          ],
+          "expected": 67
+        },
+        {
+          "label": "exact_negative_final_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_02",
+              "path": [
+                "committed_snapshot",
+                "physical",
+                "tick"
+              ]
+            }
+          ],
+          "expected": 800379
+        },
+        {
+          "label": "exact_negative_final_RAW_sha256",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_02",
+              "path": [
+                "committed_snapshot",
+                "physical",
+                "RAW_sha256"
+              ]
+            }
+          ],
+          "expected": "0c51254472c3cbead9ffd078cd185871d8dfaf6130c9f00d9da08db8619d3e40"
+        },
+        {
+          "label": "exact_negative_final_clocks_sha256",
+          "operation": "value",
+          "values": [
+            {
+              "step": "opportunity_02",
+              "path": [
+                "committed_snapshot",
+                "physical",
+                "clocks_sha256"
+              ]
+            }
+          ],
+          "expected": "2956588f75822b36dd1ee80600db8dede9f915209c8afdadcdd0f092094570eb"
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 561,
+        "applied": 559,
+        "rejected": 2,
+        "pending_or_other": 0
+      }
+    }
+  },
+  "modalities": {
+    "A": "Actual three primary JSONs and known561/559/2 receipt groups read and deduplicated passively",
+    "B": "Prepared bounded Native reproduction from genuine full inherited798033 prefix, NOT RUN through RP",
+    "C": "Three attempted contextual experiences, stopped before acquisition/reserve completed; not twenty validated cases",
+    "D": "No new ability or principal adoption inferred",
+    "E": "No recovery claim"
+  },
+  "assistance": "Prepared symmetric sensor, sequence/codecs/calendar/environment; Root original produced every action with Native. This recipe copies no acquired state into another life.",
+  "limitations": "NEGATIVE scientific target:1/3real products,3formed25 scalars,2terminal FI occupied-register rejections in third opportunity. Matching these observables is reproduction of a failure, not a cognitive/global PASS. Original metadata uncertainFalse covered only outer7; all FI/MU receipts are explicitly included here. No fourth material step, retries, cleanup or twenty-case claim.",
+  "verification": {
+    "state": "DOCUMENTARY_DRAFT_NOT_NATIVE_EXECUTED",
+    "actual_original_root_opportunities": 3,
+    "actual_original_products": 1,
+    "exact_original_Native_receipts": {
+      "unique_requested": 561,
+      "applied": 559,
+      "rejected": 2,
+      "pending_or_other": 0
+    },
+    "exact_original_final_physical": {
+      "N": 67,
+      "RAW_sha256": "0c51254472c3cbead9ffd078cd185871d8dfaf6130c9f00d9da08db8619d3e40",
+      "basic_buffers_bytes": 9624416,
+      "clocks_sha256": "2956588f75822b36dd1ee80600db8dede9f915209c8afdadcdd0f092094570eb",
+      "max_s_reg": 4530,
+      "occupied": 106,
+      "sites": 300763,
+      "tick": 800379
+    },
+    "primary_refs": [
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_04\\ensayos\\PI04_C2B_REAL_DEV_R01_OP_0.json",
+        "sha256": "b4cf9fe3516f4c3f8f40e083cb49faa6d4f4e3e43fbaa9adf1cf0f34ebb84ae4"
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_04\\ensayos\\PI04_C2B_REAL_DEV_R01_OP_1.json",
+        "sha256": "bfad8bda2bd5e6979a95ef224c6d7e33e442404eea23968a4bfbe25f6f3807b9"
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_04\\ensayos\\PI04_C2B_REAL_DEV_R01_OP_2.json",
+        "sha256": "ddd321a9ba034d80e15d0e64cc4ff0e7018b67bdedcc218039a6724788b5a008"
+      }
+    ],
+    "generic_RP_Native_replay": false,
+    "Source_original_code": "pi04_coordinacion_simetrica_C2B.py d77dea2b...; exact compatible preserved capsule must be selected by Root"
+  },
+  "usage": {
+    "listar": "sistema/gestionar.py reproducibilidad listar",
+    "verificar": "sistema/gestionar.py reproducibilidad verificar pi04_c2b_fallo_admision_3_R01",
+    "reproducir": "sistema/gestionar.py reproducibilidad reproducir pi04_c2b_fallo_admision_3_R01 --variante real_tres_con_rechazos --vida ECI02_PI03_REPRO_PI04_RP_C2B_NEG_01 --destino <NUEVO_DESTINO_DIAGNOSTICO>"
+  },
+  "blockers": [
+    "Root has not yet selected/preserved the exact compatible final or historical code capsule for this recipe",
+    "This draft is NOT installed in RP and cannot be executed",
+    "No new twenty-opportunity C2B evidence exists; positive acquisition20 must remain unclaimed"
+  ]
+}

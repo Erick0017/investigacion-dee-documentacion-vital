@@ -1,0 +1,82 @@
+{
+  "schema": "PI03.prepared_legacy_O2_current_use_recipe.v1",
+  "status": "PREPARADA_POR_LECTURA_ESTATICA_NO_EJECUTADA_EN_BASE_ACTUAL",
+  "family": "Retorno genérico de coste y selección O2 APD01",
+  "current_seed": "DEE Cognitive 2.0/reproducibilidad/materiales/PI02_BASE_T753346",
+  "current_parent": {"life": "ECI02_PI02_MAIN", "N": 67, "tick": 753346},
+  "protect_main": true,
+  "diagnostic_new_life_example": "ECI02_PI03_O2_CURRENT_PROBE_01",
+  "selection_changed": false,
+  "historical_basis": {
+    "main": "ASISTENTE_MAIN P22: rutas+1/0/−1; resultados18/23/17; historia propia",
+    "auxiliary": "RUTA_O2_R3 real+1/0/−1 coste11, omit/sham+1/+1/+1 coste15; REVERSE−1/−1 coste10 frente SAME_LAW−1/−1 coste2",
+    "evidence": "lecturas/ANTECEDENTE_O2_RECALCULADO_PI03.json y lecturas/FUENTES_O2_APD01/",
+    "do_not_repeat_as_new": "No es el primer retorno genérico ni la primera selección por consecuencias. Una comprobación actual sólo amplía el corte de disponibilidad D."
+  },
+  "current_passive_findings": {
+    "snapshot_tick": 753346,
+    "metadata_key": "DEE.Cognitive.System.1.1.APD01.route_O2.R3",
+    "component_present": true,
+    "references": [
+      {"site": [14,44,15], "state": 1, "semantic": 1, "s_reg": 1557, "clock": "753346"},
+      {"site": [16,44,15], "state": 1, "semantic": 1, "s_reg": 1621, "clock": "753346"}
+    ],
+    "difference_A_minus_B": -64,
+    "assistant_metadata_version": "APD01.shared_world.R03.separate_native_route_common_return",
+    "installed_actor_version": "APD01.shared_world.R04.third_curriculum_common24",
+    "route_contract_matches_installed_route_version": "APD01.separate_route_O2.common_cost.candidate.R3",
+    "assistant_state_get_does_not_require_R03_R04_string_equality": true,
+    "functional_current_proof": false,
+    "interpretation": "Contenido/soporte distinguible por observación externa. No demuestra que el acceso O2 actual funcione ni que sea útil o reversible. El panel actual12usos no incluye esta ruta. No ejecutar upgrade, sembrar de nuevo ni trasplantar referencias."
+  },
+  "static_dispatch_path": [
+    "gestionar.py mente-unificada-pedir → QueueDB.validate_request admite literales apd y apd-ambiente",
+    "GenesisNativeWorld.validate/execute delega literales sin prefijoeci01 a NativeWorld",
+    "NativeWorld admite esos modos en backend mente_unificada y verifica asistente_proposito_01.state/validate_literal",
+    "mente_unificada_01.py#session ramas270–279 → asistente_proposito_01.configure o execute",
+    "execute → query_form → ruta_adquirida_apd_03.use → read de6puertas → sólo rama formada → efecto real → return_cost"
+  ],
+  "clone_command_argv_template": [
+    "DEE Cognitive 2.0/motor/python313/python.exe", "-I", "-B", "-X", "utf8",
+    "PROGRESION_INTEGRADA_03/codigo/clonar_corte_experimental_PI03.py",
+    "--par", "DEE Cognitive 2.0/reproducibilidad/materiales/PI02_BASE_T753346",
+    "--vida", "ECI02_PI03_O2_CURRENT_PROBE_01"
+  ],
+  "owner": {
+    "implementation": "PROGRESION_INTEGRADA_03/codigo/servicio_ensayo.py#Owner",
+    "system": "PROGRESION_INTEGRADA_03/estados/candidato/sistema",
+    "memory_limit_bytes": 536870912,
+    "one_writer_only": true,
+    "do_not_use": ["--nueva", "prepare de O2", "seed_B", "apd-ruta-docencia", "upgrade_route_contract", "respuestas esperadas como entradas"]
+  },
+  "literal_requests_in_order": [
+    {"id_suffix": "pause_inherited_workbench", "literal": {"modo": "eci01-pi02-pausar-habitat"}, "feedback": "omit", "classification": "Retirada declarada del puente ambiental preparado; no regulación aprendida"},
+    {"id_suffix": "historical_P22_environment", "literal": {"modo": "apd-ambiente", "configuracion": {"precios": [1,5], "demora": [0,2], "disponibilidad": [true,true], "presupuesto": 2}}, "feedback": "omit", "classification": "Configuración explícita del entorno, no memoria nueva ni acción óptima"},
+    {"id_suffix": "P22_task1", "literal": {"modo": "apd", "texto": "suma", "operandos": [7,11]}, "feedback": "real"},
+    {"id_suffix": "P22_task2", "literal": {"modo": "apd", "texto": "diferencia", "operandos": [29,6]}, "feedback": "real"},
+    {"id_suffix": "P22_task3", "literal": {"modo": "apd", "texto": "agrega", "operandos": [5,12]}, "feedback": "real"}
+  ],
+  "fixed_observables": [
+    "word.reader.formed_native_command: código léxico realmente producido, no significado supuesto de la palabra",
+    "route.reader.choice y sus6observaciones fijas en q+6:−1nativo,+1externo,0ayuda material; NULL no actúa",
+    "native_numeric.numeric_reader.numeric_result o external_tool.value, según la única rama elegida",
+    "result_material_use.reader.choice y artefacto real: existencia,bytes,SHA",
+    "consequence_cost y outcome_returns: coste real modelado, mismo S2(14,45,16), umbral2, consultas genéricas y calendarioeven391",
+    "referencias antes/después, recibos únicos solicitados/aplicados/rechazados, clocks y estado completo al guardar/cerrar"
+  ],
+  "criteria_predeclared": {
+    "budget": "Como máximo3tareas materiales después de la configuración; sin repetir hasta acertar ni una cuarta prueba no declarada",
+    "D_current_use": "Ruta O2 material única y recibos correspondientes, acción de la rama elegida y consecuencia/artefacto registrado. Que la ruta sea−1 o barata no se presupone ni se sustituye",
+    "word_failure": "Si el código léxico esNULL y por ello execute no consulta O2, registrar bloqueo léxico; no inferir pérdida de O2",
+    "zero_vs_NULL": "0 formado es ayuda material, no silencio; no se convierteNULL en0",
+    "external_branch": "La calculadora externa es herramienta declarada, nunca se acredita como cálculoDEE. No evaluar ambas ramas para elegir mejor",
+    "interpretation": "Comparar corrección numérica, artefacto completado y coste por separado; retorno histórico no evalúa calidad aritmética",
+    "stop": "Ante incertidumbre, rechazo que impida protocolo, función no formada o límite real de recursos, conservar futuro y no reenviar; no limpiar ni reenseñar para favorecer esta prueba"
+  },
+  "possible_followup_not_in_this_recipe": {
+    "question": "Reversión local tras poner precios5/1 con mismos recursos, comparada con continuar1/5; no esperar flexibilidad que ya falló históricamente",
+    "minimal_control": "Futuros emparejados del mismo corte, retorno real/omitido; no mezclar sus experiencias ni promover por un soloacierto",
+    "PI03_difference": "Q busca que una traza física de la actuación determine qué referencia recibe el retorno genérico después, en lugar del sesgo asimétrico de O2. Debe acreditarse con comandos opuestos y utilidad después; no se deduce de este antecedente."
+  },
+  "new_native_ticks_in_preparation_of_this_recipe": 0
+}

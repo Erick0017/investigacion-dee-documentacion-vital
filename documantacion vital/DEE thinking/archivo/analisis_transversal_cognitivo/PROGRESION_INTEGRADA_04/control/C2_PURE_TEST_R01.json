@@ -1,0 +1,403 @@
+{
+  "schema": "PI04.C2.pure_static_mock_check.R01",
+  "status": "PURE_TESTS_PASSED_NOT_NATIVE",
+  "Native_ticks": 0,
+  "official_DEE_imports": [],
+  "refusals": [
+    "target",
+    "answer",
+    "calibration_other",
+    "bool_scalar",
+    "path",
+    "metadata_over64KB"
+  ],
+  "device_synthetic_effects": [
+    {
+      "ordinal": 0,
+      "actual_operation": "diferencia",
+      "actual_value": 7,
+      "actual_route": -1,
+      "failed": false,
+      "product": {
+        "path": "products/0000.bin",
+        "bytes": 64,
+        "sha256": "971fb48597f0033b95fef12d6cb5f992c1a37416b1c0b3bf0ced11f3906409b1",
+        "actual_native_integer": 7
+      },
+      "private_evaluator_only": {
+        "required_operation": "diferencia",
+        "connected_route": -1
+      },
+      "actual_deadline": 11,
+      "effect_is_real_file": true
+    },
+    {
+      "ordinal": 1,
+      "actual_operation": "suma",
+      "actual_value": 25,
+      "actual_route": 1,
+      "failed": false,
+      "product": {
+        "path": "products/0001.bin",
+        "bytes": 64,
+        "sha256": "e694ae087e094cb64c6a049bc9718d135582f29b7075a4ef788cd07be3dfff7d",
+        "actual_native_integer": 25
+      },
+      "private_evaluator_only": {
+        "required_operation": "suma",
+        "connected_route": 1
+      },
+      "actual_deadline": 14,
+      "effect_is_real_file": true
+    },
+    {
+      "ordinal": 2,
+      "actual_operation": "suma",
+      "actual_value": 25,
+      "actual_route": -1,
+      "failed": true,
+      "product": null,
+      "private_evaluator_only": {
+        "required_operation": "suma",
+        "connected_route": 1
+      },
+      "actual_deadline": 17,
+      "effect_is_real_file": false
+    },
+    {
+      "ordinal": 3,
+      "actual_operation": "suma",
+      "actual_value": 25,
+      "actual_route": 1,
+      "failed": true,
+      "product": null,
+      "private_evaluator_only": {
+        "required_operation": "diferencia",
+        "connected_route": 1
+      },
+      "actual_deadline": 20,
+      "effect_is_real_file": false
+    },
+    {
+      "ordinal": 4,
+      "actual_operation": null,
+      "actual_value": null,
+      "actual_route": null,
+      "failed": true,
+      "product": null,
+      "private_evaluator_only": {
+        "required_operation": "suma",
+        "connected_route": null
+      },
+      "actual_deadline": 23,
+      "effect_is_real_file": false
+    },
+    {
+      "ordinal": 5,
+      "actual_operation": "diferencia",
+      "actual_value": 0,
+      "actual_route": -1,
+      "failed": false,
+      "product": {
+        "path": "products/0005.bin",
+        "bytes": 64,
+        "sha256": "365c773814ace2fcd7093bf7e47dbbbd8d0ee47abc103d3ebbdaff9ab6b0e572",
+        "actual_native_integer": 0
+      },
+      "private_evaluator_only": {
+        "required_operation": "diferencia",
+        "connected_route": -1
+      },
+      "actual_deadline": 26,
+      "effect_is_real_file": true
+    }
+  ],
+  "integration_MOCK": [
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "real",
+      "first_choice": 1,
+      "mock_actual_result": 7,
+      "calls": [
+        [
+          "COPY",
+          1,
+          121,
+          122
+        ],
+        [
+          "ARITHMETIC",
+          {
+            "modo": "MOCK_native_arithmetic",
+            "operacion": "suma",
+            "izquierda": 16,
+            "derecha": 9
+          },
+          121
+        ],
+        [
+          "SECOND_SENSOR",
+          7,
+          319
+        ],
+        [
+          "RETURN",
+          false,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": "suma",
+        "actual_value": 7,
+        "actual_route": -1,
+        "failed": false,
+        "product": {
+          "path": "products/0000.bin",
+          "bytes": 64,
+          "sha256": "971fb48597f0033b95fef12d6cb5f992c1a37416b1c0b3bf0ced11f3906409b1",
+          "actual_native_integer": 7
+        },
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": -1
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": true
+      },
+      "mock_first_NULL_preserved": false
+    },
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "none",
+      "first_choice": 1,
+      "mock_actual_result": 7,
+      "calls": [
+        [
+          "COPY",
+          1,
+          121,
+          122
+        ],
+        [
+          "ARITHMETIC",
+          {
+            "modo": "MOCK_native_arithmetic",
+            "operacion": "suma",
+            "izquierda": 16,
+            "derecha": 9
+          },
+          121
+        ],
+        [
+          "SECOND_SENSOR",
+          7,
+          319
+        ],
+        [
+          "RETURN",
+          false,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": "suma",
+        "actual_value": 7,
+        "actual_route": -1,
+        "failed": false,
+        "product": {
+          "path": "products/0000.bin",
+          "bytes": 64,
+          "sha256": "971fb48597f0033b95fef12d6cb5f992c1a37416b1c0b3bf0ced11f3906409b1",
+          "actual_native_integer": 7
+        },
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": -1
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": true
+      },
+      "mock_first_NULL_preserved": false
+    },
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "link_cut",
+      "first_choice": 1,
+      "mock_actual_result": 7,
+      "calls": [
+        [
+          "COPY",
+          1,
+          121,
+          122
+        ],
+        [
+          "ARITHMETIC",
+          {
+            "modo": "MOCK_native_arithmetic",
+            "operacion": "suma",
+            "izquierda": 16,
+            "derecha": 9
+          },
+          121
+        ],
+        [
+          "RETURN",
+          true,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": "suma",
+        "actual_value": 7,
+        "actual_route": null,
+        "failed": true,
+        "product": null,
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": -1
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": false
+      },
+      "mock_first_NULL_preserved": false
+    },
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "actuator_null",
+      "first_choice": 1,
+      "mock_actual_result": 7,
+      "calls": [
+        [
+          "COPY",
+          1,
+          121,
+          122
+        ],
+        [
+          "ARITHMETIC",
+          {
+            "modo": "MOCK_native_arithmetic",
+            "operacion": "suma",
+            "izquierda": 16,
+            "derecha": 9
+          },
+          121
+        ],
+        [
+          "SECOND_SENSOR",
+          7,
+          319
+        ],
+        [
+          "RETURN",
+          true,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": "suma",
+        "actual_value": 7,
+        "actual_route": null,
+        "failed": true,
+        "product": null,
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": -1
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": false
+      },
+      "mock_first_NULL_preserved": false
+    },
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "real",
+      "first_choice": null,
+      "mock_actual_result": null,
+      "calls": [
+        [
+          "RETURN",
+          true,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": null,
+        "actual_value": null,
+        "actual_route": null,
+        "failed": true,
+        "product": null,
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": null
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": false
+      },
+      "mock_first_NULL_preserved": true
+    },
+    {
+      "kind": "SYNTHETIC_API_MOCK_NOT_DEE",
+      "arm": "real",
+      "first_choice": 1,
+      "mock_actual_result": null,
+      "calls": [
+        [
+          "COPY",
+          1,
+          121,
+          122
+        ],
+        [
+          "ARITHMETIC",
+          {
+            "modo": "MOCK_native_arithmetic",
+            "operacion": "suma",
+            "izquierda": 16,
+            "derecha": 9
+          },
+          121
+        ],
+        [
+          "RETURN",
+          true,
+          388,
+          389
+        ]
+      ],
+      "mock_effect": {
+        "ordinal": 0,
+        "actual_operation": "suma",
+        "actual_value": null,
+        "actual_route": null,
+        "failed": true,
+        "product": null,
+        "private_evaluator_only": {
+          "required_operation": "suma",
+          "connected_route": null
+        },
+        "actual_deadline": 388,
+        "effect_is_real_file": false
+      },
+      "mock_first_NULL_preserved": true
+    }
+  ],
+  "code_sha256": "df7eb3c24a47f42e86ed5814bbd3330f67d84babcc83c3447c1d648766dada25",
+  "unverified": [
+    "Native sensor polarity/admission",
+    "FI128/current real latency",
+    "Native generic-credit compatibility",
+    "learning/usefulness/retention"
+  ]
+}

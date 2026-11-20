@@ -1,0 +1,53 @@
+--- S2_ACTUAL
++++ S2_PUERTA_MAS_OP4
+@@ -20,10 +20,16 @@
+     for node in (script,script.parent,product):
+         if node.is_symlink()or getattr(node.lstat(),'st_file_attributes',0)&0x400:
+             raise ValueError('No se reenvía hacia un enlace/reparse: '+str(node))
+     command=[sys.executable,'-I','-B','-X','utf8',str(script),*arguments]
+-    return subprocess.run(command,cwd=product,shell=False,
+-          creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0)).returncode
++    completed=subprocess.run(command,cwd=product,shell=False,
++          capture_output=True,text=True,encoding='utf-8',errors='strict',
++          creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
++    # CREATE_NO_WINDOW does not reliably inherit console handles on Windows.
++    # Capture pipes explicitly, then forward the exact structured output.
++    if completed.stdout:sys.stdout.write(completed.stdout);sys.stdout.flush()
++    if completed.stderr:sys.stderr.write(completed.stderr);sys.stderr.flush()
++    return completed.returncode
+ 
+ # Debe estar ANTES de cualquier import app/DEE, incluso en los modos de lectura.
+ if len(sys.argv)>1 and sys.argv[1]=='reproducibilidad':
+     raise SystemExit(_reproducibilidad_frontend(sys.argv[2:]))
+@@ -31,8 +37,18 @@
+     (len(sys.argv)>2 and sys.argv[1].startswith('--system-root=') and sys.argv[2]=='reproducibilidad')):
+     print('Usa reproducibilidad como primer comando, sin --system-root; el destino diagnóstico se declara en su propio contrato.',file=sys.stderr)
+     raise SystemExit(2)
+ 
++# Fixed transport-only PI04 convenience door, before Store/Native imports.
++if len(sys.argv)>1 and sys.argv[1]in('pi04-coordinacion-estado','pi04-coordinacion-oportunidad'):
++    import importlib.util as _pi04_importlib
++    _pi04_system=Path(__file__).resolve().parent
++    _pi04_file=_pi04_system/'app/pi04_cliente_acotado.py'
++    if not _pi04_file.is_file():raise SystemExit('PI04 queue client not installed beside this manager')
++    _pi04_spec=_pi04_importlib.spec_from_file_location('PI04_bounded_existing_client',_pi04_file)
++    _pi04_client=_pi04_importlib.module_from_spec(_pi04_spec);_pi04_spec.loader.exec_module(_pi04_client)
++    raise SystemExit(_pi04_client.cli(sys.argv[1:],system_root=_pi04_system))
++
+ sys.path.insert(0,str(Path(__file__).resolve().parent))
+ from app.lives import Store,read,SYSTEM_ROOT
+ from app.native_tools import identity,physical,observe,exact_receipt,moore27
+ 
+@@ -41,8 +57,12 @@
+ 
+ def parser():
+     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--system-root',type=Path);sub=p.add_subparsers(dest='command')
+     sub.add_parser('reproducibilidad',help='listar/verificar/recalcular/reproducir: usar como primer comando, sin --system-root; puerta stdlib previa a Native')
++    for _name in('pi04-coordinacion-estado','pi04-coordinacion-oportunidad'):
++        q=sub.add_parser(_name,help='Puerta acotada de cola PI04: dueño ya abierto, vida explícita; oportunidad requiere --material')
++        q.add_argument('--vida',required=True);q.add_argument('--id');q.add_argument('--esperar',type=float,default=600)
++        q.add_argument('--material',action='store_true');q.add_argument('--diagnostico',action='store_true')
+     for name in('estado','vidas','version','capacidades','perfiles','interactivo'):
+         command=sub.add_parser(name)
+         if name=='estado':command.add_argument('--vida')
+     q=sub.add_parser('recibos');q.add_argument('--vida')

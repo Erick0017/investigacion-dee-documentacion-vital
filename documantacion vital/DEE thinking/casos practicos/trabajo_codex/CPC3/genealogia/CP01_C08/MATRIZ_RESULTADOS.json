@@ -1,0 +1,748 @@
+{
+  "schema": 1,
+  "campaign": "CASOS_PRACTICOS_01_DEE_THINKING_3_5_0_8_CAMPOS",
+  "project": "DEE Universe / INVESTIGACION DEE",
+  "author": "Ivan Erick Tlaltecatl Morales",
+  "product": "DEE thinking3.5.0",
+  "kernel": 27,
+  "synthetic_data": true,
+  "fields": [
+    {
+      "id": "C01",
+      "question": "same inventory, different temporal order",
+      "methods": [
+        "supported relative pair, online zero-load neighbor events",
+        "common probes on independent forks",
+        "first-event FSM baseline"
+      ],
+      "metrics": {
+        "accuracy_declared_phase_domain": 1.0,
+        "probe_tests": 15,
+        "reserved_histories": [
+          "ABBA",
+          "BAAB"
+        ],
+        "retention_ticks": 250,
+        "latency_ticks": 3,
+        "phase_delays": [
+          {
+            "delay": 0,
+            "events": [
+              {
+                "id": 1,
+                "status": "applied",
+                "requested_tick": 32,
+                "effective_tick": 32,
+                "channels": [
+                  "E_A"
+                ],
+                "reason": ""
+              },
+              {
+                "id": 2,
+                "status": "applied",
+                "requested_tick": 33,
+                "effective_tick": 33,
+                "channels": [
+                  "E_B"
+                ],
+                "reason": ""
+              }
+            ],
+            "delta": 1,
+            "response": {
+              "tick": 37,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1220757004058886145,
+              "clock": 37,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                1,
+                -1,
+                0
+              ],
+              "active": true
+            },
+            "expected_first_event_FSM": 1
+          },
+          {
+            "delay": 1,
+            "events": [
+              {
+                "id": 1,
+                "status": "applied",
+                "requested_tick": 33,
+                "effective_tick": 33,
+                "channels": [
+                  "E_A"
+                ],
+                "reason": ""
+              },
+              {
+                "id": 2,
+                "status": "applied",
+                "requested_tick": 34,
+                "effective_tick": 34,
+                "channels": [
+                  "E_B"
+                ],
+                "reason": ""
+              }
+            ],
+            "delta": 0,
+            "response": {
+              "tick": 38,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1152921534671618049,
+              "clock": 38,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "expected_first_event_FSM": 1
+          },
+          {
+            "delay": 2,
+            "events": [
+              {
+                "id": 1,
+                "status": "applied",
+                "requested_tick": 34,
+                "effective_tick": 34,
+                "channels": [
+                  "E_A"
+                ],
+                "reason": ""
+              },
+              {
+                "id": 2,
+                "status": "applied",
+                "requested_tick": 35,
+                "effective_tick": 35,
+                "channels": [
+                  "E_B"
+                ],
+                "reason": ""
+              }
+            ],
+            "delta": 0,
+            "response": {
+              "tick": 39,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1152921534671618049,
+              "clock": 39,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "expected_first_event_FSM": 1
+          }
+        ]
+      },
+      "scope": "first-event latch; delayed events are admitted but need not cause the same learning",
+      "evidence": [
+        "casos/C01/RESULTADOS.json",
+        "casos/INTEGRATIONS/C01_PHASE_DOMAIN.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "EXPERIENCE_PROTOCOL",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true
+    },
+    {
+      "id": "C02",
+      "question": "acquired calibration used for new queries",
+      "methods": [
+        "online paired collision, zero-origin unit-gain",
+        "one-tick unpaired exposure",
+        "independent and sequential physical queries",
+        "scalar-offset baseline"
+      ],
+      "metrics": {
+        "max_absolute_error_trained_domain": 0,
+        "initial_paired_exposures_per_relation": 1,
+        "response_latency_ticks": 5,
+        "queries": [
+          0,
+          1,
+          3,
+          17,
+          31
+        ],
+        "retention500_readout": [
+          41,
+          45
+        ]
+      },
+      "scope": "acquired offset within a fixed unit-gain family; not arbitrary affine gain or arbitrary dictionary",
+      "evidence": [
+        "casos/C02/RESULTADOS.json",
+        "casos/VALIDACION_DIRIGIDA/BASELINE_COMPARISONS.json",
+        "casos/INTEGRATIONS/C08_CONTROLS_REUSE.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "EXPERIENCE_PROTOCOL",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true
+    },
+    {
+      "id": "C03",
+      "question": "relation available versus expression/input unavailable",
+      "methods": [
+        "external passive relational panel",
+        "one common physical probe",
+        "diagnostic missing centre and occupied port",
+        "distributed saturated-channel observation"
+      ],
+      "metrics": {
+        "diagnostic_classes": [
+          "CHANNEL_AT_CAP_RELATION_STILL_AVAILABLE",
+          "INPUT_BLOCKED",
+          "LATENT_RELATION_ACCESSIBLE",
+          "RELATION_UNAVAILABLE"
+        ],
+        "queries_per_trial": 1,
+        "distributed_horizon": 700,
+        "distributed_delta": 1,
+        "distributed_probe_status": "rejected_occupied"
+      },
+      "scope": "investigator diagnostic, not native introspection; delta remains passively observable when the physical probe is rejected",
+      "evidence": [
+        "casos/C03/RESULTADOS.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "EXPERIENCE_PROTOCOL",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE",
+        "DIAGNOSTIC_FORK"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true,
+      "diagnosis_modality": "EXTERNAL_INVESTIGATOR_TOOL"
+    },
+    {
+      "id": "C04",
+      "question": "asynchronous versus simultaneous native convergence",
+      "methods": [
+        "A/B singles and joint",
+        "one-tick offset",
+        "direction/context variants",
+        "later product use",
+        "separate host admission collision"
+      ],
+      "metrics": {
+        "native_preparations": 7,
+        "joint_load": 36,
+        "joint_direction": [
+          0,
+          1,
+          1
+        ],
+        "later_use": [
+          0,
+          66
+        ],
+        "host_conflict_statuses": [
+          "rejected_conflict",
+          "rejected_conflict"
+        ]
+      },
+      "scope": "native encounter and two uses, not a Python winner policy; observer branch attribution is explicitly unresolved for void precedence",
+      "evidence": [
+        "casos/C04/RESULTADOS.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true
+    },
+    {
+      "id": "C05",
+      "question": "native acquired function used in a prepared receiver",
+      "methods": [
+        "zero-relay in one Runtime",
+        "late selective relay removal",
+        "source-absent control",
+        "two reference histories and reserved queries"
+      ],
+      "metrics": {
+        "histories": [
+          12,
+          16
+        ],
+        "queries": [
+          3,
+          17,
+          31
+        ],
+        "signatures": [
+          {
+            "teacher": 12,
+            "arms": {
+              "full": [
+                15,
+                29,
+                43
+              ],
+              "relay_cut": [
+                3,
+                17,
+                31
+              ],
+              "source_absent": [
+                3,
+                17,
+                31
+              ]
+            }
+          },
+          {
+            "teacher": 16,
+            "arms": {
+              "full": [
+                19,
+                33,
+                47
+              ],
+              "relay_cut": [
+                3,
+                17,
+                31
+              ],
+              "source_absent": [
+                3,
+                17,
+                31
+              ]
+            }
+          }
+        ]
+      },
+      "scope": "mobile native transfer; source absent is not equal-inventory unpaired exposure; not bodily reinstantiation",
+      "evidence": [
+        "casos/C05/RESULTADOS.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE",
+        "DIAGNOSTIC_FORK"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true
+    },
+    {
+      "id": "C06",
+      "question": "action changes environment and return influences later response",
+      "methods": [
+        "native contingent versus independent environment",
+        "late formed-action cut",
+        "actual return interception at46",
+        "shared external sandbox loop from C08"
+      ],
+      "metrics": {
+        "native_environment_loads": [
+          {
+            "independent": false,
+            "full": 48,
+            "after_late_action_cut": 30
+          },
+          {
+            "independent": true,
+            "full": 48,
+            "after_late_action_cut": 48
+          }
+        ],
+        "actual_return_cut_tick": 46,
+        "shared_loop_episodes": 7
+      },
+      "scope": "native environmental contingency measured; retained basal delta alone did not establish adaptive native rewrite. Repeated acquisition/use is in the external-law C08 habitat, counted once.",
+      "evidence": [
+        "casos/C06/RESULTADOS.json",
+        "casos/VALIDACION_DIRIGIDA/RESULTADOS.json",
+        "casos/INTEGRATIONS/C08_CONTROLS_REUSE.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE",
+        "DIAGNOSTIC_FORK",
+        "EXTERNAL_ACTUATION_SANDBOX"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true,
+      "external_habitat_modality": "EXTERNAL_ACTUATION_SANDBOX"
+    },
+    {
+      "id": "C07",
+      "question": "reusable causal signature tool",
+      "methods": [
+        "compare saved history panels",
+        "deep diagnostic fork with one late RAW cut and preserved clock",
+        "new reserved query11"
+      ],
+      "metrics": {
+        "reserved_query": 11,
+        "intact": 23,
+        "relay_cut": 11,
+        "effect": 12,
+        "MAIN_unchanged": true
+      },
+      "scope": "external investigator tool; C05 data reused rather than counted again",
+      "evidence": [
+        "src/causal_lab.py",
+        "casos/C07/RESULTADOS.json",
+        "casos/INTEGRATIONS/CAUSAL_RESERVED_PANEL.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE",
+        "DIAGNOSTIC_FORK"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true,
+      "diagnosis_modality": "EXTERNAL_INVESTIGATOR_TOOL"
+    },
+    {
+      "id": "C08",
+      "question": "persistent communicative experimental entity",
+      "methods": [
+        "online two-wire acquired transforms",
+        "same opaque signals in distinct histories",
+        "paired/unpaired/no-experience",
+        "matched full/no/offpath/yoked return",
+        "new translated held-out history",
+        "repeated contacts and snapshot continuation",
+        "supported-body alternative and native mobile-basal composition"
+      ],
+      "metrics": {
+        "history_signal_return_contrasts": [
+          {
+            "role": "confirmatory",
+            "references": [
+              12,
+              16
+            ],
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "same_s0_response": [
+              25,
+              29
+            ],
+            "feedback": 28,
+            "future_common_q7": {
+              "full_return": [
+                60,
+                64
+              ],
+              "no_return": [
+                32,
+                36
+              ],
+              "offpath": [
+                32,
+                36
+              ],
+              "yoked": [
+                33,
+                37
+              ]
+            }
+          },
+          {
+            "role": "history_inverted",
+            "references": [
+              16,
+              12
+            ],
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "same_s0_response": [
+              29,
+              25
+            ],
+            "feedback": 1,
+            "future_common_q7": {
+              "full_return": [
+                37,
+                33
+              ],
+              "no_return": [
+                36,
+                32
+              ],
+              "offpath": [
+                36,
+                32
+              ],
+              "yoked": [
+                37,
+                33
+              ]
+            }
+          },
+          {
+            "role": "reserved",
+            "references": [
+              22,
+              28
+            ],
+            "origin": [
+              5,
+              4,
+              2
+            ],
+            "same_s0_response": [
+              35,
+              41
+            ],
+            "feedback": 7,
+            "future_common_q7": {
+              "full_return": [
+                49,
+                55
+              ],
+              "no_return": [
+                42,
+                48
+              ],
+              "offpath": [
+                42,
+                48
+              ],
+              "yoked": [
+                43,
+                49
+              ]
+            }
+          }
+        ],
+        "initial_common_input": 13,
+        "future_common_input": 7,
+        "repeated_episodes": 7,
+        "response_latency_ticks": 5,
+        "physical_slots": 16,
+        "retention_without_new_inputs_ticks": 500,
+        "restore_advance31_response": [
+          106,
+          110
+        ],
+        "saturation_gap": [
+          4,
+          4,
+          4,
+          4,
+          0,
+          0
+        ],
+        "saturation_different_RAW_sites": 0,
+        "saturation_different_clocks": 0
+      },
+      "scope": "finite relational signal protocol, source-supported contacts; environment law external sandbox. No human-language comprehension, arbitrary correspondence, autonomous closed world or unlimited conversation demonstrated.",
+      "evidence": [
+        "conversar.py",
+        "src/sesion.py",
+        "casos/C08_INTERFACE_V2/RESULTADOS.json",
+        "casos/INTEGRATIONS/C08_CONTROLS_REUSE.json",
+        "casos/SATURATION_OBSERVERS/RESULTADOS.json",
+        "resultados/REPRODUCTION_CHECK.json"
+      ],
+      "state": "EJECUTADO",
+      "modalities": [
+        "NATIVE_EVOLUTION",
+        "EXPERIENCE_PROTOCOL",
+        "PASSIVE_OBSERVATION",
+        "PHYSICAL_PROBE",
+        "EXTERNAL_ACTUATION_SANDBOX"
+      ],
+      "independent_demonstrations_are_not_implied_by_field_count": true,
+      "external_habitat_modality": "EXTERNAL_ACTUATION_SANDBOX"
+    }
+  ],
+  "case_outputs": [
+    {
+      "id": "C01",
+      "path": "casos/C01/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 3.3504020999971544,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C02",
+      "path": "casos/C02/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.46541549999892595,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C03",
+      "path": "casos/C03/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 26.651440300000104,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C04",
+      "path": "casos/C04/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.11598819999926491,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C05",
+      "path": "casos/C05/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 7.482821599998715,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C06",
+      "path": "casos/C06/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 1.320605400000204,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C07",
+      "path": "casos/C07/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.011631999997916864,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C08",
+      "path": "casos/C08/RESULTADOS.json",
+      "role": "preserved invalid interface attempt",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.36960220000037225,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "C08_INTERFACE_V2",
+      "path": "casos/C08_INTERFACE_V2/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.3735038999984681,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "DISCOVERY_01",
+      "path": "casos/DISCOVERY_01/RESULTADOS.json",
+      "role": "discovery",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 1.2797191999998176,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "DISCOVERY_02_INTERFACES",
+      "path": "casos/DISCOVERY_02_INTERFACES/RESULTADOS.json",
+      "role": "discovery",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 5.877504100000806,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "INTEGRATIONS",
+      "path": "casos/INTEGRATIONS/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 4.148680300000706,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "SATURATION_OBSERVERS",
+      "path": "casos/SATURATION_OBSERVERS/RESULTADOS.json",
+      "role": "scientific measurements or analysis",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 0.1214590000017779,
+      "not_independent_replicate_count": true
+    },
+    {
+      "id": "VALIDACION_DIRIGIDA",
+      "path": "casos/VALIDACION_DIRIGIDA/RESULTADOS.json",
+      "role": "technical validation",
+      "stored_operational_status": "EJECUTADO",
+      "duration_seconds": 1.3909557000006316,
+      "not_independent_replicate_count": true
+    }
+  ],
+  "case_output_records_count": 14,
+  "counting_scope": "Distinct output records are not native trajectory counts or independent replicates. Shared C05/C07, C06/C08 and bridge evidence is counted once at source.",
+  "not_claimed": [
+    "general cognition",
+    "arbitrary language/dictionary",
+    "autonomous internal feedback learning of the basal body",
+    "unlimited resources",
+    "body-level reinstantiation",
+    "universal robustness",
+    "practical speed advantage"
+  ],
+  "unevaluated_or_blocked": [
+    {
+      "item": "renewed physical query of distributed saturated preparation",
+      "reason": "RejectedOccupied; passive delta remains observable"
+    },
+    {
+      "item": "relational body repeated return interface",
+      "reason": "occupied E_B port and n_active10 at investigated write occasion; no host clearing or clock repair"
+    },
+    {
+      "item": "arbitrary affine gains, broad human language and long autonomous deployment",
+      "reason": "outside the realized finite mechanisms; not inferred as DEE impossibilities"
+    }
+  ],
+  "elapsed_seconds_at_analysis": 4821.562,
+  "global_verdict": null
+}

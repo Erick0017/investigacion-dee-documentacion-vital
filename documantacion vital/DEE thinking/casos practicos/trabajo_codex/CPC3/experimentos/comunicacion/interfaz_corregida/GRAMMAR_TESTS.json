@@ -1,0 +1,183 @@
+{
+  "scope": "INTERFACE_STUB_ONLY, NOT_NATIVE_EVIDENCE",
+  "records": [
+    {
+      "input": "Ayuda",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "INTERFAZ: órdenes: «Instancia nueva», «Presenta experiencia A/B», «¿Qué pasará después?», «¿Ocurrirá lo mismo?», «Predice antes de observar», «Observa otra vez» (acontecimiento del entorno), «Muestra el estado» (lectura pasiva), «Avanza el entorno», «A esto lo llamaremos X», «Guarda la sesión [en ruta]», «Continúa desde la sesión guardada» y «Salir». Compara/fuente sólo se activan si el ente exporta esas emisiones. A/B son nombres externos de sensores físicos, no significados aprendidos. Los alias son referencias de interfaz, no nuevas asociaciones adquiridas."
+      }
+    },
+    {
+      "input": "Instancia nueva",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "Preparación nueva declarada. Una única trayectoria MAIN.",
+        "observation": {
+          "tick": 32,
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "Presenta experiencia A",
+      "output": {
+        "attribution": "INTERFAZ_Y_INTERACCION_FISICA",
+        "text": "Se solicitó la experiencia física declarada; el recibo indica su admisión real.",
+        "native_result": {
+          "receipt": {
+            "status": "applied"
+          },
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "A esto lo llamaremos zeri",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "El nombre «zeri» referencia externamente sensor. Esa equivalencia la proporciona la interfaz, no se registra como asociación DEE aprendida."
+      }
+    },
+    {
+      "input": "Presenta experiencia zeri",
+      "output": {
+        "attribution": "INTERFAZ_Y_INTERACCION_FISICA",
+        "text": "Se solicitó la experiencia física declarada; el recibo indica su admisión real.",
+        "native_result": {
+          "receipt": {
+            "status": "applied"
+          },
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "¿Qué pasará después?",
+      "output": {
+        "attribution": "RESPUESTA_NATIVA_TRADUCIDA",
+        "text": "La emisión física indica llegada en el objetivo declarado.",
+        "emission_tick": 34,
+        "target_tick": 64,
+        "physical_output": {
+          "test_stub_only": true
+        },
+        "receipt": null,
+        "modality": null,
+        "native_result": {
+          "emission_tick": 34,
+          "target_tick": 64,
+          "prediction_set": [
+            true
+          ],
+          "observable": "packet_arrival_at_barrier_output",
+          "physical_output": {
+            "test_stub_only": true
+          }
+        }
+      }
+    },
+    {
+      "input": "¿Ocurrirá lo mismo?",
+      "output": {
+        "attribution": "RESPUESTA_NATIVA_TRADUCIDA",
+        "text": "La emisión física indica llegada en el objetivo declarado.",
+        "emission_tick": 34,
+        "target_tick": 64,
+        "physical_output": {
+          "test_stub_only": true
+        },
+        "receipt": null,
+        "modality": null,
+        "native_result": {
+          "emission_tick": 34,
+          "target_tick": 64,
+          "prediction_set": [
+            true
+          ],
+          "observable": "packet_arrival_at_barrier_output",
+          "physical_output": {
+            "test_stub_only": true
+          }
+        },
+        "interface_notice": "En esta gramática, la frase solicita otro pronóstico sobre la misma variable; no acredita comparación nativa entre dos episodios."
+      }
+    },
+    {
+      "input": "Observa otra vez",
+      "output": {
+        "attribution": "ACONTECIMIENTO_OBSERVADO_Y_CODIFICADO",
+        "text": "La interfaz codificó un acontecimiento realmente observado del entorno; la evolución DEE determina su efecto.",
+        "native_result": {
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "Compara esto con lo anterior",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "La operación compare no está implementada para este candidato. No se calcula desde metadata ni desde la transcripción."
+      }
+    },
+    {
+      "input": "¿Qué fuente necesitas observar?",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "La operación source no está implementada para este candidato. No se calcula desde metadata ni desde la transcripción."
+      }
+    },
+    {
+      "input": "Guarda la sesión en interfaz.stub.json",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "Estado físico y de sesión guardado.",
+        "path": "documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\comunicacion\\interfaz_corregida\\interfaz.stub.json",
+        "snapshot_sha256": "06a957130163920383921e0e60cb4646057b1c9388a725f13e88222a5481e55c"
+      }
+    },
+    {
+      "input": "Avanza el entorno",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "El ente y su entorno declarados avanzaron treinta ticks sin reinicio.",
+        "observation": {
+          "tick": 65,
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "Continúa desde la sesión guardada",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "Se restauró el estado físico y operativo conservado; no se preparó otro cuerpo.",
+        "observation": {
+          "tick": 35,
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "Muestra el estado",
+      "output": {
+        "attribution": "OBSERVADOR_PASIVO",
+        "text": "Lectura actual del ente, no una conclusión mental.",
+        "observation": {
+          "tick": 35,
+          "test_stub_only": true
+        }
+      }
+    },
+    {
+      "input": "Instancia nueva",
+      "output": {
+        "attribution": "INTERFAZ",
+        "text": "Ya hay una instancia activa. No se reinicia silenciosamente. Inicia otro proceso para una preparación nueva."
+      }
+    }
+  ],
+  "unknown_input_rejected": true,
+  "ui_aliases_restored": true,
+  "main_not_reset_by_new_command": true
+}

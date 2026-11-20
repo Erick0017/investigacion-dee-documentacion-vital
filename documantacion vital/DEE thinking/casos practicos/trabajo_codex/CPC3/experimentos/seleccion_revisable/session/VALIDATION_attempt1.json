@@ -1,0 +1,589 @@
+{
+  "checks": {
+    "P_INFORMATIVE_load_same": true,
+    "P_INFORMATIVE_protocol_preserved": false,
+    "P_INFORMATIVE_restored_native_action_same": true,
+    "P_INFORMATIVE_unique_live_source": true,
+    "P_INFORMATIVE_actual_native_information_same": true,
+    "P_INFORMATIVE_no_cached_source_after_window": true,
+    "P_INFORMATIVE_forecast_not_invented": true,
+    "Q_INFORMATIVE_load_same": true,
+    "Q_INFORMATIVE_protocol_preserved": false,
+    "Q_INFORMATIVE_restored_native_action_same": true,
+    "Q_INFORMATIVE_unique_live_source": true,
+    "Q_INFORMATIVE_actual_native_information_same": true,
+    "Q_INFORMATIVE_no_cached_source_after_window": true,
+    "Q_INFORMATIVE_forecast_not_invented": true,
+    "pending_input_receipts_continue": true
+  },
+  "all_technical_assertions": false,
+  "cases": [
+    {
+      "roles": "P_INFORMATIVE",
+      "actual": {
+        "kind": "EXTERNAL_ACTUAL_EXPERIENCE",
+        "tick": 3,
+        "monotonic_ns": 123377939878800,
+        "wall_utc": "2026-10-14T02:20:29.877508+00:00",
+        "receipts": [
+          {
+            "id": 1,
+            "channel": "actual.negative.1",
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 2
+          },
+          {
+            "id": 2,
+            "channel": "actual.positive.1",
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 2
+          }
+        ],
+        "modality": "EXPERIENCE_PROTOCOL",
+        "scope": "actual explicit environment report at2, not Python-computed discrepancy"
+      },
+      "comparison": {
+        "kind": "NATIVE_COMPARISON",
+        "tick": 6,
+        "monotonic_ns": 123377959299600,
+        "wall_utc": "2026-10-14T02:20:29.896927+00:00",
+        "comparisons": [
+          {
+            "physical_output": {
+              "tick": 6,
+              "coordinate": [
+                35,
+                34,
+                31
+              ],
+              "RAW": 1229483067639332865,
+              "clock": 6,
+              "state": 1,
+              "semantic": 1,
+              "load": 86,
+              "direction": [
+                0,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "presentation": "coincidencia",
+            "port": "positive"
+          }
+        ],
+        "emission_tick": 6,
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "physical comparison of received P content and actual later consequence"
+      },
+      "source": {
+        "kind": "NATIVE_SOURCE_SELECTION",
+        "tick": 11,
+        "monotonic_ns": 123378160724000,
+        "wall_utc": "2026-10-14T02:20:30.098351+00:00",
+        "source": "P",
+        "emission_tick": 11,
+        "physical_output": {
+          "tick": 11,
+          "coordinate": [
+            36,
+            38,
+            35
+          ],
+          "RAW": 1224979588271046657,
+          "clock": 11,
+          "state": 1,
+          "semantic": 1,
+          "load": 114,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "physical_outputs": [
+          {
+            "physical_output": {
+              "tick": 11,
+              "coordinate": [
+                36,
+                38,
+                35
+              ],
+              "RAW": 1224979588271046657,
+              "clock": 11,
+              "state": 1,
+              "semantic": 1,
+              "load": 114,
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "source": "P",
+            "port": "positive_0_P"
+          }
+        ],
+        "status": "CURRENT_NATIVE_SOURCE_ACTION",
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "one experience-conditioned policy revision; not an optimal or repeated utility estimate"
+      },
+      "information": {
+        "kind": "NATIVE_INFORMATION_RECEIVED",
+        "tick": 14,
+        "monotonic_ns": 123378254299100,
+        "wall_utc": "2026-10-14T02:20:30.191925+00:00",
+        "information": [
+          {
+            "physical_output": {
+              "tick": 14,
+              "coordinate": [
+                36,
+                38,
+                38
+              ],
+              "RAW": 1157707167621447681,
+              "clock": 14,
+              "state": 1,
+              "semantic": 1,
+              "load": 137,
+              "direction": [
+                1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "source_route": "P",
+            "observed_explicit_class": 1,
+            "port": "positive_0_P"
+          }
+        ],
+        "emission_tick": 14,
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "content actually arriving through the selected geometric source route"
+      },
+      "operations": [
+        {
+          "operation": "advance",
+          "from": 0,
+          "to": 1
+        },
+        {
+          "operation": "advance",
+          "from": 1,
+          "to": 2
+        },
+        {
+          "operation": "submit",
+          "tick": 2,
+          "channel": "actual.negative.1",
+          "value": 1,
+          "receipt_id": 1,
+          "source_actual": {
+            "tick": 2,
+            "observed_explicit_class": 1,
+            "modality": "DECLARED_EXTERNAL_ENVIRONMENT_SENSOR"
+          },
+          "two_fixed_encodings_of_one_observation": true
+        },
+        {
+          "operation": "submit",
+          "tick": 2,
+          "channel": "actual.positive.1",
+          "value": 1,
+          "receipt_id": 2,
+          "source_actual": {
+            "tick": 2,
+            "observed_explicit_class": 1,
+            "modality": "DECLARED_EXTERNAL_ENVIRONMENT_SENSOR"
+          },
+          "two_fixed_encodings_of_one_observation": true
+        },
+        {
+          "operation": "advance",
+          "from": 2,
+          "to": 3
+        },
+        {
+          "operation": "advance",
+          "from": 3,
+          "to": 4
+        },
+        {
+          "operation": "advance",
+          "from": 4,
+          "to": 5
+        },
+        {
+          "operation": "advance",
+          "from": 5,
+          "to": 6
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.finite_policy_session.v1",
+          "tick": 6,
+          "scope": "OPERATIVE_METADATA_NON_RAW"
+        },
+        {
+          "operation": "save_snapshot",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\P_INFORMATIVE_T6.deetsnap",
+          "tick": 6,
+          "scope": "FILESYSTEM_OPERATIONAL_PERSISTENCE"
+        },
+        {
+          "operation": "advance",
+          "from": 6,
+          "to": 7
+        },
+        {
+          "operation": "advance",
+          "from": 7,
+          "to": 8
+        },
+        {
+          "operation": "advance",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "operation": "advance",
+          "from": 9,
+          "to": 10
+        },
+        {
+          "operation": "advance",
+          "from": 10,
+          "to": 11
+        },
+        {
+          "operation": "advance",
+          "from": 11,
+          "to": 12
+        },
+        {
+          "operation": "advance",
+          "from": 12,
+          "to": 13
+        },
+        {
+          "operation": "advance",
+          "from": 13,
+          "to": 14
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.finite_policy_session.v1",
+          "tick": 14,
+          "scope": "OPERATIVE_METADATA_NON_RAW"
+        },
+        {
+          "operation": "save_snapshot",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\P_INFORMATIVE_FINAL_T14.deetsnap",
+          "tick": 14,
+          "scope": "FILESYSTEM_OPERATIONAL_PERSISTENCE"
+        }
+      ],
+      "final": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\P_INFORMATIVE_FINAL_T14.deetsnap",
+        "tick": 14,
+        "sha256": "372bc8e84a5322001ac0b8d5220c6340c94156169fc0822f71642b53cd6b3c0c",
+        "physical": {
+          "tick": 14,
+          "raw_sha256": "3571b887e207ef346f8543e08b045f0cd00badeb97f5b19ea900cb09c6510286",
+          "clock_sha256": "59d846ce55ac2ca0ff6e95b6919b49e7221ea92f563610f8967e51dfaba9267d"
+        }
+      }
+    },
+    {
+      "roles": "Q_INFORMATIVE",
+      "actual": {
+        "kind": "EXTERNAL_ACTUAL_EXPERIENCE",
+        "tick": 3,
+        "monotonic_ns": 123378453136900,
+        "wall_utc": "2026-10-14T02:20:30.390762+00:00",
+        "receipts": [
+          {
+            "id": 1,
+            "channel": "actual.negative.1",
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 2
+          },
+          {
+            "id": 2,
+            "channel": "actual.positive.1",
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 2
+          }
+        ],
+        "modality": "EXPERIENCE_PROTOCOL",
+        "scope": "actual explicit environment report at2, not Python-computed discrepancy"
+      },
+      "comparison": {
+        "kind": "NATIVE_COMPARISON",
+        "tick": 6,
+        "monotonic_ns": 123378469720200,
+        "wall_utc": "2026-10-14T02:20:30.407346+00:00",
+        "comparisons": [
+          {
+            "physical_output": {
+              "tick": 6,
+              "coordinate": [
+                27,
+                34,
+                31
+              ],
+              "RAW": 1233705192289992705,
+              "clock": 6,
+              "state": 1,
+              "semantic": 1,
+              "load": 86,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "presentation": "discrepancia",
+            "port": "negative"
+          }
+        ],
+        "emission_tick": 6,
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "physical comparison of received P content and actual later consequence"
+      },
+      "source": {
+        "kind": "NATIVE_SOURCE_SELECTION",
+        "tick": 11,
+        "monotonic_ns": 123378672952300,
+        "wall_utc": "2026-10-14T02:20:30.610577+00:00",
+        "source": "Q",
+        "emission_tick": 11,
+        "physical_output": {
+          "tick": 11,
+          "coordinate": [
+            23,
+            39,
+            35
+          ],
+          "RAW": 1233705312549076993,
+          "clock": 11,
+          "state": 1,
+          "semantic": 1,
+          "load": 114,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        },
+        "physical_outputs": [
+          {
+            "physical_output": {
+              "tick": 11,
+              "coordinate": [
+                23,
+                39,
+                35
+              ],
+              "RAW": 1233705312549076993,
+              "clock": 11,
+              "state": 1,
+              "semantic": 1,
+              "load": 114,
+              "direction": [
+                -1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "source": "Q",
+            "port": "negative_-1_Q"
+          }
+        ],
+        "status": "CURRENT_NATIVE_SOURCE_ACTION",
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "one experience-conditioned policy revision; not an optimal or repeated utility estimate"
+      },
+      "information": {
+        "kind": "NATIVE_INFORMATION_RECEIVED",
+        "tick": 14,
+        "monotonic_ns": 123378772868100,
+        "wall_utc": "2026-10-14T02:20:30.710492+00:00",
+        "information": [
+          {
+            "physical_output": {
+              "tick": 14,
+              "coordinate": [
+                20,
+                42,
+                38
+              ],
+              "RAW": 1157707270700662785,
+              "clock": 14,
+              "state": 1,
+              "semantic": 1,
+              "load": 161,
+              "direction": [
+                1,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "source_route": "Q",
+            "observed_explicit_class": 1,
+            "port": "negative_-1_Q"
+          }
+        ],
+        "emission_tick": 14,
+        "modality": "NATIVE_EVOLUTION_THEN_FIXED_CURRENT_READOUT",
+        "scope": "content actually arriving through the selected geometric source route"
+      },
+      "operations": [
+        {
+          "operation": "advance",
+          "from": 0,
+          "to": 1
+        },
+        {
+          "operation": "advance",
+          "from": 1,
+          "to": 2
+        },
+        {
+          "operation": "submit",
+          "tick": 2,
+          "channel": "actual.negative.1",
+          "value": 1,
+          "receipt_id": 1,
+          "source_actual": {
+            "tick": 2,
+            "observed_explicit_class": 1,
+            "modality": "DECLARED_EXTERNAL_ENVIRONMENT_SENSOR"
+          },
+          "two_fixed_encodings_of_one_observation": true
+        },
+        {
+          "operation": "submit",
+          "tick": 2,
+          "channel": "actual.positive.1",
+          "value": 1,
+          "receipt_id": 2,
+          "source_actual": {
+            "tick": 2,
+            "observed_explicit_class": 1,
+            "modality": "DECLARED_EXTERNAL_ENVIRONMENT_SENSOR"
+          },
+          "two_fixed_encodings_of_one_observation": true
+        },
+        {
+          "operation": "advance",
+          "from": 2,
+          "to": 3
+        },
+        {
+          "operation": "advance",
+          "from": 3,
+          "to": 4
+        },
+        {
+          "operation": "advance",
+          "from": 4,
+          "to": 5
+        },
+        {
+          "operation": "advance",
+          "from": 5,
+          "to": 6
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.finite_policy_session.v1",
+          "tick": 6,
+          "scope": "OPERATIVE_METADATA_NON_RAW"
+        },
+        {
+          "operation": "save_snapshot",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\Q_INFORMATIVE_T6.deetsnap",
+          "tick": 6,
+          "scope": "FILESYSTEM_OPERATIONAL_PERSISTENCE"
+        },
+        {
+          "operation": "advance",
+          "from": 6,
+          "to": 7
+        },
+        {
+          "operation": "advance",
+          "from": 7,
+          "to": 8
+        },
+        {
+          "operation": "advance",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "operation": "advance",
+          "from": 9,
+          "to": 10
+        },
+        {
+          "operation": "advance",
+          "from": 10,
+          "to": 11
+        },
+        {
+          "operation": "advance",
+          "from": 11,
+          "to": 12
+        },
+        {
+          "operation": "advance",
+          "from": 12,
+          "to": 13
+        },
+        {
+          "operation": "advance",
+          "from": 13,
+          "to": 14
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.finite_policy_session.v1",
+          "tick": 14,
+          "scope": "OPERATIVE_METADATA_NON_RAW"
+        },
+        {
+          "operation": "save_snapshot",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\Q_INFORMATIVE_FINAL_T14.deetsnap",
+          "tick": 14,
+          "scope": "FILESYSTEM_OPERATIONAL_PERSISTENCE"
+        }
+      ],
+      "final": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\experimentos\\seleccion_revisable\\session\\Q_INFORMATIVE_FINAL_T14.deetsnap",
+        "tick": 14,
+        "sha256": "e4965f9c2c7c584a28f4d5a39dcf686edb9546f14e14419a013a6cb6307caf7b",
+        "physical": {
+          "tick": 14,
+          "raw_sha256": "a810630eebcb2a267bf85855efab7e2e6adc6b46a5951ebaa352db846c1bea52",
+          "clock_sha256": "59d846ce55ac2ca0ff6e95b6919b49e7221ea92f563610f8967e51dfaba9267d"
+        }
+      }
+    }
+  ],
+  "scope": "API integration, not additional science worlds; restored branches are technical controls and never returned to MAIN"
+}

@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "role": "technical interface and checkpoint checks, not scientific replicates",
+  "invalid_commands": [
+    {
+      "command": "observar",
+      "rejected": true,
+      "reason": "Create with nuevo or continue with cargar first"
+    },
+    {
+      "command": "nuevo 1",
+      "rejected": true,
+      "reason": "slots2..32; resource0..30"
+    },
+    {
+      "command": "nuevo 33",
+      "rejected": true,
+      "reason": "slots2..32; resource0..30"
+    },
+    {
+      "command": "senal etiqueta_desconocida",
+      "rejected": true,
+      "reason": "Unknown opaque signal; use s0 or s1"
+    },
+    {
+      "command": "encuentro -1",
+      "rejected": true,
+      "reason": "input outside declared range"
+    },
+    {
+      "command": "encuentro 65536",
+      "rejected": true,
+      "reason": "input outside declared range"
+    },
+    {
+      "command": "avanzar -1",
+      "rejected": true,
+      "reason": "Advance must be future and at most2048 ticks per call"
+    },
+    {
+      "command": "avanzar 2049",
+      "rejected": true,
+      "reason": "Advance must be future and at most2048 ticks per call"
+    },
+    {
+      "command": "entorno quizas",
+      "rejected": true,
+      "reason": "Grammar: nuevo [slots] | experiencia cue ref0 ref1 | senal s0/s1 [slot] | encuentro carga [slot] | avanzar ticks | entorno on/off | observar | guardar ruta | cargar ruta | salir"
+    },
+    {
+      "command": "experiencia 0 12 16",
+      "rejected": true,
+      "reason": "Initial paired calibration is admissible at tick0 only; later contacts use encounter/return, not hidden re-preparation"
+    },
+    {
+      "command": "arreglar memoria",
+      "rejected": true,
+      "reason": "Grammar: nuevo [slots] | experiencia cue ref0 ref1 | senal s0/s1 [slot] | encuentro carga [slot] | avanzar ticks | entorno on/off | observar | guardar ruta | cargar ruta | salir"
+    },
+    {
+      "command": "senal s0 0",
+      "rejected": true,
+      "reason": "Slot already used"
+    },
+    {
+      "command": "senal s1 99",
+      "rejected": true,
+      "reason": "Finite prepared interface exhausted; no automatic reset"
+    }
+  ],
+  "rejected_calls_physical_state_unchanged": true,
+  "live_readout": [
+    25,
+    29
+  ],
+  "archival_readout_explicit": true,
+  "observations_passive": true,
+  "explicit_restart_visible": true,
+  "save_load_operational_continuity": true,
+  "snapshots_restored": [
+    {
+      "path": "casos/C01/_FINAL.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "cc5130c21e5bacfdb5d69628ffeb58a1ab21db4c77ee9d15e3938c0406307962"
+    },
+    {
+      "path": "casos/C01/_FINAL_attempt2.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "cc5130c21e5bacfdb5d69628ffeb58a1ab21db4c77ee9d15e3938c0406307962"
+    },
+    {
+      "path": "casos/C01/_T0.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/_T0_attempt2.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/AB_FINAL.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "f10269612a3798d497cebd5e207b7c369de7c924f0bf2dc4900d989727fdd2e1"
+    },
+    {
+      "path": "casos/C01/AB_FINAL_attempt2.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "f10269612a3798d497cebd5e207b7c369de7c924f0bf2dc4900d989727fdd2e1"
+    },
+    {
+      "path": "casos/C01/AB_T0.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/AB_T0_attempt2.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/ABBA_FINAL.deetsnap",
+      "tick": 286,
+      "dimension": 47,
+      "sha256": "1445f3c065bd79d810c15edee3add59aea463bb123dddfead222f8d895aa5385"
+    },
+    {
+      "path": "casos/C01/ABBA_T0.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/ABBA_T0_attempt2.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/BA_FINAL.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "d310cb2301c90c9445cfd33f71884959c42b36c10ef6e5ee4bff3a491c8fe4a0"
+    },
+    {
+      "path": "casos/C01/BA_FINAL_attempt2.deetsnap",
+      "tick": 284,
+      "dimension": 47,
+      "sha256": "d310cb2301c90c9445cfd33f71884959c42b36c10ef6e5ee4bff3a491c8fe4a0"
+    },
+    {
+      "path": "casos/C01/BA_T0.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/BA_T0_attempt2.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C01/BAAB_FINAL.deetsnap",
+      "tick": 286,
+      "dimension": 47,
+      "sha256": "7c3374404af629f12a946c840c22484f7b0430e656d58c4c2009f87d81e4f3d4"
+    },
+    {
+      "path": "casos/C01/BAAB_T0.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "80aad00e59359b652f2e4850d7f30b3d0a4e1d45e1146638afd1ba5c56662a98"
+    },
+    {
+      "path": "casos/C02/ACQUIRED_12_paired.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "5e47ad100a41c05d6fbe0fd800866d10a1af69c8564b1c998669d306426e26b8"
+    },
+    {
+      "path": "casos/C02/ACQUIRED_12_unpaired.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "e20ef3429683e42b7d720a96e2d0911c67955b6ded6ba614c4b78983b98d0cac"
+    },
+    {
+      "path": "casos/C02/ACQUIRED_16_paired.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "2e1ee3f8a0fa835b009e4c7103ad589e464031573308c467abd1487b0d0397f3"
+    },
+    {
+      "path": "casos/C03/SATURATION_WITH_RELATION.deetsnap",
+      "tick": 700,
+      "dimension": 127,
+      "sha256": "5f5f11fd73e0a611e0d1c173bc770c90a244586232a6d8e0e7bcfe043e70a21d"
+    },
+    {
+      "path": "casos/C04/JOINT_PRODUCT.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "242f9873e4ab441d5c41ef0c2e8eb974a5ba9991c16be424a7d162db2ae97477"
+    },
+    {
+      "path": "casos/C04/JOINT_USED_TWICE.deetsnap",
+      "tick": 20,
+      "dimension": 34,
+      "sha256": "93e70bc7728bd45bcce5e4791b2214569a9cb0fd760633e6e3bee85b6581ac08"
+    },
+    {
+      "path": "casos/C05/RECEIVER_READY_12.deetsnap",
+      "tick": 16,
+      "dimension": 127,
+      "sha256": "75528924363c5d5bd422c5be95031dad6f811d2694c5f064f6dab10b4a11bad2"
+    },
+    {
+      "path": "casos/C05/RECEIVER_READY_16.deetsnap",
+      "tick": 16,
+      "dimension": 127,
+      "sha256": "a0637e1ce2d3a087caf51fed6f1bbcb6c9174ae158c4816f37dc1086a2a6a5d0"
+    },
+    {
+      "path": "casos/C05/TRANSFER_IN_FLIGHT_12.deetsnap",
+      "tick": 13,
+      "dimension": 127,
+      "sha256": "b006a937f194fec6202cd5df0bf366158f9c1127c9224077b94fc4eb57687b60"
+    },
+    {
+      "path": "casos/C05/TRANSFER_IN_FLIGHT_16.deetsnap",
+      "tick": 13,
+      "dimension": 127,
+      "sha256": "703432d8149d6e4003eb6baa160565c40ac2c3ee19719a8bb536b130782d1663"
+    },
+    {
+      "path": "casos/C06/ACTION_0.deetsnap",
+      "tick": 40,
+      "dimension": 47,
+      "sha256": "64e10c9aaa3ba012a02b12f1d8cf96d77ec9723e65fe4ea542568f0be5b3d36c"
+    },
+    {
+      "path": "casos/C06/ACTION_1.deetsnap",
+      "tick": 40,
+      "dimension": 47,
+      "sha256": "31e6df183eb38111436aad1b9b1a28b062decb2862907e43e24904315923d743"
+    },
+    {
+      "path": "casos/C08/ACQUIRED_confirmatory.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "63616e453591c26ae90e19710273532ef60ca2f00856bad838fc558690a72c3e"
+    },
+    {
+      "path": "casos/C08/ACQUIRED_history_inverted.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "2ba3b37e9eb5a419d7741269a922ff17ecd255ec114a94d3b49289a8484d3948"
+    },
+    {
+      "path": "casos/C08/ACQUIRED_reserved.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "c47b58d5762ebf69740063f1f1db50328ae71bfae6c7df02432ef174d36b0468"
+    },
+    {
+      "path": "casos/C08/C08_MAIN_FINAL.deetsnap",
+      "tick": 26,
+      "dimension": 34,
+      "sha256": "065ddff9c6073b060cbae6aa23c6c3ba74a23dee15f9a3cecb2c1d369a929bed"
+    },
+    {
+      "path": "casos/C08/C08_MAIN_MID.deetsnap",
+      "tick": 21,
+      "dimension": 34,
+      "sha256": "f7e54755bfc59c3e85de280d1821ce78e8dc16091a2f340108c85520fdd0958f"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/ACQUIRED_confirmatory.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "169a19bd7f09224d97fb5ac35e0a3a5a9e9fa3fc643b8b35f82a29658aad8654"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/ACQUIRED_history_inverted.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "45b1e952801af099de7d2d23b2ca691f42cabc7032cd604b1196f971f52fec90"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/ACQUIRED_reserved.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "3441c94211599b0636644eed0d1c9896531a9ca5bf5e492f52fc516892720d07"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/C08_CONTINUED_T31.deetsnap",
+      "tick": 31,
+      "dimension": 34,
+      "sha256": "419c4c8e1a5f9c1be97417b2513f5df18bfaec7439bbdb1d901828cb920a8d3e"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/C08_MAIN_FINAL.deetsnap",
+      "tick": 26,
+      "dimension": 34,
+      "sha256": "aff9cfdae51fdddcf192cea944fa5be9f637112b36d344aba8f28aef9672e1c3"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/C08_MAIN_MID.deetsnap",
+      "tick": 21,
+      "dimension": 34,
+      "sha256": "c96466dcb7e6eb6c760c93e9e5455dc7bd6d250be318ba3ed614204795484be1"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/sesion/C08_SESSION_FINAL.deetsnap",
+      "tick": 21,
+      "dimension": 34,
+      "sha256": "f3dd98bbcfa90decce47334a9e9d6e999d8dcccd837d7cee1c689104e2ce1c8d"
+    },
+    {
+      "path": "casos/C08_INTERFACE_V2/sesion/C08_SESSION_PENDING.deetsnap",
+      "tick": 16,
+      "dimension": 34,
+      "sha256": "9ea1bc0b409dc71eb2af31e87ecda59a976d18df86eb00ccb955a741c48548f8"
+    },
+    {
+      "path": "casos/DISCOVERY_01/BODY_AFTER_AB.deetsnap",
+      "tick": 34,
+      "dimension": 47,
+      "sha256": "7e3bd416cce0316c5bdaabf19ed77119ef0953d522de5a94bdf58e317042faaf"
+    },
+    {
+      "path": "casos/DISCOVERY_01/BODY_AFTER_RETURN.deetsnap",
+      "tick": 301,
+      "dimension": 47,
+      "sha256": "0212ca873038ae83bba5c674735f7a3504b52216ee78e9621d9042df97459e63"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_12_full.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "591befb139001c43919d06d3ef978233be73cfa0b91bc632f4e1db37fe3588a3"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_12_mobile_absent.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "16a724709d7d5d851b72e8028fd1b7ad633fe584853a208acc68ccb19006502d"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_12_no_body_history.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "832799e7b7c00be862e10eaf5abadd748cfaad8b4c51970ecaa3384f1856d215"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_12_unpaired.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "4d0c0603ad7a9fe30b0fb2e055239228f5972aa47888ecbb80abd3b8d36626a0"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_18_full.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "d88a5555e9e9faab93a65b375f6ff32818c0a12fefd519221cd74f491ce084b2"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_18_mobile_absent.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "16a724709d7d5d851b72e8028fd1b7ad633fe584853a208acc68ccb19006502d"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_18_no_body_history.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "c4e5586d5bf9a13a0b2aa48eb8c110575d38129ed9cd560d333edd57165d1388"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_FINAL_18_unpaired.deetsnap",
+      "tick": 82,
+      "dimension": 47,
+      "sha256": "41fb79618b678a000707ac0d5161dd566c94e9b3429480556a81fbdcc2191980"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_12_full.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "baaa764c01dcffd73bbbec35b8455fdfd8cdbf6c15d11e0d94a9b1767050bfea"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_12_mobile_absent.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "7273a01fdee210635273679e21f91a48b8406cb56d84d89421b8300ea90e1735"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_12_no_body_history.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "b88cc4c322ccc003a38852560402b88a7d4199add0288bd31340b9ab85a5c102"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_12_unpaired.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "8b1a1c8331575efdee0d0f83b9992cbd1c4e934f077f552d8210b5ce5002dbbd"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_18_full.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "0ae16759e1806099621e2b164dfbf67f76eb49f9e7ba0bee0574b69e556f6f61"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_18_mobile_absent.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "7273a01fdee210635273679e21f91a48b8406cb56d84d89421b8300ea90e1735"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_18_no_body_history.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "a1b37a126dd6e1a4128ac050683ab5b9d3192fb4583b20f2d43dc93847466122"
+    },
+    {
+      "path": "casos/INTEGRATIONS/BRIDGE_T0_18_unpaired.deetsnap",
+      "tick": 32,
+      "dimension": 47,
+      "sha256": "a2e2d7c82b895541cb12a00d013855e8cbd0444551361fb04fd5c49f503a31f6"
+    },
+    {
+      "path": "casos/INTEGRATIONS/C08_REPEATED_MAIN_FINAL.deetsnap",
+      "tick": 41,
+      "dimension": 34,
+      "sha256": "300f73b1b8657af231155e3d0d61bc18d753ba5c5b5079e77a4a07de222ec86b"
+    },
+    {
+      "path": "casos/INTEGRATIONS/REST500_MAIN.deetsnap",
+      "tick": 506,
+      "dimension": 34,
+      "sha256": "a8f85fbc5d55615b669b7a55e1bc6746e75d16a6ed3acc8862763c6ffc2d7ce0"
+    },
+    {
+      "path": "casos/SATURATION_OBSERVERS/SATURATED_12.deetsnap",
+      "tick": 36,
+      "dimension": 34,
+      "sha256": "53587310a7b9b9ffbdf62e83305f520a48b28c381601edb56d6e1e85b66ce1d0"
+    },
+    {
+      "path": "casos/SATURATION_OBSERVERS/SATURATED_16.deetsnap",
+      "tick": 36,
+      "dimension": 34,
+      "sha256": "1b1f5e042f8a7d6ef93eb72779818164deac23f32e3c28a2435f252437ec077f"
+    },
+    {
+      "path": "casos/VALIDACION_DIRIGIDA/C08_PENDING_BEFORE_SIGNAL.deetsnap",
+      "tick": 6,
+      "dimension": 34,
+      "sha256": "df59b8b594c1adb49f3bebd4e14f16a17bf9c7c13bf567d9786c8c280e9aebab"
+    }
+  ],
+  "snapshot_count": 65,
+  "runtime_version": "3.5.0",
+  "kernel": {
+    "kernel_version": 27,
+    "kernel_modulus": 19665,
+    "reducer_cap": 19664,
+    "native_module": true
+  }
+}

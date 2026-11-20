@@ -1,0 +1,5298 @@
+{
+  "schema": 1,
+  "checks": {
+    "changed_pending_loaded_physical": true,
+    "changed_pending_protocol_loaded": true,
+    "changed_restore_comparison_future_same": true,
+    "changed_report_applied": true,
+    "changed_proper_singleton_domain": true,
+    "changed_registered_before_actual": true,
+    "changed_not_decoded_as_forecast": true,
+    "changed_observation_passive": true,
+    "changed_loaded_current_marker_not_log": true,
+    "changed_no_reinstallation_on_load": true,
+    "stable_pending_loaded_physical": true,
+    "stable_pending_protocol_loaded": true,
+    "stable_restore_comparison_future_same": true,
+    "stable_report_applied": true,
+    "stable_proper_singleton_domain": true,
+    "stable_registered_before_actual": true,
+    "stable_not_decoded_as_forecast": true,
+    "stable_observation_passive": true,
+    "stable_loaded_current_marker_not_log": true,
+    "stable_no_reinstallation_on_load": true,
+    "H0_no_false_comparison": true,
+    "late_report_not_injected": true,
+    "legacy_missing_profile_rejected_not_installed": true
+  },
+  "all_technical_assertions": true,
+  "cases": [
+    {
+      "case": "changed",
+      "scope": "API_INTEGRATION_NOT_NEW_SCIENTIFIC_REPLICA",
+      "emission": {
+        "kind": "EMISSION",
+        "tick": 37,
+        "monotonic_ns": 122199188021500,
+        "wall_utc": "2026-10-14T02:00:51.129775+00:00",
+        "emission_tick": 37,
+        "target_tick": 83,
+        "horizon": 46,
+        "prediction_set": [
+          false
+        ],
+        "physical_output": {
+          "tick": 37,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "raw": 1157143629257506817,
+          "clock": 37,
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "receipt": {
+          "id": 3,
+          "status": "applied",
+          "reason": "",
+          "requested_tick": 34,
+          "effective_tick": 34
+        },
+        "observable": "packet_arrival_at_barrier_output",
+        "decoder": "live MAIN dx sign: positive arrival, negative absence, zero/missing unresolved",
+        "modality": "PHYSICAL_PROBE_ON_MAIN",
+        "operational_forks": 0,
+        "information_cut": [
+          {
+            "kind": "EXPERIENCE",
+            "tick": 33,
+            "monotonic_ns": 122199166375800,
+            "wall_utc": "2026-10-14T02:00:51.108128+00:00",
+            "sensor": "B",
+            "receipt": {
+              "id": 1,
+              "status": "applied",
+              "reason": "",
+              "requested_tick": 32,
+              "effective_tick": 32
+            },
+            "before": {
+              "tick": 32,
+              "delta": 0,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 32,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 32,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 32,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103577576,
+                "clock": 260,
+                "state": 1000,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 32,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103578576,
+                "clock": 260,
+                "state": 2000,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 32,
+                  "clock": 260,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 65,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 32,
+                  "clock": 260,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 65,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "after": {
+              "tick": 33,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 33,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 33,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 33,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576578,
+                "clock": 261,
+                "state": 2,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 33,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 261,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 66,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    1
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 1,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "source": {
+              "kind": "ACTUAL_OBSERVED_PACKET",
+              "past": {
+                "tick": 32,
+                "arrived": false,
+                "reference_branch": false,
+                "observable": "packet_arrival_at_barrier_output",
+                "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+              }
+            },
+            "modality": "EXPERIENCE_PROTOCOL"
+          },
+          {
+            "kind": "EXPERIENCE",
+            "tick": 34,
+            "monotonic_ns": 122199177980500,
+            "wall_utc": "2026-10-14T02:00:51.119734+00:00",
+            "sensor": "A",
+            "receipt": {
+              "id": 2,
+              "status": "applied",
+              "reason": "",
+              "requested_tick": 33,
+              "effective_tick": 33
+            },
+            "before": {
+              "tick": 33,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 33,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 33,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 33,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576578,
+                "clock": 261,
+                "state": 2,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 33,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 261,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 66,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    1
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 1,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "after": {
+              "tick": 34,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 34,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 34,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 34,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576579,
+                "clock": 262,
+                "state": 3,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 34,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 262,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 34,
+                  "clock": 262,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    -1
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 2,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 34,
+                  "clock": 262,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 67,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "source": {
+              "kind": "ACTUAL_OBSERVED_PACKET",
+              "past": {
+                "tick": 33,
+                "arrived": true,
+                "reference_branch": true,
+                "observable": "packet_arrival_at_barrier_output",
+                "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+              }
+            },
+            "modality": "EXPERIENCE_PROTOCOL"
+          }
+        ],
+        "memory_panel": {
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true
+        },
+        "limits": "finite persistence predictor, current readout may be context-sensitive; no arbitrary future dynamics learned"
+      },
+      "comparison": {
+        "kind": "CURRENT_CONSEQUENCE_NATIVE_COMPARISON",
+        "tick": 84,
+        "monotonic_ns": 122199420799000,
+        "wall_utc": "2026-10-14T02:00:51.362551+00:00",
+        "source_actual": {
+          "tick": 83,
+          "arrived": true,
+          "reference_branch": false,
+          "observable": "packet_arrival_at_barrier_output",
+          "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+        },
+        "input_receipt": {
+          "id": 4,
+          "status": "applied",
+          "reason": "",
+          "effective_tick": 83
+        },
+        "before_audit_only": {
+          "tick": 83,
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": true,
+          "physical_output": {
+            "tick": 83,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1157143629257506817,
+            "clock": 83,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "prediction_set": [
+            false
+          ],
+          "a": {
+            "tick": 83,
+            "site": [
+              14,
+              15,
+              15
+            ],
+            "raw": 1152921934103576580,
+            "clock": 311,
+            "state": 4,
+            "s_reg": 100,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "b": {
+            "tick": 83,
+            "site": [
+              16,
+              15,
+              15
+            ],
+            "raw": 1152921938398543873,
+            "clock": 311,
+            "state": 1,
+            "s_reg": 101,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "axis_projection": -1,
+          "modality": "PASSIVE_OBSERVATION",
+          "write_gates": {
+            "A": {
+              "absolute_tick": 83,
+              "clock": 311,
+              "n_active": 6,
+              "direction_sum": [
+                -2,
+                1,
+                0
+              ],
+              "tetra_pattern": 1,
+              "hadron": true,
+              "rule_value": 4,
+              "survives": true,
+              "protected": false,
+              "k": 2,
+              "period": 391,
+              "phase_remainder": 311,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            },
+            "B": {
+              "absolute_tick": 83,
+              "clock": 311,
+              "n_active": 7,
+              "direction_sum": [
+                -1,
+                0,
+                0
+              ],
+              "tetra_pattern": 6,
+              "hadron": true,
+              "rule_value": 1,
+              "survives": true,
+              "protected": false,
+              "k": 1,
+              "period": 782,
+              "phase_remainder": 311,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            }
+          },
+          "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+          "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "profile": "comparacion",
+          "comparison_stage": "pending",
+          "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+        },
+        "after_native": {
+          "tick": 84,
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": true,
+          "physical_output": {
+            "tick": 84,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 2238007539826425857,
+            "clock": 84,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              -1
+            ],
+            "active": true
+          },
+          "prediction_set": [
+            false,
+            true
+          ],
+          "a": {
+            "tick": 84,
+            "site": [
+              14,
+              15,
+              15
+            ],
+            "raw": 1152921934103576580,
+            "clock": 312,
+            "state": 4,
+            "s_reg": 100,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "b": {
+            "tick": 84,
+            "site": [
+              16,
+              15,
+              15
+            ],
+            "raw": 1152921938398543873,
+            "clock": 312,
+            "state": 1,
+            "s_reg": 101,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "axis_projection": -1,
+          "modality": "PASSIVE_OBSERVATION",
+          "write_gates": {
+            "A": {
+              "absolute_tick": 84,
+              "clock": 312,
+              "n_active": 6,
+              "direction_sum": [
+                -2,
+                1,
+                -2
+              ],
+              "tetra_pattern": 1,
+              "hadron": true,
+              "rule_value": 4,
+              "survives": true,
+              "protected": false,
+              "k": 2,
+              "period": 391,
+              "phase_remainder": 312,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            },
+            "B": {
+              "absolute_tick": 84,
+              "clock": 312,
+              "n_active": 9,
+              "direction_sum": [
+                -2,
+                -1,
+                -2
+              ],
+              "tetra_pattern": 6,
+              "hadron": true,
+              "rule_value": 1,
+              "survives": true,
+              "protected": false,
+              "k": -1,
+              "period": null,
+              "phase_remainder": null,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            }
+          },
+          "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+          "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "profile": "comparacion",
+          "comparison_stage": "pending",
+          "forecast_domain": "OUTSIDE_FORECAST_DOMAIN_COMPARISON_CONTEXT",
+          "comparison_live": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 2238007539826425857,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                -1,
+                0,
+                -1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": false,
+            "presentation": null,
+            "validity": "OUTSIDE_DECLARED_ONE_TICK_COMPARISON_WINDOW",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          }
+        },
+        "comparison_decoder": {
+          "physical_output": {
+            "tick": 84,
+            "coordinate": [
+              15,
+              15,
+              15
+            ],
+            "RAW": 2238007539826425857,
+            "clock": 84,
+            "state": 1,
+            "semantic": 1,
+            "load": 0,
+            "direction": [
+              -1,
+              0,
+              -1
+            ],
+            "active": true
+          },
+          "signed_comparison_marker_present": true,
+          "represented_expectation_before_report": true,
+          "presentation": "discrepancia_direccional",
+          "validity": "CURRENT_NATIVE_MARKER",
+          "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+        },
+        "modality": "OBSERVED_EXTERNAL_EVENT_TO_NATIVE_GRADIENT",
+        "computed_error_injected": false,
+        "direct_RAW_clock_writes": 0,
+        "status": "CURRENT_NATIVE_COMPARISON_MEASURED",
+        "episode": {
+          "emission_tick": 37,
+          "target_tick": 83,
+          "native_readout_tick": 84,
+          "matching": "single pending physical expectation and fixed target; no host error-to-memory feedback"
+        },
+        "audit_evaluations": [
+          {
+            "kind": "EVALUATION",
+            "tick": 84,
+            "monotonic_ns": 122199422062200,
+            "wall_utc": "2026-10-14T02:00:51.363812+00:00",
+            "emission_tick": 37,
+            "target_tick": 83,
+            "outcome": {
+              "tick": 83,
+              "arrived": true,
+              "observable": "packet_arrival_at_barrier_output"
+            },
+            "prediction_set": [
+              false
+            ],
+            "coverage": true,
+            "error": 1,
+            "modality": "ANALISIS_EXTERNO"
+          }
+        ]
+      },
+      "final": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\changed_MAIN_FINAL_T84.deetsnap",
+        "tick": 84,
+        "sha256": "c6334271ceaf1a6a8f98ea7515658e71b45b6fd25d2d0a39c4b5affb2ee7916b",
+        "physical": {
+          "tick": 84,
+          "raw_sha256": "81c4ecd2f6e97420f72da8a1866dd7219ccb89dc903446d87b853cb5f4a87d74",
+          "clock_sha256": "0cb37da5c3cef4bc97b3e72603fe09254b085def77256d5dcc1d6a6c0df0cbab"
+        },
+        "metadata_is_external_not_native_memory": true
+      },
+      "events": [
+        {
+          "kind": "PREPARATION",
+          "tick": 32,
+          "monotonic_ns": 122199136680100,
+          "wall_utc": "2026-10-14T02:00:51.078437+00:00",
+          "recipe": "relational.v1/H0",
+          "reader": "finite zero-load MAIN query, subsequent live native output",
+          "host_setup_finished_at_tick": 32,
+          "backend": "LAZY",
+          "event_state": 1,
+          "external_phase_slots": [
+            163,
+            292,
+            554,
+            812,
+            945
+          ]
+        },
+        {
+          "kind": "PREPARATION_PROFILE",
+          "tick": 32,
+          "monotonic_ns": 122199162615800,
+          "wall_utc": "2026-10-14T02:00:51.104371+00:00",
+          "profile": "cpc3.central_comparison.profile.v1",
+          "channels": [
+            "actual_report.negative",
+            "actual_report.positive"
+          ],
+          "prepared_before_first_experience": true,
+          "physical_preparation_unchanged": true,
+          "scope": "one forecast/consequence encounter; no automatic reuse or native absence detector"
+        },
+        {
+          "kind": "EXPERIENCE",
+          "tick": 33,
+          "monotonic_ns": 122199166375800,
+          "wall_utc": "2026-10-14T02:00:51.108128+00:00",
+          "sensor": "B",
+          "receipt": {
+            "id": 1,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 32,
+            "effective_tick": 32
+          },
+          "before": {
+            "tick": 32,
+            "delta": 0,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 32,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 32,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 32,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103577576,
+              "clock": 260,
+              "state": 1000,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 32,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921934103578576,
+              "clock": 260,
+              "state": 2000,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 32,
+                "clock": 260,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 65,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 32,
+                "clock": 260,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 65,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after": {
+            "tick": 33,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 33,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 33,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 33,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576578,
+              "clock": 261,
+              "state": 2,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 33,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 261,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 66,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  1
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 1,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          },
+          "modality": "EXPERIENCE_PROTOCOL"
+        },
+        {
+          "kind": "EXPERIENCE",
+          "tick": 34,
+          "monotonic_ns": 122199177980500,
+          "wall_utc": "2026-10-14T02:00:51.119734+00:00",
+          "sensor": "A",
+          "receipt": {
+            "id": 2,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 33,
+            "effective_tick": 33
+          },
+          "before": {
+            "tick": 33,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 33,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 33,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 33,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576578,
+              "clock": 261,
+              "state": 2,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 33,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 261,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 66,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  1
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 1,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after": {
+            "tick": 34,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 34,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 34,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 34,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576579,
+              "clock": 262,
+              "state": 3,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 34,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 262,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 34,
+                "clock": 262,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  -1
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 2,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 34,
+                "clock": 262,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 67,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          },
+          "modality": "EXPERIENCE_PROTOCOL"
+        },
+        {
+          "kind": "EMISSION",
+          "tick": 37,
+          "monotonic_ns": 122199188021500,
+          "wall_utc": "2026-10-14T02:00:51.129775+00:00",
+          "emission_tick": 37,
+          "target_tick": 83,
+          "horizon": 46,
+          "prediction_set": [
+            false
+          ],
+          "physical_output": {
+            "tick": 37,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1157143629257506817,
+            "clock": 37,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "receipt": {
+            "id": 3,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 34,
+            "effective_tick": 34
+          },
+          "observable": "packet_arrival_at_barrier_output",
+          "decoder": "live MAIN dx sign: positive arrival, negative absence, zero/missing unresolved",
+          "modality": "PHYSICAL_PROBE_ON_MAIN",
+          "operational_forks": 0,
+          "information_cut": [
+            {
+              "kind": "EXPERIENCE",
+              "tick": 33,
+              "monotonic_ns": 122199166375800,
+              "wall_utc": "2026-10-14T02:00:51.108128+00:00",
+              "sensor": "B",
+              "receipt": {
+                "id": 1,
+                "status": "applied",
+                "reason": "",
+                "requested_tick": 32,
+                "effective_tick": 32
+              },
+              "before": {
+                "tick": 32,
+                "delta": 0,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 32,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 32,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 32,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103577576,
+                  "clock": 260,
+                  "state": 1000,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 32,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103578576,
+                  "clock": 260,
+                  "state": 2000,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 32,
+                    "clock": 260,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 65,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 32,
+                    "clock": 260,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 65,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "after": {
+                "tick": 33,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 33,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 33,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 33,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576578,
+                  "clock": 261,
+                  "state": 2,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 33,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 261,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 66,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      1
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 1,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "source": {
+                "kind": "ACTUAL_OBSERVED_PACKET",
+                "past": {
+                  "tick": 32,
+                  "arrived": false,
+                  "reference_branch": false,
+                  "observable": "packet_arrival_at_barrier_output",
+                  "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+                }
+              },
+              "modality": "EXPERIENCE_PROTOCOL"
+            },
+            {
+              "kind": "EXPERIENCE",
+              "tick": 34,
+              "monotonic_ns": 122199177980500,
+              "wall_utc": "2026-10-14T02:00:51.119734+00:00",
+              "sensor": "A",
+              "receipt": {
+                "id": 2,
+                "status": "applied",
+                "reason": "",
+                "requested_tick": 33,
+                "effective_tick": 33
+              },
+              "before": {
+                "tick": 33,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 33,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 33,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 33,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576578,
+                  "clock": 261,
+                  "state": 2,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 33,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 261,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 66,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      1
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 1,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "after": {
+                "tick": 34,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 34,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 34,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 34,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576579,
+                  "clock": 262,
+                  "state": 3,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 34,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 262,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 34,
+                    "clock": 262,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      -1
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 2,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 34,
+                    "clock": 262,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 67,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "source": {
+                "kind": "ACTUAL_OBSERVED_PACKET",
+                "past": {
+                  "tick": 33,
+                  "arrived": true,
+                  "reference_branch": true,
+                  "observable": "packet_arrival_at_barrier_output",
+                  "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+                }
+              },
+              "modality": "EXPERIENCE_PROTOCOL"
+            }
+          ],
+          "memory_panel": {
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true
+          },
+          "limits": "finite persistence predictor, current readout may be context-sensitive; no arbitrary future dynamics learned"
+        },
+        {
+          "kind": "CURRENT_CONSEQUENCE_NATIVE_COMPARISON",
+          "tick": 84,
+          "monotonic_ns": 122199420799000,
+          "wall_utc": "2026-10-14T02:00:51.362551+00:00",
+          "source_actual": {
+            "tick": 83,
+            "arrived": true,
+            "reference_branch": false,
+            "observable": "packet_arrival_at_barrier_output",
+            "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+          },
+          "input_receipt": {
+            "id": 4,
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 83
+          },
+          "before_audit_only": {
+            "tick": 83,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "physical_output": {
+              "tick": 83,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 1157143629257506817,
+              "clock": 83,
+              "state": 1,
+              "s_reg": 0,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "prediction_set": [
+              false
+            ],
+            "a": {
+              "tick": 83,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576580,
+              "clock": 311,
+              "state": 4,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 83,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543873,
+              "clock": 311,
+              "state": 1,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": -1,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 83,
+                "clock": 311,
+                "n_active": 6,
+                "direction_sum": [
+                  -2,
+                  1,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 4,
+                "survives": true,
+                "protected": false,
+                "k": 2,
+                "period": 391,
+                "phase_remainder": 311,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 83,
+                "clock": 311,
+                "n_active": 7,
+                "direction_sum": [
+                  -1,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 1,
+                "survives": true,
+                "protected": false,
+                "k": 1,
+                "period": 782,
+                "phase_remainder": 311,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "pending",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after_native": {
+            "tick": 84,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "physical_output": {
+              "tick": 84,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 2238007539826425857,
+              "clock": 84,
+              "state": 1,
+              "s_reg": 0,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                -1
+              ],
+              "active": true
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 84,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576580,
+              "clock": 312,
+              "state": 4,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 84,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543873,
+              "clock": 312,
+              "state": 1,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": -1,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 84,
+                "clock": 312,
+                "n_active": 6,
+                "direction_sum": [
+                  -2,
+                  1,
+                  -2
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 4,
+                "survives": true,
+                "protected": false,
+                "k": 2,
+                "period": 391,
+                "phase_remainder": 312,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 84,
+                "clock": 312,
+                "n_active": 9,
+                "direction_sum": [
+                  -2,
+                  -1,
+                  -2
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 1,
+                "survives": true,
+                "protected": false,
+                "k": -1,
+                "period": null,
+                "phase_remainder": null,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "pending",
+            "forecast_domain": "OUTSIDE_FORECAST_DOMAIN_COMPARISON_CONTEXT",
+            "comparison_live": {
+              "physical_output": {
+                "tick": 84,
+                "coordinate": [
+                  15,
+                  15,
+                  15
+                ],
+                "RAW": 2238007539826425857,
+                "clock": 84,
+                "state": 1,
+                "semantic": 1,
+                "load": 0,
+                "direction": [
+                  -1,
+                  0,
+                  -1
+                ],
+                "active": true
+              },
+              "signed_comparison_marker_present": true,
+              "represented_expectation_before_report": false,
+              "presentation": null,
+              "validity": "OUTSIDE_DECLARED_ONE_TICK_COMPARISON_WINDOW",
+              "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+            }
+          },
+          "comparison_decoder": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 2238007539826425857,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                -1,
+                0,
+                -1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": true,
+            "presentation": "discrepancia_direccional",
+            "validity": "CURRENT_NATIVE_MARKER",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          },
+          "modality": "OBSERVED_EXTERNAL_EVENT_TO_NATIVE_GRADIENT",
+          "computed_error_injected": false,
+          "direct_RAW_clock_writes": 0,
+          "status": "CURRENT_NATIVE_COMPARISON_MEASURED",
+          "episode": {
+            "emission_tick": 37,
+            "target_tick": 83,
+            "native_readout_tick": 84,
+            "matching": "single pending physical expectation and fixed target; no host error-to-memory feedback"
+          },
+          "audit_evaluations": [
+            {
+              "kind": "EVALUATION",
+              "tick": 84,
+              "monotonic_ns": 122199422062200,
+              "wall_utc": "2026-10-14T02:00:51.363812+00:00",
+              "emission_tick": 37,
+              "target_tick": 83,
+              "outcome": {
+                "tick": 83,
+                "arrived": true,
+                "observable": "packet_arrival_at_barrier_output"
+              },
+              "prediction_set": [
+                false
+              ],
+              "coverage": true,
+              "error": 1,
+              "modality": "ANALISIS_EXTERNO"
+            }
+          ]
+        },
+        {
+          "kind": "EVALUATION",
+          "tick": 84,
+          "monotonic_ns": 122199422062200,
+          "wall_utc": "2026-10-14T02:00:51.363812+00:00",
+          "emission_tick": 37,
+          "target_tick": 83,
+          "outcome": {
+            "tick": 83,
+            "arrived": true,
+            "observable": "packet_arrival_at_barrier_output"
+          },
+          "prediction_set": [
+            false
+          ],
+          "coverage": true,
+          "error": 1,
+          "modality": "ANALISIS_EXTERNO"
+        },
+        {
+          "kind": "INTERFACE_LIMIT",
+          "tick": 84,
+          "monotonic_ns": 122199563676000,
+          "wall_utc": "2026-10-14T02:00:51.505427+00:00",
+          "status": "OUTSIDE_FORECAST_DOMAIN",
+          "detail": "The current native marker represents a consequence encounter, not a reusable fresh forecast.",
+          "prediction_set": [
+            false,
+            true
+          ],
+          "physical_output": {
+            "tick": 84,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 2238007539826425857,
+            "clock": 84,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              -1
+            ],
+            "active": true
+          },
+          "comparison": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 2238007539826425857,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                -1,
+                0,
+                -1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": true,
+            "presentation": "discrepancia_direccional",
+            "validity": "CURRENT_NATIVE_MARKER",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          },
+          "modality": "INTERFACE_NOT_NATIVE_ANSWER",
+          "profile": "comparacion"
+        }
+      ],
+      "operation_calls": [
+        {
+          "operation": "declare_interface",
+          "channel": "actual_report.negative",
+          "tick": 32,
+          "scope": "INERT_INTERFACE_METADATA_BEFORE_FIRST_EXPERIENCE",
+          "physical_write": false
+        },
+        {
+          "operation": "declare_interface",
+          "channel": "actual_report.positive",
+          "tick": 32,
+          "scope": "INERT_INTERFACE_METADATA_BEFORE_FIRST_EXPERIENCE",
+          "physical_write": false
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 32
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.B",
+          "value": 0,
+          "tick": 32,
+          "receipt_id": 1,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 33
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 33
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.A",
+          "value": 0,
+          "tick": 33,
+          "receipt_id": 2,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 34
+        },
+        {
+          "operation": "probe",
+          "channel": "body.common_query",
+          "value": 0,
+          "tick": 34,
+          "receipt_id": 3,
+          "source": "USER_QUERY"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 34,
+          "to": 37
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.central_comparison.profile.v1",
+          "tick": 37,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "tick": 37,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "key": "cpc3.entity.v1",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "save_snapshot",
+          "tick": 37,
+          "scope": "FILESYSTEM_OPERATIVE_PERSISTENCE",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\changed_PENDING_T37.deetsnap",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 37,
+          "to": 83
+        },
+        {
+          "operation": "submit",
+          "channel": "actual_report.positive",
+          "value": 1,
+          "tick": 83,
+          "receipt_id": 4,
+          "source": "CURRENT_ACTUAL_PACKET_OUTCOME_ONLY",
+          "codec": "true -> positive diagonal/z; false -> negative diagonal/z; no comparison with prediction"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 83,
+          "to": 84
+        },
+        {
+          "operation": "world.run_until",
+          "from": 84,
+          "to": 84
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.central_comparison.profile.v1",
+          "tick": 84,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "tick": 84,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "key": "cpc3.entity.v1",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "save_snapshot",
+          "tick": 84,
+          "scope": "FILESYSTEM_OPERATIVE_PERSISTENCE",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\changed_MAIN_FINAL_T84.deetsnap",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        }
+      ]
+    },
+    {
+      "case": "stable",
+      "scope": "API_INTEGRATION_NOT_NEW_SCIENTIFIC_REPLICA",
+      "emission": {
+        "kind": "EMISSION",
+        "tick": 37,
+        "monotonic_ns": 122199697925200,
+        "wall_utc": "2026-10-14T02:00:51.639676+00:00",
+        "emission_tick": 37,
+        "target_tick": 83,
+        "horizon": 46,
+        "prediction_set": [
+          false
+        ],
+        "physical_output": {
+          "tick": 37,
+          "site": [
+            15,
+            15,
+            15
+          ],
+          "raw": 1157143629257506817,
+          "clock": 37,
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "receipt": {
+          "id": 3,
+          "status": "applied",
+          "reason": "",
+          "requested_tick": 34,
+          "effective_tick": 34
+        },
+        "observable": "packet_arrival_at_barrier_output",
+        "decoder": "live MAIN dx sign: positive arrival, negative absence, zero/missing unresolved",
+        "modality": "PHYSICAL_PROBE_ON_MAIN",
+        "operational_forks": 0,
+        "information_cut": [
+          {
+            "kind": "EXPERIENCE",
+            "tick": 33,
+            "monotonic_ns": 122199685507900,
+            "wall_utc": "2026-10-14T02:00:51.627259+00:00",
+            "sensor": "B",
+            "receipt": {
+              "id": 1,
+              "status": "applied",
+              "reason": "",
+              "requested_tick": 32,
+              "effective_tick": 32
+            },
+            "before": {
+              "tick": 32,
+              "delta": 0,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 32,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 32,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 32,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103577576,
+                "clock": 260,
+                "state": 1000,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 32,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103578576,
+                "clock": 260,
+                "state": 2000,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 32,
+                  "clock": 260,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 65,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 32,
+                  "clock": 260,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 65,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "after": {
+              "tick": 33,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 33,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 33,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 33,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576578,
+                "clock": 261,
+                "state": 2,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 33,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 261,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 66,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    1
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 1,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "source": {
+              "kind": "ACTUAL_OBSERVED_PACKET",
+              "past": {
+                "tick": 32,
+                "arrived": false,
+                "reference_branch": false,
+                "observable": "packet_arrival_at_barrier_output",
+                "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+              }
+            },
+            "modality": "EXPERIENCE_PROTOCOL"
+          },
+          {
+            "kind": "EXPERIENCE",
+            "tick": 34,
+            "monotonic_ns": 122199689713200,
+            "wall_utc": "2026-10-14T02:00:51.631464+00:00",
+            "sensor": "A",
+            "receipt": {
+              "id": 2,
+              "status": "applied",
+              "reason": "",
+              "requested_tick": 33,
+              "effective_tick": 33
+            },
+            "before": {
+              "tick": 33,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 33,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 33,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 33,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576578,
+                "clock": 261,
+                "state": 2,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 33,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 261,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 66,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 33,
+                  "clock": 261,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    1
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 1,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "after": {
+              "tick": 34,
+              "delta": -1,
+              "centers_available": true,
+              "supports_intact": true,
+              "reader_available": false,
+              "physical_output": {
+                "tick": 34,
+                "site": [
+                  15,
+                  15,
+                  15
+                ],
+                "raw": 0,
+                "clock": 34,
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "prediction_set": [
+                false,
+                true
+              ],
+              "a": {
+                "tick": 34,
+                "site": [
+                  14,
+                  15,
+                  15
+                ],
+                "raw": 1152921934103576579,
+                "clock": 262,
+                "state": 3,
+                "s_reg": 100,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "b": {
+                "tick": 34,
+                "site": [
+                  16,
+                  15,
+                  15
+                ],
+                "raw": 1152921938398543875,
+                "clock": 262,
+                "state": 3,
+                "s_reg": 101,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "axis_projection": null,
+              "modality": "PASSIVE_OBSERVATION",
+              "write_gates": {
+                "A": {
+                  "absolute_tick": 34,
+                  "clock": 262,
+                  "n_active": 5,
+                  "direction_sum": [
+                    0,
+                    0,
+                    -1
+                  ],
+                  "tetra_pattern": 1,
+                  "hadron": true,
+                  "rule_value": 3,
+                  "survives": true,
+                  "protected": false,
+                  "k": 3,
+                  "period": 260,
+                  "phase_remainder": 2,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                },
+                "B": {
+                  "absolute_tick": 34,
+                  "clock": 262,
+                  "n_active": 4,
+                  "direction_sum": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "tetra_pattern": 6,
+                  "hadron": true,
+                  "rule_value": 2,
+                  "survives": true,
+                  "protected": false,
+                  "k": 4,
+                  "period": 195,
+                  "phase_remainder": 67,
+                  "ordinary_increment_condition": false,
+                  "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                  "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                }
+              },
+              "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+              "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+              "profile": "comparacion",
+              "comparison_stage": "ready",
+              "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+            },
+            "source": {
+              "kind": "ACTUAL_OBSERVED_PACKET",
+              "past": {
+                "tick": 33,
+                "arrived": true,
+                "reference_branch": true,
+                "observable": "packet_arrival_at_barrier_output",
+                "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+              }
+            },
+            "modality": "EXPERIENCE_PROTOCOL"
+          }
+        ],
+        "memory_panel": {
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true
+        },
+        "limits": "finite persistence predictor, current readout may be context-sensitive; no arbitrary future dynamics learned"
+      },
+      "comparison": {
+        "kind": "CURRENT_CONSEQUENCE_NATIVE_COMPARISON",
+        "tick": 84,
+        "monotonic_ns": 122199892802300,
+        "wall_utc": "2026-10-14T02:00:51.834552+00:00",
+        "source_actual": {
+          "tick": 83,
+          "arrived": false,
+          "reference_branch": false,
+          "observable": "packet_arrival_at_barrier_output",
+          "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+        },
+        "input_receipt": {
+          "id": 4,
+          "status": "applied",
+          "reason": "",
+          "effective_tick": 83
+        },
+        "before_audit_only": {
+          "tick": 83,
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": true,
+          "physical_output": {
+            "tick": 83,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1157143629257506817,
+            "clock": 83,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "prediction_set": [
+            false
+          ],
+          "a": {
+            "tick": 83,
+            "site": [
+              14,
+              15,
+              15
+            ],
+            "raw": 1152921934103576580,
+            "clock": 311,
+            "state": 4,
+            "s_reg": 100,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "b": {
+            "tick": 83,
+            "site": [
+              16,
+              15,
+              15
+            ],
+            "raw": 1152921938398543873,
+            "clock": 311,
+            "state": 1,
+            "s_reg": 101,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "axis_projection": -1,
+          "modality": "PASSIVE_OBSERVATION",
+          "write_gates": {
+            "A": {
+              "absolute_tick": 83,
+              "clock": 311,
+              "n_active": 6,
+              "direction_sum": [
+                -2,
+                1,
+                0
+              ],
+              "tetra_pattern": 1,
+              "hadron": true,
+              "rule_value": 4,
+              "survives": true,
+              "protected": false,
+              "k": 2,
+              "period": 391,
+              "phase_remainder": 311,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            },
+            "B": {
+              "absolute_tick": 83,
+              "clock": 311,
+              "n_active": 7,
+              "direction_sum": [
+                -1,
+                0,
+                0
+              ],
+              "tetra_pattern": 6,
+              "hadron": true,
+              "rule_value": 1,
+              "survives": true,
+              "protected": false,
+              "k": 1,
+              "period": 782,
+              "phase_remainder": 311,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            }
+          },
+          "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+          "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "profile": "comparacion",
+          "comparison_stage": "pending",
+          "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+        },
+        "after_native": {
+          "tick": 84,
+          "delta": -1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": true,
+          "physical_output": {
+            "tick": 84,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1224979098644774913,
+            "clock": 84,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "active": true
+          },
+          "prediction_set": [
+            false,
+            true
+          ],
+          "a": {
+            "tick": 84,
+            "site": [
+              14,
+              15,
+              15
+            ],
+            "raw": 1152921934103576577,
+            "clock": 312,
+            "state": 1,
+            "s_reg": 100,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "b": {
+            "tick": 84,
+            "site": [
+              16,
+              15,
+              15
+            ],
+            "raw": 1152921938398543873,
+            "clock": 312,
+            "state": 1,
+            "s_reg": 101,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "axis_projection": 0,
+          "modality": "PASSIVE_OBSERVATION",
+          "write_gates": {
+            "A": {
+              "absolute_tick": 84,
+              "clock": 312,
+              "n_active": 6,
+              "direction_sum": [
+                0,
+                1,
+                2
+              ],
+              "tetra_pattern": 1,
+              "hadron": true,
+              "rule_value": 4,
+              "survives": true,
+              "protected": false,
+              "k": 2,
+              "period": 391,
+              "phase_remainder": 312,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            },
+            "B": {
+              "absolute_tick": 84,
+              "clock": 312,
+              "n_active": 8,
+              "direction_sum": [
+                0,
+                -1,
+                2
+              ],
+              "tetra_pattern": 6,
+              "hadron": true,
+              "rule_value": 1,
+              "survives": true,
+              "protected": false,
+              "k": 0,
+              "period": null,
+              "phase_remainder": null,
+              "ordinary_increment_condition": false,
+              "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+              "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+            }
+          },
+          "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+          "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "profile": "comparacion",
+          "comparison_stage": "pending",
+          "forecast_domain": "OUTSIDE_FORECAST_DOMAIN_COMPARISON_CONTEXT",
+          "comparison_live": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1224979098644774913,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": false,
+            "presentation": null,
+            "validity": "OUTSIDE_DECLARED_ONE_TICK_COMPARISON_WINDOW",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          }
+        },
+        "comparison_decoder": {
+          "physical_output": {
+            "tick": 84,
+            "coordinate": [
+              15,
+              15,
+              15
+            ],
+            "RAW": 1224979098644774913,
+            "clock": 84,
+            "state": 1,
+            "semantic": 1,
+            "load": 0,
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "active": true
+          },
+          "signed_comparison_marker_present": true,
+          "represented_expectation_before_report": true,
+          "presentation": "coincidencia_direccional",
+          "validity": "CURRENT_NATIVE_MARKER",
+          "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+        },
+        "modality": "OBSERVED_EXTERNAL_EVENT_TO_NATIVE_GRADIENT",
+        "computed_error_injected": false,
+        "direct_RAW_clock_writes": 0,
+        "status": "CURRENT_NATIVE_COMPARISON_MEASURED",
+        "episode": {
+          "emission_tick": 37,
+          "target_tick": 83,
+          "native_readout_tick": 84,
+          "matching": "single pending physical expectation and fixed target; no host error-to-memory feedback"
+        },
+        "audit_evaluations": [
+          {
+            "kind": "EVALUATION",
+            "tick": 84,
+            "monotonic_ns": 122199894309200,
+            "wall_utc": "2026-10-14T02:00:51.836059+00:00",
+            "emission_tick": 37,
+            "target_tick": 83,
+            "outcome": {
+              "tick": 83,
+              "arrived": false,
+              "observable": "packet_arrival_at_barrier_output"
+            },
+            "prediction_set": [
+              false
+            ],
+            "coverage": true,
+            "error": 0,
+            "modality": "ANALISIS_EXTERNO"
+          }
+        ]
+      },
+      "final": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\stable_MAIN_FINAL_T84.deetsnap",
+        "tick": 84,
+        "sha256": "10bebf377c259f4c61ae6186034a54dc14a3c8671283aa36a267fb24a981d43f",
+        "physical": {
+          "tick": 84,
+          "raw_sha256": "9b9f4e538a890e1033f074c6f45e245fcd01560d2ab338f332b8135f2794aeb4",
+          "clock_sha256": "0cb37da5c3cef4bc97b3e72603fe09254b085def77256d5dcc1d6a6c0df0cbab"
+        },
+        "metadata_is_external_not_native_memory": true
+      },
+      "events": [
+        {
+          "kind": "PREPARATION",
+          "tick": 32,
+          "monotonic_ns": 122199666410700,
+          "wall_utc": "2026-10-14T02:00:51.608162+00:00",
+          "recipe": "relational.v1/H0",
+          "reader": "finite zero-load MAIN query, subsequent live native output",
+          "host_setup_finished_at_tick": 32,
+          "backend": "LAZY",
+          "event_state": 1,
+          "external_phase_slots": [
+            163,
+            292,
+            554,
+            812,
+            945
+          ]
+        },
+        {
+          "kind": "PREPARATION_PROFILE",
+          "tick": 32,
+          "monotonic_ns": 122199682597800,
+          "wall_utc": "2026-10-14T02:00:51.624349+00:00",
+          "profile": "cpc3.central_comparison.profile.v1",
+          "channels": [
+            "actual_report.negative",
+            "actual_report.positive"
+          ],
+          "prepared_before_first_experience": true,
+          "physical_preparation_unchanged": true,
+          "scope": "one forecast/consequence encounter; no automatic reuse or native absence detector"
+        },
+        {
+          "kind": "EXPERIENCE",
+          "tick": 33,
+          "monotonic_ns": 122199685507900,
+          "wall_utc": "2026-10-14T02:00:51.627259+00:00",
+          "sensor": "B",
+          "receipt": {
+            "id": 1,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 32,
+            "effective_tick": 32
+          },
+          "before": {
+            "tick": 32,
+            "delta": 0,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 32,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 32,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 32,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103577576,
+              "clock": 260,
+              "state": 1000,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 32,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921934103578576,
+              "clock": 260,
+              "state": 2000,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 32,
+                "clock": 260,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 65,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 32,
+                "clock": 260,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 65,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after": {
+            "tick": 33,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 33,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 33,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 33,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576578,
+              "clock": 261,
+              "state": 2,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 33,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 261,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 66,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  1
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 1,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          },
+          "modality": "EXPERIENCE_PROTOCOL"
+        },
+        {
+          "kind": "EXPERIENCE",
+          "tick": 34,
+          "monotonic_ns": 122199689713200,
+          "wall_utc": "2026-10-14T02:00:51.631464+00:00",
+          "sensor": "A",
+          "receipt": {
+            "id": 2,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 33,
+            "effective_tick": 33
+          },
+          "before": {
+            "tick": 33,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 33,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 33,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 33,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576578,
+              "clock": 261,
+              "state": 2,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 33,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 261,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 66,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 33,
+                "clock": 261,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  1
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 1,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after": {
+            "tick": 34,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": false,
+            "physical_output": {
+              "tick": 34,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 0,
+              "clock": 34,
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 34,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576579,
+              "clock": 262,
+              "state": 3,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 34,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543875,
+              "clock": 262,
+              "state": 3,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": null,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 34,
+                "clock": 262,
+                "n_active": 5,
+                "direction_sum": [
+                  0,
+                  0,
+                  -1
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 3,
+                "survives": true,
+                "protected": false,
+                "k": 3,
+                "period": 260,
+                "phase_remainder": 2,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 34,
+                "clock": 262,
+                "n_active": 4,
+                "direction_sum": [
+                  0,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 2,
+                "survives": true,
+                "protected": false,
+                "k": 4,
+                "period": 195,
+                "phase_remainder": 67,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "ready",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          },
+          "modality": "EXPERIENCE_PROTOCOL"
+        },
+        {
+          "kind": "EMISSION",
+          "tick": 37,
+          "monotonic_ns": 122199697925200,
+          "wall_utc": "2026-10-14T02:00:51.639676+00:00",
+          "emission_tick": 37,
+          "target_tick": 83,
+          "horizon": 46,
+          "prediction_set": [
+            false
+          ],
+          "physical_output": {
+            "tick": 37,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1157143629257506817,
+            "clock": 37,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "receipt": {
+            "id": 3,
+            "status": "applied",
+            "reason": "",
+            "requested_tick": 34,
+            "effective_tick": 34
+          },
+          "observable": "packet_arrival_at_barrier_output",
+          "decoder": "live MAIN dx sign: positive arrival, negative absence, zero/missing unresolved",
+          "modality": "PHYSICAL_PROBE_ON_MAIN",
+          "operational_forks": 0,
+          "information_cut": [
+            {
+              "kind": "EXPERIENCE",
+              "tick": 33,
+              "monotonic_ns": 122199685507900,
+              "wall_utc": "2026-10-14T02:00:51.627259+00:00",
+              "sensor": "B",
+              "receipt": {
+                "id": 1,
+                "status": "applied",
+                "reason": "",
+                "requested_tick": 32,
+                "effective_tick": 32
+              },
+              "before": {
+                "tick": 32,
+                "delta": 0,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 32,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 32,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 32,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103577576,
+                  "clock": 260,
+                  "state": 1000,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 32,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103578576,
+                  "clock": 260,
+                  "state": 2000,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 32,
+                    "clock": 260,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 65,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 32,
+                    "clock": 260,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 65,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "after": {
+                "tick": 33,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 33,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 33,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 33,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576578,
+                  "clock": 261,
+                  "state": 2,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 33,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 261,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 66,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      1
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 1,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "source": {
+                "kind": "ACTUAL_OBSERVED_PACKET",
+                "past": {
+                  "tick": 32,
+                  "arrived": false,
+                  "reference_branch": false,
+                  "observable": "packet_arrival_at_barrier_output",
+                  "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+                }
+              },
+              "modality": "EXPERIENCE_PROTOCOL"
+            },
+            {
+              "kind": "EXPERIENCE",
+              "tick": 34,
+              "monotonic_ns": 122199689713200,
+              "wall_utc": "2026-10-14T02:00:51.631464+00:00",
+              "sensor": "A",
+              "receipt": {
+                "id": 2,
+                "status": "applied",
+                "reason": "",
+                "requested_tick": 33,
+                "effective_tick": 33
+              },
+              "before": {
+                "tick": 33,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 33,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 33,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 33,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576578,
+                  "clock": 261,
+                  "state": 2,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 33,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 261,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 66,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 33,
+                    "clock": 261,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      1
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 1,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "after": {
+                "tick": 34,
+                "delta": -1,
+                "centers_available": true,
+                "supports_intact": true,
+                "reader_available": false,
+                "physical_output": {
+                  "tick": 34,
+                  "site": [
+                    15,
+                    15,
+                    15
+                  ],
+                  "raw": 0,
+                  "clock": 34,
+                  "state": 0,
+                  "s_reg": 0,
+                  "semantic": 0,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": false
+                },
+                "prediction_set": [
+                  false,
+                  true
+                ],
+                "a": {
+                  "tick": 34,
+                  "site": [
+                    14,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921934103576579,
+                  "clock": 262,
+                  "state": 3,
+                  "s_reg": 100,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "b": {
+                  "tick": 34,
+                  "site": [
+                    16,
+                    15,
+                    15
+                  ],
+                  "raw": 1152921938398543875,
+                  "clock": 262,
+                  "state": 3,
+                  "s_reg": 101,
+                  "semantic": 1,
+                  "direction": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "active": true
+                },
+                "axis_projection": null,
+                "modality": "PASSIVE_OBSERVATION",
+                "write_gates": {
+                  "A": {
+                    "absolute_tick": 34,
+                    "clock": 262,
+                    "n_active": 5,
+                    "direction_sum": [
+                      0,
+                      0,
+                      -1
+                    ],
+                    "tetra_pattern": 1,
+                    "hadron": true,
+                    "rule_value": 3,
+                    "survives": true,
+                    "protected": false,
+                    "k": 3,
+                    "period": 260,
+                    "phase_remainder": 2,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  },
+                  "B": {
+                    "absolute_tick": 34,
+                    "clock": 262,
+                    "n_active": 4,
+                    "direction_sum": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "tetra_pattern": 6,
+                    "hadron": true,
+                    "rule_value": 2,
+                    "survives": true,
+                    "protected": false,
+                    "k": 4,
+                    "period": 195,
+                    "phase_remainder": 67,
+                    "ordinary_increment_condition": false,
+                    "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                    "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+                  }
+                },
+                "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+                "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+                "profile": "comparacion",
+                "comparison_stage": "ready",
+                "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+              },
+              "source": {
+                "kind": "ACTUAL_OBSERVED_PACKET",
+                "past": {
+                  "tick": 33,
+                  "arrived": true,
+                  "reference_branch": true,
+                  "observable": "packet_arrival_at_barrier_output",
+                  "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+                }
+              },
+              "modality": "EXPERIENCE_PROTOCOL"
+            }
+          ],
+          "memory_panel": {
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true
+          },
+          "limits": "finite persistence predictor, current readout may be context-sensitive; no arbitrary future dynamics learned"
+        },
+        {
+          "kind": "CURRENT_CONSEQUENCE_NATIVE_COMPARISON",
+          "tick": 84,
+          "monotonic_ns": 122199892802300,
+          "wall_utc": "2026-10-14T02:00:51.834552+00:00",
+          "source_actual": {
+            "tick": 83,
+            "arrived": false,
+            "reference_branch": false,
+            "observable": "packet_arrival_at_barrier_output",
+            "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+          },
+          "input_receipt": {
+            "id": 4,
+            "status": "applied",
+            "reason": "",
+            "effective_tick": 83
+          },
+          "before_audit_only": {
+            "tick": 83,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "physical_output": {
+              "tick": 83,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 1157143629257506817,
+              "clock": 83,
+              "state": 1,
+              "s_reg": 0,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "prediction_set": [
+              false
+            ],
+            "a": {
+              "tick": 83,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576580,
+              "clock": 311,
+              "state": 4,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 83,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543873,
+              "clock": 311,
+              "state": 1,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": -1,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 83,
+                "clock": 311,
+                "n_active": 6,
+                "direction_sum": [
+                  -2,
+                  1,
+                  0
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 4,
+                "survives": true,
+                "protected": false,
+                "k": 2,
+                "period": 391,
+                "phase_remainder": 311,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 83,
+                "clock": 311,
+                "n_active": 7,
+                "direction_sum": [
+                  -1,
+                  0,
+                  0
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 1,
+                "survives": true,
+                "protected": false,
+                "k": 1,
+                "period": 782,
+                "phase_remainder": 311,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "pending",
+            "forecast_domain": "SINGLETON_EXPECTATION_ALLOWED_WITHIN_FINITE_DOMAIN"
+          },
+          "after_native": {
+            "tick": 84,
+            "delta": -1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "physical_output": {
+              "tick": 84,
+              "site": [
+                15,
+                15,
+                15
+              ],
+              "raw": 1224979098644774913,
+              "clock": 84,
+              "state": 1,
+              "s_reg": 0,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "prediction_set": [
+              false,
+              true
+            ],
+            "a": {
+              "tick": 84,
+              "site": [
+                14,
+                15,
+                15
+              ],
+              "raw": 1152921934103576577,
+              "clock": 312,
+              "state": 1,
+              "s_reg": 100,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "b": {
+              "tick": 84,
+              "site": [
+                16,
+                15,
+                15
+              ],
+              "raw": 1152921938398543873,
+              "clock": 312,
+              "state": 1,
+              "s_reg": 101,
+              "semantic": 1,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "axis_projection": 0,
+            "modality": "PASSIVE_OBSERVATION",
+            "write_gates": {
+              "A": {
+                "absolute_tick": 84,
+                "clock": 312,
+                "n_active": 6,
+                "direction_sum": [
+                  0,
+                  1,
+                  2
+                ],
+                "tetra_pattern": 1,
+                "hadron": true,
+                "rule_value": 4,
+                "survives": true,
+                "protected": false,
+                "k": 2,
+                "period": 391,
+                "phase_remainder": 312,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              },
+              "B": {
+                "absolute_tick": 84,
+                "clock": 312,
+                "n_active": 8,
+                "direction_sum": [
+                  0,
+                  -1,
+                  2
+                ],
+                "tetra_pattern": 6,
+                "hadron": true,
+                "rule_value": 1,
+                "survives": true,
+                "protected": false,
+                "k": 0,
+                "period": null,
+                "phase_remainder": null,
+                "ordinary_increment_condition": false,
+                "branch": "MATERIAL_NO_ORDINARY_INCREMENT",
+                "demux": "UNRESOLVED_FROM_PASSIVE_PRESTATE"
+              }
+            },
+            "domain_status": "WITHIN_FINITE_TESTED_HORIZON",
+            "limits": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+            "profile": "comparacion",
+            "comparison_stage": "pending",
+            "forecast_domain": "OUTSIDE_FORECAST_DOMAIN_COMPARISON_CONTEXT",
+            "comparison_live": {
+              "physical_output": {
+                "tick": 84,
+                "coordinate": [
+                  15,
+                  15,
+                  15
+                ],
+                "RAW": 1224979098644774913,
+                "clock": 84,
+                "state": 1,
+                "semantic": 1,
+                "load": 0,
+                "direction": [
+                  0,
+                  0,
+                  1
+                ],
+                "active": true
+              },
+              "signed_comparison_marker_present": true,
+              "represented_expectation_before_report": false,
+              "presentation": null,
+              "validity": "OUTSIDE_DECLARED_ONE_TICK_COMPARISON_WINDOW",
+              "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+            }
+          },
+          "comparison_decoder": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1224979098644774913,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": true,
+            "presentation": "coincidencia_direccional",
+            "validity": "CURRENT_NATIVE_MARKER",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          },
+          "modality": "OBSERVED_EXTERNAL_EVENT_TO_NATIVE_GRADIENT",
+          "computed_error_injected": false,
+          "direct_RAW_clock_writes": 0,
+          "status": "CURRENT_NATIVE_COMPARISON_MEASURED",
+          "episode": {
+            "emission_tick": 37,
+            "target_tick": 83,
+            "native_readout_tick": 84,
+            "matching": "single pending physical expectation and fixed target; no host error-to-memory feedback"
+          },
+          "audit_evaluations": [
+            {
+              "kind": "EVALUATION",
+              "tick": 84,
+              "monotonic_ns": 122199894309200,
+              "wall_utc": "2026-10-14T02:00:51.836059+00:00",
+              "emission_tick": 37,
+              "target_tick": 83,
+              "outcome": {
+                "tick": 83,
+                "arrived": false,
+                "observable": "packet_arrival_at_barrier_output"
+              },
+              "prediction_set": [
+                false
+              ],
+              "coverage": true,
+              "error": 0,
+              "modality": "ANALISIS_EXTERNO"
+            }
+          ]
+        },
+        {
+          "kind": "EVALUATION",
+          "tick": 84,
+          "monotonic_ns": 122199894309200,
+          "wall_utc": "2026-10-14T02:00:51.836059+00:00",
+          "emission_tick": 37,
+          "target_tick": 83,
+          "outcome": {
+            "tick": 83,
+            "arrived": false,
+            "observable": "packet_arrival_at_barrier_output"
+          },
+          "prediction_set": [
+            false
+          ],
+          "coverage": true,
+          "error": 0,
+          "modality": "ANALISIS_EXTERNO"
+        },
+        {
+          "kind": "INTERFACE_LIMIT",
+          "tick": 84,
+          "monotonic_ns": 122200042425800,
+          "wall_utc": "2026-10-14T02:00:51.984175+00:00",
+          "status": "OUTSIDE_FORECAST_DOMAIN",
+          "detail": "The current native marker represents a consequence encounter, not a reusable fresh forecast.",
+          "prediction_set": [
+            false,
+            true
+          ],
+          "physical_output": {
+            "tick": 84,
+            "site": [
+              15,
+              15,
+              15
+            ],
+            "raw": 1224979098644774913,
+            "clock": 84,
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "active": true
+          },
+          "comparison": {
+            "physical_output": {
+              "tick": 84,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1224979098644774913,
+              "clock": 84,
+              "state": 1,
+              "semantic": 1,
+              "load": 0,
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "signed_comparison_marker_present": true,
+            "represented_expectation_before_report": true,
+            "presentation": "coincidencia_direccional",
+            "validity": "CURRENT_NATIVE_MARKER",
+            "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+          },
+          "modality": "INTERFACE_NOT_NATIVE_ANSWER",
+          "profile": "comparacion"
+        }
+      ],
+      "operation_calls": [
+        {
+          "operation": "declare_interface",
+          "channel": "actual_report.negative",
+          "tick": 32,
+          "scope": "INERT_INTERFACE_METADATA_BEFORE_FIRST_EXPERIENCE",
+          "physical_write": false
+        },
+        {
+          "operation": "declare_interface",
+          "channel": "actual_report.positive",
+          "tick": 32,
+          "scope": "INERT_INTERFACE_METADATA_BEFORE_FIRST_EXPERIENCE",
+          "physical_write": false
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 32
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.B",
+          "value": 0,
+          "tick": 32,
+          "receipt_id": 1,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 32,
+              "arrived": false,
+              "reference_branch": false,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 32,
+          "to": 33
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 33
+        },
+        {
+          "operation": "submit",
+          "channel": "sensor.A",
+          "value": 0,
+          "tick": 33,
+          "receipt_id": 2,
+          "source": {
+            "kind": "ACTUAL_OBSERVED_PACKET",
+            "past": {
+              "tick": 33,
+              "arrived": true,
+              "reference_branch": true,
+              "observable": "packet_arrival_at_barrier_output",
+              "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+            }
+          }
+        },
+        {
+          "operation": "world.run_until",
+          "from": 33,
+          "to": 34
+        },
+        {
+          "operation": "probe",
+          "channel": "body.common_query",
+          "value": 0,
+          "tick": 34,
+          "receipt_id": 3,
+          "source": "USER_QUERY"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 34,
+          "to": 37
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.central_comparison.profile.v1",
+          "tick": 37,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "tick": 37,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "key": "cpc3.entity.v1",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "save_snapshot",
+          "tick": 37,
+          "scope": "FILESYSTEM_OPERATIVE_PERSISTENCE",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\stable_PENDING_T37.deetsnap",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 37,
+          "to": 83
+        },
+        {
+          "operation": "submit",
+          "channel": "actual_report.negative",
+          "value": 1,
+          "tick": 83,
+          "receipt_id": 4,
+          "source": "CURRENT_ACTUAL_PACKET_OUTCOME_ONLY",
+          "codec": "true -> positive diagonal/z; false -> negative diagonal/z; no comparison with prediction"
+        },
+        {
+          "operation": "world.run_until",
+          "from": 83,
+          "to": 84
+        },
+        {
+          "operation": "world.run_until",
+          "from": 84,
+          "to": 84
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "key": "cpc3.central_comparison.profile.v1",
+          "tick": 84,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "set_snapshot_metadata",
+          "tick": 84,
+          "scope": "OPERATIVE_METADATA_NON_RAW",
+          "key": "cpc3.entity.v1",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        },
+        {
+          "operation": "save_snapshot",
+          "tick": 84,
+          "scope": "FILESYSTEM_OPERATIVE_PERSISTENCE",
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC3\\checkpoints\\comparison_profile\\stable_MAIN_FINAL_T84.deetsnap",
+          "source": "USER_OR_AUDITOR_PERSISTENCE_REQUEST"
+        }
+      ]
+    }
+  ],
+  "scope": "new API persistence and domain validation around already measured physical comparison, not an extra capability count",
+  "no_operative_forks": true,
+  "module": "src/core/comparison_entity.py"
+}

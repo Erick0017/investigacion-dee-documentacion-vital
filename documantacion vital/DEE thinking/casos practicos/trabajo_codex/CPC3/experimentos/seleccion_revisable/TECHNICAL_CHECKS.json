@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "checks": {
+    "recovered_R14_exact_fields_directions": true,
+    "same_first_native_action_before_evidence": true,
+    "passive_observation_no_raw_clock_effect": true,
+    "audit_fork_independent": true,
+    "save_load_physical_t1": true,
+    "pending_receipts_and_future_survive_load": true,
+    "restored_world_really_runs_through_information": true,
+    "Dense_Parallel_Lazy_same_future": true
+  },
+  "all_technical_assertions": true,
+  "exact_recovered_R14_reference": [
+    {
+      "bit": 0,
+      "action": {
+        "tick": 1,
+        "coordinate": [
+          11,
+          10,
+          10
+        ],
+        "RAW": 1224979330573008897,
+        "clock": 1,
+        "state": 1,
+        "semantic": 1,
+        "load": 54,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "policy": {
+        "tick": 2,
+        "coordinate": [
+          11,
+          10,
+          11
+        ],
+        "RAW": 1153203439145058305,
+        "clock": 2,
+        "state": 1,
+        "semantic": 1,
+        "load": 107,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "active": true
+      },
+      "probeP": {
+        "tick": 3,
+        "coordinate": [
+          12,
+          10,
+          11
+        ],
+        "RAW": 1224979991997972481,
+        "clock": 3,
+        "state": 1,
+        "semantic": 1,
+        "load": 208,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "probeQ": {
+        "tick": 3,
+        "coordinate": [
+          11,
+          11,
+          11
+        ],
+        "RAW": 1229201665677066241,
+        "clock": 3,
+        "state": 1,
+        "semantic": 1,
+        "load": 103,
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "checks": {
+        "first_action_direction": true,
+        "policy_direction": true,
+        "later_action_direction": true
+      },
+      "source_exact_fields": "state1001...1005, sourceclocks0, policyclock11, original vectors/loads; only product Runtime/backend differ"
+    },
+    {
+      "bit": 1,
+      "action": {
+        "tick": 1,
+        "coordinate": [
+          11,
+          10,
+          10
+        ],
+        "RAW": 1224979330573008897,
+        "clock": 1,
+        "state": 1,
+        "semantic": 1,
+        "load": 54,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "policy": {
+        "tick": 2,
+        "coordinate": [
+          11,
+          10,
+          11
+        ],
+        "RAW": 1157425817198788609,
+        "clock": 2,
+        "state": 1,
+        "semantic": 1,
+        "load": 166,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "probeP": {
+        "tick": 3,
+        "coordinate": [
+          12,
+          10,
+          11
+        ],
+        "RAW": 1229201657087131649,
+        "clock": 3,
+        "state": 1,
+        "semantic": 1,
+        "load": 101,
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "probeQ": {
+        "tick": 3,
+        "coordinate": [
+          11,
+          11,
+          11
+        ],
+        "RAW": 1233705978269007873,
+        "clock": 3,
+        "state": 1,
+        "semantic": 1,
+        "load": 269,
+        "direction": [
+          -1,
+          1,
+          1
+        ],
+        "active": true
+      },
+      "checks": {
+        "first_action_direction": true,
+        "policy_direction": true,
+        "later_action_direction": true
+      },
+      "source_exact_fields": "state1001...1005, sourceclocks0, policyclock11, original vectors/loads; only product Runtime/backend differ"
+    }
+  ],
+  "backend": {
+    "DENSE_SEQUENTIAL": {
+      "tick": 15,
+      "raw": "39a800ce51fcd7059163fddfa7cdfcbc4337f70fb90400852c9ac061b18b8f60",
+      "clock": "cd8f96dec3e864ba94d328073ef7d9b1de7761e25fc63d547a341ececa7fd1d5"
+    },
+    "DENSE_PARALLEL": {
+      "tick": 15,
+      "raw": "39a800ce51fcd7059163fddfa7cdfcbc4337f70fb90400852c9ac061b18b8f60",
+      "clock": "cd8f96dec3e864ba94d328073ef7d9b1de7761e25fc63d547a341ececa7fd1d5"
+    },
+    "LAZY": {
+      "tick": 15,
+      "raw": "39a800ce51fcd7059163fddfa7cdfcbc4337f70fb90400852c9ac061b18b8f60",
+      "clock": "cd8f96dec3e864ba94d328073ef7d9b1de7761e25fc63d547a341ececa7fd1d5"
+    }
+  },
+  "initial_reference_deviation": "Earlier R14_REVALIDATION.json preserved the exact trajectory/direction recipe but normalized positive source states to1; this exact-fields check restores source states1001...1005 and confirms the reference without rerunning new scientific cases.",
+  "new_science_not_reexecuted": true
+}

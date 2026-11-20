@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC3\src\core\discovery_zero_reader.py", line 25, in <module>
+    r=run_case(payload,history);rows.append(r);out.write_text(json.dumps(rows,indent=2),encoding='utf-8');print(json.dumps({'payload':payload,'history':history,'states':[(p['tick'],p['delta'],p['output']['direction'],p['moore']['A']['n_active'],p['moore']['B']['n_active']) for p in r['samples']],'receipts':[q['status'] for q in r['receipts']]},ensure_ascii=True),flush=True)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC3\src\core\discovery_zero_reader.py", line 7, in run_case
+    w,target,inlet,dr=make((0,0,0),False,origin);opts=d.TickOptions();opts.backend=d.Backend.LAZY;opts.threads=1;w.runtime.set_execution_options(opts)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dee_thinking._native.Runtime' object has no attribute 'set_execution_options'. Did you mean: 'execution_options'?

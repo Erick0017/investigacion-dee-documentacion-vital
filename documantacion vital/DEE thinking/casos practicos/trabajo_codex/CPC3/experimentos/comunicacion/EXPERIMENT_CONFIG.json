@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "freeze": "2026-10-14 initial finite language contrast",
+  "scope": "Text labels select fixed physical paths. Acquired cue/teacher relations are native additive transformations, not a learned arbitrary dictionary. Cascade is composition, not grammar.",
+  "decoder": "Active native response s_reg; missing/inactive is null. Same decoder in all histories.",
+  "limits": {"native_threads": 1, "case_timeout_seconds": 180, "families": 2, "no_operational_forks": true},
+  "cases": [
+    {"id":"association_forward","family":"association","stage":"discovery","teachers":[7,11],"query":13},
+    {"id":"association_inverted","family":"association","stage":"discovery","teachers":[11,7],"query":13},
+    {"id":"association_omitted","family":"association","stage":"discovery","teachers":[7,11],"mode":"omitted","query":13},
+    {"id":"association_unpaired","family":"association","stage":"discovery","teachers":[7,11],"mode":"unpaired","query":13},
+    {"id":"association_alias_forms","family":"association","stage":"discovery","teachers":[7,11],"forms":{"lume":0,"savi":1},"query":13},
+    {"id":"association_sequential","family":"association","stage":"discovery","teachers":[7,11],"sequential":true,"queries":[13,17,9]},
+    {"id":"composition_online","family":"composition","stage":"discovery","pairs":[[3,9],[3,11]],"query":13},
+    {"id":"composition_inverted","family":"composition","stage":"discovery","pairs":[[3,11],[3,9]],"query":13},
+    {"id":"composition_omitted_stage1","family":"composition","stage":"discovery","pairs":[[3,9],[3,11]],"omit":1,"query":13},
+    {"id":"reserved_association_01","family":"association","stage":"reserved","teachers":[9,15],"query":17,"translation":[2,3,1],"forms":{"zeri":0,"pako":1}},
+    {"id":"reserved_association_02","family":"association","stage":"reserved","teachers":[15,9],"query":17,"translation":[4,1,2],"forms":{"zeri":0,"pako":1}},
+    {"id":"reserved_composition_01","family":"composition","stage":"reserved","pairs":[[5,7],[5,11]],"query":19,"translation":[3,4,1]},
+    {"id":"reserved_composition_02","family":"composition","stage":"reserved","pairs":[[5,11],[5,7]],"query":19,"translation":[5,2,3]}
+  ]
+}

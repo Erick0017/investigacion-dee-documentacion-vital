@@ -1,0 +1,82 @@
+{
+  "id": "SEM01_REVERSAL_EARLY_TRAINING_EVENT_PHASE_V2",
+  "parent_snapshot": "resultados/confirmacion/A_future_UV/MAIN_FINAL.deetsnap",
+  "parent_sha256": "a602dfdb598990f5d80b99d4a6d3d48eb43125ea45bd7b4e18c7ba8726b8ac20",
+  "parent_tick": 129,
+  "arms": [
+    "FULL_REVERSE",
+    "SIGNAL_INPUT_ONLY"
+  ],
+  "translation": [
+    0,
+    0,
+    0
+  ],
+  "signal_payload": 5,
+  "training_event_offset_from_resource_launch": -1,
+  "evaluation_event_offset_from_antecedent_emission": 1,
+  "variant_reason": "Directed replay showed returning oldV and newU co-arrive at interception173. Advance all teaching U/V events by2 equally, keep resources, current sensors, cues, queries and post-forecast evaluation events unchanged.",
+  "new_experiences": [
+    {
+      "signal": "S1",
+      "sensor_tick": 151,
+      "event": "V",
+      "round": 1
+    },
+    {
+      "signal": "S2",
+      "sensor_tick": 179,
+      "event": "U",
+      "round": 1
+    },
+    {
+      "signal": "S1",
+      "sensor_tick": 218,
+      "event": "V",
+      "round": 2
+    },
+    {
+      "signal": "S2",
+      "sensor_tick": 246,
+      "event": "U",
+      "round": 2
+    }
+  ],
+  "query_protocol": [
+    {
+      "signal": "S1",
+      "input_tick": 285,
+      "emission_tick": 288,
+      "independent_later_event": "V"
+    },
+    {
+      "signal": "S2",
+      "input_tick": 313,
+      "emission_tick": 316,
+      "independent_later_event": "U"
+    }
+  ],
+  "controls": {
+    "FULL_REVERSE": "All four native outcome banks and actual sensory reports, plus all four fixed signal inputs",
+    "SIGNAL_INPUT_ONLY": "Same native banks/resources/events, omit only outcome-report input; physical consequences are not omitted",
+    "OUTCOME_REPORT_ONLY": "Same native banks/resources/events and their present sensory reports, omit only signal input"
+  },
+  "all_native_interfaces_already_present_in_parent": true,
+  "new_body_preparation": false,
+  "clock_edits": false,
+  "raw_edits": false,
+  "maximum_native_trajectories": 2,
+  "final_tick": 330,
+  "signal_semantics": "Signal accompanies present supply effect, not the earlier threat launch",
+  "main_scope": "S1's earlier useful action may have consumed its carrier, so later expression may be reacquisition. S2's surviving carrier must be inspected; no conclusion is inferred from the term reversal.",
+  "fixed_actuator_scope": "Utility coupling is prepared. No independent utility-learning claim.",
+  "source_sha256": {
+    "reversal.py": "fbac70dfeadc237176ee3bca6668a0515b2b6cbaa6c46a692bad71607cfb0510",
+    "memory.py": "565f132df6ccde21d211eb0a3cd596b238b82ea1d92263de802c706b49ed7484",
+    "habitat.py": "264ca10b7baa599a8427cca4e36f636185422ec0685d5c56b84945ba03255e22",
+    "participant.py": "3c71f9254300a3ea9ed1b9d7f271a867c647961ec97e3b5ce122847cca256ae9",
+    "experiment.py": "34f72ebef28ccea4a89a68dc3e94305f1c73b978ef63f353052ea0a55e53c5f2",
+    "common.py": "71938e3f9c836c3e08acf38862e76a9b78ba5a6c158ba94b084040a8c3d405bb"
+  },
+  "configuration_frozen_before_execution": true
+}

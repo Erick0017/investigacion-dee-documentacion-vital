@@ -1,0 +1,19 @@
+{
+ "schema":"CPC4.A02.sustained.confirmation.v1",
+ "discovery":"resultados/regulacion/DUAL_DISCOVERY01/MEASUREMENTS.json",
+ "frozen_before_execution":true,
+ "mode":"separate component cohort; two relations in one Runtime fromT0",
+ "physical_panel":["delta1","delta2","A/B individually","current comparator direction","receipt admission"],
+ "evaluation_rule":"Compare history-specific relations at common ticks2,259,265,403,520. Missing response is not zero memory. Second probe rejection is a reader-availability datum.",
+ "reserved_worlds_not_used_in_design":["RESERVE_BA_AB","RESERVE_AB_BA"],
+ "cases":[
+  {"id":"AB_AB","history1":"AB","history2":"AB","reader1":"persistent","translation":[0,0,0]},
+  {"id":"AB_BA","history1":"AB","history2":"BA","reader1":"persistent","translation":[0,0,0]},
+  {"id":"BA_AB","history1":"BA","history2":"AB","reader1":"persistent","translation":[0,0,0]},
+  {"id":"AB_H0","history1":"AB","history2":"H0","reader1":"persistent","translation":[0,0,0]},
+  {"id":"AB_AB_FINITE_READER","history1":"AB","history2":"AB","reader1":"finite","translation":[0,0,0]},
+  {"id":"AB_AB_NO_READER","history1":"AB","history2":"AB","reader1":"absent","translation":[0,0,0]},
+  {"id":"RESERVE_BA_AB","history1":"BA","history2":"AB","reader1":"persistent","translation":[7,5,9]},
+  {"id":"RESERVE_AB_BA","history1":"AB","history2":"BA","reader1":"persistent","translation":[13,11,3]}
+ ]
+}

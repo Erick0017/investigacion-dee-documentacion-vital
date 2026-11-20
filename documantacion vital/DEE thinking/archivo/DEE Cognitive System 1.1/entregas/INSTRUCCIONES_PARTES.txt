@@ -1,0 +1,20 @@
+DEE Cognitive System 1.1 — transporte privado
+
+Cada archivo .zip.001, .zip.002, etc. es un segmento binario secuencial.
+NO son ZIP independientes. Cada segmento tiene menos de 16,000,000 bytes.
+Conserve todas las partes de cada ZIP juntas, junto con PARTES.json y REUNIR_1_1.py.
+
+Con Python disponible:
+  python REUNIR_1_1.py DEE_COGNITIVE_SYSTEM_1_1_SISTEMA.zip
+  python REUNIR_1_1.py DEE_COGNITIVE_SYSTEM_1_1_AUDITORIA_ESENCIAL.zip
+
+El reunificador comprueba orden, tamaño y SHA-256 de cada parte y del ZIP entero.
+No sobrescribe un archivo distinto. Puede indicar --salida RUTA_NUEVA.zip.
+Después extraiga el ZIP canónico, no las partes por separado.
+
+SISTEMA y AUDITORIA comparten raíz DEE_COGNITIVE_SYSTEM_1_1/ y pueden extraerse
+en la misma carpeta. Sus manifiestos tienen nombres diferentes. Los archivos
+comunes deben ser idénticos. SISTEMA funciona también sin extraer AUDITORIA.
+
+Los paquetes son privados y reconstructivos. No publicar ni enviar a servicios
+externos fuentes, geometrías, estados o evidencia confidencial.

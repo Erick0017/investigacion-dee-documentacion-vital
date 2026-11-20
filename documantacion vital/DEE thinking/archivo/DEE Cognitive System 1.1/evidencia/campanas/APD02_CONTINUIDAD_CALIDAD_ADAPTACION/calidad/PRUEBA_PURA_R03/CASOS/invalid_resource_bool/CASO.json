@@ -1,0 +1,144 @@
+{
+  "artifact_directory": ".",
+  "checks": {
+    "abstention_is_not_completion": true,
+    "binary_feedback_has_no_answer": true,
+    "expected_category": true,
+    "external_evaluation_accounted": true,
+    "feedback_exact_category_only": true,
+    "literal_transport_has_no_requested_operator": true,
+    "no_request_or_receipt_mutation": true,
+    "only_selected_provider_once_or_unavailable": true
+  },
+  "committed": {
+    "artifact": {
+      "bytes": 148,
+      "relative_path": "invalid_resource_bool.json",
+      "sha256": "4f022465e14109835b2af132d71a405f6d732e249ea2f80c0fa0a54193a5b99a"
+    },
+    "delay_ticks": 0,
+    "fixture_does_not_advance_DEE": true,
+    "no_dual_execution_or_fallback": true,
+    "price": true,
+    "provider_calls": {
+      "external": 0,
+      "native": 1
+    },
+    "raw_provider_response": {
+      "procedure": "native",
+      "value": 11
+    },
+    "reported_value": 11,
+    "selected_operation": "add",
+    "selected_procedure": "native",
+    "state": "committed",
+    "synthetic_fault": {},
+    "task_id": "invalid_resource_bool",
+    "used_value": 11
+  },
+  "entry": "explicit_private_reference",
+  "error": null,
+  "expected_category": "RESOURCE_LIMIT",
+  "label": "invalid_resource_bool",
+  "policy": {
+    "max_artifact_bytes": 4096,
+    "max_delay_ticks": 3,
+    "max_operand": 32,
+    "max_price": 2,
+    "resource_limits_required_for_success": true
+  },
+  "provider_calls": [
+    {
+      "operands": [
+        7,
+        4
+      ],
+      "operation": "add",
+      "procedure": "native"
+    }
+  ],
+  "report": {
+    "axes": {
+      "artifact_matches_committed_action": true,
+      "artifact_present": true,
+      "artifact_valid": true,
+      "delay_within_limit": null,
+      "filesystem_effect_completed": true,
+      "numeric_correct_for_original_request": true,
+      "operands_match_original": true,
+      "operation_corresponds_to_original_request": true,
+      "price_within_limit": null,
+      "receipt_matches_actual_bytes": true,
+      "resource_fields_valid": false,
+      "safety": true,
+      "same_task_identity": true,
+      "selected_procedure_admitted": true,
+      "terminal_action": true
+    },
+    "completed_task": true,
+    "completed_under_declared_limits": false,
+    "evaluation_resources": {
+      "bytes_read": 148,
+      "external_reference_operations": 1,
+      "host_cpu_seconds": 0.015625,
+      "host_wall_seconds": 0.004060900071635842,
+      "not_DEE_computation": true
+    },
+    "feedback": {
+      "category": "RESOURCE_LIMIT"
+    },
+    "private_audit": {
+      "artifact_read": {
+        "bytes_read": 148,
+        "receipt_matches_actual_bytes": true,
+        "relative_path": "invalid_resource_bool.json",
+        "sha256": "4f022465e14109835b2af132d71a405f6d732e249ea2f80c0fa0a54193a5b99a"
+      },
+      "delay_ticks": 0,
+      "error": null,
+      "failure_class": null,
+      "observed_artifact": {
+        "operands": [
+          7,
+          4
+        ],
+        "operation": "add",
+        "procedure": "native",
+        "schema": "DEE.APD02.calculation_artifact.v1",
+        "task_id": "invalid_resource_bool",
+        "value": 11
+      },
+      "original_terminal_state": "committed",
+      "price": true,
+      "reference_value": 11,
+      "reported_value": 11,
+      "reported_value_correct_is_not_a_file_effect": true,
+      "request": {
+        "operands": [
+          7,
+          4
+        ],
+        "required_operation": "add",
+        "task_id": "invalid_resource_bool",
+        "text": "literal_fixture_no_semantic_lookup"
+      },
+      "selected_operation": "add",
+      "selected_procedure": "native"
+    },
+    "resource_acceptable": false,
+    "schema": "DEE.APD02.post_commit_quality.v1",
+    "scope": "Post-action external evaluator. Only feedback.category may enter the participant. It does not choose a route, call another procedure, correct a number, learn for DEE or provide an OS sandbox. Deliberate abstention and no response are not completed tasks. Completed valid work and compliance with resource limits remain separate.",
+    "task_success": false,
+    "valid_solution_before_resource_ranking": true
+  },
+  "request": {
+    "operands": [
+      7,
+      4
+    ],
+    "required_operation": "add",
+    "task_id": "invalid_resource_bool",
+    "text": "literal_fixture_no_semantic_lookup"
+  },
+  "scope": "Synthetic purePython fixture; selected native callback is test data, not a claim of native DEE calculation."
+}

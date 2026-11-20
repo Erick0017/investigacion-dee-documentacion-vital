@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\app\lives.py", line 163, in mutate
+    try:result=callback(a)
+               ~~~~~~~~^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\acceso_conectado_10_v1.py", line 62, in trial
+    plans=routes_for_common_arrival(starts,endpoints,start+161,phase=6);goal=plans['1']['arrival_tick'];data['fixed_conductors']=plans;data['goal_tick']=goal;data['form_mapping']=mapping;data['existing_form_geometry']=words
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\conductos_nativos.py", line 67, in routes_for_common_arrival
+    pulses=turning_inputs(direction,outgoing)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\conductos_nativos.py", line 22, in turning_inputs
+    if not candidates:raise ValueError('No distinct-source two-carrier turn for '+str((incoming,outgoing)))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: No distinct-source two-carrier turn for ((-1, 0, 0), (1, 0, 0))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\acceso_conectado_10_v1.py", line 103, in <module>
+    data['commit']=s.mutate(life,'AA01_ACQUIRED_SELECTION_CONNECTED_TO_LIVED_FORMS_10',trial);(a.out/'PRIMARIOS.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf8');print(json.dumps(data['commit']['result'],ensure_ascii=False))
+                   ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\app\lives.py", line 170, in mutate
+    raise MutationRecordedError(error,rec)from error
+app.lives.MutationRecordedError: ValueError: No distinct-source two-carrier turn for ((-1, 0, 0), (1, 0, 0)); failed attempt saved at tick 39752 snapshot 25a567c3c8dfc81b98ec965afa010c7c65e40385322ace004c8596ae46b768c7

@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\app\lives.py", line 166, in mutate
+    try:result=callback(a)
+               ~~~~~~~~^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\acceso_local_25_v3.py", line 57, in trial
+    data['policy_first']=data['samples'][1]['policy'];data['policy_second']=data['samples'][3]['policy'];data['B_recall']={k:row for k,row in next(q['B']for q in data['samples']if q['relative_tick']==232).items()};data['B_use']={k:row for k,row in data['samples'][-1]['B'].items()};data['panel']={'less':e.context(x,value=64,method='B'),'more':e.context(x,value=117,method='B'),'near':pc.current_dose(x,parameter=3,load=4),'far':pc.current_dose(x,parameter=-3,load=6),'contact':e.contact_query(x,frame='contactoA'),'free':e.contact_query(x,frame='freeRepair5')};data['post']=physical(x.world,occupation=True);data['receipts']=receipts(x.world.runtime);x.world.runtime.set_snapshot_metadata('DEE.Cognitive.System.1.1.AA01.local25',encode_metadata({'epoch':start,'S':S,'training':training,'memories':memories,'B':B,'prepared_scaffold':True,'not_semantic_target_metadata':True}));return{'life':life,'tick':x.tick,'first':data['policy_first']['direction'],'second':data['policy_second']['direction'],'B_recall':{k:row['direction']for k,row in data['B_recall'].items()},'B_use':{k:row['direction']for k,row in data['B_use'].items()},'panel':{k:v.get('SPANISH_DECODED',v.get('TRADUCCION',{}).get('SPANISH_DECODED'))for k,v in data['panel'].items()}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\capacidades\espanol_funcional_01.py", line 192, in contact_query
+    a.run_until(target);readings={k:obs(a,b['hub'])for k,b in selected.items()}
+    ~~~~~~~~~~~^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\avance_acotado.py", line 14, in run
+    record={'tick':adapter.tick,'requested_target':target,'elapsed_seconds':time.perf_counter()-started,'reason':'Cooperative worker budget; no physical response selected','state':adapter.save(out/'LIMITE_COOPERATIVO_ESTADO_COMPLETO.deetsnap.gz')};samples.append(record);raise BudgetWindowStop('Cooperative time window ended at tick '+str(adapter.tick))
+                                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+avance_acotado.BudgetWindowStop: Cooperative time window ended at tick 45629
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\laboratorio\campanas\ACCESO_ADAPTATIVO_01\acceso_local_25_v3.py", line 58, in <module>
+    try:data['commit']=s.mutate(life,'AA01_ALTERNATIVE_SHORT_ACCESS_CONSERVATIVE_RECEIVER_25_V3',trial)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\app\lives.py", line 173, in mutate
+    raise MutationRecordedError(error,rec)from error
+app.lives.MutationRecordedError: BudgetWindowStop: Cooperative time window ended at tick 45629; failed attempt saved at tick 45629 snapshot 7bb5bfabd81572e76d0b83171c36187cc4f850fdf7575aab73533ca8d24dc4dd

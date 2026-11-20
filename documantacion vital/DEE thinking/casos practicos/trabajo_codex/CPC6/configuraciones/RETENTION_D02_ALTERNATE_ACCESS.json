@@ -1,0 +1,17 @@
+{
+  "schema": "CPC6.retention.alternate_access.frozen.v1",
+  "freeze": "after original-port occupancy localization, before alternate reader evaluation",
+  "method_family": "Renewed reader at a genuinely distinct local interface, declared inertly beforeT0; no physical state edit.",
+  "basis": "At69 original port center-y is occupied but center-z is empty in both original body-only and integrated discovery. Occupancy rejection did not establish loss of R1.",
+  "interface": {"name": "retention.z_reader", "relative_site": [0, 0, -1], "direction": [0, 0, 1]},
+  "history_protocol": "AB/BA real event pulses0/1, first original reader2; source P+/Q- acquisition0; actual- introduced after5; late information query30; no further R1 teaching.",
+  "readout": "Report new reader site and its local neighborhood at exact ticks0..4 after request, preserve directions/load/admission. A positive access result requires a history-dependent active directional readout following an applied new pulse, with no-pulse and no-history controls. No spontaneous record is classified as an answer to a rejected probe.",
+  "cases": [
+    {"id": "D_Z_AB_69", "history": "AB", "read_tick": 69, "payload": 11, "role": "DISCOVERY"},
+    {"id": "D_Z_BA_69", "history": "BA", "read_tick": 69, "payload": 11, "role": "OPPOSITE_HISTORY_CONTROL"},
+    {"id": "D_Z_H0_69", "history": "NONE", "read_tick": 69, "payload": 11, "role": "NO_R1_EXPERIENCE_CONTROL"},
+    {"id": "D_Z_AB_NO_QUERY_69", "history": "AB", "read_tick": 69, "payload": 11, "omit_query": true, "role": "NO_PULSE_SHAM"},
+    {"id": "R_Z_AB_136", "history": "AB", "read_tick": 136, "payload": 13, "role": "PREDECLARED_CADENCE_PAYLOAD_RESERVE"},
+    {"id": "R_Z_BA_136", "history": "BA", "read_tick": 136, "payload": 13, "role": "PREDECLARED_OPPOSITE_CADENCE_PAYLOAD_RESERVE"}
+  ]
+}

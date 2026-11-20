@@ -1,0 +1,17 @@
+{
+  "schema": "CPC6.action_feedback.frozen.controls.v1",
+  "frozen_before_run": true,
+  "prepared_domain": "N67,T5 learned moving action (+/-1,-1,0), fixed symmetric current consequence sensor at11, prepared R14 controller, P/Q sources acquiredat0, late query30/33",
+  "criterion": "No host answer feedback; count fixed candidate action/read fields only after full trajectory. Same query signal and candidate ports in all histories.",
+  "cases": [
+    {"id":"AF_NO_ACTION", "action_omitted":true, "actual":1, "source_values":{"P":1,"Q":-1}},
+    {"id":"AF_NO_ACTUAL", "action_sign":1, "actual_omitted":true, "source_values":{"P":1,"Q":-1}},
+    {"id":"AF_SOURCES_ABSENT", "action_sign":1, "actual":1, "omit_sources":["P","Q"], "source_values":{"P":1,"Q":-1}},
+    {"id":"AF_SOURCES_UNPAIRED", "action_sign":1, "actual":1, "source_mode":"unpaired", "source_values":{"P":1,"Q":-1}},
+    {"id":"AF_REVERSED_CONTENT_MATCH", "action_sign":1, "actual":1, "source_values":{"P":-1,"Q":1}},
+    {"id":"AF_REVERSED_CONTENT_MISMATCH", "action_sign":1, "actual":-1, "source_values":{"P":-1,"Q":1}},
+    {"id":"AF_RESERVED_LEFT_MATCH", "action_sign":-1, "actual":-1, "source_values":{"P":-1,"Q":1}, "late_payload":13},
+    {"id":"AF_RESERVED_LEFT_MISMATCH", "action_sign":-1, "actual":1, "source_values":{"P":-1,"Q":1}, "late_payload":13}
+  ],
+  "interpretation_scope": "Prepared finite selector changes on actual consequence. Source information direction is acquired by physical paired inputs, not learned general attention, NSM or autonomous optimal policy. Query is consumptive physical probe."
+}

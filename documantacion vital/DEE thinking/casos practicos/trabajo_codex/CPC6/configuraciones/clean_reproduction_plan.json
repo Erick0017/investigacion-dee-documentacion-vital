@@ -1,0 +1,246 @@
+{
+  "schema": "CPC6.clean-reproduction-plan.v1",
+  "scope": "Exact candidate, fresh offline CPython3.13 environment. Three automatic engine commands precede this plan. All expected-state comparisons are external commands after actual trajectories. Original deadline is unchanged.",
+  "commands": [
+    {
+      "id": "reference_sem01",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/reference_replay.py",
+        "--case",
+        "sem01",
+        "--output",
+        "{out}/reference_sem01"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "reserved_and_causal_replay",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/life.py",
+        "--config",
+        "{root}/configuraciones/R03_WORD_BUS_V2.json",
+        "--out",
+        "{out}/scientific"
+      ],
+      "timeout_seconds": 600
+    },
+    {
+      "id": "compare_five_primary_replays",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/compare_scientific_replay.py",
+        "--actual",
+        "{out}/scientific",
+        "--expected",
+        "{root}/resultados/R03_WORD_BUS_V2",
+        "--output",
+        "{out}/SCIENTIFIC_CHECKS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "public_demo",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/app.py",
+        "--demo",
+        "--seed",
+        "1",
+        "--salida",
+        "{out}/demo/DIALOGOS.jsonl",
+        "--snapshot",
+        "{out}/demo/SESSION_T105.deetsnap"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "public_restore_and_new_query",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/public_demo_continuation.py",
+        "--snapshot",
+        "{out}/demo/SESSION_T105.deetsnap",
+        "--output",
+        "{out}/continued",
+        "--operation",
+        "forma1"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check_public_physical_products",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/verify_public_outputs.py",
+        "--demo",
+        "{out}/demo",
+        "--continued",
+        "{out}/continued",
+        "--output",
+        "{out}/PUBLIC_CHECKS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "compare_public_105",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/check_snapshot_equivalence.py",
+        "--actual",
+        "{out}/demo/SESSION_T105.deetsnap",
+        "--expected",
+        "{root}/resultados/public_demo_baseline_02/SESSION_T105.deetsnap",
+        "--output",
+        "{out}/STATE105_CHECKS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "compare_restored_170",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/check_snapshot_equivalence.py",
+        "--actual",
+        "{out}/continued/FINAL_T170.deetsnap",
+        "--expected",
+        "{root}/resultados/public_demo_continue_02/FINAL_T170.deetsnap",
+        "--output",
+        "{out}/STATE170_CHECKS.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "minimal_no_results_no_map",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/minimal_app_check.py",
+        "--staging",
+        "{out}/minimal_stage",
+        "--output",
+        "{out}/minimal_check",
+        "--baseline-snapshot",
+        "{out}/demo/SESSION_T105.deetsnap",
+        "--seed",
+        "1"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "source_information_boundary",
+      "argv": [
+        "{python}",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "{root}/src/audit_host_boundaries.py",
+        "--require-public",
+        "--output",
+        "{out}/HOST_BOUNDARIES.json"
+      ],
+      "timeout_seconds": 300
+    }
+  ],
+  "required_outputs": [
+    "reference_sem01/REPLAY_CHECK.json",
+    "scientific/WR03_AB_balanced_Qminus/MEASUREMENTS.json",
+    "SCIENTIFIC_CHECKS.json",
+    "demo/DIALOGOS.jsonl",
+    "demo/SESSION_T105.deetsnap",
+    "continued/FINAL_T170.deetsnap",
+    "PUBLIC_CHECKS.json",
+    "STATE105_CHECKS.json",
+    "STATE170_CHECKS.json",
+    "minimal_check/MINIMAL_REPORT.json",
+    "HOST_BOUNDARIES.json"
+  ],
+  "asserted_json_outputs": [
+    {
+      "path": "reference_sem01/REPLAY_CHECK.json",
+      "field_equals": {
+        "new_discovery_claimed": false,
+        "kind": "HISTORICAL_REPRODUCTION",
+        "case_id": "SEM01_A_future_UV"
+      }
+    },
+    {
+      "path": "SCIENTIFIC_CHECKS.json",
+      "field_equals": {
+        "verified": true,
+        "cases_compared": 5,
+        "comparisons_after_trajectories_only": true
+      }
+    },
+    {
+      "path": "PUBLIC_CHECKS.json",
+      "field_equals": {
+        "verified": true,
+        "classification": "POST_TRAJECTORY_INSTRUMENT"
+      }
+    },
+    {
+      "path": "STATE105_CHECKS.json",
+      "field_equals": {
+        "verified": true
+      }
+    },
+    {
+      "path": "STATE170_CHECKS.json",
+      "field_equals": {
+        "verified": true
+      }
+    },
+    {
+      "path": "minimal_check/MINIMAL_REPORT.json",
+      "field_equals": {
+        "status": "VERIFIED",
+        "comparisons_after_trajectories_only": true
+      }
+    },
+    {
+      "path": "HOST_BOUNDARIES.json",
+      "field_equals": {
+        "status": "REVIEWED_STATIC_BOUNDARIES",
+        "no_output_returned_to_participant": true
+      }
+    }
+  ]
+}

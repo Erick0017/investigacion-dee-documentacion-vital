@@ -1,0 +1,504 @@
+{
+  "schema": "CPC5.clean-reproduction.v1",
+  "status": "VERIFIED",
+  "candidate_sha256": "baa73787ec3b22b47440e926719a15c83195c12aac11cae7a3ba6c2d07fb4594",
+  "candidate_bytes": 9968429,
+  "plan_sha256": "a384fb40a9111dd4645a705d128916a27a59b17ef4923e758b8b93a83798fd51",
+  "commands": [
+    {
+      "label": "00_venv",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC5\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env"
+      ],
+      "elapsed_seconds": 12.573249300010502,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 90.0
+    },
+    {
+      "label": "01_offline_install",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\runtime\\dee_thinking-4.0.0-cp313-cp313-win_amd64.whl"
+      ],
+      "elapsed_seconds": 2.777204999991227,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 90.0
+    },
+    {
+      "label": "02_engine_and_snapshots",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "\nimport hashlib, json, pathlib, sys\nimport dee_thinking as d\nassert sys.version_info[:2] == (3,13) and sys.maxsize > 2**32\nassert d.__version__ == '4.0.0'\nassert d.kernel_identity()['kernel_version'] == 27\np=pathlib.Path(d.__file__).resolve()\nassert p.is_relative_to(pathlib.Path(sys.prefix).resolve())\nassert hashlib.sha256(pathlib.Path(d._native.__file__).read_bytes()).hexdigest() == sys.argv[1]\nrows=[]\nfor checkpoint in sys.argv[3:]:\n    w=d.OrganizationalWorld.load_snapshot(checkpoint)\n    assert w.runtime.dimension > 0 and w.runtime.current_tick >= 0\n    assert len(w.runtime.raw_copy()) == w.runtime.dimension**3\n    assert len(w.runtime.clock_copy()) == w.runtime.dimension**3\n    rows.append({'path':checkpoint,'tick':w.runtime.current_tick,'N':w.runtime.dimension,\n                 'channels':list(w.runtime.channel_names),'receipts':len(w.runtime.receipts),\n                 'protocols':len(w.protocols)})\nassert not any(x.startswith(('CPC3','SEM01','dee_universe')) for x in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n    'module':str(p),'python':sys.executable,'checkpoints_loaded':rows},ensure_ascii=False,indent=2),encoding='utf-8')\n",
+        "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\ENGINE_IDENTITY.json",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\INITIAL_T0.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\ACQUIRED_K4_T204.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\MAIN_FINAL_T338.deetsnap"
+      ],
+      "elapsed_seconds": 0.8372663999907672,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 180.0
+    },
+    {
+      "label": "03_public_compound_demo",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/ejecutar.py",
+        "demostracion",
+        "--eventos",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/configuraciones/demo_compuesto.json",
+        "--salida",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/compuesto"
+      ],
+      "elapsed_seconds": 8.056230399990454,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 300.0
+    },
+    {
+      "label": "04_demo_postrun_comparison",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/demo_checks.py",
+        "verify",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/compuesto",
+        "--reference",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/resultados/demo_compuesto_01/DEMO_RESULT.json"
+      ],
+      "elapsed_seconds": 0.29722749994834885,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 60.0
+    },
+    {
+      "label": "05_another_process_continuation",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/demo_checks.py",
+        "continue",
+        "--input",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/compuesto/COMPUESTO_DESPUES_PANEL.deetsnap",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/continuado"
+      ],
+      "elapsed_seconds": 2.2247568999882787,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 180.0
+    },
+    {
+      "label": "06_principal_native_replay",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/compound.py",
+        "--case",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/configuraciones/compound_D02.json",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/principal"
+      ],
+      "elapsed_seconds": 9.6065910999896,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 300.0
+    },
+    {
+      "label": "07_prior_SEM01_reference",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/references.py",
+        "--case",
+        "SEM01_A_future_UV",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/referencia"
+      ],
+      "elapsed_seconds": 7.478577099973336,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 180.0
+    },
+    {
+      "label": "08_public_integrated_demo",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/ejecutar.py",
+        "demostracion",
+        "--eventos",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/configuraciones/demo_integrado.json",
+        "--salida",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/integrado"
+      ],
+      "elapsed_seconds": 8.002000299980864,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 300.0
+    },
+    {
+      "label": "09_integrated_postrun_comparison",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/demo_checks.py",
+        "verify",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/integrado",
+        "--reference",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/resultados/demo_integrado_01/DEMO_RESULT.json"
+      ],
+      "elapsed_seconds": 0.2534313999931328,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 60.0
+    },
+    {
+      "label": "10_integrated_another_process_continuation",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/demo_checks.py",
+        "continue",
+        "--input",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/integrado/INTEGRADO_DESPUES_PANEL.deetsnap",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/integrado_continuado"
+      ],
+      "elapsed_seconds": 2.209629799996037,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 180.0
+    },
+    {
+      "label": "11_full_physical_operational_comparison",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5/src/clean_checks.py",
+        "--generated",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated",
+        "--baseline",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\generated/PRIMARY_COMPARISONS.json"
+      ],
+      "elapsed_seconds": 2.4645714999642223,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "timeout_seconds": 180.0
+    }
+  ],
+  "error": null,
+  "elapsed_seconds": 98.84680820000358,
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017",
+  "explicit_posttrajectory_verification": [
+    {
+      "path": "PRIMARY_COMPARISONS.json",
+      "sha256": "d5ab7b1085e7ea2bf36e08342838a766838bd823885c2aa7d3c3adba325782ed",
+      "assertions": {
+        "status": true,
+        "comparisons_after_trajectories_only": true
+      },
+      "observations": {
+        "schema": "CPC5.clean-primary-comparison.v1",
+        "status": "VERIFIED",
+        "comparisons_after_trajectories_only": true,
+        "measurement_checks": [
+          {
+            "generated": "compuesto/DEMO_RESULT.json",
+            "baseline": "resultados/demo_compuesto_01/DEMO_RESULT.json",
+            "fields": {
+              "commands": true,
+              "rejected_commands": true,
+              "final_physics": true,
+              "final_operative": true
+            }
+          },
+          {
+            "generated": "principal/MEASUREMENTS.json",
+            "baseline": "resultados/compound_D02/MEASUREMENTS.json",
+            "fields": {
+              "lessons": true,
+              "readouts": true,
+              "native_windows": true,
+              "receipts": true,
+              "final_physics": true
+            }
+          },
+          {
+            "generated": "integrado/DEMO_RESULT.json",
+            "baseline": "resultados/demo_integrado_01/DEMO_RESULT.json",
+            "fields": {
+              "commands": true,
+              "rejected_commands": true,
+              "final_physics": true,
+              "final_operative": true
+            }
+          },
+          {
+            "generated": "referencia/MEASUREMENTS.json",
+            "baseline": "resultados/references/SEM01_A_future_UV/MEASUREMENTS.json",
+            "fields": {
+              "initial": true,
+              "teaching": true,
+              "uses": true,
+              "final": true,
+              "external_operations_actual": true,
+              "diagnostic_edits_actual": true
+            }
+          }
+        ],
+        "state_checks": [
+          {
+            "generated": "compuesto/COMPUESTO_T204.deetsnap",
+            "baseline": "resultados/demo_compuesto_01/COMPUESTO_T204.deetsnap",
+            "physics": {
+              "tick": 204,
+              "N": 67,
+              "raw_sha256": "605f4527b219c6a4aaa592461a3cebeb917730b095c4838f7fedaed15aa68762",
+              "clock_sha256": "3270be5786e3dc0e050c71ef46c7258db00869963b98438aa1f6fcd543bd8778"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "compuesto/COMPUESTO_DESPUES_PANEL.deetsnap",
+            "baseline": "resultados/demo_compuesto_01/COMPUESTO_DESPUES_PANEL.deetsnap",
+            "physics": {
+              "tick": 338,
+              "N": 67,
+              "raw_sha256": "463362fea0554068eb8de7f4e33cb5e1cf06e56d8292d2261bb57708dc617c17",
+              "clock_sha256": "35983c553b68439326aec64213778f5cf0ad3b6a2945af0d52e488e5141847ad"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "principal/ACQUIRED_K4_T204.deetsnap",
+            "baseline": "resultados/compound_D02/ACQUIRED_K4_T204.deetsnap",
+            "physics": {
+              "tick": 204,
+              "N": 67,
+              "raw_sha256": "d35def6a608a32e14bd70d592406e587cdaaf54040c01c4af0ad7b1d9faa3594",
+              "clock_sha256": "3270be5786e3dc0e050c71ef46c7258db00869963b98438aa1f6fcd543bd8778"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "principal/MAIN_FINAL_T338.deetsnap",
+            "baseline": "resultados/compound_D02/MAIN_FINAL_T338.deetsnap",
+            "physics": {
+              "tick": 338,
+              "N": 67,
+              "raw_sha256": "f426b82966862498a21cac94b8670fccafab30e7c0eaba5c4f5b4527e517a64b",
+              "clock_sha256": "35983c553b68439326aec64213778f5cf0ad3b6a2945af0d52e488e5141847ad"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "integrado/INTEGRADO_T222.deetsnap",
+            "baseline": "resultados/demo_integrado_01/INTEGRADO_T222.deetsnap",
+            "physics": {
+              "tick": 222,
+              "N": 67,
+              "raw_sha256": "1b3884e6980e485793fada1dc3eb4ef219c3d6b83cb8dbfab81c9950c1f85978",
+              "clock_sha256": "42cc8a4de2e87c441ddb40b697245b4e245d0df8c20d0957e46888145d393e65"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "integrado/INTEGRADO_DESPUES_PANEL.deetsnap",
+            "baseline": "resultados/demo_integrado_01/INTEGRADO_DESPUES_PANEL.deetsnap",
+            "physics": {
+              "tick": 338,
+              "N": 67,
+              "raw_sha256": "989c51a7e9e653e4cce3e2faf86aada9725729ad1b117cb979636d02c1eb55a8",
+              "clock_sha256": "35983c553b68439326aec64213778f5cf0ad3b6a2945af0d52e488e5141847ad"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          },
+          {
+            "generated": "referencia/MAIN_FINAL.deetsnap",
+            "baseline": "resultados/references/SEM01_A_future_UV/MAIN_FINAL.deetsnap",
+            "physics": {
+              "tick": 129,
+              "N": 67,
+              "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+              "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+            },
+            "full_RAW_clock_tick_equal": true,
+            "operational_equal": true
+          }
+        ],
+        "other_process_continuation": {
+          "before": {
+            "tick": 338,
+            "raw_sha256": "463362fea0554068eb8de7f4e33cb5e1cf06e56d8292d2261bb57708dc617c17",
+            "clock_sha256": "35983c553b68439326aec64213778f5cf0ad3b6a2945af0d52e488e5141847ad"
+          },
+          "after": {
+            "tick": 405,
+            "raw_sha256": "58b42e16c508659899cf87187650541ada23f9474dcaab69dc1010f16acdd329",
+            "clock_sha256": "f2c16645a7f3f7559d456c966e561dea9a94794a19d2af0c98f78b1278b0b086"
+          },
+          "all_query_receipts_applied": true
+        },
+        "integrated_other_process_continuation": {
+          "before": {
+            "tick": 338,
+            "raw_sha256": "989c51a7e9e653e4cce3e2faf86aada9725729ad1b117cb979636d02c1eb55a8",
+            "clock_sha256": "35983c553b68439326aec64213778f5cf0ad3b6a2945af0d52e488e5141847ad"
+          },
+          "after": {
+            "tick": 405,
+            "raw_sha256": "8658ed0ad69b1bb6900934aa200190672d1f46bcf3b148d5216d83d41c5d8563",
+            "clock_sha256": "f2c16645a7f3f7559d456c966e561dea9a94794a19d2af0c98f78b1278b0b086"
+          },
+          "all_query_receipts_applied": true
+        }
+      }
+    }
+  ],
+  "engine_identity": {
+    "version": "4.0.0",
+    "kernel": {
+      "kernel_version": 27,
+      "kernel_modulus": 19665,
+      "reducer_cap": 19664,
+      "native_module": true
+    },
+    "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+    "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\isolated_env\\Scripts\\python.exe",
+    "checkpoints_loaded": [
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\INITIAL_T0.deetsnap",
+        "tick": 0,
+        "N": 67,
+        "channels": [
+          "K1.cue",
+          "K1.event.minus",
+          "K1.event.plus",
+          "K2.cue",
+          "K2.event.minus",
+          "K2.event.plus",
+          "K3.cue",
+          "K3.event.minus",
+          "K3.event.plus",
+          "K4.cue",
+          "K4.event.minus",
+          "K4.event.plus",
+          "P1.cue",
+          "P1.event.minus",
+          "P1.event.plus",
+          "P2.cue",
+          "P2.event.minus",
+          "P2.event.plus",
+          "compound.query",
+          "environment.resource"
+        ],
+        "receipts": 0,
+        "protocols": 0
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\ACQUIRED_K4_T204.deetsnap",
+        "tick": 204,
+        "N": 67,
+        "channels": [
+          "K1.cue",
+          "K1.event.minus",
+          "K1.event.plus",
+          "K2.cue",
+          "K2.event.minus",
+          "K2.event.plus",
+          "K3.cue",
+          "K3.event.minus",
+          "K3.event.plus",
+          "K4.cue",
+          "K4.event.minus",
+          "K4.event.plus",
+          "P1.cue",
+          "P1.event.minus",
+          "P1.event.plus",
+          "P2.cue",
+          "P2.event.minus",
+          "P2.event.plus",
+          "compound.query",
+          "environment.resource"
+        ],
+        "receipts": 20,
+        "protocols": 0
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_CPC5_REPRO_PRE_20261017\\extracted\\CPC5\\resultados\\compound_D02\\MAIN_FINAL_T338.deetsnap",
+        "tick": 338,
+        "N": 67,
+        "channels": [
+          "K1.cue",
+          "K1.event.minus",
+          "K1.event.plus",
+          "K2.cue",
+          "K2.event.minus",
+          "K2.event.plus",
+          "K3.cue",
+          "K3.event.minus",
+          "K3.event.plus",
+          "K4.cue",
+          "K4.event.minus",
+          "K4.event.plus",
+          "P1.cue",
+          "P1.event.minus",
+          "P1.event.plus",
+          "P2.cue",
+          "P2.event.minus",
+          "P2.event.plus",
+          "compound.query",
+          "environment.resource"
+        ],
+        "receipts": 28,
+        "protocols": 0
+      }
+    ]
+  },
+  "completed_utc": "2026-10-17T19:26:14.904639+00:00"
+}

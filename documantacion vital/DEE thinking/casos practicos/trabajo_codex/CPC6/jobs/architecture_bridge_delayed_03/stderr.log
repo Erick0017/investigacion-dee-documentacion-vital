@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC6\src\architecture_bridge_delayed.py", line 128, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC6\src\architecture_bridge_delayed.py", line 124, in main
+    r=run(case,a.out/case['id']);index.append({'id':case['id'],'summary':r['summary'],'evidence':str((a.out/case['id']/'MEASUREMENTS.json').relative_to(ROOT))});put(a.out/'INDEX.json',{'cases':index,'frozen_sources':str(frozen.relative_to(ROOT))})
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC6\src\architecture_bridge_delayed.py", line 70, in run
+    out=Path(out);out.mkdir(parents=True,exist_ok=False);start=time.monotonic();w,g=prepare(late_support=case.get('late_support',False));engine=identity();calls=[];aliases=[];rows=[];windows=[];snaps=[]
+                                                                                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC6\src\architecture_bridge_delayed.py", line 39, in prepare
+    if tuple((1 if pair[0][i]+pair[1][i]>0 else -1 if pair[0][i]+pair[1][i]<0 else 0) for i in range(3))!=dr:raise ValueError('Supportpairdoesnotrealizepreparedray')
+                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Supportpairdoesnotrealizepreparedray

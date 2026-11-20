@@ -1,0 +1,18 @@
+{
+  "schema": "CPC6.late_R1_access.frozen.v1",
+  "freeze": "before passive survey and before any new probe outcome",
+  "parents": ["B01_AB_Qminus", "B03_BA_Qminus"],
+  "boundary": 110,
+  "candidate_priority": [
+    {"id": "minus2z", "offset": [0, 0, -2], "direction": [0, 0, 1]},
+    {"id": "minus2y", "offset": [0, -2, 0], "direction": [0, 1, 0]},
+    {"id": "plusy", "offset": [0, 1, 0], "direction": [0, -1, 0]}
+  ],
+  "selection_rule_auditor": "Choose the first candidate with RAW0 in both same-age110 parent states, using this fixed priority and no probe result. If none exists, stop without broader search.",
+  "arms": ["probe110", "probe111", "no_query_sham"],
+  "probe_payload": 17,
+  "horizon": 117,
+  "observation": "At the declared common input site and its Moore26 neighborhood every tick110..117. Distinguish admission, transformed pulse, history contrast and baseline activity; no original occupied field is relabelled as a fresh answer.",
+  "identity": "Independent controlled continuations of two frozen same-age parents, not six new initial preparations and not states returned to originalMAIN.",
+  "limits": "Third and final access family in this cut; at most3 surveyed sites,4 probe continuations and2shams. No RAW/clock edits. No new exploration if it fails."
+}

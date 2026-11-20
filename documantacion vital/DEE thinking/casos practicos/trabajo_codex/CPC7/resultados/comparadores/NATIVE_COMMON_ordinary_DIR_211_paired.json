@@ -1,0 +1,758 @@
+{
+  "schema": "CPC7.common.evaluation.v1",
+  "case_id": "DIR_211_paired",
+  "task": "DIRECT",
+  "mode": "paired",
+  "model": "DEE4_NATIVE_FIXED_CODEC",
+  "primary_sha256": "15462b39801d9b5ca6ade525a679ad2419c50a8ce5065628c60ea993238fe651",
+  "stream_sha256": "e9ab7b053951a264126cea8574e1d02a15c9b9b175a451626969504d7facd4de",
+  "evaluator_sha256": "e370702d446f0d3f1ec1841cfc702c6c41035a668cdf6768ec5ca4fadf31a738",
+  "query_response_classes": [
+    -1,
+    1
+  ],
+  "evaluation_after_persisted_trajectory": true,
+  "performance": {
+    "planned_queries": 40,
+    "measured_queries": 40,
+    "valid_responses": 39,
+    "correct": 39,
+    "absent_or_invalid": 1,
+    "not_measured": 0,
+    "accuracy_all_measured": 0.975,
+    "accuracy_valid_only": 1.0,
+    "coverage_among_measured": 0.975,
+    "status_counts": {
+      "RESPONSE": 39,
+      "INPUT_REJECTED_OCCUPIED": 1
+    }
+  },
+  "panels": {
+    "Q0_FIRST_8": {
+      "planned_queries": 8,
+      "measured_queries": 8,
+      "valid_responses": 8,
+      "correct": 8,
+      "absent_or_invalid": 0,
+      "not_measured": 0,
+      "accuracy_all_measured": 1.0,
+      "accuracy_valid_only": 1.0,
+      "coverage_among_measured": 1.0,
+      "status_counts": {
+        "RESPONSE": 8
+      }
+    },
+    "Q1_RETAIN_8_ADD_8": {
+      "planned_queries": 16,
+      "measured_queries": 16,
+      "valid_responses": 16,
+      "correct": 16,
+      "absent_or_invalid": 0,
+      "not_measured": 0,
+      "accuracy_all_measured": 1.0,
+      "accuracy_valid_only": 1.0,
+      "coverage_among_measured": 1.0,
+      "status_counts": {
+        "RESPONSE": 16
+      }
+    },
+    "Q2_REVISED_AND_RETAINED": {
+      "planned_queries": 16,
+      "measured_queries": 16,
+      "valid_responses": 15,
+      "correct": 15,
+      "absent_or_invalid": 1,
+      "not_measured": 0,
+      "accuracy_all_measured": 0.9375,
+      "accuracy_valid_only": 1.0,
+      "coverage_among_measured": 0.9375,
+      "status_counts": {
+        "INPUT_REJECTED_OCCUPIED": 1,
+        "RESPONSE": 15
+      }
+    }
+  },
+  "retention": {
+    "old8_after_new8": {
+      "planned_queries": 8,
+      "measured_queries": 8,
+      "valid_responses": 8,
+      "correct": 8,
+      "absent_or_invalid": 0,
+      "not_measured": 0,
+      "accuracy_all_measured": 1.0,
+      "accuracy_valid_only": 1.0,
+      "coverage_among_measured": 1.0,
+      "status_counts": {
+        "RESPONSE": 8
+      }
+    },
+    "revised_L01": {
+      "planned_queries": 1,
+      "measured_queries": 1,
+      "valid_responses": 0,
+      "correct": 0,
+      "absent_or_invalid": 1,
+      "not_measured": 0,
+      "accuracy_all_measured": 0.0,
+      "accuracy_valid_only": null,
+      "coverage_among_measured": 0.0,
+      "status_counts": {
+        "INPUT_REJECTED_OCCUPIED": 1
+      }
+    },
+    "other15_after_revision": {
+      "planned_queries": 15,
+      "measured_queries": 15,
+      "valid_responses": 15,
+      "correct": 15,
+      "absent_or_invalid": 0,
+      "not_measured": 0,
+      "accuracy_all_measured": 1.0,
+      "accuracy_valid_only": 1.0,
+      "coverage_among_measured": 1.0,
+      "status_counts": {
+        "RESPONSE": 15
+      }
+    }
+  },
+  "resources_common_bounds": {
+    "wall_seconds": 10.557767199992668,
+    "cpu_seconds": null,
+    "peak_process_working_set_bytes": 57778176,
+    "wall_limit_seconds": 120,
+    "rss_limit_bytes": 268435456,
+    "exceeds_wall_limit": false,
+    "exceeds_rss_limit": false,
+    "within_both_measured_limits": true,
+    "scope": "Source-reported whole trajectory includes preparation/initialization and checkpoint persistence; excludes final result-file write, post-hoc scoring, process launch and module imports. Native capture/physics and conventional model arithmetic are different workloads; limits are eligibility bounds, not equal computation."
+  },
+  "queries": [
+    {
+      "event_id": "e0009",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L01"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 0
+    },
+    {
+      "event_id": "e0010",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L02"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 1
+    },
+    {
+      "event_id": "e0011",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L03"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 2
+    },
+    {
+      "event_id": "e0012",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L04"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 3
+    },
+    {
+      "event_id": "e0013",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L05"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 4
+    },
+    {
+      "event_id": "e0014",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L06"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 5
+    },
+    {
+      "event_id": "e0015",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L07"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 6
+    },
+    {
+      "event_id": "e0016",
+      "block": "Q0_FIRST_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L08"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 7
+    },
+    {
+      "event_id": "e0025",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L01"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 0
+    },
+    {
+      "event_id": "e0026",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L02"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 1
+    },
+    {
+      "event_id": "e0027",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L03"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 2
+    },
+    {
+      "event_id": "e0028",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L04"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 3
+    },
+    {
+      "event_id": "e0029",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L05"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 4
+    },
+    {
+      "event_id": "e0030",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L06"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 5
+    },
+    {
+      "event_id": "e0031",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L07"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 6
+    },
+    {
+      "event_id": "e0032",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L08"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 7
+    },
+    {
+      "event_id": "e0033",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L09"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 8
+    },
+    {
+      "event_id": "e0034",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L10"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 9
+    },
+    {
+      "event_id": "e0035",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L11"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 10
+    },
+    {
+      "event_id": "e0036",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L12"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 11
+    },
+    {
+      "event_id": "e0037",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L13"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 12
+    },
+    {
+      "event_id": "e0038",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L14"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 13
+    },
+    {
+      "event_id": "e0039",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L15"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 14
+    },
+    {
+      "event_id": "e0040",
+      "block": "Q1_RETAIN_8_ADD_8",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L16"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 15
+    },
+    {
+      "event_id": "e0042",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L01"
+      },
+      "response": null,
+      "state": "INPUT_REJECTED_OCCUPIED",
+      "admission": "rejected_occupied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": false,
+      "relation_index": 0
+    },
+    {
+      "event_id": "e0043",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L02"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 1
+    },
+    {
+      "event_id": "e0044",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L03"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 2
+    },
+    {
+      "event_id": "e0045",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L04"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 3
+    },
+    {
+      "event_id": "e0046",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L05"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 4
+    },
+    {
+      "event_id": "e0047",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L06"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 5
+    },
+    {
+      "event_id": "e0048",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L07"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 6
+    },
+    {
+      "event_id": "e0049",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L08"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 7
+    },
+    {
+      "event_id": "e0050",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L09"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 8
+    },
+    {
+      "event_id": "e0051",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L10"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 9
+    },
+    {
+      "event_id": "e0052",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L11"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 10
+    },
+    {
+      "event_id": "e0053",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L12"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 11
+    },
+    {
+      "event_id": "e0054",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L13"
+      },
+      "response": -1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "relation_index": 12
+    },
+    {
+      "event_id": "e0055",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L14"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 13
+    },
+    {
+      "event_id": "e0056",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L15"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 14
+    },
+    {
+      "event_id": "e0057",
+      "block": "Q2_REVISED_AND_RETAINED",
+      "stimulus": {
+        "context_id": 0,
+        "form_id": "L16"
+      },
+      "response": 1,
+      "state": "RESPONSE",
+      "admission": "applied",
+      "measured": true,
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "relation_index": 15
+    }
+  ],
+  "provenance": "External auditor, not a participant response. No physics, mapping or alternative decoder was computed to fill an absence.",
+  "method": "ordinary",
+  "model_family": "DEE",
+  "primary": "resultados/native_direct/ordinary_DIR_211_paired/MEASUREMENTS.json",
+  "native_world_resources_reported": {
+    "basic_buffers_bytes": 9624416,
+    "initial_material_sites": 0,
+    "interfaces": 48,
+    "working_set_bytes": 40906752,
+    "peak_working_set_bytes": 57778176,
+    "available": true
+  },
+  "physical_inputs": {
+    "requested": 74,
+    "statuses": {
+      "applied": 73,
+      "rejected_occupied": 1
+    },
+    "auxiliary_requests": 0,
+    "auxiliary_payload_sum": 0,
+    "auxiliary_zero_payload_requests": 0,
+    "warning": "Zero payload does not imply no physical effect; extra requests are not free and are not in the common logical base stream."
+  },
+  "common_base_stream_identical": true,
+  "no_additional_native_revision_requests": true,
+  "physical_dose_equal_to_conventional_models": "NOT_APPLICABLE_DIFFERENT_IMPLEMENTATIONS"
+}

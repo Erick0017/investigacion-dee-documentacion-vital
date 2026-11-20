@@ -1,0 +1,247 @@
+{
+  "case_id": "ORD_101_unpaired",
+  "interface": {
+    "contexts": [
+      0,
+      1
+    ],
+    "forms": [
+      "O01"
+    ],
+    "outcomes": [
+      -1,
+      1
+    ],
+    "pairing_window_ticks": 0,
+    "semantics": "Two-token ordered-slot task, not arbitrary temporal reasoning.",
+    "tokens": [
+      "T0",
+      "T1"
+    ]
+  },
+  "mode": "unpaired",
+  "schema": "CPC7.common.observable_stream.v1",
+  "stream": [
+    {
+      "block": "O0_AB",
+      "event_id": "o0001",
+      "observed_consequence": -1,
+      "operation": "experience",
+      "signal_payload": 5,
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "teacher_payload": 11,
+      "teacher_present": true,
+      "teacher_tick": 1,
+      "tick": 0
+    },
+    {
+      "block": "O1_BA",
+      "event_id": "o0002",
+      "observed_consequence": 1,
+      "operation": "experience",
+      "signal_payload": 5,
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "teacher_payload": 11,
+      "teacher_present": true,
+      "teacher_tick": 11,
+      "tick": 10
+    },
+    {
+      "block": "OQ_RESERVED_GAP",
+      "event_id": "o0003",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 20
+    },
+    {
+      "block": "OQ_RESERVED_GAP",
+      "event_id": "o0004",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 5,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 30
+    },
+    {
+      "block": "O2_CONTEXT_UPDATE",
+      "event_id": "o0005",
+      "observed_consequence": 1,
+      "operation": "experience",
+      "signal_payload": 5,
+      "stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "teacher_payload": 11,
+      "teacher_present": true,
+      "teacher_tick": 41,
+      "tick": 40
+    },
+    {
+      "block": "O3_CONTEXT_OTHER",
+      "event_id": "o0006",
+      "observed_consequence": -1,
+      "operation": "experience",
+      "signal_payload": 5,
+      "stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "teacher_payload": 11,
+      "teacher_present": true,
+      "teacher_tick": 51,
+      "tick": 50
+    },
+    {
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "event_id": "o0007",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 120
+    },
+    {
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "event_id": "o0008",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 130
+    },
+    {
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "event_id": "o0009",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 140
+    },
+    {
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "event_id": "o0010",
+      "operation": "query",
+      "stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "tick": 150
+    }
+  ],
+  "task": "ORDER"
+}

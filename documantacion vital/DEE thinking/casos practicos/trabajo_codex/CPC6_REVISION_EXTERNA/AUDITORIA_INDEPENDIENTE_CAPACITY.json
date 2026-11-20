@@ -1,0 +1,72 @@
+{
+  "tipo": "REVISION_INDEPENDIENTE_DE_EXPORTACION_OBSERVACIONAL",
+  "candidato_sha256": "5f3c8e55c7dc44a180dd63f81b7994d04fff010a2377a2028d08c241f87fa8b9",
+  "resultado": "SIN_HALLAZGOS_BLOQUEANTES_DE_FUGA_EN_EL_CANDIDATO_REVISADO",
+  "metodo": {
+    "archivos_leidos_completos": 17,
+    "texto_y_esquemas": "Lectura de documentos, codigo de recalculo y todos los registros JSON/JSONL; inventario recursivo de claves y valores; busqueda de rutas privadas y campos reconstructivos.",
+    "contenedor": "Comparacion byte por byte del contenido de los17 miembros contra el payload; CRC; comentarios, campos extra y fechas ZIP.",
+    "recalculo": "RECALCULAR.py --verificar, sin motor y sin modificar datos.",
+    "originales": "No se modifico el expediente fuente ni se ejecuto una trayectoria nativa."
+  },
+  "comprobaciones": {
+    "miembros_zip": 17,
+    "bytes_expandidos": 4498551,
+    "crc_correcto": true,
+    "zip_igual_al_payload": true,
+    "manifest15_hashes_correctos": true,
+    "hashes16_correctos": true,
+    "comentarios_zip_vacios": true,
+    "campos_extra_zip_vacios": true,
+    "fechas_zip_neutrales": true,
+    "utf8_sin_caracteres_de_sustitucion": true,
+    "recalculo_coincidente": true,
+    "entradas_y_salidas_referencian_ids_publicos_validos": true,
+    "salidas_dentro_de_la_ventana_relativa_registrada": true,
+    "imports_recalculo": ["argparse", "collections", "json", "pathlib"]
+  },
+  "recuentos_recalculados": {
+    "ensayos_primarios": 129,
+    "familias": 27,
+    "preparaciones": 94,
+    "ramas_diagnosticas": 29,
+    "continuaciones": 6,
+    "filas_entradas_agrupadas": 1161,
+    "solicitudes_incluidas_heredadas": 7593,
+    "solicitudes_no_heredadas": 5818,
+    "aplicadas_incluidas_heredadas": 7189,
+    "rechazo_conflicto_incluidas_heredadas": 168,
+    "rechazo_ocupacion_incluidas_heredadas": 236,
+    "observables": 11076,
+    "registros_precedencia_temporal": 57,
+    "valores_predictivos_publicados": 0,
+    "testigos_secuencia_completa": 3,
+    "denominador_testigos_y_controles": 5,
+    "incidencias_y_reproducciones_tecnicas_separadas": 15
+  },
+  "hallazgos": [
+    {
+      "nivel": "PRECISION_DOCUMENTAL_NO_BLOQUEANTE",
+      "ubicacion": "DESCRIPCION_FUNCIONAL.md y FORMULAS_Y_DICCIONARIO.md; RECALCULAR.py/readout",
+      "detalle": "La advertencia de que una misma letra de clase no implica un significado comun entre variables es adecuada. El testigo de secuencia compara la primera forma y su consulta remota posterior; conviene declarar expresamente que esas dos lecturas comparten un codominio operacional de comparacion por contrato. Esa equivalencia no se extiende a la segunda forma ni constituye identidad semantica general."
+    },
+    {
+      "nivel": "ENDURECIMIENTO_OPCIONAL_DE_LISTA_BLANCA",
+      "ubicacion": "datos/RESPUESTAS.jsonl/definicion_medida",
+      "detalle": "Algunas definiciones conservan nombres de campos del decoder de origen. No conservan sus vectores, valores fisicos o transformaciones; pueden sustituirse por una descripcion funcional del decoder publicado para evitar vocabulario interno innecesario."
+    }
+  ],
+  "alcance": {
+    "independientemente_recalculable": [
+      "Cobertura documental exportada, denominadores, admision y tiempos relativos.",
+      "Contrastes entre clases publicas y secuencia temporal de reexpresion bajo el contrato de comparacion declarado.",
+      "Separacion de controles, respuestas vacias, lectura no publicada e incidentes tecnicos."
+    ],
+    "requiere_fuente_privada": [
+      "Fidelidad de la proyeccion y correccion del decoder aplicado a los datos primarios.",
+      "Dinamica nativa, continuidad fisica exacta, transporte y ausencia de mediacion externa.",
+      "Selectividad fisica de las intervenciones, igualdad material de recursos y localizacion de memoria."
+    ],
+    "cautela": "No observar campos reconstructivos no garantiza ausencia absoluta de inferencias conductuales. Los tiempos relativos, las clases y sus diferencias son informacion externa permitida. Esta revision no acredita una reproduccion del motor ni significados generales."
+  }
+}

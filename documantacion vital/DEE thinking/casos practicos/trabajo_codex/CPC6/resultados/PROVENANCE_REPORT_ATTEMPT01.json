@@ -1,0 +1,11 @@
+{
+  "schema": "CPC6.engineering-attempt.v1",
+  "command": "CPC6/.venv/Scripts/python.exe -I -B -X utf8 CPC6/src/provenance_report.py --development",
+  "exit_code": 1,
+  "stage": "Report generation only; no native evolution or file replacement occurred",
+  "error": "ModuleNotFoundError: No module named 'common'",
+  "cause": "Python isolated mode does not add the script directory to sys.path",
+  "repair": "Use an explicit path derived from __file__, as in the other isolated campaign tools",
+  "changes_to_public_participant_or_physics": false,
+  "supervisor_scientific_job": false
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC7\src\run_demo.py", line 41, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--profile',choices=['u0','repertorio'],required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.profile,a.out)
+                                                                                                                                                                       ~~~^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC7\src\run_demo.py", line 29, in run
+    aq,bq=queries(a),queries(b)
+          ~~~~~~~^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC7\src\run_demo.py", line 28, in queries
+    def queries(doc):return [e['result'] for e in doc['events'] if e.get('result',{}).get('operacion')=='SONDAS_FISICAS_CONSUMIBLES']
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'

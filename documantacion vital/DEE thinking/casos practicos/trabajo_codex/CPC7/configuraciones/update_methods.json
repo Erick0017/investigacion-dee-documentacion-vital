@@ -1,0 +1,21 @@
+{
+  "schema":"CPC7.update_methods.config.v1",
+  "frozen_before_execution":true,
+  "purpose":"Finite R1 revision while R2 remains usable; two fixed alternatives, no old-readout-selected compensation",
+  "decoder":"Applied semantic1 active direction [-1,+/-1,0] with load above query; same all histories",
+  "schedule":"Train two relations0; first panelN; auxiliary4N-4 where applicable; new consequence pair4N; last panel5N",
+  "methods":{
+    "double_teacher":"A second route of the actual current consequence, extra exposure dose; no old-class measurement",
+    "symmetric_counterflow":"Two externally scheduled zero-load counterflows cover both possible old routes; ordinary new pair follows; not autonomous regulation"
+  },
+  "cases":[
+    {"id":"UP_M1_P11","group":"pilot","method":"double_teacher","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,1],"new_sign":1},
+    {"id":"UP_M1_S11","group":"pilot","method":"double_teacher","mode":"offpath_sham","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,1],"new_sign":1},
+    {"id":"UP_M2_P11","group":"pilot","method":"symmetric_counterflow","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,1],"new_sign":1},
+    {"id":"UP_M2_S11","group":"pilot","method":"symmetric_counterflow","mode":"offpath_sham","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,1],"new_sign":1},
+    {"id":"UP_M1_R101","group":"reserve","method":"double_teacher","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[1,-1],"new_sign":-1,"query_payload":9,"translation":[4,7,2]},
+    {"id":"UP_M1_R211","group":"reserve","method":"double_teacher","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,-1],"new_sign":1,"query_payload":13,"translation":[3,5,4]},
+    {"id":"UP_M2_R101","group":"reserve","method":"symmetric_counterflow","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[1,-1],"new_sign":-1,"query_payload":9,"translation":[4,7,2]},
+    {"id":"UP_M2_R211","group":"reserve","method":"symmetric_counterflow","mode":"treatment","N":67,"K":2,"plane_gap":2,"initial_signs":[-1,-1],"new_sign":1,"query_payload":13,"translation":[3,5,4]}
+  ]
+}

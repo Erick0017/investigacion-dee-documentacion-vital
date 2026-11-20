@@ -1,0 +1,681 @@
+{
+  "schema": "CPC6.host-boundaries.v1",
+  "classification": "STATIC_INSTRUMENT_AUDIT",
+  "instrument_only": true,
+  "no_output_returned_to_participant": true,
+  "static_cutoff_scope": "Source inventory at the listed hashes; does not assert that all campaign trajectories had already completed.",
+  "source_sha256": "1f4c652cfed21c0677e9fe4de0b14ee22eeab517f512e746ad7be6ac5da4e7be",
+  "checks": {
+    "no_previous_runtime_imports_in_reviewed_layer": true,
+    "no_direct_RAW_clock_setters_or_dynamic_code_in_reviewed_layer": true,
+    "public_files_present": true
+  },
+  "files": [
+    {
+      "path": "src/common.py",
+      "sha256": "1e03b33c33ebb4e64bba7847a5e5d117687e280bf97515f3f393e9867ace5251",
+      "imports": [
+        {
+          "line": 2,
+          "module": "array"
+        },
+        {
+          "line": 3,
+          "module": "hashlib"
+        },
+        {
+          "line": 4,
+          "module": "json"
+        },
+        {
+          "line": 5,
+          "module": "pathlib"
+        },
+        {
+          "line": 6,
+          "module": "sys"
+        },
+        {
+          "line": 30,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 41,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 49,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 95,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 16,
+          "module": "snapshot_storage"
+        }
+      ],
+      "boundary_related_calls": [
+        {
+          "line": 19,
+          "call": "path.open",
+          "source": "path.open('rb')"
+        }
+      ],
+      "boundary_related_strings": [],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/order_memory.py",
+      "sha256": "1ae338c52feaebcc81ba64607c1f1de48cb21fbe42db2f7417f1902c96245e66",
+      "imports": [
+        {
+          "line": 6,
+          "module": "common"
+        },
+        {
+          "line": 14,
+          "module": "dee_thinking"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 1,
+          "value": "Fresh basal relative-order body; real event pulses acquire its distinction.\n\nAdapted from CPC5 order_stream's documented geometry, not a trained snapshot.\nNo function in this module receives the history's expected answer.\n",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/action_feedback.py",
+      "sha256": "a0682a12fbb406c5da44ccfe9d681efc02a1350eeed70b578cf8dd5eb57efbe2",
+      "imports": [
+        {
+          "line": 7,
+          "module": "pathlib"
+        },
+        {
+          "line": 8,
+          "module": "argparse"
+        },
+        {
+          "line": 9,
+          "module": "json"
+        },
+        {
+          "line": 10,
+          "module": "sys"
+        },
+        {
+          "line": 11,
+          "module": "time"
+        },
+        {
+          "line": 14,
+          "module": "common"
+        },
+        {
+          "line": 26,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 126,
+          "module": "dee_thinking"
+        }
+      ],
+      "boundary_related_calls": [
+        {
+          "line": 176,
+          "call": "json.loads",
+          "source": "json.loads(a.config.read_text(encoding='utf-8'))"
+        },
+        {
+          "line": 176,
+          "call": "a.config.read_text",
+          "source": "a.config.read_text(encoding='utf-8')"
+        }
+      ],
+      "boundary_related_strings": [],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/action_feedback_access.py",
+      "sha256": "a88cdbe055361ca82ef5665d53d3592b7f26e3396168bc1f59653a88288aaa6b",
+      "imports": [],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/language.py",
+      "sha256": "2d0cd32287fb61f6c6702db69442437a5ba3703b667f9352a30bbd3cf2b70c8f",
+      "imports": [
+        {
+          "line": 6,
+          "module": "common"
+        },
+        {
+          "line": 7,
+          "module": "action_feedback"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 37,
+          "value": "teaching",
+          "truncated": false
+        },
+        {
+          "line": 27,
+          "value": "Unknown teaching mode",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/integrated.py",
+      "sha256": "f82e6eba1463c676e1bdae867f81d5b91d07d540a94ae09e342a58219ea3c7ff",
+      "imports": [
+        {
+          "line": 6,
+          "module": "json"
+        },
+        {
+          "line": 7,
+          "module": "copy"
+        },
+        {
+          "line": 8,
+          "module": "pathlib"
+        },
+        {
+          "line": 9,
+          "module": "common"
+        },
+        {
+          "line": 10,
+          "module": "order_memory"
+        },
+        {
+          "line": 15,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 91,
+          "module": "argparse"
+        },
+        {
+          "line": 20,
+          "module": "action_feedback"
+        },
+        {
+          "line": 27,
+          "module": "consolidation"
+        },
+        {
+          "line": 66,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 67,
+          "module": "snapshot_storage"
+        },
+        {
+          "line": 24,
+          "module": "language"
+        }
+      ],
+      "boundary_related_calls": [
+        {
+          "line": 71,
+          "call": "json.loads",
+          "source": "json.loads(m[KEY])"
+        },
+        {
+          "line": 69,
+          "call": "d.OrganizationalWorld.load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(plain))"
+        }
+      ],
+      "boundary_related_strings": [
+        {
+          "line": 1,
+          "value": "A single-owner experimental U0 MAIN; all transformations are v27 evolution.\n\nThe Python session transports fixed physical requests and makes passive records.\nIt never obtains an expected answer, selects a correct route or edits a cell.\n",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/curriculum.py",
+      "sha256": "663876bdb6717ff421121f91db11d706749e94c6609b09e8e56afc876b7b4e87",
+      "imports": [
+        {
+          "line": 2,
+          "module": "integrated"
+        },
+        {
+          "line": 3,
+          "module": "common"
+        },
+        {
+          "line": 4,
+          "module": "order_memory"
+        },
+        {
+          "line": 17,
+          "module": "order_language"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 26,
+          "value": "RENEWED_PHYSICAL_QUERY_NO_RETEACHING",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/consolidation.py",
+      "sha256": "e448743f7b615891e202007400b4bbdb79bda6d98be31d4051097a16e29b6825",
+      "imports": [
+        {
+          "line": 7,
+          "module": "order_memory"
+        },
+        {
+          "line": 8,
+          "module": "common"
+        },
+        {
+          "line": 13,
+          "module": "dee_thinking"
+        },
+        {
+          "line": 29,
+          "module": "dee_thinking"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 51,
+          "value": "COMMON_QUERY_OF_NATIVE_ACQUIRED_SECOND_RELATION_NO_RETEACHING",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/order_language.py",
+      "sha256": "425ec57006659727a9b68b01ba4bc0abdecb9cacfd8cf0303f18b984a016c17a",
+      "imports": [
+        {
+          "line": 7,
+          "module": "common"
+        },
+        {
+          "line": 8,
+          "module": "order_memory"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 1,
+          "value": "Second opaque form, paired later with a renewed order-history expression.\n\nBoth candidate directions receive equal physical teaching/query pulses. This\ntests an order-history function distinct from the received-data FORM_01.\nNo general temporal predicate or human deictic semantics is assumed.\n",
+          "truncated": false
+        },
+        {
+          "line": 35,
+          "value": "teaching",
+          "truncated": false
+        },
+        {
+          "line": 25,
+          "value": "Unknown second-form teaching mode",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/balanced_sources.py",
+      "sha256": "791d0086a3855b918a90b9ee7a6285884ce818cf1964211e7da7f009b75cb89f",
+      "imports": [
+        {
+          "line": 7,
+          "module": "common"
+        },
+        {
+          "line": 8,
+          "module": "action_feedback"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "src/word_bus.py",
+      "sha256": "f6b09de10b3cb55c4ffcf58b5f576260f78bcebe9fc000287ea207360f5ec7fc",
+      "imports": [
+        {
+          "line": 7,
+          "module": "common"
+        },
+        {
+          "line": 8,
+          "module": "order_memory"
+        }
+      ],
+      "boundary_related_calls": [],
+      "boundary_related_strings": [
+        {
+          "line": 16,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 27,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 31,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 40,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 27,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 33,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 40,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 42,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 31,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 33,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 42,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 34,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 34,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 43,
+          "value": "target",
+          "truncated": false
+        },
+        {
+          "line": 43,
+          "value": "target",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "ejecutar.py",
+      "sha256": "c9a86a322927487cf8e751f46b0b729ab134e769ff8e6e374b9ef218fa7d534f",
+      "imports": [
+        {
+          "line": 2,
+          "module": "argparse"
+        },
+        {
+          "line": 2,
+          "module": "json"
+        },
+        {
+          "line": 2,
+          "module": "sys"
+        },
+        {
+          "line": 2,
+          "module": "subprocess"
+        },
+        {
+          "line": 2,
+          "module": "time"
+        },
+        {
+          "line": 2,
+          "module": "os"
+        },
+        {
+          "line": 3,
+          "module": "pathlib"
+        },
+        {
+          "line": 5,
+          "module": "common"
+        },
+        {
+          "line": 6,
+          "module": "supervisor"
+        }
+      ],
+      "boundary_related_calls": [
+        {
+          "line": 12,
+          "call": "BinOp.open",
+          "source": "(target/'stdout.log').open('w',encoding='utf-8')"
+        },
+        {
+          "line": 12,
+          "call": "BinOp.open",
+          "source": "(target/'stderr.log').open('w',encoding='utf-8')"
+        }
+      ],
+      "boundary_related_strings": [
+        {
+          "line": 31,
+          "value": "resultados",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    },
+    {
+      "path": "app.py",
+      "sha256": "ad16975346fe3bf077ff56e1564b1ad40c8baedb902ff70352a6415aab53fb19",
+      "imports": [
+        {
+          "line": 2,
+          "module": "argparse"
+        },
+        {
+          "line": 2,
+          "module": "json"
+        },
+        {
+          "line": 2,
+          "module": "sys"
+        },
+        {
+          "line": 3,
+          "module": "pathlib"
+        },
+        {
+          "line": 5,
+          "module": "common"
+        },
+        {
+          "line": 6,
+          "module": "integrated"
+        },
+        {
+          "line": 7,
+          "module": "order_memory"
+        },
+        {
+          "line": 7,
+          "module": "action_feedback"
+        },
+        {
+          "line": 7,
+          "module": "language"
+        },
+        {
+          "line": 7,
+          "module": "consolidation"
+        },
+        {
+          "line": 7,
+          "module": "curriculum"
+        },
+        {
+          "line": 7,
+          "module": "order_language"
+        },
+        {
+          "line": 7,
+          "module": "balanced_sources"
+        },
+        {
+          "line": 7,
+          "module": "word_bus"
+        },
+        {
+          "line": 8,
+          "module": "action_feedback_access"
+        },
+        {
+          "line": 101,
+          "module": "random"
+        }
+      ],
+      "boundary_related_calls": [
+        {
+          "line": 30,
+          "call": "Session.load",
+          "source": "Session.load(args[0])"
+        },
+        {
+          "line": 117,
+          "call": "json.loads",
+          "source": "json.loads(a.eventos.read_text(encoding='utf-8'))"
+        },
+        {
+          "line": 117,
+          "call": "a.eventos.read_text",
+          "source": "a.eventos.read_text(encoding='utf-8')"
+        }
+      ],
+      "boundary_related_strings": [
+        {
+          "line": 50,
+          "value": "target_tick",
+          "truncated": false
+        },
+        {
+          "line": 75,
+          "value": "Second name follows renewed order-history expression70; teaching window T71..77",
+          "truncated": false
+        }
+      ],
+      "forbidden_old_runtime_imports": [],
+      "direct_setters_or_dynamic_code": []
+    }
+  ],
+  "missing_public_files": [],
+  "directed_manual_review": [
+    {
+      "layer": "preparation",
+      "files": [
+        "order_memory.py",
+        "action_feedback.py",
+        "consolidation.py"
+      ],
+      "finding": "Prepared support, finite branch geometry and opportunities are supplied by the designer at T0. Source data values are current environmental observations, not computed future outcomes or corrected policies."
+    },
+    {
+      "layer": "MAIN transport",
+      "files": [
+        "integrated.py",
+        "curriculum.py",
+        "action_feedback_access.py"
+      ],
+      "finding": "Only declared input/probe scheduling, native advance, passive read, native fork and complete save/load. Alias de-duplication examines identical public physical interface declarations, payload, tick and modality; it does not inspect learned state or pick a successful branch."
+    },
+    {
+      "layer": "response",
+      "files": [
+        "language.py",
+        "order_language.py"
+      ],
+      "finding": "The decoder emits actual active semantic1 records having the frozen direction sector, or an empty list. No history-to-meaning map, expected response or stored terminal measurement is read. Text is a fixed rendering of measured fields, not an arbitrary learned semantic dictionary."
+    },
+    {
+      "layer": "persistence",
+      "files": [
+        "integrated.py"
+      ],
+      "finding": "Session JSON stores public geometry, identity, request IDs and tick in native metadata. Native physical/operative snapshot is loaded without preparing a new body. Snapshot metadata is not a response cache."
+    },
+    {
+      "layer": "auditor versus participant",
+      "finding": "Scientific runners/analyses may read configurations and compare evaluator references after trajectories; they are not imported as hidden deciders by the reviewed MAIN core. Fixed R14 policy normalizers are a finite prepared controller, distinct from learned optimal regulation."
+    }
+  ],
+  "limitations": [
+    "AST cannot establish causal utilization, acquisition, retention or absence of every possible information leak.",
+    "Boundary-related calls and strings are retained for review rather than silently approved.",
+    "Changing any source changes its hash and requires regenerating this inventory. Native mechanisms still require measured controls and exact clean reproduction."
+  ],
+  "status": "REVIEWED_STATIC_BOUNDARIES"
+}

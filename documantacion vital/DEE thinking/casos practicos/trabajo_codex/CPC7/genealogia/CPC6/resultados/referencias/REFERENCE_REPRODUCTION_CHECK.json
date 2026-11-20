@@ -1,0 +1,1250 @@
+{
+  "schema": "CPC6.brief_references.v1",
+  "distinct_historical_preparations": 3,
+  "native_runs": 5,
+  "technical_reproductions_not_independent_samples": true,
+  "comparison_repair_1": "JSON tuple/list serialization normalization and separation of historical wrapper-only fields; first attempts retained.",
+  "comparison_repair_2": "Offline reconciliation of explicit observer contract additions in current frozen source. No further native rerun or physics change.",
+  "references": [
+    {
+      "case_id": "CP02_B_PAIRED_gate1",
+      "kind": "HISTORICAL_REPRODUCTION",
+      "initial": {
+        "tick": 32,
+        "raw_sha256": "ed1ad804008b857a03a8cb57fab43a9ae7c9ff9f635ceb87d12616dca8af173f",
+        "clock_sha256": "7eea1ab205a4e81d98a23d0648b51fddae6010daacbddfbe252c1920b71996ed"
+      },
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "requested_tick": 32,
+          "effective_tick": 32,
+          "channels": [
+            "sensor.A"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "requested_tick": 33,
+          "effective_tick": 33,
+          "channels": [
+            "sensor.B"
+          ],
+          "reason": ""
+        }
+      ],
+      "emission": {
+        "record_type": "EMISSION",
+        "run_id": "CPC6_REFERENCE_CP02_GATE1",
+        "emission_tick": 37,
+        "target_ticks": [
+          60,
+          100,
+          150
+        ],
+        "horizons": [
+          23,
+          63,
+          113
+        ],
+        "observable": "packet_arrival_at_barrier_output",
+        "information_cut": [
+          {
+            "sensor": "A",
+            "tick": 32,
+            "load": 0,
+            "source_past_result_tick": 32,
+            "reference_branch": false,
+            "source_result_arrived": true,
+            "receipt_id": 1,
+            "codec": "past observed arrival -> A, no-arrival -> B; unpaired reverses delivery only"
+          },
+          {
+            "sensor": "B",
+            "tick": 33,
+            "load": 0,
+            "source_past_result_tick": 33,
+            "reference_branch": true,
+            "source_result_arrived": false,
+            "receipt_id": 2,
+            "codec": "past observed arrival -> A, no-arrival -> B; unpaired reverses delivery only"
+          }
+        ],
+        "physical_output": {
+          "tick": 37,
+          "coordinate": [
+            15,
+            15,
+            15
+          ],
+          "RAW": 1220757004058886145,
+          "clock": 37,
+          "state": 1,
+          "semantic": 1,
+          "s_reg": 7,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "decoder": "direction_x positive -> arrival; negative -> absence; zero/missing -> unresolved set",
+        "prediction_set": [
+          true
+        ],
+        "receipt": {
+          "id": 3,
+          "status": "applied",
+          "requested_tick": 34,
+          "effective_tick": 34,
+          "channels": [
+            "body.common_query"
+          ],
+          "reason": ""
+        },
+        "panel_before": {
+          "tick": 34,
+          "delta": 1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": false,
+          "axis_projection": null,
+          "observations": {
+            "A": {
+              "tick": 34,
+              "coordinate": [
+                14,
+                15,
+                15
+              ],
+              "RAW": 1152921938398543875,
+              "clock": 262,
+              "state": 3,
+              "semantic": 1,
+              "s_reg": 101,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "B": {
+              "tick": 34,
+              "coordinate": [
+                16,
+                15,
+                15
+              ],
+              "RAW": 1152921934103576579,
+              "clock": 262,
+              "state": 3,
+              "semantic": 1,
+              "s_reg": 100,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "action": {
+              "tick": 34,
+              "coordinate": [
+                20,
+                20,
+                15
+              ],
+              "RAW": 0,
+              "clock": 34,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "comparator": {
+              "tick": 34,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 0,
+              "clock": 34,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "environment": {
+              "tick": 34,
+              "coordinate": [
+                20,
+                20,
+                20
+              ],
+              "RAW": 0,
+              "clock": 34,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "reader_source": {
+              "tick": 34,
+              "coordinate": [
+                15,
+                13,
+                15
+              ],
+              "RAW": 0,
+              "clock": 34,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "return": {
+              "tick": 34,
+              "coordinate": [
+                19,
+                19,
+                19
+              ],
+              "RAW": 0,
+              "clock": 34,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        "panel_after": {
+          "tick": 37,
+          "delta": 1,
+          "centers_available": true,
+          "supports_intact": true,
+          "reader_available": true,
+          "axis_projection": 1,
+          "observations": {
+            "A": {
+              "tick": 37,
+              "coordinate": [
+                14,
+                15,
+                15
+              ],
+              "RAW": 1152921938398543876,
+              "clock": 265,
+              "state": 4,
+              "semantic": 1,
+              "s_reg": 101,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "B": {
+              "tick": 37,
+              "coordinate": [
+                16,
+                15,
+                15
+              ],
+              "RAW": 1152921934103576580,
+              "clock": 265,
+              "state": 4,
+              "semantic": 1,
+              "s_reg": 100,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "action": {
+              "tick": 37,
+              "coordinate": [
+                20,
+                20,
+                15
+              ],
+              "RAW": 0,
+              "clock": 37,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "comparator": {
+              "tick": 37,
+              "coordinate": [
+                15,
+                15,
+                15
+              ],
+              "RAW": 1220757004058886145,
+              "clock": 37,
+              "state": 1,
+              "semantic": 1,
+              "s_reg": 7,
+              "direction": [
+                1,
+                -1,
+                0
+              ],
+              "active": true
+            },
+            "environment": {
+              "tick": 37,
+              "coordinate": [
+                20,
+                20,
+                20
+              ],
+              "RAW": 0,
+              "clock": 37,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "reader_source": {
+              "tick": 37,
+              "coordinate": [
+                15,
+                13,
+                15
+              ],
+              "RAW": 0,
+              "clock": 37,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "return": {
+              "tick": 37,
+              "coordinate": [
+                19,
+                19,
+                19
+              ],
+              "RAW": 0,
+              "clock": 37,
+              "state": 0,
+              "semantic": 0,
+              "s_reg": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        },
+        "action_condition": "forecast does not actuate the barrier",
+        "modality": "PHYSICAL_PROBE_ON_MAIN",
+        "remaining_limits": "decoder maps a persisted outcome class; precursor->arbitrary outcome correspondence was not learned",
+        "wall_utc": "2026-10-18T02:10:35.835865+00:00",
+        "monotonic_ns": 468381755434900
+      },
+      "evaluations": [
+        {
+          "record_type": "EVALUATION",
+          "run_id": "CPC6_REFERENCE_CP02_GATE1",
+          "emission_tick": 37,
+          "target_tick": 60,
+          "current_tick": 60,
+          "outcome": {
+            "tick": 60,
+            "arrived": true,
+            "observable": "packet_arrival_at_barrier_output",
+            "world_law": "one packet per integer tick independently of forecast; transmits iff mechanical barrier open; fixed optional flip"
+          },
+          "prediction_set": [
+            true
+          ],
+          "correct_when_resolved": true,
+          "coverage": true,
+          "set_contains_outcome": true,
+          "absolute_error_binary": 0,
+          "panel": {
+            "tick": 60,
+            "delta": 1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "axis_projection": 1,
+            "observations": {
+              "A": {
+                "tick": 60,
+                "coordinate": [
+                  14,
+                  15,
+                  15
+                ],
+                "RAW": 1152921938398543876,
+                "clock": 288,
+                "state": 4,
+                "semantic": 1,
+                "s_reg": 101,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "B": {
+                "tick": 60,
+                "coordinate": [
+                  16,
+                  15,
+                  15
+                ],
+                "RAW": 1152921934103576580,
+                "clock": 288,
+                "state": 4,
+                "semantic": 1,
+                "s_reg": 100,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "action": {
+                "tick": 60,
+                "coordinate": [
+                  20,
+                  20,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 60,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "comparator": {
+                "tick": 60,
+                "coordinate": [
+                  15,
+                  15,
+                  15
+                ],
+                "RAW": 1220757004058886145,
+                "clock": 60,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 7,
+                "direction": [
+                  1,
+                  -1,
+                  0
+                ],
+                "active": true
+              },
+              "environment": {
+                "tick": 60,
+                "coordinate": [
+                  20,
+                  20,
+                  20
+                ],
+                "RAW": 0,
+                "clock": 60,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "reader_source": {
+                "tick": 60,
+                "coordinate": [
+                  15,
+                  13,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 60,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "return": {
+                "tick": 60,
+                "coordinate": [
+                  19,
+                  19,
+                  19
+                ],
+                "RAW": 0,
+                "clock": 60,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          },
+          "wall_utc": "2026-10-18T02:10:36.072488+00:00",
+          "monotonic_ns": 468381991245400
+        },
+        {
+          "record_type": "EVALUATION",
+          "run_id": "CPC6_REFERENCE_CP02_GATE1",
+          "emission_tick": 37,
+          "target_tick": 100,
+          "current_tick": 100,
+          "outcome": {
+            "tick": 100,
+            "arrived": true,
+            "observable": "packet_arrival_at_barrier_output",
+            "world_law": "one packet per integer tick independently of forecast; transmits iff mechanical barrier open; fixed optional flip"
+          },
+          "prediction_set": [
+            true
+          ],
+          "correct_when_resolved": true,
+          "coverage": true,
+          "set_contains_outcome": true,
+          "absolute_error_binary": 0,
+          "panel": {
+            "tick": 100,
+            "delta": 1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "axis_projection": 1,
+            "observations": {
+              "A": {
+                "tick": 100,
+                "coordinate": [
+                  14,
+                  15,
+                  15
+                ],
+                "RAW": 1152921938398543873,
+                "clock": 328,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 101,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "B": {
+                "tick": 100,
+                "coordinate": [
+                  16,
+                  15,
+                  15
+                ],
+                "RAW": 1152921934103576577,
+                "clock": 328,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 100,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "action": {
+                "tick": 100,
+                "coordinate": [
+                  20,
+                  20,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 100,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "comparator": {
+                "tick": 100,
+                "coordinate": [
+                  15,
+                  15,
+                  15
+                ],
+                "RAW": 1153203009648328705,
+                "clock": 100,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 7,
+                "direction": [
+                  1,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "environment": {
+                "tick": 100,
+                "coordinate": [
+                  20,
+                  20,
+                  20
+                ],
+                "RAW": 0,
+                "clock": 100,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "reader_source": {
+                "tick": 100,
+                "coordinate": [
+                  15,
+                  13,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 100,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "return": {
+                "tick": 100,
+                "coordinate": [
+                  19,
+                  19,
+                  19
+                ],
+                "RAW": 0,
+                "clock": 100,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          },
+          "wall_utc": "2026-10-18T02:10:36.433934+00:00",
+          "monotonic_ns": 468382352682300
+        },
+        {
+          "record_type": "EVALUATION",
+          "run_id": "CPC6_REFERENCE_CP02_GATE1",
+          "emission_tick": 37,
+          "target_tick": 150,
+          "current_tick": 150,
+          "outcome": {
+            "tick": 150,
+            "arrived": true,
+            "observable": "packet_arrival_at_barrier_output",
+            "world_law": "one packet per integer tick independently of forecast; transmits iff mechanical barrier open; fixed optional flip"
+          },
+          "prediction_set": [
+            true
+          ],
+          "correct_when_resolved": true,
+          "coverage": true,
+          "set_contains_outcome": true,
+          "absolute_error_binary": 0,
+          "panel": {
+            "tick": 150,
+            "delta": 1,
+            "centers_available": true,
+            "supports_intact": true,
+            "reader_available": true,
+            "axis_projection": 1,
+            "observations": {
+              "A": {
+                "tick": 150,
+                "coordinate": [
+                  14,
+                  15,
+                  15
+                ],
+                "RAW": 1152921938398543873,
+                "clock": 378,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 101,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "B": {
+                "tick": 150,
+                "coordinate": [
+                  16,
+                  15,
+                  15
+                ],
+                "RAW": 1152921934103576577,
+                "clock": 378,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 100,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "action": {
+                "tick": 150,
+                "coordinate": [
+                  20,
+                  20,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 150,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "comparator": {
+                "tick": 150,
+                "coordinate": [
+                  15,
+                  15,
+                  15
+                ],
+                "RAW": 1153203009648328705,
+                "clock": 150,
+                "state": 1,
+                "semantic": 1,
+                "s_reg": 7,
+                "direction": [
+                  1,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "environment": {
+                "tick": 150,
+                "coordinate": [
+                  20,
+                  20,
+                  20
+                ],
+                "RAW": 0,
+                "clock": 150,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "reader_source": {
+                "tick": 150,
+                "coordinate": [
+                  15,
+                  13,
+                  15
+                ],
+                "RAW": 0,
+                "clock": 150,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "return": {
+                "tick": 150,
+                "coordinate": [
+                  19,
+                  19,
+                  19
+                ],
+                "RAW": 0,
+                "clock": 150,
+                "state": 0,
+                "semantic": 0,
+                "s_reg": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          },
+          "wall_utc": "2026-10-18T02:10:36.977002+00:00",
+          "monotonic_ns": 468382895749100
+        }
+      ],
+      "comparison": {
+        "training_receipts_equal": true,
+        "emission_output_equal": true,
+        "query_receipt_equal": true,
+        "emission_panel_equal": true,
+        "evaluation_panels_equal": true,
+        "prediction_set_equal": true
+      },
+      "full_state_comparison": {
+        "current": {
+          "tick": 150,
+          "raw_sha256": "48beaff698d27b5f9f16b72c602dca1793bcc8ae8df1e48d4c6ff10af1d2dc61",
+          "clock_sha256": "d13f80fe65b6ebf9fe7c810b6b65005a9eb83cba20c036b9a4786b5d0f43d203"
+        },
+        "historical": {
+          "tick": 150,
+          "raw_sha256": "48beaff698d27b5f9f16b72c602dca1793bcc8ae8df1e48d4c6ff10af1d2dc61",
+          "clock_sha256": "d13f80fe65b6ebf9fe7c810b6b65005a9eb83cba20c036b9a4786b5d0f43d203"
+        },
+        "RAW_full_equal": true,
+        "clocks_full_equal": true,
+        "tick_equal": true,
+        "metadata_compared_separately": true
+      },
+      "scope": "Finite persistence forecast; external barrier law independent of native output; historical3.5 physical trajectory reproduced by4.0.",
+      "identity": {
+        "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Scripts\\python.exe",
+        "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Lib\\site-packages\\dee_thinking\\__init__.py",
+        "version": "4.0.0",
+        "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+        "kernel": 27,
+        "wheel_sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623"
+      },
+      "elapsed_seconds": 1.6821122999535874,
+      "utc_finished": "2026-10-18T02:10:37.115368+00:00",
+      "new_discovery_claimed": false,
+      "source_manifest": "genealogia/SOURCE_MANIFEST.json"
+    },
+    {
+      "case_id": "CPC3_CENTRAL_open_changed",
+      "kind": "HISTORICAL_REPRODUCTION_WITH_OBSERVER_METADATA_VERSION_DIFFERENCES",
+      "full_state_comparison": {
+        "current": {
+          "tick": 90,
+          "raw_sha256": "3ce48f66defb354c42afb901cb0f2ce710dc8e587747c1d38bf8a1ff9471b9cf",
+          "clock_sha256": "ddcc2dc78fbd3d9cc31baeff63420b113b732599ab05b22cf04ee1bcbe44b797"
+        },
+        "historical": {
+          "tick": 90,
+          "raw_sha256": "3ce48f66defb354c42afb901cb0f2ce710dc8e587747c1d38bf8a1ff9471b9cf",
+          "clock_sha256": "ddcc2dc78fbd3d9cc31baeff63420b113b732599ab05b22cf04ee1bcbe44b797"
+        },
+        "RAW_full_equal": true,
+        "clocks_full_equal": true,
+        "tick_equal": true,
+        "metadata_compared_separately": true
+      },
+      "physical_emission_equal": true,
+      "physical_input_receipts_equal": true,
+      "strict_JSON_equal": false,
+      "all_differences_recorded": [
+        {
+          "path": "/before_report/domain_status",
+          "kind": "KEY",
+          "current": "WITHIN_FINITE_TESTED_HORIZON",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/before_report/limits",
+          "kind": "VALUE",
+          "current": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "historical": "current direction may reflect reader context as well as relative memory; see controls"
+        },
+        {
+          "path": "/trace/0/observation/domain_status",
+          "kind": "KEY",
+          "current": "WITHIN_FINITE_TESTED_HORIZON",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/trace/0/observation/limits",
+          "kind": "VALUE",
+          "current": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "historical": "current direction may reflect reader context as well as relative memory; see controls"
+        },
+        {
+          "path": "/trace/1/observation/domain_status",
+          "kind": "KEY",
+          "current": "WITHIN_FINITE_TESTED_HORIZON",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/trace/1/observation/limits",
+          "kind": "VALUE",
+          "current": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "historical": "current direction may reflect reader context as well as relative memory; see controls"
+        },
+        {
+          "path": "/trace/2/observation/domain_status",
+          "kind": "KEY",
+          "current": "WITHIN_FINITE_TESTED_HORIZON",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/trace/2/observation/limits",
+          "kind": "VALUE",
+          "current": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "historical": "current direction may reflect reader context as well as relative memory; see controls"
+        },
+        {
+          "path": "/trace/3/observation/domain_status",
+          "kind": "KEY",
+          "current": "WITHIN_FINITE_TESTED_HORIZON",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/trace/3/observation/limits",
+          "kind": "VALUE",
+          "current": "current direction may reflect reader context as well as relative memory; see controls; no native timeout-based absence detector",
+          "historical": "current direction may reflect reader context as well as relative memory; see controls"
+        },
+        {
+          "path": "/event/comparison_decoder/represented_expectation_before_report",
+          "kind": "KEY",
+          "current": true,
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        },
+        {
+          "path": "/event/comparison_decoder/validity",
+          "kind": "KEY",
+          "current": "CURRENT_NATIVE_MARKER",
+          "historical": null,
+          "current_present": true,
+          "historical_present": false
+        }
+      ],
+      "unexpected_physical_or_receipt_differences": [],
+      "interpretation": "The final source in the audited CPC3 ZIP contains later explicit domain/absence qualifications absent from its original discovery output. Replayed physical trajectories match. JSON was not declared byte-identical.",
+      "emission_tick": 37,
+      "target_tick": 83,
+      "emitted_prediction": [
+        true
+      ],
+      "actual": {
+        "tick": 83,
+        "arrived": false,
+        "reference_branch": false,
+        "observable": "packet_arrival_at_barrier_output",
+        "modality": "OBSERVED_EXTERNAL_ENVIRONMENT"
+      },
+      "comparison_decoder_current": {
+        "physical_output": {
+          "tick": 84,
+          "coordinate": [
+            15,
+            15,
+            15
+          ],
+          "RAW": 1225260573621485569,
+          "clock": 84,
+          "state": 1,
+          "semantic": 1,
+          "load": 0,
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "signed_comparison_marker_present": true,
+        "represented_expectation_before_report": true,
+        "presentation": "discrepancia_direccional",
+        "validity": "CURRENT_NATIVE_MARKER",
+        "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+      },
+      "comparison_decoder_historical": {
+        "physical_output": {
+          "tick": 84,
+          "coordinate": [
+            15,
+            15,
+            15
+          ],
+          "RAW": 1225260573621485569,
+          "clock": 84,
+          "state": 1,
+          "semantic": 1,
+          "load": 0,
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "signed_comparison_marker_present": true,
+        "presentation": "discrepancia_direccional",
+        "scope": "Meaning applies to a represented singleton expectation in the finite +/-1 relation domain; H0 is not given a false expectation"
+      },
+      "native_comparison_tick": 84,
+      "late_observer_panels": [
+        {
+          "tick": 84,
+          "raw": "1225260573621485569",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "delta": 1
+        },
+        {
+          "tick": 85,
+          "raw": "1225260573621485569",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "delta": 1
+        },
+        {
+          "tick": 86,
+          "raw": "1225260573621485569",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "delta": 1
+        },
+        {
+          "tick": 90,
+          "raw": "1225260573621485569",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "delta": 1
+        }
+      ],
+      "new_discovery_claimed": false
+    },
+    {
+      "case_id": "SEM01_A_future_UV",
+      "kind": "HISTORICAL_REPRODUCTION",
+      "comparison": {
+        "measurement_scientific_equal": true,
+        "acquired_state_equal": true,
+        "all_receipts_equal": true,
+        "uses_exact_equal": true
+      },
+      "full_state_comparison": {
+        "current": {
+          "tick": 129,
+          "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+          "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+        },
+        "historical": {
+          "tick": 129,
+          "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+          "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+        },
+        "RAW_full_equal": true,
+        "clocks_full_equal": true,
+        "tick_equal": true,
+        "metadata_compared_separately": true
+      },
+      "prediction_correct": [
+        true,
+        true
+      ],
+      "final": {
+        "tick": 129,
+        "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+        "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+      },
+      "scope": "S1/S2 learn directional consequences through fixed external current-outcome transduction; the useful action coupling is prepared, not independently acquired utility",
+      "identity": {
+        "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Scripts\\python.exe",
+        "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Lib\\site-packages\\dee_thinking\\__init__.py",
+        "version": "4.0.0",
+        "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+        "kernel": 27,
+        "wheel_sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623"
+      },
+      "elapsed_seconds": 7.5495715999859385,
+      "utc_finished": "2026-10-18T02:12:14.889233+00:00",
+      "new_discovery_claimed": false,
+      "source_manifest": "genealogia/SOURCE_MANIFEST.json"
+    }
+  ],
+  "attempts": [
+    {
+      "job": "reference_cp02",
+      "exit_code": 0,
+      "elapsed_seconds": 1.887342699978035,
+      "stdout_sha256": "ffd5a0336235566e7f48b1974d21630cdff207d28afaa11bb3e12ca10458176c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "COMPLETED"
+    },
+    {
+      "job": "reference_central",
+      "exit_code": 1,
+      "elapsed_seconds": 1.377479399961885,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b79a600e4db8583b3160d5109fe43ac9c9dcc2a915cbd996e722ef7f3357f469",
+      "status": "COMPLETED"
+    },
+    {
+      "job": "reference_sem01",
+      "exit_code": 1,
+      "elapsed_seconds": 5.76745609997306,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bbf558ee2d38bec4b648013c39f96b99ad81e352624f80a9cb67c95ce93b1a01",
+      "status": "COMPLETED"
+    },
+    {
+      "job": "reference_central_normalized01",
+      "exit_code": 1,
+      "elapsed_seconds": 2.8468967999797314,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "310ad5c8d2e5161e4d9292ec0c0ae645169534a4cafaf0705e1536efc02ed65f",
+      "status": "COMPLETED"
+    },
+    {
+      "job": "reference_sem01_normalized01",
+      "exit_code": 0,
+      "elapsed_seconds": 7.80580720002763,
+      "stdout_sha256": "8926a123f0481c74ec6c05211588d71a0b08aaf88ecb07b60fcd7f3ccb7cd5d5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "COMPLETED"
+    }
+  ],
+  "all_three_final_RAW_clocks_tick_equal": true,
+  "source_zip_unchanged": true,
+  "native_environment": "CPC6/.venv CPython3.13 x64 installed official DEE4.0.0",
+  "data_never_fed_as_predictions": true
+}

@@ -1,0 +1,323 @@
+{
+  "schema": "CPC7.comparator.trajectory.v1",
+  "case_id": "ORD_23_paired",
+  "task": "ORDER",
+  "mode": "paired",
+  "model": "B2_SMALL_CONTINUAL_MLP",
+  "config": {
+    "hidden": 24,
+    "model_seed": 7001,
+    "learning_rate": 0.2,
+    "steps_per_experience": 96,
+    "batch_size": 8,
+    "replay_capacity": 32,
+    "l2": 0.0
+  },
+  "stream_sha256": "5e782f31611014b827724e2115da57b4763aa1c5348f8d1283786f8334ea200f",
+  "rows": [
+    {
+      "event_id": "o0001",
+      "block": "O0_AB",
+      "requested_tick": 0,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "experience",
+      "admitted": true,
+      "paired_by_fixed_coincidence_contract": true,
+      "consequence_observed": 1,
+      "model_update": true,
+      "wall_seconds": 0.1305960000026971,
+      "cpu_seconds": 0.125
+    },
+    {
+      "event_id": "o0002",
+      "block": "O1_BA",
+      "requested_tick": 10,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "experience",
+      "admitted": true,
+      "paired_by_fixed_coincidence_contract": true,
+      "consequence_observed": -1,
+      "model_update": true,
+      "wall_seconds": 0.10847820003982633,
+      "cpu_seconds": 0.09375
+    },
+    {
+      "event_id": "o0003",
+      "block": "OQ_RESERVED_GAP",
+      "requested_tick": 20,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": 1,
+      "probability_positive": 0.9939882258951079,
+      "wall_seconds": 0.00011359999189153314,
+      "cpu_seconds": 0.015625
+    },
+    {
+      "event_id": "o0004",
+      "block": "OQ_RESERVED_GAP",
+      "requested_tick": 30,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 5,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": -1,
+      "probability_positive": 0.029976243113358506,
+      "wall_seconds": 7.829995593056083e-05,
+      "cpu_seconds": 0.0
+    },
+    {
+      "event_id": "o0005",
+      "block": "O2_CONTEXT_UPDATE",
+      "requested_tick": 40,
+      "observable_stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "experience",
+      "admitted": true,
+      "paired_by_fixed_coincidence_contract": true,
+      "consequence_observed": -1,
+      "model_update": true,
+      "wall_seconds": 0.12590879999333993,
+      "cpu_seconds": 0.125
+    },
+    {
+      "event_id": "o0006",
+      "block": "O3_CONTEXT_OTHER",
+      "requested_tick": 50,
+      "observable_stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 1,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "experience",
+      "admitted": true,
+      "paired_by_fixed_coincidence_contract": true,
+      "consequence_observed": 1,
+      "model_update": true,
+      "wall_seconds": 0.14085500000510365,
+      "cpu_seconds": 0.09375
+    },
+    {
+      "event_id": "o0007",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "requested_tick": 120,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": 1,
+      "probability_positive": 0.9296433261352044,
+      "wall_seconds": 0.0001351999817416072,
+      "cpu_seconds": 0.0
+    },
+    {
+      "event_id": "o0008",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "requested_tick": 130,
+      "observable_stimulus": {
+        "context_id": 0,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": -1,
+      "probability_positive": 0.20038892428796262,
+      "wall_seconds": 0.00010219996329396963,
+      "cpu_seconds": 0.0
+    },
+    {
+      "event_id": "o0009",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "requested_tick": 140,
+      "observable_stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T0"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T1"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": -1,
+      "probability_positive": 0.11944644359725563,
+      "wall_seconds": 9.980000322684646e-05,
+      "cpu_seconds": 0.0
+    },
+    {
+      "event_id": "o0010",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "requested_tick": 150,
+      "observable_stimulus": {
+        "context_id": 1,
+        "events": [
+          {
+            "t_rel": 0,
+            "token_id": "T1"
+          },
+          {
+            "t_rel": 3,
+            "token_id": "T0"
+          }
+        ],
+        "form_id": "O01"
+      },
+      "operation": "query",
+      "admitted": true,
+      "state": "RESPONSE",
+      "response": 1,
+      "probability_positive": 0.5369732391188836,
+      "wall_seconds": 9.869999485090375e-05,
+      "cpu_seconds": 0.0
+    }
+  ],
+  "initialization": {
+    "wall_seconds": 0.0020634999964386225,
+    "cpu_seconds": 0.0
+  },
+  "resources": {
+    "wall_seconds": 0.5207448999863118,
+    "cpu_seconds": 0.453125,
+    "initial_memory": {
+      "peak_working_set_bytes": 21377024,
+      "working_set_bytes": 21372928,
+      "private_bytes": 12587008,
+      "measured": true,
+      "scope": "Whole worker process, not parameter storage alone."
+    },
+    "final_memory": {
+      "peak_working_set_bytes": 21520384,
+      "working_set_bytes": 21516288,
+      "private_bytes": 12587008,
+      "measured": true,
+      "scope": "Whole worker process, not parameter storage alone."
+    },
+    "training_events_seen": 4,
+    "queries": 6,
+    "training_examples": 4,
+    "gradient_steps": 384,
+    "gradient_examples": 3072,
+    "replay_examples": 2016,
+    "stored_examples": 4,
+    "parameter_scalars": 265
+  },
+  "provenance": {
+    "python": "3.13.11",
+    "implementation": "CPython",
+    "architecture": "64bit",
+    "worker_source_sha256": "d59401d1130374efadc482405e8dd24ca2944fbdc6951f79c129213b306c87e6",
+    "models_source_sha256": "e79be032195cc940e6d55383658738ea257174b5f6f3a280612a0a16bb54891d"
+  },
+  "status": "EXECUTED",
+  "resumed_from": null,
+  "limitations": [
+    "Prepared fixed temporal binding for demonstrations.",
+    "Pure-Python conventional model, not DEE physics.",
+    "No long-horizon plasticity benchmark; finite retention/adaptation task only."
+  ]
+}

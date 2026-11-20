@@ -1,0 +1,36 @@
+{
+  "schema": "CPC7.clean-plan.v1",
+  "scope": "Native trajectories execute before their later audit comparison; fresh offline installation outside development tree. Same exact plan is read from the candidate ZIP.",
+  "commands": [
+    {"id":"reference","argv":["{python}","-I","-B","{root}/ejecutar.py","referencia","--out","{out}/reference"],"timeout_seconds":90},
+    {"id":"main","argv":["{python}","-I","-B","{root}/src/run_integrated_revision.py","--config","{root}/configuraciones/integrated_revision.json","--case-id","IR_P01_GUARDED_M1","--out","{out}/main"],"timeout_seconds":300},
+    {"id":"revision_control","argv":["{python}","-I","-B","{root}/src/run_integrated_revision.py","--config","{root}/configuraciones/integrated_revision.json","--case-id","IR_C02_AUX_OFFPATH","--out","{out}/revision_control"],"timeout_seconds":300},
+    {"id":"guard_control","argv":["{python}","-I","-B","{root}/src/run_integrated_revision.py","--config","{root}/configuraciones/integrated_revision.json","--case-id","IR_C01_OFFPATH_GUARDS","--out","{out}/guard_control"],"timeout_seconds":300},
+    {"id":"reserve","argv":["{python}","-I","-B","{root}/src/run_integrated_revision.py","--config","{root}/configuraciones/integrated_revision.json","--case-id","IR_R607_GUARDED_M1","--out","{out}/reserve"],"timeout_seconds":300},
+    {"id":"compare_main","argv":["{python}","-I","-B","{root}/src/verify_reproduction.py","--generated","{out}/main/IR_P01_GUARDED_M1/MEASUREMENTS.json","--source","resultados/integrated_revision/IR_P01_GUARDED_M1/MEASUREMENTS.json","--out","{out}/CHECK_MAIN.json"],"timeout_seconds":60},
+    {"id":"compare_revision_control","argv":["{python}","-I","-B","{root}/src/verify_reproduction.py","--generated","{out}/revision_control/IR_C02_AUX_OFFPATH/MEASUREMENTS.json","--source","resultados/integrated_revision/IR_C02_AUX_OFFPATH/MEASUREMENTS.json","--out","{out}/CHECK_REVISION_CONTROL.json"],"timeout_seconds":60},
+    {"id":"compare_guard_control","argv":["{python}","-I","-B","{root}/src/verify_reproduction.py","--generated","{out}/guard_control/IR_C01_OFFPATH_GUARDS/MEASUREMENTS.json","--source","resultados/integrated_revision/IR_C01_OFFPATH_GUARDS/MEASUREMENTS.json","--out","{out}/CHECK_GUARD_CONTROL.json"],"timeout_seconds":60},
+    {"id":"compare_reserve","argv":["{python}","-I","-B","{root}/src/verify_reproduction.py","--generated","{out}/reserve/IR_R607_GUARDED_M1/MEASUREMENTS.json","--source","resultados/integrated_revision/IR_R607_GUARDED_M1/MEASUREMENTS.json","--out","{out}/CHECK_RESERVE.json"],"timeout_seconds":60},
+    {"id":"live_demo","argv":["{python}","-I","-B","{root}/src/run_demo.py","--profile","u0","--out","{out}/demo"],"timeout_seconds":300},
+    {"id":"check_demo","argv":["{python}","-I","-B","{root}/src/check_demo_outcomes.py","--directory","{out}/demo","--out","{out}/DEMO_CHECKS.json"],"timeout_seconds":60},
+    {"id":"recalculate","argv":["{python}","-I","-B","{root}/src/recalculate_public.py","--out","{out}/recalculated"],"timeout_seconds":90},
+    {"id":"interface","argv":["{python}","-I","-B","{root}/src/interface_test.py","--out","{out}/interface"],"timeout_seconds":90},
+    {"id":"boundary","argv":["{python}","-I","-B","{root}/src/audit_boundary.py","--out","{out}/boundary"],"timeout_seconds":60}
+  ],
+  "required_outputs": ["reference/REFERENCE.json","main/CHECKS.json","revision_control/CHECKS.json","guard_control/CHECKS.json","reserve/CHECKS.json","CHECK_MAIN.json","CHECK_REVISION_CONTROL.json","CHECK_GUARD_CONTROL.json","CHECK_RESERVE.json","demo/VERIFICATION.json","DEMO_CHECKS.json","recalculated/CALCULOS.json","interface/INTERFACE_TEST.json","boundary/INFORMATION_BOUNDARY.json"],
+  "assertions": [
+    {"path":"reference/REFERENCE.json","equals":{"/status":"VERIFIED"}},
+    {"path":"main/CHECKS.json","equals":{"/final_tick":472,"/same_RUNTIME":true,"/native_question19":1,"/opaque_covered142":1,"/base338_lower/matches_acquisition":14,"/post472/revised_form/matches_current_experienced_consequence":true,"/post472/other_thirteen/matches_original_acquisition":13,"/host_RAW_clock_writes_on_MAIN":[]}},
+    {"path":"revision_control/CHECKS.json","equals":{"/base338_lower/matches_acquisition":14,"/post472/revised_form/coverage":false,"/post472/other_thirteen/matches_original_acquisition":13}},
+    {"path":"guard_control/CHECKS.json","equals":{"/base338_lower/matches_acquisition":6}},
+    {"path":"reserve/CHECKS.json","equals":{"/base338_lower/matches_acquisition":14,"/post472/revised_form/matches_current_experienced_consequence":true,"/post472/other_thirteen/matches_original_acquisition":13}},
+    {"path":"CHECK_MAIN.json","equals":{"/physical_equal":true,"/operative_equal_without_serialization_envelope":true,"/calculated_results_equal":true,"/pre_revision_physical_equal":true}},
+    {"path":"CHECK_REVISION_CONTROL.json","equals":{"/physical_equal":true,"/operative_equal_without_serialization_envelope":true,"/calculated_results_equal":true}},
+    {"path":"CHECK_GUARD_CONTROL.json","equals":{"/physical_equal":true,"/operative_equal_without_serialization_envelope":true,"/calculated_results_equal":true}},
+    {"path":"CHECK_RESERVE.json","equals":{"/physical_equal":true,"/operative_equal_without_serialization_envelope":true,"/calculated_results_equal":true}},
+    {"path":"DEMO_CHECKS.json","equals":{"/physical_exact_on_restore":true,"/operative_exact_on_restore":true,"/before_revision_matches_explicit_demo":true,"/after_revision_matches_explicit_demo":true,"/one_opaque_association_from_native_information":true}},
+    {"path":"recalculated/CALCULOS.json","equals":{"/all_stored_summaries_equal":true}},
+    {"path":"interface/INTERFACE_TEST.json","equals":{"/status":"VERIFIED","/invalid_commands_preserve_full_physics_and_queue":true,"/passive_observation_preserves_full_physics":true}},
+    {"path":"boundary/INFORMATION_BOUNDARY.json","equals":{"/status":"BOUNDED_CHECKS_PASSED","/models_no_file_reading":true,"/engine_code_changed":false}}
+  ]
+}

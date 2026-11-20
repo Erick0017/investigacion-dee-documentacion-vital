@@ -1,0 +1,67 @@
+{
+  "schema": "CPC6.distribution-tests.v1",
+  "verified": true,
+  "source_sha256": "637e44e2e52ab66dcce3cdbc3b0ec4ce81aecd74066e982b1dc98b1b6652c4ff",
+  "packager_sha256": "4c2b03181ed81cc896260ed7b18374f06566ecc21d816001086354843cc2b4a1",
+  "checks": [
+    {
+      "id": "actual_two_part_reassembly",
+      "verified": true,
+      "source_bytes": 22020236,
+      "source_sha256": "19e3cd79e98caf3fa04cbc80710061731a4e9fd2703c13bd15c14cc8d7ea20e2",
+      "parts": [
+        {
+          "order": 1,
+          "name": "CPC6_MENTE_DEE_INTEGRADA_APRENDIZAJE_Y_COMUNICACION_RESULTADOS.zip.001",
+          "bytes": 11010118,
+          "sha256": "1e92834f03802ca3326df58fc1cd5b8047da870420b4231732ca4bf50b36105b"
+        },
+        {
+          "order": 2,
+          "name": "CPC6_MENTE_DEE_INTEGRADA_APRENDIZAJE_Y_COMUNICACION_RESULTADOS.zip.002",
+          "bytes": 11010118,
+          "sha256": "287414b68150883fe984ac16cdaf70b13b515c533429e38a0a1df59c2065edc3"
+        }
+      ],
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6\\REUNIR_CPC6.py",
+        "--carpeta",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6",
+        "--salida",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\ACTUALLY_REASSEMBLED.zip"
+      ],
+      "stdout_utf8": "CPC6 reconstruido �ntegramente: D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\ACTUALLY_REASSEMBLED.zip\r\nBytes: 22020236\r\nSHA-256: 19e3cd79e98caf3fa04cbc80710061731a4e9fd2703c13bd15c14cc8d7ea20e2\r\n",
+      "exit_code": 0
+    },
+    {
+      "id": "existing_output_protected",
+      "verified": true,
+      "exit_code": 1,
+      "stderr_utf8": "Traceback (most recent call last):\r\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6\\REUNIR_CPC6.py\", line 47, in <module>\r\n    if __name__ == '__main__': main()\r\n                               ~~~~^^\r\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6\\REUNIR_CPC6.py\", line 30, in main\r\n    if target.exists(): raise FileExistsError('Se conserva el archivo existente: ' + str(target))\r\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileExistsError: Se conserva el archivo existente: D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\ACTUALLY_REASSEMBLED.zip\r\n"
+    },
+    {
+      "id": "corrupt_part_rejected_before_output",
+      "verified": true,
+      "exit_code": 1,
+      "stderr_utf8": "Traceback (most recent call last):\r\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6\\REUNIR_CPC6.py\", line 47, in <module>\r\n    if __name__ == '__main__': main()\r\n                               ~~~~^^\r\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\_distribution_tests\\transport_41c17db0\\cases\\transporte_CPC6\\REUNIR_CPC6.py\", line 28, in main\r\n    assert path.stat().st_size == row['bytes'] and sha(path) == row['sha256'], 'Parte diferente'\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: Parte diferente\r\n"
+    },
+    {
+      "id": "existing_CPC5_sidecars_preserved",
+      "verified": true,
+      "PARTES_sha256": "3334b78611a257db2b75b51887ba6c776554a357f319cdcf196af2664c329422",
+      "INSTRUCCIONES_sha256": "46bfe4f7ee953fee85b6f03234f5d60ec9405621dbbe6960eeb4930a8ed0b40e"
+    },
+    {
+      "id": "unsafe_archive_paths_rejected",
+      "verified": true
+    },
+    {
+      "id": "twenty_MiB_compressed_threshold",
+      "verified": true
+    }
+  ],
+  "scope": "Synthetic finite engineering tests. No Runtime, no cognitive result, no canonical publication and no modification of historical artifacts."
+}

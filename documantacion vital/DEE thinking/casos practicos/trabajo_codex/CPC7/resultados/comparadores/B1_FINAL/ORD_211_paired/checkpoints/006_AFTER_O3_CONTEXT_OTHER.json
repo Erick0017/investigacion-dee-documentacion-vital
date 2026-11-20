@@ -1,0 +1,74 @@
+{
+  "schema": "CPC7.comparator.checkpoint.v1",
+  "stream_sha256": "8272b6ccd8e3f7d4924bf1cefde4f462531060b196cadd962b89fa998e4deddc",
+  "next_index": 6,
+  "model": {
+    "schema": "CPC7.B1.state.v1",
+    "kind": "B1_OBSERVED_RELATION_MEMORY",
+    "interface": {
+      "contexts": [
+        0,
+        1
+      ],
+      "forms": [
+        "O01"
+      ],
+      "outcomes": [
+        -1,
+        1
+      ],
+      "pairing_window_ticks": 0,
+      "semantics": "Two-token ordered-slot task, not arbitrary temporal reasoning.",
+      "tokens": [
+        "T0",
+        "T1"
+      ]
+    },
+    "table": [
+      [
+        "O01",
+        0,
+        [
+          "T0",
+          "T1"
+        ],
+        1
+      ],
+      [
+        "O01",
+        0,
+        [
+          "T1",
+          "T0"
+        ],
+        -1
+      ],
+      [
+        "O01",
+        1,
+        [
+          "T0",
+          "T1"
+        ],
+        -1
+      ],
+      [
+        "O01",
+        1,
+        [
+          "T1",
+          "T0"
+        ],
+        1
+      ]
+    ],
+    "counters": {
+      "training_examples": 4,
+      "gradient_steps": 0,
+      "gradient_examples": 0,
+      "replay_examples": 0
+    }
+  },
+  "last_event_id": "o0006",
+  "scope": "Operational learner state; no evaluator or query targets."
+}

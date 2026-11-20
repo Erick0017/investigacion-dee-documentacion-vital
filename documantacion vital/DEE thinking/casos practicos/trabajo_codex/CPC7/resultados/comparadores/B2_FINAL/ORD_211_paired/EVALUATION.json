@@ -1,0 +1,85 @@
+{
+  "schema": "CPC7.comparator.evaluation.v1",
+  "case_id": "ORD_211_paired",
+  "model": "B2_SMALL_CONTINUAL_MLP",
+  "task": "ORDER",
+  "mode": "paired",
+  "trajectory_sha256": "9f6ad138144f4e86896345b1bfc102352147047f12cb9c1687db2ef5141c1d88",
+  "evaluator_sha256": "3542c7c6307b622e38e2d8ac2bb660a637b184243b705fd0e42499019673c3af",
+  "panels": {
+    "OQ_RESERVED_GAP": {
+      "queries": 2,
+      "responses": 2,
+      "correct": 2,
+      "absent": 0,
+      "accuracy": 1.0,
+      "coverage": 1.0
+    },
+    "OQ_CONTEXT_AND_RETENTION": {
+      "queries": 4,
+      "responses": 4,
+      "correct": 4,
+      "absent": 0,
+      "accuracy": 1.0,
+      "coverage": 1.0
+    }
+  },
+  "queries": [
+    {
+      "event_id": "o0003",
+      "block": "OQ_RESERVED_GAP",
+      "response": 1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "response_present": true
+    },
+    {
+      "event_id": "o0004",
+      "block": "OQ_RESERVED_GAP",
+      "response": -1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "response_present": true
+    },
+    {
+      "event_id": "o0007",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "response": 1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "response_present": true
+    },
+    {
+      "event_id": "o0008",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "response": -1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "response_present": true
+    },
+    {
+      "event_id": "o0009",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "response": -1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": -1,
+      "correct": true,
+      "response_present": true
+    },
+    {
+      "event_id": "o0010",
+      "block": "OQ_CONTEXT_AND_RETENTION",
+      "response": 1,
+      "state": "RESPONSE",
+      "expected_evaluator_only": 1,
+      "correct": true,
+      "response_present": true
+    }
+  ],
+  "query_targets_were_not_passed_to_participant": true,
+  "score_evaluated_after_trajectory": true
+}

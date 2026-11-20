@@ -1,0 +1,72 @@
+{
+  "tipo": "AUDITORIA_FINAL_DE_PROYECCION_OBSERVACIONAL",
+  "candidato_sha256": "e17cc15b73ef04b76d41448b8e48ce0924c96fbe03dc0ee203cce4a9bf559b35",
+  "bytes_zip": 92769,
+  "bytes_expandidos": 4208974,
+  "archivos": 17,
+  "hallazgos_bloqueantes": [],
+  "resultado": "COHERENTE_CON_EL_ALCANCE_OBSERVACIONAL_DECLARADO",
+  "metodo": [
+    "Lectura completa de los17 archivos; analisis recursivo de todos los campos JSON y JSONL.",
+    "Busqueda de rutas privadas, campos fisicos, preparaciones reconstructivas y vocabulario tecnico omitido.",
+    "Comparacion byte por byte de todos los miembros ZIP contra el payload.",
+    "CRC,15 entradas de MANIFEST y16 entradas de HASHES comprobadas.",
+    "RECALCULAR.py --verificar ejecutado con -I -S -B, sin cargar paquetes instalados ni motor."
+  ],
+  "integridad": {
+    "crc_correcto": true,
+    "manifest_coincidente": true,
+    "hashes_coincidentes": true,
+    "zip_identico_al_payload": true,
+    "fechas_neutrales": true,
+    "comentarios_y_campos_extra_vacios": true,
+    "nombres_de_miembros_sin_rutas_privadas_o_escape": true,
+    "texto_utf8_sin_caracteres_de_sustitucion": true,
+    "recalculo_coincidente": true
+  },
+  "recuentos": {
+    "ensayos": 129,
+    "familias": 27,
+    "preparaciones": 94,
+    "ramas_diagnosticas": 29,
+    "continuaciones": 6,
+    "filas_entradas": 1253,
+    "solicitudes_incluidas_heredadas": 8117,
+    "admision_incluidas_heredadas": {
+      "applied": 7657,
+      "rejected_conflict": 224,
+      "rejected_occupied": 236
+    },
+    "solicitudes_no_heredadas": 6194,
+    "admision_no_heredada": {
+      "applied": 5854,
+      "rejected_conflict": 164,
+      "rejected_occupied": 176
+    },
+    "observables": 11076,
+    "observables_sin_lectura_publica": 81,
+    "anotaciones_temporales": 57,
+    "valores_predictivos_publicados": 0,
+    "incidencias_y_reproducciones_tecnicas": 15,
+    "testigos_secuencia_completa": 3,
+    "denominador_testigos_y_controles": 5
+  },
+  "precisiones_resueltas": [
+    "El contrato declara un codominio comun para la primera forma y su consulta remota revisada; no lo extiende a la segunda forma o al decoder anterior adverso.",
+    "Se retiraron los nombres tecnicos de campos del decoder de las definiciones publicas.",
+    "C02 declara el cambio conjunto de orden y consecuencia; no atribuye un efecto exclusivo del orden.",
+    "C03 declara la omision conjunta de consulta y lector.",
+    "Las57 anotaciones de tiempo no se presentan como prueba independiente de emision activa o acierto.",
+    "Los niveles de entradas no publicados permanecen nulos; no se reconstruyen desde campos fisicos."
+  ],
+  "revision_de_excluidos": {
+    "motor_o_binarios": "NO_ENCONTRADOS",
+    "estados_y_geometria": "NO_ENCONTRADOS",
+    "parametros_de_preparacion_reconstructivos": "NO_ENCONTRADOS",
+    "rutas_privadas": "NO_ENCONTRADAS",
+    "ids_originales_de_ensayos": "NO_ENCONTRADOS",
+    "codigo_incluido": "Solo recalculo estadistico estandar; imports argparse, collections, json y pathlib."
+  },
+  "alcance": "Permite recalcular la contabilidad y comparar observaciones publicadas. La fidelidad de la proyeccion, la dinamica, la continuidad fisica, la selectividad de intervenciones y la ausencia de mediacion externa requieren el expediente privado. No garantiza ausencia absoluta de inferencias conductuales ni valida significados generales.",
+  "preservacion": "No se editaron payload, candidato ni fuentes originales durante esta auditoria. El presente informe se creo fuera del payload."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "MI02_LECTOR_EFIMERO",
+  "version": "operational.bounded.1",
+  "availability": "REVALIDADO_EN_PERFIL_AUXILIAR_EJECUTABLE",
+  "implementation": "capacidades/comparacion_efimera_mi02.py",
+  "preparation": "N17, fondo fisico fijado, cinco vecinos coplanares del lector, soportes independientes para dos referencias adquiridas; sesgo preparado2",
+  "domain": "Observaciones actuales enteras0..160; la validez de la salida depende del cono nativo(x,-1,-1). Fuera del cono se informa indeterminacion, no se corrige.",
+  "learned": "Dos campos escalares introducidos por experiencias admitidas. Una sonda generica cero y un dato actual habilitan una lectura; v27 devuelve el lector a RAW0 sin limpieza del anfitrion.",
+  "controls": ["Historia opuesta", "Sin adquisicion", "Dato omitido", "Sonda omitida", "Demora pasiva845ticks", "Nueva referencia65/11 y datos55/56/57/70/80", "Adquisicion tardia en la misma vida previamente no entrenada"],
+  "lives": ["MI02_EFIMERO_210", "MI02_EFIMERO_211", "MI02_EFIMERO_212", "MI02_EFIMERO_213"],
+  "integration": "Perfil auxiliar independiente; NO incorporado fisicamente a D1_MI02_MAIN ni heredado de E1",
+  "assistance": "El operador presenta la sonda generica y el dato actual por puertos fijos. No hay comparacion Python, escritura de respuesta o limpieza de memoria.",
+  "limits": ["No es comparacion imparcial: sesgo2", "No inicia consultas autonomamente", "No demuestra NSM MAS/MENOS/IGUAL", "No se ha probado integracion con el conjunto social R6"],
+  "commands": ["mi02-estado --vida MI02_EFIMERO_210", "mi02-comparar-efimero --vida UNA_BIFURCACION --objetos 22,24,26,None", "mi02-crear --vida VIDA_NUEVA --variante comparador-efimero", "mi02-adquirir --vida VIDA_NUEVA --propias 32,10"],
+  "evidence": ["EFIMERO32_READ_210.json", "EFIMERO32_READ_211.json", "EFIMERO32_READ_212.json", "EFIMERO35_RESERVED210.json", "EFIMERO35_NO_PROBE.json", "EFIMERO35_LATE_TEACH212.json", "EFIMERO35_LATE_USE212.json", "EFIMERO35_RESERVED213.json"]
+}

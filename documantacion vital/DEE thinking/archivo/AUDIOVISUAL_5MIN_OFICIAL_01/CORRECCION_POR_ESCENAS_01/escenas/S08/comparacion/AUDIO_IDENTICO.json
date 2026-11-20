@@ -1,0 +1,164 @@
+{
+  "scene": 8,
+  "start_in_master": 150,
+  "duration": 20,
+  "AAC_packets_identical": true,
+  "PCM_identical_between_comparison_clips": true,
+  "audio_encode": false,
+  "notes": "OriginalAACstream preserved; cut decoder start can differ slightly from decoding the whole master. Both comparison clips are identical to each other.",
+  "before": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\ANTES_CON_AUDIO.mp4",
+    "bytes": 2434117,
+    "sha256": "9c96148839b9a4439aa3ef3acdb29c27237db2c1bafefa901082a993af04ba3e"
+  },
+  "after": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\DESPUES_CON_AUDIO.mp4",
+    "bytes": 2418022,
+    "sha256": "b35ea936b1eb9c1c7b70213ddeadf7bce5efd477bd70259012a7e4d1d1d30116"
+  },
+  "PCM_sha256": "4d31b31ff3aec2014dfaab708b699fb77a60621b1cf5ccfbf91f2dd54fbbc4e0",
+  "patch_before": {
+    "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\antes_mux_sin_limite.mp4",
+    "target": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\ANTES_CON_AUDIO.mp4",
+    "source_sha256": "a471c9a5ee87c77aea5a0a32e2c70956fc465b5a91cdcec78c275a06963b6243",
+    "target_sha256": "9c96148839b9a4439aa3ef3acdb29c27237db2c1bafefa901082a993af04ba3e",
+    "bytes": 2434117,
+    "duration_seconds": 20,
+    "operation": "Only existing mvhd/tkhd/elst duration integer fields in a new MP4 copy. No packet/media/timing-table payload changes. Final ffprobe/decode still required.",
+    "patches": [
+      {
+        "field": "mvhd.duration",
+        "offset": 64,
+        "old": 20006,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak1.tkhd.duration",
+        "offset": 184,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak1.elst.segment_duration",
+        "offset": 272,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak2.tkhd.duration",
+        "offset": 10319,
+        "old": 20006,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak2.elst.segment_duration",
+        "offset": 10407,
+        "old": 20005,
+        "new": 20000,
+        "width": 4
+      }
+    ]
+  },
+  "patch_after": {
+    "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\despues_mux_sin_limite.mp4",
+    "target": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\DESPUES_CON_AUDIO.mp4",
+    "source_sha256": "b35ea936b1eb9c1c7b70213ddeadf7bce5efd477bd70259012a7e4d1d1d30116",
+    "target_sha256": "b35ea936b1eb9c1c7b70213ddeadf7bce5efd477bd70259012a7e4d1d1d30116",
+    "bytes": 2418022,
+    "duration_seconds": 20,
+    "operation": "Only existing mvhd/tkhd/elst duration integer fields in a new MP4 copy. No packet/media/timing-table payload changes. Final ffprobe/decode still required.",
+    "patches": [
+      {
+        "field": "mvhd.duration",
+        "offset": 64,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak1.tkhd.duration",
+        "offset": 184,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak1.elst.segment_duration",
+        "offset": 272,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak2.tkhd.duration",
+        "offset": 10335,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      },
+      {
+        "field": "trak2.elst.segment_duration",
+        "offset": 10423,
+        "old": 20000,
+        "new": 20000,
+        "width": 4
+      }
+    ]
+  },
+  "commands": [
+    [
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\presentacion_clara\\herramientas\\ffmpeg.exe",
+      "-hide_banner",
+      "-n",
+      "-i",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\clips\\S08.mp4",
+      "-ss",
+      "150",
+      "-i",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\PROYECTO_INTACTO\\DEE_Cognitive_5min_MASTER_1080p_ES_ENsub.mp4",
+      "-map",
+      "0:v:0",
+      "-map",
+      "1:a:0",
+      "-c",
+      "copy",
+      "-t",
+      "20",
+      "-use_editlist",
+      "1",
+      "-avoid_negative_ts",
+      "disabled",
+      "-movflags",
+      "+faststart",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\antes_mux_sin_limite.mp4"
+    ],
+    [
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\presentacion_clara\\herramientas\\ffmpeg.exe",
+      "-hide_banner",
+      "-n",
+      "-i",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\CORREGIDA_SIN_AUDIO.mp4",
+      "-i",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\ANTES_CON_AUDIO.mp4",
+      "-map",
+      "0:v:0",
+      "-map",
+      "1:a:0",
+      "-c",
+      "copy",
+      "-t",
+      "20",
+      "-use_editlist",
+      "1",
+      "-avoid_negative_ts",
+      "disabled",
+      "-movflags",
+      "+faststart",
+      "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\CORRECCION_POR_ESCENAS_01\\escenas\\S08\\comparacion\\despues_mux_sin_limite.mp4"
+    ]
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "schema": "APD02.goal_operational_restore.pure.R02",
+  "cases": [
+    {
+      "case": "after_query",
+      "initial_cursor": 1,
+      "after_cursor": 2,
+      "completed": true,
+      "uncertain": false,
+      "artifact_count": 1,
+      "state_sha256": "976340eab9d6fe513e370269e15bbe30ed984f12704b2229e7771ba01ad996db",
+      "child_sha256": "f2ba84f25a1ff0fbb088b7631f0672e97fd63798f216b98d19d5c72f7d0713ea",
+      "state_equal_before_next_step": true,
+      "separate_child_process": true,
+      "native_ticks": 0
+    },
+    {
+      "case": "after_wrong_act",
+      "initial_cursor": 1,
+      "after_cursor": 2,
+      "completed": true,
+      "uncertain": false,
+      "artifact_count": 2,
+      "state_sha256": "51e8e5603ca4531962f19022c4ed95818ee7cfad3322d1caf3531b3d9569e620",
+      "child_sha256": "128aa39bdc5cfcb0778eb22b0d8153d6706216344f4fdcb32143cf4baf1f22fd",
+      "state_equal_before_next_step": true,
+      "separate_child_process": true,
+      "native_ticks": 0
+    },
+    {
+      "case": "uncertain",
+      "initial_cursor": 1,
+      "after_cursor": 1,
+      "completed": false,
+      "uncertain": true,
+      "artifact_count": 1,
+      "state_sha256": "e3ba2250ab1caada6a6ed560f926b4753a35b307d260e6e1b570cdf11b497c87",
+      "child_sha256": "cfc3c70967c5934a3b60bf2e419c5333c7a61942bf5e9b5d8b731701ab75eb9a",
+      "state_equal_before_next_step": true,
+      "separate_child_process": true,
+      "native_ticks": 0
+    },
+    {
+      "case": "completed",
+      "initial_cursor": 1,
+      "after_cursor": 1,
+      "completed": true,
+      "uncertain": false,
+      "artifact_count": 1,
+      "state_sha256": "a7df8ef32cc20062551090254c90427c9c0002f93395c9b0df59f0d6adafd152",
+      "child_sha256": "eda9a9eb0e2c316f3bcf823c5972eebddc471e253cd438a3a65999b6b2dc4d5b",
+      "state_equal_before_next_step": true,
+      "separate_child_process": true,
+      "native_ticks": 0
+    },
+    {
+      "case": "exhausted",
+      "initial_cursor": 4,
+      "after_cursor": 4,
+      "completed": false,
+      "uncertain": false,
+      "artifact_count": 0,
+      "state_sha256": "fa37fa3f4e68e9c931bc0fef66edc0ee21c9fd39d7e6bb50cf738a866f2a6abe",
+      "child_sha256": "dc6302b38ab3eea0e288d4a8ead4f6f5c71986c5daee9913c1935cf5a29e855d",
+      "state_equal_before_next_step": true,
+      "separate_child_process": true,
+      "native_ticks": 0
+    }
+  ],
+  "driver_one_step_fixture": {
+    "kind": "APD02.goal_clarification_apparatus.prospective.R02",
+    "opportunities": [
+      {
+        "opportunity": 1,
+        "public_observation": {
+          "task_id": "single_step",
+          "text": "suma",
+          "left": 7,
+          "second": null
+        },
+        "word": {
+          "reader": {
+            "formed_native_command": 1
+          },
+          "synthetic_fixture": true
+        },
+        "native_selection": {
+          "reader": {
+            "choice": 0
+          },
+          "synthetic_fixture": true
+        },
+        "environment_effect": {
+          "version": "APD02.goal_clarification_environment.prospective.R02",
+          "opportunity": 1,
+          "public_before": {
+            "task_id": "single_step",
+            "text": "suma",
+            "left": 7,
+            "second": null
+          },
+          "physical_action_sign": 0,
+          "physical_operation_sign": 1,
+          "selected_action": "QUERY",
+          "native_provider_called": false,
+          "committed_effect": null,
+          "quality": null,
+          "private_value_sent_to_participant": true,
+          "actuator_initiative": "Only the supplied physical sign selects ACT/QUERY; operator schedules the opportunity",
+          "environment_effect": "SECOND_OPERAND_OBSERVED",
+          "revealed_observation": {
+            "second": 4
+          },
+          "feedback": {
+            "category": "FAILURE"
+          },
+          "consequence_reason_private_auditor": "INCOMPLETE: querying reveals an actual raw operand but produces no verified goal file. This is not a correction or an ACT instruction.",
+          "public_after": {
+            "task_id": "single_step",
+            "text": "suma",
+            "left": 7,
+            "second": 4
+          },
+          "progress_after": {
+            "opportunities_used": 1,
+            "max_opportunities": 4,
+            "second_observed": true,
+            "verified_file_goal_completed": false,
+            "uncertain_effect": null,
+            "filesystem_artifacts": [],
+            "not_a_plan_or_recommended_next_action": true
+          }
+        },
+        "native_numeric": [],
+        "common_return": {
+          "synthetic_fixture": true
+        },
+        "mode": "real",
+        "actor_received_private_audit": false,
+        "no_next_action_computed_from_progress": true
+      }
+    ],
+    "progress": {
+      "opportunities_used": 1,
+      "max_opportunities": 4,
+      "second_observed": true,
+      "verified_file_goal_completed": false,
+      "uncertain_effect": null,
+      "filesystem_artifacts": [],
+      "not_a_plan_or_recommended_next_action": true
+    },
+    "scope": "At most four operator-scheduled opportunities. Native selected QUERY can reveal an operand; native selected ACT can use it. Arithmetic is prepared; generic feedback is external; termination on a verified file is assisted. No missing-data semantic input or autonomous goal invention is claimed."
+  },
+  "issues": [],
+  "new_native_ticks": 0,
+  "engine_imported": false,
+  "fixture_actions_are_not_a_DEE_policy": true,
+  "sources": {
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\probar_restauracion_pura_r02.py": "95c88cfefb8aca7e9c21ff17d4e179c496b37cc65f52aee0378fd71671afd03d",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\entorno_objetivo_aclaracion_r02.py": "4961154395f149d90f85ef8cad4eb102786871698d9cffc01538f5de92adc9da",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\aparato_objetivo_aclaracion_r02.py": "30f123ace0ba8182ac258419c92a75faf381e65ea63e8d34ed16b276ea02faae",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\calidad\\evaluador_calidad_apd02.py": "f6012233a9833b763818d2641047e74bc4e48a41bf1ed51cf7c6b64996c48b11",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\calidad\\proveedores_prueba_apd02.py": "5778dfa6eafcd7f015f7071618e63f2e9a2d4d068994022ceffd19155e276559"
+  },
+  "scope": "Pure environment persistence and actuator tests. Does not demonstrate native selection, learning, a complete paired Cognitive restart or a native response."
+}

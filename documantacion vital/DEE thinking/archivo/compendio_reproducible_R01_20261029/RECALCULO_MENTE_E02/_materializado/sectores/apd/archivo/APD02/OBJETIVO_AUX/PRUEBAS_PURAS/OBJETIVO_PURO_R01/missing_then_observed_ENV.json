@@ -1,0 +1,254 @@
+{
+  "version": "APD02.goal_clarification_environment.prospective.R01",
+  "public": {
+    "task_id": "missing_then_observed",
+    "text": "suma",
+    "left": 7,
+    "second": 4
+  },
+  "private_environment": {
+    "second": 4
+  },
+  "progress": {
+    "opportunities_used": 3,
+    "max_opportunities": 4,
+    "second_observed": true,
+    "verified_file_goal_completed": true,
+    "uncertain_effect": null,
+    "filesystem_artifacts": [
+      "missing_then_observed_attempt3.json"
+    ],
+    "not_a_plan_or_recommended_next_action": true
+  },
+  "events": [
+    {
+      "version": "APD02.goal_clarification_environment.prospective.R01",
+      "opportunity": 1,
+      "public_before": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": null
+      },
+      "physical_action_sign": -1,
+      "physical_operation_sign": 1,
+      "selected_action": "ACT",
+      "native_provider_called": false,
+      "committed_effect": null,
+      "quality": null,
+      "private_value_sent_to_participant": false,
+      "actuator_initiative": "Only the supplied physical sign selects ACT/QUERY; operator schedules the opportunity",
+      "environment_effect": "ACT_FAILED_MISSING_OBSERVATION",
+      "feedback": {
+        "category": "FAILURE"
+      },
+      "public_after": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": null
+      },
+      "progress_after": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": false,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [],
+        "not_a_plan_or_recommended_next_action": true
+      }
+    },
+    {
+      "version": "APD02.goal_clarification_environment.prospective.R01",
+      "opportunity": 2,
+      "public_before": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": null
+      },
+      "physical_action_sign": 0,
+      "physical_operation_sign": 1,
+      "selected_action": "QUERY",
+      "native_provider_called": false,
+      "committed_effect": null,
+      "quality": null,
+      "private_value_sent_to_participant": true,
+      "actuator_initiative": "Only the supplied physical sign selects ACT/QUERY; operator schedules the opportunity",
+      "environment_effect": "SECOND_OPERAND_OBSERVED",
+      "revealed_observation": {
+        "second": 4
+      },
+      "feedback": {
+        "category": "FAILURE"
+      },
+      "consequence_reason_private_auditor": "INCOMPLETE: querying reveals an actual raw operand but produces no verified goal file. This is not a correction or an ACT instruction.",
+      "public_after": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": 4
+      },
+      "progress_after": {
+        "opportunities_used": 2,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [],
+        "not_a_plan_or_recommended_next_action": true
+      }
+    },
+    {
+      "version": "APD02.goal_clarification_environment.prospective.R01",
+      "opportunity": 3,
+      "public_before": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": 4
+      },
+      "physical_action_sign": -1,
+      "physical_operation_sign": 1,
+      "selected_action": "ACT",
+      "native_provider_called": true,
+      "committed_effect": {
+        "task_id": "missing_then_observed_attempt3",
+        "state": "committed",
+        "selected_operation": "add",
+        "selected_procedure": "native",
+        "artifact": {
+          "relative_path": "missing_then_observed_attempt3.json",
+          "bytes": 157,
+          "sha256": "d3806565c61f5c74d1d294c8507c2d8908712d3392663b7881f3870a2a0dfb0b"
+        },
+        "price": 1,
+        "delay_ticks": 0,
+        "provider_calls": {
+          "native": 1,
+          "external": 0
+        },
+        "raw_provider_response": {
+          "value": 11,
+          "procedure": "native"
+        },
+        "used_value": 11,
+        "synthetic_fault": {},
+        "no_dual_execution_or_fallback": true,
+        "fixture_does_not_advance_DEE": true,
+        "effect_phase": "readback",
+        "effect_phases": [
+          "planned",
+          "before_compute",
+          "computed",
+          "opened",
+          "written",
+          "fsynced",
+          "readback"
+        ],
+        "requires_explicit_reconciliation": false,
+        "reported_value": 11
+      },
+      "quality": {
+        "schema": "DEE.APD02.post_commit_quality.v1",
+        "feedback": {
+          "category": "SUCCESS"
+        },
+        "axes": {
+          "terminal_action": true,
+          "same_task_identity": true,
+          "operation_corresponds_to_original_request": true,
+          "selected_procedure_admitted": true,
+          "artifact_present": true,
+          "artifact_valid": true,
+          "filesystem_effect_completed": true,
+          "safety": true,
+          "receipt_matches_actual_bytes": true,
+          "operands_match_original": true,
+          "artifact_matches_committed_action": true,
+          "numeric_correct_for_original_request": true,
+          "price_within_limit": true,
+          "delay_within_limit": true,
+          "resource_fields_valid": true
+        },
+        "valid_solution_before_resource_ranking": true,
+        "resource_acceptable": true,
+        "task_success": true,
+        "completed_task": true,
+        "completed_under_declared_limits": true,
+        "private_audit": {
+          "request": {
+            "task_id": "missing_then_observed_attempt3",
+            "text": "suma",
+            "operands": [
+              7,
+              4
+            ],
+            "required_operation": "add"
+          },
+          "selected_operation": "add",
+          "selected_procedure": "native",
+          "reference_value": 11,
+          "observed_artifact": {
+            "operands": [
+              7,
+              4
+            ],
+            "operation": "add",
+            "procedure": "native",
+            "schema": "DEE.APD02.calculation_artifact.v1",
+            "task_id": "missing_then_observed_attempt3",
+            "value": 11
+          },
+          "artifact_read": {
+            "relative_path": "missing_then_observed_attempt3.json",
+            "bytes_read": 157,
+            "sha256": "d3806565c61f5c74d1d294c8507c2d8908712d3392663b7881f3870a2a0dfb0b",
+            "receipt_matches_actual_bytes": true
+          },
+          "reported_value": 11,
+          "reported_value_correct_is_not_a_file_effect": true,
+          "price": 1,
+          "delay_ticks": 0,
+          "error": null,
+          "original_terminal_state": "committed",
+          "failure_class": null,
+          "reference_origin": "Conventional six-form evaluator table, resolved only after the action terminal record; never sent to an actor or used to choose its operation."
+        },
+        "evaluation_resources": {
+          "external_reference_operations": 1,
+          "bytes_read": 157,
+          "host_wall_seconds": 0.003446099814027548,
+          "host_cpu_seconds": 0.0,
+          "not_DEE_computation": true
+        },
+        "scope": "Post-action external evaluator. Only feedback.category may enter the participant. It does not choose a route, call another procedure, correct a number, learn for DEE or provide an OS sandbox. Deliberate abstention and no response are not completed tasks. Completed valid work and compliance with resource limits remain separate."
+      },
+      "private_value_sent_to_participant": false,
+      "actuator_initiative": "Only the supplied physical sign selects ACT/QUERY; operator schedules the opportunity",
+      "feedback": {
+        "category": "SUCCESS"
+      },
+      "environment_effect": "VERIFIED_GOAL_FILE",
+      "public_after": {
+        "task_id": "missing_then_observed",
+        "text": "suma",
+        "left": 7,
+        "second": 4
+      },
+      "progress_after": {
+        "opportunities_used": 3,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": true,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [
+          "missing_then_observed_attempt3.json"
+        ],
+        "not_a_plan_or_recommended_next_action": true
+      }
+    }
+  ],
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\evidencia\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\OBJETIVO_PURO_R01\\missing_then_observed",
+  "actor_access": "Only observation() and projected feedback; private_environment/events belong to environment and auditor"
+}

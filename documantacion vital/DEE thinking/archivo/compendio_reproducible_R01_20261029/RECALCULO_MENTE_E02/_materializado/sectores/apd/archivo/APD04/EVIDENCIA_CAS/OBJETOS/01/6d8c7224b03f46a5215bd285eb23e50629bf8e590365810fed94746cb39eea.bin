@@ -1,0 +1,102 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "CLOSED_FOR_EXECUTION",
+  "life": "APD04_MAIN",
+  "world_id": "APD04_MAIN",
+  "initial_snapshot_sha256": "d1f7fcfefb3a1b3795a049afb8526f2c560cc895072922e0d23c0859fc2fe468",
+  "initial_tick": 604825,
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 120,
+  "closing_reserve_seconds": 180,
+  "heartbeat_seconds": 30,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/sensor_componentes_apd04.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "material",
+      "request_id": "apd04main_pilot_r01_environment",
+      "situations": [
+        {
+          "modo": "apd04-iniciar",
+          "semilla": 40401,
+          "fuentes": 2,
+          "etiqueta_objetivo": 0,
+          "palabra": "clasifica",
+          "cargas": [
+            8,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "at_seconds": 5,
+      "kind": "material",
+      "request_id": "apd04main_pilot_r01_first_four",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false
+        }
+      ]
+    },
+    {
+      "at_seconds": 45,
+      "kind": "material",
+      "request_id": "apd04main_pilot_r01_context_change",
+      "situations": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra"
+        }
+      ]
+    },
+    {
+      "at_seconds": 50,
+      "kind": "material",
+      "request_id": "apd04main_pilot_r01_second_four",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": false
+        }
+      ]
+    },
+    {
+      "at_seconds": 100,
+      "kind": "material",
+      "request_id": "apd04main_pilot_r01_function_uses",
+      "feedback": "omit",
+      "situations": [
+        {
+          "modo": "apd04-calibrar",
+          "casos": [
+            {
+              "tipo": "clasifica",
+              "valor": 23
+            },
+            {
+              "tipo": "equilibra",
+              "cargas": [
+                6,
+                6
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

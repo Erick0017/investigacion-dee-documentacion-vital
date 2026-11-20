@@ -1,0 +1,180 @@
+{
+  "arm": "signal_only",
+  "query": 13,
+  "responses": [
+    {
+      "tick": 11,
+      "position": [
+        10,
+        18,
+        8
+      ],
+      "raw": 1157143685092081665,
+      "clock_uint64": 11,
+      "state": 1,
+      "s_reg": 13,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "semantic": 1,
+      "raw_present": true,
+      "occupied": true
+    },
+    {
+      "tick": 11,
+      "position": [
+        10,
+        18,
+        24
+      ],
+      "raw": 1157143685092081665,
+      "clock_uint64": 11,
+      "state": 1,
+      "s_reg": 13,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "semantic": 1,
+      "raw_present": true,
+      "occupied": true
+    }
+  ],
+  "phi": [
+    [
+      true,
+      13,
+      -1,
+      0,
+      0,
+      1
+    ],
+    [
+      true,
+      13,
+      -1,
+      0,
+      0,
+      1
+    ]
+  ],
+  "residuals": [
+    0,
+    0
+  ],
+  "input_receipts": [
+    {
+      "id": 1,
+      "kind": "experience",
+      "status": "applied",
+      "requested_tick": 0,
+      "effective_tick": 0,
+      "channels": [
+        "l0.cue"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 2,
+      "kind": "experience",
+      "status": "applied",
+      "requested_tick": 0,
+      "effective_tick": 0,
+      "channels": [
+        "l1.cue"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 3,
+      "kind": "probe",
+      "status": "applied",
+      "requested_tick": 6,
+      "effective_tick": 6,
+      "channels": [
+        "q0.query"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 4,
+      "kind": "probe",
+      "status": "applied",
+      "requested_tick": 6,
+      "effective_tick": 6,
+      "channels": [
+        "q1.query"
+      ],
+      "reason": ""
+    }
+  ],
+  "host_writes_after_t0": {
+    "scheduled_calls_recorded_separately": true,
+    "applied_event_batches": 4,
+    "applied_physical_sites": 4,
+    "rejected_events": 0
+  },
+  "modality": "P",
+  "age_at_query": 6,
+  "ambiguity": "Physical fixed routes select two relation carriers; the finite acquisition uses explicit event contributions, not human labels.",
+  "case_id": "signal_only",
+  "branch": "L01",
+  "role": "control",
+  "execution_status": "MEASURED",
+  "level": 0,
+  "started_utc": "2026-10-08T17:37:42.425724+00:00",
+  "finished_utc": "2026-10-08T17:37:42.508920+00:00",
+  "checkpoints": [
+    {
+      "path": "CHECKPOINTS/L01/signal_only/BEFORE_EXPERIENCE.deetsnap",
+      "label": "BEFORE_EXPERIENCE",
+      "tick": 0,
+      "sha256": "62d9ed6704e8380123e919f27f6bc52d5b54fb752bef372679aedc075725d0dd",
+      "size": 631184
+    },
+    {
+      "path": "CHECKPOINTS/L01/signal_only/AFTER_EXPERIENCE.deetsnap",
+      "label": "AFTER_EXPERIENCE",
+      "tick": 6,
+      "sha256": "ac3183712baa63f661bd0c99ff00ecd9d9729c097fc7361b741e06791901c87c",
+      "size": 631274
+    },
+    {
+      "path": "CHECKPOINTS/L01/signal_only/BEFORE_QUERY.deetsnap",
+      "label": "BEFORE_QUERY",
+      "tick": 6,
+      "sha256": "ac3183712baa63f661bd0c99ff00ecd9d9729c097fc7361b741e06791901c87c",
+      "size": 631274
+    },
+    {
+      "path": "CHECKPOINTS/L01/signal_only/FINAL.deetsnap",
+      "label": "FINAL",
+      "tick": 11,
+      "sha256": "00abc3ac0f134e1b2f330b93b6ea7d18636bae45dffe28652ad954c18d9250c4",
+      "size": 631368
+    }
+  ],
+  "runtime_ticks_executed": 11,
+  "instrumentation_scope": "local actual observations plus declared ballistic predictions, full RAW/uint64 clocks in checkpoints",
+  "instrumental_corrections": [
+    {
+      "field": "host_writes_after_t0",
+      "previous": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 0,
+        "applied_physical_sites": 0,
+        "rejected_events": 0
+      },
+      "reason": "native EventStatus string is lowercase; recount uses enum equality and checkpoint receipts",
+      "new": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 4,
+        "applied_physical_sites": 4,
+        "rejected_events": 0
+      }
+    }
+  ]
+}

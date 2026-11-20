@@ -1,0 +1,637 @@
+{
+  "question": "Can one query physically use two separately acquired relations in sequence?",
+  "numeric_budget_criterion": "common final query differs under both history omissions and intermediate route cut",
+  "status": "MEASURED",
+  "levels_executed": [
+    0,
+    1,
+    2
+  ],
+  "measurement_files": [
+    {
+      "case": "full",
+      "path": "BRANCHES/L05/full/MEASUREMENTS.json",
+      "sha256": "11400a70571ff2291b967fa168464f5063d076b0473a358cddd4ec05e58a4caf"
+    },
+    {
+      "case": "lineage_reuse_query",
+      "path": "BRANCHES/L05/lineage_reuse_query/MEASUREMENTS.json",
+      "sha256": "539c5de3e76db007c7e0c3de9e8f4cdf93ee1fa9782301724ed863bdd5e1c42c"
+    },
+    {
+      "case": "link_cut",
+      "path": "BRANCHES/L05/link_cut/MEASUREMENTS.json",
+      "sha256": "96129087fbd3880ec58cef6f859c181f6b1e2a1dc4c15e8600f121894cef6c62"
+    },
+    {
+      "case": "omit1",
+      "path": "BRANCHES/L05/omit1/MEASUREMENTS.json",
+      "sha256": "c1aa2173a8eec4da514c07db82c4b52357286b9064d3b65a42944bd7ffecb490"
+    },
+    {
+      "case": "omit2",
+      "path": "BRANCHES/L05/omit2/MEASUREMENTS.json",
+      "sha256": "cf83040e73f9fa211777dfff2b9ef31ce48c9c449167188de93933526be2f178"
+    },
+    {
+      "case": "reserve0_full",
+      "path": "BRANCHES/L05/reserve0_full/MEASUREMENTS.json",
+      "sha256": "7cbefb29eaa2e858468ff4694b6f2c6805d4b983c859c5100715a087c7a7b1bc"
+    },
+    {
+      "case": "reserve0_link_cut",
+      "path": "BRANCHES/L05/reserve0_link_cut/MEASUREMENTS.json",
+      "sha256": "458448c23d7c32caccf732c7454ee5b0acc59abb5e42cd4a128c24b0b78e3d0c"
+    },
+    {
+      "case": "reserve1_full",
+      "path": "BRANCHES/L05/reserve1_full/MEASUREMENTS.json",
+      "sha256": "dff52e0e43627e1c979d0bb0c92d6f81521ed718f752a544ef7878505ede25bf"
+    },
+    {
+      "case": "reserve1_link_cut",
+      "path": "BRANCHES/L05/reserve1_link_cut/MEASUREMENTS.json",
+      "sha256": "5ab9337e5f58f46710e7e90df7c95780208aa0492db5cfd91a7e4d61fe6da21b"
+    }
+  ],
+  "pending": "Transformations are additive/mobile and queries transform the same carriers.",
+  "scope": "Descriptive finite panel measurements; not an automatic cognitive verdict.",
+  "physical_serial_responses": {
+    "full": {
+      "first": {
+        "position": [
+          10,
+          18,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          5,
+          23,
+          8
+        ],
+        "state": 1,
+        "s_reg": 49,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          1,
+          27,
+          8
+        ],
+        "state": 1,
+        "s_reg": 49,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "lineage_reuse_query": {
+      "first": {
+        "position": [
+          10,
+          18,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          5,
+          23,
+          8
+        ],
+        "state": 1,
+        "s_reg": 49,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          30,
+          32,
+          8
+        ],
+        "state": 1,
+        "s_reg": 66,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 25
+      },
+      "reuse": {
+        "position": [
+          30,
+          32,
+          8
+        ],
+        "state": 1,
+        "s_reg": 66,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 25
+      },
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 2,
+        "applied_physical_sites": 2,
+        "rejected_events": 0
+      }
+    },
+    "link_cut": {
+      "first": {
+        "position": [
+          10,
+          18,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          5,
+          23,
+          8
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          5,
+          27,
+          8
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": {
+        "modality": "DIAGNOSTIC",
+        "tick": 13,
+        "label": "late_intermediate_cut",
+        "site": [
+          8,
+          20,
+          8
+        ],
+        "raw_before": 1161647336259059713,
+        "raw_after": 0,
+        "clock_before": 13,
+        "clock_after": 13
+      },
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "omit1": {
+      "first": {
+        "position": [
+          10,
+          18,
+          8
+        ],
+        "state": 1,
+        "s_reg": 13,
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          5,
+          23,
+          8
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          5,
+          27,
+          8
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "omit2": {
+      "first": {
+        "position": [
+          10,
+          18,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          5,
+          23,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          1,
+          27,
+          8
+        ],
+        "state": 1,
+        "s_reg": 25,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "reserve0_full": {
+      "first": {
+        "position": [
+          12,
+          21,
+          9
+        ],
+        "state": 1,
+        "s_reg": 29,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          7,
+          26,
+          9
+        ],
+        "state": 1,
+        "s_reg": 53,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          3,
+          30,
+          9
+        ],
+        "state": 1,
+        "s_reg": 53,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "reserve0_link_cut": {
+      "first": {
+        "position": [
+          12,
+          21,
+          9
+        ],
+        "state": 1,
+        "s_reg": 29,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          7,
+          26,
+          9
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          7,
+          30,
+          9
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": {
+        "modality": "DIAGNOSTIC",
+        "tick": 13,
+        "label": "late_intermediate_cut",
+        "site": [
+          10,
+          23,
+          9
+        ],
+        "raw_before": 1161647353438928897,
+        "raw_after": 0,
+        "clock_before": 13,
+        "clock_after": 13
+      },
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "reserve1_full": {
+      "first": {
+        "position": [
+          14,
+          20,
+          11
+        ],
+        "state": 1,
+        "s_reg": 31,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          9,
+          25,
+          11
+        ],
+        "state": 1,
+        "s_reg": 55,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          5,
+          29,
+          11
+        ],
+        "state": 1,
+        "s_reg": 55,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": null,
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    },
+    "reserve1_link_cut": {
+      "first": {
+        "position": [
+          14,
+          20,
+          11
+        ],
+        "state": 1,
+        "s_reg": 31,
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 11
+      },
+      "second": {
+        "position": [
+          9,
+          25,
+          11
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 16
+      },
+      "descendant": {
+        "position": [
+          9,
+          29,
+          11
+        ],
+        "state": 1,
+        "s_reg": 24,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "semantic": 1,
+        "clock_uint64": 20
+      },
+      "reuse": null,
+      "intervention": {
+        "modality": "DIAGNOSTIC",
+        "tick": 13,
+        "label": "late_intermediate_cut",
+        "site": [
+          12,
+          22,
+          11
+        ],
+        "raw_before": 1161647362028863489,
+        "raw_after": 0,
+        "clock_before": 13,
+        "clock_after": 13
+      },
+      "inputs": {
+        "scheduled_calls_recorded_separately": true,
+        "applied_event_batches": 1,
+        "applied_physical_sites": 1,
+        "rejected_events": 0
+      }
+    }
+  }
+}

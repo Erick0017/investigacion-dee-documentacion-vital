@@ -1,0 +1,78 @@
+{
+  "external_calls": [
+    {
+      "operation": "probe",
+      "called_at_tick": 202,
+      "id": 1,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 202,
+      "effective_tick": null,
+      "channels": [
+        "common_query"
+      ],
+      "reason": ""
+    }
+  ],
+  "research_edits": [
+    {
+      "modality": "DIAGNOSTIC",
+      "tick": 50,
+      "label": "late_action",
+      "site": [
+        31,
+        31,
+        15
+      ],
+      "raw_before": 1224979175954186241,
+      "raw_after": 0,
+      "clock_before": 50,
+      "clock_after": 50
+    },
+    {
+      "modality": "DIAGNOSTIC",
+      "tick": 86,
+      "label": "external_one_site_environmental_replay",
+      "site": [
+        31,
+        31,
+        4
+      ],
+      "raw_before": 2238570545614422017,
+      "raw_after": 1157706712354914305,
+      "clock_before": 86,
+      "clock_after": 86
+    }
+  ],
+  "receipts_by_runtime": [
+    {
+      "tick": 50,
+      "events": []
+    },
+    {
+      "tick": 86,
+      "events": []
+    },
+    {
+      "tick": 202,
+      "events": []
+    },
+    {
+      "tick": 205,
+      "events": [
+        {
+          "id": 1,
+          "kind": "probe",
+          "status": "rejected_occupied",
+          "requested_tick": 202,
+          "effective_tick": null,
+          "channels": [
+            "common_query"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ]
+    }
+  ],
+  "note": "Fork receipts can share a prefix; never sum inherited receipts as new calls."
+}

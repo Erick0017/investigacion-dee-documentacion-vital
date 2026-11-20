@@ -1,0 +1,68 @@
+{
+  "external_calls": [
+    {
+      "operation": "probe",
+      "called_at_tick": 202,
+      "id": 1,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 202,
+      "effective_tick": null,
+      "channels": [
+        "common_query"
+      ],
+      "reason": "",
+      "runtime_ref": 2,
+      "payload": 7
+    }
+  ],
+  "research_edits": [
+    {
+      "modality": "DIAGNOSTIC",
+      "tick": 50,
+      "label": "late_action",
+      "site": [
+        38,
+        36,
+        24
+      ],
+      "raw_before": 1224979175954186241,
+      "raw_after": 0,
+      "clock_before": 50,
+      "clock_after": 50
+    }
+  ],
+  "receipts_by_runtime": [
+    {
+      "runtime_ref": 0,
+      "initial_tick": 32,
+      "tick": 50,
+      "events": []
+    },
+    {
+      "runtime_ref": 1,
+      "initial_tick": 50,
+      "tick": 202,
+      "events": []
+    },
+    {
+      "runtime_ref": 2,
+      "initial_tick": 202,
+      "tick": 205,
+      "events": [
+        {
+          "id": 1,
+          "kind": "probe",
+          "status": "rejected_occupied",
+          "requested_tick": 202,
+          "effective_tick": null,
+          "channels": [
+            "common_query"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ]
+    }
+  ],
+  "note": "Fork receipts can share a prefix; never sum inherited receipts as new calls."
+}

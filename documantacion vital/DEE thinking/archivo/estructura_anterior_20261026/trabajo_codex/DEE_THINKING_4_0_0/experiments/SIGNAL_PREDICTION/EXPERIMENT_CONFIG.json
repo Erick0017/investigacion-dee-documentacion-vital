@@ -1,0 +1,143 @@
+{
+  "schema": "dee4.signal_prediction.frozen.v1",
+  "frozen_utc": "2026-10-14T11:22:44.184656+00:00",
+  "cases": [
+    {
+      "id": "present_then_absent",
+      "detector": [
+        12,
+        12,
+        12
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "source_offset": 0,
+      "restore_witness": true
+    },
+    {
+      "id": "absent_then_present",
+      "detector": [
+        12,
+        12,
+        12
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "source_offset": -1
+    },
+    {
+      "id": "omitted_history_same_present_world",
+      "detector": [
+        12,
+        12,
+        12
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "source_offset": 0,
+      "omit_experience": true
+    },
+    {
+      "id": "present_future_route_obstacle",
+      "detector": [
+        12,
+        12,
+        12
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "source_offset": 0,
+      "obstacle": true
+    },
+    {
+      "id": "reserved_present_minusY",
+      "detector": [
+        18,
+        16,
+        20
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "source_offset": 0,
+      "reserved": true
+    },
+    {
+      "id": "reserved_absent_minusY",
+      "detector": [
+        18,
+        16,
+        20
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "source_offset": -1,
+      "reserved": true
+    }
+  ],
+  "physical_world": {
+    "N": 35,
+    "initial_tick": 32,
+    "state": 1,
+    "semantic": 1,
+    "s_reg": 7,
+    "local_clock": 0,
+    "obstacle_offset": 8,
+    "obstacle_semantic": 4
+  },
+  "body": {
+    "profile": "continuity",
+    "history": "H0 before sensor experiences",
+    "N": 47,
+    "initial_tick": 32,
+    "initial_open": false,
+    "change_tick": null
+  },
+  "sensor": {
+    "times": [
+      32,
+      33
+    ],
+    "codec": "current active -> A; current inactive -> B",
+    "active_predicate": "state>0 and semantic!=5",
+    "mode": "EXTERNAL_LOCAL_OBSERVER_AND_INPUT"
+  },
+  "prediction": {
+    "query_tick": 34,
+    "emission_tick": 37,
+    "horizon": 30,
+    "target_tick": 67,
+    "period35": "Prepared geometric context, not acquired period estimate"
+  },
+  "comparison": {
+    "truth": "ONLY local detector observation at67",
+    "ambiguous": "null singleton correctness; not numeric zero",
+    "matched_control": "same current32/33 observations for obstacle and no obstacle",
+    "reserved": "fixed translation and minusY orientation; no refit"
+  },
+  "resource_limit": {
+    "cases": 6,
+    "process_timeout_seconds": 180,
+    "threads_per_runtime": 1,
+    "maximum_technical_corrections": 2
+  },
+  "attribution": "Native acquired relation and prior physical emission; external inter-Runtime sensor and target evaluation",
+  "no_main_operational_fork": true
+}

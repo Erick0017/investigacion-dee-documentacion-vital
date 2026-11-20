@@ -1,0 +1,85 @@
+{
+  "external_calls": [
+    {
+      "operation": "experience",
+      "called_at_tick": 32,
+      "id": 1,
+      "kind": "experience",
+      "status": "scheduled",
+      "requested_tick": 161,
+      "effective_tick": null,
+      "channels": [
+        "common_event"
+      ],
+      "reason": "",
+      "runtime_ref": 0,
+      "payload": 0
+    },
+    {
+      "operation": "probe",
+      "called_at_tick": 202,
+      "id": 2,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 202,
+      "effective_tick": null,
+      "channels": [
+        "common_query"
+      ],
+      "reason": "",
+      "runtime_ref": 1,
+      "payload": 7
+    }
+  ],
+  "research_edits": [],
+  "receipts_by_runtime": [
+    {
+      "runtime_ref": 0,
+      "initial_tick": 32,
+      "tick": 202,
+      "events": [
+        {
+          "id": 1,
+          "kind": "experience",
+          "status": "rejected_occupied",
+          "requested_tick": 161,
+          "effective_tick": null,
+          "channels": [
+            "common_event"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ]
+    },
+    {
+      "runtime_ref": 1,
+      "initial_tick": 202,
+      "tick": 205,
+      "events": [
+        {
+          "id": 1,
+          "kind": "experience",
+          "status": "rejected_occupied",
+          "requested_tick": 161,
+          "effective_tick": null,
+          "channels": [
+            "common_event"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        },
+        {
+          "id": 2,
+          "kind": "probe",
+          "status": "rejected_occupied",
+          "requested_tick": 202,
+          "effective_tick": null,
+          "channels": [
+            "common_query"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ]
+    }
+  ],
+  "note": "Fork receipts can share a prefix; never sum inherited receipts as new calls."
+}

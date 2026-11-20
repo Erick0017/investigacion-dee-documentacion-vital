@@ -1,0 +1,77 @@
+{
+  "external_calls": [
+    {
+      "operation": "experience",
+      "called_at_tick": 32,
+      "id": 1,
+      "kind": "experience",
+      "status": "scheduled",
+      "requested_tick": 162,
+      "effective_tick": null,
+      "channels": [
+        "common_event"
+      ],
+      "reason": ""
+    },
+    {
+      "operation": "probe",
+      "called_at_tick": 202,
+      "id": 2,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 202,
+      "effective_tick": null,
+      "channels": [
+        "common_query"
+      ],
+      "reason": ""
+    }
+  ],
+  "research_edits": [],
+  "receipts_by_runtime": [
+    {
+      "tick": 202,
+      "events": [
+        {
+          "id": 1,
+          "kind": "experience",
+          "status": "applied",
+          "requested_tick": 162,
+          "effective_tick": 162,
+          "channels": [
+            "common_event"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "tick": 205,
+      "events": [
+        {
+          "id": 1,
+          "kind": "experience",
+          "status": "applied",
+          "requested_tick": 162,
+          "effective_tick": 162,
+          "channels": [
+            "common_event"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "kind": "probe",
+          "status": "rejected_occupied",
+          "requested_tick": 202,
+          "effective_tick": null,
+          "channels": [
+            "common_query"
+          ],
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ]
+    }
+  ],
+  "note": "Fork receipts can share a prefix; never sum inherited receipts as new calls."
+}

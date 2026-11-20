@@ -1,0 +1,39 @@
+{
+  "format": "DEE_THINKING_COMPOSITION_V1",
+  "dimension": 127,
+  "organizations": [
+    {
+      "instance": "context",
+      "catalog_id": "distributed_context.i05.v1",
+      "constructor_version": "1.0.0",
+      "anchor": [
+        30,
+        30,
+        30
+      ],
+      "parameters": {}
+    },
+    {
+      "instance": "history",
+      "catalog_id": "relative_history.i02.v1",
+      "constructor_version": "1.0.0",
+      "anchor": [
+        30,
+        30,
+        30
+      ],
+      "parameters": {
+        "history_mode": 1
+      }
+    }
+  ],
+  "connections": [
+    {
+      "source": "context.context_output",
+      "target": "history.context",
+      "purpose": "physical research connection",
+      "verification": "REQUIRES_SIMULATION",
+      "physical_contract": "Static route accepted; native v27 evolution determines survival and result."
+    }
+  ]
+}

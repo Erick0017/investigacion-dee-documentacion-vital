@@ -1,0 +1,142 @@
+{
+  "schema": "dee_thinking4.resumption_test_plan.v1",
+  "purpose": "Reuse closed engineering evidence while completing the partial delivery without repeating unchanged native work",
+  "review_modality": "READ_ONLY_SOURCE_AND_REPORT_REVIEW_NO_NATIVE_EXECUTION",
+  "baseline": {
+    "delivery_status": "PARTIAL_NOT_RELEASE_VERIFIED",
+    "version": "4.0.0",
+    "wheel": "wheel/dee_thinking-4.0.0-cp313-cp313-win_amd64.whl",
+    "wheel_sha256": "0932c4dc8dbb6e53de5f83a95ded60f8bfa820dde6219119899a8505646364a2",
+    "native_member": "dee_thinking/_native.cp313-win_amd64.pyd",
+    "native_member_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+    "kernel_source_sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+    "evidence_only_zip_read": true,
+    "runtime_not_imported_for_review": true
+  },
+  "reuse_conditions": [
+    "Preserve closed reports and their original commands, code identities and timeouts; do not replace historical attempts",
+    "Native-source/header/binding and build-option identities must remain unchanged; prefer carrying the same already-qualified native member into the wheel with changed Python files",
+    "A new wheel hash due only to changed Python/stubs is not a new physical mechanism; compare its native member hash separately",
+    "If a native member is rebuilt with different bytes, document source/toolchain/flags equivalence and run a directed final-binary smoke; do not silently claim old tests executed on the new binary",
+    "Changed facilitators require their own targeted tests even though the native tests remain reusable",
+    "Do not count capture ticks, repeated deterministic runs, retries or one result used by two analyses as independent replicates",
+    "If any closed native implementation changes, reopen only affected coverage explicitly; no blanket reuse claim"
+  ],
+  "closed_evidence_do_not_rerun_by_default": [
+    {
+      "id": "CPP22",
+      "unique_tests": 22,
+      "evidence": ["validation/ctest.xml", "validation/ctest_timeout_retry.xml"],
+      "evidence_sha256": ["2f4fe0aeb521a44f7a098b6234540d40b66dd2b9408f906c03139f2fb535735f", "46c928ca7179ea2d676b3a2545f29dff89f9abe9301323b4bd93be571e41941b"],
+      "closure": "All22 unique tests ultimately completed. reference_organizations and integrated_protocols first timed out, then passed their bounded retry; preserve both attempts, do not count24 tests.",
+      "native_rerun_required_for_Python_only_fixes": false
+    },
+    {
+      "id": "PYTHON36",
+      "tests": 36,
+      "modules": [
+        {"file": "test_basal_api.py", "tests": 5},
+        {"file": "test_cognition_facilitators.py", "tests": 7},
+        {"file": "test_cognitive_api.py", "tests": 5},
+        {"file": "test_informative4.py", "tests": 8},
+        {"file": "test_integrated_protocols.py", "tests": 5},
+        {"file": "test_wheel_api.py", "tests": 6}
+      ],
+      "evidence_directory": "validation/python_02",
+      "closure": "Six modules have successful complete reports, no failures/errors/skips. The historical seven facilitator tests remain closed for the original wheel; the changed module needs a distinct new result.",
+      "unchanged_tests_not_to_repeat": 29,
+      "changed_module_tests_to_requalify": 7
+    },
+    {
+      "id": "COGNITIVE_PARITY",
+      "captures": 24,
+      "evidence": "validation/cognitive_parity_01/COMPARISON.json",
+      "sha256": "5f5034935464fb925dff2e445a04a2650d7f802cfea57573291572a38d44550f",
+      "coverage": "Reference3.5 vs native4 full physical state, receipts and declared readouts, including continuing snapshots",
+      "closed_technical_equality": true
+    },
+    {
+      "id": "INFORMATIVE_PARITY",
+      "cases": 21,
+      "captures": 202,
+      "evidence": "validation/informative_parity_01/COMPARISON_REPORT.json",
+      "sha256": "6e0ac2ddacd978addae0519fdb1401ace1cef83f189a1256a7cd6eb53feef5ec",
+      "coverage": "8 finite-policy cases and13 native-information cases; full RAW/clocks hashes, all declared ports, receipts and relations; omissions, late action removal, selected/unselected cuts and reserved translations retained",
+      "closed_technical_equality": true
+    },
+    {
+      "id": "BACKENDS_PASSIVITY_PERSISTENCE",
+      "evidence": "validation/cognitive_technical_01/TECHNICAL_CHECKS.json",
+      "sha256": "2e552448592303f81bcbd39d15dcaf4e5e7df2658a1b80ec2f60aae4c528095b",
+      "closed": ["DenseSequential/DenseParallel/Lazy physical equality in declared windows", "passive/trace observation equality", "capture budget does not stop Runtime", "C++ to Python to C++ continuing snapshot equivalence"],
+      "native_rerun_required_for_Python_only_fixes": false
+    },
+    {
+      "id": "EXTERNAL_CPP_CONSUMER",
+      "evidence": "validation/consumer",
+      "recorded_exit_code": 0,
+      "closure": "External find_package consumer already used organization, transduction, observation, persistence and composition; native unchanged means its result is reusable. A final extracted-package location check is a packaging check, not a new mechanism."
+    }
+  ],
+  "pending_work": [
+    {
+      "id": "PENDING_ORGANIZATIONAL_PYTHON",
+      "status_at_review": "NOT_COMPLETE",
+      "file": "source/tests/python/test_organizational_api.py",
+      "declared_test_methods": 14,
+      "action": "Run only this unfinished module on the noneditable final candidate in an isolated supervised process; keep prior incomplete attempts separately",
+      "not_equivalent_to": "Rerunning the six closed Python modules"
+    },
+    {
+      "id": "PENDING_MBP4_PYTHON",
+      "status_at_review": "NOT_COMPLETE",
+      "file": "source/tests/python/test_mbp4_regressions.py",
+      "declared_test_methods": 9,
+      "action": "Run only this unfinished module with its preserved primary fixtures and declared timeouts; it is engineering regression, not a rerun of MBP4 scientific campaigns"
+    },
+    {
+      "id": "CHANGED_FACILITATORS_AND_STUBS",
+      "status_at_review": "FIXES_PRESERVED_NOT_IN_BASELINE_WHEEL",
+      "provenance": "evidence/UNBUILT_CLOSURE_FIXES/INDEX.json",
+      "declared_changed_files": ["source/python/dee_thinking/cognition.py", "source/python/dee_thinking/dialogue.py", "source/python/dee_thinking/__init__.pyi", "source/tests/python/test_cognition_facilitators.py"],
+      "action": "After applying declared fixes, package the actual changed Python files; rerun the facilitator module/new targeted assertions and validate stub/public-export consistency. Do not rerun unchanged C++ or native parity suites merely because the wheel ZIP hash changes.",
+      "required_edges": ["malformed saved interface metadata must not replace MAIN", "fixed parser aliases do not become acquired associations", "actual input status follows Runtime receipts", "composition decoded result is a mapping, not a native response object", "save/load profile integrity and no silent new preparation"]
+    },
+    {
+      "id": "FINAL_CLEAN_EXTRACTION",
+      "status_at_review": "NOT_EXECUTED",
+      "action": "Install final noneditable wheel from a separate clean extraction, import from site-packages, check version/kernel/native-member identity, exercise one CPC3 mechanism and one new reserved public question, save/load and continue in another process",
+      "required_assertions": ["comparison reaches tick84 with signed marker/report_applied/represented expectation and current valid presentation", "original and restored comparison decoders agree", "query_composition returns decoded mapping with actually observed physical outputs", "no lab or old product import is required"],
+      "classification": "New location/changed-package qualification, not repetition of the closed scientific history"
+    },
+    {
+      "id": "BLOCK_II",
+      "status_at_review": "PREPARED_NOT_MEASURED",
+      "plans": 19,
+      "optional_same_Runtime_contrasts": 4,
+      "action": "Execute only newly frozen finite cases authorized for continuation. Save causal/configuration/receipt evidence incrementally. Do not convert plans or retained CPC3 reference data into new measurements.",
+      "evidence_review_chain": ["input/preparation", "native transition", "state/relationship acquired", "current readout", "control or omission", "functional domain", "what was external"],
+      "prohibited_shortcuts": ["forecast/error-dependent host write presented as native acquisition", "externally coupled Runtimes called same-world native transfer", "s_reg presented as temperature/energy", "parser/alias mapping presented as DEE-acquired Spanish", "terminal fixture returned as a new response"]
+    },
+    {
+      "id": "FINAL_PACKAGE",
+      "status_at_review": "NEW_CUT_PENDING",
+      "action": "Preserve previous partial delivery; seal final cut, check manifest/CRC/new-wheel contents and installed Python/native bytes; update root reports with actual results and remaining limitations, then atomically publish. Repackage saved evidence if packaging fails; do not repeat completed experiments."
+    }
+  ],
+  "reference_native_source_identities_at_review": {
+    "source/src/kernel_v27.cpp": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+    "source/src/runtime.cpp": "fa80e1668e7e1a3f55a57f4b10d7b75b8c6991ecdd69ecc6d5e179975ce64344",
+    "source/src/organizational.cpp": "20558eaad9dcb1d7e0a629380a0c0c9eaf53ce28a4b18bfbe0daaef038cfcb21",
+    "source/src/organization_recipes.cpp": "ffab8e426c7f44efde14aaddd351bf30a58b6b92a9119cfc095e06f0d07d02eb",
+    "source/src/cognitive.cpp": "cdfd359bd3533cf452b2d4779ead96b19a1cb9ac73cdabd1a64adb079ebb886c",
+    "source/src/informative.cpp": "d5ee928096106c8f656ee0c8089b5b585cc79dd14e37f62bc345626cad39cd7a",
+    "source/include/dee_thinking/cognitive.hpp": "7b447f030abc87ea17b539a8ee26d9cb6cf101a54613d4f5f9f76c325f113fc5",
+    "source/include/dee_thinking/informative.hpp": "9be02671e06732e287ec7128e6e7b5dd6959222d1f25a719c7e2a4213660bfbd",
+    "source/bindings/dee_thinking_pybind.cpp": "a6e5fc15728855d1754dbd63d4cafdf5da80af624d12008d4967a3d136384d33",
+    "source/bindings/cognitive_pybind.cpp": "d22f96fb94fc2557246aaad2d3bdca1fbe934c7645493b13fa555696a8039dcf",
+    "source/bindings/informative_pybind.cpp": "8ed3818f699e5971dd8e64d2b7b75061ff2a94ebe8f56d12bd69da27a6fdf561"
+  },
+  "not_a_root_validation_report": true,
+  "not_a_release_verdict": true
+}

@@ -1,0 +1,100 @@
+{
+  "external_calls": [
+    {
+      "operation": "probe",
+      "called_at_tick": 6,
+      "id": 1,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 6,
+      "effective_tick": null,
+      "channels": [
+        "query"
+      ],
+      "reason": "",
+      "runtime_ref": 0,
+      "payload": 0
+    },
+    {
+      "operation": "probe",
+      "called_at_tick": 16,
+      "id": 2,
+      "kind": "probe",
+      "status": "scheduled",
+      "requested_tick": 16,
+      "effective_tick": null,
+      "channels": [
+        "reserved_receiver_query"
+      ],
+      "reason": "",
+      "runtime_ref": 1,
+      "payload": 23
+    }
+  ],
+  "research_edits": [
+    {
+      "modality": "DIAGNOSTIC",
+      "tick": 13,
+      "label": "late_native_transfer_cut",
+      "site": [
+        45,
+        48,
+        36
+      ],
+      "raw_before": 1161647280424484865,
+      "raw_after": 0,
+      "clock_before": 13,
+      "clock_after": 13
+    }
+  ],
+  "receipts_by_runtime": [
+    {
+      "runtime_ref": 0,
+      "initial_tick": 0,
+      "tick": 13,
+      "events": [
+        {
+          "id": 1,
+          "kind": "probe",
+          "status": "applied",
+          "requested_tick": 6,
+          "effective_tick": 6,
+          "channels": [
+            "query"
+          ],
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "runtime_ref": 1,
+      "initial_tick": 13,
+      "tick": 21,
+      "events": [
+        {
+          "id": 1,
+          "kind": "probe",
+          "status": "applied",
+          "requested_tick": 6,
+          "effective_tick": 6,
+          "channels": [
+            "query"
+          ],
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "kind": "probe",
+          "status": "applied",
+          "requested_tick": 16,
+          "effective_tick": 16,
+          "channels": [
+            "reserved_receiver_query"
+          ],
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "note": "Fork receipts can share a prefix; never sum inherited receipts as new calls."
+}

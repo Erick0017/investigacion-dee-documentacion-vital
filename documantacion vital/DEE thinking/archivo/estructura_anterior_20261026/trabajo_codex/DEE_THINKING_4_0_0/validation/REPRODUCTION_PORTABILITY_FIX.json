@@ -1,0 +1,17 @@
+{
+  "scope": "Technical auditor-tool path repair only; no physics, installed product or frozen scientific runner changes",
+  "observed_failure": "The clean-extraction reproduction placed LOCAL_QUALIFICATION.json at output root, while the frozen runner resolves its wheel relative to a validation/ directory. The first replay stopped at artifact qualification before scientific evolution.",
+  "repair": "Create output/validation/LOCAL_QUALIFICATION.json and a byte-identical output/wheel copy under the same local identity gate. Preserve the original campaign budget and package.",
+  "tool_before_sha256": "eb8f4abba8089c6af926941498b60d1dda717a626598e1d7d3b0fe1374bf8354",
+  "tool_after_sha256": "fe20b9bf76ec5c8de256e1ab5ac50c40305cb8d944893358afe5d17077056ba7",
+  "preserved_attempt": "validation/final_extraction_attempt01/",
+  "preserved_tool": "validation/reproduce40_pre_pathfix.py",
+  "verification": "validation/FINAL_EXTRACTION_CHECK.json",
+  "additional_verification_tool_issues": [
+    "Fresh extraction attempts originally reused supervisor job IDs; IDs now include the extraction identity so earlier logs remain intact.",
+    "The continuation event file consumes query1 at11 before submitting query2. The verifier initially loaded PENDING2 at16, correctly causing the application to reject an unsupported third query. The verifier now loads the corresponding PENDING1 checkpoint; no application or physical rule was changed.",
+    "The resume guard now checks each argv element instead of a Python list repr, preserving Windows path separators. Already completed installation, smoke, trajectory and first dialogue were reused, not rerun."
+  ],
+  "final_technical_check": "All clean-extraction commands succeeded. Directed block and signal reproductions generated the same physical signatures. Pending-query restoration produced54 and73 in another process; the extracted C++ consumer compiled and ran.",
+  "new_scientific_claim": false
+}

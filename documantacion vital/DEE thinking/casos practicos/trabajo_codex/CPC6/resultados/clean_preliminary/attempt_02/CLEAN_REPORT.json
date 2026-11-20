@@ -1,0 +1,91 @@
+{
+  "schema": "CPC6.clean-reproduction.v1",
+  "status": "ERROR",
+  "candidate_sha256": "0516e25f436978817c09260a3e88a0270c639b3a486c94ad28afe16364cdf5a5",
+  "candidate_bytes": 36447130,
+  "plan_sha256": "97b6753ecaf62d22fe4cf87641b4b3f8be7801503ea24c35f59d6a8cf5ba433c",
+  "commands": [
+    {
+      "label": "00_venv",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env"
+      ],
+      "elapsed_seconds": 9.56291290000081,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "01_offline_install",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\extracted\\CPC6\\runtime\\dee_thinking-4.0.0-cp313-cp313-win_amd64.whl"
+      ],
+      "elapsed_seconds": 2.680879899999127,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "02_identity",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.0.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve())\nassert hashlib.sha256(pathlib.Path(d._native.__file__).read_bytes()).hexdigest()==sys.argv[1]\nassert not any(x.startswith(('dee_universe','CPC3','SEM01')) for x in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n 'module':str(module),'python':sys.executable,'native_sha256':sys.argv[1]},indent=2),encoding='utf-8')\n",
+        "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\ENGINE_IDENTITY.json"
+      ],
+      "elapsed_seconds": 0.40418950002640486,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "03_reference_sem01",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\extracted\\CPC6/src/reference_replay.py",
+        "--case",
+        "sem01",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\generated/reference_sem01"
+      ],
+      "elapsed_seconds": 7.872094499995001,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    }
+  ],
+  "explicit_posttrajectory_verification": [],
+  "error": "RuntimeError('Clean command failed: 04_reserved_and_causal_replay')",
+  "engine_identity": {
+    "version": "4.0.0",
+    "kernel": {
+      "kernel_version": 27,
+      "kernel_modulus": 19665,
+      "reducer_cap": 19664,
+      "native_module": true
+    },
+    "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+    "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2\\isolated_env\\Scripts\\python.exe",
+    "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066"
+  },
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE2",
+  "elapsed_seconds": 55.44746669998858,
+  "completed_utc": "2026-10-18T03:18:00.422909+00:00"
+}

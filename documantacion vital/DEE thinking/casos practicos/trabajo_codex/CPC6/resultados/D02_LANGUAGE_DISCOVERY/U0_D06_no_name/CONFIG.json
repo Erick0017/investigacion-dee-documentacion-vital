@@ -1,0 +1,1424 @@
+{
+  "schema": "CPC6.U0.config.v1",
+  "case": {
+    "id": "U0_D06_no_name",
+    "history": "AB",
+    "actual": -1,
+    "source_values": {
+      "P": 1,
+      "Q": -1
+    },
+    "language_mode": "omitted",
+    "horizon": 60,
+    "checkpoints": [
+      33,
+      53,
+      60
+    ]
+  },
+  "source_sha256": "b3e76a932171027049e9065ff6c0a360e22d0cfc296da3bf8856550b4efb1c8c",
+  "preparation": {
+    "schema": "CPC6.U0.geometry.v1",
+    "body": {
+      "n": 67,
+      "center": [
+        33,
+        25,
+        33
+      ],
+      "A": [
+        32,
+        25,
+        33
+      ],
+      "B": [
+        34,
+        25,
+        33
+      ],
+      "emission_site": [
+        33,
+        24,
+        33
+      ],
+      "emission_tick": 5,
+      "initial_phase": 260,
+      "initial_relation": 0,
+      "resource_sites": 11
+    },
+    "adapter": {
+      "schema": "CPC6.action_feedback.geometry.v1",
+      "N": 67,
+      "origin": [
+        33,
+        24,
+        33
+      ],
+      "emission_tick": 5,
+      "ticks": {
+        "comparison": 15,
+        "policy": 19,
+        "selection": 20,
+        "information": 23,
+        "late_request": 30,
+        "late_read": 33
+      },
+      "comparison_hubs": {
+        "left": [
+          23,
+          14,
+          33
+        ],
+        "right": [
+          43,
+          14,
+          33
+        ]
+      },
+      "branches": {
+        "left.match": {
+          "lane": "left",
+          "sign_reference": -1,
+          "comparison_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "policy_site": [
+            23,
+            10,
+            37
+          ],
+          "normalizer": [
+            1,
+            1,
+            -1
+          ],
+          "sources": {
+            "P": {
+              "query_site": [
+                24,
+                10,
+                37
+              ],
+              "policy_direction": [
+                1,
+                0,
+                0
+              ],
+              "action_direction": [
+                0,
+                0,
+                1
+              ],
+              "information_site": [
+                24,
+                10,
+                40
+              ]
+            },
+            "Q": {
+              "query_site": [
+                23,
+                9,
+                37
+              ],
+              "policy_direction": [
+                0,
+                -1,
+                0
+              ],
+              "action_direction": [
+                -1,
+                -1,
+                1
+              ],
+              "information_site": [
+                20,
+                6,
+                40
+              ]
+            }
+          }
+        },
+        "left.mismatch": {
+          "lane": "left",
+          "sign_reference": -1,
+          "comparison_direction_reference": [
+            -1,
+            -1,
+            1
+          ],
+          "policy_site": [
+            19,
+            10,
+            37
+          ],
+          "normalizer": [
+            1,
+            0,
+            -1
+          ],
+          "sources": {
+            "P": {
+              "query_site": [
+                20,
+                10,
+                37
+              ],
+              "policy_direction": [
+                1,
+                0,
+                0
+              ],
+              "action_direction": [
+                0,
+                0,
+                1
+              ],
+              "information_site": [
+                20,
+                10,
+                40
+              ]
+            },
+            "Q": {
+              "query_site": [
+                19,
+                9,
+                37
+              ],
+              "policy_direction": [
+                0,
+                -1,
+                0
+              ],
+              "action_direction": [
+                -1,
+                -1,
+                1
+              ],
+              "information_site": [
+                16,
+                6,
+                40
+              ]
+            }
+          }
+        },
+        "right.match": {
+          "lane": "right",
+          "sign_reference": 1,
+          "comparison_direction_reference": [
+            0,
+            -1,
+            1
+          ],
+          "policy_site": [
+            43,
+            10,
+            37
+          ],
+          "normalizer": [
+            1,
+            1,
+            -1
+          ],
+          "sources": {
+            "P": {
+              "query_site": [
+                44,
+                10,
+                37
+              ],
+              "policy_direction": [
+                1,
+                0,
+                0
+              ],
+              "action_direction": [
+                0,
+                0,
+                1
+              ],
+              "information_site": [
+                44,
+                10,
+                40
+              ]
+            },
+            "Q": {
+              "query_site": [
+                43,
+                9,
+                37
+              ],
+              "policy_direction": [
+                0,
+                -1,
+                0
+              ],
+              "action_direction": [
+                -1,
+                -1,
+                1
+              ],
+              "information_site": [
+                40,
+                6,
+                40
+              ]
+            }
+          }
+        },
+        "right.mismatch": {
+          "lane": "right",
+          "sign_reference": 1,
+          "comparison_direction_reference": [
+            1,
+            -1,
+            1
+          ],
+          "policy_site": [
+            47,
+            10,
+            37
+          ],
+          "normalizer": [
+            -1,
+            0,
+            -1
+          ],
+          "sources": {
+            "P": {
+              "query_site": [
+                48,
+                10,
+                37
+              ],
+              "policy_direction": [
+                1,
+                0,
+                0
+              ],
+              "action_direction": [
+                0,
+                0,
+                1
+              ],
+              "information_site": [
+                48,
+                10,
+                40
+              ]
+            },
+            "Q": {
+              "query_site": [
+                47,
+                9,
+                37
+              ],
+              "policy_direction": [
+                0,
+                -1,
+                0
+              ],
+              "action_direction": [
+                -1,
+                -1,
+                1
+              ],
+              "information_site": [
+                44,
+                6,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "source_codecs": {
+        "left.match.P.negative": [
+          {
+            "base": "feedback.source.left.match.P.negative.0",
+            "source": "P",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "hub": [
+              44,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.match.P.positive": [
+          {
+            "base": "feedback.source.left.match.P.positive.0",
+            "source": "P",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "hub": [
+              4,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.match.Q.negative": [
+          {
+            "base": "feedback.source.left.match.Q.negative.0",
+            "source": "Q",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "hub": [
+              20,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.match.Q.positive": [
+          {
+            "base": "feedback.source.left.match.Q.positive.0",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              0,
+              -1
+            ],
+            "hub": [
+              0,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          },
+          {
+            "base": "feedback.source.left.match.Q.positive.1",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "hub": [
+              0,
+              6,
+              40
+            ],
+            "loads": [
+              5,
+              19
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.mismatch.P.negative": [
+          {
+            "base": "feedback.source.left.mismatch.P.negative.0",
+            "source": "P",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "hub": [
+              40,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.mismatch.P.positive": [
+          {
+            "base": "feedback.source.left.mismatch.P.positive.0",
+            "source": "P",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "hub": [
+              0,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.mismatch.Q.negative": [
+          {
+            "base": "feedback.source.left.mismatch.Q.negative.0",
+            "source": "Q",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "hub": [
+              16,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "left.mismatch.Q.positive": [
+          {
+            "base": "feedback.source.left.mismatch.Q.positive.0",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              0,
+              -1
+            ],
+            "hub": [
+              63,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          },
+          {
+            "base": "feedback.source.left.mismatch.Q.positive.1",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "hub": [
+              63,
+              6,
+              40
+            ],
+            "loads": [
+              5,
+              19
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.match.P.negative": [
+          {
+            "base": "feedback.source.right.match.P.negative.0",
+            "source": "P",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "hub": [
+              64,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.match.P.positive": [
+          {
+            "base": "feedback.source.right.match.P.positive.0",
+            "source": "P",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "hub": [
+              24,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.match.Q.negative": [
+          {
+            "base": "feedback.source.right.match.Q.negative.0",
+            "source": "Q",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "hub": [
+              40,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.match.Q.positive": [
+          {
+            "base": "feedback.source.right.match.Q.positive.0",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              0,
+              -1
+            ],
+            "hub": [
+              20,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          },
+          {
+            "base": "feedback.source.right.match.Q.positive.1",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "hub": [
+              20,
+              6,
+              40
+            ],
+            "loads": [
+              5,
+              19
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.mismatch.P.negative": [
+          {
+            "base": "feedback.source.right.mismatch.P.negative.0",
+            "source": "P",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "hub": [
+              1,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.mismatch.P.positive": [
+          {
+            "base": "feedback.source.right.mismatch.P.positive.0",
+            "source": "P",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "hub": [
+              28,
+              30,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.mismatch.Q.negative": [
+          {
+            "base": "feedback.source.right.mismatch.Q.negative.0",
+            "source": "Q",
+            "value_direction": -1,
+            "part": 0,
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "hub": [
+              44,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ],
+        "right.mismatch.Q.positive": [
+          {
+            "base": "feedback.source.right.mismatch.Q.positive.0",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 0,
+            "direction": [
+              1,
+              0,
+              -1
+            ],
+            "hub": [
+              24,
+              6,
+              60
+            ],
+            "loads": [
+              5,
+              18
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          },
+          {
+            "base": "feedback.source.right.mismatch.Q.positive.1",
+            "source": "Q",
+            "value_direction": 1,
+            "part": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "hub": [
+              24,
+              6,
+              40
+            ],
+            "loads": [
+              5,
+              19
+            ],
+            "scope": "One separately acquired current environmental-data carrier, not a free clone or a computed correct action"
+          }
+        ]
+      },
+      "late_queries": {
+        "feedback.late.left.match.P.negative": {
+          "site": [
+            14,
+            0,
+            40
+          ],
+          "information_site": [
+            24,
+            10,
+            40
+          ],
+          "value_direction": -1,
+          "source": "P",
+          "branch": "left.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.match.P.positive": {
+          "site": [
+            34,
+            0,
+            40
+          ],
+          "information_site": [
+            24,
+            10,
+            40
+          ],
+          "value_direction": 1,
+          "source": "P",
+          "branch": "left.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.match.Q.negative": {
+          "site": [
+            10,
+            63,
+            40
+          ],
+          "information_site": [
+            20,
+            6,
+            40
+          ],
+          "value_direction": -1,
+          "source": "Q",
+          "branch": "left.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.match.Q.positive": {
+          "site": [
+            30,
+            63,
+            40
+          ],
+          "information_site": [
+            20,
+            6,
+            40
+          ],
+          "value_direction": 1,
+          "source": "Q",
+          "branch": "left.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.mismatch.P.negative": {
+          "site": [
+            10,
+            0,
+            40
+          ],
+          "information_site": [
+            20,
+            10,
+            40
+          ],
+          "value_direction": -1,
+          "source": "P",
+          "branch": "left.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.mismatch.P.positive": {
+          "site": [
+            30,
+            0,
+            40
+          ],
+          "information_site": [
+            20,
+            10,
+            40
+          ],
+          "value_direction": 1,
+          "source": "P",
+          "branch": "left.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.mismatch.Q.negative": {
+          "site": [
+            6,
+            63,
+            40
+          ],
+          "information_site": [
+            16,
+            6,
+            40
+          ],
+          "value_direction": -1,
+          "source": "Q",
+          "branch": "left.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.left.mismatch.Q.positive": {
+          "site": [
+            26,
+            63,
+            40
+          ],
+          "information_site": [
+            16,
+            6,
+            40
+          ],
+          "value_direction": 1,
+          "source": "Q",
+          "branch": "left.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.match.P.negative": {
+          "site": [
+            34,
+            0,
+            40
+          ],
+          "information_site": [
+            44,
+            10,
+            40
+          ],
+          "value_direction": -1,
+          "source": "P",
+          "branch": "right.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.match.P.positive": {
+          "site": [
+            54,
+            0,
+            40
+          ],
+          "information_site": [
+            44,
+            10,
+            40
+          ],
+          "value_direction": 1,
+          "source": "P",
+          "branch": "right.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.match.Q.negative": {
+          "site": [
+            30,
+            63,
+            40
+          ],
+          "information_site": [
+            40,
+            6,
+            40
+          ],
+          "value_direction": -1,
+          "source": "Q",
+          "branch": "right.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.match.Q.positive": {
+          "site": [
+            50,
+            63,
+            40
+          ],
+          "information_site": [
+            40,
+            6,
+            40
+          ],
+          "value_direction": 1,
+          "source": "Q",
+          "branch": "right.match",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.mismatch.P.negative": {
+          "site": [
+            38,
+            0,
+            40
+          ],
+          "information_site": [
+            48,
+            10,
+            40
+          ],
+          "value_direction": -1,
+          "source": "P",
+          "branch": "right.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.mismatch.P.positive": {
+          "site": [
+            58,
+            0,
+            40
+          ],
+          "information_site": [
+            48,
+            10,
+            40
+          ],
+          "value_direction": 1,
+          "source": "P",
+          "branch": "right.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.mismatch.Q.negative": {
+          "site": [
+            34,
+            63,
+            40
+          ],
+          "information_site": [
+            44,
+            6,
+            40
+          ],
+          "value_direction": -1,
+          "source": "Q",
+          "branch": "right.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        },
+        "feedback.late.right.mismatch.Q.positive": {
+          "site": [
+            54,
+            63,
+            40
+          ],
+          "information_site": [
+            44,
+            6,
+            40
+          ],
+          "value_direction": 1,
+          "source": "Q",
+          "branch": "right.mismatch",
+          "request_tick": 30,
+          "read_tick": 33,
+          "scope": "Common physical query of updated information carrier; unselected source rays differ in z and/or y"
+        }
+      },
+      "prepared_material_sites": 12,
+      "shared_identical_placements": [],
+      "prepared_function": "Finite reflected-Y comparison/R14 source controller with symmetric queries. Comparison, policy, action and received information are native state transitions, not host decisions.",
+      "input_contract": "Incoming learned U0 output(s,-1,0). actual c is a current external observation encoded as(-c,0,+1), duplicated into two fixed lanes, never an error calculated by host.",
+      "information_contract": "P/Q current contents use acquired directional source carriers taught at0; each physical opportunity receives separate exposures. Positive-Q code has two contributors and unequal codec cost.",
+      "preservation_scope": "U0 order remains in its original body. Comparator dx0/s encodes match/mismatch; later information carries source value, not a permanent copy of the original participant/order tuple."
+    },
+    "language": {
+      "schema": "CPC6.language.v1",
+      "items": {
+        "left.match.P.negative": {
+          "teach_port": "language.teach.left.match.P.negative",
+          "query_port": "language.query.left.match.P.negative",
+          "teach_site": [
+            4,
+            0,
+            50
+          ],
+          "query_site": [
+            61,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.left.match.P.negative"
+        },
+        "left.match.P.positive": {
+          "teach_port": "language.teach.left.match.P.positive",
+          "query_port": "language.query.left.match.P.positive",
+          "teach_site": [
+            44,
+            0,
+            50
+          ],
+          "query_site": [
+            54,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.left.match.P.positive"
+        },
+        "left.match.Q.negative": {
+          "teach_port": "language.teach.left.match.Q.negative",
+          "query_port": "language.query.left.match.Q.negative",
+          "teach_site": [
+            0,
+            63,
+            50
+          ],
+          "query_site": [
+            57,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.left.match.Q.negative"
+        },
+        "left.match.Q.positive": {
+          "teach_port": "language.teach.left.match.Q.positive",
+          "query_port": "language.query.left.match.Q.positive",
+          "teach_site": [
+            40,
+            63,
+            50
+          ],
+          "query_site": [
+            50,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.left.match.Q.positive"
+        },
+        "left.mismatch.P.negative": {
+          "teach_port": "language.teach.left.mismatch.P.negative",
+          "query_port": "language.query.left.mismatch.P.negative",
+          "teach_site": [
+            0,
+            0,
+            50
+          ],
+          "query_site": [
+            57,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.left.mismatch.P.negative"
+        },
+        "left.mismatch.P.positive": {
+          "teach_port": "language.teach.left.mismatch.P.positive",
+          "query_port": "language.query.left.mismatch.P.positive",
+          "teach_site": [
+            40,
+            0,
+            50
+          ],
+          "query_site": [
+            50,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.left.mismatch.P.positive"
+        },
+        "left.mismatch.Q.negative": {
+          "teach_port": "language.teach.left.mismatch.Q.negative",
+          "query_port": "language.query.left.mismatch.Q.negative",
+          "teach_site": [
+            63,
+            63,
+            50
+          ],
+          "query_site": [
+            53,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.left.mismatch.Q.negative"
+        },
+        "left.mismatch.Q.positive": {
+          "teach_port": "language.teach.left.mismatch.Q.positive",
+          "query_port": "language.query.left.mismatch.Q.positive",
+          "teach_site": [
+            36,
+            63,
+            50
+          ],
+          "query_site": [
+            46,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.left.mismatch.Q.positive"
+        },
+        "right.match.P.negative": {
+          "teach_port": "language.teach.right.match.P.negative",
+          "query_port": "language.query.right.match.P.negative",
+          "teach_site": [
+            24,
+            0,
+            50
+          ],
+          "query_site": [
+            14,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.right.match.P.negative"
+        },
+        "right.match.P.positive": {
+          "teach_port": "language.teach.right.match.P.positive",
+          "query_port": "language.query.right.match.P.positive",
+          "teach_site": [
+            64,
+            0,
+            50
+          ],
+          "query_site": [
+            7,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.right.match.P.positive"
+        },
+        "right.match.Q.negative": {
+          "teach_port": "language.teach.right.match.Q.negative",
+          "query_port": "language.query.right.match.Q.negative",
+          "teach_site": [
+            20,
+            63,
+            50
+          ],
+          "query_site": [
+            10,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.right.match.Q.negative"
+        },
+        "right.match.Q.positive": {
+          "teach_port": "language.teach.right.match.Q.positive",
+          "query_port": "language.query.right.match.Q.positive",
+          "teach_site": [
+            60,
+            63,
+            50
+          ],
+          "query_site": [
+            3,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.right.match.Q.positive"
+        },
+        "right.mismatch.P.negative": {
+          "teach_port": "language.teach.right.mismatch.P.negative",
+          "query_port": "language.query.right.mismatch.P.negative",
+          "teach_site": [
+            28,
+            0,
+            50
+          ],
+          "query_site": [
+            18,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.right.mismatch.P.negative"
+        },
+        "right.mismatch.P.positive": {
+          "teach_port": "language.teach.right.mismatch.P.positive",
+          "query_port": "language.query.right.mismatch.P.positive",
+          "teach_site": [
+            1,
+            0,
+            50
+          ],
+          "query_site": [
+            11,
+            57,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.right.mismatch.P.positive"
+        },
+        "right.mismatch.Q.negative": {
+          "teach_port": "language.teach.right.mismatch.Q.negative",
+          "query_port": "language.query.right.mismatch.Q.negative",
+          "teach_site": [
+            24,
+            63,
+            50
+          ],
+          "query_site": [
+            14,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": -1,
+          "native_information_path": "feedback.late.right.mismatch.Q.negative"
+        },
+        "right.mismatch.Q.positive": {
+          "teach_port": "language.teach.right.mismatch.Q.positive",
+          "query_port": "language.query.right.mismatch.Q.positive",
+          "teach_site": [
+            64,
+            63,
+            50
+          ],
+          "query_site": [
+            7,
+            53,
+            60
+          ],
+          "teach_request_tick": 40,
+          "teach_tick": 43,
+          "query_request_tick": 50,
+          "query_tick": 53,
+          "value_direction": 1,
+          "native_information_path": "feedback.late.right.mismatch.Q.positive"
+        }
+      },
+      "alias": "FORMA_01",
+      "encoding": "Simultaneous equal-dose pulses on every predeclared candidate lane; no lane chosen using history or decoder.",
+      "scope": "Later opaque-sign association with a received directional relation, not a dictionary or 65 semantic meanings."
+    }
+  },
+  "participant_information": "Only admitted physical events and native fields, no target or evaluator map.",
+  "frozen_decoder": "Semantic1, active state, exact direction at all predeclared candidate sites; silence/rejection/other direction kept distinct.",
+  "criterion": "Forecast at5 before actual observation request11; native comparison15 -> policy19 -> action20 -> source information23 -> physical later query33.",
+  "resource_note": "Separate source exposures for each candidate lane; Q-positive has two contributors. Prepared finite controller is not generic optimal policy learning."
+}

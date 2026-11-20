@@ -1,0 +1,1705 @@
+{
+  "schema": "CPC6.clean-reproduction.v1",
+  "status": "VERIFIED",
+  "candidate_sha256": "357aae8f9010d4bc2a3e1e19dee2f37ea537c16afee6a41cbe3a141d604c8064",
+  "candidate_bytes": 36468879,
+  "plan_sha256": "97b6753ecaf62d22fe4cf87641b4b3f8be7801503ea24c35f59d6a8cf5ba433c",
+  "commands": [
+    {
+      "label": "00_venv",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC6\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env"
+      ],
+      "elapsed_seconds": 9.82669730001362,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "01_offline_install",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6\\runtime\\dee_thinking-4.0.0-cp313-cp313-win_amd64.whl"
+      ],
+      "elapsed_seconds": 3.117331599991303,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "02_identity",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.0.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve())\nassert hashlib.sha256(pathlib.Path(d._native.__file__).read_bytes()).hexdigest()==sys.argv[1]\nassert not any(x.startswith(('dee_universe','CPC3','SEM01')) for x in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n 'module':str(module),'python':sys.executable,'native_sha256':sys.argv[1]},indent=2),encoding='utf-8')\n",
+        "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\ENGINE_IDENTITY.json"
+      ],
+      "elapsed_seconds": 0.47106349997920915,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 90
+    },
+    {
+      "label": "03_reference_sem01",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/reference_replay.py",
+        "--case",
+        "sem01",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/reference_sem01"
+      ],
+      "elapsed_seconds": 6.272767900023609,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "04_reserved_and_causal_replay",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/life.py",
+        "--config",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/configuraciones/R03_WORD_BUS_V2.json",
+        "--out",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/scientific"
+      ],
+      "elapsed_seconds": 63.31844609999098,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 600
+    },
+    {
+      "label": "05_compare_five_primary_replays",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/compare_scientific_replay.py",
+        "--actual",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/scientific",
+        "--expected",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/resultados/R03_WORD_BUS_V2",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/SCIENTIFIC_CHECKS.json"
+      ],
+      "elapsed_seconds": 4.798751599970274,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "06_public_demo",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/app.py",
+        "--demo",
+        "--seed",
+        "1",
+        "--salida",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo/DIALOGOS.jsonl",
+        "--snapshot",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo/SESSION_T105.deetsnap"
+      ],
+      "elapsed_seconds": 5.771011599979829,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "07_public_restore_and_new_query",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/public_demo_continuation.py",
+        "--snapshot",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo/SESSION_T105.deetsnap",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/continued",
+        "--operation",
+        "forma1"
+      ],
+      "elapsed_seconds": 4.209101699991152,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "08_check_public_physical_products",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/verify_public_outputs.py",
+        "--demo",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo",
+        "--continued",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/continued",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/PUBLIC_CHECKS.json"
+      ],
+      "elapsed_seconds": 0.31950629997299984,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "09_compare_public_105",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/check_snapshot_equivalence.py",
+        "--actual",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo/SESSION_T105.deetsnap",
+        "--expected",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/resultados/public_demo_baseline_02/SESSION_T105.deetsnap",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/STATE105_CHECKS.json"
+      ],
+      "elapsed_seconds": 1.2069051999715157,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "10_compare_restored_170",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/check_snapshot_equivalence.py",
+        "--actual",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/continued/FINAL_T170.deetsnap",
+        "--expected",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/resultados/public_demo_continue_02/FINAL_T170.deetsnap",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/STATE170_CHECKS.json"
+      ],
+      "elapsed_seconds": 1.2013057000003755,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "11_minimal_no_results_no_map",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/minimal_app_check.py",
+        "--staging",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/minimal_stage",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/minimal_check",
+        "--baseline-snapshot",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/demo/SESSION_T105.deetsnap",
+        "--seed",
+        "1"
+      ],
+      "elapsed_seconds": 7.212049199966714,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    },
+    {
+      "label": "12_source_information_boundary",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\extracted\\CPC6/src/audit_host_boundaries.py",
+        "--require-public",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated/HOST_BOUNDARIES.json"
+      ],
+      "elapsed_seconds": 0.3152739999932237,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "timeout_seconds": 300
+    }
+  ],
+  "explicit_posttrajectory_verification": [
+    {
+      "path": "reference_sem01/REPLAY_CHECK.json",
+      "sha256": "e8aa0305e16a5e59b98155d0825a7450b68507df7fb58faf6316643571941b0e",
+      "assertions": {
+        "new_discovery_claimed": true,
+        "kind": true,
+        "case_id": true
+      },
+      "observations": {
+        "case_id": "SEM01_A_future_UV",
+        "kind": "HISTORICAL_REPRODUCTION",
+        "comparison": {
+          "measurement_scientific_equal": true,
+          "acquired_state_equal": true,
+          "all_receipts_equal": true,
+          "uses_exact_equal": true
+        },
+        "full_state_comparison": {
+          "current": {
+            "tick": 129,
+            "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+            "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+          },
+          "historical": {
+            "tick": 129,
+            "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+            "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+          },
+          "RAW_full_equal": true,
+          "clocks_full_equal": true,
+          "tick_equal": true,
+          "metadata_compared_separately": true
+        },
+        "prediction_correct": [
+          true,
+          true
+        ],
+        "final": {
+          "tick": 129,
+          "raw_sha256": "7370a178301068533d707a3fda3008fbe12251dd7aee01a79e0637497c83c15c",
+          "clock_sha256": "b93630462b2c79a7c843d43fd9cd175678d12d82a4c5880ed49f49056978f257"
+        },
+        "scope": "S1/S2 learn directional consequences through fixed external current-outcome transduction; the useful action coupling is prepared, not independently acquired utility",
+        "identity": {
+          "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+          "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+          "version": "4.0.0",
+          "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+          "kernel": 27,
+          "wheel_sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623"
+        },
+        "elapsed_seconds": 6.049992799991742,
+        "utc_finished": "2026-10-18T03:23:48.382388+00:00",
+        "new_discovery_claimed": false,
+        "source_manifest": "genealogia/SOURCE_MANIFEST.json"
+      }
+    },
+    {
+      "path": "SCIENTIFIC_CHECKS.json",
+      "sha256": "1986eb0aa8cc3703d8a00dc3b0f30e2f2472d03ea63d191c6763f1f3b9bda3c7",
+      "assertions": {
+        "verified": true,
+        "cases_compared": true,
+        "comparisons_after_trajectories_only": true
+      },
+      "observations": {
+        "schema": "CPC6.fresh-scientific-replay.v1",
+        "verified": true,
+        "cases_compared": 5,
+        "classification": "TECHNICAL_REPRODUCTION_NOT_NEW_INDEPENDENT_SAMPLES",
+        "cases": [
+          {
+            "case_id": "WR01_BA_balanced_Qminus",
+            "checks": {
+              "case": true,
+              "geometry": true,
+              "rows": true,
+              "requests": true,
+              "predictions": true,
+              "summary": true,
+              "final_physical": true,
+              "complete_final_snapshot_physical_and_operative": true
+            },
+            "verified": true,
+            "actual_measurement_sha256": "b0f68ff5e7acb6ea410abff7013c7cb271c3e8e6104fafa9ee1301df1a518cfc",
+            "primary_measurement_sha256": "4f9621c7b8ba18b7b53ef8268f9bc6dfc6db62e092ee8b2fb4dd3f2e93ee87c4",
+            "snapshot_comparison": {
+              "schema": "CPC6.snapshot-equivalence.v1",
+              "verified": true,
+              "classification": "POST_TRAJECTORY_INSTRUMENT",
+              "checks": {
+                "N": true,
+                "tick": true,
+                "RAW_complete": true,
+                "clocks_complete": true,
+                "identity": true,
+                "geometry_JSON_values": true,
+                "request_history": true,
+                "native_interface_definitions_and_codecs": true,
+                "paused": true,
+                "organization_ids": true,
+                "operative_except_framework_cache": true
+              },
+              "actual": {
+                "sha256": "994dc94b46569cb509528265c16af0736e2cf8d918ba8921b27a246c42d11657",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "75482db375727b60306330a67ff745dc97e30b771dd8820ae3f098baf6e29cef",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "reference": {
+                "sha256": "994dc94b46569cb509528265c16af0736e2cf8d918ba8921b27a246c42d11657",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "75482db375727b60306330a67ff745dc97e30b771dd8820ae3f098baf6e29cef",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "framework_serialization_cache_equal_separately": true,
+              "geometry_Python_container_equal_separately": true,
+              "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+            },
+            "scope": "All measured rows and receipts, including silence/rejection/negative controls, must reproduce. Elapsed seconds and source-container paths are not physical observables."
+          },
+          {
+            "case_id": "WR02_BA_balanced_Qplus",
+            "checks": {
+              "case": true,
+              "geometry": true,
+              "rows": true,
+              "requests": true,
+              "predictions": true,
+              "summary": true,
+              "final_physical": true,
+              "complete_final_snapshot_physical_and_operative": true
+            },
+            "verified": true,
+            "actual_measurement_sha256": "de7792f574816d1b62bd0039c56fe3d4ed22b208e49c9311ca3b32552edab040",
+            "primary_measurement_sha256": "ab1e2b3aa6b1661519c3396f5aa7baab2c6fc5da1d756e7f8b32b0ec46e80a50",
+            "snapshot_comparison": {
+              "schema": "CPC6.snapshot-equivalence.v1",
+              "verified": true,
+              "classification": "POST_TRAJECTORY_INSTRUMENT",
+              "checks": {
+                "N": true,
+                "tick": true,
+                "RAW_complete": true,
+                "clocks_complete": true,
+                "identity": true,
+                "geometry_JSON_values": true,
+                "request_history": true,
+                "native_interface_definitions_and_codecs": true,
+                "paused": true,
+                "organization_ids": true,
+                "operative_except_framework_cache": true
+              },
+              "actual": {
+                "sha256": "9cf7bd7fc6d2bb28ac3d7099ea015ec62f950fa01636ede52cd3b20113db2a12",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "8b0502beaaad94be8c5f709c8c6641dba3f59f2770799042ccf20054270de397",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "reference": {
+                "sha256": "9cf7bd7fc6d2bb28ac3d7099ea015ec62f950fa01636ede52cd3b20113db2a12",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "8b0502beaaad94be8c5f709c8c6641dba3f59f2770799042ccf20054270de397",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "framework_serialization_cache_equal_separately": true,
+              "geometry_Python_container_equal_separately": true,
+              "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+            },
+            "scope": "All measured rows and receipts, including silence/rejection/negative controls, must reproduce. Elapsed seconds and source-container paths are not physical observables."
+          },
+          {
+            "case_id": "WR03_AB_balanced_Qminus",
+            "checks": {
+              "case": true,
+              "geometry": true,
+              "rows": true,
+              "requests": true,
+              "predictions": true,
+              "summary": true,
+              "final_physical": true,
+              "complete_final_snapshot_physical_and_operative": true
+            },
+            "verified": true,
+            "actual_measurement_sha256": "250ec9c86f87eb3d4b507f356cbc0586b6b99c9ea50873739d5f39a7a2db7a81",
+            "primary_measurement_sha256": "82cbc481f52bc692ae10ce19657ff2e63fe0609b44aa08ea8b035bc8745e16f5",
+            "snapshot_comparison": {
+              "schema": "CPC6.snapshot-equivalence.v1",
+              "verified": true,
+              "classification": "POST_TRAJECTORY_INSTRUMENT",
+              "checks": {
+                "N": true,
+                "tick": true,
+                "RAW_complete": true,
+                "clocks_complete": true,
+                "identity": true,
+                "geometry_JSON_values": true,
+                "request_history": true,
+                "native_interface_definitions_and_codecs": true,
+                "paused": true,
+                "organization_ids": true,
+                "operative_except_framework_cache": true
+              },
+              "actual": {
+                "sha256": "28859d0108ab350c12fcddd34cd5ba1d39ca464f4e4819d090de812c27ec7904",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "8f919b4c3464745ea6e468b1ae1dca703ca0aa64a231846f3ab445fbd2a72717",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "reference": {
+                "sha256": "28859d0108ab350c12fcddd34cd5ba1d39ca464f4e4819d090de812c27ec7904",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "8f919b4c3464745ea6e468b1ae1dca703ca0aa64a231846f3ab445fbd2a72717",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "framework_serialization_cache_equal_separately": true,
+              "geometry_Python_container_equal_separately": true,
+              "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+            },
+            "scope": "All measured rows and receipts, including silence/rejection/negative controls, must reproduce. Elapsed seconds and source-container paths are not physical observables."
+          },
+          {
+            "case_id": "WR04_BA_no_repeat",
+            "checks": {
+              "case": true,
+              "geometry": true,
+              "rows": true,
+              "requests": true,
+              "predictions": true,
+              "summary": true,
+              "final_physical": true,
+              "complete_final_snapshot_physical_and_operative": true
+            },
+            "verified": true,
+            "actual_measurement_sha256": "d598337def3e73b72a3f2dcaede684ea557af83390c925935c3f66ba6d8fa0b3",
+            "primary_measurement_sha256": "a528142ffd335a008252202d539a7d05f0ab40515877ed6632287c92f4f6c7cf",
+            "snapshot_comparison": {
+              "schema": "CPC6.snapshot-equivalence.v1",
+              "verified": true,
+              "classification": "POST_TRAJECTORY_INSTRUMENT",
+              "checks": {
+                "N": true,
+                "tick": true,
+                "RAW_complete": true,
+                "clocks_complete": true,
+                "identity": true,
+                "geometry_JSON_values": true,
+                "request_history": true,
+                "native_interface_definitions_and_codecs": true,
+                "paused": true,
+                "organization_ids": true,
+                "operative_except_framework_cache": true
+              },
+              "actual": {
+                "sha256": "a709c46e926ea47b5cc4232f77f2715976980b68dc5265519610e390de40825d",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "7f205e6eb982b44ebc746d6b49df86142d9b92202b0b433e7aa016a3200b1163",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "reference": {
+                "sha256": "a709c46e926ea47b5cc4232f77f2715976980b68dc5265519610e390de40825d",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "7f205e6eb982b44ebc746d6b49df86142d9b92202b0b433e7aa016a3200b1163",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "framework_serialization_cache_equal_separately": true,
+              "geometry_Python_container_equal_separately": true,
+              "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+            },
+            "scope": "All measured rows and receipts, including silence/rejection/negative controls, must reproduce. Elapsed seconds and source-container paths are not physical observables."
+          },
+          {
+            "case_id": "WR05_BA_unpaired_name",
+            "checks": {
+              "case": true,
+              "geometry": true,
+              "rows": true,
+              "requests": true,
+              "predictions": true,
+              "summary": true,
+              "final_physical": true,
+              "complete_final_snapshot_physical_and_operative": true
+            },
+            "verified": true,
+            "actual_measurement_sha256": "cff1fc3e0193a9bda5463dd2ca5c9190f753529b75fbd38f2cc3ec9ad98327f3",
+            "primary_measurement_sha256": "97fca9b6ccfe07be275a87ca83e79ddb855287ca01a9509e68bdce8e103950fe",
+            "snapshot_comparison": {
+              "schema": "CPC6.snapshot-equivalence.v1",
+              "verified": true,
+              "classification": "POST_TRAJECTORY_INSTRUMENT",
+              "checks": {
+                "N": true,
+                "tick": true,
+                "RAW_complete": true,
+                "clocks_complete": true,
+                "identity": true,
+                "geometry_JSON_values": true,
+                "request_history": true,
+                "native_interface_definitions_and_codecs": true,
+                "paused": true,
+                "organization_ids": true,
+                "operative_except_framework_cache": true
+              },
+              "actual": {
+                "sha256": "37fdea87a1110501401996451e237a341e512766f9b96088d9c55abdd2e57151",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "ce1ce6529497b3b7b95ecc0a1145c85296f1bede74d676a073c6d711e213a334",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "reference": {
+                "sha256": "37fdea87a1110501401996451e237a341e512766f9b96088d9c55abdd2e57151",
+                "physical": {
+                  "tick": 170,
+                  "raw_sha256": "ce1ce6529497b3b7b95ecc0a1145c85296f1bede74d676a073c6d711e213a334",
+                  "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+                }
+              },
+              "framework_serialization_cache_equal_separately": true,
+              "geometry_Python_container_equal_separately": true,
+              "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+            },
+            "scope": "All measured rows and receipts, including silence/rejection/negative controls, must reproduce. Elapsed seconds and source-container paths are not physical observables."
+          }
+        ],
+        "comparisons_after_trajectories_only": true,
+        "source_sha256": "bc87c7106e0f146bafd9ba5a04d831a9e9218da885af1311f22a8826af1bf76c"
+      }
+    },
+    {
+      "path": "PUBLIC_CHECKS.json",
+      "sha256": "68d70ae4e2c2c03e326064979040dc5ba098d1dfd5397f5c1889999fa7ffc4bb",
+      "assertions": {
+        "verified": true,
+        "classification": true
+      },
+      "observations": {
+        "schema": "CPC6.public-output-check.v1",
+        "classification": "POST_TRAJECTORY_INSTRUMENT",
+        "verified": true,
+        "checks": {
+          "first_opaque_sign_product53": true,
+          "second_opaque_sign_product90": true,
+          "renewed_product162": true,
+          "same_directional_relation53_and162": true,
+          "original_relation_still_measurable170": true,
+          "continuity105_to170": true
+        },
+        "first_sign": [
+          {
+            "location": "right.mismatch.Q.negative",
+            "physical": {
+              "tick": 53,
+              "site": [
+                14,
+                53,
+                60
+              ],
+              "raw": "1229201773051248641",
+              "clock": "53",
+              "state": 1,
+              "s_reg": 128,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "directional_relation": -1,
+            "provenance": "ENTE",
+            "translation": "FORMA_01 reexpresa una relación direccional -1"
+          }
+        ],
+        "second_sign": [
+          {
+            "location": "negative",
+            "physical": {
+              "tick": 90,
+              "site": [
+                43,
+                5,
+                12
+              ],
+              "raw": "2301620983347281921",
+              "clock": "90",
+              "state": 1,
+              "s_reg": 23,
+              "semantic": 1,
+              "direction": [
+                1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "history_direction": -1,
+            "provenance": "ENTE",
+            "translation": "FORMA_02 reexpresa una dirección histórica -1"
+          }
+        ],
+        "renewed_first_sign": [
+          {
+            "location": "right",
+            "physical": {
+              "tick": 162,
+              "site": [
+                44,
+                53,
+                29
+              ],
+              "raw": "2238007587071066113",
+              "clock": "162",
+              "state": 1,
+              "s_reg": 11,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                -1
+              ],
+              "active": true
+            },
+            "directional_relation": -1,
+            "provenance": "ENTE",
+            "decoder": "CPC6.wordbus.late.v2",
+            "tested_window": 162
+          }
+        ],
+        "original_body_delta": {
+          "tick5": -1,
+          "tick170": -1,
+          "scope": "Passive relation; prior function also expressed by the physical FORM02 product90."
+        },
+        "receipt_counts_unique_native_ids": {
+          "applied": 85,
+          "rejected_occupied": 15
+        },
+        "receipts_total": 100,
+        "primary_pointers": {
+          "first": {
+            "file": "demo/DIALOGOS.jsonl",
+            "line_1_based": 18,
+            "pointer": "/result/emissions"
+          },
+          "second": {
+            "file": "demo/DIALOGOS.jsonl",
+            "line_1_based": 24,
+            "pointer": "/result/order_emissions"
+          },
+          "renewed": {
+            "file": "continued/DIALOGOS.jsonl",
+            "line_1_based": 3,
+            "pointer": "/result/renewed_emissions"
+          }
+        },
+        "source_sha256": "14d90efda016ad8ae8108a1e21b0d6d4bb4ddd759acec2d4f95f3f1b2c011e78",
+        "input_sha256": {
+          "demo_dialogue": "3397601f98e78d714c5c48a7c7a91432dc86abadd85613f2bb2513b26cfb7307",
+          "continued_dialogue": "3b5fd233311ab11eb3051931895edef52293d2aa8155bb53739fd574975133f7"
+        },
+        "scope": "Finite physical responses and continuity only. Opaque forms are not automatically NSM meanings. Rejected/absent/ambiguous input statuses are retained rather than coerced to zero. No reference or calculation was returned to the participant."
+      }
+    },
+    {
+      "path": "STATE105_CHECKS.json",
+      "sha256": "e26764032ece405379ee717522597de510a80ee44f1139dca17a9bf0f8e8faf8",
+      "assertions": {
+        "verified": true
+      },
+      "observations": {
+        "schema": "CPC6.snapshot-equivalence.v1",
+        "verified": true,
+        "classification": "POST_TRAJECTORY_INSTRUMENT",
+        "checks": {
+          "N": true,
+          "tick": true,
+          "RAW_complete": true,
+          "clocks_complete": true,
+          "identity": true,
+          "geometry_JSON_values": true,
+          "request_history": true,
+          "native_interface_definitions_and_codecs": true,
+          "paused": true,
+          "organization_ids": true,
+          "operative_except_framework_cache": true
+        },
+        "actual": {
+          "sha256": "928845e4cc2368659f97577f53d0a741982f80d899278ca1a8b61629f8f243a9",
+          "physical": {
+            "tick": 105,
+            "raw_sha256": "885dfd16955582df5eccae0f39551ae1b7faa9b98f8837ac71a821f55095275a",
+            "clock_sha256": "d5514648caae1f59741d1dae7671dcf51aa2e892cf9b49a0701a98b14bf3d709"
+          }
+        },
+        "reference": {
+          "sha256": "928845e4cc2368659f97577f53d0a741982f80d899278ca1a8b61629f8f243a9",
+          "physical": {
+            "tick": 105,
+            "raw_sha256": "885dfd16955582df5eccae0f39551ae1b7faa9b98f8837ac71a821f55095275a",
+            "clock_sha256": "d5514648caae1f59741d1dae7671dcf51aa2e892cf9b49a0701a98b14bf3d709"
+          }
+        },
+        "framework_serialization_cache_equal_separately": true,
+        "geometry_Python_container_equal_separately": true,
+        "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+      }
+    },
+    {
+      "path": "STATE170_CHECKS.json",
+      "sha256": "53ea9308e08244ab3b4e7eea8f0471e935e73f8cefcfa3df61043a0d02329019",
+      "assertions": {
+        "verified": true
+      },
+      "observations": {
+        "schema": "CPC6.snapshot-equivalence.v1",
+        "verified": true,
+        "classification": "POST_TRAJECTORY_INSTRUMENT",
+        "checks": {
+          "N": true,
+          "tick": true,
+          "RAW_complete": true,
+          "clocks_complete": true,
+          "identity": true,
+          "geometry_JSON_values": true,
+          "request_history": true,
+          "native_interface_definitions_and_codecs": true,
+          "paused": true,
+          "organization_ids": true,
+          "operative_except_framework_cache": true
+        },
+        "actual": {
+          "sha256": "61a52bc7792505dfe3c62f18270b696ffa7a059449211c9ae55512eb576afebb",
+          "physical": {
+            "tick": 170,
+            "raw_sha256": "8f919b4c3464745ea6e468b1ae1dca703ca0aa64a231846f3ab445fbd2a72717",
+            "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+          }
+        },
+        "reference": {
+          "sha256": "61a52bc7792505dfe3c62f18270b696ffa7a059449211c9ae55512eb576afebb",
+          "physical": {
+            "tick": 170,
+            "raw_sha256": "8f919b4c3464745ea6e468b1ae1dca703ca0aa64a231846f3ab445fbd2a72717",
+            "clock_sha256": "8f5cd2a43208ba349f9d9f15938d77c1a656e37a9abe34b1f512668825a3e1c7"
+          }
+        },
+        "framework_serialization_cache_equal_separately": true,
+        "geometry_Python_container_equal_separately": true,
+        "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+      }
+    },
+    {
+      "path": "minimal_check/MINIMAL_REPORT.json",
+      "sha256": "c20809e9ff6c51f85e74391d815c9aa5584f5f52af5eaad5f79501013404dce7",
+      "assertions": {
+        "status": true,
+        "comparisons_after_trajectories_only": true
+      },
+      "observations": {
+        "schema": "CPC6.minimal-app.v1",
+        "status": "VERIFIED",
+        "error": null,
+        "copied_files": [
+          {
+            "path": "app.py",
+            "sha256": "ad16975346fe3bf077ff56e1564b1ad40c8baedb902ff70352a6415aab53fb19",
+            "bytes": 10024
+          },
+          {
+            "path": "src/common.py",
+            "sha256": "1e03b33c33ebb4e64bba7847a5e5d117687e280bf97515f3f393e9867ace5251",
+            "bytes": 4614
+          },
+          {
+            "path": "src/integrated.py",
+            "sha256": "f82e6eba1463c676e1bdae867f81d5b91d07d540a94ae09e342a58219ea3c7ff",
+            "bytes": 5653
+          },
+          {
+            "path": "src/order_memory.py",
+            "sha256": "1ae338c52feaebcc81ba64607c1f1de48cb21fbe42db2f7417f1902c96245e66",
+            "bytes": 2568
+          },
+          {
+            "path": "src/action_feedback.py",
+            "sha256": "a0682a12fbb406c5da44ccfe9d681efc02a1350eeed70b578cf8dd5eb57efbe2",
+            "bytes": 13787
+          },
+          {
+            "path": "src/action_feedback_access.py",
+            "sha256": "a88cdbe055361ca82ef5665d53d3592b7f26e3396168bc1f59653a88288aaa6b",
+            "bytes": 2168
+          },
+          {
+            "path": "src/language.py",
+            "sha256": "2d0cd32287fb61f6c6702db69442437a5ba3703b667f9352a30bbd3cf2b70c8f",
+            "bytes": 2765
+          },
+          {
+            "path": "src/consolidation.py",
+            "sha256": "e448743f7b615891e202007400b4bbdb79bda6d98be31d4051097a16e29b6825",
+            "bytes": 2887
+          },
+          {
+            "path": "src/curriculum.py",
+            "sha256": "663876bdb6717ff421121f91db11d706749e94c6609b09e8e56afc876b7b4e87",
+            "bytes": 1489
+          },
+          {
+            "path": "src/order_language.py",
+            "sha256": "425ec57006659727a9b68b01ba4bc0abdecb9cacfd8cf0303f18b984a016c17a",
+            "bytes": 2534
+          },
+          {
+            "path": "src/snapshot_storage.py",
+            "sha256": "6e7fac641b9172be11a17632a427ea339bb9a0e6b59c6c1db73d433f19ed179a",
+            "bytes": 11296
+          },
+          {
+            "path": "src/balanced_sources.py",
+            "sha256": "791d0086a3855b918a90b9ee7a6285884ce818cf1964211e7da7f009b75cb89f",
+            "bytes": 2138
+          },
+          {
+            "path": "src/word_bus.py",
+            "sha256": "f6b09de10b3cb55c4ffcf58b5f576260f78bcebe9fc000287ea207360f5ec7fc",
+            "bytes": 2743
+          },
+          {
+            "path": "runtime/dee_thinking-4.0.0-cp313-cp313-win_amd64.whl",
+            "sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623",
+            "bytes": 1457406
+          }
+        ],
+        "copied_count": 14,
+        "command": {
+          "argv": [
+            "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+            "-I",
+            "-B",
+            "-X",
+            "utf8",
+            "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated\\minimal_stage\\minimal_payload\\app.py",
+            "--demo",
+            "--seed",
+            "1",
+            "--salida",
+            "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated\\minimal_stage\\generated\\DIALOGOS.jsonl",
+            "--snapshot",
+            "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\generated\\minimal_stage\\generated\\SESSION.deetsnap"
+          ],
+          "exit_code": 0,
+          "seconds": 6.11911460000556
+        },
+        "comparisons_after_trajectories_only": true,
+        "comparison": {
+          "schema": "CPC6.snapshot-equivalence.v1",
+          "verified": true,
+          "classification": "POST_TRAJECTORY_INSTRUMENT",
+          "checks": {
+            "N": true,
+            "tick": true,
+            "RAW_complete": true,
+            "clocks_complete": true,
+            "identity": true,
+            "geometry_JSON_values": true,
+            "request_history": true,
+            "native_interface_definitions_and_codecs": true,
+            "paused": true,
+            "organization_ids": true,
+            "operative_except_framework_cache": true
+          },
+          "actual": {
+            "sha256": "928845e4cc2368659f97577f53d0a741982f80d899278ca1a8b61629f8f243a9",
+            "physical": {
+              "tick": 105,
+              "raw_sha256": "885dfd16955582df5eccae0f39551ae1b7faa9b98f8837ac71a821f55095275a",
+              "clock_sha256": "d5514648caae1f59741d1dae7671dcf51aa2e892cf9b49a0701a98b14bf3d709"
+            }
+          },
+          "reference": {
+            "sha256": "928845e4cc2368659f97577f53d0a741982f80d899278ca1a8b61629f8f243a9",
+            "physical": {
+              "tick": 105,
+              "raw_sha256": "885dfd16955582df5eccae0f39551ae1b7faa9b98f8837ac71a821f55095275a",
+              "clock_sha256": "d5514648caae1f59741d1dae7671dcf51aa2e892cf9b49a0701a98b14bf3d709"
+            }
+          },
+          "framework_serialization_cache_equal_separately": true,
+          "geometry_Python_container_equal_separately": true,
+          "scope": "RAW/clocks are complete uint64 arrays without normalization. Only opaque framework serialization cache is separate; JSON geometry values, receipt/queue/protocol state and own session metadata must agree. Reference is read after both trajectories and never fed into MAIN."
+        },
+        "seed_used_only_by_explicit_environment_generator": 1,
+        "excluded": [
+          "historical ZIPs",
+          "results",
+          "targets",
+          "teaching maps",
+          "NSM catalogue",
+          "external response tables",
+          "private runtime paths"
+        ],
+        "generated_files": [
+          {
+            "path": "DIALOGOS.jsonl",
+            "bytes": 760112,
+            "sha256": "3397601f98e78d714c5c48a7c7a91432dc86abadd85613f2bb2513b26cfb7307"
+          },
+          {
+            "path": "SESSION.deetsnap",
+            "bytes": 4959009,
+            "sha256": "928845e4cc2368659f97577f53d0a741982f80d899278ca1a8b61629f8f243a9"
+          }
+        ],
+        "elapsed_seconds": 6.6908325999975204,
+        "scope": "Physical trajectories executed using only the explicitly listed current files and installed official 4.0.0. Reference comparison is an external instrument, not participant cognition."
+      }
+    },
+    {
+      "path": "HOST_BOUNDARIES.json",
+      "sha256": "42d105132182ae4fb238f6e4cbac87df680f8b947ba981a4722f559d5c22ef49",
+      "assertions": {
+        "status": true,
+        "no_output_returned_to_participant": true
+      },
+      "observations": {
+        "schema": "CPC6.host-boundaries.v1",
+        "classification": "STATIC_INSTRUMENT_AUDIT",
+        "instrument_only": true,
+        "no_output_returned_to_participant": true,
+        "static_cutoff_scope": "Source inventory at the listed hashes; does not assert that all campaign trajectories had already completed.",
+        "source_sha256": "1f4c652cfed21c0677e9fe4de0b14ee22eeab517f512e746ad7be6ac5da4e7be",
+        "checks": {
+          "no_previous_runtime_imports_in_reviewed_layer": true,
+          "no_direct_RAW_clock_setters_or_dynamic_code_in_reviewed_layer": true,
+          "public_files_present": true
+        },
+        "files": [
+          {
+            "path": "src/common.py",
+            "sha256": "1e03b33c33ebb4e64bba7847a5e5d117687e280bf97515f3f393e9867ace5251",
+            "imports": [
+              {
+                "line": 2,
+                "module": "array"
+              },
+              {
+                "line": 3,
+                "module": "hashlib"
+              },
+              {
+                "line": 4,
+                "module": "json"
+              },
+              {
+                "line": 5,
+                "module": "pathlib"
+              },
+              {
+                "line": 6,
+                "module": "sys"
+              },
+              {
+                "line": 30,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 41,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 49,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 95,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 16,
+                "module": "snapshot_storage"
+              }
+            ],
+            "boundary_related_calls": [
+              {
+                "line": 19,
+                "call": "path.open",
+                "source": "path.open('rb')"
+              }
+            ],
+            "boundary_related_strings": [],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/order_memory.py",
+            "sha256": "1ae338c52feaebcc81ba64607c1f1de48cb21fbe42db2f7417f1902c96245e66",
+            "imports": [
+              {
+                "line": 6,
+                "module": "common"
+              },
+              {
+                "line": 14,
+                "module": "dee_thinking"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 1,
+                "value": "Fresh basal relative-order body; real event pulses acquire its distinction.\n\nAdapted from CPC5 order_stream's documented geometry, not a trained snapshot.\nNo function in this module receives the history's expected answer.\n",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/action_feedback.py",
+            "sha256": "a0682a12fbb406c5da44ccfe9d681efc02a1350eeed70b578cf8dd5eb57efbe2",
+            "imports": [
+              {
+                "line": 7,
+                "module": "pathlib"
+              },
+              {
+                "line": 8,
+                "module": "argparse"
+              },
+              {
+                "line": 9,
+                "module": "json"
+              },
+              {
+                "line": 10,
+                "module": "sys"
+              },
+              {
+                "line": 11,
+                "module": "time"
+              },
+              {
+                "line": 14,
+                "module": "common"
+              },
+              {
+                "line": 26,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 126,
+                "module": "dee_thinking"
+              }
+            ],
+            "boundary_related_calls": [
+              {
+                "line": 176,
+                "call": "json.loads",
+                "source": "json.loads(a.config.read_text(encoding='utf-8'))"
+              },
+              {
+                "line": 176,
+                "call": "a.config.read_text",
+                "source": "a.config.read_text(encoding='utf-8')"
+              }
+            ],
+            "boundary_related_strings": [],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/action_feedback_access.py",
+            "sha256": "a88cdbe055361ca82ef5665d53d3592b7f26e3396168bc1f59653a88288aaa6b",
+            "imports": [],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/language.py",
+            "sha256": "2d0cd32287fb61f6c6702db69442437a5ba3703b667f9352a30bbd3cf2b70c8f",
+            "imports": [
+              {
+                "line": 6,
+                "module": "common"
+              },
+              {
+                "line": 7,
+                "module": "action_feedback"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 37,
+                "value": "teaching",
+                "truncated": false
+              },
+              {
+                "line": 27,
+                "value": "Unknown teaching mode",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/integrated.py",
+            "sha256": "f82e6eba1463c676e1bdae867f81d5b91d07d540a94ae09e342a58219ea3c7ff",
+            "imports": [
+              {
+                "line": 6,
+                "module": "json"
+              },
+              {
+                "line": 7,
+                "module": "copy"
+              },
+              {
+                "line": 8,
+                "module": "pathlib"
+              },
+              {
+                "line": 9,
+                "module": "common"
+              },
+              {
+                "line": 10,
+                "module": "order_memory"
+              },
+              {
+                "line": 15,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 91,
+                "module": "argparse"
+              },
+              {
+                "line": 20,
+                "module": "action_feedback"
+              },
+              {
+                "line": 27,
+                "module": "consolidation"
+              },
+              {
+                "line": 66,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 67,
+                "module": "snapshot_storage"
+              },
+              {
+                "line": 24,
+                "module": "language"
+              }
+            ],
+            "boundary_related_calls": [
+              {
+                "line": 71,
+                "call": "json.loads",
+                "source": "json.loads(m[KEY])"
+              },
+              {
+                "line": 69,
+                "call": "d.OrganizationalWorld.load_snapshot",
+                "source": "d.OrganizationalWorld.load_snapshot(str(plain))"
+              }
+            ],
+            "boundary_related_strings": [
+              {
+                "line": 1,
+                "value": "A single-owner experimental U0 MAIN; all transformations are v27 evolution.\n\nThe Python session transports fixed physical requests and makes passive records.\nIt never obtains an expected answer, selects a correct route or edits a cell.\n",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/curriculum.py",
+            "sha256": "663876bdb6717ff421121f91db11d706749e94c6609b09e8e56afc876b7b4e87",
+            "imports": [
+              {
+                "line": 2,
+                "module": "integrated"
+              },
+              {
+                "line": 3,
+                "module": "common"
+              },
+              {
+                "line": 4,
+                "module": "order_memory"
+              },
+              {
+                "line": 17,
+                "module": "order_language"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 26,
+                "value": "RENEWED_PHYSICAL_QUERY_NO_RETEACHING",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/consolidation.py",
+            "sha256": "e448743f7b615891e202007400b4bbdb79bda6d98be31d4051097a16e29b6825",
+            "imports": [
+              {
+                "line": 7,
+                "module": "order_memory"
+              },
+              {
+                "line": 8,
+                "module": "common"
+              },
+              {
+                "line": 13,
+                "module": "dee_thinking"
+              },
+              {
+                "line": 29,
+                "module": "dee_thinking"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 51,
+                "value": "COMMON_QUERY_OF_NATIVE_ACQUIRED_SECOND_RELATION_NO_RETEACHING",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/order_language.py",
+            "sha256": "425ec57006659727a9b68b01ba4bc0abdecb9cacfd8cf0303f18b984a016c17a",
+            "imports": [
+              {
+                "line": 7,
+                "module": "common"
+              },
+              {
+                "line": 8,
+                "module": "order_memory"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 1,
+                "value": "Second opaque form, paired later with a renewed order-history expression.\n\nBoth candidate directions receive equal physical teaching/query pulses. This\ntests an order-history function distinct from the received-data FORM_01.\nNo general temporal predicate or human deictic semantics is assumed.\n",
+                "truncated": false
+              },
+              {
+                "line": 35,
+                "value": "teaching",
+                "truncated": false
+              },
+              {
+                "line": 25,
+                "value": "Unknown second-form teaching mode",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/balanced_sources.py",
+            "sha256": "791d0086a3855b918a90b9ee7a6285884ce818cf1964211e7da7f009b75cb89f",
+            "imports": [
+              {
+                "line": 7,
+                "module": "common"
+              },
+              {
+                "line": 8,
+                "module": "action_feedback"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "src/word_bus.py",
+            "sha256": "f6b09de10b3cb55c4ffcf58b5f576260f78bcebe9fc000287ea207360f5ec7fc",
+            "imports": [
+              {
+                "line": 7,
+                "module": "common"
+              },
+              {
+                "line": 8,
+                "module": "order_memory"
+              }
+            ],
+            "boundary_related_calls": [],
+            "boundary_related_strings": [
+              {
+                "line": 16,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 27,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 31,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 40,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 27,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 33,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 40,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 42,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 31,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 33,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 42,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 34,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 34,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 43,
+                "value": "target",
+                "truncated": false
+              },
+              {
+                "line": 43,
+                "value": "target",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "ejecutar.py",
+            "sha256": "c9a86a322927487cf8e751f46b0b729ab134e769ff8e6e374b9ef218fa7d534f",
+            "imports": [
+              {
+                "line": 2,
+                "module": "argparse"
+              },
+              {
+                "line": 2,
+                "module": "json"
+              },
+              {
+                "line": 2,
+                "module": "sys"
+              },
+              {
+                "line": 2,
+                "module": "subprocess"
+              },
+              {
+                "line": 2,
+                "module": "time"
+              },
+              {
+                "line": 2,
+                "module": "os"
+              },
+              {
+                "line": 3,
+                "module": "pathlib"
+              },
+              {
+                "line": 5,
+                "module": "common"
+              },
+              {
+                "line": 6,
+                "module": "supervisor"
+              }
+            ],
+            "boundary_related_calls": [
+              {
+                "line": 12,
+                "call": "BinOp.open",
+                "source": "(target/'stdout.log').open('w',encoding='utf-8')"
+              },
+              {
+                "line": 12,
+                "call": "BinOp.open",
+                "source": "(target/'stderr.log').open('w',encoding='utf-8')"
+              }
+            ],
+            "boundary_related_strings": [
+              {
+                "line": 31,
+                "value": "resultados",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          },
+          {
+            "path": "app.py",
+            "sha256": "ad16975346fe3bf077ff56e1564b1ad40c8baedb902ff70352a6415aab53fb19",
+            "imports": [
+              {
+                "line": 2,
+                "module": "argparse"
+              },
+              {
+                "line": 2,
+                "module": "json"
+              },
+              {
+                "line": 2,
+                "module": "sys"
+              },
+              {
+                "line": 3,
+                "module": "pathlib"
+              },
+              {
+                "line": 5,
+                "module": "common"
+              },
+              {
+                "line": 6,
+                "module": "integrated"
+              },
+              {
+                "line": 7,
+                "module": "order_memory"
+              },
+              {
+                "line": 7,
+                "module": "action_feedback"
+              },
+              {
+                "line": 7,
+                "module": "language"
+              },
+              {
+                "line": 7,
+                "module": "consolidation"
+              },
+              {
+                "line": 7,
+                "module": "curriculum"
+              },
+              {
+                "line": 7,
+                "module": "order_language"
+              },
+              {
+                "line": 7,
+                "module": "balanced_sources"
+              },
+              {
+                "line": 7,
+                "module": "word_bus"
+              },
+              {
+                "line": 8,
+                "module": "action_feedback_access"
+              },
+              {
+                "line": 101,
+                "module": "random"
+              }
+            ],
+            "boundary_related_calls": [
+              {
+                "line": 30,
+                "call": "Session.load",
+                "source": "Session.load(args[0])"
+              },
+              {
+                "line": 117,
+                "call": "json.loads",
+                "source": "json.loads(a.eventos.read_text(encoding='utf-8'))"
+              },
+              {
+                "line": 117,
+                "call": "a.eventos.read_text",
+                "source": "a.eventos.read_text(encoding='utf-8')"
+              }
+            ],
+            "boundary_related_strings": [
+              {
+                "line": 50,
+                "value": "target_tick",
+                "truncated": false
+              },
+              {
+                "line": 75,
+                "value": "Second name follows renewed order-history expression70; teaching window T71..77",
+                "truncated": false
+              }
+            ],
+            "forbidden_old_runtime_imports": [],
+            "direct_setters_or_dynamic_code": []
+          }
+        ],
+        "missing_public_files": [],
+        "directed_manual_review": [
+          {
+            "layer": "preparation",
+            "files": [
+              "order_memory.py",
+              "action_feedback.py",
+              "consolidation.py"
+            ],
+            "finding": "Prepared support, finite branch geometry and opportunities are supplied by the designer at T0. Source data values are current environmental observations, not computed future outcomes or corrected policies."
+          },
+          {
+            "layer": "MAIN transport",
+            "files": [
+              "integrated.py",
+              "curriculum.py",
+              "action_feedback_access.py"
+            ],
+            "finding": "Only declared input/probe scheduling, native advance, passive read, native fork and complete save/load. Alias de-duplication examines identical public physical interface declarations, payload, tick and modality; it does not inspect learned state or pick a successful branch."
+          },
+          {
+            "layer": "response",
+            "files": [
+              "language.py",
+              "order_language.py"
+            ],
+            "finding": "The decoder emits actual active semantic1 records having the frozen direction sector, or an empty list. No history-to-meaning map, expected response or stored terminal measurement is read. Text is a fixed rendering of measured fields, not an arbitrary learned semantic dictionary."
+          },
+          {
+            "layer": "persistence",
+            "files": [
+              "integrated.py"
+            ],
+            "finding": "Session JSON stores public geometry, identity, request IDs and tick in native metadata. Native physical/operative snapshot is loaded without preparing a new body. Snapshot metadata is not a response cache."
+          },
+          {
+            "layer": "auditor versus participant",
+            "finding": "Scientific runners/analyses may read configurations and compare evaluator references after trajectories; they are not imported as hidden deciders by the reviewed MAIN core. Fixed R14 policy normalizers are a finite prepared controller, distinct from learned optimal regulation."
+          }
+        ],
+        "limitations": [
+          "AST cannot establish causal utilization, acquisition, retention or absence of every possible information leak.",
+          "Boundary-related calls and strings are retained for review rather than silently approved.",
+          "Changing any source changes its hash and requires regenerating this inventory. Native mechanisms still require measured controls and exact clean reproduction."
+        ],
+        "status": "REVIEWED_STATIC_BOUNDARIES"
+      }
+    }
+  ],
+  "error": null,
+  "engine_identity": {
+    "version": "4.0.0",
+    "kernel": {
+      "kernel_version": 27,
+      "kernel_modulus": 19665,
+      "reducer_cap": 19664,
+      "native_module": true
+    },
+    "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+    "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3\\isolated_env\\Scripts\\python.exe",
+    "native_sha256": "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066"
+  },
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE3",
+  "elapsed_seconds": 144.28354869998293,
+  "completed_utc": "2026-10-18T03:25:16.877816+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "label": "02_identity",
+  "argv": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE1\\isolated_env\\Scripts\\python.exe",
+    "-I",
+    "-c",
+    "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.0.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve())\nassert hashlib.sha256(pathlib.Path(d._native.__file__).read_bytes()).hexdigest()==sys.argv[1]\nassert not any(x.startswith(('dee_universe','CPC3','SEM01')) for x in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n 'module':str(module),'python':sys.executable,'native_sha256':sys.argv[1]},indent=2),encoding='utf-8')\n",
+    "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C6_CLEAN_PRE1\\ENGINE_IDENTITY.json"
+  ],
+  "elapsed_seconds": 0.4783385999617167,
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "timeout_seconds": 90
+}

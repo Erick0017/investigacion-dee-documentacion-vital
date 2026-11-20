@@ -1,0 +1,128 @@
+{
+  "schema": "CPC6.public-output-check.v1",
+  "classification": "POST_TRAJECTORY_INSTRUMENT",
+  "verified": true,
+  "checks": {
+    "first_opaque_sign_product53": true,
+    "second_opaque_sign_product90": true,
+    "renewed_product162": true,
+    "same_directional_relation53_and162": true,
+    "original_relation_still_measurable170": true,
+    "continuity105_to170": true
+  },
+  "first_sign": [
+    {
+      "location": "right.mismatch.Q.negative",
+      "physical": {
+        "tick": 53,
+        "site": [
+          14,
+          53,
+          60
+        ],
+        "raw": "1229201773051248641",
+        "clock": "53",
+        "state": 1,
+        "s_reg": 128,
+        "semantic": 1,
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "directional_relation": -1,
+      "provenance": "ENTE",
+      "translation": "FORMA_01 reexpresa una relación direccional -1"
+    }
+  ],
+  "second_sign": [
+    {
+      "location": "negative",
+      "physical": {
+        "tick": 90,
+        "site": [
+          43,
+          5,
+          12
+        ],
+        "raw": "2301620983347281921",
+        "clock": "90",
+        "state": 1,
+        "s_reg": 23,
+        "semantic": 1,
+        "direction": [
+          1,
+          -1,
+          -1
+        ],
+        "active": true
+      },
+      "history_direction": -1,
+      "provenance": "ENTE",
+      "translation": "FORMA_02 reexpresa una dirección histórica -1"
+    }
+  ],
+  "renewed_first_sign": [
+    {
+      "location": "right",
+      "physical": {
+        "tick": 162,
+        "site": [
+          44,
+          53,
+          29
+        ],
+        "raw": "2238007587071066113",
+        "clock": "162",
+        "state": 1,
+        "s_reg": 11,
+        "semantic": 1,
+        "direction": [
+          -1,
+          0,
+          -1
+        ],
+        "active": true
+      },
+      "directional_relation": -1,
+      "provenance": "ENTE",
+      "decoder": "CPC6.wordbus.late.v2",
+      "tested_window": 162
+    }
+  ],
+  "original_body_delta": {
+    "tick5": -1,
+    "tick170": -1,
+    "scope": "Passive relation; prior function also expressed by the physical FORM02 product90."
+  },
+  "receipt_counts_unique_native_ids": {
+    "applied": 85,
+    "rejected_occupied": 15
+  },
+  "receipts_total": 100,
+  "primary_pointers": {
+    "first": {
+      "file": "demo/DIALOGOS.jsonl",
+      "line_1_based": 18,
+      "pointer": "/result/emissions"
+    },
+    "second": {
+      "file": "demo/DIALOGOS.jsonl",
+      "line_1_based": 24,
+      "pointer": "/result/order_emissions"
+    },
+    "renewed": {
+      "file": "continued/DIALOGOS.jsonl",
+      "line_1_based": 3,
+      "pointer": "/result/renewed_emissions"
+    }
+  },
+  "source_sha256": "14d90efda016ad8ae8108a1e21b0d6d4bb4ddd759acec2d4f95f3f1b2c011e78",
+  "input_sha256": {
+    "demo_dialogue": "3397601f98e78d714c5c48a7c7a91432dc86abadd85613f2bb2513b26cfb7307",
+    "continued_dialogue": "3b5fd233311ab11eb3051931895edef52293d2aa8155bb53739fd574975133f7"
+  },
+  "scope": "Finite physical responses and continuity only. Opaque forms are not automatically NSM meanings. Rejected/absent/ambiguous input statuses are retained rather than coerced to zero. No reference or calculation was returned to the participant."
+}

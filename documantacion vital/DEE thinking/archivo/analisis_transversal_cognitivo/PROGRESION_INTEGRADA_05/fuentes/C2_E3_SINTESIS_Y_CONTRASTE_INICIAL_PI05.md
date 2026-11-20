@@ -1,0 +1,55 @@
+# PI05 — Síntesis dirigida C2/E3 y contraste inicial
+
+Se leyó completo el encargo PI05 adjunto de 25457 bytes; se reutilizaron los cierres, primarios y contratos PI04. Este análisis no importó DEE ni ejecutó Native. No modifica el producto ni los originales PI04. El mapa JSON compañero identifica cada fuente, comparación y campo.
+
+## Qué está disponible y qué es realmente distinto
+
+Los tres cortes nativos cerrados T816019 existen y sus hashes coinciden con los comprobantes originales. REAL conserva además un par operativo estable en RP, post-reserva; su home actual de S2 ya vivió retención y panel y no representa aquel entorno. NONE y YOKED mantienen sus homes cerrados en T816019: se comprobaron los archivos del dispositivo y los productos, y SQLite se abrió sólo en modo lectura tras descartar WAL no vacío y comprobar igualdad de hash antes/después. Antes de Native deben exportarse de forma coherente por el procedimiento del propietario; este análisis no finge que esos pares ya existan.
+
+Los tres tienen N67/T816019, 1056 interfaces, agenda vacía, 126076 recibos, backend enum 2 y un hilo, next_event_id 126077 y next_sequence 126076. REAL y YOKED tienen RAW y clocks completos idénticos; NONE difiere en un único RAW: banco B [20,53,5], carga 153 frente a 152. El banco A es 148 en los tres; no se igualaron artificialmente. Los clocks e interfaces coinciden también con NONE.
+
+La coincidencia física no alcanza al estado completo. REAL/NONE difieren en ocho recibos; REAL/YOKED en tres; NONE/YOKED en nueve. Se registran los IDs, puertos y ticks exactos. Hay seis claves de metadatos distintas por pareja: sensor/identidad, progreso y control C2C, servicio persistente, identidad de vida y dos fragmentos organizational. Se decodificaron íntegros los 49 fragmentos binarios organizational por el serializer oficial leído como texto: receta, protocolos, ediciones, decodificadores y trazas son idénticos; las diferencias están sólo en el registro de operaciones externas (22/5/25 diferencias, respectivamente, de 127133 entradas). No hay protocolos, ediciones diagnósticas ni muestras de trace en esos cortes. Esas cantidades no son conceptos ni decisiones independientes.
+
+El entorno tiene ordinal 20 y 26 recursos declarados por brazo, con productos 19/12/20 y rechazos 1/8/0. Se verificaron sus bytes e integer real codificado. El backend REAL del par preserva un único processing: la propia solicitud administrativa exportar, is_control 1, sin experiencia Native. Se conserva su identificación, no se borra ni se reenvía como si fuera una acción pendiente. NONE/YOKED no tienen processing. Los tres SQLite pasaron quick_check; sus tablas y recuentos constan en el mapa, no se presentan iguales por compartir RAW.
+
+## Contraste inicial recomendado
+
+REAL ya vivió exactamente RET2 más cinco asociaciones y FIplus, y su reproducción técnica negativa coincide. No repetirlo para aumentar denominadores. Ejecutar NONE y YOKED desde sus propios pares completos T816019, con las dos oportunidades públicas de retención y los seis primeros usos del panel, con el mismo código, lectores y calendario. El coste previsto es 2055 ticks y 583 entradas materiales por brazo (372 de RET2 y 211 del panel), siempre que se formen las etapas; rechazos, NULL y etapas omitidas se conservan con su dosis efectiva. Detener el panel al primer error según su criterio existente; no llamar 12/12 a seis usos.
+
+YOKED no se puede continuar con el contrato antiguo: validate rechaza el ordinal 20 porque su plan sólo posee 20 slots. Preparar una extensión prospectiva PI05, en clave y diario nuevos, que preserve el brazo y plan históricos y añada exclusivamente20/21. El mapa contiene una propuesta auditora basada en los dos retornos no-fallo reales ya documentados, con hash, calendarios y fuentes. No incluye respuestas deseadas para el actor. No readmitir, reiniciar contadores ni escribir memorias para superar la validación. Los dos pulsos no-fallo son control exógeno fijo; si un control produce un efecto distinto, registrar el desacoplamiento, sin corregir la señal mirando qué conviene. Root debe sellar esta preparación antes de Native.
+
+Las oportunidades son: ordinal20, contexto 3 y operandos 14/9, de T816019 a T816801; ordinal21, contexto 6 y operandos 18/7, hasta T817583. Los q son816523/817305; se conserva la lectura física q+4 y retención externa hasta q+6, la copia en q+7, demora de 4 vueltas y contacto de referencias fase 391. Después: luma, nara, clasifica, suma, alfa y FIplus 14/3. FI empieza en T817876, primeras entradas en T817878; q=817932, C en T817933, S en T817935, lector temprano en T817936, tardío en T817938, final en T818074. Esos anclajes corresponden al protocolo original y se verifican en la ejecución, no se reubican tras el resultado.
+
+## Qué separa cada resultado y qué no
+
+H-A: los tres brazos comparten las preparaciones e historias adversas C2/B anteriores a T800379. Por eso un fallo común no demuestra envejecimiento ni descarta interferencia de una preparación compartida.
+
+H-B: se igualan edades, oportunidades y tiempos públicos; no se igualan la historia real, bancos, productos o metadatos. Si REAL/YOKED fallan y NONE pasa, la diferencia se asocia a esas historias y al estado que generaron; no prueba que aprender sea la causa única. Si los tres fallan, se prioriza una condición compartida, no una narrativa de olvido.
+
+H-C: este contraste no identifica la influencia de la entrada 17. La captura global del intervalo y sus controles de entrada deberán distinguir fuentes, contactos, transformaciones y llegada; ni la coincidencia de valor ni la ausencia en un cierre certifica linaje o destrucción. Se sigue también la contribución 14 y los ceros materiales.
+
+H-D: antes de interpretar, contrastar cada admisión, códec20−b, solicitud/efecto temporal, backend, agenda, lector, producto y cierre. Un error de plan agotado, directorio o exportación no se contabiliza como regresión cognitiva. No confundir comparación de sesgo 20 con resta de sesgo 32.
+
+Si los controles iniciales no separan la historia, el siguiente contraste barato es desde el mismo prefijo post-RET2 T817583: cinco consultas materiales (293 ticks) frente a espera real de 293 ticks, después el mismo FIplus en la misma fase. El brazo panel ya existe; sólo el brazo espera es nuevo. Suprime 35 entradas, por lo que prueba dependencia del bloque, no un sham isodosis ni pasividad de las consultas. Si fuera necesario separar RET2, desde T816019, esperar 1564 ticks y ejecutar el panel parcial frente al bloqueRET2real existente. No hacer ambos por rutina.
+
+Sólo después de esos resultados se justifica un control más largo desde T800379 con la misma preparaciónC2Cpero sin sus 20 experiencias, avanzando ticks reales a la misma edad. Aísla parte de edad/preparación frente a uso, pero no iguala dosis. El prefijo debe conservar su estado completo y no simular ordinal 20 mediante edición.
+
+Predicción acotada para REAL/YOKED: con RAW, clocks, interfaces, agenda y opciones de ejecución idénticos, y un mismo futuro material suministrado, la evolución Runtime debería coincidir bajo el motor congelado. El resto de la organización/entorno no es idéntico; se comprueba que el transductor común no tome decisiones del registro histórico antes de comparar. No se presenta esta predicción como ejecución ni como demostración de que toda historia se haya borrado.
+
+
+## División del contraste antes de la captura de tránsito
+
+Root fijó ejecutar primero sólo el prefijo T816019→817876: las dos oportunidades RET2 y cinco usos históricos, con la pausa administrativa de hábitat después de RET2. Son 1857 ticks y 407 entradas previstas; FIplus todavía no forma parte de ese runner. Este punto permite abrir el contraste instrumental antes del primer evento de FI sin repetir de nuevo la adquisición C2C. El tramo FI posterior debe registrar la nueva información de tránsito y comprobar la pasividad del capturador.
+
+El código es `codigo/ejecutar_prefijo_RET2_PANEL5_PI05.py`, SHA-256 `1de3e34146caa09b2c8aaa83356220e4ae9a7e6571b29cb8f2ea087df04dc0ca`; el protocolo previo está en `control/PROTOCOLO_PREFIJO_RET2_PANEL5_PI05_R01.json`, SHA-256 `e78058056319453b85851bf00532c7285d2986e2aece1a028f47e43f690869e8`. La comprobación de requisitos sobre la nueva copia REAL fue sólo `--dry-run`, sin importar DEE, iniciar propietario ni ejecutar ticks. No se confunde con el ensayo Native que únicamente Root está autorizado a lanzar.
+
+
+## Primer contraste instrumental cerrado: NORMAL y GLOBAL
+
+Root ejecutó ambos casos desde copias del mismo par completo pre-FI T817876. Las dos importaciones preservan la fuente REAL_PRE_01, snapshot `8e754f4521b397e80ca8702b43de722e81a3a798c76968c52321c521c5eaff47` y manifiesto del par `95b37d1806448b7ff9725440c6d8644738763f329ddb114deb0f38917880de12`, con 4026 miembros verificados. Los IDs nuevos distinguen transportes; no hacen de estas copias dos historias previas independientes. Sus `IMPORTACION.json` son fuentes pequeñas conservadas bajo S5/estado/servicios_persistentes/{REAL_NORM_01,REAL_GLOBAL_01} con el prefijo completo del ID.
+
+Ambos usos completaron 198 ticks, 176 entradas aplicadas y respuesta −1 en q+4 y q+6. El recálculo pasivo `control/PASIVIDAD_CAPTURA_GLOBAL_FI_PI05_R02.json`, SHA-256 `47b53ae763832433ea2441cc88e70cbab55bfbf78087eeb9d2f889f98a88ad20`, comparó todos los RAW y clocks finales, interfaces, agenda, 126659 recibos Runtime y las 176 solicitudes actuales, opciones de ejecución, 49 fragmentos organizational y sus 127716 operaciones registradas. Coincidieron también las observaciones C/S, los lectores, los marcos históricos y el resultado legado íntegro. Se compararon tanto las fronteras materiales como los checkpoints completos después de cerrar los propietarios; el NORMAL coincide además con los componentes equivalentes del negativo PI04.
+
+No se declaró igualdad del estado operativo completo. Hay tres claves de metadatos distintas: R04, servicio persistente e identidad de vida. Las 31 diferencias de R04 pertenecen sólo a los extremos de sus últimos 16 intervalos de puente deshabilitado. `pi02_habitat_R04.py:214` registra cada llamada a avance cuando `enabled=False`; segmentar para capturar cambia ese registro, con `active=None`, `uncertain=False` y el mismo `last_tick=818074`. La fuente instalada tiene SHA-256 `501030051dd39679bf52e2b6f30cebd365ef23cefa9ffc063afde0b100aca705`. No hay callbacks R04 ni entradas materiales en esa rama deshabilitada. Los demás cambios son IDs/PID y hashes de recibo/checkpoint; permanecen enumerados y no se borraron para declarar igualdad.
+
+La conclusión es pasividad acotada a los componentes comparados y los puntos efectivamente registrados, no neutralidad universal. NORMAL no contiene una trayectoria global completa intermedia: no se fingió medir igualdad en cada tick. La reconstrucción sin pérdida de las 69 capturas GLOBAL y sus tres anclas es una comprobación documental separada a cargo del analizador F1. El fallo de FIplus antecede a cualquier explicación de la influencia17; estos resultados no demuestran ni destrucción ni conservación funcional de esa contribución.

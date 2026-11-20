@@ -1,0 +1,154 @@
+{
+  "schema": "DEE.PI05.instrument_static_API_review.R01",
+  "scope": "Directed complete relevant functions and contracts read as text; noNative import/execution by this agent",
+  "Native_executed": false,
+  "source_files": [
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\app\\lives.py",
+      "bytes": 18891,
+      "sha256": "dd5487a6c454207f0c50e2c20cf9d304f3490f70c14cdd5710450799516fd5a6"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\app\\servicio_persistente.py",
+      "bytes": 28782,
+      "sha256": "7a82135f39d2e40b5ef18e8a1c94197b8e9a3d8b4707dcc748585cc0516cd53e"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\app\\native_tools.py",
+      "bytes": 2924,
+      "sha256": "83e817119b7ec939c67729521e8c846a7d1441dcc0fe9cda71dcc1a328bf49e9"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\app\\importacion_emparejada.py",
+      "bytes": 6763,
+      "sha256": "77d66696883acad0e3fa873e0041933770f6c2e46ac157e297c8fee631e681f3"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\capacidades\\acceso_eci01.py",
+      "bytes": 12723,
+      "sha256": "33bee08fc31f30616180e0747721cd75aeaf8f6a97ec095c32eef53978000bfb"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\capacidades\\percepcion_cruda_fi01.py",
+      "bytes": 11212,
+      "sha256": "0fb2e1f88ab1a6aedea2784791509b4e0a42fb94fdf15491f7b79596af6c3390"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\sistema\\capacidades\\acciones_nativas_apd04.py",
+      "bytes": 4589,
+      "sha256": "f0fb1a3616c668d48bee8865956f12bd6c53367b7b2062a9a33f6ff966bf3f3a"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\motor\\python313\\site-packages\\dee_thinking\\_native.pyi",
+      "bytes": 24750,
+      "sha256": "77e6f3483c84de66b8b0130632d0823f7797cd2501c64571358bc46ec7257623"
+    },
+    {
+      "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\observador_pasivo.py",
+      "bytes": 3212,
+      "sha256": "dbb2a5e15d70c64112d36505197f4aebf6ff7d4092972923e17cd60c10a1c873"
+    }
+  ],
+  "findings": [
+    {
+      "api": "WorldAdapter.run_until(tick)",
+      "source": "sistema/app/lives.py:35",
+      "advance": "self.world.run_until(absolute_tick); official OrganizationalWorld scheduler",
+      "restriction": "Never Runtime.run/advance or direct clocks/state edits"
+    },
+    {
+      "api": "Runtime.raw_copy/clock_copy",
+      "source": "sistema/app/native_tools.py:29; official _native.pyi:63-68",
+      "read": "Complete uint64 RAW/clocks; collect between legal scheduler calls and verify tick unchanged",
+      "passivity": "Only proposed. Requires matched complete clones with/without capture; fragmentar control separates segmentation from array reads"
+    },
+    {
+      "api": "acceso_eci01.balance(a,left,right)",
+      "source": "sistema/capacidades/acceso_eci01.py:62 onward; acciones_nativas_apd04.balance",
+      "codec": "Exactly inherited independent0..20, bias20 comparison; q+4/q+6 outputs returned unchanged",
+      "inputs": 176
+    },
+    {
+      "api": "FI128.frame",
+      "source": "sistema/capacidades/percepcion_cruda_fi01.py:106-134",
+      "timing": "All advances via a.run_until; returns ignored, permitting a narrow legal segmentation adapter",
+      "warning": "Not a universal TickInfo aggregate-counter wrapper"
+    },
+    {
+      "api": "closed paired export",
+      "source": "sistema/app/servicio_persistente.py:178; app/importacion_emparejada.verify_export",
+      "pair": "Native snapshot+standalone SQLite+outbox+all worker/environment artifacts, preserve source card/history provenance",
+      "warning": "Original export copies files only; new external preservation also records fixed empty directories. Snapshot alone not operational backup"
+    },
+    {
+      "api": "PI05 yoked future extension",
+      "source": "P5/codigo/pi05_yoke_futuros_R01.py",
+      "control": "Original m.plan20 unchanged; separate explicit PI05 metadata ord20/21 sourced actual RealRET2 false/false, exact calendars; zero ticks",
+      "scope": "External prospective experimental control, not memory/strategy learned by DEE"
+    }
+  ],
+  "draft_code": [
+    {
+      "file": "analizar_influencia_global_PI05_R01.py",
+      "sha256": "f67dfbb33bc793305ac061a23961e7693ff331f5492b60840e6e37123a824c27"
+    },
+    {
+      "file": "analizar_organizational_prefijos_PI05_pasivo.py",
+      "sha256": "bcece33e9cc5e39551dfeea6c22fc67ca7df6e3b055a09ec26527531595ccebd"
+    },
+    {
+      "file": "clonar_PI05.py",
+      "sha256": "680265b5071a4038aa1881c63f5353dd717c494bfa8a4cf395c7ae4d8cb00ef2"
+    },
+    {
+      "file": "contrastar_prefijos_C2C_PI05_pasivo.py",
+      "sha256": "5d84e2a21d6650f1dd69d3c677eb32db0aa9da9f0ae0ed315bb2d0992852124b"
+    },
+    {
+      "file": "ejecutar_FI_PI05_R01.py",
+      "sha256": "89d5821f25771b79bdf3d3de2c58eead01a82c9775dab0fbb292e6380356459e"
+    },
+    {
+      "file": "ejecutar_prefijo_RET2_PANEL5_PI05.py",
+      "sha256": "1de3e34146caa09b2c8aaa83356220e4ae9a7e6571b29cb8f2ea087df04dc0ca"
+    },
+    {
+      "file": "exportar_prefijo_cerrado_PI05.py",
+      "sha256": "b258e18fc9f1d0d24ecf06fc77db9cdde4bace85ed5a2107ed0926c46dcd144a"
+    },
+    {
+      "file": "observador_global_PI05_R01.py",
+      "sha256": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6"
+    },
+    {
+      "file": "pi05_transito_causal_R01.py",
+      "sha256": "230274186f58ea1af7deb7501ebd894d1e3d6f9d55d0f803bcbf8388569bdc68"
+    },
+    {
+      "file": "pi05_yoke_futuros_R01.py",
+      "sha256": "81557ecec0a9ef946fb6c319b62eb7d49e278b5e5496c01bb9a79ec1a1fbbfd9"
+    },
+    {
+      "file": "preparar_base_PI05.py",
+      "sha256": "e3ef4c9fe6e839337558f01db5c7f87392090f88bacdbe6eda0064f59da04f65"
+    },
+    {
+      "file": "preparar_fuentes_PI05_R01.py",
+      "sha256": "1196b38d227714a2739bdfde3fb08e84a7b47833d81acfda8567b75d148a2d0b"
+    },
+    {
+      "file": "probar_instrumentos_PI05_puro.py",
+      "sha256": "6b228878918780987c6387591525ed11a7a70aaba4de9f83a988a72177fa37b8"
+    },
+    {
+      "file": "servicio_ensayo_PI05.py",
+      "sha256": "eadbf8c88e09a5a4ee8e09c5352feb78a9540e8f630339cd876a8138349f914a"
+    }
+  ],
+  "open_issues": [
+    "Root must freeze/install new protocol and source after original owner closes",
+    "No Native passivity result yet",
+    "No original None/Yoke fullpair export executed by this agent; helper ready for Root",
+    "New complete frames are not full snapshots or operational backups"
+  ]
+}

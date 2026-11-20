@@ -1,0 +1,36 @@
+[build-system]
+requires = [
+  "setuptools>=81,<82",
+  "wheel>=0.48,<0.49",
+  "pybind11>=3.1,<3.2",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dee-thinking"
+version = "4.5.0"
+description = "Native DEE v27 organizational worlds, physical interfaces, recipes, observation, transfer, composition and integral persistence"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+authors = [
+  {name = "Ivan Erick Tlaltecatl Morales"},
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: C++",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+]
+
+[tool.setuptools]
+package-dir = {"" = "python"}
+packages = ["dee_thinking"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+dee_thinking = ["py.typed", "THIRD_PARTY_NOTICES.md", "*.pyi", "data/*.deetsnap", "data/*.json"]
+
+[tool.cibuildwheel]
+build = "cp313-win_amd64"
+skip = "*-win32 *-manylinux* *-musllinux* *-macosx* *t-*"
+test-command = "python -c \"import dee_thinking; print(dee_thinking.build_info())\""

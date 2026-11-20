@@ -1,0 +1,113 @@
+
+# Native informative sessions (4.0). Finite apparatus, explicit external sensor.
+class SourceRole:
+    P_INFORMATIVE: SourceRole
+    Q_INFORMATIVE: SourceRole
+
+class FinitePolicyParameters:
+    origin: Coordinate
+    roles: SourceRole
+    actual_class: int
+    actual_enabled: bool
+    execution: TickOptions
+    def __init__(self) -> None: ...
+
+class NativeInformationParameters:
+    seed_path: str
+    origin: Coordinate
+    history: BasalHistory
+    context: int
+    actual_class: int
+    information_load: int
+    query_enabled: bool
+    actual_enabled: bool
+    source_enabled: bool
+    post_query: bool
+    source_cut: str
+    distance: int
+    execution: TickOptions
+    def __init__(self) -> None: ...
+
+class InformativeOperation:
+    tick: int
+    operation: str
+    interface_name: str
+    value: int
+    receipt_id: int | None
+    modality: OperationModality
+
+class PhysicalCandidate:
+    port: str
+    source: str
+    presentation: str
+    physical: Observation
+    value: int | None
+    def as_dict(self) -> dict[str, object]: ...
+
+class InformationReadout:
+    tick: int
+    profile: str
+    status: str
+    scope: str
+    modality: OperationModality
+    comparisons: list[PhysicalCandidate]
+    policies: list[PhysicalCandidate]
+    actions: list[PhysicalCandidate]
+    information: list[PhysicalCandidate]
+    later_responses: list[PhysicalCandidate]
+    physical_outputs: dict[str, Observation]
+    receipts: list[EventReceipt]
+    current_prediction: int | None
+    delta: int | None
+    centers_available: bool
+    supports_intact: bool
+    journal_truncated: bool
+    def as_dict(self) -> dict[str, object]: ...
+
+class FinitePolicySession:
+    @staticmethod
+    def create(parameters: FinitePolicyParameters = ...) -> FinitePolicySession: ...
+    @staticmethod
+    def load_snapshot(path: str) -> FinitePolicySession: ...
+    tick: int
+    world: OrganizationalWorld
+    parameters: FinitePolicyParameters
+    journal: list[InformativeOperation]
+    interface_metadata: dict[str, str]
+    def observe(self) -> InformationReadout: ...
+    def advance(self, count: int = 1) -> InformationReadout: ...
+    def run_until(self, absolute_tick: int) -> InformationReadout: ...
+    def compare(self) -> InformationReadout: ...
+    def source(self) -> InformationReadout: ...
+    def sense(self) -> InformationReadout: ...
+    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
+    def process_boundary(self) -> None: ...
+    def fork(self) -> FinitePolicySession: ...
+    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> FinitePolicySession: ...
+    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
+    def get_interface_metadata(self, key: str) -> str | None: ...
+
+class NativeInformationSession:
+    @staticmethod
+    def create(parameters: NativeInformationParameters) -> NativeInformationSession: ...
+    @staticmethod
+    def load_snapshot(path: str) -> NativeInformationSession: ...
+    tick: int
+    world: OrganizationalWorld
+    parameters: NativeInformationParameters
+    journal: list[InformativeOperation]
+    interface_metadata: dict[str, str]
+    def observe(self) -> InformationReadout: ...
+    def advance(self, count: int = 1) -> InformationReadout: ...
+    def run_until(self, absolute_tick: int) -> InformationReadout: ...
+    def compare(self) -> InformationReadout: ...
+    def source(self) -> InformationReadout: ...
+    def sense(self) -> InformationReadout: ...
+    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
+    def process_boundary(self) -> None: ...
+    def fork(self) -> NativeInformationSession: ...
+    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> NativeInformationSession: ...
+    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
+    def get_interface_metadata(self, key: str) -> str | None: ...

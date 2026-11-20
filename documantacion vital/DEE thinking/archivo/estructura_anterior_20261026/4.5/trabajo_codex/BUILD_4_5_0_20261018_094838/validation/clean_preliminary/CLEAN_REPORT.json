@@ -1,0 +1,463 @@
+{
+  "schema": "DEE45.exact-clean.v1",
+  "status": "VERIFIED",
+  "candidate_sha256": "282b4b58c807e8b6bb728e2e4ee792082d6c809d6e79bba39216bead9abd1b5d",
+  "candidate_bytes": 16407271,
+  "plan_member": "CLEAN_PLAN.json",
+  "plan_sha256": "43532e629b1f080dd2ad374ff1c5465aac52550131cd68b4ec4b39de96958cf2",
+  "container_verification": {
+    "schema": "DEE45.container-proof.v1",
+    "status": "VERIFIED",
+    "candidate": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\_delivery\\PRE01.candidate.zip",
+    "sha256": "282b4b58c807e8b6bb728e2e4ee792082d6c809d6e79bba39216bead9abd1b5d",
+    "bytes": 16407271,
+    "expanded_bytes": 2022719146,
+    "members": 4353,
+    "hashes_verified": 4352,
+    "crc": "PASS",
+    "kernel": "UNCHANGED",
+    "identity": {
+      "version": "4.5.0",
+      "wheel_name": "dee_thinking-4.5.0-cp313-cp313-win_amd64.whl",
+      "wheel_sha256": "09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c",
+      "wheel_bytes": 1022834,
+      "native_member": "dee_thinking/_native.cp313-win_amd64.pyd",
+      "native_sha256": "17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d",
+      "kernel_source_sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+      "kernel_version": 27,
+      "metadata_member": "dee_thinking-4.5.0.dist-info/METADATA"
+    },
+    "completed_utc": "2026-10-18T11:24:44.307906+00:00"
+  },
+  "commands": [
+    {
+      "label": "00_venv",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\.venv_build\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 10.485065700020641,
+      "timeout_seconds": 120.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "01_offline_install",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0\\wheel\\dee_thinking-4.5.0-cp313-cp313-win_amd64.whl"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 2.860722600016743,
+      "timeout_seconds": 120.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "02_engine_identity",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nidentity=json.loads(sys.argv[1])\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.5.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve()/'Lib'/'site-packages')\nnative=pathlib.Path(d._native.__file__).resolve()\nassert native.is_relative_to(pathlib.Path(sys.prefix).resolve()/'Lib'/'site-packages')\nassert hashlib.sha256(native.read_bytes()).hexdigest()==identity['native_sha256']\nassert not any(name.startswith(('dee_universe','CPC3','CPC4','CPC5','CPC6','CPC7','SEM01')) for name in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n 'module':str(module),'native':str(native),'python':sys.executable,'prefix':sys.prefix,\n 'native_sha256':identity['native_sha256'],'wheel_sha256':identity['wheel_sha256']},indent=2),encoding='utf-8')\n",
+        "{\"version\": \"4.5.0\", \"wheel_name\": \"dee_thinking-4.5.0-cp313-cp313-win_amd64.whl\", \"wheel_sha256\": \"09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c\", \"wheel_bytes\": 1022834, \"native_member\": \"dee_thinking/_native.cp313-win_amd64.pyd\", \"native_sha256\": \"17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d\", \"kernel_source_sha256\": \"fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31\", \"kernel_version\": 27, \"metadata_member\": \"dee_thinking-4.5.0.dist-info/METADATA\"}",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\ENGINE_IDENTITY.json"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 0.3657260999898426,
+      "timeout_seconds": 90.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "03_public_installed_smoke",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0/tools/smoke_installed45.py",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\generated/smoke"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 3.7294398000231013,
+      "timeout_seconds": 600.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "04_independent_cpp_consumers",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0/tools/consume_cpp45.py",
+        "--root",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\generated/cpp"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 24.137206999992486,
+      "timeout_seconds": 900.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "05_unicode_snapshot_paths",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0/tools/unicode_snapshot45.py",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\generated/unicode/UNICODE_REPORT.json"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 1.1078976000426337,
+      "timeout_seconds": 180.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    },
+    {
+      "label": "06_real_spanish_launcher",
+      "argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0/tools/check_launcher45.py",
+        "--root",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\generated/launcher"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+      "elapsed_seconds": 16.971470599994063,
+      "timeout_seconds": 420.0,
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "error": null,
+      "owned_worker_waited": true,
+      "owned_job_closed": true
+    }
+  ],
+  "posttrajectory_assertions": [
+    {
+      "path": "smoke/SMOKE_REPORT.json",
+      "sha256": "69b3fdd1e1c3a7ded821bc120eb4579313579ea01471f77411f572c3cf0537d1",
+      "checks": {
+        "/status": true,
+        "/separate_process_continuation": true,
+        "/comparison_after_trajectories_only": true,
+        "/control_unavailable_preserved": true,
+        "/physical_and_operational_comparisons/physics": true,
+        "/physical_and_operational_comparisons/operative_stable": true
+      },
+      "observations": {
+        "schema": "DEE45.installed-smoke.v1",
+        "status": "VERIFIED",
+        "identity": {
+          "version": "4.5.0",
+          "kernel": {
+            "kernel_version": 27,
+            "kernel_modulus": 19665,
+            "reducer_cap": 19664,
+            "native_module": true
+          },
+          "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+          "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+          "native": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Lib\\site-packages\\dee_thinking\\_native.cp313-win_amd64.pyd",
+          "native_sha256": "17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d",
+          "loaded_from_site_packages": true
+        },
+        "legacy_mobile": [
+          25,
+          29
+        ],
+        "legacy_cascade": {
+          "stage0": 25,
+          "stage1": 39
+        },
+        "new_acquired_values": [
+          -1,
+          1
+        ],
+        "retained_values": [
+          -1,
+          1
+        ],
+        "control_unavailable_preserved": true,
+        "comparison_after_trajectories_only": true,
+        "separate_process_continuation": true,
+        "physical_and_operational_comparisons": {
+          "first": true,
+          "retained": true,
+          "physics": true,
+          "pending_physics": true,
+          "pending_operative_stable": true,
+          "operative_stable": true,
+          "inert_load_has_no_initial_material_cache": true
+        },
+        "descriptor_provenance_difference": {
+          "field": "geometry.initial_state_available",
+          "prepared": true,
+          "loaded": false,
+          "scope": "Construction-state availability, not RAW/clocks, geometry, ports or protocol; exact primary descriptors retained in INITIAL/CONTINUATION."
+        },
+        "elapsed_seconds": 3.4779087000060827
+      }
+    },
+    {
+      "path": "cpp/CPP_CONSUMER_REPORT.json",
+      "sha256": "d89889a7d363ef00ac982063b727c44628401b5ad15709f0a5e398906609feb6",
+      "checks": {
+        "/status": true,
+        "/primary_stdout/new_native_repertoire": true,
+        "/primary_stdout/pending_snapshot_continuation": true,
+        "/primary_stdout/legacy_native_composition": true,
+        "/legacy40_source_byte_exact": true,
+        "/legacy40_source_sha256": true,
+        "/legacy40_execution/exit_code": true
+      },
+      "observations": {
+        "schema": "DEE45.extracted-cpp-consumer.v1",
+        "status": "VERIFIED",
+        "primary_stdout": {
+          "status": "PASS",
+          "version": "4.5.0",
+          "kernel": 27,
+          "new_native_repertoire": true,
+          "input_codec": true,
+          "pending_snapshot_continuation": true,
+          "passive_observation": true,
+          "legacy_native_composition": true
+        },
+        "executable_sha256": "c57cc4c5836388452edbf4e344f59322545955bccb32bda32cd2595be5fc8e36",
+        "legacy40_source_byte_exact": true,
+        "legacy40_source_sha256": "6da09a24dbdf6fbb3b6736196e9eb3354295c8ea2d330491890446cde5987550",
+        "legacy40_execution": {
+          "exit_code": 0,
+          "stdout": "DEE thinking Entrega 02 installed consumer\r\norganizations=2 connections=1 single_runtime=true\r\nlater_input_tick=6 response_s_reg=25\r\nsnapshot_version=2\r\nrestored_future_exact=true control_distinct=true",
+          "executable_sha256": "6490af9b469d78f6e82a378fcad58152aea190730abc588024debf3eaeed7480",
+          "snapshot_sha256": "99c784dc2f6e7a39d6dd99ea896c7a466bc2f3218aac9cafe5cdfb2ab419e78b",
+          "snapshot_bytes": 630491
+        },
+        "inputs": [
+          {
+            "path": "validation\\tests\\external_consumer\\CMakeLists.txt",
+            "sha256": "526cb71beb47097cacb68fcba499681a582fcda675e5fd4b07b77f946fb02093"
+          },
+          {
+            "path": "validation\\tests\\external_consumer\\main.cpp",
+            "sha256": "e4dbd83b61de26b151948c95bd146f7d15efa2a0bd75c96d7b8bb62db0f22f0e"
+          },
+          {
+            "path": "validation\\tests\\external_consumer\\legacy40_consumer.cpp",
+            "sha256": "6da09a24dbdf6fbb3b6736196e9eb3354295c8ea2d330491890446cde5987550"
+          },
+          {
+            "path": "source\\examples\\independent_consumer.cpp",
+            "sha256": "6da09a24dbdf6fbb3b6736196e9eb3354295c8ea2d330491890446cde5987550"
+          },
+          {
+            "path": "install_cpp\\lib\\dee_thinking.lib",
+            "sha256": "580a00f7001de09a9144f8bfb9e6f7c3ecc5a69502754bfee265a15ff47726ca"
+          },
+          {
+            "path": "tools\\build45.ps1",
+            "sha256": "4419aefa87595adcea7870cf972cdc9fec76ac865d3166b0dc83172e829a04f8"
+          },
+          {
+            "path": "install_cpp\\lib\\cmake\\dee_thinking\\dee_thinkingConfig.cmake",
+            "sha256": "c1373af92980da10008b994787507784163776096e1cba8ce966b0a4fe943581"
+          }
+        ],
+        "installed_library_sha256": "580a00f7001de09a9144f8bfb9e6f7c3ecc5a69502754bfee265a15ff47726ca",
+        "build_provenance": {
+          "stage": "consumer",
+          "utc": "2026-10-18T11:25:18.0955824+00:00",
+          "vs_instance": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community",
+          "cmake": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+          "ninja": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+          "compiler": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.exe",
+          "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\extracted\\DEE_thinking_4_5_0\\source",
+          "build": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\generated\\cpp\\build",
+          "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+          "release_flags": "/O2 /Ob2 /DNDEBUG",
+          "configuration": "Release",
+          "language": "C++20",
+          "parallel_jobs": 2,
+          "tests_skipped_explicitly": false
+        },
+        "native_checkpoints": [
+          {
+            "path": "composed16.deetsnap",
+            "bytes": 32779617,
+            "sha256": "915993dae88ae75e9bd1c7c74addfc5675ac0a0891c23d0553909b758fb31b40"
+          },
+          {
+            "path": "continued70.deetsnap",
+            "bytes": 4827792,
+            "sha256": "bf38cd1de8e6c4c8f12b161b59870615e75de1f02e3943a65b065896edf7a4ea"
+          },
+          {
+            "path": "pending67.deetsnap",
+            "bytes": 4827926,
+            "sha256": "13ff2c3b93585d17cd640413ea67bff8b2573f3112d411c6b0c1d3c54ab45461"
+          }
+        ],
+        "scope": "Independent executable compiled from the exact extracted source and linked to that ZIP install_cpp via find_package(dee_thinking 4.5 CONFIG REQUIRED) / DEE::thinking."
+      }
+    },
+    {
+      "path": "unicode/UNICODE_REPORT.json",
+      "sha256": "0835bddec746836362f2c96ad7af473ec1eacd16dcad6a835830525fd5f9dbc6",
+      "checks": {
+        "/version": true,
+        "/cases/0/case": true,
+        "/cases/0/status": true,
+        "/cases/1/case": true,
+        "/cases/1/status": true,
+        "/cases/2/case": true,
+        "/cases/2/status": true
+      },
+      "observations": {
+        "version": "4.5.0",
+        "import_path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+        "cases": [
+          {
+            "case": "runtime_unicode",
+            "status": "PASS",
+            "seconds": 0.01983579999068752,
+            "before": {
+              "tick": 2,
+              "raw_sha256": "798c6091013f04afa235de568148ef7a555d45349c3863733d47b0c65de357da",
+              "clock_sha256": "4306793ef628cf030d70f8f1301b802c7de68940b6f173c11e5eb0b59f76268b"
+            },
+            "after": {
+              "tick": 5,
+              "raw_sha256": "798c6091013f04afa235de568148ef7a555d45349c3863733d47b0c65de357da",
+              "clock_sha256": "1972bf3df95a7f034bc5a9aaeaf62154fd8c12d40bc9b52d8dbfa90c600aa634"
+            },
+            "file_sha256": "690747010a3ff8fa5dee65d27e123f1880d51311011c0b7076939c734ad16dfb"
+          },
+          {
+            "case": "session_gzip_unicode",
+            "status": "PASS",
+            "seconds": 0.6976127999951132,
+            "before": {
+              "tick": 68,
+              "raw_sha256": "0e422435edf591783d52c4083984a94291c69af0f5cf2a74754e861969c4d391",
+              "clock_sha256": "4ab57f011ce91174a3f7e23d507e7a94ef40c67d7c7e232d8dfb5fc4a752ddfd"
+            },
+            "after": {
+              "tick": 70,
+              "raw_sha256": "ac34e62013ca3a541dc213011b6d61106f0b584a900df69d285f4ff3a34ee8b8",
+              "clock_sha256": "96afd5c31d9b7047284e8e0a4e625a7249973000eeaa979c22f3c48ba07f4b4d"
+            },
+            "file_sha256": "bb96e900e739125c95f8b9cfd09835f811c5f84c828a9d1c2116473882b000c7"
+          },
+          {
+            "case": "trace_unicode",
+            "status": "PASS",
+            "seconds": 0.014444900036323816,
+            "before": {
+              "tick": 2,
+              "raw_sha256": "798c6091013f04afa235de568148ef7a555d45349c3863733d47b0c65de357da",
+              "clock_sha256": "4306793ef628cf030d70f8f1301b802c7de68940b6f173c11e5eb0b59f76268b"
+            },
+            "after": {
+              "tick": 2,
+              "raw_sha256": "798c6091013f04afa235de568148ef7a555d45349c3863733d47b0c65de357da",
+              "clock_sha256": "4306793ef628cf030d70f8f1301b802c7de68940b6f173c11e5eb0b59f76268b"
+            },
+            "file_sha256": "7e31c02bd56778ed39c581d74b9590f7c92d86983f2e0656c4c8842b5a9f50fb"
+          }
+        ]
+      }
+    },
+    {
+      "path": "launcher/LAUNCHER_REPORT.json",
+      "sha256": "30b81385d03968959b908a78cb6a1f113ae4595c0a480cda7621fd6267815286",
+      "checks": {
+        "/status": true,
+        "/real_powershell_launcher": true,
+        "/offline_owned_environment": true,
+        "/restored_without_repreparation": true,
+        "/comparison_after_trajectory_only": true
+      },
+      "observations": {
+        "schema": "DEE45.real-launcher-check.v1",
+        "status": "VERIFIED",
+        "real_powershell_launcher": true,
+        "offline_owned_environment": true,
+        "native_queries": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "restored_without_repreparation": true,
+        "comparison_after_trajectory_only": true,
+        "events_sha256": "7d60b750156a5806e0d98a560d4649f127576fd8d2fbb158b4d6cb2bc8a56a03",
+        "transcript_sha256": "993a510e8edf682820cfe2a3324820662f24d0bbabb3e8e9767eb6abc6c49aa7",
+        "snapshot_sha256": "cb54b843d802d95d01e15f735e3af02fa9dc4a6884b881a889595ac21fd1dd5a",
+        "wheel_sha256": "09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c",
+        "native_sha256": "17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d",
+        "elapsed_seconds": 16.708408100006636
+      }
+    }
+  ],
+  "error": null,
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+  "elapsed_seconds": 87.5157007999951,
+  "completed_utc": "2026-10-18T11:25:55.137024+00:00",
+  "engine_identity": {
+    "version": "4.5.0",
+    "kernel": {
+      "kernel_version": 27,
+      "kernel_modulus": 19665,
+      "reducer_cap": 19664,
+      "native_module": true
+    },
+    "module": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Lib\\site-packages\\dee_thinking\\__init__.py",
+    "native": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Lib\\site-packages\\dee_thinking\\_native.cp313-win_amd64.pyd",
+    "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+    "prefix": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env",
+    "native_sha256": "17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d",
+    "wheel_sha256": "09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c"
+  },
+  "scope": "Exact ZIP, immutable embedded plan, fresh noneditable offline installation. Native tasks in owned bounded processes; comparisons only after trajectories."
+}

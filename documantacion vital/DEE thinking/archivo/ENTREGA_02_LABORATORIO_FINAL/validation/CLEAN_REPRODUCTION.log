@@ -1,0 +1,35 @@
+DEE thinking — Entrega 02, laboratorio final focalizado
+Validación desde extracción limpia: 2026-10-04
+
+Paquete provisional validado:
+  SHA-256: f8785365b01aace3729664799c980d53e4f6bcadb722f770ea929e3944b42e6c
+  payload: 30 archivos, 138510686 bytes
+  apertura ZIP: correcta
+  MANIFEST.json: tamaños y SHA-256 internos correctos
+  HASHES.sha256: 30 entradas coincidentes
+
+Entorno de reconstrucción:
+  CMake 4.2.3
+  Ninja
+  MSVC 19.50.35729.0
+  toolset 14.50.35717
+  configuración Release
+  biblioteca estática incluida en el paquete
+  ejecución nativa C++; Python no participa en el runtime
+
+Resultado de reproducción:
+  completed_f1=8
+  completed_f2=8
+  elapsed_ms=461313
+  technical_ok=true
+  RESULTS_VALID=TRUE
+
+Comparación con la ejecución original:
+  resultados científicos, comparaciones y chequeos técnicos: coincidencia exacta
+  único campo excluido de la igualdad: elapsed_ms
+  elapsed_ms original=473339
+  elapsed_ms reproducción=461313
+
+La reproducción limpia volvió a ejecutar los doce brazos Lazy y las cuatro
+confirmaciones DenseParallel. No reutilizó la telemetría histórica como salida
+de ejecución.

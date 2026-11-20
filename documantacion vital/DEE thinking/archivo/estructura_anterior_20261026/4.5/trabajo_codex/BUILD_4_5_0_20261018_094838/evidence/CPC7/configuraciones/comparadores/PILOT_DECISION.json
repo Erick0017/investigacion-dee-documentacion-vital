@@ -1,0 +1,15 @@
+{
+  "schema": "CPC7.comparator.freeze.v1",
+  "created_before_reserved_model_evaluation": true,
+  "pilot_profiles": ["B2_PILOT_01", "B2_PILOT_02"],
+  "same_pilot_cases": ["DIR_11_paired","CTX_11_paired","ORD_11_paired","DIR_23_paired","CTX_23_paired","ORD_23_paired"],
+  "pilot_score": {"B2_PILOT_01": {"correct":161,"queries":172},"B2_PILOT_02":{"correct":170,"queries":172}},
+  "choice": "B2_FINAL_V1.json copies PILOT_02 exactly; no reserved model predictions were available to this choice.",
+  "choice_provenance": "Engineering selection after the finite two-profile pilot, not a preregistered optimal-model theorem. Broader pilot performance was preferred while retaining two adverse errors.",
+  "resource_change": "Profile02 uses96 versus32 minibatch updates per paired experience and learning_rate0.2 versus0.15. Cost is measured, not treated as free improvement.",
+  "frozen": ["prepared encoder", "B1 temporal binding and key invariance", "B2 architecture/seed/update settings", "query response rule at probability0.5", "FIFO replay32", "evaluation criteria", "all fixtures"],
+  "reserved_profiles": ["B1_FINAL", "B2_FINAL", "B2_NO_REPLAY"],
+  "reserved_seeds": [101,211],
+  "no_replay_arm": "Same MLP, initialization and96x8 gradient-example budget; each minibatch consists solely of repetitions of the current actual example. It tests this replay mechanism, not the universe of continual learners.",
+  "revision_panel": "In Q2 report revised L01 separately from retained L02..L16; do not hide one failed adaptation inside aggregate accuracy."
+}

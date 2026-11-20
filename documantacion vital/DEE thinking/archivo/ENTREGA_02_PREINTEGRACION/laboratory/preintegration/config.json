@@ -1,0 +1,62 @@
+{
+  "schema": "dee-thinking-preintegration-laboratory-config-v1",
+  "scope": "LABORATORY_ONLY_DO_NOT_EXPORT_TO_STABLE_CATALOG",
+  "candidate": {
+    "learner": "relation_learning.c6h01.v1",
+    "reader": "relation_query.c6h01.v1",
+    "dimension": 34,
+    "learner_anchor": [10, 18, 14],
+    "reader_anchor": [10, 26, 14]
+  },
+  "execution": {
+    "primary_backend": "Lazy",
+    "primary_threads": 4,
+    "confirmation_backend": "DenseSequential",
+    "confirmation_threads": 1,
+    "final_tick": 79,
+    "reset_between_experiences": false
+  },
+  "training": {
+    "tick": 0,
+    "cue_load": 5,
+    "teacher_load": 7
+  },
+  "repeated_reader_experiences": {
+    "channel": "reader.query",
+    "ticks": [6, 40, 74],
+    "load": 13,
+    "response_ticks": [11, 45, 79]
+  },
+  "controls": {
+    "arms": ["INTACT", "CUT_RETURN", "SHAM_PARALLEL"],
+    "cut": {
+      "submission_tick": 27,
+      "source": [27, 9, 13],
+      "direction": [0, 0, 1],
+      "load": 0,
+      "encounter_tick": 28,
+      "encounter_site": [27, 9, 14]
+    },
+    "sham": {
+      "submission_tick": 27,
+      "source": [27, 10, 13],
+      "direction": [0, 0, 1],
+      "load": 0,
+      "parallel_miss_site_at_tick_28": [27, 10, 14]
+    },
+    "common_phase_support": {
+      "submission_tick": 44,
+      "source": [10, 25, 14],
+      "direction": [0, 1, 0],
+      "load": 0,
+      "purpose": "Preserve downstream admission comparability after the causal cut without restoring the removed load."
+    }
+  },
+  "claims_guard": {
+    "catalog_extension": false,
+    "fanout": false,
+    "autonomous_environment": false,
+    "learning_name_for_sum_or_route": false,
+    "note": "Later queries use the inherited Runtime channel beyond the catalog's original t=6 validation window; results are coupled laboratory evidence only."
+  }
+}

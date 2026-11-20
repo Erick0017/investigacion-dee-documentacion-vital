@@ -1,0 +1,53 @@
+{
+  "schema": "dee-thinking-preintegration-baseline-v1",
+  "executed_at": "2026-10-04",
+  "baseline_archive": "DEE_thinking_ENTREGA_02_CIERRE_Y_FRONTERA_RESULTADOS.zip",
+  "baseline_archive_sha256": "532b195e2931c693f343ea782f399fd8b546f461f2e604f7b8c2b264c63e1c80",
+  "baseline_identity": {
+    "native_api_version": "2.1.0",
+    "kernel": "DEE Universe v27 frozen",
+    "kernel_source_sha256": "44a80f7863d78f596099ddf7d41c9947fa8513503f65067097f1f3b05a8207ab",
+    "release_tests_recorded": 15,
+    "release_artifacts_recorded": 18
+  },
+  "direct_checks": [
+    {
+      "check": "installed_consumer_binary",
+      "exit_code": 0,
+      "observations": {
+        "organizations": 2,
+        "connections": 1,
+        "later_input_tick": 6,
+        "response_s_reg": 25,
+        "snapshot_version": 2,
+        "restored_future_exact": true,
+        "control_distinct": true
+      }
+    },
+    {
+      "check": "core05_phase_memory_binary",
+      "exit_code": 0,
+      "checks": 144,
+      "failures": 0
+    },
+    {
+      "check": "cross_process_persistence_producer_then_consumer",
+      "producer_exit_code": 0,
+      "consumer_exit_code": 0,
+      "producer_terminated_before_consumer": true,
+      "checkpoint_tick": 6,
+      "continued_tick": 11,
+      "raw_clock_exact": true,
+      "pending_event_exact": true,
+      "connection_exact": true,
+      "response_s_reg": 25
+    }
+  ],
+  "closed_items_not_reopened": [
+    "temporal_phase_memory.core05.v1",
+    "reachable orphan evolution fixture",
+    "occupied-destination DEMUX saturation fixture",
+    "strong-tension and write-protection fixtures",
+    "Dense/Lazy/parallel scheduler regression closure"
+  ]
+}

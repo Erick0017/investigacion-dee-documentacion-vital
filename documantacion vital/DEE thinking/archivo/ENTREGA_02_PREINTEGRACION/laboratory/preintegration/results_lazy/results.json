@@ -1,0 +1,83 @@
+{
+  "schema": "dee-thinking-preintegration-laboratory-v1",
+  "scope": "LABORATORY_ONLY_DO_NOT_EXPORT_TO_STABLE_CATALOG",
+  "backend": "lazy-4",
+  "elapsed_ms": 670,
+  "candidate": "relation_learning.c6h01.v1 + relation_query.c6h01.v1",
+  "question": "Can one reader accept three comparable experiences and can the products observed at t11 and t45 participate in later physical uses without reset?",
+  "design": {
+    "dimension": 34,
+    "same_runtime_without_reset": true,
+    "same_reader_channel": "reader.query",
+    "query_ticks": [6,40,74],
+    "response_ticks": [11,45,79],
+    "query_load": 13,
+    "cut_and_sham_submission_tick": 27,
+    "cut_encounter_tick": 28,
+    "common_zero_load_phase_support_tick": 44,
+    "catalog_extension_claimed": false,
+    "fanout_used": false
+  },
+  "criteria": {
+    "all_query_admissions_comparable_and_applied": true,
+    "training_and_common_support_admissions_comparable_and_applied": true,
+    "intact_equals_sham_at_all_response_ticks": true,
+    "cut_diverges_at_all_post_cut_response_ticks": true,
+    "predicted_finite_load_sequences_match": true,
+    "backend_used_without_fallback": true,
+    "preintegration_candidate_supported": true
+  },
+  "interpretation_guard": "s_reg accumulation and toroidal return are measured physical operations; neither is renamed as learning",
+  "arms": [
+    {
+      "name": "INTACT",
+      "intervention": "intact",
+      "receipts": [
+        {"label":"training_pair","initial":{"id":1,"kind":"experience","status":"scheduled","requested_tick":0,"effective_tick":null,"channels":["learner.cue","learner.teacher"],"reason":""},"final":{"id":1,"kind":"experience","status":"applied","requested_tick":0,"effective_tick":0,"channels":["learner.cue","learner.teacher"],"reason":""}},
+        {"label":"reader_query_1","initial":{"id":2,"kind":"probe","status":"scheduled","requested_tick":6,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":2,"kind":"probe","status":"applied","requested_tick":6,"effective_tick":6,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_2","initial":{"id":3,"kind":"probe","status":"scheduled","requested_tick":40,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":3,"kind":"probe","status":"applied","requested_tick":40,"effective_tick":40,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_3","initial":{"id":4,"kind":"probe","status":"scheduled","requested_tick":74,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":4,"kind":"probe","status":"applied","requested_tick":74,"effective_tick":74,"channels":["reader.query"],"reason":""}},
+        {"label":"common_phase_support","initial":{"id":5,"kind":"experience","status":"scheduled","requested_tick":44,"effective_tick":null,"channels":["preintegration.phase_support"],"reason":""},"final":{"id":5,"kind":"experience","status":"applied","requested_tick":44,"effective_tick":44,"channels":["preintegration.phase_support"],"reason":""}}
+      ],
+      "response_checkpoints": [
+        {"tick":11,"response":{"tick":11,"coordinate":[10,26,14],"raw":1161647336259059713,"clock":11,"state":1,"s_reg":25,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":0,"clock_diff_from_intact":0,"raw_diff_from_sham":0,"clock_diff_from_sham":0},
+        {"tick":45,"response":{"tick":45,"coordinate":[10,26,14],"raw":1161647392093634561,"clock":45,"state":1,"s_reg":38,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":0,"clock_diff_from_intact":0,"raw_diff_from_sham":1,"clock_diff_from_sham":0},
+        {"tick":79,"response":{"tick":79,"coordinate":[10,26,14],"raw":1161647447928209409,"clock":79,"state":1,"s_reg":51,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":0,"clock_diff_from_intact":0,"raw_diff_from_sham":1,"clock_diff_from_sham":0}
+      ]
+    },
+    {
+      "name": "CUT_RETURN",
+      "intervention": "cut",
+      "receipts": [
+        {"label":"training_pair","initial":{"id":1,"kind":"experience","status":"scheduled","requested_tick":0,"effective_tick":null,"channels":["learner.cue","learner.teacher"],"reason":""},"final":{"id":1,"kind":"experience","status":"applied","requested_tick":0,"effective_tick":0,"channels":["learner.cue","learner.teacher"],"reason":""}},
+        {"label":"reader_query_1","initial":{"id":2,"kind":"probe","status":"scheduled","requested_tick":6,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":2,"kind":"probe","status":"applied","requested_tick":6,"effective_tick":6,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_2","initial":{"id":3,"kind":"probe","status":"scheduled","requested_tick":40,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":3,"kind":"probe","status":"applied","requested_tick":40,"effective_tick":40,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_3","initial":{"id":4,"kind":"probe","status":"scheduled","requested_tick":74,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":4,"kind":"probe","status":"applied","requested_tick":74,"effective_tick":74,"channels":["reader.query"],"reason":""}},
+        {"label":"matched_intervention","initial":{"id":5,"kind":"experience","status":"scheduled","requested_tick":27,"effective_tick":null,"channels":["preintegration.intervention"],"reason":""},"final":{"id":5,"kind":"experience","status":"applied","requested_tick":27,"effective_tick":27,"channels":["preintegration.intervention"],"reason":""}},
+        {"label":"common_phase_support","initial":{"id":6,"kind":"experience","status":"scheduled","requested_tick":44,"effective_tick":null,"channels":["preintegration.phase_support"],"reason":""},"final":{"id":6,"kind":"experience","status":"applied","requested_tick":44,"effective_tick":44,"channels":["preintegration.phase_support"],"reason":""}}
+      ],
+      "response_checkpoints": [
+        {"tick":11,"response":{"tick":11,"coordinate":[10,26,14],"raw":1161647336259059713,"clock":11,"state":1,"s_reg":25,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":0,"clock_diff_from_intact":0,"raw_diff_from_sham":0,"clock_diff_from_sham":0},
+        {"tick":45,"response":{"tick":45,"coordinate":[10,26,14],"raw":1161647284719452161,"clock":45,"state":1,"s_reg":13,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":2,"clock_diff_from_intact":0,"raw_diff_from_sham":3,"clock_diff_from_sham":0},
+        {"tick":79,"response":{"tick":79,"coordinate":[10,26,14],"raw":1157143685092081665,"clock":79,"state":1,"s_reg":13,"direction":[-1,0,0],"semantic":1},"raw_diff_from_intact":2,"clock_diff_from_intact":0,"raw_diff_from_sham":3,"clock_diff_from_sham":0}
+      ]
+    },
+    {
+      "name": "SHAM_PARALLEL",
+      "intervention": "sham",
+      "receipts": [
+        {"label":"training_pair","initial":{"id":1,"kind":"experience","status":"scheduled","requested_tick":0,"effective_tick":null,"channels":["learner.cue","learner.teacher"],"reason":""},"final":{"id":1,"kind":"experience","status":"applied","requested_tick":0,"effective_tick":0,"channels":["learner.cue","learner.teacher"],"reason":""}},
+        {"label":"reader_query_1","initial":{"id":2,"kind":"probe","status":"scheduled","requested_tick":6,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":2,"kind":"probe","status":"applied","requested_tick":6,"effective_tick":6,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_2","initial":{"id":3,"kind":"probe","status":"scheduled","requested_tick":40,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":3,"kind":"probe","status":"applied","requested_tick":40,"effective_tick":40,"channels":["reader.query"],"reason":""}},
+        {"label":"reader_query_3","initial":{"id":4,"kind":"probe","status":"scheduled","requested_tick":74,"effective_tick":null,"channels":["reader.query"],"reason":""},"final":{"id":4,"kind":"probe","status":"applied","requested_tick":74,"effective_tick":74,"channels":["reader.query"],"reason":""}},
+        {"label":"matched_intervention","initial":{"id":5,"kind":"experience","status":"scheduled","requested_tick":27,"effective_tick":null,"channels":["preintegration.intervention"],"reason":""},"final":{"id":5,"kind":"experience","status":"applied","requested_tick":27,"effective_tick":27,"channels":["preintegration.intervention"],"reason":""}},
+        {"label":"common_phase_support","initial":{"id":6,"kind":"experience","status":"scheduled","requested_tick":44,"effective_tick":null,"channels":["preintegration.phase_support"],"reason":""},"final":{"id":6,"kind":"experience","status":"applied","requested_tick":44,"effective_tick":44,"channels":["preintegration.phase_support"],"reason":""}}
+      ],
+      "response_checkpoints": [
+        {"tick":11,"response":{"tick":11,"coordinate":[10,26,14],"raw":1161647336259059713,"clock":11,"state":1,"s_reg":25,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":0,"clock_diff_from_intact":0,"raw_diff_from_sham":0,"clock_diff_from_sham":0},
+        {"tick":45,"response":{"tick":45,"coordinate":[10,26,14],"raw":1161647392093634561,"clock":45,"state":1,"s_reg":38,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":1,"clock_diff_from_intact":0,"raw_diff_from_sham":0,"clock_diff_from_sham":0},
+        {"tick":79,"response":{"tick":79,"coordinate":[10,26,14],"raw":1161647447928209409,"clock":79,"state":1,"s_reg":51,"direction":[-1,1,0],"semantic":1},"raw_diff_from_intact":1,"clock_diff_from_intact":0,"raw_diff_from_sham":0,"clock_diff_from_sham":0}
+      ]
+    }
+  ]
+}

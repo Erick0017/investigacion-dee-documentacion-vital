@@ -1,0 +1,19 @@
+{
+  "label": "02_engine_identity",
+  "argv": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\isolated_env\\Scripts\\python.exe",
+    "-I",
+    "-c",
+    "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nidentity=json.loads(sys.argv[1])\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.5.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve()/'Lib'/'site-packages')\nnative=pathlib.Path(d._native.__file__).resolve()\nassert native.is_relative_to(pathlib.Path(sys.prefix).resolve()/'Lib'/'site-packages')\nassert hashlib.sha256(native.read_bytes()).hexdigest()==identity['native_sha256']\nassert not any(name.startswith(('dee_universe','CPC3','CPC4','CPC5','CPC6','CPC7','SEM01')) for name in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,'kernel':d.kernel_identity(),\n 'module':str(module),'native':str(native),'python':sys.executable,'prefix':sys.prefix,\n 'native_sha256':identity['native_sha256'],'wheel_sha256':identity['wheel_sha256']},indent=2),encoding='utf-8')\n",
+    "{\"version\": \"4.5.0\", \"wheel_name\": \"dee_thinking-4.5.0-cp313-cp313-win_amd64.whl\", \"wheel_sha256\": \"09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c\", \"wheel_bytes\": 1022834, \"native_member\": \"dee_thinking/_native.cp313-win_amd64.pyd\", \"native_sha256\": \"17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d\", \"kernel_source_sha256\": \"fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31\", \"kernel_version\": 27, \"metadata_member\": \"dee_thinking-4.5.0.dist-info/METADATA\"}",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01\\ENGINE_IDENTITY.json"
+  ],
+  "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_45_verify_pre01",
+  "elapsed_seconds": 0.3657260999898426,
+  "timeout_seconds": 90.0,
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "error": null,
+  "owned_worker_waited": true,
+  "owned_job_closed": true
+}

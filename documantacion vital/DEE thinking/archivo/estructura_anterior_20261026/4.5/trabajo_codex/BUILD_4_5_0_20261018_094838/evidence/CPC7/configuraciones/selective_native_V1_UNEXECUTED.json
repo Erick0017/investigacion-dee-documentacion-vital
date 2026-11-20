@@ -1,0 +1,19 @@
+{
+  "schema":"CPC7.selective_native.config.v1",
+  "frozen_before_execution":true,
+  "candidate":"SEL_V1",
+  "criterion":"Comparison-conditioned question reaches an own acquired bank70; common native use72; externally paired opaque cue75; common cue-only query139->142; other14 retained after new acquisition134 and queried201/335",
+  "input_information":"Body receives actual A/B events and actual current consequence11. The two candidate banks receive separate real cue/event experiences0. No old datasource protocol or target lookup.",
+  "decoder":"Only active semantic1 direction[-1,+/-1,0] with load above common query and Applied receipt is a covered opaque response; null otherwise.",
+  "shared_policy":"Coincident branch action ports are a single shared physical input per candidate y opportunity; do not duplicate requests.",
+  "cases":[
+    {"id":"SEL_P11_AB","group":"pilot","history":"AB","actual":1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"horizon":338},
+    {"id":"SEL_P12_BA","group":"pilot","history":"BA","actual":-1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"horizon":338},
+    {"id":"SEL_C11_CUT","group":"diagnostic","parent_id":"SEL_P11_AB","edit_mode":"cut","history":"AB","actual":1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"horizon":338},
+    {"id":"SEL_C12_SHAM","group":"diagnostic","parent_id":"SEL_P11_AB","edit_mode":"sham","history":"AB","actual":1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"horizon":338},
+    {"id":"SEL_R101_AB","group":"reserve","history":"AB","actual":1,"bank_values":[1,-1,1,1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,-1],"name_query_payload":9,"horizon":338},
+    {"id":"SEL_R211_BA","group":"reserve","history":"BA","actual":-1,"bank_values":[1,-1,-1,1,1,-1,-1,1,1,1,-1,-1,1,-1,-1,1],"name_query_payload":13,"horizon":338},
+    {"id":"SEL_N01_UNPAIRED","group":"language_control","history":"AB","actual":1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"name_mode":"unpaired","horizon":338},
+    {"id":"SEL_N02_OMITTED","group":"language_control","history":"AB","actual":1,"bank_values":[-1,1,-1,1,-1,1,-1,1,1,-1,1,-1,1,-1,1,-1],"name_mode":"omitted","horizon":338}
+  ]
+}

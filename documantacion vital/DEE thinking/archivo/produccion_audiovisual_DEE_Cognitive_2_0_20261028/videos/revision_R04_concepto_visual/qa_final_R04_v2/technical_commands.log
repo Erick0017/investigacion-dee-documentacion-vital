@@ -1,0 +1,137 @@
+
+### probe_decoded_frames
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\video_publico_definitivo\herramientas\ffprobe.exe" -v error -count_frames -show_entries stream=codec_type,codec_name,width,height,pix_fmt,r_frame_rate,avg_frame_rate,time_base,nb_frames,nb_read_frames,duration,start_time,sample_rate,channels,sample_aspect_ratio,display_aspect_ratio -show_entries format=duration,size -of json "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4"
+
+### packet_presentation_cadence
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\video_publico_definitivo\herramientas\ffprobe.exe" -v error -select_streams v:0 -show_packets -show_entries packet=pts,duration:stream=time_base -of json "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4"
+
+### strict_full_decode
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\presentacion_clara\herramientas\ffmpeg.exe" -hide_banner -v error -nostdin -xerror -err_detect explode -i "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4" -map 0:v:0 -map 0:a:0 -f null NUL
+
+### audio_loudness
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\presentacion_clara\herramientas\ffmpeg.exe" -hide_banner -nostdin -i "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4" -vn -af loudnorm=I=-16:TP=-1.5:LRA=9:print_format=json -f null NUL
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.100
+  Duration: 00:06:41.97, start: 0.000000, bitrate: 578 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 317 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 251 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Output #0, null, to 'NUL':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Audio: pcm_s16le, 192000 Hz, stereo, s16, 6144 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 pcm_s16le
+size=N/A time=00:00:10.70 bitrate=N/A speed=20.7x    
+size=N/A time=00:00:21.30 bitrate=N/A speed=20.4x    
+size=N/A time=00:00:32.60 bitrate=N/A speed=  21x    
+size=N/A time=00:00:44.60 bitrate=N/A speed=21.6x    
+size=N/A time=00:00:55.90 bitrate=N/A speed=21.6x    
+size=N/A time=00:01:07.30 bitrate=N/A speed=21.7x    
+size=N/A time=00:01:19.00 bitrate=N/A speed=21.8x    
+size=N/A time=00:01:30.90 bitrate=N/A speed=  22x    
+size=N/A time=00:01:42.50 bitrate=N/A speed=22.1x    
+size=N/A time=00:01:55.70 bitrate=N/A speed=22.4x    
+size=N/A time=00:02:08.10 bitrate=N/A speed=22.6x    
+size=N/A time=00:02:19.40 bitrate=N/A speed=22.5x    
+size=N/A time=00:02:30.80 bitrate=N/A speed=22.5x    
+size=N/A time=00:02:42.30 bitrate=N/A speed=22.4x    
+size=N/A time=00:02:54.10 bitrate=N/A speed=22.5x    
+size=N/A time=00:03:06.40 bitrate=N/A speed=22.5x    
+size=N/A time=00:03:17.60 bitrate=N/A speed=22.5x    
+size=N/A time=00:03:28.20 bitrate=N/A speed=22.4x    
+size=N/A time=00:03:39.40 bitrate=N/A speed=22.4x    
+size=N/A time=00:03:49.80 bitrate=N/A speed=22.2x    
+size=N/A time=00:04:01.50 bitrate=N/A speed=22.2x    
+size=N/A time=00:04:13.60 bitrate=N/A speed=22.3x    
+size=N/A time=00:04:21.70 bitrate=N/A speed=  22x    
+size=N/A time=00:04:30.30 bitrate=N/A speed=21.7x    
+size=N/A time=00:04:37.70 bitrate=N/A speed=21.5x    
+size=N/A time=00:04:46.90 bitrate=N/A speed=21.3x    
+size=N/A time=00:04:56.50 bitrate=N/A speed=21.2x    
+size=N/A time=00:05:05.80 bitrate=N/A speed=21.1x    
+size=N/A time=00:05:16.00 bitrate=N/A speed=21.1x    
+size=N/A time=00:05:28.00 bitrate=N/A speed=21.1x    
+size=N/A time=00:05:40.30 bitrate=N/A speed=21.2x    
+size=N/A time=00:05:52.80 bitrate=N/A speed=21.3x    
+size=N/A time=00:06:05.20 bitrate=N/A speed=21.4x    
+size=N/A time=00:06:17.00 bitrate=N/A speed=21.4x    
+size=N/A time=00:06:28.70 bitrate=N/A speed=21.5x    
+[Parsed_loudnorm_0 @ 00000150805f4a80] 
+{
+	"input_i" : "-16.04",
+	"input_tp" : "-1.32",
+	"input_lra" : "7.60",
+	"input_thresh" : "-26.93",
+	"output_i" : "-16.17",
+	"output_tp" : "-1.50",
+	"output_lra" : "5.50",
+	"output_thresh" : "-26.82",
+	"normalization_type" : "dynamic",
+	"target_offset" : "0.17"
+}
+[out#0/null @ 00000150800de580] video:0KiB audio:301488KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:06:42.00 bitrate=N/A speed=21.6x    
+
+### audio_sample_peaks
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\presentacion_clara\herramientas\ffmpeg.exe" -hide_banner -nostdin -i "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4" -vn -af volumedetect -f null NUL
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.100
+  Duration: 00:06:41.97, start: 0.000000, bitrate: 578 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 317 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 251 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+[Parsed_volumedetect_0 @ 0000024bca939a40] n_samples: 0
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Output #0, null, to 'NUL':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 pcm_s16le
+size=N/A time=00:03:03.44 bitrate=N/A speed= 355x    
+size=N/A time=00:06:25.25 bitrate=N/A speed= 372x    
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] n_samples: 38590464
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] mean_volume: -18.1 dB
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] max_volume: -1.4 dB
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] histogram_1db: 6572
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] histogram_2db: 21142
+[Parsed_volumedetect_0 @ 0000024bcae4ee80] histogram_3db: 44972
+[out#0/null @ 0000024bca6b0840] video:0KiB audio:75372KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:06:41.98 bitrate=N/A speed= 371x    
+
+### postencode_temporal_PNG_samples
+"D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dee20_trabajo\presentacion_clara\herramientas\ffmpeg.exe" -hide_banner -v warning -nostdin -n -i "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\DEE_Cognitive_2_0_Presentacion_R04_Concepto_y_Visual_1080p_v2.mp4" -filter_complex [0:v:0]select='eq(n,0)+eq(n,142)+eq(n,239)+eq(n,240)+eq(n,355)+eq(n,449)+eq(n,450)+eq(n,569)+eq(n,570)+eq(n,604)+eq(n,710)+eq(n,711)+eq(n,1014)+eq(n,1468)+eq(n,1998)+eq(n,2225)+eq(n,2226)+eq(n,2444)+eq(n,2772)+eq(n,3153)+eq(n,3317)+eq(n,3318)+eq(n,3583)+eq(n,3710)+eq(n,3809)+eq(n,3908)+eq(n,4114)+eq(n,4236)+eq(n,4297)+eq(n,4596)+eq(n,4982)+eq(n,5276)+eq(n,5277)+eq(n,5426)+eq(n,5649)+eq(n,5909)+eq(n,6020)+eq(n,6021)+eq(n,6149)+eq(n,6341)+eq(n,6566)+eq(n,6662)+eq(n,6663)+eq(n,6818)+eq(n,7049)+eq(n,7320)+eq(n,7436)+eq(n,7437)+eq(n,7580)+eq(n,7793)+eq(n,8043)+eq(n,8150)+eq(n,8151)+eq(n,8378)+eq(n,8719)+eq(n,9117)+eq(n,9287)+eq(n,9288)+eq(n,9297)+eq(n,9298)+eq(n,9522)+eq(n,9523)+eq(n,9564)+eq(n,9593)+eq(n,9594)+eq(n,9803)+eq(n,9804)+eq(n,9960)+eq(n,9961)+eq(n,9978)+eq(n,10128)+eq(n,10129)+eq(n,10397)+eq(n,10398)+eq(n,10461)+eq(n,10668)+eq(n,10669)+eq(n,10947)+eq(n,10983)+eq(n,10984)+eq(n,11044)+eq(n,11104)+eq(n,11223)+eq(n,11224)+eq(n,11363)+eq(n,11850)+eq(n,12058)',split=3[a][b][c];[a]null[full];[b]scale=960:540:flags=lanczos[mid];[c]scale=480:270:flags=lanczos[phone] -map [full] -fps_mode passthrough -start_number 0 -compression_level 4 -f image2 "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\revision_R04_concepto_visual\qa_final_R04_v2\frame_1080_%03d.png" -map [mid] -fps_mode passthrough -start_number 0 -compression_level 4 -f image2 "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\revision_R04_concepto_visual\qa_final_R04_v2\frame_0540_%03d.png" -map [phone] -fps_mode passthrough -start_number 0 -compression_level 4 -f image2 "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\produccion_audiovisual_DEE_Cognitive_2_0_20261028\videos\revision_R04_concepto_visual\qa_final_R04_v2\frame_phone_%03d.png"

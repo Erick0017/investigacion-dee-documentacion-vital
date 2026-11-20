@@ -1,0 +1,17 @@
+{
+  "label": "02_engine_identity",
+  "argv": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C5E_PRE1\\isolated_env\\Scripts\\python.exe",
+    "-I",
+    "-c",
+    "\nimport hashlib,json,pathlib,sys\nimport dee_thinking as d\nassert sys.version_info[:2]==(3,13) and sys.maxsize>2**32\nassert d.__version__=='4.0.0' and d.kernel_identity()['kernel_version']==27\nmodule=pathlib.Path(d.__file__).resolve()\nassert module.is_relative_to(pathlib.Path(sys.prefix).resolve())\nnative=pathlib.Path(d._native.__file__)\nassert hashlib.sha256(native.read_bytes()).hexdigest()==sys.argv[1]\nsnapshots=[]\nfor item in sys.argv[3:]:\n w=d.OrganizationalWorld.load_snapshot(item)\n assert len(w.runtime.raw_copy())==w.runtime.dimension**3\n assert len(w.runtime.clock_copy())==w.runtime.dimension**3\n snapshots.append({'path':item,'tick':w.runtime.current_tick,'N':w.runtime.dimension,\n                   'channels':list(w.runtime.channel_names),'receipts':len(w.runtime.receipts),\n                   'protocols':len(w.protocols)})\nassert not any(n.startswith(('dee_universe','CPC3','SEM01')) for n in sys.modules)\npathlib.Path(sys.argv[2]).write_text(json.dumps({'version':d.__version__,\n 'kernel':d.kernel_identity(),'python':sys.executable,'module':str(module),\n 'native_sha256':sys.argv[1],'snapshots':snapshots},ensure_ascii=False,indent=2),encoding='utf-8')\n",
+    "20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C5E_PRE1\\ENGINE_IDENTITY.json",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C5E_PRE1\\extracted\\CPC5\\ampliaciones\\01_SEMANTICA_RELACIONAL_Y_DIALOGO\\resultados\\dialogue_longitudinal\\LONGITUDINAL_LOWER\\T338.deetsnap",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_C5E_PRE1\\extracted\\CPC5\\ampliaciones\\01_SEMANTICA_RELACIONAL_Y_DIALOGO\\resultados\\demo_orden_01\\ORDEN_T92.deetsnap"
+  ],
+  "elapsed_seconds": 0.6987936000223272,
+  "exit_code": 0,
+  "status": "COMPLETED",
+  "timeout_seconds": 180
+}

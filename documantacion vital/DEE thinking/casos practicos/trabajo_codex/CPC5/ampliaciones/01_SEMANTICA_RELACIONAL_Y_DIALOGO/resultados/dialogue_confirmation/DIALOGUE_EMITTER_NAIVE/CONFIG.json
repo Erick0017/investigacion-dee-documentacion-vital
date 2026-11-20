@@ -1,0 +1,284 @@
+{
+  "case": {
+    "id": "DIALOGUE_EMITTER_NAIVE",
+    "architecture": "A2",
+    "modes": {
+      "U2.memory": "omitted"
+    },
+    "query": 13
+  },
+  "geometry": {
+    "N": 67,
+    "stages": [
+      {
+        "id": "U2.memory",
+        "participant": "U2",
+        "target": [
+          30,
+          20,
+          8
+        ],
+        "time": 11,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "role": "response acquired from local experience",
+        "hub": [
+          30,
+          12,
+          8
+        ]
+      },
+      {
+        "id": "U2.turn1",
+        "participant": "U2",
+        "target": [
+          35,
+          25,
+          8
+        ],
+        "time": 16,
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "train": [
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            1,
+            0
+          ]
+        ],
+        "role": "zero-load acquired routing support",
+        "hub": [
+          48,
+          25,
+          8
+        ]
+      },
+      {
+        "id": "U2.turn2",
+        "participant": "U2",
+        "target": [
+          35,
+          30,
+          8
+        ],
+        "time": 21,
+        "direction": [
+          -1,
+          -1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            0
+          ]
+        ],
+        "role": "zero-load acquired routing support",
+        "hub": [
+          53,
+          48,
+          8
+        ]
+      },
+      {
+        "id": "U1.context",
+        "participant": "U1",
+        "target": [
+          30,
+          30,
+          8
+        ],
+        "time": 26,
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            0
+          ]
+        ],
+        "role": "acquired context for using returned answer",
+        "hub": [
+          30,
+          53,
+          8
+        ]
+      }
+    ],
+    "backups": [
+      {
+        "id": "U2.memory.backup",
+        "participant": "U2",
+        "target": [
+          40,
+          15,
+          40
+        ],
+        "time": 70,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "role": "independently experienced retained support",
+        "hub": [
+          40,
+          15,
+          40
+        ]
+      },
+      {
+        "id": "U1.context.backup",
+        "participant": "U1",
+        "target": [
+          40,
+          15,
+          52
+        ],
+        "time": 70,
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "train": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            -1,
+            0
+          ]
+        ],
+        "role": "independently experienced retained support",
+        "hub": [
+          40,
+          15,
+          52
+        ]
+      }
+    ],
+    "request_site": [
+      25,
+      20,
+      8
+    ],
+    "request_tick": 6,
+    "request_direction": [
+      1,
+      0,
+      0
+    ],
+    "banks": {
+      "lower": [
+        25,
+        25,
+        8
+      ],
+      "upper": [
+        25,
+        35,
+        8
+      ]
+    },
+    "participants": {
+      "U1": {
+        "functions": [
+          "request",
+          "context",
+          "use",
+          "retained backup"
+        ],
+        "component_ids": [
+          "U1.context",
+          "U1.context.backup"
+        ]
+      },
+      "U2": {
+        "functions": [
+          "local experience",
+          "response",
+          "return routing",
+          "retained backup"
+        ],
+        "component_ids": [
+          "U2.memory",
+          "U2.turn1",
+          "U2.turn2",
+          "U2.memory.backup"
+        ]
+      }
+    },
+    "prepared_material_sites": 0,
+    "translation": [
+      0,
+      0,
+      0
+    ],
+    "scope": "Two finite communicating candidate compounds. Geometry and routing opportunities are designed; memory content and directional effects are acquired by submitted experiences. Not autonomous selection of interlocutor."
+  },
+  "source_sha256": "784ebe0d80860d92c0fd8d5553aac98ee8f2f58b28df408c1c6b18c2ef6f798a",
+  "criterion": "Fixed physical fields and arrival windows; direction/content/history contrasts evaluated after trajectories. No expected value supplied to session.",
+  "resources": {
+    "Runtime": 1,
+    "N": 67,
+    "basic_buffer_bytes": 9624416,
+    "components": 6,
+    "top_entities": 2,
+    "prepared_material_sites": 0
+  },
+  "horizon": 70
+}

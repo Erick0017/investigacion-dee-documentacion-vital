@@ -1,0 +1,16 @@
+{
+  "purpose": "Prueba de uso desde el ZIP cerrado en otra ruta, no una nueva campaña científica.",
+  "inputs_fixed_before_delivery_results": true,
+  "uses_existing_external_calibration_without_reset_or_reteaching": true,
+  "operations": [
+    {
+      "label": "new_user_raw_measurements_through_one_command_front_door",
+      "argv": ["servicio-cf01", "$LIFE", "--continuar", "--mediciones=20:28,7:13,9:18"]
+    },
+    {
+      "label": "passive_cf01_operational_state_after_user_inputs",
+      "argv": ["gestor", "cf01-estado", "--vida", "$LIFE"]
+    }
+  ],
+  "continuation": ["servicio-cf01", "$LIFE", "--continuar", "--mediciones=18:25,6:14"]
+}

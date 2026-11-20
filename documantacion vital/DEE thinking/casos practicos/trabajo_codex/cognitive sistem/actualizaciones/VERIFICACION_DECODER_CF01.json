@@ -1,0 +1,183 @@
+{
+  "schema": "CF01.fixed_decoder.target_blind.v1",
+  "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\sistema\\capacidades\\cierre_funcional_cf01.py",
+  "source_sha256": "5197024cbb730d37b220cac645f08269fb404c52c461cec7b957e12ef7f11371",
+  "function_ast_sha256": "f766bce34df09e9605930f082ec4d68bacc846d5d24525eb5f07848e06b759da",
+  "native_imports": 0,
+  "native_ticks": 0,
+  "cases": [
+    {
+      "case": "latest_unique",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [
+              -1
+            ],
+            "command": -1,
+            "simultaneous_conflict": false
+          },
+          {
+            "tick": 85,
+            "material_roles": [
+              1
+            ],
+            "command": 1,
+            "simultaneous_conflict": false
+          }
+        ],
+        "command": 1,
+        "source_tick": 85,
+        "reason": "current"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    },
+    {
+      "case": "fixed_hold1",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [
+              -1
+            ],
+            "command": -1,
+            "simultaneous_conflict": false
+          },
+          {
+            "tick": 85,
+            "material_roles": [],
+            "command": null,
+            "simultaneous_conflict": false
+          }
+        ],
+        "command": -1,
+        "source_tick": 84,
+        "reason": "fixed_hold_one_tick"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    },
+    {
+      "case": "deadline_conflict",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [
+              -1
+            ],
+            "command": -1,
+            "simultaneous_conflict": false
+          },
+          {
+            "tick": 85,
+            "material_roles": [
+              -1,
+              1
+            ],
+            "command": null,
+            "simultaneous_conflict": true
+          }
+        ],
+        "command": null,
+        "source_tick": null,
+        "reason": "deadline_conflict"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    },
+    {
+      "case": "early_conflict_then_unique",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [
+              -1,
+              1
+            ],
+            "command": null,
+            "simultaneous_conflict": true
+          },
+          {
+            "tick": 85,
+            "material_roles": [
+              -1
+            ],
+            "command": -1,
+            "simultaneous_conflict": false
+          }
+        ],
+        "command": -1,
+        "source_tick": 85,
+        "reason": "current"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    },
+    {
+      "case": "no_output",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [],
+            "command": null,
+            "simultaneous_conflict": false
+          },
+          {
+            "tick": 85,
+            "material_roles": [],
+            "command": null,
+            "simultaneous_conflict": false
+          }
+        ],
+        "command": null,
+        "source_tick": null,
+        "reason": "no_native_output"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    },
+    {
+      "case": "role0_fixed_transduction",
+      "observed": {
+        "rule": "latest_unique_with_max_hold1tick.v1",
+        "samples": [
+          {
+            "tick": 84,
+            "material_roles": [],
+            "command": null,
+            "simultaneous_conflict": false
+          },
+          {
+            "tick": 85,
+            "material_roles": [
+              0
+            ],
+            "command": 1,
+            "simultaneous_conflict": false
+          }
+        ],
+        "command": 1,
+        "source_tick": 85,
+        "reason": "current"
+      },
+      "target_variants_equal": 6,
+      "input_unchanged": true
+    }
+  ],
+  "invalid_semantic_rejected": true,
+  "invalid_direction_rejected": true,
+  "target_variant_comparisons": 36,
+  "scope": "Pure output-transduction verification only; not native learning, causality of whole environment, or an independent cognition experiment.",
+  "calibration": "External world law stored with the external environment, not learned or selected by this decoder; P0 fixed two-tick sampling."
+}

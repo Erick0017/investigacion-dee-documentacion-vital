@@ -1,0 +1,17 @@
+{
+  "purpose": "Uso del ZIP cerrado ENTE_DEE_OPERATIVO_01 desde otra ruta. No repite CF01 ni una campaña científica.",
+  "inputs_fixed_before_delivery_results": true,
+  "keeps_saved_external_world_calibration": true,
+  "no_reset_or_reteaching_by_delivery_helper": true,
+  "operations": [
+    {
+      "label": "new_user_inputs_through_ente_front_door",
+      "argv": ["ente", "$LIFE", "--continuar", "--mediciones=2:14,8:21,12:23"]
+    },
+    {
+      "label": "passive_ente_operational_state_after_new_inputs",
+      "argv": ["gestor", "ente-estado", "--vida", "$LIFE"]
+    }
+  ],
+  "continuation": ["ente", "$LIFE", "--continuar", "--mediciones=6:18,10:23"]
+}

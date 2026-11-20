@@ -1,0 +1,14 @@
+{
+  "purpose": "Uso independiente del ZIP cerrado: cuatro observaciones, trabajadores locales y un estadoC2 completo entre procesos. No se reajusta según respuestas.",
+  "operations": [
+    {
+      "label": "new_four_raw_local_worker_inputs",
+      "argv": ["evolucion", "$LIFE", "--continuar", "--observaciones", "[[6,20,2,2],[7,22,2,2]]", "--dominio", "trabajadores", "--referencia-entorno", "14", "--reiniciar-entorno"]
+    },
+    {
+      "label": "new_C2_prepare_before_complete_save",
+      "argv": ["evolucion", "$LIFE", "--continuar", "--observaciones", "[[11,25]]", "--dominio", "transaccion", "--referencia-entorno", "14", "--reiniciar-entorno", "--fase-visible"]
+    }
+  ],
+  "continuation": ["evolucion", "$LIFE", "--continuar", "--observaciones", "[[14,28]]", "--dominio", "transaccion", "--fase-visible"]
+}

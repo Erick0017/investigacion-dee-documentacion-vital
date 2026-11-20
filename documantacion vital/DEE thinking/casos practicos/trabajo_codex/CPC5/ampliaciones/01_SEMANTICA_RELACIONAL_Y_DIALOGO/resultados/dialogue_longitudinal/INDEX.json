@@ -1,0 +1,1298 @@
+{
+  "configuration": {
+    "schema": "CPC5.extension.dialogue.longitudinal.v1",
+    "frozen_before_execution": true,
+    "curriculum": "U1context+backup at0; first use of old backup query67/read70; new U2memory/backup+relays acquired134/137; request184->response189->return199->oldU1context204->bank209; subsequent form217/220->newquery278/281; both old/new backups335/338. Same Runtime and predeclared interfaces; no clocks, RAW, learned-state resets or host output copying.",
+    "criterion": "Preserve old acquired directional context when new sender relation is learned, use both in returned response, bind later N0 on live consequence, query N0 alone and then both independently experienced backups. Record first query and its physical modification separately.",
+    "reserved_before_execution": "New query23, both local relation loads18, sign+, form training7/query11, translation and different first/final probe payloads. Existing13 and previous17/19 not used as fresh numerical holdouts.",
+    "cases": [
+      {
+        "id": "LONGITUDINAL_LOWER",
+        "architecture": "A2",
+        "access_shift": 44,
+        "context_z": 1,
+        "late_sender": true,
+        "names": true,
+        "name_interval": 61,
+        "receiver_sign": -1
+      },
+      {
+        "id": "LONGITUDINAL_UPPER",
+        "architecture": "A2",
+        "access_shift": 44,
+        "context_z": 1,
+        "late_sender": true,
+        "names": true,
+        "name_interval": 61,
+        "receiver_sign": 1
+      },
+      {
+        "id": "LONGITUDINAL_OLD_CONTEXT_OMITTED",
+        "architecture": "A2",
+        "access_shift": 44,
+        "context_z": 1,
+        "late_sender": true,
+        "names": true,
+        "name_interval": 61,
+        "modes": {
+          "U1.context": "omitted"
+        }
+      },
+      {
+        "id": "LONGITUDINAL_LATE_SOURCE_OMITTED",
+        "architecture": "A2",
+        "access_shift": 44,
+        "context_z": 1,
+        "late_sender": true,
+        "names": true,
+        "name_interval": 61,
+        "modes": {
+          "U2.memory": "omitted"
+        }
+      },
+      {
+        "id": "LONGITUDINAL_RESERVED_NEW_HISTORY",
+        "architecture": "A2",
+        "access_shift": 44,
+        "context_z": 1,
+        "late_sender": true,
+        "names": true,
+        "name_interval": 61,
+        "receiver_sign": 1,
+        "query": 23,
+        "early_query": 7,
+        "late_query": 9,
+        "name_payload": 7,
+        "name_probe_payload": 11,
+        "loads": {
+          "U2.memory": [
+            7,
+            11
+          ],
+          "U1.context": [
+            3,
+            15
+          ]
+        },
+        "translation": [
+          9,
+          -5,
+          3
+        ],
+        "reserved": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "LONGITUDINAL_LOWER",
+      "file": "resultados\\dialogue_longitudinal\\LONGITUDINAL_LOWER\\MEASUREMENTS.json",
+      "sha256": "3a7afdce19e0b8c4eae0c47319f7e19883f9d4fdf3343dcc0dde30252b4c4b01",
+      "elapsed_seconds": 18.80201580002904,
+      "messages": [
+        {
+          "tick": 189,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "189",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 194,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "194",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 199,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "199",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1296755393799651329",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      ],
+      "banks_at_contact": {
+        "bank.lower": {
+          "tick": 209,
+          "site": [
+            25,
+            25,
+            13
+          ],
+          "raw": "1292533299213762561",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 48,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            1
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 209,
+          "site": [
+            25,
+            35,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "name_readout": {
+        "form.N0.lower": {
+          "tick": 281,
+          "site": [
+            25,
+            14,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form.N0.upper": {
+          "tick": 281,
+          "site": [
+            25,
+            46,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form_probe.N0.lower": {
+          "tick": 281,
+          "site": [
+            31,
+            20,
+            18
+          ],
+          "raw": "1296755466814095361",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 58,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            1
+          ],
+          "active": true
+        },
+        "form_probe.N0.upper": {
+          "tick": 281,
+          "site": [
+            31,
+            40,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_final": {
+        "U2.memory.backup": {
+          "tick": 338,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 338,
+          "site": [
+            50,
+            15,
+            52
+          ],
+          "raw": "1296755329375141889",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 26,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "LONGITUDINAL_UPPER",
+      "file": "resultados\\dialogue_longitudinal\\LONGITUDINAL_UPPER\\MEASUREMENTS.json",
+      "sha256": "bef2206a024d9f7e04ba37fa8a64d7686591e10f1afb7928c01e4c5f418e3ea5",
+      "elapsed_seconds": 28.128579800017178,
+      "messages": [
+        {
+          "tick": 189,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "189",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 194,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "194",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 199,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "199",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1233704999016464385",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      ],
+      "banks_at_contact": {
+        "bank.lower": {
+          "tick": 209,
+          "site": [
+            25,
+            25,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 209,
+          "site": [
+            25,
+            35,
+            13
+          ],
+          "raw": "1229482904430575617",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 48,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "name_readout": {
+        "form.N0.lower": {
+          "tick": 281,
+          "site": [
+            25,
+            14,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form.N0.upper": {
+          "tick": 281,
+          "site": [
+            25,
+            46,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form_probe.N0.lower": {
+          "tick": 281,
+          "site": [
+            31,
+            20,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "form_probe.N0.upper": {
+          "tick": 281,
+          "site": [
+            31,
+            40,
+            18
+          ],
+          "raw": "1233705072030908417",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 58,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention_final": {
+        "U2.memory.backup": {
+          "tick": 338,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 338,
+          "site": [
+            50,
+            15,
+            52
+          ],
+          "raw": "1233704934591954945",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 26,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "LONGITUDINAL_OLD_CONTEXT_OMITTED",
+      "file": "resultados\\dialogue_longitudinal\\LONGITUDINAL_OLD_CONTEXT_OMITTED\\MEASUREMENTS.json",
+      "sha256": "7c22072edc2e94436a74a2cce972b4d8328c5caa02294e04a58a6e59436a9d88",
+      "elapsed_seconds": 37.40804109995952,
+      "messages": [
+        {
+          "tick": 189,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "189",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 194,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "194",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 199,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "199",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at_contact": {
+        "bank.lower": {
+          "tick": 209,
+          "site": [
+            25,
+            25,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 209,
+          "site": [
+            25,
+            35,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "name_readout": {
+        "form.N0.lower": {
+          "tick": 281,
+          "site": [
+            25,
+            14,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form.N0.upper": {
+          "tick": 281,
+          "site": [
+            25,
+            46,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form_probe.N0.lower": {
+          "tick": 281,
+          "site": [
+            31,
+            20,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "form_probe.N0.upper": {
+          "tick": 281,
+          "site": [
+            31,
+            40,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_final": {
+        "U2.memory.backup": {
+          "tick": 338,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 338,
+          "site": [
+            50,
+            15,
+            52
+          ],
+          "raw": "1157143650732343297",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "LONGITUDINAL_LATE_SOURCE_OMITTED",
+      "file": "resultados\\dialogue_longitudinal\\LONGITUDINAL_LATE_SOURCE_OMITTED\\MEASUREMENTS.json",
+      "sha256": "61c7b7ac4c95e7cd9b5978d5c9f2fd69dee85f052bbbb54d35c090cdb83d4992",
+      "elapsed_seconds": 35.422747600008734,
+      "messages": [
+        {
+          "tick": 189,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1153203035418132481",
+          "clock": "189",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 194,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "194",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 199,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "199",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1292533161774809089",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      ],
+      "banks_at_contact": {
+        "bank.lower": {
+          "tick": 209,
+          "site": [
+            25,
+            25,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 209,
+          "site": [
+            25,
+            35,
+            13
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "name_readout": {
+        "form.N0.lower": {
+          "tick": 281,
+          "site": [
+            25,
+            14,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form.N0.upper": {
+          "tick": 281,
+          "site": [
+            25,
+            46,
+            24
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form_probe.N0.lower": {
+          "tick": 281,
+          "site": [
+            31,
+            20,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "form_probe.N0.upper": {
+          "tick": 281,
+          "site": [
+            31,
+            40,
+            18
+          ],
+          "raw": "1157143650732343297",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_final": {
+        "U2.memory.backup": {
+          "tick": 338,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1157143650732343297",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 338,
+          "site": [
+            50,
+            15,
+            52
+          ],
+          "raw": "1296755329375141889",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 26,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "LONGITUDINAL_RESERVED_NEW_HISTORY",
+      "file": "resultados\\dialogue_longitudinal\\LONGITUDINAL_RESERVED_NEW_HISTORY\\MEASUREMENTS.json",
+      "sha256": "74425388c88c7e5a7e8cca5b53dfad9cc10922369a877b51bc7b4f919d00d8d8",
+      "elapsed_seconds": 38.60362599999644,
+      "messages": [
+        {
+          "tick": 189,
+          "site": [
+            39,
+            15,
+            11
+          ],
+          "raw": "1157706755304587265",
+          "clock": "189",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 194,
+          "site": [
+            44,
+            20,
+            11
+          ],
+          "raw": "1157425280327876609",
+          "clock": "194",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 199,
+          "site": [
+            44,
+            25,
+            11
+          ],
+          "raw": "1157143805351165953",
+          "clock": "199",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            39,
+            25,
+            11
+          ],
+          "raw": "1233705076325875713",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 59,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      ],
+      "banks_at_contact": {
+        "bank.lower": {
+          "tick": 209,
+          "site": [
+            34,
+            20,
+            16
+          ],
+          "raw": "1153203009648328705",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 209,
+          "site": [
+            34,
+            30,
+            16
+          ],
+          "raw": "1229482981739986945",
+          "clock": "209",
+          "state": 1,
+          "s_reg": 66,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "name_readout": {
+        "form.N0.lower": {
+          "tick": 281,
+          "site": [
+            34,
+            9,
+            27
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form.N0.upper": {
+          "tick": 281,
+          "site": [
+            34,
+            41,
+            27
+          ],
+          "raw": "0",
+          "clock": "281",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "form_probe.N0.lower": {
+          "tick": 281,
+          "site": [
+            40,
+            15,
+            21
+          ],
+          "raw": "1157143676502147073",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 11,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "form_probe.N0.upper": {
+          "tick": 281,
+          "site": [
+            40,
+            35,
+            21
+          ],
+          "raw": "1233705183700058113",
+          "clock": "281",
+          "state": 1,
+          "s_reg": 84,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention_final": {
+        "U2.memory.backup": {
+          "tick": 338,
+          "site": [
+            49,
+            10,
+            43
+          ],
+          "raw": "1161647344848994305",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 27,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 338,
+          "site": [
+            59,
+            10,
+            55
+          ],
+          "raw": "1233704968951693313",
+          "clock": "338",
+          "state": 1,
+          "s_reg": 34,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2099 @@
+{
+  "configuration": {
+    "schema": "CPC5.extension.dialogue.confirmation.v1",
+    "frozen_after_discovery": "DIALOGUE_D01",
+    "frozen_before_execution": true,
+    "reader": "Exact physical fields at fixed targets/time. Bank7/+x is environmental resource alone; combined packet is identified by actual changed direction/load, not mere presence.",
+    "hypotheses": "Paired emitter history is required for the prepared return path. U1 learned context changes which bank uses the same returned message. Removing an already emitted message changes future use while independently learned backups remain accessible. Equal-load direction changes distinguish information from dose.",
+    "cases": [
+      {
+        "id": "DIALOGUE_EMITTER_OPPOSITE",
+        "architecture": "A2",
+        "emitter_sign": -1,
+        "receiver_sign": -1,
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_RECEIVER_OPPOSITE",
+        "architecture": "A2",
+        "emitter_sign": 1,
+        "receiver_sign": 1,
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_EMITTER_NAIVE",
+        "architecture": "A2",
+        "modes": {
+          "U2.memory": "omitted"
+        },
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_EMITTER_UNPAIRED",
+        "architecture": "A2",
+        "modes": {
+          "U2.memory": "unpaired"
+        },
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_RECEIVER_NAIVE",
+        "architecture": "A2",
+        "modes": {
+          "U1.context": "omitted"
+        },
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_RECEIVER_UNPAIRED",
+        "architecture": "A2",
+        "modes": {
+          "U1.context": "unpaired"
+        },
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_REQUEST_OMITTED",
+        "architecture": "A2",
+        "omit_request": true,
+        "query": 13
+      },
+      {
+        "id": "DIALOGUE_MESSAGE_REMOVE",
+        "architecture": "A2",
+        "query": 13,
+        "intervention": "remove"
+      },
+      {
+        "id": "DIALOGUE_MESSAGE_SHAM",
+        "architecture": "A2",
+        "query": 13,
+        "intervention": "sham"
+      },
+      {
+        "id": "DIALOGUE_EQUAL_LOAD_OTHER_DIRECTION",
+        "architecture": "A2",
+        "query": 13,
+        "intervention": "direction"
+      },
+      {
+        "id": "DIALOGUE_RESERVED_NEW_LOADS_UPPER",
+        "architecture": "A2",
+        "emitter_sign": 1,
+        "receiver_sign": 1,
+        "query": 17,
+        "late_query": 7,
+        "loads": {
+          "U2.memory": [
+            4,
+            10
+          ],
+          "U1.context": [
+            7,
+            13
+          ]
+        },
+        "translation": [
+          5,
+          -3,
+          7
+        ],
+        "reserved": true
+      },
+      {
+        "id": "DIALOGUE_RESERVED_NEW_LOADS_LOWER",
+        "architecture": "A2",
+        "emitter_sign": 1,
+        "receiver_sign": -1,
+        "query": 19,
+        "late_query": 9,
+        "loads": {
+          "U2.memory": [
+            6,
+            10
+          ],
+          "U1.context": [
+            3,
+            11
+          ]
+        },
+        "translation": [
+          -7,
+          6,
+          12
+        ],
+        "reserved": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "DIALOGUE_EMITTER_OPPOSITE",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_EMITTER_OPPOSITE\\MEASUREMENTS.json",
+      "sha256": "0f2f7afab98224ee2bd12110eaf5cf171cdf14855db933ef4fdf475e0ec18b88",
+      "elapsed_seconds": 5.622932599973865,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1153203035418132481",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1220475567736881153",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1224697696682508289",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_RECEIVER_OPPOSITE",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_RECEIVER_OPPOSITE\\MEASUREMENTS.json",
+      "sha256": "ab7a640ea7c7dac1295b5f3ece8481dd7845efb37166e401b5da2f2d9a89d10b",
+      "elapsed_seconds": 6.150853500002995,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1161647319079190529",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_EMITTER_NAIVE",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_EMITTER_NAIVE\\MEASUREMENTS.json",
+      "sha256": "89295804f6f841f6597b2904d213a22a3e4a0b56daea2e2f9ffba417dd373625",
+      "elapsed_seconds": 4.861545899999328,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1153203035418132481",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1220475567736881153",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1157143650732343297",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_EMITTER_UNPAIRED",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_EMITTER_UNPAIRED\\MEASUREMENTS.json",
+      "sha256": "d5bcffd8325747cab3015b68a896c881eea90986ec476a0d2b8b33b1d1307f44",
+      "elapsed_seconds": 4.790479999966919,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1153203035418132481",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1220475567736881153",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1157425164363759617",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 14,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_RECEIVER_NAIVE",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_RECEIVER_NAIVE\\MEASUREMENTS.json",
+      "sha256": "720d77380980b040edcdf6cf1f54863992445f484f1a475090979e79d67ae516",
+      "elapsed_seconds": 4.813759800046682,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1157143650732343297",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_RECEIVER_UNPAIRED",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_RECEIVER_UNPAIRED\\MEASUREMENTS.json",
+      "sha256": "7aac8753657a93fceb8d346f0c7c8d3041449f7573db4cce7ab2d7e3f359d7f3",
+      "elapsed_seconds": 4.92573529999936,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1220475567736881153",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_REQUEST_OMITTED",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_REQUEST_OMITTED\\MEASUREMENTS.json",
+      "sha256": "eb09c4159a3ff62ed53cce8735577030cdf1585a41b3ebf37d8647c96ef32d9d",
+      "elapsed_seconds": 7.675256200018339,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157425155773825025",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 12,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "0",
+          "clock": "26",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_MESSAGE_REMOVE",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_MESSAGE_REMOVE\\MEASUREMENTS.json",
+      "sha256": "6e7042244020ded046c7848c9ed3c79a55863bb4943bdea832c44b7137c73489",
+      "elapsed_seconds": 9.348521000007167,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1220475567736881153",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_MESSAGE_SHAM",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_MESSAGE_SHAM\\MEASUREMENTS.json",
+      "sha256": "03ee58388243a983e3d8094d431b351d83f2a8ba6fdd406fbcb796b9d3d19831",
+      "elapsed_seconds": 8.7220529000042,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157425211608399873",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1157143736631689217",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1224697799761723393",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 41,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "1220475705175834625",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 48,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_EQUAL_LOAD_OTHER_DIRECTION",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_EQUAL_LOAD_OTHER_DIRECTION\\MEASUREMENTS.json",
+      "sha256": "9f3518c220a649afee5caa773122e46ca12823bbd2fad645fab92d3e9254c9ad",
+      "elapsed_seconds": 7.744534699944779,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            30,
+            20,
+            8
+          ],
+          "raw": "1157706686585110529",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            35,
+            25,
+            8
+          ],
+          "raw": "1157143629257506817",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            35,
+            30,
+            8
+          ],
+          "raw": "1224697623668064257",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            30,
+            30,
+            8
+          ],
+          "raw": "1220475567736881153",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 16,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            25,
+            25,
+            8
+          ],
+          "raw": "0",
+          "clock": "31",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            25,
+            35,
+            8
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            40
+          ],
+          "raw": "1161647301899321345",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 17,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            40,
+            15,
+            52
+          ],
+          "raw": "1224697713862377473",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_RESERVED_NEW_LOADS_UPPER",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_RESERVED_NEW_LOADS_UPPER\\MEASUREMENTS.json",
+      "sha256": "46d498ba9a7826f2a9875f86671e4195332955354f292233e6f09e91269861ab",
+      "elapsed_seconds": 7.758911799988709,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            35,
+            17,
+            15
+          ],
+          "raw": "1157706712354914305",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 31,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            40,
+            22,
+            15
+          ],
+          "raw": "1157425237378203649",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 31,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            40,
+            27,
+            15
+          ],
+          "raw": "1157143762401492993",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 31,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            35,
+            27,
+            15
+          ],
+          "raw": "1157143762401492993",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 31,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            30,
+            22,
+            15
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            30,
+            32,
+            15
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            45,
+            12,
+            47
+          ],
+          "raw": "1161647319079190529",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            45,
+            12,
+            59
+          ],
+          "raw": "1161647344848994305",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 27,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "DIALOGUE_RESERVED_NEW_LOADS_LOWER",
+      "file": "resultados\\dialogue_confirmation\\DIALOGUE_RESERVED_NEW_LOADS_LOWER\\MEASUREMENTS.json",
+      "sha256": "558fb71c3c45127eea85f1df1284c29b440b0d186c0e355f6980f1535bd664fe",
+      "elapsed_seconds": 5.916746599948965,
+      "messages": [
+        {
+          "tick": 11,
+          "site": [
+            23,
+            26,
+            20
+          ],
+          "raw": "1157706729534783489",
+          "clock": "11",
+          "state": 1,
+          "s_reg": 35,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 16,
+          "site": [
+            28,
+            31,
+            20
+          ],
+          "raw": "1157425254558072833",
+          "clock": "16",
+          "state": 1,
+          "s_reg": 35,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 21,
+          "site": [
+            28,
+            36,
+            20
+          ],
+          "raw": "1157143779581362177",
+          "clock": "21",
+          "state": 1,
+          "s_reg": 35,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 26,
+          "site": [
+            23,
+            36,
+            20
+          ],
+          "raw": "1224697834121461761",
+          "clock": "26",
+          "state": 1,
+          "s_reg": 49,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "banks_at31": {
+        "bank.lower": {
+          "tick": 31,
+          "site": [
+            18,
+            31,
+            20
+          ],
+          "raw": "1220475739535572993",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 56,
+          "semantic": 1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "bank.upper": {
+          "tick": 31,
+          "site": [
+            18,
+            41,
+            20
+          ],
+          "raw": "1153203009648328705",
+          "clock": "31",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "retention_at70": {
+        "U2.memory.backup": {
+          "tick": 70,
+          "site": [
+            33,
+            21,
+            52
+          ],
+          "raw": "1161647336259059713",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 25,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "U1.context.backup": {
+          "tick": 70,
+          "site": [
+            33,
+            21,
+            64
+          ],
+          "raw": "1224697722452312065",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 23,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            0
+          ],
+          "active": true
+        }
+      }
+    }
+  ]
+}

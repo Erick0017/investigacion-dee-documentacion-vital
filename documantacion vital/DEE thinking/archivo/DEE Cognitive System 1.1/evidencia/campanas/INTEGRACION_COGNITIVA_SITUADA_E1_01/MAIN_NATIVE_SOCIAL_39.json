@@ -1,0 +1,2612 @@
+{
+  "INSTRUMENTO": {
+    "life_id": "E1_INTEGRADO_MAIN",
+    "profile": "cpc9_integral_n67",
+    "operation": "IC01_MAIN_SOCIAL_WITH_NATIVE_BODY",
+    "tick": 3441,
+    "snapshot_sha256": "18c1611947457e4410687fa699dc92ddf1e2098d265e8be3d72698e27cd1e3ab"
+  },
+  "result": {
+    "initial": {
+      "N": 67,
+      "tick": 3312,
+      "RAW_sha256": "71ab5b0f0b8bcbc05ea7f55ae3241ec681082fbdbde2a279ffb951b18b4a4ea7",
+      "clocks_sha256": "7228176df113857d3a0024877f7ad06c49216f96d0cef7d659a01458f52ce0dd",
+      "sites": 300763,
+      "occupied": 294,
+      "max_s_reg": 1149,
+      "basic_buffers_bytes": 9624416
+    },
+    "social": {
+      "plan": {
+        "schema": "DCS1.1.habitat.private_B.frozen_plan.v1",
+        "episode_id": "MAIN_NATIVE_SOCIAL_39",
+        "mode": "full",
+        "N": 67,
+        "created_tick": 3312,
+        "phase_offset": 0,
+        "spacing_periods": 3,
+        "values": [
+          45
+        ],
+        "trials": [
+          {
+            "index": 0,
+            "private_object_value": 45,
+            "round_index": 48,
+            "B_source_tick": 3363,
+            "inputs": [
+              {
+                "port": "B.quantity.object.cue",
+                "payload": 5,
+                "tick": 3358,
+                "kind": "experience",
+                "role": "PRIVATE_B_CURRENT_OBJECT_FORMAT"
+              },
+              {
+                "port": "B.quantity.object.resource",
+                "payload": 45,
+                "tick": 3358,
+                "kind": "experience",
+                "role": "PRIVATE_B_CURRENT_OBJECT_MATERIAL"
+              },
+              {
+                "port": "B.quantity.reader",
+                "payload": 7,
+                "tick": 3362,
+                "kind": "probe",
+                "role": "FIXED_B_CURRENT_USE_OPPORTUNITY"
+              },
+              {
+                "port": "back.minus.record",
+                "payload": 5,
+                "tick": 3362,
+                "kind": "experience",
+                "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS"
+              },
+              {
+                "port": "back.plus.record",
+                "payload": 5,
+                "tick": 3362,
+                "kind": "experience",
+                "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS"
+              },
+              {
+                "port": "back.minus.read",
+                "payload": 7,
+                "tick": 3429,
+                "kind": "probe",
+                "role": "E1_COMMON_LATER_READER_BOTH_BANKS"
+              },
+              {
+                "port": "back.plus.read",
+                "payload": 7,
+                "tick": 3429,
+                "kind": "probe",
+                "role": "E1_COMMON_LATER_READER_BOTH_BANKS"
+              },
+              {
+                "port": "back.minus.use",
+                "payload": 13,
+                "tick": 3434,
+                "kind": "experience",
+                "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS"
+              },
+              {
+                "port": "back.plus.use",
+                "payload": 13,
+                "tick": 3434,
+                "kind": "experience",
+                "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS"
+              }
+            ],
+            "interceptors": [],
+            "boundaries": [
+              {
+                "tick": 3362,
+                "stage": "before_B_reader"
+              },
+              {
+                "tick": 3363,
+                "stage": "B_source_formed_before_cut"
+              },
+              {
+                "tick": 3364,
+                "stage": "message_at_one_step"
+              },
+              {
+                "tick": 3365,
+                "stage": "E1_record_arrival"
+              },
+              {
+                "tick": 3366,
+                "stage": "after_record"
+              },
+              {
+                "tick": 3432,
+                "stage": "E1_later_read"
+              },
+              {
+                "tick": 3437,
+                "stage": "E1_current_use"
+              },
+              {
+                "tick": 3441,
+                "stage": "E1_delivery"
+              }
+            ],
+            "end_tick": 3441
+          }
+        ],
+        "B_center": [
+          21,
+          59,
+          40
+        ],
+        "B_reference_site": [
+          20,
+          59,
+          40
+        ],
+        "B_object_site": [
+          22,
+          59,
+          40
+        ],
+        "E1_banks": [
+          {
+            "id": "minus",
+            "sign": -1,
+            "message_site": [
+              20,
+              59,
+              40
+            ],
+            "hub": [
+              19,
+              59,
+              40
+            ],
+            "use_site": [
+              14,
+              59,
+              45
+            ],
+            "delivery_site": [
+              10,
+              63,
+              49
+            ],
+            "message_tick": 148,
+            "association_tick": 149,
+            "query_tick": 216,
+            "use_tick": 221,
+            "delivery_tick": 225
+          },
+          {
+            "id": "plus",
+            "sign": 1,
+            "message_site": [
+              22,
+              59,
+              40
+            ],
+            "hub": [
+              23,
+              59,
+              40
+            ],
+            "use_site": [
+              28,
+              59,
+              45
+            ],
+            "delivery_site": [
+              32,
+              63,
+              49
+            ],
+            "message_tick": 148,
+            "association_tick": 149,
+            "query_tick": 216,
+            "use_tick": 221,
+            "delivery_tick": 225
+          }
+        ],
+        "host_information": "Private object magnitude is sent only to B object input; E1 receives no correct relation, label or selected bank.",
+        "no_partner_scope": "Withhold B current object and reader participation. Existing B matter is NOT removed; this is not absence of the physical body.",
+        "cut_scope": "Both one-step message sites receive the same fixed interceptor only AFTER B output is formed and recorded. Nearby prepared matter can also change later B evolution; compare source frames and sham, not just final answer.",
+        "state_zero_contract": "RAW==0 required at interceptor admission boundary; state==0 with residual RAW is not treated as vacant.",
+        "not_claimed": [
+          "communication success",
+          "autonomous interlocutor selection",
+          "negotiation",
+          "new Spanish meaning",
+          "learned comparison operation"
+        ],
+        "plan_sha256": "3d4965dda46a4ad853803107292207c0597c5726acf5399d60a1af388b143e72"
+      },
+      "requests": [
+        {
+          "port": "B.quantity.object.cue",
+          "payload": 5,
+          "tick": 3358,
+          "kind": "experience",
+          "role": "PRIVATE_B_CURRENT_OBJECT_FORMAT",
+          "id": 1840,
+          "initial_receipt": {
+            "id": 1840,
+            "status": "scheduled",
+            "channels": [
+              "B.quantity.object.cue"
+            ],
+            "requested_tick": 3358,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1840,
+            "status": "applied",
+            "channels": [
+              "B.quantity.object.cue"
+            ],
+            "requested_tick": 3358,
+            "effective_tick": 3358,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "port": "B.quantity.object.resource",
+          "payload": 45,
+          "tick": 3358,
+          "kind": "experience",
+          "role": "PRIVATE_B_CURRENT_OBJECT_MATERIAL",
+          "id": 1841,
+          "initial_receipt": {
+            "id": 1841,
+            "status": "scheduled",
+            "channels": [
+              "B.quantity.object.resource"
+            ],
+            "requested_tick": 3358,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1841,
+            "status": "applied",
+            "channels": [
+              "B.quantity.object.resource"
+            ],
+            "requested_tick": 3358,
+            "effective_tick": 3358,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "port": "B.quantity.reader",
+          "payload": 7,
+          "tick": 3362,
+          "kind": "probe",
+          "role": "FIXED_B_CURRENT_USE_OPPORTUNITY",
+          "id": 1842,
+          "initial_receipt": {
+            "id": 1842,
+            "status": "scheduled",
+            "channels": [
+              "B.quantity.reader"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1842,
+            "status": "rejected_occupied",
+            "channels": [
+              "B.quantity.reader"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "port": "back.minus.record",
+          "payload": 5,
+          "tick": 3362,
+          "kind": "experience",
+          "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS",
+          "id": 1843,
+          "initial_receipt": {
+            "id": 1843,
+            "status": "scheduled",
+            "channels": [
+              "back.minus.record"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1843,
+            "status": "applied",
+            "channels": [
+              "back.minus.record"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": 3362,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "port": "back.plus.record",
+          "payload": 5,
+          "tick": 3362,
+          "kind": "experience",
+          "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS",
+          "id": 1844,
+          "initial_receipt": {
+            "id": 1844,
+            "status": "scheduled",
+            "channels": [
+              "back.plus.record"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1844,
+            "status": "applied",
+            "channels": [
+              "back.plus.record"
+            ],
+            "requested_tick": 3362,
+            "effective_tick": 3362,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "port": "back.minus.read",
+          "payload": 7,
+          "tick": 3429,
+          "kind": "probe",
+          "role": "E1_COMMON_LATER_READER_BOTH_BANKS",
+          "id": 1845,
+          "initial_receipt": {
+            "id": 1845,
+            "status": "scheduled",
+            "channels": [
+              "back.minus.read"
+            ],
+            "requested_tick": 3429,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1845,
+            "status": "applied",
+            "channels": [
+              "back.minus.read"
+            ],
+            "requested_tick": 3429,
+            "effective_tick": 3429,
+            "kind": "probe",
+            "reason": ""
+          }
+        },
+        {
+          "port": "back.plus.read",
+          "payload": 7,
+          "tick": 3429,
+          "kind": "probe",
+          "role": "E1_COMMON_LATER_READER_BOTH_BANKS",
+          "id": 1846,
+          "initial_receipt": {
+            "id": 1846,
+            "status": "scheduled",
+            "channels": [
+              "back.plus.read"
+            ],
+            "requested_tick": 3429,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1846,
+            "status": "applied",
+            "channels": [
+              "back.plus.read"
+            ],
+            "requested_tick": 3429,
+            "effective_tick": 3429,
+            "kind": "probe",
+            "reason": ""
+          }
+        },
+        {
+          "port": "back.minus.use",
+          "payload": 13,
+          "tick": 3434,
+          "kind": "experience",
+          "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS",
+          "id": 1847,
+          "initial_receipt": {
+            "id": 1847,
+            "status": "scheduled",
+            "channels": [
+              "back.minus.use"
+            ],
+            "requested_tick": 3434,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1847,
+            "status": "applied",
+            "channels": [
+              "back.minus.use"
+            ],
+            "requested_tick": 3434,
+            "effective_tick": 3434,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "port": "back.plus.use",
+          "payload": 13,
+          "tick": 3434,
+          "kind": "experience",
+          "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS",
+          "id": 1848,
+          "initial_receipt": {
+            "id": 1848,
+            "status": "scheduled",
+            "channels": [
+              "back.plus.use"
+            ],
+            "requested_tick": 3434,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": ""
+          },
+          "receipt": {
+            "id": 1848,
+            "status": "applied",
+            "channels": [
+              "back.plus.use"
+            ],
+            "requested_tick": 3434,
+            "effective_tick": 3434,
+            "kind": "experience",
+            "reason": ""
+          }
+        }
+      ],
+      "captures": [
+        {
+          "trial": 0,
+          "tick": 3362,
+          "stage": "before_B_reader",
+          "B_center": {
+            "tick": 3362,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "1224979128709545985",
+            "clock": "3362",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "active": true
+          },
+          "B_reference": {
+            "tick": 3362,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "1157425258853040129",
+            "clock": "3362",
+            "state": 1,
+            "s_reg": 36,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true
+          },
+          "B_object": {
+            "tick": 3362,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "1157425318982582273",
+            "clock": "3362",
+            "state": 1,
+            "s_reg": 50,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3362,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "1157425258853040129",
+                "clock": "3362",
+                "state": 1,
+                "s_reg": 36,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  1,
+                  0
+                ],
+                "active": true
+              },
+              "hub": {
+                "tick": 3362,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3362,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3362,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3362,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "1157425318982582273",
+                "clock": "3362",
+                "state": 1,
+                "s_reg": 50,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  1,
+                  0
+                ],
+                "active": true
+              },
+              "hub": {
+                "tick": 3362,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3362,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3362,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3362",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3363,
+          "stage": "B_source_formed_before_cut",
+          "B_center": {
+            "tick": 3363,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "1157143659322277889",
+            "clock": "3363",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "B_reference": {
+            "tick": 3363,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3363",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3363,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3363",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3363,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3363,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3363,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3363,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3363,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3363,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3363,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3363,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3363",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3364,
+          "stage": "message_at_one_step",
+          "B_center": {
+            "tick": 3364,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "2305561564301754369",
+            "clock": "3364",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "active": true
+          },
+          "B_reference": {
+            "tick": 3364,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "1157143659322277889",
+            "clock": "3364",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "B_object": {
+            "tick": 3364,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3364",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3364,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "1157143659322277889",
+                "clock": "3364",
+                "state": 1,
+                "s_reg": 7,
+                "semantic": 1,
+                "direction": [
+                  -1,
+                  0,
+                  0
+                ],
+                "active": true
+              },
+              "hub": {
+                "tick": 3364,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3364,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3364,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3364,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3364,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3364,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3364,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3364",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3365,
+          "stage": "E1_record_arrival",
+          "B_center": {
+            "tick": 3365,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "1292814598096814081",
+            "clock": "3365",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              1
+            ],
+            "active": true
+          },
+          "B_reference": {
+            "tick": 3365,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3365",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3365,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3365",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3365,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3365,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "1229201334964584449",
+                "clock": "3365",
+                "state": 1,
+                "s_reg": 26,
+                "semantic": 1,
+                "direction": [
+                  -1,
+                  0,
+                  1
+                ],
+                "active": true
+              },
+              "use_site": {
+                "tick": 3365,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3365,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3365,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3365,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "1157425125709053953",
+                "clock": "3365",
+                "state": 1,
+                "s_reg": 5,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  1,
+                  0
+                ],
+                "active": true
+              },
+              "use_site": {
+                "tick": 3365,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3365,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3365",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3366,
+          "stage": "after_record",
+          "B_center": {
+            "tick": 3366,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3366",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_reference": {
+            "tick": 3366,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3366",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3366,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3366",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3366,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3366,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3366,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3366,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3366,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3366,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3366,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3366,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3366",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3432,
+          "stage": "E1_later_read",
+          "B_center": {
+            "tick": 3432,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3432",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_reference": {
+            "tick": 3432,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3432",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3432,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3432",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3432,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3432,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "1292533123120103425",
+                "clock": "3432",
+                "state": 1,
+                "s_reg": 7,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  -1,
+                  1
+                ],
+                "active": true
+              },
+              "use_site": {
+                "tick": 3432,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3432,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3432,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3432,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "1224979150184382465",
+                "clock": "3432",
+                "state": 1,
+                "s_reg": 12,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  0,
+                  1
+                ],
+                "active": true
+              },
+              "use_site": {
+                "tick": 3432,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3432,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3432",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3437,
+          "stage": "E1_current_use",
+          "B_center": {
+            "tick": 3437,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3437",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_reference": {
+            "tick": 3437,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3437",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3437,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3437",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3437,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3437,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3437,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "1157425160068792321",
+                "clock": "3437",
+                "state": 1,
+                "s_reg": 13,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  1,
+                  0
+                ],
+                "active": true
+              },
+              "delivery_site": {
+                "tick": 3437,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3437,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3437,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3437,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "1157425160068792321",
+                "clock": "3437",
+                "state": 1,
+                "s_reg": 13,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  1,
+                  0
+                ],
+                "active": true
+              },
+              "delivery_site": {
+                "tick": 3437,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3437",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "tick": 3441,
+          "stage": "E1_delivery",
+          "B_center": {
+            "tick": 3441,
+            "site": [
+              21,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3441",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_reference": {
+            "tick": 3441,
+            "site": [
+              20,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3441",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "B_object": {
+            "tick": 3441,
+            "site": [
+              22,
+              59,
+              40
+            ],
+            "raw": "0",
+            "clock": "3441",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "E1": [
+            {
+              "bank": "minus",
+              "message_site": {
+                "tick": 3441,
+                "site": [
+                  20,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3441,
+                "site": [
+                  19,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3441,
+                "site": [
+                  14,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3441,
+                "site": [
+                  10,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            {
+              "bank": "plus",
+              "message_site": {
+                "tick": 3441,
+                "site": [
+                  22,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "hub": {
+                "tick": 3441,
+                "site": [
+                  23,
+                  59,
+                  40
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "use_site": {
+                "tick": 3441,
+                "site": [
+                  28,
+                  59,
+                  45
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "delivery_site": {
+                "tick": 3441,
+                "site": [
+                  32,
+                  63,
+                  49
+                ],
+                "raw": "0",
+                "clock": "3441",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          ]
+        }
+      ],
+      "interceptions": [],
+      "last_tick": 3441,
+      "status": "COMPLETED_FIXED_HORIZON"
+    },
+    "native_frames": [
+      {
+        "tick": 3379,
+        "roles": [
+          {
+            "role": "action",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3379,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3379",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true
+      },
+      {
+        "tick": 3383,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3383,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3383",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3383,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3383",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3383,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157707180506349569",
+            "clock": "3383",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3387,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3387,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3387",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3431,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 0,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3431,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3431",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3431,
+          "RAW_sha256": "5cc3c1af3a5545890ba7adfe3d122fe037e621b2d4f15aab8f69e4893d13d35d",
+          "clocks_sha256": "926ef076c339fec56bdb742c2a5ad2bcbecebae1e4b3120e48693655ccea0336",
+          "sites": 300763,
+          "occupied": 302,
+          "max_s_reg": 1149,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3435,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3435,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3435",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3435,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3435",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3435,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157707180506349569",
+            "clock": "3435",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3439,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3439,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3439",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      }
+    ],
+    "native_action_after_social": {
+      "tick": 3441,
+      "protocol": {
+        "name": "MAIN_COMMITTED_BODY_38",
+        "start_tick": 3312,
+        "progress_tick": 3441,
+        "end_tick": 3899,
+        "phase": "IN_PROGRESS_WITH_EXACT_PENDING_INPUTS"
+      },
+      "native_action": {
+        "tick": 3441,
+        "site": [
+          15,
+          15,
+          50
+        ],
+        "raw": "0",
+        "clock": "3441",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "scope": "Passive state and fixed opportunity protocol; no free cognition or autonomous clock claimed"
+    },
+    "final": {
+      "N": 67,
+      "tick": 3441,
+      "RAW_sha256": "67ba981ea61fc3867d73506e435b3094b23be7ff4ac3f0f4fce64ec8efd48a1b",
+      "clocks_sha256": "8985570be2cc5ba276e8e4756b788fb1c513f26cc4ac63c3d816fa60bdb1de53",
+      "sites": 300763,
+      "occupied": 304,
+      "max_s_reg": 1149,
+      "basic_buffers_bytes": 9624416
+    },
+    "not_claimed": "Existing communication shares this trajectory; a functional coupling from received content to the new selector is not established by sharing Runtime."
+  },
+  "physical": {
+    "N": 67,
+    "tick": 3441,
+    "RAW_sha256": "67ba981ea61fc3867d73506e435b3094b23be7ff4ac3f0f4fce64ec8efd48a1b",
+    "clocks_sha256": "8985570be2cc5ba276e8e4756b788fb1c513f26cc4ac63c3d816fa60bdb1de53",
+    "sites": 300763,
+    "occupied": 304,
+    "max_s_reg": 1149,
+    "basic_buffers_bytes": 9624416
+  }
+}

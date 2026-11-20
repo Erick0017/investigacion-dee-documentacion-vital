@@ -1,0 +1,5335 @@
+{
+  "INSTRUMENTO": {
+    "life_id": "IC01_SOCIAL_SOURCE_RECORD_USE_82",
+    "profile": "cpc9_integral_n67",
+    "operation": "IC01_SOCIAL_GROWTH_FAMILY_ABLATION",
+    "tick": 3899,
+    "snapshot_sha256": "a42f8e27b8ae441a667cd938d013396c681171a6ecec26f782575095fb6f4e5a"
+  },
+  "result": {
+    "initial": {
+      "N": 67,
+      "tick": 3312,
+      "RAW_sha256": "71ab5b0f0b8bcbc05ea7f55ae3241ec681082fbdbde2a279ffb951b18b4a4ea7",
+      "clocks_sha256": "7228176df113857d3a0024877f7ad06c49216f96d0cef7d659a01458f52ce0dd",
+      "sites": 300763,
+      "occupied": 294,
+      "max_s_reg": 1149,
+      "basic_buffers_bytes": 9624416
+    },
+    "included_groups": [
+      "PRIVATE",
+      "RECORD",
+      "ACTION"
+    ],
+    "private_value_B": 45,
+    "plan": {
+      "schema": "DCS1.1.habitat.private_B.frozen_plan.v1",
+      "episode_id": "SOCIAL_SOURCE_RECORD_USE_82",
+      "mode": "full",
+      "N": 67,
+      "created_tick": 3312,
+      "phase_offset": 0,
+      "spacing_periods": 3,
+      "values": [
+        45
+      ],
+      "trials": [
+        {
+          "index": 0,
+          "private_object_value": 45,
+          "round_index": 48,
+          "B_source_tick": 3363,
+          "inputs": [
+            {
+              "port": "B.quantity.object.cue",
+              "payload": 5,
+              "tick": 3358,
+              "kind": "experience",
+              "role": "PRIVATE_B_CURRENT_OBJECT_FORMAT"
+            },
+            {
+              "port": "B.quantity.object.resource",
+              "payload": 45,
+              "tick": 3358,
+              "kind": "experience",
+              "role": "PRIVATE_B_CURRENT_OBJECT_MATERIAL"
+            },
+            {
+              "port": "B.quantity.reader",
+              "payload": 7,
+              "tick": 3362,
+              "kind": "probe",
+              "role": "FIXED_B_CURRENT_USE_OPPORTUNITY"
+            },
+            {
+              "port": "back.minus.record",
+              "payload": 5,
+              "tick": 3362,
+              "kind": "experience",
+              "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS"
+            },
+            {
+              "port": "back.plus.record",
+              "payload": 5,
+              "tick": 3362,
+              "kind": "experience",
+              "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS"
+            },
+            {
+              "port": "back.minus.read",
+              "payload": 7,
+              "tick": 3429,
+              "kind": "probe",
+              "role": "E1_COMMON_LATER_READER_BOTH_BANKS"
+            },
+            {
+              "port": "back.plus.read",
+              "payload": 7,
+              "tick": 3429,
+              "kind": "probe",
+              "role": "E1_COMMON_LATER_READER_BOTH_BANKS"
+            },
+            {
+              "port": "back.minus.use",
+              "payload": 13,
+              "tick": 3434,
+              "kind": "experience",
+              "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS"
+            },
+            {
+              "port": "back.plus.use",
+              "payload": 13,
+              "tick": 3434,
+              "kind": "experience",
+              "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS"
+            }
+          ],
+          "interceptors": [],
+          "boundaries": [
+            {
+              "tick": 3362,
+              "stage": "before_B_reader"
+            },
+            {
+              "tick": 3363,
+              "stage": "B_source_formed_before_cut"
+            },
+            {
+              "tick": 3364,
+              "stage": "message_at_one_step"
+            },
+            {
+              "tick": 3365,
+              "stage": "E1_record_arrival"
+            },
+            {
+              "tick": 3366,
+              "stage": "after_record"
+            },
+            {
+              "tick": 3432,
+              "stage": "E1_later_read"
+            },
+            {
+              "tick": 3437,
+              "stage": "E1_current_use"
+            },
+            {
+              "tick": 3441,
+              "stage": "E1_delivery"
+            }
+          ],
+          "end_tick": 3441
+        }
+      ],
+      "B_center": [
+        21,
+        59,
+        40
+      ],
+      "B_reference_site": [
+        20,
+        59,
+        40
+      ],
+      "B_object_site": [
+        22,
+        59,
+        40
+      ],
+      "E1_banks": [
+        {
+          "id": "minus",
+          "sign": -1,
+          "message_site": [
+            20,
+            59,
+            40
+          ],
+          "hub": [
+            19,
+            59,
+            40
+          ],
+          "use_site": [
+            14,
+            59,
+            45
+          ],
+          "delivery_site": [
+            10,
+            63,
+            49
+          ],
+          "message_tick": 148,
+          "association_tick": 149,
+          "query_tick": 216,
+          "use_tick": 221,
+          "delivery_tick": 225
+        },
+        {
+          "id": "plus",
+          "sign": 1,
+          "message_site": [
+            22,
+            59,
+            40
+          ],
+          "hub": [
+            23,
+            59,
+            40
+          ],
+          "use_site": [
+            28,
+            59,
+            45
+          ],
+          "delivery_site": [
+            32,
+            63,
+            49
+          ],
+          "message_tick": 148,
+          "association_tick": 149,
+          "query_tick": 216,
+          "use_tick": 221,
+          "delivery_tick": 225
+        }
+      ],
+      "host_information": "Private object magnitude is sent only to B object input; E1 receives no correct relation, label or selected bank.",
+      "no_partner_scope": "Withhold B current object and reader participation. Existing B matter is NOT removed; this is not absence of the physical body.",
+      "cut_scope": "Both one-step message sites receive the same fixed interceptor only AFTER B output is formed and recorded. Nearby prepared matter can also change later B evolution; compare source frames and sham, not just final answer.",
+      "state_zero_contract": "RAW==0 required at interceptor admission boundary; state==0 with residual RAW is not treated as vacant.",
+      "not_claimed": [
+        "communication success",
+        "autonomous interlocutor selection",
+        "negotiation",
+        "new Spanish meaning",
+        "learned comparison operation"
+      ],
+      "plan_sha256": "b8180972ff21a470338d9d4cfbada7d035b2ecc6d9f8a268c770a4593c915517"
+    },
+    "samples": [
+      {
+        "N": 67,
+        "tick": 3312,
+        "RAW_sha256": "71ab5b0f0b8bcbc05ea7f55ae3241ec681082fbdbde2a279ffb951b18b4a4ea7",
+        "clocks_sha256": "7228176df113857d3a0024877f7ad06c49216f96d0cef7d659a01458f52ce0dd",
+        "sites": 300763,
+        "occupied": 294,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3363,
+        "RAW_sha256": "b2ead420ad9016565614b059f5deb1cca48bda6b52d9af3b965851356e04a55f",
+        "clocks_sha256": "da9ffb401551cbb0c78b071b8397bef4c74a3a9453df0c647f13b0108e4b7127",
+        "sites": 300763,
+        "occupied": 299,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3364,
+        "RAW_sha256": "b3a31a6692f964f96a2a74aaecb23aed8f7fee8106f90568f01e2bffc5d0b90a",
+        "clocks_sha256": "782ff5ab1734ab026eab9514c280a9840b822fea118f7f47caed5512e7c0912f",
+        "sites": 300763,
+        "occupied": 299,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3365,
+        "RAW_sha256": "e6fce6bf003edb9b458f3f0505f2f826855f5444b3f72bbb1fb7f464e0d9fe65",
+        "clocks_sha256": "b2a52d27849bed75a16d4eadecd92566646c87ae31f6d2a0584e819a2827b143",
+        "sites": 300763,
+        "occupied": 299,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3432,
+        "RAW_sha256": "6adc48cdbaf16669f916e5deb0dd697e631201987726735004b92da5cd833b41",
+        "clocks_sha256": "f1fea2be3ba630bd3eda3f778ad0c47420765afa5276cb6d4ddc4857785d6d6a",
+        "sites": 300763,
+        "occupied": 298,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3437,
+        "RAW_sha256": "89e46ce234ffcda55d7b895f5ed643e5749cf7fb5380a36d8b6ee272da7aef10",
+        "clocks_sha256": "59dbbec31a277d907cb0e102c15ca1f0b4f65be564bdb1ee0693a7703d103809",
+        "sites": 300763,
+        "occupied": 307,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3441,
+        "RAW_sha256": "fa12e7fcee9fe40f054b749e7768c12f776e9c0a35c34a0177af1ef796eee619",
+        "clocks_sha256": "8985570be2cc5ba276e8e4756b788fb1c513f26cc4ac63c3d816fa60bdb1de53",
+        "sites": 300763,
+        "occupied": 303,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3500,
+        "RAW_sha256": "964b0f7c3ae818e0c6148915dca1aa0dbfc4edba4993f6cb55b4f9578eda6b19",
+        "clocks_sha256": "4f62a77fc4dce07d1e958c0f6ae9452a96a8666a11ed8efc62db984fd057e401",
+        "sites": 300763,
+        "occupied": 336,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3550,
+        "RAW_sha256": "29deddff1eba13ffa2088e79b6fc6b926d542f183c29ce041476e404cba40eae",
+        "clocks_sha256": "3ba40baa61e9bd3bce47d2d3d35e42c8870c6babf0c0ee5a6b644601d7530859",
+        "sites": 300763,
+        "occupied": 374,
+        "max_s_reg": 642,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3600,
+        "RAW_sha256": "312a21f1c51201606a5f298d742c65618d5239296dfac12ef0dfba27a3dc89c1",
+        "clocks_sha256": "984badf3dcbdbdec3f8d9dac24eff3d19afcd5b25bd69b247b22bf960cfefbb1",
+        "sites": 300763,
+        "occupied": 401,
+        "max_s_reg": 642,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3639,
+        "RAW_sha256": "1d029b13fc6fb9fd2a554cf5c6bc850166655d03639540aa4b938a22f2900758",
+        "clocks_sha256": "5f853da1a85cd1b6d58914c98cc7858ddd19b9a2bbcbb6c80ea6c054b46ad802",
+        "sites": 300763,
+        "occupied": 470,
+        "max_s_reg": 642,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3660,
+        "RAW_sha256": "1cf1e5547b4894f826173aaaa49b6b59883a2b1f0c8e90c471b3dd178f60a1be",
+        "clocks_sha256": "60f625a7b16091be5dba5a4004a256961dcbbf066cfd7c6300823c7318842893",
+        "sites": 300763,
+        "occupied": 543,
+        "max_s_reg": 642,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3691,
+        "RAW_sha256": "6d7a53cb3c2e2f15b4fa992d868ab32895c34d623fd223073f60f34cfd7bf93c",
+        "clocks_sha256": "2f67de6a3d18a3c4500739ae2f184df58225d0ec23f1f302d0d08af27ca7841d",
+        "sites": 300763,
+        "occupied": 1198,
+        "max_s_reg": 642,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3710,
+        "RAW_sha256": "c047860a9d278c90660716d48631493569dd91b5c8dd68a5b13c0653a5fb57ec",
+        "clocks_sha256": "599702d3d8c05d000470e455799a3490ba254abec4def5bcaee44767cc358a93",
+        "sites": 300763,
+        "occupied": 45633,
+        "max_s_reg": 942,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3743,
+        "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+        "clocks_sha256": "02e906404ffca5c1bb1e06aae2dcdf9c97fb90e087140c6addc235aa4664411e",
+        "sites": 300763,
+        "occupied": 297650,
+        "max_s_reg": 3132,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3795,
+        "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+        "clocks_sha256": "49ba75f0735f7cfa7e1847ac6c36818f319b04c0dcd0a18f9f44b9ff71341427",
+        "sites": 300763,
+        "occupied": 297650,
+        "max_s_reg": 3132,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3847,
+        "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+        "clocks_sha256": "69fd8a0f5959e635ecba3111395afa514aaf9f5b5df26fae728263d380be0f89",
+        "sites": 300763,
+        "occupied": 297650,
+        "max_s_reg": 3132,
+        "basic_buffers_bytes": 9624416
+      },
+      {
+        "N": 67,
+        "tick": 3899,
+        "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+        "clocks_sha256": "11525654cc4bbd261611ce40b5bbfcda9935224e442d59795e382c455af4d0e0",
+        "sites": 300763,
+        "occupied": 297650,
+        "max_s_reg": 3132,
+        "basic_buffers_bytes": 9624416
+      }
+    ],
+    "frames": [
+      {
+        "tick": 3312,
+        "B": {
+          "tick": 3312,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3312",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3312,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3312,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3312,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3312,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3312,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3312,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3312,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3312,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3312",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3363,
+        "B": {
+          "tick": 3363,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "1157143659322277889",
+          "clock": "3363",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3363,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3363,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3363,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3363,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3363,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3363,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3363,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3363,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3363",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3364,
+        "B": {
+          "tick": 3364,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "2305561564301754369",
+          "clock": "3364",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            -1,
+            -1,
+            -1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3364,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "1157143659322277889",
+              "clock": "3364",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3364,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3364,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3364,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3364,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3364,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3364,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3364,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3364",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3365,
+        "B": {
+          "tick": 3365,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "1292814598096814081",
+          "clock": "3365",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3365,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3365,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "1229201334964584449",
+              "clock": "3365",
+              "state": 1,
+              "s_reg": 26,
+              "semantic": 1,
+              "direction": [
+                -1,
+                0,
+                1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3365,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3365,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3365,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3365,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "1157425125709053953",
+              "clock": "3365",
+              "state": 1,
+              "s_reg": 5,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3365,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3365,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3365",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3432,
+        "B": {
+          "tick": 3432,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3432",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3432,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3432,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3432,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3432,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3432,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3432,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "1157425125709053953",
+              "clock": "3432",
+              "state": 1,
+              "s_reg": 5,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3432,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3432,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3432",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3437,
+        "B": {
+          "tick": 3437,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3437",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3437,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3437,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3437,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "1157425160068792321",
+              "clock": "3437",
+              "state": 1,
+              "s_reg": 13,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3437,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3437,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3437,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3437,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "1157425160068792321",
+              "clock": "3437",
+              "state": 1,
+              "s_reg": 13,
+              "semantic": 1,
+              "direction": [
+                0,
+                1,
+                0
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3437,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3437",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3441,
+        "B": {
+          "tick": 3441,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3441",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3441,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3441,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3441,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3441,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3441,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3441,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3441,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3441,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3441",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3500,
+        "B": {
+          "tick": 3500,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3500",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3500,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3500,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3500,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3500,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3500,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3500,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3500,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3500,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3500",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3550,
+        "B": {
+          "tick": 3550,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3550",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3550,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3550,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3550,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3550,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3550,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3550,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3550,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3550,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3550",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3600,
+        "B": {
+          "tick": 3600,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3600",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3600,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3600,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3600,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3600,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3600,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3600,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3600,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3600,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3600",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3639,
+        "B": {
+          "tick": 3639,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3639",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3639,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3639,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3639,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3639,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3639,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3639,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3639,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3639,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3639",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3660,
+        "B": {
+          "tick": 3660,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3660",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3660,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3660,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3660,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3660,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3660,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3660,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3660,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3660,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3660",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3691,
+        "B": {
+          "tick": 3691,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3691",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3691,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3691,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3691,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3691,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3691,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3691,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3691,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3691,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3691",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3710,
+        "B": {
+          "tick": 3710,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "0",
+          "clock": "3710",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3710,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3710,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3710,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3710,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3710,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "hub": {
+              "tick": 3710,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "use_site": {
+              "tick": 3710,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "delivery_site": {
+              "tick": 3710,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "0",
+              "clock": "3710",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3743,
+        "B": {
+          "tick": 3743,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "2238570773247688707",
+          "clock": "3743",
+          "state": 3,
+          "s_reg": 66,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3743,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "1229764203313627139",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3743,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "1229764220493496323",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 11,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3743,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "2242511306957520898",
+              "clock": "3743",
+              "state": 2,
+              "s_reg": 39,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3743,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "2242511255417913347",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 27,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3743,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "2305561568596721667",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 8,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3743,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "2305561907899138051",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 87,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3743,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "1229766204768387075",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 473,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3743,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "1229764448126763011",
+              "clock": "3743",
+              "state": 3,
+              "s_reg": 64,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3795,
+        "B": {
+          "tick": 3795,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "2238570773247688707",
+          "clock": "3795",
+          "state": 3,
+          "s_reg": 66,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3795,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "1229764203313627139",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3795,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "1229764220493496323",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 11,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3795,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "2242511306957520898",
+              "clock": "3795",
+              "state": 2,
+              "s_reg": 39,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3795,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "2242511255417913347",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 27,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3795,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "2305561568596721667",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 8,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3795,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "2305561907899138051",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 87,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3795,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "1229766204768387075",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 473,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3795,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "1229764448126763011",
+              "clock": "3795",
+              "state": 3,
+              "s_reg": 64,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3847,
+        "B": {
+          "tick": 3847,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "2238570773247688707",
+          "clock": "3847",
+          "state": 3,
+          "s_reg": 66,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3847,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "1229764203313627139",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3847,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "1229764220493496323",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 11,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3847,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "2242511306957520898",
+              "clock": "3847",
+              "state": 2,
+              "s_reg": 39,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3847,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "2242511255417913347",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 27,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3847,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "2305561568596721667",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 8,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3847,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "2305561907899138051",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 87,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3847,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "1229766204768387075",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 473,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3847,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "1229764448126763011",
+              "clock": "3847",
+              "state": 3,
+              "s_reg": 64,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          }
+        ]
+      },
+      {
+        "tick": 3899,
+        "B": {
+          "tick": 3899,
+          "site": [
+            21,
+            59,
+            40
+          ],
+          "raw": "2238570773247688707",
+          "clock": "3899",
+          "state": 3,
+          "s_reg": 66,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "E1": [
+          {
+            "bank": "minus",
+            "message_site": {
+              "tick": 3899,
+              "site": [
+                20,
+                59,
+                40
+              ],
+              "raw": "1229764203313627139",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3899,
+              "site": [
+                19,
+                59,
+                40
+              ],
+              "raw": "1229764220493496323",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 11,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3899,
+              "site": [
+                14,
+                59,
+                45
+              ],
+              "raw": "2242511306957520898",
+              "clock": "3899",
+              "state": 2,
+              "s_reg": 39,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3899,
+              "site": [
+                10,
+                63,
+                49
+              ],
+              "raw": "2242511255417913347",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 27,
+              "semantic": 1,
+              "direction": [
+                -1,
+                1,
+                -1
+              ],
+              "active": true
+            }
+          },
+          {
+            "bank": "plus",
+            "message_site": {
+              "tick": 3899,
+              "site": [
+                22,
+                59,
+                40
+              ],
+              "raw": "2305561568596721667",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 8,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "hub": {
+              "tick": 3899,
+              "site": [
+                23,
+                59,
+                40
+              ],
+              "raw": "2305561907899138051",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 87,
+              "semantic": 1,
+              "direction": [
+                -1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "use_site": {
+              "tick": 3899,
+              "site": [
+                28,
+                59,
+                45
+              ],
+              "raw": "1229766204768387075",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 473,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            },
+            "delivery_site": {
+              "tick": 3899,
+              "site": [
+                32,
+                63,
+                49
+              ],
+              "raw": "1229764448126763011",
+              "clock": "3899",
+              "state": 3,
+              "s_reg": 64,
+              "semantic": 1,
+              "direction": [
+                1,
+                1,
+                1
+              ],
+              "active": true
+            }
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "port": "B.quantity.object.cue",
+        "payload": 5,
+        "tick": 3358,
+        "kind": "experience",
+        "role": "PRIVATE_B_CURRENT_OBJECT_FORMAT",
+        "id": 1840,
+        "factor_group": "PRIVATE",
+        "receipt": {
+          "id": 1840,
+          "status": "applied",
+          "channels": [
+            "B.quantity.object.cue"
+          ],
+          "requested_tick": 3358,
+          "effective_tick": 3358,
+          "kind": "experience",
+          "reason": ""
+        }
+      },
+      {
+        "port": "B.quantity.object.resource",
+        "payload": 45,
+        "tick": 3358,
+        "kind": "experience",
+        "role": "PRIVATE_B_CURRENT_OBJECT_MATERIAL",
+        "id": 1841,
+        "factor_group": "PRIVATE",
+        "receipt": {
+          "id": 1841,
+          "status": "applied",
+          "channels": [
+            "B.quantity.object.resource"
+          ],
+          "requested_tick": 3358,
+          "effective_tick": 3358,
+          "kind": "experience",
+          "reason": ""
+        }
+      },
+      {
+        "port": "B.quantity.reader",
+        "payload": 7,
+        "tick": 3362,
+        "kind": "probe",
+        "role": "FIXED_B_CURRENT_USE_OPPORTUNITY",
+        "id": 1842,
+        "factor_group": "PRIVATE",
+        "receipt": {
+          "id": 1842,
+          "status": "rejected_occupied",
+          "channels": [
+            "B.quantity.reader"
+          ],
+          "requested_tick": 3362,
+          "effective_tick": null,
+          "kind": "probe",
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      },
+      {
+        "port": "back.minus.record",
+        "payload": 5,
+        "tick": 3362,
+        "kind": "experience",
+        "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS",
+        "id": 1843,
+        "factor_group": "RECORD",
+        "receipt": {
+          "id": 1843,
+          "status": "applied",
+          "channels": [
+            "back.minus.record"
+          ],
+          "requested_tick": 3362,
+          "effective_tick": 3362,
+          "kind": "experience",
+          "reason": ""
+        }
+      },
+      {
+        "port": "back.plus.record",
+        "payload": 5,
+        "tick": 3362,
+        "kind": "experience",
+        "role": "E1_GENERIC_ASSOCIATION_RESOURCE_BOTH_BANKS",
+        "id": 1844,
+        "factor_group": "RECORD",
+        "receipt": {
+          "id": 1844,
+          "status": "applied",
+          "channels": [
+            "back.plus.record"
+          ],
+          "requested_tick": 3362,
+          "effective_tick": 3362,
+          "kind": "experience",
+          "reason": ""
+        }
+      },
+      {
+        "port": "back.minus.use",
+        "payload": 13,
+        "tick": 3434,
+        "kind": "experience",
+        "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS",
+        "id": 1845,
+        "factor_group": "ACTION",
+        "receipt": {
+          "id": 1845,
+          "status": "applied",
+          "channels": [
+            "back.minus.use"
+          ],
+          "requested_tick": 3434,
+          "effective_tick": 3434,
+          "kind": "experience",
+          "reason": ""
+        }
+      },
+      {
+        "port": "back.plus.use",
+        "payload": 13,
+        "tick": 3434,
+        "kind": "experience",
+        "role": "E1_COMMON_CURRENT_ACTION_RESOURCE_BOTH_BANKS",
+        "id": 1846,
+        "factor_group": "ACTION",
+        "receipt": {
+          "id": 1846,
+          "status": "applied",
+          "channels": [
+            "back.plus.use"
+          ],
+          "requested_tick": 3434,
+          "effective_tick": 3434,
+          "kind": "experience",
+          "reason": ""
+        }
+      }
+    ],
+    "native_frames": [
+      {
+        "tick": 3379,
+        "roles": [
+          {
+            "role": "action",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3379,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3379",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true
+      },
+      {
+        "tick": 3383,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3383,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3383",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3383,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3383",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3383,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157707180506349569",
+            "clock": "3383",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3387,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 0,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3387,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3387",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3431,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 0,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3431,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3431",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3431,
+          "RAW_sha256": "466836363e918116d2e68716e6f60b8cfb69afd507af714e71d1066550b53766",
+          "clocks_sha256": "926ef076c339fec56bdb742c2a5ad2bcbecebae1e4b3120e48693655ccea0336",
+          "sites": 300763,
+          "occupied": 300,
+          "max_s_reg": 1149,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3435,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3435,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3435",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3435,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3435",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3435,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157707180506349569",
+            "clock": "3435",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3439,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 1,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3439,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3439",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3483,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 1,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 2,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3483,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3483",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3483,
+          "RAW_sha256": "d3ce0d040dd09c29bb214253a2863a09ea08b86d25cd4926696ac393067be961",
+          "clocks_sha256": "9918c6e72e2c69a12a1b10e23c1bf6c2c1b011388555cdcf71ff34898a5681d2",
+          "sites": 300763,
+          "occupied": 310,
+          "max_s_reg": 1149,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3487,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 2,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3487,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3487",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3487,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "0",
+            "clock": "3487",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "1": {
+            "tick": 3487,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1161647830180298753",
+            "clock": "3487",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              -1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3491,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 2,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3491,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3491",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3535,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 2,
+            "context": -1
+          },
+          {
+            "role": "action",
+            "index": 3,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3535,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1220757575289536513",
+          "clock": "3535",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3535,
+          "RAW_sha256": "21eccdc1cf13a59012120f0876cb9c56725718503361215f960225b666f76626",
+          "clocks_sha256": "c19da4a006a676d228740192d141c7b4863b73093a9135d83dc86df452ced953",
+          "sites": 300763,
+          "occupied": 370,
+          "max_s_reg": 1149,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3539,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 3,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3539,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3539",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3539,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1220757575289536513",
+            "clock": "3539",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3539,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3539",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3543,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 3,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3543,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3543",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3587,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 3,
+            "context": -1
+          },
+          {
+            "role": "action",
+            "index": 4,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3587,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1220757575289536513",
+          "clock": "3587",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3587,
+          "RAW_sha256": "eea1b7896f8783e00c5657da0aa1d161da19093ca16f3b7068286d6b8951cda6",
+          "clocks_sha256": "49229b31d483cb581fd2285d75e855a0afe3d1b4296bc55cf5be96b7c100b44c",
+          "sites": 300763,
+          "occupied": 385,
+          "max_s_reg": 642,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3591,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 4,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3591,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3591",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3591,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1224698224963485697",
+            "clock": "3591",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              -1,
+              -1,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3591,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "0",
+            "clock": "3591",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      },
+      {
+        "tick": 3595,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 4,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3595,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3595",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3639,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 4,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 5,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3639,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157707180506349569",
+          "clock": "3639",
+          "state": 1,
+          "s_reg": 140,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": true,
+        "global": {
+          "N": 67,
+          "tick": 3639,
+          "RAW_sha256": "1d029b13fc6fb9fd2a554cf5c6bc850166655d03639540aa4b938a22f2900758",
+          "clocks_sha256": "5f853da1a85cd1b6d58914c98cc7858ddd19b9a2bbcbb6c80ea6c054b46ad802",
+          "sites": 300763,
+          "occupied": 470,
+          "max_s_reg": 642,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3643,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 5,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3643,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3643",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3643,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "1157143629257506817",
+            "clock": "3643",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3643,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1157707180506349569",
+            "clock": "3643",
+            "state": 1,
+            "s_reg": 140,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3647,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 5,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3647,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3647",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3691,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 5,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 6,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3691,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "1157706579210928129",
+          "clock": "3691",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            0
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "global": {
+          "N": 67,
+          "tick": 3691,
+          "RAW_sha256": "6d7a53cb3c2e2f15b4fa992d868ab32895c34d623fd223073f60f34cfd7bf93c",
+          "clocks_sha256": "2f67de6a3d18a3c4500739ae2f184df58225d0ec23f1f302d0d08af27ca7841d",
+          "sites": 300763,
+          "occupied": 1198,
+          "max_s_reg": 642,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3695,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 6,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3695,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3695",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3695,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "0",
+            "clock": "3695",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "1": {
+            "tick": 3695,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "1161647228884877313",
+            "clock": "3695",
+            "state": 1,
+            "s_reg": 0,
+            "semantic": 1,
+            "direction": [
+              -1,
+              1,
+              0
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3699,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 6,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3699,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "0",
+          "clock": "3699",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3743,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 6,
+            "context": -1
+          },
+          {
+            "role": "action",
+            "index": 7,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3743,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3743",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "global": {
+          "N": 67,
+          "tick": 3743,
+          "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+          "clocks_sha256": "02e906404ffca5c1bb1e06aae2dcdf9c97fb90e087140c6addc235aa4664411e",
+          "sites": 300763,
+          "occupied": 297650,
+          "max_s_reg": 3132,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3747,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 7,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3747,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3747",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3747,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "2301622323377078274",
+            "clock": "3747",
+            "state": 2,
+            "s_reg": 335,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3747,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "2301620918922772482",
+            "clock": "3747",
+            "state": 2,
+            "s_reg": 8,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3751,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 7,
+            "context": -1
+          }
+        ],
+        "selector": {
+          "tick": 3751,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3751",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3795,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 7,
+            "context": -1
+          },
+          {
+            "role": "action",
+            "index": 8,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3795,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3795",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "global": {
+          "N": 67,
+          "tick": 3795,
+          "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+          "clocks_sha256": "49ba75f0735f7cfa7e1847ac6c36818f319b04c0dcd0a18f9f44b9ff71341427",
+          "sites": 300763,
+          "occupied": 297650,
+          "max_s_reg": 3132,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3799,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 8,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3799,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3799",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3799,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "2301622323377078274",
+            "clock": "3799",
+            "state": 2,
+            "s_reg": 335,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3799,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "2301620918922772482",
+            "clock": "3799",
+            "state": 2,
+            "s_reg": 8,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3803,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 8,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3803,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3803",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3847,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 8,
+            "context": 1
+          },
+          {
+            "role": "action",
+            "index": 9,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3847,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3847",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "global": {
+          "N": 67,
+          "tick": 3847,
+          "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+          "clocks_sha256": "69fd8a0f5959e635ecba3111395afa514aaf9f5b5df26fae728263d380be0f89",
+          "sites": 300763,
+          "occupied": 297650,
+          "max_s_reg": 3132,
+          "basic_buffers_bytes": 9624416
+        }
+      },
+      {
+        "tick": 3851,
+        "roles": [
+          {
+            "role": "contact",
+            "index": 9,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3851,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3851",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "contacts": {
+          "-1": {
+            "tick": 3851,
+            "site": [
+              19,
+              11,
+              50
+            ],
+            "raw": "2301622323377078274",
+            "clock": "3851",
+            "state": 2,
+            "s_reg": 335,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          },
+          "1": {
+            "tick": 3851,
+            "site": [
+              19,
+              19,
+              50
+            ],
+            "raw": "2301620918922772482",
+            "clock": "3851",
+            "state": 2,
+            "s_reg": 8,
+            "semantic": 1,
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "active": true
+          }
+        }
+      },
+      {
+        "tick": 3855,
+        "roles": [
+          {
+            "role": "return_source",
+            "index": 9,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3855,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3855",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false
+      },
+      {
+        "tick": 3899,
+        "roles": [
+          {
+            "role": "next_action",
+            "index": 9,
+            "context": 1
+          }
+        ],
+        "selector": {
+          "tick": 3899,
+          "site": [
+            15,
+            15,
+            50
+          ],
+          "raw": "2242512105821437955",
+          "clock": "3899",
+          "state": 3,
+          "s_reg": 225,
+          "semantic": 1,
+          "direction": [
+            -1,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "action_qualified": false,
+        "global": {
+          "N": 67,
+          "tick": 3899,
+          "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+          "clocks_sha256": "11525654cc4bbd261611ce40b5bbfcda9935224e442d59795e382c455af4d0e0",
+          "sites": 300763,
+          "occupied": 297650,
+          "max_s_reg": 3132,
+          "basic_buffers_bytes": 9624416
+        }
+      }
+    ],
+    "final": {
+      "N": 67,
+      "tick": 3899,
+      "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+      "clocks_sha256": "11525654cc4bbd261611ce40b5bbfcda9935224e442d59795e382c455af4d0e0",
+      "sites": 300763,
+      "occupied": 297650,
+      "max_s_reg": 3132,
+      "basic_buffers_bytes": 9624416
+    },
+    "scope": "New causal ablation of the original social opportunity, common native body and age; no original snapshot is repaired or replaced."
+  },
+  "physical": {
+    "N": 67,
+    "tick": 3899,
+    "RAW_sha256": "029e869969d27ed12b2ce21f83cf23bc8e668605e6253fb479c4e18eda2ebf00",
+    "clocks_sha256": "11525654cc4bbd261611ce40b5bbfcda9935224e442d59795e382c455af4d0e0",
+    "sites": 300763,
+    "occupied": 297650,
+    "max_s_reg": 3132,
+    "basic_buffers_bytes": 9624416
+  }
+}

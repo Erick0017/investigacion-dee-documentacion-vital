@@ -1,0 +1,52 @@
+{
+  "schema": "DEE.PI10.snapshot_pack_selection_snippet.R01",
+  "files": [
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\INDICE_SNAPSHOTS.json",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/INDICE_SNAPSHOTS.json",
+      "role": "snapshot_index"
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\pares\\P02_NEUTRAL_T922377\\VIDA.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/P02_NEUTRAL_T922377.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 30
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\pares\\REAL2_12_T941139\\VIDA.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/REAL2_DOCE_T941139.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 20
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\estados\\RPF2\\sistema\\estado\\checkpoints\\ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RPF2_20261111A.T941139.7e19bcd6f029.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/RPF2_DOCE_T941139.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 10
+    }
+  ],
+  "pure_recalculation": {
+    "script": "CODIGO_Y_RECALCULO/recalcular_snapshots_incluidos_PI10_R01.py",
+    "args": [
+      "--indice",
+      "04_EVIDENCIAS/SNAPSHOTS/INDICE_SNAPSHOTS.json",
+      "--salida",
+      "05_CONTROL/RECALCULO_SNAPSHOTS_EXTRAIDO.json"
+    ],
+    "output": "05_CONTROL/RECALCULO_SNAPSHOTS_EXTRAIDO.json",
+    "schema": "DEE.PI10.portable_snapshot_prefix_analysis.R01",
+    "requires_optional_members": [
+      "04_EVIDENCIAS/SNAPSHOTS/P02_NEUTRAL_T922377.deetsnap.gz",
+      "04_EVIDENCIAS/SNAPSHOTS/REAL2_DOCE_T941139.deetsnap.gz",
+      "04_EVIDENCIAS/SNAPSHOTS/RPF2_DOCE_T941139.deetsnap.gz"
+    ],
+    "skip_if_optional_evidence_omitted": true
+  },
+  "Native_executed": false
+}

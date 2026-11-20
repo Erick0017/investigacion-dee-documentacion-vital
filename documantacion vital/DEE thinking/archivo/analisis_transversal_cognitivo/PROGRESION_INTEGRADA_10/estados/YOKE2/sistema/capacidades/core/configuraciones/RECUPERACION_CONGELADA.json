@@ -1,0 +1,569 @@
+{
+  "schema": "DEE_CORE.recovery_inputs.frozen.v1",
+  "cases": {
+    "cpc4": [
+      {
+        "id": "FILTER_FLAT",
+        "input_configuration": {
+          "id": "FILTER_FLAT",
+          "roles": true,
+          "A_history": 1,
+          "B_history": 1,
+          "C_history": 1,
+          "D_history": 1,
+          "neutralizer": "counterflow",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "original_primary": "historico/CPC4/ampliaciones/02_APRENDIZAJE_CONTINUO_RED_ABCD/resultados/red/fixed_counterflow01/FILTER_FLAT/MEASUREMENTS.json",
+        "original_primary_sha256": "1933727a9f1aff7b41997057684fa1a49bdd882929cd644a781e5a20d7d98446"
+      },
+      {
+        "id": "NO_FILTER_FLAT",
+        "input_configuration": {
+          "id": "NO_FILTER_FLAT",
+          "roles": true,
+          "A_history": 1,
+          "B_history": 1,
+          "C_history": 1,
+          "D_history": 1,
+          "neutralizer": "none",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "original_primary": "historico/CPC4/ampliaciones/02_APRENDIZAJE_CONTINUO_RED_ABCD/resultados/red/fixed_counterflow01/NO_FILTER_FLAT/MEASUREMENTS.json",
+        "original_primary_sha256": "20156a682373de4509344174d7b851690d36e1f1dbce965dbd161ce714df9441"
+      },
+      {
+        "id": "SHAM_ZERO_FLAT",
+        "input_configuration": {
+          "id": "SHAM_ZERO_FLAT",
+          "roles": true,
+          "A_history": 1,
+          "B_history": 1,
+          "C_history": 1,
+          "D_history": 1,
+          "neutralizer": "sham",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "original_primary": "historico/CPC4/ampliaciones/02_APRENDIZAJE_CONTINUO_RED_ABCD/resultados/red/fixed_counterflow01/SHAM_ZERO_FLAT/MEASUREMENTS.json",
+        "original_primary_sha256": "820475ec7b27769efb27e4152959fcaf1767a65f20125ef826f8606202901812"
+      },
+      {
+        "id": "RESERVED_FILTER_FLAT",
+        "input_configuration": {
+          "id": "RESERVED_FILTER_FLAT",
+          "roles": true,
+          "A_history": 1,
+          "B_history": 1,
+          "C_history": 1,
+          "D_history": 1,
+          "neutralizer": "counterflow",
+          "translation": [
+            37,
+            9,
+            53
+          ]
+        },
+        "original_primary": "historico/CPC4/ampliaciones/02_APRENDIZAJE_CONTINUO_RED_ABCD/resultados/red/fixed_counterflow01/RESERVED_FILTER_FLAT/MEASUREMENTS.json",
+        "original_primary_sha256": "ae1ff46ee06ad4e47bd3489a4f5cc286d7e62d9befc73de93bda0c8bd47e8c82"
+      }
+    ],
+    "cpc5": [
+      {
+        "id": "COMP_REUSE_CORE_D01",
+        "input_configuration": {
+          "id": "COMP_REUSE_CORE_D01",
+          "architecture": "R1.four_relation_native_core_plus_redundancy",
+          "stage": "NEW_EXTENSION_DISCOVERY",
+          "reuse_core": true,
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          },
+          "scope": "Six components. Four relations are each acquired in a primary route and a backup through real experiences. Existing P1/P2 interfaces are reused at134/201 after prior native products leave. The old common carrier encounters the newly acquired relations, without copying answers.",
+          "frozen_prediction": "If the planned encounters occur, older37 plus environmental7 is44, new16 at145 gives60, new16 at217 gives76, environmental7 at222 gives83. These numbers are auditor predictions, never read by the constructor or decoder.",
+          "criterion": "Record real native and backup outputs; preserve any missed encounter, occupancy or new route"
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_D01/MEASUREMENTS.json",
+        "original_primary_sha256": "3aaf9e39a44208d2d75481c332821ef2a7e7d08b5bd3d8a7e2268237e6dcb96b"
+      },
+      {
+        "id": "CORE_UNCOUPLED_MATCHED",
+        "input_configuration": {
+          "id": "CORE_UNCOUPLED_MATCHED",
+          "architecture": "R4.same_six_components",
+          "stage": "CONTROL",
+          "reuse_core": true,
+          "coupled": false,
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_UNCOUPLED_MATCHED/MEASUREMENTS.json",
+        "original_primary_sha256": "47cf60af506d2bab601d78a58d8dda79673ee5b6e043ac2a52a375609ebac19a"
+      },
+      {
+        "id": "CORE_K3_OPPOSITE",
+        "input_configuration": {
+          "id": "CORE_K3_OPPOSITE",
+          "architecture": "R1",
+          "stage": "CONTROL",
+          "reuse_core": true,
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": -1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_K3_OPPOSITE/MEASUREMENTS.json",
+        "original_primary_sha256": "12e4e93a8af2a03d564824f26f83a6c3405e50bee1fa96d5ce328c815d8b035c"
+      },
+      {
+        "id": "CORE_K3_UNPAIRED",
+        "input_configuration": {
+          "id": "CORE_K3_UNPAIRED",
+          "architecture": "R1",
+          "stage": "CONTROL",
+          "reuse_core": true,
+          "lesson_modes": {
+            "K3": "unpaired"
+          },
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_K3_UNPAIRED/MEASUREMENTS.json",
+        "original_primary_sha256": "ea8112600c5733bbda77812c69d739b38b4a021980fe70633b899b6a0c1ec3ea"
+      },
+      {
+        "id": "CORE_LATE_MESSAGE_REMOVE147",
+        "input_configuration": {
+          "id": "CORE_LATE_MESSAGE_REMOVE147",
+          "architecture": "R1",
+          "stage": "DIAGNOSTIC",
+          "reuse_core": true,
+          "intervention": "remove",
+          "intervention_tick": 147,
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_LATE_MESSAGE_REMOVE147/MEASUREMENTS.json",
+        "original_primary_sha256": "a6bc08663ad2268593eae60affce957d1491bd34ec31519503f3a2b7caaa836b"
+      },
+      {
+        "id": "CORE_LATE_MESSAGE_SHAM147",
+        "input_configuration": {
+          "id": "CORE_LATE_MESSAGE_SHAM147",
+          "architecture": "R1",
+          "stage": "DIAGNOSTIC",
+          "reuse_core": true,
+          "intervention": "sham",
+          "intervention_tick": 147,
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_LATE_MESSAGE_SHAM147/MEASUREMENTS.json",
+        "original_primary_sha256": "aeb9ed70e16dcf0cf8596656e5b87939d44e9a1d52e44c9cdded62cf9cfdd906"
+      },
+      {
+        "id": "CORE_RESERVED_ORDER_QUERY7",
+        "input_configuration": {
+          "id": "CORE_RESERVED_ORDER_QUERY7",
+          "architecture": "R1",
+          "stage": "RESERVED",
+          "reuse_core": true,
+          "lesson_order": [
+            "K2",
+            "K1",
+            "K4",
+            "K3"
+          ],
+          "query_payload": 7,
+          "translation": [
+            3,
+            5,
+            7
+          ],
+          "extra_native_ticks": [
+            149,
+            150,
+            211,
+            212
+          ],
+          "directions": {
+            "K1": 1,
+            "K2": 1,
+            "K3": 1,
+            "K4": 1
+          }
+        },
+        "original_primary": "historico/CPC5/resultados/compound_reuse_confirmation/CORE_RESERVED_ORDER_QUERY7/MEASUREMENTS.json",
+        "original_primary_sha256": "ee4429fcfbd7254e1a36d0b1663937e298213c66f40065ded2c33b64628fecb4"
+      }
+    ],
+    "cpc6": [
+      {
+        "id": "WR01_BA_balanced_Qminus",
+        "input_configuration": {
+          "id": "WR01_BA_balanced_Qminus",
+          "central": true,
+          "access": "deduplicated",
+          "history": "BA",
+          "event_load": 5,
+          "actual": 1,
+          "source_values": {
+            "P": 1,
+            "Q": -1
+          },
+          "source_codec": "balanced",
+          "late_payload": 13,
+          "language_query_load": 11,
+          "language_mode": "paired",
+          "language_repeat_delays": [
+            67
+          ],
+          "longitudinal": true,
+          "bilateral": true,
+          "renewed_queries": [
+            {
+              "memory": "original",
+              "tick": 69,
+              "payload": 11
+            }
+          ],
+          "order_language_mode": "paired",
+          "word_bus": true,
+          "word_bus_decoder": 2,
+          "word_bus_payload": 11,
+          "omit_consolidation_query": true,
+          "horizon": 170,
+          "checkpoints": [
+            5,
+            23,
+            53,
+            70,
+            80,
+            90,
+            94,
+            95,
+            116,
+            120,
+            160,
+            161,
+            162,
+            170
+          ]
+        },
+        "original_primary": "historico/CPC6/resultados/R03_WORD_BUS_V2/WR01_BA_balanced_Qminus/MEASUREMENTS.json",
+        "original_primary_sha256": "4f9621c7b8ba18b7b53ef8268f9bc6dfc6db62e092ee8b2fb4dd3f2e93ee87c4"
+      },
+      {
+        "id": "WR03_AB_balanced_Qminus",
+        "input_configuration": {
+          "id": "WR03_AB_balanced_Qminus",
+          "access": "deduplicated",
+          "history": "AB",
+          "event_load": 5,
+          "actual": -1,
+          "source_values": {
+            "P": 1,
+            "Q": -1
+          },
+          "source_codec": "balanced",
+          "late_payload": 13,
+          "language_query_load": 11,
+          "language_mode": "paired",
+          "language_repeat_delays": [
+            67
+          ],
+          "longitudinal": true,
+          "bilateral": true,
+          "renewed_queries": [
+            {
+              "memory": "original",
+              "tick": 69,
+              "payload": 11
+            }
+          ],
+          "order_language_mode": "paired",
+          "word_bus": true,
+          "word_bus_decoder": 2,
+          "word_bus_payload": 11,
+          "omit_consolidation_query": true,
+          "horizon": 170,
+          "checkpoints": [
+            53,
+            70,
+            80,
+            90,
+            95,
+            162,
+            170
+          ]
+        },
+        "original_primary": "historico/CPC6/resultados/R03_WORD_BUS_V2/WR03_AB_balanced_Qminus/MEASUREMENTS.json",
+        "original_primary_sha256": "82cbc481f52bc692ae10ce19657ff2e63fe0609b44aa08ea8b035bc8745e16f5"
+      },
+      {
+        "id": "WR04_BA_no_repeat",
+        "input_configuration": {
+          "id": "WR04_BA_no_repeat",
+          "access": "deduplicated",
+          "history": "BA",
+          "event_load": 5,
+          "actual": 1,
+          "source_values": {
+            "P": 1,
+            "Q": -1
+          },
+          "source_codec": "balanced",
+          "late_payload": 13,
+          "language_query_load": 11,
+          "language_mode": "paired",
+          "longitudinal": true,
+          "bilateral": true,
+          "renewed_queries": [
+            {
+              "memory": "original",
+              "tick": 69,
+              "payload": 11
+            }
+          ],
+          "order_language_mode": "paired",
+          "word_bus": true,
+          "word_bus_decoder": 2,
+          "word_bus_payload": 11,
+          "omit_consolidation_query": true,
+          "horizon": 170,
+          "checkpoints": [
+            53,
+            70,
+            80,
+            90,
+            95,
+            162,
+            170
+          ]
+        },
+        "original_primary": "historico/CPC6/resultados/R03_WORD_BUS_V2/WR04_BA_no_repeat/MEASUREMENTS.json",
+        "original_primary_sha256": "a528142ffd335a008252202d539a7d05f0ab40515877ed6632287c92f4f6c7cf"
+      },
+      {
+        "id": "WR05_BA_unpaired_name",
+        "input_configuration": {
+          "id": "WR05_BA_unpaired_name",
+          "access": "deduplicated",
+          "history": "BA",
+          "event_load": 5,
+          "actual": 1,
+          "source_values": {
+            "P": 1,
+            "Q": -1
+          },
+          "source_codec": "balanced",
+          "late_payload": 13,
+          "language_query_load": 11,
+          "language_mode": "unpaired",
+          "language_repeat_delays": [
+            67
+          ],
+          "longitudinal": true,
+          "bilateral": true,
+          "renewed_queries": [
+            {
+              "memory": "original",
+              "tick": 69,
+              "payload": 11
+            }
+          ],
+          "order_language_mode": "paired",
+          "word_bus": true,
+          "word_bus_decoder": 2,
+          "word_bus_payload": 11,
+          "omit_consolidation_query": true,
+          "horizon": 170,
+          "checkpoints": [
+            53,
+            70,
+            80,
+            90,
+            95,
+            162,
+            170
+          ]
+        },
+        "original_primary": "historico/CPC6/resultados/R03_WORD_BUS_V2/WR05_BA_unpaired_name/MEASUREMENTS.json",
+        "original_primary_sha256": "97fca9b6ccfe07be275a87ca83e79ddb855287ca01a9509e68bdce8e103950fe"
+      }
+    ],
+    "sem01": [
+      {
+        "id": "A_future_UV",
+        "input_configuration": {
+          "id": "A_future_UV",
+          "pairing": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "type": "CONFIRMATORY_REFERENCE_KNOWN_APPARATUS"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/A_future_UV/MEASUREMENTS.json",
+        "original_primary_sha256": "ab015efbf0f15579fe14a544b31313ac04517a5ae09f4f554f17a6325c24283c"
+      },
+      {
+        "id": "B_future_UV",
+        "input_configuration": {
+          "id": "B_future_UV",
+          "pairing": {
+            "S1": "V",
+            "S2": "U"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "type": "CONFIRMATORY_REFERENCE_KNOWN_APPARATUS"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/B_future_UV/MEASUREMENTS.json",
+        "original_primary_sha256": "8cd5c1d850c5023e59b939b00ef52affa670242a86ea270eb4b6d34ea3d56fc2"
+      },
+      {
+        "id": "A_no_action",
+        "input_configuration": {
+          "id": "A_no_action",
+          "pairing": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "control": "no_action",
+          "type": "EXPLICIT_DIAGNOSTIC_ACTION_CONTROL"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/A_no_action/MEASUREMENTS.json",
+        "original_primary_sha256": "7a0af11de40696f04e2851fae62de757e5076510b876e58dd72e8e5c668e1c28"
+      },
+      {
+        "id": "empty_UV",
+        "input_configuration": {
+          "id": "empty_UV",
+          "mode": "empty",
+          "pairing": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "type": "CAUSAL_HISTORY_CONTROL"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/empty_UV/MEASUREMENTS.json",
+        "original_primary_sha256": "eb93f579238319f0aed4057e0c3a95d862c6cb225c5f2d0baedaccc679e6d7f4"
+      },
+      {
+        "id": "unpaired_UV",
+        "input_configuration": {
+          "id": "unpaired_UV",
+          "mode": "unpaired",
+          "pairing": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "type": "CAUSAL_HISTORY_CONTROL"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/unpaired_UV/MEASUREMENTS.json",
+        "original_primary_sha256": "351e4583402fbc6bbd8a4c36c28c3e14ce532157df9fdcda15544717333f3fdf"
+      },
+      {
+        "id": "RESERVED_A_codec7_shift",
+        "input_configuration": {
+          "id": "RESERVED_A_codec7_shift",
+          "pairing": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "future_events": {
+            "S1": "U",
+            "S2": "V"
+          },
+          "translation": [
+            5,
+            3,
+            2
+          ],
+          "signal_payload": 7,
+          "type": "RESERVED_PHYSICAL_VARIANT"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/RESERVED_A_codec7_shift/MEASUREMENTS.json",
+        "original_primary_sha256": "5567201c7ef504ca59a9312ccb9588ad5e4dd5cb48feb8bd7f95ca794fb391ae"
+      },
+      {
+        "id": "RESERVED_B_codec7_order_shift",
+        "input_configuration": {
+          "id": "RESERVED_B_codec7_order_shift",
+          "pairing": {
+            "S1": "V",
+            "S2": "U"
+          },
+          "future_events": {
+            "S1": "V",
+            "S2": "U"
+          },
+          "translation": [
+            9,
+            -4,
+            7
+          ],
+          "signal_payload": 7,
+          "signal_order": [
+            "S2",
+            "S1"
+          ],
+          "type": "RESERVED_PHYSICAL_VARIANT"
+        },
+        "original_primary": "historico/CPC3/experimentos/SEM01_SIGNIFICADO_ADQUIRIDO/resultados/confirmacion/RESERVED_B_codec7_order_shift/MEASUREMENTS.json",
+        "original_primary_sha256": "4e4399128122219e50338ad98c82e0f8fd3365a66ed062e75610c3d5dfc95762"
+      }
+    ]
+  },
+  "scope": "Exact historical environmental/experience inputs extracted during preparation. Native participants receive physical events only. Expected observations are not part of this file."
+}

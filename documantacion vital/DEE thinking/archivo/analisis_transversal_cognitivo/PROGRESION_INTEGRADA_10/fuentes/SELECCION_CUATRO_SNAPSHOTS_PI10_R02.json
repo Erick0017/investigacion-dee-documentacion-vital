@@ -1,0 +1,60 @@
+{
+  "schema": "DEE.PI10.snapshot_pack_selection_snippet.R02",
+  "files": [
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\INDICE_SNAPSHOTS_FINAL_R02.json",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/INDICE_SNAPSHOTS.json",
+      "role": "snapshot_index"
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\P02_NEUTRAL_T922377.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/P02_NEUTRAL_T922377.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 30
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\REAL2_DOCE_T941139.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/REAL2_DOCE_T941139.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 20
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\RPF2_DOCE_T941139.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/RPF2_DOCE_T941139.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 10
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_10\\fuentes\\SNAPSHOTS_PORTABLES_R01\\PRINCIPAL_FINAL_T947395.deetsnap.gz",
+      "member": "04_EVIDENCIAS/SNAPSHOTS/PRINCIPAL_FINAL_T947395.deetsnap.gz",
+      "role": "optional_snapshot",
+      "required": true,
+      "optional": true,
+      "priority": 0
+    }
+  ],
+  "pure_recalculation": {
+    "script": "CODIGO_Y_RECALCULO/recalcular_snapshots_incluidos_PI10_R01.py",
+    "args": [
+      "--indice",
+      "04_EVIDENCIAS/SNAPSHOTS/INDICE_SNAPSHOTS.json",
+      "--salida",
+      "05_CONTROL/RECALCULO_SNAPSHOTS_EXTRAIDO.json"
+    ],
+    "output": "05_CONTROL/RECALCULO_SNAPSHOTS_EXTRAIDO.json",
+    "schema": "DEE.PI10.portable_snapshot_prefix_analysis.R01",
+    "requires_optional_members": [
+      "04_EVIDENCIAS/SNAPSHOTS/P02_NEUTRAL_T922377.deetsnap.gz",
+      "04_EVIDENCIAS/SNAPSHOTS/REAL2_DOCE_T941139.deetsnap.gz",
+      "04_EVIDENCIAS/SNAPSHOTS/RPF2_DOCE_T941139.deetsnap.gz"
+    ],
+    "skip_if_optional_evidence_omitted": true
+  },
+  "Native_executed": false
+}

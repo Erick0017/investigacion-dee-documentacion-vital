@@ -1,0 +1,7 @@
+{
+  "kind": "Metadata auditor false positive, no scientific trajectory rerun",
+  "first_attempt": "final_check.py expected POSIX separators when matching three disclosed nonzero-exit job paths; Windows paths used backslashes, so the auditor classified the same known three errors as unexpected",
+  "correction": "Normalize path separators only in the known-incident classifier. Job records, primary results, source of participants and frozen scientific configuration remain unchanged.",
+  "attempted_jobs": ["cmp_discovery_k8_01", "cmp_DEE_402817_01", "cmp_DEE_591307_01"],
+  "observed_exit_codes": [2, 1, 1]
+}

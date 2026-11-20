@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "frozen_utc": "2026-10-18T21:31:46Z",
+  "source_sha256": "2e54a12443163a6c6b892f2ad36103bd5f951d86869823d87990ad33f86ca521",
+  "private_seed": 17890331,
+  "environment_seeds": [402817, 591307],
+  "participant_information": "Only experienced form/current-observation pairs and queried formID; model constructor receives fixed private seed, not environment seed",
+  "change": "The bootstrap discards the evaluator seed only at construction. Existing evaluator and models bytes unchanged, same MLP hyperparameters/optimizer/replay/queries/observations.",
+  "preservation": "Original B2 shared-RNG attempts retained as methodological attempts. No new DEE world and no claim of fresh blind environment reserve.",
+  "classification": "Comparator initialization replicas over the same two previously frozen environment streams, not additional independent worlds",
+  "reason": "Original shared seed was used for weight initialization/replay, not reconstructed answers. Separate RNG provides a stronger information firewall nevertheless."
+}

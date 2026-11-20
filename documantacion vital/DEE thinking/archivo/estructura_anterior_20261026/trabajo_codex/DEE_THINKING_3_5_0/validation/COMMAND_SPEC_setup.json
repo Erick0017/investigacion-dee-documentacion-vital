@@ -1,0 +1,54 @@
+{
+  "commands": [
+    {
+      "name": "create_final_clean_venv",
+      "command": [
+        "D:\\Descargas\\ANACONDA MINICONDA\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009"
+      ],
+      "kind": "other",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "install_final_wheel",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--force-reinstall",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\wheel\\dee_thinking-3.5.0-cp313-cp313-win_amd64.whl"
+      ],
+      "kind": "wheel_smoke",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "external_cpp_find_package",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\build_external_3_5.ps1",
+        "-Install",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\install",
+        "-BuildRoot",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009\\cpp_consumer"
+      ],
+      "kind": "consumer",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    }
+  ]
+}

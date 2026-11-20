@@ -1,0 +1,1209 @@
+DEE UNIVERSE
+DEE thinking
+3.5.0
+Libro Blancoy Manual Técnico y de Uso
+Organizaciones con historia, interfaces de experienciay mecanismos reutilizables bajo DEE v27.
+Una misma dinámica. Nueve familias funcionales.Recorridos Python y C++ con continuidad verificable.
+Ivan Erick Tlaltecatl Morales
+Autor del proyecto DEE Universe
+Documento DEET-LBM-350-01Edición 1.0 | 9 de octubre de 2026Producto: 3.5.0 | Kernel: v27 congelado
+Documento complementario del Maestro de Arquitectura y Reconstrucción 3.5.0. Los ejemplos, herramientas y fuentes de producto se conservan en el respaldo.
+
+Guía de lectura y recuperación
+Este libro responde qué ofrece el producto, cómo se usan sus mecanismos y cómo se interpretan las mediciones. El Maestro 3.5 responde cómo está implementado y cómo reconstruirlo. El expediente científico conserva las campañas que sustentan sus recetas.
+Perfil
+Ruta recomendada
+Evaluación conceptual
+Capítulos 1-8 y 35: significado, alcance y relación con el programa DEE.
+Usuario Python
+Capítulos 9-30: instalación, capacidades heredadas y familias 3.5.
+Desarrollo C++
+Capítulos 31-34, anexos A-B y consumidor externo del respaldo.
+Reproducción y auditoría
+Capítulo 7, capítulo 33 y anexos C-E; fuentes y comprobaciones separadas.
+
+Qué se conserva
+La cobertura anterior de Runtime, catálogo, composición, H1-H4/F1-F2, BasalWorld y snapshots se mantiene. La capa organizacional 3.5 se añade mediante recetas, vistas, transducción, consultas, trazas y diagnósticos. La numeración del libro cambia; los contratos heredados continúan identificados.
+Cómo leer la evidencia
+Las referencias [S01]-[S20] remiten al anexo D. Los resultados Windows citados proceden de los registros de Codex preservados en el producto. Las comprobaciones C++ auxiliares de esta edición y las revisiones de ejemplos se entregan por separado. Ninguna etiqueta automática sustituye un estado, un contrato o un contraste.
+Material acompañante
+El respaldo incluye 33 ejemplos Python, un consumidor C++, las herramientas de verificación, este Word, el Maestro complementario y la entrega oficial 3.5 intacta. El Word contiene una cápsula pasiva de los materiales de uso, sin macros ni WHL incrustado. El anexo E explica su recuperación.
+Instalar el artefacto, restaurar una ejecución y reconstruir el software son operaciones distintas. Conservar el snapshot es indispensable para continuar una historia particular.
+Los índices siguientes son navegables. Los nombres de archivo de los ejemplos remiten al directorio manual/ejemplos del respaldo.
+
+Índice de lectura
+Capítulos y anexos. Cada título enlaza a su contenido.
+1. Síntesis ejecutiva5
+2. Una dinámica, varias formas de organización6
+3. Historia, memoria y paisaje causal7
+4. Del laboratorio a DEE thinking 3.58
+5. Las nueve familias funcionales9
+6. Valor de uso y significado de thinking10
+7. Evidencia y alcance del corte11
+8. Elegir la interfaz y la modalidad12
+9. Instalar el artefacto correcto13
+10. Primer mundo persistente con Runtime14
+11. Catálogo y composición heredados15
+12. H1: transformar retardo en posición16
+13. H2: repertorios separados e integrados17
+14. H3 y H4: recuperar y comparar18
+15. F1 y F2 heredados: revisión y mediación19
+16. BasalWorld: la base 3.0 conservada20
+17. Primer OrganizationalWorld21
+18. Transducción I/O: datos y nombres de entrada22
+19. Consultas independientes y secuenciales23
+20. Memoria relacional y acceso latente24
+
+Índice de lectura (continuación)
+Capítulos y anexos. Cada título enlaza a su contenido.
+21. Transferir una función y reconstruir un receptor25
+22. Cascadas: usar una transformación en otra26
+23. Integración entre familias y contexto distribuido27
+24. Plasticidad contextual y acceso temporal28
+25. Acción ambiental y canales de consecuencia29
+26. Resiliencia, saturación y disponibilidad30
+27. Encuentros simultáneos y uso del producto31
+28. Observación multiescala y trazas32
+29. Diagnóstico causal sobre copias33
+30. Guardar, restaurar y continuar34
+31. Preparaciones propias, backends y recursos35
+32. Consumir la biblioteca desde C++36
+33. Comprobar una instalación o reconstrucción37
+34. Migrar y resolver incidencias38
+35. Un recorrido completo de investigación y uso39
+Anexo A. Recetas, interfaces y parámetros40
+Anexo B. Referencia rápida de operaciones41
+Anexo C. Ejemplos ejecutables y recorrido de uso43
+Anexo D. Fuentes, identidades y trazabilidad45
+Anexo E. Continuidad, vocabulario y recuperación47
+
+1. Síntesis ejecutiva
+DEE thinking 3.5.0 es una biblioteca C++20 y una extensión nativa de Python para preparar, utilizar y observar organizaciones que evolucionan bajo una misma dinámica: DEE v27. Su aportación no consiste en cambiar esa ley, sino en volver utilizables mecanismos que antes estaban repartidos entre aparatos y protocolos experimentales.
+El recorrido central es concreto: una experiencia deja diferencias en el estado organizado; una consulta posterior encuentra ese estado; la evolución produce una respuesta que depende de la historia. La biblioteca permite conservar la ejecución, aplicar nuevas experiencias, estudiar sus consecuencias y restaurarla sin reconstruir manualmente la preparación de cada campaña.
+De la experiencia al uso: preparar una organización, incorporar historia mediante interacciones, transformar una consulta, observar el resultado y continuar la misma ejecución.
+La versión conserva Runtime, catálogo, composición, H1-H4/F1-F2 y BasalWorld. Añade OrganizationalWorld, recetas nativas, vistas compartidas, interfaces tipadas, protocolos de consulta, observación de resiliencia, trazas móviles acotadas y persistencia conjunta. Las nueve familias funcionales se explican en este libro con sus operaciones y dominios.
+Recurso
+Uso principal
+Runtime / ComposedWorld
+Estado persistente, entradas y composiciones físicas declaradas.
+BasalWorld
+Preparaciones basales heredadas de MBP4.
+OrganizationalWorld
+Recetas, vistas, interfaces, protocolos y trazas sobre un Runtime propietario.
+Observadores y diagnósticos
+Medir relaciones y contrastar intervenciones sin confundir ambas actividades.
+Snapshots
+Conservar una frontera física y operativa y continuar desde ella.
+
+Un usuario puede empezar con nombres de puertos y datos acotados, sin definir cada vóxel. Un investigador puede descender al Runtime, declarar otra preparación y estudiar sus condiciones. Ambos recorridos utilizan el mismo kernel. El documento Maestro complementario desarrolla la implementación y reconstrucción; este libro organiza el significado de las capacidades y su uso.
+Fuentes: [S01-S06]; Maestro 3.5, caps. 1-4.
+
+2. Una dinámica, varias formas de organización
+El mundo DEE es una retícula tridimensional finita con frontera toroidal. Cada sitio contiene RAW, una palabra de 64 bits, y un clock local de 64 bits. RAW empaqueta state, s_reg, tres componentes direccionales y semantic. Un tick transforma el estado conforme a las reglas y a su orden de precedencia.
+La descripción ocupacional no agota el estado. Un RAW no nulo puede tener state cero; un registro orphan participa de forma distinta en los conteos; una carga cero puede conservar presencia y dirección. Por eso interpretar una observación requiere conocer qué campos retiene y qué pregunta responde.
+La organización da función a los registros
+El mismo tipo de registro puede ser entrada de una interacción, relación transportada, parte de un contexto o resultado de lectura. No hay una instrucción microscópica especial llamada aprender. La función resulta de la preparación, las interacciones y las respuestas que posteriormente permite esa organización.
+Una relación móvil puede encontrarse con una consulta y transformar su carga y dirección. Un par de centros soportados puede conservar una diferencia. Un entorno recurrente puede habilitar otra ocasión de lectura. Son mecanismos distintos; no deben homogeneizarse como si todos fueran un mismo registro abstracto.
+Término
+Significado operativo
+Estado
+RAW y clocks del mundo, junto con la situación operativa de su Runtime.
+Interacción
+Evolución física que relaciona entradas, registros, vecinos o rutas.
+Organización
+Configuración y relaciones que sostienen el repertorio estudiado.
+Observador
+Regla que extrae campos, relaciones o respuestas de un estado.
+Receta
+Preparación física y descriptores necesarios para crear un aparato.
+
+La implementación ejecuta actualización local y un postpaso DEMUX. Cambiar su orden cambia la dinámica. s_reg es un registro interno del modelo: sus sumas, umbrales y efectos deben describirse según la rama, sin asignarle por nombre una unidad de energía externa. El Maestro ofrece la especificación microscópica completa.
+Fuentes: [S02, caps. 5-8]; [S07-S08]; [S17, caps. 2-5].
+
+3. Historia, memoria y paisaje causal
+La historia influye porque deja diferencias en el presente. Si dos historias alcanzan exactamente el mismo estado causal completo y reciben el mismo protocolo futuro, la dinámica determinista produce el mismo futuro. Si un lector las ve iguales y después sus respuestas difieren, ese lector había omitido alguna distinción pertinente.
+Una memoria se reconoce por una prueba de uso: variar la historia y consultar después de forma comparable. La retención se prueba tras un horizonte; la transferencia se sigue hacia otro receptor; la reprogramación añade una experiencia que cambia una función ya escrita. Encontrar dos hashes distintos, por sí solo, no identifica ninguna de esas operaciones.
+Relación, compuerta y expresión
+En el cuerpo relacional, la variable observada es delta = s_A - s_B. Si ambos centros aumentan en la misma cantidad, la diferencia permanece. La expresión depende además del lector, la ruta y el contexto. Puede conservarse una memoria aunque un canal no la exprese en cierta ocasión.
+RELACIÓN OPERACIONAL
+delta = s_A - s_B
+Cambio de delta = cambio de s_A - cambio de s_B
+(101,100) -> (102,101): delta permanece en 1.
+La compuerta de escritura depende de condiciones locales y del clock. En el testigo contextual, B alcanza clock 391 y seis vecinos activos; bajo la rama completa correspondiente, su incremento modifica la relación. Esa coincidencia es una realización concreta, no la definición universal de toda memoria DEE.
+El paisaje causal describe qué transformaciones son accesibles desde la organización presente. Incluye relaciones, disposición, fases y condiciones de interfaz. Es útil hablar de un repertorio de respuestas ante un panel finito de consultas, no de un futuro indeterminado para una ejecución ya fijada.
+Leer delta, abrir una ocasión de escritura y producir una salida son operaciones relacionadas pero distintas. 3.5 conserva las observaciones necesarias para no mezclarlas.
+Fuentes: [S17, caps. 8, 15-19]; [S18, caps. 8-9]; [S19, caps. 29-33].
+
+4. Del laboratorio a DEE thinking 3.5
+La continuidad del proyecto une evidencia experimental e ingeniería. Los antecedentes no se utilizan como un techo para el sistema: se conservan las operaciones medidas y se corrige su interpretación cuando un control posterior separa mejor sus causas.
+Etapa
+Contribución que continúa
+CORE05-07 e Ingenierías
+Fase, rutas, relaciones adquiridas, transferencia, memoria relativa y contexto distribuido.
+MBP1-MBP3
+Persistencia, checkpoints, adquisición y retención en preparaciones concretas.
+MBP4, hasta sección 24
+Cuerpo basal, memoria relacional, expresión y escritura contextual.
+DEE thinking 2.2 / 3.0
+Runtime reutilizable; protocolos, composición, presets y diagnósticos.
+Multirrama 01 + ampliación 02
+Consultas repetidas, transferencia, acceso latente, cascadas y puentes entre familias.
+DEE thinking 3.5
+Recetas nativas y capa organizacional con interfaces, trazas y continuidad operativa.
+
+Una corrección que debe conservarse
+En MBP4, el control NO_ACTION omitía desde T0 una consulta que también afectaba el contexto local. Los cortes tardíos de productos exteriores mostraron que esos productos no eran necesarios para la reescritura particular observada. El resultado vigente conserva la escritura y su mecanismo contextual, sin atribuirle una trayectoria exterior que aquellos cortes no identificaron como necesaria.
+Los rescates aportaron una segunda precisión: B podía escribir mientras A también escribía, conservando delta. La lectura de registros absolutos y la lectura de memoria diferencial responden preguntas distintas. Por eso 3.5 expone centros, relación, soporte y lector por separado.
+La decisión de publicar 3.5 convierte mecanismos y herramientas comprobados en contratos reutilizables. No transforma los nombres exploratorios de las campañas en capacidades más amplias. Un resultado sigue teniendo valor cuando el mecanismo encontrado difiere de la expectativa inicial.
+Fuentes: [S02, cap. 2]; [S14]; [S15-S19]; decisiones de continuidad [S20].
+
+5. Las nueve familias funcionales
+Las familias son una organización del producto, no nueve piezas físicas obligatoriamente separadas. Una receta puede participar en varias y un mismo soporte puede desempeñar varios papeles. Los nombres permiten localizar mecanismos, interfaces y comprobaciones.
+Familia
+Qué ofrece 3.5
+Recorrido del libro
+F01 Memoria avanzada
+Relaciones móviles, A/B, acceso latente y consultas repetidas.
+Caps. 17, 19-20
+F02 Transferencia
+Relay nativo y reconstrucción asistida explícita.
+Cap. 21
+F03 Composición
+Cascadas, contexto distribuido y puente móvil-basal.
+Caps. 22-23
+F04 Plasticidad y contexto
+Eventos, guardas y acceso temporal.
+Cap. 24
+F05 Observación
+Paneles, segmentos, encuentros y diagnósticos.
+Caps. 28-29
+F06 Transducción I/O
+Codificadores, nombres de entrada y decodificadores.
+Cap. 18
+F07 Acción ambiental
+Acoplamientos y consecuencias producidas por v27.
+Cap. 25
+F08 Resiliencia
+Soporte, centros, lector y saturación diferenciados.
+Cap. 26
+F09 Encuentros
+Convergencia, competencia y uso del producto conjunto.
+Cap. 27
+
+F01-F09 no sustituyen los protocolos H1-H4 y F1-F2 heredados. El prefijo F de esos dos protocolos anteriores identifica otro registro: F1 es revisión y F2 es mediación ambiental; F01-F09 identifica las familias del contrato de producto 3.5.
+La funcionalidad publicada incluye componentes nativos y herramientas del investigador. La reconstrucción asistida se identifica como asistida; el diagnóstico interviene una copia; la observación permanece pasiva. Mantener esa distinción hace posible utilizar el conjunto sin esconder el papel del host.
+Para elegir una entrada al producto conviene partir de la operación: conservar una relación, transformar consultas, seguir una ruta o comparar una intervención. Después se escoge la receta y el panel que hacen medible esa función.
+Fuentes: [S01]; [S02, caps. 14-22]; [S03-S06].
+
+6. Valor de uso y significado de thinking
+El valor inmediato de DEE thinking 3.5 es ofrecer un laboratorio programable de procesamiento histórico. Permite reutilizar preparaciones, comparar historias, conservar ejecuciones y examinar cómo contexto, fase y rutas modifican las respuestas. El usuario dedica menos trabajo a reproducir aparatos y dispone de más instrumentos para investigar sus mecanismos.
+Un uso concreto consiste en presentar dos historias distintas y después una misma consulta. Otro consiste en continuar una secuencia sin reiniciar, guardar a mitad y restaurar. Un tercero conecta una relación móvil con un cuerpo basal y observa cómo modifica su expresión. En cada caso, la utilidad se puede comprobar mediante estados, recibos y respuestas.
+Pensamiento basal como lectura operacional
+En el proyecto, pensamiento basal designa analógicamente una organización cuya experiencia anterior modifica su respuesta o su repertorio posterior. El criterio no exige copiar una anatomía cerebral ni que cada relación reciba el nombre de un componente humano. La interpretación se apoya en operaciones medibles y en la continuidad de la organización.
+La biblioteca es el instrumento para crear esas realizaciones; no es un individuo entrenado que haya acumulado todas las experiencias del expediente. La historia de una instancia se conserva en su ejecución y snapshot. Volver a llamar create reconstruye la preparación, mientras load continúa un estado conservado.
+La exploración de capacidades nuevas puede utilizar categorías humanas o preguntas propias de DEE. En ambos casos conviene separar el fenómeno observado, la función que se aisló y la analogía explicativa. Conocer una regla microscópica no vuelve irrelevante una función compuesta; tampoco autoriza por sí solo cualquier interpretación posterior.
+La afirmación de uso es una cadena: experiencia, estado organizado, transformación, respuesta y controles. No depende de una etiqueta cognitiva automática.
+La correspondencia con biología, mecánica cuántica u otra teoría externa pertenece a una investigación de mapas y observadores adicionales. No es una dependencia necesaria para instalar o usar estas APIs. El producto fija sus capacidades por sus propios testigos de ejecución.
+Fuentes: [S17, caps. 1, 21, 24]; [S18]; [S19]; [S01-S02].
+
+7. Evidencia y alcance del corte
+La entrega preserva código, binarios, pruebas y un expediente científico acumulado. Sus comprobaciones responden preguntas distintas: un hash identifica bytes, una prueba de instalación confirma el entorno, una regresión compara comportamientos y un contraste causal localiza el papel de una intervención.
+Evidencia registrada en el producto
+Alcance
+20 pruebas C++ / 39 Python
+Suite final de Codex, sin fallos ni omisiones en su informe.
+100 + 185 casos físicos
+Reejecución de los instrumentos de las dos campañas sobre 3.5.
+598 + 942 checkpoints
+1.540 comparaciones registradas de las reejecuciones.
+34 comparaciones de recetas
+Comprobación separada de los nuevos constructores nativos.
+3 relecturas y 1 fuente no recuperada
+Registros de evidencia, no ejecuciones físicas adicionales.
+Instalación limpia y C++/Python
+Consumo del artefacto y continuidad entre procesos e interfaces.
+
+Los 289 registros no equivalen a 289 capacidades. Tampoco la reejecución de todos los runners implica que cada operación del laboratorio exista como una nueva API pública. El contrato F01-F09 y la comparación de recetas indican qué mecanismos se portaron y con qué pruebas.
+La verificación del paquete candidato se distingue del archivo final. Los registros conservaron un candidato con menos miembros antes de añadir evidencia de cierre; el wheel y su binario final se identifican por sus hashes. El verificador del producto permite comprobar el ZIP exacto recibido, no sólo confiar en una etiqueta RELEASE_VERIFIED.
+Tres niveles de reutilización
+Reproducir un testigo, reutilizar su componente y demostrar robustez ante otras condiciones son logros diferentes. 3.5 declara recetas, rangos representables y casos comprobados. Por ejemplo, cascade admite profundidades 1..8, con pruebas de referencia en 2, 4 y 8. Que el constructor acepte otro valor no equivale a haber ejecutado todos los contextos posibles.
+Los nuevos ejemplos de este libro son recorridos de uso apoyados en esos contratos. Las comprobaciones de la edición se entregan separadamente de los registros Windows originales, sin mezclarlos en una cifra acumulada de pruebas del producto.
+Fuentes: [S12-S14]; [S02, cap. 29]; verificación editorial en el respaldo.
+
+8. Elegir la interfaz y la modalidad
+El primer paso práctico es decidir qué objeto se desea conservar. Runtime es adecuado para un mundo con canales explícitos; ComposedWorld agrega instancias y conexiones del catálogo; BasalWorld ofrece los presets heredados; OrganizationalWorld integra las recetas 3.5, sus vistas y la continuidad de protocolos y trazas.
+Operación
+Modalidad
+Consecuencia
+create / prepare
+Preparación declarada
+Instala condiciones iniciales; crea otra realización.
+submit / submit_symbol
+EXPERIENCE_PROTOCOL
+Codifica y programa entradas externas.
+probe / probe_symbol
+PHYSICAL_PROBE
+Programa una interacción de consulta.
+advance / run_until
+NATIVE_EVOLUTION
+Evoluciona el mundo y la orquestación de su capa.
+observe / decode / resilience
+PASSIVE_OBSERVATION
+Lee sin avanzar ni modificar.
+diagnostic_fork
+DIAGNOSTIC_FORK
+Interviene una copia profunda.
+assisted_reconstruction
+ASSISTED_RECONSTRUCTION
+Copia campos seleccionados a un receptor bifurcado.
+
+La diferencia entre observación y sonda es operativa. observe no cambia el sistema; probe puede transformar el portador o contexto que se consulta. Una respuesta posterior debe interpretarse junto con su modalidad y recibo efectivo.
+El acceso público a world.runtime sigue disponible. Sin embargo, cuando OrganizationalWorld administra un QueryProtocol o una TraceSession, se debe avanzar con world.advance o world.run_until. Avanzar directamente el Runtime evita las capturas de esa capa y puede perder las fronteras operativas que el usuario pretendía conservar.
+Los objetos pueden tener vistas compartidas sin duplicar la materia. fork, en cambio, crea una ejecución independiente. Compartir un mundo y comparar mundos son dos formas complementarias de estudiar composición y causalidad.
+Fuentes: [S03-S07]; [S02, caps. 3, 12, 23-25].
+
+9. Instalar el artefacto correcto
+El wheel oficial es dee_thinking-3.5.0-cp313-cp313-win_amd64.whl. Su tag corresponde a CPython 3.13 estándar sobre Windows x64. Instalar ese artefacto no requiere compilar C++ ni instalar el wheel 3.0. Las herramientas de build sólo son necesarias para reconstruir las fuentes.
+Desde una extracción del paquete oficial, utilizar un entorno dedicado y verificar primero la identidad del archivo:
+POWERSHELL
+$ErrorActionPreference = 'Stop'
+$root = (Get-Location).Path
+$whl = Join-Path $root 'wheel\dee_thinking-3.5.0-cp313-cp313-win_amd64.whl'
+$expected = '721d4ad1610d6efc7e7101b49b9d68c6925efdcf596361aca09aabd0e315bcaa'
+if ((Get-FileHash $whl -Algorithm SHA256).Hash.ToLower() -ne $expected) {
+    throw 'El WHL no coincide con el corte oficial'
+}
+New-Item -ItemType Directory -Force C:\DEE35 | Out-Null
+py -3.13 -m venv C:\DEE35\venv
+$py = 'C:\DEE35\venv\Scripts\python.exe'
+& $py -m pip install --no-index $whl
+if ($LASTEXITCODE -ne 0) { throw 'Fallo de instalacion' }
+& $py -I -c "import dee_thinking as d; print(d.__version__); print(d.__file__)"
+if ($LASTEXITCODE -ne 0) { throw 'Fallo de importacion' }
+C:\DEE35 es una ubicación de trabajo sugerida. Puede sustituirse por otra escribible. El producto presupone los componentes de ejecución Windows correspondientes; no distribuye el sistema operativo ni Visual Studio.
+Ejecutar ejemplos desde fuera del source evita confundir una instalación editable o un módulo local con el wheel instalado. El ejemplo 01 verifica versión, identidad del kernel, ruta importada y semilla. No basta que el nombre del archivo diga 3.5: la extensión nativa y los contratos deben proceder de esa instalación.
+Ejemplo completo: 01_identidad.py
+El respaldo de este manual conserva la entrega oficial bajo producto/. Extraerla a una carpeta antes de ejecutar sus comandos. No instalar por accidente la copia histórica 3.0 que algunos materiales preservan para comparación.
+Fuentes: [S01]; [S03, BUILD_AND_MIGRATION]; [S06]; [S13].
+
+10. Primer mundo persistente con Runtime
+Runtime permite construir la cadena básica sin una receta de alto nivel: declarar un canal, programar una experiencia, avanzar y leer su efecto. El canal fija sitio, state, dirección, semantic y permisos; el evento aporta carga y frontera temporal.
+PYTHON
+import dee_thinking as d
+w = d.Runtime(11)
+ch = d.ChannelSpec()
+ch.name = "entrada"
+ch.injection_site = d.Coordinate(3, 4, 5)
+ch.state = 101
+ch.direction = d.Direction(1, 0, 0)
+ch.semantic = 1
+ch.allow_experience = True
+ch.allow_probe = True
+w.register_channel(ch)
+r = w.experience("entrada", 0, 17)
+w.advance(1)
+assert w.receipt(r.id).status == d.EventStatus.APPLIED
+assert w.observe(d.Coordinate(4, 4, 5)).record.s_reg == 17
+El recibo devuelto al programar puede ser SCHEDULED. Applied se conoce al ejecutarse la frontera. advance(0) no aplica la cola ni incrementa el tiempo. run_until utiliza un tick absoluto; advance utiliza una cantidad de pasos. Para programar respecto del presente, leer current_tick y realizar la suma comprobando el rango pertinente.
+Admitir no equivale a solicitar
+Una solicitud tardía, un sitio ocupado al aplicar y un conflicto entre escrituras son situaciones diferentes. Dos entradas del host que solicitan el mismo sitio en la misma frontera se rechazan por conflicto; no se fusionan mediante el reducer nativo. Las fusiones físicas se estudian preparando contribuciones que llegan por evolución.
+Conservar receipts y las razones evita atribuir a una memoria una experiencia que nunca entró. Una entrada de carga cero puede estar aplicada y tener consecuencias por su dirección o presencia.
+Ejemplo completo: 02_runtime.py
+Ejemplo completo: 31_admision.py
+El mundo persiste entre llamadas. Crear otro Runtime reinicia su estado; guardar y cargar recupera el estado conservado. El capítulo 30 organiza los distintos loaders de persistencia.
+Fuentes: [S07]; [S02, cap. 7]; [S12].
+
+11. Catálogo y composición heredados
+OrganizationCatalog ofrece preparaciones identificadas por contratos. CompositionPlanner analiza instancias, conexiones y geometría antes de construir un ComposedWorld. Esa validación estática es necesaria para detectar errores de preparación, pero no sustituye la evolución que comprueba la función física.
+El ejemplo 03 conecta relation_learning.c6h01.v1 con relation_query.c6h01.v1. El aprendizaje ocurre mediante entradas cue y teacher; más tarde se presenta query al lector. La relación aprendida debe alcanzar su encuentro, no copiarse mediante Python.
+PYTHON
+catalog = d.OrganizationCatalog()
+learn = d.OrganizationRequest()
+learn.catalog_id = "relation_learning.c6h01.v1"
+learn.instance_id = "learner"
+learn.anchor = d.Coordinate(10, 18, 14)
+read = d.OrganizationRequest()
+read.catalog_id = "relation_query.c6h01.v1"
+read.instance_id = "reader"
+read.anchor = d.Coordinate(10, 26, 14)
+plan = d.CompositionPlanner(34)
+plan.add(catalog.instantiate(learn))
+plan.add(catalog.instantiate(read))
+Este fragmento muestra la preparación. El archivo completo declara ConnectionRequest entre learned_relation y relation_input, analiza diagnósticos, construye el mundo y presenta cue=5 y teacher=7 en t=0. Una query de 13 en t=6 produce carga 25 en t=11 bajo esa geometría.
+Ejemplo completo: 03_composicion.py
+Una conexión declara una relación espacial y contractual. No observa una salida para insertarla desde fuera en otra instancia. Si las rutas interfieren o los destinos tienen otra precedencia, el resultado debe medirse, no darse por garantizado al aceptar el plan.
+Elegir catálogo o receta organizacional
+Usar el catálogo cuando se necesite componer sus instancias y contratos. Usar create_organization cuando exista una receta 3.5 que ya reúna el aparato y sus interfaces. Los protocolos run_* son otro recorrido: preparan y ejecutan aparatos finitos y no se insertan indistintamente como instancias del catálogo.
+Fuentes: [S05]; [S07]; [S09]; [S15, caps. 11-18]; [S02, caps. 9-10].
+
+12. H1: transformar retardo en posición
+H1 conserva el protocolo delay-to-position: una diferencia temporal se convierte en un resultado espacial dentro del aparato. DelayPositionConfig fija sus parámetros y run_delay_position ejecuta la preparación; measurement y active_labels describen el resultado según el contrato.
+PYTHON
+import dee_thinking as d
+cfg = d.DelayPositionConfig()
+cfg.input_delay = 3
+opts = d.TickOptions(d.Backend.LAZY, 1)
+result = d.run_delay_position(cfg, opts)
+assert result.measurement == 3
+assert tuple(result.active_labels) == (3,)
+print(result.measurement, result.active_labels)
+El resultado conserva la relación temporal ensayada; el lector no calcula desde fuera una posición deseada y la escribe en el mundo. La configuración determina las condiciones de encuentro y el kernel las resuelve.
+H1 también tiene persistencia de protocolo. save_delay_position_checkpoint guarda una frontera intermedia y resume_delay_position_checkpoint continúa el aparato. El ejemplo comprueba igualdad de los arrays finales RAW y clock frente a la ejecución directa, no sólo igualdad del número measurement.
+Ejemplo completo: 04_h1.py
+Para estudiar otro retardo se cambia la configuración dentro de los rangos admitidos y se repite el protocolo. Un retardo fuera del contrato no debe ocultarse tras una etiqueta válida. Tampoco el tiempo de pared del ordenador equivale al input_delay del mundo simulado.
+La función representa un protocolo físico finito. Otra llamada run_delay_position crea otra realización. Para interacciones abiertas con una misma ejecución se utiliza Runtime/ComposedWorld u otra capa que la conserve.
+Fuentes: [S09]; [S12]; [S15, cap. 12]; [S16, cap. 12].
+
+13. H2: repertorios separados e integrados
+H2 ofrece dos protocolos: separated_repertoire conserva respuestas en fibras distintas; overlap_repertoire estudia su integración cuando comparten la fibra pertinente. Ambas realizaciones utilizan la dinámica nativa, pero responden preguntas diferentes.
+PYTHON
+import dee_thinking as d
+opts = d.TickOptions(d.Backend.LAZY, 1)
+cfg = d.SeparatedRepertoireConfig()
+sep = d.run_separated_repertoire(cfg, opts)
+assert sep.exact_channels == 3
+cfg.channels = 7
+assert d.run_separated_repertoire(cfg, opts).exact_channels == 7
+common = d.OverlapRepertoireConfig()
+joined = d.run_overlap_repertoire(common, opts)
+assert joined.merge_exact and joined.composed_response_exact
+La separación permite distinguir las relaciones; la fibra común integra contribuciones. Perder una identidad individual bajo cierto lector y producir una respuesta conjunta son efectos que deben registrarse por separado. El protocolo conserva individual_identity_preserved y los indicadores específicos para evitar confundirlos.
+Ejemplo completo: 05_h2.py
+Conservar resultados ya capturados
+Las versiones anteriores corrigieron un caso donde un snapshot guardaba RAW y clocks, pero perdía una lectura de merge capturada antes del guardado. La persistencia de un protocolo debe preservar también su progreso y resultados parciales cuando éstos sean necesarios para completar el informe.
+Por eso se utilizan las funciones de checkpoint del protocolo y no una copia improvisada de buffers. La relación entre estado físico y metadatos operativos es parte del contrato, no una capa que pueda omitirse sin consecuencias.
+Los resultados de un banco no autorizan afirmar independencia ilimitada entre organismos cercanos. Una composición nueva debe medir separación, interferencia y función del conjunto en la geometría que realmente utiliza.
+Fuentes: [S09]; [S12]; [S15, caps. 13 y 18]; [S02, cap. 10].
+
+14. H3 y H4: recuperar y comparar
+H3 realiza recuperación desde redundancia entrenada en un aparato definido. Su prueba incluye un daño autorizado y compara la función posterior con controles. La autorización es un campo del contrato del software; no una conversación con el usuario en mitad de la simulación.
+PYTHON
+import dee_thinking as d
+cfg = d.RepairConfig()
+cfg.authorize_diagnostic_damage = True
+result = d.run_trained_redundancy_repair(
+    cfg, d.TickOptions(d.Backend.LAZY, 1))
+assert result.damage_applied
+assert result.function_lost_after_damage
+assert result.reconstructed_at_arrival and result.fresh_function
+El control BACKUP_UNTRAINED permite distinguir la contribución de la redundancia adquirida. Es una operación valiosa por su alcance: recuperar una función bajo un protocolo de daño. No se intercambia por una promesa de mantenimiento espontáneo de cualquier cuerpo.
+Ejemplo completo: 06_h3.py
+H4 es un analizador
+analyze_accessibility compara lecturas baseline y challenged de varias historias. AccessibilityRequest identifica observador, desafío y casos; cada caso conserva tiempos, lecturas y condiciones de interpretación. La función no elige acciones para la organización ni ejecuta por sí sola una experiencia.
+El ejemplo 07 utiliza lecturas didácticas construidas: baseline 10 y challenged 12/17. El analizador devuelve diferencias 2/7. Es una comprobación de interfaz identificada como tal, no un nuevo resultado experimental de DEE.
+Ejemplo completo: 07_h4.py
+La distinción entre ambos protocolos refleja la separación general del producto: unas funciones preparan y ejecutan dinámica, otras analizan observaciones. Para comparar efectos de historia se requiere un protocolo emparejado, no sólo dos estados finales distintos.
+Fuentes: [S09]; [S12]; [S15, caps. 14-15]; [S17, cap. 18].
+
+15. F1 y F2 heredados: revisión y mediación
+F1 conserva la revisión de una misma continuidad móvil. En la preparación de referencia, dos actualizaciones de cargas 11 y 13 modifican las respuestas de consulta. Invertir ese orden cambia la respuesta intermedia y permite observar la historia secuencial del aparato.
+PYTHON
+import dee_thinking as d
+opts = d.TickOptions(d.Backend.LAZY, 1)
+cfg = d.ReusableRevisionConfig()
+r = d.run_reusable_revision(cfg, opts)
+assert tuple(r.response_loads) == (4149, 4165, 4181)
+cfg.id = "REV_13_11"
+cfg.revision1, cfg.revision2 = 13, 11
+rr = d.run_reusable_revision(cfg, opts)
+assert tuple(rr.response_loads) == (4149, 4167, 4181)
+Ejemplo completo: 08_f1.py
+F2 estudia mediación ambiental finita mediante condiciones que activan el mecanismo de overflow/DEMUX. En la configuración de referencia, environment_load llega a 19664, se registra un overflow y las lecturas downstream son 24, 55, 62, 62 y 67. El control subumbral tiene otra secuencia, 23, 54, 61, 61 y 66.
+PYTHON
+cfg = d.EnvironmentalReturnConfig()
+r = d.run_environmental_return(cfg, opts)
+assert r.overflow_total == 1
+assert tuple(r.downstream_loads) == (24, 55, 62, 62, 67)
+Ejemplo completo: 09_f2.py
+Las funciones de checkpoint propias permiten pausar y reanudar F1/F2. El ejemplo 17 comprueba la continuidad de F1 y forma parte de la cobertura heredada. No llamar otra vez run_* cuando se pretende continuar el estado que ya vivió las revisiones.
+Las cargas de estos testigos pertenecen a su representación y preparación. No son un diccionario universal de significados. El producto conserva tanto las entradas como los controles y los lectores necesarios para interpretar su función.
+Fuentes: [S09]; [S12]; [S15, caps. 16-18]; [S16, cap. 15].
+
+16. BasalWorld: la base 3.0 conservada
+La API basal heredada sigue creando los dos aparatos procedentes de MBP4: cuerpo relacional y reescritura contextual. Sus helpers resuelven la semilla incluida en el wheel y preparan la receta antes de evolucionar.
+PYTHON
+import dee_thinking as d
+w = d.create_relational_world(d.BasalHistory.AB)
+assert w.observe().delta == 0
+w.advance(1)
+assert w.observe().delta == 1
+c = d.create_contextual_world()
+c.advance(131)
+g = d.inspect_write_gate(c.runtime, c.ports.b, True)
+c.advance(1)
+assert c.observe().delta == 0
+Ejemplo completo: 10_basal_historias.py
+Ejemplo completo: 11_contexto_y_fase.py
+Los presets fijan N=47, semilla T32 y action_distance=5. El modo Validated contempla los orígenes documentados; Research amplía las traslaciones admitidas sin relajar todas las demás restricciones. Crear otro preset produce otra preparación y otra historia.
+En BasalWorld, Ports describe sitios y no registra por defecto canales de experiencia. OrganizationalWorld agrega interfaces efectivas sobre sus recetas, pero no cambia retroactivamente esa semántica heredada. Además, el helper create_organization("relational") usa keep_reader=False por defecto: no debe suponerse idéntico al helper basal heredado con su control FULL.
+La memoria puede estar disponible cuando el comparador no expresa respuesta. El uso correcto muestra delta, estado de centros, soporte y lector; luego aplica una consulta física cuando ésa es la pregunta. El capítulo 20 desarrolla este recorrido con la capa 3.5.
+Fuentes: [S10]; [S05]; [S02, cap. 11]; [S19].
+
+17. Primer OrganizationalWorld
+La nueva capa ofrece doce recetas con nombre y una fábrica de investigación. create_organization selecciona una fábrica nativa; OrganizationalWorld mantiene el Runtime, los descriptores, las interfaces y el progreso de las operaciones que administra.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("mobile_pair")
+for j, teacher in enumerate((7, 11)):
+    w.submit(f"l{j}.cue", 5, 0)
+    w.submit(f"l{j}.teacher", teacher, 0)
+w.run_until(6)
+for j in range(2):
+    w.probe(f"q{j}.query", 13, 6)
+w.run_until(11)
+values = [w.observe(f"q{j}", "response").record.s_reg
+          for j in range(2)]
+assert values == [25, 29]
+Ejemplo completo: 18_mundo_organizacional.py
+En mobile_pair, el constructor prepara canales y geometría para dos relaciones, pero la adquisición se produce al presentar cue y teacher y evolucionar. Los nombres l0/l1 y q0/q1 identifican interfaces y vistas. La consulta no devuelve un valor precalculado: encuentra los productos físicos de las historias.
+Una vista conserva la propiedad del mundo
+OrganizationView retiene una referencia compartida al estado organizacional. Dos vistas de la misma instancia no crean dos universos ni copian soportes. fork sí crea una copia profunda para comparar otra continuación. attach construye una vista inerte sobre un Runtime existente y no instala de nuevo registros o canales.
+Los puertos estáticos de una receta y las trayectorias móviles deben distinguirse. Después de que una consulta transforme el portador, el siguiente encuentro puede ocurrir en otra posición. Para el recorrido secuencial publicado se usa start_mobile_sequence; para otro protocolo se debe declarar su geometría y observador.
+Fuentes: [S04-S06]; [S12]; [S02, caps. 12-14 y 23].
+
+18. Transducción I/O: datos y nombres de entrada
+InputCodec traduce enteros acotados, booleanos o nombres registrados a una carga de canal. InterfaceSpec une el codec con un ChannelSpec que fija state, dirección, semantic y sitio. Esta capa evita que el usuario configure coordenadas para cada dato de un recorrido publicado.
+Un nombre como Sensor_Activo es una etiqueta externa de entrada. No se convierte en una palabra aprendida sólo por estar en un diccionario. La prueba de procesamiento mantiene el mismo codificador y decodificador, cambia la historia y observa la respuesta que produce DEE.
+PYTHON
+# Sobre un mobile_pair adquirido y detenido en t=6:
+i = d.InterfaceSpec()
+i.name = "sensor"
+ch = next(x.channel for x in w.interfaces if x.name == "q0.query")
+ch.name = "sensor"
+i.channel = ch
+codec = d.InputCodec()
+codec.type = d.CodecType.ENUMERATION
+codec.symbols = {"Sensor_Activo": 13}
+i.codec = codec
+w.declare_interface(i)
+r = w.probe_symbol("sensor", "Sensor_Activo", 6)
+w.run_until(11)
+assert w.runtime.receipt(r.id).status == d.EventStatus.APPLIED
+out = w.decode("q0", "response", d.OutputDecoder())
+assert out.integer == 25
+Ejemplo completo: 19_io_simbolico.py
+RegisteredPattern designa un nombre para una carga sobre el patrón fijo del canal; no compila por sí solo conjuntos arbitrarios de vóxeles. Un patrón compuesto exige una receta o una interfaz que lo represente explícitamente.
+Decodificar sin ocultar el estado
+OutputDecoder conserva la observación física y devuelve integer opcional, símbolos candidatos, available, ambiguous, ordinary_cap_reached y status. Dos nombres que codifican la misma carga generan una pérdida de distinción; injective permite advertir esos alias. El decodificador no avanza el mundo y no contiene una caché de respuestas aprendidas.
+Modificar mapas expuestos por el binding requiere reasignar su contenido cuando la propiedad devuelve una copia. El ejemplo crea objetos y asigna codec, channel y symbols explícitamente para que la configuración utilizada sea inequívoca.
+Fuentes: [S04, InputCodec/OutputDecoder]; [S06]; [S12]; [S02, cap. 19].
+
+19. Consultas independientes y secuenciales
+Las dos modalidades responden preguntas diferentes. En la consulta independiente, cada sonda parte de un fork de la misma historia. En la secuencial, cada consulta transforma el estado que recibirá la siguiente. El número de respuestas distintas no equivale al número de recuerdos independientes almacenados.
+Con cue=5 y teachers=7/11, la consulta independiente de carga 13 produce 25/29; con 7 produce 19/23; con 17 produce 29/33. Si se aplica la secuencia 13,7,17 sobre la misma continuidad, las respuestas son 25/29, 32/36 y 49/53.
+PYTHON
+# w contiene la historia adquirida en t=6.
+for value in (13, 7, 17):
+    f = w.fork()
+    for j in range(2):
+        f.probe(f"q{j}.query", value, 6)
+    f.run_until(11)
+    print([f.observe(f"q{j}", "response").record.s_reg
+           for j in range(2)])
+w.start_mobile_sequence("serie", [13, 7, 17])
+w.run_until(13)
+w.save_snapshot("serie.deetsnap")
+w = d.OrganizationalWorld.load_snapshot("serie.deetsnap")
+w.run_until(21)
+print([[o.record.s_reg for o in s.captured]
+       for s in w.protocols[0].steps])
+Ejemplo completo: 20_consultas_independientes_y_secuenciales.py
+start_mobile_sequence pertenece a mobile_pair y publica un intervalo de cinco ticks. Cada QueryStep conserva input_tick, read_tick, carga de entrada, IDs de recibos, targets y lecturas capturadas. Su cursor permite reanudar sin volver a presentar las preguntas anteriores.
+El protocolo prepara las sondas según una geometría declarada; no decide la siguiente pregunta a partir de la respuesta. El rango representable es de 1 a 1.024 entradas, con validación de ticks y cargas; las cincuenta consultas del expediente son un dominio experimental, no una promesa de capacidad ilimitada.
+Avanzar por la capa organizacional conserva las capturas. Avanzar directamente w.runtime evita esa orquestación. El usuario debe guardar también los recibos cuando necesita distinguir una sonda aplicada de una rechazada.
+Fuentes: [S04, QueryProtocol y start_mobile_sequence]; [S12]; [S14, P01/P10].
+
+20. Memoria relacional y acceso latente
+create_organization("relational") utiliza el cuerpo A/B y, por defecto, no conserva el lector persistente. La ausencia de expresión ordinaria no se interpreta como pérdida de la relación: el observador devuelve por separado centros, delta, soporte y lector.
+PYTHON
+import dee_thinking as d
+for history, expected in ((d.BasalHistory.AB, 1),
+                          (d.BasalHistory.BA, -1),
+                          (d.BasalHistory.H0, 0)):
+    w = d.create_organization("relational", history=history)
+    w.advance(250)
+    reading = w.view("body").observe()
+    assert reading.delta == expected
+    q = w.fork()
+    q.probe("body.common_query", 7, q.runtime.current_tick)
+    q.advance(3)
+    assert q.observe("body", "comparator").record.dx == expected
+Ejemplo completo: 21_memoria_latente.py
+Aquí la sonda común revela diferencias de historia que una lectura del comparador antes de la consulta podía no expresar. La experiencia y el mediador cumplen papeles diferentes: una escribe historia; el otro permite utilizarla. Los controles de igualación de relación y ruta incorrecta localizan esas contribuciones en el expediente P05.
+Disponibilidad no es un valor numérico
+FunctionalReadout calcula delta sólo cuando ambos centros cumplen las condiciones de presencia y semántica del observador. Si falta un centro, devuelve None. Un cero válido expresa igualdad de la relación; None informa que esa relación no está disponible bajo el contrato actual.
+Una fuente puede renovar una lectura; otra consulta puede consumir o transformar un portador. La prueba de retención debe dejar evolucionar y consultar después, no sustituirse por mantener inmóvil una tabla externa. La interfaz permite estudiar esos usos sin imponer que toda memoria tenga el mismo soporte.
+Fuentes: [S04-S05]; [S12]; [S14, P05]; [S17, caps. 8 y 15].
+
+21. Transferir una función y reconstruir un receptor
+La familia F02 publica dos recorridos deliberadamente separados. native_transfer prepara un relay que participa en la evolución física del mismo Runtime. assisted_reconstruction copia campos seleccionados a un fork del receptor y registra esa intervención como asistida.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("native_transfer", teacher0=7)
+w.probe("query", 0, 6)
+w.probe("receiver_query", 13, 16)
+w.run_until(21)
+assert w.observe("stage0", "receiver_response").record.s_reg == 25
+Ejemplo completo: 22_transferencia.py
+Con teacher0=11, el mismo recorrido responde 29. Los cortes de ruta y fuente ausente separan la mediación de una respuesta que el receptor produciría sin esa historia. La carga cero del relay no equivale a ausencia: el encuentro y su dirección siguen interviniendo.
+Reconstrucción asistida explícita
+El siguiente fragmento supone source y target relacionales de igual edad. Se seleccionan los centros; el receptor original permanece intacto y la función devuelve su copia intervenida.
+PYTHON
+spec = d.ReconstructionSpec()
+spec.source_sites = [source.view("body").spec.a,
+                     source.view("body").spec.b]
+spec.destination_sites = [target.view("body").spec.a,
+                          target.view("body").spec.b]
+spec.copy_raw = True
+spec.copy_clocks = False
+spec.authorize_assisted_reconstruction = True
+rebuilt = target.assisted_reconstruction(source, spec)
+Ejemplo completo: 23_reconstruccion_asistida.py
+La API permite medir suficiencia de una región o de campos seleccionados. No afirma que delta describa cualquier individuo ni que la copia asistida sea una transferencia autogenerada. Los límites de cardinalidad, destinos duplicados y campos seleccionados son controles de integridad de la operación.
+El antecedente ORGREINSTANTIATE20CX/WARPORG146X queda como genealogía: el constructor histórico completo no fue recuperado en la ampliación y no se publica como una API nueva de reinstanciación corporal. Los mecanismos efectivamente portados conservan su valor con su modalidad exacta.
+Fuentes: [S01 F02]; [S04-S05]; [S12]; [S14, P04].
+
+22. Cascadas: usar una transformación en otra
+cascade prepara varias relaciones y una ruta de consulta en un Runtime N=127. El par de entrenamiento por defecto cambia por etapa. La consulta de 13 entra en t=6 y encuentra las etapas en 11+5j. La biblioteca observa lo que produjo la evolución; no implementa la respuesta mediante una suma externa.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("cascade", depth=8)
+w.probe("query", 13, 6)
+values = []
+for j in range(8):
+    w.run_until(11 + 5*j)
+    values.append(w.observe(f"stage{j}", "response").record.s_reg)
+assert values == [25, 39, 55, 73, 93, 115, 139, 165]
+Ejemplo completo: 24_cascadas.py
+Las profundidades 2, 4 y 8 tienen referencias comprobadas; el intervalo representable 1..8 no convierte cualquier contexto en una cascada funcional. El parámetro omit y los cortes tardíos separan las contribuciones de una etapa de la continuidad restante.
+La profundidad describe el número de encuentros funcionales del aparato. Su interpretación depende de lo que conserva y transforma cada etapa. Una composición aditiva tiene una ley verificable y valor como mecanismo; no necesita llamarse abstracción para ser reconocida como composición física.
+Preparación y conflicto geométrico
+El constructor rechaza superposiciones incompatibles. Aumentar profundidad no debe lograrse copiando respuestas de mundos separados ni sobrescribiendo soportes aprendidos. Si se requiere otra geometría, se trata como una preparación nueva y se comprueba su dominio.
+Las consultas modifican el linaje. Para medir cada etapa es necesario leer en su ocasión, o conservar los datos mediante un protocolo. Una lectura final de un puerto fijo puede omitir una salida que ya se desplazó.
+Fuentes: [S05, cascade]; [S12]; [S14, P09]; [S17, cap. 11].
+
+23. Integración entre familias y contexto distribuido
+El puente mobile_basal prepara una relación móvil y un cuerpo A/B en un mismo Runtime. Su interacción demuestra que la integración no necesita copiar desde Python la salida de una familia hacia otra. El estado compartido contiene los encuentros y contextos que producen la respuesta.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("mobile_basal")
+w.advance(6)
+assert w.view("body").observe().delta == 1
+assert w.observe("body", "comparator").record.s_reg == 12
+q = w.fork()
+q.probe("body.common_query", 7, q.runtime.current_tick)
+q.advance(3)
+assert q.observe("body", "comparator").record.dx == -1
+Ejemplo completo: 25_puente_movil_basal.py
+Los controles full, offpath, componentes omitidos y corte en tránsito proceden de P09. Una lectura de carga 12 en el comparador pertenece al encuentro estudiado; conservar delta=1 no obliga a que toda expresión posterior sea la misma.
+Organización distribuida
+La receta distributed combina distributed_context.i05.v1, relative_history.i02.v1 y contextual_multichannel_recurrence.p02.v1. Sus vistas context, history e integration describen distintas partes del mismo mundo. No duplican los buffers ni convierten cada lectura en un individuo independiente.
+La familia puede mantener una historia diferencial mientras la carga de otro canal alcanza el cap. Por eso el producto no devuelve una única puntuación de conocimiento: permite examinar qué relación, canal y consulta siguen siendo accesibles.
+El cruce experimental entre familias y la reutilización de sus interfaces son distintos de probar cualquier composición arbitraria. El contrato publica las recetas que tienen testigos y ofrece un nivel de investigación para ampliar la pregunta.
+Fuentes: [S05]; [S12]; [S14, P06/P09/P13]; [S02, cap. 16].
+
+24. Plasticidad contextual y acceso temporal
+F04 reúne dos mecanismos diferentes. contextual reproduce una escritura relacional condicionada por el entorno local y la fase. phase permite consultar funciones cuyo acceso depende del momento y de trayectorias toroidales. El inspector describe el preestado; no abre por sí solo una compuerta.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("contextual")
+w.advance(131)
+gate = d.inspect_write_gate(w.runtime, w.view("body").spec.b, True)
+assert (gate.local_clock, gate.n_active, gate.period) == (391, 6, 391)
+w.advance()
+assert w.view("body").observe().delta == 0
+En el testigo P07, una experiencia externa de carga cero situada en la ocasión y ruta adecuadas cambia la escritura posterior. Esa operación es EXPERIENCE_PROTOCOL: el usuario presenta un acontecimiento y mide su efecto. No es una orden al kernel para fijar delta ni una autorregulación que se deba atribuir automáticamente al individuo.
+Receta phase
+Consulta en t=40, lectura en 42
+Consulta en t=41, lectura en 43
+mode=0
+Carga 32
+Sin salida activa en el sitio leído
+mode=1
+Sin salida activa en el sitio leído
+Carga 32
+mode=2
+Sin salida activa en el sitio leído
+Carga 54
+
+Cada columna corresponde a un fork del mismo estado previo. La ausencia de respuesta se debe interpretar también con state, semantic y admisión; una carga numérica cero aislada no basta para clasificarla.
+Ejemplo completo: 26_contexto_y_acceso.py
+El retorno toroidal estudiado por P14 añade otra relación entre recorrido, soporte y accesibilidad. Las coordenadas observadas y la trayectoria algebraica sin wrapping son representaciones complementarias. Un reloj editado externamente, un corte diagnóstico y una interacción nativa deben conservar sus modalidades.
+Fuentes: [S05]; [S11-S12]; [S14, P07/P13/P14]; [S02, cap. 17].
+
+25. Acción ambiental y canales de consecuencia
+ActionCoupling describe sitios, papeles y ticks de observación de acoplamientos preparados. La acción nativa ocurre porque los registros evolucionan e interactúan; no porque un callback Python observe la respuesta y escriba el efecto deseado en el entorno.
+PYTHON
+import dee_thinking as d
+full = d.create_organization("contingent")
+full.advance(8)
+edit = d.ResearchStateEdit()
+edit.coordinate = full.view("body").spec.ports["action"]
+edit.raw = 0
+edit.label = "corte tardio del producto emitido"
+cut = full.diagnostic_fork([edit], True)
+full.advance(5)
+cut.advance(5)
+assert full.observe("body", "environment").record.s_reg == 48
+assert cut.observe("body", "environment").record.s_reg == 30
+Ejemplo completo: 27_accion_ambiental.py
+El contraste deja formarse el producto antes de cortarlo y conserva intacto el padre al crear el fork. Esto distingue la contribución de la acción emitida de la diferencia de preparación que produciría eliminar una consulta desde T0.
+La receta information ofrece una ruta que transmite diferencias de contexto oculto. Con hidden=23/25, sus salidas downstream de referencia son 43/45; otra historia o el corte pertinente produce la respuesta del control. El valor funcional es el canal contextual contrastado. El nombre information no añade una política nativa de selección de experimentos que el aparato no haya realizado.
+Acción interna y aplicación externa
+Una aplicación puede traducir una lectura DEE a una acción en otro sistema, pero ese adaptador queda fuera de la demostración de causalidad interna. Dentro de DEE, la receta debe proporcionar el acoplamiento físico; editar arbitrariamente el entorno desde el host es otra operación y debe quedar registrada.
+Fuentes: [S01 F07]; [S04-S05]; [S12]; [S14, P03/P11].
+
+26. Resiliencia, saturación y disponibilidad
+ResilienceObservation permite separar integridad de soporte, centros disponibles, relación, lector y saturación de campos. Esta separación es funcional: una carga puede alcanzar el cap ordinario mientras otra relación de la organización conserva historia utilizable.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("distributed")
+w.submit("integration.A", 8, 0)
+w.submit("integration.B", 9, 0)
+w.run_until(700)
+assert w.observe("integration", "q").record.s_reg == 19664
+assert w.view("history").observe().delta == 1
+health = w.view("integration").resilience()
+assert "q" in health.ordinary_cap_sites
+Ejemplo completo: 28_resiliencia.py
+El cap 19664 corresponde a operaciones determinadas del kernel. El campo uint16 admite hasta 65535; una observación debe distinguir cap ordinario y límite representable. La biblioteca informa esos estados y no los corrige reseteando cargas.
+P08 estudió contactos delimitados y retirada de soporte. La conservación de respuesta bajo ciertos contactos y la dependencia de un soporte son propiedades del aparato ensayado. Para un nuevo daño conviene guardar la firma previa, aplicar una intervención declarada y medir la función posterior en el mismo panel.
+Si falta A o B, delta puede ser None; si el lector no está disponible, una relación todavía puede leerse de sus centros. Una reconstrucción material sin recuperación de la firma se registra como una reorganización, no como recuperación exacta del recuerdo.
+H3 conserva una ruta de recuperación desde redundancia en su propio protocolo. La restauración de un snapshot es, en cambio, una operación de software. Ambas son útiles, pero no deben anunciarse como el mismo tipo de autorreparación.
+Fuentes: [S04]; [S12]; [S14, P06/P08/P10]; [S02, cap. 21].
+
+27. Encuentros simultáneos y uso del producto
+competition prepara contribuciones que coinciden por dinámica nativa. En el testigo de destino vacío, las cargas 12 y 24 producen un registro conjunto de 36; su dirección y sus interacciones posteriores también forman parte de la función observada.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("competition")
+w.run_until(5)
+before = w.runtime.fork()
+w.advance()
+site = w.view("encounter").spec.ports["meeting"]
+report = d.observe_encounter(before, w.runtime, site)
+assert report.after.record.s_reg == 36
+assert len(report.direct_ballistic_contributors) == 2
+w.probe("joint_query", 13, 6)
+w.run_until(10)
+assert w.observe("encounter", "response").record.s_reg == 49
+w.run_until(14)
+w.probe("later_query", 17, 14)
+w.run_until(20)
+assert w.observe("encounter", "later_response").record.s_reg == 66
+Ejemplo completo: 29_encuentros.py
+Cambiar la simultaneidad, dirección o clase del destino puede seleccionar otra rama. Los controles A_only, B_only, material y protected permiten observar esas diferencias. Un destino protegido no se trata como un espacio vacío dispuesto a sumar cualquier llegada.
+observe_encounter requiere ticks adyacentes e igual dimensión. Conserva registro anterior/posterior, guarda local y candidatos balísticos directos. Ese reporte no certifica toda la genealogía de una actualización material o DEMUX. La atribución completa, cuando sea necesaria, requiere los contextos y contrastes pertinentes.
+Dos escrituras del host sobre el mismo sitio/frontera son conflictos de admisión, no este tipo de encuentro. La API reporta ambos sucesos con sus contratos distintos; no reordena la materia para asegurar una respuesta conveniente.
+Fuentes: [S04-S05]; [S07]; [S12]; [S14, P12].
+
+28. Observación multiescala y trazas
+Los observadores pueden conservar relaciones distintas del mismo estado: sitios, diferencias de centros, fase, rutas o respuestas ante sondas. Ninguno se convierte en conocimiento del individuo por estar disponible para el investigador. Es necesario declarar el panel y su horizonte.
+PassiveTracker mantiene el recorrido heredado de sitios fijos. TraceSession agrega sitios y MobileSegment con origen, dirección, intervalo y campos esperados. Cada captura contrasta la posición balística prevista con el registro real. La predicción no se convierte en genealogía única por coincidir.
+PYTHON
+# w: competition evolucionado hasta t=3.
+segment = d.MobileSegment()
+segment.id = "A_declarado"
+segment.birth_site = w.view("encounter").spec.ports["hubA"]
+segment.birth_tick = 3
+segment.direction = d.Direction(0, 1, 0)
+segment.expected_load = 12
+segment.expected_semantic = 1
+trace = d.TraceSession()
+trace.sample_budget = 16
+trace.segments = [segment]
+w.set_trace(trace)
+w.capture_trace()
+w.run_until(10)
+assert w.trace().segments[0].correspondence_stopped
+Ejemplo completo: 30_trazas.py
+En el encuentro, una transformación puede invalidar la correspondencia declarada. La herramienta lo informa, conserva muestras y detiene ese segmento en lugar de asignar otro padre por cercanía. Para continuar la genealogía se necesita reconstruir la transformación y declarar el siguiente tramo con su evidencia.
+El presupuesto es de muestras, no de ticks. Se admiten hasta 65.536 muestras, 128 sitios y 256 segmentos. Alcanzar el presupuesto detiene captura, no evolución. trace() devuelve una copia; set_trace instala la sesión que se desea conservar. Las trazas pueden exportarse y cargarse como archivos .deetrace o incluirse en el snapshot organizacional.
+Fuentes: [S04]; [S11-S12]; [S02, cap. 18].
+
+29. Diagnóstico causal sobre copias
+Un diagnóstico cambia una condición para comparar futuros. Su valor depende de identificar la intervención y de conservar lo demás. ResearchStateEdit permite seleccionar RAW, clock o ambos; los campos no elegidos se preservan. diagnostic_fork crea una copia profunda y registra la operación.
+PYTHON
+import dee_thinking as d
+w = d.create_organization("relational")
+w.advance(3)
+edit = d.ResearchStateEdit()
+edit.coordinate = w.view("body").spec.a
+edit.raw = 0
+edit.label = "centro retirado en copia"
+branch = w.diagnostic_fork([edit], True)
+assert w.view("body").observe().delta == 1
+assert branch.view("body").observe().delta is None
+Este ejemplo identifica disponibilidad después de una intervención; no pretende que retirar un centro describa cualquier daño natural. Para comparar efectos, evolucionar ambos mundos bajo el mismo protocolo y conservar los estados previos y posteriores.
+El ejemplo 13 conserva compare_diagnostic_fork para BasalWorld. Las dos APIs tienen objetos y retornos distintos: un informe comparativo de la capa heredada y un mundo organizacional bifurcado con ledger. El usuario debe utilizar la que corresponde a su objeto.
+Ejemplo completo: 13_diagnostico.py
+De la diferencia a la atribución
+Una diferencia observada puede pertenecer a una ruta, una guarda o una función de soporte. Un corte amplio puede alterar varias funciones a la vez. Los contrastes de carga, dirección, fase, ruta y rescate local ayudan a separar esas explicaciones sin obligar a que todo dependa de un mensajero único.
+El historial de ediciones conserva sitio, etiqueta, tick y campos antes/después. Es evidencia del investigador. Ni el ledger ni la traza se convierten en una memoria consultada por el kernel para decidir respuestas.
+Fuentes: [S04]; [S11-S12]; [S17, caps. 16-19]; [S19].
+
+30. Guardar, restaurar y continuar
+La persistencia debe conservar el objeto que realmente se utiliza. Runtime guarda estado físico, clocks, tick, canales, cola y recibos. Las capas superiores agregan sus recetas y progreso. OrganizationalWorld incluye protocolos, interfaces, decodificadores, diagnósticos y traza opcional.
+Objeto guardado
+Loader o continuación correspondiente
+Runtime
+Runtime.load_snapshot o restore_snapshot.
+ComposedWorld
+ComposedWorld.load_snapshot.
+BasalWorld
+BasalWorld.load_snapshot con metadata basal.
+Protocolo H/F
+Función resume_* de su protocolo.
+OrganizationalWorld
+OrganizationalWorld.load_snapshot.
+TraceSession
+TraceSession.load_trace.
+
+Un snapshot organizacional utiliza la envolvente Runtime v2 y metadatos namespaced con schema propio. Un Runtime antiguo puede leer la parte física, pero no continuar un protocolo 3.5 cuyas reglas desconoce. Un archivo sin metadata organizacional requiere carga como Runtime y attach explícito; no debe reinstalarse silenciosamente un cuerpo.
+PYTHON
+w.save_snapshot("continuacion.deetsnap")
+restored = d.OrganizationalWorld.load_snapshot("continuacion.deetsnap")
+restored.run_until(21)
+Ejemplo completo: 33_persistencia_proceso.py
+El ejemplo 33 guarda a mitad de una secuencia, abre otro proceso e instala la continuación desde el snapshot. Después compara RAW, clocks y cursor de protocolo. Esas son comprobaciones diferentes: igualdad física e integridad de la continuación operativa.
+Los directorios de salida deben existir. La escritura utiliza temporales y sustitución del archivo; no sustituye una política de copias locales. Guardar con include_trace=False omite la traza y no permite recuperarla después a partir de un estado que no conservó esas observaciones.
+Conservar además la versión del producto, identidad del kernel, receta, entradas y modalidad de cada intervención facilita reproducir e interpretar el corte. El wheel reconstruye el instrumento; el snapshot reconstruye una ejecución.
+Fuentes: [S04]; [S07]; [S02, caps. 24-25]; [S12].
+
+31. Preparaciones propias, backends y recursos
+OrganizationRecipe.research permite declarar placements, vistas e interfaces cuando no existe una receta publicada que represente la pregunta. La aceptación de la preparación comprueba estructura y rangos; su función se debe estudiar mediante evolución y observación.
+PYTHON
+import dee_thinking as d
+p = d.InitialPlacement()
+p.site = d.Coordinate(3, 3, 3)
+p.raw = d.pack_record(1, 17, 1, 0, 0, 1)
+p.clock = 7
+recipe = d.OrganizationRecipe.research(11, [p], 0)
+spec = d.OrganizationSpec()
+spec.id = "transporte"
+spec.ports = {"destino": d.Coordinate(4, 3, 3)}
+recipe.organizations = [spec]
+w = d.OrganizationalWorld.create(recipe)
+w.advance()
+assert w.observe("transporte", "destino").record.s_reg == 17
+Ejemplo completo: 32_receta_personalizada.py
+La dirección de un portador, los clocks y las superposiciones forman parte del aparato. No cambiar esos datos para que una salida coincida con lo esperado sin registrar otra preparación. Las etiquetas de la vista son metadatos; no viajan como campos físicos.
+Coste y concurrencia
+Los cuatro buffers básicos uint64 ocupan 32*N^3 bytes, antes de scratch, candidatos, clones y trazas. Lazy reduce evaluaciones en ciertos estados, pero no elimina ese almacenamiento. El rango dimensional representable 1..512 no garantiza memoria suficiente ni función basal para toda dimensión.
+DenseSequential, DenseParallel y Lazy deben conservar las mismas transiciones en el dominio comparado. El binding conserva el GIL durante avance; los hilos C++ internos no autorizan mutaciones concurrentes sobre un Runtime. Mantener un escritor por mundo. Procesos independientes pueden alojar ensayos separados, sujeto a recursos.
+Ejemplo completo: 15_backends.py
+Una traza detallada y raw_copy repetido cada tick tienen coste. Utilizar observación local y checkpoints dirigidos cuando sean suficientes para reconstruir la pregunta, sin ocultar diferencias relevantes por ahorrar telemetría.
+Fuentes: [S07-S08]; [S04-S06]; [S02, caps. 8 y 13].
+
+32. Consumir la biblioteca desde C++
+El consumidor C++ utiliza headers instalados y DEE::thinking, la misma biblioteca que enlaza el binding Python. No incluye archivos .cpp del producto ni depende del intérprete para evolucionar. Las fábricas basales requieren una ruta explícita a la semilla; el helper Python la resuelve desde el wheel.
+C++
+#include <dee_thinking/organizational.hpp>
+#include <iostream>
+int main() {
+    namespace dt = dee::thinking;
+    auto w = dt::OrganizationalWorld::create(
+        dt::OrganizationRecipe::mobile_pair());
+    for (int j = 0; j < 2; ++j) {
+        const auto id = "l" + std::to_string(j);
+        w.submit(id + ".cue", 5, 0);
+        w.submit(id + ".teacher", j == 0 ? 7 : 11, 0);
+    }
+    w.run_until(6);
+    w.start_mobile_sequence("serie", {13, 7, 17});
+    w.run_until(21);
+    for (const auto& step : w.protocols().front().steps) {
+        for (const auto& item : step.captured)
+            std::cout << item.record.s_reg << ' ';
+        std::cout << '\n';
+    }
+}
+El ejemplo completo del respaldo agrega comprobaciones, persistencia y otros recorridos. Su CMake utiliza find_package(dee_thinking 3 CONFIG REQUIRED) y enlaza el target instalado. La salida del recorrido anterior es 25/29, 32/36 y 49/53.
+POWERSHELL
+cmake -S .\manual\ejemplos\cpp -B C:\DEE35\consumer -G Ninja `
+  -DCMAKE_PREFIX_PATH=C:\DEE35\producto\install `
+  -DCMAKE_BUILD_TYPE=Release
+cmake --build C:\DEE35\consumer
+C:\DEE35\consumer\dee_manual35.exe `
+  C:\DEE35\producto\source\fixtures\mbp4\OBP_FRESH_VALIDATED_T32.deetsnap `
+  C:\DEE35\salida_cpp
+La carpeta install preservada corresponde al build Windows original. Otro toolchain requiere reconstruir la biblioteca desde las fuentes y usar su install. No se promete ABI binaria entre compiladores. Las comprobaciones C++ auxiliares de esta edición se identifican aparte del WHL Windows.
+Fuentes: [S04]; [S02, caps. 26-30]; [S03]; ejemplo cpp del respaldo.
+
+33. Comprobar una instalación o reconstrucción
+La verificación comienza por identidad y continúa con comportamiento. El verificador oficial comprueba el paquete, su wheel, el expediente científico y registros de validación. Las suites ejecutan interfaces y contrastes. Un hash correcto no sustituye el recorrido funcional y un resultado esperado no identifica por sí solo el binario utilizado.
+POWERSHELL
+# Desde el producto oficial, con DEE thinking 3.5 en CPython 3.13:
+$py = 'C:\DEE35\venv\Scripts\python.exe'
+& $py -I -B .\source\tools\verify_delivery_3_5.py `
+  --zip ..\DEE_thinking_3_5_0_ENTREGA_FINAL_RESULTADOS.zip
+& $py -I -B -m unittest discover -s .\source\tests\python -v
+Los comandos deben ejecutarse con el entorno de CPython 3.13 donde se instaló DEE thinking 3.5.0, desde la raíz extraída del producto y con la ruta real del ZIP oficial.
+Reconstruir sólo cuando haga falta
+Para recuperar los bytes oficiales basta el wheel preservado. Para recompilar, se necesitan las fuentes y el toolchain registrado: Visual Studio 18 Community, MSVC 14.50.35717/19.50, SDK 10.0.26100.0, CMake/Ninja de esa instalación y las dependencias de build Python documentadas.
+POWERSHELL
+# Desde la raiz del producto, en el entorno de compilacion compatible:
+python -m pip install setuptools==81.0.0 wheel==0.48.0 `
+  pybind11==3.1.0 build==1.5.0
+.\source\tools\build_3_5.ps1 -PythonExecutable C:\ruta\python.exe `
+  -BuildRoot C:\DEE35\rebuild -Wheel -Tests
+No mezclar instalaciones de Visual Studio para resolver un error; conservar comandos y salidas. Si una política impide ejecutar un script, utilizar las alternativas documentadas sin eludir sus controles. El auxiliar build_external_3_5.py prepara el consumidor desde las herramientas permitidas de una instalación coherente.
+Las regresiones científicas reutilizan los instrumentos originales bajo 3.5. compare_native_recipes contrasta los nuevos constructores por separado. El Maestro explica cada evidencia y su alcance. Una reconstrucción equivalente puede producir hashes binarios distintos; para medir equivalencia se comparan RAW, clocks y continuidad operativa.
+Fuentes: [S03, BUILD_AND_MIGRATION]; [S12-S13]; [S02, caps. 28-29].
+
+34. Migrar y resolver incidencias
+3.5 conserva las APIs de Runtime, catálogo, composición, H1-H4/F1-F2, BasalWorld, PassiveTracker e inspección heredada. El nuevo nivel organiza recetas e interfaces sin exigir reescribir un consumidor que utiliza correctamente su contrato anterior.
+Síntoma
+Lectura y acción pertinente
+Importa 3.0 o un módulo local
+Revisar __version__, __file__ y entorno; instalar el wheel en un venv dedicado.
+SCHEDULED sin efecto esperado
+Consultar el recibo tras avanzar; diferenciar conflicto, ocupación y solicitud tardía.
+delta=None
+Revisar centros y semántica; no sustituir la falta de relación por cero.
+Puerto devuelve carga cero
+Examinar state, semantic, ruta y horizonte; puede no haber respuesta activa.
+Consulta posterior inesperada
+Distinguir fork independiente de continuidad consumida por sondas anteriores.
+No se capturó un QueryStep
+Usar avance de OrganizationalWorld, no el Runtime subyacente directamente.
+Traza terminada
+Revisar presupuesto o correspondencia no resuelta; el mundo puede seguir evolucionando.
+Parámetro rechazado
+Comprobar receta, tipo y rango; Research no garantiza función arbitraria.
+Snapshot no carga en otra capa
+Usar su loader o attach explícito; no volver a crear la preparación.
+
+Las entradas inválidas deben distinguirse de los resultados físicos. No resolver un conflicto borrando la celda ocupada, normalizando clocks o reseteando la organización y luego describiendo la trayectoria como intacta. Cuando una intervención sea necesaria para diagnosticar, realizarla en un fork y guardarla en el ledger.
+Los metadatos largos del wheel conservan secciones históricas 3.0. El nombre y hash del artefacto 3.5, las instrucciones iniciales de este libro y el contrato vigente evitan instalar la versión anterior por accidente. Es una diferencia documental de procedencia, no otra dependencia del producto.
+Fuentes: [S02, cap. 31]; [S03]; [S07]; [S12-S13].
+
+35. Un recorrido completo de investigación y uso
+Una utilización coherente empieza por una pregunta verificable: qué transformación se pretende estudiar, qué historia se presentará y qué respuesta se medirá. La receta y el observador se eligen después de esa definición, no porque el nombre de una API parezca una prueba de la capacidad.
+Primero se identifica el producto y se construye una referencia breve. Después se conserva el estado anterior a la experiencia, se registra admisión y se aplica una consulta común. Los controles comparan historias y rutas sin mezclar edades, modalidades ni estados reiniciados. Los resultados se conservan con el snapshot y la configuración que permiten continuarlos.
+Una combinación nueva requiere una realización en un mundo compartido. Las herramientas pueden cooperar mediante una misma infraestructura de recetas, vistas y persistencia, pero las organizaciones físicas deben demostrar su acoplamiento. Integrar outputs de universos separados desde Python es una aplicación externa diferente.
+De la observación al mecanismo
+Cuando una lectura deja de distinguir historias, el siguiente paso es precisar qué perdió ese observador. Puede tratarse de saturación, desplazamiento, cambio de fase, ausencia del lector, convergencia del estado o intervención no admitida. El instrumento permite separar esas posibilidades mediante otros paneles y diagnósticos explícitos.
+Si aparece una regularidad inesperada, se conserva el corte y se formula un contraste. La pregunta puede ampliar las capacidades conocidas sin reescribir retrospectivamente el resultado anterior. Los datos y su mecanismo tienen prioridad sobre una etiqueta automática o una analogía.
+El aporte de 3.5 es instrumental y funcional: vuelve reutilizables mecanismos de historia, transferencia, acceso, acción, resistencia y composición, manteniendo una sola dinámica DEE.
+El presente libro cierra el uso del corte 3.5.0. El Maestro fija su implementación y reconstrucción; los expedientes conservan los experimentos; las nuevas ejecuciones deben guardarse como evidencia propia. La relación entre esos tres niveles permite seguir investigando sin confundir una versión instalada con la totalidad de lo que DEE puede llegar a realizar.
+Fuentes: [S01-S03]; [S14]; [S17-S20].
+
+Anexo A. Recetas, interfaces y parámetros
+Las recetas describen preparaciones. Las cifras de dimensiones y tiempos de la tabla identifican sus aparatos, no una escala física externa. Las claves desconocidas se rechazan. En Python, los parámetros adicionales numéricos se pasan a parameters y los strings a options; la validación final ocurre en C++.
+Receta
+N / T0
+Interfaces y lecturas de referencia
+mobile_pair
+34 / 0
+l0/l1.cue, teacher; q0/q1.query y response.
+relational
+47 / 32
+body.common_query; A, B y comparator.
+contextual
+47 / 32
+body.common_query; inspección de guardas A/B.
+phase
+31 / 0
+phase.access_query y access_response.
+distributed
+127 / 0
+integration.A/B, integration.q; history.common_query.
+cascade
+127 / 0
+query; stagej.response.
+native_transfer
+127 / 0
+query; receiver_query; stage0.receiver_response.
+mobile_basal
+47 / 32
+mobile.hub; body.comparator y common_query.
+contingent
+47 / 32
+body.action, environment y return.
+information
+47 / 32
+body.conditional y downstream.
+competition
+34 / 0
+joint_query, later_query; encounter.meeting/response/later_response.
+predictive
+34 / 0
+signal0/1; rutas y oportunidad de predictive.
+research
+1..512 / explícito
+Placements, vistas e interfaces declarados por el usuario.
+
+El origen es una traslación en unas fábricas y un ancla absoluta en otras. No aplicar un mismo desplazamiento a ciegas. La semilla T32 se utiliza en las recetas basales; las otras construyen sus estados según sus propias recetas.
+Claves y condiciones de preparación
+Grupo
+Claves y condiciones
+mobile_pair
+anchor0_x/y/z y anchor1_x/y/z; coordenadas 0..33.
+phase
+mode 0..2; distance y marcos validados por el descriptor temporal; permutation, signs, source_index y partes high/low de clocks.
+distributed
+history_mode 0..2; with_history y with_recurrence como flags 0/1.
+relational/contextual
+history, keep_reader, control y opción seed; restricciones finales del preset basal.
+mobile_basal
+Parámetros basales y flags mobile_only, body_only, offpath, paired.
+contingent / information
+independent/inverse; informative_side -1/+1, hidden 0..65535, extra_receiver.
+cascade / native_transfer
+depth 1..8; relay exige 2; omit -1..depth-1; source_absent; cue0..7 y teacher0..7.
+competition
+shift -1..1; second_y/z -1..1, no ambos cero; arm both/A_only/B_only; destination empty/material/protected.
+predictive
+sign -1/+1; consequence_tick 18..100; naive, paired, consequence como flags 0/1.
+
+Estas opciones son preparaciones representables. Sus nombres no certifican una función nueva. Para variantes, conservar la configuración completa y comparar con las referencias. Para conocer campos y defaults exactos, consultar organization_recipes.cpp, el binding y el Maestro 3.5.
+Fuentes: [S05-S06]; [S02, anexo B]; [S01].
+
+Anexo B. Referencia rápida de operaciones
+La tabla enfatiza diferencias que importan al pasar de las APIs anteriores a la capa organizacional. Las firmas completas se conservan en headers y stubs. Los optional se convierten en None en Python; los enteros de 64 bits no deben convertirse a float para persistirlos.
+Operación Python
+Objeto y orden de argumentos
+experience(channel, at_tick, s_reg)
+Runtime: tiempo antes de carga.
+probe(channel, at_tick, s_reg)
+Runtime: sonda de bajo nivel.
+experience(instance, port, at_tick, s_reg)
+ComposedWorld: ruta por instancia/puerto.
+submit(name, value, at_tick)
+OrganizationalWorld: valor antes de tiempo.
+probe(name, value, at_tick)
+OrganizationalWorld: valor antes de tiempo.
+submit_symbol / probe_symbol
+Nombre lógico, símbolo del codec y tick absoluto.
+observe(org, port)
+Lectura pasiva de un puerto organizacional.
+decode(org, port, decoder)
+Traducción de esa lectura, sin avance.
+view(id).observe()
+Panel funcional: delta y disponibilidad.
+view(id).resilience()
+Panel y listas de soporte/caps.
+advance(count) / run_until(tick)
+Pasos relativos / destino absoluto.
+start_mobile_sequence(id, inputs, first_tick=6, interval=5)
+Protocolo finito exclusivo de mobile_pair.
+diagnostic_fork(edits, authorize)
+Copia con ediciones y ledger.
+assisted_reconstruction(source, spec)
+Se llama sobre el receptor; devuelve un receptor bifurcado.
+save_snapshot(path, include_trace=True)
+Estado organizacional completo, traza opcional.
+OrganizationalWorld.load_snapshot(path)
+Carga sin reinstalar la receta.
+set_trace / trace / capture_trace
+Instalar sesión, recuperar copia, capturar.
+
+Tipos a consultar
+InputCodec: version, type, minimum, maximum, symbols; encode_integer, encode_symbol, validate e injective. OutputDecoder: decode; el resultado conserva physical, integer, symbols, available, ambiguous, ordinary_cap_reached y status.
+OrganizationRecipe: id, version, dimension, origin, parameters, options, placements, interfaces, organizations, actions, execution, t0_tick y domain. OrganizationSpec describe id, ports, supports y centros opcionales. Una vista conserva propiedad del estado compartido.
+FunctionalReadout: observaciones por puerto, delta opcional, centers_available, reader_available, supports_intact y axis_projection. ResilienceObservation agrega missing_supports, ordinary_cap_sites y representable_cap_sites. Su recovery_claim no adjudica reparación a partir de una lectura pasiva.
+TraceSession: sitios, segmentos, samples, presupuesto y flags. EncounterObservation: ticks adyacentes, destino, estados, candidatos directos, guarda y alcance de atribución. ReconstructionSpec: source_sites, destination_sites, copy_raw, copy_clocks y autorización asistida.
+Límites implementados
+Componente
+Límite relevante
+Runtime
+Dimensión 1..512; eventos pendientes 4.096.
+Codec
+Carga 0..65535; hasta 65.536 símbolos.
+Secuencia móvil
+1..1.024 consultas; intervalo publicado 5; control uint64.
+Reconstrucción
+1..65.536 sitios; destinos no repetidos.
+TraceSession
+Hasta 65.536 muestras, 128 sitios y 256 segmentos.
+Metadata organizacional
+Binario hasta 64 MiB; hasta 256 fragmentos.
+Snapshot Runtime
+Hasta 2 GiB; validación estructural y checksum.
+
+Estos límites son del instrumento. La función y el consumo de recursos reales dependen de la preparación. Los bytes completos oficiales y los procedimientos de rebuild están en el respaldo del producto.
+Fuentes: [S04]; [S06-S07]; [S02, anexos A-B].
+
+Anexo C. Ejemplos ejecutables y recorrido de uso
+Los archivos del respaldo utilizan las APIs públicas. Los ejemplos 01-17 conservan el recorrido del manual 3.0, adaptado a la versión 3.5. Los 18-33 desarrollan el nivel organizacional. El ejemplo H4 está rotulado como didáctico; sus lecturas construidas no son una nueva corrida experimental.
+Archivo en manual/ejemplos/
+Recorrido
+01_identidad.py
+Identidad del producto, semilla e interfaces.
+02_runtime.py
+Canales Runtime, experiencia y lectura.
+03_composicion.py
+Instancias y conexión del catálogo.
+04_h1.py
+H1: retardo y posición.
+05_h2.py
+H2: repertorios separados y solapados.
+06_h3.py
+H3: recuperación y daño autorizado.
+07_h4.py
+H4: comparación didáctica de lecturas.
+08_f1.py
+F1: revisión del mismo linaje.
+09_f2.py
+F2: mediación ambiental finita.
+10_basal_historias.py
+Historias AB, BA y H0 en BasalWorld.
+11_contexto_y_fase.py
+Reescritura contextual y guardas.
+12_tracker_pasivo.py
+Tracker pasivo de sitios declarados.
+13_diagnostico.py
+Diagnóstico en copia del Runtime.
+14_persistencia.py
+Persistencia basal y continuidad.
+15_backends.py
+Comparación de backends.
+16_vista_attach.py
+Vista adjunta sin reinstalación.
+17_checkpoint_f1.py
+Checkpoint de protocolo F1.
+18_mundo_organizacional.py
+Adquisición en OrganizationalWorld.
+19_io_simbolico.py
+Símbolos, codec y decodificador.
+20_consultas_independientes_y_secuenciales.py
+Consultas independientes y secuenciales.
+21_memoria_latente.py
+Memoria latente y consulta física.
+22_transferencia.py
+Transferencia nativa y contraste.
+23_reconstruccion_asistida.py
+Reconstrucción asistida explícita.
+24_cascadas.py
+Cascadas de relaciones adquiridas.
+25_puente_movil_basal.py
+Puente móvil-basal en un mundo.
+26_contexto_y_acceso.py
+Acceso contextual y fase.
+27_accion_ambiental.py
+Acción y consecuencia ambiental.
+28_resiliencia.py
+Saturación y memoria diferencial.
+29_encuentros.py
+Encuentro conjunto y utilización posterior.
+30_trazas.py
+Trazas móviles acotadas.
+31_admision.py
+Conflictos y admisión de entradas.
+32_receta_personalizada.py
+Preparación de investigación propia.
+33_persistencia_proceso.py
+Persistencia con reapertura en otro proceso.
+
+Los ejemplos crean archivos en un directorio local de resultados o en un temporal según su objeto. Ejecutarlos desde una carpeta de trabajo, no sobre los originales del proyecto. Los asserts comprueban testigos conocidos; no controlan el estado que debería producir DEE.
+El lanzador ejecutar_ejemplos.py permite seleccionar archivos o grupos, aplica un timeout por ejemplo y registra stdout, stderr y código de salida. No interpreta el código cero como un dictamen cognitivo. Los ejemplos más largos pueden requerir ampliar el límite según el hardware.
+POWERSHELL
+$py = 'C:\DEE35\venv\Scripts\python.exe'
+& $py -I -B .\manual\herramientas\ejecutar_ejemplos.py `
+  --group rapido --output C:\DEE35\salida_manual
+& $py -I -B .\manual\herramientas\ejecutar_ejemplos.py `
+  --select 21,24,28 --timeout 900 --output C:\DEE35\salida_larga
+El consumidor C++ y sus instrucciones CMake se encuentran en manual/ejemplos/cpp. La comprobación editorial identifica qué recorridos se ejecutaron aquí y cuáles se verificaron mediante sintaxis y correspondencia de API con las pruebas originales.
+Fuentes: archivos de ejemplos; [S12]; [S15]; informe de comprobaciones del respaldo.
+
+Anexo D. Fuentes, identidades y trazabilidad
+Las referencias S01-S20 conservan la procedencia de los hechos y contratos utilizados. Las rutas source/, docs/ y validation/ son relativas a la raíz de la entrega oficial 3.5. Las conclusiones experimentales conservan su aparato y su modalidad; las decisiones de esta conversación fijan la continuidad documental, no sustituyen resultados.
+ID
+Fuente y alcance
+S01
+Contrato del producto 3.5. PRODUCT_CONTRACT.json; identidad, modalidades, familias, dominios y pruebas.
+S02
+Maestro de Arquitectura 3.5. DEE_thinking_3_5_0_Maestro_Arquitectura_Reconstruccion.docx; capítulos 1-32 y anexos.
+S03
+Uso y construcción oficiales. README.md; docs/API_AND_SCOPE.md; docs/BUILD_AND_MIGRATION.md.
+S04
+Capa organizacional nativa. source/include/dee_thinking/organizational.hpp; source/src/organizational.cpp.
+S05
+Recetas físicas. source/src/organization_recipes.cpp; constructores, puertos y validación de parámetros.
+S06
+Interfaz Python. source/bindings/organizational_pybind.cpp; dee_thinking_pybind.cpp; source/python/dee_thinking/__init__.py y stubs.
+S07
+Runtime y composición. source/include/dee_thinking/runtime.hpp; source/src/runtime.cpp, composition.cpp y organization_catalog.cpp; headers asociados.
+S08
+Ley v27 y backends. source/src/kernel_v27.cpp; include/dee_thinking/kernel_v27.hpp; packing, clocks y orden de ramas.
+S09
+Protocolos heredados. source/src/integrated_protocols.cpp y header; H1-H4 y F1-F2, snapshots y lecturas.
+S10
+Preparaciones basales 3.0. source/src/basal.cpp y header; semilla, recetas, observación y persistencia de BasalWorld.
+S11
+Instrumentación heredada. observation, genealogy y diagnostics: headers y unidades C++ del producto.
+S12
+Pruebas y ejemplos del producto. source/tests/python/test_organizational_api.py; suites heredadas; source/tests/organizational_tests.cpp; source/examples/.
+S13
+Registros de validación. validation/VALIDATION_REPORT.json, resultados C++/Python, comparaciones de recetas, instalación, interoperabilidad y logs de cierre.
+S14
+Expediente científico acumulado. evidence/DEE_thinking_3_0_0_FRONTERAS_COGNITIVAS_MULTIRRAMA_01_RESULTADOS.zip; L01-L09, P01-P14, controles, recetas y checkpoints.
+S15
+Libro Blanco y Manual 3.0. DEE_thinking_3_0_0_Libro_Blanco_y_Manual_Tecnico.docx; cobertura y ejemplos heredados.
+S16
+Libro Blanco y Manual 2.2. DEE_thinking_2_2_0_Libro_Blanco_y_Manual_Tecnico(1).docx; contratos originales y protocolos integrados.
+S17
+Procesamiento Nativo DEE. Procesamiento_Nativo_DEE_Libro_Manual_v1.docx; caps. 1, 8-19, 21 y 24. Lectura dirigida del Proyecto/Biblioteca.
+S18
+Física DEE 4.0.1. DEE_V4_0_1(1).docx; identidad funcional, historia, contexto, observadores y correspondencias sectoriales.
+S19
+Cierre de Mente Basal. ORGANIZACION_BASAL_PERSISTENTE_DOCUMENTO_MAESTRO_V2_1.docx; cierre MBP4, especialmente caps. 29-33.
+S20
+Continuidad de esta conversación. Decisiones de conservar v27, publicar nueve familias en 3.5 y documentar después de auditar. Fuente de requisitos, no de nuevas mediciones.
+
+
+Identidades de los artefactos preservados
+Entrega oficial 3.5.0
+4cae52462e39ebc0443c14b4f07fe0a944cf6e1acb28f92a3657c80da2bb81ac
+WHL Windows CPython 3.13
+721d4ad1610d6efc7e7101b49b9d68c6925efdcf596361aca09aabd0e315bcaa
+Extensión nativa del WHL
+3b864bf8c5d4cee6940e3bb99bb647443548851def72df3c3b60ed69b4308585
+Source del kernel v27
+fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31
+Semilla OBP_FRESH_VALIDATED_T32
+cd09a4d94f72e00d9a5163c8dfd1d62e1528f1d146e4cb44ae23d261b3da09e6
+Expediente Multirrama acumulado
+f1f8b6b2f68517f003a21c2908adde49bf1194c7f5657b460563b91ad76f28f0
+Los hashes comprueban contenido. Para recuperar el binario oficial se utiliza el WHL preservado; una compilación equivalente puede producir otros bytes. Los datos de cada ejecución nueva deben identificarse con su propio entorno y estado inicial.
+El respaldo de este manual conserva una copia intacta de la entrega 3.5, el Maestro 3.5 complementario y los materiales de uso. El expediente Multirrama se encuentra dentro de la entrega oficial. Las fuentes conceptuales del proyecto se referencian por documento y sección; no se sustituyen por una supuesta lectura de todo el corpus.
+La cobertura no se amplía por sumar textos: un instrumento publicado, un resultado científico, una observación y una analogía pertenecen a planos distintos. La trazabilidad permite volver desde una afirmación hasta el archivo y la operación que la sostienen.
+
+Anexo E. Continuidad, vocabulario y recuperación
+Cobertura heredada y ampliación
+Cobertura anterior
+Conservación en este manual
+Estado, packing y transición
+Capítulos 2-3; Maestro 3.5 para especificación completa.
+Runtime, canales, recibos y tiempo
+Capítulos 8-10 y 30-31.
+Catálogo y composición
+Capítulo 11.
+H1-H4 / F1-F2 y checkpoints
+Capítulos 12-15 y 30.
+BasalWorld y reescritura contextual
+Capítulos 16, 20 y 24.
+Observación, PassiveTracker y forks
+Capítulos 28-30.
+C++ / instalación / rebuild / migración
+Capítulos 9 y 32-34.
+Nueve familias 3.5
+Capítulos 17-29, con interfaces y ejemplos propios.
+
+El nuevo manual integra y reorganiza la cobertura; no afirma que copie palabra por palabra los libros anteriores. El Maestro es la referencia de arquitectura y el expediente conserva la genealogía experimental. Este documento explica cómo utilizar esa implementación y leer sus resultados.
+Vocabulario operacional
+Historia: diferencias del presente causadas por experiencias anteriores. Memoria: parte de ese estado que modifica respuestas futuras bajo el panel. Latencia: intervalo de un aparato y una interfaz. Accesibilidad: posibilidad de expresar o alcanzar una función bajo el protocolo. Soporte: grados y relaciones que sostienen esa función.
+Identidad funcional: equivalencia respecto de un repertorio declarado; no exige RAW inmóvil. Preparación: instalación de condiciones iniciales. Experiencia: acontecimiento presentado y efectivamente admitido. Sonda: interacción que pregunta y puede modificar. Observación: lectura pasiva. Diagnóstico: intervención declarada para comparar futuros. Transferencia nativa: mediación realizada por la evolución. Reconstrucción asistida: copia externa explícita de campos.
+Recuperar el material de uso
+El Word incorpora una cápsula pasiva de ejemplos y herramientas en dee_payload/manual.zip. No contiene macros, no ejecuta su contenido al abrirse y no incluye el WHL incrustado. El respaldo conserva esa misma cápsula por separado y la entrega oficial que sí contiene el binario.
+PYTHON
+from pathlib import Path
+from zipfile import ZipFile
+name = "DEE_thinking_3_5_0_Libro_Blanco_y_Manual_Tecnico.docx"
+with ZipFile(name) as doc:
+    payload = doc.read("dee_payload/manual.zip")
+Path("DEE35_manual_recuperado.zip").write_bytes(payload)
+Verificar el manifiesto de la cápsula antes de extraer o ejecutar ejemplos. El helper extraer_capsula.py realiza verificación y extracción segura. verificar_respaldo.py comprueba los archivos del ZIP de respaldo sin ejecutar el kernel.
+Conservar localmente el Word y el ZIP de respaldo permite recuperar el material sin depender del enlace de la conversación. Ninguno de esos archivos reconstruye una historia particular cuyo snapshot no se haya guardado. La custodia del instrumento y la del individuo experimental son complementarias.
+Fuentes: [S02]; [S15-S17]; herramientas y manifiestos del respaldo.

@@ -1,0 +1,24 @@
+{
+  "version": "cpc3.zero_reader.confirmation.v1",
+  "frozen_before_reserves": true,
+  "recipe": "relational.v1 H0 / N47 / centres clocks260 at absolute32 / reader finite physical load0 at34",
+  "family": "A I02 relative memory renewed native MAIN reader; payload-zero finite query, no clearing",
+  "discovery_sources": ["DISCOVERY_READER.json", "DISCOVERY_OFFAXIS.json", "DISCOVERY_ZERO_READER.json"],
+  "horizon_absolute": 1032,
+  "experience_ticks": [163,292,554,812,945],
+  "sample_ticks": [37,40,50,67,79,80,100,150,162,163,164,165,200,291,292,293,300,390,391,392,520,553,554,555,556,600,782,811,812,813,814,850,944,945,946,947,1000,1032],
+  "decoder": "current physical MAIN comparator dx sign positive->arrival negative->absence zero/missing->unresolved; no history metadata input",
+  "expected_outputs": "not supplied to native physics; reference-domain criterion tests equality/difference only after execution",
+  "criterion": {"first_native_read_before_target": "emission37 < target67", "continued_admission": "measure receipt status; scheduled not applied", "history_effect": "same-aged FULL vs omitted/reversed delivery on RAW/clocks, delta and native readout", "continuous_read_write": "report actual temporal sequence and causal controls, not count replays as independent replicas"},
+  "resource_limit": {"one_writer_per_runtime": true,"threads":1,"backend":"LAZY","native_job_seconds":180,"maximum_initial_confirmatory_worlds":8},
+  "cases": [
+    {"id":"BA_FULL","origin":[15,15,15],"initial_open":false,"treatment":"full","kind":"discovery_reference_confirmed"},
+    {"id":"BA_NO_NEW","origin":[15,15,15],"initial_open":false,"treatment":"no_new_experience","kind":"control"},
+    {"id":"BA_REVERSED","origin":[15,15,15],"initial_open":false,"treatment":"reversed_delivery","kind":"control"},
+    {"id":"BA_MEMORY_EQUALIZED","origin":[15,15,15],"initial_open":false,"treatment":"memory_equalized","kind":"diagnostic_control"},
+    {"id":"AB_FULL","origin":[15,15,15],"initial_open":true,"treatment":"full","kind":"other_history_control"},
+    {"id":"RESERVED_BA_1","origin":[22,20,24],"initial_open":false,"treatment":"full","event_state":3,"kind":"reserved"},
+    {"id":"RESERVED_BA_2","origin":[28,26,18],"initial_open":false,"treatment":"full","event_state":7,"kind":"reserved"},
+    {"id":"RESERVED_AB_2","origin":[28,26,18],"initial_open":true,"treatment":"full","event_state":7,"kind":"reserved_other_history"}
+  ]
+}

@@ -1,0 +1,1665 @@
+{
+  "configuration": {
+    "schema": "CPC5.network.screen.v1",
+    "frozen_before_execution": true,
+    "question": "Serial physical coupling versus independent simple routes under explicit resource accounting; learned moving relations, not renewable bodies",
+    "reference": "R0 exact CPC4 ABCD reference is executed separately by referencias",
+    "cases": [
+      {
+        "id": "NET_R1_SERIAL4",
+        "architecture": "R1",
+        "top_level": 1,
+        "chains": [
+          4
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R2_SERIAL8_TWO_COMPOUNDS",
+        "architecture": "R2",
+        "top_level": 2,
+        "chains": [
+          8
+        ],
+        "query": 13,
+        "compound_partition": [
+          4,
+          4
+        ]
+      },
+      {
+        "id": "NET_R3_HOMOGENEOUS4",
+        "architecture": "R3",
+        "top_level": 4,
+        "chains": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "loads": [
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ]
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R3_HOMOGENEOUS10",
+        "architecture": "R3",
+        "top_level": 10,
+        "chains": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "loads": [
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ]
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R4_HETEROGENEOUS4",
+        "architecture": "R4",
+        "top_level": 4,
+        "chains": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R4_HETEROGENEOUS8",
+        "architecture": "R4",
+        "top_level": 8,
+        "chains": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R5_MIXED4PLUS4",
+        "architecture": "R5",
+        "top_level": 5,
+        "chains": [
+          4,
+          1,
+          1,
+          1,
+          1
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R1_MATCHED_HOMOGENEOUS4",
+        "architecture": "R1",
+        "top_level": 1,
+        "chains": [
+          4
+        ],
+        "loads": [
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            9
+          ]
+        ],
+        "query": 13
+      },
+      {
+        "id": "NET_R2_NAIVE_SECOND",
+        "architecture": "R2",
+        "top_level": 2,
+        "chains": [
+          8
+        ],
+        "query": 13,
+        "omit_training": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "id": "NET_R2_UNPAIRED_SECOND",
+        "architecture": "R2",
+        "top_level": 2,
+        "chains": [
+          8
+        ],
+        "query": 13,
+        "unpaired_training": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "id": "NET_R2_LATE_CUT_BRIDGE",
+        "architecture": "R2",
+        "top_level": 2,
+        "chains": [
+          8
+        ],
+        "query": 13,
+        "late_cut_stage": 4
+      },
+      {
+        "id": "NET_R1_NAIVE",
+        "architecture": "R1",
+        "top_level": 1,
+        "chains": [
+          4
+        ],
+        "query": 13,
+        "omit_training": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "resource_limits": {
+      "maximum_components": 10,
+      "N": 67,
+      "backend": "LAZY",
+      "native_threads": 1,
+      "horizon_max": 51
+    },
+    "classification_scope": "Architectural labels identify design hypotheses. A serial chain is genuinely coupled, but these finite mobile components are consumable and do not establish renewed memory by themselves."
+  },
+  "cases": [
+    {
+      "id": "NET_R1_SERIAL4",
+      "architecture": "R1",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R1_SERIAL4\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 4,
+        "top_level_declared": 1,
+        "training_input_calls": 8,
+        "query_input_calls": 1,
+        "native_ticks": 31,
+        "training_payload_sum": 60,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": 55,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 3.2578433000016958
+    },
+    {
+      "id": "NET_R2_SERIAL8_TWO_COMPOUNDS",
+      "architecture": "R2",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R2_SERIAL8_TWO_COMPOUNDS\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 2,
+        "training_input_calls": 16,
+        "query_input_calls": 1,
+        "native_ticks": 51,
+        "training_payload_sum": 152,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": 55,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 93,
+          "observed_load": 93,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 115,
+          "observed_load": 115,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 139,
+          "observed_load": 139,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 165,
+          "observed_load": 165,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.956044099992141
+    },
+    {
+      "id": "NET_R3_HOMOGENEOUS4",
+      "architecture": "R3",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R3_HOMOGENEOUS4\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 4,
+        "top_level_declared": 4,
+        "training_input_calls": 8,
+        "query_input_calls": 4,
+        "native_ticks": 16,
+        "training_payload_sum": 48,
+        "query_payload_sum": 52
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 1,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 2,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 3,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 1.8858763999887742
+    },
+    {
+      "id": "NET_R3_HOMOGENEOUS10",
+      "architecture": "R3",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R3_HOMOGENEOUS10\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 10,
+        "top_level_declared": 10,
+        "training_input_calls": 20,
+        "query_input_calls": 10,
+        "native_ticks": 16,
+        "training_payload_sum": 120,
+        "query_payload_sum": 130
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 1,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 2,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 3,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 4,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 5,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 6,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 7,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 8,
+          "group": 8,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 9,
+          "group": 9,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 1.9343045999994501
+    },
+    {
+      "id": "NET_R4_HETEROGENEOUS4",
+      "architecture": "R4",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R4_HETEROGENEOUS4\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 4,
+        "top_level_declared": 4,
+        "training_input_calls": 8,
+        "query_input_calls": 4,
+        "native_ticks": 16,
+        "training_payload_sum": 60,
+        "query_payload_sum": 52
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 1,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 27,
+          "observed_load": 27,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 2,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 29,
+          "observed_load": 29,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 3,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 31,
+          "observed_load": 31,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 1.8275024999747984
+    },
+    {
+      "id": "NET_R4_HETEROGENEOUS8",
+      "architecture": "R4",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R4_HETEROGENEOUS8\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 8,
+        "training_input_calls": 16,
+        "query_input_calls": 8,
+        "native_ticks": 16,
+        "training_payload_sum": 152,
+        "query_payload_sum": 104
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 1,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 27,
+          "observed_load": 27,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 2,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 29,
+          "observed_load": 29,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 3,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 31,
+          "observed_load": 31,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 4,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 33,
+          "observed_load": 33,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 5,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 35,
+          "observed_load": 35,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 6,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 37,
+          "observed_load": 37,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 7,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 1.9570293999859132
+    },
+    {
+      "id": "NET_R5_MIXED4PLUS4",
+      "architecture": "R5",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R5_MIXED4PLUS4\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 5,
+        "training_input_calls": 16,
+        "query_input_calls": 5,
+        "native_ticks": 31,
+        "training_payload_sum": 152,
+        "query_payload_sum": 65
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": 55,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 1,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 33,
+          "observed_load": 33,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 2,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 35,
+          "observed_load": 35,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 3,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 37,
+          "observed_load": 37,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 4,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.591939600009937
+    },
+    {
+      "id": "NET_R1_MATCHED_HOMOGENEOUS4",
+      "architecture": "R1",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R1_MATCHED_HOMOGENEOUS4\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 4,
+        "top_level_declared": 1,
+        "training_input_calls": 8,
+        "query_input_calls": 1,
+        "native_ticks": 31,
+        "training_payload_sum": 48,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 37,
+          "observed_load": 37,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 49,
+          "observed_load": 49,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 61,
+          "observed_load": 61,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.405991100007668
+    },
+    {
+      "id": "NET_R2_NAIVE_SECOND",
+      "architecture": "R2",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R2_NAIVE_SECOND\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 2,
+        "training_input_calls": 8,
+        "query_input_calls": 1,
+        "native_ticks": 51,
+        "training_payload_sum": 60,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": 55,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 93,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 115,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 139,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 165,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.9118719000252895
+    },
+    {
+      "id": "NET_R2_UNPAIRED_SECOND",
+      "architecture": "R2",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R2_UNPAIRED_SECOND\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 2,
+        "training_input_calls": 16,
+        "query_input_calls": 1,
+        "native_ticks": 51,
+        "training_payload_sum": 152,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 93,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 115,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 139,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 165,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.892855799989775
+    },
+    {
+      "id": "NET_R2_LATE_CUT_BRIDGE",
+      "architecture": "R2",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R2_LATE_CUT_BRIDGE\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 8,
+        "top_level_declared": 2,
+        "training_input_calls": 16,
+        "query_input_calls": 1,
+        "native_ticks": 51,
+        "training_payload_sum": 152,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 25,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": 39,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": 55,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": true,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 4,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 93,
+          "observed_load": 73,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 5,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 115,
+          "observed_load": 95,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 6,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 139,
+          "observed_load": 119,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 7,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 165,
+          "observed_load": 145,
+          "observed_direction": [
+            -1,
+            1,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 4.4121796999825165
+    },
+    {
+      "id": "NET_R1_NAIVE",
+      "architecture": "R1",
+      "status": "MEASURED",
+      "path": "resultados\\network_discovery\\NET_R1_NAIVE\\MEASUREMENTS.json",
+      "resources": {
+        "dimension": 67,
+        "basic_buffer_bytes": 9624416,
+        "components": 4,
+        "top_level_declared": 1,
+        "training_input_calls": 0,
+        "query_input_calls": 1,
+        "native_ticks": 31,
+        "training_payload_sum": 0,
+        "query_payload_sum": 13
+      },
+      "calculations": [
+        {
+          "stage": 0,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 25,
+          "observed_load": 13,
+          "observed_direction": [
+            -1,
+            0,
+            0
+          ],
+          "observed_active": true,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 1,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 39,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 2,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 55,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        },
+        {
+          "stage": 3,
+          "group": 0,
+          "formula": "query + sum(cue+report for prior trained stages in this physical route)",
+          "ideal_additive_reference": 73,
+          "observed_load": null,
+          "observed_direction": [
+            0,
+            0,
+            0
+          ],
+          "observed_active": false,
+          "equals_full_training_reference": false,
+          "scope": "Evaluation only; omitted/unpaired/cut cases deliberately need not match full-history reference"
+        }
+      ],
+      "elapsed_seconds": 2.465633300016634
+    }
+  ]
+}

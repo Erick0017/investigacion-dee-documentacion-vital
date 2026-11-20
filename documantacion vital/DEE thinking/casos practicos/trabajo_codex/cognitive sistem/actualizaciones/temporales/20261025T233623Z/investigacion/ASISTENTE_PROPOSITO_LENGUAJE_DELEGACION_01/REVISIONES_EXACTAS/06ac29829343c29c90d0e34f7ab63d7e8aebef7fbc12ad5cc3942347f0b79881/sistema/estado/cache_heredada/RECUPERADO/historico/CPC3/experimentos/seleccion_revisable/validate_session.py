@@ -1,0 +1,13 @@
+import json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'src'))
+from core.policy_session import FinitePolicySession
+def main(root):
+    p=root/'experimentos/seleccion_revisable/session';p.mkdir(parents=True,exist_ok=True);checks={};rows=[]
+    for roles in ('P_INFORMATIVE','Q_INFORMATIVE'):
+        s=FinitePolicySession.create(roles=roles);s.event_sink=p/(roles+'.jsonl');a=s.sense();comp=s.compare();before=s.physical_digest();s.save(p/(roles+'_T6.deetsnap'));loaded=FinitePolicySession.load(p/(roles+'_T6.deetsnap'));checks[roles+'_load_same']=loaded.physical_digest()==before;checks[roles+'_protocol_preserved']=loaded.actual_submitted and loaded.metadata==s.metadata and loaded.operation_calls==s.operation_calls
+        choice=s.source();choice_loaded=loaded.source();checks[roles+'_restored_native_action_same']=choice['physical_output']==choice_loaded['physical_output'] and loaded.physical_digest()==s.physical_digest();checks[roles+'_unique_live_source']=choice['source']==('P' if roles=='P_INFORMATIVE' else 'Q') and choice['physical_output']['tick']==11
+        info=s.sense();info_loaded=loaded.sense();checks[roles+'_actual_native_information_same']=info['information']==info_loaded['information'] and len(info['information'])==1 and loaded.physical_digest()==s.physical_digest();checks[roles+'_no_cached_source_after_window']=s.source()['status']=='OUTSIDE_CURRENT_SOURCE_ACTION_WINDOW';checks[roles+'_forecast_not_invented']=s.predict()['status']=='FORECAST_NOT_IMPLEMENTED_IN_POLICY_PROFILE';rows.append({'roles':roles,'actual':a,'comparison':comp,'source':choice,'information':info,'operations':s.operation_calls,'final':s.save(p/(roles+'_FINAL_T14.deetsnap'))})
+    pending=FinitePolicySession.create();pending._until(2);pending._physical_inputs();pending.save(p/'PENDING_INPUT_T2.deetsnap');loaded=FinitePolicySession.load(p/'PENDING_INPUT_T2.deetsnap');before=len(loaded.operation_calls);p0=pending.source();p1=loaded.source();checks['pending_input_receipts_continue']=pending.physical_digest()==loaded.physical_digest() and p0['physical_output']==p1['physical_output'] and len([x for x in loaded.operation_calls if x['operation']=='submit'])==2
+    result={'checks':checks,'all_technical_assertions':all(checks.values()),'cases':rows,'scope':'API integration, not additional science worlds; restored branches are technical controls and never returned to MAIN'};(p/'VALIDATION.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps({'checks':checks},ensure_ascii=True));assert all(checks.values())
+if __name__=='__main__':main(Path(sys.argv[1]) if len(sys.argv)>1 else ROOT)

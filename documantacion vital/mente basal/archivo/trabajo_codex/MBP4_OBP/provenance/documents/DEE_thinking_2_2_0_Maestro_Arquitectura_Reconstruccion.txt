@@ -1,0 +1,3075 @@
+DEE UNIVERSE
+DEE thinking2.2.0
+Documento Maestro deArquitectura y Reconstrucción
+Entrega 02 definitiva  |  Kernel DEE v27
+Autor del proyecto: Ivan Erick Tlaltecatl Morales
+Identificador documental: DEET-MAR-220-01Edición documental: 1.0Corte del producto: 4 de octubre de 2026
+Especificación de la constitución interna, reglas, interfaces, protocolos, persistencia, construcción, verificación y recuperación de la librería C++ y de su distribución nativa para CPython 3.13 / Windows x64.
+Unidad de reconstrucción. Este documento explica el producto. El respaldo conserva también el paquete original completo de Entrega 02: código fuente, configuración, pruebas, biblioteca y WHL. La reconstrucción exacta de la implementación se realiza desde esas fuentes, no reinterpretando libremente una narración.
+Documento de ingeniería y preservación. No sustituye el Libro Blanco y Manual Técnico, que constituye una entrega documental distinta.
+Control documental y ruta de recuperación
+Elemento
+Identidad del corte
+Producto
+DEE thinking 2.2.0; Entrega 02 definitiva
+Núcleo
+DEE v27; P_KERNEL = 19665; cap de reducer/DEMUX = 19664
+API nativa
+C++20; target instalado DEE::thinking
+Distribución Python
+dee_thinking-2.2.0-cp313-cp313-win_amd64.whl
+Importación
+dee_thinking; extensión dee_thinking._native
+Persistencia
+Runtime: escritor v2, lectores v1/v2; recetas y checkpoints versionados
+Estado de evidencia
+El resumen del producto declara VERIFIED. Las pruebas heredadas y la comprobación documental independiente se distinguen en el capítulo de validación.
+Si sólo se perdió el WHL: recuperar la copia en wheel/ y verificar su SHA-256; no reconstruir innecesariamente. Si se perdieron los binarios: extraer las fuentes preservadas y seguir los procedimientos C++ y Python. Si se perdió una ejecución viva: hace falta su snapshot; reconstruir el programa no reconstruye automáticamente su historia.
+Si también se perdieron las fuentes y el respaldo: la descripción conserva la arquitectura, pero no permite prometer la misma implementación ni el mismo binario. Por eso el ZIP documental retiene el paquete fuente original sin modificar.
+Fuente: [S01] PROJECT_METADATA.json
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md
+Contenido
+Los títulos enlazan con sus capítulos. Los anexos permiten localizar archivos, interfaces, parámetros y fuentes sin recorrer el código completo.
+1. Identidad, alcance y material que debe preservarse4
+2. Una sola dinámica; interfaces, no piezas ontológicas5
+3. Genealogía de la entrega y decisiones que no deben perderse6
+4. Arquitectura de construcción y fronteras reales8
+5. Representación binaria y constantes efectivas de v279
+6. Transición completa: orden, guardas y resultados12
+7. Dense, Lazy y paralelismo: misma regla, agenda distinta16
+8. Runtime persistente: ciclo de vida y admisión17
+9. Catálogo y planificador de composiciones19
+10. Snapshot: formato de bytes y reconstrucción del futuro21
+11. H1: transducción de retardo a posición23
+12. H2: repertorios separados y fusión controlada25
+13. H3: reparación desde redundancia entrenada27
+14. H4: diagnóstico finito de accesibilidad30
+15. F1: revisión reiterada de una relación móvil31
+16. F2: respuesta, umbral ambiental y efecto posterior33
+17. Binding Python y constitución del WHL35
+18. Reconstrucción desde cero: recorrido Windows verificable37
+19. Evidencia, cobertura y comprobación de esta edición41
+20. Recuperación de fallos, preservación y extensión futura44
+Anexo A. Inventario completo del paquete preservado46
+Anexo B. Declaraciones públicas de la versión 2.2.053
+Anexo C. Parámetros y puertos del catálogo heredado68
+Anexo D. Fases, claves y oráculos de reconstrucción72
+Anexo E. Genealogía de mecanismos y decisiones74
+Anexo F. Índice de fuentes y verificación documental75
+1. Identidad, alcance y material que debe preservarse
+Este documento fija la reconstrucción de DEE thinking 2.2.0, no una especificación genérica de cualquier motor DEE. Hay tres identidades diferentes: la regla histórica v27, su adaptación C++ incorporada al producto y el artefacto de distribución. Sus hashes no son intercambiables: una diferencia de bytes entre envoltorios no demuestra por sí misma una diferencia de dinámica.
+Artefacto
+SHA-256
+ZIP definitivo
+ce088e902888e5ce0f61296d405b14b8acccc183cd73fcbd0fe7bc4eb8ce7cc3
+WHL final, 465442 bytes
+39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6
+Source histórico v27
+44a80f7863d78f596099ddf7d41c9947fa8513503f65067097f1f3b05a8207ab
+src/kernel_v27.cpp del producto
+fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31
+WHL histórico dee_universe_v27
+69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939
+El paquete definitivo tiene 138 miembros y HASHES.sha256 registra 137: el manifiesto de hashes no se enumera a sí mismo. Su comprobación de integridad no sustituye una prueba científica ni convierte un ejecutable en confiable por el mero nombre; sirve para identificar el corte preservado.
+Fuente: [S03] HASHES.sha256
+Fuente: [S04] docs/KERNEL_PROVENANCE.md
+Fuente: [S01] PROJECT_METADATA.json
+1.1. Tres objetivos de recuperación distintos
+Objetivo
+Qué se necesita y qué se obtiene
+Restaurar un artefacto idéntico
+Conservar el WHL o la biblioteca original y comprobar su hash. La copia verificada es byte-idéntica.
+Reconstruir el software
+Conservar source, configuración y toolchain compatible. El resultado debe pasar pruebas; no se promete el mismo hash entre herramientas o fechas de compilación distintas.
+Reanudar una organización
+Conservar snapshot de Runtime y la receta/protocolo correspondiente. El estado inicial no sustituye una historia ya evolucionada.
+Repetir un experimento
+Conservar preparación, entradas, tiempos, lector, controles y horizonte; no basta con conservar el programa.
+El respaldo que acompaña a este documento incluye el Word y una copia sin cambios del ZIP definitivo. Dentro de este último se encuentran el source y el WHL. Las bibliotecas de compilación de terceros y el entorno operativo no están empaquetados como una máquina virtual; sus condiciones de reconstrucción se especifican más adelante.
+1.2. Jerarquía de especificación
+Para reconstruir lo que ejecuta este corte, el archivo fuente y las configuraciones exactas fijan el comportamiento; las pruebas aportan oráculos finitos y la documentación explica su propósito. Una descripción narrativa no autoriza a cambiar silenciosamente un algoritmo. Cuando source y texto tienen alcances distintos, ambos se conservan y se explicita la diferencia. Las conversaciones fijan decisiones de alcance y autorización; no sustituyen la telemetría de un ensayo.
+En particular, las observaciones generales sobre una única dinámica no convierten todas las interfaces en la misma operación. Runtime::experience, los protocolos heredados H2/H3 y un analizador externo como H4 poseen fronteras distintas; ese detalle es esencial para una reconstrucción fiel.
+Fuente: [S05] docs/ARCHITECTURE_AND_BUILD.md
+Fuente: [S06] src/integrated_protocols.cpp; L121-137
+2. Una sola dinámica; interfaces, no piezas ontológicas
+El estado DEE se representa por dos campos sobre un toro discreto: la palabra RAW de cada sitio y su clock. El kernel aplica una sola transición. Organizaciones, puertos, lectores y protocolos son maneras de preparar, acoplar u observar ese mundo. No constituyen leyes microscópicas independientes que el motor alterne según una etiqueta humana.
+Q_t = (RAW_t, CLOCK_t)
+Q_(t+1) = F_27(E_t(Q_t))
+y_t = M(Q_t)
+E_t representa una intervención externa sólo cuando el protocolo la declara. Si no hay entrada, E_t es la identidad y el kernel puede continuar. M representa un lector; la lectura pasiva y la sonda física no son equivalentes. Esta notación separa el mecanismo del motor de la lógica del experimento.
+Que la organización sea contextual no significa que todos los sitios se afecten instantáneamente. El source utiliza consultas espaciales locales y un orden de actualización definido. Las relaciones pueden propagarse y afectar futuras condiciones de encuentro. El contexto relevante debe conservarse, no sustituirse por el valor visible de una celda.
+Fuente: [S07] docs/API_CONTRACT.md
+Fuente: [S08] src/kernel_v27.cpp; L139-439
+2.1. Lo que debe conservarse del paradigma DEE
+Distinción
+Consecuencia de reconstrucción
+RAW, ocupación y actividad
+No eliminar un registro porque state sea cero. Otros bits pueden producir una propuesta o formar parte de la preparación.
+Carga cero y ausencia
+Un portador de carga cero tiene presencia, dirección y trayectoria. No reemplazarlo por falta de evento.
+Identidad móvil y coordenada
+Un linaje puede continuar en sitios distintos. No considerar perdida una función sólo porque abandonó su posición inicial.
+Historia y metadatos
+La historia causal deja diferencias en el estado. Un ID de organización no es una variable física de memoria.
+Composición y copia
+La conexión aceptada prepara una trayectoria en un mundo compartido. No copiar outputs entre motores y atribuir esa copia a DEE.
+Observador y sonda
+observe no escribe ni avanza; probe introduce una intervención permitida.
+Saturación y continuidad
+Una actividad puede persistir aunque ciertas diferencias escalares se pierdan. El cap no garantiza regeneración ni aprendizaje.
+La modularidad C++ facilita la ingeniería y la trazabilidad. No obliga a interpretar la organización como una suma de componentes aislados. A la vez, la posibilidad de mantener repertorios separados es una capacidad real del aparato: una dinámica única puede conservar distinciones sin mezclarlas todas.
+Fuente: [S09] docs/ORGANIZATION_CATALOG.md
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md
+2.2. Alcance de los nombres del kernel
+Los nombres ElectronSeed, ProtonSeed, Horizon, tensión fuerte o tensión electrodébil se conservan porque existen en el source. Su presencia como identificadores no demuestra identidad con una partícula o magnitud externa. En la reconstrucción se especifican sus valores y usos efectivos, sin convertir la nomenclatura en una correspondencia física no medida.
+El nombre thinking describe analógicamente el procesamiento histórico, contextual y recurrente del producto. Este documento no introduce consciencia, agencia general ni universalidad como precondiciones para utilizar las capacidades logradas.
+Fuente: [S11] include/dee_thinking/kernel_v27.hpp; L10-39
+Fuente: [S12] docs/SCIENTIFIC_SCOPE.md
+3. Genealogía de la entrega y decisiones que no deben perderse
+Etapa
+Aporte conservado
+Consecuencia en 2.2.0
+Entrega 01
+Núcleo C++ independiente, Runtime persistente, ejemplos y oráculos WHL.
+No sustituir el núcleo por un script Python. Conservar contrato de copy-back.
+Entrega 02 / 2.0.0
+Catálogo, planificador y composición; DenseParallel y Lazy.
+Conservar las agendas como implementaciones de la misma transición.
+Cierre / 2.1.0
+Memoria de fase CORE05; nuevos fixtures; persistencia entre procesos.
+No volver a marcar esas capacidades como no implementadas.
+Preintegración
+H1/H2/H3 candidatos y H4 diagnóstico; retorno 25,38,51 con corte y sham.
+Distinguir candidato, dominio y publicación. La acumulación no prueba toda forma de aprendizaje.
+Laboratorio final
+F1 revisiones reiteradas; F2 mediación DEMUX; F3 sin réplica de contenido.
+Integrar F1/F2 con contratos finitos; conservar el resultado negativo de F3.
+Definitiva / 2.2.0
+H1-H4 y F1/F2 públicos; binding CPython; WHL; persistencia cruzada.
+Un solo corte de source, API, binarios, wheel y evidencia.
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L20-88
+3.1. Lecciones traducidas a requisitos
+Las conversaciones de integración fijaron una regla: no desplazar indefinidamente la meta después de conseguir un resultado. Una capacidad finita puede publicarse con su dominio. La ausencia de replicación, autonomía ilimitada o gestión perpetua de capacidad no invalida H1/H2/H3/H4/F1/F2. F3 se conserva como evidencia, no como función disponible ni como imposibilidad general.
+La evolución también corrigió errores prácticos: mezclar instalaciones de Visual Studio; perder metadatos al restaurar; aceptar una entrada sólo porque se había solicitado; considerar un sham fuera de ruta sin seguir su trayectoria; y confundir una comparación de números finales con igualdad del estado. El código de este corte debe conservarse aun cuando una simplificación superficial parezca equivalente.
+Fuente: [S13] docs/CHANGELOG.md
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L145-166
+3.2. H2-overlap: la corrección de checkpoint
+El informe definitivo describe un caso donde RAW y clock se restauraban exactamente pero faltaba la lectura de merge capturada en t14 cuando se guardaba en t16. Se corrigió la captura de metadatos del wrapper en la frontera física t14. El caso ilustra que reconstruir buffers no basta para reconstruir el progreso de un protocolo y sus resultados ya observados. No se modificó la regla del kernel.
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L145-161
+Fuente: [S06] src/integrated_protocols.cpp; L797-924
+4. Arquitectura de construcción y fronteras reales
+Aplicacion C++ -> headers instalados -> DEE::thinking
+Aplicacion Python -> dee_thinking -> _native -> DEE::thinking
+DEE::thinking
+  kernel + runtime + catalogo + composicion + protocolos
+  -> la misma transicion v27 sobre RAW/clock
+La implementación nativa consta de seis unidades de compilación: kernel_v27.cpp, runtime.cpp, organizations.cpp, organization_catalog.cpp, composition.cpp e integrated_protocols.cpp. CMake construye una biblioteca estática y exporta el target DEE::thinking. El módulo pybind11 enlaza ese target; setuptools no mantiene otra lista independiente de fuentes del motor.
+Fuente: [S14] CMakeLists.txt; L1-49
+Fuente: [S15] cmake/python/dee_thinking_python.cmake
+Capa
+Responsabilidad
+Lo que no sustituye
+Kernel
+Packing, consultas locales, transición y agendas.
+No decide qué experimento quiere realizar el usuario.
+Runtime
+Estado, canales, cola, recibos, evolución y snapshots.
+No calcula una respuesta aprendida en lugar del kernel.
+Catálogo/composición
+Plantillas, contratos y una preparación conjunta.
+No demuestra compatibilidad universal ni aislamiento del contexto.
+Protocolos integrados
+Preparaciones y secuencias finitas H1/H2/H3/F1/F2; análisis H4.
+No todos son instancias de OrganizationCatalog ni un Runtime interactivo retornado al cliente.
+Binding
+Traducción de tipos y llamadas hacia C++.
+No contiene una segunda física Python.
+Pruebas
+Oráculos, controles y comprobación de interfaces.
+No son evidencia universal de todo estado o plataforma.
+4.1. Dos registros públicos complementarios
+OrganizationCatalog enumera organizaciones componibles heredadas y la memoria de fase. Los seis componentes integrados nuevos se exponen mediante `integrated_protocol_descriptors()`, un registro separado en dee::thinking::protocols. H4 es un analizador puro y H3 incluye daño opt-in; por eso no deben aparecer como si todos fueran el mismo tipo de organismo físico.
+La publicación de un protocolo es real: existen funciones run, configuraciones, resultados y checkpoints cuando procede. Pero un run_* crea y ejecuta un aparato finito; no es por sí mismo una operación para insertar ese aparato en un mundo ya en marcha. La continuidad interactiva general se realiza mediante Runtime/ComposedWorld. La reconstrucción debe conservar esta diferencia, no inventar una API futura.
+Fuente: [S16] include/dee_thinking/integrated_protocols.hpp; L1-70
+Fuente: [S06] src/integrated_protocols.cpp; L141-212
+4.2. Lo físico, lo operativo y lo descriptivo
+RAW y clock son estado del mundo. Tick global, colas, recibos y fase protocolar son estado del entorno de ejecución. El nombre de un protocolo, sus labels y la receta son metadatos necesarios para reanudar o interpretar el experimento, pero no deben afectar la regla F_27. Las mediciones de rendimiento son información técnica adicional y se excluyen de equivalencias físicas.
+Fuente: [S17] include/dee_thinking/runtime.hpp
+Fuente: [S11] include/dee_thinking/kernel_v27.hpp; L46-69
+5. Representación binaria y constantes efectivas de v27
+Cada sitio utiliza una palabra RAW de 64 bits y una palabra clock de 64 bits. La palabra RAW empaqueta estado, carga, tres componentes de dirección y semántica. El reloj no está empacado dentro de RAW. En memoria de trabajo existen cuatro vectores: RAW A/B y clock A/B. A contiene el estado que lee la transición; B recibe el resultado y se copia a A al terminar.
+Campo
+Bits / tipo
+Regla exacta
+state
+0-31; uint32_t
+raw & 0xFFFFFFFFULL
+s_reg
+32-47; uint16_t
+(raw >> 32) & 0xFFFFULL
+dx
+48-51; entero con signo de 4 bits
+nibble; si bit 0x8 está activo, extender signo
+dy
+52-55; entero con signo de 4 bits
+Misma decodificación que dx
+dz
+56-59; entero con signo de 4 bits
+Misma decodificación que dx
+semantic
+60-63; uint8_t expuesto
+(raw >> 60) & 0xFULL
+clock
+Otro uint64_t por sitio
+Incremento modular de +1 por tick, incluso fuera del trabajo local Lazy
+RAW = state
+    | (uint64(s_reg) << 32)
+    | (uint64(dx & 0xF) << 48)
+    | (uint64(dy & 0xF) << 52)
+    | (uint64(dz & 0xF) << 56)
+    | (uint64(semantic & 0xF) << 60)
+El dominio representable de s_reg es 0..65535; el cap operativo 19664 no lo reemplaza. Los canales del Runtime validan direcciones en [-8,7] y semántica hasta 15. La función de packing de bajo nivel aplica máscaras; no debe confundirse su truncamiento binario con las validaciones de una interfaz de mayor nivel. Una dirección representable tampoco garantiza que su trayectoria pertenezca al dominio probado de una organización.
+Fuente: [S08] src/kernel_v27.cpp; L46-135
+Fuente: [S18] src/runtime.cpp; L265-277
+5.1. Tres predicados diferentes
+raw_present(v)       := v != 0
+occupied(v)          := state(v) != 0
+alive_for_rule(v)    := state(v) > 0 AND semantic(v) != 5
+Un registro de semántica 4 puede conservarse con state cero; un RAW con estado cero puede contener dirección y participar en la búsqueda de propuestas direccionales. Un orphan material no se cuenta como vecino activo de regla aunque exista para otras sumas. Esta distinción afecta Lazy, XNOR, gradientes, ocupación y diagnósticos.
+Fuente: [S08] src/kernel_v27.cpp; L128-135
+Fuente: [S08] src/kernel_v27.cpp; L198-222
+5.2. Semánticas públicas
+Valor
+Nombre C++
+Uso que fija el código
+0
+Void
+Semántica nula. Una celda material que termina esa rama pasa a Normal.
+1
+Normal
+Registro ordinario; se usa en transporte y diversas preparaciones.
+2
+ElectronSeed
+Etiqueta definida; no implica una implementación externa de electrón por el nombre.
+3
+ProtonSeed
+Etiqueta definida; misma cautela sobre interpretación.
+4
+Observer
+RAW protegido en la pasada base y en DEMUX; clock sigue avanzando.
+5
+OrphanBit
+No se cuenta como alive_for_rule; tiene condiciones especiales de dirección y exclusión en DEMUX.
+6
+Horizon
+Etiqueta definida; conservarla en los registros que corresponda.
+7
+BornXnor
+Semántica del nacimiento XNOR: state=1, s_reg=1, dirección cero.
+Fuente: [S11] include/dee_thinking/kernel_v27.hpp; L10-25
+Fuente: [S08] src/kernel_v27.cpp; L237-326
+5.3. Constantes, derivación de código y papel
+Constante
+Valor / expresión
+Papel efectivo
+K_LIMIT
+9.887
+Literal double. Alimenta el umbral de cristalización; el archivo no deriva por qué el literal es 9.887.
+V_NODES / E_EDGES / F_FACES
+8.0 / 12.0 / 6.0
+Constantes geométricas usadas en las expresiones siguientes.
+D_MOORE / V_TETRA
+26.0 / 4.0
+Vecindad y patrón tetraédrico de la formulación del source.
+TENSION_ELECTROWEAK
+(26-6)/8 = 2.5
+Régimen material ordinario.
+TENSION_STRONG
+(12*4)/(4-1) = 16
+Régimen con firma tetraédrica e incompletitud.
+UMBRAL_CRISTALIZACION
+int(9.887^3) = 966
+Guarda de nacimiento por gradiente.
+P_KERNEL / UMBRAL_FUSION
+19665 / 19665
+Denominador de una guarda y umbral material de overflow.
+kReducerCap
+19664
+Cap de integración múltiple y suma DEMUX sobre ocupado.
+TTL_ORFAN
+194422
+Literal en una rama defensiva del postpaso; el dominio auditado no la alcanza desde tick completo.
+ORPHAN_TTL
+9
+Definido pero no utilizado en la transición del archivo.
+COMPLETE_CUBE_VECINOS
+7
+La firma tetraédrica usa tensión fuerte si n_active < 7.
+XNOR_MIN_ACTIVE / XNOR_PAIRS_TOTAL
+8 / 13
+Nacimiento sólo con 13 pares antipodales iguales y al menos 8 activos.
+782
+Literal en 782/(8-n_active)
+Agenda de incremento de s_reg material cuando no hay protección.
+Estas igualdades describen la constitución del programa. No son una derivación independiente del origen científico de todos los literales. Para reconstruir 2.2.0 deben conservarse tal como aparecen; completar una genealogía teórica distinta no autoriza a recalcularlos ni a sustituirlos en esta versión.
+Fuente: [S08] src/kernel_v27.cpp; L23-61
+Fuente: [S08] src/kernel_v27.cpp; L347-363
+5.4. Vecindad e indexación
+index(x,y,z,N) = (x*N + y)*N + z
+wrap(v,N) = ((v % N) + N) % N
+La implementación corrige el resto negativo, sin modificar coordenadas válidas. MOORE_DXYZ enumera las 26 ternas de {-1,0,1} excepto el origen, con x, después y y después z como orden de recorrido. Este orden importa para herencia del primer vecino activo y para desempates con comparación estricta. XNOR_PAIRS contiene 13 representantes de pares antipodales; TET_PATTERNS contiene ocho patrones de cuatro vecinos. EDGE_DXYZ y demux_edge_min se conservan aunque ese helper no participa en el camino de tick actual.
+Para N muy pequeño, diferentes offsets pueden recaer en la misma coordenada toroidal. La implementación recorre offsets, no un conjunto de vecinos deduplicado. No introducir deduplicación como una supuesta corrección inocua; los contratos experimentales utilizan dimensiones específicas y no prometen extrapolación a todo N.
+Fuente: [S08] src/kernel_v27.cpp; L63-195
+6. Transición completa: orden, guardas y resultados
+El kernel lee A como un estado común. Cada actualización escribe B y acumula propuestas DEMUX en un buffer separado. Sólo después de terminar las actualizaciones locales se aplica DEMUX sobre B y se copia B a A. Los contadores de overflow y genesis informan eventos; no seleccionan la evolución.
+6.1. Variables de vecindad
+Antes de la rama vacío/material, salvo semántica 4, se calcula n_active contando vecinos con estado positivo y semántica distinta de orphan. La suma vectorial utiliza sus direcciones. El gradiente usa vecinos cuyo estado es positivo, incluidos los orphan; para cada componente se resta offset*s_reg. La semántica heredada procede del primer vecino activo. La presencia de un vecino con semántica orphan se detecta incluso cuando no cuenta como activo.
+g_a = -sum_over_neighbors(offset_a * s_reg(neighbor))
+       [solo vecinos con state > 0]
+grad_mag = abs(g_x) + abs(g_y) + abs(g_z)
+El source calcula también suma_s_reg_vecinos, max_sreg y offsets del máximo. Algunos valores son auxiliares o vestigios de ramas con igual salida. No se debe deducir una fuerza o regla nueva sólo porque exista una variable con nombre sugerente.
+Fuente: [S08] src/kernel_v27.cpp; L237-296
+6.2. Precedencia del registro protegido
+Si semantic=4, la pasada local conserva RAW literalmente y escribe clock+1; no entra en las ramas siguientes. El postpaso DEMUX también lo protege. Esto explica que un soporte persistente pueda abastecer contextos o propuestas sin ser una memoria ordinaria reescribible en ese registro.
+Fuente: [S08] src/kernel_v27.cpp; L243-248
+Fuente: [S08] src/kernel_v27.cpp; L416-437
+6.3. Rama state=0
+Prioridad
+Condición
+Salida
+1
+Vecino activo, grad_mag/P_KERNEL >= 966 y sin vecino orphan.
+state=1, s_reg=0, dirección=signo del gradiente, semántica heredada; genesis +1.
+2
+13 pares antipodales con actividad igual y >=8 vecinos activos.
+state=1, s_reg=1, dirección=(0,0,0), semántica=7; genesis +1.
+3
+Existe al menos una propuesta direccional no nula hacia el destino.
+state=1, carga/dirección del reductor, semántica=1.
+4
+Ninguna condición anterior.
+RAW=0; clock+1. Las dos ramas finales del source tienen esa salida.
+La prioridad XNOR puede impedir interpretar todo encuentro como suma direccional. Una predicción aritmética sólo es válida cuando la trayectoria permanece en la rama asumida. La cristalización por el umbral 966 está conservada en source, pero el informe microscópico demuestra que la cota de gradiente con el packing de 16 bits no alcanza ese valor normalizado: la cota conservadora usada es floor(5111730/19665)=259. No se presenta esa rama como mecanismo ejecutado del dominio actual.
+Fuente: [S08] src/kernel_v27.cpp; L298-335
+Fuente: [S19] docs/MICROSCOPIC_BRANCH_AUDIT.md
+6.4. Reductor de propuestas direccionales
+La búsqueda recorre los 26 vecinos y comprueba si su dirección no nula apunta al destino después del wrap. No exige alive_for_rule para reconocer esa propuesta. Con cero fuentes devuelve 0; con una conserva la palabra de la fuente para tomar carga y dirección; con varias suma cargas y reduce cada componente direccional por signo. La rama de nacimiento fija después state=1 y semántica normal.
+s_out = min(19664, sum(s_j))
+d_out = (sign(sum(dx_j)), sign(sum(dy_j)), sign(sum(dz_j)))
+[para dos o mas propuestas de la misma fibra]
+La operación simultánea es simétrica respecto de las contribuciones. Una serie de colisiones no conserva necesariamente ese resultado: reducir signos después de una primera colisión puede perder magnitudes que otra agrupación utilizaría. No reordenar una composición por asociatividad presupuesta.
+Fuente: [S08] src/kernel_v27.cpp; L198-234
+6.5. Rama material y supervivencia
+hadron = existe uno de los ocho TET_PATTERNS activo
+incomplete = n_active < 7
+T_local = 16 si hadron AND incomplete; de otro modo 2.5
+rho_eff = n_active * T_local / 26
+rule_value = floor(rho_eff + 0.5)
+Si rule_value=0, el registro desaparece y se escribe clock+1. Sólo después de superar esa guarda se determina la protección: n_active>=7 y suma de direcciones exactamente cero. La protección impide el incremento de procedencia, no elimina la posibilidad de que otras condiciones del código se apliquen a una preparación extrema.
+Cuando no hay protección se toma k=8-n_active. Si 0<k<=8, el periodo es la división entera 782/k y se incrementa s_reg en uno sólo cuando el clock de entrada es congruente a cero. El clock consultado es clkA del sitio, no el tick global del Runtime. No se inventa un periodo de atención ni se comprime el reloj a Q=391 para todo el mundo.
+n_active
+Periodo candidato
+Condición adicional
+0
+97
+Sólo si sobrevive y no está protegido
+1
+111
+Sólo si sobrevive y no está protegido
+2
+130
+Sólo si sobrevive y no está protegido
+3
+156
+Sólo si sobrevive y no está protegido
+4
+195
+Sólo si sobrevive y no está protegido
+5
+260
+Sólo si sobrevive y no está protegido
+6
+391
+Sólo si sobrevive y no está protegido
+7
+782
+Sólo si sobrevive y no está protegido
+Fuente: [S08] src/kernel_v27.cpp; L340-364
+6.6. Overflow, destino y reinicio
+Si prov_total>=19665 se recorre la vecindad Moore. Se omiten los destinos con semántica orphan. Para cada candidato se vuelve a contar su vecindad activa; sólo se admiten candidatos con menos de ocho vecinos activos. Se elige la menor carga s_reg y el primer offset que consigue un mínimo estricto. Al hallar destino, se acumula un delta unitario, se incrementa overflow_count y prov_total se reinicia a cero.
+Si no hay destino abierto, no se ejecuta ese reinicio. El empaquetado final convierte prov_total a uint16_t, tal como hace el source. No introducir un clamp universal en esa rama porque el reducer de propuestas tenga otro cap. Conservar esta diferencia es parte de la fidelidad de las preparaciones extremas.
+La dirección material pasa al signo del gradiente sólo si la dirección anterior no era nula o el registro es orphan. En otro caso queda cero. La semántica nula pasa a normal; las otras se conservan. El estado final es rule_value, no necesariamente el state anterior.
+Fuente: [S08] src/kernel_v27.cpp; L365-410
+6.7. Postpaso DEMUX
+Destino en B
+Acción cuando delta>0
+semantic=4
+Ignorar el delta y conservar el registro.
+semantic=5
+Rama defensiva: empaquetar TTL_ORFAN, carga y dirección cero. El productor actual impide alcanzar esta combinación en el dominio auditado.
+state=0
+Crear state=1, s_reg=0, dirección cero y semántica normal. No es sumar delta a una memoria ya material.
+Otro ocupado
+sumar delta a s_reg con cap 19664; conservar state, dirección y semántica de B.
+El productor elige destinos mirando A; el postpaso aplica sobre B. Esa separación permite, por ejemplo, que un portador que nace o llega en la misma transición reciba una modificación posterior, como en F2. No fusionar las fases ni aplicar inmediatamente un delta durante el recorrido local.
+Fuente: [S08] src/kernel_v27.cpp; L416-439
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md
+7. Dense, Lazy y paralelismo: misma regla, agenda distinta
+Los tres backends llaman la misma actualización local y el mismo postpaso. La selección no es una nueva ley física ni una optimización que pueda eliminar historia. El valor predeterminado del Runtime es DenseSequential con un hilo. Los protocolos H3/F1/F2 declaran otros valores predeterminados de ejecución, sin alterar sus estados físicos.
+Backend
+Trabajo local
+Fases globales
+DenseSequential
+Recorre x,y,z de todo N^3 en el hilo llamador.
+Inicializa deltas; aplica DEMUX; copia RAW B y clock B a A.
+DenseParallel
+Divide slabs de x; workers leen el mismo A y escriben regiones disjuntas de B.
+Espera join antes del postpaso y copy-back.
+Lazy
+Marca todo RAW!=0 y su halo Moore-26, compacta y evalúa sólo esos índices.
+Primero conserva RAW y avanza todos los clocks; DEMUX y copy-back siguen recorriendo el volumen.
+Fuente: [S08] src/kernel_v27.cpp; L529-770
+7.1. Justificación del conjunto candidato
+Fuera del conjunto formado por RAW no nulo más su halo inmediato, el sitio tiene RAW=0 y no tiene vecino RAW no nulo. En las ramas locales del source no dispone de una propuesta ni de vecinos activos que produzcan un nacimiento. Su resultado por defecto es RAW cero y clock+1. DEMUX se aplica por separado sobre todo B, por lo que no se descartan impactos del postpaso. Esta justificación se refiere al criterio de trabajo; no identifica ese halo con el radio máximo de dependencia causal de un tick.
+El source reconstruye las listas candidate/active_raw/work y el buffer atómico de deltas en cada llamada. No contiene una caché incremental de frentes ni una memoria dispersa completa. Las optimizaciones futuras deberán preservar estos efectos, pero no pertenecen al corte reconstruido.
+Fuente: [S08] src/kernel_v27.cpp; L621-722
+Fuente: [S19] docs/MICROSCOPIC_BRANCH_AUDIT.md
+7.2. Hilos, aislamiento y métricas
+DenseParallel limita workers al mínimo entre threads y N; Lazy los limita por el tamaño de work. Una división entera redondeada hacia arriba puede dejar menos tramos no vacíos que hilos solicitados. La telemetría informa el número realmente lanzado. Un mundo Lazy vacío puede usar cero workers y aun así avanzar todos sus clocks.
+Los acumuladores DEMUX y los contadores son atómicos; cada tick crea buffers propios. El join separa la escritura local de la aplicación global. Esto no autoriza dos transiciones simultáneas sobre el mismo Runtime. El binding retiene el GIL, pero la API C++ por sí sola no incorpora un mutex universal para todas las operaciones del mundo.
+Fuente: [S08] src/kernel_v27.cpp; L559-726
+Fuente: [S20] bindings/dee_thinking_pybind.cpp; L709-738
+7.3. Coste de memoria y rendimiento
+Sólo los cuatro vectores uint64 de Runtime requieren 32*N^3 bytes. Para N=127 son 65 548 256 bytes, aproximadamente 62,51 MiB; para N=512 son 4 GiB. Los deltas, candidate, listas, copias de resultados, snapshots serializados y objetos Python aumentan ese coste. El límite N<=512 del Runtime no es una promesa de que una máquina tenga memoria suficiente ni de que su snapshot quepa en el límite de 2 GiB.
+Lazy puede ser muy favorable en mundos poco ocupados y menos favorable en otros. El informe heredado contiene resultados de ambos signos. No derivar de esa evidencia una tasa universal, una complejidad completamente dispersa ni consumo energético. La reconstrucción primero recupera comportamiento; cualquier benchmark posterior debe usar preparaciones y compilación comparables.
+Fuente: [S17] include/dee_thinking/runtime.hpp; L151-183
+Fuente: [S18] src/runtime.cpp; L28-32
+Fuente: [S21] docs/TECHNICAL_REPORT.md
+8. Runtime persistente: ciclo de vida y admisión
+Runtime posee su estado y no utiliza un mundo global mutable. Su constructor crea N^3 palabras cero en cada vector. import_research_state es una importación explícita: copia o mueve RAW/clock recibidos, fija el tick y reconstruye los buffers B a partir de A. No es una experiencia ordinaria ni se llama silenciosamente para reiniciar cada muestra.
+Fuente: [S17] include/dee_thinking/runtime.hpp; L72-185
+Fuente: [S18] src/runtime.cpp; L220-244
+8.1. Convención de tiempo
+El estado etiquetado t existe después de t transiciones. Los eventos destinados a t se intentan aplicar justo antes de t->t+1. run_until(T) termina en T antes de aplicar eventos de esa frontera. observe() no aplica la cola. advance(0) no modifica estado ni recibos. El tick global evita overflow mediante una excepción; los clocks físicos uint64 siguen su aritmética modular.
+experience(canal, t=5, s=7) -> Scheduled
+run_until(5)               -> estado en frontera 5; evento pendiente
+observe(sitio)             -> lectura sin aplicar el evento
+advance(1)                 -> admision del evento en 5, luego tick 5->6
+receipt(id)                -> Applied o rechazo efectivo
+El recibo devuelto al programar es una copia del estado de esa solicitud. Para conocer su resultado posterior se consulta receipt(id) o receipts(): no se supone que el objeto previamente recibido se actualice por referencia.
+Fuente: [S18] src/runtime.cpp; L303-444
+8.2. Canal, lote y conflicto
+Un ChannelSpec fija nombre, coordenada, state, dirección, semántica y permisos de experiencia/sonda. InputRequest aporta canal y s_reg. La función de programación valida tiempo, cola, existencia del canal, permiso y ausencia de destinos repetidos en el lote. La admisión física se vuelve a comprobar al llegar la frontera efectiva.
+La admisión exige RAW exactamente cero. No basta state=0. Dos eventos simultáneos que reclaman un destino provocan rechazo por conflicto para los eventos afectados; no existe una política silenciosa de última escritura. Los lotes son atómicos: sólo cuando todas sus escrituras son admisibles se aplican. Al escribir RAW mediante esta ruta se conserva la palabra clock existente.
+Estado
+Valor
+Significado
+Scheduled
+1
+Solicitud aceptada; admisión física pendiente.
+Applied
+2
+Todas las escrituras del evento se aplicaron en effective_tick.
+RejectedLate
+3
+Frontera solicitada anterior al tick actual.
+RejectedInvalid
+4
+Canal, permiso o lote no válido.
+RejectedOccupied
+5
+Destino no RAW-vacío al aplicar.
+RejectedConflict
+6
+Destinos repetidos o reclamo simultáneo.
+RejectedQueueFull
+7
+4096 eventos pendientes ya alcanzados.
+Fuente: [S18] src/runtime.cpp; L265-409
+8.3. Advance, pausa y observaciones
+advance(n) aplica eventos y ejecuta exactamente n ticks, salvo error. Acumula overflows, genesis, evaluated y tiempos, mientras algunos campos técnicos reflejan el último tick. last_tick_info() conserva ese último informe. pause() sólo cambia el permiso de evolución: advance(n>0) lanza un error mientras está pausado. resume() no recupera tiempo de reloj de pared ni reconstruye historia.
+observe devuelve tick, coordenada, RAW, clock y Record decodificado. metrics cuenta soporte RAW, ocupación y suma descriptiva de s_reg. No son medidas de inteligencia, energía ni capacidad informacional por definición. raw_copy() y clock_copy() devuelven copias; no vistas mutables. fork() copia profundamente el objeto y sus vectores/mapas.
+Fuente: [S18] src/runtime.cpp; L412-469
+Fuente: [S17] include/dee_thinking/runtime.hpp; L95-146
+8.4. Garantías y límites de la capa
+El Runtime valida dimensión 1..512. Los contadores de eventos no pueden agotarse silenciosamente. Sus invariantes de persistencia verifican canales, dimensiones, correspondencia entre pending y receipts, campos de escritura y permisos. El mundo no aplica aplazamiento automático: una entrada rechazada no reaparece después salvo una solicitud nueva del cliente.
+No todas las escrituras de los protocolos integrados pasan por Runtime::experience. H1/H2 utilizan buffers nativos de protocolo; H3 usa RepairWorld; F1/F2 sí utilizan Runtime con una preparación inicial. Por tanto, la garantía de conservar clock de experience no debe extenderse sin lectura de source a todas las preparaciones históricas. Los capítulos H2 y H3 describen sus asignaciones explícitas de fase.
+Fuente: [S18] src/runtime.cpp; L192-200
+Fuente: [S18] src/runtime.cpp; L471-578
+Fuente: [S06] src/integrated_protocols.cpp; L108-138
+9. Catálogo y planificador de composiciones
+El catálogo mantiene OrganizationDescriptor y construye OrganizationInstance. El descriptor declara familia, disponibilidad, fuente, resumen, parámetros, puertos, preparación, recursos, consulta, interferencia, retención, dominio y contexto. La instancia materializa coordenadas absolutas, footprint, canales y landmarks para que CompositionPlanner instale una sola preparación.
+Las cinco facetas initial_footprint, functional_relation, read_region, required_context y context_horizon se mantienen separadas incluso cuando en un aparato algunas ocupan el mismo soporte. Describir una región no genera una frontera física; la interferencia y supervivencia continúan dependiendo del mundo compartido.
+Fuente: [S22] include/dee_thinking/organization_catalog.hpp; L35-198
+9.1. Familias heredadas publicadas
+ID de organización
+Ver.
+Dominio declarado por el registro
+transport.axis.v1
+1.0.0
+Axis directions; distance 1..20; validated on toroidal worlds large enough to avoid unintended wrap.
+relation_learning.c6h01.v1
+1.0.0
+N>=17 witness; cue/teacher boundary 0, relation at t=3.
+relation_query.c6h01.v1
+1.0.0
+Query admitted at boundary 6; response at boundary 11.
+mobile_lineage.c7h03.v1
+1.0.0
+N=127 reference geometry; t=5 training, t=12 update.
+native_update_bridge.p01.v1
+1.0.0
+N=127 geometry, consequence t=8, update t=12.
+query_recurrence.p01.v1
+1.0.0
+N=127, responses t=34,46,58.
+relative_history.i02.v1
+1.0.0
+N>=31 scaffold; HA/HB common inventory, exchanged early/late order.
+contextual_multichannel_recurrence.p02.v1
+1.0.0
+N=127 witness; A/B/C consequence t=6, redirect t=8, q readout t=12.
+distributed_context.i05.v1
+1.0.0
+N>=31; intended shared-anchor use with relative_history and contextual recurrence.
+temporal_phase_memory.core05.v1
+1.0.0
+Toroidal v27 worlds; distance 3..8; signed axis permutations; source loads 1..1000 with aggregate below reducer cap. NRH06 parity law additionally selects source 3.
+La tabla reproduce el registro de la implementación, incluyendo su terminología original en inglés. El dominio del descriptor es una promesa acotada del constructor, no una demostración de composición arbitraria. Los parámetros y puertos completos se encuentran en el anexo de catálogo.
+Fuente: [S23] src/organization_catalog.cpp; L220-647
+9.2. Puertos y preparación
+Los roles distinguen ExperienceInput, QueryInput, UpdateInput, SupplyInput, PassiveReadout, InternalOutput y ContextInterface. Las contribuciones distinguen Carrier, CollisionProposal, MobileRelation, ContextCondition y PassiveObservation. Un puerto combina rol, sitio, dirección opcional, ventana temporal, rango de carga y límite de conexiones. No introduce una operación nueva del kernel.
+La capa ComposedWorld valida el rol, el rango y la ventana del puerto antes de delegar la admisión al Runtime. Los nombres quedan cualificados como instancia.canal. No es lo mismo un nombre válido, una conexión estática aceptada y un encuentro que sobrevive a la simulación.
+Fuente: [S24] src/composition.cpp; L252-397
+9.3. Análisis estático y build
+CompositionPlanner::analyze verifica IDs, dimensiones, roles, rangos, direcciones, trayectorias toroidales, conexiones obligatorias, capacidad por puerto y solapamientos pertinentes. Produce diagnósticos con severidad y clase de verificación: StaticVerified, RequiresSimulation o Unsupported. Una conexión geométricamente consistente puede requerir simulación para supervivencia, fase o interferencia.
+build() rechaza errores; prepara vectores RAW/clock, instala las plantillas y sus canales en un solo Runtime y guarda la receta y el manifiesto. No contiene una operación por tick que lea el resultado de una organización para copiarlo a otra. El transporte posterior lo realiza el kernel. Un ContextInterface reconoce contexto compartido, no crea una copia.
+La prohibición de una segunda conexión desde una salida es una limitación de este planificador para no falsificar fan-out. No prueba que toda organización posible de v27 sea incapaz de dos consecuencias. La entrega conserva esa cautela sin abrir una búsqueda nueva.
+Fuente: [S24] src/composition.cpp; L473-705
+9.4. Receta y manifiesto
+El manifiesto JSON describe identidad estable de la composición; el tick, el backend actual y las colas no deben confundirse con esa identidad. La receta canónica incluye dimensión, IDs y versiones de constructores, IDs de instancia, anchors, parámetros y conexiones con su purpose. El lector limita tamaño y número de elementos y comprueba codificaciones, duplicados y equivalencias antes de instalar el Runtime restaurado.
+Las claves de metadatos son dee_thinking.organization_catalog_schema, dee_thinking.composition_recipe_schema, dee_thinking.composition_recipe y dee_thinking.composition_manifest. Los esquemas son 1; la cabecera de receta es DEE_THINKING_COMPOSITION_RECIPE_V1. Las cadenas variables se codifican en hexadecimal dentro del formato lineal. No hay evaluación de código guardado.
+Fuente: [S24] src/composition.cpp; L17-207
+Fuente: [S24] src/composition.cpp; L306-361
+10. Snapshot: formato de bytes y reconstrucción del futuro
+Guardar RAW/clock permite recuperar el estado físico, pero no basta para una aplicación que tenga eventos pendientes, fases de protocolo o lecturas ya acumuladas. El snapshot de Runtime serializa esas capas operativas y un mapa de metadatos inertes. La composición y cada protocolo reconstruyen después sus interfaces desde una receta verificada.
+10.1. Primitivas y orden binario v2
+Los enteros del archivo se escriben little-endian mediante u8, u32 y u64. Un int de coordenada/dirección se escribe mediante u32 con la conversión del source. Cada string comienza con longitud u32 en bytes, seguida del contenido. Los arrays RAW y clock no pasan por float ni por un formato de texto numérico de precisión limitada.
+Orden
+Campo
+Representación
+1
+Magic
+8 bytes ASCII: DEETSNP1; se conserva también en escritor v2.
+2
+Versión y dimensión
+u32 version=2; u32 N.
+3
+Tiempo y pausa
+u64 tick; u8 paused.
+4
+Contadores y fase
+u64 next_event_id; u64 next_sequence; string protocol_phase.
+5
+Estado
+u64 cantidad=N^3; N^3 u64 RAW A; N^3 u64 clock A.
+6
+Canales
+u32 cantidad y, por canal: nombre; xyz i32; state u32; dirección i32*3; sem u8; permisos u8*2.
+7
+Eventos pendientes
+u32 cantidad; frontera u64; ID u64; kind u8; requested u64; sequence u64; lista de canales y escrituras xyz+RAW.
+8
+Recibos
+u32 cantidad; ID, kind, status, requested, indicador effective_tick y valor opcional; canales; reason.
+9
+Extensión v2
+backend u8; threads u64; u32 cantidad de metadatos; pares string key/value.
+10
+Checksum
+u64 sobre todos los bytes precedentes; no autenticación criptográfica.
+Fuente: [S18] src/runtime.cpp; L25-97
+Fuente: [S18] src/runtime.cpp; L580-633
+10.2. Checksum exacto del corte
+h = 1469598103934665603  // literal de este source
+para cada byte b del payload:
+    h = h XOR b
+    h = h * 1099511628211  // aritmetica uint64
+append_u64_little_endian(h)
+El helper se llama fnv1a64. La compatibilidad del archivo se obtiene conservando el literal exacto del source, no sustituyendo la semilla por la de otra implementación que use un nombre parecido. El checksum detecta determinadas corrupciones accidentales; no es una firma ni una autorización para cargar código.
+Fuente: [S18] src/runtime.cpp; L97-104
+10.3. Límites y validación
+Límite
+Valor
+Snapshot máximo
+2 * 1024^3 bytes
+String serializado
+1 << 20 bytes
+Canales
+65536
+Campos por evento/recibo
+65536
+Recibos
+1000000
+Eventos pendientes
+4096
+Metadatos
+4096 entradas; key no vacía y hasta 1024 bytes
+Dimensión Runtime
+1..512, sujeta además a memoria y tamaño del snapshot
+Receta de composición
+Hasta 65536 elementos y 1 << 20 bytes
+El lector comprueba magic, versión compatible, checksum, longitudes, consumo completo del payload, dimensiones y coherencia de estado/recibos/colas. Un evento pendiente debe tener recibo Scheduled, identidad consistente, canales existentes, permisos y escritura compatible con el canal. restore_snapshot carga primero una instancia temporal y sólo reemplaza el objeto vigente si toda la carga termina correctamente.
+Fuente: [S18] src/runtime.cpp; L471-554
+Fuente: [S18] src/runtime.cpp; L635-790
+Fuente: [S24] src/composition.cpp; L17-25
+10.4. Publicación del archivo
+Se escribe un temporal junto al destino, con identificador de proceso y contador. Se cierra antes de publicarlo. En Windows se llama FlushFileBuffers y después ReplaceFileW o MoveFileExW según exista el destino; en la rama POSIX se usa rename. Si algo falla se elimina el temporal y se conserva el destino anterior. No se promete durabilidad absoluta ante toda avería del sistema de archivos, firmware o energía.
+Fuente: [S18] src/runtime.cpp; L106-188
+10.5. Qué debe cargarse con cada API
+API
+Información que reconstruye
+Runtime::load_snapshot
+Buffers, tick, colas, canales, recibos, opciones y metadatos. Lee v1/v2; en v1 usa valores legacy sin inventar organizaciones.
+ComposedWorld::load_snapshot
+Exige receta autocontenida v2; reinstancia contratos, valida versiones/manifiesto y luego coloca el Runtime guardado.
+resume_*_checkpoint
+Reconstituye el protocolo particular y sus observaciones parciales; no repite su entrenamiento desde cero.
+Los checkpoints H1/H2/H3/F1/F2 reutilizan el contenedor Runtime y claves protocol.id/version. H2 distingue separado y solapado. H3 conserva autorización, geometría y resultados parciales; F1/F2 conservan lecturas previas y contadores. Un resultado final devuelto por run_* no equivale a un controlador vivo con sus recetas: para detener y continuar se utiliza el par save/resume correspondiente.
+Fuente: [S06] src/integrated_protocols.cpp; L319-454
+Fuente: [S06] src/integrated_protocols.cpp; L659-924
+Fuente: [S06] src/integrated_protocols.cpp; L1475-1568
+Fuente: [S06] src/integrated_protocols.cpp; L1998-2332
+11. H1: transducción de retardo a posición
+H1 convierte un retardo relativo en una etiqueta espacial mediante coincidencias entre portadores. No estima el retardo con una operación externa para después encender la salida: el host prepara recorridos según el contrato y el kernel determina qué hub recibe la fusión identificadora. El registro público lo identifica como delay_position_bank.core05.nrh05.v1, versión 1.0.0.
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L11-32
+Fuente: [S06] src/integrated_protocols.cpp; L213-318
+11.1. Preparación por defecto y dominio publicado
+Parámetro
+Valor y papel
+dimension / base
+N=59; base=(13,17,19). El toro contiene todos los canales.
+bank_axis / channel_spacing
+(0,1,0); separación 5 entre hubs.
+base_path_length / labels
+L=12; etiquetas enteras -5,-4,-3,-2,-1,0,1,2,3,4,5.
+target_direction / probe_direction
+Objetivo (1,0,0); sonda (0,0,1). Ambas y el eje del banco son cardinales ortogonales.
+input_delay / arm
+Retardo 0 por defecto; Native, ReversedCalibration o TargetAbsent.
+loads / states
+Cargas 321 y 654; states 1001 y 2003. La fusión esperada tiene carga 975 y state=1.
+phases
+0x123456789abcdef0 y 0xfedcba9876543210. Son clocks iniciales declarados, no escrituras posteriores.
+Horizonte por defecto
+L + max(abs(labels)) + 3 = 20 ticks. El dominio publicado excluye auto-wrap y saturación en la ventana.
+El validador exige etiquetas no vacías ni repetidas, retardo presente en el banco, distancias positivas, direcciones cardinales ortogonales, footprint sin colisiones y margen temporal/espacial. Sus guardas admiten ciertas configuraciones más amplias que el ejemplo; eso no equivale a una validación de todas ellas. El contrato de 2.2.0 publica el banco local N=59 y labels -5..5.
+Fuente: [S16] include/dee_thinking/integrated_protocols.hpp; L73-132
+Fuente: [S06] src/integrated_protocols.cpp; L213-277
+11.2. Construcción y ley operacional
+hub_i = base + i * channel_spacing * bank_axis  (mod N)
+probe_origin_i = hub_i - (L + calibration_i) * probe_direction
+target_origin_i = hub_i - (L + input_delay) * target_direction
+Native:              calibration_i = labels[i]
+ReversedCalibration: calibration_i = -labels[i]
+TargetAbsent:        no se instala el portador target
+Coincidencia: L + input_delay = L + calibration_i
+Los orígenes se calculan para la preparación, no para determinar la respuesta después de observar el mundo. El mundo se inicializa con 22 portadores en el caso de once etiquetas con objetivo presente; los hubs están vacíos. La evolución recoge eventos cuya firma completa coincide con el portador conjunto: state=1, semantic=1, carga 975 y dirección reducida (1,0,1). Una llegada aislada no cumple esa firma.
+La variable measurement sólo tiene valor cuando se identifica exactamente una etiqueta activa. active_labels y merged_events conservan las detecciones que permiten auditar esa decisión. El reader no crea nuevos portadores ni cambia el estado.
+Fuente: [S06] src/integrated_protocols.cpp; L278-318
+11.3. Uso y recuperación
+auto cfg = dee::thinking::protocols::DelayPositionConfig{};
+cfg.input_delay = 3;
+auto out = dee::thinking::protocols::run_delay_position(
+    cfg, {dee::v27::Backend::Lazy, 4});
+// out.measurement debe interpretarse junto con active_labels.
+dee::thinking::protocols::save_delay_position_checkpoint(
+    cfg, 8, "h1.snap", {dee::v27::Backend::Lazy, 4});
+auto resumed =
+    dee::thinking::protocols::resume_delay_position_checkpoint(
+        "h1.snap", {dee::v27::Backend::DenseSequential, 1});
+El checkpoint conserva configuración, labels, eventos de fusión ya observados y estado. Reanudar no puede descartar detecciones anteriores ni volver a instalar el banco. Los controles correctos son calibración invertida y ausencia de objetivo, además de errores de dominio. El informe del corte atribuye once retardos comprobados a la prueba nativa; esa cifra no prueba metrología continua ni funcionamiento sobre fondos arbitrarios.
+Fuente: [S06] src/integrated_protocols.cpp; L319-454
+Fuente: [S25] tests/integrated_protocols_tests.cpp
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L114-157
+12. H2: repertorios separados y fusión controlada
+H2 distingue dos operaciones que no deben fusionarse en una API ambigua: preservar relaciones en fibras distintas y hacerlas converger deliberadamente. El mismo mecanismo de encuentro que compone cargas puede eliminar la identidad de contribuciones bajo los lectores individuales. La biblioteca ofrece run_separated_repertoire y run_overlap_repertoire, no una clonación de memorias.
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L33-55
+12.1. Banco separado
+Campo
+Valor por defecto
+Dimensión / número
+N=79; K=3. La versión publica K=3 y K=7 reejecutados.
+Traslación
+(2,5,7). Se aplica a las posiciones de la plantilla.
+Relación base
+base_offset=4096; delta_cycle={-6,-3,1,4,8}.
+Consultas
+query_base=151; la consulta del canal i usa 151+i.
+Tiempos
+training_tick=5; query_tick=19; query_path=5.
+Acoplamiento posterior
+Las consultas se introducen en t=14 para llegar en t=19.
+i = 0, ..., K-1
+junction_i = (5+10*(i%8), 11, 7+14*(i/8)) + translation
+x_i = 25 + (i%11)
+delta_i = delta_cycle[i % len(delta_cycle)]
+cue_i = 4096 - x_i
+teacher_i = x_i + delta_i
+memoria_i = 4096 + delta_i
+consulta_i = 151 + i
+respuesta_i = 4096 + delta_i + consulta_i
+Los cues viajan en +x y los teachers en (-1,+1,0), de modo que el producto entrenado se mueve en +y. La consulta posterior llega en +x; la respuesta toma (1,1,0). Las distancias se calculan para que el encuentro ocurra en la frontera declarada. El código valida rango de cargas, orden de tiempos y ocupación de puertos antes de las escrituras protocolarias.
+Para K=3, los valores por defecto producen 4241, 4245 y 4250. El presupuesto de soporte sigue 2K portadores iniciales, K memorias después del entrenamiento, K consultas nuevas y K respuestas finales. Es un balance de ese sector, no una conservación universal del número de objetos para todo DEE.
+Fuente: [S06] src/integrated_protocols.cpp; L455-568
+12.2. Inyección protocolaria no equivale a experience
+Distinción necesaria para reconstruir el corte. El helper interno inject utilizado por H2 escribe RAW y también asigna el clock preparado que recibe como argumento. No sigue la regla de Runtime::experience de conservar el clock del sitio. En el banco separado usa phase=300+i para las consultas; esto forma parte de la preparación acoplada de este protocolo, no de una capacidad endógena ni de un cambio de la ley v27.
+Para recuperar exactamente la versión 2.2.0 hay que conservar esa diferencia de interfaces. No debe describirse como si todas las entradas del producto pasaran por el mismo ChannelSpec. Tampoco se debe eliminar la asignación de fase para ajustar el programa a un relato previo sin revalidar otra versión. Una futura armonización de interfaces necesitaría declarar el cambio de protocolo y comprobar su equivalencia.
+Fuente: [S06] src/integrated_protocols.cpp; L121-138
+Fuente: [S06] src/integrated_protocols.cpp; L510-551
+12.3. Panel de solapamiento
+Campo
+Valor / operación
+Preparación
+N=71; geometry_index=0; base_offset=4096; deltas={-5,2}.
+Agenda
+Entrenamiento t5; merge t14; consulta t22. Query de carga 17, inyectada en t18.
+Geometría
+merge=(17+6g,19+9g,23+11g) mod N. Una memoria llega desde y y otra desde z.
+Producto común
+2*4096-5+2=8189; dirección (0,1,1).
+Lectura conjunta
+8189+17=8206; dirección (1,1,1).
+Control off_fiber
+Desplaza una ruta +3x; no debe producir la fusión prevista ni fingir acceso individual a una carga integrada.
+Fase de consulta
+El helper de inyección utiliza phase=600 y state=6000 en la consulta del panel.
+El resultado separa merge_exact, composed_response_exact, individual_identity_preserved, false_merge y cargas observadas. Estos flags son comprobaciones de la lectura contra la preparación, no instrucciones que escriban un mundo con la respuesta deseada. En el tratamiento, una carga conjunta correcta no preserva dos identidades de memoria por ese solo hecho.
+Fuente: [S06] src/integrated_protocols.cpp; L569-658
+12.4. Persistencia y corrección histórica del wrapper
+H2-separado guarda deltas, consultas, canales y progreso. H2-solapado guarda además el resultado parcial del merge. En el corte definitivo se corrigió una omisión: detener un checkpoint en t16 no debe perder el dato observado en t14. La captura se realiza cuando sucede el evento físico, no sólo si el tick de parada coincide con el evento. RAW y clock podían ser correctos y, aun así, el resultado funcional serializado estar incompleto.
+Este caso explica por qué la prueba de persistencia no termina con igualdad de buffers: debe comparar también la fase del protocolo y las lecturas acumuladas. La corrección pertenece al envoltorio de checkpoint, no al kernel.
+Fuente: [S06] src/integrated_protocols.cpp; L659-924
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L145-157
+13. H3: reparación desde redundancia entrenada
+El protocolo trained_redundancy_repair.core17.v1 realiza una recuperación funcional usando una segunda fuente que ya recibió su propia secuencia de entrenamiento. No crea esa copia desde la primera. Su API exige authorize_diagnostic_damage=true; la preparación es acoplada y el borrado de la primera política es una intervención diagnóstica explícita.
+Fuente: [S16] include/dee_thinking/integrated_protocols.hpp; L196-255
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L56-82
+13.1. Configuraciones admitidas
+Geometría
+Parámetros
+fresh_like_00
+N=31; distancias primaria/respaldo=7/7; permutation={2,1,0}; signs={-1,1,-1}; receiver=(15,15,15).
+fresh_like_01
+N=31; distancias=6/6; permutation={0,1,2}; signs={1,1,-1}; mismo receiver.
+Preparación
+preparation_tag=1721000 por defecto. Se utiliza en states y clocks iniciales/intervenciones de este protocolo; no es una etiqueta descubierta por DEE.
+Autorización
+false por defecto. El caller debe activar el permiso de daño para ejecutar el procedimiento.
+Las direcciones del marco fuente son A=(1,0,0), B=(0,1,0), SENSOR=(-1,0,1), NORMALIZER=(1,0,-1), PENALTY=(-1,1,0) y ACTION1=(-1,1,1). La transformación es out[i]=signs[i]*in[permutation[i]]. Las geometrías validadas cambian el marco sin cambiar el papel de las intervenciones.
+Fuente: [S06] src/integrated_protocols.cpp; L925-1083
+13.2. Agenda de referencia
+Frontera / evento
+Operación y causalidad
+t0
+Dos fuentes, cargas 7 y 8, dirección A y registros preparados. No son una copia creada por la otra.
+t=N=31
+Sensores de cargas 47/48 llegan a las fuentes conforme al protocolo.
+t=2N=62
+Normalizadores 53/54 y penalizadores 59/60 completan la preparación de la relación; el brazo backup_untrained omite el entrenamiento correspondiente.
+t=3N=93
+Relay primario de carga 61 inicia transferencia; llegada t100 o t99 según distancia. Conversor de receptor de carga 71.
+Un tick después de llegada primaria
+Daño autorizado: se borra la primera política transferida en el sitio del protocolo.
+t=5N=155
+Relay de respaldo de carga 67; llegada t162 o t161. Conversor de carga 79 o su variante de control.
+Durante la ruta de respaldo
+El corte/offpath introduce el portador de carga 73 en la trayectoria o fuera de ella, según brazo.
+Un N después de llegada del respaldo
+Consulta fresh de carga 101; la función se comprueba por dirección ACTION1 en el marco elegido.
+La clase RepairMachine coordina las fronteras y acumula resultados. RepairWorld posee los cuatro arrays y ejecuta el mismo tick. Sus operaciones de preparación/daño son distintas de los eventos ordinarios del Runtime: put asigna fase, overwrite reemplaza registros y clear borra RAW y clock. Esos actos deben quedar descritos como intervenciones del protocolo; no son comportamientos espontáneos de la regla.
+Fuente: [S06] src/integrated_protocols.cpp; L966-1038
+Fuente: [S06] src/integrated_protocols.cpp; L1084-1292
+13.3. Los siete brazos y qué separan
+Brazo
+Modificación
+Treatment
+Respaldo entrenado, ruta y receptor de referencia.
+BackupUntrained
+El segundo recurso existe pero no porta la misma preparación funcional.
+BackupDirectionReset
+La dirección del respaldo se altera después de su entrenamiento.
+NoBackup
+Se retira la fuente de respaldo según el protocolo.
+PathCut
+El portador de corte intercepta la ruta física.
+OffpathCut
+Control de corte desplazado fuera de esa ruta durante la ventana.
+WrongReceiver
+Se modifica el conversor de receptor; llegar al lugar no basta para recuperar la función.
+RepairResult distingue backup_learned, función primaria antes del daño, daño aplicado, pérdida, reconstrucción a la llegada, respuesta fresh y agotamiento de ambas fuentes. La recuperación se compara con los controles; no se define por la mera existencia de un registro en el receptor. El dominio observado consume ambas fuentes, por lo que no demuestra reparación ilimitada.
+Fuente: [S06] src/integrated_protocols.cpp; L1046-1298
+Fuente: [S25] tests/integrated_protocols_tests.cpp
+13.4. Guardar y reanudar un diagnóstico
+El checkpoint conserva la configuración, el brazo, la autorización, la fase y resultados parciales. Al reanudar, el protocolo continúa las intervenciones pendientes que el usuario autorizó: cargar el contenedor no debe convertirse en una operación nueva de daño fuera de la fase guardada. El nombre del par save/resume usa stop_after_tick, que debe respetarse según la máquina de estados, no equipararse por intuición con cualquier corte de otro protocolo.
+El entrypoint run_trained_redundancy_repair devuelve el resultado de la máquina activa. El archivo preserva código histórico adicional posterior al return del entrypoint; al leer o reconstruir el comportamiento se debe seguir el flujo realmente ejecutado, no contar ese bloque como otra reparación concurrente.
+Fuente: [S06] src/integrated_protocols.cpp; L1293-1310
+Fuente: [S06] src/integrated_protocols.cpp; L1475-1568
+14. H4: diagnóstico finito de accesibilidad
+H4 no ejecuta una organización ni modifica un Runtime. analyze_accessibility recibe lecturas emparejadas y metadatos de protocolo; calcula diferencias y verifica que puedan compararse. Su ID es accessibility.history_conditioned_finite_response.v1. Integrarlo como herramienta, y no como órgano, mantiene la diferencia entre evolución DEE e interpretación externa.
+Fuente: [S16] include/dee_thinking/integrated_protocols.hpp; L257-310
+Fuente: [S06] src/integrated_protocols.cpp; L1570-1662
+14.1. Entradas y precondiciones
+AccessibilityRequest contiene observer_id, challenge_id, marcas de aparato/challenge congelados, edades alineadas y una lista de casos. Cada caso incluye history_id, ticks baseline/challenged, vectores de lecturas (sitio, RAW, clock), clasificación histórica y si el challenge pertenece a un clon diagnóstico. El analizador verifica tamaños, correspondencia de sitios, ticks y consistencia de esas declaraciones.
+Constructed, Reached, Acquired y NotDemonstrated son etiquetas de procedencia del caller. El programa no demuestra por sí mismo una trayectoria nativa sólo porque se le pase Reached. La validación detecta ciertas contradicciones de entrada, pero no puede verificar hechos ausentes de los datos recibidos.
+14.2. Contraste realmente calculado
+por historia H:
+    raw_changed_sites = numero de pares con RAW distinto
+    clock_changed_sites = numero de pares con clock distinto
+    s_reg_deltas[i] = s_reg(challenged[i]) - s_reg(baseline[i])
+history_conditioned_response =
+    hay mas de una historia y alguna firma resumida difiere
+La firma que compara esta implementación combina conteos de sitios cambiados y el vector de deltas de s_reg. No compara todo el vector de palabras XOR como si fuera una firma causal completa. Dos efectos diferentes pueden compartir ese resumen; por ello un resultado negativo de H4 no demuestra identidad del mundo ni igualdad de todos los repertorios futuros.
+El campo comparable resume la validez de los pares según las comprobaciones ejecutadas. Si las firmas resumidas no difieren, el programa añade un diagnóstico informativo: la presencia de ese texto no significa automáticamente que comparable sea falso. No reinterprete todos los mensajes como errores estructurales de entrada.
+Fuente: [S06] src/integrated_protocols.cpp; L1570-1662
+14.3. Alcance de la herramienta
+H4 conserva la lección de Ingenierías 03-04.5/POST: una configuración compatible puede existir sin que el aparato ensayado la alcance de forma nativa. La herramienta no encuentra rutas, no reinstancia una función y no demuestra un borde general refractario-a-competente. Para ampliar su observer haría falta otro contrato y evidencia; no se debe alterar retrospectivamente el significado de esta versión.
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L83-102
+15. F1: revisión reiterada de una relación móvil
+F1 convierte el resultado del laboratorio final en un protocolo finito reproducible. La misma continuidad de linaje recibe dos revisiones suministradas y las utiliza en consultas posteriores. Las revisiones no son calculadas por DEE: sus portadores existen en la preparación t0. Esto no impide reconocer la reprogramación por interacción; delimita qué parte procede del teacher.
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L104-133
+Fuente: [S26] evidence/laboratory_final/SCIENTIFIC_REPORT.md; L41-97
+15.1. Geometría y herencia C7H03
+Evento
+Tick / coordenada / contribución
+Junction de entrenamiento
+t5; (63,63,63); cue 4083 + teacher 19 = 4102.
+Consecuencia
+t8; (59,74,63); 23+17=40.
+Actualización inicial
+t12; (63,70,63); 4102+40=4142.
+Redirección
+t18; (69,70,63); relay con carga 0 hacia la trayectoria de consulta.
+Consulta 1
+t34; (69,86,63); +7 produce 4149.
+Revisión 1
+t38; (73,90,63); carga r1 y redirección.
+Consulta 2
+t46; (73,98,63); +5.
+Revisión 2
+t50; (77,102,63); carga r2 y redirección.
+Consulta 3
+t58; (77,110,63); +3. Horizonte final t60.
+La retícula tiene N=127. Para un portador con destino q, tick h y dirección d, el origen preparado es q-h*d módulo N. Las direcciones incluyen cue(+x), teacher(-x,+y,0), memoria(+y), programmer(+x,-y,0), programmed(+x), query(+y) y query_redirect(-x). Los relays de carga cero conservan influencia direccional: ausencia y carga cero no son equivalentes.
+Cada revisión tiene una trayectoria on-path y una paralela desplazada +3z. Los brazos intercambian la carga entre ambas manteniendo el inventario y los orígenes. Las consultas están preparadas en t0, no son entradas de una aplicación decididas a mitad de la ejecución.
+Fuente: [S06] src/integrated_protocols.cpp; L1663-1815
+Fuente: [S06] src/integrated_protocols.cpp; L1930-1997
+15.2. Brazos permitidos y resultados
+Brazo / (r1,r2; sham1,sham2)
+Respuestas t34 / t46 / t58
+Estados t38 / t50
+REV_11_13 (11,13;0,0)
+4149 / 4165 / 4181
+4160 / 4178
+REV_13_11 (13,11;0,0)
+4149 / 4167 / 4181
+4162 / 4178
+FIRST_ONLY_11 (11,0;0,13)
+4149 / 4165 / 4168
+4160 / 4165
+SECOND_ONLY_13 (0,13;11,0)
+4149 / 4154 / 4170
+4149 / 4167
+SHAM_11_13 (0,0;11,13)
+4149 / 4154 / 4157
+4149 / 4154
+NO_TRAINED_RELATION (11,13;0,0)
+7 / 5 / 3
+11 / 13
+El último brazo desvía el teacher inicial; no simplemente borra una respuesta ya calculada. La configuración ReusableRevisionConfig exige coherencia entre ID, revisiones, shams y trained_relation. Cambiar sólo id no configura automáticamente el resto del brazo. El validador rechaza combinaciones no publicadas.
+Fuente: [S06] src/integrated_protocols.cpp; L1880-1901
+15.3. Relación que se utiliza y límite de interpretación
+M0 = 4142
+Y1 = M0 + 7
+M1 = Y1 + r1
+Y2 = M1 + 5
+M2 = Y2 + r2
+Y3 = M2 + 3
+Tratamiento completo: Y3 - Y3_sham = 11 + 13 = 24
+La ecuación describe el sector no saturado y la geometría ensayada; no sustituye la ejecución. Intercambiar revisiones cambia la respuesta intermedia y conserva el total terminal. El resultado no equivale a que todo el estado completo de las dos historias sea idéntico. La biblioteca conserva snapshots y checkpoints para separar lecturas de identidad causal.
+F1 ofrece revisión reutilizable suministrada, finita y transformativa. No hay que negar esa capacidad por utilizar suma ni exigir autoenseñanza para publicarla. Tampoco se debe anunciar que admite cualquier secuencia de updates, infinitas experiencias o un stream arbitrario: la versión 1.0.0 es el protocolo concreto de sus seis brazos.
+Fuente: [S06] src/integrated_protocols.cpp; L1930-2096
+16. F2: respuesta, umbral ambiental y efecto posterior
+F2 demuestra una mediación distinta de que el mismo portador siga viajando. Una respuesta alcanza un receptor soportado, activa un overflow condicionado por la preparación y DEMUX modifica un portador independiente. Esa diferencia se utiliza en encuentros posteriores. El contenido del delta lo fija la regla; no es una copia arbitraria de la respuesta original.
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L134-165
+Fuente: [S06] src/integrated_protocols.cpp; L2097-2194
+16.1. Preparación exacta
+Elemento
+Condición del aparato
+Mundo y receptor
+N=127; receptor ambiental (73,90,63), el sitio de la primera revisión de la geometría compartida.
+Respuesta upstream
+4149 en el tratamiento; 4151 con marker_load=19. La base utiliza teacher 19 y marker17.
+Sesgo ambiental
+15515 en tratamiento;15514 subumbral. Llega en t38 con dirección (0,-1,0).
+Fase del receptor
+Clock inicial 353, incluso si RAW del receptor está vacío. Es preparación declarada.
+Soporte
+Seis semantic=4 de carga 0 y dirección0, states9000+i. Offsets respecto al receptor: (1,-1,-1), (1,-1,0), (1,-1,1), (1,0,-1), (1,0,0), (1,0,1).
+Destino DEMUX
+(72,89,62); portador independiente de carga 23 y dirección +z llega en t39.
+Cadena posterior
+t43 +31 en (72,89,66); t47 +7 en (76,89,70); t51 relay0 en (80,93,74); t55 +5 en (80,97,78).
+Horizonte
+t56, con lecturas causales en34,38,39,43,47,51,55.
+Fuente: [S06] src/integrated_protocols.cpp; L1724-1752
+Fuente: [S06] src/integrated_protocols.cpp; L1864-1879
+Fuente: [S06] src/integrated_protocols.cpp; L2097-2173
+16.2. Por qué aparece el delta
+t38: 4149 + 15515 = 19664  (receptor ambiental)
+clock de entrada al paso siguiente = 353 + 38 = 391
+n_active = 6; k = 8-6 = 2; floor(782/2) = 391
+391 % 391 = 0  -> incremento de provenance
+19664 + 1 = 19665  -> overflow cuando las guardas se cumplen
+DEMUX escribe delta +1 en el destino seleccionado
+portador independiente: 23 -> 24
+La colisión inicial llega al cap del reducer, pero el overflow de este caso sucede en la transición material posterior del receptor ocupado y soportado. No es correcto decir que todo portador que alcanza 19664 genera DEMUX: la preintegración ya distinguió recorte de carga de esa rama material. La fase y el soporte aquí preparan precisamente las guardas del segundo paso.
+El portador original no viaja al destino DEMUX. La carga local se reinicia bajo overflow; el postpaso aplica el delta al resultado base del otro sitio. Si no hubiera un portador adecuado, la rama de destino vacío no tendría el mismo significado que sumar una unidad a una memoria ya material. Los controles examinan esa distinción.
+Fuente: [S08] src/kernel_v27.cpp; L296-446
+Fuente: [S06] src/integrated_protocols.cpp; L2097-2194
+16.3. Controles y cadena leída
+Brazo
+Overflow
+t39 / t43 / t47 / t51 / t55
+ENV_INTACT
+1
+24 / 55 / 62 / 62 / 67
+ENV_RESPONSE_CUT
+0
+23 / 54 / 61 / 61 / 66
+ENV_NO_QUERY
+1
+0 / 31 / 7 / 0 / 5
+ENV_QUERY_SHAM
+1
+0 / 31 / 7 / 0 / 5
+ENV_SUBTHRESHOLD
+0
+23 / 54 / 61 / 61 / 66
+ENV_CONTENT_19
+1
+24 / 55 / 62 / 62 / 67
+ENV_RESPONSE_CUT desvía el teacher inicial, no realiza un corte tardío de una respuesta ya formada. ENV_SUBTHRESHOLD cambia sólo el sesgo a 15514; el receptor queda un nivel por debajo de lo requerido en esa frontera. No-query y query-sham conservan el overflow pero no suministran en la ruta funcional el mismo portador receptor del delta. Estos son los controles reales del source; no se deben reemplazar por suposiciones sugeridas por los nombres.
+El retorno se publica como mediación ambiental finita y preparada. No implica que el mismo entorno haya renovado indefinidamente su capacidad ni que el sistema genere todos sus teachers. Los resultados se calculan desde el mundo; las listas de valores anteriores sirven como oráculos de prueba.
+Fuente: [S06] src/integrated_protocols.cpp; L1902-1929
+Fuente: [S06] src/integrated_protocols.cpp; L2195-2332
+16.4. F3 no integrado
+El marcador 19 produce una carga upstream diferente, pero ambas alternativas llegan al mismo umbral saturado y generan el mismo delta 1. La salida downstream no preserva la distinción escalar 4149/4151. Por eso no se exportó F3 como fan-out o replicación de contenido. Es una evidencia negativa del aparato F2, no una prohibición de todas las organizaciones v27.
+La existencia de ese límite no bloquea la publicación de F1/F2 con su función observada. El corte de Entrega 02 incorpora lo alcanzado; una investigación futura se realiza sobre otra versión o laboratorio sin reescribir esta identidad documental.
+Fuente: [S26] evidence/laboratory_final/SCIENTIFIC_REPORT.md; L148-160
+Fuente: [S10] docs/CAPABILITY_CONTRACTS.md; L167-173
+17. Binding Python y constitución del WHL
+La distribución Python es otra interfaz al mismo source C++, no una segunda versión del simulador. El CMake raíz define la biblioteca estática con seis archivos src y el target de extensión enlaza esa biblioteca. Setuptools sólo coordina la construcción mediante CMakeExtension/CMakeBuild; no contiene otra lista de reglas físicas.
+Fuente: [S14] CMakeLists.txt; L1-48
+Fuente: [S15] cmake/python/dee_thinking_python.cmake
+Fuente: [S27] setup.py; L1-138
+17.1. Cadena de construcción
+pyproject.toml
+    -> setuptools.build_meta
+    -> setup.py : CMakeBuild
+    -> CMake raiz : DEE_THINKING_BUILD_PYTHON=ON
+    -> dee_thinking_python enlaza DEE::thinking
+    -> python/dee_thinking/_native.cp313-win_amd64.pyd
+    -> wheel cp313-cp313-win_amd64
+El paquete importable se llama dee_thinking; la distribución declara dee-thinking. El fichero __init__.py reexporta los símbolos nativos, build_info y __version__, define RuntimeConfig como alias de TickOptions y ofrece kernel_identity como consulta de identidad. No importa dee_universe_v27 para ejecutar el tick.
+Fuente: [S28] python/dee_thinking/__init__.py
+Fuente: [S20] bindings/dee_thinking_pybind.cpp; L1-102
+17.2. Composición del wheel preservado
+Miembro del WHL
+Bytes
+Función
+dee_thinking/THIRD_PARTY_NOTICES.md
+769
+Marcador/aviso distribuido con el paquete.
+dee_thinking/__init__.py
+914
+Inicializador de API Python.
+dee_thinking/_native.cp313-win_amd64.pyd
+1310208
+Implementación C++ compilada con interfaz CPython.
+dee_thinking/py.typed
+1
+Marcador/aviso distribuido con el paquete.
+dee_thinking-2.2.0.dist-info/METADATA
+5077
+Metadatos del paquete y soporte de instalación.
+dee_thinking-2.2.0.dist-info/WHEEL
+101
+Metadatos del paquete y soporte de instalación.
+dee_thinking-2.2.0.dist-info/top_level.txt
+13
+Metadatos del paquete y soporte de instalación.
+dee_thinking-2.2.0.dist-info/RECORD
+665
+Metadatos del paquete y soporte de instalación.
+Las etiquetas cp313-cp313-win_amd64 significan que este artefacto está dirigido a CPython 3.13 con ABI cp313 y Windows 64. No se promete abi3, Python free-threaded, subintérpretes ni otros sistemas por el mero hecho de disponer del source. El metadato Requires-Python es >=3.13,<3.14. Instalar este wheel no requiere compilar C++; reconstruirlo sí requiere el toolchain.
+Fuente: [S29] pyproject.toml
+Fuente: [S15] cmake/python/dee_thinking_python.cmake
+17.3. Tipos, propiedad y errores
+El binding expone Coordinate, Direction, Record, opciones, observaciones, canales, requests, receipts, Runtime, constructores, catálogo, planificador, ComposedWorld y los tipos de protocolos. Los resultados integrados y sus flags proceden del C++; Python no selecciona un receptor según la respuesta deseada. Las copias RAW/clock cruzan como enteros, sin conversión intermedia a float.
+Runtime posee sus buffers. Los resultados de raw_copy y clock_copy son copias. Las propiedades de instancias, descriptores y mundo compuesto tienen las políticas de vida útil del binding; no convierta las referencias expuestas en mutaciones manuales de un buffer causal. Los casts de enums, los límites del tipo y las excepciones de validación deben mantenerse al portar a otro binding.
+No todas las APIs validan la misma capa: pack_record conserva el packing de bajo nivel y puede enmascarar bits de los argumentos. Los canales y protocolos tienen guardas adicionales. No asumir que la mera existencia de un entero Python representa un valor admisible de un contrato científico.
+Fuente: [S20] bindings/dee_thinking_pybind.cpp; L103-496
+Fuente: [S20] bindings/dee_thinking_pybind.cpp; L497-738
+17.4. GIL y paralelismo
+La versión 2.2.0 mantiene el GIL durante advance y run_until. No se libera para permitir llamadas Python concurrentes sobre la misma instancia. Los workers nativos de DenseParallel/Lazy pueden funcionar dentro de la operación C++, pero eso no promete dos mundos ejecutándose en paralelo desde hilos Python. El Runtime C++ tampoco queda declarado thread-safe para usos concurrentes arbitrarios.
+build_info informa esa decisión. No debe reemplazarse por gil_scoped_release como una optimización inocua: ello cambiaría la protección frente a experience, observe o restore simultáneos y exigiría otra estrategia de bloqueo y pruebas. Esta entrega no incorpora callbacks Python dentro del tick.
+Fuente: [S20] bindings/dee_thinking_pybind.cpp; L1-102
+Fuente: [S05] docs/ARCHITECTURE_AND_BUILD.md; L133-141
+17.5. Prueba mínima desde Python instalado
+import dee_thinking as dt
+assert dt.__version__ == "2.2.0"
+assert dt.KERNEL_MODULUS == 19665
+assert dt.REDUCER_CAP == 19664
+options = dt.TickOptions(dt.Backend.LAZY, 2)
+config = dt.DelayPositionConfig()
+config.input_delay = 3
+result = dt.run_delay_position(config, options)
+assert result.measurement == 3
+print(dt.build_info())
+Este ejemplo usa una capacidad finita del protocolo. Para sesiones interactivas utilice Runtime/ComposedWorld y canales públicos; para reanudar un run_* integrado utilice su checkpoint. No confunda la devolución de un resultado completo con disponer de un mundo mutable arbitrario encapsulado en ese resultado.
+Fuente: [S30] tests/python/test_wheel_api.py
+Fuente: [S31] tests/python/test_integrated_protocols.py
+18. Reconstrucción desde cero: recorrido Windows verificable
+Este capítulo diferencia recuperación de artefactos existentes y reconstrucción de binarios. Los comandos siguientes organizan los pasos soportados por los scripts preservados. Las rutas cortas C:\DEE_RECUP son ejemplos editables del operador; no reemplazan la ubicación histórica ni requieren modificar sus archivos. Trabaje siempre sobre una extracción nueva.
+Límite del respaldo. El paquete conserva source, pruebas y artefactos de DEE thinking, no Visual Studio, Windows SDK, CPython ni copias de todas las dependencias de build. Para reconstrucción completamente offline también habría que conservar sus instaladores permitidos y wheels de herramientas. Si faltan, se deben provisionar aparte; no se puede inferir que este ZIP contiene el toolchain entero.
+18.1. Recuperar lo que ya existe
+$root = "C:\DEE_RECUP\release"
+$original = "C:\RESPALDO\DEE_thinking_ENTREGA_02_DEFINITIVA_RESULTADOS.zip"
+Get-FileHash -Algorithm SHA256 -LiteralPath $original
+Expand-Archive -LiteralPath $original -DestinationPath $root
+$wheel = Join-Path $root "wheel\dee_thinking-2.2.0-cp313-cp313-win_amd64.whl"
+Get-FileHash -Algorithm SHA256 -LiteralPath $wheel
+El ZIP original debe coincidir con ce088e... y el wheel preservado con 39e6bc...; los hashes completos figuran en el capítulo 1. Si sólo se perdió el wheel externo, basta recuperar esa copia y verificarla. No sobreescriba una versión distinta sólo porque comparta nombre.
+18.2. Requisitos de reconstrucción
+Recurso
+Requisito del corte
+Sistema/arquitectura
+Windows x64 para el wheel entregado.
+Compilador
+Visual Studio con VC.Tools.x86.x64 y soporte C++20. El informe del freeze identifica MSVC19.50; el script detecta la instalación mediante vswhere.
+Herramientas nativas
+CMake>=3.20, Ninja y Windows SDK/rc/mt resueltos por la instalación utilizada. Evitar mezclar herramientas de dos Visual Studio.
+Intérprete
+CPython 3.13 estándar, 64bits. El script comprueba versión, implementación y ancho de puntero.
+Empaquetado
+setuptools>=81,<82; wheel>=0.48,<0.49; pybind11>=3.1,<3.2; módulo build para ejecutar python -m build.
+Validación externa opcional
+WHL canónico dee_universe_v27 si se desea regenerar sus oráculos. No se requiere para ejecutar dee_thinking.
+Los rangos anteriores proceden de pyproject.toml; no son un lock exacto de todas las herramientas. Los documentos nombran pybind11 3.1.0 y el wheel declara generator setuptools 81.0.0. Si se exige reproducir el entorno histórico exacto, conserve también versiones efectivas y disponibilidad de sus paquetes. Un rebuild compatible no promete necesariamente el mismo SHA del binario.
+Fuente: [S29] pyproject.toml
+Fuente: [S32] tools/build_definitive.ps1; L1-83
+Fuente: [S05] docs/ARCHITECTURE_AND_BUILD.md; L86-99
+18.3. Entorno de build aislado
+$py313 = "C:\ruta\Python313\python.exe"
+& $py313 -I -c "import sys,struct; print(sys.version,struct.calcsize('P')*8)"
+& $py313 -m venv "C:\DEE_RECUP\venv-build"
+$buildPython = "C:\DEE_RECUP\venv-build\Scripts\python.exe"
+& $buildPython -m pip install "setuptools>=81,<82" `
+    "wheel>=0.48,<0.49" "pybind11>=3.1,<3.2" build
+if ($LASTEXITCODE -ne 0) { throw "No se instalaron herramientas de build" }
+La instalación anterior afecta sólo al venv nuevo y requiere un origen de paquetes disponible. Para un entorno offline, sustituya el origen por un directorio de wheels previamente conservado, sin cambiar las versiones declaradas. No copie un venv antiguo entre máquinas como sustituto de instalar el artefacto correcto.
+18.4. Ruta automatizada preservada
+Set-Location -LiteralPath $root
+& .\tools\build_definitive.ps1 `
+    -Configuration Release `
+    -BuildDirectory "C:\DEE_RECUP\b" `
+    -InstallPrefix "C:\DEE_RECUP\i" `
+    -PythonExecutable $buildPython
+El script detecta Visual Studio, importa su entorno al proceso, configura CMake con tests/examples/benchmarks activados, compila, ejecuta CTest, instala, construye un consumidor C++ separado y genera el wheel en dist. Para construir únicamente C++, use -SkipWheel. No confunda --parallel de build con hilos del kernel: controlan operaciones diferentes.
+Esta ruta no constituye por sí sola toda la aceptación final. El script no ejecuta toda la suite del wheel instalado ni todos los cruces C++/Python; esos pasos se hacen a continuación. La existencia del mensaje DEE_THINKING_DEFINITIVE_BUILD_COMPLETE no sustituye esos resultados.
+Fuente: [S32] tools/build_definitive.ps1; L1-83
+18.5. Ruta CMake manual
+En una consola de desarrollo x64 de la misma instalación Visual Studio, el recorrido equivalente del núcleo es el siguiente. Las variables root, b e install deben ser rutas absolutas. No reutilice un directorio CMake de otro compilador o arquitectura.
+$b = "C:\DEE_RECUP\b-manual"
+$install = "C:\DEE_RECUP\i-manual"
+cmake -S $root -B $b -G Ninja -DCMAKE_BUILD_TYPE=Release `
+    -DDEE_THINKING_BUILD_TESTS=ON `
+    -DDEE_THINKING_BUILD_EXAMPLES=ON `
+    -DDEE_THINKING_BUILD_BENCHMARKS=ON `
+    -DDEE_THINKING_BUILD_PYTHON=OFF
+cmake --build $b --parallel
+ctest --test-dir $b -C Release --output-on-failure
+cmake --install $b --config Release --prefix $install
+La biblioteca se produce en lib y los consumidores de prueba en bin. La instalación exporta DEE::thinking y la dependencia Threads. El consumidor externo debe resolver el paquete instalado mediante find_package, no incluir archivos cpp ni enlazar una lib anterior por ruta privada.
+Fuente: [S14] CMakeLists.txt; L1-217
+Fuente: [S33] tests/installed_consumer/CMakeLists.txt
+18.6. Instalar el wheel en limpio y fuera del source
+& $py313 -m venv "C:\DEE_RECUP\venv-use"
+$usePython = "C:\DEE_RECUP\venv-use\Scripts\python.exe"
+# Usar dist para el wheel recien reconstruido; wheel para el preservado.
+$builtWheel = Join-Path $root "dist\dee_thinking-2.2.0-cp313-cp313-win_amd64.whl"
+& $usePython -m pip install --no-index --no-deps $builtWheel
+New-Item -ItemType Directory -Force "C:\DEE_RECUP\outside" | Out-Null
+Set-Location "C:\DEE_RECUP\outside"
+& $usePython -I -c "import dee_thinking as d; print(d.__file__); print(d.build_info())"
+& $usePython -I -m unittest discover `
+    -s "$root\tests\python" -p "test_*.py" -v
+No use pip install -e para acreditar una distribución reconstruida. Verifique que __file__ apunta al site-packages del venv y que dee_universe_v27 no aparece cargado. El wheel entregado no declara dependencias Python de runtime; la prueba --no-deps comprueba que su uso no dependa de un paquete antiguo instalado por accidente.
+El artefacto Windows no se puede validar por instalarlo directamente en Linux. La posibilidad de compilar el núcleo con otro toolchain no cambia las etiquetas del wheel ni demuestra portabilidad ABI de la extensión.
+Fuente: [S30] tests/python/test_wheel_api.py
+Fuente: [S31] tests/python/test_integrated_protocols.py
+Fuente: [S34] python/README.md
+18.7. Persistencia C++ a Python y vuelta
+Los puentes entregados comparan un checkpoint con un futuro producido sin interrupción. A continuación se muestra la secuencia exacta de modos soportados por sus ejecutables. Cada proceso termina antes de invocar el consumidor; no se comparte el planner en RAM.
+$bin = "C:\DEE_RECUP\b\bin"
+& "$bin\dee_cross_language_bridge.exe" produce cpp.snap cpp_future.snap
+& $usePython -I "$root\tests\python\cross_language_bridge.py" `
+    consume cpp.snap cpp_future.snap
+& $usePython -I "$root\tests\python\cross_language_bridge.py" `
+    produce py.snap py_future.snap
+& "$bin\dee_cross_language_bridge.exe" consume py.snap py_future.snap
+# Protocolos: ejecutar este esquema para h1, h2-separated, h2-overlap, h3, f1, f2.
+& "$bin\dee_protocol_checkpoint_bridge.exe" save-h1 h1_cpp.snap
+& $usePython -I "$root\tests\python\protocol_checkpoint_bridge.py" `
+    resume-h1 h1_cpp.snap
+& $usePython -I "$root\tests\python\protocol_checkpoint_bridge.py" `
+    save-h1 h1_py.snap
+& "$bin\dee_protocol_checkpoint_bridge.exe" resume-h1 h1_py.snap
+Los modos H3 del puente activan explícitamente el permiso diagnóstico. No los use como una simple carga pasiva de un sistema externo. Conservar los archivos de salida de estos puentes permite demostrar futuro exacto sin equiparar esa comprobación a una prueba universal de todos los snapshots.
+Fuente: [S35] tests/cross_language_bridge.cpp
+Fuente: [S36] tests/python/cross_language_bridge.py
+Fuente: [S37] tests/protocol_checkpoint_bridge.cpp
+Fuente: [S38] tests/python/protocol_checkpoint_bridge.py
+18.8. Conservar la nueva reconstrucción sin sustituir el original
+Calcule SHA-256 del wheel reconstruido y compare función y pruebas, no presuponga igualdad binaria con otro compilador. Mantenga el ZIP preservado y su hash original. Un nuevo paquete de reconstrucción debe registrar toolchain, comandos y resultados efectivos; no copiar el VERIFIED histórico como si se hubiera vuelto a ejecutar.
+Los scripts package_definitive.py y verify_definitive_delivery.py hacen staging, coherencia de versiones, comprobaciones estructurales y publicación del paquete. El verificador no ejecuta las pruebas científicas: comprueba evidencia y estructura ya producidas. Antes de usarlos, consulte sus argumentos --help y los paths reales del nuevo build; no los interprete como reemplazo de CTest, instalación y cruces.
+Fuente: [S39] tools/package_definitive.py
+Fuente: [S40] tools/verify_definitive_delivery.py
+19. Evidencia, cobertura y comprobación de esta edición
+El documento conserva tres niveles separados: lo que reporta la entrega original; lo que puede inspeccionarse directamente en los archivos preservados; y lo que se ejecutó nuevamente para preparar este documento. Mezclarlos produciría una verificación más fuerte de la que realmente existe.
+19.1. Estado reportado por la entrega original
+Evidencia declarada
+Resultado del resumen entregado
+CTest nativo completo
+17/17, Release, 820.79 s; después de la corrección H2-overlap.
+API del wheel instalada
+11/11; 29.457 s; instalación no editable desde cwd externo; CPython 3.13.
+Consumidor nativo instalado
+find_package sobre install tree; entrada posterior, restore, CORE05 y H1.
+Persistencia cruzada
+Runtime genérico y H1/H2-separado/H2-solapado/H3/F1/F2 en ambos sentidos entre procesos.
+Extracción limpia
+49 pasos/targets de build reportados; panel dirigido 8/8 en 9.78 s; nuevo wheel reconstruido.
+Estado del resumen
+VERIFIED con seis checks PASS. Es un estado técnico del informe, no un dictamen científico universal.
+Fuente: [S41] validation/FINAL_VALIDATION_SUMMARY.json
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md; L114-184
+19.2. Qué evidencia está efectivamente empaquetada
+En validation del ZIP definitivo se encuentran FINAL_VALIDATION_SUMMARY.json y wheel_build.log. El primero resume la corrida final favorable; el segundo conserva intentos de construcción fallidos, incluidos mensajes de ausencia de compilador CMake y errores de build. Por tanto, wheel_build.log no es el log exitoso completo del freeze. No deben tratarse todas sus líneas como la última ejecución aprobada ni atribuir al ZIP un JUnit completo que no figura entre sus miembros.
+Esto no prueba que el binario final sea inválido: el wheel está presente, coincide con la identidad del resumen, y las pruebas y fuentes están preservadas. Sí delimita la trazabilidad: los tiempos y recuentos oficiales se atribuyen al resumen/informe; un auditor puede volver a ejecutar los tests para producir logs detallados de su reconstrucción.
+Fuente: [S41] validation/FINAL_VALIDATION_SUMMARY.json
+Fuente: [S42] validation/wheel_build.log
+19.3. Comprobación documental independiente realizada aquí
+Para preparar esta edición se extrajo el ZIP original sin modificarlo, se comprobó su CRC y se verificaron 137/137 entradas de HASHES.sha256. El archivo de hashes no se incluye a sí mismo. Se inspeccionaron source, headers, contratos, scripts, metadatos del wheel y resultados de referencia.
+Se configuró y compiló el source nativo en Linux/GCC mediante CMake/Ninja, con la extensión Python desactivada y benchmarks desactivados. La compilación completó 47 pasos. Se ejecutó el panel dirigido siguiente y las ocho pruebas terminaron sin fallos, en 1.78 s acumulados en este entorno. Los logs de esta comprobación se conservan en el ZIP documental, separados de la entrega original.
+Prueba repetida en esta edición
+Estado
+kernel_whl_differential
+APROBADA en esta ejecución nativa
+runtime_contract
+APROBADA en esta ejecución nativa
+execution_backends
+APROBADA en esta ejecución nativa
+composition_snapshot_restore
+APROBADA en esta ejecución nativa
+core05_phase_memory
+APROBADA en esta ejecución nativa
+cross_process_persistence
+APROBADA en esta ejecución nativa
+examples_smoke
+APROBADA en esta ejecución nativa
+integrated_protocols_e2e
+APROBADA en esta ejecución nativa
+No se ejecutó aquí el binario Windows ni se repitió la instalación CPython 3.13/Windows del wheel. Tampoco se presenta el panel 8/8 como repetición de los 17 targets completos ni de todos los protocolos largos. La compilación nativa independiente aporta evidencia de ese recorrido, no soporte oficial multiplataforma ni paridad exhaustiva de la extensión.
+19.4. Matriz de targets preservados
+CTest
+Objeto de comprobación
+kernel_whl_differential
+Fixtures de transición contra datos del WHL de referencia.
+runtime_contract
+Eventos, recibos, observación, pausa, errores y futuro.
+reference_organizations
+Organizaciones heredadas; recorrido de coste mayor.
+integration_persistence
+Integración y formato legacy v1.
+execution_backends
+Dense/Parallel/Lazy y configuraciones de hilos.
+composition_catalog
+Contratos, conexiones y composición.
+composition_snapshot_restore
+Receta autocontenida y restauración.
+core05_phase_memory
+Memoria temporal, controles y paridad.
+cross_process_persistence
+Productor/consumidor en procesos distintos.
+integrated_protocols
+Panel de H1-H4/F1/F2 y guardas de dominio.
+independent_consumer_e2e
+Consumidor de API, estado persistente y control.
+examples_smoke
+Ejemplo mínimo de transporte.
+composition_a_e2e
+Linaje, puente de update y consultas.
+composition_b_e2e
+Historia, contexto y canales.
+catalog_transport_e2e
+Constructor catalogal de transporte.
+composition_c6_later_query_e2e
+Consulta posterior sin recrear el mundo.
+integrated_protocols_e2e
+Ejemplo público del registro integrado.
+Los puentes dee_cross_language_bridge y dee_protocol_checkpoint_bridge se construyen como herramientas pero sus recorridos bidireccionales no aparecen como esos 17 nombres de CTest. Deben ejecutarse aparte. Del mismo modo, las pruebas Python se ejecutan desde el entorno limpio que instaló el wheel.
+Fuente: [S14] CMakeLists.txt; L109-195
+Fuente: [S43] docs/TEST_MATRIX_DEFINITIVE.md
+19.5. Criterios de aceptación de una reconstrucción
+Acepte la reconstrucción como compatible en su entorno sólo si compila el source preservado, las pruebas requeridas se ejecutan realmente, la extensión se instala desde el wheel construido y los futuros coinciden en las comparaciones declaradas. Debe conocerse qué diferencias son metadatos técnicos y cuáles son RAW/clock o estado del protocolo. No basta con que import funcione ni con que una respuesta final sea numéricamente igual.
+Una diferencia debe localizarse en preparación, wrapper, scheduler, lectura, toolchain o regla. No eliminar controles ni flexibilizar igualdad entera para declarar compatibilidad. El objetivo de las pruebas es reconstruir esta versión, no obligar a una nueva hipótesis a ser verdadera ni abrir un laboratorio indefinido.
+20. Recuperación de fallos, preservación y extensión futura
+20.1. Diagnóstico por síntoma
+Síntoma
+Causa que debe examinarse / respuesta
+No CMAKE_CXX_COMPILER / rc / mt
+Consola o entorno de Visual Studio incompleto; comprobar instalación x64 y herramientas de la misma instalación. No cambiar el kernel.
+CMake apunta a archivos anteriores
+Caché o build reutilizado. Usar un directorio limpio y verificar el prefijo instalado antes de enlazar.
+Wheel no soportado
+Comprobar CPython 3.13 estándar/64bits/Windows. No renombrar las etiquetas para ocultar incompatibilidad.
+Import funciona sólo desde source
+Se está importando el árbol de trabajo en vez de site-packages o falta contenido del wheel. Probar -I desde otra carpeta.
+Scheduled pero sin respuesta
+Consultar el recibo actual: puede ser rechazo por ocupación/conflicto o una entrada admitida cuya dinámica no produce esa función.
+Misma carga, distinto futuro
+Comparar RAW completo, direcciones, semánticas, clocks, eventos y contexto; s_reg no es todo el estado.
+H2 checkpoint merge=false con RAW igual
+Comprobar versión definitiva y captura del evento t14; no basta copiar arrays si falta metadata observada.
+Restore rechaza una composición
+Comprobar receta, IDs/versiones, canales y formato. No inventar descriptores ausentes de un snapshot v1.
+F1/F2 rechazan un brazo
+El ID y sus parámetros deben formar una tupla validada. Cambiar id sin cambiar los campos no configura el control.
+H3 lanza error de autorización
+El protocolo realiza daño diagnóstico; activar permiso sólo si se desea ejecutar esa intervención.
+Lazy tarda más
+El coste incluye clocks/postpaso globales y construcción de candidatos. Comparar mismo mundo y elegir backend explícito.
+Hilos Python no evolucionan dos mundos a la vez
+El binding retiene GIL. Paralelismo interno del kernel no equivale a concurrencia Python de llamadas.
+Fuente: [S32] tools/build_definitive.ps1
+Fuente: [S18] src/runtime.cpp
+Fuente: [S06] src/integrated_protocols.cpp
+Fuente: [S20] bindings/dee_thinking_pybind.cpp
+20.2. Qué no se debe reparar de forma silenciosa
+No convertir saturación en un reset oculto, una lectura en una copia física, un rechazo en una inyección forzada o una migración de archivo en una transferencia aprendida. Cambiar esos comportamientos produce otra interfaz o experimento. Si una corrección es necesaria, debe guardar el caso, modificar sólo una copia de trabajo, versionar su contrato y repetir las regresiones pertinentes.
+No modificar el reloj global porque una organización parezca detenerse. Un RAW terminal y los clocks que avanzan representan una dinámica distinta de un mundo totalmente congelado. Tampoco corregir una preparación de fase eliminando sus clocks sólo porque la entrada ordinaria conserva clock: H2/H3 tienen contratos acoplados específicos que deben explicarse o revisarse como tales.
+20.3. Unidad de respaldo y trazabilidad
+Conserve juntos: este documento; el ZIP original de Entrega 02 definitiva; el WHL contenido; y los hashes de identidad. Los fuentes dentro del ZIP original permiten recuperar todos los artefactos DEE del corte. La recuperación de una ejecución particular exige además su snapshot y, cuando sea aplicable, los datos externos que todavía no habían entrado en el mundo.
+La entrega documental adicional incluye una copia byte-idéntica del paquete original para no depender de enlaces anteriores de la conversación. Los enlaces de la sesión permiten obtenerla ahora, pero la preservación a largo plazo depende de guardar los archivos fuera de la sesión. Un checksum detecta sustituciones accidentales; no garantiza por sí solo disponibilidad futura.
+20.4. Congelar el corte sin congelar la investigación
+La versión 2.2.0 es el producto comprobado hasta este corte. No es el límite ontológico de DEE. Las hipótesis sobre nueva replicación, enseñanza endógena, mantenimiento prolongado o aplicaciones pueden investigarse con esta biblioteca sin cambiar retrospectivamente lo que aquí está implementado.
+La siguiente entrega documental será el Libro Blanco y Manual Técnico. Este documento no lo sustituye: deja la referencia de arquitectura y reconstrucción sobre la que puede redactarse una explicación introductoria sin perder exactitud. La Entrega 03 utilizará las capacidades disponibles y deberá declarar por separado adaptadores, políticas supervisoras y cambios futuros.
+Fuente: [S12] docs/SCIENTIFIC_SCOPE.md
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md
+Anexo A. Inventario completo del paquete preservado
+Este inventario corresponde a los 138 miembros de archivo del ZIP original, no a los archivos temporales de esta edición documental. Permite distinguir fuente, artefacto construido, evidencia y copia instalada. Los tamaños son los bytes efectivos de cada miembro. HASHES.sha256 ofrece la identidad individual; su propia identidad depende del ZIP que lo contiene.
+Raíz y construcción
+Ruta
+Bytes
+Responsabilidad
+CMakeLists.txt
+10,548
+Grafo único de build nativo, Python opcional, pruebas e instalación.
+HASHES.sha256
+14,240
+137 identidades de miembros; no se incluye a sí mismo.
+MANIFEST.json
+23,757
+Manifest del contenido y artefactos preservados.
+PROJECT_METADATA.json
+1,822
+Identidad, versión y estado de la entrega.
+README.md
+4,525
+Entrada de uso, build, capacidades y alcance.
+THIRD_PARTY_NOTICES.md
+541
+Avisos conservados de dependencias de construcción; no asigna licencia nueva al producto.
+pyproject.toml
+965
+Metadatos y dependencias de build Python.
+setup.py
+5,291
+Adaptador setuptools que invoca CMake; no otro kernel.
+Fuente, headers y binding
+Ruta
+Bytes
+Responsabilidad
+bindings/dee_thinking_pybind.cpp
+47,027
+Tipos y llamadas Python sobre C++.
+include/dee_thinking/composition.hpp
+4,424
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/integrated_protocols.hpp
+12,970
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/kernel_v27.hpp
+3,016
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/organization_catalog.hpp
+6,385
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/organizations.hpp
+820
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/runtime.hpp
+6,503
+Contrato C++ público; tipos y firmas exactos.
+include/dee_thinking/version.hpp
+390
+Contrato C++ público; tipos y firmas exactos.
+src/composition.cpp
+36,933
+Validación de conexiones, build de mundo y receta.
+src/integrated_protocols.cpp
+118,859
+H1/H2/H3/H4/F1/F2; fases y checkpoints.
+src/kernel_v27.cpp
+31,596
+Packing, regla v27, DEMUX y drivers Dense/Parallel/Lazy.
+src/organization_catalog.cpp
+44,921
+Descriptores, parámetros, puertos e instanciación.
+src/organizations.cpp
+8,178
+Constructores de referencia heredados.
+src/runtime.cpp
+34,726
+Estado, eventos, observación, snapshots y errores.
+Herramientas, CMake y benchmark
+Ruta
+Bytes
+Responsabilidad
+benchmarks/backend_benchmark.cpp
+12,376
+Instrumentación de rendimiento técnico.
+cmake/RunCrossProcessPersistence.cmake
+1,758
+Orquesta productor/consumidor en procesos separados.
+cmake/dee_thinkingConfig.cmake.in
+180
+Plantilla de paquete instalado y dependencia Threads.
+cmake/python/build_wheel.ps1
+2,710
+Ruta auxiliar de build del wheel.
+cmake/python/dee_thinking_python.cmake
+1,083
+Target nativo _native y dependencias Python/pybind11.
+cmake/python/validate_wheel.ps1
+1,659
+Ruta auxiliar de comprobación del wheel.
+tools/build_definitive.ps1
+4,671
+Build completo C++, CTest, install, consumidor y wheel.
+tools/package_definitive.py
+11,929
+Stage y publicación del ZIP definitivo.
+tools/verify_definitive_delivery.py
+21,699
+Verificador estructural; no ejecuta por sí mismo los tests científicos.
+Ejemplos y pruebas
+Ruta
+Bytes
+Responsabilidad
+examples/catalog_transport.cpp
+814
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/composition_a_learning_update.cpp
+1,916
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/composition_b_context_multichannel.cpp
+1,575
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/composition_c6_later_query.cpp
+1,139
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/core05_phase_memory.cpp
+1,318
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/dee_thinking_demo.cpp
+3,108
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/independent_consumer.cpp
+5,082
+Consumidor ejecutable de API para el mecanismo nombrado.
+examples/integrated_protocols.cpp
+1,798
+Consumidor ejecutable de API para el mecanismo nombrado.
+tests/backend_tests.cpp
+19,643
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/composition_catalog_tests.cpp
+15,627
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/composition_snapshot_tests.cpp
+6,965
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/core05_phase_memory_tests.cpp
+11,068
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/cross_language_bridge.cpp
+3,873
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/cross_process_persistence.cpp
+7,996
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/installed_consumer/CMakeLists.txt
+310
+Proyecto externo que consume el paquete instalado.
+tests/installed_consumer/main.cpp
+8,193
+Prueba de consumidor sin incluir source privado.
+tests/integrated_protocols_tests.cpp
+17,616
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/integration_persistence_tests.cpp
+15,136
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/kernel_fixture_tests.cpp
+4,625
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/protocol_checkpoint_bridge.cpp
+10,371
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/python/cross_language_bridge.py
+2,598
+Prueba o puente Python sobre el wheel instalado; no dinámica alternativa.
+tests/python/protocol_checkpoint_bridge.py
+4,787
+Prueba o puente Python sobre el wheel instalado; no dinámica alternativa.
+tests/python/test_integrated_protocols.py
+8,028
+Prueba o puente Python sobre el wheel instalado; no dinámica alternativa.
+tests/python/test_wheel_api.py
+8,199
+Prueba o puente Python sobre el wheel instalado; no dinámica alternativa.
+tests/reference_tests.cpp
+7,746
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/runtime_tests.cpp
+13,425
+Prueba C++ del subsistema nombrado o puente de persistencia.
+tests/test_support.hpp
+2,273
+Asserts/checks y contabilidad de fallos de los tests.
+Fixtures y evidencia
+Ruta
+Bytes
+Responsabilidad
+evidence/laboratory_final/INTEGRATION_PROPOSAL.md
+2,067
+Propuesta histórica; autorización posterior incorporada en 2.2.0.
+evidence/laboratory_final/SCIENTIFIC_REPORT.md
+8,971
+Reporte de laboratorio F1/F2/F3 previo a integración.
+evidence/laboratory_final/final_laboratory_runner.cpp
+31,532
+Runner primario de F1/F2/F3, no motor de runtime adicional.
+evidence/laboratory_final/results.json
+18,670
+Telemetría resumida y comparaciones del laboratorio.
+fixtures/legacy_v1/PROVENANCE.md
+768
+Origen del checkpoint v1 real de Entrega 01.
+fixtures/legacy_v1/pending_event_v1.deetsnap
+12,005
+Checkpoint v1 con entrada pendiente para prueba de compatibilidad.
+fixtures/whl_v27/demux_atomic_shared_target.dtr
+11,000
+two x-slab overflows atomically accumulate on one born target
+fixtures/whl_v27/demux_occupied_saturation.dtr
+11,000
+two DEMUX deltas saturate an occupied destination at P_KERNEL-1
+fixtures/whl_v27/demux_overflow_six_neighbors.dtr
+11,000
+reachable material overflow with one postpass DEMUX delta
+fixtures/whl_v27/empty_three_ticks.dtr
+4,024
+empty lattice and uniform clock progression
+fixtures/whl_v27/manifest.json
+7,574
+Origen de oráculos y propósito de los 15 fixtures.
+fixtures/whl_v27/nonuniform_clocks_direction_edges.dtr
+6,936
+signed direction boundaries and clocks
+fixtures/whl_v27/occupied_destination.dtr
+11,000
+occupied versus empty destination branch
+fixtures/whl_v27/orphan_reachable_evolution.dtr
+11,000
+reachable orphan matter update preserving semantic and gradient direction
+fixtures/whl_v27/reachable_demux_overflow.dtr
+11,000
+historical overflow attempt; survival guard yields zero overflow
+fixtures/whl_v27/semantic4_modular_clock.dtr
+11,000
+observer semantic and uint64 clock wrap
+fixtures/whl_v27/simultaneous_non_xnor.dtr
+23,352
+eight simultaneous non-XNOR proposals
+fixtures/whl_v27/simultaneous_xnor_eight.dtr
+23,352
+eight simultaneous corner proposals
+fixtures/whl_v27/staged_directional_composition.dtr
+42,616
+two-proposal reduction followed by a later third proposal
+fixtures/whl_v27/state_zero_raw_nonzero.dtr
+11,000
+RAW-present record with state zero
+fixtures/whl_v27/strong_tension_write_protection.dtr
+70,328
+reachable strong-tension survival and zero-vector write protection
+fixtures/whl_v27/transport_toroidal_wrap.dtr
+11,000
+directional transport across x wrap
+Documentación y validación
+Ruta
+Bytes
+Responsabilidad
+docs/API_CONTRACT.md
+12,404
+Semántica de Runtime y API.
+docs/ARCHITECTURE_AND_BUILD.md
+9,340
+Mapa de arquitectura, dependencias y rebuild.
+docs/BUILD_INSTALL_AND_SNAPSHOT.md
+4,496
+Build, install y persistencia.
+docs/CAPABILITY_CONTRACTS.md
+11,387
+Contratos H1-H4/F1/F2 y F3 no integrado.
+docs/CHANGELOG.md
+4,171
+Cambios del producto y sus etapas.
+docs/CLOSURE_AND_FRONTIER_REPORT.md
+10,321
+Informe heredado de cierre; no estado de publicación actual.
+docs/CORE05_PHASE_MEMORY.md
+2,871
+Port, ley de aparato y controles de memoria temporal.
+docs/DEFINITIVE_INTEGRATION_REPORT.md
+11,124
+Corte autorizado 2.2.0, corrección H2 y validación.
+docs/DIRECTED_SOURCE_REVIEW.md
+5,038
+Revisión de fuentes y mapa de procedencia.
+docs/KERNEL_PROVENANCE.md
+4,335
+Identidades canónica/producto y regla preservada.
+docs/MICROSCOPIC_BRANCH_AUDIT.md
+6,864
+Fixtures y condiciones alcanzables/inalcanzables.
+docs/ORGANIZATION_CATALOG.md
+5,677
+Catálogo heredado y composición.
+docs/PREINTEGRATION_REPORT.md
+12,919
+Histórico de ports y laboratorio anterior.
+docs/REPRODUCIBILITY.md
+5,977
+Reproducción y limitaciones.
+docs/SCIENTIFIC_SCOPE.md
+2,983
+Alcance científico sin promesas generales.
+docs/TECHNICAL_REPORT.md
+8,191
+Reporte heredado y base de pruebas.
+docs/TEST_MATRIX_DEFINITIVE.md
+9,522
+Matriz de verificación final.
+validation/FINAL_VALIDATION_SUMMARY.json
+3,501
+Resumen de aceptación final y pruebas reportadas.
+validation/wheel_build.log
+18,106
+Log de intentos de construcción fallidos retenidos; no log completo de la corrida final favorable.
+Distribución Python y wheel
+Ruta
+Bytes
+Responsabilidad
+python/README.md
+1,079
+Notas de uso y build de la interfaz Python.
+python/dee_thinking/THIRD_PARTY_NOTICES.md
+769
+Aviso de terceros distribuido dentro del wheel.
+python/dee_thinking/__init__.py
+914
+Reexportaciones nativas, alias e identidad.
+python/dee_thinking/py.typed
+1
+Marcador de distribución; no contiene stubs detallados.
+wheel/dee_thinking-2.2.0-cp313-cp313-win_amd64.whl
+465,442
+Distribución nativa CPython 3.13/Windows 64 del corte.
+Artefactos nativos y paquete instalado
+Ruta
+Bytes
+Responsabilidad
+artifacts/native/bin/dee_backend_benchmark.exe
+156,672
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_backend_tests.exe
+125,440
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_catalog_transport.exe
+232,448
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_composition_a.exe
+238,080
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_composition_b.exe
+238,592
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_composition_c6_later_query.exe
+237,568
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_composition_catalog_tests.exe
+275,456
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_composition_snapshot_tests.exe
+341,504
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_core05_phase_memory.exe
+220,160
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_core05_phase_memory_tests.exe
+327,680
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_cross_language_bridge.exe
+146,432
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_cross_process_persistence.exe
+326,144
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_integrated_protocols.exe
+93,184
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_integrated_protocols_tests.exe
+371,200
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_integration_persistence_tests.exe
+187,392
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_kernel_fixture_tests.exe
+91,136
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_protocol_checkpoint_bridge.exe
+303,616
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_reference_tests.exe
+115,200
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_runtime_tests.exe
+189,952
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_thinking_consumer.exe
+324,096
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/bin/dee_thinking_demo.exe
+95,744
+Ejecutable Windows preservado; derivado del source de tests/examples/benchmark.
+artifacts/native/lib/dee_thinking.lib
+8,931,032
+Biblioteca estática Windows del corte; reconstruible desde source.
+install/include/dee_thinking/composition.hpp
+4,424
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/integrated_protocols.hpp
+12,970
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/kernel_v27.hpp
+3,016
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/organization_catalog.hpp
+6,385
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/organizations.hpp
+820
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/runtime.hpp
+6,503
+Copia instalada del header público correspondiente.
+install/include/dee_thinking/version.hpp
+390
+Copia instalada del header público correspondiente.
+install/lib/cmake/dee_thinking/dee_thinkingConfig.cmake
+1,082
+Configuración/targets exportados para find_package.
+install/lib/cmake/dee_thinking/dee_thinkingConfigVersion.cmake
+2,827
+Configuración/targets exportados para find_package.
+install/lib/cmake/dee_thinking/dee_thinkingTargets-release.cmake
+867
+Configuración/targets exportados para find_package.
+install/lib/cmake/dee_thinking/dee_thinkingTargets.cmake
+4,317
+Configuración/targets exportados para find_package.
+install/lib/dee_thinking.lib
+8,931,032
+Biblioteca instalada para consumidores externos.
+Fuente: [S44] MANIFEST.json
+Fuente: [S03] HASHES.sha256
+Anexo B. Declaraciones públicas de la versión 2.2.0
+Este anexo reproduce las declaraciones de los siete headers públicos, eliminando comentarios y líneas de inclusión para lectura. No constituye otro conjunto de fuentes: los archivos compilables completos y sus comentarios se conservan en include/dee_thinking. Los cuerpos inline y campos de clases se mantienen para evitar inventar una firma o un valor por defecto. Los saltos visibles que introduzca Word por ancho de página no cambian el archivo original.
+Los tipos de datos son parte del contrato de reconstrucción. Cambiar un uint64 por double, una lista ordenada por un conjunto sin orden o un estado de recibo por un booleano puede alterar la compatibilidad aun cuando una demostración sencilla siga funcionando.
+kernel_v27.hpp
+namespace dee::v27 {
+inline constexpr std::uint64_t kKernelModulus = 19665ULL;
+inline constexpr std::uint16_t kReducerCap = 19664U;
+enum class Semantic : std::uint8_t {
+    Void = 0,
+    Normal = 1,
+    ElectronSeed = 2,
+    ProtonSeed = 3,
+    Observer = 4,
+    OrphanBit = 5,
+    Horizon = 6,
+    BornXnor = 7,
+};
+enum class Backend : std::uint8_t {
+    DenseSequential = 0,
+    DenseParallel = 1,
+    Lazy = 2,
+};
+struct TickOptions {
+    Backend backend{Backend::DenseSequential};
+    std::size_t threads{1};
+};
+struct Record {
+    std::uint64_t raw{};
+    std::uint32_t state{};
+    std::uint16_t s_reg{};
+    std::int8_t dx{};
+    std::int8_t dy{};
+    std::int8_t dz{};
+    std::uint8_t semantic{};
+    [[nodiscard]] bool raw_present() const noexcept { return raw != 0; }
+    [[nodiscard]] bool occupied() const noexcept { return state != 0; }
+};
+struct TickInfo {
+    std::uint64_t overflows{};
+    std::uint64_t genesis{};
+    std::uint64_t evaluated{};
+    std::uint64_t active_raw{};
+    std::uint64_t total{};
+    Backend requested_backend{Backend::DenseSequential};
+    Backend used_backend{Backend::DenseSequential};
+    std::size_t requested_threads{1};
+    std::size_t used_threads{1};
+    bool fallback{};
+    std::uint64_t preparation_ns{};
+    std::uint64_t evaluation_ns{};
+    std::uint64_t postprocess_ns{};
+    std::uint64_t total_ns{};
+};
+[[nodiscard]] const char* backend_name(Backend backend) noexcept;
+[[nodiscard]] std::uint64_t pack_record(
+    std::uint32_t state,
+    std::uint16_t s_reg,
+    int dx,
+    int dy,
+    int dz,
+    std::uint8_t semantic);
+[[nodiscard]] Record decode_record(std::uint64_t raw) noexcept;
+[[nodiscard]] std::size_t linear_index(int x, int y, int z, int n);
+[[nodiscard]] int wrap_coordinate(int value, int n);
+TickInfo tick(
+    std::vector<std::uint64_t>& gA,
+    std::vector<std::uint64_t>& gB,
+    std::vector<std::uint64_t>& clockA,
+    std::vector<std::uint64_t>& clockB,
+    int n);
+TickInfo tick(
+    std::vector<std::uint64_t>& gA,
+    std::vector<std::uint64_t>& gB,
+    std::vector<std::uint64_t>& clockA,
+    std::vector<std::uint64_t>& clockB,
+    int n,
+    const TickOptions& options);
+}
+Fuente: [S11] include/dee_thinking/kernel_v27.hpp
+runtime.hpp
+namespace dee::thinking {
+struct Coordinate {
+    int x{};
+    int y{};
+    int z{};
+    friend bool operator==(const Coordinate&, const Coordinate&) = default;
+};
+struct Direction {
+    int dx{};
+    int dy{};
+    int dz{};
+};
+enum class EventKind : std::uint8_t { Experience = 1, Probe = 2 };
+enum class EventStatus : std::uint8_t {
+    Scheduled = 1,
+    Applied = 2,
+    RejectedLate = 3,
+    RejectedInvalid = 4,
+    RejectedOccupied = 5,
+    RejectedConflict = 6,
+    RejectedQueueFull = 7,
+};
+struct ChannelSpec {
+    std::string name;
+    Coordinate injection_site;
+    std::uint32_t state{1};
+    Direction direction{};
+    std::uint8_t semantic{1};
+    bool allow_experience{true};
+    bool allow_probe{false};
+};
+struct InputRequest {
+    std::string channel;
+    std::uint16_t s_reg{};
+};
+struct EventReceipt {
+    std::uint64_t id{};
+    EventKind kind{EventKind::Experience};
+    EventStatus status{EventStatus::Scheduled};
+    std::uint64_t requested_tick{};
+    std::optional<std::uint64_t> effective_tick;
+    std::vector<std::string> channels;
+    std::string reason;
+};
+struct Observation {
+    std::uint64_t tick{};
+    Coordinate coordinate;
+    std::uint64_t raw{};
+    std::uint64_t clock{};
+    v27::Record record{};
+};
+struct WorldMetrics {
+    std::uint64_t tick{};
+    std::size_t raw_support{};
+    std::size_t occupied{};
+    std::uint64_t s_reg_sum{};
+};
+class Runtime {
+public:
+    explicit Runtime(int dimension);
+    [[nodiscard]] static Runtime import_research_state(
+        int dimension,
+        std::uint64_t tick,
+        std::vector<std::uint64_t> raw,
+        std::vector<std::uint64_t> clock);
+    [[nodiscard]] int dimension() const noexcept { return n_; }
+    [[nodiscard]] std::uint64_t current_tick() const noexcept { return tick_; }
+    [[nodiscard]] bool paused() const noexcept { return paused_; }
+    void set_execution_options(v27::TickOptions options);
+    [[nodiscard]] v27::TickOptions execution_options() const noexcept { return execution_options_; }
+    [[nodiscard]] const v27::TickInfo& last_tick_info() const noexcept { return last_tick_info_; }
+    void register_channel(ChannelSpec channel);
+    [[nodiscard]] std::vector<std::string> channel_names() const;
+    EventReceipt experience(const std::string& channel, std::uint64_t at_tick, std::uint16_t s_reg);
+    EventReceipt experience_batch(const std::vector<InputRequest>& inputs, std::uint64_t at_tick);
+    EventReceipt probe(const std::string& channel, std::uint64_t at_tick, std::uint16_t s_reg);
+    [[nodiscard]] std::optional<EventReceipt> receipt(std::uint64_t id) const;
+    [[nodiscard]] std::vector<EventReceipt> receipts() const;
+    v27::TickInfo advance(std::uint64_t count = 1);
+    v27::TickInfo run_until(std::uint64_t target_tick);
+    void pause() noexcept { paused_ = true; }
+    void resume() noexcept { paused_ = false; }
+    [[nodiscard]] Observation observe(Coordinate coordinate) const;
+    [[nodiscard]] std::vector<Observation> observe_many(const std::vector<Coordinate>& coordinates) const;
+    [[nodiscard]] WorldMetrics metrics() const;
+    [[nodiscard]] Runtime fork() const { return *this; }
+    void save_snapshot(const std::string& path) const;
+    [[nodiscard]] static Runtime load_snapshot(const std::string& path);
+    void restore_snapshot(const std::string& path);
+    void set_snapshot_metadata(std::string key, std::string value);
+    bool erase_snapshot_metadata(const std::string& key);
+    [[nodiscard]] std::optional<std::string> snapshot_metadata(const std::string& key) const;
+    [[nodiscard]] const std::map<std::string, std::string>& snapshot_metadata_entries() const noexcept {
+        return snapshot_metadata_;
+    }
+    [[nodiscard]] std::uint32_t loaded_snapshot_version() const noexcept {
+        return loaded_snapshot_version_;
+    }
+    [[nodiscard]] bool imported_legacy_snapshot() const noexcept {
+        return loaded_snapshot_version_ == 1;
+    }
+    void set_protocol_phase(std::string phase) { protocol_phase_ = std::move(phase); }
+    [[nodiscard]] const std::string& protocol_phase() const noexcept { return protocol_phase_; }
+    [[nodiscard]] std::vector<std::uint64_t> raw_copy() const { return raw_a_; }
+    [[nodiscard]] std::vector<std::uint64_t> clock_copy() const { return clock_a_; }
+private:
+    struct Write {
+        Coordinate coordinate;
+        std::uint64_t raw{};
+    };
+    struct PendingEvent {
+        std::uint64_t id{};
+        EventKind kind{EventKind::Experience};
+        std::uint64_t requested_tick{};
+        std::uint64_t sequence{};
+        std::vector<std::string> channels;
+        std::vector<Write> writes;
+    };
+    Runtime() = default;
+    EventReceipt schedule(EventKind kind, const std::vector<InputRequest>& inputs, std::uint64_t at_tick);
+    void apply_events_at_boundary();
+    [[nodiscard]] std::size_t index(Coordinate coordinate) const;
+    void validate_invariants() const;
+    int n_{};
+    std::uint64_t tick_{};
+    bool paused_{};
+    std::uint64_t next_event_id_{1};
+    std::uint64_t next_sequence_{};
+    std::string protocol_phase_{"initialized"};
+    std::vector<std::uint64_t> raw_a_;
+    std::vector<std::uint64_t> raw_b_;
+    std::vector<std::uint64_t> clock_a_;
+    std::vector<std::uint64_t> clock_b_;
+    std::map<std::string, ChannelSpec> channels_;
+    std::multimap<std::uint64_t, PendingEvent> pending_;
+    std::map<std::uint64_t, EventReceipt> receipts_;
+    std::map<std::string, std::string> snapshot_metadata_;
+    std::uint32_t loaded_snapshot_version_{2};
+    v27::TickOptions execution_options_{};
+    v27::TickInfo last_tick_info_{};
+    static constexpr std::size_t kMaxPendingEvents = 4096;
+    static constexpr std::size_t kMaxSnapshotMetadataEntries = 4096;
+};
+[[nodiscard]] const char* to_string(EventStatus status) noexcept;
+[[nodiscard]] const char* to_string(EventKind kind) noexcept;
+}
+Fuente: [S17] include/dee_thinking/runtime.hpp
+organizations.hpp
+namespace dee::thinking {
+enum class HistoryMode { H0, HA, HB };
+struct ReferenceWorld {
+    Runtime runtime;
+    std::map<std::string, Coordinate> landmarks;
+    std::string contract;
+};
+[[nodiscard]] ReferenceWorld make_transport_world(bool occupied_destination = false);
+[[nodiscard]] ReferenceWorld make_relational_learning_world();
+[[nodiscard]] ReferenceWorld make_reprogramming_world();
+[[nodiscard]] ReferenceWorld make_history_world(HistoryMode mode);
+[[nodiscard]] ReferenceWorld make_recurrence_multichannel_world(HistoryMode mode = HistoryMode::HA);
+}
+Fuente: [S45] include/dee_thinking/organizations.hpp
+organization_catalog.hpp
+namespace dee::thinking::catalog {
+enum class OrganizationFamily : std::uint8_t {
+    TransportRedirection = 1,
+    RelationalLearning = 2,
+    FunctionalUpdateTransfer = 3,
+    RelativeMemoryHistorySelection = 4,
+    MultichannelIntegrationSeparation = 5,
+    RecurrenceLaterUse = 6,
+    DistributedContextMemory = 7,
+};
+enum class Availability : std::uint8_t {
+    Available = 1,
+    Pending = 2,
+};
+enum class ParameterKind : std::uint8_t {
+    Integer = 1,
+    Boolean = 2,
+    Enumeration = 3,
+};
+enum class PortRole : std::uint8_t {
+    ExperienceInput = 1,
+    QueryInput = 2,
+    UpdateInput = 3,
+    SupplyInput = 4,
+    PassiveReadout = 5,
+    InternalOutput = 6,
+    ContextInterface = 7,
+};
+enum class ContributionKind : std::uint8_t {
+    Carrier = 1,
+    CollisionProposal = 2,
+    MobileRelation = 3,
+    ContextCondition = 4,
+    PassiveObservation = 5,
+};
+struct ParameterSpec {
+    std::string name;
+    ParameterKind kind{ParameterKind::Integer};
+    std::int64_t default_value{};
+    std::int64_t minimum{};
+    std::int64_t maximum{};
+    std::map<std::int64_t, std::string> enumeration;
+    std::string meaning;
+};
+struct PortSpec {
+    std::string name;
+    PortRole role{PortRole::ExperienceInput};
+    ContributionKind contribution{ContributionKind::Carrier};
+    Coordinate relative_site{};
+    std::optional<Direction> direction;
+    std::uint64_t earliest_tick{};
+    std::uint64_t latest_tick{};
+    std::uint16_t minimum_load{};
+    std::uint16_t maximum_load{v27::kReducerCap};
+    bool transforms_world{};
+    std::string timing_and_phase;
+    std::size_t maximum_connections{1};
+};
+struct InitialFootprintRecord {
+    Coordinate relative_site{};
+    std::uint64_t raw{};
+    std::uint64_t clock{};
+    std::string purpose;
+};
+struct ChannelContract {
+    std::string local_name;
+    Coordinate relative_site{};
+    std::uint32_t state{1};
+    Direction direction{};
+    std::uint8_t semantic{1};
+    bool allow_experience{true};
+    bool allow_probe{};
+};
+struct ResourceBudget {
+    std::size_t initial_voxels{};
+    std::size_t persistent_sources{};
+    std::size_t input_channels{};
+    std::size_t declared_ports{};
+    std::size_t declared_connection_capacity{};
+};
+struct OrganizationDescriptor {
+    std::string id;
+    std::string constructor_version;
+    std::vector<OrganizationFamily> families;
+    Availability availability{Availability::Pending};
+    std::string source_mechanism;
+    std::string source_reference;
+    std::string summary;
+    std::vector<ParameterSpec> parameters;
+    std::vector<PortSpec> ports;
+    std::string preparation;
+    std::string resources;
+    std::string query_effects;
+    std::string possible_interference;
+    std::string retention_and_saturation;
+    std::string tested_domain;
+    std::string pending_reason;
+    std::string initial_footprint;
+    std::string functional_relation;
+    std::string read_region;
+    std::string required_context;
+    std::string context_horizon;
+};
+struct OrganizationRequest {
+    std::string catalog_id;
+    std::string instance_id;
+    Coordinate anchor{};
+    std::map<std::string, std::int64_t> parameters;
+};
+struct InstancePort {
+    PortSpec contract;
+    Coordinate absolute_site{};
+};
+class OrganizationInstance {
+public:
+    [[nodiscard]] const OrganizationDescriptor& descriptor() const noexcept { return descriptor_; }
+    [[nodiscard]] const std::string& instance_id() const noexcept { return instance_id_; }
+    [[nodiscard]] Coordinate anchor() const noexcept { return anchor_; }
+    [[nodiscard]] const std::map<std::string, std::int64_t>& parameters() const noexcept { return parameters_; }
+    [[nodiscard]] const std::vector<InstancePort>& ports() const noexcept { return ports_; }
+    [[nodiscard]] const std::map<std::string, Coordinate>& landmarks() const noexcept { return landmarks_; }
+    [[nodiscard]] const std::vector<InitialFootprintRecord>& initial_footprint() const noexcept {
+        return initial_voxels_;
+    }
+    [[nodiscard]] const std::vector<ChannelContract>& channel_contracts() const noexcept {
+        return channels_;
+    }
+    [[nodiscard]] ResourceBudget resource_budget() const noexcept;
+    [[nodiscard]] const InstancePort* find_port(const std::string& name) const noexcept;
+private:
+    OrganizationDescriptor descriptor_;
+    std::string instance_id_;
+    Coordinate anchor_{};
+    std::map<std::string, std::int64_t> parameters_;
+    std::vector<InstancePort> ports_;
+    std::map<std::string, Coordinate> landmarks_;
+    std::vector<InitialFootprintRecord> initial_voxels_;
+    std::vector<ChannelContract> channels_;
+    friend class OrganizationCatalog;
+    friend class CompositionPlanner;
+    friend struct CatalogAssembler;
+};
+class OrganizationCatalog {
+public:
+    OrganizationCatalog();
+    [[nodiscard]] const std::vector<OrganizationDescriptor>& descriptors() const noexcept { return descriptors_; }
+    [[nodiscard]] const OrganizationDescriptor* find(const std::string& id) const noexcept;
+    [[nodiscard]] OrganizationInstance instantiate(const OrganizationRequest& request) const;
+private:
+    std::vector<OrganizationDescriptor> descriptors_;
+};
+[[nodiscard]] const char* to_string(OrganizationFamily value) noexcept;
+[[nodiscard]] const char* to_string(Availability value) noexcept;
+[[nodiscard]] const char* to_string(PortRole value) noexcept;
+[[nodiscard]] const char* to_string(ContributionKind value) noexcept;
+}
+Fuente: [S22] include/dee_thinking/organization_catalog.hpp
+composition.hpp
+namespace dee::thinking::catalog {
+enum class DiagnosticSeverity : std::uint8_t { Information = 1, Warning = 2, Error = 3 };
+enum class VerificationClass : std::uint8_t {
+    StaticVerified = 1,
+    RequiresSimulation = 2,
+    Unsupported = 3,
+};
+struct Diagnostic {
+    DiagnosticSeverity severity{DiagnosticSeverity::Information};
+    VerificationClass verification{VerificationClass::StaticVerified};
+    std::string code;
+    std::string message;
+};
+struct Endpoint {
+    std::string instance;
+    std::string port;
+};
+struct ConnectionRequest {
+    Endpoint source;
+    Endpoint target;
+    std::string purpose;
+};
+struct ConnectionRecord {
+    ConnectionRequest request;
+    VerificationClass verification{VerificationClass::RequiresSimulation};
+    std::string physical_contract;
+};
+struct PortInputRequest {
+    std::string instance;
+    std::string port;
+    std::uint16_t s_reg{};
+};
+class ComposedWorld {
+public:
+    [[nodiscard]] static ComposedWorld load_snapshot(const std::string& path);
+    [[nodiscard]] static ComposedWorld load_snapshot(const std::string& path,
+                                                     const OrganizationCatalog& catalog);
+    [[nodiscard]] Runtime& runtime() noexcept { return runtime_; }
+    [[nodiscard]] const Runtime& runtime() const noexcept { return runtime_; }
+    [[nodiscard]] const std::vector<OrganizationInstance>& organizations() const noexcept { return organizations_; }
+    [[nodiscard]] const std::vector<ConnectionRecord>& connections() const noexcept { return connections_; }
+    [[nodiscard]] const std::map<std::string, Coordinate>& landmarks() const noexcept { return landmarks_; }
+    [[nodiscard]] std::string qualified_channel(const std::string& instance, const std::string& local_name) const;
+    EventReceipt experience(const std::string& instance, const std::string& port,
+                            std::uint64_t at_tick, std::uint16_t s_reg);
+    EventReceipt experience_batch(const std::vector<PortInputRequest>& inputs,
+                                  std::uint64_t at_tick);
+    EventReceipt probe(const std::string& instance, const std::string& port,
+                       std::uint64_t at_tick, std::uint16_t s_reg);
+    [[nodiscard]] std::string manifest_json() const;
+    void save_manifest(const std::string& path) const;
+    void save_snapshot(const std::string& path) const;
+    void restore_snapshot(const std::string& path);
+private:
+    ComposedWorld(Runtime runtime,
+                  std::vector<OrganizationInstance> organizations,
+                  std::vector<ConnectionRecord> connections,
+                  std::map<std::string, Coordinate> landmarks);
+    Runtime runtime_;
+    std::vector<OrganizationInstance> organizations_;
+    std::vector<ConnectionRecord> connections_;
+    std::map<std::string, Coordinate> landmarks_;
+    friend class CompositionPlanner;
+};
+class CompositionPlanner {
+public:
+    explicit CompositionPlanner(int dimension);
+    void add(OrganizationInstance organization);
+    void connect(ConnectionRequest connection);
+    [[nodiscard]] int dimension() const noexcept { return dimension_; }
+    [[nodiscard]] const std::vector<OrganizationInstance>& organizations() const noexcept { return organizations_; }
+    [[nodiscard]] const std::vector<ConnectionRequest>& requested_connections() const noexcept { return connections_; }
+    [[nodiscard]] std::vector<Diagnostic> analyze() const;
+    [[nodiscard]] ComposedWorld build() const;
+private:
+    [[nodiscard]] const OrganizationInstance* find_instance(const std::string& id) const noexcept;
+    int dimension_{};
+    std::vector<OrganizationInstance> organizations_;
+    std::vector<ConnectionRequest> connections_;
+};
+[[nodiscard]] const char* to_string(DiagnosticSeverity value) noexcept;
+[[nodiscard]] const char* to_string(VerificationClass value) noexcept;
+}
+Fuente: [S46] include/dee_thinking/composition.hpp
+integrated_protocols.hpp
+namespace dee::thinking::protocols {
+inline constexpr const char* kH1Id = "delay_position_bank.core05.nrh05.v1";
+inline constexpr const char* kH2Id = "destination_repertoires.core07.c7h02.v1";
+inline constexpr const char* kH3Id = "trained_redundancy_repair.core17.v1";
+inline constexpr const char* kH4Id = "accessibility.history_conditioned_finite_response.v1";
+inline constexpr const char* kF1Id = "reusable_lineage_revision.c7h03.v1";
+inline constexpr const char* kF2Id = "environmental_demux_return.v1";
+enum class ProtocolModality : std::uint8_t {
+    NativePostHostStop = 1,
+    Coupled = 2,
+    Diagnostic = 3,
+};
+struct ProtocolResourceBudget {
+    std::size_t initial_carriers{};
+    std::size_t persistent_supports{};
+    std::size_t declared_inputs{};
+    std::size_t read_sites{};
+    bool resources_consumable{};
+};
+struct ProtocolPortDescriptor {
+    std::string name;
+    std::string role;
+    std::string timing;
+    std::uint16_t minimum_load{};
+    std::uint16_t maximum_load{v27::kReducerCap};
+    bool transforms_world{};
+};
+struct IntegratedProtocolDescriptor {
+    std::string id;
+    std::string version{"1.0.0"};
+    ProtocolModality modality{ProtocolModality::NativePostHostStop};
+    std::string scientific_source;
+    std::string summary;
+    std::string tested_domain;
+    std::string limits;
+    ProtocolResourceBudget resources;
+    std::vector<ProtocolPortDescriptor> ports;
+    std::vector<std::string> labels;
+};
+[[nodiscard]] const std::vector<IntegratedProtocolDescriptor>&
+integrated_protocol_descriptors();
+[[nodiscard]] const IntegratedProtocolDescriptor* find_integrated_protocol(
+    const std::string& id) noexcept;
+struct ProtocolReceipt {
+    std::string label;
+    EventReceipt receipt;
+};
+struct ProtocolObservation {
+    std::string label;
+    Observation observation;
+};
+enum class DelayPositionArm : std::uint8_t {
+    Native = 0,
+    ReversedCalibration = 1,
+    TargetAbsent = 2,
+};
+struct DelayPositionConfig {
+    int dimension{59};
+    Coordinate base{13, 17, 19};
+    Direction bank_axis{0, 1, 0};
+    int channel_spacing{5};
+    int base_path_length{12};
+    std::vector<int> labels{-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5};
+    Direction target_direction{1, 0, 0};
+    Direction probe_direction{0, 0, 1};
+    int input_delay{};
+    DelayPositionArm arm{DelayPositionArm::Native};
+    std::array<std::uint16_t, 2> loads{321, 654};
+    std::array<std::uint32_t, 2> states{1001, 2003};
+    std::array<std::uint64_t, 2> phases{0x123456789abcdef0ULL,
+                                        0xfedcba9876543210ULL};
+};
+struct DelayPositionDetection {
+    std::uint64_t tick{};
+    int label{};
+    v27::Record record{};
+};
+struct DelayPositionResult {
+    bool initial_hubs_empty{};
+    std::optional<int> measurement;
+    std::vector<int> active_labels;
+    std::vector<DelayPositionDetection> merged_events;
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+[[nodiscard]] DelayPositionResult run_delay_position(
+    const DelayPositionConfig& config,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+void save_delay_position_checkpoint(
+    const DelayPositionConfig& config, std::uint64_t stop_at_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+[[nodiscard]] DelayPositionResult resume_delay_position_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+struct SeparatedRepertoireConfig {
+    int dimension{79};
+    std::size_t channels{3};
+    Coordinate translation{2, 5, 7};
+    std::uint16_t base_offset{4096};
+    std::vector<int> delta_cycle{-6, -3, 1, 4, 8};
+    std::uint16_t query_base{151};
+    int training_tick{5};
+    int query_tick{19};
+    int query_path{5};
+};
+struct SeparatedRepertoireResult {
+    bool ports_empty{};
+    std::size_t exact_channels{};
+    bool all_exact{};
+    bool training_budget_exact{};
+    bool read_budget_exact{};
+    bool load_accounting_exact{};
+    std::vector<std::uint16_t> observed_responses;
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+struct OverlapRepertoireConfig {
+    int dimension{71};
+    int geometry_index{};
+    std::array<int, 2> deltas{-5, 2};
+    std::uint16_t query_load{17};
+    bool off_fiber{};
+    std::uint16_t base_offset{4096};
+    int training_tick{5};
+    int merge_tick{14};
+    int query_tick{22};
+};
+struct OverlapRepertoireResult {
+    bool port_empty{};
+    bool merge_exact{};
+    bool composed_response_exact{};
+    bool individual_identity_preserved{};
+    bool false_merge{};
+    std::uint16_t observed_merge_load{};
+    std::uint16_t observed_response_load{};
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+[[nodiscard]] SeparatedRepertoireResult run_separated_repertoire(
+    const SeparatedRepertoireConfig& config,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+[[nodiscard]] OverlapRepertoireResult run_overlap_repertoire(
+    const OverlapRepertoireConfig& config,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+void save_separated_repertoire_checkpoint(
+    const SeparatedRepertoireConfig& config, std::uint64_t stop_at_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+[[nodiscard]] SeparatedRepertoireResult resume_separated_repertoire_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+void save_overlap_repertoire_checkpoint(
+    const OverlapRepertoireConfig& config, std::uint64_t stop_at_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+[[nodiscard]] OverlapRepertoireResult resume_overlap_repertoire_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::DenseSequential, 1});
+enum class RepairArm : std::uint8_t {
+    Treatment = 0,
+    BackupUntrained = 1,
+    BackupDirectionReset = 2,
+    NoBackup = 3,
+    PathCut = 4,
+    OffpathCut = 5,
+    WrongReceiver = 6,
+};
+struct RepairGeometry {
+    std::string id{"fresh_like_00"};
+    int dimension{31};
+    int primary_distance{7};
+    int backup_distance{7};
+    std::array<int, 3> permutation{2, 1, 0};
+    std::array<int, 3> signs{-1, 1, -1};
+    Coordinate receiver{15, 15, 15};
+};
+struct RepairConfig {
+    RepairGeometry geometry{};
+    RepairArm arm{RepairArm::Treatment};
+    bool authorize_diagnostic_damage{};
+    std::uint32_t preparation_tag{1721000};
+};
+struct RepairResult {
+    bool backup_learned{};
+    bool primary_function_before_damage{};
+    bool damage_applied{};
+    bool function_lost_after_damage{};
+    bool reconstructed_at_arrival{};
+    bool fresh_function{};
+    bool primary_source_depleted{};
+    bool backup_source_depleted{};
+    std::uint16_t query_load{};
+    Direction query_direction{};
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+[[nodiscard]] RepairResult run_trained_redundancy_repair(
+    const RepairConfig& config,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+void save_trained_redundancy_repair_checkpoint(
+    const RepairConfig& config, std::uint64_t stop_after_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+[[nodiscard]] RepairResult resume_trained_redundancy_repair_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+enum class AccessibilityStatus : std::uint8_t {
+    Constructed = 1,
+    Reached = 2,
+    Acquired = 3,
+    NotDemonstrated = 4,
+};
+struct AccessibilityReading {
+    Coordinate site{};
+    std::uint64_t raw{};
+    std::uint64_t clock{};
+};
+struct AccessibilityCase {
+    std::string history_id;
+    std::uint64_t baseline_tick{};
+    std::uint64_t challenged_tick{};
+    std::vector<AccessibilityReading> baseline;
+    std::vector<AccessibilityReading> challenged;
+    AccessibilityStatus history_status{AccessibilityStatus::NotDemonstrated};
+    bool history_reached_natively{};
+    bool challenge_applied_to_diagnostic_clone{true};
+};
+struct AccessibilityRequest {
+    std::string observer_id;
+    std::string challenge_id;
+    bool apparatus_frozen{true};
+    bool challenge_frozen{true};
+    bool ages_aligned{true};
+    std::vector<AccessibilityCase> cases;
+};
+struct AccessibilityEffect {
+    std::string history_id;
+    std::size_t raw_changed_sites{};
+    std::size_t clock_changed_sites{};
+    std::vector<std::int32_t> s_reg_deltas;
+    AccessibilityStatus status{AccessibilityStatus::NotDemonstrated};
+};
+struct AccessibilityResult {
+    bool comparable{};
+    bool history_conditioned_response{};
+    std::vector<AccessibilityEffect> effects;
+    std::vector<std::string> diagnostics;
+};
+[[nodiscard]] AccessibilityResult analyze_accessibility(
+    const AccessibilityRequest& request);
+struct ReusableRevisionConfig {
+    std::string id{"REV_11_13"};
+    std::uint16_t revision1{11};
+    std::uint16_t revision2{13};
+    std::uint16_t sham1{};
+    std::uint16_t sham2{};
+    bool trained_relation{true};
+};
+struct ReusableRevisionResult {
+    std::array<std::uint16_t, 3> response_loads{};
+    std::array<std::uint16_t, 2> post_revision_loads{};
+    bool all_inputs_applied_at_t0{};
+    bool backend_fallback{};
+    std::vector<ProtocolReceipt> receipts;
+    std::vector<ProtocolObservation> checkpoints;
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+[[nodiscard]] ReusableRevisionResult run_reusable_revision(
+    const ReusableRevisionConfig& config,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+void save_reusable_revision_checkpoint(
+    const ReusableRevisionConfig& config, std::uint64_t stop_at_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+[[nodiscard]] ReusableRevisionResult resume_reusable_revision_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+enum class EnvironmentalQueryMode : std::uint8_t {
+    Intact = 0,
+    Absent = 1,
+    Sham = 2,
+};
+struct EnvironmentalReturnConfig {
+    std::string id{"ENV_INTACT"};
+    bool trained_response{true};
+    std::uint16_t bias_load{15515};
+    std::uint16_t marker_load{17};
+    EnvironmentalQueryMode query_mode{EnvironmentalQueryMode::Intact};
+    std::uint64_t environment_clock_phase{353};
+};
+struct EnvironmentalReturnResult {
+    std::uint16_t upstream_response_load{};
+    std::uint16_t environment_load{};
+    std::array<std::uint16_t, 5> downstream_loads{};
+    std::uint64_t overflow_total{};
+    bool query_admitted{};
+    bool all_inputs_applied_at_t0{};
+    bool backend_fallback{};
+    std::vector<ProtocolReceipt> receipts;
+    std::vector<ProtocolObservation> checkpoints;
+    std::vector<std::uint64_t> final_raw;
+    std::vector<std::uint64_t> final_clock;
+};
+[[nodiscard]] EnvironmentalReturnResult run_environmental_return(
+    const EnvironmentalReturnConfig& config,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+void save_environmental_return_checkpoint(
+    const EnvironmentalReturnConfig& config, std::uint64_t stop_at_tick,
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+[[nodiscard]] EnvironmentalReturnResult resume_environmental_return_checkpoint(
+    const std::string& path,
+    v27::TickOptions options = {v27::Backend::Lazy, 4});
+[[nodiscard]] const char* to_string(ProtocolModality value) noexcept;
+[[nodiscard]] const char* to_string(DelayPositionArm value) noexcept;
+[[nodiscard]] const char* to_string(RepairArm value) noexcept;
+[[nodiscard]] const char* to_string(AccessibilityStatus value) noexcept;
+[[nodiscard]] const char* to_string(EnvironmentalQueryMode value) noexcept;
+}
+Fuente: [S16] include/dee_thinking/integrated_protocols.hpp
+version.hpp
+namespace dee::thinking {
+inline constexpr const char* kProductName = "DEE thinking";
+inline constexpr const char* kProductVersion = "2.2.0";
+inline constexpr const char* kKernelVersion = "DEE v27";
+inline constexpr std::uint32_t kSnapshotFormatCurrent = 2;
+inline constexpr std::uint32_t kSnapshotFormatOldestReadable = 1;
+}
+Fuente: [S47] include/dee_thinking/version.hpp
+Anexo C. Parámetros y puertos del catálogo heredado
+Las tablas siguientes provienen de una consulta al registro del source nativo preservado durante esta edición. Son metadatos ejecutables de la API, no una nueva prueba de todas sus combinaciones. No se incluyen aquí H1-H4/F1/F2 porque pertenecen al registro integrado y sus configuraciones exactas están en el anexo B y los capítulos 11-16.
+transport.axis.v1
+Parámetro
+Default
+Rango
+Significado registrado
+distance
+5
+1..20
+Transitions from admission site to readout
+direction_code
+0
+0..5
+Representable axis direction
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+carrier / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+arrival / PASSIVE_READOUT
+5..5
+0..19664
+1
+relation_learning.c6h01.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+cue / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+teacher / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+learned_relation / INTERNAL_OUTPUT
+3..3
+0..19664
+1
+relation_query.c6h01.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+relation_input / UPDATE_INPUT
+11..11
+0..19664
+1
+query / QUERY_INPUT
+6..6
+0..19664
+1
+response / PASSIVE_READOUT
+11..11
+0..19664
+1
+mobile_lineage.c7h03.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+cue / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+teacher / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+mobile_relation / INTERNAL_OUTPUT
+12..12
+0..19664
+1
+update_input / UPDATE_INPUT
+12..12
+0..19664
+1
+updated_relation / INTERNAL_OUTPUT
+12..12
+0..19664
+1
+native_update_bridge.p01.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+supply / SUPPLY_INPUT
+0..0
+0..19664
+1
+marker / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+cut_update_link / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+native_update / INTERNAL_OUTPUT
+12..12
+0..19664
+1
+query_recurrence.p01.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+updated_relation_input / UPDATE_INPUT
+12..12
+0..19664
+1
+program_redirect / SUPPLY_INPUT
+0..0
+0..19664
+1
+query1 / QUERY_INPUT
+0..0
+0..19664
+1
+query_redirect1 / SUPPLY_INPUT
+0..0
+0..19664
+1
+query2 / QUERY_INPUT
+0..0
+0..19664
+1
+query_redirect2 / SUPPLY_INPUT
+0..0
+0..19664
+1
+query3 / QUERY_INPUT
+0..0
+0..19664
+1
+response1 / PASSIVE_READOUT
+34..34
+0..19664
+1
+response2 / PASSIVE_READOUT
+46..46
+0..19664
+1
+response3 / PASSIVE_READOUT
+58..58
+0..19664
+1
+relative_history.i02.v1
+Parámetro
+Default
+Rango
+Significado registrado
+history_mode
+1
+0..2
+Prepared history witness
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+context / CONTEXT_INTERFACE
+0..0
+0..19664
+1
+history_state / INTERNAL_OUTPUT
+0..0
+0..19664
+1
+contextual_multichannel_recurrence.p02.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+context_input / CONTEXT_INTERFACE
+0..0
+0..19664
+1
+A / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+B / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+C / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+cut_link / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+sham_link / EXPERIENCE_INPUT
+0..0
+0..19664
+1
+q_response / PASSIVE_READOUT
+12..12
+0..19664
+1
+distributed_context.i05.v1
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+context_output / CONTEXT_INTERFACE
+0..0
+0..19664
+1
+reader_initial / PASSIVE_READOUT
+0..0
+0..19664
+1
+temporal_phase_memory.core05.v1
+Parámetro
+Default
+Rango
+Significado registrado
+distance
+4
+3..8
+Source-to-hub distance in the frozen NRH04/NRH06 domain
+permutation_code
+0
+0..5
+Axis permutation applied before output-axis signs
+sign_mask
+0
+0..7
+Bits x/y/z select a negative output-axis sign
+control_mode
+0
+0..3
+Frozen experimental arm
+source_index
+3
+0..3
+Source selected by block or ablation
+block_sreg
+1
+1..1000
+Load of the one-tick normal mouth blocker
+source0_sreg
+11
+1..1000
+Persistent source 0 load
+source1_sreg
+13
+1..1000
+Persistent source 1 load
+source2_sreg
+17
+1..1000
+Persistent source 2 load
+source3_sreg
+19
+1..1000
+Persistent source 3 load
+source0_clock_high
+0
+0..4294967295
+High 32 bits of source 0 clock
+source0_clock_low
+0
+0..4294967295
+Low 32 bits of source 0 clock
+source1_clock_high
+0
+0..4294967295
+High 32 bits of source 1 clock
+source1_clock_low
+0
+0..4294967295
+Low 32 bits of source 1 clock
+source2_clock_high
+0
+0..4294967295
+High 32 bits of source 2 clock
+source2_clock_low
+0
+0..4294967295
+Low 32 bits of source 2 clock
+source3_clock_high
+0
+0..4294967295
+High 32 bits of source 3 clock
+source3_clock_low
+0
+0..4294967295
+Low 32 bits of source 3 clock
+Puerto / rol
+Ticks
+Carga
+Conexiones máx.
+hub / PASSIVE_READOUT
+0..0
+0..19664
+1
+Los roles y nombres de las tablas se mantienen como en el registro. Deben interpretarse junto con footprint, direcciones y condiciones de contexto; una ventana temporal y rango de carga no bastan para garantizar cualquier acoplamiento.
+Fuente: [S23] src/organization_catalog.cpp
+Anexo D. Fases, claves y oráculos de reconstrucción
+D.1. Checkpoints integrados
+Cada checkpoint integrado usa el contenedor de Runtime y metadatos protocol.id y protocol.version para reconstituir la máquina de protocolo correcta. Las claves siguientes se extraen de los literales que aparecen en integrated_protocols.cpp. Las que funcionan como prefijos generan series de claves; no deben interpretarse como una lista completa de las entradas de cualquier snapshot particular.
+protocol.
+protocol.f1.id; protocol.f1.response0; protocol.f1.response1; protocol.f1.response2; protocol.f1.revision0; protocol.f1.revision1; protocol.f2.downstream; protocol.f2.environment; protocol.f2.id; protocol.f2.overflow; protocol.f2.upstream; protocol.fallback; protocol.h2.mode; protocol.h3.arm; protocol.h3.backup_distance; protocol.h3.backup_learned; protocol.h3.damage_applied; protocol.h3.damage_authorized; protocol.h3.dimension; protocol.h3.function_lost; protocol.h3.geometry_id; protocol.h3.permutation; protocol.h3.preparation_tag; protocol.h3.primary_before_damage; protocol.h3.primary_distance; protocol.h3.receiver_x; protocol.h3.receiver_y; protocol.h3.receiver_z; protocol.h3.reconstructed; protocol.h3.sign; protocol.id; protocol.version
+h1.
+h1.arm; h1.axis; h1.base; h1.base_path; h1.input_delay; h1.labels; h1.loads; h1.phase0; h1.phase1; h1.probe; h1.spacing; h1.states; h1.target
+h2.
+h2.base_offset; h2.channels; h2.deltas; h2.geometry_index; h2.initial_load; h2.initial_support; h2.merge_exact; h2.merge_load; h2.merge_tick; h2.query_base; h2.query_load; h2.query_path; h2.query_tick; h2.trained_support; h2.training_tick; h2.translation
+El sufijo de un campo, el nombre de un vector y la frontera donde se guarda una lectura no son ornamentales: describen el estado que resume el protocolo para su retorno. Para modificar un esquema se requiere migración declarada; renombrar claves silenciosamente puede conservar RAW y perder la función del resultado.
+Fuente: [S06] src/integrated_protocols.cpp; L319-454
+Fuente: [S06] src/integrated_protocols.cpp; L659-924
+Fuente: [S06] src/integrated_protocols.cpp; L1475-1568
+Fuente: [S06] src/integrated_protocols.cpp; L1998-2332
+D.2. Fixtures de referencia
+Fixture
+N / ticks
+Propósito original
+empty_three_ticks.dtr
+5 / 3
+empty lattice and uniform clock progression
+transport_toroidal_wrap.dtr
+7 / 3
+directional transport across x wrap
+state_zero_raw_nonzero.dtr
+7 / 2
+RAW-present record with state zero
+semantic4_modular_clock.dtr
+7 / 3
+observer semantic and uint64 clock wrap
+occupied_destination.dtr
+7 / 1
+occupied versus empty destination branch
+simultaneous_xnor_eight.dtr
+9 / 1
+eight simultaneous corner proposals
+simultaneous_non_xnor.dtr
+9 / 1
+eight simultaneous non-XNOR proposals
+staged_directional_composition.dtr
+11 / 2
+two-proposal reduction followed by a later third proposal
+nonuniform_clocks_direction_edges.dtr
+6 / 2
+signed direction boundaries and clocks
+reachable_demux_overflow.dtr
+7 / 1
+historical overflow attempt; survival guard yields zero overflow
+demux_overflow_six_neighbors.dtr
+7 / 1
+reachable material overflow with one postpass DEMUX delta
+demux_atomic_shared_target.dtr
+7 / 1
+two x-slab overflows atomically accumulate on one born target
+orphan_reachable_evolution.dtr
+7 / 1
+reachable orphan matter update preserving semantic and gradient direction
+demux_occupied_saturation.dtr
+7 / 1
+two DEMUX deltas saturate an occupied destination at P_KERNEL-1
+strong_tension_write_protection.dtr
+13 / 1
+reachable strong-tension survival and zero-vector write protection
+Los archivos .dtr son oráculos de transiciones con estado inicial y esperado, no snapshots para continuar una aplicación. El manifest identifica el wheel/binario que generó los datos. El generador original mencionado por el manifest no aparece entre los 138 miembros finales: puede revalidarse la biblioteca contra los fixtures conservados sin regenerarlos, pero no debe afirmarse que está incluido un generador que no está.
+Fuente: [S48] fixtures/whl_v27/manifest.json
+Fuente: [S49] tests/kernel_fixture_tests.cpp
+D.3. Scripts de verificación frente a experimentos
+El test support cuenta checks, imprime diagnósticos y devuelve fallo cuando una comprobación no se cumple. El verificador del ZIP analiza contenido, identidades y evidencia declarada. Ninguno de esos objetos debe confundirse con la regla DEE ni con un juicio automático sobre consciencia, generalidad o validez física externa. Los fixtures controlan lo que se conserva, no generan por sí solos la evolución.
+Fuente: [S50] tests/test_support.hpp
+Fuente: [S40] tools/verify_definitive_delivery.py
+Anexo E. Genealogía de mecanismos y decisiones
+El análisis transversal se utiliza para explicar por qué existen los contratos. No convierte cada documento histórico en una norma inmutable ni afirma que todas las campañas hayan sido reejecutadas para redactar este manual. La reconstrucción del producto se fija por las fuentes finales, las referencias y sus pruebas; la genealogía conserva el problema que cada mecanismo resolvió.
+Familia / etapa
+Aporte al corte
+Límite que se conserva
+Kernel v27 y genealogía Lazy
+Regla nativa; representación; schedulers equivalentes en dominios probados.
+No reintroducir constantes v25 ni interpretar optimización como una nueva física.
+CORE05
+Transporte, coincidencias, memoria de fase, retardo a lugar.
+T_div y bancos temporales son relaciones de aparatos, no constantes universales.
+CORE06 / CORE07
+Aprendizaje de relaciones, actualización, transporte de función y repertorios.
+Consultas transformativas; preparar una relación no demuestra que el mundo invente sus teachers.
+CORE15-17
+Estado completo, proyecciones, identidad funcional, reparación redundante.
+Un observer igual no implica RAW+clock iguales; copia entrenada no es replicación adquirida.
+Ingeniería 01-02
+Suministro persistente; memoria relativa y lectura direccional.
+No exigir a una sola celda ser fuente, memoria, lector y reparador a la vez.
+Ingeniería 03-04.5/POST
+Compatibilidad, acceso e intervenciones diagnósticas.
+Existencia de una clase funcional no garantiza acceso nativo desde cada preparación.
+Ingeniería 05-06
+Historia distribuida y efecto contextual de una experiencia nueva.
+Comparar efectos sobre fondos pareados, no sólo outputs de mundos ya distintos.
+Procesos 01-03
+Desarrollo del paisaje e interfaces; procedencia científica complementaria.
+No identificar s_reg con una temperatura ni importar una ley térmica no usada por el producto.
+PENSAMIENTO 01-02
+Reentrada, integración contextual, recurrencia y límites de saturación.
+Actividad persistente no garantiza capacidad informacional ilimitada.
+Laboratorio final
+F1 revisiones sucesivas; F2 mediación por DEMUX; F3 negativo en ese aparato.
+Reconocer el resultado acotado sin desplazar continuamente la meta a una versión universal.
+Entregas 01-02 y 2.2.0
+Contratos de software, validación, persistencia y distribución C++/Python.
+La modularidad de software es interfaz humana sobre una sola dinámica; no independencia ontológica.
+Fuente: [S51] docs/DIRECTED_SOURCE_REVIEW.md
+Fuente: [S04] docs/KERNEL_PROVENANCE.md
+Fuente: [S52] docs/PREINTEGRATION_REPORT.md
+Fuente: [S26] evidence/laboratory_final/SCIENTIFIC_REPORT.md
+Fuente: [S02] docs/DEFINITIVE_INTEGRATION_REPORT.md
+El documento no incorpora como hecho de producto las hipótesis de mente completa, autoenseñanza universal, optimización termodinámica automática o superioridad energética. Tampoco las transforma en prohibiciones de investigación. La distinción permite consolidar una librería utilizable ahora y continuar estudiando mecanismos nuevos después.
+Anexo F. Índice de fuentes y verificación documental
+Cada etiqueta [Snn] identifica un archivo del ZIP original. Las referencias Lx-Ly son las líneas del archivo de texto preservado; las referencias sin líneas remiten al archivo completo. Los bloques de código descriptivos del manual no reemplazan los archivos compilables. Los hashes siguientes permiten localizar exactamente las fuentes consultadas, sin exigir los enlaces de la conversación.
+[S01] PROJECT_METADATA.json
+SHA-256: 2263249d185411647a7dc552c540f85591ac9870791eaf6c5d41ea10e9daf1ea
+[S02] docs/DEFINITIVE_INTEGRATION_REPORT.md
+SHA-256: 88877461451e0e9cac390e93f7626db734798c704ca5eefa6a913fa3f7b118b5
+[S03] HASHES.sha256
+SHA-256: 6b69b8b6709c5f989aa8e244efbecfb5135aab8eb0e164b3ae5c0699993a5ab0
+[S04] docs/KERNEL_PROVENANCE.md
+SHA-256: 88023ec9c0a19dc06d7b38264374e17eb140a04d2feedf2bb7c290bbb413170f
+[S05] docs/ARCHITECTURE_AND_BUILD.md
+SHA-256: 31da97973d2d89214075b723aabfb38cde6fac4851196b092b84d284dc4fe7de
+[S06] src/integrated_protocols.cpp
+SHA-256: 28ab0be1339cfa753666185229656e79a9f276d5e30736d1163bba0b7dd1464f
+[S07] docs/API_CONTRACT.md
+SHA-256: ced1f9598034ed527ee14feda267a33b1d2be3230fbaac7402cee1be562f092f
+[S08] src/kernel_v27.cpp
+SHA-256: fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31
+[S09] docs/ORGANIZATION_CATALOG.md
+SHA-256: 8363351522b296194ffbf6691ea22d3caece34f42486b91f9d8f068b6e748fba
+[S10] docs/CAPABILITY_CONTRACTS.md
+SHA-256: 43f04dd0946b3a95449c14714bb9dbaa80af76f5c241da27f8b2fe258457250e
+[S11] include/dee_thinking/kernel_v27.hpp
+SHA-256: 6e1cfea44e35a2f281ac7c3dc6009921b199facfc5ac0000db58982402087239
+[S12] docs/SCIENTIFIC_SCOPE.md
+SHA-256: 895dfb22c67e614c6f05cf933e0d2fdc7029894b21891ec89485f425f8cf06a9
+[S13] docs/CHANGELOG.md
+SHA-256: c334584e37dc5f2710329b9b39651d97b5edc14e8c523cd2a8f55c906344803e
+[S14] CMakeLists.txt
+SHA-256: 86f9e4aa88a6e2e9a68dbeeedf0d76f383f17021a0ba86cb8a7f1e87255328b3
+[S15] cmake/python/dee_thinking_python.cmake
+SHA-256: d406f9c9f3f8189f92ac1df78e2c9ed0899af4fbd9f11dbdb8d57ff7e4ecc2af
+[S16] include/dee_thinking/integrated_protocols.hpp
+SHA-256: 709a1a2c48acd51db6ad22260db225f7fdaff6599e4075b3d7c369be52527ac3
+[S17] include/dee_thinking/runtime.hpp
+SHA-256: 5fe32fe3759fecea82997c9294495a8b19cede2e04038877080e8d878547d4de
+[S18] src/runtime.cpp
+SHA-256: 617c01bda7cdc8859c3737efc25a49d34554839a56ccc3856a8e54d6aa992b32
+[S19] docs/MICROSCOPIC_BRANCH_AUDIT.md
+SHA-256: a31981ee2372c54582fc5dfef70f43146046a8605117ba2c01b3e17c15b1ceab
+[S20] bindings/dee_thinking_pybind.cpp
+SHA-256: 27da3a2946fb94d0e8b8212c49c98d3966a58af535b28410c71d30648b9536f1
+[S21] docs/TECHNICAL_REPORT.md
+SHA-256: f805e9a8b25eb8097084ab13f7ca0cd3f799cc731a04f1fbaa0beeb507c63481
+[S22] include/dee_thinking/organization_catalog.hpp
+SHA-256: 1605fcd590d02a4755e4a5ac93383ea4ee2a3983318daa688ddbd897d88715fe
+[S23] src/organization_catalog.cpp
+SHA-256: 949e281b4014ecdeafe445a89585447e4a70bba2d1b75a76179654517d748146
+[S24] src/composition.cpp
+SHA-256: 302ef92d4d0056c8389e674b546ad232b93809ca54c736653d0db4fbc13ad9c6
+[S25] tests/integrated_protocols_tests.cpp
+SHA-256: ac3de8835a3e0cad5b1fadeebbfe2756b63687381ff933aa573bafabe6197389
+[S26] evidence/laboratory_final/SCIENTIFIC_REPORT.md
+SHA-256: 98ed583e6076759220df97dac8c7fa7831328c5fa30e7b2f4132bcc5d9124e9f
+[S27] setup.py
+SHA-256: f6a39c94c627aebf189c0c235274ecc7de8d3140ffb77b7502b53d20e83522a8
+[S28] python/dee_thinking/__init__.py
+SHA-256: 654af68a4d9ba498cd7600b2c9f84caf14c1edb9398c692a7eeea630fa9d9658
+[S29] pyproject.toml
+SHA-256: 5707a49abbe7cbcdcd25416180c7fd721cde92cfb50704424d3006f619c0b587
+[S30] tests/python/test_wheel_api.py
+SHA-256: 77ef4424accc7840ae627d05304f6cc8ef4753a44ce0877c2115021be5b67f78
+[S31] tests/python/test_integrated_protocols.py
+SHA-256: e8b5220771a936f2d6da1453433a79511e589b959928388bff70147dea176f06
+[S32] tools/build_definitive.ps1
+SHA-256: 71715ab4623a982213bbb14b3e42d769c007c7bd8f14f99d53f8a61dc3bbe8a7
+[S33] tests/installed_consumer/CMakeLists.txt
+SHA-256: 60f5f6e5479b4f113941e084c4481a527801046034ed6ae03ed9756a4288feda
+[S34] python/README.md
+SHA-256: bfe1ffb667ebc30fa80ba2e036d4b731737593e92d37c8f1c940bcfffe7a8f1a
+[S35] tests/cross_language_bridge.cpp
+SHA-256: 35648d3d96bf17f285c23762211451a70085b347ef421fa141289265a6d9f458
+[S36] tests/python/cross_language_bridge.py
+SHA-256: 9936e0db6af210f8e815f0c4c56399bb9fc0b1c8e3f4406a15bb6fd5adc10343
+[S37] tests/protocol_checkpoint_bridge.cpp
+SHA-256: a8c715966fa7c88c2e3f3b04e181553e75f4be4d0fd04eb5b9c4f31e7424c36e
+[S38] tests/python/protocol_checkpoint_bridge.py
+SHA-256: b5067a458551626978cbc5676ccb476ea0b4ef762443729a59191ffe1618c069
+[S39] tools/package_definitive.py
+SHA-256: 9b20aa454dce704acabe913b58830ea812f942eb666d9202461e5c0e254317b6
+[S40] tools/verify_definitive_delivery.py
+SHA-256: 823d2f0e7f32eae4420367b2513a4a2b3d485473aab1fa69180526482b7231b4
+[S41] validation/FINAL_VALIDATION_SUMMARY.json
+SHA-256: 0124b06000a0f77e4d77b6ddaae9c5a5154943d87879e0628890040abda8b3d1
+[S42] validation/wheel_build.log
+SHA-256: 3a078c06b928f410639b53a62828b2a9403d92fe68bf8e2815636e1e4a650b3e
+[S43] docs/TEST_MATRIX_DEFINITIVE.md
+SHA-256: b71abf8c05c88d1f6407bf8ec098e92519dfb92ab17ed50971f70afa431d4da8
+[S44] MANIFEST.json
+SHA-256: ddcbbe6acfd47e807e9d8b5033c74a5ca6078bcb86d1d382ee3b32afed6bed44
+[S45] include/dee_thinking/organizations.hpp
+SHA-256: eae2070449fa8d58df5db8c70fb81bf0baef9c4067c1231900c366efdd8d1173
+[S46] include/dee_thinking/composition.hpp
+SHA-256: cc65a1e41467068215d29a589ae8f7f9c30f30d738fcc0b6fa33d85df52a6d4f
+[S47] include/dee_thinking/version.hpp
+SHA-256: cf528f3d03a0587e65fbd67af91c2ac7baf48476fd8e06463fb9a873522f0a44
+[S48] fixtures/whl_v27/manifest.json
+SHA-256: 8b70d92a179d96fc4270033b5eb5ce87e01df3446a216a4a7a0c8a2cd6b8825f
+[S49] tests/kernel_fixture_tests.cpp
+SHA-256: d490321527e47e05a3beece6518c6cb2a5cea1ed87bc7af33c7cbd5fdfe5c9e2
+[S50] tests/test_support.hpp
+SHA-256: ba42be35b823cfbaa962e60df5fba7baa999e8c42d30e26f626f71799adb8cfd
+[S51] docs/DIRECTED_SOURCE_REVIEW.md
+SHA-256: f91227fd41f006adea23cb01b75339e0ba5f2778938b66b9546bc846f7d9231c
+[S52] docs/PREINTEGRATION_REPORT.md
+SHA-256: e5ed3a1ca5de6c63b271f96814b691df01e8b9748c5939c8eb866c63fbba4e6d
+Comprobación adicional de esta edición: los logs configure.log, build.log y tests.log incluidos en el respaldo documental corresponden a la nueva verificación Linux/GCC descrita en 19.3. Son evidencia de esta edición, no miembros ni resultados nuevos del ZIP de producto original.
+Criterio de entrega documental: DOCX abierto y revisado estructuralmente; renderización para inspección visual; CRC del DOCX y del ZIP documental; identidad de la copia del documento dentro del respaldo; identidad del paquete original y del wheel preservados. La verificación garantiza el estado de los archivos entregados, no la permanencia indefinida del enlace de la sesión.

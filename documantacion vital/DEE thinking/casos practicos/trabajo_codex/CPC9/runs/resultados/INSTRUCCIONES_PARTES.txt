@@ -1,0 +1,12 @@
+ENTREGA PRIVADA DEE
+
+Cada archivo .001, .002, etc. es un segmento binario, no un ZIP independiente.
+Descargue PARTES.json, REUNIR_ENTREGA.py y TODAS las partes del ZIP elegido en la misma carpeta.
+Cada parte mide como máximo 16000000 bytes (16 MB decimales como máximo).
+Con Python3, ejecute: python REUNIR_ENTREGA.py
+Para seleccionar uno: python REUNIR_ENTREGA.py --archivo NOMBRE_COMPLETO.zip
+El script verifica orden, tamaños, SHA-256 de cada parte y SHA-256 del ZIP reconstruido.
+No sobrescribe archivos distintos ya existentes. Un ZIP canónico ya correcto se verifica sin cambiarlo.
+La publicación sin sobrescritura usa enlaces físicos atómicos en la misma carpeta: requiere NTFS u otro sistema de archivos con hardlinks.
+Si el destino no admite hardlinks, el programa falla conservando el temporal; no usa un reemplazo que pueda sobrescribir datos.
+Los ZIP pequeños no se dividen; deben descargarse directamente. Conserve los ZIP canónicos originales.

@@ -1,0 +1,6130 @@
+{
+  "schema": "CPC9.essential.independent.primary.recalculation.v1",
+  "engine_imported": false,
+  "campaign_repeated": false,
+  "formulas": {
+    "uint64": "0<=integer<2**64; no float accepted",
+    "state": "RAW & (2**32-1)",
+    "s_reg": "(RAW>>32)&65535",
+    "semantic": "(RAW>>60)&15",
+    "direction": "signed4-bit components at48,52,56",
+    "qualified": "active AND semantic==1 AND direction==frozen_expected; load equality only when predeclared",
+    "rate": "sum(qualified)/number_of_requested_observations; all rejections/misses retained",
+    "physical_equal": "tick and complete RAW/clocks SHA equality; not documentary metadata equality",
+    "occupation": "count((RAW & 0xffffffff)>0)",
+    "main_new_receipts": "set(current_ids)-set(previous_ids)"
+  },
+  "primary_coverage": {
+    "containers": 281,
+    "statuses": {
+      "MEASURED": 203,
+      "PREDICTED": 1,
+      "None": 1,
+      "EXECUTED": 74,
+      "TECHNICAL_ERROR": 2
+    },
+    "uint64_exact_fields": 2271293,
+    "invalid": [],
+    "unpacked_mismatch": []
+  },
+  "continuity": {
+    "stages": [
+      {
+        "phase": 0,
+        "case_id": "EI_D01",
+        "start": 0,
+        "end": 884,
+        "initial": {
+          "RAW_sha256": "75a05fbf533a02dcc7fb88d1dd303888b062fa2ee9232cc38bca8a74da5c66be",
+          "clocks_sha256": "cb3aa434c6c39a5d55d5bc037de258dc73f0749fedaab51c00b3c21559cd5ace",
+          "tick": 0
+        },
+        "final": {
+          "RAW_sha256": "9f60c4e9b0aa6a4e39ddc3d0f643ca6ecf0140f3e11df8c387933b9d9bcaa5b6",
+          "clocks_sha256": "80a28ce6ddfdb209914494a4a0e37d837083f2656e5d9ee4a397b54243a466a3",
+          "tick": 884
+        },
+        "new_receipts": 522,
+        "new_statuses": {
+          "applied": 487,
+          "rejected_occupied": 35
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": null,
+        "parent_declared": null,
+        "parent_saved_sha": null,
+        "parent_hash_matches_saved_original": null,
+        "source": {
+          "document": "D00058",
+          "original_member": "CPC9/resultados/vida_integral/EI_D01/MEDICIONES.json",
+          "original_sha256": "ab12be445184fcf70102d0ce2d6077592f189615d597094d2fb569470a3ade6c",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 1,
+        "case_id": "E1_MAIN_884_1220",
+        "start": 884,
+        "end": 1220,
+        "initial": {
+          "RAW_sha256": "9f60c4e9b0aa6a4e39ddc3d0f643ca6ecf0140f3e11df8c387933b9d9bcaa5b6",
+          "clocks_sha256": "80a28ce6ddfdb209914494a4a0e37d837083f2656e5d9ee4a397b54243a466a3",
+          "tick": 884
+        },
+        "final": {
+          "RAW_sha256": "580d527f11c418226e0db1bc9f0dcb525e8dada986eb29aac7dd7c51f09d3e36",
+          "clocks_sha256": "dab5517b87d95aa2004b2c2c324e59869816c4185d247e04b68dfacd68382bb4",
+          "tick": 1220
+        },
+        "new_receipts": 123,
+        "new_statuses": {
+          "applied": 96,
+          "rejected_occupied": 27
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "2e28f995579317b37e4e58f272bb70368b8c87bef09d4384f79f616c477d151a",
+        "parent_saved_sha": "2e28f995579317b37e4e58f272bb70368b8c87bef09d4384f79f616c477d151a",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00029",
+          "original_member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/MEDICIONES.json",
+          "original_sha256": "9b23c7944c1201b3c443c839af357887ac90ea62b6995a57d789129dbf0f5080",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 2,
+        "case_id": "E1_MAIN_1220_1371",
+        "start": 1220,
+        "end": 1371,
+        "initial": {
+          "RAW_sha256": "580d527f11c418226e0db1bc9f0dcb525e8dada986eb29aac7dd7c51f09d3e36",
+          "clocks_sha256": "dab5517b87d95aa2004b2c2c324e59869816c4185d247e04b68dfacd68382bb4",
+          "tick": 1220
+        },
+        "final": {
+          "RAW_sha256": "7269d4eadbaed65bdf8f765d6b9094735aa9703716fa761d106fd80fb8a1f5e5",
+          "clocks_sha256": "671af00a7084fe0213f1d34dedaa310adbe49dc5726dc17ec07ae49268ccda96",
+          "tick": 1371
+        },
+        "new_receipts": 68,
+        "new_statuses": {
+          "rejected_occupied": 15,
+          "applied": 53
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "051b89c26769f7342a515e47ce66c6d77b65e544c70a3ceb4a79c390d64fedeb",
+        "parent_saved_sha": "051b89c26769f7342a515e47ce66c6d77b65e544c70a3ceb4a79c390d64fedeb",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00078",
+          "original_member": "CPC9/front_relations/resultados/E1_MAIN_1220_1371/MEDICIONES.json",
+          "original_sha256": "b4250384585b118061d338a6f9506eb8f8f456491741d4488a1ed154381c0a4a",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 3,
+        "case_id": "E1_MAIN_1371_1639",
+        "start": 1371,
+        "end": 1639,
+        "initial": {
+          "RAW_sha256": "7269d4eadbaed65bdf8f765d6b9094735aa9703716fa761d106fd80fb8a1f5e5",
+          "clocks_sha256": "671af00a7084fe0213f1d34dedaa310adbe49dc5726dc17ec07ae49268ccda96",
+          "tick": 1371
+        },
+        "final": {
+          "RAW_sha256": "17c77252ca7d5e690e0a7527592d9923763a178952a7fa06829e7441bf3b1d41",
+          "clocks_sha256": "7f6dec30a961ce7dfac6d9ff05167162f717e0b4eca31edbd0ab92674019a7e1",
+          "tick": 1639
+        },
+        "new_receipts": 87,
+        "new_statuses": {
+          "applied": 63,
+          "rejected_occupied": 24
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "5b3c95367becd27e1188a3fa19e24517545bcb662523dc8f6553001e0c9ea11a",
+        "parent_saved_sha": "5b3c95367becd27e1188a3fa19e24517545bcb662523dc8f6553001e0c9ea11a",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00079",
+          "original_member": "CPC9/front_relations/resultados/E1_MAIN_1371_1639/MEDICIONES.json",
+          "original_sha256": "479cf75ff2288863bb20e6053ed574ab3bda370fbedbed18781f328c200d0b11",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 4,
+        "case_id": "E1_MAIN_1639_1907",
+        "start": 1639,
+        "end": 1907,
+        "initial": {
+          "RAW_sha256": "17c77252ca7d5e690e0a7527592d9923763a178952a7fa06829e7441bf3b1d41",
+          "clocks_sha256": "7f6dec30a961ce7dfac6d9ff05167162f717e0b4eca31edbd0ab92674019a7e1",
+          "tick": 1639
+        },
+        "final": {
+          "RAW_sha256": "bf0663562a2edd2f271365704a6931b312a72c3c986bcd1033a1fbd3f6173398",
+          "clocks_sha256": "36f1f1e4d3327ee52ed30bfb051dc7ae92095e101c93933e890d4caf90f1fd43",
+          "tick": 1907
+        },
+        "new_receipts": 81,
+        "new_statuses": {
+          "applied": 65,
+          "rejected_occupied": 16
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "e0c6bd41d4ddae18c31faae753edcfaaa41a2c10de3c4ed3e4205f7521b54b43",
+        "parent_saved_sha": "e0c6bd41d4ddae18c31faae753edcfaaa41a2c10de3c4ed3e4205f7521b54b43",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00080",
+          "original_member": "CPC9/front_relations/resultados/E1_MAIN_1639_1907/MEDICIONES.json",
+          "original_sha256": "b2c86614661e54fc3aea544db565fba36107d6bce5e7a592134c797676399c3e",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 5,
+        "case_id": "E1_MAIN_K65_1907_2353",
+        "start": 1907,
+        "end": 2353,
+        "initial": {
+          "RAW_sha256": "bf0663562a2edd2f271365704a6931b312a72c3c986bcd1033a1fbd3f6173398",
+          "clocks_sha256": "36f1f1e4d3327ee52ed30bfb051dc7ae92095e101c93933e890d4caf90f1fd43",
+          "tick": 1907
+        },
+        "final": {
+          "RAW_sha256": "4830e29ae19e78282443ed0071b0308cd8aa97fefc008ac6942c8c2dd1b9b810",
+          "clocks_sha256": "f2e6a039f13b4e995d22d0b2021d2379aaad316b7a121ddd8ae0bdde0691f16d",
+          "tick": 2353
+        },
+        "new_receipts": 514,
+        "new_statuses": {
+          "applied": 429,
+          "rejected_occupied": 85
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "f2a7a5ab80c112f8f5e770910ca79f40b2a2f4836f31cae44dceccb1bd56c341",
+        "parent_saved_sha": "f2a7a5ab80c112f8f5e770910ca79f40b2a2f4836f31cae44dceccb1bd56c341",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00030",
+          "original_member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/MEDICIONES.json",
+          "original_sha256": "eddf877a8db828cd1b20e3627753dcb727aa579f50c4867d69aa9fed4cc5180f",
+          "pointer": ""
+        }
+      },
+      {
+        "phase": 6,
+        "case_id": "E1_MAIN_TAIL_2353_2493",
+        "start": 2353,
+        "end": 2493,
+        "initial": {
+          "RAW_sha256": "4830e29ae19e78282443ed0071b0308cd8aa97fefc008ac6942c8c2dd1b9b810",
+          "clocks_sha256": "f2e6a039f13b4e995d22d0b2021d2379aaad316b7a121ddd8ae0bdde0691f16d",
+          "tick": 2353
+        },
+        "final": {
+          "RAW_sha256": "133c73aadf103d2726dfe8a6ed37e5d0757b4d81e242cfe34985d5b7cf8fdbf7",
+          "clocks_sha256": "979fd1b587ace6f21773544be781399068bf558a3106da12c877cad3dd3e41ac",
+          "tick": 2493
+        },
+        "new_receipts": 178,
+        "new_statuses": {
+          "applied": 1,
+          "rejected_occupied": 177
+        },
+        "prior_ids_retained": true,
+        "previous_final_equal": true,
+        "parent_declared": "5a117957929bc98cd22a704b918d4f3b0c70c64a2da4d616fcd7d8e38dd72b78",
+        "parent_saved_sha": "5a117957929bc98cd22a704b918d4f3b0c70c64a2da4d616fcd7d8e38dd72b78",
+        "parent_hash_matches_saved_original": true,
+        "source": {
+          "document": "D00031",
+          "original_member": "CPC9/resultados/continuacion/E1_MAIN_TAIL_2353_2493/MEDICIONES.json",
+          "original_sha256": "43ffff81a2548554e2011c3766eadce1495a9d26349e5fd4fbafb6a4edc074ae",
+          "pointer": ""
+        }
+      }
+    ],
+    "unique_receipts": 1573,
+    "tick_span": 2493,
+    "recorded_frames": 352,
+    "scope": "Seven serialized phases, not seven independent lives. External empty interfaces are declared, not native growth."
+  },
+  "saved_physical_field_recounts": [
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S00_T0.json",
+      "physical": {
+        "RAW_sha256": "75a05fbf533a02dcc7fb88d1dd303888b062fa2ee9232cc38bca8a74da5c66be",
+        "clocks_sha256": "cb3aa434c6c39a5d55d5bc037de258dc73f0749fedaab51c00b3c21559cd5ace",
+        "tick": 0
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 107,
+        "alive_except_sem5": 107,
+        "directional_fields_nonzero": 39,
+        "semantic_counts": {
+          "0": 300656,
+          "4": 66,
+          "1": 41
+        },
+        "state_counts": {
+          "0": 300656,
+          "1": 95,
+          "3000": 1,
+          "3001": 1,
+          "1000": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "2000": 1,
+          "4002": 1,
+          "4003": 1,
+          "2": 1
+        },
+        "max_s_reg": 100,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5485219,
+        "decoded_sha256": "1622f6e756d1e60c4f100eae49cee711a905f0d2aeace5bb724a2de8790aa46e",
+        "member": "CPC9/resultados/vida_integral/EI_D01/T0.deetsnap.gz",
+        "sha256": "223f654bfd87e764783fd20d13c12879b36c2fbb2563e8e15ec351217a8a5d07"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S01_T884.json",
+      "physical": {
+        "RAW_sha256": "9f60c4e9b0aa6a4e39ddc3d0f643ca6ecf0140f3e11df8c387933b9d9bcaa5b6",
+        "clocks_sha256": "80a28ce6ddfdb209914494a4a0e37d837083f2656e5d9ee4a397b54243a466a3",
+        "tick": 884
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 294,
+        "alive_except_sem5": 294,
+        "directional_fields_nonzero": 226,
+        "semantic_counts": {
+          "0": 300469,
+          "1": 228,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300469,
+          "1": 284,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "3": 1,
+          "4003": 1
+        },
+        "max_s_reg": 214,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5446086,
+        "decoded_sha256": "9be4b189798b1a49065226585fcd64f145f2354690d56b334be907d4922c13df",
+        "member": "CPC9/resultados/vida_integral/EI_D01/T884.deetsnap.gz",
+        "sha256": "2e28f995579317b37e4e58f272bb70368b8c87bef09d4384f79f616c477d151a"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S02_T1220.json",
+      "physical": {
+        "RAW_sha256": "580d527f11c418226e0db1bc9f0dcb525e8dada986eb29aac7dd7c51f09d3e36",
+        "clocks_sha256": "dab5517b87d95aa2004b2c2c324e59869816c4185d247e04b68dfacd68382bb4",
+        "tick": 1220
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 297,
+        "alive_except_sem5": 297,
+        "directional_fields_nonzero": 228,
+        "semantic_counts": {
+          "0": 300466,
+          "1": 231,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300466,
+          "1": 287,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "3": 1,
+          "4003": 1
+        },
+        "max_s_reg": 384,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5490391,
+        "decoded_sha256": "2727320dbb36aa92933f432e78cbb571c9eece4c62f38f89b34a395644d9f498",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/T1220.deetsnap.gz",
+        "sha256": "051b89c26769f7342a515e47ce66c6d77b65e544c70a3ceb4a79c390d64fedeb"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S03_T1371.json",
+      "physical": {
+        "RAW_sha256": "7269d4eadbaed65bdf8f765d6b9094735aa9703716fa761d106fd80fb8a1f5e5",
+        "clocks_sha256": "671af00a7084fe0213f1d34dedaa310adbe49dc5726dc17ec07ae49268ccda96",
+        "tick": 1371
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 310,
+        "alive_except_sem5": 310,
+        "directional_fields_nonzero": 241,
+        "semantic_counts": {
+          "0": 300453,
+          "1": 244,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300453,
+          "1": 299,
+          "3000": 1,
+          "3": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 469,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5529701,
+        "decoded_sha256": "e98d08e9c138e420fbff90d5fb51f89084fa765b53e3efff096401d0767257b8",
+        "member": "CPC9/front_relations/resultados/E1_MAIN_1220_1371/T1371.deetsnap.gz",
+        "sha256": "5b3c95367becd27e1188a3fa19e24517545bcb662523dc8f6553001e0c9ea11a"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S04_T1639.json",
+      "physical": {
+        "RAW_sha256": "17c77252ca7d5e690e0a7527592d9923763a178952a7fa06829e7441bf3b1d41",
+        "clocks_sha256": "7f6dec30a961ce7dfac6d9ff05167162f717e0b4eca31edbd0ab92674019a7e1",
+        "tick": 1639
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 301,
+        "alive_except_sem5": 301,
+        "directional_fields_nonzero": 232,
+        "semantic_counts": {
+          "0": 300462,
+          "1": 235,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300462,
+          "1": 291,
+          "3000": 1,
+          "3": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4003": 1
+        },
+        "max_s_reg": 537,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5562440,
+        "decoded_sha256": "839b3417a0ce13fe158081c24290c876450a974c884171d87dd0e452a8bb4df8",
+        "member": "CPC9/front_relations/resultados/E1_MAIN_1371_1639/T1639.deetsnap.gz",
+        "sha256": "e0c6bd41d4ddae18c31faae753edcfaaa41a2c10de3c4ed3e4205f7521b54b43"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S05_T1907.json",
+      "physical": {
+        "RAW_sha256": "bf0663562a2edd2f271365704a6931b312a72c3c986bcd1033a1fbd3f6173398",
+        "clocks_sha256": "36f1f1e4d3327ee52ed30bfb051dc7ae92095e101c93933e890d4caf90f1fd43",
+        "tick": 1907
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 310,
+        "alive_except_sem5": 310,
+        "directional_fields_nonzero": 242,
+        "semantic_counts": {
+          "0": 300453,
+          "1": 244,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300453,
+          "1": 299,
+          "3000": 1,
+          "3": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 605,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5592295,
+        "decoded_sha256": "e26034f02f4adf099daf23765e819c8d1613b82632a6038d8e958534d592a25b",
+        "member": "CPC9/front_relations/resultados/E1_MAIN_1639_1907/T1907.deetsnap.gz",
+        "sha256": "f2a7a5ab80c112f8f5e770910ca79f40b2a2f4836f31cae44dceccb1bd56c341"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S06_T1912.json",
+      "physical": {
+        "RAW_sha256": "3d7969ec598497cc4af4170a73f81af093dc16ae928d22147466e17eef63f841",
+        "clocks_sha256": "c8fe264cd8250ae7c9fef05606bad1b892d68e3c39e44e0341f978e56971978f",
+        "tick": 1912
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 315,
+        "alive_except_sem5": 315,
+        "directional_fields_nonzero": 247,
+        "semantic_counts": {
+          "0": 300448,
+          "1": 249,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300448,
+          "1": 305,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 605,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 6030465,
+        "decoded_sha256": "9c57b065fd902f1960010f9e061834fe8708c943c9433d8681f4e0daa21edbde",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/T1912.deetsnap.gz",
+        "sha256": "0264e2e9804c18c2344b9d77de14ebe225331b68d276d609bf4bdacbded4b289"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S07_T2152.json",
+      "physical": {
+        "RAW_sha256": "4717abaa1404f51233f7c890431d05e598c7211fd704b72847a0721b1160f233",
+        "clocks_sha256": "cdf9942c50f321123cf7128e4d13c985d97ad8dada9792bd6243efebbf832e5f",
+        "tick": 2152
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 361,
+        "alive_except_sem5": 361,
+        "directional_fields_nonzero": 293,
+        "semantic_counts": {
+          "0": 300402,
+          "1": 295,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300402,
+          "1": 351,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 707,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 6013367,
+        "decoded_sha256": "e4e4394bcce5b4444bf33164055297ac00a4e46fd249514a8165650cdcea99a4",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/T2152.deetsnap.gz",
+        "sha256": "177ea9ef46d94e0e5f2fca53ce7e859ca4f44512f0732f84775d43fe0a9f2d1a"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S08_T2219.json",
+      "physical": {
+        "RAW_sha256": "bc64a1437e86752cee0684bc3ee62747fabc6438d5c222f4dbf2d198a513a80f",
+        "clocks_sha256": "6b8158e5ef486aa9127bf812eb5c7023a9f57311982600a1c58a3f3c26e25684",
+        "tick": 2219
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 379,
+        "alive_except_sem5": 379,
+        "directional_fields_nonzero": 311,
+        "semantic_counts": {
+          "0": 300384,
+          "1": 313,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300384,
+          "1": 368,
+          "3000": 1,
+          "3": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 741,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 6006690,
+        "decoded_sha256": "c67f6642c93b2cc222d491a7eb8088a665e7f00d4334b090e553847073256802",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/T2219.deetsnap.gz",
+        "sha256": "7912736397507a13719697a20d5fc5611c9001f6272bf0282c5076f46ca5e67a"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S09_T2353.json",
+      "physical": {
+        "RAW_sha256": "4830e29ae19e78282443ed0071b0308cd8aa97fefc008ac6942c8c2dd1b9b810",
+        "clocks_sha256": "f2e6a039f13b4e995d22d0b2021d2379aaad316b7a121ddd8ae0bdde0691f16d",
+        "tick": 2353
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 298024,
+        "alive_except_sem5": 298024,
+        "directional_fields_nonzero": 290788,
+        "semantic_counts": {
+          "1": 292190,
+          "7": 5768,
+          "0": 2739,
+          "4": 66
+        },
+        "state_counts": {
+          "3": 252746,
+          "2": 45212,
+          "0": 2739,
+          "1": 57,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4003": 1
+        },
+        "max_s_reg": 3275,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5996103,
+        "decoded_sha256": "ea2954aba4b475f75843ec0f18e54d9e1ca8eeb1cd0341bf6d6bf68467d44fd9",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/T2353.deetsnap.gz",
+        "sha256": "5a117957929bc98cd22a704b918d4f3b0c70c64a2da4d616fcd7d8e38dd72b78"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S10_T2353.json",
+      "physical": {
+        "RAW_sha256": "b6ecad6f487cafa44bb8b794835ab5b97875bb81faf1c7c33c8cbbfed4f1fbac",
+        "clocks_sha256": "f2e6a039f13b4e995d22d0b2021d2379aaad316b7a121ddd8ae0bdde0691f16d",
+        "tick": 2353
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 348,
+        "alive_except_sem5": 348,
+        "directional_fields_nonzero": 274,
+        "semantic_counts": {
+          "0": 300415,
+          "1": 282,
+          "4": 66
+        },
+        "state_counts": {
+          "0": 300415,
+          "1": 337,
+          "3000": 1,
+          "3": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4": 1,
+          "4003": 1
+        },
+        "max_s_reg": 809,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 5972049,
+        "decoded_sha256": "4dc96b95800c9758e693ecf62633b7269cc4beac37b9bc9ff3c4dab5bfd60a49",
+        "member": "CPC9/resultados/continuacion/E1_CF_K65_NO_EVENT/T2353.deetsnap.gz",
+        "sha256": "1279eb90dffb3fdf941785467dfdaf54cbbea1282dbbe3a8ec6b99d05d391b51"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S11_T2353.json",
+      "physical": {
+        "RAW_sha256": "e24774c1ec287bd30f4581f2925606927bddf6a8ba5b741b9977eb9e6b0ef0dc",
+        "clocks_sha256": "f2e6a039f13b4e995d22d0b2021d2379aaad316b7a121ddd8ae0bdde0691f16d",
+        "tick": 2353
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 297334,
+        "alive_except_sem5": 297334,
+        "directional_fields_nonzero": 290055,
+        "semantic_counts": {
+          "1": 291517,
+          "0": 3429,
+          "7": 5751,
+          "4": 66
+        },
+        "state_counts": {
+          "2": 54475,
+          "3": 242793,
+          "0": 3429,
+          "1": 57,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4003": 1
+        },
+        "max_s_reg": 5508,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 6011175,
+        "decoded_sha256": "0085ab2fe85354377814fea3240971083bdfb996431414c5576e8981b4797247",
+        "member": "CPC9/resultados/continuacion/E1_CF_K65_UNPAIRED/T2353.deetsnap.gz",
+        "sha256": "8343abd02c55a70766afc8e12ea32328b871998368e8c84cd5ca30df8c39942c"
+      }
+    },
+    {
+      "file": "EVIDENCIA_PRIMARIA_ESENCIAL/CAMPOS_COMPLETOS/S12_T2493.json",
+      "physical": {
+        "RAW_sha256": "133c73aadf103d2726dfe8a6ed37e5d0757b4d81e242cfe34985d5b7cf8fdbf7",
+        "clocks_sha256": "979fd1b587ace6f21773544be781399068bf558a3106da12c877cad3dd3e41ac",
+        "tick": 2493
+      },
+      "statistics_recounted": {
+        "sites": 300763,
+        "occupied_state_gt0": 298026,
+        "alive_except_sem5": 298026,
+        "directional_fields_nonzero": 290789,
+        "semantic_counts": {
+          "1": 292191,
+          "7": 5769,
+          "0": 2737,
+          "4": 66
+        },
+        "state_counts": {
+          "3": 252790,
+          "2": 45170,
+          "0": 2737,
+          "1": 57,
+          "3000": 1,
+          "3001": 1,
+          "3002": 1,
+          "3003": 1,
+          "6100": 1,
+          "4000": 1,
+          "4001": 1,
+          "4002": 1,
+          "4003": 1
+        },
+        "max_s_reg": 3275,
+        "at_or_above_reducer_cap": 0
+      },
+      "source": {
+        "archive": "CPC9_ONTOGENIA_SEMANTICA_NATIVA65_RESULTADOS.zip",
+        "archive_sha256": "917a559b917388fc63a6948762d73c3e87a00c30199c5b65c635a8d39bf96bad",
+        "array_offset_bytes": 68,
+        "decoded_bytes": 6061799,
+        "decoded_sha256": "dfd54afe45dee534c6f2cb083c3ce438a20e24bd39a3b2b14ab7c0ad2298abd8",
+        "member": "CPC9/resultados/continuacion/E1_MAIN_TAIL_2353_2493/T2493.deetsnap.gz",
+        "sha256": "8bf63fdf2c16bbb710ac5f922a1ebb9796dc2002000c2da5644f1e1764603941"
+      }
+    }
+  ],
+  "opaque65": [
+    {
+      "case": "E1_MAIN_K65_1907_2353",
+      "first_queries": [
+        60,
+        65
+      ],
+      "later_queries": [
+        103,
+        186
+      ],
+      "rounds": [
+        {
+          "tick": 1979,
+          "qualified": 7,
+          "attempts": 8
+        },
+        {
+          "tick": 2046,
+          "qualified": 6,
+          "attempts": 8
+        },
+        {
+          "tick": 2059,
+          "qualified": 7,
+          "attempts": 8
+        },
+        {
+          "tick": 2113,
+          "qualified": 7,
+          "attempts": 8
+        },
+        {
+          "tick": 2126,
+          "qualified": 6,
+          "attempts": 8
+        },
+        {
+          "tick": 2139,
+          "qualified": 16,
+          "attempts": 16
+        },
+        {
+          "tick": 2180,
+          "qualified": 6,
+          "attempts": 8
+        },
+        {
+          "tick": 2193,
+          "qualified": 6,
+          "attempts": 8
+        },
+        {
+          "tick": 2206,
+          "qualified": 15,
+          "attempts": 16
+        },
+        {
+          "tick": 2219,
+          "qualified": 30,
+          "attempts": 33
+        },
+        {
+          "tick": 2247,
+          "qualified": 7,
+          "attempts": 8
+        },
+        {
+          "tick": 2260,
+          "qualified": 5,
+          "attempts": 8
+        },
+        {
+          "tick": 2273,
+          "qualified": 14,
+          "attempts": 16
+        },
+        {
+          "tick": 2286,
+          "qualified": 27,
+          "attempts": 33
+        },
+        {
+          "tick": 2314,
+          "qualified": 4,
+          "attempts": 8
+        },
+        {
+          "tick": 2327,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2340,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2353,
+          "qualified": 0,
+          "attempts": 33
+        }
+      ],
+      "complete_rounds": [],
+      "source": {
+        "document": "D00030",
+        "original_member": "CPC9/resultados/continuacion/E1_MAIN_K65_1907_2353/MEDICIONES.json",
+        "original_sha256": "eddf877a8db828cd1b20e3627753dcb727aa579f50c4867d69aa9fed4cc5180f",
+        "pointer": ""
+      }
+    },
+    {
+      "case": "E1_CF_K65_NO_EVENT",
+      "first_queries": [
+        0,
+        65
+      ],
+      "later_queries": [
+        0,
+        186
+      ],
+      "rounds": [
+        {
+          "tick": 1979,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2046,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2059,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2113,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2126,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2139,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2180,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2193,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2206,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2219,
+          "qualified": 0,
+          "attempts": 33
+        },
+        {
+          "tick": 2247,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2260,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2273,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2286,
+          "qualified": 0,
+          "attempts": 33
+        },
+        {
+          "tick": 2314,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2327,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2340,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2353,
+          "qualified": 0,
+          "attempts": 33
+        }
+      ],
+      "complete_rounds": [],
+      "source": {
+        "document": "D00026",
+        "original_member": "CPC9/resultados/continuacion/E1_CF_K65_NO_EVENT/MEDICIONES.json",
+        "original_sha256": "9ea7243fc455174cd2b7646050e058ec2fd2a8d696c1545c04a074392d21e51d",
+        "pointer": ""
+      }
+    },
+    {
+      "case": "E1_CF_K65_UNPAIRED",
+      "first_queries": [
+        0,
+        65
+      ],
+      "later_queries": [
+        0,
+        186
+      ],
+      "rounds": [
+        {
+          "tick": 1979,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2046,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2059,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2113,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2126,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2139,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2180,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2193,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2206,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2219,
+          "qualified": 0,
+          "attempts": 33
+        },
+        {
+          "tick": 2247,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2260,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2273,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2286,
+          "qualified": 0,
+          "attempts": 33
+        },
+        {
+          "tick": 2314,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2327,
+          "qualified": 0,
+          "attempts": 8
+        },
+        {
+          "tick": 2340,
+          "qualified": 0,
+          "attempts": 16
+        },
+        {
+          "tick": 2353,
+          "qualified": 0,
+          "attempts": 33
+        }
+      ],
+      "complete_rounds": [],
+      "source": {
+        "document": "D00027",
+        "original_member": "CPC9/resultados/continuacion/E1_CF_K65_UNPAIRED/MEDICIONES.json",
+        "original_sha256": "2fc29b87c4b63f36618240f661d5c04bb34e1594610d638edb3b9c175c631b46",
+        "pointer": ""
+      }
+    }
+  ],
+  "quantity": [
+    {
+      "case": "E1_MAIN_884_1220",
+      "predeclared_auditor_forecast": {
+        "actual_new_addition": 13,
+        "comparison_ticks": [
+          941,
+          1008,
+          1075,
+          1142
+        ],
+        "current_object_payloads": [
+          57,
+          57,
+          70,
+          11
+        ],
+        "old_count": "Try old acquired form at952/1019/1086/1153/1220 without contact/form reteaching",
+        "old_joint": "Try old four candidate signs at951/1018/1085/1152/1219; no decoder repair after result",
+        "predicted_direction_X": [
+          -1,
+          1,
+          -1,
+          1
+        ],
+        "reference_after": 67,
+        "reference_before": 54,
+        "two_old_memories": "Try late old operands36/16 at942/1009/1076/1143, without operand re-exposure; outcomes not assumed"
+      },
+      "observations": [
+        {
+          "tick": 941,
+          "observed": {
+            "raw": "1157143659322277889",
+            "clock": "941",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            -1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425391997026305",
+            "clock": "941",
+            "state": 1,
+            "s_reg": 67,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00029",
+            "original_member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/MEDICIONES.json",
+            "original_sha256": "9b23c7944c1201b3c443c839af357887ac90ea62b6995a57d789129dbf0f5080",
+            "pointer": "/frames/4/view/quantity"
+          }
+        },
+        {
+          "tick": 1008,
+          "observed": {
+            "raw": "1153203009648328705",
+            "clock": "1008",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425391997026305",
+            "clock": "1008",
+            "state": 1,
+            "s_reg": 67,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00029",
+            "original_member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/MEDICIONES.json",
+            "original_sha256": "9b23c7944c1201b3c443c839af357887ac90ea62b6995a57d789129dbf0f5080",
+            "pointer": "/frames/11/view/quantity"
+          }
+        },
+        {
+          "tick": 1075,
+          "observed": {
+            "raw": "1157143659322277889",
+            "clock": "1075",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            -1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425391997026305",
+            "clock": "1075",
+            "state": 1,
+            "s_reg": 67,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00029",
+            "original_member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/MEDICIONES.json",
+            "original_sha256": "9b23c7944c1201b3c443c839af357887ac90ea62b6995a57d789129dbf0f5080",
+            "pointer": "/frames/18/view/quantity"
+          }
+        },
+        {
+          "tick": 1142,
+          "observed": {
+            "raw": "1153203009648328705",
+            "clock": "1142",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425391997026305",
+            "clock": "1142",
+            "state": 1,
+            "s_reg": 67,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00029",
+            "original_member": "CPC9/resultados/continuacion/E1_MAIN_884_1220/MEDICIONES.json",
+            "original_sha256": "9b23c7944c1201b3c443c839af357887ac90ea62b6995a57d789129dbf0f5080",
+            "pointer": "/frames/25/view/quantity"
+          }
+        }
+      ],
+      "matches": 4,
+      "denominator": 4,
+      "scope": "Prepared comparison law; acquired/revised physical reference. Forecast belongs to auditor, not native prospective prediction."
+    },
+    {
+      "case": "E1_CF_OFFPATH_884_1220",
+      "predeclared_auditor_forecast": {
+        "actual_new_addition": 13,
+        "comparison_ticks": [
+          941,
+          1008,
+          1075,
+          1142
+        ],
+        "current_object_payloads": [
+          57,
+          57,
+          70,
+          11
+        ],
+        "old_count": "Try old acquired form at952/1019/1086/1153/1220 without contact/form reteaching",
+        "old_joint": "Try old four candidate signs at951/1018/1085/1152/1219; no decoder repair after result",
+        "predicted_direction_X": [
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "reference_after": 54,
+        "reference_before": 54,
+        "two_old_memories": "Try late old operands36/16 at942/1009/1076/1143, without operand re-exposure; outcomes not assumed"
+      },
+      "observations": [
+        {
+          "tick": 941,
+          "observed": {
+            "raw": "1157143659322277889",
+            "clock": "941",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            -1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425336162451457",
+            "clock": "941",
+            "state": 1,
+            "s_reg": 54,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00028",
+            "original_member": "CPC9/resultados/continuacion/E1_CF_OFFPATH_884_1220/MEDICIONES.json",
+            "original_sha256": "3b4652e089b0a2ab6db32af204d7973bbc5066c1d4a771b633fbde04bc4eb583",
+            "pointer": "/frames/4/view/quantity"
+          }
+        },
+        {
+          "tick": 1008,
+          "observed": {
+            "raw": "1157143659322277889",
+            "clock": "1008",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            -1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425336162451457",
+            "clock": "1008",
+            "state": 1,
+            "s_reg": 54,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00028",
+            "original_member": "CPC9/resultados/continuacion/E1_CF_OFFPATH_884_1220/MEDICIONES.json",
+            "original_sha256": "3b4652e089b0a2ab6db32af204d7973bbc5066c1d4a771b633fbde04bc4eb583",
+            "pointer": "/frames/11/view/quantity"
+          }
+        },
+        {
+          "tick": 1075,
+          "observed": {
+            "raw": "1157143659322277889",
+            "clock": "1075",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            -1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425336162451457",
+            "clock": "1075",
+            "state": 1,
+            "s_reg": 54,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00028",
+            "original_member": "CPC9/resultados/continuacion/E1_CF_OFFPATH_884_1220/MEDICIONES.json",
+            "original_sha256": "3b4652e089b0a2ab6db32af204d7973bbc5066c1d4a771b633fbde04bc4eb583",
+            "pointer": "/frames/18/view/quantity"
+          }
+        },
+        {
+          "tick": 1142,
+          "observed": {
+            "raw": "1153203009648328705",
+            "clock": "1142",
+            "state": 1,
+            "s_reg": 7,
+            "semantic": 1,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "active": true,
+            "site": [
+              50,
+              35,
+              35
+            ]
+          },
+          "predicted_auditor_direction": [
+            1,
+            0,
+            0
+          ],
+          "match": true,
+          "reference_hub": {
+            "raw": "1157425336162451457",
+            "clock": "1142",
+            "state": 1,
+            "s_reg": 54,
+            "semantic": 1,
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "active": true,
+            "site": [
+              49,
+              36,
+              35
+            ]
+          },
+          "source": {
+            "document": "D00028",
+            "original_member": "CPC9/resultados/continuacion/E1_CF_OFFPATH_884_1220/MEDICIONES.json",
+            "original_sha256": "3b4652e089b0a2ab6db32af204d7973bbc5066c1d4a771b633fbde04bc4eb583",
+            "pointer": "/frames/25/view/quantity"
+          }
+        }
+      ],
+      "matches": 4,
+      "denominator": 4,
+      "scope": "Prepared comparison law; acquired/revised physical reference. Forecast belongs to auditor, not native prospective prediction."
+    }
+  ],
+  "late_memory": {
+    "source": {
+      "document": "D00004",
+      "original_member": "CPC9/resultados/auditoria/MEMORIAS_TARDIAS_2283_R1/MEDICIONES.json",
+      "original_sha256": "24cd63bfae676e54f4539b680023a15b1ddf645b26908f97d8058ed77e78e70b",
+      "pointer": ""
+    },
+    "conditions": [
+      {
+        "condition": "cut_reference",
+        "actual": null,
+        "recorded_controls": {
+          "branch_exact": true,
+          "clock_edited": false,
+          "condition": "cut_reference",
+          "current_boundary_receipts": [
+            {
+              "id": 1370,
+              "kind": "probe",
+              "payload": 7,
+              "port": "TM.quantity.reader",
+              "receipt": {
+                "channels": [
+                  "TM.quantity.reader"
+                ],
+                "effective_tick": null,
+                "id": 1370,
+                "kind": "probe",
+                "reason": "target register is not RAW-empty at application boundary",
+                "requested_tick": 2282,
+                "status": "rejected_occupied"
+              },
+              "tick": 2282
+            }
+          ],
+          "full_MAIN_equal": false,
+          "local_checker_scope": "Complete local prestate; current probes rejected while old reader occupies target",
+          "parent_unchanged": true,
+          "post": {
+            "active": false,
+            "clock": "2283",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              8,
+              52,
+              10
+            ],
+            "state": 0,
+            "tick": 2283
+          },
+          "predicted_native_branch": {
+            "branch": "OCCUPIED_MATERIAL_DECAY_NO_DEMUX",
+            "clock": "2283",
+            "raw": "0"
+          }
+        }
+      },
+      {
+        "condition": "cut_reader",
+        "actual": null,
+        "recorded_controls": {
+          "branch_exact": false,
+          "clock_edited": false,
+          "condition": "cut_reader",
+          "current_boundary_receipts": [
+            {
+              "id": 1370,
+              "kind": "probe",
+              "payload": 7,
+              "port": "TM.quantity.reader",
+              "receipt": {
+                "channels": [
+                  "TM.quantity.reader"
+                ],
+                "effective_tick": 2282,
+                "id": 1370,
+                "kind": "probe",
+                "reason": "",
+                "requested_tick": 2282,
+                "status": "applied"
+              },
+              "tick": 2282
+            }
+          ],
+          "full_MAIN_equal": true,
+          "local_checker_scope": "NOT_CERTIFIED_PENDING_CURRENT_INPUT",
+          "parent_unchanged": true,
+          "post": {
+            "active": true,
+            "clock": "2283",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "raw": "1153203009648328705",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              8,
+              52,
+              10
+            ],
+            "state": 1,
+            "tick": 2283
+          },
+          "predicted_native_branch": {
+            "branch": "EMPTY_NO_SOURCE",
+            "clock": "2283",
+            "raw": "0"
+          }
+        }
+      },
+      {
+        "condition": "same_support_R5",
+        "actual": null,
+        "recorded_controls": {
+          "branch_exact": true,
+          "clock_edited": false,
+          "condition": "same_support_R5",
+          "current_boundary_receipts": [
+            {
+              "id": 1370,
+              "kind": "probe",
+              "payload": 7,
+              "port": "TM.quantity.reader",
+              "receipt": {
+                "channels": [
+                  "TM.quantity.reader"
+                ],
+                "effective_tick": null,
+                "id": 1370,
+                "kind": "probe",
+                "reason": "target register is not RAW-empty at application boundary",
+                "requested_tick": 2282,
+                "status": "rejected_occupied"
+              },
+              "tick": 2282
+            }
+          ],
+          "full_MAIN_equal": false,
+          "local_checker_scope": "Complete local prestate; current probes rejected while old reader occupies target",
+          "parent_unchanged": true,
+          "post": {
+            "active": true,
+            "clock": "2283",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "raw": "1157143659322277889",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              8,
+              52,
+              10
+            ],
+            "state": 1,
+            "tick": 2283
+          },
+          "predicted_native_branch": {
+            "branch": "OCCUPIED_MATERIAL",
+            "clock": "2283",
+            "gradient": [
+              -11,
+              0,
+              0
+            ],
+            "hadron": false,
+            "increment": false,
+            "n_active": 6,
+            "raw": "1157143659322277889",
+            "write_protected": false
+          }
+        }
+      },
+      {
+        "condition": "same_support_R16",
+        "actual": null,
+        "recorded_controls": {
+          "branch_exact": true,
+          "clock_edited": false,
+          "condition": "same_support_R16",
+          "current_boundary_receipts": [
+            {
+              "id": 1370,
+              "kind": "probe",
+              "payload": 7,
+              "port": "TM.quantity.reader",
+              "receipt": {
+                "channels": [
+                  "TM.quantity.reader"
+                ],
+                "effective_tick": null,
+                "id": 1370,
+                "kind": "probe",
+                "reason": "target register is not RAW-empty at application boundary",
+                "requested_tick": 2282,
+                "status": "rejected_occupied"
+              },
+              "tick": 2282
+            }
+          ],
+          "full_MAIN_equal": false,
+          "local_checker_scope": "Complete local prestate; current probes rejected while old reader occupies target",
+          "parent_unchanged": true,
+          "post": {
+            "active": true,
+            "clock": "2283",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "1152921534671618049",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              8,
+              52,
+              10
+            ],
+            "state": 1,
+            "tick": 2283
+          },
+          "predicted_native_branch": {
+            "branch": "OCCUPIED_MATERIAL",
+            "clock": "2283",
+            "gradient": [
+              0,
+              0,
+              0
+            ],
+            "hadron": false,
+            "increment": false,
+            "n_active": 6,
+            "raw": "1152921534671618049",
+            "write_protected": false
+          }
+        }
+      },
+      {
+        "condition": "sham_reference",
+        "actual": null,
+        "recorded_controls": {
+          "branch_exact": true,
+          "clock_edited": false,
+          "condition": "sham_reference",
+          "current_boundary_receipts": [
+            {
+              "id": 1370,
+              "kind": "probe",
+              "payload": 7,
+              "port": "TM.quantity.reader",
+              "receipt": {
+                "channels": [
+                  "TM.quantity.reader"
+                ],
+                "effective_tick": null,
+                "id": 1370,
+                "kind": "probe",
+                "reason": "target register is not RAW-empty at application boundary",
+                "requested_tick": 2282,
+                "status": "rejected_occupied"
+              },
+              "tick": 2282
+            }
+          ],
+          "full_MAIN_equal": true,
+          "local_checker_scope": "Complete local prestate; current probes rejected while old reader occupies target",
+          "parent_unchanged": true,
+          "post": {
+            "active": true,
+            "clock": "2283",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "raw": "1153203009648328705",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              8,
+              52,
+              10
+            ],
+            "state": 1,
+            "tick": 2283
+          },
+          "predicted_native_branch": {
+            "branch": "OCCUPIED_MATERIAL",
+            "clock": "2283",
+            "gradient": [
+              20,
+              0,
+              0
+            ],
+            "hadron": false,
+            "increment": false,
+            "n_active": 6,
+            "raw": "1153203009648328705",
+            "write_protected": false
+          }
+        }
+      }
+    ]
+  },
+  "composition": {
+    "source": {
+      "document": "D00001",
+      "original_member": "CPC9/resultados/auditoria/COMPOSICION_E1/MEDICIONES.json",
+      "original_sha256": "ce8baacc95001750302ee3826d3dfc8902b1ec691f15bc5b7114b96bc84e2c54",
+      "pointer": ""
+    },
+    "incoming": [
+      {
+        "active": true,
+        "clock": "205",
+        "direction": [
+          1,
+          0,
+          1
+        ],
+        "raw": "1225260685290635265",
+        "s_reg": 26,
+        "semantic": 1,
+        "site": [
+          19,
+          8,
+          13
+        ],
+        "state": 1,
+        "tick": 205
+      },
+      {
+        "active": true,
+        "clock": "205",
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "raw": "1157425233083236353",
+        "s_reg": 30,
+        "semantic": 1,
+        "site": [
+          20,
+          7,
+          14
+        ],
+        "state": 1,
+        "tick": 205
+      }
+    ],
+    "formed": {
+      "active": true,
+      "clock": "206",
+      "direction": [
+        1,
+        1,
+        1
+      ],
+      "raw": "1229764413767024641",
+      "s_reg": 56,
+      "semantic": 1,
+      "site": [
+        20,
+        8,
+        14
+      ],
+      "state": 1,
+      "tick": 206
+    },
+    "incoming_load_sum": 56,
+    "baseline_consequence210": {
+      "active": true,
+      "clock": "210",
+      "direction": [
+        1,
+        0,
+        1
+      ],
+      "raw": "1225260844204425217",
+      "s_reg": 63,
+      "semantic": 1,
+      "site": [
+        24,
+        12,
+        18
+      ],
+      "state": 1,
+      "tick": 210
+    },
+    "conditions": [
+      {
+        "condition": "cut_arrival_0",
+        "pre_tick": 205,
+        "new_raw": "0",
+        "victim": {
+          "active": true,
+          "clock": "205",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "raw": "1225260685290635265",
+          "s_reg": 26,
+          "semantic": 1,
+          "site": [
+            19,
+            8,
+            13
+          ],
+          "state": 1,
+          "tick": 205
+        },
+        "clock_preserved": true,
+        "consequence210": {
+          "active": true,
+          "clock": "210",
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "1220475529082175489",
+          "s_reg": 7,
+          "semantic": 1,
+          "site": [
+            24,
+            12,
+            18
+          ],
+          "state": 1,
+          "tick": 210
+        },
+        "baseline_qualified_consequence_present": false,
+        "parents_unchanged": true,
+        "full_original884_equal": false
+      },
+      {
+        "condition": "cut_arrival_1",
+        "pre_tick": 205,
+        "new_raw": "0",
+        "victim": {
+          "active": true,
+          "clock": "205",
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "raw": "1157425233083236353",
+          "s_reg": 30,
+          "semantic": 1,
+          "site": [
+            20,
+            7,
+            14
+          ],
+          "state": 1,
+          "tick": 205
+        },
+        "clock_preserved": true,
+        "consequence210": {
+          "active": true,
+          "clock": "210",
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "1220475529082175489",
+          "s_reg": 7,
+          "semantic": 1,
+          "site": [
+            24,
+            12,
+            18
+          ],
+          "state": 1,
+          "tick": 210
+        },
+        "baseline_qualified_consequence_present": false,
+        "parents_unchanged": true,
+        "full_original884_equal": false
+      },
+      {
+        "condition": "erase_composed_X",
+        "pre_tick": 206,
+        "new_raw": "1229482938790313985",
+        "victim": {
+          "active": true,
+          "clock": "206",
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "raw": "1229764413767024641",
+          "s_reg": 56,
+          "semantic": 1,
+          "site": [
+            20,
+            8,
+            14
+          ],
+          "state": 1,
+          "tick": 206
+        },
+        "clock_preserved": true,
+        "consequence210": {
+          "active": true,
+          "clock": "210",
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "1220475529082175489",
+          "s_reg": 7,
+          "semantic": 1,
+          "site": [
+            24,
+            12,
+            18
+          ],
+          "state": 1,
+          "tick": 210
+        },
+        "baseline_qualified_consequence_present": false,
+        "parents_unchanged": true,
+        "full_original884_equal": false
+      },
+      {
+        "condition": "erase_composed_Z",
+        "pre_tick": 206,
+        "new_raw": "1157706819729096705",
+        "victim": {
+          "active": true,
+          "clock": "206",
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "raw": "1229764413767024641",
+          "s_reg": 56,
+          "semantic": 1,
+          "site": [
+            20,
+            8,
+            14
+          ],
+          "state": 1,
+          "tick": 206
+        },
+        "clock_preserved": true,
+        "consequence210": {
+          "active": true,
+          "clock": "210",
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "1220475529082175489",
+          "s_reg": 7,
+          "semantic": 1,
+          "site": [
+            24,
+            12,
+            18
+          ],
+          "state": 1,
+          "tick": 210
+        },
+        "baseline_qualified_consequence_present": false,
+        "parents_unchanged": true,
+        "full_original884_equal": false
+      },
+      {
+        "condition": "sham_formed206",
+        "pre_tick": 206,
+        "new_raw": "1229764413767024641",
+        "victim": {
+          "active": true,
+          "clock": "206",
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "raw": "1229764413767024641",
+          "s_reg": 56,
+          "semantic": 1,
+          "site": [
+            20,
+            8,
+            14
+          ],
+          "state": 1,
+          "tick": 206
+        },
+        "clock_preserved": true,
+        "consequence210": {
+          "active": true,
+          "clock": "210",
+          "direction": [
+            1,
+            0,
+            1
+          ],
+          "raw": "1225260844204425217",
+          "s_reg": 63,
+          "semantic": 1,
+          "site": [
+            24,
+            12,
+            18
+          ],
+          "state": 1,
+          "tick": 210
+        },
+        "baseline_qualified_consequence_present": true,
+        "parents_unchanged": true,
+        "full_original884_equal": true
+      }
+    ]
+  },
+  "return_observations": [
+    {
+      "case": "RET_C01_NOFORM",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00040"
+    },
+    {
+      "case": "RET_C01_NOFORM",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00040"
+    },
+    {
+      "case": "RET_C01_NOFORM",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00040"
+    },
+    {
+      "case": "RET_C02_UNPAIRED",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00041"
+    },
+    {
+      "case": "RET_C02_UNPAIRED",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00041"
+    },
+    {
+      "case": "RET_C02_UNPAIRED",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00041"
+    },
+    {
+      "case": "RET_C03_NOQUERY",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "raw": "1157143659322277889",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "raw": "1157706652225372161",
+            "s_reg": 17,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00042"
+    },
+    {
+      "case": "RET_C03_NOQUERY",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00042"
+    },
+    {
+      "case": "RET_C03_NOQUERY",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00042"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "restore",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              0,
+              1
+            ],
+            "raw": "1225260676700700673",
+            "s_reg": 24,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "restore",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "restore",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "cut_message",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201304899813377",
+            "s_reg": 19,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "raw": "1224979150184382465",
+            "s_reg": 12,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "cut_message",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233704960361758721",
+            "s_reg": 32,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "cut_message",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233704960361758721",
+            "s_reg": 32,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "sham_message",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              0,
+              1
+            ],
+            "raw": "1225260676700700673",
+            "s_reg": 24,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "sham_message",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL",
+      "condition": "sham_message",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00043"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "restore",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "restore",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "restore",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "cut_message",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201304899813377",
+            "s_reg": 19,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "raw": "1224979150184382465",
+            "s_reg": 12,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "cut_message",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233704960361758721",
+            "s_reg": 32,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "cut_message",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233704960361758721",
+            "s_reg": 32,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "sham_message",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "sham_message",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_CAUSAL_MINUS",
+      "condition": "sham_message",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00044"
+    },
+    {
+      "case": "RET_D01_P",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              0,
+              1
+            ],
+            "raw": "1225260676700700673",
+            "s_reg": 24,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00045"
+    },
+    {
+      "case": "RET_D01_P",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00045"
+    },
+    {
+      "case": "RET_D01_P",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00045"
+    },
+    {
+      "case": "RET_D02_M",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00046"
+    },
+    {
+      "case": "RET_D02_M",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00046"
+    },
+    {
+      "case": "RET_D02_M",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00046"
+    },
+    {
+      "case": "RET_R01_SOURCE17_OBJECT9",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              0,
+              1
+            ],
+            "raw": "1225260676700700673",
+            "s_reg": 24,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00047"
+    },
+    {
+      "case": "RET_R01_SOURCE17_OBJECT9",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00047"
+    },
+    {
+      "case": "RET_R01_SOURCE17_OBJECT9",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00047"
+    },
+    {
+      "case": "RET_R02_SOURCE17_OBJECT27",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00048"
+    },
+    {
+      "case": "RET_R02_SOURCE17_OBJECT27",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00048"
+    },
+    {
+      "case": "RET_R02_SOURCE17_OBJECT27",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00048"
+    },
+    {
+      "case": "RET_R03_SOURCE31_OBJECT42",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00049"
+    },
+    {
+      "case": "RET_R03_SOURCE31_OBJECT42",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00049"
+    },
+    {
+      "case": "RET_R03_SOURCE31_OBJECT42",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00049"
+    },
+    {
+      "case": "RET_V3_R31_SOURCE23_OBJECT16",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              -1,
+              1
+            ],
+            "raw": "1296755277835534337",
+            "s_reg": 14,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              1,
+              0,
+              1
+            ],
+            "raw": "1225260676700700673",
+            "s_reg": 24,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00050"
+    },
+    {
+      "case": "RET_V3_R31_SOURCE23_OBJECT16",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00050"
+    },
+    {
+      "case": "RET_V3_R31_SOURCE23_OBJECT16",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              1,
+              1,
+              1
+            ],
+            "raw": "1229764332162646017",
+            "s_reg": 37,
+            "semantic": 1,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00050"
+    },
+    {
+      "case": "RET_V3_R32_SOURCE23_OBJECT35",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 216,
+      "field": "hub",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              -1,
+              0,
+              1
+            ],
+            "raw": "1229201356439420929",
+            "s_reg": 31,
+            "semantic": 1,
+            "site": [
+              19,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "216",
+            "direction": [
+              0,
+              -1,
+              1
+            ],
+            "raw": "1292533123120103425",
+            "s_reg": 7,
+            "semantic": 1,
+            "site": [
+              23,
+              59,
+              40
+            ],
+            "state": 1,
+            "tick": 216
+          }
+        }
+      ],
+      "document": "D00051"
+    },
+    {
+      "case": "RET_V3_R32_SOURCE23_OBJECT35",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 221,
+      "field": "use_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              14,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": true,
+            "clock": "221",
+            "direction": [
+              0,
+              1,
+              0
+            ],
+            "raw": "1157425160068792321",
+            "s_reg": 13,
+            "semantic": 1,
+            "site": [
+              28,
+              59,
+              45
+            ],
+            "state": 1,
+            "tick": 221
+          }
+        }
+      ],
+      "document": "D00051"
+    },
+    {
+      "case": "RET_V3_R32_SOURCE23_OBJECT35",
+      "condition": "MAIN_OR_AUX_CASE",
+      "tick": 225,
+      "field": "delivery_site",
+      "banks": [
+        {
+          "bank": "minus",
+          "physical": {
+            "active": true,
+            "clock": "225",
+            "direction": [
+              -1,
+              1,
+              1
+            ],
+            "raw": "1233705011901366273",
+            "s_reg": 44,
+            "semantic": 1,
+            "site": [
+              10,
+              63,
+              49
+            ],
+            "state": 1,
+            "tick": 225
+          }
+        },
+        {
+          "bank": "plus",
+          "physical": {
+            "active": false,
+            "clock": "225",
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "raw": "0",
+            "s_reg": 0,
+            "semantic": 0,
+            "site": [
+              32,
+              63,
+              49
+            ],
+            "state": 0,
+            "tick": 225
+          }
+        }
+      ],
+      "document": "D00051"
+    }
+  ],
+  "query_causal": [
+    {
+      "condition": "restore",
+      "gate210": {
+        "active": true,
+        "clock": "210",
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "raw": "1152921624865931265",
+        "s_reg": 28,
+        "semantic": 1,
+        "site": [
+          6,
+          14,
+          55
+        ],
+        "state": 1,
+        "tick": 210
+      },
+      "TM206": {
+        "active": true,
+        "clock": "206",
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "raw": "1153203009648328705",
+        "s_reg": 7,
+        "semantic": 1,
+        "site": [
+          8,
+          52,
+          10
+        ],
+        "state": 1,
+        "tick": 206
+      },
+      "full_final_equal": true,
+      "receipts_equal": true,
+      "parent_unchanged": true,
+      "source": {
+        "document": "D00012",
+        "original_member": "CPC9/resultados/consulta/QA_INTEGRAL_CAUSAL/MEDICIONES.json",
+        "original_sha256": "2a516a39372c1eac81daf760dbf01742d7d1b1cea9591e0d99f591525136167d",
+        "pointer": "/rows"
+      }
+    },
+    {
+      "condition": "cut_return",
+      "gate210": {
+        "active": true,
+        "clock": "210",
+        "direction": [
+          1,
+          -1,
+          0
+        ],
+        "raw": "1220756973994115073",
+        "s_reg": 0,
+        "semantic": 1,
+        "site": [
+          6,
+          14,
+          55
+        ],
+        "state": 1,
+        "tick": 210
+      },
+      "TM206": {
+        "active": true,
+        "clock": "206",
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "raw": "1153203009648328705",
+        "s_reg": 7,
+        "semantic": 1,
+        "site": [
+          8,
+          52,
+          10
+        ],
+        "state": 1,
+        "tick": 206
+      },
+      "full_final_equal": false,
+      "receipts_equal": false,
+      "parent_unchanged": true,
+      "source": {
+        "document": "D00012",
+        "original_member": "CPC9/resultados/consulta/QA_INTEGRAL_CAUSAL/MEDICIONES.json",
+        "original_sha256": "2a516a39372c1eac81daf760dbf01742d7d1b1cea9591e0d99f591525136167d",
+        "pointer": "/rows"
+      }
+    },
+    {
+      "condition": "sham_return",
+      "gate210": {
+        "active": true,
+        "clock": "210",
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "raw": "1152921624865931265",
+        "s_reg": 28,
+        "semantic": 1,
+        "site": [
+          6,
+          14,
+          55
+        ],
+        "state": 1,
+        "tick": 210
+      },
+      "TM206": {
+        "active": true,
+        "clock": "206",
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "raw": "1153203009648328705",
+        "s_reg": 7,
+        "semantic": 1,
+        "site": [
+          8,
+          52,
+          10
+        ],
+        "state": 1,
+        "tick": 206
+      },
+      "full_final_equal": true,
+      "receipts_equal": true,
+      "parent_unchanged": true,
+      "source": {
+        "document": "D00012",
+        "original_member": "CPC9/resultados/consulta/QA_INTEGRAL_CAUSAL/MEDICIONES.json",
+        "original_sha256": "2a516a39372c1eac81daf760dbf01742d7d1b1cea9591e0d99f591525136167d",
+        "pointer": "/rows"
+      }
+    }
+  ],
+  "regulation_R1": [
+    {
+      "case": "EI_D01",
+      "response137": {
+        "active": true,
+        "clock": "137",
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "raw": "1157143659322277889",
+        "s_reg": 7,
+        "semantic": 1,
+        "site": [
+          2,
+          12,
+          36
+        ],
+        "state": 1,
+        "tick": 137
+      },
+      "configuration": {
+        "back_form": "paired",
+        "case": "EI_D01",
+        "contact_medium": 1,
+        "count": "both",
+        "count_form": "paired",
+        "first_object": 18,
+        "out": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC9\\runs\\RUN_20261019_165651\\resultados\\vida_integral\\EI_D01",
+        "query_delay": 0,
+        "query_local": "unknown",
+        "query_remote": "known",
+        "query_remote_load": 11,
+        "regulation": "plus",
+        "remote": "onpath",
+        "remote_name": "paired",
+        "source": 31,
+        "tile_a_load": 3,
+        "tile_b_load": 3,
+        "tile_form": "paired",
+        "tile_interval": 5,
+        "tile_omit": null,
+        "tile_order": "AB",
+        "two_object": 11,
+        "two_omit": null,
+        "two_order": "O_first",
+        "two_reference": 31,
+        "until": 884
+      },
+      "source": {
+        "document": "D00058",
+        "original_member": "CPC9/resultados/vida_integral/EI_D01/MEDICIONES.json",
+        "original_sha256": "ab12be445184fcf70102d0ce2d6077592f189615d597094d2fb569470a3ade6c",
+        "pointer": ""
+      }
+    },
+    {
+      "case": "EI_C05_RCA_OFFPATH",
+      "response137": {
+        "active": true,
+        "clock": "137",
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "raw": "1153203009648328705",
+        "s_reg": 7,
+        "semantic": 1,
+        "site": [
+          2,
+          12,
+          36
+        ],
+        "state": 1,
+        "tick": 137
+      },
+      "configuration": {
+        "back_form": "paired",
+        "case": "EI_C05_RCA_OFFPATH",
+        "contact_medium": 1,
+        "count": "both",
+        "count_form": "paired",
+        "first_object": 18,
+        "out": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC9\\runs\\RUN_20261019_165651\\resultados\\vida_integral\\EI_C05_RCA_OFFPATH",
+        "query_delay": 0,
+        "query_local": "unknown",
+        "query_remote": "known",
+        "query_remote_load": 11,
+        "regulation": "offpath",
+        "remote": "onpath",
+        "remote_name": "paired",
+        "source": 31,
+        "tile_a_load": 3,
+        "tile_b_load": 3,
+        "tile_form": "paired",
+        "tile_interval": 5,
+        "tile_omit": null,
+        "tile_order": "AB",
+        "two_object": 11,
+        "two_omit": null,
+        "two_order": "O_first",
+        "two_reference": 31,
+        "until": 884
+      },
+      "source": {
+        "document": "D00057",
+        "original_member": "CPC9/resultados/vida_integral/EI_C05_RCA_OFFPATH/MEDICIONES.json",
+        "original_sha256": "da31d5edac6e68c15cd7464766d769104bcbf607287527d7cb69557beb61bd3a",
+        "pointer": ""
+      }
+    }
+  ],
+  "historical_families": [
+    {
+      "family": "architectures",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/architectures",
+      "original_primary_ids_identified": [
+        "D00389",
+        "D00390",
+        "D00391",
+        "D00392",
+        "D00393",
+        "D00394"
+      ],
+      "completed_replay_documents": [
+        "D00614",
+        "D00615",
+        "D00616",
+        "D00617",
+        "D00618",
+        "D00619",
+        "D00620",
+        "D00621",
+        "D00622",
+        "D00623",
+        "D00624",
+        "D00625",
+        "D00626",
+        "D00627",
+        "D00628",
+        "D00629",
+        "D00630",
+        "D00631",
+        "D00632",
+        "D00633",
+        "D00634",
+        "D00635",
+        "D00636",
+        "D00637",
+        "D00638",
+        "D00639",
+        "D00640",
+        "D00641",
+        "D00642"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "bridge",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/bridge",
+      "original_primary_ids_identified": [
+        "D00385",
+        "D00386",
+        "D00387",
+        "D00388"
+      ],
+      "completed_replay_documents": [
+        "D00643",
+        "D00644",
+        "D00645",
+        "D00646",
+        "D00647",
+        "D00648",
+        "D00649",
+        "D00650",
+        "D00651",
+        "D00652",
+        "D00653",
+        "D00654",
+        "D00655",
+        "D00656",
+        "D00657",
+        "D00658",
+        "D00659",
+        "D00660"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "capacity",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/capacity",
+      "original_primary_ids_identified": [
+        "D00359",
+        "D00360",
+        "D00361",
+        "D00362"
+      ],
+      "completed_replay_documents": [
+        "D00661",
+        "D00662",
+        "D00663",
+        "D00664",
+        "D00665",
+        "D00666",
+        "D00667",
+        "D00668",
+        "D00669",
+        "D00670",
+        "D00671",
+        "D00672",
+        "D00673"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "central",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/central",
+      "original_primary_ids_identified": [
+        "D00313",
+        "D00314",
+        "D00315",
+        "D00316",
+        "D00317",
+        "D00318",
+        "D00319",
+        "D00320"
+      ],
+      "completed_replay_documents": [
+        "D00674",
+        "D00675",
+        "D00676",
+        "D00677",
+        "D00678",
+        "D00679",
+        "D00680",
+        "D00681",
+        "D00682"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "core06",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/core06",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00565",
+        "D00683",
+        "D00684",
+        "D00685"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "core07",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/core07",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00568",
+        "D00683",
+        "D00686",
+        "D00687"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "count",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/count",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00688",
+        "D00689",
+        "D00690",
+        "D00691",
+        "D00692"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc1",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc1",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00693",
+        "D00694",
+        "D00695",
+        "D00696",
+        "D00697",
+        "D00698",
+        "D00699",
+        "D00700",
+        "D00701",
+        "D00702",
+        "D00703",
+        "D00704",
+        "D00705",
+        "D00706",
+        "D00707",
+        "D00708",
+        "D00709",
+        "D00710",
+        "D00711",
+        "D00712",
+        "D00713",
+        "D00714",
+        "D00715"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc2",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc2",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00716"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc4",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc4",
+      "original_primary_ids_identified": [
+        "D00348",
+        "D00349",
+        "D00350",
+        "D00351"
+      ],
+      "completed_replay_documents": [
+        "D00348",
+        "D00349",
+        "D00350",
+        "D00351",
+        "D00717",
+        "D00718",
+        "D00719",
+        "D00720",
+        "D00721"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc5",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc5",
+      "original_primary_ids_identified": [
+        "D00352",
+        "D00353",
+        "D00354",
+        "D00355",
+        "D00356",
+        "D00357",
+        "D00358"
+      ],
+      "completed_replay_documents": [
+        "D00722",
+        "D00723",
+        "D00724",
+        "D00725",
+        "D00726",
+        "D00727",
+        "D00728",
+        "D00729",
+        "D00730",
+        "D00731",
+        "D00732",
+        "D00733",
+        "D00734",
+        "D00735",
+        "D00736",
+        "D00737",
+        "D00738",
+        "D00739",
+        "D00740",
+        "D00741",
+        "D00742",
+        "D00743"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc6",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc6",
+      "original_primary_ids_identified": [
+        "D00509",
+        "D00510",
+        "D00511",
+        "D00512"
+      ],
+      "completed_replay_documents": [
+        "D00744",
+        "D00745",
+        "D00746",
+        "D00747",
+        "D00748",
+        "D00749",
+        "D00750",
+        "D00751",
+        "D00752",
+        "D00753",
+        "D00754",
+        "D00755",
+        "D00756",
+        "D00757",
+        "D00758",
+        "D00759",
+        "D00760",
+        "D00761",
+        "D00762"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "cpc7",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/cpc7",
+      "original_primary_ids_identified": [
+        "D00427",
+        "D00428",
+        "D00429",
+        "D00430"
+      ],
+      "completed_replay_documents": [
+        "D00763",
+        "D00764",
+        "D00765",
+        "D00766",
+        "D00767",
+        "D00768",
+        "D00769",
+        "D00770",
+        "D00771",
+        "D00772",
+        "D00773",
+        "D00774",
+        "D00775",
+        "D00776",
+        "D00777",
+        "D00778",
+        "D00779",
+        "D00780",
+        "D00781",
+        "D00782"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "initial_cpc8",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/initial_cpc8",
+      "original_primary_ids_identified": [
+        "D00434",
+        "D00543",
+        "D00544",
+        "D00545",
+        "D00546",
+        "D00547",
+        "D00548",
+        "D00549",
+        "D00550"
+      ],
+      "completed_replay_documents": [
+        "D00541",
+        "D00542",
+        "D00783",
+        "D00784",
+        "D00785",
+        "D00786",
+        "D00787",
+        "D00788",
+        "D00789",
+        "D00790",
+        "D00791",
+        "D00792",
+        "D00793",
+        "D00794",
+        "D00795",
+        "D00796",
+        "D00797",
+        "D00798",
+        "D00799",
+        "D00800"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "l15",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/l15",
+      "original_primary_ids_identified": [
+        "D00440"
+      ],
+      "completed_replay_documents": [
+        "D00801",
+        "D00802",
+        "D00803",
+        "D00804"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "longitudinal",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/longitudinal",
+      "original_primary_ids_identified": [
+        "D00363",
+        "D00364"
+      ],
+      "completed_replay_documents": [
+        "D00805",
+        "D00806",
+        "D00807",
+        "D00808",
+        "D00809"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "mcts",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/mcts",
+      "original_primary_ids_identified": [
+        "D00439",
+        "D00441",
+        "D00442",
+        "D00443",
+        "D00444"
+      ],
+      "completed_replay_documents": [
+        "D00810",
+        "D00811",
+        "D00812",
+        "D00813",
+        "D00814",
+        "D00815",
+        "D00816",
+        "D00817"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "missing",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/missing",
+      "original_primary_ids_identified": [
+        "D00421",
+        "D00422",
+        "D00423",
+        "D00424",
+        "D00425",
+        "D00426"
+      ],
+      "completed_replay_documents": [
+        "D00818",
+        "D00819",
+        "D00820",
+        "D00821",
+        "D00822",
+        "D00823",
+        "D00824",
+        "D00825",
+        "D00826",
+        "D00827",
+        "D00828",
+        "D00829",
+        "D00830",
+        "D00831",
+        "D00832",
+        "D00833",
+        "D00834",
+        "D00835",
+        "D00836"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "native_loop",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/native_loop",
+      "original_primary_ids_identified": [
+        "D00321",
+        "D00322",
+        "D00323",
+        "D00324",
+        "D00325",
+        "D00326",
+        "D00327",
+        "D00328"
+      ],
+      "completed_replay_documents": [
+        "D00837",
+        "D00838",
+        "D00839",
+        "D00840",
+        "D00841",
+        "D00842",
+        "D00843",
+        "D00844",
+        "D00845"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "need",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/need",
+      "original_primary_ids_identified": [
+        "D00414",
+        "D00415",
+        "D00416",
+        "D00417",
+        "D00418",
+        "D00419",
+        "D00420"
+      ],
+      "completed_replay_documents": [
+        "D00846",
+        "D00847",
+        "D00848",
+        "D00849",
+        "D00850",
+        "D00851",
+        "D00852",
+        "D00853",
+        "D00854",
+        "D00855",
+        "D00856",
+        "D00857",
+        "D00858",
+        "D00859",
+        "D00860",
+        "D00861",
+        "D00862",
+        "D00863",
+        "D00864",
+        "D00865",
+        "D00866"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "network",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/network",
+      "original_primary_ids_identified": [
+        "D00365",
+        "D00366",
+        "D00367",
+        "D00368",
+        "D00369",
+        "D00370",
+        "D00371"
+      ],
+      "completed_replay_documents": [
+        "D00867",
+        "D00868",
+        "D00869",
+        "D00870",
+        "D00871",
+        "D00872",
+        "D00873",
+        "D00874",
+        "D00875",
+        "D00876",
+        "D00877",
+        "D00878",
+        "D00879",
+        "D00880",
+        "D00881",
+        "D00882",
+        "D00883",
+        "D00884",
+        "D00885",
+        "D00886",
+        "D00887",
+        "D00888"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "ordered",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/ordered",
+      "original_primary_ids_identified": [
+        "D00378",
+        "D00379",
+        "D00380",
+        "D00381",
+        "D00382",
+        "D00383"
+      ],
+      "completed_replay_documents": [
+        "D00889",
+        "D00890",
+        "D00891",
+        "D00892",
+        "D00893",
+        "D00894",
+        "D00895",
+        "D00896",
+        "D00897",
+        "D00898",
+        "D00899",
+        "D00900",
+        "D00901",
+        "D00902",
+        "D00903",
+        "D00904",
+        "D00905",
+        "D00906",
+        "D00907"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "policy",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/policy",
+      "original_primary_ids_identified": [
+        "D00329",
+        "D00330",
+        "D00331",
+        "D00332",
+        "D00333",
+        "D00334",
+        "D00335",
+        "D00336"
+      ],
+      "completed_replay_documents": [
+        "D00329",
+        "D00330",
+        "D00331",
+        "D00332",
+        "D00333",
+        "D00334",
+        "D00335",
+        "D00336",
+        "D00908"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "product",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/product",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00909"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "product_extra",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/product_extra",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00910"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "qfm",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/qfm",
+      "original_primary_ids_identified": [
+        "D00459",
+        "D00460",
+        "D00461",
+        "D00462",
+        "D00463"
+      ],
+      "completed_replay_documents": [
+        "D00459",
+        "D00460",
+        "D00461",
+        "D00462",
+        "D00463",
+        "D00911",
+        "D00912",
+        "D00913",
+        "D00914",
+        "D00915",
+        "D00916"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "rca",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/rca",
+      "original_primary_ids_identified": [],
+      "completed_replay_documents": [
+        "D00917",
+        "D00918",
+        "D00919"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "repertoire",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/repertoire",
+      "original_primary_ids_identified": [
+        "D00452",
+        "D00453",
+        "D00454",
+        "D00455",
+        "D00456"
+      ],
+      "completed_replay_documents": [
+        "D00920",
+        "D00921",
+        "D00922",
+        "D00923",
+        "D00924",
+        "D00925",
+        "D00926",
+        "D00927",
+        "D00928",
+        "D00929",
+        "D00930",
+        "D00931"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "retain_early",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/retain_early",
+      "original_primary_ids_identified": [
+        "D00395",
+        "D00396",
+        "D00397",
+        "D00398",
+        "D00399",
+        "D00400",
+        "D00401",
+        "D00402"
+      ],
+      "completed_replay_documents": [
+        "D00932",
+        "D00933",
+        "D00934",
+        "D00935",
+        "D00936",
+        "D00937",
+        "D00938",
+        "D00939",
+        "D00940",
+        "D00941",
+        "D00942",
+        "D00943",
+        "D00944",
+        "D00945",
+        "D00946",
+        "D00947",
+        "D00948",
+        "D00949",
+        "D00950",
+        "D00951",
+        "D00952",
+        "D00953",
+        "D00954",
+        "D00955",
+        "D00956"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "retain_late",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/retain_late",
+      "original_primary_ids_identified": [
+        "D00403",
+        "D00404",
+        "D00405",
+        "D00406",
+        "D00407",
+        "D00408"
+      ],
+      "completed_replay_documents": [
+        "D00957",
+        "D00958",
+        "D00959",
+        "D00960",
+        "D00961",
+        "D00962",
+        "D00963",
+        "D00964",
+        "D00965",
+        "D00966",
+        "D00967",
+        "D00968",
+        "D00969",
+        "D00970",
+        "D00971",
+        "D00972",
+        "D00973",
+        "D00974",
+        "D00975"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "retain_word",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/retain_word",
+      "original_primary_ids_identified": [
+        "D00409",
+        "D00410",
+        "D00411",
+        "D00412"
+      ],
+      "completed_replay_documents": [
+        "D00976",
+        "D00977",
+        "D00978",
+        "D00979",
+        "D00980",
+        "D00981",
+        "D00982",
+        "D00983",
+        "D00984",
+        "D00985",
+        "D00986",
+        "D00987",
+        "D00988"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "sem01",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/sem01",
+      "original_primary_ids_identified": [
+        "D00340",
+        "D00341",
+        "D00342",
+        "D00343",
+        "D00344",
+        "D00345",
+        "D00346"
+      ],
+      "completed_replay_documents": [
+        "D00989",
+        "D00990",
+        "D00991",
+        "D00992",
+        "D00993",
+        "D00994",
+        "D00995",
+        "D00996"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "social",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/social",
+      "original_primary_ids_identified": [
+        "D00445",
+        "D00446",
+        "D00447",
+        "D00448",
+        "D00449",
+        "D00450",
+        "D00451"
+      ],
+      "completed_replay_documents": [
+        "D00997",
+        "D00998",
+        "D00999",
+        "D01000",
+        "D01001",
+        "D01002",
+        "D01003",
+        "D01004",
+        "D01005"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    },
+    {
+      "family": "stream",
+      "recorded_status": "PASS",
+      "proof_document": "D00308",
+      "proof_pointer": "/family_results/stream",
+      "original_primary_ids_identified": [
+        "D00372",
+        "D00373",
+        "D00374",
+        "D00375",
+        "D00376",
+        "D00377"
+      ],
+      "completed_replay_documents": [
+        "D01006",
+        "D01007",
+        "D01008",
+        "D01009",
+        "D01010",
+        "D01011",
+        "D01012",
+        "D01013",
+        "D01014",
+        "D01015",
+        "D01016",
+        "D01017",
+        "D01018",
+        "D01019",
+        "D01020",
+        "D01021",
+        "D01022",
+        "D01023",
+        "D01024"
+      ],
+      "new_native_execution_by_this_audit": false,
+      "verification_limit": "Recorded pass and included original/fresh data are separate. Investigator can inspect the data; no generic scientific-capability verdict is inferred from exit0."
+    }
+  ],
+  "historical_rows": {
+    "count": 56,
+    "classification_recount": {
+      "C": 39,
+      "B": 1,
+      "D": 16
+    },
+    "pending_ids": [
+      "ING01_R04_R14",
+      "ING02_RELATIVE",
+      "ING05_06_CONTEXT",
+      "PROCESOS_OBSERVERS",
+      "PROCESAMIENTO_NATIVO",
+      "FISICA_META_ROSETTA",
+      "PRODUCT4_CONTRACT",
+      "CPC7_NSM65_SCOPE",
+      "CORE15_OBSERVER_SHADOW",
+      "CORE16_OBSERVER_INFORMATION",
+      "CORE17_COMPRESSED_OPERATOR_AND_REPAIR",
+      "ING05_HISTORY_FACTORIAL",
+      "ING06_POST_HOST_OPPORTUNITIES",
+      "PROC02_PREEXISTING_INTERFACE",
+      "PROC03_EXCHANGE_DISCOVERY",
+      "FISICA_UNI1_LATER_REDUCTION"
+    ]
+  },
+  "NSM_claims_recount": {
+    "catalogue_entries": 65,
+    "original_E1_levels": {
+      "E0": 60,
+      "E2": 4,
+      "E3": 1
+    },
+    "scope": "Counts original manual claims, not an automatic fresh adjudication of meanings; see ESTADO_REAL_NSM65.csv and scientific report."
+  },
+  "elapsed_seconds": 75.96799999999348
+}

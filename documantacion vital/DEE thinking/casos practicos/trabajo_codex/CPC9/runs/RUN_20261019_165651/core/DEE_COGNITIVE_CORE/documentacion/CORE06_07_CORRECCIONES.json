@@ -1,0 +1,31 @@
+{
+  "schema": "CPC9.core06-07.recovery-worklog.v1",
+  "entries": [
+    {
+      "job": "S_CORE06_07_DEPS",
+      "result": "INTEGRITY_BLOCKED_BEFORE_NATIVE",
+      "cause": "Concurrent intentional store/index update; materializer correctly rejected intermediate content-store hash.",
+      "action": "Wait for owner seal, then a new named non-native materialization succeeded. No data bypass."
+    },
+    {
+      "job": "S_CORE06_PILOT",
+      "source": "worker_recover_v1_failed_export.py",
+      "source_sha256": "f9b1024af764ab26029d0aab02458bcd36ea7a9abe9209461a397efd7356ddce",
+      "result": "FIVE_PHYSICAL_CASES_COMPLETED_EXPORT_MEMORY_ERROR",
+      "cause": "Attempt to expand nonzero continuing clocks at empty lattice sites into dense terminal dictionaries exceeded256MiB.",
+      "action": "One repair: archive initial state, all external writes, local primary observations and complete terminal hashes instead. No change to input, transition, clocks or decoder. V2 reran five-case pilot exactly."
+    },
+    {
+      "job": "S_CORE06_FULL134",
+      "result": "RESOURCE_BLOCKED_ZERO_RUNTIME",
+      "cause": "Global native semaphore queue600s, no worker launched.",
+      "counting": "No scientific preparation, continuation or reproduction."
+    },
+    {
+      "job": "S_CORE06_FULL134_QUEUE2",
+      "result": "SUPERVISOR_CANCELLED_WHILE_WAITING_ZERO_RUNTIME",
+      "cause": "Priority handed to Root main-life diagnostic wave; only this owned queued supervisor interrupted with Ctrl-C before any worker/Runtime launch.",
+      "counting": "No scientific preparation, continuation or reproduction. Resubmission postponed until Root releases priority."
+    }
+  ]
+}

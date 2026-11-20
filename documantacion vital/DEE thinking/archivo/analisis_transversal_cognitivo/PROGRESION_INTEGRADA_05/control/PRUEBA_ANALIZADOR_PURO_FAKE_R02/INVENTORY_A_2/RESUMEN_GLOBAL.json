@@ -1,0 +1,150 @@
+{
+  "schema": "DEE.PI05.global_inventory.external_observer.R01",
+  "recalculation": "DETERMINISTIC_FROM_FROZEN_CAPTURE_NO_HOST_TIMESTAMP",
+  "capture": "SYNTHETIC_A",
+  "capture_config": {
+    "N": 67,
+    "actor_receives_recording": false,
+    "anchor_ticks": [
+      100
+    ],
+    "buffers": "Complete N^3 RAW and clocks, including state0/nonzeroRAW and stationary configurations",
+    "byte_order": "little",
+    "index": "(x*N+y)*N+z",
+    "no_native_lineage_tags": true,
+    "not_a_full_operational_snapshot": true,
+    "provenance": {
+      "no_physical_trajectory_asserted": true,
+      "not_DEE": true,
+      "synthetic_fixture": true
+    },
+    "schema": "DEE.PI05.passive_global_uint64_frames.R01",
+    "ticks": [
+      100,
+      101,
+      102
+    ]
+  },
+  "capture_config_file": {
+    "file": "CAPTURA.json",
+    "bytes": 444,
+    "sha256": "fb2564f227ae9134bf45d43d285590167c90075a4f86ee992050ff58e729ae14"
+  },
+  "frame_count": 3,
+  "first_tick": 100,
+  "last_tick": 102,
+  "complete_N67_each_frame": true,
+  "all_reconstructed_frame_hashes_verified": true,
+  "frames": [
+    {
+      "tick": 100,
+      "RAW_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "clocks_sha256": "570b73e9503ffa8fbe6eb1bfd90c3aa384d17cf86d042646ff3c4785537de285",
+      "raw_nonzero": 1,
+      "active_state": 0,
+      "state0_raw_nonzero": 1,
+      "s_reg_sum_all_fields_not_energy": 0,
+      "max_s_reg": 0,
+      "semantic_counts_present": {
+        "4": 1
+      },
+      "direction_counts_present": {
+        "[0, 0, 0]": 1
+      },
+      "changed_RAW_sites_since_previous_frame": null,
+      "changed_clocks_sites_since_previous_frame": null,
+      "all_clocks_min": "100",
+      "all_clocks_max": "100",
+      "fusion_branch_excluded_for_following_step_by_max_only": true,
+      "following_step_dependency_radius_bound_if_excluded": 1,
+      "otherwise_conservative_raw_dependency_radius_bound": 3
+    },
+    {
+      "tick": 101,
+      "RAW_sha256": "b38ca2a026081c39160be4d5a3bbd197e2912e5715c6e7d8d3e534afac05fa24",
+      "clocks_sha256": "0bf62b43ed09f3a84eabfcf3dde49a2902c5101113e63dee792c807fb2493880",
+      "raw_nonzero": 2,
+      "active_state": 1,
+      "state0_raw_nonzero": 1,
+      "s_reg_sum_all_fields_not_energy": 17,
+      "max_s_reg": 17,
+      "semantic_counts_present": {
+        "4": 1,
+        "1": 1
+      },
+      "direction_counts_present": {
+        "[0, 0, 0]": 1,
+        "[1, 1, 1]": 1
+      },
+      "changed_RAW_sites_since_previous_frame": 1,
+      "changed_clocks_sites_since_previous_frame": 300763,
+      "all_clocks_min": "101",
+      "all_clocks_max": "101",
+      "fusion_branch_excluded_for_following_step_by_max_only": true,
+      "following_step_dependency_radius_bound_if_excluded": 1,
+      "otherwise_conservative_raw_dependency_radius_bound": 3
+    },
+    {
+      "tick": 102,
+      "RAW_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "clocks_sha256": "9c79c490cbdff491a2d52ae657cbe6ad04a62298adabc4f5d5a71bc0837a9f8e",
+      "raw_nonzero": 1,
+      "active_state": 0,
+      "state0_raw_nonzero": 1,
+      "s_reg_sum_all_fields_not_energy": 0,
+      "max_s_reg": 0,
+      "semantic_counts_present": {
+        "4": 1
+      },
+      "direction_counts_present": {
+        "[0, 0, 0]": 1
+      },
+      "changed_RAW_sites_since_previous_frame": 1,
+      "changed_clocks_sites_since_previous_frame": 300763,
+      "all_clocks_min": "102",
+      "all_clocks_max": "102",
+      "fusion_branch_excluded_for_following_step_by_max_only": true,
+      "following_step_dependency_radius_bound_if_excluded": 1,
+      "otherwise_conservative_raw_dependency_radius_bound": 3
+    }
+  ],
+  "actual_requests": {
+    "primary": {
+      "file": "SYNTHETIC_A_PRIMARY.json",
+      "bytes": 234,
+      "sha256": "9e40b6084911895b252c07d43055f2bc189be5217d1dd3b4c39ba2487b791673"
+    },
+    "pointer": "/result/result/rows/0/requests",
+    "unique_requests": 1,
+    "statuses": {
+      "applied": 1
+    },
+    "requests_with_explicit_physical_source": 1,
+    "missing_physical_sources_not_invented": [],
+    "events": [
+      {
+        "channel": "SYNTHETIC_PORT",
+        "tick": 100,
+        "payload": 17,
+        "site": [
+          14,
+          46,
+          20
+        ],
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "Native_id": 1,
+        "receipt": {
+          "id": 1,
+          "status": "applied"
+        }
+      }
+    ]
+  },
+  "scope": "All RAW!=0 records, including inactive nonzeroRAW, plus fixed nominal-node observations. No path/lineage is inferred by a matching value; no Native access or new capability is claimed.",
+  "new_Native_ticks": 0,
+  "actor_receives_inventory": false
+}

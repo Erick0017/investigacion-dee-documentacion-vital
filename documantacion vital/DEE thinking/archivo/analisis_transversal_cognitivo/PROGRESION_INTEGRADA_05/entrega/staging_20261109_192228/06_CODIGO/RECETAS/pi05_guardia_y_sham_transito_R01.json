@@ -1,0 +1,631 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi05_guardia_y_sham_transito_R01",
+  "title": "PI05: contraste causal P0 de guarda y sham sobre tránsito previo a FIplus",
+  "revision": "R01_PREPARADA_REPLAY_NATIVE_PENDIENTE",
+  "prefix": "PI03_PI05_REAL_PREFI_T817876",
+  "code_capsule_key": "PI05_TRANSITO_GUARDIA_R01",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_",
+  "reproduction_enabled": true,
+  "requires_explicit_material": true,
+  "variants": {
+    "guardia": {
+      "batches": [
+        [
+          {
+            "label": "trial",
+            "literal": {
+              "modo": "eci01-pi05-fiplus-guardia",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "global"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "stop_on_NULL": true,
+            "stop_on_unapplied_receipt": true,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "old_start",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 817876
+        },
+        {
+          "label": "old_end",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "after_tick"
+              ]
+            }
+          ],
+          "expected": 818074
+        },
+        {
+          "label": "old_age198",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "trial",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 198
+        },
+        {
+          "label": "fixed_q4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "calendar",
+                "early_reader_tick"
+              ]
+            }
+          ],
+          "expected": 817936
+        },
+        {
+          "label": "fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "calendar",
+                "old_reader_tick"
+              ]
+            }
+          ],
+          "expected": 817938
+        },
+        {
+          "label": "old176_plus_one",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "unique_requested"
+              ]
+            }
+          ],
+          "expected": 177
+        },
+        {
+          "label": "all177_admitted",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "applied"
+              ]
+            }
+          ],
+          "expected": 177
+        },
+        {
+          "label": "zero_rejections",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "rejected_or_other"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "support_initial_RAW0",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "before",
+                "raw"
+              ]
+            }
+          ],
+          "expected": "0"
+        },
+        {
+          "label": "support_persistent_SEM4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "after",
+                "raw"
+              ]
+            }
+          ],
+          "expected": "4611686018427387904"
+        },
+        {
+          "label": "support_exact_birth_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "tick"
+              ]
+            }
+          ],
+          "expected": 817878
+        },
+        {
+          "label": "support_exact_load0",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "payload"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "support_admitted",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "receipt",
+                "status"
+              ]
+            }
+          ],
+          "expected": "applied"
+        },
+        {
+          "label": "no_preparation_advance",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "no_tick_advance_to_prepare"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "no_host_RAW_clock_edits",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "host_RAW_or_clock_writes"
+              ]
+            }
+          ],
+          "expected": 0
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 177,
+        "applied": 177,
+        "rejected": 0,
+        "pending_or_other": 0
+      }
+    },
+    "sham": {
+      "batches": [
+        [
+          {
+            "label": "trial",
+            "literal": {
+              "modo": "eci01-pi05-fiplus-sham",
+              "izquierda": 14,
+              "derecha": 3,
+              "captura": "global"
+            },
+            "feedback": "omit",
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "stop_on_NULL": true,
+            "stop_on_unapplied_receipt": true,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ]
+          }
+        ]
+      ],
+      "final_checks": [
+        {
+          "label": "old_start",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 817876
+        },
+        {
+          "label": "old_end",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "after_tick"
+              ]
+            }
+          ],
+          "expected": 818074
+        },
+        {
+          "label": "old_age198",
+          "operation": "difference",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "after_tick"
+              ]
+            },
+            {
+              "step": "trial",
+              "path": [
+                "before_tick"
+              ]
+            }
+          ],
+          "expected": 198
+        },
+        {
+          "label": "fixed_q4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "calendar",
+                "early_reader_tick"
+              ]
+            }
+          ],
+          "expected": 817936
+        },
+        {
+          "label": "fixed_q6",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "calendar",
+                "old_reader_tick"
+              ]
+            }
+          ],
+          "expected": 817938
+        },
+        {
+          "label": "old176_plus_one",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "unique_requested"
+              ]
+            }
+          ],
+          "expected": 177
+        },
+        {
+          "label": "all177_admitted",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "applied"
+              ]
+            }
+          ],
+          "expected": 177
+        },
+        {
+          "label": "zero_rejections",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "Native_inputs",
+                "rejected_or_other"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "support_initial_RAW0",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "before",
+                "raw"
+              ]
+            }
+          ],
+          "expected": "0"
+        },
+        {
+          "label": "support_persistent_SEM4",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "after",
+                "raw"
+              ]
+            }
+          ],
+          "expected": "4611686018427387904"
+        },
+        {
+          "label": "support_exact_birth_tick",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "tick"
+              ]
+            }
+          ],
+          "expected": 817878
+        },
+        {
+          "label": "support_exact_load0",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "payload"
+              ]
+            }
+          ],
+          "expected": 0
+        },
+        {
+          "label": "support_admitted",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "request",
+                "receipt",
+                "status"
+              ]
+            }
+          ],
+          "expected": "applied"
+        },
+        {
+          "label": "no_preparation_advance",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "no_tick_advance_to_prepare"
+              ]
+            }
+          ],
+          "expected": true
+        },
+        {
+          "label": "no_host_RAW_clock_edits",
+          "operation": "value",
+          "values": [
+            {
+              "step": "trial",
+              "path": [
+                "result",
+                "rows",
+                0,
+                "support",
+                "host_RAW_or_clock_writes"
+              ]
+            }
+          ],
+          "expected": 0
+        }
+      ],
+      "native_receipt_expectations": {
+        "unique_requested": 177,
+        "applied": 177,
+        "rejected": 0,
+        "pending_or_other": 0
+      }
+    }
+  },
+  "modalities": {
+    "A": "Documentos y futuros publicados; esta receta no ejecuta recálculo documental por sí sola",
+    "B": "Reproducción de intervención legal P0 desde un estado completo real preFI, sólo en copia",
+    "C": "No reproduce adquisición del ente ni supone reenseñanza",
+    "D": "No atribuir al principal; sólo después de adopción explícita con evidencia separada",
+    "E": "Prevenir un contacto en un clon es soporte preparado, no recuperación autónoma o readquisición"
+  },
+  "assistance": "El operador prepara oportunidad, interfaz fija, condiciones guardia/sham y comparación14/3. DEE conserva toda la física de los176inputs, el tránsito y los lectoresq4/q6. Ningún resultado esperado entra al literal material.",
+  "limitations": "PREPARADA, no resultado Native verificado. +1guarda y−1sham son predicciones preregistradas del evaluador, no respuestas implantadas. Guarda/sham añaden exactamente1nacimientoSEM4state0carga0 a817878; mismaedad198. Sourcecompartido,noindividuosindependientes. Cualquier rechazo/NULL/fallo se conserva; ningún reinicio, limpieza, puerto favorable o transferencia de memoria. El guard persistente exige comprobar funciones posteriores. Esta receta ensaya una vez y no reinserta soporte durantecontinuación.",
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "new_generic_RP_Native_replay": false,
+    "guard_or_sham_material_execution_by_preparer": false,
+    "scientific_success_not_assumed": true,
+    "hypotheses_evaluator_only": {
+      "guardia": 1,
+      "sham": -1
+    },
+    "Native_verified_after_actual_closed_registration_only": true
+  },
+  "usage": {
+    "listar": "sistema/gestionar.py reproducibilidad listar",
+    "verificar": "sistema/gestionar.py reproducibilidad verificar pi05_guardia_y_sham_transito_R01",
+    "reproducir": "sistema/gestionar.py reproducibilidad reproducir pi05_guardia_y_sham_transito_R01 --variante guardia --vida ECI02_PI03_REPRO_PI04_PI05_RP_GUARD_01 --destino <DESTINO_ABSOLUTO_NUEVO> --material"
+  },
+  "blockers": []
+}

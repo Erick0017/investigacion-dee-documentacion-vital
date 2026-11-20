@@ -1,0 +1,222 @@
+{
+  "schema": "DEE.PI05.global_difference.external_influence_observer.R01",
+  "recalculation": "DETERMINISTIC_FROM_FROZEN_CAPTURES_NO_HOST_TIMESTAMP",
+  "capture_a": "SYNTHETIC_A",
+  "capture_b": "SYNTHETIC_B",
+  "capture_configs": {
+    "a": {
+      "N": 67,
+      "actor_receives_recording": false,
+      "anchor_ticks": [
+        100
+      ],
+      "buffers": "Complete N^3 RAW and clocks, including state0/nonzeroRAW and stationary configurations",
+      "byte_order": "little",
+      "index": "(x*N+y)*N+z",
+      "no_native_lineage_tags": true,
+      "not_a_full_operational_snapshot": true,
+      "provenance": {
+        "no_physical_trajectory_asserted": true,
+        "not_DEE": true,
+        "synthetic_fixture": true
+      },
+      "schema": "DEE.PI05.passive_global_uint64_frames.R01",
+      "ticks": [
+        100,
+        101,
+        102
+      ]
+    },
+    "b": {
+      "N": 67,
+      "actor_receives_recording": false,
+      "anchor_ticks": [
+        100
+      ],
+      "buffers": "Complete N^3 RAW and clocks, including state0/nonzeroRAW and stationary configurations",
+      "byte_order": "little",
+      "index": "(x*N+y)*N+z",
+      "no_native_lineage_tags": true,
+      "not_a_full_operational_snapshot": true,
+      "provenance": {
+        "no_physical_trajectory_asserted": true,
+        "not_DEE": true,
+        "synthetic_fixture": true
+      },
+      "schema": "DEE.PI05.passive_global_uint64_frames.R01",
+      "ticks": [
+        100,
+        101,
+        102
+      ]
+    }
+  },
+  "initial_physical_comparison": {
+    "tick": 100,
+    "RAW_bytes_exact": true,
+    "clocks_bytes_exact": true
+  },
+  "actual_event_comparison": {
+    "actual_event_lists_available": true,
+    "same_event_count": true,
+    "same_reported_sources_timing_directions": true,
+    "all_physical_sources_explicit_in_requests": true,
+    "same_sources_timing_directions_verified_from_requests": true,
+    "single_payload_intervention_verified": true,
+    "interface_contract_identity_not_checked_by_event_list": true,
+    "differences": [
+      {
+        "a": {
+          "channel": "SYNTHETIC_PORT",
+          "tick": 100,
+          "site": [
+            14,
+            46,
+            20
+          ],
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "payload": 17
+        },
+        "b": {
+          "channel": "SYNTHETIC_PORT",
+          "tick": 100,
+          "site": [
+            14,
+            46,
+            20
+          ],
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "payload": 18
+        }
+      }
+    ],
+    "missing_physical_sources_a": [],
+    "missing_physical_sources_b": [],
+    "admission_status_counts_a": {
+      "applied": 1
+    },
+    "admission_status_counts_b": {
+      "applied": 1
+    },
+    "scope": "The direct event list proves reported timing/channel/payload changes. Missing source coordinates are never treated as verified geometry; complete prefix/interface contracts require their separate proof. Admission differences are outcomes to retain; they are not silently removed to match dose."
+  },
+  "complete_prefix_proof_descriptor": null,
+  "frame_count": 3,
+  "first_observed_difference_tick": 101,
+  "last_observed_difference_tick": 101,
+  "first_difference_is_already_initial_history_difference": false,
+  "first_difference_window": {
+    "observed_difference": true,
+    "onset": 101,
+    "onset_site_count": 1,
+    "requested_ticks": [
+      100,
+      101,
+      102
+    ],
+    "available_ticks": [
+      100,
+      101,
+      102
+    ],
+    "missing_ticks": [],
+    "global_max_sreg_previous_boundary": 0,
+    "conservative_causal_neighbourhood_radius": 1,
+    "toroidal_region_sites": 27,
+    "scope": "This is the first observed difference, not automatically the first failing encounter or a lineage. Full global differences are exported separately; local enlargement is derived from the frozen kernel bound."
+  },
+  "frames": [
+    {
+      "tick": 100,
+      "RAW_difference_sites": 0,
+      "clocks_difference_sites": 0,
+      "union_difference_sites": 0,
+      "RAW_difference_index_uint32LE_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "clocks_difference_index_uint32LE_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nominal_node_differences": [],
+      "RAW_a_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "RAW_b_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "clocks_a_sha256": "570b73e9503ffa8fbe6eb1bfd90c3aa384d17cf86d042646ff3c4785537de285",
+      "clocks_b_sha256": "570b73e9503ffa8fbe6eb1bfd90c3aa384d17cf86d042646ff3c4785537de285"
+    },
+    {
+      "tick": 101,
+      "RAW_difference_sites": 1,
+      "clocks_difference_sites": 0,
+      "union_difference_sites": 1,
+      "RAW_difference_index_uint32LE_sha256": "f4016808a8cce5c3ddf18293fe1152ed6d19460cd06882e57c74337a93ddefe3",
+      "clocks_difference_index_uint32LE_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nominal_node_differences": [
+        {
+          "role": "right.root.0.0",
+          "site": [
+            15,
+            47,
+            21
+          ],
+          "a": {
+            "raw": "1229764246263300097",
+            "state": 1,
+            "s_reg": 17,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              1
+            ]
+          },
+          "b": {
+            "raw": "1229764250558267393",
+            "state": 1,
+            "s_reg": 18,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              1
+            ]
+          },
+          "clock_a": "101",
+          "clock_b": "101"
+        }
+      ],
+      "RAW_a_sha256": "b38ca2a026081c39160be4d5a3bbd197e2912e5715c6e7d8d3e534afac05fa24",
+      "RAW_b_sha256": "64d70434531743da4fea28d0dd9c16e1d7cfd72e0659d60b464020b26dd371ff",
+      "clocks_a_sha256": "0bf62b43ed09f3a84eabfcf3dde49a2902c5101113e63dee792c807fb2493880",
+      "clocks_b_sha256": "0bf62b43ed09f3a84eabfcf3dde49a2902c5101113e63dee792c807fb2493880"
+    },
+    {
+      "tick": 102,
+      "RAW_difference_sites": 0,
+      "clocks_difference_sites": 0,
+      "union_difference_sites": 0,
+      "RAW_difference_index_uint32LE_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "clocks_difference_index_uint32LE_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nominal_node_differences": [],
+      "RAW_a_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "RAW_b_sha256": "eb61066075e6fa63a2bbf785993a831537a224da60d2565f6ab770c1d58fb665",
+      "clocks_a_sha256": "9c79c490cbdff491a2d52ae657cbe6ad04a62298adabc4f5d5a71bc0837a9f8e",
+      "clocks_b_sha256": "9c79c490cbdff491a2d52ae657cbe6ad04a62298adabc4f5d5a71bc0837a9f8e"
+    }
+  ],
+  "all_global_difference_sites_exported": true,
+  "interpretation": {
+    "same_initial_RAW_clocks_and_single_payload_change": true,
+    "complete_operational_prefix_identity_not_inferred_from_two_buffers": true,
+    "causal_encounter_automatically_certified": false,
+    "Native_lineage_labels_assigned": false,
+    "functional_recovery_certified": false,
+    "all_RAW_clocks_convergence_means_only_buffer_convergence": true,
+    "scope": "D(T) is the complete observed RAW/clocks difference support at matched ticks. Initial history differences preclude attributing all D to the current input. A controlled payload contrast also needs comparable complete prefixes/interfaces/agenda and a causal intervention to identify a specific encounter. Value/direction/position coincidence never establishes lineage."
+  },
+  "new_Native_ticks": 0,
+  "actor_receives_differences": false
+}

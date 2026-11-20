@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.PI05.direct_stable_exporter.static_and_rejection_contracts.v1",
+  "Native_ticks": 0,
+  "DEE_imports": 0,
+  "source_or_RP_writes": false,
+  "positive_export_not_executed": true,
+  "original_R02_source_sha256": "52e25d7442f519c174e104690d3a60ced5a5ba4e2a1b12b8c29a64bae0e5ddf8",
+  "new_R03_source_sha256": "813d2abba6fa8e3bcc4d2df84194428c75934717c36bde741eff79817ca19343",
+  "six_pure_helpers_AST_exact": true,
+  "full_source_snapshot_SQLite_owner_receipt_outbox_checks_literal_exact_R02": true,
+  "negative_CLI_cases": [
+    {
+      "case": "zero_tick",
+      "returncode": 1,
+      "last_error_line": "ValueError: Explicit exact expected current tick required",
+      "destination_created": false
+    },
+    {
+      "case": "outside_destination",
+      "returncode": 1,
+      "last_error_line": "ValueError: Only one new canonical stable PI05 final-guard RP alias; no arbitrary path, intermediate or overwrite",
+      "destination_created": false
+    },
+    {
+      "case": "wrong_identity",
+      "returncode": 1,
+      "last_error_line": "ValueError: Exact closed continuing S5 GUARD source only",
+      "destination_created": false
+    }
+  ],
+  "scope": "Reject-only CLI tests end beforesourceworld/openSQLite/copy. Positive wholepair copy is reserved forRoot at a final exact currenttick."
+}

@@ -1,0 +1,325 @@
+EXTRACTOS LITERALES, NO MOTOR EJECUTABLE
+Fuente: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\4.5\DEE_thinking_4_5_0\source\src\kernel_v27.cpp
+SHA-256 del archivo completo: fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31
+Cobertura: líneas25–172 (constantes, packing, vecindades y firmas) y185–352 (reductor y actualización local), extremos incluidos. Números externos para localizar; contenido tras la tabulación literal.
+
+
+RANGO 25–172
+25	// =========================================================================
+26	static constexpr double K_LIMIT = 9.887;
+27	static constexpr double V_NODES = 8.0;
+28	static constexpr double E_EDGES = 12.0;
+29	static constexpr double F_FACES = 6.0;
+30	static constexpr double D_MOORE = 26.0;
+31	static constexpr double V_TETRA = 4.0;
+32	
+33	static constexpr double TENSION_ELECTROWEAK = (D_MOORE - F_FACES) / V_NODES;
+34	static constexpr double TENSION_STRONG = (E_EDGES * V_TETRA) / (V_TETRA - 1.0);
+35	static constexpr int UMBRAL_CRISTALIZACION = (int)(K_LIMIT * K_LIMIT * K_LIMIT);
+36	static constexpr uint64_t P_KERNEL = 19665ULL;
+37	static constexpr int UMBRAL_FUSION = 19665;
+38	static constexpr int TTL_ORFAN = 194422;
+39	
+40	static constexpr int ORPHAN_TTL = 9;
+41	static constexpr int COMPLETE_CUBE_VECINOS = 7;
+42	static constexpr int XNOR_MIN_ACTIVE = 8;
+43	static constexpr int XNOR_PAIRS_TOTAL = 13;
+44	
+45	static constexpr uint8_t SEM_VOID = 0;
+46	static constexpr uint8_t SEM_NORMAL = 1;
+47	static constexpr uint8_t SEM_ELECTRON_SEED = 2;
+48	static constexpr uint8_t SEM_PROTON_SEED = 3;
+49	static constexpr uint8_t SEM_OBSERVER = 4;
+50	static constexpr uint8_t SEM_ORPHAN_BIT = 5;
+51	static constexpr uint8_t SEM_HORIZON = 6;
+52	static constexpr uint8_t SEM_NACIDO_XNOR = 7;
+53	
+54	static constexpr int SHIFT_SREG = 32;
+55	static constexpr int SHIFT_DIRX = 48;
+56	static constexpr int SHIFT_DIRY = 52;
+57	static constexpr int SHIFT_DIRZ = 56;
+58	static constexpr int SHIFT_SEM = 60;
+59	static constexpr uint64_t MASK_ESTADO = 0xFFFFFFFFULL;
+60	
+61	// =========================================================================
+62	// SECCION 2: TABLAS DE VECINDADES
+63	// =========================================================================
+64	static const int MOORE_DXYZ[26][3] = {
+65	    {-1,-1,-1}, {-1,-1,0}, {-1,-1,1}, {-1,0,-1}, {-1,0,0}, {-1,0,1},
+66	    {-1,1,-1},  {-1,1,0},  {-1,1,1},  {0,-1,-1}, {0,-1,0}, {0,-1,1},
+67	    {0,0,-1},              {0,0,1},   {0,1,-1},  {0,1,0},  {0,1,1},
+68	    {1,-1,-1},  {1,-1,0},  {1,-1,1},  {1,0,-1},  {1,0,0},  {1,0,1},
+69	    {1,1,-1},   {1,1,0},   {1,1,1}
+70	};
+71	
+72	static const int EDGE_DXYZ[12][3] = {
+73	    {1,1,0}, {1,-1,0}, {-1,1,0}, {-1,-1,0},
+74	    {1,0,1}, {1,0,-1}, {-1,0,1}, {-1,0,-1},
+75	    {0,1,1}, {0,1,-1}, {0,-1,1}, {0,-1,-1}
+76	};
+77	
+78	static const int XNOR_PAIRS[13][3] = {
+79	    {1,0,0}, {0,1,0}, {0,0,1},
+80	    {1,1,0}, {1,-1,0}, {1,0,1}, {1,0,-1},
+81	    {0,1,1}, {0,1,-1},
+82	    {1,1,1}, {1,1,-1}, {1,-1,1}, {1,-1,-1}
+83	};
+84	
+85	static const int TET_PATTERNS[8][4][3] = {
+86	    {{1,0,0}, {0,1,0}, {0,0,1}, {1,1,1}},
+87	    {{-1,0,0}, {0,1,0}, {0,0,1}, {-1,1,1}},
+88	    {{1,0,0}, {0,-1,0}, {0,0,1}, {1,-1,1}},
+89	    {{1,0,0}, {0,1,0}, {0,0,-1}, {1,1,-1}},
+90	    {{-1,0,0}, {0,-1,0}, {0,0,1}, {-1,-1,1}},
+91	    {{-1,0,0}, {0,1,0}, {0,0,-1}, {-1,1,-1}},
+92	    {{1,0,0}, {0,-1,0}, {0,0,-1}, {1,-1,-1}},
+93	    {{-1,0,0}, {0,-1,0}, {0,0,-1}, {-1,-1,-1}}
+94	};
+95	
+96	// =========================================================================
+97	// SECCION 3: BIT-PACKING
+98	// =========================================================================
+99	static inline uint32_t get_estado(uint64_t v) { return (uint32_t)(v & MASK_ESTADO); }
+100	static inline uint16_t get_s_reg(uint64_t v) { return (uint16_t)((v >> SHIFT_SREG) & 0xFFFFULL); }
+101	static inline int get_dir_x(uint64_t v) {
+102	    int8_t r = (int8_t)((v >> SHIFT_DIRX) & 0xFULL);
+103	    if (r & 0x8) r |= (int8_t)0xF0;
+104	    return (int)r;
+105	}
+106	static inline int get_dir_y(uint64_t v) {
+107	    int8_t r = (int8_t)((v >> SHIFT_DIRY) & 0xFULL);
+108	    if (r & 0x8) r |= (int8_t)0xF0;
+109	    return (int)r;
+110	}
+111	static inline int get_dir_z(uint64_t v) {
+112	    int8_t r = (int8_t)((v >> SHIFT_DIRZ) & 0xFULL);
+113	    if (r & 0x8) r |= (int8_t)0xF0;
+114	    return (int)r;
+115	}
+116	static inline uint8_t get_sem(uint64_t v) { return (uint8_t)((v >> SHIFT_SEM) & 0xFULL); }
+117	
+118	static inline uint64_t pack_voxel(uint32_t e, uint16_t s, int dx, int dy, int dz, uint8_t sem) {
+119	    return (uint64_t)e
+120	         | ((uint64_t)s << SHIFT_SREG)
+121	         | (((uint64_t)(dx & 0xF)) << SHIFT_DIRX)
+122	         | (((uint64_t)(dy & 0xF)) << SHIFT_DIRY)
+123	         | (((uint64_t)(dz & 0xF)) << SHIFT_DIRZ)
+124	         | (((uint64_t)(sem & 0xF)) << SHIFT_SEM);
+125	}
+126	
+127	static inline bool exists(uint64_t v) { return get_estado(v) > 0; }
+128	static inline bool is_alive_for_rule(uint64_t v) {
+129	    return (get_estado(v) > 0) && (get_sem(v) != SEM_ORPHAN_BIT);
+130	}
+131	
+132	// =========================================================================
+133	// SECCION 4: INDEXADO TOROIDAL
+134	// =========================================================================
+135	static inline int wrap(int v, int N) {
+136	    int r = v % N;
+137	    return (r < 0) ? r + N : r;
+138	}
+139	static inline size_t idx3d(int x, int y, int z, int N) {
+140	    return ((size_t)x * N + (size_t)y) * N + (size_t)z;
+141	}
+142	
+143	// =========================================================================
+144	// SECCION 5: HELPERS FISICOS
+145	// =========================================================================
+146	static bool tiene_firma_tetraedrica(const uint64_t* gA, int x, int y, int z, int N) {
+147	    for (int p = 0; p < 8; ++p) {
+148	        bool all_alive = true;
+149	        for (int v = 0; v < 4; ++v) {
+150	            int nx = wrap(x + TET_PATTERNS[p][v][0], N);
+151	            int ny = wrap(y + TET_PATTERNS[p][v][1], N);
+152	            int nz = wrap(z + TET_PATTERNS[p][v][2], N);
+153	            size_t nidx = idx3d(nx, ny, nz, N);
+154	            if (!is_alive_for_rule(gA[nidx])) { all_alive = false; break; }
+155	        }
+156	        if (all_alive) return true;
+157	    }
+158	    return false;
+159	}
+160	
+161	static bool verificar_genesis_xnor(const uint64_t* gA, int x, int y, int z, int N) {
+162	    int symmetric = 0, active = 0;
+163	    for (int i = 0; i < XNOR_PAIRS_TOTAL; ++i) {
+164	        int dx = XNOR_PAIRS[i][0], dy = XNOR_PAIRS[i][1], dz = XNOR_PAIRS[i][2];
+165	        bool p_active = is_alive_for_rule(gA[idx3d(wrap(x+dx,N), wrap(y+dy,N), wrap(z+dz,N), N)]);
+166	        bool n_active = is_alive_for_rule(gA[idx3d(wrap(x-dx,N), wrap(y-dy,N), wrap(z-dz,N), N)]);
+167	        if (p_active == n_active) ++symmetric;
+168	        if (p_active) ++active;
+169	        if (n_active) ++active;
+170	    }
+171	    return (symmetric == XNOR_PAIRS_TOTAL) && (active >= XNOR_MIN_ACTIVE);
+172	}
+
+RANGO 185–352
+185	    return best;
+186	}
+187	
+188	static uint64_t buscar_fuente_demux(const uint64_t* gA, int x, int y, int z, int N) {
+189	    // v26-SYM1: reducer simetrico para TODAS las fuentes direccionales que apuntan al destino.
+190	    // - 0 fuentes: conserva el comportamiento nulo.
+191	    // - 1 fuente: conserva EXACTAMENTE el raw de v25.
+192	    // - >1 fuentes: suma s_reg con la misma cota P_KERNEL-1 ya usada por DEMUX,
+193	    //   y compone la direccion mediante signo de la suma vectorial.
+194	    // La reduccion es conmutativa y no depende del indice de MOORE_DXYZ.
+195	    int count = 0;
+196	    uint64_t only_source = 0;
+197	    uint32_t sum_sreg = 0;
+198	    int sum_dx = 0, sum_dy = 0, sum_dz = 0;
+199	
+200	    for (int k = 0; k < 26; ++k) {
+201	        int nx = wrap(x + MOORE_DXYZ[k][0], N);
+202	        int ny = wrap(y + MOORE_DXYZ[k][1], N);
+203	        int nz = wrap(z + MOORE_DXYZ[k][2], N);
+204	        size_t nidx = idx3d(nx, ny, nz, N);
+205	        uint64_t nv = gA[nidx];
+206	        int ndx = get_dir_x(nv), ndy = get_dir_y(nv), ndz = get_dir_z(nv);
+207	        if (ndx == 0 && ndy == 0 && ndz == 0) continue;
+208	        if (wrap(nx + ndx, N) == x && wrap(ny + ndy, N) == y && wrap(nz + ndz, N) == z) {
+209	            ++count;
+210	            only_source = nv;
+211	            sum_sreg += static_cast<uint32_t>(get_s_reg(nv));
+212	            sum_dx += ndx;
+213	            sum_dy += ndy;
+214	            sum_dz += ndz;
+215	        }
+216	    }
+217	
+218	    if (count == 0) return 0;
+219	    if (count == 1) return only_source;
+220	
+221	    const uint32_t cap = static_cast<uint32_t>(P_KERNEL - 1);
+222	    if (sum_sreg > cap) sum_sreg = cap;
+223	    const int out_dx = (sum_dx > 0) ? 1 : ((sum_dx < 0) ? -1 : 0);
+224	    const int out_dy = (sum_dy > 0) ? 1 : ((sum_dy < 0) ? -1 : 0);
+225	    const int out_dz = (sum_dz > 0) ? 1 : ((sum_dz < 0) ? -1 : 0);
+226	    return pack_voxel(1, static_cast<uint16_t>(sum_sreg), out_dx, out_dy, out_dz, SEM_NORMAL);
+227	}
+228	
+229	// =========================================================================
+230	// SECCION 6: actualizar_voxel (FISICA PURA SIN ALIAS)
+231	// =========================================================================
+232	static void actualizar_voxel(
+233	    const uint64_t* gA, const uint64_t* clkA,
+234	    uint64_t* gB, uint64_t* clkB,
+235	    std::atomic<uint32_t>* delta_demux,
+236	    std::atomic<uint64_t>* overflow_count,
+237	    std::atomic<uint64_t>* genesis_count,
+238	    int x, int y, int z, int N)
+239	{
+240	    const size_t i = idx3d(x, y, z, N);
+241	    const uint64_t v = gA[i];
+242	
+243	    const uint32_t estado = get_estado(v);
+244	    const uint16_t s_reg = get_s_reg(v);
+245	    const uint8_t sem = get_sem(v);
+246	    const uint64_t tick = clkA[i];
+247	
+248	    if (sem == SEM_OBSERVER) { gB[i] = v; clkB[i] = tick + 1; return; }
+249	
+250	    int n_active = 0;
+251	    int sum_x = 0, sum_y = 0, sum_z = 0;
+252	    int grad_x = 0, grad_y = 0, grad_z = 0;
+253	    int suma_s_reg_vecinos = 0;
+254	    uint8_t sem_heredada = SEM_NORMAL;
+255	    bool tiene_vecino_vivo = false;
+256	    bool hay_vecino_orphan = false;
+257	    int max_sreg = 0;
+258	    int max_off_x = 0, max_off_y = 0, max_off_z = 0;
+259	
+260	    for (int k_v = 0; k_v < 26; ++k_v) {
+261	        int nx = wrap(x + MOORE_DXYZ[k_v][0], N);
+262	        int ny = wrap(y + MOORE_DXYZ[k_v][1], N);
+263	        int nz = wrap(z + MOORE_DXYZ[k_v][2], N);
+264	        size_t nidx = idx3d(nx, ny, nz, N);
+265	        uint64_t nv = gA[nidx];
+266	
+267	        if (get_sem(nv) == SEM_ORPHAN_BIT) hay_vecino_orphan = true;
+268	
+269	        if (is_alive_for_rule(nv)) {
+270	            n_active++;
+271	            sum_x += get_dir_x(nv);
+272	            sum_y += get_dir_y(nv);
+273	            sum_z += get_dir_z(nv);
+274	            if (!tiene_vecino_vivo) {
+275	                sem_heredada = get_sem(nv);
+276	                tiene_vecino_vivo = true;
+277	            }
+278	        }
+279	        if (exists(nv)) {
+280	            int s_v = (int)get_s_reg(nv);
+281	            suma_s_reg_vecinos += s_v;
+282	            grad_x -= MOORE_DXYZ[k_v][0] * s_v;
+283	            grad_y -= MOORE_DXYZ[k_v][1] * s_v;
+284	            grad_z -= MOORE_DXYZ[k_v][2] * s_v;
+285	        }
+286	        int s_v_total = (int)get_s_reg(nv);
+287	        if (s_v_total > max_sreg) {
+288	            max_sreg = s_v_total;
+289	            max_off_x = MOORE_DXYZ[k_v][0];
+290	            max_off_y = MOORE_DXYZ[k_v][1];
+291	            max_off_z = MOORE_DXYZ[k_v][2];
+292	        }
+293	    }
+294	
+295	    int grad_mag = std::abs(grad_x) + std::abs(grad_y) + std::abs(grad_z);
+296	
+297	    // =========================================================
+298	    // REGLA DEL VACIO
+299	    // =========================================================
+300	    if (estado == 0) {
+301	        if (tiene_vecino_vivo && (grad_mag / P_KERNEL) >= UMBRAL_CRISTALIZACION && !hay_vecino_orphan) {
+302	            int ndx = (grad_x > 0) ? 1 : ((grad_x < 0) ? -1 : 0);
+303	            int ndy = (grad_y > 0) ? 1 : ((grad_y < 0) ? -1 : 0);
+304	            int ndz = (grad_z > 0) ? 1 : ((grad_z < 0) ? -1 : 0);
+305	            gB[i] = pack_voxel(1, 0, ndx, ndy, ndz, sem_heredada);
+306	            clkB[i] = tick + 1;
+307	            genesis_count->fetch_add(1, std::memory_order_relaxed);
+308	            return;
+309	        }
+310	
+311	        if (verificar_genesis_xnor(gA, x, y, z, N)) {
+312	            gB[i] = pack_voxel(1, 1, 0, 0, 0, SEM_NACIDO_XNOR);
+313	            clkB[i] = tick + 1;
+314	            genesis_count->fetch_add(1, std::memory_order_relaxed);
+315	            return;
+316	        }
+317	
+318	        uint64_t fuente = buscar_fuente_demux(gA, x, y, z, N);
+319	        if (fuente != 0) {
+320	            gB[i] = pack_voxel(1, get_s_reg(fuente), get_dir_x(fuente), get_dir_y(fuente), get_dir_z(fuente), SEM_NORMAL);
+321	            clkB[i] = tick + 1;
+322	            return;
+323	        }
+324	
+325	        if (max_sreg > 0) {
+326	            gB[i] = pack_voxel(0, 0, 0, 0, 0, SEM_VOID);
+327	            clkB[i] = tick + 1;
+328	            return;
+329	        }
+330	
+331	        gB[i] = pack_voxel(0, 0, 0, 0, 0, SEM_VOID);
+332	        clkB[i] = tick + 1;
+333	        return;
+334	    }
+335	
+336	    // =========================================================
+337	    // REGLA DE LA MATERIA (Friccion Geometrica)
+338	    // =========================================================
+339	    bool hadron = tiene_firma_tetraedrica(gA, x, y, z, N);
+340	    bool incomplete = (n_active < COMPLETE_CUBE_VECINOS);
+341	    double T_local = (hadron && incomplete) ? TENSION_STRONG : TENSION_ELECTROWEAK;
+342	    double rho_eff = ((double)n_active * T_local) / D_MOORE;
+343	    int rule_value = (int)std::floor(rho_eff + 0.5);
+344	
+345	    if (rule_value == 0) {
+346	        gB[i] = pack_voxel(0, 0, 0, 0, 0, SEM_VOID);
+347	        clkB[i] = tick + 1;
+348	        return;
+349	    }
+350	
+351	    bool simetria_vectorial = (sum_x == 0 && sum_y == 0 && sum_z == 0);
+352	    bool write_protected = (n_active >= 7) && simetria_vectorial; 

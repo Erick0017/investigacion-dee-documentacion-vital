@@ -1,0 +1,58 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "CLOSED_FOR_EXECUTION",
+  "life": "APD04_CONTINUABLE_R01",
+  "world_id": "APD04_CONTINUABLE_R01",
+  "initial_snapshot_sha256": "b8808317ccaf16c3650af97df2c419ec914967f7e7272f00b3c610bd562827aa",
+  "initial_tick": 639374,
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 90,
+  "closing_reserve_seconds": 180,
+  "material_wait_seconds": 30,
+  "result_limit_seconds": 1200,
+  "poll_heartbeat_seconds": 5,
+  "heartbeat_seconds": 20,
+  "supervision_wall_limit_seconds": 1600,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "command",
+      "request_id": "apd04continuable_operation_r01_clasifica",
+      "argv": ["palabra-ecosistema", "clasifica", "--retorno", "omit"]
+    },
+    {
+      "at_seconds": 15,
+      "kind": "command",
+      "request_id": "apd04continuable_operation_r01_equilibra",
+      "argv": ["palabra-ecosistema", "equilibra", "--retorno", "omit"]
+    },
+    {
+      "at_seconds": 30,
+      "kind": "material",
+      "request_id": "apd04continuable_operation_r01_new_measurements",
+      "situations": [{"modo": "apd04-calibrar", "casos": [
+        {"tipo": "clasifica", "valor": 37},
+        {"tipo": "equilibra", "cargas": [8, 2]}
+      ]}],
+      "feedback": "omit"
+    }
+  ],
+  "after_window_pending": {
+    "request_id": "apd04continuable_exact_pending_r01",
+    "situations": [{"modo": "apd04-calibrar", "casos": [{"tipo": "clasifica", "valor": 41}]}],
+    "feedback": "omit"
+  },
+  "queueing_wait_seconds": 0.25,
+  "scope": "Brief operational use of the explicitly imported complete past, actual single-parser commands and a queued new measurement. Not a repeat of APD03, a recovery of the uncertain MAIN future, or a 60-minute reserve. No new teaching."
+}

@@ -1,0 +1,43 @@
+{
+  "jobs": [
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--evaluador",
+        "FUENTES/capacidades/evaluador_calidad_apd02.py",
+        "--fuente-ruta",
+        "FUENTES/capacidades/ruta_adaptativa_apd02_04.py",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "RESERVE_FUNCTIONS_RAW_REAL_EFFECTS_42EVENTS",
+      "reference": "REFERENCIA_FUNCIONES_RESERVA.json",
+      "script": "RECALCULO/recalcular_reserva_continua_apd02.py"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "RESERVE_ONE_OWNER_DURATION_AND_SEPARATE_CLEAN_CLOSE",
+      "reference": "REFERENCIA_TIEMPO_RESERVA.json",
+      "script": "RECALCULO/recalcular_tiempo_reserva_apd02.py"
+    },
+    {
+      "args": [
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "TIME_AUDITOR9_SYNTHETIC_NEGATIVE_FIXTURES_ONLY",
+      "reference": "REFERENCIA_FIXTURES_TIEMPO_N0.json",
+      "script": "RECALCULO/probar_tiempo_reserva_apd02_n0.py"
+    }
+  ],
+  "scope": "Only archived RAW/receipt/actual-file/temporal computation and9 synthetic auditor fixtures. No engine, provider, live queue, native reproduction or new tick."
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "M302",
+    "script": "protocolos/delta/ejecutar_perfil_delta_r1.py",
+    "kind": "system_out",
+    "parents": [
+      "padres/APD01_BASE_LEXICA.T104472.db3d0d26687b.deetsnap.gz"
+    ],
+    "argv": [
+      "--parent",
+      "APD01_BASE_LEXICA",
+      "--max-seconds",
+      "300"
+    ],
+    "reference": "archivo/APD01/MECANISMO/EVIDENCIA/PERFIL_DELTA_R1",
+    "output": "nativo",
+    "comparison": "delta"
+  },
+  {
+    "id": "M303",
+    "script": "archivo/APD02/ACUMULADOR_LEXICO/EVIDENCIA/ACUMULADOR/R01/ensayar_acumulador_r01.py",
+    "kind": "patched_globals",
+    "parents": [
+      "padres/APD02_MAIN.T361114.97439697e3b9.deetsnap.gz"
+    ],
+    "output": "nativo",
+    "comparison": "accumulator",
+    "reference": "archivo/APD02/ACUMULADOR_LEXICO/EVIDENCIA/ACUMULADOR/R01",
+    "global_paths": {
+      "SOURCE": "padres/APD02_MAIN.T361114.97439697e3b9.deetsnap.gz"
+    },
+    "deadline": true
+  },
+  {
+    "id": "M301",
+    "script": "protocolos/lexico/ensayar_lexico_r04.py",
+    "kind": "patched_globals",
+    "parents": [
+      "padres/APD01_LEX_R03_paired.T108212.8a2d055fcf82.deetsnap.gz"
+    ],
+    "output": "evidencia/campanas/ASISTENTE_PROPOSITO_LENGUAJE_DELEGACION_01/lenguaje/APD01_LEX_R04",
+    "comparison": "lexical",
+    "reference": "archivo/APD01/APD_P01_P26/CURRICULO_LEXICO_R04",
+    "budget_file": true
+  },
+  {
+    "id": "M304",
+    "script": "protocolos/ruta04/ejecutar_r04_abab.py",
+    "kind": "system_out",
+    "parents": [
+      "padres/APD02_MAIN.T391957.8b146c72922f.deetsnap.gz"
+    ],
+    "output": "nativo",
+    "comparison": "r04",
+    "reference": "archivo/APD02/MECANISMO",
+    "argv": [],
+    "host_budget_seconds": 1800,
+    "budget_config": "PROTOCOLO_R04_ABAB.json"
+  },
+  {
+    "id": "M305",
+    "script": "protocolos/sensor03/cribar_sensor_balanceado_apd03_r02.py",
+    "kind": "system_out",
+    "parents": [
+      "padres/APD02_MAIN.T548407.1175587c1ab9.deetsnap.gz"
+    ],
+    "output": "nativo",
+    "comparison": "sensor",
+    "reference": "archivo/APD03/DEE_APD03_ANALISIS/MECANISMO/EVIDENCIA/SENSOR_BALANCEADO_R02",
+    "argv": [
+      "--root-go",
+      "APD03_SENSOR_AUX_R02_ONLY"
+    ],
+    "host_budget_seconds": 900,
+    "budget_config": "CRIBADO_SENSOR_BALANCEADO_R02.json"
+  },
+  {
+    "id": "M309",
+    "script": "protocolos/calidad/probar_calidad_apd02.py",
+    "kind": "pure_quality",
+    "parents": [],
+    "output": "calidad",
+    "comparison": "quality",
+    "reference": "archivo/APD02/CALIDAD",
+    "argv": []
+  }
+]

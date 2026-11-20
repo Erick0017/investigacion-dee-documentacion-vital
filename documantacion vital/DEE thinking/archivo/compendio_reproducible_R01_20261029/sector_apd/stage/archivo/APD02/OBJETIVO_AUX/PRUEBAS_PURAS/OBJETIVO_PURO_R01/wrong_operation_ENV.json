@@ -1,0 +1,176 @@
+{
+  "version": "APD02.goal_clarification_environment.prospective.R01",
+  "public": {
+    "task_id": "wrong_operation",
+    "text": "suma",
+    "left": 7,
+    "second": 4
+  },
+  "private_environment": {
+    "second": 4
+  },
+  "progress": {
+    "opportunities_used": 1,
+    "max_opportunities": 4,
+    "second_observed": true,
+    "verified_file_goal_completed": false,
+    "uncertain_effect": null,
+    "filesystem_artifacts": [
+      "wrong_operation_attempt1.json"
+    ],
+    "not_a_plan_or_recommended_next_action": true
+  },
+  "events": [
+    {
+      "version": "APD02.goal_clarification_environment.prospective.R01",
+      "opportunity": 1,
+      "public_before": {
+        "task_id": "wrong_operation",
+        "text": "suma",
+        "left": 7,
+        "second": 4
+      },
+      "physical_action_sign": -1,
+      "physical_operation_sign": -1,
+      "selected_action": "ACT",
+      "native_provider_called": true,
+      "committed_effect": {
+        "task_id": "wrong_operation_attempt1",
+        "state": "committed",
+        "selected_operation": "sub",
+        "selected_procedure": "native",
+        "artifact": {
+          "relative_path": "wrong_operation_attempt1.json",
+          "bytes": 150,
+          "sha256": "b33ed2a50dc37335ad6c7bb8c5b2b8f369c0f2f0b2c6ab2592c44f87de4a9dd7"
+        },
+        "price": 1,
+        "delay_ticks": 0,
+        "provider_calls": {
+          "native": 1,
+          "external": 0
+        },
+        "raw_provider_response": {
+          "value": 3,
+          "procedure": "native"
+        },
+        "used_value": 3,
+        "synthetic_fault": {},
+        "no_dual_execution_or_fallback": true,
+        "fixture_does_not_advance_DEE": true,
+        "effect_phase": "readback",
+        "effect_phases": [
+          "planned",
+          "before_compute",
+          "computed",
+          "opened",
+          "written",
+          "fsynced",
+          "readback"
+        ],
+        "requires_explicit_reconciliation": false,
+        "reported_value": 3
+      },
+      "quality": {
+        "schema": "DEE.APD02.post_commit_quality.v1",
+        "feedback": {
+          "category": "SEMANTIC_ERROR"
+        },
+        "axes": {
+          "terminal_action": true,
+          "same_task_identity": true,
+          "operation_corresponds_to_original_request": false,
+          "selected_procedure_admitted": true,
+          "artifact_present": true,
+          "artifact_valid": true,
+          "filesystem_effect_completed": true,
+          "safety": true,
+          "receipt_matches_actual_bytes": true,
+          "operands_match_original": true,
+          "artifact_matches_committed_action": true,
+          "numeric_correct_for_original_request": false,
+          "price_within_limit": true,
+          "delay_within_limit": true,
+          "resource_fields_valid": true
+        },
+        "valid_solution_before_resource_ranking": false,
+        "resource_acceptable": true,
+        "task_success": false,
+        "completed_task": false,
+        "completed_under_declared_limits": false,
+        "private_audit": {
+          "request": {
+            "task_id": "wrong_operation_attempt1",
+            "text": "suma",
+            "operands": [
+              7,
+              4
+            ],
+            "required_operation": "add"
+          },
+          "selected_operation": "sub",
+          "selected_procedure": "native",
+          "reference_value": 11,
+          "observed_artifact": {
+            "operands": [
+              7,
+              4
+            ],
+            "operation": "sub",
+            "procedure": "native",
+            "schema": "DEE.APD02.calculation_artifact.v1",
+            "task_id": "wrong_operation_attempt1",
+            "value": 3
+          },
+          "artifact_read": {
+            "relative_path": "wrong_operation_attempt1.json",
+            "bytes_read": 150,
+            "sha256": "b33ed2a50dc37335ad6c7bb8c5b2b8f369c0f2f0b2c6ab2592c44f87de4a9dd7",
+            "receipt_matches_actual_bytes": true
+          },
+          "reported_value": 3,
+          "reported_value_correct_is_not_a_file_effect": false,
+          "price": 1,
+          "delay_ticks": 0,
+          "error": null,
+          "original_terminal_state": "committed",
+          "failure_class": null,
+          "reference_origin": "Conventional six-form evaluator table, resolved only after the action terminal record; never sent to an actor or used to choose its operation."
+        },
+        "evaluation_resources": {
+          "external_reference_operations": 1,
+          "bytes_read": 150,
+          "host_wall_seconds": 0.0031026999931782484,
+          "host_cpu_seconds": 0.0,
+          "not_DEE_computation": true
+        },
+        "scope": "Post-action external evaluator. Only feedback.category may enter the participant. It does not choose a route, call another procedure, correct a number, learn for DEE or provide an OS sandbox. Deliberate abstention and no response are not completed tasks. Completed valid work and compliance with resource limits remain separate."
+      },
+      "private_value_sent_to_participant": false,
+      "actuator_initiative": "Only the supplied physical sign selects ACT/QUERY; operator schedules the opportunity",
+      "feedback": {
+        "category": "FAILURE"
+      },
+      "environment_effect": "ACT_TERMINAL_GOAL_NOT_VERIFIED",
+      "public_after": {
+        "task_id": "wrong_operation",
+        "text": "suma",
+        "left": 7,
+        "second": 4
+      },
+      "progress_after": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [
+          "wrong_operation_attempt1.json"
+        ],
+        "not_a_plan_or_recommended_next_action": true
+      }
+    }
+  ],
+  "directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\evidencia\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\OBJETIVO_PURO_R01\\wrong_operation",
+  "actor_access": "Only observation() and projected feedback; private_environment/events belong to environment and auditor"
+}

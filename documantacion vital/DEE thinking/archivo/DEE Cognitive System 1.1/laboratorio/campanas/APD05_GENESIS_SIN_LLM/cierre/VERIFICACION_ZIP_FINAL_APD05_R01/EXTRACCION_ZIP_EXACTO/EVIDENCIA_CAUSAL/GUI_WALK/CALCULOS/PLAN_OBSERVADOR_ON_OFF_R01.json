@@ -1,0 +1,22 @@
+{
+  "schema": "GENESIS.passive_observer.prospective_control.R01",
+  "frozen_before_experiment": true,
+  "parent_life": "APD05_MAIN",
+  "parent_tick": 655557,
+  "paired_manifest": "sistema/estado/servicios_persistentes/APD05_MAIN/exportaciones/ui_c_19fc4eb61a1d4aab9a872fe3b4bf8612/EXPORTACION_SERVICIO.json",
+  "paired_manifest_sha256": "9f12f90ed7c53acc386893123716fb112cc0967aeda8092bcae8a30a5b19471a",
+  "parent_snapshot_sha256": "02375730e29a3763fea52550820b89c3f31ba1ceda7348f12b13fe7f07b82b84",
+  "lives": ["APD05_GUI_OBS_ON_R01", "APD05_GUI_OBS_OFF_R01"],
+  "native_owners": "one sequential owner for each condition; no wall idle loop",
+  "operations_in_both": [
+    {"id": "apd05_obs_resume_r01", "payload": {"operacion": "reanudar"}},
+    {"id": "apd05_obs_advance_first_r01", "payload": {"operacion": "avanzar", "ticks": 67}},
+    {"id": "apd05_obs_query_r01", "payload": {"operacion": "sesion", "situaciones": [{"modo": "apd04-palabra", "texto": "clasifica"}], "retorno": "omit", "actuador": "closed"}},
+    {"id": "apd05_obs_advance_second_r01", "payload": {"operacion": "avanzar", "ticks": 67}},
+    {"id": "apd05_obs_stop_r01", "payload": {"operacion": "detener"}}
+  ],
+  "schedule": "Existing PersistentService.restore_transport/perform and QueueDB admission, each request at the previous safe operation boundary. No Runtime.advance shortcut, CPU-based catchup or display-driven native ticks.",
+  "fixed_criterion": "Same N/tick, exact whole RAW/clocks, native next_event_id/sequence/phase, channels, pending and native receipts. Report documentary identity/owner epoch differences separately, not as physical errors.",
+  "costs": "Whole owned worker process plus capture_seconds/capture_count. Not electrical energy. Difference includes view serialization and copies, not Native intelligence.",
+  "interpretation_limit": "Native fixed-tick test only. Does not prove zero host cost or absence of wall-time effects on a separately coupled external simulator."
+}

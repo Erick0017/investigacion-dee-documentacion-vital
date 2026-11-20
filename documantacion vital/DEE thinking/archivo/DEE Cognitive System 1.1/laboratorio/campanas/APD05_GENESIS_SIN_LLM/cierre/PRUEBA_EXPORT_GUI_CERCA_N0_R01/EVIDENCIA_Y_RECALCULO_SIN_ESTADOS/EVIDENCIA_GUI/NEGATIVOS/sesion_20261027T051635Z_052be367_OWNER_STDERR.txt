@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\aplicacion\GENESIS\propietario_genesis.py", line 75, in <module>
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\aplicacion\GENESIS\propietario_genesis.py", line 69, in main
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\sistema\app\servicio_persistente.py", line 324, in run
+    self.checkpoint({'kind':'PERSISTENT_PERIODIC_IDLE_SAVE','idle_ticks':self.idle_total})
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\sistema\app\servicio_persistente.py", line 241, in checkpoint
+    result=self.world.checkpoint(self.protocol(receipt),pending,operation)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\sistema\app\servicio_persistente.py", line 173, in checkpoint
+    self.rec=self.store.commit(self.rec,self.a,operation)
+             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\sistema\app\lives.py", line 122, in commit
+    atomic_json(directory/'VIDA.json',rec)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive System 1.1\sistema\app\native_tools.py", line 45, in atomic_json
+    os.replace(pending,path)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Acceso denegado: 'D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive System 1.1\\sistema\\estado\\vidas\\APD05_GUI_WALK_R01\\VIDA.json.pending.4edd4351276a4947937ea43207663ab9' -> 'D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive System 1.1\\sistema\\estado\\vidas\\APD05_GUI_WALK_R01\\VIDA.json'

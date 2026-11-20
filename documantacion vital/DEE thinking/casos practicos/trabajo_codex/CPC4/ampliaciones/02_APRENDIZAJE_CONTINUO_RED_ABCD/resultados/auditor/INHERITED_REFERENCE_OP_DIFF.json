@@ -1,0 +1,40 @@
+{
+  "mode": "PASSIVE_COMPARISON_NO_ADVANCE_NO_ADDED_INPUT",
+  "physical_equal": true,
+  "operational_equal": false,
+  "different_operational_components": [
+    "receipts",
+    "metadata",
+    "external_operations"
+  ],
+  "receipts_only_in_historical_target": [
+    {
+      "id": 11,
+      "kind": "experience",
+      "status": "scheduled",
+      "requested_tick": 149,
+      "effective_tick": null,
+      "channels": [
+        "use.plus.resource"
+      ],
+      "reason": ""
+    },
+    {
+      "id": 12,
+      "kind": "experience",
+      "status": "scheduled",
+      "requested_tick": 155,
+      "effective_tick": null,
+      "channels": [
+        "use.plus.supply"
+      ],
+      "reason": ""
+    }
+  ],
+  "external_calls_only_in_historical_target": [
+    "EXPERIENCE_PROTOCOL interface=use.plus.resource at=149 load=3 receipt=11",
+    "EXPERIENCE_PROTOCOL interface=use.plus.supply at=155 load=7 receipt=12"
+  ],
+  "explanation": "The historical t149 cut was saved after its host runner submitted resource at149 and supply at155. Those new boundary calls are not contained in source148 and do not follow from advancing Runtime one tick. At149 before their application physics still matches; pending protocol state legitimately differs.",
+  "scope": "Physical reference transition reproduced; full external-environment continuation not replayed. No queue was lost by save/load and no artificial input was added just to force equality."
+}

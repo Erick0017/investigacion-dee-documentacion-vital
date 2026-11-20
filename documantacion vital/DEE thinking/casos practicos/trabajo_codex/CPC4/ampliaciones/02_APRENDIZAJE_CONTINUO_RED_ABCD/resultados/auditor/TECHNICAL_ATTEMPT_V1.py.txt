@@ -1,0 +1,96 @@
+"""Small explicit technical windows from saved full operative worlds.
+
+No preparation, training, response injection or fusion of forks into MAIN.
+Every evolved world is an independent technical copy of the source snapshot.
+"""
+import argparse,hashlib,json
+from pathlib import Path
+import sys,time
+
+ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
+from src.auditor.passive import capture,digest,fields,operation_state,record
+
+def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def put(path,x):
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_text(json.dumps(x,ensure_ascii=False,indent=2,default=str),encoding='utf-8')
+
+def runtime_snapshot(world,path):
+    world.runtime.save_snapshot(str(path))
+    return {'path':str(path),'sha256':sha(path),'bytes':path.stat().st_size,
+        'scope':'Opaque complete Runtime serialization includes pending queue payloads and channel definitions; native snapshot format, no hand-built RAW-only clone'}
+
+def run(source,output,ports,end_tick,edit_port=None):
+    import dee_thinking as d
+    started=time.monotonic();output.mkdir(parents=True,exist_ok=False)
+    source_sha=sha(source);world=d.OrganizationalWorld.load_snapshot(str(source))
+    start=world.runtime.current_tick
+    if not start<end_tick<=start+4:raise ValueError('Technical native horizon must be one to four ticks')
+    initial=operation_state(world);before_serial=runtime_snapshot(world,output/'BEFORE_RUNTIME.deetsnap')
+    context_sites=list(ports.values())
+    passive=capture(world,ports,context_sites)
+    for _ in range(3):assert capture(world,ports,context_sites)==passive
+    after_observation=operation_state(world)
+    after_serial=runtime_snapshot(world,output/'AFTER_OBSERVATION_RUNTIME.deetsnap')
+    assert initial==after_observation and before_serial['sha256']==after_serial['sha256']
+    fork=world.fork();assert operation_state(fork)==initial
+    fork_serial=runtime_snapshot(fork,output/'FORK_RUNTIME.deetsnap');assert fork_serial['sha256']==before_serial['sha256']
+    mid=output/'OPERATIVE_ROUNDTRIP.deetsnap';fork.save_snapshot(str(mid))
+    loaded=d.OrganizationalWorld.load_snapshot(str(mid));assert operation_state(loaded)==operation_state(fork)
+    loaded_serial=runtime_snapshot(loaded,output/'LOADED_RUNTIME.deetsnap')
+    assert loaded_serial['sha256']==fork_serial['sha256']
+    modes={};mode_serials={};captures={}
+    for name,backend in [('lazy',d.Backend.LAZY),('dense',d.Backend.DENSE_SEQUENTIAL),('parallel_one_thread',d.Backend.DENSE_PARALLEL)]:
+        child=loaded.fork();child.runtime.execution_options=d.TickOptions(backend,1)
+        child.run_until(end_tick);modes[name]=operation_state(child)
+        captures[name]=capture(child,ports,context_sites)
+        mode_serials[name]=runtime_snapshot(child,output/(name+'_FINAL_RUNTIME.deetsnap'))
+    assert modes['lazy']==modes['dense']==modes['parallel_one_thread']
+    # A direct continuation of the restored source is the independent reference.
+    world.run_until(end_tick);assert operation_state(world)==modes['lazy']
+    direct_serial=runtime_snapshot(world,output/'DIRECT_FINAL_RUNTIME.deetsnap')
+    assert len({v['sha256'] for v in mode_serials.values()}|{direct_serial['sha256']})==1
+    parent_pre=operation_state(loaded)
+    if edit_port is None:
+        edit_port=next((name for name,value in fields(loaded,ports).items() if value['raw']!=0),None)
+    diagnostic=None
+    if edit_port is not None:
+        q=d.Coordinate(*ports[edit_port]);pre=record(loaded.runtime.observe(q));edit=d.ResearchStateEdit()
+        edit.coordinate=q;edit.raw=0;edit.label='AUDITOR_ONLY_DEEP_FORK_SINGLE_RAW_REMOVAL'
+        child=loaded.diagnostic_fork([edit],True);post=record(child.runtime.observe(q))
+        before_raw=loaded.runtime.raw_copy();after_raw=child.runtime.raw_copy()
+        before_clock=loaded.runtime.clock_copy();after_clock=child.runtime.clock_copy()
+        changed_raw=sum(a!=b for a,b in zip(before_raw,after_raw));changed_clock=sum(a!=b for a,b in zip(before_clock,after_clock))
+        assert operation_state(loaded)==parent_pre and changed_raw==int(pre['raw']!=0) and changed_clock==0
+        diagnostic={'port':edit_port,'pre':pre,'post':post,'RAW_sites_changed':changed_raw,
+            'clock_sites_changed':changed_clock,'parent_unchanged':True,
+            'scope':'Explicit diagnostic copy, never reintroduced into MAIN and not a biological/functional lesion conclusion'}
+    result={'status':'MEASURED','classification':'TECHNICAL_WINDOW_NOT_FRESH_LEARNED_CASE',
+        'source':str(source),'source_sha256':source_sha,'start_tick':start,'end_tick':end_tick,
+        'window_native_ticks_per_continuation':end_tick-start,'continuations':4,
+        'initial':initial,'passive_capture':passive,'captures':captures,
+        'technical_checks':{'repeated_passive_fields_equal':True,'passive_RAW_clock_operational_unchanged':True,
+           'opaque_Runtime_serialization_equal_before_after_observation':True,'full_fork_initial_equal':True,
+           'save_load_operational_and_opaque_Runtime_equal':True,'direct_save_load_same_future':True,
+           'Lazy_Dense_Parallel_one_thread_same_RAW_clock_and_operational_state':True,
+           'same_future_opaque_Runtime_serialization':True,'deep_diagnostic_fork_parent_unchanged':diagnostic is not None},
+        'snapshots':{'before':before_serial,'after_observation':after_serial,'fork':fork_serial,'loaded':loaded_serial,
+                     'direct_final':direct_serial,'mode_finals':mode_serials},
+        'diagnostic':diagnostic,'pending_at_boundary':[r for r in initial['receipts'] if 'scheduled' in r['status'].lower()],
+        'elapsed_seconds':time.monotonic()-started,'source_untouched':sha(source)==source_sha,
+        'code_sha256':sha(__file__),'passive_code_sha256':sha(Path(__file__).with_name('passive.py')),
+        'instrument':{'library':d.__version__,'kernel':d.kernel_identity(),'native_sha256':sha(d._native.__file__)}}
+    put(output/'TECHNICAL_CHECKS.json',result)
+    return result
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--snapshot',type=Path,required=True)
+    parser.add_argument('--output',type=Path,required=True);parser.add_argument('--recipe',type=Path,required=True)
+    parser.add_argument('--end-tick',type=int,required=True);parser.add_argument('--edit-port')
+    args=parser.parse_args();m=json.loads(args.recipe.read_text(encoding='utf-8'));recipe=m.get('recipe',m)
+    ports=dict(recipe['centers']);ports['joint']=recipe['joint_site']
+    for name in ('cost_meeting','interception','resource_receiver','function_receiver'):
+        ports['bank_'+name]=recipe['bank'][name]
+    r=run(args.snapshot,args.output,ports,args.end_tick,args.edit_port)
+    print(json.dumps({'status':r['status'],'window':[r['start_tick'],r['end_tick']],'seconds':r['elapsed_seconds']}))

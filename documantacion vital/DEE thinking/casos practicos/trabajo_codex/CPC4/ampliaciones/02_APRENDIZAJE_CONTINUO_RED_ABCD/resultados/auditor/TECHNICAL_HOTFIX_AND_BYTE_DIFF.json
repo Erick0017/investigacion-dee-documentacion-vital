@@ -1,0 +1,145 @@
+{
+  "technical_attempt": "auditor_ABCD_window01",
+  "original_lazy_sha256": "2ffc1271d71bec42e78b4d4032e095302b73e003f0558a866cf404967554c5c1",
+  "comparison": [
+    {
+      "artifact": "resultados\\auditor\\ABCD_WINDOW160_161\\dense_FINAL_RUNTIME.deetsnap",
+      "sha256": "3151ce89aa57059b153fe84421f5d1b56b1dd77cd43cfac88475af492b690d2f",
+      "same_length": true,
+      "different_byte_count": 9,
+      "different_offsets": [
+        4814255,
+        4829892,
+        4829893,
+        4829894,
+        4829895,
+        4829896,
+        4829897,
+        4829898,
+        4829899
+      ],
+      "values_at_difference": [
+        {
+          "offset": 4814255,
+          "lazy": 2,
+          "other": 0
+        },
+        {
+          "offset": 4829892,
+          "lazy": 25,
+          "other": 247
+        },
+        {
+          "offset": 4829893,
+          "lazy": 212,
+          "other": 50
+        },
+        {
+          "offset": 4829894,
+          "lazy": 94,
+          "other": 45
+        },
+        {
+          "offset": 4829895,
+          "lazy": 130,
+          "other": 251
+        },
+        {
+          "offset": 4829896,
+          "lazy": 85,
+          "other": 111
+        },
+        {
+          "offset": 4829897,
+          "lazy": 106,
+          "other": 43
+        },
+        {
+          "offset": 4829898,
+          "lazy": 74,
+          "other": 98
+        },
+        {
+          "offset": 4829899,
+          "lazy": 123,
+          "other": 207
+        }
+      ]
+    },
+    {
+      "artifact": "resultados\\auditor\\ABCD_WINDOW160_161\\parallel_one_thread_FINAL_RUNTIME.deetsnap",
+      "sha256": "e1983d705f8f282cae9c6fa5354d2e09f3b53c18e89fc0f6fcc20ec90e109dcd",
+      "same_length": true,
+      "different_byte_count": 9,
+      "different_offsets": [
+        4814255,
+        4829892,
+        4829893,
+        4829894,
+        4829895,
+        4829896,
+        4829897,
+        4829898,
+        4829899
+      ],
+      "values_at_difference": [
+        {
+          "offset": 4814255,
+          "lazy": 2,
+          "other": 1
+        },
+        {
+          "offset": 4829892,
+          "lazy": 25,
+          "other": 224
+        },
+        {
+          "offset": 4829893,
+          "lazy": 212,
+          "other": 49
+        },
+        {
+          "offset": 4829894,
+          "lazy": 94,
+          "other": 144
+        },
+        {
+          "offset": 4829895,
+          "lazy": 130,
+          "other": 221
+        },
+        {
+          "offset": 4829896,
+          "lazy": 85,
+          "other": 234
+        },
+        {
+          "offset": 4829897,
+          "lazy": 106,
+          "other": 68
+        },
+        {
+          "offset": 4829898,
+          "lazy": 74,
+          "other": 163
+        },
+        {
+          "offset": 4829899,
+          "lazy": 123,
+          "other": 142
+        }
+      ]
+    },
+    {
+      "artifact": "resultados\\auditor\\ABCD_WINDOW160_161\\DIRECT_FINAL_RUNTIME.deetsnap",
+      "sha256": "2ffc1271d71bec42e78b4d4032e095302b73e003f0558a866cf404967554c5c1",
+      "same_length": true,
+      "different_byte_count": 0,
+      "different_offsets": [],
+      "values_at_difference": []
+    }
+  ],
+  "cause": "Runtime.cpp656 saves execution_options_.backend; snapshot checksum also changes. This is an intentionally different scheduling descriptor, not a difference in observed RAW/clocks/operative future.",
+  "resolution": "Keep original artifacts distinct. V2 also compares opaque full Runtime bytes after setting only the final technical-copy execution descriptor back to the same value, without advance or physical edits.",
+  "noop_fork_notice": "The original broad window checks attempted RAW0 removal at an empty fixed port. That parent remained unchanged, but the no-op is not used to claim nontrivial isolation. NONTRIVIAL_FORK_ISOLATION explicitly removes actual58/74 records and verifies one RAW site and zero clocks."
+}

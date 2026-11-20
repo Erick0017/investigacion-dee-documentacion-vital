@@ -1,0 +1,54 @@
+{
+  "schema": "CF01.R9.phase_and_existing_results.v1",
+  "scope": "Read existing C++ source, snapshots and CF01 primaries only. No ticks or alterations by this analyst.",
+  "official_admission_rule": {
+    "source": "cognitive sistem/fuentes/producto_4_5/src/runtime.cpp, Runtime::apply_events_at_boundary and Runtime::advance",
+    "facts": [
+      "At application the target must have raw_a_[idx]==0, not merely state==0.",
+      "Events on the same register and boundary conflict; events are never silently retried.",
+      "Boundary events apply before the full native tick; the existing full clock is preserved.",
+      "An input may affect neighbours during that tick and disappear in its poststate. Failure to survive does not by itself show failure to influence."
+    ]
+  },
+  "B_datum_phase": {
+    "site": [20,13,15],
+    "native_recurrent_source": [20,13,16],
+    "existing_source": "SEM4 load0, direction(0,0,-1), not a private-answer source",
+    "source_and_history_observed": "Parent15329 and CAL_PARENT_B52 records show datum occupied on odd boundaries and RAW0 on even boundaries, without the new input.",
+    "private_supports": [[18,15,15],[20,15,15]],
+    "private_support_admission": "Their acquired61/19 RAW is already nonzero; direct sample ports cannot overwrite them at the tested cuts. Such an attempted request is not new native acquisition.",
+    "B_seed_condition": "A small stationary datum does not initiate an empty B reader: its gradient is far below the empty-space crystallization threshold and it does not point at B. A native request or declared generic reading resource must be present. When B is already alive, a current datum contributes to its native next direction even if the datum dies in that same update.",
+    "prediction_not_yet_tested_here": "From the original15329 parent, a fixed delay1 request at15330even should find datum RAW0 while B remains active. Scalar52 would change the next B Gx from+44 to−8 in the quiescent pattern. The opposite output should be checked in the next sample and along its route, not inferred from admission. CAL_PARENT_B52 delay2 tested only15331odd and was rejected."
+  },
+  "existing_open_peripheral_paths": {
+    "at_MAIN_T17675": [
+      {"site": [19,12,14], "raw": "0", "role": "Existing query path, B+(0,-2,0)", "direction_to_datum": [1,1,1]},
+      {"site": [19,13,14], "raw": "0", "role": "Existing query path, B+(0,-1,0)", "direction_to_datum": [1,0,1]},
+      {"site": [19,14,14], "raw": "0", "role": "B reader itself, not an inert unused peripheral position", "direction_to_datum": [1,-1,1]}
+    ],
+    "limit": "A moving datum injected on these routes still requires a B reader for comparative use. The generic source may combine directions and loads at the datum. The source and destination state must be counted, and a test cannot be made successful by overwriting either."
+  },
+  "postformation_native_control_candidate_NOT_EXECUTED_HERE": {
+    "common_input": "Same original15329 prefix and one predeclared datum52 in15330; first verify B negative packet formation in the common trajectory.",
+    "new_message_cut": {"site": [12,19,9], "input_tick": 15336, "state": 1, "semantic": 4, "payload": 0, "direction": [0,0,0]},
+    "branch_sham": {"site": [0,19,9], "input_tick": 15336, "state": 1, "semantic": 4, "payload": 0, "direction": [0,0,0]},
+    "why_postformation": "The predicted B output is formed in15331; the blocker boundary15336 is later, before the negative message reaches its bus. This timing is a source-based prediction requiring measured route confirmation.",
+    "why_admissible_candidate": "Both sites belong to opened buses; the negative bus is observed RAW0 in the actual parent/cuts and the positive bus has the ordinary alternating transport phase with expected even-boundary RAW0. Record receipt rejection rather than forcing the block.",
+    "sham_scope": "This is an opposite-message-branch intervention, not an innocuous intervention for all functions. It can interrupt old positive trains; therefore compare both recipient contents, own/private references and later contacts. The previously named sham_query(6,12,19) is inert SEM4 RAW-nonzero and would not be an admissible posthoc empty-site sham.",
+    "old_context_caveat": "The original positive A recipient already holds5. Cutting future positive or negative packets cannot erase or prove necessity of that earlier acquisition. A newly arrived negative packet could fill the other recipient and cancel rather than replace the old context."
+  },
+  "existing_CF01_results": {
+    "APERTURA_02": {"start_tick": 15329, "end_tick": 17675, "requested_opportunities": 3, "useful_contacts": 2, "failed_contacts": 1, "requests_applied": 40, "own_before": [47,44], "own_after": [52,50], "context_before_and_after": [0,5], "B_private_before_and_after": [61,19], "last_action_change": "Between17575 and17675 A changesx0 to x−1 after the contrary-availability opportunity; detailed onset not present in these sparse opening frames."},
+    "CAL_ALEFT": {"request_tick": 17676, "status": "applied", "A_changes": [[17682,1],[17683,-1]], "own_and_context_changed": false, "scope": "Current raw input transiently changes A direction; no learning or lasting update established."},
+    "CAL_B36_and_CAL_B52": {"request_tick": 17676, "both_status": "applied", "B": "RAW0 throughout both recorded intervals", "A": "x−1 throughout", "context": [0,5], "private_B": [61,19], "datum_effect": "Injected content disappears during its application update. Both inputs shift the datum's zero-load recurrence phase, without preserving their differing magnitudes in the final physical state.", "final_tick": 17723},
+    "CAL_PARENT_B52": {"request_tick": 15331, "status": "rejected_occupied", "B": "Alive x+1 throughout80 recorded ticks", "A": "x0 throughout", "context": [0,5], "private_B": [61,19], "scope": "Negative admission result; it is not a failed native use of an admitted52 observation."}
+  },
+  "convergence_of_two_empty_reader_histories": {
+    "states": ["CF01_CAL_B36 T17723", "CF01_CAL_B52 T17723"],
+    "same_RAW_sha256": "55de3cb3c7ee9f2e010816c94b400d5af0f9ff2c64b5f9b19313b661a00ba45e",
+    "same_clocks_sha256": "1d9c0b584f1dceae6cadc02cd80bd3bc40904a8da3df17d9544e30c27795cd30",
+    "full_snapshot_parser_comparison": {"RAW_different_sites": 0, "clock_different_sites": 0, "pending_equal": true, "channels_equal": true, "receipts_equal": true, "prefix_through_execution_before_metadata_equal": true, "different_metadata_keys": ["DEE.Cognitive.System.1.1.life.v1", "dee_thinking.organizational.v1.7"], "different_owner_sections": ["operations"]},
+    "interpretation": "The reached native fields and actual agenda do not retain a difference between36 and52 at this endpoint. The differing experiment diary and identity are not DEE-accessible remembered magnitude. This negative concerns inputs delivered with B empty, not an impossibility of comparative use with B active."
+  },
+  "recalculation": "Run recalcular_lectura_cf01.py with the archived primary directory and optional --snapshot or --compare-snapshots pairs. It imports only the copied existing stdlib snapshot observer, validates exact packed observations and never imports the engine."
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "APD01.instrumental_auditor_error_preserved.v1",
+  "native_ticks_repeated": 0,
+  "actor_or_kernel_modified": false,
+  "original_auditor_file": "recalcular_referencias_ejecutadas_ORIGINAL_ERROR_ORIGEN.py",
+  "original_auditor_sha256": "7382db584c6fd2e1a4b0c0381c8914db7605b13918d5feaff1df9241a5498a57",
+  "original_output_file_created": false,
+  "exception": "ValueError: Changed frozen six gates",
+  "cause": "The generic auditor walker also reaches the OLD scalar selector nested inside native arithmetic trials. Those observations have y17 and no explicit origin key. The initial checker incorrectly defaulted every no-origin selector to O2/y47.",
+  "correction": "Only infer between the two existing fixed geometries from their complete observation-site set: y17 means origin15,15,15; y47 means origin15,45,15. Reject every other origin. Then check exactly the same6 sites/directions and unique-output rule. No gate or criterion is selected by answer/target.",
+  "scope": "Postprocessing schema correction only. Preserve both source revisions, all actual results and reached states. No experiment or reference action was repeated."
+}

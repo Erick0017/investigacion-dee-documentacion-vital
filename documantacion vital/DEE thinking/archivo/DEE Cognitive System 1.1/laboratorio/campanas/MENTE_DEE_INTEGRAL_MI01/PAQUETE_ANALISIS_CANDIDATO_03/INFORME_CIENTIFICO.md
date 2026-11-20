@@ -1,0 +1,211 @@
+# Mente DEE Integral MI01
+
+Proyecto INVESTIGACION DEE. Autor del proyecto: Ivan Erick Tlaltecatl Morales. Corte científico del22 de octubre de2026. DEE Cognitive System1.1.0, DEE thinking4.5.0 y kernelv27 sin modificaciones.
+
+## Conclusión sobre el candidato
+
+El alcance conseguido es **capacidades adaptativas especializadas sin integración suficiente**. Durante la construcción, una sola trayectoria E1 utilizó selección adquirida, solicitud material a B, información privada, códigos anteriores, contacto/orden y actuación externa. No fueron cuatro individuos renombrados como uno. Sin embargo, al fijar la preparación y retirar las reparaciones, esa misma vida no sostuvo una integración útil: nueve oportunidades nativas produjeron cero contactos útiles; una petición por fallo obtuvo una respuesta válida de B, pero no su utilización final; cuarenta y siete pasos externos sólo tuvieron una acción no neutral. No se demostró una política competente de Pendulum ni una estrategia general de recuperación aprendida.
+
+El candidato final es el estado realmente alcanzado de **E1_MI01_MAIN T28169**, con cero entradas pendientes, no un conjunto de éxitos incompatibles. Su futuro adverso se conserva. El predeterminado **E1_SOCIAL_11 T3154** y el padre de investigación quedaron intactos; no se promovió una rama por su mejor respuesta aislada.
+
+Esta conclusión no invalida las capacidades acotadas que sí funcionaron, no demuestra una imposibilidad general de DEE y no identifica pérdida de lectura con destrucción global de información. El contraste causal más informativo rescató un tramo de transporte mediante una intervención legal, pero mostró un segundo impedimento antes de recuperar el uso final. Por eso no se presenta ese rescate local como recuperación cognitiva completa.
+
+## Cómo comprobar este expediente
+
+Las cuatro tablas de la raíz contienen191 registros de ensayo u operación,25 registros de capacidades por vida/momento,17 fronteras de asistencia y26 filas de evaluación/estrés. **191 no es el número de aprendices independientes.** Muchas consultas comparten una vida y los controles son bifurcaciones del mismo prefijo.
+
+Cada identificador de ensayo remite al JSON original exportado sin pérdida en `EVIDENCIA_CAUSAL/PRIMARIOS/`. El sufijo `.gz` es sólo compresión: al descomprimir se recuperan exactamente los bytes originales, cuya ubicación y SHA-256 constan en el índice. `EVIDENCIA_CAUSAL/LECTURA_PRIMARIA_DECISIVA.json` facilita la lectura de muestras positivas y negativas sin reemplazar sus fuentes. `RECALCULO/recalcular_mi01.py` vuelve a contar resultados desde los primarios y decodifica RAW con enteros exactos, sin importar el motor ni avanzar ticks. La comprobación independiente del paquete distingue este recálculo de la reproducción física ya ejecutada470 y de los ensayos externos reales.
+
+Los snapshots completos locales deciden la continuidad. La selección pequeña de estados del paquete sirve para verificar contrastes físicos, no convierte este ZIP en respaldo autosuficiente del sistema ni de todas las vidas. El índice declara las omisiones profundas y sus hashes.
+
+## 1 Organización ensayada y continuidad
+
+El padre se eligió antes de conocer las reservas: **E1_CICLO02_SEPARACION_TRIPLE_01 T21711 N67**, SHA-256 `e5298f9e32e75ec986e2427bf396cd547989aae80ab74e28205dd7310ed8ef82`. Era pertinente porque tenía usos propios de códigos separados y una continuación completa con puente externo. No se le atribuyeron las21/21 acciones del futuro divergente de MAIN Ciclo02 ni los aprendizajes de U0, repertorios independientes o AA01.
+
+E1_MI01_MAIN es una bifurcación exacta de ese estado. Se conservan RAW, clocks, interfaces, propietario, colas, recibos, progreso y entorno externo. La comprobación al cierre verificó treinta enlaces de su diario original y ticks monótonos. Las copias no regresaron conocimientos a MAIN. No se limpió RAW, no se reiniciaron clocks y no se modificó N.
+
+La organización es **compuesta/acoplada dentro de un Runtime**, no una sola celda ni varias mentes completas por tener varios lectores. Integra soporte de selección, comparadores heredados, portadores de códigos adquiridos, rutas de consulta/retorno, participante B y sensores/actuadores preparados. Las vistas y regiones comparten materia; no se cuentan como entes nuevos. El mundo incluye también entorno y suministros: no todo el Runtime se denomina mente.
+
+Durante la construcción falló la readquisición en el soporte anterior S15. Se declaró una extensión anatómica a S40, mediante entradas legales en la misma vida, conservando el soporte anterior. El investigador diseñó esa posibilidad, sus rutas y lectores. La adquisición posterior es nueva experiencia propia de MAIN; no fue un trasplante entrenado ni una anatomía inventada espontáneamente por E1.
+
+La física y el producto oficial permanecieron congelados. Los hashes de WHL, PYD y fuente v27 cotejados fueron, respectivamente, `09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c`, `17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d` y `fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31`. Se reutilizó CPython3.13x64 instalado. No se reejecutaron las34familias históricas.
+
+### Etapas reales de MAIN
+
+| Corte | Lo observado en esa trayectoria | Límite |
+|---|---|---|
+| T21711 | Bifurcación exacta del padre fijado | No importa futuros de otras ramas |
+| Operaciones100–103 | Primera composición opaca y nueva adquisición posterior | La segunda composición acumulativa falló; no se ocultó |
+| T23453 | Tres códigos anteriores seguían utilizándose | El selector anterior no produjo la pregunta pretendida122 |
+| T23922–24190 | Petición material, recepción positiva145 y cuatro usos externos con tres códigos anteriores aún accesibles | Protección P0 y ventanas preparadas; no control aprendido |
+| T24414/T24420 | Contacto y orden combinados produjeron31 y consecuencia38 | Compositor preparado y consumptivo |
+| T24525 | Dos usos externos adicionales y acceso a los cuatro códigos | Era un corte con dos entradas pendientes, no un estado vacío |
+| T24752 | Reutilización propia del positivo145 como +Y145 | Interacción genérica iniciada por operador; el negativo no generalizó |
+| T24752–27834 | Tres reservas continuas, sin reparación ni reinicio | Fracaso de integración sostenida detallado abajo |
+| T28169 | Drenaje, intervalo libre, interacción nueva y nueva continuación entre procesos | Estado adverso cargable, no aprendiz saludable certificado |
+
+La ficha `CONTINUIDAD_MENTE_DEE_INTEGRAL_MI01.json` da los hashes exactos de los cortes funcionales. Dos snapshots del mismo tick pueden tener RAW/clocks iguales y agendas distintas; por eso no se elige simplemente el archivo más reciente ni se intercambian cortes T24752.
+
+## 2 Qué estaba preparado y qué procedió de la experiencia
+
+El investigador preparó anatomía, recursos finitos, ventanas, rutas posibles, marcos físicos de B, condiciones de contacto, codec y evaluación. Python calculó geometría y horarios **antes** del uso, no la acción correcta según el target. El compilador sólo deduplicó paquetes físicamente idénticos de la preparación, con aliases explícitos; no seleccionó contenidos favorables. Algunas entradas posteriores al compilador siguieron chocando y se rechazaron.
+
+El contenido de selección y los códigos que se atribuyen a una vida cambiaron mediante encuentros v27. Una petición y una respuesta posteriores son emisiones materiales, no texto completado por un LLM. El auditor descifró y comparó después, sin alimentar sus diarios, semillas o resultados al participante.
+
+El entorno de evaluación es finito y calendarizado: ofrece oportunidades aunque el candidato no responda. Sus salidas materiales modifican contactos y retornos. El calendario no elige actuar o consultar por él, pero tampoco demuestra iniciativa temporal general. No se instaló un ejecutivo central ni un módulo por palabra.
+
+El puente a Pendulum es asistencia externa explícita: cuantiza seno, transforma una salida DEE en torque y devuelve el coste real a un comparador heredado. No convierte ese coste desde Python en la actualización correcta del selector S. Neutral obligatorio por código ausente o inválido no cuenta como una decisión inteligente.
+
+`FRONTERAS_DE_ASISTENCIA.csv` separa ente, entorno, instrumento e interpretación. Tener una estructura preparada no invalida el aprendizaje dentro de ella; que la estructura evolucione con v27 tampoco demuestra que su selección haya sido aprendida.
+
+## 3 Capacidades positivas y contraejemplos de construcción
+
+### Composición de selección y contenido
+
+Los ensayos30–34 reutilizaron el mecanismo local de AA01 con nuevas experiencias propias. Una selección Y y un contenido Z adquiridos separadamente participaron en una forma conjunta XYZ161 y un uso posterior YZ175. Historias opuestas, contenidos permutados, ausencia de retorno y contenido omitido delimitaron la causalidad. Es composición nativa de códigos opacos bajo aparato preparado; no composición lingüística humana ni una regla inventada por el ente.
+
+MAIN utilizó una primera composición, pero su nueva adquisición103 no conservó la segunda combinación pretendida. Se retiene ese fallo. En el cribado material40–44, el criterio de dirección con carga cero se fijó antes de leer los resultados:40 produjo23/24comandos materiales,21contactos y14útiles; el control de acción cortada43 aún tuvo24/24formas materiales pero sólo4contactos y3útiles. Por tanto, ciertos productos de ruta pueden modificar el selector sin una acción propia correspondiente: no se atribuyen todos los cambios a aprendizaje por consecuencias. El suministro50–52 mantuvo carga, pero no estableció mejor utilidad ni metabolismo.
+
+### Petición a B y utilización del contenido privado
+
+110 y111 produjeron códigos145 de signos opuestos a partir de entradas privadas20/52 en B, tras una petición material de E1. La historia opuesta112, el corte de la solicitud ya formada113 y la ausencia de impulso115 no dieron la misma recepción;114sham conservó el efecto. Las variantes de fase12/14 y demodulación70–95 fallaron. No se contabilizan como equivalentes a la fase que funcionó.
+
+La protección tardía170/171 permitió recepción y3/3usos en cada signo; los controles172/173 no restauraron lo mismo. MAIN190–193 adquirió su propio positivo145 y lo utilizó cuatro veces con sus tres códigos anteriores conservados. No heredó el estado aprendido de170/171. Los controles174/175 muestran que esa protección no era incondicional.
+
+En210/211 la respuesta privada llegó al mismo soporte de selección y cambió una decisión posterior de signo. El corte del producto formado214 suprimió el uso y215sham lo conservó. Una contribución de carga cero fue causalmente relevante en el desvío negativo185; no era ausencia de materia. Interceptores legales P0 corrigieron ese dominio finito, no establecieron recuperación general autónoma.
+
+### Solicitud iniciada por un producto de fallo
+
+En270 una acción fallida produjo físicamente una solicitud XY−145 en una oportunidad posterior.271sin retorno y272con corte del producto ya formado eliminaron esa petición;273sham la conservó. No hubo un `if falla entonces buscar` que leyera el estado completo desde Python. El producto material aportó la diferencia.
+
+Es un avance local de iniciación nativa condicionada por historia bajo posibilidades preparadas. No se demostró que E1 aprendiera una ley general de cuándo consultar, ni que esa solicitud lograra siempre recuperación. El segundo acceso a B falló en esa configuración. Los estudios306/307 verificaron que la primera y la segunda respuesta no tenían el mismo contexto físico: la contribución43 previa ya no estaba y cambiaba también el vecindario. B no podía denominarse un comparador canónico intacto sólo por los nombres de sus interfaces.
+
+### Reutilización sin reenseñar el contenido
+
+280 produjo +Y145 desde la historia positiva anterior con recursos genéricos aplicados a ambas posibilidades.281negativo falló;282corte perdió el efecto y283sham lo conservó. MAIN320/321 reutilizó después **su propio** positivo145, sin nuevo valor privado de B ni docente que aportara el signo correcto.
+
+Lo que se recuperó fue el uso de un código direccional histórico, no el valor privado20 original ni una relación espacial actual. El operador inició la interacción y la materia se desvió, no se clonó. Es recuperación/reutilización asistida P0 con contenido dependiente de historia P1, restringida al signo positivo ensayado.
+
+### Español y relaciones distintas
+
+150/151 separaron primeras respuestas de contacto y paso libre;153 utilizó un medio de contacto reservado3.152 mostró que una segunda sonda material podía producir por sí misma una nueva experiencia: no se presenta esa segunda respuesta como retención de una enseñanza ausente.
+
+220 combinó contacto adquirido y orden AB, produjo31 y consecuencia38;221sin contacto,222sin segundo acontecimiento y223con BA no produjeron la misma consecuencia positiva. MAIN310–314 adquirió/utilizó las dos relaciones en su propia historia y las combinó;315 volvió a utilizar códigos anteriores después. La combinación ocurrió físicamente, no como una frase construida por Python.
+
+Las traducciones españolas son fijas sobre firmas del instrumento existente. Esto amplía o confirma un uso funcional acotado de contacto/orden y una combinación, **no demuestra adquisición nueva general de las palabras españolas ni gramática productiva**. El compositor es preparado y consumptivo. No se reinició para mantener una apariencia de competencia. El catálogo NSM65 sigue sin nuevos niveles generales atribuidos a E1; tres códigos y145 no son65significados.
+
+### Especialización de B y fallos de preparación
+
+340–347 ensayaron un marco43 fijo y oportunidades materiales de carga cero para B.344 conservó una segunda respuesta positiva en su dominio y347 produjo una negativa con otro marco espacial. Es una preparación P0, no una referencia43 aprendida por B. El corte343 suprimió la primera respuesta pero también cambió la evolución posterior: no se lo trata como intervención globalmente inerte.
+
+348 reconstruyó los recibos: el marco43 se aplicó, pero algunos apoyos coincidentes se rechazaron. La revisión R3 había solicitado guardas duplicadas y quedó preservada como fallo instrumental. R4 declaró la deduplicación y sus cambios de dosis. Los conflictos posteriores fuera de ese compilador no se borraron.345/346, desde un prefijo posterior de MAIN, siguieron fallando pese a la nueva experiencia: la solución del pasado no se importó como reparación favorable.
+
+El uso operativo495–498 se hizo mediante el gestor normal y procesos distintos. Produjo una orden motora válida de tres, no tres usos correctos ni una política sostenida. La especialización se conserva con ese límite; no reemplaza al candidato principal.
+
+## 4 Evaluación integral fijada
+
+El sello se emitió a **08:21:03.061541 UTC**, antes de la mitad del presupuesto. Fijó fuentes, preparación, lectores, codec, disponibilidad, valores privados reservados, retornos, utilidades y límites. Los hashes físicos permanecieron iguales al cierre. El aprendizaje nativo no se desactivó; sí quedaron prohibidas las reparaciones del investigador durante las reservas.
+
+Las secuencias411–413 pertenecen a **la misma MAIN**, sin restauraciones entre ellas:
+
+| Secuencia | Nativo | Externo | Pasos | Recompensa | Acciones no neutrales |
+|---|---|---|---:|---:|---:|
+| 411 | Oportunidades0–2, valores B17/58/26 | Cerrado, coste real | 16 | -126.84941375827731 | 1 |
+| 412 | Oportunidades3–5, B54/9/66, ocho eventos periféricos fijados | Un paso de retardo sensorial, coste real | 15 | -26.740687235855347 | 0 |
+| 413 | Oportunidades6–8, B18/57/30, retorno a contextos anteriores | Cerrado, coste omitido | 16 | -117.72200109707448 | 0 |
+
+Disponibilidad nativa: −1,−1,+1,+1,+1,−1,+1,−1,+1. El criterio predefinido exige acción material positiva y consecuencia de contacto útil; no elimina silencios/rechazos del denominador.
+
+Resultado: **9 oportunidades;1acción positiva, perjudicial;0contactos útiles; utilidad−1**. Hubo una pregunta material regular de carga cero, que no satisface el criterio de petición con carga positiva; además hubo **una petición positiva iniciada por el producto de fallo en T24835**, una respuesta válida de B en T25005 y **cero usos finales del retorno en S**. Esos eventos se cuentan por separado y no se inflan por observarlos varias veces.
+
+El puente produjo **47 pasos,1acción+2 y46neutrales obligatorios**. Suma de recompensa: **−271.31210209120714**. El entorno pasó de elapsed36 a83 sin reset; una interacción nueva posterior llegó a84. La interfaz nominal usa67ticks nativos por0.05segundos externos después del primer muestreo, que puede ocurrir en el tick actual. Las tres reservas abarcaron3082ticks nativos. No se anuncia funcionamiento en tiempo real ni robot industrial.
+
+El compositor de contacto/orden se había consumido durante314. Su versión recurrente no quedó disponible en la evaluación fijada; esto es una **familia no ejecutada en ese dominio final**, no evidencia de que una relación presente fuese cognitivamente incomprendida. La condición fuerte de integración queda sin cumplir por los usos y pérdidas efectivamente observados, no por convertir ese bloque no ejecutable en cero artificial.
+
+### Admisión y disponibilidad
+
+Desde la preparación fijada se registraron **804 solicitudes únicas**:173aplicadas,613rechazadas por ocupación y18por conflicto. La preparación nativa aportó648solicitudes:132aplicadas,498ocupadas,18conflictos. Las entradas externas y la continuación posterior aportaron156:41aplicadas,115ocupadas. Los cortes de ventana podían tener dos pendientes; los recuentos finales se hicieron después de drenarlas. Programado, admitido y aplicado no son sinónimos.
+
+El deterioro ya estaba presente al final de la primera reserva, antes de los ocho eventos nominales que empezaron en la segunda. No se atribuye el fallo completo a ese ruido tardío. Algunos recursos se aplicaron y sin embargo no llegaron al encuentro en una forma utilizable: tampoco todos los fallos son rechazos de puerto.
+
+## 5 Prueba externa y descarte de ayuda decisional
+
+Pendulum evolucionó con su propio modelo en el proceso ambiental instalado. El codec sensorial cuantiza únicamente seno a1..145, descarta coseno y velocidad, y registra saturación/ranuras perdidas. Esa limitación puede impedir distinguir estados de control, pero no se usa como prueba de que todas las funciones internas seguían intactas. El codec motor fijado atribuye XY+ con carga a+2; XY− es solicitud nativa, no torque negativo en este cuerpo. Un código inválido ejecuta el cero fijo del puente.
+
+En450–452 se anuló **después de formarse** la salida motora, desde el prefijo completo emparejado. El actuador real fue cero aunque el JSON conserva también lo que habría ordenado el puente antes del corte. El futuro del entorno pudo divergir legítimamente al cambiar la acción. La recompensa resultante fue−267.76039764518566, igual a la referencia neutral. Referencias externas separadas480: constante+2 obtuvo−395.60816690894603; tres secuencias aleatorias dieron−275.17331522499103,−283.80477010199183 y−263.1750635571432. Ninguna controló a E1. Son un prefijo y unas pocas semillas, no una comparación estadística general de políticas.
+
+483 comparó snapshots completos tras47pasos cerrados y anulados: RAW difería en **un sitio [50,31,35], carga87 frente a92**; clocks, pendientes, canales y recibos coincidían. Los metadatos ambientales y operaciones no eran idénticos y no se ocultaron. Esto establece sensibilidad física del conjunto a la acción y su retorno externo. **No demuestra cambio útil de la decisión S**, transferencia de una política ni control aprendido.
+
+## 6 Autopsia causal sin convertirla en otra campaña
+
+470 reprodujo la primera reserva desde el prefijo exacto con observación pasiva microscópica. El resultado coincidió en RAW, clocks, interfaces, pendientes, recibos y secciones operativas del propietario. Sólo difería la identidad documental de la copia. Es reproducción técnica, no un nuevo aprendiz independiente. Los snapshots guardados dentro de un paso de puente se etiquetan **diagnósticos no operativos** porque las variables locales en vuelo no estaban todavía todas comprometidas como frontera de continuación.
+
+### Primer encuentro demostrado
+
+La respuesta B fue (+X,−Y,0)150 en T25005. La contribución correcta150 llegó a P=[24,56,40] en T25008. En el destino vacío K=[25,56,41] confluyeron esa contribución y otra188 desde [24,57,41]; en T25009 apareció338 con dirección distinta. No se infiere un linaje único ni una antigua función de188 sólo porque su valor coincida con otro registro.
+
+476 introdujo una guarda legal selectiva antes de ese encuentro;477 aportó material comparable fuera de la interacción decisiva. Ambas entradas se aplicaron. La guarda restauró150 en K y150 con la dirección prevista en el tramo siguiente; el sham conservó338/desvío. **Ninguna restauró el uso final en S.** MAIN no recibió el futuro de esa intervención.
+
+El fallo local apareció con unas388–392posiciones ocupadas, no con el espacio global agotado. Se demuestra interferencia contextual y transformación de transporte en ese tramo; no una teoría única de todas las pérdidas, ni un límite universal de capacidad.
+
+### Segundo impedimento y límite de lo explicado
+
+479–482 siguieron el retorno rescatado: mantuvo150 a través de varios giros hasta T25081. En [40,30,43] T25094 retuvo150 pero acabó con dirección nula, en lugar del Z− requerido. En T25093 se observaron +X150 y −X0 como antecedentes de la combinación; el aporte Z− previsto no estaba en la forma necesaria. Los dos paquetes solicitados para ese giro **habían sido aplicados en T25091**. El recálculo conserva contexto y recibos, pero no afirma haber probado por una segunda intervención toda la procedencia que hizo faltar el giro.
+
+Se obtuvo así una delimitación concreta: reparar una coalescencia no bastaba; había otra pérdida de ruta/forma antes del selector.150 de amplitud no prueba conservación del signo informativo, que estaba codificado en la dirección. Se detuvo el diseño de nuevas guardas tras ese seguimiento acotado, sin modificar las reservas ni presentar una reparación acumulativa no evaluada.
+
+No se estableció un retorno toroidal único como causa del fallo. El cálculo espacial y los antecedentes múltiples sustituyen conjeturas basadas sólo en carga o imagen final. El contexto local registrado no se presenta como límite completo de dependencia del tick; los estados completos pertinentes permanecen localmente.
+
+## 7 Estrés y continuidad libre
+
+460 y461 parten del mismo prefijo preparado. Pendulum quedó pausado en ambos para aislar el bloque nativo.460 recibió un pulso severo de64entradas legales de carga145, dosis solicitada9280;461 no recibió ese pulso. Ambos conservaron cuerpo, fuentes, oportunidades y eventos nominales previamente fijados. No se llamó ruido a ediciones ilegales de campos internos ni se convirtió s_reg en electricidad o metabolismo.
+
+En460 la ocupación pasó385→401durante el pulso; después de la segunda oportunidad era297141 y al final297142. Se conserva también la trayectoria control, los recibos y las lecturas antiguas en la tabla/primarios. La expansión y la pérdida funcional no se adjudican exclusivamente al pulso porque la referencia sin él también se deterioró. Después se drenaron colas y se observaron201ticks realmente libres; no se restauró un checkpoint favorable.
+
+En la continuación libre490 de una copia del MAIN final, se observaron **68 estados consecutivos durante67intervalos**, sin entradas pendientes. Hubo un único hash RAW y68hashes de clocks distintos. Esto descarta que la igualdad RAW observada sólo en extremos separados por67fuera la única evidencia: se verificó entre todos los ticks de esa ventana. No convierte RAW estacionario en estado causal completo idéntico, muerte, recurrencia informativa, memoria universal o estabilidad infinita.
+
+MAIN final conserva297240de300763sitios ocupados y max_s_reg6455. Los puertos antiguos y el selector no mostraron sus firmas funcionales calificadas, incluso al mirar la fase original en la copia490. **Pérdida de acceso funcional demostrada no equivale a convergencia global de historias diferentes.** No se ejecutó un control que probara destrucción universal de toda memoria de MAIN, y el informe no lo afirma.
+
+## 8 Incorporación y disponibilidad real
+
+El mismo gestor recibió las operaciones MI01 y un contrato acotado. La operación normal no importa decisiones desde laboratorio, evidencia o entregas. Se conservó la barrera de lectura y sólo se permitió el trabajador ambiental exacto ya declarado; el fallo inicial250 fue de esa autorización de instrumento y ocurrió antes de avanzar física, no fue un fallo cognitivo.
+
+Quedaron disponibles composición opaca, petición/retorno material, protección P0 tardía, solicitud por producto de fallo, reutilización positiva propia, composición consumptiva contacto/orden, preparación contextual de B y codecs externos. Cada una tiene dominio, vida/etapa, límites y comando real. Incorporar código **no implica** que MAIN28169 tenga actualmente todas esas habilidades.
+
+Los usos normales252/253 comprobaron ambos signos y continuidad entre procesos, pero sólo el primer paso de cada secuencia produjo la orden pretendida; no se anuncian4/4usos. La especialización495 produjo1/3. El MAIN final se guardó, cargó, interactuó de nuevo con el entorno y volvió a avanzar hasta T28169, conservando la identidad y la cola. La continuidad está probada; la competencia no se deduce de ella.
+
+No se promovió MAIN ni una copia rescatada. E1_SOCIAL_11 T3154 continúa como predeterminado protegido. Los cortes funcionales de MAIN24190/24525/24752 son pasados utilizables sólo mediante una nueva bifurcación explícita. Las variantes útiles170/171/210/211/344 conservan sus propias experiencias y no se suman al conocimiento final de MAIN.
+
+El Manual Maestro **Word1.7** incorpora realmente el corte y corrige portada, control1.4, encabezado/pie, índice y ubicación del capítulo23; añade24 sin revelar reglas ni código del kernel. La edición1.6 permanece byte a byte intacta. La estructura fue comprobada. El intento de render terminó con `FileNotFoundError: LibreOffice soffice.exe was not found on PATH`; **no se acredita validación visual** ni se sustituye por un Markdown. `CAMBIOS_MANUAL.md` da el hash y las comprobaciones realizadas.
+
+## 9 Qué quedó demostrado y qué no
+
+**Hecho computacional:** existen las trayectorias, solicitudes, rechazos, salidas, acciones y diferencias RAW/clocks recalculadas con enteros exactos. La igualdad física de la reproducción470 y la diferencia de un sitio483 pueden comprobarse desde estados seleccionados.
+
+**Física interna:** encuentros transformaron selección/contenido y produjeron peticiones, respuestas, combinaciones y desvíos; las intervenciones admitidas y shams delimitaron enlaces concretos. No se impuso superposición lineal ni se dedujo un pasado único a partir de un estado final.
+
+**Capacidad funcional del ente:** usos acotados condicionados por experiencia, solicitud nativa local por fallo, información privada de B que altera uso posterior, reutilización positiva propia asistida y combinación finita de relaciones en la misma construcción. Estas capacidades no se mantuvieron conjuntamente durante la evaluación fijada.
+
+**Interpretación:** la frontera limitante de este candidato fue la coexistencia/reutilización de rutas y contexto material, más una interfaz externa escasa y la falta de evidencia de un mecanismo que aprenda una política útil de control. El primero está localizado mediante encuentros; la contribución exacta de cada limitación al conjunto no está completamente separada.
+
+**Hipótesis abiertas:** selección general de accesos aprendida, renovación autónoma, utilidad repetida después de cambios, composición recurrente, conservación distribuida utilizable tras el deterioro y crecimiento de repertorio. No se atribuyen consciencia, AGI,65significados, regulación generalR2 o lenguaje humano a partir de estos datos.
+
+### Cobertura no completada
+
+No se obtuvo una arquitectura alternativa completa con identidad propia; se concentró la construcción en MAIN y variantes de sus enlaces. No hubo reaprendizaje completo de NSM65. La composición relacional recurrente no se ejecutó en las reservas finales. No se ensayó control externo con sensores de velocidad/coseno ni nueva plataforma industrial. No se probó supervivencia ilimitada ni una política que elija de forma general cuándo iniciar recuperación. Estos puntos son límites de cobertura, no resultados negativos de pruebas inexistentes.
+
+Existe además una laguna de preservación: los bytes de algunas revisiones tempranas del frontal de comandos/codec anteriores a su versión sellada no se archivaron al ejecutarse. Se conservan los primarios, estados, fuentes nativas versionadas y la versión final compatible, pero **no se certifica identidad de bytes de todas las revisiones tempranas del frontal**. La reproducción470 y los hashes del código físico fijado sí tienen soporte exacto. El índice no reconstruye bytes históricos inventados para cubrir esa ausencia.
+
+## 10 Cómo continuar el estado real
+
+La ficha raíz identifica el Python compatible, el snapshot completo final y sus dependencias. Desde la raíz del sistema:
+
+```powershell
+$py = (Get-Content -LiteralPath 'CONTINUIDAD_MENTE_DEE_INTEGRAL_MI01.json' -Raw | ConvertFrom-Json).python
+& $py 'sistema/gestionar.py' mi01-estado --vida E1_MI01_MAIN
+& $py 'sistema/gestionar.py' mi01-externo --vida E1_MI01_MAIN --pasos 1 --modo closed --retorno omit --codec-motor native_body_roles --habitat MI01_EVALUACION_FIJADA
+```
+
+El segundo comando utiliza el futuro real degradado, sin escoger una habilidad manualmente. Puede producir salida inválida/neutral y lo declara; no reconstruye un ente vacío. MI01 no incorpora un reset externo general y exige no exceder200pasos del episodio. Para continuar un pasado funcional se bifurca **con su snapshot exacto y otro nombre**, sin borrar este futuro.
+
+Se entrega evidencia de una construcción real y sus límites, con mecanismos utilizables dentro de su dominio y un estado final que puede continuarse. La respuesta concreta es que este candidato no alcanzó la condición fuerte integrada. Lo que falta no es una etiqueta de mente, sino transporte y contexto reutilizables bajo la carga fijada y un mecanismo demostrado que convierta consecuencias en decisiones útiles sostenidas.

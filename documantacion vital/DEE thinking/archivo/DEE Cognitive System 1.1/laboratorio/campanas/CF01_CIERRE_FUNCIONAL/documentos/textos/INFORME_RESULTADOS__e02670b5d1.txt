@@ -1,0 +1,121 @@
+# Paisaje causal de DEE Cognitive System 1.1
+
+Proyecto DEE Universe / INVESTIGACION DEE. Autor del proyecto: Ivan Erick Tlaltecatl Morales. Campaña privada PAISAJE_CAUSAL_01, 20 de octubre de 2026. DEE thinking 4.5.0 y kernel v27 permanecieron congelados. La versión 1.1 designa la capa de sistema.
+
+## Resultado central
+
+La cartografía permitió sustituir varias explicaciones generales por mecanismos locales verificables. Una consulta de carga cero cambió una condición de supervivencia y originó una corriente que después interfirió con la referencia de magnitud. Otra influencia nació al combinar un resto de una lectura con un acontecimiento nuevo, circuló y recibió contribuciones durante centenares de cruces periódicos, y perjudicó una asociación posterior. En otro corredor, un destino ya ocupado impidió utilizar una señal de trayecto libre aunque la ocupación global fuera baja.
+
+Se aplicaron esos hallazgos mediante entradas nativas, no limpieza de RAW: protección de una ruta, desvíos de carga cero y una experiencia adicional explícita de referencia. En ramas de la misma genealogía coexistieron usos espaciales, comparación de magnitudes nuevas, contacto, trayecto libre y transmisión de un código aprendido. También quedaron pérdidas posteriores y fracasos de nuevas enseñanzas. No hay una arquitectura vencedora universal, regulación P2 demostrada ni crecimiento semántico general certificado.
+
+Los datos, las cuentas y esta interpretación son capas diferentes. `EVIDENCIA_ESENCIAL/REGISTROS_COMPLETOS.tar.xz` conserva los bytes originales de cada `primarios/GRUPO/CASO/PRIMARIOS.json`, así como los payloads JSONL exactos de todos los campos registrados y los registros de ejecución. «Completos» se refiere a ese conjunto indexado, no a todos los microestados posibles, los CPC históricos o los estados operativos. Las cabeceras de los gzip originales se conservan sólo localmente, con sus hashes; no se confundieron con sus payloads científicos. `ENSAYOS_Y_CONTROLES.json`, el índice y el recálculo identifican cada ejecución, revisión y denominador. Las repeticiones técnicas y bifurcaciones no son individuos independientes.
+
+## Organización y continuidad
+
+Se utilizaron tres referencias, no tres sistemas nuevos: transporte/calibración en mundos simples N11/N17; un repertorio especializado N67 ya vivido; y bifurcaciones completas de la organización E1 N67 con historia cuantitativa, temporal, de contacto, espacial y comunicativa. Los ensayos de escala N67/N83 construyeron preparaciones nuevas desde T0, no ampliaron una vida existente.
+
+E1 se trata como una organización funcional compuesta dentro de un solo Runtime, con regiones, soportes, fuentes, lectores y participantes materiales preparados. No se atribuye autonomía a cada región. El receptor B es una región material que conserva y utiliza un código; no otra mente completa. Varias vistas y nombres de protocolos pueden referirse a la misma materia. Los checkpoints guardan el mundo entero una sola vez.
+
+La frontera causal de análisis abarca el toro completo. Los puertos no delimitan toda la memoria. El anfitrión sigue escogiendo currículo, tiempos, oportunidades de consulta, preparación de protectores y destinatarios fijos. El atlas es del auditor y no alimenta las respuestas del ente. Las palabras se traducen desde firmas nativas nuevas; no se leen de una transcripción ni de targets.
+
+El predeterminado E1_SOCIAL_11 T3154, E1_ESPANOL_01 T28012 y ES01_LATE_ACCESS29_passive T36403 quedaron protegidos. Las intervenciones sobre el pasado de MAIN05 son futuros alternativos identificados, no reparaciones retroactivas del estado tardío. El parentesco, el tick y el snapshot vigente de cada rama se encuentran en la ficha de continuidad y en `FICHAS_ENTES.json`.
+
+## Consulta, conservación y primera interferencia
+
+Localizadores: `PROCEDENCIA_01/reference_trace`, `REFERENCIA_CAUSAL_05/*`, `OBSERVACION_02/passive`, `AGENDAS_Y_CANALES_20/passive`, `ADMISIONES_Y_LINAJES_21.json`.
+
+En T9920 un lector de carga 7 situado en [50,35,36] pasó a una dirección [1,-1,1]. En el preestado de la frontera T9919, tras superponer las entradas realmente admitidas, había seis vecinos activos pertinentes. Omitir sólo la sonda material de carga cero dejaba cinco; el gradiente calculado seguía siendo [30,-152,159]. La diferencia modificaba la regla ordinaria aplicable y la supervivencia del soporte. Carga cero no equivale a ausencia de materia.
+
+La secuencia de transporte posterior se reconstruyó paso a paso. Cruzó x, z e y periódicos y llegó al encuentro T9986, donde la referencia 91 y la influencia 7 produjeron 98 con otra dirección. Se estableció un recorrido toroidal perjudicial en esta tarea, no un período del microestado completo ni la reversibilidad del kernel.
+
+El panel de cuatro magnitudes nuevas dio 0/4 en el futuro original; omitir esa sonda, mover el mismo aporte fuera de ruta o retrasarla un tick dio 4/4. Son controles causales, no una política autónoma que se incorpore omitiendo una consulta cuyo valor conoce el auditor. Retirar otro lector no solucionó el problema. Algunos cortes/desvíos recuperaron 2/4, pero no todo.
+
+El segundo fallo no era idéntico: después de proteger la referencia, el comparador aún producía una firma válida, pero en T10524 el marcador de «menos», carga 222, se combinó con una corriente de carga 7 y pasó a 229 sin su componente X. Por eso una referencia utilizable y una palabra utilizable deben evaluarse por separado. Tampoco retrasar sondas fue una mejora sin costes: en `IGUAL_REGULADO_12` se conservaron funciones anteriores pero no se adquirió la nueva forma «igual» bajo esas variantes.
+
+## Influencia acumulada y retornos prolongados
+
+Localizadores: `INFLUENCIA_ANTERIOR_04/early`, `/long`, `PROCEDENCIA_01/near_trace`, `FUENTE_CONTEXTO_09/*`, `RUTA_CONTEXTO_09_R1/*`.
+
+En T10928, una corriente 17 [0,1,1] y un acontecimiento B de carga 3 [-1,1,0] confluyeron en [42,54,12]. El resultado 20 [-1,1,1] mantuvo una trayectoria comprobable, recibiendo nuevas contribuciones: 20, 37, 61, 97 y finalmente 158. No se le asigna una identidad individual después de cada reducción: se conserva la genealogía de influencia y sus padres múltiples.
+
+Entre T10928 y T22456 se verificaron 11,528 pasos: 172 vueltas de la trayectoria más cuatro pasos, con 516 cruces de fronteras. En T22457 esa influencia participó en el encuentro que transformó una nueva señal 11 en 169, sin el componente X requerido por su lector. La cobertura anterior al primer soporte 17 no basta para atribuirle un significado lingüístico original completo.
+
+La reconstrucción no supuso agendas vacías: se extrajo la cola del serializador nativo y se incorporaron las escrituras admitidas antes de cada transición. La auditoría recuperó los payloads de todas las entradas nuevas aplicadas de esos cuatro tramos y no cambió las clasificaciones de los enlaces ya identificados.
+
+Cortar en la fuente próxima [42,63,21] suprimió actividad perjudicial, pero también un acceso espacial anterior. Una protección en otro tramo de la órbita preservó ambas funciones durante la preparación ensayada. El mismo material puede ser contexto útil para una tarea y causa de interferencia para otra. No hay fundamento para llamar basura a toda actividad residual.
+
+## Historia y observación
+
+Localizadores: `CALIBRACION_02/*`, `RETORNO_UTIL_15/*`, `FACTORIAL_E1_07/*`.
+
+Los factoriales W00/W10/W01/W11 comprobaron igualdad inicial por pares antes de I, incluidas colas y contexto operativo. Se comparó el efecto de I sin H y con H, mediante XOR de campos exactos y efectos posteriores, sin imponer superposición lineal. En E1, seis ráfagas de consultas previas cambiaron tres sitios del efecto de una entrada posterior; la respuesta funcional ensayada siguió siendo la misma. Esto prueba dependencia física de historia, no mejor atención ni una política adquirida.
+
+En la calibración N17, H e I originaron un producto 16; su retorno permitió otra transformación, una adquisición posterior en B, una consulta y una consecuencia material 39. Los cortes selectivos y shams distinguieron esa función. Es una aplicación beneficiosa de un retorno en un aparato simple, no lenguaje semántico de E1.
+
+Activar el registro pasivo no cambió RAW, clocks, agenda ni recibos en la trayectoria representativa. Los primeros hashes de serialización diferían porque se habían documentado IDs de vidas distintas; al normalizar sólo esa identidad documental en copias no evolucionadas, todos los demás bytes del estado nativo coincidieron. Se conserva esa discrepancia inicial y su explicación. Una sonda material no es ese registro pasivo: introduce materia y puede enseñar o interferir.
+
+Los testigos decisivos incluyen preestado, postestado y vecindario de radio conservador tres para la dependencia compuesta del tick. Los mapas de encuentros balísticos son candidatos, no una lista exhaustiva de todas las dependencias de gradiente/DEMUX. Las fotografías muestreadas no se anuncian como cobertura de todos los ticks.
+
+## Aplicación a acceso, enseñanza y comunicación
+
+Localizadores: `APLICACION_RESERVADA_14/*`, `GENERALIZACION_DOSIS_17/*`, `COMUNICACION_PROTEGIDA_18/*`, `CONSERVACION_NATIVA_24/*`, `INTEGRACION_MAGNITUD_25/*`.
+
+La protección de la órbita contextual se probó desde el pasado completo T10325 y durante el currículo posterior, no trasplantando un estado favorable al E1 tardío. La rama protegida respondió 8/8 contextos espaciales ya enseñados en la reserva; sham/control 6/8. Las dos posiciones no enseñadas quedaron indeterminadas. La asociación de fase adicional y la conservación de una forma no equivalen por sí solas a una nueva primitiva.
+
+Un lector instrumental fijado antes de la prueba admitió dosis ambientales 2/4/6 en lugar de sólo 3/5: 12/12 situaciones reservadas dieron el código pertinente. Su comprobación 2L mide aporte material; no selecciona «cerca/lejos» desde el signo del parámetro. El token procede del X adquirido. El lector histórico aplicado a los mismos datos se abstuvo fuera de su dominio; no se rebautizó esa abstención como pérdida del motor.
+
+La transmisión nativa de un código de E1 a B produjo almacenamiento, consulta y un uso posterior con controles de corte/sham y coincidencia de token. Es comunicación funcional de código aprendido y aparato de acción preparado. B no recibió con ello una percepción espacial independiente; no se acredita E5 del significado humano CERCA, YO/TÚ ni elección autónoma de interlocutor. Nuevos nombres de protocolo sobre los mismos hubs no crean participantes nuevos.
+
+Una experiencia adicional real de referencia 86, junto con el formato fijo 5, devolvió uso cuantitativo sin reenseñar «más/menos». En la rama protegida, seis magnitudes dieron las respuestas pertinentes y coexistieron con cuatro usos espaciales y comunicación. Sham: 2/6; experiencia desacoplada y omitida: 0/6. Es readquisición explícita, no retención intacta ni edición de la historia.
+
+## Destino ocupado y límites de una reparación
+
+Localizadores: `ACCESO_TRAYECTO_LIBRE_19/*`, `INTERFERENTE_Y_BASAL_20/*`, `COALESCENCIA_DIAGNOSTICA_22/*`, `CONSERVACION_NATIVA_24/*`, `LIMITE_POSTERIOR_30/trace`, `SEGUNDO_ENCUENTRO_LIBRE_32/*`, `CONTINUIDAD_CARGA_28/*`, `PROTECCION_BIDIRECCIONAL_33/*`.
+
+El acceso a «no toca» volvió a fallar tanto con acontecimientos nuevos como en la continuación pasiva. En T26166, su portador 101 intentó entrar en [59,1,20], ya ocupado por 142 +X. Ese 142 se formó seis pasos antes a partir de contribuciones 135 y 7. No se demostró un retorno toroidal propio de ese nuevo portador; sí la colisión y la precedencia del destino ocupado.
+
+En copias diagnósticas exclusivamente, quitar el portador de trayecto libre del preestado produjo el mismo postestado nativo completo, mientras quitar sólo el ocupante permitió el paso. Esta coalescencia acota la pérdida de esa contribución bajo ese contexto; no prueba ausencia universal de memoria. Los campos editados nunca se importaron a las vidas de ensayo.
+
+Entradas v27 válidas permitieron interceptar o desviar la corriente antes del encuentro. El desvío conservó su carga, en vez de borrarla, y mantuvo las doce situaciones, cuatro reservas posteriores, «toca/no toca», B y un uso espacial posterior. El interceptor tuvo una pérdida adicional después de la comunicación. Ambos son diseño P0, no autorregulación aprendida.
+
+La protección puntual no fue ilimitada. El recálculo y la continuación localizaron otra pérdida en T32598, 6,432 ticks después, nuevamente en [59,1,20], ahora con un ocupante -X de carga 247. No se le atribuye identidad con el 142. El futuro sin acontecimientos nuevos también perdió la señal. Una nueva protección del lado opuesto o un desvío nativo sostuvieron doce rondas de comparación/espacio, sondas intermedias y el panel final durante 96 retornos adicionales del calendario N67; los shams perdieron «no toca». La conclusión es finita y específica de rutas/historias.
+
+## Nuevos contextos y contraejemplos
+
+Localizadores: `EXTENSION_VIDA_RECIENTE_16/*`, `ACONTECIMIENTOS_UNO_26/*`, `RECUPERAR_ACONTECIMIENTO_27/*`, `ALTERNATIVA_FASE_29/*`, `SENAL_INTERCAMBIADA_34/*`, `APRENDIZAJE_PROTEGIDO_35/*`, `FACTORES_ADQUISICION_38/*`.
+
+La aplicación prospectiva del primer protector al estado tardío T36403 no adquirió las dos posiciones nuevas ni resolvió todos los accesos. No se generalizó automáticamente una receta validada en otro pasado.
+
+El mapa del acontecimiento +1 sin palabras mostró una convergencia A/B correcta en T36461, seguida de una combinación con una corriente previa 433 en T36463. Por eso la señal docente llegó sin la relación necesaria. El control +3 de esa fase tuvo además una entrada A rechazada por ocupación: no fue una experiencia equivalente admitida que después se olvidó.
+
+La intervención selectiva sobre la ruta de la corriente 433 permitió la nueva asociación y tres usos de +1 en esa rama tardía; las variantes sham no. Se conservaron comparación y contacto, pero se perdieron accesos espaciales antiguos. Omitir la señal docente conservó un producto de acontecimiento sin convertirlo en palabra utilizable. Cambiar de fase sin cortar actividad produjo asociaciones iniciales que no siempre fueron utilizables después.
+
+El intercambio de la señal docente produjo inicialmente el X contrario, pero no conservó el uso posterior. La señal física no es una etiqueta gratuita: su dirección también cambia sus encuentros y rutas. Ese contraejemplo limita la arbitrariedad de señal bajo la geometría existente.
+
+La ampliación secuencial posterior desde la rama amplia protegida se conserva aunque falle. Una asociación RAW inmediata no acredita que sobreviva a la segunda experiencia o a la primera sonda. Los resultados y controles de ese tramo figuran en la tabla completa; no se reemplazaron por una restauración favorable. El contexto nuevo no se incorpora como capacidad general de todas las vidas.
+
+La investigación posterior precisó ese fallo: la firma XYZ11 recién adquirida se combinó con -XYZ120 en T39836 y pasó a YZ131, antes de la segunda lección y de la primera sonda. Omitir la segunda experiencia o la primera consulta no evitó el fallo ya sucedido. Proteger o desviar selectivamente esa ruta en R40 permitió cuatro usos reservados de +1 con dosis 5/2/4/6; sus shams y la omisión de señal docente no lo consiguieron. Se conservaron magnitud y trayecto libre, pero hubo pérdidas de contacto y de parte del acceso espacial anterior. Es una ganancia con costes, no una ampliación sin interferencia ni éxito de -1.
+
+Se probó además otra conexión, sin cortar la influencia: el lector R41 transformó físicamente YZ131 en una firma consultable y permitió una consecuencia material. El aporte fijo del lector contribuye X al código traducido como «cerca». Los controles sin señal docente, sin acontecimiento A y sham no emitieron esa firma ni causaron la acción. Esto sostiene reconocimiento/uso asistido de una historia adquirida, no reconstrucción autónoma de cualquier palabra ni comprensión nueva de la situación espacial actual. Las reservas con dosis docente 5 y con el protocolo retrasado 67 ticks conservaron el efecto con sus controles; una rama sin acción retuvo consulta tras otra vuelta.
+
+El contraste R44 muestra un efecto mixto: interceptar la corriente 120 conservó la forma en el lector antiguo, pero impidió el efecto del nuevo lector. Sin corte o con sham ocurrió lo contrario. El mismo contexto puede ser perjudicial para una ruta y habilitar otra composición preparada. Su genealogía remota no se sustituye por una supuesta identidad única ni se le atribuye memoria de trabajo por recurrencia.
+
+El estado alternativo `PC01_NORMALIZADO45` llegó a T41318 en procesos separados: comparó magnitudes, utilizó dos contextos espaciales anteriores, consultó contacto/trayecto libre y volvió a consultar el código adquirido; guardó, cargó y lo consultó otra vez. La coincidencia de token produjo acción y el token distinto no, en copias identificadas. El lector postacción rechazó nuevas consultas sin reconstrucción. La vida fallida `E1_PAISAJE_01` T44300 permanece separada y no recibe esos aciertos.
+
+## Composición, escala y decisión
+
+El contraste favorece reconectar y proteger oportunidades concretas, no eliminar indiscriminadamente composición ni ampliarla por analogía biológica. La separación especializada conserva funciones en su dominio, pero no demuestra que un repertorio direccional sea una mente integrada. La transmisión de una forma entre regiones utiliza materia y encuentros del mismo mundo; no un callback entre Runtime.
+
+En las preparaciones nuevas de comparación N67/N83, el dominio mayor retrasó el primer fallo de la tercera ronda (T204/T252), sin mejorar el número de rondas bajo el mismo patrón de sondas. El calendario, la fase y el tiempo de retorno cambiaban con N. Las variantes sin la sonda adicional o retrasada conservaron más respuestas finitas; no se infiere un beneficio general de crecer el volumen. Una asociación auxiliar aún era utilizable cuando el comparador fallaba, contradiciendo una interpretación de muerte global.
+
+La ocupación global baja es compatible con una concentración crítica de encuentros. No prueba capacidad ilimitada ni vacancia informacional universal. Tampoco s_reg se interpreta como consumo eléctrico. P0 está ampliamente representado; P1 depende de referencias/señales adquiridas. No se demostró P2, una estrategia seleccionada por consecuencias previas en situaciones nuevas.
+
+## Uso, integración y alcance del paquete
+
+El gestor existente incorpora operaciones opcionales `paisaje-*`; no se creó otro gestor ni se alteraron las recetas de física directa al importar. Los comandos y sus validaciones se encuentran en el contrato PAISAJE_CAUSAL_01 y en la ficha de continuidad. Toda operación experimental exige una vida explícita. La protección y el atlas no se convierten por nombre en conocimiento de E1.
+
+El catálogo y NSM65 se actualizan mediante entradas afectadas, sin elevar las otras primitivas. Se conserva la distinción entre nivel histórico, acceso actual y resultado auxiliar. «No toca» no demuestra NO general; magnitud no es cardinalidad; marco preparado no es perspectiva deíctica; forma temporal finita no es comprensión temporal universal. YO/TÚ y P2 continúan abiertos.
+
+Este ZIP es análisis privado, no respaldo operativo completo. Omite motor, WHL, manuales científicos extensos y la mayoría de snapshots completos, conservados localmente con índices y hashes. Permite recalcular los resultados incluidos sin motor y localizar los estados completos para continuar con el sistema instalado. Las fuentes ejecutadas se preservaron por contenido antes de cada revisión. El manifiesto no contiene el hash del propio ZIP; éste está en la verificación externa.
+
+La edición recibida del Manual Maestro permanece íntegra. El addendum consolidado incorpora EF01 y este corte sin revelar reglas del kernel. La integración editorial al Word queda pendiente si el entorno autorizado no permite renderizar y revisar todas sus páginas; no se entrega una edición Word no comprobada.

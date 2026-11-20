@@ -1,0 +1,91 @@
+--- a/sistema/app/cola_local.py
++++ b/sistema/app/cola_local.py
+@@ -32,6 +32,29 @@
+             raise ValueError('Declared actuator/return modes only.')
+         allowed={'contexto','modo','senal','aceptar_consumo','dominio','valores','lado','operacion_memoria','valor','componentes'}
+         for row in rows:
++            if row.get('modo')=='apd-ambiente':
++                if set(row)!={'modo','configuracion'}or not isinstance(row['configuracion'],dict)or set(row['configuracion'])!={'precios','demora','disponibilidad','presupuesto'}:raise ValueError('APD environment requires exactly declared prices/delay/availability/budget, never a route or evaluator answer.')
++                cfg=row['configuracion']
++                for field in('precios','demora'):
++                    if not isinstance(cfg[field],list)or len(cfg[field])!=2 or any(type(v)is not int or not 0<=v<=4096 for v in cfg[field]):raise ValueError('Native/external prices and DEE-tick delays require two integers0..4096.')
++                if not isinstance(cfg['disponibilidad'],list)or len(cfg['disponibilidad'])!=2 or any(type(v)is not bool for v in cfg['disponibilidad']):raise ValueError('Native/external availability requires two explicit booleans.')
++                if type(cfg['presupuesto'])is not int or not 0<=cfg['presupuesto']<=4096:raise ValueError('Modelled environmental budget must be integer0..4096, not native energy.')
++                continue
++            if row.get('modo')=='apd-docencia':
++                if set(row)-{'modo','texto','senal','revision'}or not{'modo','texto','senal'}<=set(row):raise ValueError('Explicit APD teaching is separate from use: literal form, signed teacher signal and optional revision flag.')
++                text=row['texto']
++                if not isinstance(text,str)or not text or '\x00'in text or len(text.encode('utf8'))>128:raise ValueError('A bounded literal teacher form is required.')
++                if type(row['senal'])is not int or row['senal']not in(-1,1):raise ValueError('Explicit APD teacher signal must be exact integer minus/plus one.')
++                if 'revision'in row and type(row['revision'])is not bool:raise ValueError('Explicit revision flag must be boolean.')
++                continue
++            if row.get('modo')=='apd':
++                # Literal word form and public operands, not a parsed operation,
++                # selected tool/route, case identity or evaluator answer.
++                if set(row)!={'modo','texto','operandos'}:raise ValueError('APD use receives exactly modo/texto/operandos; teaching and evaluator fields are separate.')
++                text=row['texto'];values=row['operandos']
++                if not isinstance(text,str)or not text or '\x00'in text or len(text.encode('utf8'))>128:raise ValueError('A bounded literal APD form of1..128UTF8bytes is required; no normalization or semantic parsing.')
++                if not isinstance(values,list)or len(values)!=2 or any(type(v)is not int or not 0<=v<=32 for v in values):raise ValueError('APD transport requires exactly two public integer operands0..32, matching the declared native codec domain.')
++                continue
+             if set(row)-allowed:raise ValueError('Unknown situation field; no evaluator target or file input.')
+             if row.get('modo','usar')not in('usar','trabajo','ensenar','revisar','componer','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar'):
+                 raise ValueError('Unknown material mode.')
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -55,6 +55,8 @@
+         memory=self.capability if self.backend=='ma02'else self.capability.ma
+         enabled=memory.get(self.a).get('enabled_contexts',list(memory.BASE_TOKENS))
+         if self.backend=='mente_unificada':
++            preparation=[row for row in payload['situaciones']if row.get('modo')in('apd-docencia','apd-ambiente')]
++            if preparation and len(payload['situaciones'])!=1:raise ValueError('APD teaching/environment configuration are explicit separate requests, never hidden fields or mixed evaluation rows.')
+             stages=[row for row in payload['situaciones']if row.get('modo')in('cadena-iniciar','cadena-finalizar')]
+             if stages:
+                 if len(payload['situaciones'])!=1:raise ValueError('The service exposes chain stages as two explicit separate requests, not an implicit planner.')
+@@ -66,7 +68,14 @@
+         for row in payload['situaciones']:
+             mode=row.get('modo','usar')
+             if self.backend=='mente_unificada':
+-                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar'):raise ValueError('Operation outside declared unified backend.')
++                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente'):raise ValueError('Operation outside declared unified backend.')
++                if mode in('apd','apd-docencia','apd-ambiente'):
++                    # Passive preparation/domain check only. The literal word
++                    # and operands are forwarded unchanged by session; no host
++                    # operation, useful route or correct result is selected.
++                    from capacidades import asistente_proposito_01 as apd
++                    apd.state(self.a)
++                    continue
+                 if mode=='crudos':
+                     from capacidades import percepcion_cruda_fi01 as pc
+                     if pc.get(self.a).get('level')!=128:raise ValueError('This service admits only the explicit prepared128-component profile; no new sensor installation or level substitution.')
+@@ -89,12 +98,22 @@
+             self.dirty=True
+     def external_uncertainty(self):
+         # Protocol state only. A legitimate pending artifact is NOT an error.
++        hook=getattr(self.capability,'external_uncertainty',None)
++        if hook is not None:
++            value=hook(self.a)
++            if type(value)is not bool:raise ValueError('Declared uncertainty hook must return an explicit boolean')
++            return value
+         own=self.capability.get(self.a)
+         return bool(own.get('external_uncertain'))
+     def operational_dependencies(self):
+         # Passive receipt only: no value from this witness selects an action.
+         own=self.capability.get(self.a)
+         fields={key:own.get(key)for key in('external_pending','cascade_pending','external_uncertain')}
++        hook=getattr(self.capability,'additional_operational_state',None)
++        if hook is not None:
++            extra=hook(self.a)
++            if not isinstance(extra,dict):raise ValueError('Additional operational state must be a serializable declared dictionary')
++            if extra:fields['additional_external_state']=extra
+         return {'external_pending_present':bool(fields['external_pending']),
+             'cascade_pending_present':bool(fields['cascade_pending']),
+             'external_uncertain_present':bool(fields['external_uncertain']),
+@@ -254,7 +273,7 @@
+             if op=='exportar':result['paired_export']=self.world.export_pair(row['id'],self.queue)
+             self.last_receipt=receipt;self.queue.finish(row['id'],'completed',result)
+         except BaseException as error:
+-            work=any(q.get('modo')in('trabajo','cadena-iniciar','cadena-finalizar')or(q.get('modo')=='componer'and q.get('dominio'))or(q.get('modo')=='memoria'and(q.get('operacion_memoria')=='trabajo'or q.get('operacion_memoria')=='componer'and q.get('dominio')))for q in payload.get('situaciones',[]))
++            work=any(q.get('modo')in('trabajo','cadena-iniciar','cadena-finalizar','apd')or(q.get('modo')=='componer'and q.get('dominio'))or(q.get('modo')=='memoria'and(q.get('operacion_memoria')=='trabajo'or q.get('operacion_memoria')=='componer'and q.get('dominio')))for q in payload.get('situaciones',[]))
+             self.uncertain=self.uncertain or work;self.paused=True
+             info={'type':type(error).__name__,'detail':str(error),'native_tick_after_attempt':self.world.tick,
+                 'external_execution_may_be_uncertain':work,'no_retry_or_rollback':True}

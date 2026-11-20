@@ -1,0 +1,19 @@
+{
+  "scope":"Primer uso de una copia completa de COMPOSICION_PLUS_MA02. La rama lista original no se consume ni se atribuye a MAIN5.",
+  "operations":[
+    {
+      "label":"new_native_composition_from_acquired_positive_contents",
+      "argv":["mente2","$LIFE","--continuar","--situaciones","[{\"modo\":\"componer\",\"aceptar_consumo\":true}]","--detalle"],
+      "require_fence":true,
+      "expect":{"native_signs":[1]}
+    },
+    {
+      "label":"two_old_contents_after_consuming_composition",
+      "argv":["mente2","$LIFE","--continuar","--situaciones","[{\"contexto\":\"gamma\"},{\"contexto\":\"delta\"}]"],
+      "require_fence":true,
+      "expect":{"native_signs":[1,-1]}
+    }
+  ],
+  "continuation":["gestor","continuar","--vida","$LIFE","--hasta","$NEXT_TICK"],
+  "continuation_requires_fence":false
+}

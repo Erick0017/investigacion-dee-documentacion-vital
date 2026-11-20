@@ -1,0 +1,26 @@
+{
+  "schema": "MENTE_ACUMULATIVA.portable_recalculation_plan.v1",
+  "runs": [
+    {
+      "script": "RECALCULO/recalcular_mente.py",
+      "args": ["--evidencia", "EVIDENCIA_CAUSAL", "--salida", "RECALCULADO_DESDE_ZIP/RAIZ"],
+      "outputs": [
+        {"actual": "RECALCULADO_DESDE_ZIP/RAIZ/RESULTADOS.json", "reference": "EVIDENCIA_CAUSAL/recalculo/FINAL/RESULTADOS.json"}
+      ]
+    },
+    {
+      "script": "RECALCULO/recalcular_mecanismo.py",
+      "args": ["--evidencia", "EVIDENCIA_CAUSAL/mecanismo", "--operativas", "EVIDENCIA_CAUSAL", "--salida", "RECALCULADO_DESDE_ZIP/RECALCULO_MECANISMO_FINAL.json"],
+      "outputs": [
+        {"actual": "RECALCULADO_DESDE_ZIP/RECALCULO_MECANISMO_FINAL.json", "reference": "EVIDENCIA_CAUSAL/mecanismo/RECALCULO_MECANISMO_FINAL.json"}
+      ]
+    },
+    {
+      "script": "RECALCULO/analizar_traza_social.py",
+      "args": ["--evidencia", "EVIDENCIA_CAUSAL", "--salida", "RECALCULADO_DESDE_ZIP/TRAZA"],
+      "outputs": [
+        {"actual": "RECALCULADO_DESDE_ZIP/TRAZA/TRAZA_SOCIAL.json", "reference": "EVIDENCIA_CAUSAL/recalculo/FINAL/TRAZA_SOCIAL.json"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "revision": "EO02.prospective.integrated.reserves.R02",
+  "frozen_before_any_reserved_run": true,
+  "one_main_life": "EO02_MAIN",
+  "contexts_are_not_separate_memories": "A/B/C are operator-selected task contracts. Source scalar relation may be reused and overwritten; current phase is a prepared observable, not a policy learned by DEE.",
+  "reader": "Same CF two samples and at most one tick of instrumental hold",
+  "sensory_four": "R06 no central cancel supplies. Four raw observations independently enter; v27 performs the combination.",
+  "reserve1": {
+    "credit": 14,
+    "A4": [[5,18,4,5],[7,22,3,2]],
+    "B4": [[4,18,2,1],[9,21,2,4]],
+    "Cphase": [[1,15],[4,18],[7,21],[13,27],[16,30],[18,32]],
+    "return_A2": [[14,28],[7,22]],
+    "minimum_useful_steps": 10,
+    "minimum_completed_C_transactions": 2
+  },
+  "reserve2_counterexample": {
+    "credit": 14,
+    "A4": [[4,20,5,3],[8,20,1,5]],
+    "B4": [[6,22,3,1],[11,23,1,5]],
+    "Cphase": [[2,17],[5,20],[8,23],[11,26],[14,29],[17,32]],
+    "return_A2": [[15,29],[10,25]],
+    "minimum_useful_steps": 10,
+    "minimum_completed_C_transactions": 2,
+    "purpose": "Prepare can require the negative worker and commit the positive worker. A phase bias that only favours negative is not a general opposite-worker policy. Preserve all failures."
+  },
+  "reserve3_limited_alignment": {
+    "credit": 12,
+    "source_A2_alignment_exactly4": [[2,15],[3,16],[4,17],[5,18]],
+    "B4": [[7,17,4,6],[8,19,4,6]],
+    "Cphase": [[9,21],[10,22],[12,24],[15,27],[17,29],[18,30]],
+    "return_old_A2_credit14": [[12,26],[13,27],[7,22]],
+    "minimum_useful_steps": 11,
+    "minimum_completed_C_transactions": 2,
+    "alignment_is_not_zero_shot_transfer": true,
+    "old_context_retention_requires_first_return_correct_without_its_feedback": true
+  },
+  "control": "AUX_EO02_RES_ZERO shares the exact pre-reserve prefix and full reserve1 curriculum but C phase is fixed0 with the same two extra input sources. Futures may legitimately diverge after actions.",
+  "references": "Pre-sealed separate left/right, alternating, random8seeds1001..1008, adaptive bias12 using own permitted observations/consequences and optional phase-aware memory, never controlling DEE.",
+  "no_repair_during_reserves": true,
+  "no_metric_redefinition_after_outcome": true,
+  "replication_unit": "Continuous trajectory or forked learning history, not ticks or consultations",
+  "resource_scope": "Fixed prepared sensory/tactile sources and actual local workers; not autonomous renewal or hardware throughput."
+}

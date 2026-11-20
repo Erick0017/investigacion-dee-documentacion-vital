@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "args": [
+        "--primarios",
+        "PRIMARIOS",
+        "--artefactos",
+        "ARTEFACTOS",
+        "--salida",
+        "RECALCULADO_ROOT.json"
+      ],
+      "case": "ROOT",
+      "reference": "REFERENCIAS/ROOT.json",
+      "reference_sha256": "40e77b953d7e289c6f560119dcd80e42a895e461eb1b7c3592366604dcb53107",
+      "script": "RECALCULO/recalcular_primarios_apd.py"
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R01",
+        "--salida",
+        "RECALCULADO_LEX_R01.json"
+      ],
+      "case": "LEX_R01",
+      "reference": "LENGUAJE/REFERENCIAS/R01.json",
+      "reference_sha256": "51105b5b1235b464d77f4410d4602e718f4dfbf373180235366a408075ee5762",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r01.py"
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R02",
+        "--salida",
+        "RECALCULADO_LEX_R02.json"
+      ],
+      "case": "LEX_R02",
+      "reference": "LENGUAJE/REFERENCIAS/R02.json",
+      "reference_sha256": "484654b5e7fa37a51fd15fa030aa925442402021491b3e68e6c845d1113245df",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r02.py"
+    },
+    {
+      "args": [
+        "--primarios",
+        "FUNCION_LEXICA_R03",
+        "--auditor",
+        "RECALCULO/recalcular_primarios_apd.py",
+        "--salida",
+        "RECALCULADO_LEX_R03.json"
+      ],
+      "case": "LEX_R03_FUNCTION",
+      "reference": "REFERENCIAS/LEX_R03.json",
+      "reference_sha256": "29c35b61866b3a6ab9cbe6d807dbcf3422b3784c5b089a77fccf204334523a27",
+      "script": "RECALCULO/recalcular_funcion_lexica_r03.py"
+    },
+    {
+      "args": [
+        "--primarios",
+        "CURRICULO_LEXICO_R04",
+        "--salida",
+        "RECALCULADO_LEX_R04.json"
+      ],
+      "case": "LEX_R04_CURRICULUM",
+      "reference": "REFERENCIAS/LEX_R04.json",
+      "reference_sha256": "3b256ce80a7f18cd9a337643af7aef05a246a09be34249cbcbcac4bac06c7b09",
+      "script": "RECALCULO/recalcular_lexico_r04.py"
+    }
+  ],
+  "native_ticks_executed": 0,
+  "stdlib_only": true
+}

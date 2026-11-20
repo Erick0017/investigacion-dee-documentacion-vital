@@ -1,0 +1,257 @@
+{
+  "cases": [
+    {
+      "args": [
+        "--primarios",
+        "PRIMARIOS",
+        "--artefactos",
+        "ARTEFACTOS",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__ROOT",
+      "reference": "REFERENCIAS/ROOT.json",
+      "reference_bytes": 126858,
+      "reference_sha256": "2b3be19359c390ed50403163c38ff3ddbd35826491029aa86c879b42a28dba46",
+      "script": "RECALCULO/recalcular_primarios_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R01",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R01",
+      "reference": "LENGUAJE/REFERENCIAS/R01.json",
+      "reference_bytes": 19553,
+      "reference_sha256": "51105b5b1235b464d77f4410d4602e718f4dfbf373180235366a408075ee5762",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r01.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R02",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R02",
+      "reference": "LENGUAJE/REFERENCIAS/R02.json",
+      "reference_bytes": 23468,
+      "reference_sha256": "484654b5e7fa37a51fd15fa030aa925442402021491b3e68e6c845d1113245df",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r02.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "FUNCION_LEXICA_R03",
+        "--auditor",
+        "RECALCULO/recalcular_primarios_apd.py",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R03_FUNCTION",
+      "reference": "REFERENCIAS/LEX_R03.json",
+      "reference_bytes": 10419,
+      "reference_sha256": "29c35b61866b3a6ab9cbe6d807dbcf3422b3784c5b089a77fccf204334523a27",
+      "script": "RECALCULO/recalcular_funcion_lexica_r03.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "CURRICULO_LEXICO_R04",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R04_CURRICULUM",
+      "reference": "REFERENCIAS/LEX_R04.json",
+      "reference_bytes": 34554,
+      "reference_sha256": "3b256ce80a7f18cd9a337643af7aef05a246a09be34249cbcbcac4bac06c7b09",
+      "script": "RECALCULO/recalcular_lexico_r04.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--compacto",
+        "FUNCION_LEXICA_R03/PROTOCOLO_DEDUPLICADO.json",
+        "--base",
+        ".",
+        "--restaurar",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__RESTAURAR_PROTOCOLO_R03_SIN_PERDIDA",
+      "reference": null,
+      "reference_bytes": 58311806,
+      "reference_sha256": "aca542d66aa19491257897ded758b6cf6ea5e57b2a19b9f5cc7db0f7ff2c480c",
+      "script": "RECALCULO/deduplicar_protocolo_r03.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/PERFIL_DELTA_R1",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__DESPLAZAMIENTO_ADQUIRIDO_CINCO_USOS",
+      "reference": "REFERENCIAS/DELTA.json",
+      "reference_bytes": 13343,
+      "reference_sha256": "79690a810c750aa142f4c5177bb848ae3de461148280466c4bdf923293f1b6ba",
+      "script": "RECALCULO/recalcular_perfil_delta_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__RETORNO_FASE_O2_REVERSO_Y_CAMPO_COMPLETO",
+      "reference": "REFERENCIAS/CONSECUENCIAS_Y_CAMPO.json",
+      "reference_bytes": 28221,
+      "reference_sha256": "f2d2a2e768602af95a306f509e87df91841ddeb76dce1dd3b6200c5ae6e74977",
+      "script": "RECALCULO/recalcular_consecuencias_y_campo_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--registro",
+        "EVIDENCIA/ANTECEDENTE_R17/REGISTROS_NUMERICOS_R17_PROYECCION.json.gz",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__ANTECEDENTE_R17_DOCE_EMISIONES",
+      "reference": "REFERENCIAS/ANTECEDENTE_R17.json",
+      "reference_bytes": 9430,
+      "reference_sha256": "06b2a7670236dc31b94b304f93165c2fe4e0cd1b1fe5392e60766fc3ff8b5eae",
+      "script": "RECALCULO/recalcular_agregacion_previa.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "POLITICAS",
+      "case": "POLITICAS__POLITICAS_ANALITICAS_Y_LIMITES",
+      "reference": "REFERENCIAS/RESULTADO.json",
+      "reference_bytes": 113798,
+      "reference_sha256": "fd38f924b72307c8a281f04285c705a9d0a2cf07d8b1ec56f006de51cb09aec7",
+      "script": "RECALCULO/recalcular_referencias_politicas_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "REFERENCIAS_EJECUTADAS",
+      "case": "REFERENCIAS_EJECUTADAS__REFERENCIAS_HOST_REALMENTE_EJECUTADAS",
+      "reference": "REFERENCIAS/ACTOS_REFERENCIA.json",
+      "reference_bytes": 18791,
+      "reference_sha256": "19474df89ac68f09bf4d603ac4c8c8ae30655c1616d9d323eade84c02dcb419d",
+      "script": "RECALCULO/recalcular_referencias_ejecutadas_o2_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "REFERENCIAS_EJECUTADAS",
+      "case": "REFERENCIAS_EJECUTADAS__COMPARACION_REFERENCIAS_CON_LEARNER_EXISTENTE",
+      "reference": "REFERENCIAS/COMPARACION.json",
+      "reference_bytes": 9468,
+      "reference_sha256": "1bd0e2c0a6500123ac4eccb2b314eea4b035ff34f50d6343ed2e4aa55aec197e",
+      "script": "RECALCULO/comparar_referencias_ejecutadas_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--system",
+        "DESPUES",
+        "--before",
+        "ANTES",
+        "--output",
+        "{output}"
+      ],
+      "base": "PERIMETRO_METADATA",
+      "case": "PERIMETRO_METADATA__DESCRIPTORES_SIN_CAMBIO_ALGORITMO_O_PERMISOS",
+      "reference": "REFERENCIA/VERIFICACION_METADATOS_PERIMETRO_N0.json",
+      "reference_bytes": 1487,
+      "reference_sha256": "adc37f2e4d225b12d2b425805b0c49a8b1ffc51c05afb18602ddf495f5c3b0ab",
+      "script": "RECALCULO/verificar_ajuste_metadatos_perimetro.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "COSTE_ACUMULADOR",
+      "case": "COSTE_ACUMULADOR__COSTE_REGISTRADO_ENSENANZA_Y_CINCO_USOS",
+      "reference": "REFERENCIAS/COSTE_ACUMULADOR.json",
+      "reference_bytes": 28426,
+      "reference_sha256": "b34be4329fc056a3a2023b3ab5481d37238b9e898d54d18639497d0b161a0ada",
+      "script": "RECALCULO/recalcular_coste_acumulador_apd.py",
+      "timeout_seconds": 180
+    }
+  ],
+  "native_ticks": 0,
+  "pending_components": [
+    {
+      "id": "SERVICIO_RESERVADO_UNA_HORA",
+      "scope": "No final service verdict or final tick presumed. Interrupted R01 and surviving queued work must remain identifiable.",
+      "status": "WAIT_FOR_FINAL_STOP_AND_CLOSED_STAGE"
+    },
+    {
+      "id": "MANUAL_MAESTRO_WORD",
+      "scope": "Only received final Word bytes, not this configuration, can represent the updated manual.",
+      "status": "WAIT_FOR_ROOT_FINAL_DOCUMENT_BYTES"
+    },
+    {
+      "id": "INFORME_CIENTIFICO_ROOT_Y_CONTINUIDAD",
+      "scope": "Final physical state, paired protocol and limitations must come from the actual reached life.",
+      "status": "WAIT_FOR_EXACT_FINAL_SAVED_CUT"
+    },
+    {
+      "id": "DELTA_OPERATIVO_FINAL",
+      "scope": "Selected actual system-layer sources and metadata; never motor, WHL or all dense states.",
+      "status": "WAIT_FOR_CLOSED_SOURCE_CONTRACTS_AND_FROZEN_ACTOR"
+    },
+    {
+      "id": "PRUEBA_PAQUETE_FINAL_EXACTO",
+      "scope": "No ZIP or final proof is generated by this preparation.",
+      "status": "WAIT_FOR_GO_AND_PACKAGE_BYTES"
+    },
+    {
+      "id": "PANEL_POST_RESERVA_Y_CORTE_REAL_FINAL",
+      "scope": "Previous R1 two-request draft was not executed. Bind docs to the actual final reached cut, not a prospectively selected tick or the earlier R03 STOP if later actions occurred.",
+      "status": "WAIT_FOR_ACTUAL_ROOT_APPROVED_R04_AND_FINAL_MATERIAL_PANELS"
+    }
+  ],
+  "schema": "APD01.global_archived_recalculation_plan.v1",
+  "status": "PREPARACION_NO_FINAL"
+}

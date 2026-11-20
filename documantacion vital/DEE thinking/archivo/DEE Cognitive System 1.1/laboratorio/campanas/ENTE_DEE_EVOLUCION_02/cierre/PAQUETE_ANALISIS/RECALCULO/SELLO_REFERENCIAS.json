@@ -1,0 +1,17 @@
+{
+  "schema": "EO02.reference.preregistration.v1",
+  "frozen_utc": "2026-10-24T21:40:33Z",
+  "code": "referencias_eo02.py",
+  "code_sha256": "8fddf2a81ea6517cd8f02f3df72930b9789e3bf99a870fbdf3c6a761cc1e28cb",
+  "initial_estimate": 12,
+  "random_seeds": [1001,1002,1003,1004,1005,1006,1007,1008],
+  "policies": ["fixed_left","fixed_right","alternating","random","adaptive_threshold","adaptive_phase"],
+  "known_before_freeze": "Exploratory source04/05/06, B10/11/12/13 and initial C14 records were inspected. These are not prospective validation of this reference selection.",
+  "prospective_use": "Reference algorithm and seeds are frozen before reserved sequences or the proposed visible-phase C variant are inspected. No score-driven retuning is permitted.",
+  "observation_budget": "Same exogenous source observations4 and target observations6 when those trajectories provide them. The policy persists across domains; environmental reset never resets its acquired estimate.",
+  "adaptive_rule": "Fixed initial estimate12. Current raw alternating scalar sums choose action. After actually observed contact, estimate changes by minus sensed action, bounded[-64,64]. No update for omitted return. Decoupled return changes sensed posture explicitly, not the target.",
+  "phase_aware_reference": "An additional prepared-protocol reference may use the current phase bit only when that public sensor actually exists; it remembers its own successful preparation action and selects its opposite for verify. It never receives MAIN pending state or desired worker.",
+  "independence": "Each policy owns an independently evolving task environment from the shared reset conditions. Only exogenous measurements/reset events are shared; pending transaction and phase after distinct actions are not forced to MAIN's future.",
+  "hidden_state_boundary": "Capacity credit and admission law belong only to the task evaluator. Policy.choose receives observations only; Policy.observe receives own post-action consequence only. No reference ever controls a DEE life.",
+  "scope": "Finite task-model arithmetic, not service execution, native DEE replay, CPU performance or a general intelligence benchmark. Random seeds are not biological/statistical replicates of the one deterministic DEE history."
+}

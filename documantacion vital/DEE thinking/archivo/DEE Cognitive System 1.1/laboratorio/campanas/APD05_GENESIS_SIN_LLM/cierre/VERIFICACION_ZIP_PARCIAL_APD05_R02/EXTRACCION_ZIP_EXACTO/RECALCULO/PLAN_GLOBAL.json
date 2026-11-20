@@ -1,0 +1,77 @@
+{
+  "full_status": "NOT_EXECUTED_APD05_FULL_REFRESH_OR_EXACT_FULL_GUI_PROOF",
+  "jobs": [
+    {
+      "args": [
+        "--root",
+        {
+          "input": "EVIDENCIA_CAUSAL/GUI_WALK"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "RECALCULO/REFERENCIA_GUI_N0.json",
+      "expected_sha256": "afa0874e2e3f50f1bc8da9fc4cb9565ed4fd178a553f4a15c00992dbeb05ab43",
+      "id": "GUI_PORTABLE",
+      "script": "RECALCULO/recalcular_export_gui_portable_n0_r01.py",
+      "script_sha256": "23d3605492a8bcc1b6fad3f9b6ae72973b57452982d8696fa654e358ccfd9ca3",
+      "timeout_seconds": 60
+    },
+    {
+      "args": [
+        "--root",
+        {
+          "input": "EVIDENCIA_CAUSAL/CONTROLES"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "EVIDENCIA_CAUSAL/CONTROLES/RECALCULO_N0.json",
+      "expected_sha256": "991a1a443d2a3f32bc38e3550480beafaffcf3162151027f50fa46d2a1f25759",
+      "id": "CONTROLES_PORTABLE",
+      "script": "EVIDENCIA_CAUSAL/CONTROLES/CODIGO/exportar_recalcular_controles_reposo_n0_r02.py",
+      "script_sha256": "5dc4f85febf5ea453797ecdfc2a6828640ad56537c225f29ea397a3acd654a06",
+      "timeout_seconds": 90
+    },
+    {
+      "args": [
+        {
+          "input": "EVIDENCIA_CAUSAL/RESERVA_60_R02/PRIMARIOS/EVENTOS.jsonl"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "EVIDENCIA_CAUSAL/RESERVA_60_R02/RECALCULO_RAW_R03_RECIBOS_CON_ALIAS.json",
+      "expected_sha256": "1229d97614965c25a08fe429c9134003f856f071ebc257ef41bb975bcbf0ea48",
+      "id": "MAIN_PORTABLE",
+      "script": "RECALCULO/recalcular_vigencia_apd05_r03.py",
+      "script_sha256": "0949faeaf5bd2e4c7fc5ddf77e8a0d23b4981e4dd6ede011fc4152c8c5f49d96",
+      "timeout_seconds": 90
+    },
+    {
+      "args": [
+        {
+          "input": "EVIDENCIA_CAUSAL/VIGENCIA_R02/PRIMARIOS/EVENTOS.jsonl"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "EVIDENCIA_CAUSAL/VIGENCIA_R02/RECALCULO_RAW_R02_GEOMETRIA_ESTRICTA.json",
+      "expected_sha256": "3e2d9e98fb486f5fc4077e174acb2b5c15193c28f9c970c06a18dc2f9377aa1f",
+      "id": "VIGENCIA_754_RAW",
+      "script": "RECALCULO/recalcular_vigencia_apd05_r02.py",
+      "script_sha256": "9bc65d5cf9510128936f5bf38eb603a658b47f50c0948b02946571219c630ff6",
+      "timeout_seconds": 90
+    }
+  ],
+  "new_native_ticks": 0,
+  "schema": "APD05.archived_recalculation_plan.R01"
+}

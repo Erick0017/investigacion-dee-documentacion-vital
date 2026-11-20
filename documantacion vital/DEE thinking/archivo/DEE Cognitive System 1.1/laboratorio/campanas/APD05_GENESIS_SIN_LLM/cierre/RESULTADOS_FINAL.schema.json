@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APD05.final_analysis_selection.R01",
+  "title": "Selección cerrada y atribución científica para análisis APD05 Génesis sin LLM",
+  "type": "object",
+  "required": ["schema", "status", "native_work_closed", "zip_name", "attempts", "claims", "lives", "executed_revisions", "files", "components", "jobs", "omissions"],
+  "properties": {
+    "schema": {"const": "APD05.final_analysis_selection.R01"},
+    "status": {"enum": ["DRAFT_NOT_APPROVED", "FINAL_RESULTS_APPROVED_FOR_ANALYSIS"]},
+    "native_work_closed": {"type": "boolean", "description": "Sólo true después de cerrar escritores que afectan las fuentes seleccionadas; no es un PASS científico."},
+    "zip_name": {"type": "string", "pattern": "^[^\\\\/:]+\\.zip$"},
+    "full_status": {"type": "string", "description": "Prueba Full separada: indicar cierre real o pendiente, nunca inferirla del análisis."},
+    "recalculation_timeout_seconds": {"type": "integer", "minimum": 30, "maximum": 1800},
+    "attempts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/attempt"}},
+    "claims": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claim"}},
+    "lives": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/life"}},
+    "executed_revisions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/revision"}},
+    "files": {"type": "array", "items": {"$ref": "#/$defs/file"}},
+    "components": {"type": "array", "items": {"$ref": "#/$defs/component"}},
+    "jobs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/job"}},
+    "omissions": {"type": "array", "items": {"$ref": "#/$defs/omission"}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_ids": {"type": "array", "items": {"type": "string"}, "description": "IDs existentes de files/components. Añadir localizador JSON exacto en el alcance o localizers."},
+    "attempt": {
+      "type": "object",
+      "required": ["id", "life", "role", "status", "scope", "source_ids"],
+      "properties": {
+        "id": {"type": "string"}, "life": {"type": ["string", "null"]},
+        "role": {"enum": ["MAIN", "FORK", "AUX", "CONTROL", "N0_INSTRUMENT", "FULL_PROOF", "EDITORIAL"]},
+        "status": {"enum": ["CLOSED_RESULT", "CLOSED_INSTRUMENT_FAILURE", "PRESERVED_UNCOMMITTED_FUTURE", "NOT_EXECUTED"]},
+        "scope": {"type": "string"}, "source_ids": {"$ref": "#/$defs/source_ids"},
+        "initial_tick": {"type": ["integer", "null"]}, "final_committed_tick": {"type": ["integer", "null"]},
+        "requested": {"type": ["integer", "null"]}, "submitted": {"type": ["integer", "null"]},
+        "admitted": {"type": ["integer", "null"]}, "responded": {"type": ["integer", "null"]},
+        "correct": {"type": ["integer", "null"]}, "incorrect": {"type": ["integer", "null"]},
+        "abstained": {"type": ["integer", "null"]}, "rejected": {"type": ["integer", "null"]},
+        "out_of_domain": {"type": ["integer", "null"]},
+        "denominator_scope": {"type": "string", "description": "No sumar recibos repetidos ni borrar pendientes o rechazos. null significa no calculado, nunca cero."}
+      }
+    },
+    "claim": {
+      "type": "object", "required": ["id", "text", "level", "life", "scope", "source_ids", "limits"],
+      "properties": {
+        "id": {"type": "string"}, "text": {"type": "string"},
+        "level": {"enum": ["HECHO_COMPUTACIONAL", "MECANISMO_FISICO", "CAPACIDAD_FUNCIONAL", "INTERPRETACION", "HIPOTESIS", "ANALOGIA"]},
+        "life": {"type": ["string", "null"]}, "scope": {"type": "string"},
+        "source_ids": {"$ref": "#/$defs/source_ids"}, "limits": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "localizers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "life": {
+      "type": "object", "required": ["id", "parent", "N", "tick", "snapshot_sha256", "status", "available", "not_currently_proven", "continuation"],
+      "properties": {
+        "id": {"type": "string"}, "parent": {"type": ["object", "null"]}, "N": {"type": "integer"},
+        "tick": {"type": "integer"}, "snapshot_sha256": {"$ref": "#/$defs/hash"},
+        "status": {"type": "string"}, "available": {"type": "array", "items": {"type": "string"}},
+        "not_currently_proven": {"type": "array", "items": {"type": "string"}},
+        "continuation": {"type": "object", "description": "Localizador de par completo, colas/estado, pendientes exactos y comando real. No contiene snapshots en este análisis."}
+      }
+    },
+    "revision": {
+      "type": "object", "required": ["id", "scope", "source_ids", "provenance"],
+      "properties": {"id": {"type": "string"}, "scope": {"type": "string"}, "source_ids": {"$ref": "#/$defs/source_ids"}, "provenance": {"type": "string"}}
+    },
+    "file": {
+      "type": "object", "required": ["id", "source", "destination", "kind", "sha256"],
+      "properties": {
+        "id": {"type": "string"}, "source": {"type": "string", "description": "Relativo a la raíz canónica Cognitive, no absoluto."},
+        "destination": {"type": "string", "description": "Relativo POSIX dentro del análisis."},
+        "kind": {"type": "string"}, "sha256": {"$ref": "#/$defs/hash"},
+        "compress_gzip": {"type": "boolean", "description": "Conserva SHA y bytes originales + comprimidos; usar destino terminado .gz."}
+      }
+    },
+    "component": {
+      "type": "object", "required": ["id", "source", "destination", "manifest_sha256"],
+      "properties": {
+        "id": {"type": "string"}, "source": {"type": "string"}, "destination": {"type": "string"},
+        "manifest": {"type": "string", "default": "MANIFIESTO.json"}, "manifest_sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "job": {
+      "type": "object", "required": ["id", "base", "script", "args", "expected", "comparison"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"}, "base": {"type": "string"},
+        "script": {"type": "string"}, "expected": {"type": "string"},
+        "args": {"type": "array", "items": {"oneOf": [{"type": "string"}, {"type": "object", "required": ["input"], "properties": {"input": {"type": "string"}}, "additionalProperties": false}]}},
+        "comparison": {"enum": ["bytes", "json_values"], "description": "No llamar identidad de bytes a mera igualdad de valores JSON."},
+        "timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 900}
+      }
+    },
+    "omission": {
+      "type": "object", "required": ["locator", "reason", "scientific_consequence"],
+      "properties": {
+        "locator": {"type": "string"}, "sha256": {"$ref": "#/$defs/hash"}, "bytes": {"type": "integer"},
+        "manifest_locator": {"type": "string"}, "manifest_sha256": {"$ref": "#/$defs/hash"},
+        "reason": {"type": "string"}, "scientific_consequence": {"type": "string"}
+      }
+    }
+  }
+}

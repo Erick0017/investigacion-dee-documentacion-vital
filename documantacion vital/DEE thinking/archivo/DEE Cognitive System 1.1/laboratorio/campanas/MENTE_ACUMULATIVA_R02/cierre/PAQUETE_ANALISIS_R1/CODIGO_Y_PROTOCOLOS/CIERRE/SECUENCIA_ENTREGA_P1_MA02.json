@@ -1,0 +1,18 @@
+{
+  "scope": "Primera utilización finita del snapshot aprendido P1 completo; otra copia, no experiencia de MAIN ni repetición ilimitada del selector.",
+  "operations": [
+    {
+      "label": "load_admitted_finite_P1_protocol_without_new_T0",
+      "argv": ["gestor", "mente2-p1-estado", "--vida", "$LIFE"],
+      "require_fence": true
+    },
+    {
+      "label": "consume_queued_generic_request_and_use_acquired_P1_trace",
+      "argv": ["gestor", "mente2-p1-usar", "--vida", "$LIFE", "--detalle"],
+      "require_fence": true,
+      "expect": {"require_single_native_command": true}
+    }
+  ],
+  "continuation": ["gestor", "continuar", "--vida", "$LIFE", "--hasta", "$NEXT_TICK"],
+  "continuation_requires_fence": false
+}

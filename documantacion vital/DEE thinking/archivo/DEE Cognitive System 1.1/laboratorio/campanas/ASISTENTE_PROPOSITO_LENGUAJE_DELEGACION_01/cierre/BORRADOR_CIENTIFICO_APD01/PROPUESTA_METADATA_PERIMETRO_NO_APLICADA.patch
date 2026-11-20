@@ -1,0 +1,30 @@
+--- a/sistema/app/access_guard.py
++++ b/sistema/app/access_guard.py
+@@ -28,4 +28,4 @@
+     sys.addaudithook(hook)
+     # Keep the temporary owner alive through process lifetime. Cleanup is hostI/O,
+     # never a world edit, and applies only to this uniquely-created directory.
+-    return{'temporary_owner':owned,'temporary_path':str(temporary),'denied_operations':denied,'allowed_exact_external_calls':allowed_external,'scope':'Pythonopen/subprocess/network audit hooks; an optional exact declared environment-worker argv does not authorize other processes or networks. Not an operating-system sandbox'}
++    return{'temporary_owner':owned,'temporary_path':str(temporary),'denied_operations':denied,'allowed_exact_external_calls':allowed_external,'scope':'Python open/subprocess/network audit hooks. Reads inside sistema, including operational life records, journals and cached results in estado, remain permitted except explicit exclusions; declared exact external inputs are permitted. Undeclared sibling laboratorio/evidencia and other external reads are blocked. An optional exact environment-worker argv does not authorize other processes or networks. This does not detect all response-history lookups and is not an operating-system sandbox.'}
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -138,7 +138,7 @@
+             actuator=payload.get('actuador','closed'),feedback=payload.get('retorno','real'),detailed=False)
+         value['INSTRUMENTO_FENCE']={'denied':self.guard['denied_operations'],
+             'exact_environment_processes':self.guard['allowed_exact_external_calls'][before_calls:],
+-            'no_lab_evidence_or_history_reads_allowed':True,'scope':self.guard['scope']}
++            'no_lab_evidence_or_history_reads_allowed':False,'legacy_combined_flag_deprecated_no_universal_history_guarantee':True,'no_undeclared_external_lab_or_evidence_reads_allowed':True,'operational_history_reads_universally_blocked':False,'scope':self.guard['scope']}
+         return value
+     def checkpoint(self,protocol,pending,operation):
+         # Slots are reused; no unbounded native metadata ledger or hidden answers.
+--- a/sistema/gestionar.py
++++ b/sistema/gestionar.py
+@@ -577,7 +577,7 @@
+                 system=Path(args.system_root or SYSTEM_ROOT).resolve();config=json.loads((system/'contratos/HABITAT_EXTERNO_01.json').read_text(encoding='utf8'));external_python=str(Path(config['external_python']));external_command=[external_python,'-I','-B','-u',str(system/'app/habitat_externo/pendulum_worker.py'),'--deps',str(system/'runtime/habitat_externo_deps')];explicit_read.append(external_python)
+             guard=install(args.system_root or SYSTEM_ROOT,explicit_read=explicit_read,explicit_write=explicit_write,external_command=external_command)
+         result=execute(args)
+-        if guard is not None and args.command and args.command.startswith(('integrado-','mi01-','mi02-','cf01-','ente-','evolucion-','mente-','mente2-','unificada-'))and isinstance(result,dict):result['INSTRUMENTO_FENCE']={'denied':guard['denied_operations'],'exact_environment_processes':guard['allowed_exact_external_calls'],'no_lab_evidence_or_history_reads_allowed':True,'scope':guard['scope']}
++        if guard is not None and args.command and args.command.startswith(('integrado-','mi01-','mi02-','cf01-','ente-','evolucion-','mente-','mente2-','unificada-'))and isinstance(result,dict):result['INSTRUMENTO_FENCE']={'denied':guard['denied_operations'],'exact_environment_processes':guard['allowed_exact_external_calls'],'no_lab_evidence_or_history_reads_allowed':False,'legacy_combined_flag_deprecated_no_universal_history_guarantee':True,'no_undeclared_external_lab_or_evidence_reads_allowed':True,'operational_history_reads_universally_blocked':False,'scope':guard['scope']}
+         print(json.dumps(result,ensure_ascii=False,indent=2,default=str))
+     except Exception as e:
+         if hasattr(e,'partial_result'):print(json.dumps(e.partial_result,ensure_ascii=False,indent=2,default=str))

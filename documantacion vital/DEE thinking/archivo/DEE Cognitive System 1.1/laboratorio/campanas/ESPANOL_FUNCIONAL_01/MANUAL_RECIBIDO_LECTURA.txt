@@ -1,0 +1,1192 @@
+0001 INVESTIGACION DEE
+0002 DEE CognitiveSystem 1.1
+0003 Manual maestro de uso, memoriay continuidad de la investigación
+0005 Configuración documentada. Perfiles. Estados vividos.Restauración. Evolución del sistema.
+0006 Edición de operación y continuidadSin especificación ni código del kernel v27
+0008 Autor del proyectoIvan Erick Tlaltecatl Morales
+0009 DEE thinking 4.5.0  |  DEE Cognitive System 1.1.0Edición documental 1.0  |  DCS11-MM-001
+0010 Corte técnico: 19 de octubre de 2026, UTC-6Estado preferente documentado: E1_SOCIAL_11, T3154
+0011 Documento de referencia para continuar el trabajo sin depender del historial de una conversación. No sustituye los archivos ejecutables ni los estados completos.
+0013 Control documental
+0014 Campo
+0015 Identificación
+0016 Documento
+0017 DCS11-MM-001 / Edición documental 1.0
+0018 Sistema documentado
+0019 DEE Cognitive System 1.1.0 sobre DEE thinking 4.5.0
+0020 Motor
+0021 DEE Universe v27; se trata como componente cerrado
+0022 Corte de liberación registrado
+0023 20/10/2026 04:28:25 UTC; 19/10/2026 22:28:25 UTC-6
+0024 Base principal
+0025 DEE_COGNITIVE_SYSTEM_1_1_RESUMEN_FUNCIONAL.zip
+0026 Tipo de documento
+0027 Manual operativo, memoria de investigación y protocolo de continuidad
+0028 Autoridad
+0029 Los archivos de estado y los comprobantes de cada corte prevalecen sobre una copia desactualizada del manual
+0030 Estado de esta edición
+0031 Documento generado a partir del corte disponible; no modifica ni vuelve a liberar el software
+0033 Qué se revisó realmente
+0034 Se abrieron y procesaron los 42 miembros del resumen funcional: documentos, contratos, matrices, genealogía, catálogo y registros de verificación archivados. Se comprobaron los hashes de sus 40 miembros declarados en el manifiesto, sin diferencias. Se contrastaron con los textos disponibles de los dos manuales 4.5, Procesamiento Nativo, OBP y documentos pertinentes de CPC7, los dos cortes CPC8 y la auditoría esencial CPC9. Los apéndices conservan la cobertura y los localizadores.
+0035 Esta revisión no es una nueva ejecución de las simulaciones Windows. Los paquetes SISTEMA y AUDITORÍA completos de 1.1 no fueron aportados en este corte: sus identidades y pruebas se conocen por los comprobantes conservados. Los grandes ZIP históricos se consultaron de forma dirigida; no se afirma una lectura microscópica exhaustiva de todos sus estados.
+0036 Límite de divulgación
+0037 Se describen los contratos visibles y la configuración de la capa 1.1. Se omiten código del motor, reglas locales, parámetros internos, representación binaria, geometrías de construcción y recetas que permitan reconstruir el kernel. Las rutas de estados se tratan como archivos opacos. Los paquetes originales siguen requiriendo su propia revisión antes de compartirse.
+0038 Fuentes: [F02]; [F13]; [F16]; manifiesto del resumen; [M01-M04]; [H01-H04].
+0040 Índice de consulta
+0041 1. Qué es 1.1 y qué hace más sencillo4
+0042 2. Vocabulario indispensable para no perder continuidad4
+0043 3. Memoria transversal: de los CPC al sistema5
+0044 4. Configuración efectiva de carpetas y dependencias5
+0045 5. Los cinco perfiles admitidos6
+0046 6. Nueve estados seleccionados y vida preferente7
+0047 7. Participantes, mundos y comunicación8
+0048 8. Instalación y primera apertura segura8
+0049 9. Operaciones del gestor y efectos sobre la vida9
+0050 10. Recorrido documentado: una interacción nueva10
+0051 11. Guardado, traslado y restauración11
+0052 12. Errores, interrupciones y recuperación honesta11
+0053 13. Lo heredado, lo mejorado y lo todavía separado12
+0054 14. Qué muestran las verificaciones y qué no13
+0055 15. Laboratorio, evolución y promoción de ramas13
+0056 16. Pendientes reales y lectura del deterioro14
+0057 17. Lenguaje español: objetivo y estado del programa14
+0058 18. Memoria de proyecto y relevo entre conversaciones15
+0059 19. Actualización del manual y control de versiones16
+0060 20. Alcance de confidencialidad y uso externo17
+0061 Apéndice A. Inventario de las 73 entradas18
+0062 Apéndice B. Las 65 entradas y su continuidad21
+0063 Apéndice C. Familias de recuperación heredada23
+0064 Apéndice D. Identidades de entrega y de estados24
+0065 Apéndice E. Fuentes y cobertura de revisión26
+0067 1. Qué es 1.1 y qué hace más sencillo
+0068 DEE Cognitive System 1.1 es la capa que organiza el trabajo cognitivo experimental sobre DEE thinking 4.5. Mantiene perfiles ejecutables, identidades de vida, estados guardados, ramas, operaciones y decisiones de promoción. No sustituye el motor ni convierte por sí mismo todas las capacidades anteriores en una sola mente.
+0069 Nivel
+0070 Responsabilidad
+0071 Lo que no debe confundirse
+0072 Kernel v27
+0073 Ejecución interna del motor, aquí tratada como caja cerrada.
+0074 No se reconstruye ni se modifica en este manual.
+0075 DEE thinking 4.5
+0076 Biblioteca y contratos para preparar, ejecutar y conservar mundos y sesiones.
+0077 Una API disponible no equivale a un aprendizaje adquirido.
+0078 Sistema 1.1
+0079 Entrada común, perfiles, vidas, ramas, persistencia y uso controlado.
+0080 Un gestor común no fusiona memorias.
+0081 Laboratorio CPC
+0082 Ensayos, variantes, controles y nuevas integraciones.
+0083 Un resultado auxiliar no pasa automáticamente a E1.
+0084 Evidencia
+0085 Registros que respaldan resultados y límites.
+0086 No es una tabla de respuestas para el participante.
+0088 La organización facilita localizar lo ya construido, continuar un estado correcto, ensayar una alternativa sin destruir la anterior y preparar entregas separadas. Reduce trabajo repetido de infraestructura. No resuelve automáticamente generalización, acceso sostenido, lenguaje o regulación aprendida. Esos problemas siguen dependiendo de mecanismos y experiencias.
+0089 El término mente sintética experimental puede emplearse como objetivo funcional de investigación. En esta edición no identifica una mente general, una conciencia ni comprensión humana del lenguaje. Las capacidades se describen por lo que cada vida hace en el dominio comprobado.
+0090 Fuentes: [F01, apartados 2-6]; [F10]; [F18]; [M01, caps. 52-53].
+0091 2. Vocabulario indispensable para no perder continuidad
+0092 Término
+0093 Significado operativo
+0094 Capacidad
+0095 Función con un procedimiento, condiciones, evidencia y límites. Su presencia en el catálogo no implica disponibilidad en todas las vidas.
+0096 Perfil
+0097 Contrato de preparación y operaciones compatibles. No es por sí mismo un individuo entrenado.
+0098 Mundo / Runtime
+0099 Instancia mutable que mantiene el estado de una simulación. Varias regiones pueden compartirla.
+0100 Vida
+0101 Identidad de una trayectoria con perfil, padre, tick, snapshot y procedencia.
+0102 Participante / compuesto
+0103 Organización o región con un papel funcional; su integración debe comprobarse, no deducirse del nombre.
+0104 Tick / T
+0105 Paso de evolución del modelo. No es un segundo de reloj ni una medida de inteligencia.
+0106 Snapshot completo
+0107 Estado guardado con lo necesario para continuar: mundo, entradas pendientes, interfaces y progreso operativo compatible.
+0108 Receta
+0109 Preparación que construye una organización. No sustituye una vida que ya adquirió experiencias.
+0110 Bifurcación exacta
+0111 Rama que comparte el pasado hasta un snapshot y luego tiene su propia trayectoria.
+0112 Promoción
+0113 Decisión externa de preferir una rama o perfil; no aprendizaje ni elección autónoma del ente.
+0114 Observación / consulta
+0115 La observación pasiva lee. La consulta material puede cambiar el estado y debe contarse como interacción.
+0117 Tres preguntas distintas. Conservar una relación, poder expresarla y utilizarla no son lo mismo. [F07-F12; M01, caps. 52-53; M02, sección 4.1; M03, caps. 8-9].
+0118 3. Memoria transversal: de los CPC al sistema
+0119 La acumulación tiene dos planos: conocimiento del investigador sobre mecanismos y capacidades realmente disponibles en una vida. Los CPC produjeron ambos, pero en aparatos e historias diferentes. 1.1 permite conservarlos bajo una entrada común sin afirmar que un individuo haya aprendido todo.
+0120 Etapa
+0121 Aporte recuperado
+0122 Lectura actual
+0123 CPC1 / CP01
+0124 Experiencias de orden, calibración, diagnóstico, competencia, transferencia, acción y sesión persistente.
+0125 Contratos auxiliares recuperados.
+0126 CPC2 / CP02
+0127 Pronóstico condicionado por experiencias y revisión de memoria relativa.
+0128 Preparación y dominio propios.
+0129 CPC3 / SEM01
+0130 Comparación, respuesta finita y asociación de una señal con una consecuencia utilizable.
+0131 No lenguaje libre ni política general.
+0132 CPC4
+0133 Transmisión y uso entre participantes, contexto y regulación acotada.
+0134 Canales y recursos preparados.
+0135 CPC5
+0136 Repertorios, adquisición por bloques, composición sensible al orden y diálogos finitos.
+0137 65 formas no son 65 significados.
+0138 CPC6
+0139 Integración, dos formas y acceso renovado en otro momento.
+0140 El lector y sus oportunidades tienen contrato.
+0141 CPC7
+0142 U0 con historia, consulta condicionada, memoria propia, signo y revisión selectiva.
+0143 La vida U0 no equivale al E1 posterior.
+0144 CPC8, ambos cortes
+0145 Comunicación, orden/contacto, magnitud, composición y diagnósticos de acceso.
+0146 Rescates y auxiliares se conservan separados.
+0147 CPC9
+0148 Vida integrada prolongada, revisión, retorno social y deterioro del acceso a 65 formas.
+0149 Mayor continuidad no significa acceso final intacto.
+0150 Sistema 1.1
+0151 Perfiles, estados completos, entrada común, bifurcaciones y continuación utilizable.
+0152 Consolidación operativa; semántica general aún abierta.
+0154 Lo que el cruce de fuentes obliga a corregir
+0155 El repertorio independiente que conserva 65 formas y la rama integrada con funciones sociales son alternativas complementarias, no pruebas de una arquitectura universalmente superior. Del mismo modo, recuperar 34 familias significa poder ejecutar contratos finitos; no significa 34 conceptos en E1 ni recuperación completa de todas las filas documentales.
+0156 Procesamiento Nativo y OBP aportan la separación entre conservación, escritura, acceso y uso. Los trabajos de observadores muestran por qué una descripción parcial puede ocultar diferencias funcionales. El manuscrito de entrelazamiento aporta una hipótesis de organización distribuida: su empleo aquí es metodológico; los intercambios documentados de 1.1 no constituyen una nueva prueba cuántica.
+0157 La campaña 1.1 dejó constancia de que no localizó los dos DOCX 4.5. En esta preparación documental sus textos sí estuvieron disponibles y se cruzaron con los contratos. Esto completa el contexto de lectura; no convierte aquella ausencia en una verificación que Codex hubiera realizado.
+0158 Fuentes: [F01]; [F02]; [F05]; [F18]; [H01-H04]; [M01-M04]; [Q01, pp. 20-23].
+0159 4. Configuración efectiva de carpetas y dependencias
+0160 La raíz lógica es DEE Cognitive System 1.1. Los comandos de este manual parten de su carpeta extraída, la que contiene sistema. No deben ejecutarse desde el interior de runtime. Una ruta local corta puede facilitar el manejo; cambiarla no autoriza editar estados ni identificadores.
+0161 DEE Cognitive System 1.1/  sistema/    instalar_sistema.ps1    iniciar_sistema.ps1    gestionar.py    app/    capacidades/core/    organizaciones/    contratos/    estado/      ACTIVO.json      checkpoints/    runtime/    documentacion/  laboratorio/  evidencia/  entregas/
+0162 Es un esquema de las rutas documentadas, no un listado completo de los 1.080 miembros del paquete SISTEMA. Los archivos instalados y sus manifiestos son la autoridad para rutas adicionales.
+0163 Zona
+0164 Contenido y separación
+0165 sistema/
+0166 Gestor, adaptadores, perfiles, contratos, motor distribuido y estados completos. La operación normal no depende de los CPC originales, del laboratorio ni de los resultados del auditor.
+0167 capacidades/core/
+0168 Núcleo de recuperación histórica. Se materializa al pedir expresamente probar-herencia; no alimenta respuestas del activo.
+0169 estado/
+0170 Puntero activo, fichas, colas y checkpoints operativos. No es telemetría prescindible.
+0171 laboratorio/
+0172 Candidatos y nuevos ensayos. Un mecanismo probado aquí aún requiere decisión de integración.
+0173 evidencia/
+0174 Primarios, controles, diagnósticos, recálculos y genealogía extensa.
+0175 entregas/
+0176 ZIP sellados y comprobantes. No es un origen de importación del programa.
+0178 Entorno documentado: Windows x64, CPython 3.13 x64 y bibliotecas de ejecución de C++. El intérprete y el entorno de compilación no se distribuyen. NumPy 2.2.6 está incluido como dependencia específica de las familias CORE06/07; no debe convertirse por ello en memoria cognitiva del activo. Este corte no certifica macOS, Linux ni otras ABI para la distribución Windows.
+0179 Fuentes: [F10-F11]; [F13, external_dependencies y system_standalone_scope]; [F23]; [F22].
+0180 5. Los cinco perfiles admitidos
+0181 Un perfil define lo que puede prepararse y ejecutarse bajo un contrato finito. Elegirlo no cambia silenciosamente la arquitectura de una vida existente. Las dimensiones siguientes son configuraciones del experimento; no describen reglas internas del kernel.
+0182 Integración CPC9 y rama social
+0183 cpc9_integral_n67
+0184 N67; cinco estados E1 seleccionados. Relación, orden/contacto, cantidad, solicitud y retorno en dominios finitos.
+0185 Vidas seleccionadas: E1_SOCIAL_11, E1_11_ESTABLE, E1_CPC9_1907, E1_CPC9_884, E1_RECONSTRUIDO_11
+0186 Repertorio oficial
+0187 repertorio_fisico_4_5
+0188 Formas físicas bajo el contrato de RepertoireSession. Las dos vidas incluidas utilizan N131.
+0189 Vidas seleccionadas: R65_45_VIVIDO, R65_REVISION_11
+0190 U0 de CPC7
+0191 u0_integrado_4_5
+0192 IntegratedSession oficial, N67. Historia y protocolo preparado; una vida U0 seleccionada.
+0193 Vidas seleccionadas: U0_14_VIVIDO
+0194 Investigación directa
+0195 fisica_directa
+0196 Mundo nuevo sin capacidades cognitivas instaladas automáticamente. No incluye una vida entrenada seleccionada.
+0197 Vidas seleccionadas: ninguna vida aprendida incluida.
+0198 Repertorio alternativo
+0199 repertorio_n67_independiente
+0200 N67, hasta 65 formas en el dominio ensayado; carece del cuerpo integrado de E1.
+0201 Vidas seleccionadas: R65_N67_VIVIDO
+0202 Los perfiles no comparten automáticamente materia, memorias, respuestas ni aprendizajes. No se implementó un puente implícito entre sus mundos. El sistema ya permite administrarlos; integrarlos causalmente sigue siendo una tarea experimental.
+0203 Fuentes: [F04, profiles y multiworld_communication]; [F07]; [M01, cap. 53].
+0204 6. Nueve estados seleccionados y vida preferente
+0205 Vida / estado
+0206 T / N
+0207 Alcance documentado
+0208 E1_SOCIAL_11
+0209 3154 / 67
+0210 Preferente: cuatro accesos sociales con el lector admitido, referencia cuantitativa revisada y comparador anterior. No acceso general a todo el historial.
+0211 E1_11_ESTABLE
+0212 1948 / 67
+0213 Rama anterior preservada. Consulta del comparador antiguo; no contiene las nuevas asociaciones sociales posteriores.
+0214 E1_CPC9_1907
+0215 1907 / 67
+0216 Padre histórico completo protegido. La carga no prueba disponibilidad actual de todas sus capacidades.
+0217 E1_CPC9_884
+0218 884 / 67
+0219 Padre histórico completo protegido. Conserva su procedencia original.
+0220 E1_RECONSTRUIDO_11
+0221 884 / 67
+0222 Reproducción nueva desde T0 que coincide con el referente en el corte documentado; biografía distinta.
+0223 R65_45_VIVIDO
+0224 792 / 131
+0225 65 formas adquiridas en bloques 32+33; requiere ventanas de lectura separadas.
+0226 R65_REVISION_11
+0227 1054 / 131
+0228 Rama experimental: L01 revisada y otras 64 formas accesibles en las ventanas comprobadas.
+0229 R65_N67_VIVIDO
+0230 2822 / 67
+0231 65 formas en un mundo independiente durante diez barridos; no contiene las funciones de E1.
+0232 U0_14_VIVIDO
+0233 539 / 67
+0234 U0 oficial independiente: 14 asociaciones consultables; L03 revisada y 13 conservadas.
+0236 El activo de la entrega no es el último futuro producido
+0237 El puntero ACTIVO.json identifica E1_SOCIAL_11 en T3154, perfil cpc9_integral_n67. La verificación generó una copia de visita que alcanzó T3221 y continuó en otro proceso a T3288. Esos ticks no sustituyen el activo sellado ni describen una vida nueva incluida entre las nueve sin comprobar su ficha.
+0238 La cadena de procedencia relevante parte del checkpoint histórico T1907, pasa por la rama T1948 y por estados sociales intermedios, y llega a T3154. No es una reparación del final bloqueado T2493. El mismo pasado puede tener futuros diferentes: ambos deben conservarse con sus identidades.
+0239 La etiqueta de creación CANDIDATE aparece en la ficha social. No contradice por sí sola su preferencia posterior: la identidad de rama, la decisión de promoción y el puntero activo son registros diferentes.
+0240 Qué se ganó y qué no se conservó
+0241 La primera utilización social fue 7/8; el lector posterior conserva 4/8, no ocho. Se revisó la referencia de 67 a 78 y continuó siendo utilizable un comparador anterior. Se perdió el acceso repetido del puerto original y no quedó disponible íntegramente el panel previo de 18 lectores cuantitativos. Por eso la preferencia es limitada y la rama T1948 permanece seleccionable.
+0242 Fuentes: [F07-F09]; [F12]; [F13, checks]; [F16]; [F18]. Los nombres de archivos y hashes completos están en el apéndice D.
+0243 7. Participantes, mundos y comunicación
+0244 En la rama social, A, B y C describen participantes o regiones de un mismo mundo. A emite en función de una adquisición; B recibe y adquiere; el retorno participa en una adquisición y uso posteriores en C. B es un aprendiz físico simple en el dominio probado, no otra mente completa equivalente a E1.
+0245 Se mantiene un snapshot autorizado del mundo por checkpoint. Crear otra vista de una región no crea otra materia ni una copia independiente. La exclusión de escritores se aplica por identificador de mundo, no solamente por el nombre visible de una ventana o participante.
+0246 Situación
+0247 Tratamiento correcto
+0248 Varias regiones del mismo mundo
+0249 Conservar juntas sus interacciones y su estado operativo. Declarar qué ruta hace posible la comunicación.
+0250 Dos vidas independientes
+0251 Sus estados son distintos. Seleccionar una no importa los aprendizajes de otra.
+0252 Compuesto
+0253 Exigir función conjunta comprobada; no sumar aciertos aislados como si fueran integración.
+0254 Mundos diferentes
+0255 No hay un puente implementado en este corte. Una futura conexión externa tendrá que declararse y validarse.
+0256 Gestor de perfiles
+0257 Selecciona por instrucción del usuario o decisión registrada; no elige al conocedor correcto para simular autonomía.
+0259 La comunicación está acotada por las oportunidades, lectores y suministros preparados. Es compatible con adquisición genuina de contenido, pero no demuestra una estrategia general aprendida de a quién preguntar. Tampoco es una nueva certificación de entrelazamiento cuántico.
+0260 Fuentes: [F01, apartados 3-4]; [F04]; [F10]; [F17-F18].
+0261 8. Instalación y primera apertura segura
+0262 Qué archivos se necesitan
+0263 Para ejecutar se necesita el paquete SISTEMA completo, no el resumen de 636.072 bytes ni este manual. Obtenga también el comprobante externo del mismo corte. Si se recibieron partes, conserve los nombres numerados, PARTES.json y REUNIR_1_1.py; las partes no son ZIP independientes. Use el reunificador entregado y compare el hash canónico del apéndice D.
+0264 Extraiga en una carpeta de trabajo independiente. Antes de aprender o continuar, conserve una copia intacta del ZIP liberado. No copie el entorno virtual de otra máquina como sustituto de la instalación documentada. Tenga disponible CPython 3.13 x64 y las dependencias del contrato.
+0265 Comandos de entrada
+0266 Desde la raíz extraída, sustituya la ruta de Python por la que exista en su computadora:
+0267 .\sistema\instalar_sistema.ps1 `  -Python313 'C:\ruta\python.exe'$inicio = '.\sistema\iniciar_sistema.ps1'& $inicio estado& $inicio vidas& $inicio capacidades& $inicio perfiles
+0268 El instalador y los comandos son los documentados en el paquete. Se han normalizado las barras de la ruta de ejemplo para PowerShell; no se presentan como una ejecución nueva realizada al redactar este libro.
+0269 Lectura del estado inicial
+0270 El inicio normal carga y verifica el activo. Para el corte aquí documentado deben corresponder vida E1_SOCIAL_11, perfil cpc9_integral_n67, T3154 y el hash del estado registrado. Si la copia ya se utilizó, su tick puede ser otro: no intente forzarlo a T3154 para que coincida con el libro. Identifique el corte real y conserve su historia.
+0271 Ante ausencia o incoherencia del activo, detenga la operación y revise la procedencia. El comportamiento documentado es informar el error, no crear un universo nuevo ni rebobinar. No edite ACTIVO.json manualmente para ocultar una inconsistencia.
+0272 Fuentes: [F08]; [F11, Instalación y vida activa]; [F13]; [F16].
+0273 9. Operaciones del gestor y efectos sobre la vida
+0274 Los comandos siguientes pertenecen a la capa 1.1. Los argumentos en MAYÚSCULAS son marcadores que deben reemplazarse; no son nombres de entidades existentes. Los horarios y los puertos se eligen a partir del contrato del perfil, no a partir de esta tabla general.
+0275 Operación documentada
+0276 Efecto y precaución
+0277 estado / vidas / perfiles / capacidades
+0278 Inspección del inventario y estado. Una lista de capacidades no ejecuta una enseñanza.
+0279 activar ID
+0280 Selecciona explícitamente otra vida; no modifica su pasado.
+0281 restaurar ID
+0282 Carga y verifica. No avanza por sí sola.
+0283 continuar --vida ID --hasta T
+0284 Evoluciona hasta un tick absoluto permitido. Puede cambiar funciones o activar entradas pendientes.
+0285 guardar --vida ID
+0286 Conserva mundo y estado operativo. No equivale a exportar sólo un informe.
+0287 bifurcar PADRE HIJA --modalidad EXACT_FORK
+0288 Copia completa con pasado compartido y futuro independiente; HIJA debe ser un ID nuevo.
+0289 bifurcar PADRE CANDIDATA --modalidad CANDIDATE
+0290 Inicia una rama experimental identificada.
+0291 crear NUEVA --perfil PERFIL
+0292 Prepara otra vida; no hereda conocimiento por defecto.
+0293 importar-estado ARCHIVO ID --perfil PERFIL --sha256 HASH
+0294 Importación explícita de un estado completo compatible.
+0295 exportar ID --salida NUEVA
+0296 Exporta el estado y su ficha a un destino nuevo.
+0297 entrada --vida ID PUERTO CARGA T --sonda
+0298 Interacción material: puede transformar el estado, ocupar un acceso o producir aprendizaje.
+0299 observar / observar-componente
+0300 Lectura pasiva del punto o componente declarado; no restablece acceso ni repara memoria.
+0301 comparar PADRE CANDIDATA
+0302 Comparación pasiva; no elige un ganador.
+0303 promover CANDIDATA --decision ARCHIVO.json
+0304 Aplica una decisión con evidencia, ganancias, pérdidas y hash exacto.
+0305 ensayar --nivel A|B|C --salida NUEVA
+0306 Pruebas en copias. El símbolo | describe alternativas: elija A, B o C; no lo pegue como tubería.
+0307 probar-herencia --familias ... --salida NUEVA
+0308 Ejecuta contratos auxiliares recuperados. No enseña al activo.
+0310 La guía documenta experiencia ... curriculo_integral como operación de enseñanza, pero no ofrece en el resumen una firma completa con todos los argumentos. No se inventa aquí. Para esa operación use el ejemplo y la ayuda de la distribución instalada. Lo mismo se aplica a protocolos especializados no descritos con sintaxis completa.
+0311 Advertencia de versión: cambiar la geometría o N requiere una nueva preparación y vida; restaurar con otro perfil no es una migración válida. Los archivos de ejemplo tienen calendarios propios: no pueden desplazarse a cualquier tick sin revalidación.
+0312 Fuentes: [F11, Operaciones distintas y Laboratorio]; [F10]; [F04].
+0313 10. Recorrido documentado: una interacción nueva
+0314 El ejemplo distribuido crea VISITA_11 como bifurcación de E1_SOCIAL_11 en T3154. Se conserva el padre sin alterar. Antes de ejecutarlo compruebe que VISITA_11 no existe y que el origen corresponde al corte esperado. Si la vida o el identificador ya se usaron, no borre el resultado para repetirlo: seleccione un nuevo ensayo conforme al contrato.
+0315 $inicio = '.\sistema\iniciar_sistema.ps1'& $inicio vidas& $inicio eventos `  '.\sistema\documentacion\ejemplos\visita_1_1.eventos'& $inicio estado --vida VISITA_11& $inicio restaurar VISITA_11& $inicio interactivo
+0316 Momento
+0317 Lo registrado
+0318 Interpretación
+0319 Padre T3154
+0320 Estado aprendido completo disponible.
+0321 No una receta vacía reentrenada para la visita.
+0322 Visita hasta T3221
+0323 Consulta de cuatro asociaciones sociales, prueba cuantitativa nueva y uso de un comparador anterior.
+0324 Interacciones del contrato: no una conversación libre.
+0325 Verificación hasta T3288
+0326 Una petición pendiente se conserva y se utiliza tras cambiar de proceso.
+0327 Continuidad operativa documentada, no otra vida independiente.
+0329 El ejemplo presenta un nuevo valor de tarea y utiliza una referencia previamente revisada. Las cifras de ese ensayo no se convierten en una regla del motor ni en una capacidad aritmética universal. Lo que debe conservarse es la relación entre experiencia, estado, respuesta y contrato.
+0330 El archivo de eventos real no está dentro del resumen funcional aportado aquí. Debe obtenerse de SISTEMA. El manual reproduce su ruta y el comportamiento registrado, no sustituye sus bytes ni asegura que un guion inventado sea equivalente.
+0331 No avanzar para comprobar que está vivo. Continuar tick a tick también es una intervención sobre la historia. Primero lea el perfil, el estado y el ejemplo compatible. Una inspección de inventario suele bastar para situarse sin gastar una nueva oportunidad de consulta.
+0332 Fuentes: [F11, Una interacción nueva]; [F13, new_interaction_events y checks]; [F18].
+0333 11. Guardado, traslado y restauración
+0334 Qué debe viajar a otra computadora
+0335 Se necesitan el paquete SISTEMA compatible, los estados operativos actuales de las vidas que quiera continuar, sus fichas y genealogías, y el comprobante de integridad de esa copia. Si se sigue trabajando después de la liberación, el ZIP original conserva T3154 pero no incorpora automáticamente esos futuros. El manual tampoco los conserva.
+0336 Para evitar dependencias omitidas, la opción conservadora es guardar las vidas y copiar sistema/ en un corte coherente sin escritores activos. La exportación individual documentada permite trasladar una vida con su ficha, pero debe comprobarse que el destino dispone del perfil y recursos operativos compatibles.
+0337 Paso
+0338 Procedimiento
+0339 1. Identificar
+0340 Anotar vida, perfil, tick, snapshot y hash realmente actuales. No reemplazarlos por los valores de esta edición.
+0341 2. Guardar
+0342 Guardar con el gestor; finalizar o detener ordenadamente la actividad escritora. No copiar un archivo mientras está siendo modificado.
+0343 3. Copiar
+0344 Trasladar un corte completo de sistema o una exportación compatible, con fichas y dependencias. Conservar el original.
+0345 4. Instalar
+0346 En el destino instalar CPython 3.13 x64 y el entorno documentado. No cambiar el motor durante una prueba de traslado.
+0347 5. Cargar
+0348 Leer el estado y verificar identidad. Restaurar no significa crear ni volver a enseñar.
+0349 6. Validar
+0350 Probar una interacción nueva en una bifurcación; comprobar guardado y nueva restauración. Conservar recibos y el nuevo checkpoint.
+0351 7. Declarar autoridad
+0352 Elegir qué copia continuará como vida operativa. Dos computadoras que divergen no pueden sincronizarse como si compartieran una sola historia.
+0354 Qué portabilidad está acreditada
+0355 El informe conservado documenta extracción limpia y continuación entre procesos en un entorno Windows compatible, sin abrir los CPC originales para operar. No acredita por sí solo una prueba en una segunda computadora física ni en otro sistema operativo. El primer traslado real debe quedar registrado como prueba nueva.
+0356 Conservar sólo mediciones o extracciones parciales del estado no permite reponer colas, interfaces y progreso ausentes. La auditoría esencial CPC9 se diseñó para analizar, no para continuar un Runtime. No debe utilizarse como sustituto del snapshot completo.
+0357 Fuentes: [F10-F11]; [F13]; [F02]; [H04, sección 1].
+0358 12. Errores, interrupciones y recuperación honesta
+0359 El gestor documenta checkpoints FAILED_* si una operación compuesta falla después de admitir entradas o evolucionar. Ese futuro parcial es parte de la historia. La corrección no consiste en descartarlo y recargar en silencio una versión favorable.
+0360 Síntoma
+0361 Acción recomendada de operación
+0362 No concluir
+0363 Hash o ficha incoherentes
+0364 Detener la carga; cotejar copia, manifiesto y último guardado completo.
+0365 Que basta renombrar el archivo o editar el hash.
+0366 ID de visita ya existente
+0367 Conservarlo. Usar una nueva bifurcación identificada si se autoriza otro ensayo.
+0368 Que repetir con el mismo nombre puede sobrescribir una vida.
+0369 Entrada rechazada por ocupación
+0370 Registrar rechazo y tick; examinar el contrato en laboratorio.
+0371 Que esa experiencia fue aprendida o que toda memoria se perdió.
+0372 Respuesta ausente o fuera de dominio
+0373 Separar estado del lector, calendario, contexto y resultado.
+0374 Que el silencio significa NO o una respuesta numérica cero.
+0375 Excepción tras cambios
+0376 Conservar FAILED, diario y el estado alcanzado. Diagnosticar en otra rama.
+0377 Que un error del anfitrión autoriza rebobinar sin registrarlo.
+0378 Corte de energía o archivo incompleto
+0379 No insistir en escritura. Conservar la evidencia y acudir al último respaldo completo verificado, declarando la rama.
+0380 Que la promoción transaccional garantiza recuperación ante cualquier fallo de disco.
+0382 Hay bloqueo por mundo y promoción con estados PREPARED/COMMITTED. El contrato documenta comprobaciones de continuidad ante excepciones; no una garantía transaccional completa ante cualquier fallo físico. La barrera de accesos de archivos del CLI es una herramienta de auditoría, no un aislamiento de seguridad del sistema operativo.
+0383 No se deben desactivar verificaciones para hacer pasar una demostración. Una reparación requiere una versión identificada, preservación del caso fallido y pruebas del comportamiento afectado.
+0384 Fuentes: [F10-F11]; [F13, limitations]; [F03].
+0385 13. Lo heredado, lo mejorado y lo todavía separado
+0386 La matriz de 1.1 contiene 73 entradas. El recuento de sus valores da 40 revalidadas, 15 revalidadas con dominio finito, 16 documentales pendientes y 2 recuperadas del perfil CPC9 pendientes de prueba específica. Son estados de registros; no un inventario de 73 habilidades dominadas por E1.
+0387 Dimensión
+0388 Qué dice realmente la matriz
+0389 Disponibilidad
+0390 55 filas con alguna revalidación registrada; 18 con alcance pendiente de distinto tipo.
+0391 Integración registrada
+0392 7 filas se etiquetan integradas con límites en rama E1; 2 corresponden a continuidad o mundo conectado; 3 a perfiles independientes; 61 a referencia/perfil/auxiliar, incluidos pendientes.
+0393 Familias heredadas
+0394 34 contratos de recuperación agrupados, que comparten mecanismos y no corresponden uno a uno a las 73 filas.
+0395 Conocimiento actual
+0396 Se consulta por vida y ventana. La clasificación histórica no asegura acceso actual al final guardado.
+0398 Mejoras que no son reemplazos universales
+0399 En el repertorio N131, una ventana común mostraba sólo 33 formas; el uso de ventanas separadas recuperó las 65 sin reenseñanza. Esa evidencia corrige una interpretación de borrado en ese caso. No elimina la necesidad de un lector y una cadencia adecuados.
+0400 La revisión experimental continuada de L01 permite consultar las otras 64 formas en sus ventanas verificadas. Complementa el contrato oficial, no lo amplía silenciosamente. El control desplazado afectó también L06; por ello no debe utilizarse como prueba de inocuidad universal.
+0401 El repertorio independiente N67 conserva 65 formas durante diez barridos. Se admite como alternativa arquitectónica y no como reparación del E1 integrado. U0 conserva por separado su panel de 14 asociaciones. Mantener estos perfiles protege capacidades sin fingir una fusión de conocimientos.
+0402 Fuentes: [F05-F06]; [F03]; [F07]; [F09]; [F14]; inventario completo en apéndice A.
+0403 14. Qué muestran las verificaciones y qué no
+0404 El resumen incluye resultados de verificaciones ya ejecutadas: 25 comprobaciones de perfiles, recuperación de 34 familias y 22 verificaciones finales. Al leer estos archivos no se vuelven a realizar esos ensayos ni se añaden réplicas independientes. La confianza debe descansar en contratos, controles y datos, no solamente en la etiqueta PASS.
+0405 Registro
+0406 Alcance documentado
+0407 25 comprobaciones de perfiles
+0408 Pruebas conservadas del candidato corregido. El comprobante final justifica su reutilización mediante identidad de contenido y verifica los padres añadidos.
+0409 34 familias heredadas
+0410 Recuperación desde una extracción limpia de contratos auxiliares. No recupera por ello toda afirmación amplia de las 16 filas documentales.
+0411 22 verificaciones finales
+0412 Identidad, carga, separación de carpetas, interacción nueva, continuidad de cola entre procesos, paquetes y controles seleccionados.
+0413 Nueve estados restaurados
+0414 Restauración de los estados completos seleccionados, no demostración de acceso a todo su conocimiento histórico.
+0415 Esta edición del manual
+0416 Lectura, cruces documentales y comprobación de hashes del resumen. Sin nueva ejecución nativa.
+0418 Regresión proporcional al cambio
+0419 La operación ensayar distingue niveles A, B y C. Para el trabajo futuro, la cobertura debe ajustarse al cambio: comprobaciones rápidas de identidad y contrato, pruebas de integración de las funciones afectadas y verificación completa del alcance anunciado antes de liberar. No hace falta repetir toda la historia después de una edición tipográfica.
+0420 Las sondas funcionales no siempre son inocuas. Ejecutarlas en copias separa la evaluación del curso de la vida. Mantenga testigos causales también de los éxitos nuevos: una respuesta final igual puede ocultar una compensación o un mecanismo distinto. Este es un criterio metodológico, no una garantía automatizada nueva del gestor.
+0421 Fuentes: [F13-F15]; [F25]; [F11]; [F18]; [M01, observación y consulta].
+0422 15. Laboratorio, evolución y promoción de ramas
+0423 El sistema estable conserva lo utilizable; el laboratorio permite ensayar incompatibilidades prometedoras. No se debe rechazar una arquitectura nueva sólo porque no reproduce los detalles de una anterior. Tampoco se debe promoverla por una única mejora ocultando las funciones perdidas.
+0424 Ruta
+0425 Qué conserva
+0426 Criterio de decisión
+0427 Bifurcación compatible
+0428 Pasado completo hasta el padre y contrato comparable.
+0429 Regresión del alcance afectado; ganancias, pérdidas y controles.
+0430 Arquitectura nueva
+0431 Otra vida y preparación desde T0.
+0432 Pruebas funcionales comparables; no exigir identidad del microestado de otra geometría.
+0433 Perfil complementario
+0434 Otra especialización utilizable.
+0435 Admitirla sin atribuir su conocimiento al activo ni eliminar automáticamente la anterior.
+0436 Transferencia asistida o social
+0437 Mecanismo y procedencia específicos.
+0438 Comprobar qué se transfirió y qué tuvo que reaprenderse; no presuponer clonación de significado.
+0440 $inicio = '.\sistema\iniciar_sistema.ps1'& $inicio bifurcar PADRE CANDIDATA --modalidad CANDIDATE& $inicio comparar PADRE CANDIDATA& $inicio promover CANDIDATA --decision ARCHIVO.json
+0441 Este bloque es una plantilla de sintaxis, no una orden de promover una rama existente. Sustituya los marcadores y utilice un documento de decisión válido con hash, evidencia y cobertura. La estructura precisa de ese archivo debe seguir el contrato instalado, no un JSON improvisado desde este libro.
+0442 La promoción registrada de E1_SOCIAL_11 preservó E1_11_ESTABLE. No promovió las guardas R0 del ensayo K65 ni la variante trasladada que perdió acceso. El resultado fue preferencia limitada, no declaración de estabilidad general.
+0443 Fuentes: [F09-F12]; [F03]; [F11, Laboratorio, comparación y promoción].
+0444 16. Pendientes reales y lectura del deterioro
+0445 La evidencia más reciente permite acotar mejor el problema que afectaba al E1 integrado. El intento K65 reprodujo 57/65, 53/65, 4/65 y después pérdida de acceso. Una arquitectura N67 sin ese cuerpo conservó las 65 formas; por tanto, no se infiere un techo universal de 65.
+0446 Además, desde el mismo pasado sin consultas, una primera lectura tardía obtuvo 61/65; las consultas repetidas deterioraron el acceso. El control sin sondas llegó a T3560 con 326 sitios ocupados frente a aproximadamente 297 mil en la condición consultada. Son datos reportados en los registros archivados. Acotan una contribución del procedimiento de consulta en ese contexto, no una explicación universal ni una nueva causa física establecida por este manual.
+0447 Pendiente
+0448 Pregunta que debe resolverse
+0449 No dar por demostrado
+0450 Acceso sostenido
+0451 ¿Qué protocolos conservan uso y nueva adquisición durante retornos y consultas repetidas?
+0452 Que consultar siempre sólo observa.
+0453 Integración K65
+0454 ¿Puede el repertorio coexistir con funciones sociales y de comparación?
+0455 Que el perfil independiente ya reparó E1.
+0456 Retención diversa
+0457 ¿Qué relaciones siguen utilizables tras adquirir otras distintas?
+0458 Que el último snapshot garantiza todo acceso.
+0459 Generalización
+0460 ¿La relación funciona con nuevos referentes, contexto y orden?
+0461 Que una reserva local cubre todo significado.
+0462 YO/TÚ y negación
+0463 ¿Se aprenden roles relativos y negación de contenidos?
+0464 Que IDs, silencio o ceros son conceptos.
+0465 Regulación R2
+0466 ¿La experiencia cambia qué estrategia conviene aplicar?
+0467 Que un pulso aprendido implica política general.
+0468 Productividad
+0469 ¿Se utilizan combinaciones no enseñadas completas?
+0470 Que juntar señales es una gramática.
+0471 16 antecedentes documentales
+0472 ¿Qué pruebas y artefactos faltan para su dominio concreto?
+0473 Que una cita equivale a una capacidad ejecutable.
+0475 No es necesario detener toda enseñanza hasta un número arbitrario de ticks. Es preferible estudiar aprendizaje y acceso en tareas acotadas con diagnósticos proporcionados. Aumentar el tiempo sin nuevas interacciones útiles no demuestra mayor complejidad cognitiva.
+0476 Fuentes: [F17-F18]; [F21]; [H04]; [F03].
+0477 17. Lenguaje español: objetivo y estado del programa
+0478 La decisión de continuidad del proyecto es investigar español básico referido a relaciones observables del mundo DEE, no empezar por una lista de nombres de objetos ni exigir completar NSM65 antes de permitir cualquier comunicación. Pueden estudiarse presencia, posición relativa, tiempo, igualdad, cambio, permanencia, acción y participación. Esta orientación es una decisión de investigación, no una capacidad ya publicada en 1.1.
+0479 NSM65 se conserva como mapa de preguntas y cobertura. Las 65 entradas no son el repertorio K65 ni bastan por sí solas para una gramática. El corte 1.1 no acreditó primitivas nuevas: mantiene máximos históricos operacionales de E1, 60 E0, cuatro E2 y una E3. No son cinco significados humanos completos disponibles ahora.
+0480 Candidata
+0481 Máximo histórico
+0482 Estado actual documentado
+0483 antes
+0484 E2
+0485 Historia y rutas compuestas parcialmente accesibles; no nueva demostración de significado general actual.
+0486 tocar
+0487 E2
+0488 Historia y uso parcial; no generalización amplia actual acreditada.
+0489 dos
+0490 E2
+0491 Lector antiguo parcial; no cardinalidad general actual.
+0492 como
+0493 E2
+0494 Máximo histórico; acceso específico actual no revalidado.
+0495 más
+0496 E3
+0497 Comparación cuantitativa finita con referencia adquirida y revisada; ley comparativa preparada.
+0499 Método de desarrollo, no exigencia de acertar a la primera
+0500 En el laboratorio se permite enseñar, observar, ensayar, corregir la preparación y volver a probar. Las variantes se identifican y los fallos se conservan. Cuando un candidato parece funcionar, se fija su procedimiento y se reserva una prueba nueva. Cambiar el evaluador después de ver el resultado no transforma un fracaso en acierto, pero un fracaso tampoco prohíbe mejorar el método.
+0501 La analogía de desarrollo de una mente orienta los problemas; no exige un cerebro humano ni sentidos biológicos. Enseñar una señal después de una experiencia funcional es una estrategia respaldada por antecedentes, no una ley exclusiva para toda palabra. El anfitrión puede ofrecer acontecimientos y señales, pero no resolver la respuesta que luego atribuye al participante.
+0502 Organizar 1.1 hace más sencillo conservar y contrastar estos intentos. No demuestra que el único obstáculo sea el método, ni fija un techo de vocabulario. Tampoco justifica prometer diez mil palabras. El avance se medirá por relaciones reutilizables, retención, generalización y composición, no sólo por rapidez o número de etiquetas.
+0503 Fuentes: [F19-F20]; [F01, apartado 5]; [F17-F18]; [H01-H04]; decisiones del usuario conservadas en esta conversación. Catálogo en apéndice B.
+0504 18. Memoria de proyecto y relevo entre conversaciones
+0505 Se necesitan dos memorias diferentes. El snapshot guarda la historia operativa de la vida. El manual y el registro de continuidad guardan lo que el investigador necesita saber para retomarla. Un nuevo chat no hereda automáticamente el conocimiento documental; una vida tampoco aprende leyendo este manual.
+0506 Para continuar...
+0507 Conservar o entregar
+0508 La operación
+0509 SISTEMA compatible y estado actual completo, no solamente el ZIP liberado original si ya hubo cambios.
+0510 La investigación
+0511 Este manual, fichas actualizadas, matriz de capacidades, resultados de la última campaña y pendientes.
+0512 Una revisión documental
+0513 Resumen funcional actualizado y comprobante del corte; no hace falta transferir todos los snapshots.
+0514 Una comprobación física
+0515 Archivos y motor necesarios para el contrato concreto, con sus dependencias y entradas.
+0517 Ficha de relevo recomendada
+0518 La ficha siguiente es un formato documental propuesto, no un archivo que el gestor 1.1 ya actualice automáticamente. Guárdela junto al manual y actualícela al cerrar una sesión de trabajo:
+0519 PROYECTO: INVESTIGACION DEESISTEMA: DEE Cognitive System 1.1CORTE Y FECHA: ...PAQUETE Y SHA-256: ...VIDA ACTIVA / PERFIL / TICK: ...SNAPSHOT / SHA-256 / PADRE: ...ULTIMA OPERACION COMPLETADA: ...ENTRADAS PENDIENTES O ESTADO FAILED: ...CAPACIDADES REALMENTE ACCESIBLES: ...CAMBIOS DESDE EL CORTE ANTERIOR: ...EXPERIMENTO ABIERTO Y RESULTADO: ...SIGUIENTE TAREA AUTORIZADA: ...ARCHIVOS NECESARIOS Y UBICACION: ...COMPROBACIONES REALIZADAS / NO REALIZADAS: ...
+0520 Texto breve para abrir otra conversación
+0521 "Continuamos INVESTIGACION DEE sobre DEE Cognitive System 1.1 y DEE thinking 4.5. Adjunto el manual y el corte de continuidad actual. Primero confirma qué archivos puedes leer; distingue la configuración documentada del estado ejecutable disponible. No reinicies vidas, no repitas la campaña cerrada ni modifiques el kernel. Continúa sólo la tarea autorizada de la ficha, preservando perfiles, ramas y evidencia. Las capacidades históricas no se atribuyen automáticamente al activo. El objetivo de lenguaje español sigue abierto."
+0522 Si faltan archivos, el nuevo agente debe decir qué no puede verificar y pedir el mínimo indispensable. El manual permite orientarse; no reemplaza la prueba de acceso ni la evidencia de una versión posterior.
+0523 Fuentes: [F02]; [F10-F11]; [F16]; criterio de continuidad del proyecto. La ficha y el texto de relevo son incorporaciones documentales de esta edición.
+0524 19. Actualización del manual y control de versiones
+0525 El sistema permanece 1.1.0 mientras no exista otra liberación. Este libro tiene edición documental 1.0. Una corrección de texto no cambia el software; una nueva vida no cambia necesariamente el perfil; una nueva arquitectura no es una continuación exacta de otra. Mantenga esos ejes separados.
+0526 Cuándo
+0527 Qué actualizar
+0528 Qué conservar
+0529 Nueva sesión
+0530 Ficha de relevo, activo, tick, snapshot y última tarea.
+0531 El corte anterior y los comprobantes necesarios.
+0532 Nueva capacidad
+0533 Contrato, evidencia, perfil y vida donde funciona, límites y regresión.
+0534 Resultados negativos y dominios no cubiertos.
+0535 Nueva arquitectura
+0536 Perfil, origen, transferencia/reenseñanza y comparación funcional.
+0537 La alternativa anterior si sigue siendo útil.
+0538 Nueva liberación
+0539 Paquetes, hashes, guía, prueba limpia y edición del manual correspondiente.
+0540 ZIP sellados; no reescribir su identidad.
+0541 Corrección científica
+0542 Afirmación afectada, motivo, evidencia posterior y alcance corregido.
+0543 La interpretación anterior como genealogía, sin usarla como autoridad final.
+0545 Ruta sugerida para la copia de trabajo del libro: sistema/documentacion/. Integrarlo allí modificará los bytes de esa copia del sistema; no altera retroactivamente el ZIP ya sellado. Codex debe registrar el cambio documental y, si publica otro paquete, emitir nuevos hashes y el comprobante correspondiente. No repita simulaciones no afectadas por agregar un documento.
+0546 La automatización puede extraer inventarios, hashes y estados. Las interpretaciones científicas requieren revisión y fuentes; no deben actualizarse por convertir cualquier PASS en una afirmación cognitiva. Ninguna sincronización de este libro con el gestor está demostrada por su mera redacción.
+0547 Registro de cambios de esta edición
+0548 Se consolida la configuración documentada de 1.1, se diferencia herencia de integración, se aclara T3154 frente a la visita T3288, se integra el cruce con los manuales 4.5 y se añaden el protocolo de traslado, relevo y actualización. No se ejecutan nuevos aprendizajes ni se adjudican primitivas nuevas.
+0549 Fuentes: [F08-F16]; [F02]; reglas documentales propuestas en esta edición.
+0550 20. Alcance de confidencialidad y uso externo
+0551 Este manual describe el sistema a nivel de operación y continuidad. No contiene el motor ni instrucciones para reconstruir su implementación interna. Tampoco adjunta las fuentes técnicas consultadas, snapshots o configuraciones microscópicas. Las interfaces y los identificadores visibles se conservan porque permiten usar y reconocer el sistema.
+0552 No se debe adjuntar automáticamente el Maestro de Reconstrucción 4.5 a una entrega externa: su finalidad es distinta. Del mismo modo, quitar el WHL de un ZIP de evidencia no convierte todo su contenido en publicable. La documentación original señala que geometrías, estados y fuentes experimentales son material privado.
+0553 Material
+0554 Finalidad
+0555 Límite
+0556 Este manual
+0557 Uso, configuración de 1.1, lectura de capacidades y continuidad.
+0558 No certifica una política de distribución ni autoriza otros archivos.
+0559 SISTEMA completo
+0560 Ejecutar y continuar vidas compatibles.
+0561 Incluye recursos privados; requiere una decisión independiente de entrega.
+0562 AUDITORÍA / evidencia
+0563 Examinar mecanismos, controles y datos.
+0564 Puede revelar información técnica aunque no incluya motor.
+0565 Maestro 4.5
+0566 Arquitectura y reconstrucción de la plataforma.
+0567 No es equivalente a un manual externo de caja negra.
+0569 El usuario externo debe recibir una versión y un alcance concretos. Este documento no sustituye una revisión de todos los artefactos que se decida distribuir. Para mantener el límite solicitado, los apéndices usan denominaciones funcionales y referencias; no reproducen reglas ni fragmentos de código del kernel.
+0570 Fuentes: [F02]; [F10-F11]; USO_PRIVADO de 1.1; [M02, alcance del documento original].
+0572 Apéndice A. Inventario de las 73 entradas
+0573 Esta tabla conserva los identificadores y la clasificación de disponibilidad, con una descripción funcional redactada sin mecanismos internos del kernel. RV: revalidada en 1.1; RF: revalidada con dominio finito; DP: documental pendiente; PE: recuperada, prueba específica pendiente. La revalidación también puede confirmar un fallo o un límite: no todas estas entradas son logros positivos. [F05-F06]
+0574 Número e identificador exacto
+0575 Función y atribución
+0576 Estado
+0577 1. CP01_C01
+0578 Orden finito de dos acontecimientosAuxiliar/perfil; no atribuir al activo.
+0579 RV
+0580 2. CP01_C02
+0581 Calibración de una respuesta por encuentrosAuxiliar/perfil; no atribuir al activo.
+0582 RV
+0583 3. CP01_C03
+0584 Observación y diagnóstico mediante consultasAuxiliar/perfil; no atribuir al activo.
+0585 RV
+0586 4. CP01_C04
+0587 Competencia y convergencia de contribucionesAuxiliar/perfil; no atribuir al activo.
+0588 RV
+0589 5. CP01_C05
+0590 Transferencia mediante un recorrido compatibleAuxiliar/perfil; no atribuir al activo.
+0591 RV
+0592 6. CP01_C06
+0593 Acción, consecuencia y retornoAuxiliar/perfil; no atribuir al activo.
+0594 RV
+0595 7. CP01_C07
+0596 Panel causal de diagnóstico externoAuxiliar/perfil; no atribuir al activo.
+0597 RV
+0598 8. CP01_C08
+0599 Sesión persistente de comunicaciónAuxiliar/perfil; no atribuir al activo.
+0600 RV
+0601 9. CP02_B
+0602 Pronóstico con memoria de consecuencias previasAuxiliar/perfil; no atribuir al activo.
+0603 RV
+0604 10. CPC3_MAIN_AND_COMPARISON
+0605 Comparación entre expectativa y consecuenciaAuxiliar/perfil; no atribuir al activo.
+0606 RV
+0607 11. CPC3_POLICY
+0608 Regla finita de conservar o cambiar una elecciónAuxiliar/perfil; no atribuir al activo.
+0609 RV
+0610 12. SEM01
+0611 Asociación de señal, consecuencia y acciónAuxiliar/perfil; no atribuir al activo.
+0612 RV
+0613 13. CPC4_AB
+0614 Comunicación A-B con experiencia del receptorAuxiliar/perfil; no atribuir al activo.
+0615 RV
+0616 14. CPC4_REGULATION_ABCD
+0617 Contexto y regulación en varias regionesAuxiliar/perfil; no atribuir al activo.
+0618 RV
+0619 15. CPC5_COMPOUND
+0620 Composición de etapas con respaldos adquiridosAuxiliar/perfil; no atribuir al activo.
+0621 RV
+0622 16. CPC5_CAPACITY65
+0623 65 correspondencias físicas consultablesAuxiliar/perfil; no atribuir al activo.
+0624 RV
+0625 17. CPC5_LONGITUDINAL65
+0626 Adquisición acumulativa por bloques 32+33Auxiliar/perfil; no atribuir al activo.
+0627 RV
+0628 18. CPC5_ORDER_AND_DIALOGUE
+0629 Orden, composición y diálogo finitoAuxiliar/perfil; no atribuir al activo.
+0630 RV
+0631 19. CPC6_INTEGRATED
+0632 Integración de experiencia, comparación e informaciónAuxiliar/perfil; no atribuir al activo.
+0633 RV
+0634 20. CPC6_TWO_FORMS
+0635 Dos formas y recuperación posteriorAuxiliar/perfil; no atribuir al activo.
+0636 RV
+0637 21. CPC6_RETENTION_CAUSAL
+0638 Retención y separación entre memoria y lectorAuxiliar/perfil; no atribuir al activo.
+0639 RV
+0640 22. CPC6_ARCHITECTURES
+0641 Comparación de arquitecturas e intercambiosAuxiliar/perfil; no atribuir al activo.
+0642 RV
+0643 23. CORE06_RELEARNING
+0644 Reaprendizaje bajo un protocolo finitoAuxiliar/perfil; no atribuir al activo.
+0645 RV
+0646 24. CORE07_REPROGRAMMING
+0647 Reprogramación de una respuesta adquiridaAuxiliar/perfil; no atribuir al activo.
+0648 RV
+0649 25. ING01_R04_R14
+0650 Renovación y política finita, todavía separadasAuxiliar/perfil; no atribuir al activo.
+0651 DP
+0652 26. ING02_RELATIVE
+0653 Memoria relativa y acceso temporalAuxiliar/perfil; no atribuir al activo.
+0654 DP
+0655 27. ING05_06_CONTEXT
+0656 Contexto dependiente de historiaAuxiliar/perfil; no atribuir al activo.
+0657 DP
+0658 28. PROCESOS_OBSERVERS
+0659 Observadores, cambio de interfaz e intercambioAuxiliar/perfil; no atribuir al activo.
+0660 DP
+0661 29. PROCESAMIENTO_NATIVO
+0662 Síntesis de Procesamiento NativoAuxiliar/perfil; no atribuir al activo.
+0663 DP
+0664 30. FISICA_META_ROSETTA
+0665 Equivalencia funcional y observaciónAuxiliar/perfil; no atribuir al activo.
+0666 DP
+0667 31. PRODUCT4_CONTRACT
+0668 Contrato de producto y atribución de operacionesAuxiliar/perfil; no atribuir al activo.
+0669 DP
+0670 32. CPC7_U0_CONTINUITY
+0671 Continuidad de U0 con nuevas adquisicionesAuxiliar/perfil; no atribuir al activo.
+0672 RV
+0673 33. CPC7_SELECTIVE_REVISION_M1_M2
+0674 Actualización selectiva con recursos declaradosAuxiliar/perfil; no atribuir al activo.
+0675 RV
+0676 34. CPC7_PREPARED_DISCREPANCY_REQUEST
+0677 Solicitud condicionada por discrepanciaAuxiliar/perfil; no atribuir al activo.
+0678 RV
+0679 35. CPC7_ABSENCE_APERTURE
+0680 Solicitud en una ventana preparada de ausenciaAuxiliar/perfil; no atribuir al activo.
+0681 RV
+0682 36. CPC7_DIRECTIONAL_COMPOSITION_AND_POST_NAME
+0683 Composición y signo enseñado después del usoAuxiliar/perfil; no atribuir al activo.
+0684 RV
+0685 37. CPC7_NSM65_SCOPE
+0686 Catálogo NSM65 y sus estados de evidenciaAuxiliar/perfil; no atribuir al activo.
+0687 DP
+0688 38. PRODUCT45_PORT_VALIDATION
+0689 Validación del traslado a producto 4.5Auxiliar/perfil; no atribuir al activo.
+0690 RV
+0691 39. CORE15_OBSERVER_SHADOW
+0692 Familia de observadores y respuestaAuxiliar/perfil; no atribuir al activo.
+0693 DP
+0694 40. CORE16_OBSERVER_INFORMATION
+0695 Información no visible en una observación parcialAuxiliar/perfil; no atribuir al activo.
+0696 DP
+0697 41. CORE17_COMPRESSED_OPERATOR_AND_REPAIR
+0698 Representación comprimida y reparación asistidaAuxiliar/perfil; no atribuir al activo.
+0699 DP
+0700 42. ING05_HISTORY_FACTORIAL
+0701 Respuesta a una experiencia según la historia previaAuxiliar/perfil; no atribuir al activo.
+0702 DP
+0703 43. ING06_POST_HOST_OPPORTUNITIES
+0704 Oportunidades posteriores a la intervención externaAuxiliar/perfil; no atribuir al activo.
+0705 DP
+0706 44. PROC02_PREEXISTING_INTERFACE
+0707 Transformación de una interfaz preexistenteAuxiliar/perfil; no atribuir al activo.
+0708 DP
+0709 45. PROC03_EXCHANGE_DISCOVERY
+0710 Descubrimiento acotado de intercambioAuxiliar/perfil; no atribuir al activo.
+0711 DP
+0712 46. MBP4_CONTEXTUAL_REWRITE
+0713 Reescritura contextual estudiada en MBP4Auxiliar/perfil; no atribuir al activo.
+0714 RV
+0715 47. FISICA_UNI1_LATER_REDUCTION
+0716 Síntesis posterior de Física DEEAuxiliar/perfil; no atribuir al activo.
+0717 DP
+0718 48. CPC8_MAIN_ORDER_CONTACT
+0719 Orden, contacto y retención de forma en CPC8Auxiliar/perfil; no atribuir al activo.
+0720 RV
+0721 49. CPC8_MAIN_QUANTITY_UPDATE
+0722 Actualización cuantitativa en CPC8Auxiliar/perfil; no atribuir al activo.
+0723 RV
+0724 50. CPC8_CONTACT_SOCIAL
+0725 Aprendizaje social de contactoAuxiliar/perfil; no atribuir al activo.
+0726 RV
+0727 51. CPC8_MAGNITUDE_SOCIAL
+0728 Transferencia social de una referenciaAuxiliar/perfil; no atribuir al activo.
+0729 RV
+0730 52. CPC8_K65_PUBLISHED
+0731 Repertorio K65 de CPC8Auxiliar/perfil; no atribuir al activo.
+0732 RV
+0733 53. CPC8_RCA_REGULATION
+0734 Regulación acoplada a una consecuenciaAuxiliar/perfil; no atribuir al activo.
+0735 RV
+0736 54. CPC8_COUNT_SIGN
+0737 Conteo y señal: resultado positivo y límitesAuxiliar/perfil; no atribuir al activo.
+0738 RV
+0739 55. CPC8_QFM_MOVING_FORM
+0740 Acceso móvil a una forma cuantitativaAuxiliar/perfil; no atribuir al activo.
+0741 RV
+0742 56. CPC8_L15_DIAGNOSIS
+0743 Diagnóstico de acceso L15Auxiliar/perfil; no atribuir al activo.
+0744 RV
+0745 57. CPC9_E1_ORDER_CONTACT
+0746 Orden y contacto en la historia E1Rama E1; integración limitada al dominio.
+0747 RF
+0748 58. CPC9_E1_COMPOSITION
+0749 Composición dependiente de dos contribucionesRama E1; integración limitada al dominio.
+0750 RF
+0751 59. CPC9_E1_REFERENCE_REVISION
+0752 Revisión de una referencia adquiridaRama E1; integración limitada al dominio.
+0753 RF
+0754 60. CPC9_E1_LATE_OPERANDS
+0755 Uso posterior de operandos antiguosRama E1; integración limitada al dominio.
+0756 RF
+0757 61. CPC9_E1_SOCIAL_RETURN
+0758 Retorno social y uso posterior en E1Rama E1; integración limitada al dominio.
+0759 RF
+0760 62. CPC9_E1_QUERY_CONDITIONED
+0761 Consulta condicionada por información recibidaRama E1; integración limitada al dominio.
+0762 RF
+0763 63. CPC9_E1_REGULATION_R1
+0764 Regulación R1 del perfil CPC9Auxiliar/perfil; no atribuir al activo.
+0765 PE
+0766 64. CPC9_E1_K65_ATTEMPT
+0767 Intento K65 integrado y su deterioroAuxiliar/perfil; no atribuir al activo.
+0768 RF
+0769 65. CPC9_E1_RESTORE
+0770 Continuación de E1 mediante estados guardadosRama E1; integración limitada al dominio.
+0771 RF
+0772 66. CPC9_AUX_K65_N67
+0773 Repertorio auxiliar K65 en N67Auxiliar/perfil; no atribuir al activo.
+0774 RF
+0775 67. CPC9_AUX_SEMANTIC_PREREQUISITES
+0776 Prerrequisitos semánticos auxiliaresAuxiliar/perfil; no atribuir al activo.
+0777 PE
+0778 68. CPC9_OCCUPATION_WAVE
+0779 Expansión de ocupación y diagnósticosAuxiliar/perfil; no atribuir al activo.
+0780 RF
+0781 69. DCS11_LIFE_STORE
+0782 Gestión completa de vidas y estadosContinuidad o mundo conectado.
+0783 RF
+0784 70. DCS11_SOCIAL_MOBILE
+0785 Aprendizaje social y lector móvilContinuidad o mundo conectado.
+0786 RF
+0787 71. DCS11_R65_SEPARATE_PHASE
+0788 Recuperación de repertorio por ventanas separadasPerfil independiente.
+0789 RF
+0790 72. DCS11_REVISION_CONTINUED
+0791 Revisión continuada experimental de L01Perfil independiente.
+0792 RF
+0793 73. DCS11_REPERTOIRE_N67
+0794 Repertorio N67 independiente de E1Perfil independiente.
+0795 RF
+0797 Los controles, comandos y detalles de dominio completos están en la matriz y el catálogo originales. Algunas filas CPC8 tienen el campo limits vacío: esta edición no interpreta ese vacío como ausencia de restricciones. Los límites proceden del informe de su aparato. Los 16 DP y los 2 PE no se eliminan ni se convierten en funciones del activo.
+0798 Apéndice B. Las 65 entradas y su continuidad
+0799 Versión de catálogo conservada: 2026-10-17.3-measured-finite-directional. Se incluyen las 65 formas españolas exactas del registro. Su tabla original tiene 260 filas: 65 para E1_SOCIAL_11, R65_45_VIVIDO, R65_N67_VIVIDO y U0_14_VIVIDO. No contiene una evaluación equivalente para cada una de las nueve vidas. Los repertorios independientes no heredan los máximos semánticos de E1. [F19-F20]
+0800 La columna H indica el máximo histórico operacional de E1, no un certificado actual. E0 significa falta de adquisición funcional acreditada en ese registro; no imposibilidad. E2 y E3 conservan dominios limitados explicados en el capítulo 17. Las preguntas siguientes son proyectos de prueba; no funciones ya implementadas. Se han reexpresado a nivel funcional para no divulgar detalles del motor.
+0801 Entrada en español
+0802 H
+0803 Pregunta funcional de continuidad
+0804 1  yo
+0805 E0
+0806 ¿El mismo signo sigue al emisor cuando cambian los papeles?
+0807 2  tú
+0808 E0
+0809 ¿La referencia al destinatario cambia correctamente al invertir el intercambio?
+0810 3  alguien
+0811 E0
+0812 ¿Se mantiene la función de participante al variar sus marcadores?
+0813 4  algo
+0814 E0
+0815 ¿Una referencia sirve para un elemento nuevo sin depender de su identidad previa?
+0816 5  gente
+0817 E0
+0818 ¿Se distingue un conjunto de participantes de una sola contribución agregada?
+0819 6  cuerpo
+0820 E0
+0821 ¿Se diferencian efectos sobre la organización propia y sobre otra?
+0822 7  tipos
+0823 E0
+0824 ¿Una clase adquirida se aplica a un ejemplar nuevo con la misma función?
+0825 8  partes
+0826 E0
+0827 ¿Se utiliza una relación parte-conjunto tras sustituir una contribución?
+0828 9  esto
+0829 E0
+0830 ¿La referencia local selecciona el elemento presente cuando cambia su identidad?
+0831 10  lo mismo
+0832 E0
+0833 ¿Se reconoce continuidad funcional pese a cambios y se distingue de una copia?
+0834 11  otro
+0835 E0
+0836 ¿Se identifica el referente alternativo al conocido en otro contexto?
+0837 12  uno
+0838 E0
+0839 ¿Una contribución se distingue de dos con cambios de elementos y dosis?
+0840 13  dos
+0841 E2
+0842 ¿Dos contactos siguen diferenciados después de otras adquisiciones?
+0843 14  algunos
+0844 E0
+0845 ¿Se reconoce un subconjunto sin confundirlo con uno o con todo?
+0846 15  todo
+0847 E0
+0848 ¿Se detecta que falta una oportunidad al cambiar el tamaño del conjunto?
+0849 16  mucho
+0850 E0
+0851 ¿Se reutiliza una cantidad relativamente grande frente a otra referencia?
+0852 17  poco
+0853 E0
+0854 ¿Una cantidad relativamente pequeña depende de una referencia adquirida?
+0855 18  bueno
+0856 E0
+0857 ¿La valoración favorable cambia según consecuencias y contexto?
+0858 19  malo
+0859 E0
+0860 ¿Se distingue una consecuencia desfavorable sin fijarla al nombre del caso?
+0861 20  grande
+0862 E0
+0863 ¿La relación de tamaño se reutiliza con otros referentes?
+0864 21  pequeño
+0865 E0
+0866 ¿La relación de pequeño cambia con la referencia y no con un ID fijo?
+0867 22  saber
+0868 E0
+0869 ¿Tener información adquirida modifica el uso y la necesidad de consultar?
+0870 23  pensar
+0871 E0
+0872 ¿Relaciones anteriores permiten una transformación sin recibir la solución?
+0873 24  querer
+0874 E0
+0875 ¿Una selección de consecuencias se modifica por experiencia?
+0876 25  no querer
+0877 E0
+0878 ¿Se adquiere una evitación que cambia al cambiar las consecuencias?
+0879 26  sentir
+0880 E0
+0881 ¿Se diferencia funcionalmente una condición propia sin atribuir subjetividad?
+0882 27  ver
+0883 E0
+0884 ¿Un modo de observación permite conocimiento que otro no proporciona?
+0885 28  oír
+0886 E0
+0887 ¿Se utiliza información de una modalidad de señal diferenciada?
+0888 29  decir
+0889 E0
+0890 ¿Una emisión adquirida modifica la información utilizable por otro?
+0891 30  palabras
+0892 E0
+0893 ¿Se distinguen signos de referentes y se reutilizan en otro intercambio?
+0894 31  verdad
+0895 E0
+0896 ¿La información comunicada se contrasta con acontecimientos accesibles?
+0897 32  hacer
+0898 E0
+0899 ¿La acción propia modifica una consecuencia de forma distinguible?
+0900 33  pasar
+0901 E0
+0902 ¿Se representa un acontecimiento sin confundirlo con quien actúa?
+0903 34  moverse
+0904 E0
+0905 ¿Se reconoce un desplazamiento al cambiar el referente o la posición inicial?
+0906 35  estar en algún lugar
+0907 E0
+0908 ¿Se usa una relación de localización con varios referentes?
+0909 36  hay
+0910 E0
+0911 ¿La presencia se reconoce por una observación admisible, no por silencio arbitrario?
+0912 37  ser alguien o algo
+0913 E0
+0914 ¿Se mantiene identidad o clase al variar otras propiedades?
+0915 38  es mío
+0916 E0
+0917 ¿Se utiliza una relación de pertenencia relativa al participante?
+0918 39  vivir
+0919 E0
+0920 ¿Se distingue continuidad funcional de una interrupción dentro del dominio?
+0921 40  morir
+0922 E0
+0923 ¿Se identifica una pérdida de función sin confundirla con un acceso fallido?
+0924 41  cuándo
+0925 E0
+0926 ¿Se sitúa un acontecimiento respecto de otras referencias temporales?
+0927 42  ahora
+0928 E0
+0929 ¿La referencia actual cambia con la perspectiva de la interacción?
+0930 43  antes
+0931 E2
+0932 ¿Se conserva precedencia con acontecimientos y participantes nuevos?
+0933 44  después
+0934 E0
+0935 ¿Se utiliza sucesión sin recibir el orden ya resuelto por el anfitrión?
+0936 45  mucho tiempo
+0937 E0
+0938 ¿Se distingue duración larga en relación con otra duración?
+0939 46  poco tiempo
+0940 E0
+0941 ¿Se distingue duración corta al cambiar la escala de la tarea?
+0942 47  por un tiempo
+0943 E0
+0944 ¿Se representa persistencia durante un intervalo no fijado a un caso?
+0945 48  momento
+0946 E0
+0947 ¿Se utiliza una referencia temporal puntual dentro de un episodio?
+0948 49  dónde
+0949 E0
+0950 ¿Se pide o utiliza localización sin una respuesta externa precalculada?
+0951 50  aquí
+0952 E0
+0953 ¿La referencia espacial local se actualiza al cambiar el participante?
+0954 51  arriba
+0955 E0
+0956 ¿Una dirección relativa se aprende respecto de un marco accesible al ente?
+0957 52  debajo
+0958 E0
+0959 ¿La relación opuesta se conserva al cambiar referente y orientación?
+0960 53  cerca
+0961 E0
+0962 ¿La proximidad se utiliza sin depender de coordenadas conocidas sólo por el auditor?
+0963 54  lejos
+0964 E0
+0965 ¿La lejanía cambia de manera coherente con la referencia?
+0966 55  lado
+0967 E0
+0968 ¿Se reconoce una relación lateral al cambiar el punto de vista?
+0969 56  dentro
+0970 E0
+0971 ¿Se distingue pertenencia espacial interior de una vecindad externa?
+0972 57  tocar
+0973 E2
+0974 ¿El contacto se diferencia de una trayectoria libre con experiencias nuevas?
+0975 58  no
+0976 E0
+0977 ¿La negación actúa sobre contenidos distintos y no sólo sobre ausencia de salida?
+0978 59  tal vez
+0979 E0
+0980 ¿Una situación no resuelta cambia la manera de consultar o actuar?
+0981 60  poder
+0982 E0
+0983 ¿Se distingue una oportunidad posible de otra inaccesible bajo condiciones nuevas?
+0984 61  porque
+0985 E0
+0986 ¿Se usa dependencia causal y se diferencia de simple precedencia?
+0987 62  si
+0988 E0
+0989 ¿Una condición adquirida altera el uso de otra relación?
+0990 63  muy
+0991 E0
+0992 ¿Un grado intensificado se utiliza respecto de una referencia?
+0993 64  más
+0994 E3
+0995 ¿La comparación conserva su función al cambiar referencia y objetos?
+0996 65  como
+0997 E2
+0998 ¿Una relación de similitud se reutiliza sin exigir identidad completa?
+1000 Las formulaciones de pregunta son una síntesis documental de esta edición, no nuevos ensayos ni definiciones universales de las palabras. Los 65 identificadores y sus dimensiones originales se conservan en la fuente F19.
+1001 Apéndice C. Familias de recuperación heredada
+1002 Estos son los 34 nombres aceptados por el registro FAMILIAS.json. Son contratos auxiliares, no perfiles activos ni conocimientos de E1. El comando probar-herencia prepara y ejecuta su verificación. No debe usarse como paso rutinario antes de cada consulta del sistema. [F23, families; F14]
+1003 Familia exacta
+1004 Función orientadora
+1005 cpc1
+1006 Primeros casos prácticos y sesión móvil
+1007 cpc2
+1008 Pronóstico y experiencia relativa
+1009 sem01
+1010 Significado funcional inicial de señales
+1011 cpc4
+1012 Comunicación y contexto CPC4
+1013 cpc5
+1014 Compuestos y repertorios CPC5
+1015 cpc6
+1016 Integración y acceso CPC6
+1017 cpc7
+1018 U0 y contratos CPC7
+1019 mcts
+1020 Integración orden/contacto de CPC8
+1021 repertoire
+1022 Repertorios de formas físicas
+1023 rca
+1024 Regulación acoplada
+1025 count
+1026 Conteo funcional y límites
+1027 product
+1028 Regresión del producto
+1029 product_extra
+1030 Contratos adicionales del producto
+1031 ordered
+1032 Composición sensible al orden
+1033 stream
+1034 Historia temporal y señal
+1035 network
+1036 Intercambios en red
+1037 architectures
+1038 Candidatos de arquitectura
+1039 bridge
+1040 Enlaces entre funciones
+1041 capacity
+1042 Capacidad de repertorio
+1043 longitudinal
+1044 Continuidad con adquisiciones sucesivas
+1045 policy
+1046 Política finita preparada
+1047 native_loop
+1048 Recorrido nativo de interacción
+1049 central
+1050 Integración central auxiliar
+1051 qfm
+1052 Forma cuantitativa con acceso móvil
+1053 l15
+1054 Diagnóstico de acceso L15
+1055 need
+1056 Solicitud condicionada
+1057 missing
+1058 Ausencia en ventana preparada
+1059 retain_early
+1060 Retención temprana
+1061 retain_word
+1062 Retención de forma
+1063 retain_late
+1064 Retención tardía
+1065 social
+1066 Interacción social
+1067 initial_cpc8
+1068 Rescate del primer CPC8
+1069 core06
+1070 Contratos CORE06
+1071 core07
+1072 Contratos CORE07
+1074 CORE06 y CORE07 utilizan la dependencia numérica opcional documentada. Que un contrato termine no equivale a transferir su aprendizaje al activo. Las listas de familias y de capacidades tienen granularidad distinta: no deben igualarse por simple conteo.
+1075 $inicio = '.\sistema\iniciar_sistema.ps1'& $inicio probar-herencia --familias cpc1,cpc2 `  --salida RUTA_NUEVA --segundos 4200
+1076 Plantilla de reproducción explícita, no instrucción de ejecutarla ahora ni presupuesto obligatorio para toda prueba. Use una salida nueva y seleccione únicamente las familias necesarias.
+1077 Apéndice D. Identidades de entrega y de estados
+1078 Los hashes de los paquetes SISTEMA y AUDITORÍA proceden de sus comprobantes archivados. No se calcularon sobre sus ZIP completos en esta revisión porque esos paquetes no fueron aportados. El hash del resumen funcional sí se calculó directamente. Los hashes de snapshots identifican archivos opacos; no publican sus contenidos. [F07-F08; F13; F16]
+1079 SISTEMA
+1080 DEE_COGNITIVE_SYSTEM_1_1_SISTEMA.zip
+1081 Tamaño comprimido: 88.789.675 bytes. Miembros: 1080. Tamaño de miembros expandidos: 136.104.313 bytes.
+1082 d34d0fc5c304b79b1b39cab487208ac7e126ec0436268f6cc866682860a609a7
+1083 AUDITORÍA ESENCIAL
+1084 DEE_COGNITIVE_SYSTEM_1_1_AUDITORIA_ESENCIAL.zip
+1085 Tamaño comprimido: 50.788.382 bytes. Miembros: 2030. Tamaño de miembros expandidos: 469.407.253 bytes.
+1086 8ce2704d47bd3e36a321caf31303975b18e0bc5e4f15664d42297cf94cf3238a
+1087 Resumen utilizado para esta edición
+1088 DEE_COGNITIVE_SYSTEM_1_1_RESUMEN_FUNCIONAL.zip636.072 bytes / 42 miembros / manifiesto de 40 miembros sin diferencias.
+1089 09b5b583c0204a2e47f07022a971d47c81521add792450827c21b119bfae430a
+1090 Los saltos de línea de los hashes son sólo de presentación: cada valor tiene 64 caracteres hexadecimales consecutivos.
+1091 Nueve snapshots del corte seleccionado
+1092 E1_SOCIAL_11 | T3154
+1093 estado/checkpoints/E1_SOCIAL_11.T3154.1a841e439187.deetsnap.gzSHA-256:51e2ec6a41f906607848c003c6a22e3e33690f57d20dcae90c8dbbc7ab9ad396
+1094 E1_11_ESTABLE | T1948
+1095 estado/checkpoints/E1_11_ESTABLE.T1948.83caec983c9d.deetsnap.gzSHA-256:5445a452b9fee8c7b283b3c2d0cba973636a24b324e4768e399b1b433630b8e2
+1096 E1_CPC9_1907 | T1907
+1097 estado/checkpoints/importado_E1_CPC9_1907.deetsnap.gzSHA-256:f2a7a5ab80c112f8f5e770910ca79f40b2a2f4836f31cae44dceccb1bd56c341
+1098 E1_CPC9_884 | T884
+1099 estado/checkpoints/importado_E1_CPC9_884.deetsnap.gzSHA-256:2e28f995579317b37e4e58f272bb70368b8c87bef09d4384f79f616c477d151a
+1100 E1_RECONSTRUIDO_11 | T884
+1101 estado/checkpoints/E1_RECONSTRUIDO_11.T884.02a934e1a64f.deetsnap.gzSHA-256:7fc4461bb8b446f457d7cb667d632f5d1eef609d864b50737970b6fa8915fa5f
+1102 R65_45_VIVIDO | T792
+1103 estado/checkpoints/R65_45_VIVIDO.T792.e465f506566b.deetsnap.gzSHA-256:1394eaa8bb770a3a6149394befaaf5c9515d3910e22f46c675b9d5c14d8b3432
+1104 R65_REVISION_11 | T1054
+1105 estado/checkpoints/R65_REVISION_11.T1054.12294986a777.deetsnap.gzSHA-256:b1a2377ab4224d3f0086ca0c3f19ee33c9817f7af6670194abce07a04ff50a28
+1106 R65_N67_VIVIDO | T2822
+1107 estado/checkpoints/R65_N67_VIVIDO.T2822.d348b937817d.deetsnap.gzSHA-256:8f6d8e7f040e94e9ee52774bc1580178d6dafe4d955c371e4806eacadf8464f4
+1108 U0_14_VIVIDO | T539
+1109 estado/checkpoints/U0_14_VIVIDO.T539.8da6112acc1c.deetsnap.gzSHA-256:fad438997f0d594d0cca129b764bfd05cb97dbacd1e864fa426dfa8574b85c52
+1110 Las rutas son relativas a sistema/. No copie un hash de esta tabla a un estado posterior: continuar una vida puede crear otro archivo y otro hash. Use las fichas y punteros del corte real.
+1111 Apéndice E. Fuentes y cobertura de revisión
+1112 Las referencias F corresponden a documentos contenidos en el resumen funcional suministrado. Se leyeron y procesaron todos sus miembros; esta tabla destaca los que fundamentan el manual. Los documentos extensos de datos se analizaron por estructura, inventarios, identidades y campos pertinentes; no se afirma nueva comprobación causal de cada primario original al que remiten.
+1113 Ref.
+1114 Archivo dentro del resumen
+1115 F01
+1116 RESUMEN_FUNCIONAL.md
+1117 F02
+1118 FUENTES_Y_ALCANCE.md
+1119 F03
+1120 MEJORAS_COEXISTENCIAS_Y_LIMITES.md
+1121 F04
+1122 originales/sistema/contratos/PERFILES.json
+1123 F05
+1124 originales/sistema/documentacion/MATRIZ_HERENCIA_CPC01_CPC09.csv
+1125 F06
+1126 originales/evidencia/informes/CATALOGO_CAPACIDADES_1_1.json
+1127 F07
+1128 originales/sistema/documentacion/ESTADO_ACTUAL_DE_VIDAS.json
+1129 F08
+1130 originales/sistema/estado/ACTIVO.json
+1131 F09
+1132 originales/sistema/contratos/PROMOCION_SOCIAL_R1.json
+1133 F10
+1134 originales/sistema/documentacion/ARQUITECTURA_Y_SEPARACION.md
+1135 F11
+1136 originales/sistema/documentacion/GUIA_DE_USO_1_1.md
+1137 F12
+1138 originales/sistema/documentacion/RAMAS_Y_GENEALOGIA.json
+1139 F13
+1140 originales/entregas/VERIFICACION_FINAL_EXTERNA.json
+1141 F14
+1142 originales/evidencia/verificaciones/RECUPERACION_FINAL_DESDE_ZIP/REGRESION_HEREDADA_LIMPIA.json
+1143 F15
+1144 originales/evidencia/verificaciones/RECUPERACION_FINAL_DESDE_ZIP/PERFILES_CANDIDATO02/RESULTADOS.json
+1145 F16
+1146 originales/entregas/REANUDACION.json
+1147 F17
+1148 originales/evidencia/informes/INFORME_CIENTIFICO_1_1.md
+1149 F18
+1150 originales/evidencia/informes/RESUMEN_CIENTIFICO_1_1.md
+1151 F19
+1152 originales/sistema/documentacion/NSM65_ESTADO_POR_VIDA.csv
+1153 F20
+1154 originales/evidencia/informes/NSM65_COBERTURA.json
+1155 F21
+1156 originales/evidencia/informes/PENDIENTES_Y_CAUSAS.json
+1157 F22
+1158 originales/evidencia/informes/INFORME_TAMANOS_Y_COMPACTACION.md
+1159 F23
+1160 originales/sistema/capacidades/core/FAMILIAS.json
+1161 F24
+1162 originales/sistema/documentacion/DESCUBRIMIENTOS_NATIVOS.json
+1163 F25
+1164 originales/evidencia/verificaciones/NUEVE_ESTADOS_ORIGINALES_VALIDOS.json
+1166 Otros 17 miembros del mismo paquete
+1167 HASHES.sha256
+1168 INDICE_DOCUMENTAL.json
+1169 LEER_PRIMERO.md
+1170 MANIFIESTO.json
+1171 originales/PROVENANCE.json
+1172 originales/entregas/DEE_COGNITIVE_SYSTEM_1_1_AUDITORIA_ESENCIAL.SELLADO.json
+1173 originales/entregas/DEE_COGNITIVE_SYSTEM_1_1_SISTEMA.SELLADO.json
+1174 originales/evidencia/INDICE_EVIDENCIA.json
+1175 originales/evidencia/informes/CALCULOS_DESDE_PRIMARIOS.json
+1176 originales/evidencia/informes/COBERTURA_Y_DECISION.json
+1177 originales/evidencia/informes/NSM65_DIMENSIONES_POR_VIDA.json
+1178 originales/evidencia/informes/RECURSOS_Y_TAMANOS.json
+1179 originales/evidencia/verificaciones/ORIGINALES_SIN_MODIFICAR.json
+1180 originales/evidencia/verificaciones/TABLAS_CSV_RELECTURA.json
+1181 originales/sistema/documentacion/COBERTURA_REGRESION.json
+1182 originales/sistema/documentacion/DECISIONES_DE_PROMOCION.md
+1183 originales/sistema/documentacion/USO_PRIVADO.md
+1184 Las copias originales no se adjuntan al manual: algunas contienen información técnica privada que no corresponde a esta edición. El manifiesto del resumen conserva las identidades exactas de esos miembros.
+1185 Manuales y antecedentes cruzados
+1186 Ref.
+1187 Fuente
+1188 Cobertura utilizada
+1189 M01
+1190 DEE thinking 4.5.0, Libro Blanco y Manual Técnico; 107 páginas.
+1191 Texto extraído disponible en seis tramos; lectura dirigida de contratos, uso, persistencia y distinciones de evidencia. No se incorpora su especificación interna.
+1192 M02
+1193 DEE thinking 4.5.0, Maestro de Arquitectura y Reconstrucción; 102 páginas.
+1194 Texto extraído en seis tramos; propiedad de mundo, interfaces y continuidad. No se reproduce código del kernel.
+1195 M03
+1196 Procesamiento Nativo DEE, Libro Manual v1; 69 páginas.
+1197 Texto disponible por tramos; historia, acceso y función. Cruce conceptual, no nueva validación de todos sus experimentos.
+1198 M04
+1199 Organización Basal Persistente, Documento Maestro V2.1; 38 páginas.
+1200 Texto disponible; conservación, aprendizaje, continuidad y dominio de interpretación.
+1201 H01
+1202 CPC7: revision/LECTURA_PROVISIONAL.md.
+1203 Leído del ZIP CPC7 aportado; 2.951 miembros inventariados. No reejecución.
+1204 H02
+1205 Primer CPC8: LECTURA_PROVISIONAL.md.
+1206 Leído del ZIP de 2.927 miembros; uso como antecedente del rescate.
+1207 H03
+1208 CPC8 reconstruido: revision/LECTURA_PROVISIONAL.md.
+1209 Leído del ZIP de 8.469 miembros; diversidad funcional y distinción MAIN/auxiliares.
+1210 H04
+1211 CPC9: INFORME_CIENTIFICO_TRANSVERSAL.md y auditoría de interferencias.
+1212 Auditoría esencial disponible: continuidad, acceso y alcance de las extracciones. No sustituye CPC9 completo.
+1213 Q01
+1214 DEE ENTRELAZAMIENTO CUÁNTICO; 42 páginas.
+1215 Secciones pertinentes sobre observadores y organización distribuida; no se atribuye una prueba cuántica a 1.1.
+1216 C01
+1217 Conversación de continuidad del proyecto.
+1218 Objetivos, límites y decisiones del usuario: no prueba experimental ni acceso certificado a todos los chats.
+1220 CORE, Ingenierías y Procesos se cruzan mediante las entradas y localizadores conservados en el catálogo, los manuales y las genealogías disponibles. No se afirma haber abierto todos sus paquetes originales. La limitación se mantiene para no transformar una referencia en acceso efectivo.
+1221 Regla de autoridad entre cortes
+1222 Para reanudar: estado operativo actual y su identidad. Para una liberación: comprobante externo del ZIP exacto y REANUDACION externo. Para una afirmación científica: primarios y controles de su dominio. Para orientarse: este manual. Los archivos de corte previo internos a un ZIP sellado no deben reescribirse para aparentar que contienen una verificación posterior.

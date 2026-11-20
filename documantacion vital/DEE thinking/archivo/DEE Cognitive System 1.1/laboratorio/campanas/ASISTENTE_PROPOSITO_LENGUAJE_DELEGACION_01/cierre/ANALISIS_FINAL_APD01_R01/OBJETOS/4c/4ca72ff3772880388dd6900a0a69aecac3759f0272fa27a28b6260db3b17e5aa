@@ -1,0 +1,44 @@
+--- a/sistema/app/cola_local.py
++++ b/sistema/app/cola_local.py
+@@ -32,6 +32,12 @@
+             raise ValueError('Declared actuator/return modes only.')
+         allowed={'contexto','modo','senal','aceptar_consumo','dominio','valores','lado','operacion_memoria','valor','componentes'}
+         for row in rows:
++            if row.get('modo')=='apd-componer':
++                if set(row)!={'modo','formas','datos'}:raise ValueError('Assisted APD composition receives only literal forms and public data, never a plan, route or answer.')
++                forms=row['formas'];values=row['datos']
++                if not isinstance(forms,list)or not 2<=len(forms)<=3 or any(not isinstance(t,str)or not t or '\x00'in t or len(t.encode('utf8'))>128 for t in forms):raise ValueError('Composition requires two or three bounded literal forms; no semantic parsing or normalization.')
++                if not isinstance(values,list)or len(values)!=len(forms)+1 or any(type(v)is not int or not 0<=v<=16 for v in values):raise ValueError('Composition receives one more raw public integer0..16 than literal forms.')
++                continue
+             if row.get('modo')=='apd-conteo':
+                 if set(row)!={'modo','presencias'}or not isinstance(row['presencias'],list)or len(row['presencias'])not in(2,3)or any(type(v)is not int or v not in(0,1)for v in row['presencias']):raise ValueError('APD count receives exactly two or three independent literal presence integers0/1, not booleans, dose totals or evaluator answers.')
+                 continue
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -68,14 +68,14 @@
+         for row in payload['situaciones']:
+             mode=row.get('modo','usar')
+             if self.backend=='mente_unificada':
+-                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente','apd-conteo'):raise ValueError('Operation outside declared unified backend.')
+-                if mode in('apd','apd-docencia','apd-ambiente','apd-conteo'):
++                if mode not in('usar','trabajo','experiencia','memoria','dato','crudos','cadena-iniciar','cadena-finalizar','apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer'):raise ValueError('Operation outside declared unified backend.')
++                if mode in('apd','apd-docencia','apd-ambiente','apd-conteo','apd-componer'):
+                     # Passive preparation/domain check only. The literal word
+                     # and operands are forwarded unchanged by session; no host
+                     # operation, useful route or correct result is selected.
+                     from capacidades import asistente_proposito_01 as apd
+                     apd.state(self.a)
+-                    if mode in('apd','apd-docencia'):
++                    if mode in('apd','apd-docencia','apd-componer'):
+                         validator=getattr(apd,'validate_literal',None)
+                         if not callable(validator):raise ValueError('Declared APD literal-admission preflight is absent; no material request or tool action submitted.')
+                         validator(self.a,row)
+@@ -280,7 +280,7 @@
+             if op=='exportar':result['paired_export']=self.world.export_pair(row['id'],self.queue)
+             self.last_receipt=receipt;self.queue.finish(row['id'],'completed',result)
+         except BaseException as error:
+-            work=any(q.get('modo')in('trabajo','cadena-iniciar','cadena-finalizar','apd')or(q.get('modo')=='componer'and q.get('dominio'))or(q.get('modo')=='memoria'and(q.get('operacion_memoria')=='trabajo'or q.get('operacion_memoria')=='componer'and q.get('dominio')))for q in payload.get('situaciones',[]))
++            work=any(q.get('modo')in('trabajo','cadena-iniciar','cadena-finalizar','apd','apd-componer')or(q.get('modo')=='componer'and q.get('dominio'))or(q.get('modo')=='memoria'and(q.get('operacion_memoria')=='trabajo'or q.get('operacion_memoria')=='componer'and q.get('dominio')))for q in payload.get('situaciones',[]))
+             self.uncertain=self.uncertain or work;self.paused=True
+             info={'type':type(error).__name__,'detail':str(error),'native_tick_after_attempt':self.world.tick,
+                 'external_execution_may_be_uncertain':work,'no_retry_or_rollback':True}

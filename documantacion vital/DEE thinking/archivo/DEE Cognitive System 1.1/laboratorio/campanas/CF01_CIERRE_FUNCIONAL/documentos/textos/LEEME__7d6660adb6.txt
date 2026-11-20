@@ -1,0 +1,97 @@
+# DEE thinking 4.5.0 — compilación privada y validación
+
+Proyecto DEE Universe / INVESTIGACION DEE. Autor: Ivan Erick Tlaltecatl Morales.
+Esta entrega consolida software y pruebas sobre v27 congelado; no declara nuevas
+capacidades cognitivas por cambiar la versión. Es privada y reconstructiva.
+El estado técnico exacto está en `VALIDATION_REPORT.json` y el comprobante del ZIP
+exacto se entrega fuera, como `VERIFICACION_FINAL_EXTERNA.json`.
+
+## Instalar
+
+Use CPython3.13 x64 normal (cp313, no free-threaded). Desde la extracción:
+
+```powershell
+python -m venv .mente45_env
+.\.mente45_env\Scripts\python.exe -m pip install --no-index --no-deps .\wheel\dee_thinking-4.5.0-cp313-cp313-win_amd64.whl
+.\.mente45_env\Scripts\python.exe -I -B -c "import dee_thinking as d; print(d.__version__, d.__file__, d.build_info())"
+```
+
+`python` debe ser el intérprete3.13 elegido. No se instala ni modifica4.0.
+No hace falta compilar para utilizar el WHL. La aplicación principal sólo usa
+biblioteca estándar y ese WHL; no necesita expedientes CPC ni rutas históricas.
+
+## Recorrido español
+
+```powershell
+.\.mente45_env\Scripts\python.exe -I -B -m dee_thinking.consolidated_dialogue
+.\.mente45_env\Scripts\python.exe -I -B -m dee_thinking.consolidated_dialogue --events source/examples/consolidated_repertorio.eventos --transcript repertorio.json --strict
+.\.mente45_env\Scripts\python.exe -I -B -m dee_thinking.consolidated_dialogue --events source/examples/consolidated_integrado.eventos --transcript integrado.json --strict
+```
+
+La gramática es estructurada: `nuevo repertorio [K]`, `nuevo integrado`,
+`experiencia`, `bloque`, `consulta`, `actualizar`, `historia`, `consecuencia`,
+`accion`, `ensenar-forma`, `preguntar-forma`, `hasta`, `observar`, `recibos`,
+`guardar`, `cargar`. Escriba `ayuda` para la sintaxis y ventanas reales.
+`reiniciar confirmar` crea otra sesión por petición explícita del usuario;
+no forma parte de una supuesta conservación espontánea de conocimientos.
+Los recorridos guardan y cargan el mismo estado para comprobar continuación.
+
+`ENTE` presenta emisiones; `INSTRUMENTO`, operaciones y medidas;
+`INTERPRETACIÓN`, lectura causal del auditor. No hay LLM ni respuestas cacheadas.
+Los archivos de evaluación no son memoria del participante.
+
+## APIs opcionales y física directa
+
+```python
+from dee_thinking import Runtime, RepertoireSession
+w = Runtime(11)  # vacío: no instala memoria, guardas, fuentes ni consultas
+s = RepertoireSession.create(count=2)
+s.acquire("L01", -1, 0)
+s.acquire("L02", +1, 0)
+s.run_until(3)
+print(s.query(["L01", "L02"], 67))
+```
+
+Vea `source/examples/physical_runtime45.py` para transporte, observación pasiva y un
+fork que no altera MAIN. Las recetas cognitivas no limitan el Runtime directo.
+`source/examples/consolidated_integrado.eventos` muestra orden, comparación, acceso propio,
+interacción, asociación posterior y revisión local. Las oportunidades de pregunta
+y las guardas están preparadas; no se publican como una política general aprendida.
+
+El repertorio de hasta65formas corresponde a dos clases direccionales en aparatos
+finitos; no acredita65significados NSM. El catálogo y su alcance se distribuyen
+como recursos JSON con procedencia y estados. La revisión M1 usa otro docente;
+M2 usa contraflujos explícitos. Las consultas son sondas físicas, no lecturas inocuas.
+El perfil remoto y el de ausencia, si figuran en el contrato, conservan su modalidad
+experimental separada y sus ventanas; no se fusionan silenciosamente con U0.
+
+## C++ y reconstrucción
+
+`install_cpp/` contiene biblioteca estática Release, headers y configuración CMake.
+Un consumidor usa `find_package(dee_thinking 4.5 CONFIG REQUIRED)` y `DEE::thinking`.
+La prueba externa incluye también código4.0 byte-idéntico. No se promete ABI universal.
+
+`tools/build45.ps1` descubre VS/CMake/Ninja instalados y recibe `SourcePath`,
+`BuildRoot`, `ProductRoot`, `PythonExecutable` y `Stage` (`wheel`, `cpp`, `consumer`,
+o `native` para recompilar una configuración nativa de wheel ya creada).
+Los comandos efectivos, versiones y flags están en `BUILD_INFO.json` y sus logs.
+La reconstrucción requiere las dependencias de build documentadas, no incluidas
+como un entorno/toolchain completo. No ejecute scripts históricos de limpieza.
+Los archivos heredados `source/tools/*_3_5.py` y `source/cmake/python/*.ps1`
+se conservan como procedencia histórica, no son los publicadores4.5. En particular,
+no use su opción heredada `venv --clear`; las entradas operativas son los nuevos
+`tools/build45.ps1`, `tools/clean45.py` y `tools/package45.py` con protección de rutas.
+En Windows use una extracción corta si el cargador DLL rechaza una ruta profunda.
+
+## Revisar la evidencia
+
+Comience por `revision/LEER_PRIMERO.md`, `INFORME_TECNICO.md`, las tres matrices,
+`API_DIFF.json`, `MIGRATION_NOTES.md` y `validation/`. Se distinguen observaciones,
+cálculos e interpretación; permanecen controles, rechazos, timeouts y reparaciones.
+Los históricos extensos siguen intactos y sólo se incorporan miembros seleccionados,
+identificados por hash. Las comparaciones diferenciales usan procesos separados.
+
+`MANIFEST.json` y `HASHES.sha256` describen los miembros sin identidad circular.
+El SHA-256 del ZIP está fuera. Si supera20MiB comprimidos, se entregan exactamente
+dos segmentos binarios y `REUNIR_4_5.py`; no son ZIP independientes.
+No se actualizaron los documentos científicos definitivos ni se publicó en Internet.

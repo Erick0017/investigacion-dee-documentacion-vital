@@ -1,0 +1,120 @@
+{
+  "schema": "CF01.independent_read_only_scope_audit.v1",
+  "review_utc": "2026-10-23T01:07:09Z",
+  "modality": "Lectura de código, datos primarios y snapshots; recálculo sin motor",
+  "new_native_ticks": 0,
+  "participant_or_source_edits": 0,
+  "scientific_source_blockers_identified": [],
+  "release_installation_zip_verification_by_this_auditor": "NO_EJECUTADA; corresponde al cierre de distribución, no inferida de esta revisión",
+  "prompt_read_complete": {
+    "name": "1-PROMPT_CODEX_CF01_CIERRE_FUNCIONAL_Y_PAQUETE_INDEPENDIENTE.txt",
+    "sha256": "1a26a605650c4ad52fc8b9fb634065571b9513ab4a62d57c755883f5564b07f0"
+  },
+  "source_review": [
+    {"path": "sistema/capacidades/cierre_funcional_cf01.py", "sha256": "67b277562eafe7cb09ec033d55a60d7dc63f1a2f51848826bc6d4ef6a0c7a8bd", "coverage": "Archivo completo, protocolo de código4"},
+    {"path": "sistema/capacidades/arquitectura_distribuida_mi02_r8.py", "sha256": "0b64ec274bfbfb4c39157659f9f809254b3d05d9dd4e11f3a1413f85828bb7b3", "coverage": "Archivo completo; send y cycle_plan reutilizados por CF01, prepare no se invoca desde el servicio"},
+    {"path": "sistema/app/lives.py", "sha256": "22192925edca01faa9eef2ecaeb2769cf57b4f7245d56e7d0a7ddf172882f976", "coverage": "Load/commit, identidad, sufijoUUID y hash real del checkpoint; no auditoría exhaustiva de todas sus funciones"},
+    {"path": "laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/recalcular_servicio_v3_cf01.py", "coverage": "Código completo, sin importaciones DEE"},
+    {"path": "laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/recalcular_post_cal8_cf01.py", "coverage": "Código completo, sin importaciones DEE"},
+    {"path": "laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/observador_snapshot_existente.py", "coverage": "Importaciones y contrato de parser; ejecutado sólo para leer el snapshot final, sin crear Runtime"}
+  ],
+  "independent_checks": {
+    "gzip_primary_containers_fully_parsed": 76,
+    "packed_observation_occurrences_checked_not_unique_states_or_replicates": 67360,
+    "RAW_clock_preservation": "Cadenas decimales exactas y rango uint64; state, s_reg, semantic y tres direcciones recalculados desde RAW sin float",
+    "packed_observation_mismatches": 0,
+    "archived_code_bundles": 11,
+    "archived_code_member_entries_hashed": 631,
+    "archived_code_member_hash_mismatches": 0,
+    "archived_source_note": "Las dos APERTURA usan un bundle anterior a la existencia del módulo CF01; no se exige que contengan un archivo que aún no existía. Los631 miembros declarados de sus11 índices sí están presentes y coinciden.",
+    "baseline_external_opportunities_decoded_independently": 105,
+    "fixed_window_and_CAL8_opportunities_decoded_independently": 82,
+    "new_DEE_trajectories_for_this_audit": 0,
+    "comparison_errors_found": 0,
+    "counts_scope": "Contenedores, apariciones de observaciones y oportunidades no son individuos ni réplicas independientes. Los cuerpos de control conservan su propia historia."
+  },
+  "dataflow_boundaries": {
+    "world": "task toma una cola exógena. classify calcula gate=+1 si left+referencia_entorno>=right. availability sólo gobierna condiciones y recursos de contacto de cycle_plan, además de evaluación externa.",
+    "participant_inputs": "Dos mediciones RAW por interfaces fijas; observación privada actual por B_incoming cuando se solicita. No se inyecta la referencia7/8, un signo correcto, un error calculado ni una referencia nativa corregida.",
+    "native_action": "Materia existente evoluciona por v27. El servicio no llama prepare ni copia memorias entrenadas; exige metadataR9 y N26/A/B del dominio comprobado.",
+    "fixed_decoder": "Lee únicamente contactos RAW en critical-16 y critical-15, conserva a lo sumo1tick, elige la última muestra única, invalida un conflicto al deadline. No recibe gate, utilidad, memoria, referencia ni respuesta esperada.",
+    "environment_material_contact": "cycle_plan prepara las posibilidades antes de observar la acción. En el primer contacto omite el recurso de fallo del lado actualmente disponible. Es una ley material ambiental dependiente de su estado, no una elección host de la salida del ente.",
+    "external_actuator": "Convierte dirección material r>=0 en izquierda y r<0 en derecha; anulación posterior sustituye sólo la actuación externa porNone. No anula el retorno nativo ni corrige memoria.",
+    "host_role": "Muestreo y codec fijos, calendario preparado, entradas ambientales, bookkeeping, métricas y presentación. No se encontró lectura de targets o de resultados terminales para seleccionar la respuesta nativa.",
+    "timing_domain": "N26, A6/14/14, B19/14/14; critical391mod782 y ventanas declaradas. No se acredita toda la banda representable de valores y fases por admitirla la API."
+  },
+  "reconciled_results": {
+    "baseline_queue": {
+      "MAIN": {"completed_jobs": 24, "offered_jobs": 24, "attempts": 33},
+      "return_omitted": {"completed_jobs": 3, "offered_jobs": 24, "attempts": 36},
+      "external_action_nulled": {"completed_jobs": 0, "offered_jobs": 24, "attempts": 36},
+      "scope": "Tres secuencias consecutivas por brazo. Avanzar o no la cola cambia futuras oportunidades; no son105 aprendices."
+    },
+    "new_social_context": {
+      "same_prefix_tick": 44263,
+      "end_tick": 44343,
+      "private_RAW_input": {"site": [19,12,14], "requested_tick": 44264, "payload": 52},
+      "native_B_message": "Carga2 negativa; el primer giro añade el suministro genérico5 y se observa carga7 en la ruta hacia A",
+      "MAIN_and_sham_context_A": [7,5],
+      "negative_bus_cut_context_A": [0,5],
+      "old_own_loads_preserved": [116,113],
+      "old_private_B_preserved": [61,19],
+      "causal_control": "SEM4 carga0 admitido en bus negativo12/19/9 a44270, después de formarse el mensaje; sham de bus opuesto0/19/9 conserva el efecto en esta ventana",
+      "limits": "36 es otro valor ambiental, no un control desacoplado de igual dosis. El sham opuesto no es universalmente inerte. Se acredita contribución de la ruta, no genealogía única por igualdad de cargas. B61/19 se utiliza y conserva;52 no pasa a ser por ello una nueva memoria privada persistente de B."
+    },
+    "original_single_tick_compound_panel": {"MAIN_useful": 1, "MAIN_offered": 4, "CUT_useful": 0, "CUT_offered": 4, "MAIN_silences": 3, "earlier_material_explains_silences": 3, "rescored_as_original_success": false, "limit": "Los cuatro objetivos eranizquierda; una referencia fija izquierda también resolvería ese panel."},
+    "prospective_two_sample_service": {
+      "MAIN": {"native_correct":18,"external_completed":18,"offered":18,"current_samples":9,"hold1_samples":9},
+      "SHAM": {"native_correct":18,"external_completed":18,"offered":18,"current_samples":9,"hold1_samples":9},
+      "CUT": {"native_correct":16,"external_completed":16,"offered":18,"own_delta_initial":7,"own_delta_final":9},
+      "external_action_nulled": {"native_correct":18,"external_completed":0,"offered":18},
+      "fixed_left_reference": {"completed":9,"offered":18},
+      "fixed_right_reference": {"completed":9,"offered":18},
+      "random_reference_all_seeds": {"seeds":[101,202,303,404,505,606,707,808],"completed":[10,10,11,9,7,10,9,14],"offered_each":18},
+      "limits": "El cambio de lector es instrumental y prospectivo, no recuperación aprendida. CUT comienzaδ7/contexto0,5, frente aMAINδ3/contexto7,5;16/18 incluye compensación y no estima aisladamente la necesidad del mensaje. Referencias fijas/aleatorias no establecen ventaja sobre todo comparador convencional."
+    },
+    "POST_contradictory_consequence": {"intact_delta": [3,2],"omitted_delta":[3,3],"first_common_use_passed_intact_vs_omitted":[false,true],"second_use_passed_intact_vs_omitted":[true,true],"interpretation":"El primer uso deMAIN falla y su retorno readquiereδ3; el segundo acierto no es retención intacta de la referencia perturbada."},
+    "CAL8_same_MAIN": {
+      "start_tick":63813,"end_tick":67723,"explicit_external_world_reset": "Calibración7→8, sin escribir8 ni la referencia correcta enRAW",
+      "intact_completed":4,"omitted_completed":2,"offered_each":5,
+      "first_intact_error_delta":[3,4],"first_omitted_error_delta":[3,3],
+      "next_new_gap8_commands_intact_vs_omitted":[1,-1],
+      "intact_sequence": [{"input":[18,26],"command":-1,"required_gate":1,"passed":false},{"input":[19,27],"command":1,"required_gate":1,"passed":true},{"input":[7,16],"command":-1,"required_gate":-1,"passed":true},{"input":[8,15],"command":1,"required_gate":1,"passed":true},{"input":[13,21],"command":1,"required_gate":1,"passed":true}],
+      "interpretation": "Mejora limitada de una acción posterior dependiente de la consecuencia: primer fallo conservado, cambio nativoδ3→4 y siguiente caso nuevo correcto. No se demuestra recordar simultáneamente ambas calibraciones ni reajustar cualquier ley."
+    }
+  },
+  "final_main_read_only_snapshot": {
+    "life": "CF01_MAIN",
+    "biography": "Fork completo deMI02_SOCIAL_REUSABLE_240 T15329; no es la vidaE1 renombrada",
+    "path": "sistema/estado/checkpoints/CF01_MAIN.T67723.6fc398c95a43.deetsnap.gz",
+    "filename_suffix_is_UUID_not_content_hash": true,
+    "encoded_sha256": "205a34e3b0925fe6d9631d4934aaf29c427171f123d4176adf68bf44d76e07bb",
+    "native_container_sha256": "8969bc184f85360965121fe1a45fcaf7da49d1fa76d9a88953e5e8980bf7121f",
+    "checksum_valid": true,
+    "N":26,"tick":67723,
+    "RAW_sha256":"1ce5b28b2a8f230614c8af6537b3631aa07b08ea1b90acdceba58d9da53ad3de",
+    "clocks_sha256":"2b988a4f5c1e11e8516c498d09d6225bb5ab05a77af78a991f7889b2982d2064",
+    "own":[175,171],"own_delta":4,"context_A":[7,5],"private_B":[61,19],
+    "channels":23,"pending":0,"receipts":1233,
+    "source_metadata_version_note":"protocol_code_revision4 es código actual; service.revision1 y contadores64episodes/17native_queries son acumulativos históricos con varias ventanas. No son tasa del lector3 ni17 decisiones exclusivas de pedir información.",
+    "protected_default": "E1_SOCIAL_11 N67T3154 sigue siendo ACTIVO; CF01 es perfil/vida seleccionable explícitamente. R10 continúa código preparado, no Runtime ejecutado."
+  },
+  "required_scope_statements": [
+    "Retorno omitido elimina suministros programados; no equivale a un corte selectivo del retorno ya formado.",
+    "El rolx0 actúa izquierda y entra en la ruta de consulta; no demuestra decisión exclusiva preguntar-o-actuar.",
+    "Un comando externo retenido1tick no crea retroactivamente un contacto/retorno nativo en el tick sin salida.",
+    "classify ofrece los pares programados y registra fallos en backlog; no selecciona de manera nativa cuál trabajo reintentar. La cola con reintentos es task, otro contrato explícito.",
+    "La plantilla previa de calibración7 y el MAIN finalδ4 son estados distintos; no presentar la plantilla como el futuro reparado ni prometer conservación de toda función anterior en67723.",
+    "El cuerpo, las oportunidades y el calendario son preparación; los campos adquiridos y sus cambios por interacción son función de la evolución. El nuevo contexto y la mejoraCAL8 tienen evidencia, sin añadir funciones de otras vidas a ese resultado.",
+    "No se auditó aquí elZIP final, instalación independiente ni el Word. Su finalización requiere la prueba de entrega separada."
+  ],
+  "evidence_locators": [
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/RECALCULO_TAREA_CF01.json","sha256":"3b10700c2a7ca2a10dca504be86c6e724fa3eb1c3a88df5d469b9ba68fa069d5"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/RECALCULO_CONTEXTO_CF01.json","sha256":"743cc4a16548d4f516425e50027fdb57688eb0548aa0f5e0ff50eda71be502aa"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/RECALCULO_COMPUESTO_ORIGINAL_CF01.json","sha256":"c851118be56fcdc54eb700c6acdcdb9836e17a464344a80832b54eb6c6426720"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/RECALCULO_SERVICIO_V3_CF01.json","sha256":"5161bc5930dc0e07b10ffa8bd324081a0d35a6c0e43e222afe4cc63e05153fd7"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/mecanismo/RECALCULO_POST_CAL8_CF01.json","sha256":"1e7df59e432a3086d9918a0f7aa5a24eb739c60fb1b230981b60aee1deaa7f22"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/PROTOCOLO_SERVICIO_RESERVAS_R9_03.json","sha256":"5daf2c5709cd663fe9e00e27d37be515d34009adee605ec123da2852b369f9a0"},
+    {"path":"laboratorio/campanas/CF01_CIERRE_FUNCIONAL/PROTOCOLO_CAMBIO_CALIBRACION_R9_05.json","sha256":"8d340580efd16d375f7c147a361477cf71bc13da832c1cb0a38b3ae0e108e8af"}
+  ]
+}

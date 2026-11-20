@@ -1,0 +1,108 @@
+{
+  "schema": "CF01.mechanism.read_only_r9.v1",
+  "scope": "Source analysis and passive restoration only. No DEE ticks, no mutations, no new architectures executed by this analyst.",
+  "parent": {
+    "life": "MI02_SOCIAL_REUSABLE_240",
+    "tick": 15329,
+    "snapshot": "sistema/estado/checkpoints/MI02_SOCIAL_REUSABLE_240.T15329.79e7779809ff.deetsnap.gz",
+    "sha256": "dd008c7b0e73c464a75dd0fc55ec05862f8440b8ff5d106c2b77f0b4601c9e8a",
+    "N": 26,
+    "profile": "fisica_directa; MI02.unified.r9",
+    "genealogy_limit": "New MI02 R9 biography, not inherited E1 history. CF01 must fork and preserve this actual state."
+  },
+  "passive_parent_observations": {
+    "A": {"site": [6,14,14], "raw": "2301339409586323457", "clock": "15329", "direction": [0,-1,-1]},
+    "A_own_left": {"site": [5,15,15], "raw": "1152921706470309892", "state": 4, "load": 47},
+    "A_own_right": {"site": [7,15,15], "raw": "1152921693585408004", "state": 4, "load": 44},
+    "A_context_left": {"site": [5,15,13], "raw": "0", "state": 0, "load": 0},
+    "A_context_right": {"site": [7,15,13], "raw": "1152921526081683457", "state": 1, "load": 5},
+    "B": {"site": [19,14,14], "raw": "2301620897447936001", "clock": "15329", "state": 1, "load": 3, "direction": [1,-1,-1]},
+    "B_private_left": {"site": [18,15,15], "raw": "1152921766599852033", "state": 1, "load": 61},
+    "B_private_right": {"site": [20,15,15], "raw": "1152921586211225601", "state": 1, "load": 19},
+    "A_Moore26_alive": 11,
+    "A_Moore26_exact_gradient": [0,-97,-87],
+    "state_zero_note": "Eight inspected neighbours have nonzero inert SEM4 RAW despite state0. They were not treated as available slots or cleared."
+  },
+  "native_causal_composition": {
+    "instantaneous_kernel_rule": "For an alive moving record the next local direction takes componentwise signs of grad_i = -sum(offset_i * s_reg) over existing state>0 Moore26 neighbours. Subsequent transport and encounters remain relevant; this is not a prediction of arbitrary long-term behaviour.",
+    "quiescent_A_Gx": "own_left - own_right + 2 + context_left - context_right",
+    "parent_A_Gx_calculation": "47 - 44 + 2 + 0 - 5 = 0",
+    "own_history_contribution": "A references acquired by its own earlier scalar experiences and actual action consequences; values47/44 are native reached values, not freshly supplied targets.",
+    "private_history_contribution": "B acquired61/19 determines the sign of a native response, which is transported with generic equal load5 on either branch and retained at the corresponding A recipient.",
+    "not_claimed": ["The two private numbers are not both transmitted to A.", "x0 has both default-left motor and query roles; this is not an exclusive learned act/ask policy.", "The parent already has a social recipient. Cutting only future messages cannot remove its historical contribution."]
+  },
+  "query_route": {
+    "heads": [[6,11,11],[6,4,11],[9,4,14],[16,4,14],[16,8,14],[19,11,14],[19,14,14]],
+    "segment_lengths": [3,7,3,7,4,3,3],
+    "sum_geometric_steps": 30,
+    "observed_historical_tick_example": "MI02 testigos26: A change T1174, B activation T1205. This includes update/transport timing; do not assume the geometric sum is a universal runtime latency.",
+    "source_content": "All prepared turn resources are generic; final B reader is load0 in R9. No source supplies the private sign."
+  },
+  "message_routes": [
+    {"sign": 1, "heads": [[22,11,11],[24,11,11],[24,13,9],[24,19,9],[3,19,9]], "recipient": [7,15,13], "segment_lengths": [3,2,2,6,5,4], "geometric_steps": 22},
+    {"sign": -1, "heads": [[16,11,11],[14,11,11],[14,13,9],[14,19,9],[9,19,9]], "recipient": [5,15,13], "segment_lengths": [3,2,2,6,5,4], "geometric_steps": 22}
+  ],
+  "admissible_current_information_candidates_NOT_YET_EXECUTED": {
+    "A_current_left": {"origin": [5,13,20], "direction": [0,0,-1], "travel": 5, "target": [5,13,15], "native_Gx_contribution": "+load"},
+    "A_current_right": {"origin": [7,13,20], "direction": [0,0,-1], "travel": 5, "target": [7,13,15], "native_Gx_contribution": "-load"},
+    "B_private_current_scalar": {
+      "target": [20,13,15],
+      "stationary_input_direction": [0,0,0],
+      "existing_refresh_source": [20,13,16],
+      "existing_refresh_direction": [0,0,-1],
+      "existing_stop": [20,13,14],
+      "quiescent_B_Gx_prediction": "61 - 19 + 2 - current_scalar = 44 - current_scalar",
+      "candidate_observations_for_opposite_outputs": [36,52],
+      "cone_limit_prediction": "For only this quiescent neighbourhood, B Gy=-80+current_scalar and Gz=-82-current_scalar. Scalar36 and52 would preserve dy,dz negative while crossing Gx0; values80+ need not remain within qualified output cone.",
+      "strict_limits": "Current packet is a new private environmental observation, not replacement of B's acquired61/19. Fix delivery phase before observing outcome. Count rejection when the recurrent resource occupies the datum; do not overwrite, clear or retry at a favourable tick after seeing failure. Whether the input persists, a response forms, the second recipient changes, or downstream use improves requires native tests."
+    }
+  },
+  "update_bottleneck": {
+    "existing_sources": "R9 supports reuse of B reader, not arbitrary replacement of either private reference or A's persistent social recipients.",
+    "prediction": "Opposite private output may create the other A recipient while old load5 remains, yielding cancellation instead of replacement. Repeated same-sign messages may coalesce or be blocked. An arrived packet alone is not proof of a usable context update.",
+    "required_observables": ["Both A recipient RAW/clocks before and after message", "Own A reference RAW/clocks", "B private reference RAW/clocks", "Full output route/context, not only named ports", "Future actual contacts and their consequences"],
+    "forbidden_shortcut": "Do not empty the old recipient, rewrite a memory/clock, or select a special reader from the expected result to claim learned social updating."
+  },
+  "causal_controls_and_attribution": [
+    {"control": "Same full-prefix world with generic legal context/data input omitted or fixed same-dose sham", "tests": "Sensitivity to new accessible current information; not loss of previously acquired B context."},
+    {"control": "Same-prefix cut of a newly formed message versus sham", "tests": "The new message's subsequent contribution, provided intervention is admissible and does not paralyse all functions.", "implementation_status": "MI0222/24/46 are not implementations of this control; their blockers were prepared at T0. A CF01 same-prefix intervention would be new and must be labelled."},
+    {"control": "Environmental action annulled only after native output", "tests": "World consequence depends on DEE output rather than a useful host default; do not alter prior input history unintentionally."},
+    {"control": "Return omitted/desynchronised at fixed resource schedule", "tests": "Future own-field/decision change depends on actual physical return; retain motor output even if no reflected failure is produced."},
+    {"control": "Historical MI0246 private histories91/29 versus29/91 and message-cut/no-private/sham worlds", "tests": "Native private-information contribution in the documented earlier T0 histories, not novel CF01 memories."}
+  ],
+  "minimal_service_contract_proposal": {
+    "architecture": "Continue exact chosen R9 with existing interfaces only initially.",
+    "user_inputs": "A finite exogenous availability sequence and, if fixed prior to reserves, raw current observations through fixed existing peripheral sensor ports.",
+    "output_codec": "Qualified direction(x,-1,-1), x in{-1,0,+1}: x>=0 selects left, x<0 right. x0 additionally enters the native query channel. Absence, invalid direction and conflict remain explicit; no favourable action substituted.",
+    "time_domain": "Existing live protocol critical391mod782, contact critical-15, frame windows fixed before evaluation. A sensor+7 read has historical support; new loads/phase still require brief contract checks.",
+    "world_law_requirement": "Freeze utility from independent world parameters and actual effects before reserves. Do not compute stimuli from the expected action or choose availability from A's observed output. A native comparative service is a valid bounded product even if no competent general policy emerges.",
+    "ordinary_learning": "Use actual failed contact and existing native return routes to modify later local fields, not an external reference update.",
+    "strong_integrated_claim_requires": "Same life uses own acquired reference, materially relevant B-derived content, admits new experience, changes a future useful action, retains/reuses an earlier relation, and survives save/continue. Evidence must distinguish each link and any function that remains merely assisted."
+  },
+  "sources_read_complete": [
+    "User CF01 prompt attached 1-PROMPT_CODEX_CF01_CIERRE_FUNCIONAL_Y_PAQUETE_INDEPENDIENTE.txt",
+    "MI02 PAQUETE_ANALISIS_CANDIDATO_02/INFORME_CIENTIFICO_MI02.md",
+    "sistema/capacidades/geometria_distribuida_mi02_r9.py",
+    "sistema/capacidades/geometria_distribuida_mi02_r8.py",
+    "sistema/capacidades/geometria_distribuida_mi02_r7.py",
+    "sistema/capacidades/geometria_distribuida_mi02_r6.py",
+    "sistema/capacidades/geometria_distribuida_mi02.py",
+    "sistema/capacidades/integracion_distribuida_mi02_r9.py",
+    "sistema/capacidades/integracion_distribuida_mi02_r6.py",
+    "sistema/capacidades/arquitectura_distribuida_mi02_r8.py",
+    "sistema/capacidades/distribucion_social_mi02_r2.py",
+    "sistema/capacidades/comparacion_efimera_mi02.py",
+    "sistema/capacidades/mi02_operativo.py",
+    "sistema/contratos/MI02_LECTOR_SOCIAL_REUTILIZABLE.json",
+    "laboratorio/campanas/MI02_ARQUITECTURA_DISTRIBUIDA/vida_unificada_22.py",
+    "laboratorio/campanas/MI02_ARQUITECTURA_DISTRIBUIDA/continuidad_unificada_24.py",
+    "laboratorio/campanas/MI02_ARQUITECTURA_DISTRIBUIDA/reserva_social_reusable_46.py",
+    "laboratorio/campanas/MI02_ARQUITECTURA_DISTRIBUIDA/testigos_y_observacion_26.py",
+    "laboratorio/campanas/MI02_ARQUITECTURA_DISTRIBUIDA/reutilizacion_social_45.py"
+  ],
+  "sources_partially_read_or_structurally_parsed": [
+    "kernel_v27.cpp: bitpacking/exists helpers and complete actualizar_voxel/aplicar_demux sections only; no claim to re-audit full kernel.",
+    "SOCIAL45_REUSE.json: exact final-state and all12 opportunity metric rows extracted; full86MB repeated history not reread linearly.",
+    "MI02_SOCIAL_REUSABLE_240 VIDA.json: identity/snapshot fields; physical parent restored passively, no operation replay."
+  ]
+}

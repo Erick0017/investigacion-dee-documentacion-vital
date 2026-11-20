@@ -1,0 +1,18 @@
+{
+  "scope": "Comprobación operativa nueva solamente en una extracción del ZIP exacto; no campaña científica ni modificación del corte original.",
+  "operations": [
+    {
+      "label": "new_five_context_use_and_actual_local_transaction",
+      "argv": [
+        "mente2", "$LIFE", "--continuar", "--situaciones",
+        "[{\"contexto\":\"delta\"},{\"contexto\":\"epsilon\"},{\"contexto\":\"alfa\"},{\"contexto\":\"beta\"},{\"contexto\":\"gamma\",\"modo\":\"trabajo\",\"dominio\":\"transaccion\",\"valores\":[9,9]},{\"contexto\":\"epsilon\",\"modo\":\"trabajo\",\"dominio\":\"transaccion\",\"valores\":[9,9]}]",
+        "--detalle"
+      ],
+      "require_fence": true,
+      "expect": {"native_signs": [-1, -1, -1, 1, 1, -1], "accepted_workers": 2, "commits": 1}
+    }
+  ],
+  "continuation": ["mente2", "$LIFE", "--continuar", "--situaciones", "[{\"contexto\":\"beta\"},{\"contexto\":\"epsilon\"}]"],
+  "continuation_requires_fence": true,
+  "continuation_expect": {"native_signs": [1, -1]}
+}

@@ -1,0 +1,13 @@
+--- a/sistema/app/servicio_persistente.py
++++ b/sistema/app/servicio_persistente.py
+@@ -75,6 +75,10 @@
+                     # operation, useful route or correct result is selected.
+                     from capacidades import asistente_proposito_01 as apd
+                     apd.state(self.a)
++                    if mode in('apd','apd-docencia'):
++                        validator=getattr(apd,'validate_literal',None)
++                        if not callable(validator):raise ValueError('Declared APD literal-admission preflight is absent; no material request or tool action submitted.')
++                        validator(self.a,row)
+                     if mode=='apd-conteo':
+                         from capacidades import percepcion_cruda_fi01 as pc
+                         if pc.get(self.a).get('level')!=128:raise ValueError('Count requires the already admitted128-component frontend; no automatic preparation or level switch.')

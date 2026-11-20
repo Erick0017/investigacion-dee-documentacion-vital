@@ -1,0 +1,49 @@
+{
+  "campaign": "HABITAT_CAUSAL_Y_ESTRES_E1_01",
+  "scope": "Diagnóstico dirigido, no búsqueda exhaustiva de todos los discos",
+  "checked_utc": "2026-10-21T09:24:00Z",
+  "gazebo_isaac": {
+    "commands_checked": ["gz", "ign", "gazebo", "isaac-sim"],
+    "found_on_path": [],
+    "isaacsim_module_python311": null,
+    "isaacsim_module_anaconda313": null,
+    "conclusion": "No plataforma pesada ya utilizable identificada mediante estas comprobaciones. No se instaló ninguna."
+  },
+  "python311": {
+    "path": "C:/Users/Erik/AppData/Local/Programs/Python/Python311/python.exe",
+    "version": "3.11.9",
+    "gymnasium_initial": null,
+    "numpy_initial": "Disponible en instalación existente",
+    "cloudpickle_initial": null,
+    "farama_notifications_initial": null,
+    "typing_extensions_initial": "Disponible",
+    "pip_version": "26.1.2"
+  },
+  "python313_anaconda": {
+    "path": "D:/Descargas/ANACONDA MINICONDA/python.exe",
+    "version": "3.13.11",
+    "gymnasium_initial": null,
+    "changed": false
+  },
+  "python312_windowsapps": {
+    "attempt": "py -3.12 -I -B -c import checks",
+    "result": "Acceso denegado al crear el proceso WindowsApps"
+  },
+  "pip_attempt": {
+    "command": "python -I -B -m pip install --target <campaign>/external/deps --no-deps --no-cache-dir gymnasium",
+    "sandbox_result": "exit 1; WinError 10013 conexión de socket no permitida; no distribución descargada",
+    "escalated_attempt_result": "Solicitud require_escalated abortada después de espera, instalación no confirmada",
+    "runtime_dee_changed": false,
+    "handoff": "Raíz informada para gestionar descarga; no interpretar el fallo de permisos como inexistencia de Gymnasium."
+  },
+  "published_environment": {
+    "id": "Pendulum-v1",
+    "official_documentation": "https://gymnasium.farama.org/environments/classic_control/pendulum/",
+    "official_source": "https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/envs/classic_control/pendulum.py",
+    "observations": ["cos(theta)", "sin(theta)", "angular velocity"],
+    "torque_bounds_Nm": [-2, 2],
+    "published_default_gravity": 10,
+    "published_truncation_steps": 200,
+    "attribution": "Modelo clásico de control externo; no robot industrial ni prueba de aprendizaje de E1 por sí mismo."
+  }
+}

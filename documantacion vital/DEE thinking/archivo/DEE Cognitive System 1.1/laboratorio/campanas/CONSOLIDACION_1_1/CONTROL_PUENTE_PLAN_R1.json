@@ -1,0 +1,14 @@
+{
+ "schema":"DCS1.1.bridge_causal.plan.r1","frozen_before_runs":true,
+ "discovery":"At2174 C40 is at[10,10,9]; its next destination[9,11,10] is occupied by an existing16record. The predictedC40 route is empty thereafter. Test necessity of that occupancy and actual outgoing/return messages in diagnostic copies only.",
+ "cases":[
+  {"id":"BRIDGE_CUT_DESTINATION","start_tick":2115,"intervention_tick":2174,"kind":"cut_destination"},
+  {"id":"BRIDGE_DESTINATION_SHAM","start_tick":2115,"intervention_tick":2174,"kind":"unchanged_destination"},
+  {"id":"BRIDGE_CUT_OUTBOUND","start_tick":2042,"intervention_tick":2042,"kind":"cut_outbound"},
+  {"id":"BRIDGE_OUTBOUND_SHAM","start_tick":2042,"intervention_tick":2042,"kind":"unchanged_outbound"},
+  {"id":"BRIDGE_CUT_RETURN","start_tick":2115,"intervention_tick":2115,"kind":"cut_return"},
+  {"id":"BRIDGE_RETURN_SHAM","start_tick":2115,"intervention_tick":2115,"kind":"unchanged_return"}
+ ],
+ "end_tick":2189,"decoders_frozen":"For current experienced sign s: A23[0,s,1], B35[0,s,1], C47[0,s,1], use58[1,s,1]. Source acquisition history is unchanged. Destination-cut predicts restoring onlyS00, not a new semantic acquisition.",
+ "limits":"Edits are explicit native diagnostic_fork operations; RAWcut is prohibited in operationalMAIN. No causal result is returned to a live parent. Sham leaves originalraw/clocks unchanged. Counterfactuals are diagnostic, not independent lives."
+}

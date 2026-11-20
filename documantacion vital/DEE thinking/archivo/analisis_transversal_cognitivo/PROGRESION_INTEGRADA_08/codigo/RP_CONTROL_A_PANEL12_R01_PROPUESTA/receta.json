@@ -1,0 +1,426 @@
+{
+  "schema": "DEE.reproduction.recipe.v1",
+  "id": "pi08_a_panel12_regulado_T861426_R01",
+  "title": "PI08 A diagnostic: fixed inherited twelve witnesses with explicit regulated FI",
+  "revision": "R01_PROSPECTIVE_AFTER_B_NUMERIC_REGRESSION_BEFORE_A_CONTROL",
+  "prefix": "PI08_A_CONSOLIDADA_T861426",
+  "code_capsule_key": "PI08_A_CONSOLIDADA_TRANSPORTE_R02",
+  "required_life_prefix": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI08_ARP_",
+  "requires_explicit_material": true,
+  "reproduction_enabled": true,
+  "variants": {
+    "panel12_sin_c2c": {
+      "batches": [
+        [
+          {
+            "label": "habitat_off",
+            "literal": {
+              "modo": "eci01-pi02-pausar-habitat"
+            },
+            "require_zero_ticks": true,
+            "max_ticks": 0,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "luma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "nara",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "nara"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "clasifica",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "clasifica"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "suma",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "suma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "alfa",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "FIplus",
+            "literal": {
+              "modo": "eci01-pi07-fi-regulada",
+              "izquierda": 14,
+              "derecha": 3
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 1300,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "FIminus",
+            "literal": {
+              "modo": "eci01-pi07-fi-regulada",
+              "izquierda": 2,
+              "derecha": 11
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 1300,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "FIzero",
+            "literal": {
+              "modo": "eci01-pi07-fi-regulada",
+              "izquierda": 6,
+              "derecha": 6
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "early_physical_choice"
+            ],
+            "expected": 0,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 1300,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "number13",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "suma",
+              "izquierda": 6,
+              "derecha": 7
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 13,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ],
+            "max_ticks": 600,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "number8",
+            "literal": {
+              "modo": "eci01-aritmetica-directa",
+              "operacion": "diferencia",
+              "derecha": 5
+            },
+            "actual_integer_binding": {
+              "from_step": "number13",
+              "field": "izquierda"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "numeric_result"
+            ],
+            "expected": 8,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "native_operation",
+                "native_trial",
+                "requests"
+              ]
+            ],
+            "max_ticks": 600,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "alfa_after",
+            "literal": {
+              "modo": "memoria",
+              "operacion_memoria": "usar",
+              "contexto": "alfa"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": -1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          },
+          {
+            "label": "luma_after",
+            "literal": {
+              "modo": "apd04-palabra",
+              "texto": "luma"
+            },
+            "read_path": [
+              "result",
+              "rows",
+              0,
+              "reader",
+              "formed_native_command"
+            ],
+            "expected": 1,
+            "receipt_paths": [
+              [
+                "result",
+                "rows",
+                0,
+                "requests"
+              ]
+            ],
+            "max_ticks": 512,
+            "feedback": "real",
+            "actuator": "closed",
+            "stop_on_unapplied_receipt": false
+          }
+        ]
+      ],
+      "native_receipt_expectations": {
+        "rejected": 0,
+        "pending_or_other": 0
+      },
+      "fixed_API_Native_bound": 8684,
+      "bound_derivation": "7word/memory*512 +2arithmetic*600 +3regulatedFI*1300; no C2C use. The literal bodies have fixed finite calendars. Generic RP records actual ticks; Root supervisor retains the campaign budget.",
+      "comparison_question": "A861426 numeric13/8 availability versus failed B875451 panel; initial absolute phases differ and all actual calendars/doses are recorded. No cause is assumed."
+    }
+  },
+  "analysis": {
+    "product_relative": "reproducibilidad/materiales/PI08_A_ANALISIS_PUBLICO_R02",
+    "manifest": "MANIFIESTO_ESTABLE.json",
+    "manifest_sha256": "8fb598792442850fb17a01354134d7a10b7183dfa6e1566960cff36e81c62c1d",
+    "recalculation_script": "RECALCULAR_A_PUBLICA_RP_PI08_R01.py",
+    "interface": "DEE.recalculation.root_outdir.v1"
+  },
+  "verification": {
+    "state": "PREPARADA_REPLAY_NATIVE_PENDIENTE",
+    "Native_replay_verified": false
+  },
+  "assistance": [
+    "Same fixed panel12 paths, literals, numeric decoder and actual integer binding as the closed B panel; only FI modes are explicitly regulated as already declared there.",
+    "No Python chooses a correct result or substitutes13. Each expected value is an evaluator-only comparison after Native.",
+    "Only fresh ARP identity/new absolute destination is allowed by the preserved importer. No C2C resource or B/R03 opportunity is consumed."
+  ],
+  "limitations": [
+    "This is a new diagnostic of complete acquired A, not a redo of B18 or a query on the selected principal.",
+    "B conservation remains false regardless of this outcome. If A also returns7/2, the prepared None diagnostic is not automatically needed or authorized.",
+    "Wrong numeric integer outputs continue to the subsequent fixed binding and remaining witnesses; NULL cannot be replaced with a number.",
+    "Documentary recalculation points to the existing actual A selected FI/alfa evidence; it is not a recálculo of this pending new panel."
+  ],
+  "sources": {
+    "prior_recipe": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\reproducibilidad\\recetas\\pi08_a_consolidada_uso_T861426_R02.json",
+      "sha256": "353b688601deebde0e3800423e575a29848b5731e7446dd7cd52187f041af97c"
+    },
+    "full_A_manifest_sha256": "dfadc5037b804f3c6112263eb0af84f6215d53fd3cb138ae143676a56dfcc00c",
+    "A_code_capsule_manifest_sha256": "dd1d065ecbb8f9ad40224fb0446baaad89ea09eef506ed407ed4a521038a20c0",
+    "unchanged_original_panel_runner": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\ejecutar_conservacion_B_PI08_R02.py",
+      "sha256": "2e1da7e239466c9d99992d3d7edcb4caed66daf5e171a5c3b7b8496096f6e2af"
+    },
+    "failed_B_panel": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\control\\PI08_B_CONSERVACION_R02.json",
+      "sha256": "bd9b211b5b17fb4f140478b88b7924ea1df54c993f1a617b020031caec07030a"
+    },
+    "Native_executed_by_registration": false,
+    "new_worlds_on_registration": 0,
+    "new_worlds_if_Root_runs": 1,
+    "material_C2C_calls": 0
+  }
+}

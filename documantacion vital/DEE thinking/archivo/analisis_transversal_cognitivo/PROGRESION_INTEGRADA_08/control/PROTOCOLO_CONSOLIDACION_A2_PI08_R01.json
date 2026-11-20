@@ -1,0 +1,263 @@
+{
+  "schema": "DEE.PI08.A2.fixed_consolidation.protocol.R01",
+  "status": "SEALED_BEFORE_A2_EVALUATION",
+  "registered_utc": "2026-11-10T20:27:38.551766+00:00",
+  "N": 67,
+  "source_complete_prefix": {
+    "alias": "PI07_R03_POST4_T849645",
+    "manifest_sha256": "06c0bd42cf408933955743465eae357a74658e8d68521da24c400a6ebe7b8575",
+    "initial_RP_use_ordinal4_executed_by_Root": "control/RP_A01_REAL_PI08_R01.json",
+    "after_RP_expected_tick_reference": 850427,
+    "replay_is_use_from_acquired_state_not_acquisition_from_T0": true
+  },
+  "phases": {
+    "previas": {
+      "before": {
+        "R03_ordinal": 5,
+        "C2C_ordinal": 28,
+        "C2C_resources": 30
+      },
+      "after": {
+        "R03_ordinal": 6,
+        "C2C_ordinal": 30,
+        "C2C_resources": 30
+      },
+      "steps": [
+        {
+          "label": "R03_EP05",
+          "kind": "R03",
+          "ordinal": 5,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "C2C28",
+          "kind": "C2C",
+          "ordinal": 28,
+          "literal": {
+            "modo": "eci01-pi04-c2c-oportunidad"
+          },
+          "max_Native_ticks": 1500
+        },
+        {
+          "label": "C2C29",
+          "kind": "C2C",
+          "ordinal": 29,
+          "literal": {
+            "modo": "eci01-pi04-c2c-oportunidad"
+          },
+          "max_Native_ticks": 1500
+        },
+        {
+          "label": "word_luma",
+          "kind": "word",
+          "literal": {
+            "modo": "apd04-palabra",
+            "texto": "luma"
+          },
+          "expected": 1,
+          "max_Native_ticks": 512
+        },
+        {
+          "label": "word_nara",
+          "kind": "word",
+          "literal": {
+            "modo": "apd04-palabra",
+            "texto": "nara"
+          },
+          "expected": -1,
+          "max_Native_ticks": 512
+        },
+        {
+          "label": "memory_alfa",
+          "kind": "memory",
+          "literal": {
+            "modo": "memoria",
+            "operacion_memoria": "usar",
+            "contexto": "alfa"
+          },
+          "expected": -1,
+          "max_Native_ticks": 512
+        }
+      ]
+    },
+    "suministro": {
+      "before": {
+        "R03_ordinal": 6,
+        "C2C_ordinal": 30,
+        "C2C_resources": 30
+      },
+      "after": {
+        "R03_ordinal": 6,
+        "C2C_ordinal": 30,
+        "C2C_resources": 32
+      },
+      "steps": [
+        {
+          "label": "prepare32",
+          "kind": "supply_prepare",
+          "literal": {
+            "modo": "eci01-pi08-c2c-preparar"
+          },
+          "max_Native_ticks": 0
+        },
+        {
+          "label": "confirm32",
+          "kind": "supply_commit",
+          "literal": {
+            "modo": "eci01-pi08-c2c-confirmar"
+          },
+          "token_is_actual_prepare_output": true,
+          "max_Native_ticks": 0
+        }
+      ]
+    },
+    "reapertura": {
+      "before": {
+        "R03_ordinal": 6,
+        "C2C_ordinal": 30,
+        "C2C_resources": 32
+      },
+      "after": {
+        "R03_ordinal": 12,
+        "C2C_ordinal": 30,
+        "C2C_resources": 32
+      },
+      "steps": [
+        {
+          "label": "FI_positive",
+          "kind": "public_FI",
+          "literal": {
+            "modo": "eci01-balance",
+            "izquierda": 17,
+            "derecha": 6
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "FI_negative",
+          "kind": "public_FI",
+          "literal": {
+            "modo": "eci01-balance",
+            "izquierda": 3,
+            "derecha": 14
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "FI_zero",
+          "kind": "public_FI",
+          "literal": {
+            "modo": "eci01-balance",
+            "izquierda": 10,
+            "derecha": 10
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP06",
+          "kind": "R03",
+          "ordinal": 6,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP07",
+          "kind": "R03",
+          "ordinal": 7,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP08",
+          "kind": "R03",
+          "ordinal": 8,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP09",
+          "kind": "R03",
+          "ordinal": 9,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP10",
+          "kind": "R03",
+          "ordinal": 10,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "R03_EP11",
+          "kind": "R03",
+          "ordinal": 11,
+          "literal": {
+            "modo": "eci01-pi07-r03-episodio"
+          },
+          "max_Native_ticks": 1300
+        },
+        {
+          "label": "memory_alfa_final",
+          "kind": "memory",
+          "literal": {
+            "modo": "memoria",
+            "operacion_memoria": "usar",
+            "contexto": "alfa"
+          },
+          "expected": -1,
+          "max_Native_ticks": 512
+        }
+      ]
+    }
+  },
+  "fixed_assistance": "Opportunity order, sensor/actuator/codec and phase calendar are prepared. The actor receives actual physical state and generic actual outcomes, never the expected direction or favorable action. New public FI is fixed retiming, not learned recovery.",
+  "gates_before_adoption": {
+    "full_operational_integrity": true,
+    "all_three_phases_closed_coherently": true,
+    "atomic_supply32_only_after_real_C2C28_29": true,
+    "source_main_not_advanced_or_overwritten": true,
+    "R03_ordinal4_to7_joint_minimum": 3,
+    "R03_ordinal4_to7_denominator": 4,
+    "at_least_one_actual_admitted_useful_protection_pulse": true,
+    "at_least_one_actual_message_preserved_without_pulse": true,
+    "new_public_FI_three_signs_correct": 3,
+    "zero_material_is_valid_NULL_is_not_zero": true,
+    "named_word_memory_minimum_correct": 4,
+    "named_word_memory_denominator": 4,
+    "actual_C2C_products_minimum": 1,
+    "actual_C2C_denominator": 2,
+    "C2C_if_one_failure": "Explicitly classify a1/2 useful-composition scope/degradation; do not claim2/2 or require universal perfection. A NULL/self-halted component that prevents coherent supply remains a real operational blocker.",
+    "post_reopen_R03_ordinal8_to11_joint_minimum": 3,
+    "post_reopen_R03_ordinal8_to11_denominator": 4,
+    "first_cost_error_in_changed_contingency_allowed": true,
+    "new_relearning_at_state1_is_separate_reported_evidence_not_fabricated_when_cue_absent": true,
+    "material_recipe_decisive_replay": "Actual Cognitive RP normal_op4 is the learned-regulation use reproduction; new public migration and transactional use are checked on the same continuing successor.",
+    "old_direct_FI_contract": "Historical/diagnostic with known limitation; no claim that198/176 was repaired.",
+    "no_adoption_by_runner": true
+  },
+  "stop_rules": [
+    "Write/transport uncertainty, unknown/pending Native admission, a second owner, changed principal, deadline or finite-bound failure stops and preserves without retry.",
+    "Valid numeric errors, NULL and terminal Native conflicts are recorded; they do not automatically become transport errors. The component own halt guard is respected.",
+    "Every published use belongs to its actual cut. A previous12/12 panel is not attributed to the final cut."
+  ],
+  "remaining_environment_if_all_phases_complete": {
+    "R03_available_offers": 6,
+    "C2C_available_resources": 2,
+    "no_counter_reset": true
+  },
+  "maximum_remaining_Native_ticks": 18048
+}

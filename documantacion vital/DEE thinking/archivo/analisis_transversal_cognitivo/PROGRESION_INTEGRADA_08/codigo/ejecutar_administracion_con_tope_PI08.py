@@ -1,0 +1,47 @@
+"""Root-only512MiB owned job for conditional administrative Store phases.
+No Native import in this supervisor. Default is a plan. A timeout is logged
+and kept under supervision; it never silently kills an uncertain moving world.
+"""
+from pathlib import Path
+import argparse,datetime,hashlib,json,os,sys,time
+P=Path(__file__).resolve().parents[1];C=P.parents[2]/'DEE Cognitive 2.0';SYSTEM=C/'sistema';PY=C/'motor/python313/python.exe';LIFE='ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01';LIMIT=512*1024*1024
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def record(path,value):
+ temporary=path.with_name(path.name+'.WRITING')
+ with temporary.open('w',encoding='utf8')as f:json.dump(value,f,ensure_ascii=False,indent=2);f.write('\n');f.flush();os.fsync(f.fileno())
+ os.replace(temporary,path)
+def main(a):
+ script=P/'codigo/incorporar_PI08_misma_identidad_R02.py'
+ command=[str(PY),'-I','-B','-X','utf8',str(script),'--prepare-move'if a.accion=='preparar'else'--adopt','--decision',str(a.decision.resolve(strict=True)),'--process-proof',str(a.process_proof.resolve(strict=True))]
+ if a.accion=='adoptar':
+  if a.reopening_proof is None:raise ValueError('Actual product reopening witness required')
+  command+=['--reopening-proof',str(a.reopening_proof.resolve(strict=True))]
+ if not a.ejecutar:print(json.dumps({'mode':'PLAN_ONLY','command':command,'owned_job_memory_limit':LIMIT,'NativeRuntime_opened':False,'Native_inputs':0,'tick_advance_requested':0}));return
+ if not 30<=a.horizonte_segundos<=1800:raise ValueError('Prospective finite administrative horizon30..1800sec required')
+ output=P/'control'/('ADMINISTRACION_'+a.accion.upper()+'_512M_PI08_R01.json');stdout=output.with_suffix('.stdout.txt');stderr=output.with_suffix('.stderr.txt')
+ if any(path.exists()for path in(output,stdout,stderr)):raise FileExistsError('Existing administration preserved; no automatic repeat')
+ sys.path.insert(0,str(SYSTEM));from app import process_control as pc
+ started=time.monotonic();samples=[];timed_out=False;interrupted=False;handle=None;proc=None
+ base={'schema':'DEE.PI08.owned_admin512.v1','phase':a.accion,'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'command':command,'script_sha256':sha(script),'supervisor_sha256':sha(Path(__file__)),'memory_limit_bytes':LIMIT,'Native_threads_environment':1,'tick_advance_requested':0,'scope':'Existing administrative load/save/promote only. No cognitive input; the actual official subprocess and all descendants are bounded by this job.'}
+ with stdout.open('x',encoding='utf8')as out,stderr.open('x',encoding='utf8')as err:
+  proc,handle,name=pc.spawn_owned(command,cwd=str(P),stdout=out,stderr=err,memory_limit=LIMIT);base.update(pid=proc.pid,job_name=name)
+  record(output,{**base,'status':'RUNNING'})
+  while True:
+   try:
+    sample={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'elapsed_seconds':time.monotonic()-started,'process_exit_code':proc.poll(),**pc.job_resources(handle)};samples.append(sample)
+    active=sample.get('job_active_processes')
+    if proc.poll()is not None and active==0:break
+    if not timed_out and sample['elapsed_seconds']>a.horizonte_segundos:
+     timed_out=True;record(output,{**base,'status':'ADMINISTRATIVE_HORIZON_EXCEEDED_LIVE_JOB_PRESERVED','samples':samples,'automatic_kill':False,'automatic_retry':False,'next':'Root must inspect this exact owned job. Supervisor keeps its handle; no new admin/Native phase may start.'})
+     print(json.dumps({'administrative_timeout_preserved':str(output),'pid':proc.pid,'job':name,'automatic_kill':False}),flush=True)
+    time.sleep(.5)
+   except KeyboardInterrupt:
+    interrupted=True;record(output,{**base,'status':'ROOT_INTERRUPTION_LIVE_JOB_PRESERVED','samples':samples,'automatic_kill':False,'automatic_retry':False});print(json.dumps({'root_interruption_preserved':str(output),'pid':proc.pid,'job':name,'automatic_kill':False}),flush=True)
+  exitcode=proc.wait(timeout=1);last=pc.job_resources(handle)
+  # Close a KILL_ON_JOB_CLOSE handle only after actual zero active processes.
+  if last.get('job_active_processes')!=0:raise RuntimeError('Residual job process unexpectedly remains; preserve supervision')
+  pc.close_job(handle);handle=None
+ final={**base,'status':'COMPLETED'if exitcode==0 and not timed_out and not interrupted else'FAILED_OR_LIMIT_PRESERVED','finished_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'exit_code':exitcode,'elapsed_seconds':time.monotonic()-started,'samples':samples,'last_job_resources':last,'all_owned_processes_exited':True,'job_handle_closed_only_after_active0':True,'peak_job_committed_bytes':max(row.get('peak_job_committed_bytes',0)for row in samples),'actual_processes_total':max(row.get('job_total_processes',0)for row in samples),'administrative_horizon_exceeded':timed_out,'interrupted':interrupted,'automatic_kill':False,'automatic_retry':False,'stdout':{'path':str(stdout),'bytes':stdout.stat().st_size,'sha256':sha(stdout)},'stderr':{'path':str(stderr),'bytes':stderr.stat().st_size,'sha256':sha(stderr)},'scientific_operation':'No new Native input or tick advance was requested; Native process was opened only by the explicitly authorized child administrative CLI.'}
+ record(output,final);print(json.dumps({'proof':str(output),'sha256':sha(output),'status':final['status'],'exit_code':exitcode,'peak_job_committed_bytes':final['peak_job_committed_bytes'],'all_owned_processes_exited':True}));return exitcode if exitcode else 2 if timed_out or interrupted else 0
+if __name__=='__main__':
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--accion',choices=('preparar','adoptar'),required=True);ap.add_argument('--decision',type=Path,required=True);ap.add_argument('--process-proof',type=Path,required=True);ap.add_argument('--reopening-proof',type=Path);ap.add_argument('--horizonte-segundos',type=int,default=900);ap.add_argument('--ejecutar',action='store_true');raise SystemExit(main(ap.parse_args()))

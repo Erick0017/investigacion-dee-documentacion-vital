@@ -1,0 +1,72 @@
+{
+  "schema": "DEE.PI08.documentary_fence_actual_test.v1",
+  "all_tests_passed": true,
+  "positive_actual_returncode": 0,
+  "positive_access_fence": {
+    "schema": "DEE.PI08.extraction_access_fence.v1",
+    "denied": [],
+    "DEE_or_app_imports": [],
+    "open_counts": {
+      "extraction": 17,
+      "stdlib": 12,
+      "destination": 3
+    },
+    "jobs": [
+      {
+        "script": "05_RECALCULO/RECALCULAR_PRIMARIOS_PI08.py",
+        "successful_CLI_exit": true
+      },
+      {
+        "script": "05_RECALCULO/CONTINUACION_PROBE.py",
+        "successful_CLI_exit": true
+      }
+    ],
+    "error": null,
+    "new_Native_ticks": 0,
+    "no_original_source_access": true
+  },
+  "actual_PI08_RP_primary_recalculated": 1,
+  "checks": 4,
+  "SystemExit0_followed_by_second_CLI_verified": true,
+  "deliberate_original_path_probe_blocked_before_read": true,
+  "negative_probe_returncode": 2,
+  "negative_probe_audit": {
+    "schema": "DEE.PI08.extraction_access_fence.v1",
+    "denied": [
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\auditoria_documental_PI08.py",
+        "write": false
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py",
+        "write": false
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py",
+        "write": false
+      },
+      {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py",
+        "write": false
+      }
+    ],
+    "DEE_or_app_imports": [],
+    "open_counts": {
+      "extraction": 5,
+      "stdlib": 2
+    },
+    "jobs": [],
+    "error": {
+      "type": "PermissionError",
+      "message": "Extraction fence denied D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\auditoria_documental_PI08.py",
+      "traceback": "Traceback (most recent call last):\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py\", line 39, in <module>\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\x\\05_RECALCULO\\ORIGINAL_PROBE.py\", line 3, in <module>\n    Path(sys.argv[1]).read_bytes()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"pathlib\\_abc.py\", line 625, in read_bytes\n  File \"pathlib\\_local.py\", line 537, in open\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py\", line 26, in hook\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pruebas\\FENCE_ACTUAL_R01\\FENCE.py\", line 15, in check\nPermissionError: Extraction fence denied D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\auditoria_documental_PI08.py\n"
+    },
+    "new_Native_ticks": 0,
+    "no_original_source_access": false
+  },
+  "new_Native_ticks": 0,
+  "DEE_imports": 0,
+  "ZIP_created": false,
+  "product_modified": false,
+  "scope": "Actual isolated Python subprocesses for documentary tools only. The deliberate denied file was a non-secret P8 code file; no world, DEE module or operational process was opened."
+}

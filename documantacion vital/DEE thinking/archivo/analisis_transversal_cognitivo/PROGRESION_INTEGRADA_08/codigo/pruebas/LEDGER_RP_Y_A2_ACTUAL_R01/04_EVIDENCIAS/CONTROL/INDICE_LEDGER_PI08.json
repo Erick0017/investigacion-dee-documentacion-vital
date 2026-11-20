@@ -1,0 +1,87 @@
+{
+  "schema": "DEE.PI08.execution_ledger_index.v1",
+  "evidence": {
+    "rp": {
+      "file": "04_EVIDENCIAS/CONTROL/rp.json",
+      "bytes": 3277,
+      "sha256": "7b525f9529342459f5f84a48ab429acb8f70ecd3af6183852b8149fc8b966c41",
+      "source_reference_for_provenance_only": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\control\\RP_A01_REAL_PI08_R01.json"
+    },
+    "import": {
+      "file": "04_EVIDENCIAS/CONTROL/import.json",
+      "bytes": 3645,
+      "sha256": "7d1834a734d53a937c7257cb0519056e3213a30313a863b5283c56c1a417f51d",
+      "source_reference_for_provenance_only": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\estados\\RP_A01\\IMPORTACION_DIAGNOSTICA.json"
+    },
+    "a2": {
+      "file": "04_EVIDENCIAS/CONTROL/a2.json",
+      "bytes": 135972,
+      "sha256": "5ecd4e9f51987cf1126feb096f99e7910677ecd1e0e104745b1881780839cc58",
+      "source_reference_for_provenance_only": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\control\\PI08_A2_PREVIAS_R01.json"
+    }
+  },
+  "coverage_is_complete_campaign": false,
+  "coverage_declaration": "Only actual RP_A01 cold use and CLOSED A2 previas; subsequent Native phases and technical tests are not included.",
+  "prospective_limits": {
+    "Native_ticks": 150000,
+    "worlds": 10
+  },
+  "executions": [
+    {
+      "execution_id": "RP_A01_COLD_USE",
+      "world_key": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01",
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01",
+      "modality": "B_NATIVE_USE_REPRODUCTION_FROM_LEARNED_PREFIX",
+      "fields": {
+        "before_tick": {
+          "evidence": "import",
+          "pointer": "/result/physical/tick"
+        },
+        "after_tick": {
+          "evidence": "rp",
+          "pointer": "/actual_physical/tick"
+        },
+        "Native_ticks": {
+          "evidence": "rp",
+          "pointer": "/new_Native_ticks"
+        },
+        "life_id": {
+          "evidence": "rp",
+          "pointer": "/life"
+        },
+        "scope_closed": {
+          "evidence": "rp",
+          "pointer": "/coherent_closed"
+        }
+      }
+    },
+    {
+      "execution_id": "A2_PREVIAS_R01",
+      "world_key": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01",
+      "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_RP_R03_PI08_A01",
+      "modality": "MATERIAL_USE_AND_CONSERVATION_BEFORE_A1_INTEGRATION",
+      "fields": {
+        "before_tick": {
+          "evidence": "a2",
+          "pointer": "/initial_tick"
+        },
+        "after_tick": {
+          "evidence": "a2",
+          "pointer": "/final_tick"
+        },
+        "Native_ticks": {
+          "evidence": "a2",
+          "pointer": "/new_Native_ticks"
+        },
+        "life_id": {
+          "evidence": "a2",
+          "pointer": "/life_id"
+        },
+        "scope_closed": {
+          "evidence": "a2",
+          "pointer": "/closed"
+        }
+      }
+    }
+  ]
+}

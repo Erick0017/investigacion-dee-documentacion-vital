@@ -1,0 +1,42 @@
+{
+  "schema": "DEE.PI08.C.immediate_witness_instrumentation.change.R03",
+  "at_utc": "2026-11-10T22:29:49.401826+00:00",
+  "Native_executed": false,
+  "before": {
+    "path": "documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\ORIGINALES_C_INSTRUMENTACION_R03\\pi08_consulta_condicional_C_R02.py",
+    "sha256": "c2d11e2e4243b018fd06ecdc9b7e6cbf1f2b87c93b256ee92daf52ea770fa2f8"
+  },
+  "after": {
+    "path": "documantacion vital\\DEE thinking\\archivo\\analisis_transversal_cognitivo\\PROGRESION_INTEGRADA_08\\codigo\\pi08_consulta_condicional_C_R03.py",
+    "sha256": "07072d230c33f75eccd3cd46751e404bfb24745756e1575e50705c0c76f8870f"
+  },
+  "changes": [
+    {
+      "before": "SEAL = Path(__file__).with_name('SELLO_PI08_C_R02.json')",
+      "after": "SEAL = Path(__file__).with_name('SELLO_PI08_C_R03.json')"
+    },
+    {
+      "before": "_PRIVATE = None\n",
+      "after": "_PRIVATE = None\nINSTRUMENTATION_REVISION = 'R03'\n\n\ndef write_first_stage_witness(home, payload):\n    \"\"\"Write only already captured values; no adapter/world/Native API here.\n\n    Host I/O and one artifact are new. This focused implementation fact is not\n    a universal Native with/without-observer passivity claim.\n    \"\"\"\n    home = Path(home).resolve(strict=True)\n    if not home.is_dir() or type(payload.get('ordinal')) is not int or type(payload.get('query_tick')) is not int:\n        raise ValueError('Existing owned first-stage witness home and indices required')\n    name = 'primera_C_%02d_q%d.json' % (payload['ordinal'], payload['query_tick'])\n    value = {'schema': 'DEE.PI08.C.immediate_first_stage_witness.R03',\n             'instrumentation_revision': 'R03', 'new_Native_calls_for_witness': 0,\n             'uses_existing_observations_and_receipts_only': True, **payload}\n    data = (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'), allow_nan=False)+'\\n').encode('utf8')\n    file = home/name\n    with file.open('xb') as out:\n        out.write(data); out.flush(); os.fsync(out.fileno())\n    return {'file': name, 'bytes': len(data), 'sha256': _sha(data),\n            'schema': value['schema'], 'new_Native_calls': 0}\n"
+    },
+    {
+      "before": "        now_receipts = c._receipts(a, requests); summary1 = c._summary(now_receipts, start, int(a.tick))\n",
+      "after": "        now_receipts = c._receipts(a, requests); summary1 = c._summary(now_receipts, start, int(a.tick))\n        first_stage_witness = write_first_stage_witness(c._home(directory, LIFE), {\n            'ordinal': ordinal, 'query_tick': q1, 'observation_tick': int(a.tick), 'before_tick': start,\n            'actual_preview_observation': sample, 'first_submitted_STATE': datum,\n            'reader': reader1, 'native_motor': motor1, 'question_request_before_final_receipt_lookup': question,\n            'question_observation': question_observation, 'requests': now_receipts, 'Native_inputs': summary1,\n            'no_extra_sensor_query_or_return': True})\n"
+    },
+    {
+      "before": "'Native_selection_valid':motor1 is not None,",
+      "after": "'Native_selection_valid':motor1 is not None,'external_immediate_witness':first_stage_witness,"
+    },
+    {
+      "before": "'new_native_ticks':int(a.tick)-start,'first_stage':first,'second_stage':second,'requests':whole_requests,",
+      "after": "'new_native_ticks':int(a.tick)-start,'first_stage':first,'second_stage':second,'requests':whole_requests,\n                  'instrumentation_revision':INSTRUMENTATION_REVISION,'external_immediate_first_stage_witness':first_stage_witness,"
+    },
+    {
+      "before": "latest['pending'] = {'phase':'preserved_incomplete_C_opportunity','ordinal':ordinal,'tick':int(a.tick),'reason':type(error).__name__}",
+      "after": "latest['pending'] = {'phase':'preserved_incomplete_C_opportunity','ordinal':ordinal,'tick':int(a.tick),'reason':type(error).__name__,\n                             'external_immediate_first_stage_witness':locals().get('first_stage_witness')}"
+    }
+  ],
+  "scientific_VERSION_KEY_protocol_second_episode_unchanged": true,
+  "no_new_Native_observation_query_submit_advance_or_decoder": true,
+  "scope": "Immediately writes already captured first-stage values before terminal/signature/extra-bit validation; preserves file pointer on failure. Host I/O and artifact only; not a universal passivity claim."
+}

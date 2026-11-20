@@ -1,0 +1,138 @@
+{
+  "schema": "DEE.PI07.F1.Runtime_conflict_and_message_phase.source_review.v1",
+  "inspection_utc": "2026-11-10T14:17:49.094718+00:00",
+  "new_Native_ticks": 0,
+  "Native_imports": 0,
+  "new_contract_status": "CANDIDATE_NOT_NATIVE_VALIDATED",
+  "sources": [
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\runtime.cpp",
+      "bytes": 36031,
+      "sha256": "5e1951b7e5b192219e6c7620c9f9c61be911ab5a7faaa6948fea32956cfaf357",
+      "line_start": 370,
+      "line_end": 409,
+      "excerpt": "370: void Runtime::apply_events_at_boundary() {\n371:     const auto range = pending_.equal_range(tick_);\n372:     if (range.first == range.second) return;\n373:     std::vector<PendingEvent> events;\n374:     for (auto it = range.first; it != range.second; ++it) events.push_back(it->second);\n375:     std::sort(events.begin(), events.end(), [](const PendingEvent& a, const PendingEvent& b) {\n376:         return a.sequence < b.sequence;\n377:     });\n378:     std::map<std::size_t, std::size_t> target_counts;\n379:     for (const auto& event : events) {\n380:         for (const auto& write : event.writes) ++target_counts[index(write.coordinate)];\n381:     }\n382:     for (const auto& event : events) {\n383:         EventStatus status = EventStatus::Applied;\n384:         std::string reason;\n385:         for (const auto& write : event.writes) {\n386:             const auto idx = index(write.coordinate);\n387:             if (target_counts[idx] > 1) {\n388:                 status = EventStatus::RejectedConflict;\n389:                 reason = \"simultaneous events target the same register\";\n390:                 break;\n391:             }\n392:             if (raw_a_[idx] != 0) {\n393:                 status = EventStatus::RejectedOccupied;\n394:                 reason = \"target register is not RAW-empty at application boundary\";\n395:                 break;\n396:             }\n397:         }\n398:         auto& receipt = receipts_.at(event.id);\n399:         receipt.status = status;\n400:         receipt.reason = reason;\n401:         if (status == EventStatus::Applied) {\n402:             for (const auto& write : event.writes) {\n403:                 raw_a_[index(write.coordinate)] = write.raw;\n404:                 // Intentionally preserve the existing full clock word.\n405:             }\n406:             receipt.effective_tick = tick_;\n407:         }\n408:     }\n409:     pending_.erase(range.first, range.second);"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\runtime.cpp",
+      "bytes": 36031,
+      "sha256": "5e1951b7e5b192219e6c7620c9f9c61be911ab5a7faaa6948fea32956cfaf357",
+      "line_start": 412,
+      "line_end": 420,
+      "excerpt": "412: v27::TickInfo Runtime::advance(std::uint64_t count) {\n413:     if (paused_ && count != 0) throw std::logic_error(\"runtime is paused\");\n414:     if (count > std::numeric_limits<std::uint64_t>::max() - tick_) {\n415:         throw std::overflow_error(\"runtime tick overflow\");\n416:     }\n417:     v27::TickInfo total{};\n418:     for (std::uint64_t step = 0; step < count; ++step) {\n419:         apply_events_at_boundary();\n420:         const auto info = v27::tick(raw_a_, raw_b_, clock_a_, clock_b_, n_, execution_options_);"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\kernel_v27.cpp",
+      "bytes": 31596,
+      "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+      "line_start": 188,
+      "line_end": 226,
+      "excerpt": "188: static uint64_t buscar_fuente_demux(const uint64_t* gA, int x, int y, int z, int N) {\n189:     // v26-SYM1: reducer simetrico para TODAS las fuentes direccionales que apuntan al destino.\n190:     // - 0 fuentes: conserva el comportamiento nulo.\n191:     // - 1 fuente: conserva EXACTAMENTE el raw de v25.\n192:     // - >1 fuentes: suma s_reg con la misma cota P_KERNEL-1 ya usada por DEMUX,\n193:     //   y compone la direccion mediante signo de la suma vectorial.\n194:     // La reduccion es conmutativa y no depende del indice de MOORE_DXYZ.\n195:     int count = 0;\n196:     uint64_t only_source = 0;\n197:     uint32_t sum_sreg = 0;\n198:     int sum_dx = 0, sum_dy = 0, sum_dz = 0;\n199: \n200:     for (int k = 0; k < 26; ++k) {\n201:         int nx = wrap(x + MOORE_DXYZ[k][0], N);\n202:         int ny = wrap(y + MOORE_DXYZ[k][1], N);\n203:         int nz = wrap(z + MOORE_DXYZ[k][2], N);\n204:         size_t nidx = idx3d(nx, ny, nz, N);\n205:         uint64_t nv = gA[nidx];\n206:         int ndx = get_dir_x(nv), ndy = get_dir_y(nv), ndz = get_dir_z(nv);\n207:         if (ndx == 0 && ndy == 0 && ndz == 0) continue;\n208:         if (wrap(nx + ndx, N) == x && wrap(ny + ndy, N) == y && wrap(nz + ndz, N) == z) {\n209:             ++count;\n210:             only_source = nv;\n211:             sum_sreg += static_cast<uint32_t>(get_s_reg(nv));\n212:             sum_dx += ndx;\n213:             sum_dy += ndy;\n214:             sum_dz += ndz;\n215:         }\n216:     }\n217: \n218:     if (count == 0) return 0;\n219:     if (count == 1) return only_source;\n220: \n221:     const uint32_t cap = static_cast<uint32_t>(P_KERNEL - 1);\n222:     if (sum_sreg > cap) sum_sreg = cap;\n223:     const int out_dx = (sum_dx > 0) ? 1 : ((sum_dx < 0) ? -1 : 0);\n224:     const int out_dy = (sum_dy > 0) ? 1 : ((sum_dy < 0) ? -1 : 0);\n225:     const int out_dz = (sum_dz > 0) ? 1 : ((sum_dz < 0) ? -1 : 0);\n226:     return pack_voxel(1, static_cast<uint16_t>(sum_sreg), out_dx, out_dy, out_dz, SEM_NORMAL);"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0\\source\\src\\kernel_v27.cpp",
+      "bytes": 31596,
+      "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+      "line_start": 241,
+      "line_end": 249,
+      "excerpt": "241:     const uint64_t v = gA[i];\n242: \n243:     const uint32_t estado = get_estado(v);\n244:     const uint16_t s_reg = get_s_reg(v);\n245:     const uint8_t sem = get_sem(v);\n246:     const uint64_t tick = clkA[i];\n247: \n248:     if (sem == SEM_OBSERVER) { gB[i] = v; clkB[i] = tick + 1; return; }\n249: "
+    }
+  ],
+  "conflict_source_conclusion": {
+    "conditions": "Separate scheduled Native events, same exact application boundary and identical site, irrespective of channel names. Not a batch with duplicate targets, which has an earlier separate validation.",
+    "both_event_status": "rejected_conflict",
+    "priority_over_RAW_occupied": true,
+    "writes_applied": 0,
+    "effective_tick_for_conflict": null,
+    "measurement_status": "Static source deduction, not a new binary test."
+  },
+  "message_free_motion_prediction": [
+    {
+      "relative_to_application_boundary": 0,
+      "position": [
+        52,
+        48,
+        51
+      ],
+      "scope": "At0 source is written immediately before kernel step; at1..3 complete frames after advance, assuming no other collision.",
+      "sensor53_contains_message": false
+    },
+    {
+      "relative_to_application_boundary": 1,
+      "position": [
+        53,
+        48,
+        51
+      ],
+      "scope": "At0 source is written immediately before kernel step; at1..3 complete frames after advance, assuming no other collision.",
+      "sensor53_contains_message": true
+    },
+    {
+      "relative_to_application_boundary": 2,
+      "position": [
+        54,
+        48,
+        51
+      ],
+      "scope": "At0 source is written immediately before kernel step; at1..3 complete frames after advance, assuming no other collision.",
+      "sensor53_contains_message": false
+    },
+    {
+      "relative_to_application_boundary": 3,
+      "position": [
+        55,
+        48,
+        51
+      ],
+      "scope": "At0 source is written immediately before kernel step; at1..3 complete frames after advance, assuming no other collision.",
+      "sensor53_contains_message": false
+    }
+  ],
+  "recommended_fixed_reader_options": [
+    {
+      "site": [
+        53,
+        48,
+        51
+      ],
+      "frame": "B+1"
+    },
+    {
+      "site": [
+        54,
+        48,
+        51
+      ],
+      "frame": "B+2"
+    }
+  ],
+  "sinks": [
+    {
+      "site": [
+        55,
+        48,
+        51
+      ],
+      "role": "prepared SEM4 sink for ordinary communication pulse",
+      "nominal_packet_arrival": "B+3"
+    },
+    {
+      "site": [
+        55,
+        48,
+        47
+      ],
+      "role": "prepared SEM4 sink for falsecue+X",
+      "nominal_falsecue_from51_arrival": "birth+4"
+    }
+  ],
+  "geometry_scope": {
+    "counterlane_x": 52,
+    "sink_x": 55,
+    "x_separation": 3,
+    "nominal_counter_minusZ_intersection": false,
+    "direct_Moore1_from_counterlane_to_sink": false,
+    "not_proven": "No global future interaction/passivity guarantee; actual RAW0/interface preflight and Native observation required."
+  },
+  "information_limit": "STATE1 can describe both old +Z threat and new +X falsecue. With STATE as the only sensor input, instantaneous perfect differentiation is not guaranteed or required. Reliability reversal over history is a different legitimate question."
+}

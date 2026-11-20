@@ -1,0 +1,121 @@
+{
+  "claims": [
+    {
+      "claim_id": "C12C01",
+      "claim_text": "A source-supported semantic-4 process emits a non-dispersive period-two train whose detector phase is arrival parity; a t0 mouth obstruction shifts that parity by one tick while an off-path sham does not.",
+      "controls": [
+        "offpath sham",
+        "new axes/N/translations/s_reg"
+      ],
+      "counterevidence": "source is persistent/source-supported, not an autonomous oscillating bulk mode",
+      "machine_predicate": "machine_predicate_result == true and passed == 4/4",
+      "predicate_result": true,
+      "source_result_file": "RESULTS/C12H01_phase_transport_holdout.json",
+      "status": "HOLDOUT_CONFIRMED_INTERNAL",
+      "trial_ids": [
+        "H01-0",
+        "H01-1",
+        "H01-2",
+        "H01-3"
+      ]
+    },
+    {
+      "claim_id": "C12C02",
+      "claim_text": "For equal convergent period-two paths, relative phase changes the detector record: coherent arrivals reduce to s_reg=a+b; the one-tick-shifted B lineage is excluded by prior target occupancy, leaving A-only records. This is phase-sensitive but not a spatial interference-fringe law.",
+      "controls": [
+        "A only",
+        "B only",
+        "isolated shifted B",
+        "closed",
+        "offpath sham",
+        "center-record causal ablation"
+      ],
+      "counterevidence": "no peak/minimum/envelope scaling; destination reducer and occupancy exclusion explain the response",
+      "machine_predicate": "machine_predicate_result == true and passed == 4/4",
+      "predicate_result": true,
+      "source_result_file": "RESULTS/C12H02_phase_history_path_holdout.json",
+      "status": "HOLDOUT_CONFIRMED_INTERNAL",
+      "trial_ids": [
+        "H02-0",
+        "H02-1",
+        "H02-2",
+        "H02-3"
+      ]
+    },
+    {
+      "claim_id": "C12C03",
+      "claim_text": "With zero-direction semantic-4 records at the eight corners, a present center is retained iff k>=6, while an absent center is created iff k=8, in the tested local sector.",
+      "controls": [
+        "all masks",
+        "center absent/present",
+        "new N/translation/state/s_reg"
+      ],
+      "counterevidence": "sector-specific semantic guard, not a global law for arbitrary organizations",
+      "machine_predicate": "machine_predicate_result == true and passed_outcomes == 1536/1536",
+      "predicate_result": true,
+      "source_result_file": "RESULTS/C12H03_guard_threshold_holdout.json",
+      "status": "EXACT_SECTOR_LAW",
+      "trial_ids": [
+        "H03-all-1536"
+      ]
+    },
+    {
+      "claim_id": "C12C04",
+      "claim_text": "The k>=6 semantic-4 guard produces an organization-specific sustained capture interface for a period-two train; k=5, semantic-1 equal inventory, and spatially shuffled semantic-4 controls transmit.",
+      "controls": [
+        "k=5",
+        "semantic1 equal inventory",
+        "semantic4 shuffled",
+        "empty"
+      ],
+      "counterevidence": "discrete capture/no transmission; no reflection, phase shift, refraction, or external interface law yet",
+      "machine_predicate": "machine_predicate_result == true and passed == 4/4",
+      "predicate_result": true,
+      "source_result_file": "RESULTS/C12H04_guarded_interface_holdout.json",
+      "status": "HOLDOUT_CONFIRMED_INTERNAL",
+      "trial_ids": [
+        "H04-0",
+        "H04-1",
+        "H04-2",
+        "H04-3"
+      ]
+    },
+    {
+      "claim_id": "C12C05",
+      "claim_text": "No Theta_DEE candidate or zeroth-law screen was earned within three causally distinct ensemble classes.",
+      "controls": [
+        "closed static",
+        "joint scaffold A/B controls",
+        "source-supported isolated/contact"
+      ],
+      "counterevidence": "this is bounded by the mechanism budget, not DEE_HAS_NO_TEMPERATURE",
+      "machine_predicate": "Theta_DEE_found == false and classes_tested == 3",
+      "predicate_result": true,
+      "source_result_file": "RESULTS/C12D03_persistent_ensemble_contact.json",
+      "status": "BOUNDED_NEGATIVE",
+      "trial_ids": [
+        "MC1",
+        "MC2",
+        "MC3"
+      ]
+    }
+  ],
+  "contradiction_check": {
+    "all_final_claim_predicates_true": true,
+    "incidents": [
+      {
+        "claim_id": "C12D02_PROVISIONAL",
+        "preserved": "INCIDENTS/C12I03_binary_readout_interpretation.json",
+        "reason": "binary occupancy labeled paths additive, but recorded s_reg/direction already differed by phase; richer frozen observer corrected it",
+        "status": "INTERPRETATION_INVALIDATED"
+      },
+      {
+        "claim_id": "C12D04_PROVISIONAL",
+        "preserved": "INCIDENTS/C12I01_provisional_interface_interpretation.json",
+        "reason": "the broad full-scaffold label omitted equal suppression by seven corners; exhaustive mask law replaced it",
+        "status": "INTERPRETATION_INVALIDATED"
+      }
+    ]
+  },
+  "created_utc": "2026-09-15T03:28:42Z"
+}

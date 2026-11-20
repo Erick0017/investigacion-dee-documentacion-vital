@@ -1,0 +1,338 @@
+{
+  "schema": "CPC8R.initiative.integration.contract.v1",
+  "status": "COMPONENT_VALIDATED_IN_NEW_JOINT_QUANTITY_WORLD_NOT_YET_MAIN_E1",
+  "geometry": {
+    "schema": "CPC8R.initiative.gradient_tap.v1",
+    "N": 67,
+    "prefix": "initiative.quantity.",
+    "branches": [
+      {
+        "reference_candidate": 1,
+        "incoming_candidate": "+X_NATIVE_COMPARATOR_OUTPUT",
+        "comparison_site": [
+          50,
+          35,
+          35
+        ],
+        "request_site": [
+          52,
+          35,
+          35
+        ],
+        "request_port": "initiative.quantity.request_opportunity",
+        "request_direction": [
+          0,
+          1,
+          1
+        ],
+        "request_probe_site": [
+          52,
+          36,
+          36
+        ],
+        "source_site": [
+          52,
+          40,
+          40
+        ],
+        "sources": {
+          "-1": {
+            "value": -1,
+            "hub": [
+              59,
+              47,
+              47
+            ],
+            "source_contact": [
+              52,
+              40,
+              40
+            ],
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "cue_port": "initiative.quantity.source.-1.cue",
+            "event_port": "initiative.quantity.source.-1.event"
+          },
+          "1": {
+            "value": 1,
+            "hub": [
+              45,
+              47,
+              47
+            ],
+            "source_contact": [
+              52,
+              40,
+              40
+            ],
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "cue_port": "initiative.quantity.source.1.cue",
+            "event_port": "initiative.quantity.source.1.event"
+          }
+        },
+        "effects": {
+          "-1": {
+            "site": [
+              48,
+              40,
+              40
+            ],
+            "opportunity_port": "initiative.quantity.effect.-1",
+            "return_site": [
+              43,
+              35,
+              35
+            ],
+            "return_direction": [
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "1": {
+            "site": [
+              56,
+              40,
+              40
+            ],
+            "opportunity_port": "initiative.quantity.effect.1",
+            "return_site": [
+              61,
+              35,
+              35
+            ],
+            "return_direction": [
+              1,
+              -1,
+              -1
+            ]
+          }
+        }
+      }
+    ],
+    "signatures": {
+      "initiative.quantity.request_opportunity": {
+        "site": [
+          55,
+          32,
+          32
+        ],
+        "direction": [
+          -1,
+          1,
+          1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.-1.cue": {
+        "site": [
+          59,
+          50,
+          50
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.-1.event": {
+        "site": [
+          62,
+          47,
+          47
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "state": 31,
+        "semantic": 1
+      },
+      "initiative.quantity.effect.-1": {
+        "site": [
+          48,
+          43,
+          43
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 43,
+        "semantic": 1
+      },
+      "initiative.quantity.source.1.cue": {
+        "site": [
+          45,
+          50,
+          50
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.1.event": {
+        "site": [
+          42,
+          47,
+          47
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "state": 31,
+        "semantic": 1
+      },
+      "initiative.quantity.effect.1": {
+        "site": [
+          56,
+          43,
+          43
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 43,
+        "semantic": 1
+      }
+    },
+    "source_epoch": 0,
+    "ticks": {
+      "comparison": 70,
+      "request": 72,
+      "question_in_flight": 73,
+      "source": 77,
+      "effect": 81,
+      "return": 86
+    },
+    "prepared": "One fixed conditional geometric tap and both symmetric effect resources. Does not prepare or classify the upstream comparison.",
+    "acquired": "Source directional content only through postT0cue/event experiences. Upstream reference acquisition remains the owningE1protocol.",
+    "scope": "A native positive-X comparator output can trigger a finite information request; negative/zero outputs are measured separately. No general need-for-information claim.",
+    "resources": {
+      "initial_material_sites": 0,
+      "interfaces": 7,
+      "request_opportunities": 1,
+      "effect_opportunities": 2,
+      "provider_copies_separately_exposed": 1,
+      "basic_buffers_bytes": "Shared with owningN67Runtime, not allocated by factory"
+    }
+  },
+  "optional_return_use": {
+    "schema": "CPC8R.initiative.return_use.geometry.v1",
+    "items": [
+      {
+        "source_value_candidate": -1,
+        "port": "initiative.quantity.return_use.1.-1",
+        "input_site": [
+          37,
+          29,
+          32
+        ],
+        "input_direction": [
+          1,
+          1,
+          0
+        ],
+        "load": 13,
+        "requested_tick": 86,
+        "meeting_site": [
+          40,
+          32,
+          32
+        ],
+        "meeting_tick": 89,
+        "emission_site": [
+          40,
+          32,
+          31
+        ],
+        "emission_tick": 90,
+        "expected_format_not_payload": [
+          0,
+          0,
+          -1
+        ]
+      },
+      {
+        "source_value_candidate": 1,
+        "port": "initiative.quantity.return_use.1.1",
+        "input_site": [
+          0,
+          29,
+          32
+        ],
+        "input_direction": [
+          -1,
+          1,
+          0
+        ],
+        "load": 13,
+        "requested_tick": 86,
+        "meeting_site": [
+          64,
+          32,
+          32
+        ],
+        "meeting_tick": 89,
+        "emission_site": [
+          64,
+          32,
+          31
+        ],
+        "emission_tick": 90,
+        "expected_format_not_payload": [
+          0,
+          0,
+          -1
+        ]
+      }
+    ],
+    "prepared": "Two symmetric receiving resources, same schedule/load regardless of reference, source or upstream output.",
+    "scope": "A contact using a returned physical product; not a learned receptor policy or unbounded reusable organ."
+  },
+  "source_paths": [
+    "src/iniciativa_accion/solicitud.py",
+    "src/iniciativa_accion/return_use.py"
+  ],
+  "call_order": [
+    "before world creation: ports,g=prepare_gradient_tap()",
+    "append the interfaces to the owning N67 recipe; do not create another Runtime",
+    "optional rxports,rxg=prepare_return_use(g); add rxports and g.return_use",
+    "world=OrganizationalWorld.create(recipe) once",
+    "session=InitiativeSession(world,g), inert attachment",
+    "at0: session.acquire_source(+1 or-1), based on actual local provider observation",
+    "at0: session.opportunities(), finite fixed resources, no observation branch",
+    "optional: submit both return-use resources at86, load13, using their declared ports",
+    "advance only owning world/session, capture fields and receipts",
+    "save/load full world; no prepare() on restoration"
+  ],
+  "restrictions": [
+    "N67 only; no resize",
+    "source_epoch0, first tap72, finite return86",
+    "the upstream physical predicate must actually reach+Xsite(52,35,35)72",
+    "new MAIN context and root regulation can perturb all these routes: requires a new integrated trajectory, causal control and reserve",
+    "all source and consequence resource inputs remain external EXPERIENCE_PROTOCOL; native routing/content interaction follows v27",
+    "ports add no initial matter, no RAW or clock edits; do not transplant a learned source"
+  ]
+}

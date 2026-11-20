@@ -1,0 +1,45 @@
+{
+  "anti_cheating": {
+    "clock_same_in_AB_BA": true,
+    "event_payload_s_reg": 0,
+    "events_preloaded_before_t0": true,
+    "python_history_decoder": false,
+    "readout_answer_independent": true
+  },
+  "content_sha256": "9f0080bceb717b5eef34c23b15dbe9469e4a43e1cfe47c07e220b13df28a8a9f",
+  "created_utc": "2026-09-19T16:48:53Z",
+  "evidence": [
+    {
+      "artifact": "DISCOVERY/ING02_D17_TEMPORAL_ORDER_ZERO_PAYLOAD.json",
+      "content_sha256": "8f8eb41e0ded82aa726c71f8e37818b1ff3cbd8faf2fcb5e01c177ce39b5c17e",
+      "file_sha256": "e274ee09888dc2d1dd6868faf3077228c971e2c4bf3ff5c46cb752c77b92368d"
+    },
+    {
+      "artifact": "MECHANISM_SELECTION/ING02_D23_TEMPORAL_FRAME_PANEL.json",
+      "content_sha256": "362b276c4d7ec154611412a7a73580f03a54b73712b5c3730e3dc6bbc221ab72",
+      "file_sha256": "7b573a3e03d0b07098d1d6532060125aafe93b6bde379d835727d42a38d7cf53"
+    },
+    {
+      "artifact": "FREEZE/ING02_FINAL_LOCK.json",
+      "content_sha256": "8d4d9adef2a0873a84d89e0ce8849d74f9bbb85d8df06e6c5241a74e74901448",
+      "file_sha256": "c98e0b4e2b9157e7d63406637f2ab27090f1867c2025f7cc492fe53a98711795"
+    },
+    {
+      "artifact": "HOLDOUT/ING02_FINAL_HOLDOUT.json",
+      "content_sha256": "3142f14253e9d4dbf05b3e2d433931e93ab205bfcca972015b4f3cbfdf31ce74",
+      "file_sha256": "394a0f9bb6cb5709305c53e7dfc34102cceef98516e0f708566a51a59b122f4a"
+    }
+  ],
+  "fresh": {
+    "canaries": 16,
+    "controls": 16,
+    "exact": 72,
+    "frames_and_origins": "fresh randomized signed frames, origins and N=19/25/37/41/43",
+    "treatments": 40,
+    "worlds": 72
+  },
+  "result": "FRESH_CONFIRMED_EXACT_IN_FROZEN_DOMAIN",
+  "schema": "dee.v27.ing02.temporal_history_memory.v1",
+  "scope": "Two-event order only. No longer-sequence, unseen-length or temporal prediction claim.",
+  "write_rule": "At common memory phase 260, the event active during the first update increments its supported center; a state0 late carrier becomes active only after that gate. AB therefore writes delta=+1 and BA delta=-1."
+}

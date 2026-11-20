@@ -1,0 +1,8747 @@
+{
+  "schema": "CPC8R.initiative.return_use.measurements.v1",
+  "case": {
+    "id": "USE_C01_NO_QUESTION",
+    "reference_quantity": 31,
+    "source_sign": 1,
+    "objects": [
+      16,
+      42,
+      16
+    ],
+    "question_opportunity": false
+  },
+  "source_sha256": {
+    "cantidad_renovable.py": "62811a7d2f817ca8f0917ca6309efb53989349af8a8717ae037ee72e1d023426",
+    "return_use.py": "6e4b0e11913719d1bd3da23493f1269963b54b214ce91f339483965636010a77",
+    "solicitud.py": "b051062c5be320536fd0ee90f5db9f308877062c66549fa7a9129c7b56dbf682"
+  },
+  "configuration_sha256": "2e2a5df62142706e1f1fdfe1103340daf37eea69fd453a3259926cb0e23a4095",
+  "geometry": {
+    "schema": "CPC8R.initiative.gradient_tap.v1",
+    "N": 67,
+    "prefix": "initiative.quantity.",
+    "branches": [
+      {
+        "reference_candidate": 1,
+        "incoming_candidate": "+X_NATIVE_COMPARATOR_OUTPUT",
+        "comparison_site": [
+          50,
+          35,
+          35
+        ],
+        "request_site": [
+          52,
+          35,
+          35
+        ],
+        "request_port": "initiative.quantity.request_opportunity",
+        "request_direction": [
+          0,
+          1,
+          1
+        ],
+        "request_probe_site": [
+          52,
+          36,
+          36
+        ],
+        "source_site": [
+          52,
+          40,
+          40
+        ],
+        "sources": {
+          "-1": {
+            "value": -1,
+            "hub": [
+              59,
+              47,
+              47
+            ],
+            "source_contact": [
+              52,
+              40,
+              40
+            ],
+            "direction": [
+              -1,
+              -1,
+              -1
+            ],
+            "cue_port": "initiative.quantity.source.-1.cue",
+            "event_port": "initiative.quantity.source.-1.event"
+          },
+          "1": {
+            "value": 1,
+            "hub": [
+              45,
+              47,
+              47
+            ],
+            "source_contact": [
+              52,
+              40,
+              40
+            ],
+            "direction": [
+              1,
+              -1,
+              -1
+            ],
+            "cue_port": "initiative.quantity.source.1.cue",
+            "event_port": "initiative.quantity.source.1.event"
+          }
+        },
+        "effects": {
+          "-1": {
+            "site": [
+              48,
+              40,
+              40
+            ],
+            "opportunity_port": "initiative.quantity.effect.-1",
+            "return_site": [
+              43,
+              35,
+              35
+            ],
+            "return_direction": [
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "1": {
+            "site": [
+              56,
+              40,
+              40
+            ],
+            "opportunity_port": "initiative.quantity.effect.1",
+            "return_site": [
+              61,
+              35,
+              35
+            ],
+            "return_direction": [
+              1,
+              -1,
+              -1
+            ]
+          }
+        }
+      }
+    ],
+    "signatures": {
+      "initiative.quantity.request_opportunity": {
+        "site": [
+          55,
+          32,
+          32
+        ],
+        "direction": [
+          -1,
+          1,
+          1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.-1.cue": {
+        "site": [
+          59,
+          50,
+          50
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.-1.event": {
+        "site": [
+          62,
+          47,
+          47
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "state": 31,
+        "semantic": 1
+      },
+      "initiative.quantity.effect.-1": {
+        "site": [
+          48,
+          43,
+          43
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 43,
+        "semantic": 1
+      },
+      "initiative.quantity.source.1.cue": {
+        "site": [
+          45,
+          50,
+          50
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.source.1.event": {
+        "site": [
+          42,
+          47,
+          47
+        ],
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "state": 31,
+        "semantic": 1
+      },
+      "initiative.quantity.effect.1": {
+        "site": [
+          56,
+          43,
+          43
+        ],
+        "direction": [
+          0,
+          -1,
+          -1
+        ],
+        "state": 43,
+        "semantic": 1
+      },
+      "initiative.quantity.return_use.1.-1": {
+        "site": [
+          37,
+          29,
+          32
+        ],
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "state": 1,
+        "semantic": 1
+      },
+      "initiative.quantity.return_use.1.1": {
+        "site": [
+          0,
+          29,
+          32
+        ],
+        "direction": [
+          -1,
+          1,
+          0
+        ],
+        "state": 1,
+        "semantic": 1
+      }
+    },
+    "source_epoch": 0,
+    "ticks": {
+      "comparison": 70,
+      "request": 72,
+      "question_in_flight": 73,
+      "source": 77,
+      "effect": 81,
+      "return": 86
+    },
+    "prepared": "One fixed conditional geometric tap and both symmetric effect resources. Does not prepare or classify the upstream comparison.",
+    "acquired": "Source directional content only through postT0cue/event experiences. Upstream reference acquisition remains the owningE1protocol.",
+    "scope": "A native positive-X comparator output can trigger a finite information request; negative/zero outputs are measured separately. No general need-for-information claim.",
+    "resources": {
+      "initial_material_sites": 0,
+      "interfaces": 7,
+      "request_opportunities": 1,
+      "effect_opportunities": 2,
+      "provider_copies_separately_exposed": 1,
+      "basic_buffers_bytes": "Shared with owningN67Runtime, not allocated by factory"
+    },
+    "return_use": {
+      "schema": "CPC8R.initiative.return_use.geometry.v1",
+      "items": [
+        {
+          "source_value_candidate": -1,
+          "port": "initiative.quantity.return_use.1.-1",
+          "input_site": [
+            37,
+            29,
+            32
+          ],
+          "input_direction": [
+            1,
+            1,
+            0
+          ],
+          "load": 13,
+          "requested_tick": 86,
+          "meeting_site": [
+            40,
+            32,
+            32
+          ],
+          "meeting_tick": 89,
+          "emission_site": [
+            40,
+            32,
+            31
+          ],
+          "emission_tick": 90,
+          "expected_format_not_payload": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "source_value_candidate": 1,
+          "port": "initiative.quantity.return_use.1.1",
+          "input_site": [
+            0,
+            29,
+            32
+          ],
+          "input_direction": [
+            -1,
+            1,
+            0
+          ],
+          "load": 13,
+          "requested_tick": 86,
+          "meeting_site": [
+            64,
+            32,
+            32
+          ],
+          "meeting_tick": 89,
+          "emission_site": [
+            64,
+            32,
+            31
+          ],
+          "emission_tick": 90,
+          "expected_format_not_payload": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "prepared": "Two symmetric receiving resources, same schedule/load regardless of reference, source or upstream output.",
+      "scope": "A contact using a returned physical product; not a learned receptor policy or unbounded reusable organ."
+    }
+  },
+  "quantity_geometry": {
+    "schema": "CPC8R.quantity.transient.geometry.v3g4",
+    "profile": "transient",
+    "guards": "on_path",
+    "object_input_lead": 1,
+    "repair": "F1 object path crossed reference; F2 permanent reader traffic later occupied data routes. F3 uses four supports: reader survives only during two material operands, then dies natively. F3g intercepts its first X-directed product before its toroidal return into the reference after67ticks; same-count off-path control. Identical three reader opportunities are externally declared; no autonomous access selection. Earlier states/results preserved.",
+    "N": 67,
+    "center": [
+      50,
+      35,
+      35
+    ],
+    "reference_hub": [
+      49,
+      36,
+      35
+    ],
+    "object_hub": [
+      51,
+      32,
+      35
+    ],
+    "auxiliary_hub": [
+      4,
+      20,
+      13
+    ],
+    "reference_site": [
+      49,
+      35,
+      35
+    ],
+    "object_site": [
+      51,
+      35,
+      35
+    ],
+    "initial_material": 7,
+    "interfaces": 7,
+    "prepared": "Four supports and object absorber in transient profile; three externally supplied identical readers. No magnitude or answer in initial material.",
+    "learned": "Reference carrier from actual prior quantity plus fixed format cue5. The native gradient responds to new object magnitude.",
+    "basic_buffer_bytes": 9624416,
+    "finite_domain": "N67, reference quantities11/17/31, three current objects, comparison times70+67k relative to a fixed reference-experience time",
+    "guard_distance": 4
+  },
+  "preparations": 1,
+  "runtime_owners": 1,
+  "same_world": true,
+  "host_RAW_clock_edits_on_MAIN": [],
+  "frames": [
+    {
+      "tick": 69,
+      "initiative": {
+        "tick": 69,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 69,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "69",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 69,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "69",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 69,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "69",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 69,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "69",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 69,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "69",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 69,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "69",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 69,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "69",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 69,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "69",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 69,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "69",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 69,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "69",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 69,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "69",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 70,
+      "initiative": {
+        "tick": 70,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 70,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "70",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 70,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "70",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 70,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "70",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 70,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "70",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 70,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "70",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 70,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "70",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 70,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "70",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 70,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "70",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 70,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "70",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 70,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "70",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 70,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "70",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 72,
+      "initiative": {
+        "tick": 72,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 72,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "1153203009648328705",
+              "clock": "72",
+              "state": 1,
+              "s_reg": 7,
+              "semantic": 1,
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "active": true
+            },
+            "question_in_flight": {
+              "tick": 72,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "72",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 72,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "72",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 72,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "72",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 72,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "72",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 72,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "72",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 72,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "72",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 72,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "72",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 72,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "72",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 72,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "72",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 72,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "72",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 73,
+      "initiative": {
+        "tick": 73,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 73,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "73",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 73,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "73",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 73,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "73",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 73,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "73",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 73,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "73",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 73,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "73",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 73,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "73",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 73,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "73",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 73,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "73",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 73,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "73",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 73,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "73",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 77,
+      "initiative": {
+        "tick": 77,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 77,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "77",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 77,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "77",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 77,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "2301620953282510849",
+              "clock": "77",
+              "state": 1,
+              "s_reg": 16,
+              "semantic": 1,
+              "direction": [
+                1,
+                -1,
+                -1
+              ],
+              "active": true
+            },
+            "effects": {
+              "-1": {
+                "tick": 77,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "77",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 77,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "77",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 77,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "77",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 77,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "77",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 77,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "77",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 77,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "77",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 77,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "77",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 77,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "77",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 81,
+      "initiative": {
+        "tick": 81,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 81,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "81",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 81,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "81",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 81,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "81",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 81,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "2301339439651094529",
+                "clock": "81",
+                "state": 1,
+                "s_reg": 7,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  -1,
+                  -1
+                ],
+                "active": true
+              },
+              "1": {
+                "tick": 81,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "2301339439651094529",
+                "clock": "81",
+                "state": 1,
+                "s_reg": 7,
+                "semantic": 1,
+                "direction": [
+                  0,
+                  -1,
+                  -1
+                ],
+                "active": true
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 81,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "81",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 81,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "81",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 81,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "81",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 81,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "81",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 81,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "81",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 81,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "81",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 86,
+      "initiative": {
+        "tick": 86,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 86,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "86",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 86,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "86",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 86,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "86",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 86,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "86",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 86,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "86",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 86,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "86",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 86,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "86",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 86,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "86",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 86,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "86",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 86,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "86",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 86,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "86",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 87,
+      "initiative": {
+        "tick": 87,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 87,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "87",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 87,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "87",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 87,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "87",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 87,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "87",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 87,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "87",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 87,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "87",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 87,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "87",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 87,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "87",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 87,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "87",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 87,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "87",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 87,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "87",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 88,
+      "initiative": {
+        "tick": 88,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 88,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "88",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 88,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "88",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 88,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "88",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 88,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "88",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 88,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "88",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 88,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "88",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 88,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "88",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 88,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "88",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 88,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "88",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 88,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "88",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 88,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "88",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 89,
+      "initiative": {
+        "tick": 89,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 89,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "89",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 89,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "89",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 89,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "89",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 89,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "89",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 89,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "89",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 89,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "89",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 89,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "89",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 89,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "1157706635045502977",
+            "clock": "89",
+            "state": 1,
+            "s_reg": 13,
+            "semantic": 1,
+            "direction": [
+              1,
+              1,
+              0
+            ],
+            "active": true
+          },
+          "physical_after_contact": {
+            "tick": 89,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "89",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 89,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "1161647284719452161",
+            "clock": "89",
+            "state": 1,
+            "s_reg": 13,
+            "semantic": 1,
+            "direction": [
+              -1,
+              1,
+              0
+            ],
+            "active": true
+          },
+          "physical_after_contact": {
+            "tick": 89,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "89",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 90,
+      "initiative": {
+        "tick": 90,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 90,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "90",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 90,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "90",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 90,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "90",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 90,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "90",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 90,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "90",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 90,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "90",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 90,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "90",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 90,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "90",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 90,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "90",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 90,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "90",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 90,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "90",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 91,
+      "initiative": {
+        "tick": 91,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 91,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "91",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 91,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "91",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 91,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "91",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 91,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "91",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 91,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "91",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 91,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "91",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 91,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "91",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 91,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "91",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 91,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "91",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 91,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "91",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 91,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "91",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 136,
+      "initiative": {
+        "tick": 136,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 136,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "136",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 136,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "136",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 136,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "136",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 136,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "136",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 136,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "136",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 136,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "136",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 136,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "136",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 136,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "136",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 136,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "136",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 136,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "136",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 136,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "136",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 137,
+      "initiative": {
+        "tick": 137,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 137,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "137",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 137,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "137",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 137,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "137",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 137,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "137",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 137,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "137",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 137,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "137",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 137,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "137",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 137,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "137",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 137,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "137",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 137,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "137",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 137,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "137",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 180,
+      "initiative": {
+        "tick": 180,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 180,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "180",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 180,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "180",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 180,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "180",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 180,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "180",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 180,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "180",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 180,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "180",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 180,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "180",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 180,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "180",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 180,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "180",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 180,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "180",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 180,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "180",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 203,
+      "initiative": {
+        "tick": 203,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 203,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "203",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 203,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "203",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 203,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "203",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 203,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "203",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 203,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "203",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 203,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "203",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 203,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "203",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 203,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "203",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 203,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "203",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 203,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "203",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 203,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "203",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 204,
+      "initiative": {
+        "tick": 204,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 204,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "204",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 204,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "204",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 204,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "204",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 204,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "204",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 204,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "204",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 204,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "204",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 204,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "204",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 204,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "204",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 204,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "204",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 204,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "204",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 204,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "204",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    },
+    {
+      "tick": 214,
+      "initiative": {
+        "tick": 214,
+        "branches": [
+          {
+            "reference_candidate": 1,
+            "question": {
+              "tick": 214,
+              "site": [
+                52,
+                35,
+                35
+              ],
+              "raw": "0",
+              "clock": "214",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "question_in_flight": {
+              "tick": 214,
+              "site": [
+                52,
+                36,
+                36
+              ],
+              "raw": "0",
+              "clock": "214",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "source": {
+              "tick": 214,
+              "site": [
+                52,
+                40,
+                40
+              ],
+              "raw": "0",
+              "clock": "214",
+              "state": 0,
+              "s_reg": 0,
+              "semantic": 0,
+              "direction": [
+                0,
+                0,
+                0
+              ],
+              "active": false
+            },
+            "effects": {
+              "-1": {
+                "tick": 214,
+                "site": [
+                  48,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "214",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 214,
+                "site": [
+                  56,
+                  40,
+                  40
+                ],
+                "raw": "0",
+                "clock": "214",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            },
+            "return": {
+              "-1": {
+                "tick": 214,
+                "site": [
+                  43,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "214",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              },
+              "1": {
+                "tick": 214,
+                "site": [
+                  61,
+                  35,
+                  35
+                ],
+                "raw": "0",
+                "clock": "214",
+                "state": 0,
+                "s_reg": 0,
+                "semantic": 0,
+                "direction": [
+                  0,
+                  0,
+                  0
+                ],
+                "active": false
+              }
+            }
+          }
+        ],
+        "modality": "PASSIVE_OBSERVATION_OF_NATIVE_TRANSITIONS"
+      },
+      "return_use": [
+        {
+          "physical_at_contact": {
+            "tick": 214,
+            "site": [
+              40,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "214",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 214,
+            "site": [
+              40,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "214",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        },
+        {
+          "physical_at_contact": {
+            "tick": 214,
+            "site": [
+              64,
+              32,
+              32
+            ],
+            "raw": "0",
+            "clock": "214",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          },
+          "physical_after_contact": {
+            "tick": 214,
+            "site": [
+              64,
+              32,
+              31
+            ],
+            "raw": "0",
+            "clock": "214",
+            "state": 0,
+            "s_reg": 0,
+            "semantic": 0,
+            "direction": [
+              0,
+              0,
+              0
+            ],
+            "active": false
+          }
+        }
+      ]
+    }
+  ],
+  "quantity": [
+    {
+      "tick": 69,
+      "physical": {
+        "tick": 69,
+        "RAW_sha256": "2afe30225ca47aaa84cdb911d4a9166d9fb6d4bee05998afbf7e757b74be2414",
+        "clocks_sha256": "381aee38b9228295074faf7878fd594501288b3c7140b1b7ef0fd135b6109d41"
+      },
+      "center": {
+        "tick": 69,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "69",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "reference": {
+        "tick": 69,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "1157425258853040129",
+        "clock": "69",
+        "state": 1,
+        "s_reg": 36,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "object": {
+        "tick": 69,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "1157425194428530689",
+        "clock": "69",
+        "state": 1,
+        "s_reg": 21,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "Moore27": [
+        {
+          "tick": 69,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "1157425194428530689",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "69",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 69,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "69",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 70,
+      "physical": {
+        "tick": 70,
+        "RAW_sha256": "8bc7015928bc4fc002d8dc635defa733aa00118cd7e85ca53debd9dced53dca3",
+        "clocks_sha256": "96afd5c31d9b7047284e8e0a4e625a7249973000eeaa979c22f3c48ba07f4b4d"
+      },
+      "center": {
+        "tick": 70,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "1153203009648328705",
+        "clock": "70",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "active": true
+      },
+      "reference": {
+        "tick": 70,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "70",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "object": {
+        "tick": 70,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "70",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "Moore27": [
+        {
+          "tick": 70,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "1153203009648328705",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "1224979128709545985",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "70",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "1157425194428530689",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 70,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "70",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 136,
+      "physical": {
+        "tick": 136,
+        "RAW_sha256": "1b6ca905e2adb1c448de4f3f4ad4b71568859c07e5e61ab80a81fcf324c25c3d",
+        "clocks_sha256": "527fc435d28e9e202d310649a318f07afff7dc2bae11d3974a3e5927b4bcdc44"
+      },
+      "center": {
+        "tick": 136,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "1224979128709545985",
+        "clock": "136",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "reference": {
+        "tick": 136,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "1157425258853040129",
+        "clock": "136",
+        "state": 1,
+        "s_reg": 36,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "object": {
+        "tick": 136,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "1157425306097680385",
+        "clock": "136",
+        "state": 1,
+        "s_reg": 47,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "Moore27": [
+        {
+          "tick": 136,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "1224979128709545985",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "1157425306097680385",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 47,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "136",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 136,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "136",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 137,
+      "physical": {
+        "tick": 137,
+        "RAW_sha256": "c2ccb161c1b33a5dbd08a53079285b0c0d57208ae838543eaeeb936bc9f43a75",
+        "clocks_sha256": "e94635898f2a57a33302b0556a75e751d66f90cd874835b2ccd26ecb429ec5de"
+      },
+      "center": {
+        "tick": 137,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "1157143659322277889",
+        "clock": "137",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "active": true
+      },
+      "reference": {
+        "tick": 137,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "137",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "object": {
+        "tick": 137,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "137",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "Moore27": [
+        {
+          "tick": 137,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "1157143659322277889",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "1224979128709545985",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "137",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "1157425306097680385",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 47,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 137,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "137",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 180,
+      "physical": {
+        "tick": 180,
+        "RAW_sha256": "b218a34b0658448459b1cb75b8f2c95fcc2fcade7b4b38621421f7c3073a485c",
+        "clocks_sha256": "1a9cfeeb2e6105cefe122314324b18271894115c661b1a768f59fa301a72d6ad"
+      },
+      "center": {
+        "tick": 180,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "180",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "reference": {
+        "tick": 180,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "180",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "object": {
+        "tick": 180,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "180",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "Moore27": [
+        {
+          "tick": 180,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "180",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "180",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "180",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "180",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 180,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "180",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 203,
+      "physical": {
+        "tick": 203,
+        "RAW_sha256": "57ee5dc6c0b36e64ed7d41a3292dd3f37b8fc5b9e45a12b9e19fecd9c4b57571",
+        "clocks_sha256": "118aa0abfd996d7334f6dcb1cf01df60309bafe2b78645a53127b5a6b663ba94"
+      },
+      "center": {
+        "tick": 203,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "1224979128709545985",
+        "clock": "203",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "active": true
+      },
+      "reference": {
+        "tick": 203,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "1157425258853040129",
+        "clock": "203",
+        "state": 1,
+        "s_reg": 36,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "object": {
+        "tick": 203,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "1157425194428530689",
+        "clock": "203",
+        "state": 1,
+        "s_reg": 21,
+        "semantic": 1,
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "active": true
+      },
+      "Moore27": [
+        {
+          "tick": 203,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "1224979128709545985",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "1157425194428530689",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "203",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 203,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "203",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    },
+    {
+      "tick": 204,
+      "physical": {
+        "tick": 204,
+        "RAW_sha256": "68bce9af36ea95768b4ebb926a6adec01899df0c7de9e8f45f9feefd67ef0c34",
+        "clocks_sha256": "3270be5786e3dc0e050c71ef46c7258db00869963b98438aa1f6fcd543bd8778"
+      },
+      "center": {
+        "tick": 204,
+        "site": [
+          50,
+          35,
+          35
+        ],
+        "raw": "1153203009648328705",
+        "clock": "204",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "active": true
+      },
+      "reference": {
+        "tick": 204,
+        "site": [
+          49,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "204",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "object": {
+        "tick": 204,
+        "site": [
+          51,
+          35,
+          35
+        ],
+        "raw": "0",
+        "clock": "204",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "Moore27": [
+        {
+          "tick": 204,
+          "site": [
+            49,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            36,
+            35
+          ],
+          "raw": "1157425258853040129",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 36,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            49,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            34,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            35,
+            35
+          ],
+          "raw": "1153203009648328705",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            35,
+            36
+          ],
+          "raw": "1224979128709545985",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            36,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            50,
+            36,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            34,
+            34
+          ],
+          "raw": "4611686018427387905",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            34,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            34,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            35,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            35,
+            35
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            35,
+            36
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            36,
+            34
+          ],
+          "raw": "0",
+          "clock": "204",
+          "state": 0,
+          "s_reg": 0,
+          "semantic": 0,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": false
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            36,
+            35
+          ],
+          "raw": "1157425194428530689",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 21,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "active": true
+        },
+        {
+          "tick": 204,
+          "site": [
+            51,
+            36,
+            36
+          ],
+          "raw": "4611686018427387905",
+          "clock": "204",
+          "state": 1,
+          "s_reg": 0,
+          "semantic": 4,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "active": true
+        }
+      ],
+      "origin": "INSTRUMENTO_PASSIVE_VIEW_OF_NATIVE_FIELDS"
+    }
+  ],
+  "snapshots": [
+    {
+      "path": "T0.deetsnap.gz",
+      "physical": {
+        "tick": 0,
+        "RAW_sha256": "ba72003ccae49d4863cd0adce59f6d5333acc4dc2a3dc2578ec94b73bf6ec3b2",
+        "clocks_sha256": "8f7fcd4d78dc7994e8c1bcb33b8fe0e2595964cc683d9f3b4447c5a90fdae169"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T0.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "afd8427cee759029b65a56818131d9f9de58dec9709f92510b1d8408d87de032",
+        "decoded_bytes": 4838743,
+        "encoded_sha256": "d5465c9b980521ebf5beb3909aa5217b6c7b49cb69841372a1b16fc323db2de7",
+        "encoded_bytes": 9695,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    },
+    {
+      "path": "T73.deetsnap.gz",
+      "physical": {
+        "tick": 73,
+        "RAW_sha256": "342733c854a61a1723e00da605d362b758c7047acc27be7ccc50c26859256133",
+        "clocks_sha256": "363a0f07ca134149b6af4275f4f7d7fc7f927fb9ec7b59232bd50af23459e7bd"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T73.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "7545cbc6c5fb72301d4b73f2dcf0f7d7307bf08bd08e1d09b9d83a590fc381f5",
+        "decoded_bytes": 4850469,
+        "encoded_sha256": "30205c7608f0cf4c88d88c57dec23f8b9b008d27725cc978d0ddc56ba5fcea01",
+        "encoded_bytes": 12914,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    },
+    {
+      "path": "T86.deetsnap.gz",
+      "physical": {
+        "tick": 86,
+        "RAW_sha256": "b809520e0983454965cb475de2ebf4a0eaf90885fd77565bd40f28a83261b602",
+        "clocks_sha256": "dd158acc6a7af2980561967523f8bfcbcb48f6cf96171e3ef842569a5fb5661a"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T86.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "12ef9eb4d6a2e25a8108c68123f276dccdbf95bf73c40175072d91b8efcde8e5",
+        "decoded_bytes": 4853461,
+        "encoded_sha256": "76b4d89d9e926142299450cc59a6ae0c40a791d8df04f42be4099747b5d0fd94",
+        "encoded_bytes": 13145,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    },
+    {
+      "path": "T87.deetsnap.gz",
+      "physical": {
+        "tick": 87,
+        "RAW_sha256": "42785fdf9c1baf45ceb5e16848e23f0fa089da6768d5afc6d6ff00f897ea60f9",
+        "clocks_sha256": "a380940522ebc16a2338c2c07480551d05229d23aab0e47f8c4652bfee727e10"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T87.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "0a6040a69144ad050fa642187c3036f40e6659ed8738148d1074f1202500435b",
+        "decoded_bytes": 4854313,
+        "encoded_sha256": "44c3109184b5d8fe727806c287847ad887eb63056d351d5835bc46adb88847c6",
+        "encoded_bytes": 13178,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    },
+    {
+      "path": "T90.deetsnap.gz",
+      "physical": {
+        "tick": 90,
+        "RAW_sha256": "81f2d224a6ee72db94618c5091e747be8ee690a41d0c3e35d912ea7ba30eee7c",
+        "clocks_sha256": "e72d3bff1e63eb6f155445da3f6c08456bd3fdf67910a5c540c1e3efb2ecc6e8"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T90.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "c51bdd843117d097748b5737968a412def75c6c0b22c84442c7902ab2de2076e",
+        "decoded_bytes": 4857418,
+        "encoded_sha256": "21fbf1583ca37c404a889642f633d142288b3817c499177b40601a08405042d6",
+        "encoded_bytes": 13395,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    },
+    {
+      "path": "T214.deetsnap.gz",
+      "physical": {
+        "tick": 214,
+        "RAW_sha256": "f2913749d197e5226ca514d92441be7b44aee0faaf345203c11daa889d6a81ef",
+        "clocks_sha256": "c3ed064d6b65e02f0e4c16a979fb842f677ca51ce0ef5b32b63263ed2274e875"
+      },
+      "storage": {
+        "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\CPC8\\runs\\RECONSTRUCCION_20261019_002104\\resultados\\iniciativa\\USE_C01_NO_QUESTION\\T214.deetsnap.gz",
+        "encoding": "gzip",
+        "decoded_sha256": "59912a858409bc1818da3527ff5ce661643abc90436e96aa4206ed95d11f00df",
+        "decoded_bytes": 4884819,
+        "encoded_sha256": "59558f7b303e2790d0fe83186bf54feb9d3aa06b85e2c6c9471814cd793389a7",
+        "encoded_bytes": 15279,
+        "gzip_crc_verified": true,
+        "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+      }
+    }
+  ],
+  "status": "RUNNING"
+}

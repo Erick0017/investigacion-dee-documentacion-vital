@@ -1,0 +1,1407 @@
+[word/document.xml p1] El entrelazamiento en la Dinámica de Eficiencia Entrópica
+[word/document.xml p2] Ivan Erick Tlaltecatl Morales
+[word/document.xml p3] Autor · Dinámica de Eficiencia Entrópica (DEE)
+[word/document.xml p4] https://dee-universe.com  ·  erick.eglobal@gmail.com  ·  222 207 0912 (México)
+[word/document.xml p5] Preámbulo — Definiciones operacionales y arquitectura de lectura
+[word/document.xml p6] Este preámbulo fija el significado de los términos propios de DEE antes de utilizarlos y establece cómo se conectan las tres capas del manuscrito: la formulación relacional del entrelazamiento, la representación cuántica efectiva de sectores reversibles y la traducción algebraica del kernel v27. No sustituye ni modifica las ecuaciones del cuerpo principal; proporciona el diccionario necesario para leerlas de forma autocontenida.
+[word/document.xml p7] Convención de lectura
+Cuando aquí se usa “microscópico” se significa “estado interno de máxima resolución disponible en el modelo DEE”. No se afirma por esa palabra una escala física concreta, subatómica o de Planck. Del mismo modo, “efectivo” indica una descripción reducida o representada a partir del estado DEE; no una variable adicional almacenada en el kernel.
+[word/document.xml p8] 0.1 Qué contiene el manuscrito y cómo se conectan sus tres partes
+[word/document.xml p9] Parte
+[word/document.xml p10] Contenido
+[word/document.xml p11] Función dentro del argumento
+[word/document.xml p12] I. Estado conjunto y entrelazamiento
+[word/document.xml p13] Define la lectura relacional: un estado completo puede contener dos regiones observables A y B sin que la descripción fundamental deba separarse en dos estados independientes.
+[word/document.xml p14] Pregunta que responde: qué estructura DEE se propone como antecedente microscópico de un estado conjunto.
+[word/document.xml p15] II. Régimen cuántico efectivo
+[word/document.xml p16] Restringe la dinámica a sectores reversibles, construye su representación lineal unitaria U y, a partir de U, un generador H y el límite continuo de Schrödinger.
+[word/document.xml p17] Pregunta que responde: cómo puede aparecer una descripción cuántica efectiva sin introducir una función de onda como variable elemental del voxel.
+[word/document.xml p18] III. Cierre desde el kernel v27
+[word/document.xml p19] Traduce las reglas C++ a funciones, indicadores, ramas y composición global F_DEE.
+[word/document.xml p20] Pregunta que responde: de qué regla ejecutable concreta proceden los objetos matemáticos usados en las dos partes anteriores.
+[word/document.xml p21] La cadena completa que organiza el documento es:
+[word/document.xml p22] kernel v27  →  F_DEE  →  sector reversible F_Q  →  U_Q  →  H_Q  →  Schrödinger  →  estado conjunto efectivo
+[word/document.xml p23] La última flecha no significa que toda relación interna de DEE sea automáticamente entrelazamiento cuántico. El criterio cuántico aparece sólo cuando la descripción efectiva admite una factorización de Hilbert H_A ⊗ H_B y el estado conjunto resultante no factoriza.
+[word/document.xml p24] 0.2 Espacio, sitio, voxel, retícula y frontera periódica
+[word/document.xml p25] Para un tamaño lineal N, el dominio espacial interno es una retícula cúbica tridimensional periódica:
+[word/document.xml p26] Λ_N = Z_N³ = {(x,y,z) : x,y,z ∈ {0,…,N−1}}  con coordenadas módulo N
+[word/document.xml p27] Un sitio o voxel es una posición i=(x,y,z) de Λ_N. “Voxel” nombra la unidad de indexación del autómata; no implica que el elemento físico real sea un cubo sólido. La palabra “cúbica” describe la conectividad y el sistema de coordenadas del sustrato discreto. Las condiciones periódicas identifican los extremos: avanzar fuera de un borde reaparece por el borde opuesto, de modo que la topología computacional es toroidal.
+[word/document.xml p28] La vecindad primaria utilizada por v27 es la vecindad tridimensional de Moore, no la de von Neumann:
+[word/document.xml p29] M_26 = {−1,0,1}³ \ {(0,0,0)},     |M_26| = 26
+[word/document.xml p30] Por tanto, un sitio puede consultar los 6 vecinos axiales, 12 vecinos de arista y 8 vecinos de esquina. La expresión “Moore-26” se refiere exactamente a esos 26 desplazamientos.
+[word/document.xml p31] 0.3 Qué es un estado y qué significa “microestado” en DEE
+[word/document.xml p32] Un estado es la información suficiente para determinar, junto con la regla de evolución, el siguiente estado. Para N fijo, el estado microscópico completo utilizado por el kernel está formado por dos campos sobre toda la retícula: un campo raw de 64 bits y un campo clock de 64 bits por sitio. Esquemáticamente:
+[word/document.xml p33] X_t = (R_t, C_t),     R_t = {r_i(t)}_(i∈Λ_N),     C_t = {c_i(t)}_(i∈Λ_N)
+[word/document.xml p34] El subíndice t indica el número de actualizaciones globales ya ejecutadas. X_t es el estado antes del tick siguiente y X_(t+1) el estado después de aplicarlo. “Microestado” significa una configuración X concreta con todos esos grados internos; una observación reducida puede conservar sólo una parte de ellos.
+[word/document.xml p35] Objeto
+[word/document.xml p36] Representación
+[word/document.xml p37] Lectura
+[word/document.xml p38] raw_i o r_i
+[word/document.xml p39] uint64 por sitio
+[word/document.xml p40] Registro de 64 bits que empaqueta state, s_reg, tres componentes de dirección y semantic.
+[word/document.xml p41] clock_i o c_i
+[word/document.xml p42] uint64 por sitio
+[word/document.xml p43] Reloj causal local. En cada tick válido: c_i(t+1)=c_i(t)+1 módulo 2^64.
+[word/document.xml p44] state_i
+[word/document.xml p45] bits 0–31 de raw
+[word/document.xml p46] Campo entero de estado/ocupación interna usado por las ramas del kernel.
+[word/document.xml p47] s_reg,i
+[word/document.xml p48] bits 32–47 de raw
+[word/document.xml p49] Registro interno de 16 bits; el almacenamiento llega a 65535, aunque reducer/DEMUX saturan operativamente en 19664.
+[word/document.xml p50] d_i=(d_x,d_y,d_z)
+[word/document.xml p51] bits 48–59
+[word/document.xml p52] Tres nibbles con signo que codifican dirección.
+[word/document.xml p53] semantic_i
+[word/document.xml p54] bits 60–63
+[word/document.xml p55] Etiqueta de 4 bits que selecciona roles de implementación. Sus nombres son etiquetas del motor, no identificaciones físicas por sí solas.
+[word/document.xml p56] En el cuerpo principal aparece en ocasiones la expresión “palabra espacial”. Debe leerse simplemente como el registro raw_i de 64 bits asociado a un sitio; no tiene un significado lingüístico.
+[word/document.xml p57] 0.4 Qué es un tick y qué es F_DEE
+[word/document.xml p58] Un tick es una aplicación completa de la regla del motor a todo el estado. No es, por sí solo, un segundo ni una unidad física de tiempo. La evolución se representa mediante un mapa determinista:
+[word/document.xml p59] F_DEE : S_N → S_N,        X_(t+1) = F_DEE(X_t)
+[word/document.xml p60] Aquí S_N es el conjunto de todos los estados completos permitidos para el tamaño N. “Mapa” significa función: a cada entrada X asigna una única salida F_DEE(X). No se presupone que F_DEE sea lineal. De hecho, el kernel contiene ramas, umbrales, conteos y reducciones, por lo que su forma global es no lineal y por partes.
+[word/document.xml p61] Internamente el tick tiene dos etapas causales: primero cada sitio calcula su salida base y las contribuciones DEMUX a partir del estado de entrada; después las contribuciones acumuladas se aplican a las salidas base. No existe una cascada recursiva dentro del mismo tick. Esta separación es la razón por la que la sección 22 escribe F_DEE como composición de una actualización base y una aplicación posterior de DEMUX.
+[word/document.xml p62] Sobre el tiempo físico
+Cuando el manuscrito introduce τ* (o τ en algunas fórmulas), τ* es una escala física asignada a un tick para construir una correspondencia continua. El kernel únicamente cuenta ticks; τ* no es una constante numérica fijada por v27.
+[word/document.xml p63] 0.5 Qué es un observador o mapa M
+[word/document.xml p64] DEE distingue el estado completo de aquello que una medición conserva. Esta distinción se formaliza por un mapa de observación o reducción:
+[word/document.xml p65] M : S_N → O,        y = M(X)
+[word/document.xml p66] O es el espacio de registros observables elegidos y y es el registro obtenido. M puede ser una extracción, un coarse-graining, un detector temporal o una función más general; no se supone lineal salvo que se declare explícitamente para un caso particular.
+[word/document.xml p67] Si dos microestados distintos producen el mismo registro, M(X_1)=M(X_2), el observador no los distingue en ese nivel. Para que exista una dinámica autónoma exacta G sobre los observables debe cumplirse el cierre por fibras:
+[word/document.xml p68] M(X_1)=M(X_2)  ⇒  M(F_DEE(X_1))=M(F_DEE(X_2))
+[word/document.xml p69] Cuando esa condición se cumple en un dominio, existe G tal que M∘F_DEE = G∘M. Cuando falla, el registro M ha descartado información causal necesaria y debe enriquecerse. Esta es la razón formal por la que “lo que se observa” y “el estado que realmente evoluciona” se mantienen separados a lo largo del manuscrito.
+[word/document.xml p70] 0.6 Qué significa “sector”, “reversible” y “unitario”
+[word/document.xml p71] Un sector S_Q es un subconjunto de estados seleccionado por propiedades dinámicas. Para que el sector sea cerrado, iniciar dentro de él debe mantener la evolución dentro de él. Para que sea reversible, la restricción F_Q de F_DEE al sector debe ser biyectiva:
+[word/document.xml p72] S_Q ⊆ S_N,      F_DEE(S_Q) ⊆ S_Q,      F_Q = F_DEE|_(S_Q) : S_Q → S_Q  biyectiva
+[word/document.xml p73] La palabra “unitario” se aplica a la representación lineal U_Q de esa dinámica reversible, no al conjunto S_Q por sí mismo ni a toda la dinámica global de DEE. Si a cada estado X_j de un sector finito se le asigna un vector base ortogonal |X_j⟩, entonces:
+[word/document.xml p74] U_Q |X_j⟩ = |F_Q(X_j)⟩,        U_Q† U_Q = I
+[word/document.xml p75] Esto es una construcción matemática exacta para una permutación. La dinámica global F_DEE no es inyectiva en todos sus estados y, por tanto, no se identifica con un único operador unitario global.
+[word/document.xml p76] 0.7 Función de onda, Hamiltoniano y por qué se denominan “efectivos”
+[word/document.xml p77] En el manuscrito la función de onda no se introduce como un campo elemental almacenado en cada voxel. Aparece como representación de un sector reversible en un espacio vectorial complejo:
+[word/document.xml p78] |Ψ⟩ = Σ_j ψ_j |X_j⟩
+[word/document.xml p79] Los coeficientes ψ_j son amplitudes de esa representación. Si U_Q describe un tick dentro del sector y se asigna una escala temporal τ* y una escala de acción ħ*, puede definirse un generador mediante una rama del logaritmo:
+[word/document.xml p80] U_Q = exp(−i H_Q τ*/ħ*),        H_Q = (i ħ*/τ*) log U_Q
+[word/document.xml p81] Para el sistema discreto, U_Q ya proporciona la evolución exacta en los instantes separados por un tick. El paso a una ecuación diferencial de Schrödinger se refiere al límite continuo de una familia escalada en la que τ* se hace pequeño; no cambia la regla microscópica del kernel.
+[word/document.xml p82] i ħ* ∂_t Ψ = H_Q Ψ
+[word/document.xml p83] Los símbolos a*, τ* y ħ* son escalas de correspondencia. No aparecen como constantes físicas universales fijadas por el C++ y no deben confundirse automáticamente con una longitud, un segundo o la constante de Planck física sin una calibración externa.
+[word/document.xml p84] 0.8 Qué significa el estado conjunto A–B y dónde empieza el criterio de entrelazamiento
+[word/document.xml p85] A y B designan dos regiones o subsistemas identificados en una descripción. El estado microscópico relevante es X_AB, que contiene toda la información DEE necesaria para evolucionar la organización conjunta. Las lecturas locales se obtienen mediante mapas parciales:
+[word/document.xml p86] A_obs = M_A(X_AB),        B_obs = M_B(X_AB)
+[word/document.xml p87] Que A_obs y B_obs estén espacialmente separados no obliga a que X_AB sea la composición de dos microestados autónomos. Esta es la tesis relacional del primer bloque del manuscrito. Sin embargo, relación microscópica y entrelazamiento cuántico no son sinónimos.
+[word/document.xml p88] El criterio cuántico se formula sólo después de definir un mapa efectivo M_Q hacia una descripción de Hilbert y una partición efectiva en dos subsistemas:
+[word/document.xml p89] M_Q(X_AB) = |Ψ_AB⟩,        H_AB = H_A ⊗ H_B
+[word/document.xml p90] En ese nivel, para un estado puro, la no separabilidad se expresa por:
+[word/document.xml p91] |Ψ_AB⟩ ≠ |ψ_A⟩ ⊗ |ψ_B⟩
+[word/document.xml p92] Por tanto, la estructura relacional de DEE proporciona el candidato microscópico; la identificación como entrelazamiento cuántico exige además que el mapa efectivo, el espacio bipartito y los observables correspondientes estén bien definidos. El manuscrito mantiene separados esos dos pasos.
+[word/document.xml p93] 0.9 Qué significan las constantes del kernel y las escalas efectivas
+[word/document.xml p94] Símbolo/valor
+[word/document.xml p95] Naturaleza
+[word/document.xml p96] Interpretación
+[word/document.xml p97] N
+[word/document.xml p98] entrada del sistema
+[word/document.xml p99] Tamaño lineal de la retícula; no es una constante universal.
+[word/document.xml p100] 26
+[word/document.xml p101] geometría exacta
+[word/document.xml p102] Número de desplazamientos de Moore-26.
+[word/document.xml p103] P_KERNEL = 19665
+[word/document.xml p104] constante exacta v27
+[word/document.xml p105] Valor canónico usado por las ramas que lo invocan; reducer/DEMUX saturan s_reg en P_KERNEL−1 = 19664.
+[word/document.xml p106] 966
+[word/document.xml p107] constante exacta v27
+[word/document.xml p108] Umbral de cristalización presente en la rama de gradiente.
+[word/document.xml p109] 782
+[word/document.xml p110] constante exacta v27
+[word/document.xml p111] Numerador de la cadencia p=floor(782/a) en la rama temporal de s_reg.
+[word/document.xml p112] 2.5 y 16
+[word/document.xml p113] constantes exactas v27
+[word/document.xml p114] Valores TENSION_ELECTROWEAK y TENSION_STRONG usados en la rama material.
+[word/document.xml p115] a*, τ*, ħ*
+[word/document.xml p116] escalas efectivas
+[word/document.xml p117] Parámetros de correspondencia espacial, temporal y de acción; no son valores físicos externos fijados por el kernel.
+[word/document.xml p118] ω(k), m*, V(x)
+[word/document.xml p119] cantidades derivadas
+[word/document.xml p120] Se obtienen de la estructura espectral/continua del sector considerado; no son constantes universales de v27.
+[word/document.xml p121] 0.10 Cómo leer la sección 22: del C++ a la formulación cerrada
+[word/document.xml p122] La sección 22 no introduce una segunda teoría. Reescribe algebraicamente el mismo tick del kernel v27. Sus objetos se leen así: r_i es el raw de 64 bits, c_i el reloj, E_i y A_i son indicadores de existencia/actividad, n_i cuenta vecinos activos, los vectores de gradiente y dirección resumen contribuciones locales, y W_N implementa el wrap toroidal.
+[word/document.xml p123] La actualización distingue primero la rama de vacío de la rama material, calcula nacimientos, transporte, reglas de densidad, acumulación de s_reg y emisiones DEMUX, y finalmente aplica los deltas DEMUX. La ecuación global F_DEE compacta exactamente esa composición. Las etiquetas semánticas ELECTRON_SEED y PROTON_SEED son nombres de preparación del kernel y no constituyen por sí mismas una identificación con electrones o protones físicos.
+[word/document.xml p124] Cuando el texto pasa de F_DEE a U_Q y H_Q, no se afirma que todas las ramas microscópicas sean reversibles. Se selecciona un sector donde la evolución sí es biyectiva y sólo allí se construye la representación unitaria. Este punto separa la dinámica global many-to-one de la dinámica reversible que admite tratamiento Hamiltoniano.
+[word/document.xml p125] 0.11 Niveles de afirmación que aparecen en el documento
+[word/document.xml p126] Nivel
+[word/document.xml p127] Significado
+[word/document.xml p128] Regla exacta del kernel
+[word/document.xml p129] Definición extraída de la implementación v27: packing, Moore-26, ramas, constantes, DEMUX, clock y composición del tick.
+[word/document.xml p130] Resultado matemático exacto
+[word/document.xml p131] Consecuencia demostrable de una regla o sector especificado: por ejemplo, una permutación finita admite representación unitaria.
+[word/document.xml p132] Resultado experimental interno
+[word/document.xml p133] Regularidad obtenida al ejecutar configuraciones/experimentos DEE bajo condiciones declaradas.
+[word/document.xml p134] Representación o límite efectivo
+[word/document.xml p135] Cambio de variables o aproximación que traduce un sector a lenguaje espectral/continuo, como U→H o una expansión de dispersión.
+[word/document.xml p136] Correspondencia física propuesta
+[word/document.xml p137] Identificación entre una estructura DEE y una magnitud/fenómeno de la física observada; requiere que el mapa de correspondencia esté especificado y validado en el dominio pertinente.
+[word/document.xml p138] Esta separación es semántica y lógica: evita leer como “constante física medida” lo que es una constante de implementación, o como “regla microscópica” lo que es una representación efectiva. El cuerpo principal conserva sus derivaciones originales; este preámbulo fija el significado con el que deben leerse.
+[word/document.xml p139] 0.12 Notación mínima de consulta rápida
+[word/document.xml p140] Símbolo
+[word/document.xml p141] Significado
+[word/document.xml p142] X_t
+[word/document.xml p143] estado microscópico completo en el tick t
+[word/document.xml p144] F_DEE
+[word/document.xml p145] mapa determinista de un tick completo
+[word/document.xml p146] M, M_A, M_B
+[word/document.xml p147] mapas de observación/reducción
+[word/document.xml p148] M_Q
+[word/document.xml p149] mapa hacia la descripción cuántica efectiva cuando dicha reducción está definida
+[word/document.xml p150] S_Q, F_Q
+[word/document.xml p151] sector reversible y restricción de F_DEE a ese sector
+[word/document.xml p152] U_Q
+[word/document.xml p153] representación unitaria de F_Q
+[word/document.xml p154] H_Q o H_eff
+[word/document.xml p155] generador asociado a U_Q mediante el logaritmo
+[word/document.xml p156] |Ψ⟩, |Ψ_AB⟩
+[word/document.xml p157] estado efectivo en la representación de Hilbert
+[word/document.xml p158] a*, τ*, ħ*
+[word/document.xml p159] escalas efectivas espacial, temporal y de acción
+[word/document.xml p160] N
+[word/document.xml p161] tamaño lineal de la retícula; hay N³ sitios
+[word/document.xml p162] raw, clock
+[word/document.xml p163] dos campos que componen el estado microscópico del kernel
+[word/document.xml p164] En la Dinámica de Eficiencia Entrópica, la aparente separación entre dos objetos no implica necesariamente que ambos constituyan sistemas fundamentales independientes. La descripción observable de la realidad puede representar únicamente una proyección parcial de un estado subyacente mucho más rico, distribuido sobre una retícula tridimensional de información.
+[word/document.xml p165] Bajo esta formulación, aquello que en mecánica cuántica se describe mediante un estado conjunto entrelazado puede interpretarse en DEE como una organización distribuida única, de la cual los objetos observados constituyen únicamente manifestaciones locales.
+[word/document.xml p166] La idea fundamental puede expresarse como:
+[word/document.xml p167] separación observable≠independencia fundamental
+[word/document.xml p168] Dos regiones pueden aparecer espacialmente separadas y, sin embargo, continuar perteneciendo a un mismo estado físico del sustrato.
+[word/document.xml p169] 1. El sustrato fundamental
+[word/document.xml p170] DEE define un universo discreto tridimensional:
+[word/document.xml p171] ZN3
+[word/document.xml p172] con condiciones periódicas de frontera.
+[word/document.xml p173] Cada posición de la retícula posee una vecindad tridimensional de Moore:
+[word/document.xml p174] 33−1=26
+[word/document.xml p175] de modo que cada sitio puede relacionarse localmente con hasta:
+[word/document.xml p176] 26
+[word/document.xml p177] posiciones circundantes.
+[word/document.xml p178] Sin embargo, una posición DEE no se reduce a una variable binaria de ocupado o vacío.
+[word/document.xml p179] Su estado contiene distintos grados internos de información.
+[word/document.xml p180] En la representación actual, una palabra espacial de 64 bits puede descomponerse conceptualmente como:
+[word/document.xml p181] rawi=statei,sreg,i,dix,diy,diz,semantici.
+[word/document.xml p182] La distribución utilizada es:
+[word/document.xml p183] 32 bits para state,
+[word/document.xml p184] 16 bits para sreg,
+[word/document.xml p185] 4+4+4 bits para dirección,
+[word/document.xml p186] y:
+[word/document.xml p187] 4 bits para semantic.
+[word/document.xml p188] Además, cada posición posee un reloj causal:
+[word/document.xml p189] clocki∈Z264.
+[word/document.xml p190] Por tanto, el estado microscópico completo del universo puede representarse esquemáticamente mediante:
+[word/document.xml p191] Xt=grid_rawt,clockt,N,T
+[word/document.xml p192] donde T representa la topología del espacio.
+[word/document.xml p193] Así, aquello que un observador identifica simplemente como una posición vacía puede conservar información interna distinta de cero.
+[word/document.xml p194] En particular:
+[word/document.xml p195] state=0
+[word/document.xml p196] no implica necesariamente:
+[word/document.xml p197] raw=0.
+[word/document.xml p198] Una región sin ocupación visible puede conservar:
+[word/document.xml p199] sreg≠0,  d≠0,  semantic≠0,  clock≠0.
+[word/document.xml p200] Este hecho es esencial para comprender la interpretación DEE del entrelazamiento.
+[word/document.xml p201] 2. Evolución causal
+[word/document.xml p202] El universo DEE evoluciona mediante una transformación:
+[word/document.xml p203] Xt+1=FDEEXt
+[word/document.xml p204] aplicada sucesivamente.
+[word/document.xml p205] Cada vóxel modifica su estado a partir de su microestado actual y de las relaciones accesibles desde su vecindad.
+[word/document.xml p206] En una primera capa local:
+[word/document.xml p207] xit+1=fxit,N26i,t.
+[word/document.xml p208] La actualización completa del tick queda descrita globalmente por FDEE e incorpora la fase posterior DEMUX.
+[word/document.xml p209] La dinámica no requiere que cada sitio conozca la configuración global.
+[word/document.xml p210] Toda organización macroscópica surge de la reiteración de estas operaciones locales.
+[word/document.xml p211] Algunos parámetros discretos característicos del kernel actual incluyen:
+[word/document.xml p212] PKERNEL=19665
+[word/document.xml p213] y la cota operacional de saturación utilizada por reducer/DEMUX:
+[word/document.xml p214] sregsat=19664.
+[word/document.xml p215] En sectores de transporte direccional, una excitación puede seguir una evolución de la forma:
+[word/document.xml p216] qt=q0+t d (mod N)
+[word/document.xml p217] donde:
+[word/document.xml p218] d=dx,dy,dz.
+[word/document.xml p219] Cuando varias contribuciones alcanzan una misma posición, su información direccional puede combinarse mediante:
+[word/document.xml p220] dout=signj​dj
+[word/document.xml p221] mientras que la regulación resultante queda limitada por:
+[word/document.xml p222] sout=minj​sj,19664.
+[word/document.xml p223] La dinámica fundamental, por tanto, posee un mecanismo concreto de propagación, combinación, regulación y transformación.
+[word/document.xml p224] 3. El observador no ve necesariamente el estado completo
+[word/document.xml p225] La diferencia fundamental entre el universo microscópico y la realidad observada puede describirse mediante un operador:
+[word/document.xml p226] M:S→O
+[word/document.xml p227] donde S representa el espacio completo de estados DEE y O el conjunto de observaciones accesibles.
+[word/document.xml p228] El universo se encuentra realmente en:
+[word/document.xml p229] X∈S,
+[word/document.xml p230] pero el observador registra únicamente:
+[word/document.xml p231] Y=MX.
+[word/document.xml p232] Esto permite una situación fundamental:
+[word/document.xml p233] X1≠X2
+[word/document.xml p234] aunque:
+[word/document.xml p235] MX1=MX2.
+[word/document.xml p236] Es decir, dos estados microscópicamente diferentes pueden resultar indistinguibles para un observador particular.
+[word/document.xml p237] Sin embargo, como sus microestados son diferentes:
+[word/document.xml p238] FX1≠FX2
+[word/document.xml p239] y, posteriormente:
+[word/document.xml p240] MFX1≠MFX2.
+[word/document.xml p241] De esta forma, dos configuraciones que aparentemente poseen el mismo presente pueden tener futuros distintos porque el observador no conserva toda la información necesaria para distinguirlas.
+[word/document.xml p242] DEE introduce así una separación fundamental entre:
+[word/document.xml p243] estado físico
+[word/document.xml p244] y:
+[word/document.xml p245] estado observado.
+[word/document.xml p246] 4. El estado conjunto
+[word/document.xml p247] Consideremos ahora dos regiones que un observador denomina:
+[word/document.xml p248] A
+[word/document.xml p249] y:
+[word/document.xml p250] B.
+[word/document.xml p251] Desde el nivel observable pueden aparecer como dos objetos separados:
+[word/document.xml p252] A    B.
+[word/document.xml p253] Sin embargo, en DEE el estado fundamental no necesita factorizarse simplemente como:
+[word/document.xml p254] X=XA+XB.
+[word/document.xml p255] El estado completo puede ser:
+[word/document.xml p256] XAB={A,B,R,G,D,C,H}
+[word/document.xml p257] donde:
+[word/document.xml p258] R representa las relaciones del medio;
+[word/document.xml p259] G, su organización geométrica;
+[word/document.xml p260] D, la información direccional;
+[word/document.xml p261] C, los estados de reloj;
+[word/document.xml p262] H, la historia relevante del sistema.
+[word/document.xml p263] En consecuencia, A y B no constituyen necesariamente entidades fundamentales independientes.
+[word/document.xml p264] Son dos manifestaciones locales de:
+[word/document.xml p265] XAB.
+[word/document.xml p266] El observador obtiene:
+[word/document.xml p267] Aobs=MAXAB
+[word/document.xml p268] y:
+[word/document.xml p269] Bobs=MBXAB,
+[word/document.xml p270] pero ninguna de las dos observaciones tiene por qué contener toda la información presente en XAB.
+[word/document.xml p271] Éste es el punto central de la interpretación DEE.
+[word/document.xml p272] 5. El análogo DEE del entrelazamiento
+[word/document.xml p273] El entrelazamiento puede entonces interpretarse como la persistencia de una identidad relacional conjunta incluso después de que sus manifestaciones observables se encuentren separadas.
+[word/document.xml p274] No se requiere imaginar:
+[word/document.xml p275] A→B
+[word/document.xml p276] como una partícula enviando una señal misteriosa.
+[word/document.xml p277] La estructura fundamental es:
+[word/document.xml p278] A+B+medio+relaciones=un único estado distribuido.
+[word/document.xml p279] Por tanto, cuando se modifica o interroga una parte de esa organización, la respuesta de la otra parte depende del estado conjunto al que ambas pertenecen.
+[word/document.xml p280] Una representación más apropiada sería:
+[word/document.xml p281] A←XAB→B
+[word/document.xml p282] en vez de:
+[word/document.xml p283] A→B.
+[word/document.xml p284] La correlación no necesita pertenecer exclusivamente a A ni exclusivamente a B.
+[word/document.xml p285] Pertenece a:
+[word/document.xml p286] XAB.
+[word/document.xml p287] 6. La analogía de la sábana
+[word/document.xml p288] Esta estructura puede visualizarse mediante una sábana tensada.
+[word/document.xml p289] Dos puntos de una sábana pueden encontrarse muy separados cuando sólo se observan sus coordenadas superficiales.
+[word/document.xml p290] Sin embargo, ninguno de ellos constituye un sistema independiente de la tela.
+[word/document.xml p291] Ambos son estados locales de:
+[word/document.xml p292] una misma estructura
+[word/document.xml p293] y modificar una región modifica las condiciones internas de la organización que también contiene a la otra.
+[word/document.xml p294] DEE añade a esa analogía algo más preciso.
+[word/document.xml p295] La “tensión” no es una única variable continua.
+[word/document.xml p296] Está distribuida entre:
+[word/document.xml p297] state, sreg, d, semantic, clock, geometry, history.
+[word/document.xml p298] Por ello, dos universos con el mismo número de elementos pueden evolucionar de forma diferente si cambia:
+[word/document.xml p299] cómo están relacionados.
+[word/document.xml p300] Formalmente, pueden existir:
+[word/document.xml p301] InvX1=InvX2
+[word/document.xml p302] pero:
+[word/document.xml p303] RelX1≠RelX2,
+[word/document.xml p304] de modo que:
+[word/document.xml p305] FtX1≠FtX2.
+[word/document.xml p306] La geometría y las relaciones son, por tanto, parte del estado físico.
+[word/document.xml p307] 7. Distancia observada y distancia fundamental
+[word/document.xml p308] La separación espacial observada tampoco tiene por qué contener toda la información acerca de la relación causal fundamental.
+[word/document.xml p309] Podemos distinguir:
+[word/document.xml p310] dobsA,B
+[word/document.xml p311] de una distancia o relación nativa del sustrato:
+[word/document.xml p312] dDEEA,B.
+[word/document.xml p313] En general:
+[word/document.xml p314] dobs≠dDEE.
+[word/document.xml p315] Dos regiones que parecen distantes en la representación observable pueden continuar perteneciendo a una organización cuya conectividad fundamental no queda reflejada completamente en esa distancia.
+[word/document.xml p316] Así, aquello que desde el nivel macroscópico parece una relación entre objetos separados puede corresponder microscópicamente a:
+[word/document.xml p317] dinámica de una única estructura relacional.
+[word/document.xml p318] La aparente no localidad puede surgir entonces de aplicar un mapa de observación que conserva la posición de los objetos pero pierde parte de las relaciones que constituyen el sustrato.
+[word/document.xml p319] 8. La fase puede existir aunque el observador no la vea
+[word/document.xml p320] Otra consecuencia natural de esta arquitectura es que una variable puede desaparecer de una observación sin desaparecer del estado físico.
+[word/document.xml p321] Sean dos microestados:
+[word/document.xml p322] Xϕ1,  Xϕ2
+[word/document.xml p323] con diferente fase interna.
+[word/document.xml p324] Un observador reducido puede producir:
+[word/document.xml p325] MXϕ1=MXϕ2.
+[word/document.xml p326] Para él, la fase ha desaparecido.
+[word/document.xml p327] Sin embargo, una interacción posterior puede actuar sobre el estado completo:
+[word/document.xml p328] FtXϕ1
+[word/document.xml p329] y:
+[word/document.xml p330] FtXϕ2
+[word/document.xml p331] produciendo:
+[word/document.xml p332] MFtXϕ1≠MFtXϕ2.
+[word/document.xml p333] Así:
+[word/document.xml p334] información no observable≠información inexistente.
+[word/document.xml p335] Esta distinción resulta especialmente importante cuando se intenta interpretar una teoría cuántica efectiva desde un sustrato más profundo.
+[word/document.xml p336] 9. El origen de la probabilidad efectiva
+[word/document.xml p337] El universo DEE puede evolucionar mediante una transformación determinista:
+[word/document.xml p338] Xt+1=FXt.
+[word/document.xml p339] Sin embargo, si el observador sólo conoce:
+[word/document.xml p340] m=MX,
+[word/document.xml p341] pueden existir numerosos estados:
+[word/document.xml p342] Xj∈M−1m
+[word/document.xml p343] compatibles con exactamente la misma observación.
+[word/document.xml p344] Si el observador no conoce cuál de ellos constituye el estado real, aparece una distribución:
+[word/document.xml p345] μX|m.
+[word/document.xml p346] La probabilidad de observar posteriormente un resultado y será:
+[word/document.xml p347] Py|m=X∈M−1m​μX|m 1MFtX=y.
+[word/document.xml p348] Por tanto:
+[word/document.xml p349] microdinámica determinista+información incompleta=probabilidad efectiva.
+[word/document.xml p350] La incertidumbre del observador no requiere necesariamente que el microestado fundamental sea igualmente indeterminado.
+[word/document.xml p351] El fenómeno probabilístico aparece al proyectar una dinámica de dimensión mayor sobre una descripción reducida.
+[word/document.xml p352] 10. La medición
+[word/document.xml p353] En este marco, una medición deja de necesitar una posición ontológica especial.
+[word/document.xml p354] El aparato de medición también pertenece al universo.
+[word/document.xml p355] Puede describirse mediante una intervención:
+[word/document.xml p356] Ia
+[word/document.xml p357] dependiente de la configuración a del aparato.
+[word/document.xml p358] El estado conjunto pasa de:
+[word/document.xml p359] Xt
+[word/document.xml p360] a:
+[word/document.xml p361] X′t=IaXt.
+[word/document.xml p362] Después:
+[word/document.xml p363] Xt+τ=FτX′t.
+[word/document.xml p364] Finalmente el observador registra:
+[word/document.xml p365] y=MXt+τ.
+[word/document.xml p366] Así, medir significa:
+[word/document.xml p367] interacción→evolución→proyección observable.
+[word/document.xml p368] No existe una frontera fundamental entre “sistema cuántico” y “aparato clásico”.
+[word/document.xml p369] Ambos son subconjuntos del mismo estado DEE.
+[word/document.xml p370] 11. El entrelazamiento como identidad distribuida
+[word/document.xml p371] La expresión más compacta de la propuesta puede construirse de la siguiente manera.
+[word/document.xml p372] En el nivel observable:
+[word/document.xml p373] Aobs,Bobs.
+[word/document.xml p374] En el nivel fundamental:
+[word/document.xml p375] XAB.
+[word/document.xml p376] Las mediciones locales son:
+[word/document.xml p377] Aobs=MaXAB
+[word/document.xml p378] y:
+[word/document.xml p379] Bobs=MbXAB.
+[word/document.xml p380] Entonces la correlación observada:
+[word/document.xml p381] CA,B
+[word/document.xml p382] no necesita proceder de:
+[word/document.xml p383] A→B
+[word/document.xml p384] ni de:
+[word/document.xml p385] B→A.
+[word/document.xml p386] Puede proceder de:
+[word/document.xml p387] A,B⊂XAB.
+[word/document.xml p388] Ambos resultados son expresiones distintas de una única organización.
+[word/document.xml p389] En este sentido, el entrelazamiento DEE puede definirse como:
+[word/document.xml p390] la persistencia de información relacional distribuida entre regiones cuya descripción observable individual no contiene el estado completo que determina su comportamiento conjunto.
+[word/document.xml p391] 12. Complementariedad con la mecánica cuántica
+[word/document.xml p392] La relación entre ambas descripciones puede expresarse como dos niveles.
+[word/document.xml p393] La mecánica cuántica proporciona un estado efectivo:
+[word/document.xml p394] |Ψ⟩
+[word/document.xml p395] o una matriz de densidad:
+[word/document.xml p396] ρ
+[word/document.xml p397] a partir de los cuales calcula observables y probabilidades.
+[word/document.xml p398] DEE añadiría una descripción microscópica:
+[word/document.xml p399] X
+[word/document.xml p400] y un mapa:
+[word/document.xml p401] M:X→ρ
+[word/document.xml p402] o, en términos generales:
+[word/document.xml p403] microestado DEE→Mestado físico observable.
+[word/document.xml p404] Así:
+[word/document.xml p405] mecánica cuántica=descripción de observables
+[word/document.xml p406] mientras:
+[word/document.xml p407] DEE=descripción del sustrato que produce esos observables.
+[word/document.xml p408] No existe contradicción necesaria entre ambas capas.
+[word/document.xml p409] Una teoría puede ser correcta en su dominio sin describir cada variable microscópica del sistema.
+[word/document.xml p410] La relación conceptual sería análoga a:
+[word/document.xml p411] temperatura↔movimiento molecular.
+[word/document.xml p412] La temperatura no es incorrecta porque debajo existan moléculas.
+[word/document.xml p413] Es una descripción emergente de ellas.
+[word/document.xml p414] De la misma forma, bajo la hipótesis DEE:
+[word/document.xml p415] |Ψ⟩
+[word/document.xml p416] sería una representación efectiva del comportamiento de familias de microestados:
+[word/document.xml p417] {X}.
+[word/document.xml p418] 13. Qué completa DEE
+[word/document.xml p419] La información adicional proporcionada por DEE se encuentra precisamente en aquello que el estado efectivo no especifica explícitamente:
+[word/document.xml p420] state
+[word/document.xml p421] sreg
+[word/document.xml p422] direction
+[word/document.xml p423] semantic
+[word/document.xml p424] clock
+[word/document.xml p425] geometry
+[word/document.xml p426] history
+[word/document.xml p427] topology
+[word/document.xml p428] y, sobre todo:
+[word/document.xml p429] relations.
+[word/document.xml p430] El estado observado deja de ser necesariamente una descripción completa de la ontología del sistema.
+[word/document.xml p431] Se convierte en:
+[word/document.xml p432] MX,
+[word/document.xml p433] una proyección de ella.
+[word/document.xml p434] 14. Formulación final
+[word/document.xml p435] La secuencia completa del fenómeno puede escribirse como:
+[word/document.xml p436] preparación
+[word/document.xml p437] ↓
+[word/document.xml p438] XAB
+[word/document.xml p439] una organización distribuida única,
+[word/document.xml p440] ↓
+[word/document.xml p441] separación observable de A y B
+[word/document.xml p442] sin destrucción necesariamente de la relación microscópica,
+[word/document.xml p443] ↓
+[word/document.xml p444] evolución FDEE
+[word/document.xml p445] conservando estado, geometría, fase, clocks e historia,
+[word/document.xml p446] ↓
+[word/document.xml p447] interacción/medición
+[word/document.xml p448] Ia, Ib,
+[word/document.xml p449] ↓
+[word/document.xml p450] observadores parciales
+[word/document.xml p451] Aobs=MaX,  Bobs=MbX,
+[word/document.xml p452] ↓
+[word/document.xml p453] correlación observable.
+[word/document.xml p454] Por tanto, en esta formulación el fenómeno denominado entrelazamiento no necesita representar una comunicación instantánea entre dos entidades fundamentalmente separadas.
+[word/document.xml p455] Representa que la separación pertenece al nivel de observación, mientras la relación pertenece al nivel del estado fundamental.
+[word/document.xml p456] La formulación DEE puede resumirse mediante:
+[word/document.xml p457] dos observables≠dos ontologías independientes
+[word/document.xml p458] o, de manera todavía más compacta:
+[word/document.xml p459] Aobs+Bobs=MXAB,
+[word/document.xml p460] donde el observador ve las partes, pero el universo evoluciona sobre el todo.
+[word/document.xml p461] Anexo — Emergencia del Régimen Cuántico Efectivo y Límite Continuo en Sectores Reversibles de Representación Unitaria de DEE
+[word/document.xml p462] Este anexo debe leerse como continuación natural de “El entrelazamiento en la Dinámica de Eficiencia Entrópica”. Allí se describe cómo un estado distribuido profundo puede aparecer ante un observador como varios subsistemas separados. Aquí se desarrolla la otra mitad del problema: cómo una dinámica discreta DEE puede admitir una descripción efectiva mediante función de onda y, bajo determinadas condiciones, adquirir la forma de la ecuación de Schrödinger.
+[word/document.xml p463] La traducción matemática completa del kernel C++ v27 a una función cerrada FDEE se desarrolla en la sección 22, “Cierre microscópico desde el kernel v27”. Para el desarrollo presente basta partir de una propiedad ya definida por el sistema:
+[word/document.xml p464] Xt+1=FDEEXt
+[word/document.xml p465] donde Xt representa el estado microscópico completo del universo DEE.
+[word/document.xml p466] 1. Dinámica fundamental y dinámica efectiva
+[word/document.xml p467] DEE considera fundamental una dinámica discreta.
+[word/document.xml p468] El universo no evoluciona inicialmente mediante una función de onda continua, sino mediante una sucesión:
+[word/document.xml p469] X0→X1→X2→⋯
+[word/document.xml p470] con:
+[word/document.xml p471] Xt+1=FDEEXt.
+[word/document.xml p472] Cada estado contiene mucho más que una ocupación espacial. En términos esquemáticos:
+[word/document.xml p473] Xt={rawt,clockt,N,T}.
+[word/document.xml p474] El campo raw contiene internamente:
+[word/document.xml p475] state, sreg, dx,dy,dz, semantic,
+[word/document.xml p476] mientras que cada posición posee además su correspondiente estado de reloj.
+[word/document.xml p477] La palabra espacial utilizada por el kernel es de 64 bits, distribuida en:
+[word/document.xml p478] 32+16+4+4+4+4=64.
+[word/document.xml p479] Por tanto, el objeto fundamental de DEE es:
+[word/document.xml p480] X
+[word/document.xml p481] y no:
+[word/document.xml p482] ψ.
+[word/document.xml p483] La función de onda aparecerá posteriormente como una representación efectiva de determinados sectores de la dinámica de X.
+[word/document.xml p484] 2. No toda la dinámica DEE necesita pertenecer al mismo régimen
+[word/document.xml p485] El kernel completo puede contener evolución irreversible o many-to-one:
+[word/document.xml p486] X1≠X2
+[word/document.xml p487] pero:
+[word/document.xml p488] FDEEX1=FDEEX2.
+[word/document.xml p489] Por consiguiente, la evolución global de DEE no tiene por qué ser unitaria.
+[word/document.xml p490] Esto no impide que existan subconjuntos del espacio de estados donde la dinámica sí sea reversible.
+[word/document.xml p491] Definamos uno de ellos como:
+[word/document.xml p492] SQ⊆SDEE
+[word/document.xml p493] y exijamos:
+[word/document.xml p494] FDEESQ⊆SQ.
+[word/document.xml p495] Es decir: una vez que la dinámica entra en SQ, permanece dentro de él.
+[word/document.xml p496] Además, para un régimen reversible:
+[word/document.xml p497] FQ≡FDEE|SQ
+[word/document.xml p498] debe ser biyectivo:
+[word/document.xml p499] FQ:SQ→SQ.
+[word/document.xml p500] Entonces cada estado posee exactamente un sucesor y un predecesor.
+[word/document.xml p501] Éste será denominado sector reversible DEE cuya representación lineal es unitaria.
+[word/document.xml p502] 3. De una permutación DEE a un operador unitario
+[word/document.xml p503] Supongamos que el sector SQ contiene un número finito de microestados:
+[word/document.xml p504] SQ={X1,X2,…,XM}.
+[word/document.xml p505] Asociamos a cada uno un vector ortogonal:
+[word/document.xml p506] |Xj⟩.
+[word/document.xml p507] La dinámica microscópica induce entonces un operador:
+[word/document.xml p508] UFXj⟩=FQXj⟩.
+[word/document.xml p509] Como FQ es una permutación de los estados de SQ, UF es una matriz de permutación.
+[word/document.xml p510] Por tanto:
+[word/document.xml p511] UF†UF=I.
+[word/document.xml p512] Es decir:
+[word/document.xml p513] UF es unitario.
+[word/document.xml p514] Aquí aparece el primer puente matemático importante.
+[word/document.xml p515] DEE sigue siendo completamente discreto y determinista:
+[word/document.xml p516] X→FX,
+[word/document.xml p517] pero la misma evolución admite una representación lineal unitaria:
+[word/document.xml p518] Ψt+1⟩=UFΨt⟩.
+[word/document.xml p519] 4. Nacimiento de la función de onda efectiva
+[word/document.xml p520] En esta representación, un estado efectivo puede escribirse:
+[word/document.xml p521] Ψ⟩=j​ψjXj⟩.
+[word/document.xml p522] Los coeficientes:
+[word/document.xml p523] ψj∈C
+[word/document.xml p524] constituyen la representación compleja del estado sobre el sector.
+[word/document.xml p525] La función de onda no necesita interpretarse entonces como el objeto fundamental del universo.
+[word/document.xml p526] Es una representación de:
+[word/document.xml p527] cómo está distribuido un estado efectivo sobre un sector de microestados DEE.
+[word/document.xml p528] La distinción ontológica es:
+[word/document.xml p529] X=estado microscópico
+[word/document.xml p530] mientras:
+[word/document.xml p531] Ψ=representación efectiva del régimen.
+[word/document.xml p532] Esto conecta directamente con la formulación del entrelazamiento: un observador puede trabajar con Ψ aun cuando debajo exista una organización microscópica X mucho más rica.
+[word/document.xml p533] 5. El caso elemental: una órbita periódica
+[word/document.xml p534] Consideremos una órbita DEE de período p:
+[word/document.xml p535] X0→X1→⋯→Xp−1→X0.
+[word/document.xml p536] Definimos:
+[word/document.xml p537] Uj⟩=j+1 (mod p)⟩.
+[word/document.xml p538] En la base microscópica, U simplemente desplaza el estado un paso.
+[word/document.xml p539] Sin embargo, podemos cambiar a una base de Fourier:
+[word/document.xml p540] k⟩=1pj=0p−1e2πikj/pj⟩.
+[word/document.xml p541] Aplicando U:
+[word/document.xml p542] Uk⟩=e−2πik/pk⟩.
+[word/document.xml p543] Por tanto los modos propios ya no aparecen como posiciones individuales del ciclo, sino como fases.
+[word/document.xml p544] Los valores propios son:
+[word/document.xml p545] λk=e−2πik/p.
+[word/document.xml p546] Y poseen módulo:
+[word/document.xml p547] λk=1.
+[word/document.xml p548] Ésta es exactamente la estructura matemática de una evolución unitaria de fase.
+[word/document.xml p549] 6. Del tick discreto al Hamiltoniano
+[word/document.xml p550] Sea:
+[word/document.xml p551] τ
+[word/document.xml p552] la duración física efectiva asociada a un tick.
+[word/document.xml p553] La evolución puede escribirse:
+[word/document.xml p554] Ψt+τ⟩=UΨt⟩.
+[word/document.xml p555] Todo operador unitario puede representarse, escogiendo una rama apropiada del logaritmo, como:
+[word/document.xml p556] U=e−iHeffτ/ℏ*.
+[word/document.xml p557] Por tanto:
+[word/document.xml p558] Heff=iℏ*τlogU.
+[word/document.xml p559] Aquí Heff es el Hamiltoniano efectivo del sector y ℏ* fija la escala entre fase y acción en esa descripción.
+[word/document.xml p560] Para el ciclo de período p:
+[word/document.xml p561] e−iEkτ/ℏ*=e−2πik/p.
+[word/document.xml p562] Por tanto:
+[word/document.xml p563] Ek=2πℏ*pτk
+[word/document.xml p564] módulo la periodicidad asociada al logaritmo.
+[word/document.xml p565] Esto proporciona una interpretación precisa:
+[word/document.xml p566] la energía efectiva corresponde a una frecuencia de fase de la dinámica microscópica recurrente.
+[word/document.xml p567] 7. Aparición de la ecuación de Schrödinger
+[word/document.xml p568] Partimos de:
+[word/document.xml p569] Ψt+τ=e−iHeffτ/ℏ*Ψt.
+[word/document.xml p570] Para una familia escalada de evoluciones
+[word/document.xml p571] Uτ=e−iHeffτ/ℏ*,
+[word/document.xml p572] y para τ pequeño:
+[word/document.xml p573] e−iHeffτ/ℏ*=I−iℏ*Heffτ+Oτ2.
+[word/document.xml p574] Entonces:
+[word/document.xml p575] Ψt+τ−Ψt=−iℏ*HeffΨtτ+Oτ2.
+[word/document.xml p576] Dividiendo por τ:
+[word/document.xml p577] Ψt+τ−Ψtτ=−iℏ*HeffΨt+Oτ.
+[word/document.xml p578] En el límite continuo de esa familia escalada:
+[word/document.xml p579] τ→0,
+[word/document.xml p580] se obtiene:
+[word/document.xml p581] iℏ*∂Ψ∂t=HeffΨ.
+[word/document.xml p582] Ésta es la forma general de la ecuación de Schrödinger.
+[word/document.xml p583] Dentro de DEE su interpretación es:
+[word/document.xml p584] Schrödinger=descripción continua de una dinámica DEE unitaria efectiva.
+[word/document.xml p585] No constituye la regla microscópica del kernel.
+[word/document.xml p586] Constituye la ecuación que aparece cuando determinada dinámica microscópica se describe mediante las variables y escalas apropiadas.
+[word/document.xml p587] 8. Introducción del espacio continuo
+[word/document.xml p588] Hasta aquí solamente se ha hecho continuo el tiempo efectivo.
+[word/document.xml p589] Para obtener una teoría espacial, introducimos el tamaño físico de un vóxel:
+[word/document.xml p590] a.
+[word/document.xml p591] Una posición discreta:
+[word/document.xml p592] n=nx,ny,nz
+[word/document.xml p593] corresponde entonces a:
+[word/document.xml p594] x=a n.
+[word/document.xml p595] El límite continuo requiere:
+[word/document.xml p596] a→0,
+[word/document.xml p597] N→∞
+[word/document.xml p598] manteniendo una escala física macroscópica apropiada.
+[word/document.xml p599] Una excitación efectiva puede describirse:
+[word/document.xml p600] ψnt
+[word/document.xml p601] y en el límite:
+[word/document.xml p602] ψnt→ψx,t.
+[word/document.xml p603] 9. Modos espaciales
+[word/document.xml p604] Para un sector aproximadamente homogéneo y traslacionalmente simétrico, pueden definirse modos:
+[word/document.xml p605] ψn∝eik⋅na.
+[word/document.xml p606] Cada modo evoluciona:
+[word/document.xml p607] ψkt+τ=e−iωkτψkt.
+[word/document.xml p608] La cantidad fundamental que debe extraerse del kernel es entonces:
+[word/document.xml p609] ωk
+[word/document.xml p610] la relación de dispersión del sector.
+[word/document.xml p611] Ésta representa la frecuencia temporal de cada modo espacial.
+[word/document.xml p612] Todo el problema del límite continuo puede reformularse como:
+[word/document.xml p613] ¿Qué función ωk produce DEE en el sector SQ a longitudes de onda grandes?
+[word/document.xml p614] 10. Régimen de baja energía
+[word/document.xml p615] Supongamos que el sector posee una dispersión:
+[word/document.xml p616] ω2k=ω02+c*2k2+Ok4.
+[word/document.xml p617] Aquí:
+[word/document.xml p618] ω0
+[word/document.xml p619] es una frecuencia propia incluso cuando:
+[word/document.xml p620] k=0,
+[word/document.xml p621] mientras:
+[word/document.xml p622] c*
+[word/document.xml p623] define una velocidad característica del régimen.
+[word/document.xml p624] Entonces:
+[word/document.xml p625] ωk=ω02+c*2k2.
+[word/document.xml p626] Para:
+[word/document.xml p627] c*k≪ω0,
+[word/document.xml p628] podemos expandir:
+[word/document.xml p629] ωk=ω01+c*2k2ω02.
+[word/document.xml p630] Utilizando:
+[word/document.xml p631] 1+x≈1+x2,
+[word/document.xml p632] resulta:
+[word/document.xml p633] ωk≈ω0+c*2k22ω0.
+[word/document.xml p634] 11. Separación de la fase rápida
+[word/document.xml p635] La componente:
+[word/document.xml p636] ω0
+[word/document.xml p637] produce una oscilación común.
+[word/document.xml p638] Definimos:
+[word/document.xml p639] Ψx,t=e−iω0tψx,t.
+[word/document.xml p640] La función:
+[word/document.xml p641] ψx,t
+[word/document.xml p642] representa la envolvente lenta.
+[word/document.xml p643] Su frecuencia residual es:
+[word/document.xml p644] Δωk=c*2k22ω0.
+[word/document.xml p645] En espacio real:
+[word/document.xml p646] k2↔−∇2.
+[word/document.xml p647] Por tanto:
+[word/document.xml p648] i∂ψ∂t=−c*22ω0∇2ψ.
+[word/document.xml p649] Multiplicando por ℏ*:
+[word/document.xml p650] iℏ*∂ψ∂t=−ℏ*c*22ω0∇2ψ.
+[word/document.xml p651] 12. Emergencia de la masa
+[word/document.xml p652] Definamos:
+[word/document.xml p653] m*=ℏ*ω0c*2.
+[word/document.xml p654] Entonces:
+[word/document.xml p655] ℏ*c*22ω0=ℏ*22m*.
+[word/document.xml p656] Y obtenemos:
+[word/document.xml p657] iℏ*∂ψ∂t=−ℏ*22m*∇2ψ.
+[word/document.xml p658] Ésta es exactamente la ecuación libre de Schrödinger.
+[word/document.xml p659] La masa efectiva satisface:
+[word/document.xml p660] m*c*2=ℏ*ω0.
+[word/document.xml p661] Esto proporciona una interpretación especialmente importante para DEE.
+[word/document.xml p662] La masa no necesita introducirse inicialmente como una propiedad independiente.
+[word/document.xml p663] Puede aparecer como:
+[word/document.xml p664] frecuencia interna de una organización persistente
+[word/document.xml p665] expresada en unidades macroscópicas.
+[word/document.xml p666] 13. Interpretación DEE de la masa efectiva
+[word/document.xml p667] En esta formulación:
+[word/document.xml p668] ω0
+[word/document.xml p669] representa la frecuencia propia del patrón incluso en reposo espacial.
+[word/document.xml p670] Entonces:
+[word/document.xml p671] E0=ℏ*ω0.
+[word/document.xml p672] Y:
+[word/document.xml p673] E0=m*c*2.
+[word/document.xml p674] Por tanto:
+[word/document.xml p675] masa efectiva↔energía de recurrencia interna.
+[word/document.xml p676] Una organización DEE puede encontrarse espacialmente estacionaria y, sin embargo, seguir realizando actividad microscópica.
+[word/document.xml p677] La ausencia de desplazamiento no implica ausencia de dinámica.
+[word/document.xml p678] La masa efectiva representa entonces una propiedad espectral de esa dinámica interna.
+[word/document.xml p679] 14. Introducción de un potencial
+[word/document.xml p680] Si la frecuencia interna depende lentamente de la posición:
+[word/document.xml p681] ω0→ω0x,
+[word/document.xml p682] podemos separar:
+[word/document.xml p683] ω0x=ω0+δωx.
+[word/document.xml p684] La corrección energética es:
+[word/document.xml p685] Vx=ℏ*δωx.
+[word/document.xml p686] La ecuación efectiva pasa entonces a:
+[word/document.xml p687] iℏ*∂ψ∂t=−ℏ*22m*∇2+Vxψ.
+[word/document.xml p688] Así, en una interpretación DEE:
+[word/document.xml p689] potencial=modificación espacial de la dinámica/fase local del medio.
+[word/document.xml p690] No necesita ser una entidad fundamental independiente.
+[word/document.xml p691] 15. Relación con el observador
+[word/document.xml p692] El estado profundo continúa siendo:
+[word/document.xml p693] X.
+[word/document.xml p694] Pero un observador puede utilizar una transformación:
+[word/document.xml p695] MQ:X→ψ.
+[word/document.xml p696] La descripción cuántica efectiva será válida cuando exista aproximadamente un operador cerrado:
+[word/document.xml p697] GQ
+[word/document.xml p698] tal que:
+[word/document.xml p699] MQFDEEX≈GQMQX.
+[word/document.xml p700] En el régimen de representación unitaria:
+[word/document.xml p701] GQ=U.
+[word/document.xml p702] Y en el límite continuo:
+[word/document.xml p703] GQ→e−iHefft/ℏ*.
+[word/document.xml p704] Esta condición es fundamental.
+[word/document.xml p705] Significa que el observador ya no necesita conocer todos los bits de X para describir el futuro relevante.
+[word/document.xml p706] El estado efectivo:
+[word/document.xml p707] ψ
+[word/document.xml p708] se vuelve suficientemente cerrado.
+[word/document.xml p709] 16. Por qué un coarse-graining trivial no es suficiente
+[word/document.xml p710] No cualquier mapa:
+[word/document.xml p711] M:X→ψ
+[word/document.xml p712] funciona.
+[word/document.xml p713] Por ejemplo, conservar únicamente:
+[word/document.xml p714] ρx,t=densidad de occupancy
+[word/document.xml p715] puede borrar:
+[word/document.xml p716] dirección;
+[word/document.xml p717] fase;
+[word/document.xml p718] sreg;
+[word/document.xml p719] clocks;
+[word/document.xml p720] historia;
+[word/document.xml p721] relaciones internas.
+[word/document.xml p722] Entonces pueden existir:
+[word/document.xml p723] MX1=MX2
+[word/document.xml p724] pero:
+[word/document.xml p725] MFX1≠MFX2.
+[word/document.xml p726] En ese caso no existe una ecuación autónoma:
+[word/document.xml p727] ψt+1=Gψt.
+[word/document.xml p728] Por ello, el límite continuo correcto de DEE probablemente necesite un observador enriquecido:
+[word/document.xml p729] MQX=ρ,ϕ,J,Z,…
+[word/document.xml p730] donde podrían sobrevivir:
+[word/document.xml p731] densidad ρ;
+[word/document.xml p732] fase ϕ;
+[word/document.xml p733] corriente J;
+[word/document.xml p734] variables internas Z.
+[word/document.xml p735] La función de onda:
+[word/document.xml p736] ψ=ρ eiϕ
+[word/document.xml p737] sería entonces una representación compacta de algunos de esos grados efectivos.
+[word/document.xml p738] 17. Conexión con el entrelazamiento DEE
+[word/document.xml p739] Este desarrollo encaja directamente con “El entrelazamiento en la Dinámica de Eficiencia Entrópica”.
+[word/document.xml p740] Allí el estado fundamental de dos regiones se representa:
+[word/document.xml p741] XAB.
+[word/document.xml p742] La descripción efectiva correspondiente sería:
+[word/document.xml p743] ΨAB=MQXAB.
+[word/document.xml p744] Si la organización profunda permite separar completamente las dos regiones:
+[word/document.xml p745] XAB=XA⊕XB
+[word/document.xml p746] y el observador respeta esa separación, entonces:
+[word/document.xml p747] ΨAB=ψA⊗ψB.
+[word/document.xml p748] En cambio, si las relaciones fundamentales forman parte inseparable de XAB, puede ocurrir:
+[word/document.xml p749] ΨAB≠ψA⊗ψB.
+[word/document.xml p750] Ésta es precisamente la estructura matemática de un estado efectivo no factorizable.
+[word/document.xml p751] Desde DEE, la no factorización tendría una interpretación microscópica:
+[word/document.xml p752] la relación entre A y B pertenece al estado fundamental.
+[word/document.xml p753] Por tanto, la función de onda conjunta no se factoriza porque el estado subyacente tampoco puede describirse correctamente mediante dos objetos independientes.
+[word/document.xml p754] 18. Estado conjunto y función de onda conjunta
+[word/document.xml p755] La cadena conceptual sería:
+[word/document.xml p756] XAB
+[word/document.xml p757] estado microscópico distribuido,
+[word/document.xml p758] ↓MQ
+[word/document.xml p759] ΨAB
+[word/document.xml p760] estado cuántico efectivo.
+[word/document.xml p761] Cuando:
+[word/document.xml p762] ΨAB≠ψA⊗ψB,
+[word/document.xml p763] el observador habla de un estado entrelazado.
+[word/document.xml p764] La interpretación DEE es:
+[word/document.xml p765] la no separabilidad de la función de onda constituye la imagen efectiva de una no separabilidad relacional del microestado.
+[word/document.xml p766] No es necesario introducir una comunicación posterior misteriosa entre A y B.
+[word/document.xml p767] La relación estaba contenida desde el principio en:
+[word/document.xml p768] XAB.
+[word/document.xml p769] 19. Fase, relación y geometría
+[word/document.xml p770] En DEE, una fase efectiva:
+[word/document.xml p771] ϕ
+[word/document.xml p772] puede emerger de ciclos, clocks, recurrencias y relaciones entre estados.
+[word/document.xml p773] Dos partes de una estructura pueden poseer una relación de fase:
+[word/document.xml p774] Δϕ=ϕA−ϕB.
+[word/document.xml p775] Aunque un observador local no conserve toda esa información, la dinámica microscópica sí puede hacerlo.
+[word/document.xml p776] Así, un estado efectivo complejo:
+[word/document.xml p777] ψ=A eiϕ
+[word/document.xml p778] puede interpretarse como una compresión de dos componentes:
+[word/document.xml p779] amplitud+relación de fase.
+[word/document.xml p780] DEE proporciona candidatos microscópicos para ambas mediante organización, recurrencia, clocks y relaciones.
+[word/document.xml p781] 20. Arquitectura completa
+[word/document.xml p782] Puede resumirse la construcción en tres niveles.
+[word/document.xml p783] Nivel I — Ontología DEE
+[word/document.xml p784] Xt+1=FDEEXt
+[word/document.xml p785] Microestado discreto, local y causal.
+[word/document.xml p786] Nivel II — Sector cuántico efectivo
+[word/document.xml p787] SQ⊂SDEE
+[word/document.xml p788] con:
+[word/document.xml p789] FQ:SQ→SQ
+[word/document.xml p790] reversible.
+[word/document.xml p791] Su representación lineal:
+[word/document.xml p792] Ψt+τ=UQΨt
+[word/document.xml p793] con:
+[word/document.xml p794] UQ†UQ=I.
+[word/document.xml p795] Nivel III — Límite continuo
+[word/document.xml p796] Si:
+[word/document.xml p797] a,τ→0
+[word/document.xml p798] y existe una dispersión adecuada:
+[word/document.xml p799] ωk,
+[word/document.xml p800] entonces:
+[word/document.xml p801] iℏ*∂tψ=Heffψ.
+[word/document.xml p802] En el límite no relativista con dispersión cuadrática:
+[word/document.xml p803] iℏ*∂ψ∂t=−ℏ*22m*∇2+Vψ.
+[word/document.xml p804] 21. La cadena DEE → Schrödinger
+[word/document.xml p805] La construcción completa queda:
+[word/document.xml p806] FDEE
+[word/document.xml p807] ↓
+[word/document.xml p808] sector cerrado y reversible SQ
+[word/document.xml p809] ↓
+[word/document.xml p810] operador de permutación UQ
+[word/document.xml p811] ↓
+[word/document.xml p812] modos de Fourier / fase
+[word/document.xml p813] ↓
+[word/document.xml p814] UQ=e−iHeffτ/ℏ*
+[word/document.xml p815] ↓
+[word/document.xml p816] ωk
+[word/document.xml p817] ↓
+[word/document.xml p818] ωk≃ω0+c*2k22ω0
+[word/document.xml p819] ↓
+[word/document.xml p820] m*=ℏ*ω0c*2
+[word/document.xml p821] ↓
+[word/document.xml p822] iℏ*∂tψ=−ℏ*22m*∇2ψ+Vψ.
+[word/document.xml p823] 22. Cierre microscópico desde el kernel v27
+[word/document.xml p824] Hasta este punto se ha utilizado la transformación fundamental
+[word/document.xml p825] Xt+1=FDEEXt
+[word/document.xml p826] como punto de partida.
+[word/document.xml p827] El kernel completo permite ahora hacer explícita esa transformación y cerrar el enlace que permanecía pendiente entre la implementación microscópica y la construcción efectiva desarrollada en las secciones anteriores.
+[word/document.xml p828] 22.1 Estado microscópico
+[word/document.xml p829] El universo está definido sobre:
+[word/document.xml p830] ΛN=ZN3.
+[word/document.xml p831] Para cada posición:
+[word/document.xml p832] i=x,y,z∈ΛN
+[word/document.xml p833] existen dos palabras de 64 bits:
+[word/document.xml p834] ri∈Z264
+[word/document.xml p835] y:
+[word/document.xml p836] ci∈Z264,
+[word/document.xml p837] correspondientes respectivamente a raw y clock.
+[word/document.xml p838] Por tanto, para N fijo, el estado causal puede escribirse como:
+[word/document.xml p839] X=r,c.
+[word/document.xml p840] Los buffers utilizados para calcular el siguiente tick no constituyen grados adicionales del estado; implementan la transformación síncrona.
+[word/document.xml p841] 22.2 Descomposición exacta de raw
+[word/document.xml p842] Sea:
+[word/document.xml p843] ri∈{0,…,264−1}.
+[word/document.xml p844] Se definen:
+[word/document.xml p845] ei=ri & 232−1
+[word/document.xml p846] para state;
+[word/document.xml p847] si=ri≫32 & 216−1
+[word/document.xml p848] para sreg;
+[word/document.xml p849] y los cuatro bits direccionales:
+[word/document.xml p850] νx=ri≫48&15,
+[word/document.xml p851] νy=ri≫52&15,
+[word/document.xml p852] νz=ri≫56&15.
+[word/document.xml p853] Cada nibble se interpreta como entero con signo mediante:
+[word/document.xml p854] Dν=ν,0≤ν<8,ν−16,8≤ν≤15.
+[word/document.xml p855] De modo que:
+[word/document.xml p856] dix=Dνx,  diy=Dνy,  diz=Dνz.
+[word/document.xml p857] Finalmente:
+[word/document.xml p858] σi=ri≫60&15
+[word/document.xml p859] representa semantic.
+[word/document.xml p860] La operación inversa es:
+[word/document.xml p861] Pe,s,dx,dy,dz,σ=​e∨s≪32∨dx&15≪48∨dy&15≪52∨dz&15≪56∨σ&15≪60.
+[word/document.xml p862] Así, el microestado de cada posición queda matemáticamente determinado por:
+[word/document.xml p863] xi=ei,si,di,σi,ci.
+[word/document.xml p864] 22.3 Topología y vecindad
+[word/document.xml p865] Toda coordenada se evalúa módulo N:
+[word/document.xml p866] WNq=q−NqN.
+[word/document.xml p867] La vecindad primaria es:
+[word/document.xml p868] M26={−1,0,1}3\{0,0,0}.
+[word/document.xml p869] Definimos dos indicadores:
+[word/document.xml p870] Ei=1ei>0
+[word/document.xml p871] y:
+[word/document.xml p872] Ai=1ei>0∧σi≠5.
+[word/document.xml p873] El primero indica existencia state>0.
+[word/document.xml p874] El segundo reproduce exactamente el criterio utilizado por las reglas de vecindad: un ORPHAN no cuenta como vecino activo.
+[word/document.xml p875] El número de vecinos activos de i es:
+[word/document.xml p876] ni=δ∈M26​Ai+δ.
+[word/document.xml p877] La suma direccional es:
+[word/document.xml p878] ui=δ∈M26​Ai+δdi+δ.
+[word/document.xml p879] Y el gradiente regulatorio utilizado por el kernel es:
+[word/document.xml p880] gi=−δ∈M26​Ei+δ si+δ δ.
+[word/document.xml p881] Su magnitud interna es:
+[word/document.xml p882] Gi=gix+giy+giz.
+[word/document.xml p883] 22.4 Firma tetraédrica
+[word/document.xml p884] Sea:
+[word/document.xml p885] ϵ=ϵx,ϵy,ϵz,  ϵα∈{−1,+1}.
+[word/document.xml p886] Para cada elección de signos se consideran las cuatro posiciones:
+[word/document.xml p887] ϵx,0,0,
+[word/document.xml p888] 0,ϵy,0,
+[word/document.xml p889] 0,0,ϵz,
+[word/document.xml p890] ϵx,ϵy,ϵz.
+[word/document.xml p891] La firma tetraédrica existe cuando alguna de las ocho combinaciones posee sus cuatro posiciones activas:
+[word/document.xml p892] hi=1∃ϵ:δ∈Tϵ​Ai+δ=1.
+[word/document.xml p893] 22.5 Génesis XNOR
+[word/document.xml p894] Los 26 vecinos forman 13 pares antipodales.
+[word/document.xml p895] Sea P13 un representante de cada par:
+[word/document.xml p896] {δ,−δ}.
+[word/document.xml p897] Se define:
+[word/document.xml p898] Si=δ∈P13​1Ai+δ=Ai−δ.
+[word/document.xml p899] Y:
+[word/document.xml p900] Nipair=δ∈P13​Ai+δ+Ai−δ.
+[word/document.xml p901] El nacimiento XNOR ocurre exactamente cuando:
+[word/document.xml p902] Si=13  ∧  Nipair≥8.
+[word/document.xml p903] Su resultado es:
+[word/document.xml p904] ri†=P1,1,0,0,0,7.
+[word/document.xml p905] 22.6 Transporte y reducción direccional
+[word/document.xml p906] Para una posición vacía i, definimos el conjunto de fuentes que apuntan exactamente hacia ella:
+[word/document.xml p907] Ji=j=i+δ:δ∈M26, dj≠0, WNj+dj=i.
+[word/document.xml p908] Si:
+[word/document.xml p909] Ji=1,
+[word/document.xml p910] con fuente j, la nueva posición recibe:
+[word/document.xml p911] ri†=P1,sj,djx,djy,djz,1.
+[word/document.xml p912] Si:
+[word/document.xml p913] Ji>1,
+[word/document.xml p914] se define:
+[word/document.xml p915] siJ=minj∈Ji​sj,19664
+[word/document.xml p916] y:
+[word/document.xml p917] diJ=sgnj∈Ji​dj,
+[word/document.xml p918] aplicando el signo componente por componente.
+[word/document.xml p919] Entonces:
+[word/document.xml p920] ri†=P1,siJ,diJ,1.
+[word/document.xml p921] Ésta es la forma algebraica exacta del reducer direccional.
+[word/document.xml p922] 22.7 Rama del vacío
+[word/document.xml p923] Cuando:
+[word/document.xml p924] ei=0,
+[word/document.xml p925] la actualización provisional sigue este orden.
+[word/document.xml p926] Primero se evalúa la condición de gradiente:
+[word/document.xml p927] Gi19665≥966.
+[word/document.xml p928] Si además existe al menos un vecino activo y no existe un vecino ORPHAN, la posición nace con dirección:
+[word/document.xml p929] sgngi.
+[word/document.xml p930] En el dominio generado normalmente por el propio kernel esta rama resulta inalcanzable, porque incluso una cota superior conservadora de Gi permanece muy por debajo del umbral requerido.
+[word/document.xml p931] Si esa condición no se satisface, se evalúa XNOR.
+[word/document.xml p932] Si XNOR tampoco se satisface, se evalúa Ji.
+[word/document.xml p933] Y si no existe fuente:
+[word/document.xml p934] ri†=P0,0,0,0,0,0.
+[word/document.xml p935] Por tanto, la rama del vacío queda completamente expresada mediante funciones por tramos de las variables microscópicas.
+[word/document.xml p936] 22.8 Rama material
+[word/document.xml p937] Para:
+[word/document.xml p938] ei>0
+[word/document.xml p939] y:
+[word/document.xml p940] σi≠4,
+[word/document.xml p941] se define:
+[word/document.xml p942] Ti=16,hi=1∧ni<7,2.5,en otro caso.
+[word/document.xml p943] La densidad efectiva utilizada por el kernel es:
+[word/document.xml p944] ρi=niTi26.
+[word/document.xml p945] Y el siguiente state provisional es:
+[word/document.xml p946] ei†=ρi+12.
+[word/document.xml p947] Si:
+[word/document.xml p948] ei†=0,
+[word/document.xml p949] el resultado provisional es simplemente:
+[word/document.xml p950] P0,0,0,0,0,0.
+[word/document.xml p951] Si:
+[word/document.xml p952] ei†>0,
+[word/document.xml p953] se evalúa la protección:
+[word/document.xml p954] wi=1ni≥7∧ui=0.
+[word/document.xml p955] 22.9 Evolución de sreg
+[word/document.xml p956] Inicialmente:
+[word/document.xml p957] si0=si.
+[word/document.xml p958] Cuando la celda no está protegida:
+[word/document.xml p959] wi=0,
+[word/document.xml p960] se define:
+[word/document.xml p961] ai=8−ni.
+[word/document.xml p962] Para:
+[word/document.xml p963] 1≤ai≤8,
+[word/document.xml p964] el período del mecanismo es:
+[word/document.xml p965] pi=782ai.
+[word/document.xml p966] Si:
+[word/document.xml p967] ci mod pi=0,
+[word/document.xml p968] entonces:
+[word/document.xml p969] si0←si0+1.
+[word/document.xml p970] De aquí aparecen directamente, según ni, cadencias como:
+[word/document.xml p971] 195, 260, 391, 782.
+[word/document.xml p972] 22.10 Emisión DEMUX
+[word/document.xml p973] Si:
+[word/document.xml p974] si0≥19665,
+[word/document.xml p975] la posición busca un destino entre sus 26 vecinos.
+[word/document.xml p976] Para cada candidato j se calcula de nuevo:
+[word/document.xml p977] nj=ϵ∈M26​Aj+ϵ.
+[word/document.xml p978] El candidato es admisible cuando:
+[word/document.xml p979] σj≠5  ∧  nj<8.
+[word/document.xml p980] Entre todos los admisibles se selecciona el de menor:
+[word/document.xml p981] sj,
+[word/document.xml p982] utilizando el orden fijo del kernel para resolver empates.
+[word/document.xml p983] Sea ese destino:
+[word/document.xml p984] j*.
+[word/document.xml p985] Entonces se acumula:
+[word/document.xml p986] Δj*←Δj*+1
+[word/document.xml p987] y el emisor reinicia:
+[word/document.xml p988] si†=0.
+[word/document.xml p989] Si no existe destino admisible:
+[word/document.xml p990] si†=si0.
+[word/document.xml p991] 22.11 Dirección material
+[word/document.xml p992] La dirección provisional de la materia es:
+[word/document.xml p993] di†=sgngi,di≠0 ∨ σi=5,0,0,0,en otro caso.
+[word/document.xml p994] El semantic provisional es:
+[word/document.xml p995] σi†=1,σi=0,σi,σi≠0.
+[word/document.xml p996] Y:
+[word/document.xml p997] ri†=Pei†,si†,di†,σi†.
+[word/document.xml p998] 22.12 Observer
+[word/document.xml p999] El código semántico:
+[word/document.xml p1000] σi=4
+[word/document.xml p1001] constituye una excepción anterior a las ramas anteriores.
+[word/document.xml p1002] Su raw permanece exactamente fijo durante el paso:
+[word/document.xml p1003] ri†=ri.
+[word/document.xml p1004] El reloj, sin embargo, continúa avanzando.
+[word/document.xml p1005] 22.13 Aplicación final de DEMUX
+[word/document.xml p1006] Las actualizaciones anteriores producen un estado provisional:
+[word/document.xml p1007] ri†
+[word/document.xml p1008] y un campo de acumuladores:
+[word/document.xml p1009] Δi.
+[word/document.xml p1010] La segunda fase del tick aplica:
+[word/document.xml p1011] ri′=Dri†,Δi.
+[word/document.xml p1012] Si:
+[word/document.xml p1013] Δi=0,
+[word/document.xml p1014] entonces:
+[word/document.xml p1015] ri′=ri†.
+[word/document.xml p1016] Si:
+[word/document.xml p1017] σi†=4,
+[word/document.xml p1018] el raw permanece igualmente inalterado.
+[word/document.xml p1019] Si:
+[word/document.xml p1020] σi†=5
+[word/document.xml p1021] y:
+[word/document.xml p1022] Δi>0,
+[word/document.xml p1023] se obtiene:
+[word/document.xml p1024] ri′=P194422,0,0,0,0,5.
+[word/document.xml p1025] Si el destino estaba vacío:
+[word/document.xml p1026] ei†=0,
+[word/document.xml p1027] entonces:
+[word/document.xml p1028] ri′=P1,0,0,0,0,1.
+[word/document.xml p1029] En cualquier otro caso:
+[word/document.xml p1030] si′=minsi†+Δi,19664
+[word/document.xml p1031] y los demás campos permanecen iguales:
+[word/document.xml p1032] ri′=Pei†,si′,di†,σi†.
+[word/document.xml p1033] 22.14 Evolución exacta del reloj
+[word/document.xml p1034] En todas las ramas:
+[word/document.xml p1035] ci′=ci+1 (mod 264).
+[word/document.xml p1036] Por tanto:
+[word/document.xml p1037] cit=ci0+t (mod 264).
+[word/document.xml p1038] Las diferencias de clock entre posiciones se conservan mientras no exista una intervención externa que las modifique.
+[word/document.xml p1039] 22.15 La transformación fundamental completa
+[word/document.xml p1040] Definamos:
+[word/document.xml p1041] A
+[word/document.xml p1042] como la primera fase que calcula simultáneamente:
+[word/document.xml p1043] r†,Δ=Ar,c,
+[word/document.xml p1044] y:
+[word/document.xml p1045] D
+[word/document.xml p1046] como la aplicación posterior del campo DEMUX.
+[word/document.xml p1047] Entonces el kernel completo puede escribirse:
+[word/document.xml p1048] FDEEr,c=D(Arr,c,AΔr,c), c+1.
+[word/document.xml p1049] Ésta es la traducción matemática de:
+[word/document.xml p1050] dee_kernel_v27.cpp
+[word/document.xml p1051] a:
+[word/document.xml p1052] Xt+1=FDEEXt.
+[word/document.xml p1053] No se introduce ninguna ley adicional.
+[word/document.xml p1054] Cada cantidad de la expresión procede de una operación presente en el kernel.
+[word/document.xml p1055] 22.16 Alcance causal exacto
+[word/document.xml p1056] La primera etapa consulta Moore-26, pero la selección DEMUX de un emisor compara candidatos vecinos y, para cada candidato, vuelve a inspeccionar su propia vecindad.
+[word/document.xml p1057] Por ello, la dependencia final de un raw no queda limitada simplemente a Moore-26.
+[word/document.xml p1058] Puede escribirse:
+[word/document.xml p1059] rit+1=Φirt​B∞i,3, ctB∞i,1.
+[word/document.xml p1060] En consecuencia:
+[word/document.xml p1061] Rraw1≤3
+[word/document.xml p1062] y, por composición:
+[word/document.xml p1063] Rrawt≤3t.
+[word/document.xml p1064] La causalidad sigue siendo estrictamente finita y local, pero la fórmula exacta del tick final posee un radio compuesto mayor que la primera vecindad Moore.
+[word/document.xml p1065] 22.17 Unión con el régimen cuántico efectivo
+[word/document.xml p1066] Con FDEE ya explicitada, el puente utilizado en las secciones anteriores deja de partir de una caja negra.
+[word/document.xml p1067] Sea:
+[word/document.xml p1068] SQ⊆SDEE
+[word/document.xml p1069] un sector cerrado en el que:
+[word/document.xml p1070] FQ=FDEE|SQ
+[word/document.xml p1071] es reversible.
+[word/document.xml p1072] Entonces:
+[word/document.xml p1073] UQX⟩=FQX⟩
+[word/document.xml p1074] define su representación unitaria.
+[word/document.xml p1075] Y:
+[word/document.xml p1076] HQ=iℏ*τ*logUQ.
+[word/document.xml p1077] Por tanto, la cadena completa queda ahora:
+[word/document.xml p1078] dee_kernel_v27.cpp
+[word/document.xml p1079] ↓
+[word/document.xml p1080] FDEE
+[word/document.xml p1081] ↓
+[word/document.xml p1082] FQ
+[word/document.xml p1083] ↓
+[word/document.xml p1084] UQ
+[word/document.xml p1085] ↓
+[word/document.xml p1086] HQ
+[word/document.xml p1087] ↓
+[word/document.xml p1088] iℏ*∂tΨ=HQΨ.
+[word/document.xml p1089] Conclusión
+[word/document.xml p1090] DEE no necesita considerar la ecuación de Schrödinger como la ley microscópica fundamental.
+[word/document.xml p1091] Su arquitectura permite una interpretación diferente:
+[word/document.xml p1092] la dinámica fundamental es discreta
+[word/document.xml p1093] mientras:
+[word/document.xml p1094] la dinámica cuántica puede ser una representación efectiva de determinados sectores.
+[word/document.xml p1095] Una órbita reversible de DEE admite naturalmente una representación unitaria. Una representación unitaria admite un Hamiltoniano. Un sector espacial con modos de Fourier posee una dispersión. Y una dispersión con:
+[word/document.xml p1096] ω2=ω02+c*2k2
+[word/document.xml p1097] produce, en el régimen de baja frecuencia espacial:
+[word/document.xml p1098] iℏ*∂tψ=−ℏ*22m*∇2ψ
+[word/document.xml p1099] con:
+[word/document.xml p1100] m*=ℏ*ω0c*2.
+[word/document.xml p1101] La masa aparece entonces como una propiedad espectral de una organización recurrente; la función de onda como representación de un sector del microestado; el potencial como modificación espacial de su fase o dinámica; y el entrelazamiento efectivo como la no factorización de una organización distribuida:
+[word/document.xml p1102] XAB→ΨAB≠ψA⊗ψB.
+[word/document.xml p1103] Así, los dos textos quedan unidos por una sola arquitectura:
+[word/document.xml p1104] microestado DEE → organización relacional →
+[word/document.xml p1105] sector reversible de representación unitaria →
+[word/document.xml p1106] función de onda → dinámica de Schrödinger →
+[word/document.xml p1107] estados conjuntos no factorizables.
+[word/document.xml p1108] Apéndice A — Glosario de notación y objetos matemáticos
+[word/document.xml p1109] Este apéndice fija el significado de la notación utilizada en el manuscrito. No introduce nuevas reglas de evolución: distingue estados, mapas, operadores, parámetros de escala y constantes del kernel para que las derivaciones puedan seguirse sin ambigüedad.
+[word/document.xml p1110] A.1 Estado fundamental, espacio y evolución
+[word/document.xml p1111] Símbolo / objeto
+[word/document.xml p1112] Tipo / dominio
+[word/document.xml p1113] Significado en el manuscrito
+[word/document.xml p1114] N
+[word/document.xml p1115] entero positivo
+[word/document.xml p1116] Tamaño lineal de la retícula. El espacio discreto contiene N³ posiciones.
+[word/document.xml p1117] Λ_N = Z_N³
+[word/document.xml p1118] retícula toroidal
+[word/document.xml p1119] Espacio microscópico tridimensional con coordenadas evaluadas módulo N.
+[word/document.xml p1120] i = (x,y,z)
+[word/document.xml p1121] índice espacial
+[word/document.xml p1122] Posición individual de la retícula.
+[word/document.xml p1123] M_26
+[word/document.xml p1124] conjunto de desplazamientos
+[word/document.xml p1125] Vecindad de Moore tridimensional: los 26 desplazamientos de {-1,0,1}³ excepto (0,0,0).
+[word/document.xml p1126] X_t
+[word/document.xml p1127] estado microscópico completo
+[word/document.xml p1128] Estado causal del sistema en el tick t. En el cierre microscópico se representa por los campos raw y clock sobre toda la retícula; N y la topología fijan el dominio.
+[word/document.xml p1129] F_DEE
+[word/document.xml p1130] mapa determinista
+[word/document.xml p1131] Transformación fundamental de un tick: X_(t+1) = F_DEE(X_t). Es el objeto matemático que representa la evolución ejecutada por el motor.
+[word/document.xml p1132] T (en X_t)
+[word/document.xml p1133] topología / estructura del dominio
+[word/document.xml p1134] En la formulación esquemática inicial identifica la topología espacial; no debe confundirse con T_i, la tensión local usada en la rama material.
+[word/document.xml p1135] q(t)
+[word/document.xml p1136] posición de un portador
+[word/document.xml p1137] Coordenada de un portador en el sector balístico. En ese sector q(t)=q_0+t d (mod N).
+[word/document.xml p1138] d = (d_x,d_y,d_z)
+[word/document.xml p1139] dirección discreta
+[word/document.xml p1140] Vector direccional almacenado en el microestado y utilizado por el transporte/routing.
+[word/document.xml p1141] A.2 Observación, reducción y estado conjunto
+[word/document.xml p1142] Símbolo / objeto
+[word/document.xml p1143] Tipo / dominio
+[word/document.xml p1144] Significado en el manuscrito
+[word/document.xml p1145] M : S → O
+[word/document.xml p1146] mapa de observación
+[word/document.xml p1147] Proyección o coarse-graining desde el espacio de estados completos S hacia un espacio observable O.
+[word/document.xml p1148] y = M(X)
+[word/document.xml p1149] estado observable
+[word/document.xml p1150] Registro que obtiene un observador a partir del microestado completo.
+[word/document.xml p1151] G
+[word/document.xml p1152] dinámica efectiva
+[word/document.xml p1153] Mapa que cierra la evolución al nivel observado cuando M∘F_DEE = G∘M en el dominio considerado.
+[word/document.xml p1154] M_A, M_B
+[word/document.xml p1155] observadores parciales
+[word/document.xml p1156] Mapas que extraen respectivamente los registros observables asociados a las regiones A y B.
+[word/document.xml p1157] A_obs, B_obs
+[word/document.xml p1158] registros observables
+[word/document.xml p1159] Resultados locales de M_A(X_AB) y M_B(X_AB). No se identifican automáticamente con el estado fundamental completo.
+[word/document.xml p1160] X_A, X_B
+[word/document.xml p1161] microestados/subestructuras
+[word/document.xml p1162] Descripciones de las regiones A y B cuando una separación de subsistemas es válida.
+[word/document.xml p1163] X_AB
+[word/document.xml p1164] estado conjunto
+[word/document.xml p1165] Estado completo de la organización que contiene A, B y las relaciones relevantes entre ellas.
+[word/document.xml p1166] R, G, D, C, H en X_AB
+[word/document.xml p1167] componentes relacionales
+[word/document.xml p1168] R: relaciones del medio; G: organización geométrica; D: información direccional; C: estados de reloj; H: historia relevante. La letra G aquí es componente geométrica y se distingue por contexto del mapa efectivo G.
+[word/document.xml p1169] Inv(X)
+[word/document.xml p1170] inventario/coarse descriptor
+[word/document.xml p1171] Conjunto de características inventariables comparadas entre configuraciones; puede coincidir aunque cambie la organización relacional.
+[word/document.xml p1172] Rel(X)
+[word/document.xml p1173] estructura relacional
+[word/document.xml p1174] Organización de relaciones entre componentes. Dos estados con inventario similar pueden tener Rel distinto y evolucionar de forma distinta.
+[word/document.xml p1175] d_obs, d_DEE
+[word/document.xml p1176] distancias
+[word/document.xml p1177] d_obs es distancia definida por el observador; d_DEE representa distancia/relación causal nativa. El manuscrito no las supone idénticas.
+[word/document.xml p1178] μ(X|m)
+[word/document.xml p1179] medida condicional
+[word/document.xml p1180] Peso asignado a microestados compatibles con un macroregistro m=M(X).
+[word/document.xml p1181] P(y|m)
+[word/document.xml p1182] probabilidad efectiva
+[word/document.xml p1183] Pushforward de μ por la evolución y la observación: cuantifica la distribución de resultados y al desconocer el microestado compatible.
+[word/document.xml p1184] I_a
+[word/document.xml p1185] intervención
+[word/document.xml p1186] Transformación asociada a una acción o medición a aplicada sobre el estado antes de continuar la evolución.
+[word/document.xml p1187] A.3 Sector reversible y representación cuántica efectiva
+[word/document.xml p1188] Símbolo / objeto
+[word/document.xml p1189] Tipo / dominio
+[word/document.xml p1190] Significado en el manuscrito
+[word/document.xml p1191] S_Q
+[word/document.xml p1192] subconjunto de estados DEE
+[word/document.xml p1193] Sector cerrado y reversible: F_DEE(S_Q)⊆S_Q y F_Q=F_DEE|_(S_Q) es biyectivo.
+[word/document.xml p1194] F_Q
+[word/document.xml p1195] restricción reversible
+[word/document.xml p1196] Dinámica de F_DEE limitada al sector S_Q.
+[word/document.xml p1197] |X_j⟩
+[word/document.xml p1198] vector base
+[word/document.xml p1199] Vector ortogonal asociado a un microestado X_j del sector reversible. El ket es notación de espacio de Hilbert, no un nuevo campo microscópico del voxel.
+[word/document.xml p1200] U_Q / U_F
+[word/document.xml p1201] operador unitario
+[word/document.xml p1202] Representación lineal de F_Q: U_Q|X⟩=|F_Q(X)⟩. Al ser F_Q una permutación, U_Q†U_Q=I.
+[word/document.xml p1203] |Ψ⟩
+[word/document.xml p1204] estado efectivo
+[word/document.xml p1205] Vector de la representación lineal del sector, por ejemplo |Ψ⟩=Σ_j ψ_j|X_j⟩.
+[word/document.xml p1206] ψ_j
+[word/document.xml p1207] amplitud compleja
+[word/document.xml p1208] Coeficiente complejo de |X_j⟩ en la representación efectiva.
+[word/document.xml p1209] τ*
+[word/document.xml p1210] escala temporal efectiva
+[word/document.xml p1211] Tiempo físico asignado a un tick al construir una descripción continua. El manuscrito no fija por sí solo un valor externo universal.
+[word/document.xml p1212] ħ*
+[word/document.xml p1213] escala de acción efectiva
+[word/document.xml p1214] Constante de conversión entre fase/frecuencia y energía en la representación efectiva. No debe identificarse automáticamente con ħ físico sin un mapa de unidades.
+[word/document.xml p1215] H_eff / H_Q
+[word/document.xml p1216] generador efectivo
+[word/document.xml p1217] Hamiltoniano asociado al unitario, mediante U=exp(-iHτ*/ħ*) y H=(iħ*/τ*)log U, con la elección de rama correspondiente en tiempo discreto.
+[word/document.xml p1218] E_k
+[word/document.xml p1219] cuasienergía / energía efectiva
+[word/document.xml p1220] Valor espectral asociado a un modo del operador unitario; se define módulo de la periodicidad de fase propia de la evolución discreta.
+[word/document.xml p1221] A.4 Límite espacial, dispersión, masa y potencial
+[word/document.xml p1222] Símbolo / objeto
+[word/document.xml p1223] Tipo / dominio
+[word/document.xml p1224] Significado en el manuscrito
+[word/document.xml p1225] a*
+[word/document.xml p1226] escala espacial efectiva
+[word/document.xml p1227] Longitud física asignada a una separación de una celda al construir el límite continuo. No tiene un valor externo fijado por el manuscrito.
+[word/document.xml p1228] n
+[word/document.xml p1229] índice entero 3D
+[word/document.xml p1230] Coordenada discreta utilizada para escribir x=a* n.
+[word/document.xml p1231] x
+[word/document.xml p1232] coordenada continua
+[word/document.xml p1233] Variable espacial del límite continuo.
+[word/document.xml p1234] k
+[word/document.xml p1235] vector de onda
+[word/document.xml p1236] Índice/momento espacial de los modos de Fourier del sector.
+[word/document.xml p1237] ω(k)
+[word/document.xml p1238] relación de dispersión
+[word/document.xml p1239] Frecuencia efectiva de cada modo espacial. Es el objeto que conecta la dinámica discreta con su descripción continua.
+[word/document.xml p1240] ω₀
+[word/document.xml p1241] frecuencia propia
+[word/document.xml p1242] Frecuencia del modo en k=0 en el régimen considerado; representa recurrencia interna del patrón efectivo.
+[word/document.xml p1243] c*
+[word/document.xml p1244] velocidad característica efectiva
+[word/document.xml p1245] Coeficiente de la expansión de dispersión. Es una velocidad del régimen efectivo; no se identifica automáticamente con la velocidad física de la luz.
+[word/document.xml p1246] m*
+[word/document.xml p1247] masa efectiva
+[word/document.xml p1248] Parámetro espectral definido en el régimen cuadrático por m*=ħ*ω₀/c*².
+[word/document.xml p1249] V(x)
+[word/document.xml p1250] potencial efectivo
+[word/document.xml p1251] Corrección espacial de energía/fase. En el manuscrito V(x)=ħ* δω(x) para una variación lenta de la frecuencia interna.
+[word/document.xml p1252] ∇²
+[word/document.xml p1253] Laplaciano
+[word/document.xml p1254] Operador espacial continuo que aparece al pasar del comportamiento k² de Fourier a espacio real.
+[word/document.xml p1255] ψ(x,t)
+[word/document.xml p1256] función de onda efectiva
+[word/document.xml p1257] Envolvente continua del sector, no variable elemental del kernel.
+[word/document.xml p1258] A.5 Estado conjunto y no factorización
+[word/document.xml p1259] Símbolo / objeto
+[word/document.xml p1260] Tipo / dominio
+[word/document.xml p1261] Significado en el manuscrito
+[word/document.xml p1262] M_Q
+[word/document.xml p1263] mapa de reducción cuántica
+[word/document.xml p1264] Mapa desde un microestado DEE hacia la descripción efectiva usada en el régimen cuántico: M_Q(X)=ψ o, para el estado conjunto, M_Q(X_AB)=Ψ_AB.
+[word/document.xml p1265] Ψ_AB
+[word/document.xml p1266] estado efectivo conjunto
+[word/document.xml p1267] Representación del estado conjunto X_AB en el espacio efectivo.
+[word/document.xml p1268] ψ_A, ψ_B
+[word/document.xml p1269] estados efectivos locales
+[word/document.xml p1270] Representaciones asociadas a A y B cuando una descripción separada es válida.
+[word/document.xml p1271] ⊗
+[word/document.xml p1272] producto tensorial
+[word/document.xml p1273] Operación estándar para construir el espacio/estado conjunto de dos subsistemas en la representación cuántica.
+[word/document.xml p1274] Ψ_AB = ψ_A⊗ψ_B
+[word/document.xml p1275] factorización
+[word/document.xml p1276] Caso separable: el estado conjunto puede escribirse como producto de dos estados locales.
+[word/document.xml p1277] Ψ_AB ≠ ψ_A⊗ψ_B
+[word/document.xml p1278] no factorización
+[word/document.xml p1279] Criterio matemático de no separabilidad del estado efectivo conjunto. En la propuesta DEE se interpreta como imagen efectiva de una organización relacional conjunta.
+[word/document.xml p1280] φ, Δφ
+[word/document.xml p1281] fase y fase relativa
+[word/document.xml p1282] φ es fase efectiva; Δφ=φ_A-φ_B representa una relación de fase entre dos partes del estado.
+[word/document.xml p1283] ρ (cuántico)
+[word/document.xml p1284] operador/matriz de densidad
+[word/document.xml p1285] Representación estándar de un estado estadístico cuántico. No debe confundirse con ρ_i de la regla local del kernel.
+[word/document.xml p1286] A.6 Notación microscópica del kernel v27
+[word/document.xml p1287] Símbolo / objeto
+[word/document.xml p1288] Tipo / dominio
+[word/document.xml p1289] Significado en el manuscrito
+[word/document.xml p1290] r_i / raw_i
+[word/document.xml p1291] uint64
+[word/document.xml p1292] Palabra microscópica de 64 bits de la posición i.
+[word/document.xml p1293] c_i / clock_i
+[word/document.xml p1294] uint64
+[word/document.xml p1295] Reloj causal local. Evoluciona c_i(t+1)=c_i(t)+1 mod 2^64.
+[word/document.xml p1296] e_i / state_i
+[word/document.xml p1297] uint32
+[word/document.xml p1298] Campo state extraído de los bits 0–31 de raw.
+[word/document.xml p1299] s_i / s_reg,i
+[word/document.xml p1300] uint16
+[word/document.xml p1301] Registro interno extraído de los bits 32–47. Su almacenamiento permite 0…65535; 19664 es la cota operacional de saturación usada por reducer/DEMUX.
+[word/document.xml p1302] d_i
+[word/document.xml p1303] tres enteros con signo
+[word/document.xml p1304] Dirección codificada en tres nibbles de raw (x,y,z).
+[word/document.xml p1305] σ_i / semantic_i
+[word/document.xml p1306] uint4
+[word/document.xml p1307] Etiqueta semántica de 4 bits. Valores usados por el kernel: 0 VOID, 1 NORMAL, 2 ELECTRON_SEED, 3 PROTON_SEED, 4 OBSERVER, 5 ORPHAN_BIT, 6 HORIZON, 7 NACIDO_XNOR. Los nombres de preparación no constituyen por sí solos identificaciones con partículas físicas externas.
+[word/document.xml p1308] P(e,s,d_x,d_y,d_z,σ)
+[word/document.xml p1309] función de empaquetado
+[word/document.xml p1310] Reconstruye la palabra raw a partir de sus campos. Esta P no es la probabilidad P(y|m); se distinguen por contexto.
+[word/document.xml p1311] W_N(q)
+[word/document.xml p1312] wrap toroidal
+[word/document.xml p1313] Reducción de una coordenada módulo N.
+[word/document.xml p1314] E_i
+[word/document.xml p1315] indicador
+[word/document.xml p1316] E_i=1 si state_i>0; indica existencia para operaciones que sólo requieren ocupación.
+[word/document.xml p1317] A_i
+[word/document.xml p1318] indicador de actividad
+[word/document.xml p1319] A_i=1 si state_i>0 y semantic_i≠5; un ORPHAN no cuenta como vecino activo.
+[word/document.xml p1320] n_i
+[word/document.xml p1321] conteo entero
+[word/document.xml p1322] Número de vecinos activos en M_26.
+[word/document.xml p1323] u_i
+[word/document.xml p1324] vector
+[word/document.xml p1325] Suma direccional de vecinos activos.
+[word/document.xml p1326] g_i, G_i
+[word/document.xml p1327] gradiente y magnitud
+[word/document.xml p1328] g_i es el gradiente regulatorio construido con s_reg vecino; G_i es su magnitud L1.
+[word/document.xml p1329] h_i
+[word/document.xml p1330] indicador tetraédrico
+[word/document.xml p1331] Vale 1 cuando alguna de las ocho firmas tetraédricas definidas por el kernel está completamente activa.
+[word/document.xml p1332] P_13
+[word/document.xml p1333] 13 pares antipodales
+[word/document.xml p1334] Conjunto de pares opuestos de Moore usado por la condición XNOR.
+[word/document.xml p1335] S_i, N_i^pair
+[word/document.xml p1336] conteos XNOR
+[word/document.xml p1337] S_i cuenta pares antipodales con igualdad alive/dead; N_i^pair cuenta actividad total. La génesis XNOR requiere S_i=13 y N_i^pair≥8.
+[word/document.xml p1338] J_i
+[word/document.xml p1339] conjunto de fuentes
+[word/document.xml p1340] Fuentes vecinas cuya dirección apunta exactamente a la posición vacía i.
+[word/document.xml p1341] T_i
+[word/document.xml p1342] tensión local de regla
+[word/document.xml p1343] Vale 16 en la rama tetraédrica fuerte bajo la condición indicada por el kernel y 2.5 en el caso ordinario.
+[word/document.xml p1344] ρ_i (kernel)
+[word/document.xml p1345] escalar de regla
+[word/document.xml p1346] Densidad efectiva local ρ_i=n_i T_i/26 usada para determinar el state provisional. No es una matriz de densidad cuántica.
+[word/document.xml p1347] w_i
+[word/document.xml p1348] booleano
+[word/document.xml p1349] Bandera de write-protection del registro s_reg bajo la condición de vecindad y suma direccional nula.
+[word/document.xml p1350] a_i, p_i
+[word/document.xml p1351] enteros
+[word/document.xml p1352] a_i=8-n_i; cuando aplica, p_i=floor(782/a_i) fija la cadencia temporal de la rama s_reg.
+[word/document.xml p1353] Δ_i
+[word/document.xml p1354] entero acumulado
+[word/document.xml p1355] Número de deltas DEMUX que llegan a la posición i en la segunda etapa del tick.
+[word/document.xml p1356] j*
+[word/document.xml p1357] índice de destino
+[word/document.xml p1358] Destino DEMUX elegido entre candidatos admisibles, minimizando s_reg y usando el orden fijo del kernel para empates.
+[word/document.xml p1359] r_i†, r_i′
+[word/document.xml p1360] raw provisional / final
+[word/document.xml p1361] r_i† es la salida de la primera etapa; r_i′ es la salida tras aplicar los deltas DEMUX.
+[word/document.xml p1362] A_r, A_Δ (caligráficas en el texto)
+[word/document.xml p1363] operadores de primera etapa
+[word/document.xml p1364] Calculan simultáneamente el raw provisional y el campo de deltas DEMUX a partir del estado anterior.
+[word/document.xml p1365] D_post (D caligráfica en el texto)
+[word/document.xml p1366] operador de segunda etapa
+[word/document.xml p1367] Aplica el campo de deltas al raw provisional para producir el raw final.
+[word/document.xml p1368] B_∞(i,r)
+[word/document.xml p1369] bola de Chebyshev
+[word/document.xml p1370] Conjunto de posiciones a distancia Chebyshev ≤r de i; se usa para expresar el alcance causal compuesto.
+[word/document.xml p1371] R_raw(t)
+[word/document.xml p1372] radio causal
+[word/document.xml p1373] Cota del radio de dependencia del raw tras t ticks; el manuscrito obtiene R_raw(1)≤3 y R_raw(t)≤3t.
+[word/document.xml p1374] A.7 Constantes y cantidades: qué tiene valor fijo y qué es una escala
+[word/document.xml p1375] Símbolo / objeto
+[word/document.xml p1376] Tipo / dominio
+[word/document.xml p1377] Significado en el manuscrito
+[word/document.xml p1378] 26
+[word/document.xml p1379] constante geométrica
+[word/document.xml p1380] Número de posiciones de la vecindad Moore tridimensional.
+[word/document.xml p1381] 13
+[word/document.xml p1382] constante geométrica
+[word/document.xml p1383] Número de pares antipodales dentro de Moore-26.
+[word/document.xml p1384] P_KERNEL = 19665
+[word/document.xml p1385] constante del kernel v27
+[word/document.xml p1386] Umbral/canon numérico utilizado por las ramas que lo invocan en la implementación descrita.
+[word/document.xml p1387] 19664
+[word/document.xml p1388] cota operacional
+[word/document.xml p1389] Saturación usada por reducer/DEMUX para s_reg; no es el máximo representable del campo uint16.
+[word/document.xml p1390] 966
+[word/document.xml p1391] umbral de cristalización
+[word/document.xml p1392] Umbral presente en la rama de gradiente descrita por el kernel.
+[word/document.xml p1393] 782
+[word/document.xml p1394] constante de cadencia
+[word/document.xml p1395] Numerador entero del período p_i=floor(782/a_i) en la rama temporal de s_reg.
+[word/document.xml p1396] 2^64
+[word/document.xml p1397] módulo de clock
+[word/document.xml p1398] Período aritmético del reloj uint64 antes de wrap.
+[word/document.xml p1399] a*, τ*, ħ*
+[word/document.xml p1400] escalas de correspondencia
+[word/document.xml p1401] No son constantes numéricas fijadas por el kernel en este manuscrito. Sirven para convertir la descripción adimensional/discreta a unidades espaciales, temporales y de acción en un modelo efectivo.
+[word/document.xml p1402] ω(k), ω₀, c*, m*, V(x)
+[word/document.xml p1403] cantidades derivadas del sector
+[word/document.xml p1404] No son constantes universales del kernel: se obtienen de la estructura espectral o de la correspondencia efectiva del sector que se esté estudiando.
+[word/document.xml p1405] Lectura recomendada: para comprobar una derivación, primero identifique si el símbolo pertenece al nivel microscópico (kernel/F_DEE), al nivel de observación (M/G), al sector reversible (S_Q/U/H) o al límite continuo (a*, τ*, ħ*, ω, m*, V). La misma letra puede aparecer con significados distintos sólo cuando el contexto y el subíndice los distinguen; este apéndice explicita esos casos.

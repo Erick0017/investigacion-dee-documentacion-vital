@@ -1,0 +1,2128 @@
+{
+  "schema": "CPC8.integration.longitudinal690.analysis.v1",
+  "data": [
+    {
+      "case_id": "LIF_C11_NEW_BA",
+      "identity": "SOC_I21_SOCIAL_THEN_L01_REVISION",
+      "new_exposures": [
+        {
+          "port": "event.B",
+          "payload": 3,
+          "tick": 786,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "event.A",
+          "payload": 3,
+          "tick": 787,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY"
+        },
+        {
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "origin": "NEW_OPAQUE_RIGHT_CUE"
+        },
+        {
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT"
+        },
+        {
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        },
+        {
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        }
+      ],
+      "new_exposure_receipts": [
+        {
+          "id": 332,
+          "port": "event.B",
+          "payload": 3,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 332,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.B"
+            ],
+            "requested_tick": 786,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 333,
+          "port": "event.A",
+          "payload": 3,
+          "tick": 787,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 333,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.A"
+            ],
+            "requested_tick": 787,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 334,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY",
+          "call_tick": 690,
+          "receipt": {
+            "id": 334,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 788,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 335,
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_OPAQUE_RIGHT_CUE",
+          "call_tick": 690,
+          "receipt": {
+            "id": 335,
+            "status": "applied",
+            "channels": [
+              "U.right.signal"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 336,
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 336,
+            "status": "applied",
+            "channels": [
+              "U.right.event.minus"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 337,
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 337,
+            "status": "applied",
+            "channels": [
+              "need.actual.left.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 338,
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 338,
+            "status": "applied",
+            "channels": [
+              "need.actual.right.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        }
+      ],
+      "emission791": {
+        "tick": 791,
+        "site": [
+          35,
+          69,
+          29
+        ],
+        "raw": "1220757004058886145",
+        "clock": "791",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "questions805_all_active": {
+        "left.equal": {
+          "tick": 805,
+          "site": [
+            25,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "left.different": {
+          "tick": 805,
+          "site": [
+            21,
+            55,
+            33
+          ],
+          "raw": "1157143667912212481",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 9,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.different": {
+          "tick": 805,
+          "site": [
+            49,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "right920": {
+        "tick": 920,
+        "site": [
+          33,
+          55,
+          33
+        ],
+        "raw": "1220475567736881153",
+        "clock": "920",
+        "state": 1,
+        "s_reg": 16,
+        "semantic": 1,
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "actions922_all_active": {
+        "own.use.minus": {
+          "tick": 922,
+          "site": [
+            35,
+            53,
+            33
+          ],
+          "raw": "1224979128709545985",
+          "clock": "922",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "action922_three_component_products": [],
+      "B926_all_active": {
+        "right.plus": {
+          "tick": 926,
+          "site": [
+            39,
+            61,
+            37
+          ],
+          "raw": "2238007561301262337",
+          "clock": "926",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "B943_all_active": {
+        "left.minus": {
+          "tick": 943,
+          "site": [
+            31,
+            32,
+            37
+          ],
+          "raw": "1224979145889415169",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 11,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 943,
+          "site": [
+            39,
+            32,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 943,
+          "site": [
+            39,
+            78,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "B947_all_active": {
+        "left.minus": {
+          "tick": 947,
+          "site": [
+            31,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "left.plus": {
+          "tick": 947,
+          "site": [
+            31,
+            82,
+            41
+          ],
+          "raw": "1229764697234866177",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 947,
+          "site": [
+            39,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 947,
+          "site": [
+            39,
+            82,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "delivery952_all_active": {
+        "left.plus.context1": {
+          "tick": 952,
+          "site": [
+            36,
+            87,
+            46
+          ],
+          "raw": "1229764697234866177",
+          "clock": "952",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention1051": {
+        "new_receipt_statuses": {
+          "rejected_occupied": 4,
+          "applied": 68
+        },
+        "covered1051": 63,
+        "previous658_covered": 63,
+        "both_covered": 63,
+        "both_covered_same_value": 63
+      },
+      "resource_actual": {
+        "N": 131,
+        "interfaces": 259,
+        "initial_material_sites": 15
+      },
+      "resource_metadata_inherited": {
+        "independent_lower_relations": 65,
+        "extra_own_relations": 1,
+        "total_prepared_relation_interfaces": 66,
+        "initial_material_sites": 15,
+        "interfaces": 219,
+        "base_buffer_estimate": 71938912
+      },
+      "scope": "Data at frozen targets. Activity is not automatically a new emission or a genealogically identified response."
+    },
+    {
+      "case_id": "LIF_C12_NO_RIGHT_CUE",
+      "identity": "SOC_I21_SOCIAL_THEN_L01_REVISION",
+      "new_exposures": [
+        {
+          "port": "event.A",
+          "payload": 3,
+          "tick": 786,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "event.B",
+          "payload": 3,
+          "tick": 787,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY"
+        },
+        {
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT"
+        },
+        {
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        },
+        {
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        }
+      ],
+      "new_exposure_receipts": [
+        {
+          "id": 332,
+          "port": "event.A",
+          "payload": 3,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 332,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.A"
+            ],
+            "requested_tick": 786,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 333,
+          "port": "event.B",
+          "payload": 3,
+          "tick": 787,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 333,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.B"
+            ],
+            "requested_tick": 787,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 334,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY",
+          "call_tick": 690,
+          "receipt": {
+            "id": 334,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 788,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 335,
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 335,
+            "status": "applied",
+            "channels": [
+              "U.right.event.minus"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 336,
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 336,
+            "status": "applied",
+            "channels": [
+              "need.actual.left.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 337,
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 337,
+            "status": "applied",
+            "channels": [
+              "need.actual.right.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        }
+      ],
+      "emission791": {
+        "tick": 791,
+        "site": [
+          35,
+          69,
+          29
+        ],
+        "raw": "1220757004058886145",
+        "clock": "791",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "questions805_all_active": {
+        "left.equal": {
+          "tick": 805,
+          "site": [
+            25,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "left.different": {
+          "tick": 805,
+          "site": [
+            21,
+            55,
+            33
+          ],
+          "raw": "1157143667912212481",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 9,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.different": {
+          "tick": 805,
+          "site": [
+            49,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "right920": {
+        "tick": 920,
+        "site": [
+          33,
+          55,
+          33
+        ],
+        "raw": "0",
+        "clock": "920",
+        "state": 0,
+        "s_reg": 0,
+        "semantic": 0,
+        "direction": [
+          0,
+          0,
+          0
+        ],
+        "active": false
+      },
+      "actions922_all_active": {
+        "own.use.minus": {
+          "tick": 922,
+          "site": [
+            35,
+            53,
+            33
+          ],
+          "raw": "1292814645341454337",
+          "clock": "922",
+          "state": 1,
+          "s_reg": 18,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "action922_three_component_products": [
+        {
+          "tick": 922,
+          "site": [
+            35,
+            53,
+            33
+          ],
+          "raw": "1292814645341454337",
+          "clock": "922",
+          "state": 1,
+          "s_reg": 18,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            1
+          ],
+          "active": true
+        }
+      ],
+      "B926_all_active": {
+        "right.minus": {
+          "tick": 926,
+          "site": [
+            39,
+            49,
+            37
+          ],
+          "raw": "1292814645341454337",
+          "clock": "926",
+          "state": 1,
+          "s_reg": 18,
+          "semantic": 1,
+          "direction": [
+            1,
+            -1,
+            1
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 926,
+          "site": [
+            39,
+            61,
+            37
+          ],
+          "raw": "2238007561301262337",
+          "clock": "926",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "B943_all_active": {
+        "left.minus": {
+          "tick": 943,
+          "site": [
+            31,
+            32,
+            37
+          ],
+          "raw": "1224979145889415169",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 11,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 943,
+          "site": [
+            39,
+            32,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 943,
+          "site": [
+            39,
+            78,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "B947_all_active": {
+        "left.minus": {
+          "tick": 947,
+          "site": [
+            31,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "left.plus": {
+          "tick": 947,
+          "site": [
+            31,
+            82,
+            41
+          ],
+          "raw": "1229764697234866177",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 947,
+          "site": [
+            39,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 947,
+          "site": [
+            39,
+            82,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "delivery952_all_active": {
+        "left.plus.context1": {
+          "tick": 952,
+          "site": [
+            36,
+            87,
+            46
+          ],
+          "raw": "1229764697234866177",
+          "clock": "952",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention1051": {
+        "new_receipt_statuses": {
+          "rejected_occupied": 4,
+          "applied": 67
+        },
+        "covered1051": 63,
+        "previous658_covered": 63,
+        "both_covered": 63,
+        "both_covered_same_value": 63
+      },
+      "resource_actual": {
+        "N": 131,
+        "interfaces": 259,
+        "initial_material_sites": 15
+      },
+      "resource_metadata_inherited": {
+        "independent_lower_relations": 65,
+        "extra_own_relations": 1,
+        "total_prepared_relation_interfaces": 66,
+        "initial_material_sites": 15,
+        "interfaces": 219,
+        "base_buffer_estimate": 71938912
+      },
+      "scope": "Data at frozen targets. Activity is not automatically a new emission or a genealogically identified response."
+    },
+    {
+      "case_id": "LIF_C13_NO_NEW_ORDER",
+      "identity": "SOC_I21_SOCIAL_THEN_L01_REVISION",
+      "new_exposures": [
+        {
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY"
+        },
+        {
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "origin": "NEW_OPAQUE_RIGHT_CUE"
+        },
+        {
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT"
+        },
+        {
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        },
+        {
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        }
+      ],
+      "new_exposure_receipts": [
+        {
+          "id": 332,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY",
+          "call_tick": 690,
+          "receipt": {
+            "id": 332,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 788,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 333,
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_OPAQUE_RIGHT_CUE",
+          "call_tick": 690,
+          "receipt": {
+            "id": 333,
+            "status": "applied",
+            "channels": [
+              "U.right.signal"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 334,
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 334,
+            "status": "applied",
+            "channels": [
+              "U.right.event.minus"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 335,
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 335,
+            "status": "applied",
+            "channels": [
+              "need.actual.left.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 336,
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 336,
+            "status": "applied",
+            "channels": [
+              "need.actual.right.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        }
+      ],
+      "emission791": {
+        "tick": 791,
+        "site": [
+          35,
+          69,
+          29
+        ],
+        "raw": "1220757004058886145",
+        "clock": "791",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "questions805_all_active": {
+        "left.equal": {
+          "tick": 805,
+          "site": [
+            25,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "left.different": {
+          "tick": 805,
+          "site": [
+            21,
+            55,
+            33
+          ],
+          "raw": "1157143667912212481",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 9,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.different": {
+          "tick": 805,
+          "site": [
+            49,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "right920": {
+        "tick": 920,
+        "site": [
+          33,
+          55,
+          33
+        ],
+        "raw": "1220475567736881153",
+        "clock": "920",
+        "state": 1,
+        "s_reg": 16,
+        "semantic": 1,
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "actions922_all_active": {
+        "own.use.minus": {
+          "tick": 922,
+          "site": [
+            35,
+            53,
+            33
+          ],
+          "raw": "1224979128709545985",
+          "clock": "922",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "action922_three_component_products": [],
+      "B926_all_active": {
+        "right.plus": {
+          "tick": 926,
+          "site": [
+            39,
+            61,
+            37
+          ],
+          "raw": "2238007561301262337",
+          "clock": "926",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "B943_all_active": {
+        "left.minus": {
+          "tick": 943,
+          "site": [
+            31,
+            32,
+            37
+          ],
+          "raw": "1224979145889415169",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 11,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 943,
+          "site": [
+            39,
+            32,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 943,
+          "site": [
+            39,
+            78,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "B947_all_active": {
+        "left.minus": {
+          "tick": 947,
+          "site": [
+            31,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "left.plus": {
+          "tick": 947,
+          "site": [
+            31,
+            82,
+            41
+          ],
+          "raw": "1229764697234866177",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 947,
+          "site": [
+            39,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 947,
+          "site": [
+            39,
+            82,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "delivery952_all_active": {
+        "left.plus.context1": {
+          "tick": 952,
+          "site": [
+            36,
+            87,
+            46
+          ],
+          "raw": "1229764697234866177",
+          "clock": "952",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention1051": {
+        "new_receipt_statuses": {
+          "rejected_occupied": 2,
+          "applied": 68
+        },
+        "covered1051": 63,
+        "previous658_covered": 63,
+        "both_covered": 63,
+        "both_covered_same_value": 63
+      },
+      "resource_actual": {
+        "N": 131,
+        "interfaces": 259,
+        "initial_material_sites": 15
+      },
+      "resource_metadata_inherited": {
+        "independent_lower_relations": 65,
+        "extra_own_relations": 1,
+        "total_prepared_relation_interfaces": 66,
+        "initial_material_sites": 15,
+        "interfaces": 219,
+        "base_buffer_estimate": 71938912
+      },
+      "scope": "Data at frozen targets. Activity is not automatically a new emission or a genealogically identified response."
+    },
+    {
+      "case_id": "LIF_P11_NEW_AB",
+      "identity": "SOC_I21_SOCIAL_THEN_L01_REVISION",
+      "new_exposures": [
+        {
+          "port": "event.A",
+          "payload": 3,
+          "tick": 786,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "event.B",
+          "payload": 3,
+          "tick": 787,
+          "origin": "NEW_CURRENT_ORDER_EVENT"
+        },
+        {
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY"
+        },
+        {
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "origin": "NEW_OPAQUE_RIGHT_CUE"
+        },
+        {
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT"
+        },
+        {
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        },
+        {
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC"
+        }
+      ],
+      "new_exposure_receipts": [
+        {
+          "id": 332,
+          "port": "event.A",
+          "payload": 3,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 332,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.A"
+            ],
+            "requested_tick": 786,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 333,
+          "port": "event.B",
+          "payload": 3,
+          "tick": 787,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_ORDER_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 333,
+            "status": "rejected_occupied",
+            "channels": [
+              "event.B"
+            ],
+            "requested_tick": 787,
+            "effective_tick": null,
+            "kind": "experience",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 334,
+          "port": "order.read",
+          "payload": 7,
+          "tick": 788,
+          "kind": "probe",
+          "origin": "EXPLICIT_EXTERNAL_ORDER_QUERY",
+          "call_tick": 690,
+          "receipt": {
+            "id": 334,
+            "status": "rejected_occupied",
+            "channels": [
+              "order.read"
+            ],
+            "requested_tick": 788,
+            "effective_tick": null,
+            "kind": "probe",
+            "reason": "target register is not RAW-empty at application boundary"
+          }
+        },
+        {
+          "id": 335,
+          "port": "U.right.signal",
+          "payload": 5,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_OPAQUE_RIGHT_CUE",
+          "call_tick": 690,
+          "receipt": {
+            "id": 335,
+            "status": "applied",
+            "channels": [
+              "U.right.signal"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 336,
+          "port": "U.right.event.minus",
+          "payload": 11,
+          "tick": 786,
+          "kind": "submit",
+          "origin": "NEW_CURRENT_RIGHT_DIRECTIONAL_EVENT",
+          "call_tick": 690,
+          "receipt": {
+            "id": 336,
+            "status": "applied",
+            "channels": [
+              "U.right.event.minus"
+            ],
+            "requested_tick": 786,
+            "effective_tick": 786,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 337,
+          "port": "need.actual.left.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 337,
+            "status": "applied",
+            "channels": [
+              "need.actual.left.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        },
+        {
+          "id": 338,
+          "port": "need.actual.right.-1",
+          "payload": 17,
+          "tick": 797,
+          "kind": "submit",
+          "origin": "CURRENT_SENSOR_REPORT_FIXED_CODEC",
+          "call_tick": 690,
+          "receipt": {
+            "id": 338,
+            "status": "applied",
+            "channels": [
+              "need.actual.right.-1"
+            ],
+            "requested_tick": 797,
+            "effective_tick": 797,
+            "kind": "experience",
+            "reason": ""
+          }
+        }
+      ],
+      "emission791": {
+        "tick": 791,
+        "site": [
+          35,
+          69,
+          29
+        ],
+        "raw": "1220757004058886145",
+        "clock": "791",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "questions805_all_active": {
+        "left.equal": {
+          "tick": 805,
+          "site": [
+            25,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        },
+        "left.different": {
+          "tick": 805,
+          "site": [
+            21,
+            55,
+            33
+          ],
+          "raw": "1157143667912212481",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 9,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.different": {
+          "tick": 805,
+          "site": [
+            49,
+            55,
+            33
+          ],
+          "raw": "2238289070637711361",
+          "clock": "805",
+          "state": 1,
+          "s_reg": 13,
+          "semantic": 1,
+          "direction": [
+            0,
+            1,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "right920": {
+        "tick": 920,
+        "site": [
+          33,
+          55,
+          33
+        ],
+        "raw": "1220475567736881153",
+        "clock": "920",
+        "state": 1,
+        "s_reg": 16,
+        "semantic": 1,
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "active": true
+      },
+      "actions922_all_active": {
+        "own.use.minus": {
+          "tick": 922,
+          "site": [
+            35,
+            53,
+            33
+          ],
+          "raw": "1224979128709545985",
+          "clock": "922",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "action922_three_component_products": [],
+      "B926_all_active": {
+        "right.plus": {
+          "tick": 926,
+          "site": [
+            39,
+            61,
+            37
+          ],
+          "raw": "2238007561301262337",
+          "clock": "926",
+          "state": 1,
+          "s_reg": 5,
+          "semantic": 1,
+          "direction": [
+            -1,
+            0,
+            -1
+          ],
+          "active": true
+        }
+      },
+      "B943_all_active": {
+        "left.minus": {
+          "tick": 943,
+          "site": [
+            31,
+            32,
+            37
+          ],
+          "raw": "1224979145889415169",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 11,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 943,
+          "site": [
+            39,
+            32,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 943,
+          "site": [
+            39,
+            78,
+            37
+          ],
+          "raw": "1224979128709545985",
+          "clock": "943",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "active": true
+        }
+      },
+      "B947_all_active": {
+        "left.minus": {
+          "tick": 947,
+          "site": [
+            31,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "left.plus": {
+          "tick": 947,
+          "site": [
+            31,
+            82,
+            41
+          ],
+          "raw": "1229764697234866177",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        },
+        "right.minus": {
+          "tick": 947,
+          "site": [
+            39,
+            28,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        },
+        "right.plus": {
+          "tick": 947,
+          "site": [
+            39,
+            82,
+            41
+          ],
+          "raw": "1153203009648328705",
+          "clock": "947",
+          "state": 1,
+          "s_reg": 7,
+          "semantic": 1,
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "active": true
+        }
+      },
+      "delivery952_all_active": {
+        "left.plus.context1": {
+          "tick": 952,
+          "site": [
+            36,
+            87,
+            46
+          ],
+          "raw": "1229764697234866177",
+          "clock": "952",
+          "state": 1,
+          "s_reg": 122,
+          "semantic": 1,
+          "direction": [
+            1,
+            1,
+            1
+          ],
+          "active": true
+        }
+      },
+      "retention1051": {
+        "new_receipt_statuses": {
+          "rejected_occupied": 4,
+          "applied": 68
+        },
+        "covered1051": 63,
+        "previous658_covered": 63,
+        "both_covered": 63,
+        "both_covered_same_value": 63
+      },
+      "resource_actual": {
+        "N": 131,
+        "interfaces": 259,
+        "initial_material_sites": 15
+      },
+      "resource_metadata_inherited": {
+        "independent_lower_relations": 65,
+        "extra_own_relations": 1,
+        "total_prepared_relation_interfaces": 66,
+        "initial_material_sites": 15,
+        "interfaces": 219,
+        "base_buffer_estimate": 71938912
+      },
+      "scope": "Data at frozen targets. Activity is not automatically a new emission or a genealogically identified response."
+    }
+  ],
+  "calculations": {
+    "preparations": 0,
+    "controlled_continuations": 4,
+    "distinct_parent_frontiers": 1,
+    "technical_replays": 1,
+    "source_copies_checked": 32,
+    "source_copy_mismatches": 0,
+    "comparisons": [
+      {
+        "pilot": "LIF_P11_NEW_AB",
+        "control": "LIF_C11_NEW_BA",
+        "full_physical_at_common_frontiers": [
+          {
+            "tick": 690,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 805,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 926,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 952,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 1051,
+            "RAW_clocks_tick_equal": true
+          }
+        ],
+        "all_delivery952_records_equal": true
+      },
+      {
+        "pilot": "LIF_P11_NEW_AB",
+        "control": "LIF_C12_NO_RIGHT_CUE",
+        "full_physical_at_common_frontiers": [
+          {
+            "tick": 690,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 805,
+            "RAW_clocks_tick_equal": false
+          },
+          {
+            "tick": 926,
+            "RAW_clocks_tick_equal": false
+          },
+          {
+            "tick": 952,
+            "RAW_clocks_tick_equal": false
+          },
+          {
+            "tick": 1051,
+            "RAW_clocks_tick_equal": false
+          }
+        ],
+        "all_delivery952_records_equal": true
+      },
+      {
+        "pilot": "LIF_P11_NEW_AB",
+        "control": "LIF_C13_NO_NEW_ORDER",
+        "full_physical_at_common_frontiers": [
+          {
+            "tick": 690,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 805,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 926,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 952,
+            "RAW_clocks_tick_equal": true
+          },
+          {
+            "tick": 1051,
+            "RAW_clocks_tick_equal": true
+          }
+        ],
+        "all_delivery952_records_equal": true
+      }
+    ],
+    "technical_replay": {
+      "path": "resultados/integracion/LIF_ENTRY_REPLAY/MEASUREMENTS.json",
+      "sha256": "49d952bb8121b0a441c6525f735583d8a9634c0ede3e6df60594a252359fcb9d",
+      "comparisons": {
+        "initial_RAW_clocks_tick_equal": true,
+        "final805_RAW_clocks_tick_equal": true,
+        "past_receipts_and_call_ticks_equal": true
+      }
+    }
+  },
+  "provisional_reading": [
+    "All four branches continue the same physical parent690 without a new recipe, interface or reset; they are controlled continuations, not four independent initial preparations.",
+    "The prior63accessible directional relations remain usable1051 and match all63previous covered values658, after additional experiences and no re-teaching.",
+    "The fixed new RIGHT cue/event is admitted and leaves a normalized mobileYcarrier920. The no-cue control has an empty declaredRIGHT hub920, but a distinct load18(+1,-1,+1)product at the action site922 and B hub926. These are different trajectories; covered windows do not establish its entire ancestry. Neither makes the proposed new RIGHT query/use/delivery chain.",
+    "New A/B events and common order reader are rejectedOccupied. The prospective second order-learning episode was not admitted; continuing body activity cannot be credited to that new experience.",
+    "In the pilot, opposite-order and no-new-order branches no frozen three-component new action appears922. The no-cue branch produces the distinct load18three-component product noted above, without a normalized B memory or new RIGHT delivery. The old LEFT.plus delivery952 is identical in all four branches, including no new order and no newRIGHT cue; it is not evidence of the proposed newRIGHT communication chain.",
+    "RAW occupancy of interface targets and passive kernel write-gate flags belong to different contracts. A non-protected kernel site may still reject a host interface because RAW is not empty.",
+    "The period6N prediction is one bounded tested apparatus. No phase sweep or port clearing rescues the continuation; failure of admission is a local access boundary, not a universal limit of v27."
+  ],
+  "inherited_metadata_caveat": "The original SOC_I21 snapshot records219base interfaces before40social additions. Runtime has259interfaces and15original material sites. Both are retained here; load did not silently repair or reprepare the world."
+}

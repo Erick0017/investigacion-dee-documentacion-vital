@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\base_validada\reproducir_repertorio65.py", line 31, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--case',choices=['K65_PAIRED','K65_OPPOSITE','K65_NO_SYMBOL','K65_UNPAIRED','K65_RESERVE'],required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.case,a.out)
+                                                                                                                                                                                                                           ~~~^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\base_validada\reproducir_repertorio65.py", line 27, in run
+    before=dict(observations);new=-before['L01'];s.revise('L01',new,786,method='double_teacher');q=s.query(list(observations),917);target={**before,'L01':new};revision={'teaching_tick':786,'query_tick':917,'captured':q,'auditor_revised_correct':q['responses'][0]['covered']and q['responses'][0]['value']==new,'auditor_other_correct':sum(bool(r['covered'])and r['value']==target[r['form']]for r in q['responses'][1:]),'other_denominator':64,'method':'Published double_teacher, explicit additional doses; not arbitraryresource-freeoverwrite'};s.save(out/'T920.deetsnap.gz',compress=True)
+                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_cpc8r_runtime_20261019_002104\Lib\site-packages\dee_thinking\consolidated.py", line 267, in revise
+    rr=native.revise_form(self.world,self.preparation,i,consequence,tick,method,mode,cue,teacher)
+ValueError: revision outside published finite cadence

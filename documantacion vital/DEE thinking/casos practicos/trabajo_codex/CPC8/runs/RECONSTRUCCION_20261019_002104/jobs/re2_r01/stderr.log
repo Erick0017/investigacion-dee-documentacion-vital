@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\tools\ejecutar_regulated_finite_e1.py", line 20, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--case',choices=CASES,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.case,a.out)
+                                                                                                                                                      ~~~^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\tools\ejecutar_regulated_finite_e1.py", line 12, in run
+    s=RegulatedFiniteE1Session.create(identifier=case,actor_mode=actor);s.curriculum(**options);s.save(out/'T0.deetsnap.gz');rows=[]
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\regulated_finite_e1.py", line 16, in create
+    r,g=prepare_complete(quantity_guards='off_path',**options);rr,rg=prepare_regulation(center=(50,35,35))
+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\complete_e1.py", line 14, in prepare_complete
+    r,g=prepare_guarded_v2(guard_mode=guard_mode,**options);qr,qg=prepare_quantity(center=(50,35,35),profile='transient',guards=quantity_guards)
+        ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\relational_guarded_v2.py", line 15, in prepare_guarded_v2
+    r,g=prepare_social_ensemble(**options);placements=list(r.placements);sites=[]
+        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\relational_social.py", line 9, in prepare_social_ensemble
+    r,g=prepare_v2(**options)
+        ~~~~~~~~~~^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\relational_pair_v2.py", line 14, in prepare_v2
+    r,g=prepare(**options);n=67;contact_roles={'Current zero-load actuator','Common zero-load opportunity','Current medium'}
+        ~~~~~~~^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC8\runs\RECONSTRUCCION_20261019_002104\src\integracion\relational_pair.py", line 22, in prepare
+    if actor_mode not in('contact','offpath','omitted')or event_state_offset not in(0,100,400)or medium_load not in(1,3,5)or actor_state not in(1,17):raise ValueError('Frozen candidate parameters')
+                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Frozen candidate parameters

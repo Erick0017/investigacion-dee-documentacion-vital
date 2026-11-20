@@ -1,0 +1,525 @@
+{
+  "baseline": "M_Q0",
+  "core15_policy": "discovery may combine observers; confirmation freezes only causally necessary components",
+  "count": 13,
+  "historical_selected": "M_EVENT_CAUSAL",
+  "observers": [
+    {
+      "cost": 7,
+      "dimensionality": "1D route + 0D local relation",
+      "information_cost": 7,
+      "known_failures": [
+        "global Q0 closure"
+      ],
+      "known_successes": [
+        "P01_BALLISTIC",
+        "P01_REDUCER",
+        "P05_DELAY_PLACE",
+        "P05_PHASE_HISTORY",
+        "P08_GUARD_REPAIR",
+        "P10_COUPLING",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "observer_id": "M_EVENT_CAUSAL",
+      "phenomena_explained": [
+        "P01_BALLISTIC",
+        "P01_REDUCER",
+        "P05_DELAY_PLACE",
+        "P05_PHASE_HISTORY",
+        "P08_GUARD_REPAIR",
+        "P10_COUPLING",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "phenomena_failed": [
+        "global Q0 closure"
+      ],
+      "rationale": "smallest union of variables needed by priority cluster A",
+      "scope": "smallest union of variables needed by priority cluster A",
+      "selection_score": 18.55,
+      "source": "CORE13",
+      "variables": [
+        "route length",
+        "event tick",
+        "event sreg",
+        "event direction",
+        "relative phase",
+        "target occupancy",
+        "guard count"
+      ],
+      "what_it_ignores": [
+        "global Q0 closure"
+      ],
+      "what_it_sees": [
+        "route length",
+        "event tick",
+        "event sreg",
+        "event direction",
+        "relative phase",
+        "target occupancy",
+        "guard count"
+      ]
+    },
+    {
+      "cost": 9,
+      "dimensionality": "local-graph",
+      "information_cost": 9,
+      "known_failures": [
+        "global exact closure"
+      ],
+      "known_successes": [
+        "P01_REDUCER",
+        "P04_HISTORY",
+        "P05_OBSERVER",
+        "P08_GUARD_REPAIR",
+        "P10_COUPLING",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "observer_id": "M_REL",
+      "phenomena_explained": [
+        "P01_REDUCER",
+        "P04_HISTORY",
+        "P05_OBSERVER",
+        "P08_GUARD_REPAIR",
+        "P10_COUPLING",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "phenomena_failed": [
+        "global exact closure"
+      ],
+      "rationale": "broad relational baseline from CORE08/11",
+      "scope": "broad relational baseline from CORE08/11",
+      "selection_score": 13.85,
+      "source": "CORE13",
+      "variables": [
+        "support",
+        "proposals",
+        "fiber multiplicity",
+        "direction",
+        "sreg",
+        "semantic",
+        "guard",
+        "clock/history"
+      ],
+      "what_it_ignores": [
+        "global exact closure"
+      ],
+      "what_it_sees": [
+        "support",
+        "proposals",
+        "fiber multiplicity",
+        "direction",
+        "sreg",
+        "semantic",
+        "guard",
+        "clock/history"
+      ]
+    },
+    {
+      "cost": 100,
+      "dimensionality": 3,
+      "information_cost": 100,
+      "known_failures": [],
+      "known_successes": [
+        "P01_CLOCK",
+        "P01_CAUSAL_BOUND",
+        "P01_BALLISTIC",
+        "P01_REDUCER",
+        "P03_BASIN",
+        "P04_HISTORY",
+        "P05_OBSERVER",
+        "P05_DELAY_PLACE",
+        "P05_PHASE_HISTORY",
+        "P06_LEARNING",
+        "P06_MATTER",
+        "P06_DISSIPATION",
+        "P07_TRANSFER",
+        "P08_GUARD_REPAIR",
+        "P08_BOUNDARY",
+        "P09_ADAPTIVE_POLICY",
+        "P10_COUPLING",
+        "P10_JOINT_HOMEOSTASIS",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "observer_id": "M_Q0",
+      "phenomena_explained": [
+        "P01_CLOCK",
+        "P01_CAUSAL_BOUND",
+        "P01_BALLISTIC",
+        "P01_REDUCER",
+        "P03_BASIN",
+        "P04_HISTORY",
+        "P05_OBSERVER",
+        "P05_DELAY_PLACE",
+        "P05_PHASE_HISTORY",
+        "P06_LEARNING",
+        "P06_MATTER",
+        "P06_DISSIPATION",
+        "P07_TRANSFER",
+        "P08_GUARD_REPAIR",
+        "P08_BOUNDARY",
+        "P09_ADAPTIVE_POLICY",
+        "P10_COUPLING",
+        "P10_JOINT_HOMEOSTASIS",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT",
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "phenomena_failed": [],
+      "rationale": "global exact baseline",
+      "scope": "global exact baseline",
+      "selection_score": 11.0,
+      "source": "CORE13",
+      "status": "TRIVIAL_NOT_REDUCED",
+      "variables": [
+        "full raw",
+        "full clock"
+      ],
+      "what_it_ignores": [],
+      "what_it_sees": [
+        "full raw",
+        "full clock"
+      ]
+    },
+    {
+      "cost": 5,
+      "dimensionality": 0,
+      "information_cost": 5,
+      "known_failures": [
+        "P12_GUARD_THRESHOLD"
+      ],
+      "known_successes": [
+        "P01_REDUCER",
+        "P05_OBSERVER",
+        "P12_PHASE_PATH",
+        "P10_COUPLING"
+      ],
+      "observer_id": "M_DESTINATION_HISTORY",
+      "phenomena_explained": [
+        "P01_REDUCER",
+        "P05_OBSERVER",
+        "P12_PHASE_PATH",
+        "P10_COUPLING"
+      ],
+      "phenomena_failed": [
+        "P12_GUARD_THRESHOLD"
+      ],
+      "rationale": "resolves CORE12 observer failure",
+      "scope": "resolves CORE12 observer failure",
+      "selection_score": 5.25,
+      "source": "CORE13",
+      "variables": [
+        "tick",
+        "sreg",
+        "direction",
+        "target occupancy at t",
+        "fiber multiplicity"
+      ],
+      "what_it_ignores": [
+        "P12_GUARD_THRESHOLD"
+      ],
+      "what_it_sees": [
+        "tick",
+        "sreg",
+        "direction",
+        "target occupancy at t",
+        "fiber multiplicity"
+      ]
+    },
+    {
+      "cost": 6,
+      "dimensionality": 1,
+      "information_cost": 6,
+      "known_failures": [
+        "P12_PHASE_PATH"
+      ],
+      "known_successes": [
+        "P08_GUARD_REPAIR",
+        "P10_JOINT_HOMEOSTASIS",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "observer_id": "M_INTERFACE",
+      "phenomena_explained": [
+        "P08_GUARD_REPAIR",
+        "P10_JOINT_HOMEOSTASIS",
+        "P12_GUARD_THRESHOLD",
+        "P12_CAPTURE"
+      ],
+      "phenomena_failed": [
+        "P12_PHASE_PATH"
+      ],
+      "rationale": "system+detector as one interaction",
+      "scope": "system+detector as one interaction",
+      "selection_score": 4.9,
+      "source": "CORE13",
+      "variables": [
+        "incident event",
+        "transmitted event",
+        "captured event",
+        "delay",
+        "guard count",
+        "center state"
+      ],
+      "what_it_ignores": [
+        "P12_PHASE_PATH"
+      ],
+      "what_it_sees": [
+        "incident event",
+        "transmitted event",
+        "captured event",
+        "delay",
+        "guard count",
+        "center state"
+      ]
+    },
+    {
+      "cost": 4,
+      "dimensionality": 1,
+      "information_cost": 4,
+      "known_failures": [
+        "P12_PHASE_PATH",
+        "P12_CAPTURE"
+      ],
+      "known_successes": [
+        "P01_BALLISTIC",
+        "P05_DELAY_PLACE",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT"
+      ],
+      "observer_id": "M_TRANSPORT",
+      "phenomena_explained": [
+        "P01_BALLISTIC",
+        "P05_DELAY_PLACE",
+        "P11_PARALLEL_APERTURE_NULL",
+        "P12_PHASE_TRANSPORT"
+      ],
+      "phenomena_failed": [
+        "P12_PHASE_PATH",
+        "P12_CAPTURE"
+      ],
+      "rationale": "first-passage laws",
+      "scope": "first-passage laws",
+      "selection_score": 4.6,
+      "source": "CORE13",
+      "variables": [
+        "arrival time",
+        "path length",
+        "direction",
+        "event existence"
+      ],
+      "what_it_ignores": [
+        "P12_PHASE_PATH",
+        "P12_CAPTURE"
+      ],
+      "what_it_sees": [
+        "arrival time",
+        "path length",
+        "direction",
+        "event existence"
+      ]
+    },
+    {
+      "cost": 4,
+      "dimensionality": 1,
+      "information_cost": 4,
+      "known_failures": [
+        "P12_PHASE_PATH"
+      ],
+      "known_successes": [
+        "P05_PHASE_HISTORY",
+        "P12_PHASE_TRANSPORT"
+      ],
+      "observer_id": "M_PHASE",
+      "phenomena_explained": [
+        "P05_PHASE_HISTORY",
+        "P12_PHASE_TRANSPORT"
+      ],
+      "phenomena_failed": [
+        "P12_PHASE_PATH"
+      ],
+      "rationale": "history-bearing pulse laws",
+      "scope": "history-bearing pulse laws",
+      "selection_score": 1.6,
+      "source": "CORE13",
+      "variables": [
+        "arrival time",
+        "period",
+        "relative parity",
+        "detector history"
+      ],
+      "what_it_ignores": [
+        "P12_PHASE_PATH"
+      ],
+      "what_it_sees": [
+        "arrival time",
+        "period",
+        "relative parity",
+        "detector history"
+      ]
+    },
+    {
+      "cost": 1,
+      "dimensionality": 0,
+      "information_cost": 1,
+      "known_failures": [
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD"
+      ],
+      "known_successes": [
+        "P01_BALLISTIC"
+      ],
+      "observer_id": "M_BINARY_EVENT",
+      "phenomena_explained": [
+        "P01_BALLISTIC"
+      ],
+      "phenomena_failed": [
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD"
+      ],
+      "rationale": "minimal counterexample from CORE12",
+      "scope": "minimal counterexample from CORE12",
+      "selection_score": -0.35,
+      "source": "CORE13",
+      "variables": [
+        "event existence"
+      ],
+      "what_it_ignores": [
+        "P12_PHASE_PATH",
+        "P12_GUARD_THRESHOLD"
+      ],
+      "what_it_sees": [
+        "event existence"
+      ]
+    },
+    {
+      "information_cost": "O(support)",
+      "known_failures": [
+        "phase-path",
+        "guard",
+        "payload",
+        "history"
+      ],
+      "known_successes": [
+        "support/presence"
+      ],
+      "observer_id": "M_OCCUPANCY",
+      "scope": "negative baseline",
+      "variables": [
+        "occupied coordinates"
+      ],
+      "what_it_ignores": [
+        "state",
+        "s_reg",
+        "direction",
+        "semantic",
+        "clock",
+        "lineage"
+      ],
+      "what_it_sees": "support geometry only"
+    },
+    {
+      "information_cost": "task-relative sparse lineage",
+      "known_failures": [
+        "global closure"
+      ],
+      "known_successes": [
+        "CORE06 associative response",
+        "CORE14 path dependence"
+      ],
+      "observer_id": "M_HISTORY",
+      "scope": "history-bearing apparatuses",
+      "variables": [
+        "current lineage",
+        "training relation",
+        "prior target occupancy",
+        "ordered intervention record"
+      ],
+      "what_it_ignores": [
+        "unrelated global microstate"
+      ],
+      "what_it_sees": "causally stored/ordered history"
+    },
+    {
+      "information_cost": "local topology plus response trace",
+      "known_failures": [
+        "mobile inertia not established"
+      ],
+      "known_successes": [
+        "CORE08/14 regeneration"
+      ],
+      "observer_id": "M_MATTER",
+      "scope": "guarded/regenerative organizations",
+      "variables": [
+        "functional identity",
+        "guard topology",
+        "persistence",
+        "damage response",
+        "recovery"
+      ],
+      "what_it_ignores": [
+        "irrelevant voxel identity"
+      ],
+      "what_it_sees": "persistent organization and response class"
+    },
+    {
+      "information_cost": "sparse endpoints plus mediator",
+      "known_failures": [
+        "global ecology closure"
+      ],
+      "known_successes": [
+        "CORE10/14 exchange, transfer, joint recovery"
+      ],
+      "observer_id": "M_COUPLING",
+      "scope": "prepared coupled systems",
+      "variables": [
+        "endpoint functional states",
+        "lane/interface state",
+        "directional causal cuts",
+        "joint recovery"
+      ],
+      "what_it_ignores": [
+        "unrelated bulk"
+      ],
+      "what_it_sees": "bounded coupled-system causal response"
+    },
+    {
+      "information_cost": "clock patch or hash",
+      "known_failures": [
+        "no functional effect under two frozen probes"
+      ],
+      "known_successes": [
+        "CORE14 exact persistent clock trace"
+      ],
+      "observer_id": "M_CLOCK_RESIDUAL",
+      "scope": "clock-trace apparatus",
+      "variables": [
+        "raw state",
+        "local/global clock residual relative to matched age"
+      ],
+      "what_it_ignores": [
+        "semantic interpretation"
+      ],
+      "what_it_sees": "hidden clock trace"
+    }
+  ]
+}

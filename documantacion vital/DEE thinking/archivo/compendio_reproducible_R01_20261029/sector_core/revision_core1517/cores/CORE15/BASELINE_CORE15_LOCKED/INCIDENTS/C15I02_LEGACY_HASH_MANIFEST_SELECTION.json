@@ -1,0 +1,10 @@
+{
+  "incident_id": "C15I02",
+  "classification": "TECHNICAL_INVALID",
+  "stage": "parent preflight",
+  "cause": "The generic verifier selected an arbitrary HASHES.sha256 from a legacy ZIP containing both a top-level package manifest and a nested campaign hash list.",
+  "scientific_output_created": false,
+  "holdout_opened": false,
+  "correction": "Select the shallowest HASHES.sha256 deterministically, then verify every listed member.",
+  "retry_policy": "single technical retry after correction"
+}

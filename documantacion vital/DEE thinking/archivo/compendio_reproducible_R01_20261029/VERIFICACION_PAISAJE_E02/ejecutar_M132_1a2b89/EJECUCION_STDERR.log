@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 178, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 173, in main
+    try:_execute(payload,guard);return 0
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 156, in _execute
+    sys.path.insert(0,str(script.parent));sys.argv=[str(script),*payload[1:]];runpy.run_path(str(script),run_name='__main__')
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\sectores\paisaje\ejecutar_integrados.py", line 145, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\sectores\paisaje\ejecutar_integrados.py", line 144, in main
+    return recalc(m,a.out)if a.mode=='recalc'else native(m,a.out,a.common,a.external_python)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\sectores\paisaje\ejecutar_integrados.py", line 108, in native
+    job=prepare(m,out,common,external);env=dict(os.environ,OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1');env.pop('PYTHONPATH',None)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\sectores\paisaje\ejecutar_integrados.py", line 101, in prepare
+    original=read(BASE/'codigo/contratos/HABITAT_EXTERNO_01.original.json');original.update(external_python=str(external.resolve()),external_python_sha256=sha(external),worker_sha256=sha(target));save(system/'contratos/HABITAT_EXTERNO_01.json',original)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\sectores\paisaje\ejecutar_integrados.py", line 8, in <lambda>
+    sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\pathlib\_abc.py", line 625, in read_bytes
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\pathlib\_local.py", line 537, in open
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 99, in audit
+    self.check(event,args[0],write)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 87, in check
+    if not _beneath(path,self.write_roots if write else self.read_roots):self.reject(event,path,write)
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\compendio_reproducible_R01_20261029\VERIFICACION_PAISAJE_E02\_materializado\codigo_comun\entorno_seguro.py", line 79, in reject
+    raise PermissionError('DEE isolation blocked '+event+': '+str(path))
+PermissionError: DEE isolation blocked open: C:\Users\Erik\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe

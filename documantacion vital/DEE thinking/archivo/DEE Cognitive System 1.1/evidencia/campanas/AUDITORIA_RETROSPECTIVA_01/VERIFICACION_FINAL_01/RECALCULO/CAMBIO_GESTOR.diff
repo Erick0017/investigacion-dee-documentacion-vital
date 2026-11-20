@@ -1,0 +1,31 @@
+--- sistema/gestionar.py anterior
++++ sistema/gestionar.py con observador
+@@ -17,6 +17,7 @@
+     q=sub.add_parser('recibos');q.add_argument('--vida')
+     q=sub.add_parser('paisaje-estado');q.add_argument('--vida',required=True)
+     q=sub.add_parser('acceso-estado');q.add_argument('--vida',required=True)
++    q=sub.add_parser('inspeccionar-snapshot');q.add_argument('archivo',type=Path);q.add_argument('--comparar',type=Path)
+     q=sub.add_parser('crear');q.add_argument('life');q.add_argument('--perfil',default='fisica_directa');q.add_argument('--parametros',default='{}');q.add_argument('--activar',action='store_true')
+     q=sub.add_parser('bifurcar');q.add_argument('origen');q.add_argument('destino');q.add_argument('--activar',action='store_true');q.add_argument('--modalidad',choices=['EXACT_FORK','CANDIDATE','DIAGNOSTIC_COPY'],default='EXACT_FORK');q.add_argument('--checkpoint-relativo')
+     q=sub.add_parser('restaurar');q.add_argument('life')
+@@ -58,6 +59,11 @@
+     return p
+ 
+ def execute(args):
++    if args.command=='inspeccionar-snapshot':
++        from capacidades.observador_causal_retrospectivo_01 import Snapshot,compare
++        source=Snapshot(args.archivo);result=source.summary()
++        if args.comparar:result['comparison']=compare(source,Snapshot(args.comparar))
++        return{'AUDITOR':result,'INSTRUMENTO':{'operation':'READ_SAVED_BYTES_ONLY','native_ticks':0,'world_restored':False,'snapshot_modified':False},'INTERPRETACION':'External forensic observer, not acquired memory or access of the participant. Equal fields alone do not certify identical future operational state.'}
+     s=Store(args.system_root);cmd=args.command or'estado'
+     if cmd=='version':return{'INSTRUMENTO':{'system_version':'1.1.0','engine':identity(s.root)}}
+     if cmd=='estado':return s.status(getattr(args,'vida',None))
+@@ -236,7 +242,7 @@
+             protect_current()
+         if args.command not in('probar-herencia','ensayar'):
+             from app.access_guard import install
+-            explicit_read=[args.archivo]if args.command in('eventos','importar-estado')else[args.decision]if args.command=='promover'else[];explicit_write=[args.salida]if args.command=='exportar'else[]
++            explicit_read=[args.archivo]+([args.comparar]if args.comparar else[])if args.command=='inspeccionar-snapshot'else[args.archivo]if args.command in('eventos','importar-estado')else[args.decision]if args.command=='promover'else[];explicit_write=[args.salida]if args.command=='exportar'else[]
+             guard=install(args.system_root or SYSTEM_ROOT,explicit_read=explicit_read,explicit_write=explicit_write)
+         result=execute(args);print(json.dumps(result,ensure_ascii=False,indent=2,default=str))
+     except Exception as e:

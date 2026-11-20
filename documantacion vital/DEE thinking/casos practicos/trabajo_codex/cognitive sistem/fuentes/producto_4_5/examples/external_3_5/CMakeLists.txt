@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.24)
+project(dee_public_consumer LANGUAGES CXX)
+find_package(dee_thinking 3 CONFIG REQUIRED)
+add_executable(dee_public_consumer main.cpp)
+target_link_libraries(dee_public_consumer PRIVATE DEE::thinking)
+target_compile_features(dee_public_consumer PRIVATE cxx_std_20)

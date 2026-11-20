@@ -1,0 +1,42 @@
+{
+  "jobs": [
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/PERFIL_DELTA_R1",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "DESPLAZAMIENTO_ADQUIRIDO_CINCO_USOS",
+      "reference": "REFERENCIAS/DELTA.json",
+      "script": "RECALCULO/recalcular_perfil_delta_r1.py"
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "RETORNO_FASE_O2_REVERSO_Y_CAMPO_COMPLETO",
+      "reference": "REFERENCIAS/CONSECUENCIAS_Y_CAMPO.json",
+      "script": "RECALCULO/recalcular_consecuencias_y_campo_r1.py"
+    },
+    {
+      "args": [
+        "--registro",
+        "EVIDENCIA/ANTECEDENTE_R17/REGISTROS_NUMERICOS_R17_PROYECCION.json.gz",
+        "--salida",
+        "{output}"
+      ],
+      "base": ".",
+      "name": "ANTECEDENTE_R17_DOCE_EMISIONES",
+      "reference": "REFERENCIAS/ANTECEDENTE_R17.json",
+      "script": "RECALCULO/recalcular_agregacion_previa.py"
+    }
+  ],
+  "native_ticks": 0,
+  "schema": "APD01.mechanism.portable_recalculation_plan.v1"
+}

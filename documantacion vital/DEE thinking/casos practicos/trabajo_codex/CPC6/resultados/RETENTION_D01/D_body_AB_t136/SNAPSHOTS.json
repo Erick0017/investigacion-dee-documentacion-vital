@@ -1,0 +1,386 @@
+[
+  {
+    "path": "PREPARED_T0.deetsnap",
+    "sha256": "d18a9c8cc6150191f3a1d6190fc462c43a386fdcc02125e4444ab67281bf2746",
+    "physical": {
+      "tick": 0,
+      "raw_sha256": "52e37b5cbc0aa2c8db921f28eab303268b2c68cdb535c86ec4fbd27004044cea",
+      "clock_sha256": "fdd9d20b4639616eb217b15c8d39b7e4fa4beecadfac9715074e199dfddba3bd"
+    },
+    "operative": {
+      "tick": 0,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "scheduled",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": null,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "scheduled",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": null,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "scheduled",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": null,
+          "kind": "probe",
+          "reason": ""
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0}],\"tick\":0}"
+      }
+    }
+  },
+  {
+    "path": "T5.deetsnap",
+    "sha256": "3dda6b7e791a4c7238c60cbae37765eb98a0f689dec42d4e2a8cc123ad6dc8c5",
+    "physical": {
+      "tick": 5,
+      "raw_sha256": "6797cdcba1500f377eda42a4e06aaacdce85de791c591c92943c09ec9cd1d32a",
+      "clock_sha256": "41c0b7c526c0d4a545bcdd2e5295b7767ee895ad59e512eef83c5df76f6c7833"
+    },
+    "operative": {
+      "tick": 5,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": 0,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": 1,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "applied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": 2,
+          "kind": "probe",
+          "reason": ""
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0}],\"tick\":5}"
+      }
+    }
+  },
+  {
+    "path": "T23.deetsnap",
+    "sha256": "3e145e21244b8a91003eda5c6ee84729275fe813e643d779566d2fd4c26a8b5d",
+    "physical": {
+      "tick": 23,
+      "raw_sha256": "1fde6c0c75f1eba56287fe38321ac0d79cf5c477e52e0e42090c742547882b14",
+      "clock_sha256": "8e5dbe2c567a99b610cbbdff566edebd8cb96c3026291919d46f4a061da2682b"
+    },
+    "operative": {
+      "tick": 23,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": 0,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": 1,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "applied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": 2,
+          "kind": "probe",
+          "reason": ""
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0}],\"tick\":23}"
+      }
+    }
+  },
+  {
+    "path": "T33.deetsnap",
+    "sha256": "65811c2bd08f18fd487c5ce08020bd50340b0c33e0fd8eb722f7a42878dcb5f2",
+    "physical": {
+      "tick": 33,
+      "raw_sha256": "14ba1333d77121bbc00093bdd02392ffb4db8d3fa79b396b3c59390380e46634",
+      "clock_sha256": "017249b12fb9f0b31c49d1068dd80c62406094a9e7d21a57e4c23acf98c67831"
+    },
+    "operative": {
+      "tick": 33,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": 0,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": 1,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "applied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": 2,
+          "kind": "probe",
+          "reason": ""
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0}],\"tick\":33}"
+      }
+    }
+  },
+  {
+    "path": "BEFORE_RETAINED_QUERY_T136.deetsnap",
+    "sha256": "a68cad1ad0ebd0d212c9d27aacf65f98bbc66b1b54d3f11f66a17beed3fe43b9",
+    "physical": {
+      "tick": 136,
+      "raw_sha256": "6cf5713c7ce4c5b780e765f573c506155db8790ef76ffeb8fcc662341a6a5fea",
+      "clock_sha256": "ddc3665b6f0d6a599f3518a6560d0c46b36716a8e05a12ea2512deb31758be25"
+    },
+    "operative": {
+      "tick": 136,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": 0,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": 1,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "applied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": 2,
+          "kind": "probe",
+          "reason": ""
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0}],\"tick\":136}"
+      }
+    }
+  },
+  {
+    "path": "AFTER_RETAINED_QUERY_T139.deetsnap",
+    "sha256": "7f7d5985c927d971759e7b36f2d88b0f91844dc4811c4c0a75658e659e9f87f0",
+    "physical": {
+      "tick": 139,
+      "raw_sha256": "aafba1402226f1d4aca91eab68dea2f11752240cd10dc3299107eaa3001d3685",
+      "clock_sha256": "43ce876188bc74cc169de2260a62e529bed0398ead8b285792988b2775a0490e"
+    },
+    "operative": {
+      "tick": 139,
+      "channels": [
+        "event.A",
+        "event.B",
+        "order.read"
+      ],
+      "receipts": [
+        {
+          "id": 1,
+          "status": "applied",
+          "channels": [
+            "event.A"
+          ],
+          "requested_tick": 0,
+          "effective_tick": 0,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 2,
+          "status": "applied",
+          "channels": [
+            "event.B"
+          ],
+          "requested_tick": 1,
+          "effective_tick": 1,
+          "kind": "experience",
+          "reason": ""
+        },
+        {
+          "id": 3,
+          "status": "applied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 2,
+          "effective_tick": 2,
+          "kind": "probe",
+          "reason": ""
+        },
+        {
+          "id": 4,
+          "status": "rejected_occupied",
+          "channels": [
+            "order.read"
+          ],
+          "requested_tick": 136,
+          "effective_tick": null,
+          "kind": "probe",
+          "reason": "target register is not RAW-empty at application boundary"
+        }
+      ],
+      "external_operations": [
+        "CREATE_PREPARATION tick=0",
+        "EXPERIENCE_PROTOCOL interface=event.A at=0 load=3 receipt=1",
+        "EXPERIENCE_PROTOCOL interface=event.B at=1 load=3 receipt=2",
+        "PHYSICAL_PROBE interface=order.read at=2 load=7 receipt=3",
+        "PHYSICAL_PROBE interface=order.read at=136 load=7 receipt=4"
+      ],
+      "protocols": [],
+      "metadata": {
+        "cpc6.u0.session.v1": "{\"schema\":1,\"identity\":\"U0\",\"geometry\":{\"schema\":\"CPC6.U0.geometry.v1\",\"body\":{\"n\":67,\"center\":[33,25,33],\"A\":[32,25,33],\"B\":[34,25,33],\"emission_site\":[33,24,33],\"emission_tick\":5,\"initial_phase\":260,\"initial_relation\":0,\"resource_sites\":11},\"adapter\":null,\"language\":null},\"requests\":[{\"port\":\"event.A\",\"payload\":3,\"tick\":0,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":1,\"call_tick\":0},{\"port\":\"event.B\",\"payload\":3,\"tick\":1,\"kind\":\"submit\",\"origin\":\"CURRENT_LOCAL_EVENT\",\"id\":2,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":2,\"kind\":\"probe\",\"origin\":\"COMMON_FIRST_ORDER_QUERY\",\"id\":3,\"call_tick\":0},{\"port\":\"order.read\",\"payload\":7,\"tick\":136,\"kind\":\"probe\",\"origin\":\"RETENTION_QUERY_NO_RETEACHING\",\"id\":4,\"call_tick\":136}],\"tick\":139}"
+      }
+    }
+  }
+]

@@ -1,0 +1,155 @@
+16. Competencia, contexto y accesibilidad de las transformaciones34
+18. La historia cambia la transformación de una experiencia38
+19. Reutilización del soporte y continuidad de la historia40
+20. El procesamiento desplegado: transición e interfaz42
+21. Teoría unificada del procesamiento nativo44
+16. Competencia, contexto y accesibilidad de las transformaciones
+16.1. Una experiencia modifica las condiciones de la siguiente
+Ingenierías 03 y 04 estudian cómo una experiencia deja un estado que cambia la admisión de otra. El objeto ya no es sólo una función escrita, sino una organización cuya capacidad de responder depende de su historia. En ventanas del aparato, una experiencia ordinaria deja una distinción diagnóstica que persiste después de desaparecer el portador original y se distribuye en 22 diferencias RAW. [I03, veredicto y CCE.]
+El término competencia se usa para una respuesta definida por una prueba. Una región competente responde al desafío correspondiente bajo el protocolo. No significa por sí mismo competencia cognitiva general. Lo científicamente importante es que una historia cambia esa respuesta de forma causal y que las intervenciones permiten localizar el cambio.
+16.2. Distinguir un estado posible de un camino para alcanzarlo
+Una construcción diagnóstica puede mostrar que cierta función y cierta capacidad de respuesta son compatibles en un mismo estado. Otra pregunta es si la dinámica nativa del montaje llega a ese estado desde la preparación prevista. Ingeniería 04.5 hizo explícita esa separación entre clase de estado y accesibilidad.
+Esta distinción impide usar un resultado de trayectoria como una prohibición ontológica. También impide atribuir a la evolución libre una configuración que se obtuvo mediante una edición del host. En ambos casos se conserva el resultado positivo con su operación real: compatibilidad diagnóstica o transformación nativa. [I045, mapas de observador y frontera del sistema.]
+   (PN-039)
+Definición operacional. Repertorio accesible en el conjunto declarado de intervenciones y horizontes.
+16.3. Vacancia, historia y conservación del reloj
+Los diagnósticos CCE18–21 de Ingeniería 03 comparan vaciar RAW preservando clock con borrar también el reloj. La primera operación permite una secuencia B–C–B en el mismo mundo con nuevas organizaciones estratificadas; el control que retira el reloj no es equivalente. La memoria no se agota en el registro ocupacional intervenido.
+La vacancia se aplica aquí como una intervención diagnóstica declarada. Su valor es identificar qué distinciones del estado sostienen una capacidad posterior. El libro no cambia la naturaleza de esa intervención al describir su significado. Las pruebas muestran una relación entre espacio disponible, organización conservada y respuesta, y permiten separar condiciones que una lectura de ocupación habría mezclado.
+16.4. Acoplamiento remoto y cambio de régimen temporal
+La continuidad POST04.5 identifica un acoplamiento distribuido condicionado por historia: una realización modifica un régimen temporal remoto de período dos a período uno. La función de la fuente, el contexto y la ruta de influencia deben describirse conjuntamente. No basta registrar que hubo una perturbación: interesa cómo esa perturbación reorganizó el repertorio temporal del receptor.
+Los resultados de Ingeniería 04 integrada conservan ese mecanismo y distinguen qué montajes mantienen separadas sus organizaciones y cuáles introducen acoplamiento al compartir soporte. Esa evidencia aporta una lección de diseño: aumentar el contacto no equivale automáticamente a conservar la discriminación funcional. La relación específica entre soportes decide qué transformación aparece. [I04; POST045.]
+La descripción vigente de procesamiento se hace por tanto más rica: incluye operaciones que cambian una función y operaciones que cambian las condiciones bajo las que otras funciones pueden aparecer. Ambas pertenecen a la física causal de las organizaciones. El siguiente capítulo cuantifica esas distinciones mediante soportes mínimos y clases de respuesta.
+
+18. La historia cambia la transformación de una experiencia
+18.1. Comparar efectos, no sólo estados finales
+Dos estados finales distintos no bastan para demostrar que una historia cambió la manera de procesar una nueva entrada. La diferencia podría proceder enteramente de la historia previa. NRD05 resuelve este problema con un factorial de cuatro mundos.
+W00 no recibe la primera ni la segunda experiencia. W10 recibe la primera; W01 recibe la segunda; W11 recibe ambas. Antes de la segunda experiencia, W00 coincide con W01 y W10 con W11. Se compara el efecto de la segunda entrada sobre el par sin historia con su efecto sobre el par que conserva historia. [I05, NRD05.]
+   (PN-042)
+Diseño factorial. El símbolo ⊖ denota la diferencia definida por el observador: resta, XOR, Hamming o cambio de clase.
+   (PN-043)
+Inferencia causal de aparato. La atribución utiliza igualdad previa de los pares y la misma segunda entrada.
+Las firmas difieren inmediatamente y después de 64 ticks libres. El resultado se conserva en dos configuraciones fresh N=19 y N=25 y en una geometría donde las rutas de entrada de las dos experiencias son disjuntas. Por tanto, la explicación no se reduce a reutilizar el mismo trayecto directo de entrada. La respuesta depende del estado organizado del paisaje.
+18.2. Deltas inmediatos iguales, consecuencias diferentes
+NRD06 compara tres historias H0, HA y HB, seguidas por el mismo probe BA. En MAIN_S0, H0 y HB producen el mismo efecto XOR inmediatamente después del probe, tanto en RAW como en clock. Sin embargo, las consecuencias posteriores de ese efecto se separan.
+El recálculo G13 compara las diferencias probe–control sobre ambas historias. La distancia entre deltas inmediatos es cero. En C0, las diferencias futuras de los deltas ocupan 56 posiciones RAW en h32 y 70 en h64; en C3, 56 y 74. Es un testigo concreto de que el delta inmediato no contiene por sí solo toda la información necesaria para describir su propagación.
+Comparación entre efectos H0/HB
+Posiciones diferentes
+RAW inmediato
+0
+Clock inmediato
+0
+C0, h32
+56
+C0, h64
+70
+C3, h32
+56
+C3, h64
+74
+
+18.3. Cálculo exacto de perturbaciones dependientes del estado
+   (PN-044)
+Definición. X y δ se representan en las palabras binarias del estado completo; ⊕ es XOR.
+   (PN-045)
+Identidad exacta. La diferencia después de h pasos se propaga sobre el estado que el sistema alcanzó en h.
+La demostración sólo usa sustitución. De la definición se obtiene F^h(X⊕δ)=F^h(X)⊕V_h(X,δ). Al evolucionar ambos miembros k pasos y comparar con F^k(F^hX), aparece exactamente la expresión de la derecha. No se ha supuesto linealidad.
+Para dos perturbaciones, insertar el estado intermedio X⊕δ_1 y usar la cancelación XOR da otra ley:
+   (PN-046)
+Identidad exacta. La segunda contribución se evalúa sobre el estado ya modificado, no sobre X.
+Esta ecuación explica por qué la composición contextual puede diferir de una superposición de efectos individuales. El mismo incremento actúa sobre una organización distinta. El testigo NRD06 no es la demostración de la identidad, que es algebraica; es evidencia de que la dependencia respecto de X es efectivamente relevante en los aparatos DEE.
+18.4. Una secuencia que transforma su repertorio
+El piloto posterior conserva un mundo continuo con F0→F1→F2→F3 producido por experiencias sucesivas sin copiar desde el host el soporte RAW causal ya descubierto. El mismo tercer probe actúa de manera diferente sobre historias acumuladas distintas. Un desafío nuevo de seis fuentes axiales vuelve a distinguir futuros a h32 y h64. Su alcance es el panel diagnóstico y la secuencia ensayada.
+La aportación teórica queda terminada en un objeto concreto: una organización no sólo guarda el resultado de una experiencia; transforma de manera dependiente de historia el efecto de las siguientes. F sigue siendo una sola ley. El operador efectivo de respuesta cambia porque el estado sobre el que actúa también cambia.
+
+19. Reutilización del soporte y continuidad de la historia
+19.1. Reutilizar una entrada no borra necesariamente el pasado
+Ingeniería 06 examina una secuencia más larga de contribuciones históricas. Un segundo ciclo reutiliza las mismas 34 posiciones de entrada. El paisaje desarrollado por la primera secuencia ya es distinto y la nueva experiencia interactúa con él. El almacenamiento no se define como una lista de bloques reservados y escritos una sola vez. [I06, carga causal y reutilización.]
+Para saber si una experiencia sigue importando, el runner compara una historia FULL con historias que omiten cada episodio. Todos los mundos usan el mismo protocolo de lectura futuro. Si una omisión cambia la firma, ese episodio ha dejado una contribución distinguible dentro del panel. La intervención es sobre la historia de preparación, no una etiqueta puesta al final.
+   (PN-047)
+Definición experimental. Firma causal de omitir el episodio j, definida en el espacio del observador.
+19.2. Qué cuentan las diecisiete distinciones
+Los snapshots permiten distinguir FULL, dieciséis omisiones y NO_NEW. Las diecisiete firmas de diferencia respecto de FULL son distintas en MAIN_S0 y FRESH_V1. La unidad de ese resultado es una firma de omisión: no una variable binaria independiente.
+G14 recalcula las diecisiete firmas a partir de los arrays públicos. Identifica además una distinción importante en la omisión 13. Su diferencia inmediata de RAW es cero y su diferencia de clock ocupa una posición. La lectura completa la distingue; una lectura RAW del mismo panel no debe contarse como si ya la distinguiera. Esta precisión conserva la evidencia, al especificar qué observador realiza cada discriminación.
+Una cantidad de firmas no se convierte en bits independientes por cambiarle el nombre. Para calcular información debe declararse una medida sobre las preparaciones y el repertorio que el observador distingue. Para describir capacidad funcional deben declararse las consultas y el aislamiento de los canales. La contabilidad de I06 complementa, pero no reemplaza, la capacidad por fibras de CORE07.
+19.3. La frontera de la memoria no coincide con el puerto
+Las 34 posiciones describen la región de entrada reutilizada. La historia puede quedar distribuida más allá de ellas. Igualar número de puertos con tamaño total de memoria perdería esa expansión. Los snapshots y desafíos permiten seguir la huella en el paisaje, en vez de atribuirla por costumbre al lugar donde se inició el episodio.
+Después de detener nuevas escrituras del host, RAW puede seguir reorganizándose. La historia acumulada condiciona esa evolución. Por ello una observación en el instante de retirada de las entradas no agota el efecto de la secuencia. Los futuros diagnósticos de h32 y h64 examinan precisamente esa continuidad.
+Los experimentos de oportunidades equivalentes y sus continuaciones RAW-only separan el cambio del sustrato del mero avance de clock. Una oportunidad preexistente se examina dentro de la organización que la rodea. El nombre oportunidad no designa una reserva abstracta: corresponde a un estado y a una sonda cuyo resultado se mide.
+19.4. Procesamiento como transformación del medio de respuesta
+Los resultados anteriores permiten formular una síntesis precisa. Una nueva experiencia actúa sobre un medio que ya incorpora otras experiencias. La respuesta no depende solamente de la entrada nueva y de un dato recuperado; depende de cómo el paisaje transformado admite y propaga la interacción.
+Esta propiedad no se identifica automáticamente con una regla de optimización ni con una tarea humana. Es un mecanismo DEE medible mediante omisiones, futuros contrafactuales y snapshots completos. El uso posterior de ese mecanismo para una tarea debe conservar el codificador y el lector que convierten su repertorio en una respuesta interpretable.
+El siguiente paso de la explicación no es añadir otro nivel por nombre. Es observar cómo esa historia se desarrolla en el tiempo: el proceso puede propagarse, ramificarse, reorganizar una fracción grande del universo y terminar en una organización con otra capacidad de respuesta. Procesos 01 y 02 realizan ese seguimiento.
+
+20. El procesamiento desplegado: transición e interfaz
+20.1. De una historia local a una evolución extensa
+Procesos 01 utiliza N=39, es decir, 59319 posiciones. Dos realizaciones de una historia BA, identificadas como HB_OMIT_P2 y HB_FULL, desarrollan una familia expansiva con tiempos diferentes. La diferencia se propaga con ascendencia local, se ramifica, coalesce y envuelve el toro. El desplazamiento de tiempo pertenece al estado y la organización de la experiencia. [P01, caracterización HB/P2.]
+Para leer las cifras hay que fijar el observador. Aquí τ_50 y τ_99 son cruces de fracción de ocupación en el protocolo correspondiente. No son por definición los mismos tiempos que un umbral de diferencia RAW entre dos mundos.
+Magnitud
+EARLY: OMIT_P2
+LATE: FULL
+τ_50 ocupacional
+112
+442
+τ_99 ocupacional
+121
+450
+Inicio de RAW terminal registrado
+127
+458
+Ocupación parental t512
+58903
+58889
+Primer cambio RAW de interfaz añadida
+113
+442
+
+   (PN-048)
+Resultado empírico de dominio. Separación entre realizaciones de la misma familia preparada.
+La interpretación vigente de P2 es modulación de acceso y latencia en una configuración no aditiva. Retirarlo produce una expansión más temprana en este montaje. Describirlo solamente como un amplificador no conserva el mecanismo observado.
+G15 carga los checkpoints originales de t32 y continúa ambas ramas hasta t512 con el source v27. Se ejecutan 960 ticks en conjunto. Las cuarenta y dos comparaciones con checkpoints posteriores coinciden exactamente en RAW y clock. Es una verificación de trayectorias concretas, distinta del mero recuento de resúmenes.
+20.2. Conteo, configuración y respuesta
+En los mundos parentales de t512, los conteos de ocupación difieren en 14. Las máscaras de ocupación difieren en 836 posiciones y los RAW en 58540. La diferencia neta de conteo no describe cuántas posiciones son distintas.
+Procesos 02 añade desde t0 una interfaz preexistente de catorce sitios. En las ramas aumentadas, ambos conteos finales son exactamente 58890, mientras sus máscaras ocupacionales difieren en 848 posiciones y sus RAW en 58533. El mismo conteo es compatible con organizaciones y respuestas diferentes.
+El primer cambio RAW de la interfaz aparece a 113 ticks en EARLY y 442 en LATE, en ambos casos τ_99−8. Esa alineación por evento es una relación de este aparato. La interfaz es parte de la evolución desde el inicio: conservar los tiempos principales de expansión no significa ausencia de reacción microscópica sobre el entorno. [P02; G15.]
+20.3. Por qué la restauración depende del contexto
+El diagnóstico de restauración borra los dos centros en un clon y ejecuta un paso. La referencia inicial produce dos centros ocupados, EARLY final produce cero y LATE final produce dos. El patrón 2/0/2 se conserva en MAIN_S0 y dos marcos fresh.
+La explicación procede de la regla XNOR. En EARLY, los centros tienen respectivamente 23 y 25 vecinos activos, con tres y un pares antipodales desiguales. En LATE, ambos tienen 26 vecinos activos y todos sus pares son simétricos. Al borrar los centros, el entorno de LATE satisface la regla de nacimiento; el de EARLY no la satisface. La función diagnóstica está en el contexto que permaneció, no en el valor del centro que fue borrado.
+La referencia del 2/0/2 es el estado inicial definido por el protocolo. Una referencia envejecida pertenece a otro experimento. También una posición ocupada después del paso puede ser un portador ordinario, y no necesariamente una reinstanciación exacta del centro XNOR. El manual conserva la lectura por campos para distinguir esas realizaciones.
+20.4. Una organización terminal sigue teniendo un estado completo
+   (PN-049)
+Consecuencia de estado y kernel. Para los estados terminales verificados donde las condiciones de la rama RAW permanecen invariantes.
+En los estados terminales pertinentes, la ocupación, direcciones y condiciones de protección mantienen apagadas las modificaciones RAW. Si un paso conserva exactamente esas condiciones, la misma prueba se aplica de nuevo: por inducción, RAW permanece fijo. Los clocks, en cambio, avanzan. La organización puede ser fija para el observador RAW y periódica con período 2^64 para el registro completo de clocks.
+Procesos 01–02 completan una parte esencial de la teoría: una historia no sólo cambia una respuesta inmediata. Puede modificar una evolución extensa, la latencia de una transición y el contexto que producirá respuestas futuras. El procesamiento se entiende entonces como una dinámica de organización causal, no como un output aislado.
+
+VII. FORMALIZACIÓN
+21. Teoría unificada del procesamiento nativo
+21.1. Un operador para la transformación del repertorio
+   (PN-050)
+Definición. El resultado es una firma de respuestas futuras después de aplicar I y dejar evolucionar h pasos.
+Esta expresión reúne las capas que los experimentos fueron separando. X conserva el estado completo. I especifica la entrada o intervención. F realiza la evolución. El panel C contiene las preguntas que definen el repertorio. P no exige que ese repertorio sea un escalar ni una instrucción de un paradigma externo.
+Para medir el efecto de procesar una entrada se compara P(X,I) con P(X,Id). Para medir la dependencia de historia se comparan esos efectos sobre X_H y X_0. Para probar una función aprendida se restringe C al repertorio de consultas y se contrasta una relación congelada. La misma construcción describe memoria relativa, aprendizaje por colisión y transformaciones del paisaje, sin declarar idénticos sus mecanismos.
+21.2. Cuándo una descripción reducida basta
+   (PN-051)
+Teorema de cierre. En un dominio invariante S, con X,Y en S y G definido sobre M(S).
+Si G existe, dos estados que dan la misma lectura reciben el mismo argumento y producen la misma lectura siguiente. En sentido inverso, definimos G(M(X)) como M(FX). La implicación de fibras garantiza que el valor no depende del representante X elegido. Queda demostrada la equivalencia.
+Para un sistema con entradas permitidas I_u, se exige la misma propiedad para las transiciones F∘I_u del contrato. Un cierre de evolución libre no se extiende automáticamente a cualquier edición externa. Las distinciones descartadas por M deben ser irrelevantes para las preguntas y entradas que el modelo pretende describir.
+En un espacio finito puede refinarse una partición hasta hacerla estable frente a todas las transiciones admitidas. Cada refinamiento separa clases y nunca las une; por eso termina. La estabilidad de un panel finito de observaciones por sí sola no demuestra esa estabilidad de transiciones. NRD04 produce clases exactas de panel; R0 ofrece un ejemplo distinto de cierre predictivo sectorial. [MAN; C16; C17; F31, capítulo 12.]
+21.3. R0 y representaciones suficientes
+CORE16 y CORE17 desarrollan R0 como una reducción que conserva la evolución pertinente en dominios declarados. En la variante ordinaria R0_FACTOR_52 se combinan un indicador de estado, s_reg, direcciones, semantic y una fase reducida. Los registros semantic=4 conservan el tratamiento especial que requiere su RAW fijo.
+La fase utiliza el mínimo común múltiplo 304980 de 195,260,391 y 782. El cierre conserva su contrato temporal anterior al wrap de uint64. Los registros de diez mundos contienen 406 transiciones y 416 comparaciones incluyendo sus estados iniciales, sin discrepancias en la comparación registrada. La función de R0 en este libro es demostrar que una representación reducida puede preservar dinámica, no reemplazar sin condición al estado completo de todos los experimentos.
+21.4. Probabilidad y contabilidad de lo observado
+   (PN-052)
+Identidad probabilística. La medida de preparación se proyecta a las respuestas del observador.
+Una evolución determinista puede producir una ley probabilística para una preparación aleatoria o parcialmente especificada. La incertidumbre se localiza en la medida μ y en la lectura, no en una modificación implícita del kernel. CORE16 registró 27648 microestados distribuidos en 54 macroclases y una predicción branch-union exacta en 576/576 pruebas fresh; CORE17 desarrolla una instancia binomial bajo preparaciones Bernoulli. [C16; C17.]
+   (PN-053)
+Identidad de información. La incertidumbre del estado se divide entre la lectura y lo que queda dentro de sus fibras.
+   (PN-054)
+Identidad exacta. Para F determinista y una medida declarada con entropía finita.
+   (PN-055)
+Derivación. Balance exacto entre variación visible, variación oculta y pérdida de distinguibilidad.
+La última ecuación resulta al restar la regla de la cadena en dos tiempos y sustituir la expresión de L_t. Explica por qué una lectura puede ganar o perder incertidumbre aun cuando el estado completo evolucione determinísticamente. La integración many-to-one puede descartar procedencia; una proyección puede ocultarla; una historia puede hacerla reaparecer en otro observador. Son operaciones matemáticamente distintas.
+21.5. Una sola dinámica, varios mecanismos de procesamiento
+La arquitectura queda conectada: estado completo, propuestas y guardas, fibras, interacciones, linajes, memoria, repertorios y observaciones. Las traducciones aprendidas y las memorias relativas son cierres funcionales diferentes de esa dinámica. El cálculo de perturbaciones explica su dependencia de contexto. Las clases de respuesta especifican la identidad pertinente. La contabilidad de información describe qué conserva o pierde una lectura.
+No es necesario completar un catálogo de propiedades externas para que estas relaciones constituyan una teoría nativa. Cada ley expuesta tiene premisas, significado operacional, evidencia o demostración y un procedimiento de comprobación. Esa es la unidad científica del procesamiento desarrollado en esta obra.
+
+VIII. MANUAL DE REPRODUCCIÓN

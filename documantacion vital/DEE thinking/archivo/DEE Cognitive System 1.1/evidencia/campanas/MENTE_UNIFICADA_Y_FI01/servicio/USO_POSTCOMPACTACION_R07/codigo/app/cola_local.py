@@ -1,0 +1,141 @@
+"""Bounded local transport journal. It never computes a DEE answer or route."""
+from contextlib import contextmanager
+from datetime import datetime,timezone
+import hashlib,json,re,sqlite3,time
+from pathlib import Path
+
+SCHEMA='DEE.local.persistent.transport.v1'
+CONTROL={'pausar','reanudar','guardar','detener','exportar'}
+MATERIAL={'sesion','avanzar'}
+
+
+def now():return datetime.now(timezone.utc).isoformat()
+def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
+def digest(value):return hashlib.sha256(canonical(value).encode('utf-8')).hexdigest()
+
+
+def validate_request(request):
+    if not isinstance(request,dict)or set(request)-{'operacion','situaciones','ticks','actuador','retorno'}:
+        raise ValueError('Only declared bounded transport fields; no file, shell, module or target field.')
+    op=request.get('operacion')
+    if op not in CONTROL|MATERIAL:raise ValueError('Unknown local operation.')
+    allowed_top={'operacion'}if op in CONTROL else({'operacion','ticks'}if op=='avanzar'else{'operacion','situaciones','actuador','retorno'})
+    if set(request)-allowed_top:raise ValueError('Unexpected fields for this operation.')
+    if len(canonical(request).encode('utf-8'))>8192:raise ValueError('Request exceeds8192 transport bytes.')
+    if op=='avanzar'and(type(request.get('ticks'))is not int or not 1<=request['ticks']<=4096):
+        raise ValueError('Explicit advance requires1..4096 real ticks.')
+    if op=='sesion':
+        rows=request.get('situaciones')
+        if not isinstance(rows,list)or not 1<=len(rows)<=8 or not all(isinstance(x,dict)for x in rows):
+            raise ValueError('A material request contains1..8 literal situations.')
+        if request.get('actuador','closed')not in('closed','nulled')or request.get('retorno','real')not in('real','omit'):
+            raise ValueError('Declared actuator/return modes only.')
+        allowed={'contexto','modo','senal','aceptar_consumo','dominio','valores','lado','operacion_memoria'}
+        for row in rows:
+            if set(row)-allowed:raise ValueError('Unknown situation field; no evaluator target or file input.')
+            if row.get('modo','usar')not in('usar','trabajo','ensenar','revisar','componer','experiencia','memoria'):
+                raise ValueError('Unknown material mode.')
+            if 'dominio'in row and row['dominio']not in('trabajadores','transaccion'):
+                raise ValueError('Only two declared bounded worker domains.')
+            if 'aceptar_consumo'in row and type(row['aceptar_consumo'])is not bool:
+                raise ValueError('acceptar_consumo must be an explicit boolean.')
+            if 'senal'in row and(type(row['senal'])is not int or row['senal']not in(-1,1)):
+                raise ValueError('A teaching signal is an exact signed integer.')
+            if 'contexto'in row and(not isinstance(row['contexto'],str)or not re.fullmatch(r'[a-z][a-z0-9_]{0,15}',row['contexto'])):
+                raise ValueError('Bounded literal interface identifier required. The owner checks physical admission, never content.')
+            if row.get('modo')=='experiencia'and row.get('lado')not in('A','B'):
+                raise ValueError('An explicit teaching experience needs literal side A or B; no target-based side selection.')
+            if 'lado'in row and row.get('modo')!='experiencia':raise ValueError('Teaching side is not a query or actuator instruction.')
+            memory_mode=row.get('operacion_memoria','usar')
+            if 'operacion_memoria'in row and(row.get('modo')!='memoria'or memory_mode not in('usar','trabajo','ensenar','revisar','componer')):raise ValueError('Declared memory operation only.')
+            if(row.get('modo')in('ensenar','revisar')or row.get('modo')=='memoria'and memory_mode in('ensenar','revisar'))and(type(row.get('senal'))is not int or row['senal']not in(-1,1)):
+                raise ValueError('Declared teaching requires physical sign±1.')
+            if(row.get('modo')=='componer'or row.get('modo')=='memoria'and memory_mode=='componer')and row.get('aceptar_consumo')is not True:
+                raise ValueError('Destructive composition requires explicit aceptar_consumo.')
+            if 'valores'in row and(not isinstance(row['valores'],list)or len(row['valores'])!=2 or any(type(v)is not int or not 0<=v<=64 for v in row['valores'])):
+                raise ValueError('Only two public bounded worker values0..64.')
+    return op
+
+
+class QueueDB:
+    def __init__(self,path,*,capacity=8,control_capacity=8,max_bytes=268435456):
+        self.path=Path(path);self.path.parent.mkdir(parents=True,exist_ok=True)
+        self.capacity=capacity;self.control_capacity=control_capacity;self.max_bytes=max_bytes
+        with self.connect()as con:
+            con.execute('PRAGMA journal_mode=WAL')
+            con.executescript('''CREATE TABLE IF NOT EXISTS requests(
+                seq INTEGER PRIMARY KEY AUTOINCREMENT,id TEXT NOT NULL UNIQUE,
+                payload TEXT NOT NULL,payload_sha TEXT NOT NULL,is_control INTEGER NOT NULL,
+                status TEXT NOT NULL,arrived_utc TEXT NOT NULL,arrived_ns INTEGER NOT NULL,
+                started_utc TEXT,finished_utc TEXT,result TEXT,error TEXT);
+                CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);''')
+    @contextmanager
+    def connect(self):
+        con=sqlite3.connect(self.path,timeout=5,isolation_level=None);con.row_factory=sqlite3.Row
+        con.execute('PRAGMA synchronous=FULL');con.execute('PRAGMA busy_timeout=5000')
+        try:yield con
+        finally:con.close()
+    def get_meta(self,key,default=None):
+        with self.connect()as c:r=c.execute('SELECT value FROM meta WHERE key=?',(key,)).fetchone()
+        return json.loads(r[0])if r else default
+    def meta(self,key,value):
+        with self.connect()as c:c.execute('INSERT OR REPLACE INTO meta VALUES(?,?)',(key,canonical(value)))
+    def put(self,identifier,request):
+        if not isinstance(identifier,str)or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,90}',identifier)or identifier.endswith('.')or identifier.split('.')[0].upper()in{'CON','PRN','AUX','NUL',*('COM'+str(i)for i in range(1,10)),*('LPT'+str(i)for i in range(1,10))}:raise ValueError('Bounded portable transport filename identifier required; no relative path or Windows device name.')
+        op=validate_request(request);payload=canonical(request);sha=digest(request);control=int(op in CONTROL)
+        with self.connect()as c:
+            c.execute('BEGIN IMMEDIATE')
+            old=c.execute('SELECT * FROM requests WHERE id=?',(identifier,)).fetchone()
+            if old:
+                c.execute('COMMIT')
+                if old['payload_sha']!=sha:raise ValueError('ID_CONFLICT: same transport ID with different bytes; nothing repeated.')
+                return {'admission':'existing_same_transport_request','request':dict(old),'never_blind_retry':True}
+            gate=c.execute("SELECT value FROM meta WHERE key='protocol_admission_closed'").fetchone()
+            if gate and json.loads(gate[0]):
+                c.execute('ROLLBACK');return {'admission':'rejected_protocol_closed','native_input_submitted':False,'requires_explicit_owner_start':True}
+            count=c.execute("SELECT count(*) FROM requests WHERE is_control=? AND status IN('queued','processing')",(control,)).fetchone()[0]
+            limit=self.control_capacity if control else self.capacity
+            used=sum(p.stat().st_size for p in self.path.parent.glob(self.path.name+'*')if p.is_file())
+            if count>=limit or used>=self.max_bytes:
+                c.execute('ROLLBACK');return {'admission':'rejected_control_capacity'if control else'rejected_queue_capacity','queued':count,'capacity':limit,'storage_bytes':used,'native_input_submitted':False}
+            c.execute('INSERT INTO requests(id,payload,payload_sha,is_control,status,arrived_utc,arrived_ns) VALUES(?,?,?,?,?,?,?)',
+                (identifier,payload,sha,control,'queued',now(),time.time_ns()))
+            c.execute('COMMIT')
+        return {'admission':'queued','id':identifier,'payload_sha256':sha,'technical_FIFO_not_cognitive_priority':True}
+    def next(self,*,paused=False):
+        with self.connect()as c:
+            c.execute('BEGIN IMMEDIATE')
+            # Control precedence permits stop/resume at safe boundaries while a
+            # paused material queue waits. No utility/content/expected answer used.
+            row=c.execute("SELECT * FROM requests WHERE status='queued' AND is_control=1 ORDER BY seq LIMIT1".replace('LIMIT1','LIMIT 1')).fetchone()
+            if row is None and not paused:row=c.execute("SELECT * FROM requests WHERE status='queued' ORDER BY seq LIMIT 1").fetchone()
+            began=now()
+            if row:c.execute("UPDATE requests SET status='processing',started_utc=? WHERE id=?",(began,row['id']))
+            c.execute('COMMIT')
+        return {**dict(row),'status':'processing','started_utc':began}if row else None
+    def finish(self,identifier,status,result=None,error=None):
+        if status not in('completed','failed_preserved','uncertain','rejected_invalid'):raise ValueError('Explicit terminal transport status required.')
+        with self.connect()as c:c.execute('UPDATE requests SET status=?,finished_utc=?,result=?,error=? WHERE id=?',
+            (status,now(),None if result is None else canonical(result),None if error is None else canonical(error),identifier))
+    def get(self,identifier):
+        with self.connect()as c:r=c.execute('SELECT * FROM requests WHERE id=?',(identifier,)).fetchone()
+        return dict(r)if r else None
+    def outstanding(self):
+        with self.connect()as c:r=c.execute("SELECT * FROM requests WHERE status IN('queued','processing','uncertain') ORDER BY seq").fetchall()
+        return [dict(q)for q in r]
+    def counters(self):
+        with self.connect()as c:rows=c.execute('SELECT status,count(*) FROM requests GROUP BY status').fetchall()
+        return {q[0]:q[1]for q in rows}
+    def backup(self,target):
+        target=Path(target)
+        if target.exists():raise FileExistsError('Transport checkpoint is never overwritten.')
+        with self.connect()as src:
+            dst=sqlite3.connect(target)
+            try:src.backup(dst);dst.execute('PRAGMA journal_mode=DELETE');dst.commit()
+            finally:dst.close()
+    def close_admission_if_idle(self):
+        with self.connect()as c:
+            c.execute('BEGIN IMMEDIATE')
+            count=c.execute("SELECT count(*) FROM requests WHERE status IN('queued','processing','uncertain')").fetchone()[0]
+            if count:c.execute('ROLLBACK');raise ValueError('Pending or uncertain transport prevents explicit protocol closure.')
+            c.execute('INSERT OR REPLACE INTO meta VALUES(?,?)',('protocol_admission_closed','true'));c.execute('COMMIT')

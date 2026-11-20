@@ -1,0 +1,170 @@
+Retirar el comparador
+No aparece el incremento decisivo; la intervención también altera la expresión.
+Retirar un soporte
+Daño estructural no selectivo: B falta en el paso siguiente. No se usa como aislamiento de una señal.
+
+En la ventana 120–133, el conteo de B repite 7,7,6; los casos n=6 aparecen en 122,125,128,131. Sólo el último coincide aquí con el clock habilitante. Es una regularidad de esa ventana, no una prueba de periodicidad global de la organización. [M24-I; recálculo del buffer guardado]
+
+31. Qué cambió en la atribución al retorno
+La expectativa previa asignaba la reescritura a una cadena exterior que comenzaba en la acción y volvía a B. La sección 23 la hacía plausible, pero su control NO_ACTION retiraba desde T0 la consulta que produciría la acción. FULL y ese control ya difieren localmente en t_rel=1, antes del producto exterior de t_rel=18. [M24-D]
+La sección 24 separa esa diferencia de preparación de intervenciones tardías sobre productos ya formados. Los brazos siguientes conservan B=101 y δ=0 al corte t_rel=170:
+Contraste selectivo
+t_rel
+Diferencias RAW globales al corte
+ACT_REMOVE: retirar la acción
+18
+1 sitio
+ACT_LOAD_MINUS: 18→17
+18
+0 sitios
+ACT_LOAD_PLUS: 18→19
+18
+0 sitios
+ACT_DIRECTION: cambiar dirección
+18
+42 sitios
+ENV42_REMOVE: retirar producto 42
+65
+0 sitios
+SHAM_EXACT: copia idéntica
+18
+0 sitios
+
+El mundo puede cambiar sin que cambie la escritura seleccionada. En particular, ACT_DIRECTION conserva diferencias externas medibles pero no elimina ese resultado local. La conclusión exacta es que los productos ensayados no fueron necesarios bajo esos cortes y horizontes. Esto no prueba ausencia de cualquier redundancia, de toda influencia externa ni de otras formas de feedback DEE. [M24-A]
+La lectura vigente retira la afirmación de que el descendiente ambiental de carga 42 llevó necesariamente el aprendizaje de vuelta. Se conserva la interacción que lo produjo y su trayectoria observada, pero no se le atribuye una función que el contraste no respalda.
+El mecanismo local de escritura queda sustentado con la regla y las intervenciones sobre fase y actividad. La genealogía microscópica completa desde la consulta inicial hasta todos los elementos del contexto no fue descompuesta en cada arista. El grafo guardado es una síntesis parcial de eventos y contrastes; no un rastreador universal ya terminado. [M24-G; M24-D]
+Criterio de cierre: conocer un mecanismo positivo y su dominio permite consolidarlo. No exige rescatar la ruta originalmente planeada ni declarar irreal cualquier ruta externa futura.
+
+32. Rescates: cambiar registros no equivale a cambiar memoria
+Los rescates son intervenciones diagnósticas en clones. Copian regiones declaradas del contexto en t_rel=120; no son acontecimientos autogenerados de MAIN. Debe distinguirse el aumento absoluto de B de la modificación de δ. [M24-L]
+Preparación / brazo
+A / B finales
+δ
+Proyección
+FULL
+101 / 101
+0
+0
+NO_ACTION de referencia
+101 / 100
++1
+0
+ENV_RAW_RESCUE sobre NO_ACTION
+102 / 101
++1
+0
+LOCAL_RAW_RESCUE sobre NO_ACTION
+102 / 101
++1
++1
+LOCAL_RAW_CLOCK_RESCUE sobre NO_ACTION
+102 / 101
++1
++1
+FULL con contexto de NO_ACTION
+101 / 100
++1
++1
+
+Todos los valores de la tabla corresponden a t_rel=170. Fuente: LOCAL_INTERVENTIONS_AND_RESCUE.json, final_reference/final_test; las filas 131 y 132 localizan los incrementos.
+En los rescates sobre NO_ACTION, B sí pasa de 100 a 101. Simultáneamente A pasa de 101 a 102. Por tanto 102−101=1: la escritura absoluta ocurre, pero la memoria diferencial no adopta el cero de FULL. La frase automática «no rescata la escritura» debe leerse, como máximo, como «no reproduce la reescritura diferencial esperada». Los registros originales se conservan; esta adjudicación explica su alcance.
+En el intercambio inverso, introducir en FULL el contexto local de NO_ACTION lleva el conteo de B a 10 en la ocasión pertinente y suprime el incremento. Es evidencia de inhibición contextual condicional, no de una sustancia que almacene por sí sola el significado de la memoria.
+FULL: Δs_A=0, Δs_B=1 ⇒ Δδ=−1.Rescate: Δs_A=1, Δs_B=1 ⇒ Δδ=0.
+Esta comparación conecta el cierre con Ingeniería 02: la relación puede conservarse frente a cambios comunes. También muestra que igual δ no garantiza igual expresión, porque el contexto del lector puede ser distinto. Ninguna de las dos lecturas sustituye al estado causal completo. [PN, cap. 15; FD, §9.2]
+
+33. Observadores, uso físico y continuidad
+33.1. Observar y consultar
+observe es una lectura declarada como pasiva. Una consulta o sonda física participa en la dinámica y puede cambiar la organización. Por ello, «recordar altera el futuro» sólo es una analogía admisible cuando se refiere a ese uso físico; no describe un efecto producido por el investigador al leer un archivo o mirar una telemetría. [DT-L, §9.4]
+FULL y NO_ACTION documentan dos preparaciones diferentes por la presencia de la consulta inicial. Su divergencia temprana apoya el papel del uso físico en el contexto posterior, pero no basta para afirmar una única ruta completa desde la consulta a cada vecino de B. La explicación se expresa con ese grado de resolución, no con certeza añadida por el nombre de un brazo. [M24-D; M24-G]
+33.2. Genealogía transformativa
+La sección 22 reconstruye un caso B12: la contribución 12014 con dirección (1,1,0), junto con otra de 2000 y dirección (1,−1,0), produce 14014 y (1,0,0). La continuidad se sigue hasta el checkpoint posterior aunque su firma inicial haya cambiado. La atribución usa la transición real y contrastes, no sólo similitud visual. [M22-T]
+Procedencia material, necesidad causal e identidad funcional deben guardarse por separado. Ser descendiente de una contribución no demuestra conservar todo su repertorio. Una etiqueta científica puede registrar el grafo reconstruido, pero no viajar como un campo invisible de memoria ni decidir la física. Las ramas many-to-one impiden recuperar siempre una historia única mirando sólo el resultado.
+33.3. Un objeto situado
+La organización se estudia dentro de un mundo compartido. Su frontera funcional depende de las variables y relaciones suficientes para la pregunta, sin equiparar todo el universo a una mente. El soporte, el comparador, las rutas y el contexto pueden participar en una misma función. Compartir Runtime o estar cerca, por sí solo, no demuestra esa integración. [FD, §8.4; DT-A, §9]
+El conteo de actividad no es una medida de relevancia semántica. La fase no es atención humana. Una reescritura selectiva no prueba que la organización juzgue la importancia de una experiencia. Lo nativo comprobado es la dependencia de transformaciones respecto de condiciones físicas presentes; las analogías se conservan como preguntas posteriores.
+
+34. Alcance final y objetivo de PENSAMIENTO
+El objetivo basal queda satisfecho en el dominio demostrado: construir y estudiar organizaciones para las cuales una experiencia o un uso físico anterior modifica el estado presente y sus respuestas posteriores, sin sustituir la evolución por una respuesta calculada por el host. MBP4 ofrece testigos de persistencia, historia, relación, lectura, interacción y plasticidad contextual. [CONV; PN; M4–M24]
+Ese cierre no depende de conservar la hipótesis del «cartero». La supresión selectiva de la ruta exterior investigada corrige una atribución, no elimina las adquisiciones, las interacciones ni la reescritura observadas. Tampoco convierte el feedback remoto en un sesgo humano que DEE deba rechazar: es una familia de mecanismos distinta que puede investigarse en su propio dominio.
+Lectura vigente
+Condición que la acompaña
+Memoria relacional
+δ describe este par soportado; no toda memoria DEE debe adoptar esa coordenada.
+Plasticidad contextual y fásica
+Las guardas, conteos y clocks se verifican por preparación; n=6 y clock=391 no son una ley de aprendizaje universal.
+Relación utilizada físicamente
+La proyección, la acción y el cambio de memoria son observables distintos, con horizontes propios.
+Contexto habilitante o inhibitorio
+Los trasplantes son diagnósticos condicionales; no prueban autogeneración de ese entorno.
+Continuidad y transformación
+El tracker tiene un dominio y puede conservar incertidumbre. No identifica siempre una mente por todo el universo.
+Cierre de etapa
+Se congela la evidencia hasta 24 y se pasa a producto. No se declara lenguaje, desarrollo ilimitado ni mente humana completa.
+
+La descripción transversal más útil es un paisaje de futuros accesibles bajo un panel declarado. Con estado completo y protocolo fijo, la trayectoria es determinada; el repertorio compara intervenciones o situaciones posibles. Aprender puede abrir, restringir o reorganizar ese repertorio. No exige conservar para siempre cada episodio como un registro independiente. [PN, caps. 1, 8 y 21]
+Las piezas nuevas no vuelven falsos los mecanismos anteriores ni completan automáticamente todos los objetivos futuros. Constituyen un corte suficiente para publicar capacidades finitas y reproducibles, con una explicación corregida de qué las produce.
+
+35. Transición a DEE thinking 3.0.0
+El trabajo siguiente es de producto: extraer mecanismos reutilizables y comprobar que reproducen los testigos canónicos. No se requiere otra campaña para «merecer» el número 3.0. Una versión publicada sí requiere implementación, pruebas y artefactos propios; no se obtiene renombrando el wheel 2.2.0. [CONV; DT-L, §7]
+Nivel
+Estado y responsabilidad
+DEE v27
+Dinámica microscópica conservada. Nuevas interfaces no autorizan nuevas reglas.
+DEE thinking 2.2.0
+Runtime y producto ejecutor de los experimentos preservados. Se mantiene como referencia.
+MBP4 / 00–24
+Expediente científico congelado para esta entrega; no se convierte en MBP3 ni se reescribe al portar código.
+DEE thinking 3.0.0
+Producto autorizado para consolidación. Su validez se decide con la entrega de software y sus pruebas.
+Este documento 2.1
+Actualización científica de OBP-DM-002. No sustituye los dos manuales de la futura biblioteca.
+
+35.1. Capacidades a trasladar
+Constructores de organización basal en un Runtime; lectura de la relación y su expresión; inspección de guardas; seguimiento transformativo en su dominio; diagnósticos explícitos en forks; snapshots, recetas y reanudación. Los presets deben declarar geometrías, fases, recursos y horizontes comprobados. Un descriptor de catálogo no demuestra composición arbitraria. [DT-A, §4, 9 y 10]
+35.2. Criterio de aceptación de producto
+Reproducir desde la preparación inicial y desde checkpoints, comparando RAW, clocks y medidas funcionales; conservar las capacidades de 2.2.0; separar observación de intervención; comprobar instalación limpia, binding Python, consumidor C++ y persistencia. Las tablas esperadas son oráculos de prueba, nunca respuestas que la biblioteca deba devolver sin evolucionar. [DT-L, §7.2; DT-A, §18–19]
+Los documentos definitivos serán el Libro Blanco y Manual Técnico y el Maestro de Arquitectura y Reconstrucción de 3.0.0. Se redactarán desde el software entregado y revisado. Este cierre no anticipa sus APIs reales ni certifica un binario que aún no forma parte del corte analizado.
+
+36. Evidencia, reproducción y custodia del cierre
+El artefacto vigente es el MBP4 acumulado hasta sección 24: 294 miembros. El corte anterior contiene 276; los 276 conservan su contenido y se añaden 18. El nombre puede llevar sufijos de descarga, pero la identidad se fija por hash. [VER]
+SHA-256 del ZIP experimental canónico hasta sección 24:
+4d20d893d04486de047c66ce76c9f7dad067158941b553025bd946b7dc6ce086
+SHA-256 del documento base 2.0 preservado como origen editorial:
+89bd82c57175c6c798bc7b850ad6fa4607bcbe69bbe9dd1fea0b7e3e410cabde
+36.1. Cápsulas y alcance
+El Word conserva su cápsula histórica de sección 19 y añade dee_repro/cierre_mbp4_s24_sin_whl.zip. La nueva cápsula conserva 293 miembros del corte 24 con contenido idéntico; se excluye únicamente el WHL. El manifiesto declara la exclusión y el hash del ZIP original. No se presenta la cápsula sin runtime como una copia binariamente idéntica del ZIP canónico. [VER]
+El respaldo exterior incluye el mismo Word, la cápsula de cierre y herramientas de extracción y verificación. No contiene macros ni fuentes tipográficas distribuibles. La cápsula es una parte pasiva del contenedor DOCX: guardados posteriores en otros editores pueden omitir partes no reconocidas; el ZIP de respaldo conserva la copia separada.
+36.2. Comprobación sin runtime
+Extraer la cápsula y ejecutar herramientas/verificar_cierre.py. Se comprueban los hashes del contenido, se vuelven a calcular los contrastes tabulados y se decodifica la ventana binaria 120–133 para contar los vecinos y recuperar cargas/clocks. Esto no ejecuta v27 ni sustituye el replay experimental. [VER]
+36.3. Reejecución nativa
+Requiere Windows x64, CPython 3.13 y DEE thinking 2.2.0 instalado externamente. En una copia de trabajo nueva, herramientas/reproducir_cierre.py ejecuta --discover, --discover-local y --reproduce del runner original de sección 24. Usar --reproduce solo reutiliza parte de la evidencia discovery guardada; por eso no equivale a repetir toda la batería. [M24-RUN]
+El lanzador nuevo no cambia el kernel ni las funciones del experimento. Comprueba el entorno y conserva la evidencia entregada fuera del directorio de salida. Su código se incluye para revisión; la verificación editorial de esta actualización no se presenta como una nueva ejecución del WHL Windows.
+
+36.4. Mapa verificable de fuentes nuevas
+Las claves de los capítulos 27–35 remiten a rutas relativas a evidencia_mbp4 en la cápsula del cierre. Los informes y dictámenes originales se conservan como documentos del experimento; las tablas de esta edición se calculan desde lecturas y estados, no desde esas etiquetas.
+Clave
+Fuente y función
+M20 / M21
+Secciones 20_MATERIALIZED_ENTITIES_NATIVE_INTERACTION y 21_INTEGRATED_MIND_GENEALOGY_GENERATIVE_HABITAT. Constructores, trazas y checkpoints del contexto histórico.
+M22 / M22-T
+22_TRANSFORMATIVE_GENEALOGY_RELATIONAL_CONSOLIDATION. RELATIONAL_MAIN.json, MATCHED_CONTROLS.json y TRANSFORMATIVE_TRACKER.json.
+M23-C / M24-C
+EXPERIMENT_CONFIG.json de secciones 23 y 24. Origen, tiempos, protocolo y alcance.
+M24-I
+24_CONTEXTUAL_CAUSAL_MECHANISM/TELEMETRY/INTACT_REPLAY_AND_GATE.json; ventana binaria LOCAL_WINDOW_120_133.u64.gz e índice.
+M24-A
+TELEMETRY/ACTION_ENVIRONMENT_INTERVENTIONS.json. Intervenciones sobre los productos de acción y del entorno.
+M24-L / M24-D
+TELEMETRY/LOCAL_INTERVENTIONS_AND_RESCUE.json. Cambios locales, rescates y divergencia de preparaciones; REPLICATIONS.json.
+M24-P / M24-G
+TELEMETRY/POST_WRITE_READOUT.json y CAUSAL_GRAPH.json. Lecturas e índice interpretativo; el grafo contiene una síntesis parcial.
+M24-RUN
+RUNNER/run_contextual_mechanism.py, junto con los constructores de secciones 22 y 23.
+PN / FD
+Procesamiento Nativo DEE, caps. 1, 8 y 15; Física DEE 4.0.1, §8.4 y 9. Antecedentes interpretativos, no sustitutos de la telemetría.
+DT-A / DT-L
+Maestro de Arquitectura y Reconstrucción 2.2.0, §2, 6, 9, 10 y 18; Libro Blanco 2.2.0, §7 y 9.4.
+CONV / VER
+Decisiones de continuidad conservadas en este chat y contexto recuperado de PENSAMIENTO; verificaciones editoriales y recálculos incluidos en referencias/.
+
+Conclusión del corte: MBP4 documenta procesamiento basal nativo en organizaciones cuya historia, relaciones, contexto y fase condicionan transformaciones futuras. La publicación 3.0 debe conservar esa diversidad y el alcance de las pruebas. El mecanismo observado se reconoce por lo que hace; la ruta exterior no necesaria se conserva como resultado del control, sin convertirla en obligación ni en prohibición universal.

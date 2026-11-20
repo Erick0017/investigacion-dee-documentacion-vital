@@ -1,0 +1,377 @@
+{
+  "checks": [
+    {
+      "check": "import references exact complete acquired++history",
+      "observed": true
+    },
+    {
+      "check": "ready import is T2616, not reconstructionT0",
+      "observed": true
+    },
+    {
+      "check": "ready status/fork preserve same native fields",
+      "observed": true
+    },
+    {
+      "check": "evaluation fork names its acquired source",
+      "observed": true
+    },
+    {
+      "check": "55_IMPORTAR_COMPOSICION_PLUS: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "55_IMPORTAR_COMPOSICION_PLUS: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "56_ESTADO_COMPOSICION_PLUS: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "56_ESTADO_COMPOSICION_PLUS: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "56_ESTADO_COMPOSICION_PLUS: no denied fence operation",
+      "observed": true
+    },
+    {
+      "check": "56_ESTADO_COMPOSICION_PLUS: no environment process during pure composition",
+      "observed": true
+    },
+    {
+      "check": "57_FORK_COMPOSICION_PLUS: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "57_FORK_COMPOSICION_PLUS: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: no denied fence operation",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: no environment process during pure composition",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: fixed RAW decoder",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: fixed read window",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: exact parent cut used",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: native positive joint output",
+      "observed": true
+    },
+    {
+      "check": "58_COMPOSICION_PLUS_GESTOR: same physical output as reserved R10PLUS",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: no denied fence operation",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: no environment process during pure composition",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: fixed RAW decoder",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: fixed read window",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: exact parent cut used",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: fixed RAW decoder",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: fixed read window",
+      "observed": true
+    },
+    {
+      "check": "59_ANTERIORES_TRAS_PLUS: exact parent cut used",
+      "observed": true
+    },
+    {
+      "check": "60_GUARDAR_PLUS_USO: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "60_GUARDAR_PLUS_USO: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "61_REABRIR_PLUS_USO: archived process successful",
+      "observed": true
+    },
+    {
+      "check": "61_REABRIR_PLUS_USO: stdout exact result",
+      "observed": true
+    },
+    {
+      "check": "61_REABRIR_PLUS_USO: no denied fence operation",
+      "observed": true
+    },
+    {
+      "check": "61_REABRIR_PLUS_USO: no environment process during pure composition",
+      "observed": true
+    },
+    {
+      "check": "composition uses copied ready prefix",
+      "observed": true
+    },
+    {
+      "check": "gamma/delta use follows composition without reset",
+      "observed": true
+    },
+    {
+      "check": "save and another-process passive status keep native fields",
+      "observed": true
+    }
+  ],
+  "fences": [
+    {
+      "case": "56_ESTADO_COMPOSICION_PLUS",
+      "denied": [],
+      "exact_environment_processes": []
+    },
+    {
+      "case": "58_COMPOSICION_PLUS_GESTOR",
+      "denied": [],
+      "exact_environment_processes": []
+    },
+    {
+      "case": "59_ANTERIORES_TRAS_PLUS",
+      "denied": [],
+      "exact_environment_processes": []
+    },
+    {
+      "case": "61_REABRIR_PLUS_USO",
+      "denied": [],
+      "exact_environment_processes": []
+    }
+  ],
+  "issues": [],
+  "new_dee_ticks": 0,
+  "observations_checked": 13883,
+  "schema": "DEE.MA02.archived_composition_service06.v1",
+  "scope_and_limits": [
+    "Ready++is an imported full acquired R10 branch at2616, not MAIN5, not a new T0 and not merged knowledge.",
+    "One native composition and then two retained gamma/delta accesses were used consecutively in the evaluation copy; the ready original was not consumed.",
+    "Gate decoding does not receive historical signs; expected fields above are auditor scoring only.",
+    "Composition consumes alpha/beta accesses. This operational check is not proof of retention for all four contents after composition.",
+    "Save/reopen physical fingerprints compare N,tick,RAW,clocks, not equality of all whole-snapshot metadata.",
+    "Archived process/fence records are recalculated, not re-executed by this script."
+  ],
+  "sessions": [
+    {
+      "case": "58_COMPOSICION_PLUS_GESTOR",
+      "correct": 1,
+      "final_physical": {
+        "N": 67,
+        "RAW_sha256": "8a960e596f7efb4cbc9f8b11511adc76e4635fc05e5b4190a755c2ce61f6fb99",
+        "clocks_sha256": "5c40dc8bd21e62d8dc9e9afd4916462208ec426bfa324d15ad628b88586a1dd5",
+        "tick": 2758
+      },
+      "life": "MA02_COMPOSICION_PLUS_USO",
+      "receipts": {
+        "applied": 12,
+        "pending_or_other": 0,
+        "rejected": 0,
+        "requested": 12,
+        "statuses": {
+          "applied": 12
+        }
+      },
+      "requested": 1,
+      "responded": 1,
+      "rows": [
+        {
+          "candidates": [
+            {
+              "s_reg": 776,
+              "sign": 1,
+              "site": [
+                33,
+                33,
+                39
+              ]
+            }
+          ],
+          "context_for_auditor": "alfa_beta",
+          "correct": true,
+          "decoded_sign": 1,
+          "expected_for_external_scoring_only": 1,
+          "input_tick": 2680,
+          "kind": "joint",
+          "read_tick": 2756,
+          "receipts": {
+            "applied": 12,
+            "pending_or_other": 0,
+            "rejected": 0,
+            "requested": 12,
+            "statuses": {
+              "applied": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "59_ANTERIORES_TRAS_PLUS",
+      "correct": 2,
+      "final_physical": {
+        "N": 67,
+        "RAW_sha256": "930bcb2a35ea4541fe0105b0dcde4ac0ccfdc2c465f0d76ac375af052edeb626",
+        "clocks_sha256": "7a3f4ae8e5bde16a08a25c0a854922c5dfc3bb78e271409f090d9d0dd2cb151d",
+        "tick": 2888
+      },
+      "life": "MA02_COMPOSICION_PLUS_USO",
+      "receipts": {
+        "applied": 14,
+        "pending_or_other": 0,
+        "rejected": 0,
+        "requested": 14,
+        "statuses": {
+          "applied": 14
+        }
+      },
+      "requested": 2,
+      "responded": 2,
+      "rows": [
+        {
+          "candidates": [
+            {
+              "s_reg": 310,
+              "sign": 1,
+              "site": [
+                37,
+                37,
+                34
+              ]
+            }
+          ],
+          "context_for_auditor": "gamma",
+          "correct": true,
+          "decoded_sign": 1,
+          "expected_for_external_scoring_only": 1,
+          "input_tick": 2814,
+          "kind": "query",
+          "read_tick": 2818,
+          "receipts": {
+            "applied": 7,
+            "pending_or_other": 0,
+            "rejected": 0,
+            "requested": 7,
+            "statuses": {
+              "applied": 7
+            }
+          }
+        },
+        {
+          "candidates": [
+            {
+              "s_reg": 184,
+              "sign": -1,
+              "site": [
+                29,
+                37,
+                32
+              ]
+            }
+          ],
+          "context_for_auditor": "delta",
+          "correct": true,
+          "decoded_sign": -1,
+          "expected_for_external_scoring_only": -1,
+          "input_tick": 2881,
+          "kind": "query",
+          "read_tick": 2885,
+          "receipts": {
+            "applied": 7,
+            "pending_or_other": 0,
+            "rejected": 0,
+            "requested": 7,
+            "statuses": {
+              "applied": 7
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "bytes": 1860,
+      "file": "55_IMPORTAR_COMPOSICION_PLUS.json.gz",
+      "sha256": "8c987cf25316dffcfadeeb43bde66247248d4b6253385be4b5bb7b342b8c809a"
+    },
+    {
+      "bytes": 2056,
+      "file": "56_ESTADO_COMPOSICION_PLUS.json.gz",
+      "sha256": "013b33915a3429b541a4ec73b481d91b3490805afe488401b935443d7d9d6bb0"
+    },
+    {
+      "bytes": 1961,
+      "file": "57_FORK_COMPOSICION_PLUS.json.gz",
+      "sha256": "4b22f998edcd8f504aa628587bb15f024f75c37aae571d9ca5c38e5fac67cba6"
+    },
+    {
+      "bytes": 122410,
+      "file": "58_COMPOSICION_PLUS_GESTOR.json.gz",
+      "sha256": "d43de05c8e3e8f2b27d254525556d6ee64c59b2753338085f616e813de481b44"
+    },
+    {
+      "bytes": 41170,
+      "file": "59_ANTERIORES_TRAS_PLUS.json.gz",
+      "sha256": "27cc047e9b297769cf51af4b7f1a39e7889eccd0e8a8eeba563b6a58d5024e3a"
+    },
+    {
+      "bytes": 969,
+      "file": "60_GUARDAR_PLUS_USO.json.gz",
+      "sha256": "4e2e5b100cc13b5036470d67945b6b5ff37536dd97a82685a9e89b7f3c1b31aa"
+    },
+    {
+      "bytes": 2048,
+      "file": "61_REABRIR_PLUS_USO.json.gz",
+      "sha256": "e00bb043960bdf3534283833fcaa3a1cdb1f07b03f332cdbb9879bf8f6bf382e"
+    },
+    {
+      "bytes": 42161,
+      "file": "entrada_comun/MA02_R10_PLUS.R10.json.gz",
+      "sha256": "3b72ea47ea11a4343e9ae186416181805ebb9eaee8a6133ec48adab56503dd76"
+    }
+  ]
+}

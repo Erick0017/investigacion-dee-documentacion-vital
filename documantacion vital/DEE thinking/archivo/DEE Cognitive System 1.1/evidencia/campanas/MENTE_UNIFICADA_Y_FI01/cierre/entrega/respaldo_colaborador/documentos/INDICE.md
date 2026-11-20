@@ -1,0 +1,11 @@
+# Lecturas vigentes
+
+1. `MANUAL_VIGENTE.json` identifica el **Manual Maestro del corte cerrado seleccionado**, conservado byte por byte tanto en la raíz de la distribución como en `documentos/`, y su situación editorial. Distribuirlo no añade una nueva validación de contenido o representación visual.
+2. `thinking_4_5/INFORME_TECNICO.md` y `thinking_4_5/LEEME.md`: documentación técnica oficial 4.5 efectivamente localizada. Los dos DOCX técnicos con nombres citados en campañas antiguas no estaban disponibles en la carpeta 4.5 ni en su ZIP canónico: no se inventaron ni se sustituyeron por manuales4.0 rotulados como4.5.
+3. `../sistema/documentacion/`: contratos, guías y estados de Cognitive. `USO_MENTE_ACUMULATIVA.md` y `../ejemplos/MENTE_ACUMULATIVA.md` describen la continuación principal seleccionada y el U0 complementario distinto. EO02 y perfiles anteriores conservan sus guías y límites; no se fusionan memorias. Para ejecutar en **esta distribución**, anteponga `INICIAR.bat gestor` a los comandos del gestor. Las llamadas a intérpretes y carpetas del autor que aparezcan en documentos originales son ejemplos históricos, no rutas que deba reproducir.
+4. `ciencia/`: Física DEE4.0.1, Procesamiento Nativo y OBP2.1 completos disponibles. Son documentación privada, no datos que E1 consulte para decidir.
+5. `../fuentes/producto_4_5/`: fuentes existentes del producto congelado (C++, headers, bindings, Python y ejemplos); `../fuentes/thinking_4_5/` conserva fuentes y matrices recuperadas. Se entregan para estudio. No hace falta compilarlas ni cambiar el kernel para modificar experiencias.
+6. `../sistema/capacidades/core/`: mecanismos y reconstrucción heredada por contenido. No es una colección de ZIP históricos ni conocimiento integrado en E1. La distribución no repitió esas suites.
+7. `../investigacion/INDICE_ORIGEN_Y_OMISIONES.json`: procedencia y evidencia profunda que no viaja. Esta copia operativa no sustituye el archivo científico íntegro del proyecto.
+
+El catálogo de vidas y sus límites está en `../entes/CATALOGO.json`. El registro completo de mecanismos está en `../sistema/capacidades/CATALOGO_CAPACIDADES.json`; su presencia no acredita adquisición por todas las vidas.

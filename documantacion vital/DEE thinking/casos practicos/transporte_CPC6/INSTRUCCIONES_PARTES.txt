@@ -1,0 +1,23 @@
+CPC6 — dos segmentos binarios, sin pérdida de datos
+
+El ZIP canónico se conserva completo. Sólo si supera20MiB comprimidos se crean
+exactamente dos segmentos .zip.001 y .zip.002, junto al ZIP. No son dos ZIPs
+independientes: primero001 y después002 recuperan los bytes originales.
+
+La carpeta de casos prácticos ya contiene PARTES.json de CPC5. Para no alterarlo,
+CPC6 puede colocar sus propios PARTES.json, REUNIR_CPC6.py y estas instrucciones
+en transporte_CPC6/. El campo parts_directory indica dónde están los segmentos;
+no deben modificarse los metadatos ni mezclarse con los de otra campaña.
+
+Desde la carpeta que contiene el PARTES.json de CPC6:
+
+    py REUNIR_CPC6.py
+
+También puede especificarse:
+
+    py REUNIR_CPC6.py --carpeta transporte_CPC6 --salida CPC6_REUNIDO.zip
+
+Se comprueban tamaños y SHA-256 de ambas partes y del resultado. No se borran
+las partes ni se sobrescribe una salida existente. El archivo resultante se
+abre como ZIP normal. La división no garantiza compatibilidad con una aplicación
+concreta de iPhone; los tamaños reales están en el manifiesto de partes.

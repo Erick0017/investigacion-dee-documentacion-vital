@@ -1,0 +1,14 @@
+"""Pure re-evaluation: retain native exactness and explicitly record old metadata fault."""
+from pathlib import Path
+import importlib.util,json,sys
+RUN=Path(__file__).resolve().parents[1];CORE=RUN/'core/DEE_COGNITIVE_CORE';sys.path.insert(0,str(CORE/'reproduccion'))
+import worker_core as audit
+source=RUN/'notes/core_extension_v2/ORDERED_v4';mat=RUN/'notes/core_extension_v2/materialized';frozen=json.loads((CORE/'configuraciones/RECUPERACION_EXTENSION_CONGELADA.json').read_text(encoding='utf8'))['groups']['ordered'];rows=[]
+keys=('geometry','calls','receipts','trace','local_transition_windows','interventions','primary_observations','final','operative_final','host_RAW_writes_in_MAIN','host_clock_writes_in_MAIN','resources')
+for f in frozen:
+ actual=json.loads((source/f['id']/'MEASUREMENTS.json').read_text(encoding='utf8'));old=json.loads((mat/f['primary']).read_text(encoding='utf8'));diffs={k:audit.compare_data(actual[k],old[k])for k in keys};checks={k:not v for k,v in diffs.items()};technical={k:{'actual':v,'historical':old['technical'][k],'equal':v==old['technical'][k]}for k,v in actual['technical'].items()}
+ changes=[{'field':k,**v}for k,v in technical.items()if not v['equal']]
+ assert all(x['field']=='save_load_session_metadata_equal'and x['actual']is True and x['historical']is False for x in changes)
+ rows.append({'id':f['id'],'checks':checks,'differences':{k:v for k,v in diffs.items()if v},'full_final_RAW_clocks_tick_equal':actual['final']==old['final'],'current_save_load_checks':actual['technical'],'historical_save_load_checks':old['technical'],'metadata_only_changes':changes,'historical_primary_sha256':audit.sha(mat/f['primary']),'current_scientific_source_sha256':actual['source_sha256'],'historical_scientific_source_sha256':old['source_sha256'],'passed':all(checks.values())and all(actual['technical'].values())})
+v={'schema':'DEE_CORE.recalculation.ordered.v1','status':'PASS'if all(r['passed']for r in rows)else'FAIL','cases':rows,'native_reexecuted':False,'inputs':'Actual completed ORDERED_v4 native measurements compared against original immutable primary, no new engine trajectory.','prior_strict_result':'notes/core_extension_v2/ORDERED_v4/RECOVERY.json remains FAIL because old discovery snapshot metadata-equality flag false became true in later corrected source.','scope':'Native preparation/inputs/all local RAW-clocks windows/full final state and operational fields exact for six original AB/BA, cut/sham and translated-load reserves. Current save/load all true. First discovery had old nonphysical metadata-equality defect; retained explicitly, not counted as a cognitive failure or erased.'}
+(RUN/'notes/core_audit/ORDERED_RECALCULADO.json').write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf8');print(json.dumps({'status':v['status'],'native_reexecuted':False,'rows':len(rows),'metadata_changes':[r['id']for r in rows if r['metadata_only_changes']]}))

@@ -1,0 +1,17 @@
+{
+  "schema":"CPC9.dependencies.v1",
+  "included":[
+    {"role":"official native instrument","member":"runtime/dee_thinking-4.5.0-cp313-cp313-win_amd64.whl","sha256":"09e191d259fd15d321ea11b587f8cc02c12c7adfe81b7b96ca2dbebb1fb12d0c"},
+    {"role":"new participant and external curriculum","members":["src/","front_relations/src/","front_semantics/src/"]},
+    {"role":"minimum inherited implementation for new worlds","member":"base_validada/cpc8/src/","identity":"revision/BASE_HEREDADA_COPIAS.json"},
+    {"role":"reference data, auditor only","members":["resultados/","front_relations/resultados/","front_semantics/resultados/","revision/"]}
+  ],
+  "external_required":[
+    {"name":"Windows x64","reason":"Only the official win_amd64 wheel is tested"},
+    {"name":"CPython3.13 x64 with venv/pip","tested":"3.13.11","check":"python -c import sys,struct; print(sys.version,struct.calcsize('P')*8)"}
+  ],
+  "not_required_for_new_CPC9":["Historical CPC ZIPs","Source checkout at a private absolute path","Internet access","NumPy","Cognitive Core ZIP","A trained snapshot imported from another world"],
+  "optional_companion":{"name":"DEE_COGNITIVE_CORE_CPC01_A_CPC08.zip","purpose":"Independent historical recovery; required only for the historical contracts not copied into CPC9"},
+  "temporary_paths":"Native persistence uses an ASCII temporary directory; final source/output may be Unicode. App exposes --ascii-temp. No security policy changes required.",
+  "old_absolute_paths":"Primary provenance may retain original paths; they are evidence labels, not operational dependencies. Clean verification denies accidental reads from historical directories."
+}

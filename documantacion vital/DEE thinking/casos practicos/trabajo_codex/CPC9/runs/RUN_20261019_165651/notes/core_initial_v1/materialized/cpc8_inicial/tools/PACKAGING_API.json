@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "state": "TOOLS_ONLY_WAITING_FOR_ROOT_SEAL_AUTHORIZATION",
+  "no_current_scientific_tree_inventoried": true,
+  "internal_root": "CPC8/",
+  "canonical_relative_to_WORK_parent": "resultados/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS.zip",
+  "commands_from_WORK_using_official_CP313": {
+    "unit_tools": "python -I -B tools/test_publication_tools.py",
+    "build_after_science_frozen": "python -I -B tools/publicar_cpc8.py build --ack-science-frozen --candidate ../entrega_candidata/CPC8_CANDIDATO.zip",
+    "verify_exact_candidate": "python -I -B tools/publicar_cpc8.py verify --zip ../entrega_candidata/CPC8_CANDIDATO.zip --report ../entrega_candidata/INTEGRIDAD_CANDIDATO.json",
+    "clean_extraction_new_short_path": "python -I -B tools/publicar_cpc8.py extract --zip ../entrega_candidata/CPC8_CANDIDATO.zip --destination SHORT_NEW_PATH --report ../entrega_candidata/EXTRACCION.json",
+    "publish_after_root_clean_validation": "python -I -B tools/publicar_cpc8.py publish --candidate ../entrega_candidata/CPC8_CANDIDATO.zip --canonical ../resultados/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS.zip --clean-report EXACT_CLEAN_REPORT.json --authorize",
+    "transport_after_full_verification": "python -I -B tools/publicar_cpc8.py transport --zip ../resultados/CPC8_ORGANIZACION_COGNITIVA_NATIVA_APRENDIZAJE65_RESULTADOS.zip --output ../resultados",
+    "consumer_reassembly_without_overwrite": "python REUNIR_CPC8.py --output CPC8_REUNIDO.zip"
+  },
+  "clean_report_minimum_schema": {
+    "status": "PASS",
+    "artifact_sha256": "exact SHA-256 of closed candidate, not workspace or prior ZIP",
+    "commands": "Root clean validator supplies actual commands, exit codes, source of installed interpreter/module, function/continuation results"
+  },
+  "gates": [
+    "build requires explicit frozen-tree acknowledgement; no source mutation",
+    "exact one official4.5 WHL/PYD and all required source/evidence trees",
+    "CRC, complete manifest/hash inventory, safe unique member paths",
+    "extract only into a new path and only after full verification",
+    "publish requires root authorization and a PASS clean report naming the candidate exact hash",
+    "all existing outputs protected; final ZIP name created atomically without replace",
+    "external proof and small review files remain outside the unchanged ZIP",
+    "transport splits only if compressed ZIP >20MiB, into exactly two sequential binary parts",
+    "two part hashes, streaming concatenation, actual temporary reconstruction and rebuilt container are verified"
+  ],
+  "scope": "Integrity checks are not functional/scientific validation; root clean validator remains mandatory. No fallback imports, PYTHONPATH injection, legacy engine, installer or science automatically runs."
+}

@@ -1,0 +1,234 @@
+"""Private SDK contracts. Stdlib only; import never creates a DEE world."""
+from pathlib import Path
+import hashlib
+import json
+import os
+import re
+import sqlite3
+import time
+
+SCHEMA = 'DEE.Roblox.SDK.private.0.1.0'
+NATIVE_VERSION = 'DEE.Roblox.SDK.focal.native.0.1.0'
+RUNTIME = Path(__file__).resolve().parents[2]
+INSTANCE = re.compile(r'SDK_DEMO_[0-9A-F]{16}')
+LIFE_PREFIX = 'ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_'
+IDENTIFIER = re.compile(r'[A-Za-z0-9_-]{1,90}')
+
+def canonical(value):
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'), allow_nan=False)
+
+def sha(path):
+    h = hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for part in iter(lambda: stream.read(1024 * 1024), b''): h.update(part)
+    return h.hexdigest()
+
+def digest(value):
+    return hashlib.sha256(canonical(value).encode('utf8')).hexdigest()
+
+def read(path):
+    deadline = time.monotonic() + 2.0
+    while True:
+        try:
+            return json.loads(Path(path).read_text('utf-8-sig'))
+        except OSError as error:
+            sharing = getattr(error, 'winerror', None) in (5, 32) or os.name == 'nt' and error.errno == 13
+            if not sharing or time.monotonic() >= deadline:
+                raise
+            time.sleep(.02)  # Same passive read only; never re-admit an operation.
+
+def safe(root, relative, *, exists=False):
+    root = Path(root).resolve(strict=True)
+    p = Path(relative)
+    if p.is_absolute() or any(x in ('..', '.') for x in p.parts) or ':' in str(relative):
+        raise ValueError('Relative contained path required')
+    target = root / p
+    cursor = root
+    for part in p.parts:
+        cursor = cursor / part
+        if cursor.exists() or cursor.is_symlink():
+            st = cursor.lstat()
+            if cursor.is_symlink() or getattr(st, 'st_file_attributes', 0) & 1024:
+                raise ValueError('Linked/reparse path prohibited')
+    resolved = target.resolve(strict=exists)
+    if not resolved.is_relative_to(root): raise ValueError('Escaped runtime')
+    return resolved
+
+def atomic(path, value, *, new=False):
+    path = Path(path)
+    if new and path.exists(): raise FileExistsError(path)
+    tmp = path.with_name(path.name + '.WRITING')
+    data = (canonical(value) + '\n').encode('utf8')
+    with tmp.open('xb') as out:
+        out.write(data); out.flush(); os.fsync(out.fileno())
+    if new and path.exists(): raise FileExistsError(path)
+    # Windows readers/antivirus can hold a destination without share-delete.
+    # Retry only this SAME prepared rename, never the Native/HTTP operation.
+    intended = hashlib.sha256(data).hexdigest()
+    deadline = time.monotonic() + 2.0
+    while True:
+        try:
+            os.replace(tmp, path)
+            break
+        except OSError as error:
+            if getattr(error, 'winerror', None) not in (5, 32) or time.monotonic() >= deadline:
+                raise  # .WRITING stays preserved; no material retry.
+            if sha(tmp) != intended:
+                raise RuntimeError('Prepared atomic bytes changed; preserve without retry') from error
+            time.sleep(.02)
+
+def instance_home(instance_id, runtime=RUNTIME):
+    if not isinstance(instance_id, str) or INSTANCE.fullmatch(instance_id) is None:
+        raise ValueError('Only fresh SDK_DEMO_<16HEXUPPER> diagnostic IDs')
+    home = safe(runtime, 'estado_demo/instancias/' + instance_id, exists=True)
+    if (home / 'sistema/estado/ACTIVO.json').exists():
+        raise ValueError('Selected life prohibited')
+    cfg = read(home / 'INSTANCE.json')
+    if cfg.get('instanceId') != instance_id or cfg.get('lifeId') != LIFE_PREFIX + instance_id:
+        raise ValueError('Diagnostic identity mismatch')
+    if (cfg.get('runtimeVersion') != '0.1.1' or cfg.get('validationRevision') != 'FOCAL_R06'
+            or cfg.get('profile') != 'FOCAL' or cfg.get('focalCondition') not in ('OSCILANTE','CONTROL')
+            or cfg.get('maxCycles') != 6 or cfg.get('maxLocalSequence') != 12):
+        raise ValueError('FOCAL_R06 newly prepared profile6 only')
+    return home, cfg
+
+def verify_focal_sources(runtime=RUNTIME):
+    runtime = Path(runtime).resolve(strict=True)
+    manifest = runtime / 'backend/focal_r06/FUENTES_FOCAL_R06.json'
+    frozen = read(manifest)
+    if frozen.get('schema') != 'DEE.SDK.FOCAL_R06.source_freeze.01':
+        raise ValueError('EXPLICIT_FOCAL_SOURCE_FREEZE_REQUIRED')
+    for row in frozen['members']:
+        if sha(safe(runtime, row['file'], exists=True)) != row['sha256']:
+            raise ValueError('FOCAL_SOURCE_CHANGED:' + row['file'])
+    return sha(manifest)
+
+def budget(runtime=RUNTIME, now=None):
+    runtime = Path(runtime).resolve(strict=True)
+    global_path = safe(runtime, 'configuracion/VENTANA_R06.json', exists=True)
+    global_window = read(global_path)
+    p = safe(runtime, 'configuracion/VENTANA_FOCAL_R06.json', exists=True)
+    c = read(p)
+    required = {'schema','startUtcEpoch','lastNewUtcEpoch','hardFinishUtcEpoch',
+                'maxNativeTicks','maxSdkCycles','ownerMemoryBytes','threads',
+                'maxRawSupport','minimumHostFreeBytes','sealed',
+                'globalWindowSha256','focalSourcesSha256'}
+    if set(c) != required or c['schema'] != SCHEMA or c['sealed'] is not True:
+        raise ValueError('EXPLICIT_PROSPECTIVE_FOCAL_WINDOW_REQUIRED')
+    if (c['globalWindowSha256'] != sha(global_path)
+            or c['focalSourcesSha256'] != verify_focal_sources(runtime)):
+        raise ValueError('GLOBAL_WINDOW_OR_FOCAL_SOURCE_BINDING_CHANGED')
+    fixed = ('schema','maxNativeTicks','maxSdkCycles','ownerMemoryBytes',
+             'threads','maxRawSupport','minimumHostFreeBytes','sealed')
+    if any(c[k] != global_window[k] for k in fixed):
+        raise ValueError('FOCAL_CANNOT_CREATE_ANOTHER_BUDGET')
+    if not (global_window['startUtcEpoch'] <= c['startUtcEpoch']
+            < c['lastNewUtcEpoch'] <= global_window['lastNewUtcEpoch']
+            < c['hardFinishUtcEpoch'] <= global_window['hardFinishUtcEpoch']
+            and c['hardFinishUtcEpoch']-c['startUtcEpoch'] <= 21600
+            and global_window['hardFinishUtcEpoch']-global_window['startUtcEpoch'] <= 28800
+            and c['maxNativeTicks']==40000 and c['maxSdkCycles']==3
+            and c['ownerMemoryBytes']==536870912 and c['threads']==1
+            and c['maxRawSupport']==10000 and c['minimumHostFreeBytes']==3758096384):
+        raise ValueError('FOCAL_MUST_BE_SUBSET_OF_UNCHANGED_GLOBAL_R06')
+    when=time.time() if now is None else now
+    if when >= c['hardFinishUtcEpoch']:
+        raise RuntimeError('FOCAL_HARD_DEADLINE_REACHED')
+    return c
+
+def operational_window(cfg, runtime=RUNTIME, now=None):
+    """Product session is finite; the campaign is an additional optional clip."""
+    c = budget(runtime, now=0)
+    lease = cfg.get('operationalLease')
+    if not isinstance(lease, dict) or lease.get('schema') != 'DEE.Roblox.SDK.operational_lease.0.1.0':
+        raise ValueError('Explicit start/continue operational lease required')
+    if (lease.get('instanceId'), lease.get('lifeId'), lease.get('sessionId')) != (cfg['instanceId'], cfg['lifeId'], cfg['sessionId']):
+        raise ValueError('Lease identity mismatch')
+    if not (lease['startUtcEpoch'] < lease['lastNewUtcEpoch'] < lease['hardFinishUtcEpoch']
+            and lease['hardFinishUtcEpoch'] - lease['startUtcEpoch'] <= 21600
+            and 1 <= lease['additionalCycles'] <= 6
+            and lease['cumulativeCycleCap'] == lease['startingCompletedCycles'] + lease['additionalCycles'] <= 6):
+        raise ValueError('Finite demo lifetime/profile/session cap')
+    if lease['validationCampaign']:
+        if (lease['validationCampaignSha256'] != sha(Path(runtime) / 'configuracion/VENTANA_FOCAL_R06.json')
+                or lease['lastNewUtcEpoch'] > c['lastNewUtcEpoch'] or lease['hardFinishUtcEpoch'] > c['hardFinishUtcEpoch']):
+            raise ValueError('Current validation campaign clip required')
+    when = time.time() if now is None else now
+    if when >= lease['hardFinishUtcEpoch']: raise RuntimeError('Operational session has expired; explicit closed renewal required')
+    return {**c, 'startUtcEpoch': lease['startUtcEpoch'], 'lastNewUtcEpoch': lease['lastNewUtcEpoch'],
+            'hardFinishUtcEpoch': lease['hardFinishUtcEpoch']}
+
+def closed_native(home, cfg):
+    """Closed-only RO inspection; never opens a Native runtime."""
+    system = home / 'sistema'; life = cfg['lifeId']
+    if (system / 'estado/ACTIVO.json').exists() or (system / 'estado/locks' / (life + '.lock')).exists():
+        raise RuntimeError('Selected/owned Native is not a closed instance')
+    cardfile = system / 'estado/vidas' / life / 'VIDA.json'
+    card = read(cardfile)
+    db = system / 'estado/servicios_persistentes' / life / 'cola.sqlite3'
+    for suffix in ('-wal', '-journal'):
+        side = Path(str(db) + suffix)
+        if side.exists() and side.stat().st_size: raise RuntimeError('Live/uncertain SQLite sidecar')
+    con = sqlite3.connect(db.resolve().as_uri() + '?mode=ro&immutable=1', uri=True)
+    try:
+        ownerrow = con.execute("SELECT value FROM meta WHERE key='owner'").fetchone()
+        owner = {} if ownerrow is None else json.loads(ownerrow[0])
+        pending = con.execute("SELECT COUNT(*) FROM requests WHERE status IN('queued','processing','uncertain')").fetchone()[0]
+        if owner.get('running') is True or pending: raise RuntimeError('Native writer/pending requests must be preserved')
+    finally: con.close()
+    snapshot = safe(system, card['snapshot'], exists=True)
+    return {'lifeId': life, 'nativeTick': card['physical']['tick'], 'dimension': card['physical']['N'],
+            'cardSha256': sha(cardfile), 'snapshotSha256': sha(snapshot),
+            'databaseSha256': sha(db), 'writerClosed': True, 'pending': 0}
+
+def validate_pair(home, cfg, proof=None):
+    """Before any continuation mutation, couple all recorded cursors and hashes."""
+    path = Path(home) / 'SDK_PAIR.json'; pair = read(path)
+    snapshot = pair['snapshot']; state = snapshot['state']
+    if snapshot.get('schema') != 'DEE.RBX.AgentWorldCheckpoint.R01':
+        raise ValueError('Exact original Agent/World checkpoint schema required')
+    expected = (cfg['sessionId'], cfg['lifeId'], cfg['nativeTick'], cfg['localSequence'], cfg['completedCycles'])
+    actual = (state.get('sessionId'), state.get('lifeId'), state.get('nativeTick'),
+              state.get('sequence'), state.get('completedOpportunities'))
+    if actual != expected or state.get('phase') != 'BOUNDARY':
+        raise ValueError('Literal closed Agent/Native cursor required before continuation')
+    if (pair['instanceId'] != cfg['instanceId'] or pair['sessionId'] != cfg['sessionId']
+            or pair['localSequence'] != cfg['localSequence'] or digest(snapshot) != pair['snapshotSha256']):
+        raise ValueError('Pair identity/hash mismatch')
+    backend = dict(pair['backendProof']); checksum = backend.pop('proofSha256', None)
+    if checksum != digest(backend) or backend.get('backendWriterClosed') is not True or backend.get('bridgeQuiescent') is not True:
+        raise ValueError('Closed and quiescent backend proof required')
+    proof = closed_native(home, cfg) if proof is None else proof
+    for key in ('lifeId','nativeTick','snapshotSha256','databaseSha256','cardSha256'):
+        if pair['native'].get(key) != proof.get(key) or backend.get(key) != proof.get(key):
+            raise ValueError('Paired Native differs: '+key)
+    if backend.get('sessionId') != cfg['sessionId'] or backend.get('localSequence') != cfg['localSequence']:
+        raise ValueError('Paired backend cursor mismatch')
+    return pair
+
+def native_payload(kind, payload, sequence_offset):
+    """Translate only the declared local sequence; never sensors or answers."""
+    result = json.loads(canonical(payload))
+    fields = ('observationId', 'seq', 'phase', 'worldTimeMs', 'sampleTimeMs', 'previousActionId', 'sensors')
+    def project(observation):
+        if not isinstance(observation, dict) or any(k not in observation for k in fields if k != 'previousActionId'):
+            raise ValueError('Complete actual connector observation required')
+        # Lua nil is omitted by JSONEncode. The effective P08 driver used
+        # get('previousActionId') too: absence is None, never a fabricated ID.
+        return {k: observation.get(k) if k == 'previousActionId' else observation[k] for k in fields}
+    if kind in ('decision', 'query_sensor'):
+        if set(result) != {'observation'}: raise ValueError('Observation-only Native ABI')
+        result['observation'] = project(result['observation'])
+        o = result['observation']; local = o['seq']; observation_id = o['observationId']
+        if type(local) is not int or not 1 <= local <= 12: raise ValueError('SDK local sequence bound')
+        o['seq'] = sequence_offset + local
+    elif kind == 'feedback':
+        local = result['seq']; observation_id = result['observationId']
+        if result['lastObservation']['seq'] != local: raise ValueError('Feedback sequence correlation')
+        result['lastObservation'] = project(result['lastObservation'])
+        result['seq'] = sequence_offset + local
+        result['lastObservation']['seq'] = sequence_offset + local
+    elif kind == 'function':
+        raise ValueError('SDK 0.1 simple demo does not advertise function RPC')
+    else: raise ValueError('Closed Native kind')
+    return result, local, observation_id

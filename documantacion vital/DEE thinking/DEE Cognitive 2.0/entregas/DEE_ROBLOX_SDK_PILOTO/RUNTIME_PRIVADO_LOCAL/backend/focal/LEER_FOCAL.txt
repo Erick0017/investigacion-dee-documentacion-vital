@@ -1,0 +1,47 @@
+PERFIL PRIVADO FOCAL6 — separado del demo3 congelado
+
+No ejecutado por el constructor. Son dos vidas completas nuevas desdePAR28,
+cada una con6oportunidades y seqLOCAL1..12 (Native57..68), RoleFOCAL y claves
+de metadata/actor/lease propias. No amplía el demo ni reinicia sus contadores.
+El ledger estado_demo/LEDGER_SDK.json es EL MISMO:40k total de validación,
+6vidas máximas; focal no ocupa la cuota de3episodios SDKdemo. Los ticks reales
+de los dos focales sí se suman al mismo40k. Un intent ambiguo bloquea la continuación.
+
+Escenas R03 en VALIDACION/OSCILACION, protocolo congelado de ese directorio:
+  OSCILANTE → CONSUME_RECHARGE
+  CONTROL   → NONCONSUMING_CONTROL
+Ambos feedbackreal/teacheromitted/products_v1/price_tag_v1/local_tag.
+Sólo la disponibilidad ambiental consume/recharge en un brazo. No hay regla
+de rutas ni destino elegida por este backend. Los AST first/second/function/
+feedback/BoundedTime son idénticos al SDKdemo; sólo identidad/cap6 son nuevos.
+
+Desde RUNTIME_PRIVADO_LOCAL, con <PY>=dependencias/producto/motor/python313/python.exe:
+
+  <PY> -I -B backend/focal/preparar_focal.py crear --instance <ID_OSC> --condition OSCILANTE --execute-fs-only
+  <PY> -I -B backend/focal/preparar_focal.py crear --instance <ID_CTL> --condition CONTROL --execute-fs-only
+
+Usar IDs SDK_DEMO_<16HEX MAYUSCULAS> DISTINTOS y nunca antes preparados.
+Cada salida PREPARACION_FOCAL.json aporta contextSha256; no usar el hash del
+PREPARACION_PAR28_SDK anterior al overlay (se conserva como procedencia).
+
+  <PY> -I -B backend/focal/preparar_focal.py importar --instance <ID> --context-sha256 <SHA_FOCAL> --deadline-utc-epoch <UTC_FINITO> --execute-root-only
+
+Importa UNA vez cada raíz completa, Job512MiB,0ticks. No repetir si parcial.
+Después, para OSCILANTE,6casos y cierre; sólo trasCLOSED+drained+pair iniciarCONTROL:
+
+  <PY> -I -B backend/focal/iniciar_focal_R03.py start --instance <ID_OSC> --minutes 180 --cycles 6 --port 8897 --validation-campaign --execute-real-native
+  <PY> -I -B backend/focal/iniciar_focal_R03.py start --instance <ID_CTL> --minutes 180 --cycles 6 --port 8898 --validation-campaign --execute-real-native
+
+Los puertos distintos no autorizan dos owners simultáneos: ordenSERIAL por
+protocolo. Root puede preparar/importar ambos antes, no abrir ambos servicios.
+CurrentCampaign recorta admisión04:03:43UTC/cierre05:03:43UTC18Nov2026.
+No se ofrecen casos después del plazo ni se alarga según respuestas.
+
+Conexión privada de escena: FolderDEE_FOCAL_PrivateConnection, BaseUrl con
+puerto elegido, InstanceId correspondiente y Token privado del runtime.
+No publicar esa escena/credencial. WrapperFOCAL verifica handshake.profile y
+focalCondition antes de cualquier POST. HttpLoop/DTOs/ACK no cambian.
+
+Al final6 se agota el perfil y se cierra. No renovar para repetir6 ni cargar
+una vida avanzada como fresh. Curvas/controles/errores/costes se conservan.
+Esta carpeta sólo prepara; no constituye resultado Native ni adquisición.

@@ -1,0 +1,51 @@
+REPARACION TECNICA R03: PARTICIPANTE SIN ACCESO A INSTANCE.json
+
+Alcance: fallo de arranque CAP demostrado antes del primer evento. No cambia
+access_guard, mecanismo Native, CORE26, FOCAL, plazo, estimulos ni lectores.
+La identidad participante deriva del Scope sellado y de identidad/metadatos
+Native. El host conserva la validacion INSTANCE.json fuera del participante.
+
+No ejecutar este helper con propietario o servicio abierto. Deben existir el
+fallo FAILED_PRESERVED con sequence0 y prueba Native identica a preCapNative,
+sin eventos CAP, reserva, intent ni operacion pendiente. Se admiten solamente
+recibos CLOSE administrativos completados y explicitamente sin admision Native.
+
+Copiar SOLO esta carpeta nueva a backend/extension_r06_R03 de la instalacion
+SHORT. Sus dependencias originales backend/extension_r06 y backend/r06 deben
+estar presentes y coincidir con los freezes anteriores. No sustituir R02.
+El servicio R03 carga owner_caps_R06.py y ledger_caps_R06.py desde extension_r06
+por rutas explicitas. El host Native conserva servicio_capabilities_R06.py.
+
+Comandos desde RUNTIME_PRIVADO_LOCAL de la instalacion SHORT (Root):
+
+dependencias\producto\motor\python313\python.exe -I -S -B backend\extension_r06_R03\reparar_boot_access_R03.py --runtime . --instance SDK_DEMO_3666B1B0A4134233 --failure-stderr ensayos/SDK_CAP_R06_eca96ed6.stderr.txt
+
+La primera llamada solo imprime el PLAN para revision. Despues de revisar:
+
+dependencias\producto\motor\python313\python.exe -I -S -B backend\extension_r06_R03\reparar_boot_access_R03.py --runtime . --instance SDK_DEMO_3666B1B0A4134233 --failure-stderr ensayos/SDK_CAP_R06_eca96ed6.stderr.txt --execute-fs-only
+
+Exigir RESULTADO.json status REPAIRED_ZERO_EVENT_FS_ONLY, NativeBefore igual
+a NativeAfter, ledgerUnchanged y oldFailurePreserved true. La transaccion
+CAPABILITIES_REPAIR_ACCESS_R03 conserva PLAN y copias .before de fuentes,
+Scope, registry, fallo y stderr originales. Cualquier fallo conserva INCOMPLETE;
+no reintentar automaticamente ni eliminar archivos para pasar las guardas.
+
+Solo Root, una vez aprobado y completado el cambio FS, puede arrancar:
+
+dependencias\producto\motor\python313\python.exe -I -B backend\extension_r06_R03\servicio_capabilities_http_R06.py --instance SDK_DEMO_3666B1B0A4134233 --port 8899 --start-real-native
+
+Este comando abre el propietario real: no es una prueba de sintaxis. Conserva
+la misma vida, SID y cero eventos previos; no reenvia una decision ni repite K4.
+El estado host nuevo es CAPABILITIES_STATE_R06_R03.json. El fallo previo queda
+literal en CAPABILITIES_STATE_R06.json y queda vinculado por SHA en el nuevo.
+
+El Scope conserva todo salvo hashes de las dos fuentes y declaraciones
+participantIdentityRevision/hostProfile. No se edita snapshot, card, DB, RAW,
+clocks, agenda, recibos, contador, intencion ni dato aprendido. No existe una
+recuperacion autonoma: es una reparacion de despliegue asistida por el operador.
+
+Pruebas realizadas sin Native/DEE/SQL real ni instancia: 7 de identidad/AST y
+3 de transaccion FS con dobles. Sus resultados no equivalen a arranque real.
+
+Exportador cerrado R06 anterior usa el nombre de estado R02; no usarlo para
+atribuir resultados R03 hasta preparar una variante versionada compatible.

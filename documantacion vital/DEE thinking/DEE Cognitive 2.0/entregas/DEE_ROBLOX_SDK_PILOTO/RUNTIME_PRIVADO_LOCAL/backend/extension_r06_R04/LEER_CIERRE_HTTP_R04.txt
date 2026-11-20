@@ -1,0 +1,38 @@
+CIERRE HTTP R04: RECIBO NATIVE EXISTENTE, SIN REPLAY
+
+R03 cerro correctamente Native y persistio CLOSE COMPLETED, pero self.stop
+terminaba HTTP antes de que el cliente hiciera el GET posterior. Native y sus
+primarios no se repiten. R03/fallo UI siguen preservados.
+
+SERVICIO FUTURO VERSIONADO
+servicio_capabilities_http_R06.py en esta carpeta es una copia R03 con cambio
+exclusivo de ciclo de vida HTTP: tras stop mantiene hasta60s (sin superar el
+hard ya fijado) o termina al servir GET de un CLOSE COMPLETED y hacer flush.
+No cambia owner/ledger/actor/lector/solicitudes/valorNative. Importa el plugin
+desde extension_r06_R03 y owner/ledger originales desde extension_r06.
+No arrancar este servicio para reconciliar el caso actual cerrado.
+
+CASO ACTUAL: SERVIDOR DE RECIBO RO
+Copiar la carpeta nueva R04 a backend/extension_r06_R04 del SHORT.
+Desde su RUNTIME_PRIVADO_LOCAL, Root puede ejecutar exactamente:
+
+dependencias\producto\motor\python313\python.exe -I -S -B backend\extension_r06_R04\servir_recibo_cerrado_RO_R04.py --runtime . --instance SDK_DEMO_3666B1B0A4134233 --operation ext_close_634f178b-b102-4971-98cb-e41ab0efa44f --state-sha256 a6029dfa848786ab676bafe260e2b083345d1bdd7166bcf95566ee0efc5d236e --receipt-sha256 e1520e3b6d7215400f338015ab1acbab1e1e4559d630795aec249ae48ddf3f90 --ledger-sha256 28584f31c373caa87d96b84d01a775343ae417a3b0ae15e28b91f4fcf5cbf353 --port 8899 --seconds 60
+
+Solo permite GET autenticado del mismo ID y mismo instanceId. Envelope y
+contenido equivalen a GET de R03; no crea ni modifica el recibo. POST=405.
+Lee token del archivo privado, no lo imprime. No crea owner, cola, locks,
+Native, modelo ni archivos. No importa DEE ni SQLite.
+
+Valida SHA externos de state/receipt/ledger antes de servir; en cada GET exige
+state/receipt/card/config/ownerjournal identicos, cierre/pending0, ausencia de
+locks/futuro/ACTIVO y ledger intents{} con mundo CAP cerrado literal. El SHA
+global del ledger solo se usa al arranque; otras vidas cerradas no quedan
+congeladas por un GET. Se detiene tras la entrega o60s sin reintentar Native.
+
+Root reanuda unicamente GET ORIGINAL desde el cliente. No repetir POST CLOSE,
+no borrar estado UI y no reiniciar los diez eventos. Si el cliente ya agoto su
+poll, la respuesta RO sigue siendo conciliacion del recibo durable, no nuevo
+resultado Native ni prueba de que su loop original termino naturalmente.
+
+Pruebas sinteticas sin socket/Native/instancia: seis de lifecycle y cinco del
+servidor RO. La prueba del puerto/cliente real queda a Root.

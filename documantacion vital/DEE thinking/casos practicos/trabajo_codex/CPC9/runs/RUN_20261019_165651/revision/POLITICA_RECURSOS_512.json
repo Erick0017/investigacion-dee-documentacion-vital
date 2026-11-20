@@ -1,0 +1,11 @@
+{
+  "schema": "CPC9.supervision.memory.refinement.v1",
+  "original_budget_unchanged": true,
+  "native_concurrency_unchanged": 2,
+  "original_worker_max_bytes": 1073741824,
+  "optional_lower_worker_cap_bytes": 536870912,
+  "physical_free_reserve_bytes": 536870912,
+  "reason": "Measured integral native job peak217530368B. Host free RAM fluctuated below1536MiB, so default1GiB jobs were correctly blocked before Runtime. Selected short N67 workers may use a strictly lower512MiB Windows Job cap while retaining512MiB free physical reserve. Default1GiB jobs keep the old1536MiB admission requirement.",
+  "not_changed": ["kernel", "WHL", "Runtime", "physical inputs", "experimental decoder", "original monotonic start/deadline", "max two native workers"],
+  "prior_resource_blocks": "Remain in original COMMAND.json files, not scientific negative samples. New attempts use new job IDs."
+}

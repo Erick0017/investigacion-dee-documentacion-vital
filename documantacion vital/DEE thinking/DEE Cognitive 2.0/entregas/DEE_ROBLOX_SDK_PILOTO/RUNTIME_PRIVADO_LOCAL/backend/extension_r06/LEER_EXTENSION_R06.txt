@@ -1,0 +1,82 @@
+EXT_R06 — capacidades Native asistidas, separadas del core SDK0.1.1
+
+ESTADO AL CONGELAR: preparado y comprobado con temporales/fakes, NO ejecutado
+materialmente. Root es el único autorizado para instalar en la vida real y
+abrir Native. CORE26, sus tres fuentes Native, la física, lectores y calendarios
+históricos permanecen intactos. No requiere ni usa MCP/Codex/Studio para HTTP.
+
+Sólo después del K4 ORDINARIO real: SDK_PAIR completo, reapertura con prueba
+persistida y un segundo uso real con Native ticks posteriores. La instalación
+rechaza ciclos<2, ausencia de prueba K4, servicios abiertos, intents, reservas,
+SHA distintos o cualquier ACTIVO. Es una única vida SDK_DEMO exacta en allowlist,
+no el principal ni una identidad de sustitución. Copia de archivos sólo dentro
+del sistema privado de esa vida. No se usa ni se importa una vida avanzada ajena.
+
+PreparaciónRoot cerrada (PY es Python oficial DENTRO del despliegueSHORT):
+ PY -I -B backend/extension_r06/preparar_capabilities_R06.py --instance ID --minutes 180 --max-events 10 --execute-fs-only
+Sin ese flag imprime sólo el plan. La instalación es FS0ticks, añade plugin al
+registro PI10 y conserva registro anterior+snapshotSDK_PRE_CAP; verifica Native
+card/snapshot/SQLite y ledger idénticos antes/después. Un fallo queda preservado,
+sin borrado ni repetición automática. Nunca instalar mientras corre el core.
+
+InicioRoot explícito:
+ PY -I -B backend/extension_r06/servicio_capabilities_http_R06.py --instance ID --port 8899 --start-real-native
+Abre UN owner oficial512MiB/1hilo, event-driven/cacheORIGINAL,3.5GiB RAM antesboot,
+1GiB antesNativeadmisión. Guarda900s máximoPENDING_RESOURCE sin pulsos/intents,
+limitado por la sesión/campaña. Todoerror desde owner.material quedaUNCERTAIN,
+sinreplay. El cierre es POSTautenticado /v1/capabilities/close conIDdurable; espera
+Native cerrado/drained y conserva descriptor. Bootfallido conocido sólo se puede
+cerrar si no hay operaciones inciertas/intents/owner; no limpia estado Native.
+
+Registro: plugin sdk_capabilities_R06, modoúnico eci01-pi10-sdk-capability-r06.
+Sólo el nuevo modo usa el validator adicional durante arranquePythonfrío; los
+demás modos delegan al validator original byteidéntico. No cambia whitelist
+ancestral ni modifica rbx07_identity_v3.py. No escribe RAW/clocks/bancos/lectores.
+Nuevo CODE_SCOPE/registro técnico propio; el evento sólo comienza desde Native
+coreIDLE/pendingNone/uncertainFalse. No se simula Q1/Q2/feedback ni ciclo SDK.
+
+Ledger: MISMO estado_demo/LEDGER_SDK_R06.json/global40000ticks. Un evento reserva
+4096, cobra sólo diferencia física antes/después, liberareserva y aumenta un
+contador capability_events. cycles/validation_cycles SDK no aumentan ni se
+reinician. Máximo configurado10 eventos en este protocolo (implementación admite
+como techo12). Todos ellos deben comenzar antes lastNew y terminar antes hard;
+sesiónfinita --minutes actualUTC se recorta a campañaR06, sin reiniciar su reloj.
+
+APIautenticada loopback, envelope {ok,result}. GET /v1/capabilities/handshake es
+RO; POST /v1/capabilities/submit {instanceId,sessionId,operationId,request} devuelve
+202; GET /v1/capability-operations/ID?instanceId=ID consultaELMISMOID. No rePOST.
+COMPLETED.value es JSON Native literal íntegro, incluido NULL/fuera de dominio,
+observacionesRAW/clocks y primarios. El cliente puede resumir UI sin amputar API.
+No host-calculator, respuesta esperada ni lector alternativo.
+
+Contratos request EXACTOS (nombres sin alias):
+ RECALL {kind,form:luma|nara}
+ LESSON {kind,form,observedSign:-1|1,revision:bool,teacherMode:paired|omitted|desync}
+ NUMERIC {kind,operation:suma|diferencia,left:int0..32,right:int0..32}
+ SOLVE {kind,form,left:int0..32,right:int0..32}
+ COMPOSE {kind,forms:[dosluma/nara],data:[tresenteroses0..32]}
+ COMPARE {kind,left:int0..20,right:int0..20}
+
+COMPOSE transporta SOLOelprimer entero Native real a la segunda etapa. Si esNULL
+o no está0..32, se detiene según helper histórico; jamás se sustituye por9/0.
+'suma' es operaciónNUMERIC, NOforma lexical: ['suma','nara'] se rechaza. SOLVE
+elige operación por signoNative recordado mediante codecpreparado +1/−1.
+
+Asistencia PREPARADA que no se atribuye a aprendizaje: petición y orden elegidos
+por operador, formas/operandos/experienciasexternas elegidas por operador, FI128,
+transducción signos→opcode, profesores físicos y lectores/calendarios fijos.
+Los cuerpos helper lesson/recall/numeric/solve/compose tienen AST original salvo
+guardade identidadSDK y etiqueta. forecast_numeric conserva guardasR3P0 basadas
+SÓLOenreloj: query start+56, precaución frontera391 y coincidencia módulo67; no
+busca por operandos/acierto. Lexical usa siguiente tickmúltiplo67 ylector q+4.
+COMPARE es acceso_eci01.balance ORIGINAL: cargasindependientes0..20, codificación
+preparada(left,20-right) ylector tempranoq+4; conserva TAMBIÉN q+6 original,RAW,
+clocks yrecibos. Nunca se cambia lector para obtener signo correcto.
+
+Después de cualquier avancecapability, SDK_PAIR_PRE_CAP_R06 es HISTÓRICO. El
+World/Agent no se movió ni se falsificó su nativeTick. El Native completo local
+sí se guarda y mantiene su historia. El descriptorCLOSEDcapabilities NO es una
+parejaWorldactual ni respaldo ejecutable independiente. Este perfil no promete
+volver automáticamente al loopCore tras los eventos ni continuidadindefinida.
+Root preservará NativeRoot completo y primarios; el principal global y manual
+permanecen intactos.

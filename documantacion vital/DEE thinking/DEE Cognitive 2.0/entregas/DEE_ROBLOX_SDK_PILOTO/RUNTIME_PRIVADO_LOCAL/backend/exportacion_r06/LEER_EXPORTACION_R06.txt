@@ -1,0 +1,46 @@
+Exportación cerrada SDK y capacidades R06 — sólo stdlib
+
+Código preparado/probado con fixtures; ningún caso real se leyó ni exportó por
+el agente. Root debe ejecutar cuando todos los propietarios relevantes estén
+cerrados, los locks hayan desaparecido y el ledger no tenga intents/reservas.
+
+Desde el despliegue SHORT, con Python estándar u oficial privado:
+ PY -I -S -B backend/exportacion_r06/exportar_capacidades_cerradas_R06.py export --runtime RUNTIME_ABSOLUTO --home HOME_ABSOLUTO --output DESTINO_NUEVO_FUERA_RUNTIME
+
+HOME es RUNTIME/estado_demo/instancias/SDK_DEMO_3666B1B0A4134233 para esta
+validación. La herramienta admite otro ID diagnóstico SDK de la misma forma,
+verifica la identidad real y nunca abre un principal/ACTIVO. Exige cierre de
+servicios y writer, ausencia FUTURO_INTERRUMPIDO e intents, últimoOWNER_CLOSED0,
+cardinalidad/tick/hashNative actuales, cursor y contador reales. Revalida anclas
+y locks después de copiar; sólo entonces publica MANIFIESTO.json. Un error deja
+la salida parcial preservada y no debe confundirse con exportación completada.
+
+Se copian LITERALMENTE los journals de fases/eventos, primarios de capacidades
+y sus operacionesHTTP sin encabezados. Recibos se verifican/deduplican porID
+real; alias conflictivos, pendientes o hashes alterados bloquean. NULL permanece
+None/null y jamás se convierte en0. No se calculan respuestas esperadas de las
+operaciones: sólo se reproduce el contenidoNative y se recuentan ticks/recibos.
+
+Owner/ledger/VIDA/pareja/K4 se representan mediante proyecciones etiquetadas y
+SHA/tamaño de sus fuentes. SDK_PAIR completo, snapshotsNative, SQLite, buffers,
+configuración privada y credenciales NO se copian. El token privado se usa sólo
+como detector de fuga; nunca aparece en la salida ni stdout. Si un primario
+contiene un campo prohibido, se rechaza; no se mutila o redacta su contenido.
+
+Paquete resultante: MANIFIESTO.json, INDICE_CERRADO.json, RECALCULO.json,
+PRIMARIOS/..., RECALCULAR_CAPACIDADES_R06.py y LEER_RECALCULO.txt.
+
+Desde una extracción limpia (sin originales disponibles):
+ python -I -S -B RECALCULAR_CAPACIDADES_R06.py recalculate --package-root . --output RECALCULO_NUEVO
+
+El destino debe ser nuevo y su padre existir. Puede estar dentro de la
+extracción. El recálculo verifica los miembros archive declarados y nunca abre
+las rutas source: éstas son sólo procedencia. No usa Native/DEE, SQLite, red,
+modelos ni otras herramientas del laboratorio.
+
+Límites: las proyeccionesK4 certifican qué comparación/cierre se registró y
+anclan sus fuentes; NO repiten la comparación completaWorld sin sus checkpoints.
+Los literalesWorld/Core2 y recálculoK4 del área de media son la evidencia aparte.
+Después de capacidades, SDK_PAIR_PRE_CAP es histórico: este paquete no lo hace
+actual ni es un respaldo ejecutable del estadoNative. El NativeRoot completo
+privado sigue siendo necesario para cualquier continuidad autorizada.

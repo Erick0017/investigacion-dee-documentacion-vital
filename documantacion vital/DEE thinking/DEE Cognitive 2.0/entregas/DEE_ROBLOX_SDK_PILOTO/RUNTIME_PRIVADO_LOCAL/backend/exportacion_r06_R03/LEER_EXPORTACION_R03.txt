@@ -1,0 +1,33 @@
+EXPORTADOR CERRADO R06 / ESTADO HOST R03
+
+Variante nueva del exportador R06 preservado. No abre Native/DEE/SQLite,
+Studio, red ni modelo. No lee una instancia hasta que Root lo ejecuta.
+
+Solo despues de CLOSE normal por API, propietario terminado, locks ausentes,
+ledger sin intents/reserva y CAPABILITIES_STATE_R06_R03.json CLOSED sin error:
+
+python -I -S -B backend/exportacion_r06_R03/exportar_capacidades_cerradas_R03.py export --runtime <RUNTIME_ABSOLUTO> --home <HOME_ABSOLUTO> --output <DESTINO_NUEVO_FUERA_RUNTIME>
+
+Si existe estado R03 es la unica fuente del estado actual. Nunca usa el fallo
+R02 como cierre actual ni vuelve silenciosamente al SDK_PAIR. Exige que
+previousFailedBoot vincule el SHA y error literales del FAILED_PRESERVED R02,
+que debe seguir con capabilitySequence0 y las mismas identidades.
+
+El paquete conserva por separado:
+- PRIMARIOS/ESTADO_HOST/CAPABILITIES_STATE_R06_R03.json: actual cerrado.
+- PRIMARIOS/ESTADO_HOST/HISTORICO_CAPABILITIES_STATE_R06.json: fallo anterior.
+- PRIMARIOS/ESTADO_HOST/REPARACION_R03_RESULTADO.json: recibo tecnico si existe.
+
+Los roles current_closed_host_state/historical_failed_boot/technical_repair_receipt
+son explicitos. Todo miembro literal queda ligado por SHA, tamano y procedencia.
+Si R03 no existe, se conserva la ruta R06 anterior para expedientes cerrados.
+
+Recálculo desde el paquete extraido, con destino NUEVO:
+
+python -I -S -B RECALCULAR_CAPACIDADES_R06_R03.py recalculate --package-root . --output RECALCULO_NUEVO
+
+Solo abre los archive declarados dentro de la extraccion; source es procedencia.
+Recuenta Native ticks/recibos/cursor y verifica el vinculo de estados capturados.
+No calcula respuestas esperadas, no convierte NULL en0 y no considera admision
+de LESSON como prueba de aprendizaje. Snapshot/DB/pesos/credenciales quedan fuera.
+No es respaldo ejecutable completo ni repite la comparacion World de K4.

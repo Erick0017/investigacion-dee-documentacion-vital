@@ -1,0 +1,21 @@
+CPC5 — dos partes binarias, sin pérdida de datos
+
+El ZIP canónico completo permanece en esta carpeta. Si su tamaño comprimido
+supera 20 MiB, se ofrecen exactamente dos segmentos de transporte. No son
+dos ZIP independientes y no se descomprimen por separado.
+
+Para reconstruir, coloca .zip.001, .zip.002, PARTES.json y REUNIR_CPC5.py
+en una misma carpeta. Con Python ejecuta:
+
+    py REUNIR_CPC5.py
+
+El programa comprueba primero tamaño y SHA-256 de cada parte; las concatena
+en orden por bloques; verifica tamaño y SHA-256 completos; y conserva todos
+los archivos originales. El resultado termina en _REUNIDO.zip. Si ya existe,
+el programa se detiene para protegerlo. Puedes elegir otro destino:
+
+    py REUNIR_CPC5.py --salida otra_carpeta/CPC5_REUNIDO.zip
+
+Después abre o descomprime el ZIP reunido con una herramienta ZIP compatible.
+La división no garantiza que una aplicación concreta de iPhone permita la
+descarga; PARTES.json informa los tamaños reales y las identidades exactas.

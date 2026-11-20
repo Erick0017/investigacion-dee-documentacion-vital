@@ -1,0 +1,886 @@
+DEE UNIVERSE
+DEE thinking
+2.2.0
+Libro Blancoy Manual Técnico y de Uso
+Estado persistente, interacciones nativasy capacidades utilizables bajo DEE v27.
+Una misma dinámica. Distintas formas de prepararla,acoplarla y observar sus consecuencias.
+Autor del proyecto: Ivan Erick Tlaltecatl Morales
+Entrega 02 definitiva | Kernel v27 congelado
+Corte: 4 de octubre de 2026Documento DEET-LBM-220-01 | Edición 1.0
+Identidad del documento y ruta de lectura
+Elemento
+Identificación
+Producto
+DEE thinking 2.2.0 - Entrega 02 definitiva
+Núcleo
+DEE v27; P_KERNEL=19665; cap operativo del reducer/DEMUX=19664
+Python
+dee_thinking; CPython 3.13 / Windows x64
+C++
+C++20; paquete instalado dee_thinking; target DEE::thinking
+Documento complementario
+Documento Maestro de Arquitectura y Reconstrucción, DEET-MAR-220-01 (77 páginas)
+Este libro ofrece dos recorridos en una sola entrega. El Libro Blanco presenta el mecanismo y su valor de uso; el Manual traduce esa explicación en operaciones, ejemplos y criterios para interpretar resultados. La reconstrucción exhaustiva del código y sus formatos permanece en el Documento Maestro.
+Perfil de lectura
+Recorrido sugerido
+Investigador, socio o evaluador
+Capítulos 1 a 7: concepto, organización causal, capacidades, evidencia y alcance.
+Usuario Python
+Capítulos 8 a 17: instalación, Runtime, composición, protocolos y persistencia.
+Ingeniería C++
+Capítulos 3, 10, 16 a 19: fronteras, enlace, recursos y verificación; Documento Maestro para reconstruir.
+Consulta rápida
+Anexos A y B: interfaces, ejemplos y vocabulario. Anexo C: fuentes e identidades.
+Los ejemplos ejecutables del manual están incluidos en el ZIP de respaldo. Los valores esperados proceden de contratos y pruebas del corte; los asserts comparan respuestas, no las generan. H4 incluye un ejemplo didáctico rotulado como tal.
+Las referencias [Sxx] remiten al anexo C. La versión 2.2.0 identifica un producto comprobado hasta ese corte, no el límite final de las capacidades de DEE.
+Contenido
+PARTE I | LIBRO BLANCO
+1. Síntesis ejecutiva4
+2. DEE desde cero: estado, encuentro e historia5
+3. Una sola dinámica, distintas interfaces6
+4. Del laboratorio al producto consolidado8
+5. Capacidades y significado de los resultados9
+6. Valor de uso y criterios de evaluación11
+7. Evidencia y alcance del corte 2.2.012
+PARTE II | MANUAL TÉCNICO Y DE USO
+8. Instalación y primera comprobación14
+9. Primer mundo persistente: Runtime15
+10. Construir una composición nativa17
+11. Elegir una organización o un protocolo19
+12. Manual H1: del retardo al hub20
+13. Manual H2: banco separado y solapamiento22
+14. Manual H3 y H4: intervenir y diagnosticar23
+15. Manual F1 y F2: revisión y mediación25
+16. Guardar una organización y continuarla28
+17. Dense, Lazy, paralelismo y recursos30
+18. Usar DEE thinking desde C++31
+19. Diagnóstico de problemas y uso responsable33
+20. Del uso documentado a la siguiente etapa34
+ANEXOS
+Anexo A. Referencia rápida de interfaces36
+Anexo B. Glosario operativo38
+Anexo C. Fuentes, identidades y comprobación documental40
+PARTE I | LIBRO BLANCO
+1. Síntesis ejecutiva
+DEE thinking 2.2.0 es una biblioteca nativa de procesamiento sobre el kernel DEE v27. Permite crear un mundo discreto, introducir experiencias, conservar el estado que dejan, ejecutar interacciones posteriores y observar sus consecuencias. La distribución ofrece una interfaz C++ y un paquete Python compilado; ambas utilizan la misma implementación de la transición DEE.
+Su unidad de trabajo es una organización que evoluciona, no sólo una llamada que recibe un dato y devuelve otro. Una entrada encuentra el estado existente, incluidos soporte, dirección, fase y contexto. Cuando el mecanismo lo permite, esa interacción escribe o modifica una relación que influirá en una consulta posterior. La historia importa por las diferencias que permanecen en el presente del mundo.
+La Entrega 02 definitiva transforma mecanismos de CORE, Ingenierías, Procesos y PENSAMIENTO en interfaces y protocolos ejecutables. Conserva el motor v27, añade organizaciones y persistencia, integra seis capacidades identificadas como H1 a H4 y F1/F2, y publica el WHL dee_thinking-2.2.0-cp313-cp313-win_amd64.whl. La versión del producto es 2.2.0; la del kernel sigue siendo v27.
+1.1. Qué puede utilizarse hoy
+Recurso disponible
+Utilidad concreta
+Mundo persistente
+Continuar una misma ejecución entre entradas, consultas y pausas, sin reconstruir su historia por defecto.
+Catálogo y composición
+Preparar organizaciones compatibles en un mundo compartido y dejar que el kernel resuelva sus encuentros.
+Aprendizaje y revisión
+Escribir relaciones mediante interacción, transferirlas y revisar un linaje móvil en los protocolos documentados.
+Representaciones diversas
+Utilizar carga, dirección, fase temporal, fibras de destino y contexto como parte de la organización funcional.
+H1/H2
+Convertir retardos discretos en una lectura espacial y mantener relaciones accesibles en repertorios separados.
+H3/H4
+Ejecutar recuperación desde redundancia entrenada con daño autorizado y analizar efectos condicionados por historia.
+F1/F2
+Realizar revisiones sucesivas de un mismo linaje y una mediación ambiental que modifica otro portador y se utiliza después.
+Persistencia y ejecución
+Guardar, reanudar, comparar ramas y seleccionar agendas Dense/Lazy/paralelas sin cambiar la ley física del modelo.
+1.2. Qué aporta esta entrega
+La aportación de producto es disponer de un instrumento común. Los experimentos ya no dependen exclusivamente de un script separado que prepara cada vóxel; el usuario dispone de contratos, tipos de entrada, recetas y protocolos versionados. Puede repetir un mecanismo conocido, examinar su estado y construir nuevas preparaciones de investigación sin reescribir el kernel.
+Esto no convierte cada protocolo en un procesador universal. La generalidad del Runtime y la especialización de un aparato son niveles distintos: el primero ejecuta el mundo; el segundo fija condiciones en las que una capacidad particular ha sido comprobada. Esa delimitación hace utilizable lo alcanzado sin convertirlo en el supuesto límite de DEE.
+1.3. Alcance de este libro
+La primera parte explica qué es el producto, su lógica y el significado de las capacidades. La segunda enseña a instalarlo, seleccionar interfaces, ejecutar ejemplos y conservar resultados. El Documento Maestro de Arquitectura y Reconstrucción, identificado como DEET-MAR-220-01, conserva el detalle de constitución interna, formatos y recuperación del software.
+Este libro corresponde al corte 2.2.0 del 4 de octubre de 2026. No es una propuesta de otra librería ni una promesa de funciones que se incorporarán automáticamente. Las demostraciones nuevas no son requisitos para poder utilizar este corte.
+Fuentes: [S01], [S02], [S06], [S07].
+2. DEE desde cero: estado, encuentro e historia
+Un mundo DEE es una retícula tridimensional discreta con condiciones periódicas. Cada sitio tiene una palabra de estado, denominada RAW, y un clock. El kernel ejecuta pasos o ticks. En cada paso consulta configuraciones vecinas y aplica reglas de nacimiento, transporte, evolución, protección e interacción. Las condiciones periódicas hacen que una trayectoria pueda regresar por el otro extremo del dominio.
+Un portador es una configuración que participa en esas interacciones; no es simplemente un valor almacenado en una dirección de memoria del programa. Importa lo que porta, pero también cómo llega, con qué coincide y qué encuentra. Dos preparaciones con la misma cantidad de registros pueden tener futuros diferentes por su disposición y sus relaciones temporales.
+2.1. Los términos básicos
+Término
+Significado operativo en este libro
+RAW
+Palabra de 64 bits con campos de estado, carga s_reg, dirección y semántica. No equivale a una simple ocupación.
+Clock
+Contador de 64 bits por sitio. Se conserva completo; su fase puede participar en las guardas del kernel.
+Tick
+Una transición completa del modelo. No es por definición un milisegundo ni una unidad calibrada del mundo exterior.
+s_reg
+Campo de carga del registro. Su función depende de la rama y del protocolo; no se identifica aquí con calor o energía universal.
+Dirección
+Componentes codificadas que participan en propuestas de transporte y reducciones de encuentros.
+Semántica
+Campo que interviene en las condiciones de la regla. Sus nombres en el source no prueban correspondencias con partículas externas.
+Fibra de destino
+Conjunto de contribuciones que coinciden en un destino y una frontera temporal del aparato.
+Organización
+Estado y relaciones suficientes para expresar una capacidad bajo una preparación, lectura y horizonte definidos.
+2.2. Por qué cero no es ausencia
+Un portador de carga cero puede tener dirección, semántica y presencia. Puede llegar a un encuentro y modificar su dirección resultante sin añadir carga. Sustituirlo por "no enviar nada" cambia el experimento. Del mismo modo, state=0 no garantiza que toda la palabra RAW sea cero: otros campos pueden seguir siendo relevantes.
+La distinción afecta directamente al uso. El Runtime ordinario admite una escritura en un sitio RAW-vacío, no en cualquier sitio que un lector de ocupación llame vacío. Por eso una entrada programada puede ser rechazada cuando alcanza su frontera efectiva.
+2.3. Dónde está la memoria
+La memoria no necesita un campo llamado "memoria". En los mecanismos del proyecto puede expresarse como una relación entre registros, una dirección, una secuencia de coincidencias o un contexto que modifica futuros encuentros. Un linaje puede conservar función mientras cambia de lugar. Una fuente puede conservar su RAW y, aun así, no describir por sí sola la historia temporal de lo que emite.
+Las Ingenierías 05 y 06 separaron algo más preciso que "los mundos terminan distintos": una experiencia posterior puede tener efectos diferentes sobre paisajes con historias distintas. Los controles comparan el efecto de la experiencia sobre cada fondo, no sólo las fotografías finales. Este antecedente explica por qué el producto conserva el mundo completo y no reduce el contexto a una única carga visible.
+2.4. Física del modelo y soporte de ejecución
+En este producto, las interacciones DEE se realizan mediante una regla matemática implementada en software nativo. La geometría causal pertenece al modelo que se ejecuta; no demuestra por sí sola masa, energía o neuronas biológicas en el hardware. Describir esa diferencia no reduce el valor de los mecanismos medidos: evita confundir una interpretación externa con el comportamiento exacto de la librería.
+Fuentes: [S03], [S05], [S11], [S12], [S02, caps. 2 y 5 a 8].
+3. Una sola dinámica, distintas interfaces
+La identidad del procesamiento está en la evolución del mundo. El siguiente esquema expresa la separación entre estado, intervención y lectura:
+Q_t = (RAW_t, CLOCK_t)
+Q_(t+1) = F_27(E_t(Q_t));     y_t = M(Q_t)
+F_27 es la transición del kernel. E_t representa una intervención externa cuando el protocolo la declara; sin entrada, es la identidad. M es una lectura. El estado del Runtime incluye además la cola, el tick y los metadatos necesarios para aplicar el protocolo y reanudarlo. Esos elementos no deben confundirse con nuevos campos de la física DEE.
+3.1. Modularidad de software no significa piezas físicamente aisladas
+Los nombres de organizaciones, puertos y protocolos permiten a un ingeniero preparar y utilizar mecanismos. No añaden una ley distinta para cada etiqueta. En una composición nativa, las organizaciones se instalan en un solo Runtime; después la interacción, supervivencia y posible interferencia se resuelven en ese estado compartido.
+Una dinámica única tampoco significa que todo influya instantáneamente sobre todo. El kernel conserva sus dependencias espaciales y su orden temporal. Es posible mantener fibras separadas o contextos diferentes; lo que no se puede suponer es independencia causal porque el código esté dividido en clases.
+3.2. Tres formas de utilizar la versión 2.2.0
+Interfaz
+Qué conserva o ejecuta
+Cuándo usarla
+Runtime
+Un mundo, sus entradas, observaciones, ticks, forks y snapshots.
+Para continuar una ejecución propia y controlar explícitamente el protocolo.
+OrganizationCatalog + CompositionPlanner
+Preparaciones compatibles y sus conexiones dentro de un ComposedWorld.
+Para componer organizaciones publicadas sin editar cada vóxel.
+Registro de protocolos H1 a H4/F1/F2
+Constructores, procedimientos finitos y un analizador, con configuraciones y resultados propios.
+Para ejecutar los mecanismos integrados mediante sus entrypoints públicos.
+Estas interfaces no son intercambiables. En particular, run_reusable_revision(...) prepara y ejecuta su propio protocolo finito; no recibe automáticamente un Runtime del usuario ni se inserta como un nodo genérico en cualquier composición. Las llamadas run_* separadas no quedan acopladas físicamente por ejecutarse en un mismo programa Python. H4, por su parte, analiza lecturas y no evoluciona un mundo.
+3.3. Preparación, acoplamiento y diagnóstico
+Modalidad
+Frontera de intervención
+Nativa después de HOST_STOP
+Se prepara el mundo; tras la frontera declarada sólo se ejecutan ticks y observaciones pasivas.
+Acoplada
+Se aportan experiencias externas durante la evolución mediante un protocolo identificado.
+Diagnóstica
+Se realizan sondas, cortes o daño para comprobar qué mecanismo produce una respuesta.
+La preparación inicial puede ser compleja y sigue siendo legítima. No equivale a que el sistema haya diseñado esa arquitectura. Un portador preparado en t0 que llega después por transporte nativo no es lo mismo que una escritura del host agendada para un tick futuro. Esa distinción se conserva en F1/F2.
+H2/H3 también conservan operaciones de preparación protocolaria que no pasan por Runtime.experience: incluyen fases preparadas y, en H3, daño autorizado. El kernel es el mismo, pero las intervenciones del experimento son diferentes. El manual no las oculta bajo una promesa de "todo es una entrada ordinaria".
+Fuentes: [S02, caps. 2, 9, 12 y 13], [S03], [S04], [S06].
+4. Del laboratorio al producto consolidado
+El desarrollo avanzó mediante descubrimientos, contrastes y correcciones de interpretación. La Entrega 02 definitiva no reemplaza esa genealogía: conserva los mecanismos que llegaron al producto y el alcance de cada uno. Un resultado histórico más amplio puede orientar investigación futura, pero no convierte automáticamente todo su dominio en una promesa del port C++ publicado.
+4.1. Aportes que se conservan
+Etapa o familia
+Aporte al corte 2.2.0
+CORE05
+Transporte, coincidencias, memoria temporal por fase y transducción de retardo a posición.
+CORE06/CORE07
+Aprendizaje de relaciones, consulta transformativa, transferencia, revisión y repertorios de destino.
+CORE15 a 17
+Distinción entre estado completo y observación, identidad funcional y recuperación desde redundancia entrenada.
+Ingenierías 01 a 06
+Controles de escritura y lectura, memoria relativa, accesibilidad, contexto e historia distribuida.
+Procesos
+Continuidad, transición, contexto e interfaces cuya respuesta depende de la organización previa.
+PENSAMIENTO y laboratorios finales
+Reentrada, integración multicanal, revisiones repetidas y mediación ambiental finita.
+Entregas 01/02 y cierre
+Núcleo nativo, Runtime, composición, agendas equivalentes, persistencia, API y WHL.
+No se afirma que cada aparato de cada familia se encuentre publicado. El mapa indica procedencia; el catálogo y los contratos del corte identifican lo que realmente puede invocarse.
+4.2. Correcciones que forman parte del conocimiento
+La distinción entre reloj preparado y experiencia posterior evitó atribuir al mundo una memoria que el host había escrito. Separar observación pasiva de sonda física evitó llamar "lectura inocua" a una operación que transforma la organización. Comparar entradas realmente admitidas evitó confundir aprendizaje con una diferencia de ocupación del puerto.
+En PENSAMIENTO se comprobó que una recurrencia puede continuar mientras un grado escalar pierde distinciones por saturación. En los laboratorios posteriores se separaron acumulación de consultas, revisiones suministradas y utilización causal posterior. F1 no se descarta porque sus teachers sean externos: la capacidad publicada es precisamente recibir esas revisiones y utilizarlas en el mismo linaje. F2 tampoco requiere infinitud para reconocer su mediación ambiental.
+4.3. Cuándo una conclusión anterior queda superada
+El criterio no es que un documento nuevo sea siempre mejor por su fecha. La evidencia nueva puede ampliar un dominio, identificar un control faltante o demostrar que dos observadores describen propiedades distintas. La conclusión anterior permanece como antecedente de su preparación, mientras la descripción vigente incorpora la mejora.
+La versión 2.2.0 representa un corte utilizable de ese proceso. "No se probó replicación con este aparato" no se convierte en "DEE no puede replicar". A la inversa, "podría ser posible" no aparece como una función disponible. Esta distinción permite cerrar el producto actual sin cerrar la investigación.
+Fuentes: [S01], [S02, cap. 3], [S10], [S11], [S12].
+5. Capacidades y significado de los resultados
+Las seis capacidades H1 a H4/F1/F2 se exponen mediante el namespace C++ dee::thinking::protocols y el módulo Python dee_thinking. Sus descriptores explican procedencia, modalidad, puertos, recursos y dominio. Sus nombres son contratos de acceso a mecanismos, no divisiones ontológicas del mundo.
+5.1. H1: una diferencia temporal se vuelve una lectura espacial
+H1 prepara un banco de rutas que llegan a hubs separados. Para un label j, la sonda llega según una calibración geométrica y el objetivo llega según el retardo de entrada. La coincidencia identificadora ocurre donde ambas llegadas se encuentran. El host no selecciona el hub correcto a partir del dato recibido.
+L + delta = L + j  implica  j = delta
+El dominio publicado utiliza N=59, L=12 y once labels enteros de -5 a 5 en el marco documentado. Los controles de calibración invertida y objetivo ausente distinguen una coincidencia producida por la preparación correcta de una simple llegada aislada. Es una transducción temporal discreta utilizable dentro de ese contrato.
+5.2. H2: conservar repertorios o integrarlos
+En el banco separado, K pares cue/teacher escriben relaciones sobre fibras distintas; una consulta posterior examina cada una. En el panel solapado, dos memorias llegan al mismo destino y producen una contribución conjunta. La capacidad que permite combinar información puede hacer que deje de estar disponible bajo sus lectores individuales.
+La API publica run_separated_repertoire y run_overlap_repertoire como operaciones diferentes. K=3 y K=7 forman parte de la cobertura local del corte. El K=40 histórico no es un límite universal ni una ampliación automática de esta versión.
+5.3. H3: recuperar una función desde redundancia entrenada
+H3 prepara dos fuentes que aprenden mediante secuencias propias. Se daña de forma autorizada la primera política transferida; la segunda aporta una continuidad que permite reconstruir función en el receptor adecuado. Los controles con copia no entrenada, ruta cortada, copia ausente o receptor incorrecto delimitan de dónde procede la recuperación.
+La recuperación es funcional: no exige que todos los RAW sean idénticos a los de la primera organización. Ambas fuentes se consumen en el aparato ensayado. H3 es un protocolo acoplado/diagnóstico con daño opt-in, no una acción oculta de reparación dentro de advance().
+5.4. H4: medir acceso sin inventar una ruta
+H4 es un analizador puro. Recibe lecturas emparejadas de baseline y challenge por historia, comprueba consistencia de ciertas declaraciones y calcula diferencias. No crea un mundo, no lo modifica y no demuestra que una clase sea alcanzable porque el usuario escriba REACHED en sus metadatos.
+Su utilidad es mantener interpretable un contraste: comparar el efecto de una misma intervención sobre cada historia, en vez de atribuir a la intervención cualquier diferencia entre mundos ya distintos. La salida depende del observador y de los datos suministrados.
+5.5. F1: revisar una misma continuidad funcional
+F1 realiza dos revisiones suministradas sobre el mismo linaje C7H03 y utiliza las modificaciones en consultas posteriores. Las consultas también son transformativas. El panel separa orden, primera revisión, segunda revisión, sham y ausencia de relación entrenada.
+Brazo F1
+Respuestas en t34, t46 y t58
+REV_11_13
+4149 - 4165 - 4181
+REV_13_11
+4149 - 4167 - 4181
+FIRST_ONLY_11
+4149 - 4165 - 4168
+SECOND_ONLY_13
+4149 - 4154 - 4170
+SHAM_11_13
+4149 - 4154 - 4157
+NO_TRAINED_RELATION
+7 - 5 - 3
+En el contraste con sham, la diferencia intermedia del brazo 11/13 es 11; la terminal es 24, correspondiente a las dos revisiones. Invertir el orden cambia la lectura intermedia y conserva la carga terminal una vez aplicada la misma suma. Es una revisión reutilizable acotada de una relación móvil. La preparación contiene los teachers: el resultado no requiere afirmar que DEE haya inventado esos valores.
+5.6. F2: una consecuencia modifica otro portador
+En F2, la respuesta upstream llega a un receptor ambiental soportado, junto con un sesgo común. Una preparación de fase habilita la transición material que produce overflow. El postpaso DEMUX aplica +1 sobre un portador independiente: 23 se convierte en 24. La diferencia participa después en otras interacciones.
+Brazo F2
+Overflow
+Cadena t39, t43, t47, t51, t55
+ENV_INTACT
+1
+24 - 55 - 62 - 62 - 67
+ENV_RESPONSE_CUT
+0
+23 - 54 - 61 - 61 - 66
+ENV_NO_QUERY
+1
+0 - 31 - 7 - 0 - 5
+ENV_QUERY_SHAM
+1
+0 - 31 - 7 - 0 - 5
+ENV_SUBTHRESHOLD
+0
+23 - 54 - 61 - 61 - 66
+ENV_CONTENT_19
+1
+24 - 55 - 62 - 62 - 67
+El corte denominado ENV_RESPONSE_CUT desvía el teacher inicial: no es un corte tardío de una respuesta ya formada. El control subumbral cambia el sesgo 15515 a 15514. Los controles sin query o con query desviada conservan el overflow pero no transmiten su efecto por la ruta funcional examinada.
+El mecanismo publicado es mediación ambiental finita y preparada. El contenido unitario procede de DEMUX. No se ofrece como un generador arbitrario de teachers ni como el mismo entorno auto-renovado para infinitos episodios.
+5.7. F3: un resultado informativo que no es una función exportada
+Las respuestas upstream 4149 y 4151 produjeron la misma secuencia downstream al pasar por el umbral del aparato F2. Esa realización funciona como compuerta de umbral, no como replicador de contenido. F3 permanece como evidencia y regresión; no hay un ID público de fan-out que prometa lo que no se consiguió.
+Fuentes: [S06], [S08], [S10]. Los valores de las tablas son oráculos documentados del corte, no código que sustituya al kernel.
+6. Valor de uso y criterios de evaluación
+La utilidad inmediata de DEE thinking es convertir mecanismos de procesamiento causal en operaciones reproducibles y accesibles a un programa. Un equipo puede explorar cómo una experiencia modifica el futuro de una organización, comparar lectores, conservar ejecuciones y ensayar composiciones con controles. Un socio técnico puede examinar una demostración, sus recursos y su contrato sin tener que aceptar una afirmación general de inteligencia.
+6.1. Lo que se puede evaluar con la biblioteca actual
+Necesidad
+Punto de entrada
+Qué verificar
+Relación entre tiempo y lugar
+H1
+Retardo admitido, label observado y controles de calibración.
+Mantener varias relaciones
+H2
+Respuesta por canal, aislamiento y efecto de solapar fibras.
+Cambiar una función ya presente
+C7H03/F1
+Revisión suministrada, lectura común y persistencia de la diferencia.
+Recuperar desde redundancia
+H3
+Función antes del daño, pérdida, recurso entrenado, reconstrucción y consulta posterior.
+Medir sensibilidad a historia
+H4 y protocolos contextuales
+Efecto del challenge sobre su baseline y comparabilidad del lector.
+Hacer que una respuesta tenga otra consecuencia
+F2
+Umbral, destino DEMUX, portador modificado y uso posterior.
+Ejecutar y comparar preparaciones
+Runtime/ComposedWorld
+Entradas admitidas, estado completo, versión, controles y snapshots.
+6.2. De mecanismo a aplicación
+Una señal de audio, un sensor o una variable de un simulador necesita un contrato de codificación antes de entrar al mundo. El contrato debe decir qué representa, qué diferencias conserva, cuándo llega y cómo se interpretará la respuesta. Codificar una variable no demuestra por sí solo reconocimiento, control o adaptación exitosa en el dominio externo.
+Las aplicaciones y adaptadores de la Entrega 03 podrán apoyarse en esta base. Ese paso no cambia retrospectivamente lo que se midió en 2.2.0. Si un supervisor externo decide redirigir entradas, debe aparecer como parte del sistema compuesto, no como una acción que se atribuye silenciosamente al kernel.
+6.3. Cómo presentar el producto sin exagerarlo ni minimizarlo
+La formulación verificable es: "Biblioteca nativa para construir y ejecutar organizaciones DEE con estado persistente, relaciones aprendidas o revisadas en protocolos definidos, composición y persistencia". Su valor no depende de declarar que sustituye cualquier otra IA o que resuelve toda tarea posible.
+El término thinking es una analogía de procesamiento. Las hipótesis de relación con mente o procesamiento biológico pueden investigarse, pero no forman parte de la validación funcional de esta distribución. No es necesario descartarlas ni presentarlas como logradas para utilizar las capacidades actuales.
+No se dispone en este corte de una comparación de energía o coste industrial que autorice promesas de superioridad universal. La elección de una agenda optimizada se mide por preparación y entorno. La diferencia propia de DEE debe explicarse por sus mecanismos y su evidencia, no por atribuir limitaciones falsas a otras tecnologías.
+Fuentes: [S01], [S02, caps. 2 y 20], [S06], [S10]. La tabla organiza usos de los mecanismos publicados; no constituye una validación industrial nueva.
+7. Evidencia y alcance del corte 2.2.0
+Una verificación de producto responde a si el software compila, conserva sus contratos y reproduce los casos previstos. Una afirmación científica responde a qué mecanismo se observó, con qué controles y en qué dominio. Los dos niveles se complementan, pero no deben fundirse en una etiqueta única de "todo demostrado".
+7.1. Validación reportada por la entrega
+Recorrido
+Resultado reportado
+Suite nativa completa
+17 de 17 targets aprobados tras la corrección del wrapper H2-overlap.
+API Python instalada
+11 de 11 pruebas; instalación no editable en CPython 3.13 y directorio externo al source.
+Persistencia C++/Python
+Comparaciones bidireccionales de Runtime y protocolos con estado, fase y lecturas pertinentes.
+Consumidor instalado
+Enlace mediante find_package y uso de interfaces públicas, sin incluir los .cpp como atajo.
+Reconstrucción desde extracción
+Build y panel dirigido 8/8, más reconstrucción del wheel.
+Estas cifras se atribuyen al resumen e informe de la entrega, no a una nueva campaña ejecutada para este libro. El paquete conserva FINAL_VALIDATION_SUMMARY.json y wheel_build.log; el Documento Maestro aclara que el log incluye intentos fallidos previos y que no debe confundirse con un registro exitoso completo de todas las pruebas. Esa diferencia no se elimina por resumir el corte como VERIFIED.
+7.2. Qué significa equivalencia
+Con la misma preparación, entrada y versión, los backends se contrastan mediante RAW y clock, no sólo por una salida escalar. Un contador de trabajo puede variar porque Lazy evita evaluaciones, sin que por ello cambie la física. Para dos organizaciones con geometría distinta, la comparación pertinente puede ser una función o un repertorio de respuestas, siempre que se declare qué se conserva.
+La coincidencia de casos finitos respalda esos casos y el razonamiento estructural asociado. No sustituye una prueba para todo estado posible. Esta precisión no transforma la generalidad no ensayada en una deuda que bloquee indefinidamente la publicación.
+7.3. Alcance concluido y continuidad futura
+El corte ofrece mecanismos operativos, bibliotecas, interfaces, código y procedimientos de reproducción. F3 no es una capacidad disponible; H4 es un analizador; H3 requiere un protocolo diagnóstico; F1/F2 conservan preparaciones finitas. Esas fronteras deben acompañar al uso y a la comunicación del producto.
+Una nueva capacidad puede investigarse con DEE thinking en un laboratorio separado. Cuando su evidencia y su implementación lo justifiquen, podrá publicarse como otra versión. La congelación de 2.2.0 protege la trazabilidad; no congela la investigación ni obliga a reeditar sus resultados cada vez que aparece una hipótesis.
+Fuentes: [S01], [S02, cap. 19], [S08], [S09], [S10].
+PARTE II | MANUAL TÉCNICO Y DE USO
+8. Instalación y primera comprobación
+El artefacto Python de esta entrega está construido para CPython 3.13 estándar y Windows x64. Su nombre completo es dee_thinking-2.2.0-cp313-cp313-win_amd64.whl. No es el paquete histórico dee_universe_v27 renombrado: contiene la extensión nativa dee_thinking._native y no necesita importar el kernel antiguo para evolucionar.
+8.1. Qué archivo utilizar
+Para ejecutar desde Python basta el wheel compatible y el entorno requerido. El ZIP definitivo contiene además código, headers, biblioteca nativa, herramientas y pruebas. Para reconstruir o desarrollar en C++, utilice ese paquete completo y el Documento Maestro. Instalar el wheel no exige compilarlo de nuevo.
+La etiqueta cp313 identifica el contrato de esta distribución. No cambie el nombre del archivo para intentar instalarlo en otro Python, en un intérprete free-threaded, en ARM o en otro sistema operativo. Eso no convierte al binario en compatible.
+8.2. Instalación local reproducible
+El ejemplo utiliza C:\DEE22 como carpeta de trabajo elegida por el lector, no como una ruta obligatoria del producto. Coloque allí el wheel, o copie su ruta absoluta en la variable $wheel. El paquete técnico original lo conserva dentro de wheel/.
+powershell
+$work = "C:\DEE22"New-Item -ItemType Directory -Force $work | Out-NullSet-Location $workpy -3.13 --versionpy -3.13 -m venv .venv$python = Join-Path $work ".venv\Scripts\python.exe"$wheel = Join-Path $work "dee_thinking-2.2.0-cp313-cp313-win_amd64.whl"& $python -m pip install --no-index --no-deps $wheel& $python -c "import dee_thinking as dt; print(dt.__version__)"
+El uso de --no-index --no-deps reproduce la modalidad de instalación local reportada. No descarga ni reconstruye el paquete desde un repositorio. Si el comando falla, conserve el mensaje exacto y compruebe primero intérprete, arquitectura y ruta; no modifique el kernel ni las etiquetas del wheel.
+8.3. Identidad y registro de capacidades
+El script siguiente comprueba la identidad y muestra los seis descriptores integrados. En Python, __version__ describe el producto; kernel_identity() describe el kernel incorporado. Un import exitoso acredita carga del módulo, no por sí solo el funcionamiento de todos los protocolos.
+Ejemplo ejecutable: 01_identidad.py
+import sysimport dee_thinking as dtassert dt.__version__ == "2.2.0"assert dt.KERNEL_MODULUS == 19665assert dt.REDUCER_CAP == 19664print("Python:", sys.version.split()[0])print("Producto:", dt.__version__)print("Kernel:", dt.kernel_identity())print("Build:", dt.build_info())print("Paquete:", dt.__file__)for item in dt.integrated_protocol_descriptors():    print(item.id, item.version, item.modality)
+El resultado debe identificar versión 2.2.0, módulo nativo, módulo antiguo no delegado y las seis entradas H1-H4/F1-F2. Para comprobar uso real continúe con los ejemplos de este manual. Ejecútelos desde una carpeta distinta del source para no confundir archivos locales con el paquete instalado.
+8.4. Identidad del artefacto preservado
+El SHA-256 del wheel de este corte es:
+39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6
+Puede obtenerlo con Get-FileHash -Algorithm SHA256 $wheel. La coincidencia identifica la copia del artefacto; no garantiza disponibilidad perpetua del enlace ni sustituye la ejecución de sus pruebas. Conserve el archivo localmente junto con el paquete fuente y los documentos.
+Fuentes: [S01], [S07], [S09], [S13], [S14].
+9. Primer mundo persistente: Runtime
+Runtime es la interfaz para mantener una ejecución abierta y presentar experiencias explícitas. El objeto posee sus buffers, sus canales y su cola. Crear dos objetos no crea una interacción entre ellos. Una llamada posterior sobre el mismo objeto continúa su estado, salvo que el usuario invoque expresamente una restauración o una nueva preparación.
+9.1. Crear, programar, avanzar y observar
+El ejemplo crea un mundo N=11, define un canal y programa un portador de carga 17. La lectura se realiza después del tick que aplica la entrada. La dirección +x conduce al sitio de lectura del ejemplo en la siguiente frontera.
+Ejemplo ejecutable: 02_runtime.py
+import dee_thinking as dtworld = dt.Runtime(11)world.execution_options = dt.TickOptions(dt.Backend.LAZY, 2)channel = dt.ChannelSpec()channel.name = "entrada"channel.injection_site = dt.Coordinate(3, 4, 5)channel.state = 101channel.direction = dt.Direction(1, 0, 0)channel.semantic = 1channel.allow_experience = Truechannel.allow_probe = Trueworld.register_channel(channel)request = world.experience("entrada", 0, 17)assert request.status == dt.EventStatus.SCHEDULEDworld.advance(0)assert world.current_tick == 0world.advance(1)receipt = world.receipt(request.id)assert receipt.status == dt.EventStatus.APPLIEDobs = world.observe(dt.Coordinate(4, 4, 5))assert obs.record.s_reg == 17print(world.current_tick, obs.record.s_reg, obs.clock)
+# La segunda entrada usa el mismo mundo, no otro Runtime.second = world.experience("entrada", world.current_tick, 3)world.advance(1)print("Segunda entrada:", world.receipt(second.id).status)print("Registros RAW:", world.metrics().raw_support)
+La primera impresión esperada es 1 17 1: tick 1, carga 17 y clock 1 en la coordenada observada. La entrada usó un state de preparación 101, pero el nacimiento transportado se normaliza según la rama del kernel; no se debe esperar que todo RAW del emisor se copie sin cambios al destino.
+La segunda experiencia utiliza el mismo objeto y el mismo canal. Su resultado se inspecciona mediante el recibo: solicitar no equivale a admitir. No se afirma que cualquier repetición por el mismo puerto sea siempre aceptada ni que toda entrada escriba una memoria retenida.
+9.2. Fronteras de tiempo exactas
+Operación
+Efecto temporal
+experience(..., t, ...)
+Agenda la experiencia para la frontera t. No implica que ya se haya escrito el mundo.
+run_until(T)
+Termina en el estado tras T transiciones; no aplica eventos pendientes de T hasta que comience otra transición.
+advance(n)
+Realiza exactamente n ticks, aplicando los eventos de cada frontera correspondiente.
+advance(0)
+No aplica cola ni cambia estado, clock o tick.
+observe(...)
+Lee en la frontera actual, sin avanzar ni aplicar entradas.
+pause()/resume()
+Impide o habilita avance; no recupera automáticamente tiempo de pared ni reinicia historia.
+Si run_until(6) termina y se agenda una consulta en t6, hace falta avanzar para aplicarla. Observar inmediatamente en t6 no significa que la consulta haya ocurrido. Esta diferencia explica varios errores de uso que parecen errores físicos y son, en realidad, errores de frontera.
+9.3. Leer el recibo, no adivinar la admisión
+Estado Python del recibo
+Interpretación
+SCHEDULED
+La solicitud fue programada; su admisión física sigue pendiente.
+APPLIED
+Se aplicó en la frontera indicada por effective_tick.
+REJECTED_OCCUPIED
+El destino no estaba RAW-vacío. No se borró para forzar la entrada.
+REJECTED_CONFLICT
+Escrituras simultáneas incompatibles sobre el mismo registro.
+REJECTED_LATE
+Se solicitó una frontera anterior a la actual.
+REJECTED_INVALID
+Canal, permiso, campos o lote no válidos.
+REJECTED_QUEUE_FULL
+Se alcanzó el límite de la cola, fijado en 4096 eventos pendientes en este corte.
+receipt(id) permite consultar el estado actualizado. No reutilice el recibo inicial SCHEDULED como si cambiara por sí solo cuando evoluciona el mundo. Un lote de entradas tiene la atomicidad declarada por el Runtime: no se aplica una parte favorable y se omite otra silenciosamente.
+9.4. Observar, sondar y conservar el clock
+observe devuelve la palabra RAW, el clock y su decodificación. probe agenda una intervención que debe estar permitida por el canal; puede transformar el estado. Para comparar ambos casos utilice trayectorias o forks explícitos. Una sonda no es una lectura pasiva con otro nombre.
+En las entradas ordinarias de Runtime se escribe RAW y se conserva el clock existente en el sitio. Esta regla no debe extenderse sin examen a los protocolos H2/H3, que tienen preparaciones específicas. Cambiar el clock manualmente para obtener una respuesta deseada convierte el procedimiento en otro experimento.
+Fuentes: [S03], [S05], [S07], [S08: test_wheel_api.py].
+10. Construir una composición nativa
+El catálogo permite seleccionar una organización; el planificador comprueba condiciones declaradas de conexión y prepara un mundo compartido. Una conexión no es un callback que copia una respuesta entre motores. La geometría, el tiempo y la dirección deben permitir que los participantes se encuentren bajo v27.
+10.1. Aprendizaje y consulta posterior
+El ejemplo siguiente procede de la prueba pública de composición del paquete. Prepara una organización de aprendizaje y una de consulta, conecta la salida móvil y aporta una consulta después de avanzar el mismo mundo.
+Ejemplo ejecutable: 03_composicion.py
+import dee_thinking as dtcatalog = dt.OrganizationCatalog()learn = dt.OrganizationRequest()learn.catalog_id = "relation_learning.c6h01.v1"learn.instance_id = "learner"learn.anchor = dt.Coordinate(10, 18, 14)read = dt.OrganizationRequest()read.catalog_id = "relation_query.c6h01.v1"read.instance_id = "reader"read.anchor = dt.Coordinate(10, 26, 14)link = dt.ConnectionRequest()link.source = dt.Endpoint()link.source.instance = "learner"link.source.port = "learned_relation"link.target = dt.Endpoint()link.target.instance = "reader"link.target.port = "relation_input"link.purpose = "consulta posterior"
+plan = dt.CompositionPlanner(34)plan.add(catalog.instantiate(learn))plan.add(catalog.instantiate(read))plan.connect(link)problems = plan.analyze()if any(p.severity == dt.DiagnosticSeverity.ERROR for p in problems):    raise RuntimeError("La composicion no supera su contrato")world = plan.build()world.runtime.execution_options = dt.TickOptions(dt.Backend.LAZY, 2)cue = dt.PortInputRequest()cue.instance, cue.port, cue.s_reg = "learner", "cue", 5teacher = dt.PortInputRequest()teacher.instance, teacher.port, teacher.s_reg = "learner", "teacher", 7training = world.experience_batch([cue, teacher], 0)world.runtime.run_until(6)query = world.probe("reader", "query", 6, 13)world.runtime.run_until(11)assert world.runtime.receipt(query.id).status == dt.EventStatus.APPLIEDsite = world.landmarks["reader.response"]answer = world.runtime.observe(site)assert answer.record.s_reg == 25print("Respuesta:", answer.record.s_reg)world.save_snapshot("composicion.deetsnap")
+La respuesta prevista en esta preparación es 25. Los valores 5 y 7 de la experiencia inicial y la consulta 13 participan en los encuentros del kernel. El assert es un control externo del resultado: no lo escribe en el mundo. La consulta de t6 es una experiencia posterior real por la API; el aparato no se reconstruye al recibirla.
+La coordenada de lectura procede del landmark que fija la organización, no de una búsqueda a posteriori del sitio cuyo valor coincida con 25. Cambiar anclas, tiempos o direcciones puede alterar el encuentro, aunque se conserven las mismas cargas.
+10.2. Qué garantiza analyze y qué debe comprobarse ejecutando
+El planificador comprueba condiciones de rol, tipo de contribución, dirección, orden temporal y llegada del contrato. No crea una pared alrededor de cada organización ni elimina interferencias del mundo. Las guardas que dependen de supervivencia, fase, soporte o encuentros reales se resuelven durante la evolución.
+Un rechazo informa que esa composición no está soportada por el planificador. No es una prueba de que el kernel prohíba toda realización de la función. Para investigarla haría falta otro aparato y otra validación; no basta con desactivar la comprobación.
+10.3. Qué no hace una conexión
+No clona el estado para alimentar dos receptores, no crea entradas nuevas porque un resultado parezca conveniente y no cambia el tamaño del toro para hacer sitio sin declararlo. La versión no soporta fan-out genérico copiando una relación. Las consultas transformativas tampoco preservan la memoria mediante una copia oculta.
+build() instala la preparación antes de avanzar. Añadir una nueva estructura en una ejecución evolucionada sería una intervención distinta, no una operación administrativa inocua. Los protocolos integrados H1-H4/F1-F2 tienen su registro separado; que un ID figure allí no significa que pueda pasarse indistintamente a OrganizationCatalog.instantiate().
+Fuentes: [S04], [S07], [S08: test_wheel_api.py], [S02, cap. 9].
+11. Elegir una organización o un protocolo
+El criterio de selección no es el nombre que suene más general, sino el contrato que realiza la interacción requerida. El catálogo responde a cómo preparar una organización y sus puertos; los protocolos integrados proporcionan procedimientos completos y resultados específicos.
+11.1. Catálogo heredado
+ID de catálogo
+Papel disponible
+transport.axis.v1
+Transporte sobre un eje representable, con distancia y dirección configuradas.
+relation_learning.c6h01.v1
+Preparación de la colisión cue/teacher y relación móvil.
+relation_query.c6h01.v1
+Consulta posterior sobre el linaje correspondiente.
+mobile_lineage.c7h03.v1
+Linaje móvil con encuentro de actualización.
+native_update_bridge.p01.v1
+Preparación del puente de actualización nativa del aparato.
+query_recurrence.p01.v1
+Consultas y suministro de la realización recurrente finita.
+relative_history.i02.v1
+Historia relativa y selección bajo el soporte declarado.
+contextual_multichannel_recurrence.p02.v1
+Integración/contexto/recurrencia del testigo publicado.
+distributed_context.i05.v1
+Contexto distribuido usado en la composición documentada.
+temporal_phase_memory.core05.v1
+Memoria de fase NRH04/NRH06 con sus brazos y condiciones.
+Los sufijos p01 o p02 se conservan como identificadores del software. No permiten sustituir por intuición la fuente que fija cada aparato. Para conocerla utilice el campo de procedencia y las referencias del corte.
+11.2. Inspección de contratos
+python
+import dee_thinking as dtcatalog = dt.OrganizationCatalog()for descriptor in catalog.descriptors:    print(descriptor.id)for descriptor in dt.integrated_protocol_descriptors():    print(descriptor.id)    print(descriptor.tested_domain)    print(descriptor.limits)    print(descriptor.modality)
+La inspección no evoluciona un mundo. Permite descubrir lo que publica la instalación real, en lugar de programar contra una lista de nombres propuesta en una conversación anterior. Los flags y textos de un descriptor son metadatos de contrato, no el estado de una memoria DEE.
+11.3. Parámetros y generalización
+Un tipo de configuración puede contener varios campos aun cuando la versión publique sólo un subconjunto probado. H1 conserva un banco concreto; H2 publica K=3/K=7; H3 restringe geometrías; F1/F2 verifican tuplas de parámetros asociadas a los brazos autorizados. No se debe deducir un dominio ilimitado de que exista un atributo modificable.
+Para utilizar los casos estables, mantenga configuraciones documentadas. Para investigar otro dominio, trabaje sobre una copia y deje constancia de la nueva preparación. Una excepción de validación es preferible a recibir una respuesta de otro experimento sin advertirlo.
+Fuentes: [S04], [S06], [S07].
+12. Manual H1: del retardo al hub
+El primer recorrido de H1 necesita sólo DelayPositionConfig, unas opciones de backend y run_delay_position. Los campos de la configuración describen el banco: no son instrucciones de salida. La función prepara una ejecución completa y devuelve su resultado; una segunda llamada crea otra realización, no continúa la anterior.
+12.1. Ejecución y controles
+Ejemplo ejecutable: 04_h1.py
+import dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.DelayPositionConfig()config.input_delay = 3result = dt.run_delay_position(config, options)print("Medida:", result.measurement)print("Labels activos:", result.active_labels)assert result.measurement == 3assert list(result.active_labels) == [3]config.arm = dt.DelayPositionArm.REVERSED_CALIBRATIONreverse = dt.run_delay_position(config, options)print("Calibracion invertida:", reverse.measurement)config.arm = dt.DelayPositionArm.TARGET_ABSENTabsent = dt.run_delay_position(config, options)assert absent.measurement is Noneassert not absent.active_labels
+Con entrada 3, el caso nativo debe identificar label 3. La calibración invertida comprueba la dependencia de la relación geométrica y temporal. En el caso sin target no debe aparecer una coincidencia identificadora: measurement es None y la lista de labels queda vacía.
+12.2. Parámetros de referencia
+Campo
+Preparación por defecto o dominio publicado
+dimension
+59
+base_path_length
+12
+labels
+Once enteros entre -5 y 5
+input_delay
+Retardo entero dentro del banco permitido
+loads
+321 y 654; carga de coincidencia 975 en el sector no saturado
+target/probe
+Direcciones cardinales ortogonales del marco publicado
+arm
+NATIVE, REVERSED_CALIBRATION o TARGET_ABSENT
+initial_hubs_empty describe la preparación. measurement es la lectura categórica del banco. active_labels y merged_events permiten examinar qué coincidencias cumplieron la firma completa. final_raw y final_clock conservan el estado terminal para comparaciones; no conviene imprimir esos arrays completos como si fueran una salida de usuario.
+12.3. Guardar el protocolo H1
+python
+import dee_thinking as dtcfg = dt.DelayPositionConfig()cfg.input_delay = 3opt = dt.TickOptions(dt.Backend.LAZY, 4)dt.save_delay_position_checkpoint(cfg, 5, "h1.deetsnap", opt)restored = dt.resume_delay_position_checkpoint("h1.deetsnap", opt)print(restored.measurement)
+Este helper ejecuta desde la preparación hasta el tick de parada y guarda. No recibe un resultado terminal para reconstruir su pasado. En el corte, el checkpoint se admite antes de la primera coincidencia: con la configuración usual, t5 es una frontera válida. El nombre genérico de la función no autoriza cualquier tick.
+Fuentes: [S06: H1 y helpers de checkpoint], [S08: test_integrated_protocols.py], [S02, cap. 11].
+13. Manual H2: banco separado y solapamiento
+H2 debe utilizarse como dos operaciones distintas. El panel separado conserva respuestas individuales; el panel solapado examina qué ocurre cuando dos relaciones comparten destino. Combinar las cargas no equivale a conservar su identidad funcional por separado.
+13.1. Un banco de tres y siete relaciones
+Ejemplo ejecutable: 05_h2.py
+import dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.SeparatedRepertoireConfig()config.channels = 3result = dt.run_separated_repertoire(config, options)print(result.observed_responses)assert list(result.observed_responses) == [4241, 4245, 4250]assert result.exact_channels == 3assert result.training_budget_exact and result.read_budget_exactassert result.load_accounting_exactconfig.channels = 7result7 = dt.run_separated_repertoire(config, options)assert result7.exact_channels == 7print("Canales exactos:", result7.exact_channels)overlap_config = dt.OverlapRepertoireConfig()merged = dt.run_overlap_repertoire(overlap_config, options)assert merged.merge_exact and merged.composed_response_exactassert not merged.individual_identity_preservedprint("Fusion/respuesta:", merged.observed_merge_load,      merged.observed_response_load)
+Para los tres canales por defecto, la lectura prevista es 4241, 4245 y 4250. El mecanismo prepara relaciones con un desplazamiento base B=4096. Cada respuesta combina la relación de su canal con la consulta correspondiente; la siguiente identidad explica el sector, pero no reemplaza su ejecución:
+respuesta_i = B + delta_i + consulta_i
+La comprobación all_exact compara la lectura con la relación esperada del protocolo. No significa que cualquier tarea de aprendizaje o cualquier K haya sido validado. Los presupuestos de soporte y carga se verifican por separado.
+13.2. Interpretar el solapamiento
+En la configuración por defecto, el panel produce una carga de merge 8189 y una respuesta 8206. merge_exact comprueba el encuentro compuesto; composed_response_exact comprueba su lectura. individual_identity_preserved permanece falso bajo los decoders individuales del protocolo. Ninguno de esos flags sustituye el registro observado.
+El control off_fiber=True coloca una condición de no fusión: no debe generar un falso merge. El registro conjunto puede ser correcto sin que dos identidades sigan disponibles individualmente.
+13.3. Preparación acoplada y clocks
+H2 no utiliza en todas sus fases la misma ruta de admisión que Runtime.experience. Su helper interno de inyección escribe los registros de la consulta y la fase preparada; en el panel separado se utilizan clocks 300+i para esas consultas. Es parte de la preparación del protocolo preservado, no una escritura endógena del aprendizaje ni una propiedad universal de cualquier entrada.
+Por ello no debe afirmarse que "ninguna entrada de toda la librería cambia clocks". La afirmación exacta se refiere al canal ordinario del Runtime. Al utilizar H2 se acepta su protocolo acoplado, cuya semántica está documentada en el Documento Maestro.
+13.4. Checkpoints y la corrección de merge
+El panel separado ofrece un checkpoint entre entrenamiento e inyección de consulta; con los defaults, t10 es válido. El panel solapado admite la ventana posterior a merge y anterior a query, sin el modo off-fiber; t15 es un ejemplo válido.
+El cierre 2.2.0 corrigió un detalle relevante: detener el checkpoint en t16 no debía perder la lectura de merge que ocurrió en t14. RAW y clock podían coincidir y, aun así, faltar una observación acumulada. La corrección pertenece a la captura de metadatos del protocolo, no a la ley v27.
+Fuentes: [S06: H2, inject y checkpoint], [S01], [S08], [S02, cap. 12].
+14. Manual H3 y H4: intervenir y diagnosticar
+H3 y H4 pertenecen a la distribución, pero no son dos versiones de la misma operación. H3 ejecuta un aparato con preparación y daño; H4 calcula contrastes sobre observaciones. Su integración pública no elimina esa diferencia.
+14.1. Ejecutar la reparación autorizada
+Ejemplo ejecutable: 06_h3.py
+import dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.RepairConfig()# Consentimiento al protocolo de dano: no es una lectura pasiva.config.authorize_diagnostic_damage = Trueresult = dt.run_trained_redundancy_repair(config, options)assert result.primary_function_before_damageassert result.damage_applied and result.function_lost_after_damageassert result.reconstructed_at_arrival and result.fresh_functionprint("Funcion recuperada:", result.fresh_function)print("Fuentes consumidas:", result.primary_source_depleted,      result.backup_source_depleted)config.arm = dt.RepairArm.BACKUP_UNTRAINEDcontrol = dt.run_trained_redundancy_repair(config, options)assert not control.fresh_functionprint("Control no entrenado:", control.fresh_function)
+authorize_diagnostic_damage=True es un consentimiento al protocolo, no una optimización. La configuración por defecto sin ese permiso debe rechazarse. El lector debe examinar primero la función anterior, la aplicación del daño y la pérdida; después, la reconstrucción y la consulta fresh. Decir sólo "hay un registro" no describe reparación funcional.
+El control con backup no entrenado mantiene explícita la procedencia de la información. Una segunda fuente que recibió su propio entrenamiento puede reparar la función; eso no significa que la primera haya creado la segunda.
+14.2. Intervenciones y recursos de H3
+La máquina interna de H3 tiene operaciones de preparación, reemplazo y borrado. put puede asignar fase; overwrite reemplaza campos; clear elimina RAW y clock según el protocolo de daño. No son conductas espontáneas del kernel ni una consecuencia de observar pasivamente un mundo.
+El dominio publicado usa N=31 y dos geometrías transformadas con siete brazos. El resultado expone si se consumieron las dos fuentes. No extienda la realización a reparación ilimitada por haber obtenido una recuperación en el episodio.
+El helper resume_trained_redundancy_repair_checkpoint continúa la fase guardada, incluidas intervenciones futuras que ya pertenecen al protocolo autorizado. Cargar el contenedor no es por sí solo una nueva acción de daño; reanudar el procedimiento tampoco significa omitir sus acciones pendientes.
+14.3. H4: ejemplo de uso del analizador
+El siguiente ejemplo usa lecturas didácticas equivalentes a un test de la API. Sirve para aprender los campos de entrada y la forma de la salida; no constituye una nueva campaña de accesibilidad ni prueba un aprendizaje ocurrido en un mundo real del laboratorio.
+Ejemplo ejecutable: 07_h4.py
+import dee_thinking as dt# Datos didacticos: ilustran el analizador, no una nueva corrida DEE.def reading(load):    item = dt.AccessibilityReading()    item.site = dt.Coordinate(1, 2, 3)    item.raw = dt.pack_record(1, load, 1, 0, 0, 1)    item.clock = 41    return item
+cases = []for name, load in [("historia_a", 12), ("historia_b", 17)]:    case = dt.AccessibilityCase()    case.history_id = name    case.baseline_tick = case.challenged_tick = 41    case.baseline = [reading(10)]    case.challenged = [reading(load)]    case.history_status = dt.AccessibilityStatus.NOT_DEMONSTRATED    case.history_reached_natively = False    case.challenge_applied_to_diagnostic_clone = True    cases.append(case)request = dt.AccessibilityRequest()request.observer_id = "ejemplo_didactico"request.challenge_id = "desafio_fijo"request.cases = casesresult = dt.analyze_accessibility(request)assert result.comparableprint([list(item.s_reg_deltas) for item in result.effects])print(result.history_conditioned_response)
+El resultado de los deltas es [[2], [7]]. El flag de respuesta condicionada es verdadero para los descriptores calculados a partir de estas lecturas. La etiqueta NOT_DEMONSTRATED impide presentar este ejemplo sintético como una historia alcanzada o adquirida por DEE.
+14.4. Qué puede y qué no puede concluir el analizador
+H4 compara conteos de sitios con RAW distinto, conteos de clocks distintos y vectores de diferencias s_reg. También comprueba ciertos campos de consistencia: nombres, alineación de ticks, pares de sitios y declaraciones de protocolo. No verifica por sí solo hechos de procedencia que no estén presentes en los datos.
+Una salida history_conditioned_response=False sólo indica que los descriptores utilizados no distinguieron ese efecto. No prueba igualdad del estado causal completo ni imposibilidad de otro observador. Una salida verdadera tampoco acredita adquisición sólo porque los metadatos incluyan la palabra ACQUIRED.
+Fuentes: [S06: H3/H4 y analyze_accessibility], [S08: test_wheel_api.py], [S02, caps. 13 y 14].
+15. Manual F1 y F2: revisión y mediación
+Estos protocolos integran los resultados del laboratorio final. Sus configuraciones públicas representan brazos concretos con tuplas de campos verificadas. No son dos funciones que devuelven una constante: preparan, evolucionan y leen un mundo. Pero tampoco son una API genérica de streaming ni un agente que decide qué entrenamiento pedir.
+15.1. Ejecutar F1 y cambiar el orden
+Ejemplo ejecutable: 08_f1.py
+import dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.ReusableRevisionConfig()result = dt.run_reusable_revision(config, options)assert tuple(result.response_loads) == (4149, 4165, 4181)assert tuple(result.post_revision_loads) == (4160, 4178)assert result.all_inputs_applied_at_t0print("Revisiones 11/13:", result.response_loads)config.id = "REV_13_11"config.revision1, config.revision2 = 13, 11reverse = dt.run_reusable_revision(config, options)assert tuple(reverse.response_loads) == (4149, 4167, 4181)print("Revisiones 13/11:", reverse.response_loads)
+La configuración debe ser coherente con su ID. Cambiar sólo id a REV_13_11 sin intercambiar las cargas no selecciona correctamente el brazo: el producto valida la tupla completa. Esta comprobación evita etiquetar un experimento con un nombre que no corresponde a sus campos físicos.
+ID
+revision1 / revision2
+sham1 / sham2
+trained_relation
+REV_11_13
+11 / 13
+0 / 0
+True
+REV_13_11
+13 / 11
+0 / 0
+True
+FIRST_ONLY_11
+11 / 0
+0 / 13
+True
+SECOND_ONLY_13
+0 / 13
+11 / 0
+True
+SHAM_11_13
+0 / 0
+11 / 13
+True
+NO_TRAINED_RELATION
+11 / 13
+0 / 0
+False
+Las revisiones se encuentran con el mismo linaje. Los shams conservan recursos en una ruta paralela y dejan un redireccionamiento de carga cero en la ruta funcional cuando corresponda. La diferencia entre 4165 y 4167 permite ver la primera revisión; la coincidencia terminal en 4181 no implica igualdad del mundo completo.
+15.2. Ejecutar F2 y su contraste subumbral
+Ejemplo ejecutable: 09_f2.py
+import dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.EnvironmentalReturnConfig()result = dt.run_environmental_return(config, options)assert result.environment_load == 19664assert result.overflow_total == 1assert tuple(result.downstream_loads) == (24, 55, 62, 62, 67)print("Mediacion:", result.downstream_loads)config.id = "ENV_SUBTHRESHOLD"config.bias_load = 15514control = dt.run_environmental_return(config, options)assert control.overflow_total == 0assert tuple(control.downstream_loads) == (23, 54, 61, 61, 66)print("Subumbral:", control.downstream_loads)
+La preparación por defecto usa fase ambiental 353. Su evolución la lleva a la condición del receptor ocupado que permite el overflow. No se debe generalizar el efecto a todo portador que alcance 19664: una reducción saturada y el overflow material son operaciones distintas.
+La información que sigue por el portador independiente es el efecto unitario que produce DEMUX. Para este contrato, la capacidad relevante es que la consecuencia upstream determine ese cambio y que se utilice después. No se necesita que el delta replique toda la carga original para reconocer la mediación observada.
+15.3. Brazos admitidos de F2
+ID
+Campos distintos del caso por defecto
+ENV_INTACT
+trained_response=True; bias_load=15515; marker_load=17; query_mode=INTACT.
+ENV_RESPONSE_CUT
+trained_response=False.
+ENV_NO_QUERY
+query_mode=ABSENT.
+ENV_QUERY_SHAM
+query_mode=SHAM.
+ENV_SUBTHRESHOLD
+bias_load=15514.
+ENV_CONTENT_19
+marker_load=19.
+Mantenga environment_clock_phase=353 en este corte. Cambiar una etiqueta y no sus campos, o inventar una combinación no publicada, produce un error de contrato. Esto no define el límite físico de v27; define el dominio de una interfaz validada.
+query_admitted es un campo del protocolo que debe leerse con su modalidad: el brazo sin query no solicitó ese participante, mientras el sham lo prepara fuera de la ruta funcional. No convierta todos los valores falsos en un rechazo ordinario de Runtime.experience.
+15.4. Guardar a mitad del protocolo
+Ejemplo ejecutable: 10_checkpoints.py
+import tempfilefrom pathlib import Pathimport dee_thinking as dtoptions = dt.TickOptions(dt.Backend.LAZY, 4)config = dt.ReusableRevisionConfig()full = dt.run_reusable_revision(config, options)with tempfile.TemporaryDirectory() as directory:    path = Path(directory) / "f1.deetsnap"    # Ejecuta desde la preparacion hasta t40 y guarda ese estado.    dt.save_reusable_revision_checkpoint(config, 40, str(path), options)    continued = dt.resume_reusable_revision_checkpoint(str(path), options)assert continued.final_raw == full.final_rawassert continued.final_clock == full.final_clockassert tuple(continued.response_loads) == tuple(full.response_loads)print("F1: estado y respuestas coinciden tras reanudar")
+Los helpers save_*_checkpoint(config, tick, path, options) ejecutan una preparación hasta una frontera y guardan el progreso. No se aplican a un Result ya terminado ni convierten ese objeto en un mundo mutable. Para mantener una ejecución arbitraria de usuario, la interfaz apropiada es Runtime o ComposedWorld.
+Fuentes: [S06: F1/F2, validate_f1 y validate_f2], [S08], [S10], [S02, caps. 15 y 16].
+16. Guardar una organización y continuarla
+Conservar el programa no equivale a conservar una ejecución. El wheel permite volver a crear un mundo; un snapshot permite recuperar una historia que ya evolucionó. Para reproducir un experimento también se necesitan preparación, entradas, tiempos, lectura y horizonte.
+16.1. Snapshot de Runtime
+python
+from pathlib import Pathimport dee_thinking as dtworld = dt.Runtime(11)world.advance(4)path = Path("estado.deetsnap")world.save_snapshot(str(path))restored = dt.Runtime.load_snapshot(str(path))assert restored.current_tick == world.current_tickassert restored.raw_copy() == world.raw_copy()assert restored.clock_copy() == world.clock_copy()world.advance(3)restored.advance(3)assert restored.raw_copy() == world.raw_copy()assert restored.clock_copy() == world.clock_copy()
+Este ejemplo vacío ilustra el contrato de archivo y futuro; no demuestra memoria aprendida. Para una ejecución con entradas pendientes se conserva también la cola y el orden correspondiente. Si se guarda un Runtime pausado, su pausa forma parte del estado operativo: debe reanudarse explícitamente antes de avanzar.
+restore_snapshot(path) reemplaza el estado de la instancia cuando la carga valida. Runtime.load_snapshot(path) crea otra instancia. Un fallo de formato o integridad no debe resolverse reiniciando el mundo silenciosamente. Lea el error y conserve el archivo para diagnosticar la causa.
+16.2. Snapshot de una composición
+Después de ejecutar 03_composicion.py, el archivo composicion.deetsnap contiene una receta y el estado del mundo. La carga adecuada es:
+python
+import dee_thinking as dtworld = dt.ComposedWorld.load_snapshot("composicion.deetsnap")print(world.runtime.current_tick)print(world.runtime.observe(world.landmarks["reader.response"]).record.s_reg)
+No basta con recuperar RAW para reconstruir puertos, nombres y conexiones. La receta identifica versiones de constructores, anclas, parámetros y enlaces. El cargador valida esos elementos antes de instalar el Runtime guardado. No usa direcciones RAM del proceso anterior como si fueran conexiones persistentes.
+16.3. Checkpoints de protocolos
+Procedimiento
+Ventana o condición de la implementación 2.2.0
+H1
+Parada positiva antes de la primera coincidencia; t5 es válido para la preparación usual.
+H2 separado
+Después del entrenamiento y antes de inyectar query; con defaults, 5 < t < 14.
+H2 solapado
+On-fiber, desde el merge y antes de query; con defaults, 14 <= t < 18. El modo off-fiber no usa este checkpoint.
+H3
+Frontera estrictamente interior del protocolo; stop_after_tick y la fase corresponden a su máquina de ejecución.
+F1
+stop_at_tick entre 1 y 59.
+F2
+stop_at_tick entre 1 y 55.
+H4
+No evoluciona un Runtime: conservar lecturas y solicitud, no un supuesto estado físico del analizador.
+El helper save_* de cada protocolo ejecuta la preparación hasta la parada y almacena también lecturas parciales. resume_* continúa desde allí con su receta. Para reanudar correctamente H3, la autorización y las acciones pendientes siguen perteneciendo al protocolo guardado; no se inventa otro episodio de daño.
+16.4. Compatibilidad y seguridad de lectura
+El Runtime escribe formato v2 y lee v1/v2 según su contrato. Un snapshot legacy que no contiene receta no puede convertirse por intuición en un ComposedWorld autocontenido. Tampoco basta con cambiar el número de versión del archivo.
+La escritura utiliza temporal y sustitución soportada por la plataforma. El checksum permite detectar daños accidentales, pero no es una firma criptográfica ni una autorización para cargar archivos no confiables. El Documento Maestro contiene el formato de bytes y las limitaciones de reconstrucción. No modifique manualmente metadatos para sortear una incompatibilidad de contrato.
+Fuentes: [S03], [S04], [S06], [S15], [S02, caps. 10 a 16].
+17. Dense, Lazy, paralelismo y recursos
+Las tres agendas de ejecución utilizan la misma ley v27. El objetivo de Lazy y del paralelismo es cambiar la cantidad u organización del trabajo computacional, no modificar el resultado físico del caso. La selección es explícita; el Runtime conserva DenseSequential como valor por defecto.
+17.1. Seleccionar y comprobar el backend
+python
+import dee_thinking as dtworld = dt.Runtime(11)world.execution_options = dt.TickOptions(dt.Backend.LAZY, 4)info = world.advance(1)print(info.requested_backend, info.used_backend)print(info.requested_threads, info.used_threads, info.fallback)print(info.evaluated, info.total)
+Un mundo vacío puede utilizar cero workers Lazy y aun así avanzar sus clocks. No interprete eso como un fallo. En el binding, last_tick_info es una propiedad de lectura, no un método que deba llamarse con paréntesis.
+Backend
+Organización del trabajo
+DENSE_SEQUENTIAL
+Recorrido denso de referencia, secuencial.
+DENSE_PARALLEL
+Particiones nativas que leen el mismo estado fuente, seguidas por barreras y postpaso.
+LAZY
+Selección a partir de RAW no nulo y halo de trabajo; conserva avance de clocks y postpaso correspondientes.
+El halo que utiliza Lazy para seleccionar trabajo no debe identificarse con el radio máximo de dependencia causal de la transición. Se trata de propiedades distintas. Los contadores evaluated y los tiempos pueden variar sin que cambien RAW y clock.
+17.2. Rendimiento sin alterar la interpretación
+No hay un backend más rápido para todos los estados. La densidad, los candidatos, el tamaño y el coste de coordinar hilos influyen. Para comparar, mantenga la misma preparación, horizonte, lector y toolchain; separe el coste del kernel del de copiar arrays a Python o imprimir resultados.
+raw_copy() y clock_copy() materializan copias. Son apropiadas para comprobaciones y respaldo, pero llamarlas en cada tick puede dominar el tiempo y la memoria de una aplicación. Para una lectura localizada, utilice observe u observe_many. Una medición del wrapper completo no es automáticamente una medición del kernel.
+17.3. Memoria de trabajo
+Los cuatro buffers básicos de uint64 necesitan 32*N^3 bytes. Esta cuenta deriva de su representación y no incluye scratch, candidatos, metadatos, snapshots ni las copias de resultados. Por ejemplo, N=127 requiere aproximadamente 62,5 MiB sólo para esos cuatro buffers; las copias expuestas a Python pueden añadir una carga considerable.
+El límite de dimensiones admitidas por una API no garantiza que exista RAM suficiente para el mayor valor. Un fallo de recursos no debe interpretarse como imposibilidad de la función DEE ni resolverse borrando historia del mundo sin declarar otra política.
+17.4. GIL y concurrencia real
+El binding 2.2.0 mantiene el GIL durante Runtime.advance y run_until. Los workers de DenseParallel/Lazy pueden ejecutar trabajo C++ interno, pero eso no promete dos mundos avanzando simultáneamente desde dos hilos Python. Liberar el GIL o cambiar esa política exige otra implementación y sus pruebas.
+La interfaz C++ tampoco se declara thread-safe para cualquier combinación de operaciones sobre una instancia. No ejecute dos ticks concurrentes ni mutaciones y lecturas simultáneas del mismo mundo. La independencia entre dos objetos Runtime no equivale a una garantía de concurrencia arbitraria sobre uno de ellos.
+Fuentes: [S03], [S05], [S07], [S14], [S02, caps. 7 y 17].
+18. Usar DEE thinking desde C++
+La biblioteca nativa puede utilizarse sin Python. Los headers instalados y el target DEE::thinking ofrecen el mismo núcleo que utiliza la extensión del wheel. Para compilar un consumidor se necesita un toolchain C++20 compatible; no basta el wheel si el objetivo es desarrollar una aplicación C++.
+18.1. Consumidor mínimo
+El ejemplo siguiente utiliza la API instalada, observa transporte y ejecuta H1. No incluye directamente archivos .cpp del producto y no lee una trayectoria guardada para obtener la respuesta.
+Ejemplo ejecutable: 11_cpp/main.cpp
+#include <dee_thinking/runtime.hpp>#include <dee_thinking/integrated_protocols.hpp>#include <exception>#include <iostream>int main() {    namespace dt = dee::thinking;    namespace pr = dee::thinking::protocols;    namespace k = dee::v27;    try {        dt::Runtime world(11);        dt::ChannelSpec input;        input.name = "input";        input.injection_site = {3, 4, 5};        input.state = 101;        input.direction = {1, 0, 0};        input.semantic = 1;        input.allow_experience = true;        world.register_channel(input);        const auto pending = world.experience("input", 0, 17);        world.advance(1);        const auto reading = world.observe({4, 4, 5});        if (reading.record.s_reg != 17) return 2;        std::cout << "Runtime: " << reading.record.s_reg << '\n';
+        pr::DelayPositionConfig config;        config.input_delay = 3;        const auto result = pr::run_delay_position(            config, {k::Backend::Lazy, 4});        if (!result.measurement || *result.measurement != 3) return 3;        std::cout << "H1: " << *result.measurement << '\n';        return 0;    } catch (const std::exception& error) {        std::cerr << error.what() << '\n';        return 1;    }}
+La salida esperada es Runtime: 17 y H1: 3. El par de controles verifica la ejecución del consumidor, no una nueva propiedad científica de DEE. La preparación es deliberadamente pequeña para comprobar el enlace y la API.
+18.2. Proyecto CMake del consumidor
+Ejemplo ejecutable: 11_cpp/CMakeLists.txt
+cmake_minimum_required(VERSION 3.20)project(dee_manual LANGUAGES CXX)find_package(dee_thinking 2 CONFIG REQUIRED)add_executable(dee_manual main.cpp)target_link_libraries(dee_manual PRIVATE DEE::thinking)
+Desde una consola de desarrollo x64 con CMake y Ninja disponibles, la variable dee_thinking_DIR debe apuntar a la carpeta que contiene dee_thinkingConfig.cmake en el árbol instalado. En el paquete original se conserva un árbol install/; una reconstrucción puede producir otro bajo install-definitive/.
+powershell
+$package = "C:\DEE22\producto\install\lib\cmake\dee_thinking"cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release `  "-Ddee_thinking_DIR=$package"cmake --build build.\build\dee_manual.exe
+Estos comandos corresponden a un consumidor cuya carpeta contiene main.cpp y CMakeLists.txt. El material de acompañamiento los agrupa en ejemplos/11_cpp. No ejecute la configuración del consumidor desde una carpeta que contiene otro proyecto CMake.
+18.3. Reconstruir el producto cuando haga falta
+Para reconstruir C++ en una copia de trabajo del ZIP, el script entregado puede invocarse así:
+powershell
+.\tools\build_definitive.ps1 -Configuration Release -SkipWheel
+La construcción del wheel requiere además el intérprete CPython 3.13 x64 y las herramientas registradas por el paquete. La guía detallada, los comandos de reconstrucción y las identidades están en el Documento Maestro; este manual no propone cambiar versiones del toolchain ni ampliar plataformas por intuición.
+El hecho de que una compilación del source funcione en otro entorno no convierte al wheel Windows en un binario para ese entorno. Mantenga separadas reconstrucción nativa, compatibilidad de paquete y evidencia científica de los mecanismos.
+Fuentes: [S13], [S14], [S02, cap. 18]. El consumidor de este capítulo se compiló y ejecutó en la comprobación documental nativa descrita en el anexo C.
+19. Diagnóstico de problemas y uso responsable
+Una operación fallida puede deberse a instalación, contrato, preparación, lectura, recursos o una diferencia real de ejecución. Identifique la capa antes de cambiar el aparato. La corrección no consiste en forzar a que una salida coincida con lo esperado.
+19.1. Problemas habituales
+Síntoma
+Comprobación y acción
+El wheel no es compatible
+Verifique CPython 3.13 estándar, Windows x64 y etiquetas del archivo. No lo renombre para sortear la validación.
+DLL load failed o import fallido
+Conserve el mensaje; compruebe arquitectura, entorno y runtime de sistema requerido. No sustituya el .pyd por otro sin identificar la versión.
+Importa otra copia de dee_thinking
+Revise dt.__file__, directorio actual y entorno. Ejecute fuera del source y sin instalación editable.
+La entrada sigue en SCHEDULED
+Compruebe si comenzó la transición que aplica su frontera. run_until(t) termina antes de aplicar eventos de t.
+REJECTED_OCCUPIED
+Inspeccione RAW y el momento de llegada. No vacíe el puerto para fingir la misma experiencia.
+Composición rechazada
+Lea rol, tiempo, dirección y contrato. El rechazo de API no demuestra imposibilidad del kernel.
+F1/F2 rechaza la configuración
+ID y campos deben coincidir con un brazo publicado. No cambie sólo el nombre.
+H3 rechaza el daño
+El permiso diagnóstico es explícito. No lo elimine del wrapper ni lo active de manera oculta.
+Checkpoint rechazado
+Verifique versión, tipo de protocolo y ventana de parada. H1/H2 no aceptan cualquier tick.
+Restore correcto, lectura diferente
+Compare también fase, cola y observaciones parciales; no sólo RAW. Distinga Runtime de ComposedWorld o protocolo.
+Saturación o respuestas iguales
+Compruebe el campo y el observer. Igualdad local no equivale necesariamente a igualdad completa; el cap no regenera capacidad por sí solo.
+Rendimiento peor con más hilos
+Mida el dominio; conserve el backend que corresponda. Paralelismo no garantiza aceleración universal.
+19.2. Qué no cambiar para hacer desaparecer un error
+No borre historia, reinicie clocks, normalice s_reg o copie un resultado correcto sobre el mundo para pasar una prueba. No elimine del informe una entrada rechazada ni cambie de lector después de ver la respuesta sin declarar la modificación. Si el procedimiento exige otra preparación, trate el cambio como otro contrato o ensayo.
+Un nombre de organización no aporta independencia causal. Un hash diferente no cuantifica aprendizaje. Una etiqueta ACQUIRED no prueba adquisición. Una salida correcta no garantiza persistencia completa. Estas distinciones son parte del uso técnico, no obstáculos para reconocer una capacidad realmente realizada.
+19.3. Conservar un caso reproducible
+Antes de modificar, guarde la versión del producto, el backend, el tick, la preparación, los eventos, los recibos y la lectura que observó. Cuando sea pertinente, conserve un snapshot anterior al problema. Compare el estado más temprano en el que aparece la discrepancia: una convergencia posterior puede ocultar un fallo intermedio.
+Mantenga el paquete original intacto y trabaje sobre una copia. La reconstrucción del programa y la reproducción de un experimento son objetivos distintos; para lo segundo también se necesitan los datos y el protocolo del caso.
+Fuentes: [S02, caps. 19 y 20], [S03], [S06], [S07], [S08].
+20. Del uso documentado a la siguiente etapa
+La Entrega 02 definitiva es una base de procesamiento utilizable y preservable. Los mecanismos integrados ya pueden mostrarse mediante un programa, contrastarse con sus controles y describirse sin redefinir la tarea después de cada resultado. Formalizar el corte no impone que toda posibilidad de DEE haya sido agotada.
+20.1. Ruta práctica de adopción
+Comience con la instalación e identidad del capítulo 8. Ejecute el Runtime pequeño y la composición de aprendizaje/consulta. Seleccione después el protocolo que corresponda a la pregunta: H1 para tiempo/lugar, H2 para repertorios, H3 para reparación preparada, H4 para diagnóstico, F1 para revisión y F2 para mediación ambiental.
+Mantenga fijos entrada, lector y dominio cuando evalúe una capacidad. Si necesita otra codificación, formule su contrato y prúebelo aparte. No confunda un uso de investigación con una garantía industrial que aún no se haya medido.
+20.2. Entrega 03 y extensiones
+Los adaptadores y la operación aplicada se apoyarán en la biblioteca existente. Cada adaptador deberá separar representación de datos, interacción con el mundo y lectura de la respuesta. Una política externa de recursos o control deberá declarar sus intervenciones. No se vuelve endógena por compilarse en C++.
+La replicación, nuevas formas de aprendizaje, otras representaciones y una operación más prolongada pueden estudiarse sobre esta plataforma. F3 conserva el resultado de un aparato concreto; no es un teorema que cierre esas líneas. A la vez, ninguna línea pendiente tiene que convertirse en una promesa de la versión 2.2.0.
+20.3. Cierre de lectura
+DEE thinking permite trabajar con una organización causal que conserva consecuencias y transforma futuros encuentros. El Runtime, el catálogo y los protocolos son accesos distintos a esa misma ley, con fronteras de intervención explícitas. Su valor actual está en poder ejecutar y examinar esos mecanismos, no en etiquetar de antemano cualquier resultado como mente, agente universal o equivalencia biológica.
+El lector puede utilizar lo que está disponible, conservar la evidencia y explorar otras preparaciones sin perder el punto de referencia. Esa es la función conjunta de este libro, del Documento Maestro y del paquete técnico preservado.
+Fuentes: [S01], [S02], [S06], [S10], [S11], [S12].
+Anexo A. Referencia rápida de interfaces
+A.1. Tipos básicos y Runtime en Python
+Elemento
+Uso
+Coordinate(x, y, z)
+Posición de un sitio.
+Direction(dx, dy, dz)
+Componentes de dirección de una preparación.
+ChannelSpec
+Sitio, campos y permisos de un canal ordinario.
+TickOptions(backend, threads)
+Agenda técnica; no cambia la ley del mundo.
+Runtime(N)
+Crea un mundo con estado inicial cero.
+register_channel(spec)
+Registra el contrato del canal.
+experience / experience_batch / probe
+Agenda entradas o sondas según permiso, tiempo y atomicidad.
+receipt(id), receipts
+Recibo actualizado por ID y colección de recibos.
+advance / run_until
+Evolución por número de ticks o hasta una frontera.
+current_tick, dimension, paused
+Propiedades de estado operativo; no se llaman como funciones en Python.
+execution_options, last_tick_info
+Selección de agenda y telemetría técnica de la llamada.
+observe / observe_many / metrics
+Lecturas pasivas; no actualizan el mundo.
+fork
+Otra trayectoria independiente; no es un mecanismo de clonación nativa.
+save_snapshot / load_snapshot / restore_snapshot
+Persistencia operativa de Runtime.
+raw_copy / clock_copy
+Copias de arrays de estado, con coste de memoria asociado.
+import_research_state
+Importación explícita de investigación; no equivale a experience.
+Los nombres C++ correspondientes se consultan en los headers preservados. En Python, algunas funciones de consulta C++ son propiedades: utilice la sintaxis del binding y de los ejemplos, no una traducción mecánica de paréntesis.
+A.2. Registro integrado y nombres públicos
+Capacidad
+Entrada principal
+H1
+run_delay_position
+H2 separado
+run_separated_repertoire
+H2 solapado
+run_overlap_repertoire
+H3
+run_trained_redundancy_repair
+H4
+analyze_accessibility
+F1
+run_reusable_revision
+F2
+run_environmental_return
+Descriptores
+integrated_protocol_descriptors / find_integrated_protocol
+H1/H2/H3/F1/F2 cuentan con pares save_*_checkpoint y resume_*_checkpoint. Respete el nombre exacto, la configuración y la ventana de cada protocolo; no existe una promesa de checkpoint genérico en cualquier fase de todos ellos.
+A.3. Ejemplos incluidos en el respaldo
+Archivo
+Recorrido
+01_identidad.py
+Identidad de producto, kernel y registro integrado.
+02_runtime.py
+Canal, evento, recibo, transporte y nueva entrada.
+03_composicion.py
+Aprendizaje/consulta en ComposedWorld y snapshot.
+04_h1.py
+Retardo 3, calibración invertida y ausencia.
+05_h2.py
+K=3/K=7 y solapamiento.
+06_h3.py
+Daño autorizado y control no entrenado.
+07_h4.py
+Analizador sobre datos didácticos, no una campaña.
+08_f1.py
+Revisiones 11/13 y 13/11.
+09_f2.py
+Mediación y control subumbral.
+10_checkpoints.py
+F1 guardado a t40 y continuación comparable.
+11_cpp/
+Consumidor C++ y su CMakeLists.txt.
+Los ejemplos se entregan como material de uso dentro del ZIP documental. No modifican el source ni el wheel original.
+Fuentes: [S03], [S04], [S06], [S07], [S08].
+Anexo B. Glosario operativo
+Término
+Definición para el uso de DEE thinking
+Backend
+Agenda de evaluación que implementa la transición DEE: densa, paralela o Lazy.
+Baseline
+Preparación y protocolo de referencia de una comparación.
+Binding
+Frontera que expone tipos y operaciones C++ a Python. No es otra física.
+Cap
+Límite de una operación particular. No equivale a toda la capacidad informacional del mundo.
+Catálogo
+Registro de constructores y contratos para preparar organizaciones.
+Challenge
+Intervención de prueba cuyo efecto se compara con la referencia correspondiente.
+Checkpoint
+Estado guardado de ejecución y, cuando corresponde, progreso del protocolo.
+Clock
+Contador por sitio; no es automáticamente tiempo humano ni un campo libre para escribir etiquetas.
+Composición
+Preparación de relaciones entre organizaciones en un mundo compartido, bajo contratos admisibles.
+Contrato
+Condiciones de entrada, preparación, lectura, recursos, tiempos y dominio de una capacidad.
+DEMUX
+Postpaso nativo que aplica incrementos derivados de overflows según la regla v27.
+Descriptor
+Metadatos de una capacidad; no demuestra por sí mismo que ocurrió una trayectoria.
+Estado causal
+Variables del mundo suficientes para continuar su transición bajo el protocolo correspondiente.
+Experiencia
+Interacción externa declarada que actúa sobre el estado presente. No implica aprendizaje por definición.
+Fibra
+Contribuciones dirigidas a un destino y tiempo de encuentro.
+Fork
+Copia de trabajo para una trayectoria independiente de diagnóstico o comparación.
+GIL
+Bloqueo del intérprete que el binding 2.2.0 conserva durante el avance nativo.
+Historia
+Antecedentes que importan porque dejaron diferencias en la organización presente.
+HOST_STOP
+Frontera después de la cual un ensayo declarado nativo deja de aplicar escrituras externas.
+Hub
+Sitio de encuentro o lectura de un aparato; no un centro universal de procesamiento.
+Linaje
+Continuidad funcional o causal que puede cambiar de coordenada o soporte.
+Observador
+Regla de lectura declarada. Una proyección puede omitir diferencias que otros lectores distingan.
+Oráculo de prueba
+Resultado de referencia contra el cual se compara una ejecución; no reemplaza al motor.
+Portador
+Configuración que transporta o expresa una contribución mediante la dinámica.
+Probe
+Sonda física o intervención de prueba; distinta de observe.
+Repertorio
+Conjunto de relaciones o respuestas accesibles bajo un panel de consultas.
+Runtime
+Objeto que conserva el mundo y el estado operativo de su ejecución.
+Sham
+Control comparable que evita o altera el enlace causal bajo estudio.
+Snapshot
+Archivo de persistencia con estado y metadatos versionados, no una imagen del mundo.
+Source
+Código fuente que fija la implementación del corte.
+Teacher
+Información de enseñanza suministrada según el protocolo; no significa que el mundo la generó.
+Tick
+Paso de la transición completa; independiente del tiempo de cómputo empleado.
+WHL
+Artefacto de distribución Python. En este corte contiene una extensión nativa compatible con CPython 3.13/Windows x64.
+Fuentes: [S02], [S03], [S04], [S05], [S06], [S07], [S11], [S12].
+Anexo C. Fuentes, identidades y comprobación documental
+C.1. Mapa de referencias
+Las referencias [Sxx] permiten localizar el fundamento de los capítulos. Las rutas corresponden al paquete definitivo preservado, salvo los documentos históricos y el Maestro, identificados por título. Los resultados de etapas anteriores se utilizan como genealogía, no como afirmación de que se volvieron a ejecutar al redactar este libro.
+ID
+Material y papel
+S01
+PROJECT_METADATA.json; docs/DEFINITIVE_INTEGRATION_REPORT.md. Identidad, corte e integración autorizada.
+S02
+DEE thinking 2.2.0 - Documento Maestro de Arquitectura y Reconstrucción, DEET-MAR-220-01, 77 páginas. Arquitectura, reconstrucción y precisiones de implementación.
+S03
+include/dee_thinking/runtime.hpp; src/runtime.cpp; docs/API_CONTRACT.md. Runtime y contrato de entradas/persistencia.
+S04
+Headers y fuentes organization_catalog/composition; docs/ORGANIZATION_CATALOG.md. Preparaciones y composición compartida.
+S05
+include/dee_thinking/kernel_v27.hpp; src/kernel_v27.cpp; docs/KERNEL_PROVENANCE.md. Regla y agendas de v27.
+S06
+include/dee_thinking/integrated_protocols.hpp; src/integrated_protocols.cpp; docs/CAPABILITY_CONTRACTS.md. H1-H4/F1-F2 y sus fronteras.
+S07
+bindings/dee_thinking_pybind.cpp; python/dee_thinking/__init__.py; python/README.md. Interfaz Python real.
+S08
+tests/integrated_protocols_tests.cpp; tests/python/test_wheel_api.py; tests/python/test_integrated_protocols.py; ejemplos C++. Casos de uso y oráculos preservados.
+S09
+validation/FINAL_VALIDATION_SUMMARY.json; docs/TEST_MATRIX_DEFINITIVE.md; validation/wheel_build.log. Resumen de verificación y alcance de los registros conservados.
+S10
+docs/PREINTEGRATION_REPORT.md; docs/CLOSURE_AND_FRONTIER_REPORT.md; evidence/laboratory_final/SCIENTIFIC_REPORT.md y results.json. Genealogía experimental y F1-F3.
+S11
+Física DEE, edición 4.0.1, archivo DEE_V4_0_1(1).docx, capítulos de estado, historia, aprendizaje, continuidad y composición.
+S12
+Procesamiento_Nativo_DEE_Libro_Manual_v1.docx, capítulos 7, 12 y 18-21. Memoria temporal, repertorios, historia distribuida y procesamiento nativo.
+S13
+tools/build_definitive.ps1; herramientas de empaquetado/verificación; scripts cmake/python. Procedimientos de construcción y entrega.
+S14
+CMakeLists.txt; pyproject.toml; setup.py; cmake/dee_thinkingConfig.cmake.in. Constitución de targets y paquete.
+S15
+Pruebas cross_process_persistence y puentes cross_language/protocol_checkpoint en C++/Python. Persistencia de mundo y protocolo.
+S16
+THIRD_PARTY_NOTICES.md. Avisos de terceros y autoría preservada.
+S17
+Ejemplos y comprobaciones de esta edición documental, incluidos dentro del respaldo. No son una nueva versión de la librería.
+C.2. Identidades del producto referenciado
+ZIP definitivo de la Entrega 02:
+ce088e902888e5ce0f61296d405b14b8acccc183cd73fcbd0fe7bc4eb8ce7cc3
+WHL dee_thinking 2.2.0, 465442 bytes:
+39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6
+El hash del source histórico canónico y el del archivo adaptado del producto identifican artefactos distintos. No deben intercambiarse. El código del producto conserva los drivers integrados; volver a generar una copia con una herramienta antigua puede eliminar esas agendas aunque conserve parte de la regla local.
+C.3. Comprobación de esta edición
+Para preparar este libro se inspeccionaron el paquete definitivo, sus headers, sources, binding, pruebas y el Documento Maestro. Se verificó la integridad del ZIP original y la identidad del wheel contenido. Los ejemplos Python fueron contrastados con los tipos y casos de prueba preservados y revisados sintácticamente; no se presenta esa revisión como una ejecución nueva del wheel Windows.
+Se compiló el source nativo en una copia de trabajo Linux/GCC y se ejecutó el consumidor C++ de este manual. Produjo Runtime: 17 y H1: 3. También se ejecutaron los ejemplos nativos entregados de registro integrado/H1/H4 y de consulta posterior C6, este último con respuesta 25. Es una comprobación documental dirigida, no una repetición de las 17 pruebas completas, de la suite Python 11/11 ni una declaración de soporte oficial Linux.
+La maquetación y apertura del Word se verifican separadamente. Ninguna de estas operaciones modifica la librería ni sus resultados históricos. El respaldo contiene el documento, los ejemplos de uso y una copia íntegra del paquete original para conservar una base reproducible.
+C.4. Autoría, avisos y preservación
+La autoría del proyecto DEE Universe y del producto se atribuye a Ivan Erick Tlaltecatl Morales. Los avisos de terceros del paquete se conservan; este libro no asigna una licencia nueva ni sustituye las condiciones de los componentes utilizados para construirlo.
+Para preservar una capacidad de reconstrucción, guarde el paquete fuente y el Documento Maestro. Para preservar una ejecución, guarde sus snapshots y los datos externos pertinentes. Para preservar la explicación y el uso, conserve este Libro Blanco y Manual junto con su respaldo. Un enlace de descarga es un medio de entrega; el archivo local es la copia de conservación.

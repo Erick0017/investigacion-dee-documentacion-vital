@@ -1,0 +1,236 @@
+{
+  "action_environment_arms": {
+    "ACT_DIRECTION": {
+      "final_delta": 0,
+      "final_raw_different_sites": 42,
+      "first_b_guard_difference": null
+    },
+    "ACT_LOAD_MINUS": {
+      "final_delta": 0,
+      "final_raw_different_sites": 0,
+      "first_b_guard_difference": null
+    },
+    "ACT_LOAD_PLUS": {
+      "final_delta": 0,
+      "final_raw_different_sites": 0,
+      "first_b_guard_difference": null
+    },
+    "ACT_REMOVE": {
+      "final_delta": 0,
+      "final_raw_different_sites": 1,
+      "first_b_guard_difference": null
+    },
+    "ENV42_REMOVE": {
+      "final_delta": 0,
+      "final_raw_different_sites": 0,
+      "first_b_guard_difference": null
+    },
+    "SHAM_EXACT": {
+      "final_delta": 0,
+      "final_raw_different_sites": 0,
+      "first_b_guard_difference": null
+    }
+  },
+  "edges": [
+    {
+      "evidence": "FULL/NO_ACTION first B-guard difference at t_rel=1; internal route not fully decomposed",
+      "source": "Q0",
+      "status": "observed_temporal_preparation_difference",
+      "target": "LOCAL_DIVERGENCE"
+    },
+    {
+      "evidence": "removal at 131 suppressed B 100->101 and retained delta=1",
+      "source": "COMPARATOR",
+      "status": "intervention_effect_observed",
+      "target": "B_GATE"
+    },
+    {
+      "evidence": "removal or semantic=5 suppressed; load 7->0 and direction->0 preserved write",
+      "source": "DYNAMIC_NEIGHBOR",
+      "status": "active_presence_effect_observed",
+      "target": "B_GATE"
+    },
+    {
+      "evidence": "clock 391->392 at t_rel=131 suppressed the write",
+      "source": "B_CLOCK_PHASE",
+      "status": "intervention_effect_observed",
+      "target": "B_GATE"
+    },
+    {
+      "source": "B_GATE",
+      "status": "executed_rule_and_transition_observed",
+      "target": "B_REWRITE"
+    },
+    {
+      "source": "B_REWRITE",
+      "status": "observed_field_relation",
+      "target": "DELTA_READOUT"
+    },
+    {
+      "evidence": "remove/load +/-1 did not change B guard/write; direction edit propagated elsewhere but not to B guard",
+      "source": "ACTION18",
+      "status": "not_necessary_under_tested_interventions",
+      "target": "B_GATE"
+    },
+    {
+      "evidence": "single-site removal at 65 converged and preserved write",
+      "source": "ENV42",
+      "status": "not_necessary_under_tested_intervention",
+      "target": "B_GATE"
+    },
+    {
+      "evidence": "n_active=9 gives no ordinary period; inverse environmental transplant at 120 suppressed FULL",
+      "source": "NO_ACTION_CROWDING",
+      "status": "inhibitory_context_observed",
+      "target": "B_GATE"
+    }
+  ],
+  "field_specific_dependence": {
+    "B_clock_391_to_392": "changed outcome",
+    "comparator_presence": "changed outcome",
+    "dynamic_neighbor_active_presence": "changed outcome",
+    "dynamic_neighbor_direction_to_zero": "did_not_change_write",
+    "dynamic_neighbor_load_7_to_0": "did_not_change_write",
+    "one_support_removal": "destructive_nonselective; not used as minimal attribution"
+  },
+  "nodes": [
+    {
+      "id": "Q0",
+      "kind": "prepared query",
+      "site": [
+        15,
+        14,
+        15
+      ],
+      "tick": 0
+    },
+    {
+      "id": "LOCAL_DIVERGENCE",
+      "kind": "first B-guard divergence FULL/NO_ACTION",
+      "tick": 1
+    },
+    {
+      "id": "COMPARATOR",
+      "kind": "active local record",
+      "site": [
+        15,
+        15,
+        15
+      ],
+      "tick": 131
+    },
+    {
+      "id": "DYNAMIC_NEIGHBOR",
+      "kind": "active local record",
+      "site": [
+        15,
+        16,
+        15
+      ],
+      "tick": 131
+    },
+    {
+      "id": "B_CLOCK_PHASE",
+      "kind": "clock condition",
+      "tick": 131,
+      "value": 391
+    },
+    {
+      "id": "B_GATE",
+      "k": 2,
+      "kind": "ordinary write opportunity",
+      "n_active": 6,
+      "period": 391,
+      "phase_remainder": 0,
+      "tick": 131
+    },
+    {
+      "after": 101,
+      "before": 100,
+      "id": "B_REWRITE",
+      "kind": "observed relation write",
+      "tick": 132
+    },
+    {
+      "after": 0,
+      "before": 1,
+      "id": "DELTA_READOUT",
+      "kind": "relational readout",
+      "tick": 132
+    },
+    {
+      "id": "ACTION18",
+      "kind": "external action product",
+      "site": [
+        31,
+        31,
+        15
+      ],
+      "tick": 18
+    },
+    {
+      "id": "ENV42",
+      "kind": "environment product",
+      "site": [
+        42,
+        42,
+        4
+      ],
+      "tick": 65
+    },
+    {
+      "id": "NO_ACTION_CROWDING",
+      "kind": "alternative local context",
+      "n_active": 9,
+      "tick": 131
+    }
+  ],
+  "question": "dependencies producing B:100->101 and delta:+1->0 at t_rel 131->132",
+  "replications": {
+    "origin_22_20_24": {
+      "B_CLOCK_PLUS1_final_delta": 1,
+      "INVERSE_final_reference_delta": 0,
+      "INVERSE_final_test_delta": 1,
+      "LOCAL_DYNAMIC_REMOVE_final_delta": 1
+    },
+    "origin_28_26_18": {
+      "B_CLOCK_PLUS1_final_delta": 1,
+      "INVERSE_final_reference_delta": 0,
+      "INVERSE_final_test_delta": 1,
+      "LOCAL_DYNAMIC_REMOVE_final_delta": 1
+    }
+  },
+  "rescue_asymmetry": {
+    "ENV_RAW_RESCUE": {
+      "edited_sites": 6,
+      "reference_delta": 1,
+      "test_delta": 1
+    },
+    "FULL_IDENTITY_COPY": {
+      "edited_sites": 0,
+      "reference_delta": 0,
+      "test_delta": 0
+    },
+    "INVERSE_FULL_FROM_NO_ACTION": {
+      "edited_sites": 6,
+      "reference_delta": 0,
+      "test_delta": 1
+    },
+    "LOCAL_RAW_CLOCK_RESCUE": {
+      "edited_sites": 7,
+      "reference_delta": 1,
+      "test_delta": 1
+    },
+    "LOCAL_RAW_RESCUE": {
+      "edited_sites": 7,
+      "reference_delta": 1,
+      "test_delta": 1
+    }
+  },
+  "unresolved": [
+    "the internal transition chain from Q0 to the t1 local divergence was not decomposed into every microscopic reducer dependency",
+    "FULL local environment copied into the NO_ACTION background at t120 did not rescue the write, so the sufficient enabling state extends beyond that copied shell and/or predates t120",
+    "the inverse transplant establishes conditional inhibitory sufficiency, not a unique environmental route",
+    "no tested selective intervention made ACTION18 or ENV42 necessary for the t131->132 write"
+  ]
+}

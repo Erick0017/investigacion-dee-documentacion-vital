@@ -1,0 +1,57 @@
+{
+  "schema": "mbp4.contextual-causal-mechanism.experiment-config.v1",
+  "campaign": "MBP4-MECANISMO-CAUSAL-REESCRITURA-OBSERVADA",
+  "parent_zip_sha256": "10c0cd5754b71d9c865de983c64f8ffc989cb8da4d33c61d804c1429416b310e",
+  "kernel": "DEE Universe v27 (frozen)",
+  "runtime": "DEE thinking 2.2.0",
+  "dimension": 47,
+  "main_origin": [15, 15, 15],
+  "runtime_t0_absolute_tick": 32,
+  "horizon_relative_tick": 170,
+  "write_transition": [131, 132],
+  "write_site_relative_to_origin": [1, 0, 0],
+  "discovery_completed_before_freeze": {
+    "action_and_environment_arms": [
+      "SHAM_EXACT",
+      "ACT_REMOVE",
+      "ACT_LOAD_MINUS",
+      "ACT_LOAD_PLUS",
+      "ACT_DIRECTION",
+      "ENV42_REMOVE"
+    ],
+    "local_arms": [
+      "LOCAL_DYNAMIC_REMOVE",
+      "LOCAL_DYNAMIC_SEM5",
+      "LOCAL_DYNAMIC_DIRECTION_ZERO",
+      "LOCAL_DYNAMIC_LOAD_ZERO",
+      "LOCAL_COMPARATOR_REMOVE",
+      "B_CLOCK_PLUS1",
+      "SUPPORT_REMOVE"
+    ],
+    "rescue_arms": [
+      "ENV_RAW_RESCUE",
+      "LOCAL_RAW_RESCUE",
+      "LOCAL_RAW_CLOCK_RESCUE",
+      "FULL_IDENTITY_COPY",
+      "INVERSE_FULL_FROM_NO_ACTION"
+    ],
+    "trajectory_count": 18
+  },
+  "confirmatory_replications_frozen": {
+    "origins": [[22, 20, 24], [28, 26, 18]],
+    "contrasts": [
+      "B_CLOCK_PLUS1_AT_T131",
+      "LOCAL_DYNAMIC_REMOVE_AT_T131",
+      "INVERSE_FULL_FROM_NO_ACTION_AT_T120"
+    ],
+    "trajectory_count": 6,
+    "coordinate_rule": "q_new = q_base + origin_new - (15,15,15) mod 47",
+    "individual_refit_after_holdout": false
+  },
+  "total_diagnostic_trajectory_limit": 24,
+  "replay_reference": "23_NATIVE_FEEDBACK_RELATIONAL_REWRITE/CHECKPOINTS/MAIN_T0.deetsnap",
+  "main_replay_host_interventions": 0,
+  "diagnostic_clone_policy": "fork/import complete RAW+clock only after verifying no channels or receipts",
+  "rescue_region": "Moore shell of B, excluding A/B; local variant includes comparator/support positions",
+  "frozen_after_discovery": true
+}

@@ -1,0 +1,2713 @@
+Fórmulas y Correspondencias DEE
+Edición 17.1 | Revisión interpretativa H_DEE | 12 de septiembre de 2026
+Registro matemático acumulativo F-001–F-278, relaciones por dominio y contrato Rosetta.
+Guia de lectura
+Este archivo conserva íntegro el documento anterior, incluidos sus cierres históricos, e incorpora al final el CIERRE DEFINITIVO DE VOLUMEN 7. La revisión 17.1 añade una actualización exclusivamente interpretativa: bajo H_DEE, la información no se trata como una categoría menor que la física. Las fórmulas, controles y resultados permanecen sin cambio; cuando existe many-to-one, coarse-graining, entropía o dinámica estadística demostrada, esos objetos pueden formar la termodinámica física fundamental DEE. La Rosetta sigue siendo necesaria para obtener las variables macroscópicas convencionales.
+Los Volúmenes 1–7 permanecen congelados como evidencia histórica: cada uno fija resultados en su corte, kernel y aparato. Esta edición no reescribe fórmulas ni telemetría; actualiza únicamente la ontología interpretativa de la termodinámica bajo H_DEE. La solidez de una afirmación sigue determinada por controles, dominio y predicción. “Informacional” puede ser físico fundamental; “macroscópico convencional” exige además reducción de escala y Rosetta.
+REVISIÓN INTERPRETATIVA H_DEE · 12 SEPTIEMBRE 2026 — Esta revisión no modifica telemetría, fórmulas, controles, hashes ni resultados experimentales. Modifica exclusivamente la lectura ontológica de la termodinámica. Bajo H_DEE, “informacional” no se contrapone a “físico”: la dinámica informacional del kernel se toma como nivel físico fundamental. Por tanto, many-to-one, pérdida de distinguibilidad, fibras, coarse-graining, basins y producción de entropía constituyen estructura termodinámica nativa DEE cuando están operativamente demostrados. Lo que sigue abierto es la Rosetta que derive o calibre energía, calor, temperatura y entropía macroscópicas convencionales.
+Original preservado: FORMULAS_Y_CORRESPONDENCIAS_DEE_E01_V27_CONTINUIDAD_VOLUMEN_4_V13_0(1).docx
+SHA-256 original: 2c1cb668f05825f484d5637856a2ee534dc5e70786ff4b7d1fa6ab7dd5337677
+FÓRMULAS Y CORRESPONDENCIAS DEE
+E01–v25.5 | kernel v25-LAZY | continuidad VOLUMEN 4; VOLUMENES 1–3 preservados
+Registro maestro unificado F-001–F-193 | corte documental 2 de septiembre de 2026
+Documento de control científico. La Parte I conserva y amplía el registro de fórmulas internas DEE; la Parte II preserva las correspondencias exactas previamente auditadas y añade correspondencias hipotéticas explícitamente separadas. Una relación interna no implica equivalencia con la naturaleza externa.
+Cómo leer este documento
+Se conservan íntegramente F-001-F-149 del cierre E01-V23.1. La actualización post-cierre agrega F-150-F-160 a partir de V23.2 parcial, S_Y_E 24X y la formalización FGIF-DEE. Ninguna relación anterior se borra; las nuevas entradas corrigen alcance o añaden resultados posteriores.
+Estatus: “empírica exacta en dominio” significa que los puntos probados obedecieron la relación dentro de ese aparato y rango; “candidato post-hoc” exige validación prospectiva; “corregida/rechazada” se conserva por trazabilidad; “teórica no validada” pertenece al marco teórico y no al cierre experimental.
+La segunda parte distingue tres niveles: correspondencia matemática/formal exacta; correspondencia externa demostrada (si existe); y correspondencia hipotética. Compartir nombres como campo, energía, fase, memoria, observador o resonancia no constituye equivalencia.
+PARTE I | REGISTRO MAESTRO DE FORMULAS E01-V23.1
+Total actualizado: 160 relaciones (149 al cierre V23.1 + 11 post-cierre/formales FGIF).
+ID
+Estatus
+Fórmula / relación
+Origen
+Significado y alcance
+F-001
+Fundacional / matemático
+E(m,n) = 2^(n-m) · n!/[m!(n-m)!] = 2^(n-m)·C(n,m)
+Fundamento DEE / n-cubo
+Cuenta m-caras del n-cubo; para n=3: 8 vértices, 12 aristas, 6 caras. Identidad combinatoria declarada; no es un hallazgo empírico del kernel.
+F-002
+Definición
+V = N³
+Arquitectura del universo
+Número de posiciones de un universo cúbico N×N×N. Definición geométrica exacta.
+F-003
+Definición
+k_Moore,max = 3³ - 1 = 26
+Vecindad local 3D
+Máximo de vecinos de Moore de radio 1 en una retícula 3D. Definición geométrica; no implica que las 26 conexiones estén activas.
+F-004
+Definición
+M_D(t) = Σ_i 1[estado_i(t) > 0]
+Metrología nativa
+Cuenta de vóxeles ocupados; históricamente llamada “masa informacional”. Es conteo de ocupación, no masa física.
+F-005
+Definición
+Λ(t) = Σ_i 1[activo_i(t) ≠ activo_i(t-1)]
+Metrología nativa
+Actividad topológica como distancia de Hamming entre ocupaciones consecutivas. No mide cambio del uint64 completo.
+F-006
+Identidad derivada
+Λ(t) = B(t) + D(t)
+Metrología nativa
+La actividad de ocupación se descompone en nacimientos y desapariciones. Identidad de conteo bajo la definición de Λ.
+F-007
+Identidad derivada
+ΔM_D(t) = B(t) - D(t)
+Metrología nativa
+Cambio neto de ocupación. Junto con F-006 permite separar actividad de cambio neto.
+F-008
+Definición
+p₁ = M_D/N³ ; p₀ = 1 - p₁
+Metrología / ocupación
+Probabilidades empíricas binarias de ocupado/vacío. Base del cálculo de entropía binaria.
+F-009
+Definición externa usada
+H = -p₁ log₂(p₁) - p₀ log₂(p₀)
+Metrología / ocupación
+Entropía binaria de Shannon de la ocupación. Es una proyección termodinámica informacional parcial de DEE; no agota por sí sola la entropía de fibras, historia, organización ni la termodinámica completa.
+F-010
+Definición de lectura
+S_max(t) = max_i ((voxel_i >> 32) & 0xFFFF)
+Metrología / s_reg
+Máximo valor leído del campo s_reg de 16 bits entre vóxeles activos. Es una lectura de campo; su semántica física externa no está establecida.
+F-011
+Definición
+ρ_D = M_D/V_caja
+Caja Negra / densidad
+Fracción de ocupación del bounding box. Ejemplo histórico: 6488/13824 = 0.4693287. Volumen de ocupación, no densidad de masa SI.
+F-012
+Identidad derivada
+f_vacío = 1 - ρ_D
+Caja Negra / densidad
+Fracción geométrica vacía dentro del volumen de referencia. Derivada exacta de F-011.
+F-013
+Candidato histórico corregido
+M_max ≈ 0.4693·V_caja
+Caja Negra
+Se propuso como ley de empaquetamiento a partir de una corrida. No universal; conservar solo como relación histórica de ese estado.
+F-014
+Candidato histórico rechazado
+S_max ≤ 6
+Caja Negra
+Se interpretó 6 como límite de tensión. Rechazado como límite universal: otros registros muestran s_reg mucho mayor.
+F-015
+Empírica exacta en dominio
+M_final = 9Z - 10,  Z=3…30
+E01 / barrido de prismas
+Ley afín que reproduce los 28 puntos observados del barrido. Exacta en ese dominio experimental; no generalizada fuera de él.
+F-016
+Derivada exacta
+R(Z) = (9Z-10)/(8Z)·100 = 112.5 - 125/Z [%]
+E01 / supervivencia
+Porcentaje final respecto de la masa inicial 8Z. Explica completamente la tendencia de ese barrido.
+F-017
+Empírica exacta en dominio
+c_DEE = 1 celda/tick
+Propagación V1/T16
+Velocidad operacional de propagación dirigida observada. Unidad interna del autómata; no equivale a la velocidad de la luz física.
+F-018
+Empírica exacta en dominio
+T_retorno = N
+Retorno toroidal V1
+Un desplazamiento unitario por tick retorna al origen tras N ticks. Depende de topología toroidal y paso unitario.
+F-019
+Empírica exacta en dominio
+grid(t+N) = grid(t)
+RECURRENCE / V14–V16
+Recurrencia del grid en familias probadas. No es recurrencia demostrada de grid+clock.
+F-020
+Exacta por cociente
+P_mod_traslación = 1
+ORBITQUOT / V15.5
+Al identificar estados que difieren solo por traslación, un portador unitario es equivalente cada tick. Periodo en espacio cociente, no en coordenadas absolutas.
+F-021
+Empírica + aritmética
+retorno en toro d ⇔ N mod d = 0
+FACTORX / divisibilidad
+Prueba modular basada en recurrencia de un portador en toro de longitud candidata d. Funcionó en casos factorizados; el barrido sigue siendo secuencial.
+F-022
+Empírica exacta en dominio
+t_evento = d - 2
+FIELDLAWX: V2+V4_TETRA → PRISM12
+Primer efecto específico como función de distancia d. Pendiente 1 y ajuste perfecto en el rango ensayado hasta d=40.
+F-023
+Empírica exacta en dominio
+t_evento = d - 3
+FIELDLAWX: V3_L+V4_TETRA → PRISM12
+Segunda familia de frente causal. Pendiente 1 y ajuste perfecto en el rango ensayado.
+F-024
+Estadística del ajuste
+pendiente = 1 ; R² = 1
+FIELDLAWX
+Resume la linealidad temporal exacta de F-022/F-023 en los datos ensayados. No garantiza extrapolación ilimitada.
+F-025
+Empírica contextual
+T₂ = 2
+STATECODE / estados escritos
+Órbitas materiales de periodo 2 aparecen en estados escritos concretos. Corregido: no es propiedad universal de las especies aisladas.
+F-026
+Empírica contextual
+T₃ = 3
+DISCOVER / ATTRACTORROBUST
+Atractor contextual de periodo 3; familias robustas sobrevivieron holdouts y daño. Contextual, no universal.
+F-027
+Empírica contextual
+T₄ = 4
+T4VALID
+Atractor contextual de periodo 4 reproducido en múltiples N/traslaciones. Robusto pero difícil de modular con pulsos ensayados.
+F-028
+Empírica + identidad
+P_conjunto = lcm(3,4) = 12
+ARITHCOEXIST / T3⊕T4
+Coexistencia T3 y T4 produjo periodo conjunto de grid 12 en 3/3 traslaciones. La lectura condicional de fase P12 no se logró.
+F-029
+Regla de kernel recuperada
+p(a) = 782 // a
+CLOCK / código recuperado
+Periodo entero usado por una rama temporal para a = anclajes_faltantes. Es fórmula de implementación observada, no ley física externa.
+F-030
+Valores de F-029
+p(1..8) = {782,391,260,195,156,130,111,97}
+CLOCK / código recuperado
+Conjunto de periodos enteros generado por la división entera. Sirvió para construir hipótesis de equivalencia de clock.
+F-031
+Candidato histórico refinado
+L = lcm(782,391,260,195,156,130,111,97) = 1,094,573,220
+CLOCKQUOT16X
+Primer periodo común propuesto para equivalencia de clock uniforme. V17/V18 lo refinaron: no es la escala mínima observada del dominio conjunto.
+F-032
+Empírica consolidada en dominio
+Q = 391 = 17·23
+CLOCKMIN17X / CLOCKLAW18X
+Mínimo común observado que preserva el futuro material en el conjunto sensible probado. No es periodo mínimo de cada aparato ni reloj universal.
+F-033
+Equivalencia empírica
+clock ≡ clock + 391  (para el futuro de grid en el dominio probado)
+CLOCKLAW18X
+Clases de equivalencia de clock uniforme. +782 y +1173 también preservan el futuro. La distribución espacial del clock puede seguir siendo causal.
+F-034
+Empírica exacta en dominio
+t = N - 14
+MEMDECODE / TOPOLOGICALLATENCY
+Latencia de ruta memoria→decoder replicada en múltiples N. El evento desaparece con frontera absorbente: dependencia topológica fuerte.
+F-035
+Empírica exacta en dominio
+t = N - 16
+PHASESHIFT / TOPOLOGICALLATENCY
+Segunda familia de latencia afín a N. También desaparece con frontera absorbente.
+F-036
+Empírica exacta en dominio
+t_forward = N - 11
+BUFFERVALID18X
+Latencia forward de normal_t2. Aún falta control de frontera absorbente específico de este aparato.
+F-037
+Empírica exacta en dominio
+t_reverse = N - 9
+BUFFERVALID18X
+Latencia reverse de normal_t2. Misma cautela que F-036.
+F-038
+Familia empírica candidata
+t = N + c_aparato
+Síntesis V18
+Unifica las familias observadas con c ∈ {-16,-14,-11,-9}. Es una familia provisional, no una ley universal del motor.
+F-039
+Empírica exacta en dominio
+Δt_plano = N
+SHIELDGENERAL18X
+Una barrera plana thickness2 añade exactamente un recorrido temporal N. Observado en N64/N96 y tres targets.
+F-040
+Derivada de F-039
+t_plano = 41 + N
+SHIELDGENERAL18X
+Evento base 41 se desplaza a 105 en N64 y 137 en N96. Sugiere una vuelta topológica adicional.
+F-041
+Ley discreta muestreada
+sreg8: (t,response) = {(12,2),(34,5),(40,10),(48,36),(64,180),(80,434)}
+SREGTHRESHOLD18X
+Trayectoria característica de amplificación no lineal para sreg=8 en el aparato probado. No es una función cerrada ni universal; se registra como secuencia empírica.
+F-042
+Métrica derivada
+amplification = 434 - 12 = 422
+SREGTHRESHOLD18X
+Exceso del estado sreg8 sobre la cola writer-only en N96/N112/N128. Métrica específica del aparato.
+F-043
+Métrica observada
+peak_sharpness = 27.4026
+SREGTHRESHOLD18X
+Separación del pico sreg8 frente a vecinos según la métrica del runner. Valor de prueba, no constante universal.
+F-044
+Métrica operacional
+G_transfer = response_trained - response_virgin
+PLASTICITY17X/18X
+Ganancia de transferencia usada para clasificar plasticidad. 95/96 fueron negativas; mediana ≈ -10.85. La dirección dominante es depresión/inhibición, no potenciación.
+F-045
+Métrica operacional
+A_assoc = G_paired - G_unpaired = 0
+ASSOCIATIVE18X
+Ventaja asociativa; fue cero en sreg 1,4,8,16 y holdouts. Cierra aprendizaje por coincidencia en este protocolo.
+F-046
+Candidato exploratorio
+N · C_activos ≈ 1061 ticks
+RESERVOIRWORK18X
+Productos 48·22=1056, 64·17=1088, 80·13=1040 sugieren horizonte casi absoluto. No prerregistrado; necesita campaña específica.
+F-047
+Candidato degradado
+P ≈ 58
+REENTRYHARM165X → HARMONIC17X
+Firma espectral ancha inicialmente reproducida. V17 no conservó periodo/coherencia: no usar como portadora estable.
+F-048
+Artefacto corregido
+t = d - 1
+V10 detector causal
+Compresión temporal reportada inicialmente. Identificada como artefacto del detector; no ley DEE.
+F-049
+Etiqueta corregida
+full_state_period = N
+V15 histórico
+Se usó para describir recurrencia. Corrección: solo grid-period N; clock_A no retorna necesariamente.
+F-050
+Fórmula teórica declarada
+R(x) = floor(x + 1/2)
+Axioma 3 / material teórico
+Redondeo al entero más cercano propuesto como regla de traducción. No fue establecido como resultado experimental independiente.
+F-051
+Parámetro teórico declarado
+Δν = 5.087×10^-5
+Arquitectura del Vacío / teoría
+Parámetro usado en una derivación teórica del costo del vacío. No se eleva a constante experimental DEE por la evidencia de V18.
+F-052
+Fórmula teórica no validada
+E_Λ = m_e · (Δν)² · √3
+Arquitectura del Vacío / teoría
+Relaciona un costo propuesto de vacío activo con m_e, Δν y geometría cúbica. No es una equivalencia experimental demostrada con energía oscura.
+F-053
+Derivada teórica no validada
+T_purga = ceil(1/Δν) = 19658
+Arquitectura del Vacío / teoría
+Periodo de acumulación/purga propuesto a partir de Δν. No debe confundirse con una ley experimental del clock de V17/V18.
+F-054
+Lógica confirmada
+y = A ∧ B
+Mega Test T03 / AND
+Tabla 00→0, 10→0, 01→0, 11→1. Función booleana AND implementada por una geometría del sistema.
+F-055
+Lógica confirmada
+y = XNOR(A,B) = ¬(A ⊕ B)
+Mega Test T02 / Génesis XNOR
+Operador de igualdad booleana asociado a nacimientos en geometrías ensayadas. La implementación material es DEE; la función lógica es estándar.
+F-056
+Geometría confirmada
+M_cubo(s) = s³
+Mega Test T01
+Cubos densos 2³…8³ conservaron exactamente su ocupación en el horizonte probado. La fórmula es volumen geométrico; la persistencia es el hallazgo DEE.
+F-057
+Relación causal histórica
+AB ≠ BA
+HISTORY / AUTOHISTORY
+El orden de exposición puede cambiar el estado final en contextos probados. No es una ley universal; registra no conmutatividad histórica.
+F-058
+Negativo contextual
+respuesta(4+4) ≠ respuesta tipo sreg8 por suma lineal
+SREGSUMMATION18X
+La premisa de sumación falló: single4 ya saturaba en esa geometría. Demuestra que s_reg no puede tratarse como amplitud escalar simple.
+F-059
+Relación estructural post-V18
+estado causal efectivo ⊃ grid
+KERNELSTATE / CLOCKFIELD / V18
+El grid por sí solo no determina el futuro: clock/fase y contexto pueden ser causales. Relación conceptual, no ecuación cerrada mínima.
+F-060
+Modelo estructural post-V18
+memoria funcional ≈ código local desarrollado + infraestructura topológica global
+MEMUTILITY + MEMORYSUPPORT + BOUNDARYEMU
+Síntesis mínima: el estado local puede codificar; la topología global habilita transporte/lectura. Modelo operativo a falsar, no suma física literal.
+F-061
+Modelo estructural empírico
+R = f(s_reg, rol, geometría, estado, historia)
+SREGCONTEXT185X / síntesis V18.5–V19
+El mismo s_reg produce respuestas distintas según rol, posición, geometría, estado e historia. Reemplaza el modelo escalar R=f(s_reg); no es una función cerrada todavía.
+F-062
+Empírica exacta en aparato
+Pico_sreg4(k fuentes) = {7.5, 10.8888889, 13.3} para k={1,2,3}
+FIELDINTERFERENCE185X
+Tres fuentes distribuidas s_reg=4 reprodujeron exactamente los mismos picos en N64/N96/N112: una fuente 7.5, pares 10.8888889, triple 13.3. Es composición no aditiva del aparato, no compuerta booleana.
+F-063
+Candidato estructural replicado
+A_causal = [[0,1,1,0,1],[0,0,0,0,0],[1,1,0,1,1],[0,0,0,0,0],[0,0,1,1,0]], densidad=0.45
+CAUSALNETWORKSCALING185X
+El grafo derivado por intervención fue idéntico en N64/N96/N112. Registra invariancia relacional del aparato; no equivale a una red natural concreta.
+F-064
+Relación estructural replicada
+código_local = 7 celdas desarrolladas; éxito_transferencia_crossN = 3/3
+CODESUBSTRATE185X
+El parche local desarrollado transfirió función desde N112 hacia N128/N144/N160. Fortalece “código local portable + runtime/topología global”; no prueba independencia universal de sustrato.
+F-065
+Empírica de aparato refinada
+T_assist,band = 1057.7778 ticks; CV = 0.015449; valores={1040,1056,1064,1088,1080,1040,1056,1056,1040}
+RESERVOIRLAW19X
+Refina F-046 con nueve tamaños. La banda thick_closed_band conserva un horizonte casi absoluto en el dominio, pero single_toroidal_pulse no comparte la ley.
+F-066
+Empírica exacta en decoder probado
+C_neutral={0,391}; C_active={7,17,23}
+WRITECODEBOOK19X
+En los ensayos V19, 0 y 391 produjeron el mismo futuro material; 7,17,23 produjeron la misma clase activa entre sí. Es una partición operacional del decoder, no un alfabeto universal del clock.
+F-067
+Candidato post-hoc
+P_active(N) = N/2 + 9
+WRITECODEBOOK19X / auditoría post-hoc
+Los picos post-reset de la clase activa fueron 57,65,73,81,89 para N96,112,128,144,160. Ajuste exacto observado post-hoc; requiere prueba prospectiva.
+F-068
+Empírica exacta en dominio
+G_apertura(r): cerrado/r0 -> pico 0; r1/r2 -> pico 17
+APERTURESENSOR19X
+Se reprodujo en N64/N96/N112 y s_reg 4,7,8,9,16: 15/15 comparaciones positivas. La geometría controla acceso causal; no demuestra difracción óptica.
+F-069
+Empírica exacta extendida
+t_normal_t2,forward = N - 11
+CAUSALMETRIC19X
+Refina F-036: V19 extendió la relación a N48…N160 con c=11 estable en el grupo forward de thickness2.
+F-070
+Empírica exacta extendida
+t_normal_t2,reverse = N - 9
+CAUSALMETRIC19X
+Refina F-037: V19 extendió la relación a N48…N160 con c=9 estable en el grupo reverse de thickness2.
+F-071
+Empírica exacta en dominio
+t_normal_t3,forward = t_normal_t3,reverse = N - 11
+CAUSALMETRIC19X
+Thickness3 produjo c=11 en ambas direcciones dentro del barrido V19. Muestra que la interfaz puede cambiar la asimetría direccional.
+F-072
+Familia empírica refinada
+t = N - c(interfaz, dirección, aparato)
+Síntesis V18.5–V19
+Refina F-038. El coeficiente c no es universal: depende de la interfaz, dirección y aparato. Las leyes N-c son métricas operacionales de ruta, no tiempo global de DEE.
+F-073
+Candidato post-hoc
+t_ruta_alternativa = (3/8)N - 6
+CAUSALINFLUENCE19X / auditoría post-hoc
+Tras ablación central, N96->30, N112->36, N128->42 encajan exactamente. El control off-center de V19 removió 0 celdas, por lo que requiere validación prospectiva con control de volumen igualado.
+F-074
+Empírica de consolidación
+Para count=1…16: G(t_ret=0)≈-10.25…-10.3833 -> G(t_ret>=128)=-17.9167; count=24 ya da -17.9167 en t_ret=0
+PLASTICITYDOSE19X
+La depresión continúa consolidándose durante la retención incluso con pocos eventos. Es evidencia de consolidación retardada del aparato, no de una regla sináptica biológica.
+F-075
+Regla operacional replicada
+argmax_i G_i posterior ∉ rutas_entrenadas en 15/15 casos con ruta no entrenada disponible
+ADAPTIVEROUTING19X
+La historia inhibitoria reconfigura qué ruta queda funcionalmente preferida. No implica que el sistema optimice velocidad o una función de costo externa.
+F-076
+Relación histórica reforzada
+ΔG_order = G_asc - G_desc; a 512 ticks = -8.230769 en N96 y N112
+HISTORYREVERSIBILITY19X
+Mismos elementos en distinto orden producen respuesta futura distinta. Fortalece F-057. Un ciclo de histéresis cerrado no es requisito para registrar memoria no conmutativa.
+F-077
+Modelo temporal de dos etapas
+topología_global -> disparo; después del onset: Δactividad_toro-cut ≈ 0 en 8/8
+TOPOLOGICALWORKMEMORY19X
+Cortar la topología después del onset no alteró la actividad tardía medida. Compatible con inicialización topológica seguida por mantenimiento local; no prueba eco infinito.
+F-078
+Métrica de READ contextual
+accuracy_global(N64,N80,N96) = {0.875,0.875,1.0}
+GLOBALREADOUT19X / auditoría forense
+El macroestado global es discriminable dentro de cada N. El pooling absoluto cross-N falló; el resultado motiva coordenadas relacionales de cuenca, no demuestra un lector universal.
+F-079
+Corrección / contraejemplo
+RMSE(t_relax ~ N-11)=70.6045; RMSE_afín=2.1142; RMSE_constante=3.7712
+GLOBALRELAXSCALING19X
+La relajación global no sigue la ley de canal N-11. Separa explícitamente latencia de ruta de tiempo global de relajación.
+F-080
+Candidato de régimen
+signo(Δmacro_clustered-shuffled)=f(densidad, horizonte, N); a densidad 0.004 y t=256: Δocupación>0 en 14/15 ensayos
+MESOORGANIZATION19X + MICROMACROEMERGENCE185X
+La organización mesoscópica puede modificar el macroestado en regímenes concretos, pero el signo no es universal y cambió respecto de otros horizontes/condiciones. Prioriza mapa de regímenes sobre “fractalidad universal”.
+F-081
+Definicion probada / regla cross-N no generalizada
+z=(d_B-d_A)/(d_A+d_B), tras estandarizacion de anchors dentro de N
+BASINRELATIONALREAD20X
+Coordenada relacional de cuenca. La misma regla de signo logro accuracies {N64:1.0,N80:.5,N96:.4167,N112:.6667,N128:.8333}; conservar como operador, no como decoder universal.
+F-082
+Empirica exacta en dominio
+G20(r,h)=17 si r∈{1,2} y h=1; G20=0 si r∈{-1,0} o h=2
+GEOMETRICGATEMAP20X
+Refina F-068: 192 pruebas; 48/48 positivas exactamente a 17 en apertura r1/r2 con thickness1; thickness2 bloqueo total. Invariante en N64/96, s_reg4/8, clock0/17/391 y dos shapes.
+F-083
+Empirica exacta de aparato
+tras trigger y cierre: (inside_tail_mean,outside_tail_mean)=(3,0)
+TRIGGERVAULT20X
+9/9 condiciones N64/80/96 x s_reg4/8/16. Retencion interior medida sin fuga exterior en el horizonte post-cierre.
+F-084
+Candidato acotado / correccion de F-073
+t_alt=(3/8)N-6 solo exacta prospectivamente para N=80..144 en este aparato
+CAUSALROUTER20X
+Residual 0 en N80,96,112,128,144; +6 en N64 y +2 en N160. No elevar a ley universal. Baseline N-11 vuelve a replicarse.
+F-085
+Empirica de consolidacion refinada
+G_1pulso(t_rest): -10.25 en 0; -17.9167 en 128 y 512; -17.3333 en 1024
+ROUTERCONSOLIDATION20X
+Misma secuencia en N96 y N112. Refina F-074 con validacion prospectiva de un solo pulso.
+F-086
+Frontera empirica discretizada
+rho*_obs(N)={.004@40,.003@48,.003@64,.003@80,.002@96}
+MESOREGIME20X
+Menor densidad probada con Δocupacion clustered-shuffled>0 en ambos replicados y horizontes 64..512. Es una cota del grid explorado, no criticalidad exacta.
+F-087
+Empirica exacta en dominio
+t_especifico=d-9
+ORGREINSTANTIATE20CX
+18/18: d={18,24,30}, N={64,80,96}, ejes x/y/z y seis patrones. Fuente vacia a t=5; latencia causal respetada. Ley interna de este aparato de reinstanciacion.
+F-088
+Cota de requisito de receptor
+R_especifica=0 para S∈{0,1,7,27}; R_especifica>0 para S=98; por tanto 27<S_min<=98
+REINSTANTIATIONDEPTH20CX
+El scaffold completo fue necesario en el barrido. La cota no identifica el minimo exacto.
+F-089
+Clases de programa empiricas
+P(zero)=P(391_r8)=P(17_shell); P(17_r8)=P(17_slab)=P(17_checker); H_ROI(interclase)=19
+MATTERPROGRAM20CX
+Dos clases persistentes exactas post-reset en el aparato. Demuestra que clase de clock y geometria del campo interactuan.
+F-090
+Tabla de interaccion exploratoria
+peak(zero/391,none)≈29.037; peak(zero/391,aperture)≈18.029; peak(17,none/aperture)=11; peak(closed)=0
+CAPABILITYSEARCH20CX
+Reproducido en row/diag dentro de esta busqueda. Candidato a ley de interaccion clock x geometria; requiere confirmacion preregistrada.
+F-091
+Empirica/estructural
+X_i=(state_i,s_reg_i,dx_i,dy_i,dz_i,semantic_i,clock_i)
+V21-C BINARYBASIS/TELEMETRY
+Microestado operacional minimo; los seis primeros campos pertenecen al raw voxel y clock es almacenamiento separado.
+F-092
+Empirica exacta en testigos
+state=0 !=> raw=0; raw=0 !=> clock=0
+V21-C HIDDENRAW/FULLMICROTRACE
+Define tres nociones distintas de vacio y corrige lecturas basadas solo en ocupacion.
+F-093
+Empirica contextual
+r_Cheb(t)=t para t=1,2,4,8,16; diferencia extinguida antes de t32
+V21-C PERTURBATIONBASIS dir-x
+Testigo de propagacion causal direccional a una celda/tick en checkpoints del aparato.
+F-094
+Empirica en muestra
+53355 exactos/0 ambiguos; 52443 coarse/896 ambiguos
+V21-C LOCALGRAMMAR
+El coarse-graining elimina informacion predictiva que distingue next_raw.
+F-095
+Empirica exacta en corrida
+P_global=24 despues del transitorio sparse_directional
+V21-C OSCILLATIONMINE
+Atractor global espontaneo observado sin imponer T3/T4.
+F-096
+Empirica de simetria
+H_translation=0; H_swap=24; H_rotZ90=57; H_reflectX=96 (plateaus)
+V21-C SYMMETRYORBIT
+Traslacion homogénea; orientaciones probadas no son todas equivariantes.
+F-097
+Empirica descriptiva
+G_obs: V=387,E=553,SCC=221,maxSCC=167
+V21-C ACCESSIBILITYGRAPH
+Estructura recurrente del grafo de estados raw observado.
+F-098
+Empirica descriptiva
+occupancy: 5333 -> 3031(t8) -> 3793(t16) -> 57433(t32) -> 63819(t64)
+V21-C SPONTANEOUSMULTISCALE
+Reorganizacion espontanea N40 hacia un unico macrocomponente de63819.
+F-099
+Empirica factorial contextual
+Firma_OBSERVER != Firma_NORMAL en 36/54 pares; closed iguala
+V21-A OBSERVERBACKACTIONMAP
+La semantica observer puede cambiar backaction/retorno; sreg/clock no cambian la firma V7 en el barrido.
+F-100
+Empirica acotada
+48 < S_min^(exact) <= 64; random/shell fallan hasta 98
+V21-A CAVITYSCAFFOLD
+El scaffold receptor depende de configuracion espacial, no solo conteo.
+F-101
+Empirica exacta en dominio
+t_specific=d-9; V21 16/16; acumulado V20+V21 34/34
+V20-C + V21-A REINSTANTIATIONSCALE
+Ley de latencia de reinstanciacion causal en el aparato probado.
+F-102
+Empirica exacta en dominio
+R0=sin respuesta; t_R1=d-9 en 18/18
+V21-A RECEIVERCOMPETITION
+Asimetria estable de reachability; sesgos de un voxel no cambian ganador.
+F-103
+Resultado nulo
+historia_clock_vacia -> mismo final material en 16/16
+V21-A VACUUMHISTORY
+No se demuestra memoria funcional de vacio por posterior reinsercion ingenua.
+F-104
+Empirica temporal
+fill_aperture=3 en t14; target effect t15; fill vuelve0
+V21-A VAULTSELFCLOSE
+Intermediario transitorio; no self-closing persistente.
+F-105
+Empirica contextual
+t_motor=15 direct; t_motor=68 normal_t2
+V21-A SENSORIMOTOR
+Transferencia nativa sensor->motor; feedback de ruido permanece hibrido Python.
+F-106
+Empirica longitudinal
+Hamming_local(train,control)=10 hasta50000; unused=0
+V21-B CHRONICMEMORY
+Memoria/plasticidad estructural cronica robusta a ruido matched.
+F-107
+Resultado nulo
+noise in {0,16,64}/32 ticks no cambia endpoint rest128/512
+V21-B SLEEPDISRUPTION
+No evidencia de ventana offline sensible al ruido en el aparato.
+F-108
+Empirica contextual / refinamiento
+N112: DeltaG01=-7.2667(pre0), +7.2667(pre1); cooldown 0/128/512 igual; N96=0
+V21-B PRECONSOLIDATEDCHALLENGE
+Precondicionamiento historico; refina la lectura de consolidacion temporal F-085.
+F-109
+Resultado nulo para repair
+rehab4=rehab16=sham16: D=9261, G=-14.4286
+V21-B TRAINEDREPAIR
+Pulsos no reconstruyen estado entrenado; sham reproduce efecto.
+F-110
+Empirica contextual
+rest8192: G_used=-15 para rutas0..3; G_unused=0; silence=noise
+V21-B OFFLINEPRUNING
+Convergencia used-vs-unused; se pierde orden de dosis.
+F-111
+Resultado nulo para auto-gating
+open_aperture=0; closed_control=9 en todos N/stress/cycles
+V21-B HOMEOSTATICMEMBRANE
+Sin actuacion homeostatica de membrana.
+F-112
+Fallo de prerrequisito
+first effects=11/13/17/19; periods=2/2/2/2; factor returns=False
+V21-B PARALLELFACTOR
+Latencia etiquetada no equivale a reloj modular; no factoriza en paralelo.
+F-113
+Empirica contextual
+inner17 => outer_H=0, inner_spec~7; no inner17 => outer_H~33, inner_spec~18
+V21-B NESTEDSCALE
+Gating/decoupling jerarquico controlado por clock local.
+F-114
+Resultado nulo de conservacion simple
+No nontrivial exact/modular invariant in sparse_directional candidate set
+V21-C INVARIANTSEARCH
+No se identifica conservacion simple entre observables candidatos.
+F-115
+Empirica exacta en familia truncada
+R_specific(S)=0 para S=49..60; R_specific(S)>0 y t_first=15 para S=61..64; S_min^trunc=61
+V21.5-A SCAFFOLDCAUSALDNA
+Umbral exacto de la secuencia de truncacion ensayada. No es minimo topologico global.
+F-116
+Cota empirica de descubrimiento
+S_min^topologico <= 46
+V21.5-A SCAFFOLDCAUSALDNA
+Una geometria greedy outer-to-inner de 46 voxeles conserva respuesta row/diag/bent t=15. 46 no esta probado como minimo.
+F-117
+Necesidad causal contextual
+R_specific=0 si state_source->0 o direction_source->0; R_specific(t=15) en baseline, sreg0, semantic4/5, clock17/391
+V21.5-A REINSTANTIATIONMICROCAUSAL
+En el aparato row/diag, state y direccion son necesarios para la respuesta especifica; los otros cambios probados no lo son.
+F-118
+Empirica contextual / no universal
+N96, retention>=128: G(d=0)=0; G(d>0)≈-15; holdout N112 no conserva la misma ley funcional
+V21.5-B PLASTICITYDOSELAW
+Maduracion used-vs-unused en N96. La excepcion N112 impide promoverla como ley universal de plasticidad.
+F-119
+Empirica factorial contextual
+semantic4: max(backaction,return)=(4,3); semantics {0,1,2,3,5,7}: (1,1) en aparatos ensayados
+V21.5-B SEMANTICOPERATOR
+Aislando los demas campos, semantic4 define una firma dinamica distinta en V7/cavity16.
+F-120
+Equivalencia exacta contextual
+N96 CLOCKBARRIER: Trace(7)=Trace(17)=Trace(23) para r in {4,8,12}, ejes X/Y/Z; Trace(0) y Trace(391) no son universalmente equivalentes
+V21.5-B CLOCKBARRIERLAW
+Clase clock exacta {7,17,23} en el dominio. N160 muestra dependencia de eje/contexto y corrige la dicotomia previa.
+F-121
+Refinamiento/replicacion de F-018/F-019/F-095
+P_grid=N para N in {20,24,28} en 4 densidades x 2 seeds (24/24)
+V21.5-B P24MECHANISM + historial V14-V15.5.1.1
+Reclasifica P24 de V21-C como instancia N=24 de la familia historica P=N del grid; no prueba periodicidad del estado grid+clock.
+F-122
+Empirica exacta muestreada / precursora
+En FIELDINTERROGATION A.1, variantes state2, sreg8, sreg16 y semantic5 pueden converger al baseline full grid+clock en 1 tick en contextos muestreados.
+V22-A.1 FIELDINTERROGATION22A1X
+Precursor de la no-injectividad prospectiva demostrada por F-138.
+F-123
+Empirica contextual de regimen
+N64 primordial: Occ_final media neutral~1406.6, motif46=1515, direction~261448.8, semantic4~260763.3, mixed~261271.1 de 262144 sitios; replay seleccionados estables hasta 8192.
+V22-A.1 PRIMORDIAL + LONGEVOLUTION
+Separa regimen disperso y casi saturado; no identifica vida ni optimalidad.
+F-124
+Empirica factorial contextual
+A t192: row sem1=(H36,ap0), sem4=(H49,ap5); diag=(36,0) vs (35,3); bent=(36,0) vs (36,0). semantic4 incoming face/ring conserva la diferencia; outgoing face vuelve al perfil base.
+V22-A HOLISTIC + V22-A.1 SEMANTICGEOMETRY
+Semantic4 es boundary operator contextual, no observer universal.
+F-125
+Necesidad topologica local
+Motif46: 46/46 single-site deletions del banco V22-B eliminan la respuesta row/diag; holdouts conservan t_first=15.
+V22-B SCAFFOLDMOTIFTOMOGRAPHY
+Irreducibilidad local del motivo; no minimo global.
+F-126
+Clases exactas contextuales de clock
+semantic1, axis0/2: Trace({0,391,782}) exacta y Trace({1..31}) exacta; semantic4: Trace({0..31,391,782}) colapsa a una clase por eje.
+V22-B CLOCKSIGNATUREATLAS
+Clock classes dependen de semantic/aparato; no simbolos universales.
+F-127
+Causalidad de state en memoria
+32 raw-changed cells; radius31: swap trained state->control da G=0 y control state->trained da G=-17.9167; swaps sreg/direction/semantic/clock aislados no transfieren la funcion.
+V22-B MEMORYCAUSALTOMOGRAPHY
+State distribuido es causalmente suficiente en el ROI completo; refinado por F-134.
+F-128
+Mediacion serial temporal
+Relay contribution en R2 row: H(15)=0, H(39)=3, H(64)=12, H(98)=13, H(128)=19; XOR hash es pattern-dependent.
+V22-B RELAYIDENTITY
+R1 contribuye causalmente a R2; no identidad material.
+F-129
+Resultado dependiente de ventana / supersedido
+V22-B: sparse_quiescent P_grid=1; sparse_directional sin tail period <=N en la ventana corta.
+V22-B RECURRENCESUPPORT
+No aperiodicidad: la ventana era insuficiente. F-137 demuestra P=N con horizonte 1600.
+F-130
+Empirica exacta en dominio ampliado
+t_specific=d-9 en 72/72: N in {64,80,96,112}, d in {18,24,30}, target in {motif46,full64}, pattern in {row,diag,bent}.
+V23.1-A CAUSALMETRICLAW231X
+Ley local de latencia de reinstanciacion en el dominio; no velocidad fisica externa.
+F-131
+Empirica exacta de aparato
+t_source_empty=5 en 72/72 combinaciones de F-130.
+V23.1-A CAUSALMETRICLAW231X
+Vaciamiento de la fuente ocurre antes de la respuesta especifica; no prueba continuidad de materia.
+F-132
+Causal piecewise / carrier
+checkpoint 5: source raw/direction ->0 o corridor raw/direction ->0 implica R_specific=0; checkpoints 6..14: source deja de ser necesario, corridor raw/direction sigue siendo necesario; front observed corridor desde t6 y receiver desde t15.
+V23.1-A REINSTANTIATIONWINDOW + FRONT
+Soporte causal migra source->corridor->receiver; reinstanciacion mediada en este aparato.
+F-133
+Especificidad topologica de banco
+0/80 geometrías alternativas de 32..56 sitios producen respuesta; motif46 control: t_first=15 para row/diag/bent.
+V23.1-A SCAFFOLDALTERNATIVES
+Cardinalidad no basta; no demuestra unicidad global.
+F-134
+Epistasis / degeneracion de memoria
+All32 state-write: G=-17.9167; all32 erase: G=0; leave-one-out 32/32 conserva G=-17.9167; single-write suficientes 2/32; subsets 25/50/75%: 3/6,5/6,6/6 positivos.
+V23.1-A MEMORYEPISTASIS
+Representacion redundante/degenerada compatible con basin selectors.
+F-135
+Mediacion causal contextual
+Intervenciones field-by-field en R1 producen DeltaR2 dependiente de checkpoint: raw/state alteran temprano; direction emerge en checkpoints intermedios; semantic/clock aislados permanecen baseline en las lecturas resumidas.
+V23.1-A RELAYMEDIATION
+La composicion serial tiene mediadores internos; no identidad reconstruction.
+F-136
+Acoplamiento multiescala matched
+Mismo base hash por replica: outer_clock17=baseline; outer_sreg0 conserva inner pero pone sreg exterior a 0; outer_ablate~outer_direction0 perturban; outer_semantic4 produce gran reorganizacion en niveles.
+V23.1-A MATCHEDMULTISCALE
+Evidencia causal de coupling entre escalas en el aparato, no entrainment universal.
+F-137
+Recurrencia estratificada exacta
+sparse_directional: P_spatial=N para N={24,31,47,64} en packed/state/direction/semantic/sreg; sparse_quiescent: P_spatial=1; P(clock mod391)=391; P(clock mod782)=782.
+V23.1-A RECURRENCEPROJECTION
+Refina P=N como preparation-specific; clock absoluto sigue monotono.
+F-138
+Falsacion de injectividad simple
+Existe X!=Y con F(X)=F(Y) en full grid+clock; 20 colisiones exactas en 52 pares prospectivos muestreados.
+V23.1-B REVERSIBILITYFIBERS
+El operador v25 implementado no es globalmente inyectivo/biyectivo en el dominio demostrado.
+F-139
+Compresion local many-to-one
+3072 contextos locales muestreados ->171 outputs distintos; max sampled output fiber=1174.
+V23.1-B LOCALTRANSITIONGRAMMAR
+Apoya gramatica convergente; por si sola no sustituye F-138.
+F-140
+Anisotropia / ruptura de equivarianza
+48 transformaciones cubicas x2 replicas: exactas 26/96@t1, 5/96@t8, 2/96@t32; a t32 solo identidad en ambas replicas.
+V23.1-B CUBICSYMMETRY
+La dinamica v25 no es cubic-equivariant salvo subconjuntos transitorios/contextuales.
+F-141
+Operador tetraedrico exacto
+8/8 tetra: center_after=(state2,sreg2,semantic1); 8/8 matched non-tetra: (0,0,0).
+V23.1-B TETRAHEDRALOPERATOR
+La relacion tetraedrica activa una rama especifica; no equivalencia con particulas.
+F-142
+Cota matematica / rama inalcanzable
+grad_req=19658*966=18,989,628; max_grad(uint16)=983,025 => quotient 50; max_grad(dynamic19657)=294,855 => quotient14; ambos <966.
+V23.1-B CRYSTALLIZATIONREACHABILITY
+La condicion compilada de cristalizacion no puede alcanzarse bajo los dominios auditados.
+F-143
+Routing DEMUX Moore
+Overflow forzado alcanza destino unico face, edge y vertex (3/3); site_count N^3 no cambia.
+V23.1-B DEMUXROUTINGONTOLOGY
+DEMUX no esta restringido a 12 aristas en la ruta activa probada; ocupacion != expansion de lattice.
+F-144
+Ley de cadencia local
+T_local=782/(8-n_active): n=6 ->391; n=7 ->782. sreg incrementa solo para clock congruente 0 mod T_local en aparato no protegido; write-protected bloquea.
+V23.1-B TEMPORALCADENCE
+Relacion exacta del branch probado; no frecuencia fisica SI.
+F-145
+Threshold phase-gated de overflow
+Con n_active=6: sreg0=19657 y clock in {0,391,782} -> overflow=1, source_sreg_after=0, target_raw!=0; clock in {1,390,392} -> overflow=0.
+V23.1-B PROVTOTALTHRESHOLD
+Overflow depende de cruce de prov_total y fase, no de sreg nominal aislado.
+F-146
+Gramatica XNOR de genesis
+4 pares antipodales/8 activos -> center=(state1,sreg1,semantic7), genesis=1; 3 pares, 8 activos con simetria rota y ORPHAN control -> genesis=0.
+V23.1-B XNORGENERATIVEGRAMMAR
+Conteo+simetria+semantic condition; no simple density threshold.
+F-147
+Clases semanticas de frontera
+incoming keep row/diag: sem4 != {0,1,2,3,5,6,7}; outgoing keep: sem5 != {0,1,2,3,4,6,7}; state0/raw!=0: sem4 forma clase distinta en row/diag/bent.
+V23.1-B SEMANTICBOUNDARYPRIMITIVE
+Semantic effect depende de placement, geometry y state/raw.
+F-148
+Frontera de regimen por direction density
+N48: f_dir=0 -> Occ_final~0.0126-0.0131; f_dir>=0.25 -> casi siempre ~0.99-1.00; f_dir=0.125 produce mezcla de basin disperso/saturado segun seed/sem4.
+V23.1-B PRIMORDIALREGIMEBOUNDARY
+Direction density es parametro de control de regimen candidato; semantic4 modula.
+F-149
+Transduccion nativa pattern-dependent
+216 trials=72 configs x3 patrones. Full downstream signature: 29/72 configs distinguen 3 clases, 6/72 dos, 37/72 una; Hamming tail estable t>=128 en 216/216. Ej.: sem1,sreg0,out H={88,74,84}; sem1,sreg8,out H={0,0,0}.
+V23.1-B NATIVETRANSDUCERATLAS
+Existe transduccion persistente en arquitecturas fijas; no aprendizaje/inteligencia por si sola.
+Lectura transversal de las fórmulas al cierre de VOLUMEN 1
+La trayectoria ya no se reduce a periodos y latencias. V18.5–V19 añaden una capa relacional: composición distribuida, código local portable, clases de clock, gating geométrico, consolidación inhibitoria, selección de rutas y un modelo temporal donde topología y memoria local pueden dominar en etapas diferentes.
+La familia temporal más fuerte debe escribirse ahora como t=N-c(interfaz,dirección,aparato), no como una constante universal. El contraejemplo GLOBALRELAXSCALING19X muestra además que una ley de canal no debe extrapolarse al tiempo global de relajación.
+El recurso interno debe describirse por observables DEE (asistencia al load, vida útil, recuperación, capacidad de repetir trabajo). F-065 cuantifica una banda muy estable, pero no autoriza llamarla energía SI, combustible físico o energía libre.
+La plasticidad se vuelve una familia de memoria causal: depresión selectiva, consolidación retardada, no conmutatividad histórica y cambio de ruta posterior. Esto merece un lenguaje propio antes de intentar identificarlo con aprendizaje biológico.
+La lectura global cambia de estatus: V19 contiene información de clase legible dentro de cada N. El problema pendiente no es simplemente “falta un decoder”, sino encontrar coordenadas relacionales/operadores de cuenca que conserven significado entre contextos.
+PARTE II · CORRESPONDENCIAS EXACTAS E HIPOTÉTICAS
+Esta parte conserva las 60 correspondencias exactas/formales del documento original y añade, por separado, una hipótesis de correspondencia cuando puede formularse sin convertir analogía en hecho. Para F-061–F-080 se registra desde el inicio el mismo criterio.
+ID
+Clasificación
+Disciplina / marco
+Correspondencia exacta o formal
+Correspondencia hipotética
+Límite / falsación
+F-001
+EXACTA matemática
+Combinatoria / geometría discreta
+Número de caras m-dimensionales del hipercubo. Mapeo: Mismos símbolos y conteo combinatorio.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Equivalencia matemática exacta; no implica que el universo físico sea un hipercubo DEE.
+F-002
+EXACTA matemática
+Geometría
+Volumen/cantidad de celdas de una retícula cúbica N×N×N. Mapeo: V=N³.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como conteo discreto.
+F-003
+EXACTA matemática
+Autómatas celulares / grafos
+Vecindad de Moore 3D de radio 1. Mapeo: 3³-1=26 vecinos.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como definición topológica.
+F-004
+EXACTA formal
+Teoría de medida / poblaciones
+Cardinalidad de un conjunto ocupado. Mapeo: Suma de indicadores.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como conteo; no equivale a masa física.
+F-005
+EXACTA
+Teoría de códigos / informática
+Distancia de Hamming. Mapeo: Número de posiciones binarias distintas.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Equivalencia exacta de la métrica usada.
+F-006
+EXACTA
+Dinámica de poblaciones / contabilidad
+Balance de eventos: actividad bruta = entradas + salidas. Mapeo: B+D.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Identidad de contabilidad, no ley biológica específica.
+F-007
+EXACTA
+Dinámica de poblaciones / continuidad discreta
+Balance neto = nacimientos - muertes. Mapeo: B-D.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Identidad discreta de conservación de conteo.
+F-008
+EXACTA
+Probabilidad
+Distribución Bernoulli empírica. Mapeo: p0=1-p1.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como normalización binaria.
+F-009
+EXACTA
+Teoría de la información
+Entropía binaria de Shannon. Mapeo: H2(p).
+Bajo H_DEE, una entropía informacional operacional puede ser física en el nivel fundamental. F-009 es una proyección concreta de ocupación, no la totalidad de la termodinámica DEE.
+Equivalencia exacta como entropía de Shannon de la proyección ocupacional. Puede formar parte de la entropía física fundamental bajo H_DEE, pero no representa por sí sola toda S ni una T macroscópica.
+F-010
+EXACTA computacional
+Informática / bitfields
+Extracción de campo por shift y máscara. Mapeo: (x>>32)&0xFFFF.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como operación digital; sin contraparte física necesaria.
+F-011
+EXACTA formal
+Física de medios / geometría
+Fracción volumétrica / occupancy fraction. Mapeo: cantidad ocupada / volumen.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como definición geométrica; no masa volumétrica SI.
+F-012
+EXACTA formal
+Ciencia de materiales
+Porosidad complementaria a fracción sólida. Mapeo: φ_void=1-φ_solid.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta si ρ_D se interpreta exclusivamente como fracción de ocupación.
+F-013
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-014
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-015
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-016
+EXACTA formal
+Ingeniería / estadística
+Eficiencia o retención porcentual. Mapeo: output/input×100.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como razón; el numerador específico 9Z-10 es propio de DEE.
+F-017
+EXACTA computacional
+Autómatas celulares
+Velocidad de señal de una celda por paso temporal. Mapeo: v=Δx/Δt=1.
+Analogía con velocidad causal máxima en una retícula discreta; no con c físico.
+Exacta en unidades de retícula; no equivalencia con c físico.
+F-018
+EXACTA matemática
+Grupos cíclicos / condiciones periódicas
+Orden de una traslación unitaria en Z_N. Mapeo: T=N.
+Analogía con tiempo de circunvalación en un espacio periódico o anillo.
+Exacta para desplazamiento unitario en ciclo de longitud N.
+F-019
+EXACTA estructural
+Sistemas dinámicos discretos
+Órbita periódica de periodo N en la proyección observada. Mapeo: x(t+N)=x(t).
+Analogía con órbita periódica/recurrencia de un sistema dinámico.
+Exacta como definición de periodicidad; el hecho de que ocurra es propio de DEE.
+F-020
+EXACTA matemática
+Teoría de grupos / espacios cociente
+Identificación módulo acción de traslaciones. Mapeo: La órbita móvil se vuelve fija en el cociente.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta matemáticamente.
+F-021
+EXACTA matemática
+Teoría de números
+Divisibilidad/congruencia. Mapeo: N mod d=0 ⇔ d|N.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Equivalencia exacta; el mecanismo de prueba por retorno es DEE.
+F-022
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con frente causal a velocidad unitaria más un offset de aparato.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-023
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Misma familia hipotética de frente causal con distinta corrección local.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-024
+EXACTA estadística
+Regresión lineal
+Pendiente unitaria y coeficiente de determinación perfecto. Mapeo: m=1, R²=1.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta para los datos; no es una ley física externa.
+F-025
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con oscilador discreto de periodo 2.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-026
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con ciclo límite/atractor periodo 3.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-027
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con ciclo límite/atractor periodo 4.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-028
+EXACTA matemática
+Teoría de números / osciladores conmensurables
+Periodo conjunto = mínimo común múltiplo de periodos coprimos. Mapeo: lcm(3,4)=12.
+Analogía con sincronía de osciladores conmensurables; no prueba acoplamiento.
+Exacta matemáticamente; no demuestra interferencia física o compuerta.
+F-029
+EXACTA computacional
+Programación entera
+División entera/floor para operandos positivos. Mapeo: 782//a=floor(782/a).
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como operación de código.
+F-030
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-031
+EXACTA matemática
+Teoría de números
+Mínimo común múltiplo de una lista. Mapeo: LCM=1,094,573,220.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta aritméticamente; su interpretación física fue refinada.
+F-032
+EXACTA matemática
+Aritmética
+Factorización 391=17×23. Mapeo: Producto entero.
+Puede recordar clase modular de fase/gauge; no hay identidad física demostrada.
+Exacta aritméticamente; Q como ley de equivalencia es hallazgo DEE.
+F-033
+EXACTA estructural
+Aritmética modular
+Congruencia módulo 391. Mapeo: clock1≡clock2 (mod 391).
+Hipótesis de gauge/fase discreta global cocientada; distribución espacial sigue siendo causal.
+La notación matemática es exacta para la equivalencia observada; no implica gauge físico.
+F-034
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de geodésica topológica de una vuelta con corrección -14.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-035
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de geodésica topológica de una vuelta con corrección -16.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-036
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de canal causal forward con offset geométrico -11.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-037
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de canal causal reverse con offset -9 y anisotropía de interfaz.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-038
+EXACTA de forma, NO identidad física
+Matemáticas / ecuación afín
+Familia afín y=N+c. Mapeo: Misma forma funcional.
+Hipótesis de familia de métricas causales operacionales del aparato.
+Compartir forma matemática no identifica un fenómeno externo.
+F-039
+EXACTA de forma, NO identidad física
+Cinemática discreta / ruta periódica
+Tiempo adicional proporcional a longitud recorrida a v=1. Mapeo: Δt=L/v con L=N, v=1.
+Hipótesis de una vuelta topológica adicional impuesta por la barrera.
+Solo si N representa longitud efectiva de ruta; el mecanismo DEE aún se prueba.
+F-040
+EXACTA de forma, NO identidad física
+Sistemas con delay
+Retardo base + tiempo de una vuelta. Mapeo: t=t0+L/v.
+Hipótesis de retardo base + recorrido global periódico.
+Forma exacta bajo la interpretación geométrica; no equivalencia física demostrada.
+F-041
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con excitabilidad/umbral no lineal, sin equivalencia neuronal.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-042
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con amplificación no lineal de estado.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-043
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con selectividad/resonancia contextual, no frecuencia física.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-044
+EXACTA formal
+Aprendizaje / sistemas experimentales
+Ganancia diferencial post-pre. Mapeo: Δresponse=response_after-response_before.
+Analogía con depresión, habituación o inhibición dependiente de historia.
+Exacta como definición de efecto; no prueba plasticidad sináptica biológica.
+F-045
+EXACTA formal
+Diseño experimental
+Contraste de diferencias. Mapeo: effect_paired-effect_control.
+Contraste de aprendizaje asociativo; el cero observado niega Hebbianidad en este aparato.
+Exacta como contraste; no equivalencia con regla de Hebb.
+F-046
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de presupuesto interno de recurso/capacidad de reservorio; refinado por F-065.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-047
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía de resonancia histórica degradada; no usar como portadora.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-048
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-049
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Puede buscarse una analogía externa solo si una campaña futura produce la misma ecuación, variables operacionalmente mapeadas, predicción nueva, controles alternativos y holdout.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-050
+EXACTA matemática
+Análisis numérico
+Redondeo al entero más cercano (para la convención indicada). Mapeo: floor(x+1/2).
+Puede participar en una teoría discreta de cuantización/redondeo; no está validado físicamente.
+Exacta como operador matemático; su papel cosmológico no está validado.
+F-051
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis teórica de parámetro del vacío; sin cierre experimental.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-052
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis energética del modelo teórico; no energía experimental DEE.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-053
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Hipótesis de periodo de purga teórico; no confundir con Q391.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-054
+EXACTA
+Álgebra booleana / lógica digital
+Conjunción AND. Mapeo: y=A∧B.
+Implementación material DEE de una conjunción lógica estándar.
+Equivalencia funcional exacta de tabla de verdad.
+F-055
+EXACTA
+Álgebra booleana / lógica digital
+XNOR / equivalencia lógica. Mapeo: y=¬(A⊕B).
+Implementación material DEE de igualdad lógica/XNOR.
+Equivalencia funcional exacta.
+F-056
+EXACTA matemática
+Geometría
+Volumen de cubo discreto de lado s. Mapeo: M=s³.
+La estructura matemática/computacional puede servir como bloque formal para modelos externos, pero el hecho de que DEE la implemente no identifica por sí solo un fenómeno físico, químico o biológico.
+Exacta como cardinalidad; la persistencia del cubo es propiedad DEE.
+F-057
+EXACTA formal
+Álgebra / dinámica con memoria
+No conmutatividad de operadores. Mapeo: A∘B ≠ B∘A.
+Analogía con memoria de trayectoria, histéresis abierta o dinámica no conmutativa; reforzada por F-076.
+La relación es matemáticamente estándar; no identifica una histéresis física concreta.
+F-058
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Evidencia contra tratar s_reg como amplitud lineal; favorece variables contextuales.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-059
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con sistemas de estado oculto: la observación grid no es estado causal completo.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-060
+SIN equivalencia exacta demostrada
+—
+No se identifica un fenómeno externo no controvertido con identidad exacta. Mapeo: La forma o el nombre puede tener analogías, pero no una identidad validada.
+Analogía con memoria local portable que necesita un bus/sustrato global para ejecutar o leer.
+Mantener como ley/resultado interno DEE hasta validación independiente.
+F-061
+EXACTA formal / NO identidad física
+Sistemas dinámicos / modelos constitutivos
+Respuesta multivariable contextual. Mapeo: La forma R=f(x1,…,xn) es estándar; las variables concretas son DEE.
+Analogía posible con excitabilidad contextual, medios no lineales o leyes constitutivas dependientes de historia.
+No existe ecuación externa mapeada término a término; usar solo como marco hipotético.
+F-062
+EXACTA numérica interna / NO identidad física
+Sistemas no lineales / interferencia
+Respuesta colectiva no aditiva de múltiples fuentes. Mapeo: Los tres niveles numéricos son exactos en el aparato; no corresponden a una ley externa conocida.
+Puede recordar superposición no lineal, interferencia de campos o respuesta cooperativa.
+No se demostró onda física, fase óptica ni álgebra booleana.
+F-063
+EXACTA matemática de grafo
+Teoría de grafos / redes
+Matriz de adyacencia dirigida y densidad de aristas. Mapeo: La representación A_ij y densidad son conceptos estándar de grafos.
+Hipótesis: organización causal relacional que puede conservarse aunque cambie la escala geométrica.
+No equivale a cerebro, red cósmica ni red biológica.
+F-064
+EXACTA formal de transferencia
+Computación / teoría de códigos
+Código local portable entre sustratos de distinto N. Mapeo: La noción de copiar un patrón local y evaluar función es computacionalmente estándar.
+Analogía con programa portable, engrama local o semilla que utiliza infraestructura global.
+No prueba independencia universal del sustrato ni memoria biológica.
+F-065
+EXACTA estadística interna / NO energía SI
+Sistemas con recurso finito / reservoir computing
+Vida útil operacional casi constante de una fuente/aparato. Mapeo: Media y CV son métricas estadísticas exactas de los datos V19.
+Puede corresponder hipotéticamente a presupuesto de recurso, fatiga, combustible lógico o capacidad de reservorio.
+No son joules, potencia, energía libre ni regeneración física.
+F-066
+EXACTA formal de partición
+Álgebra / clases de equivalencia
+Partición del conjunto de offsets en clases de respuesta del decoder. Mapeo: Una partición C_neutral/C_active es una estructura matemática exacta.
+Puede recordar clases de fase, símbolos degenerados o gauge discreto.
+No prueba gauge físico ni que esas clases sean universales en DEE.
+F-067
+EXACTA de forma en 5 puntos / post-hoc
+Regresión afín / escala discreta
+Relación afín P=N/2+9. Mapeo: Los cinco puntos obedecen exactamente la recta.
+Hipótesis: amplitud/alcance de escritura activo determinado por tamaño global más offset local.
+Fue descubierta post-hoc; no promover hasta holdouts prospectivos.
+F-068
+EXACTA funcional interna
+Gating geométrico / informática
+Función umbral de apertura: cerrado/r0 bloquea; r1/r2 transmite respuesta. Mapeo: Equivalente formal a una compuerta controlada por geometría.
+Analogía con transistor geométrico, válvula, poro, membrana, pupila o firewall causal.
+No demuestra óptica, difracción, criptografía perfecta ni biología sensorial.
+F-069
+EXACTA de forma / NO identidad física
+Propagación discreta
+Tiempo de llegada afín a tamaño del toro. Mapeo: Forma t=N-11 exacta en el grupo probado.
+Hipótesis: geodésica topológica efectiva con recorrido global y corrección local.
+No implica relatividad ni velocidad de la luz.
+F-070
+EXACTA de forma / NO identidad física
+Propagación discreta
+Tiempo reverse t=N-9. Mapeo: Forma afín exacta en el grupo probado.
+Hipótesis: anisotropía/impedancia direccional de la ruta.
+No es tiempo propio ni métrica física externa.
+F-071
+EXACTA de forma / NO identidad física
+Propagación / interfaz
+Thickness3 simetriza a N-11 en ambas direcciones. Mapeo: Relación temporal exacta en el dominio V19.
+Hipótesis: la interfaz redefine la geodesia causal o la impedancia efectiva.
+Requiere más geometrías antes de una ley universal.
+F-072
+EXACTA matemática de familia / NO identidad física
+Geometría causal discreta
+Familia afín parametrizada por aparato/interfaz/dirección. Mapeo: t=N-c es una familia matemática estándar.
+Hipótesis fuerte: DEE posee una métrica causal operacional dependiente de la configuración.
+No se identifica con espacio-tiempo físico sin mapeo independiente.
+F-073
+EXACTA de forma en 3 puntos / post-hoc
+Rutas / geometría discreta
+Ruta alternativa afín tras intervención central. Mapeo: Los tres puntos V19 encajan exactamente.
+Hipótesis: ablación abre/selecciona una geodésica más corta pero de menor amplitud.
+Control V19 insuficiente; V20 debe usar ablación igualada.
+F-074
+EXACTA empírica de estado
+Sistemas con memoria / plasticidad
+Consolidación retardada de una respuesta inhibitoria. Mapeo: La trayectoria de G está cuantificada directamente.
+Analogía con habituación, consolidación, depresión o endurecimiento dependiente de historia.
+No equivale a plasticidad sináptica ni aprendizaje Hebbiano.
+F-075
+EXACTA formal de selección
+Optimización / routing
+Selección posterior de la ruta con mayor ganancia remanente. Mapeo: argmax es operación matemática estándar; 15/15 es el resultado interno.
+Hipótesis: aprendizaje por poda/inhibición, selección de ruta por costo histórico.
+No demuestra optimización autónoma ni mínimo global.
+F-076
+EXACTA formal de no conmutatividad
+Dinámica con memoria
+El orden temporal cambia la respuesta futura. Mapeo: Contraste ΔG_order cuantifica AB≠BA.
+Analogía con histéresis abierta, memoria de trayectoria, aging o plasticidad no conmutativa.
+No exige ni demuestra un ciclo termodinámico cerrado.
+F-077
+EXACTA estructural en protocolo
+Sistemas de disparo y memoria
+Fase de inicialización global seguida de mantenimiento local. Mapeo: La igualdad tardía entre toro/corte es un contraste experimental.
+Analogía con latch, ignition, trigger-hold o memoria iniciada por propagación global.
+No prueba eco infinito, energía autónoma ni independencia de toda topología.
+F-078
+EXACTA estadística
+Reconocimiento de patrones / lectura global
+Exactitud de clasificación del macroestado dentro de N. Mapeo: Accuracy es métrica estándar de clasificación.
+Hipótesis: READ como coordenada de cuenca/orden global en vez de decoder local.
+No demuestra un lector universal ni computación completa.
+F-079
+EXACTA estadística de falsación
+Model comparison / sistemas dinámicos
+Comparación de errores de modelos de relajación. Mapeo: RMSE es métrica estándar; N-11 queda fuertemente peor.
+Hipótesis: existen escalas temporales distintas para transporte causal y relajación global.
+Es un contraejemplo, no una nueva ley cerrada de relajación.
+F-080
+SIN equivalencia exacta demostrada
+Emergencia / transiciones de régimen
+Dependencia del macroestado respecto de organización mesoscópica. Mapeo: No hay una ecuación cerrada externa mapeada.
+Hipótesis: transición de régimen, dependencia de densidad, organización mesoscópica o cambio de signo micro-macro.
+No demuestra fractalidad, criticalidad, cerebro, terremotos ni leyes naturales universales.
+F-081
+EXACTA formal / no identidad fisica
+Sistemas dinamicos / clasificacion
+Coordenada normalizada de diferencia de distancias a dos anchors.
+Analogica a coordenadas de decision/basin embeddings.
+El fracaso cross-N impide llamarla invariante universal.
+F-082
+SIN equivalencia externa demostrada
+Sistemas causales / gating
+Funcion por tramos exacta en el aparato.
+Analogica a una compuerta geometrica o filtro de acceso.
+No es una barrera electromagnetica ni difraccion fisica.
+F-083
+SIN equivalencia externa demostrada
+Memoria / sistemas de estado
+Retencion interior y ausencia de señal exterior segun metrica del aparato.
+Analogica a latch/vault con cierre posterior al trigger.
+No implica aislamiento perfecto, criptografia o memoria infinita.
+F-084
+EXACTA solo en subdominio
+Cinematica discreta / ajuste
+Relacion afín de latencia en N80..144, con contraejemplos fuera.
+Analogica a una ruta efectiva con offset/escala.
+Los contraejemplos N64/N160 falsan universalidad.
+F-085
+EXACTA formal / no identidad biologica
+Sistemas con memoria
+Respuesta diferida dependiente del tiempo de retencion.
+Analogica a consolidacion de memoria/plasticidad.
+No identifica sinapsis, LTP/LTD ni mecanismo biologico.
+F-086
+SIN equivalencia externa demostrada
+Transiciones de regimen
+Frontera discretizada en un barrido N x densidad.
+Analogica a frontera de fase/umbral mesoscopico.
+No hay exponente, universalidad ni rho_c continuo.
+F-087
+SIN equivalencia externa demostrada
+Transferencia de informacion/estado
+Latencia afín exacta en el aparato de reinstanciacion.
+Analogica a reconstruccion remota de organizacion con receptor preparado.
+No es teleportacion fisica, identidad de materia ni superluminalidad.
+F-088
+EXACTA como cota experimental
+Sistemas receptores / umbrales
+Cota inferior/superior del scaffold necesario en el grid ensayado.
+Analogica a requisito de plantilla/sustrato para reconstruccion.
+No prueba creacion desde vacio ni determina el minimo exacto.
+F-089
+EXACTA como particion empirica
+Computacion material / memoria de estado
+Particion de seis programas en dos clases de estado persistente.
+Analogica a material multestable programable.
+No demuestra materia fisica programable ni seis simbolos independientes.
+F-090
+CANDIDATA exploratoria
+Interacciones de control
+Tabla factorial de amplitud clock x gate.
+Analogica a modulacion de canal por dos operadores.
+Debe replicarse prospectivamente antes de promoverse.
+F-091
+FORMAL/INTERNA
+Sistemas discretos
+Vector de estado finito por sitio + clock separado.
+Microfisica efectiva multigrado.
+No equivale a variables fisicas externas.
+F-092
+EMPIRICA
+Ontologia operacional
+Proyecciones distintas del mismo microestado.
+Vacuum-like degrees of freedom.
+No es vacio cuantico ni campo fisico externo.
+F-093
+EMPIRICA contextual
+Dinamica causal discreta
+Frente de perturbacion medido en metrica Chebyshev.
+Propagacion de señal en lattice.
+No fija velocidad de la luz ni unidades SI.
+F-094
+FORMAL/EMPIRICA
+Coarse-graining / informacion
+Una particion coarse puede fusionar contextos con futuros distintos.
+Variables ocultas/estado suficiente.
+No demuestra completitud de la gramatica reconstruida.
+F-095
+EMPIRICA
+Sistemas dinamicos
+Ciclo limite P24 por hashes globales.
+Oscilador/atractor emergente.
+No oscilacion fisica externa; relacion con P12 abierta.
+F-096
+EMPIRICA
+Simetria de lattices
+Equivarianza translacional y no-equivarianza rotacional/reflexiva probada.
+Anisotropia de red.
+No anisotropia del espacio-tiempo real.
+F-097
+DESCRIPTIVA
+Teoria de grafos
+SCCs del grafo de transiciones observado.
+Recurrent state-space / attractor support.
+Muestra parcial, no espacio de estados completo.
+F-098
+DESCRIPTIVA
+Sistemas complejos
+Cambio brusco de densidad/conectividad en corrida N40.
+Nucleacion/percolacion/phase-transition-like.
+Solo analogia; faltan scaling, order parameter y critical tests.
+F-099
+EMPIRICA contextual
+Interaccion/medicion
+Condicion semantica cambia dinamica del probe/target.
+Boundary-condition-dependent measurement interaction.
+No conciencia ni medicion cuantica.
+F-100
+EMPIRICA
+Topologia/ingenieria
+Umbral funcional condicionado por geometria exacta.
+Scaffold/transducer geometry.
+No ley universal de receptores.
+F-101
+EMPIRICA exacta en dominio
+Causalidad discreta
+Latencia lineal t=d-9 en aparato.
+Transfer/reconstruction latency.
+No teleportacion ni superluminalidad.
+F-102
+EMPIRICA
+Anisotropia/reachability
+Dos destinos nominales no son dinamicamente equivalentes.
+Directional channel selection.
+No symmetry breaking espontaneo demostrado.
+F-103
+NEGATIVA
+Memoria/campos
+Clock persistente sin efecto posterior en materia naive.
+Field-memory test.
+Memoria del vacio rechazada en protocolo.
+F-104
+EMPIRICA parcial
+Control/gating
+Ocupacion transitoria precede respuesta en1 tick.
+Transient valve/gate intermediate.
+No self-sealing/autopoiesis.
+F-105
+EMPIRICA
+Control distribuido
+Cadena causal sensor->motor con latencias medidas.
+Sensorimotor pathway.
+Feedback actual no es autonomia nativa.
+F-106
+EMPIRICA
+Memoria/plasticidad
+Diferencia local persiste 50000 ticks bajo ruido.
+Long-term structural memory.
+No engrama biologico.
+F-107
+NEGATIVA
+Memoria biologica analogica
+Perturbacion offline no degrada endpoint.
+Sleep disruption analogy tested.
+Analogia de sueno no soportada.
+F-108
+EMPIRICA
+Historia/plasticidad
+Respuesta depende de prehistoria, no del cooldown probado.
+Priming/preconditioning.
+No consolidacion biologica.
+F-109
+NEGATIVA
+Repair/rehabilitation
+Sham y rehab convergen al mismo estado lejano.
+Saturation under stimulation.
+No reparacion dirigida.
+F-110
+EMPIRICA contextual
+Plasticidad competitiva
+Rutas usadas convergen; no usada queda separada.
+Use-dependent equalization.
+No poda/optimizacion demostrada.
+F-111
+NEGATIVA
+Homeostasis
+Gate no responde al stress.
+Membrane regulation test.
+No homeostasis/autopoiesis.
+F-112
+NEGATIVA
+Computacion aritmetica
+Canales de latencia no generan residuos modulares funcionales.
+Parallel sieve architecture.
+No factoring paralelo ni ventaja de complejidad.
+F-113
+EMPIRICA
+Sistemas multiescala
+Clock inner controla coupling hacia outer.
+Hierarchical gating / isolation.
+No fractalidad ni scale invariance universal.
+F-114
+NEGATIVA
+Conservacion/recursos
+No invariante simple en conjunto candidato.
+Search for conserved quantity.
+No prueba ausencia universal; no autoriza energia SI.
+F-115
+EMPIRICA contextual
+Topologia discreta
+Umbral de una familia de subgrafos/truncaciones.
+Minimal support dentro de una familia ordenada.
+No minimo universal ni ley externa.
+F-116
+EMPIRICA / cota
+Topologia / busqueda combinatoria
+Existe soporte funcional con <=46 sitios en la busqueda realizada.
+Motivo causal esparso.
+No prueba optimalidad global.
+F-117
+EMPIRICA causal
+Sistemas discretos
+Ablacion de campos separa variables necesarias/no necesarias en un aparato.
+Necessary-condition intervention.
+Dependencia contextual; no ontologia fisica externa.
+F-118
+EMPIRICA contextual
+Plasticidad / histeresis
+Transicion used-vs-unused con maduracion en un contexto.
+Binary-like structural maturation.
+No curva biologica universal; holdout funcional rompe portabilidad.
+F-119
+EMPIRICA causal
+Automatas / operadores de estado
+Un valor semantico cambia la dinamica manteniendo otros campos fijos.
+Internal state operator.
+No conciencia ni observador fisico.
+F-120
+EMPIRICA contextual
+Dinamica discreta / clases de equivalencia
+Valores de clock producen trazas identicas en un aparato.
+Equivalence class of control parameter.
+No frecuencia fisica ni clase universal.
+F-121
+EMPIRICA historica refinada
+Sistemas dinamicos toroidales
+Periodo del grid igual al tamano global N en la familia.
+Toroidal recurrence.
+No periodo del estado causal completo grid+clock; ya existia historicamente.
+F-122
+EMPIRICA / sistemas dinamicos
+Mapas deterministas no invertibles
+Convergencia exacta de estados distintos en una iteracion.
+Many-to-one state update / coarse-graining formal.
+Sostiene irreversibilidad/pérdida de distinguibilidad informacional nativa bajo H_DEE; por sí sola no identifica calor o temperatura macroscópicos.
+F-123
+EMPIRICA contextual
+Transiciones de regimen / automatas
+Dos macroregimenes de ocupacion bajo familias iniciales.
+Basin/regime separation.
+No vida, inflacion ni fase fisica externa demostrada.
+F-124
+EMPIRICA causal contextual
+Condiciones de frontera
+El valor semantic cambia respuesta segun placement/geometria.
+Boundary-condition operator.
+No observer/conscience correspondence.
+F-125
+EMPIRICA topologica
+Teoria de grafos / minimal supports
+Ablacion individual destruye funcion del subgrafo dado.
+Locally irreducible functional motif.
+No global minimality.
+F-126
+EMPIRICA / clases de equivalencia
+Dinamica modular
+Valores de clock comparten trazas exactas condicionadas por semantic.
+Parameter equivalence classes.
+No frecuencia fisica universal.
+F-127
+EMPIRICA causal
+Memoria de estado / atractores
+State swap transfiere/borra respuesta funcional.
+Distributed state code / basin control.
+No memoria biologica demostrada.
+F-128
+EMPIRICA causal
+Sistemas en cascada
+Contribucion de relay aparece con latencia y firma pattern-dependent.
+Serial causal mediation.
+No transporte de identidad/materia.
+F-129
+HISTORICA supersedida
+Analisis de recurrencia
+No-period-in-window no equivale a aperiodicidad.
+Finite-window identifiability limit.
+Supersedida por horizonte mayor.
+F-130
+EMPIRICA exacta
+Metricas discretas / latencia
+Latencia lineal t=d-9 en dominio amplio.
+Affine discrete travel-time law.
+Sin mapeo voxel/tick a SI.
+F-131
+EMPIRICA exacta
+Dinamica transitoria
+Tiempo de vaciamiento de source constante en el banco.
+Source relaxation offset.
+No desmaterializacion fisica externa.
+F-132
+EMPIRICA causal
+Propagacion / causal graphs
+Necesidad causal migra de source a corridor a receiver.
+Moving causal support / front.
+No superluminalidad; frente tiene latencia positiva.
+F-133
+EMPIRICA de banco
+Topologia / combinatoria
+Un motivo funciona y 80 alternativas fixed-bank no.
+Topology-specific functional support.
+No unicidad global.
+F-134
+EMPIRICA epistatica
+Memoria distribuida / redundancia
+Multiples subsets acceden al mismo fenotipo; ninguna celda individual necesaria.
+Degenerate basin triggers / fault tolerance formal.
+No engrama biologico directo.
+F-135
+EMPIRICA causal
+Mediacion multivariable
+Campos de R1 tienen ventanas causales diferentes sobre R2.
+Time-dependent mediator set.
+No identidad reconstruction.
+F-136
+EMPIRICA causal
+Sistemas multiescala
+Intervenciones exteriores matched alteran niveles interiores.
+Cross-scale coupling.
+No holografia/entrainment sin prueba especifica.
+F-137
+EMPIRICA exacta estratificada
+Sistemas toroidales / modular arithmetic
+Periodo espacial depende de preparation; clocks tienen periodos modulares.
+Product/quotient recurrence structure.
+No periodicidad del clock absoluto.
+F-138
+EMPIRICA falsatoria
+Teoria de funciones / dinamica discreta
+F no es inyectiva en el dominio demostrado.
+Non-invertible deterministic map.
+No conclusion sobre reversibilidad de la realidad.
+F-139
+EMPIRICA muestreada
+Automatas celulares / informacion
+Muchos inputs locales comparten output.
+Local information compression.
+Es evidencia de compresión/degeneración informacional; bajo H_DEE es un ingrediente termodinámico físico fundamental, aunque no una medida completa de S macroscópica.
+F-140
+EMPIRICA de simetria
+Teoria de grupos / equivarianza
+La mayoria de transformaciones O_h no conmutan con F.
+Broken cubic symmetry / anisotropy.
+No anisotropia del vacio fisico demostrada.
+F-141
+EMPIRICA exacta
+Geometria discreta
+Cuatro vecinos tetraedricos y cuatro no-tetra producen outputs distintos.
+Geometric local operator.
+No enlace quimico/particula external validado.
+F-142
+MATEMATICA / implementacion
+Analisis de alcanzabilidad
+Umbral compilado excede cota maxima del dtype/vecindad.
+Unreachable branch proof.
+No afirmacion sobre cristalizacion fisica.
+F-143
+EMPIRICA mecanistica
+Grafos Moore / routing
+Overflow puede escribir face/edge/vertex elegible.
+26-neighbor routing.
+No expansion cosmologica.
+F-144
+EMPIRICA exacta
+Aritmetica modular / clocks
+Periodo local se deriva de n_active y actualiza por congruencia.
+Phase-gated local update.
+No frecuencia SI.
+F-145
+EMPIRICA mecanistica
+Threshold dynamics
+Overflow exige threshold+fase; sreg nominal aislado no basta.
+Phase-gated accumulator threshold.
+No energia/masa fisica.
+F-146
+EMPIRICA exacta de banco
+Simetria discreta / logica
+Genesis exige cuatro pares antipodales y semantic admissible.
+Pattern/symmetry detector.
+No genesis biologica/fisica externa.
+F-147
+EMPIRICA factorial
+Operadores de estado / boundary conditions
+Clases semantic dependen de placement y raw/state.
+Contextual boundary operator.
+No semantica cognitiva.
+F-148
+EMPIRICA de regimen
+Bifurcaciones / percolacion analogica
+Direction density controla basin disperso/saturado.
+Order-parameter candidate.
+Puede tratarse como transición de régimen/fase nativa bajo H_DEE si el cierre colectivo se sostiene; su equivalencia con una fase termodinámica macroscópica convencional requiere Rosetta.
+F-149
+EMPIRICA funcional
+Transductores / clasificacion dinamica
+Arquitecturas fijas convierten patrones en firmas downstream persistentes.
+Pattern-dependent transduction.
+No inteligencia/aprendizaje ni sensor fisico externo por si solo.
+Correspondencias hipotéticas fuertes que merecen pruebas, no afirmaciones
+Métrica causal discreta: F-034/F-035/F-069/F-070/F-071/F-072 sugieren geodésicas o rutas topológicas efectivas. La prueba pendiente es predecir nuevas latencias bajo geometrías no usadas para ajustar c.
+Gauge/fase discreta contextual: F-032/F-033/F-066 permiten hablar matemáticamente de clases de equivalencia de clock. La hipótesis física de gauge solo sería defendible si existe un mapeo de invariantes, transformación local y predicciones nuevas independientes.
+Memoria trigger-hold: F-060/F-064/F-077 sugieren que la topología puede iniciar una operación que después se sostiene localmente. Esto es más cercano a latch/ignition que a un eco que circula indefinidamente.
+Aprendizaje por inhibición: F-044/F-074/F-075/F-076 forman una familia coherente de historia -> consolidación -> supresión -> cambio de ruta. Puede inspirar aprendizaje por poda, pero aún debe demostrarse una función de costo interna y adaptación útil.
+Recurso/trabajo DEE: F-065 debe estudiarse con definiciones nativas de capacidad, agotamiento, descanso y recuperación. Bajo H_DEE, la termodinámica puede ser informacional antes de existir una energía SI identificada; lo que debe derivarse después es si esos recursos forman una E efectiva y cómo se traducen a la termodinámica macroscópica convencional.
+READ holístico: F-078 junto con los atractores abre una lectura por coordenadas de cuenca o parámetros de orden. La hipótesis más nativa no exige que los valores absolutos sean iguales entre N; exige una relación operacional que conserve la clase.
+Regímenes micro-macro: F-080 favorece un diagrama de fase densidad×tiempo×organización. Esto es una alternativa falsable y más precisa que asumir invarianza de escala o fractalidad universal.
+Geometría como operador causal: F-068, shielding y las familias N-c permiten tratar paredes, aperturas e interfaces como parte del operador, no como simple contenedor pasivo. La correspondencia externa puede recordar filtros, membranas o transistores, pero la equivalencia debe probarse.
+Criterio de promoción futura
+Una correspondencia hipotética solo debe promoverse cuando exista: (1) misma ecuación o transformación con variables operacionalmente mapeadas; (2) dominio y condiciones comparables; (3) predicción cuantitativa nueva no usada para construir la analogía; (4) falsación contra mecanismos alternativos; y (5) validación en holdout. Una coincidencia verbal, visual o numérica aislada no basta.
+El bloque histórico precedente cerró el VOLUMEN 1 en V19. Las relaciones de V20 se añaden a continuación en este VOLUMEN 2 después del análisis conjunto A+B+C; no se retroescriben como si hubieran sido conocidas en VOLUMEN 1.
+PARTE III | LECTURA TRANSVERSAL DE LAS RELACIONES V20
+V20 anade una familia de relaciones que no estaba cerrada en V19: gating conjunto por apertura y espesor (F-082), consolidacion prospectiva de un pulso (F-085), frontera mesoscopica discretizada (F-086), una ley temporal de reinstanciacion t=d-9 (F-087), una cota experimental del scaffold receptor (F-088) y clases persistentes de programacion por clock espacial (F-089).
+Dos entradas preservan falsacion/alcance: F-081 conserva el operador relacional de cuenca aunque falle como regla universal cross-N; F-084 corrige la promocion del candidato (3/8)N-6 al mostrar contraejemplos en N64 y N160. F-090 queda deliberadamente como candidata exploratoria hasta replicacion preregistrada.
+La correspondencia externa mas tentadora de F-087 es la teleportacion. Debe rechazarse como equivalencia: el experimento demuestra reinstanciacion de organizacion con receptor preparado y latencia causal, no continuidad de la misma materia, superluminalidad ni dinamica del espacio-tiempo fisico.
+PARTE IV | LECTURA TRANSVERSAL DE LAS RELACIONES V21
+V21 introduce una capa microscopica que faltaba en el registro: F-091-F-098 describen estado packed, proyecciones de vacio, frentes causales, perdida de informacion por coarse-graining, recurrencia, anisotropia y reorganizacion espontanea. Estas relaciones no sustituyen las formulas funcionales anteriores; explican por que varias de ellas dependen de contexto y aparato.
+F-099 corrige el alcance del observador semantico: los negativos V16.5/V20 permanecen historicamente validos en sus aparatos, pero V21 demuestra un diferencial observer/normal en V7. El unico lenguaje permitido es condicion semantica/boundary condition interna; no conciencia ni colapso cuantico.
+F-100 y F-101 son las promociones cuantitativas mas fuertes de Parte A: el scaffold exacto queda acotado por 48<S_min<=64 y la ley t=d-9 suma 16/16 holdouts nuevos, 34/34 acumulados con V20. La segunda sigue describiendo reinstanciacion causal de organizacion, no teleportacion fisica.
+F-106-F-110 refinan la familia de plasticidad. La evidencia robusta es una marca estructural used-vs-unused de muy larga vida; no una ley simple de dosis ni una ventana de consolidacion de 128 ticks. F-108 debe leerse como refinamiento/correccion de la interpretacion biologizante de F-085, no como borrado del dato V20.
+F-111-F-114 conservan falsaciones utiles: no self-gating homeostatico, no factoring modular paralelo, gating multiescala contextual y ausencia de un invariante simple en el ensemble direccional. Estos negativos restringen el espacio de mecanismos sin negar universalmente los fenomenos.
+Criterio causal V21
+No se debe traducir F-093 o F-101 como faster-than-light. F-093 contiene un frente discreto finito y F-101 una latencia positiva. Sin un mapeo validado voxel/tick -> longitud/tiempo fisico, la comparacion con c no esta definida.
+PARTE V | AUDITORIA Y RELACIONES V21.5
+V21.5 no solo agrega relaciones: corrige el alcance de varias entradas previas. En particular, F-121 no presenta P=N como descubrimiento nuevo; enlaza explicitamente F-095 con la familia historica F-018/F-019 y con las validaciones de N impares. F-120 corrige la lectura simplificada que agrupaba 0 y391. F-118 conserva la no-portabilidad funcional como parte de la propia relacion.
+F-115 y F-116 deben leerse juntas: conteo y topologia no son equivalentes. La secuencia truncada tiene umbral 61, pero otra configuracion funciona con 46.
+F-117 expresa necesidad causal solo para el aparato de reinstanciacion ensayado; no convierte state/direction en variables universalmente suficientes.
+F-118 no autoriza una "curva de aprendizaje" universal. El efecto funcional depende de N/contexto.
+F-119 registra semantic4 como operador causal interno, sin interpretacion cognitiva.
+F-120 invita a construir un atlas de firmas clock en lugar de imponer clases preconcebidas.
+F-121 exige declarar la proyeccion periodica: grid. El clock separado puede impedir recurrencia del estado causal completo.
+PARTE VI | RELACIONES Y CORRECCIONES V22-V23.1
+V22-V23.1 cambia el centro matematico del programa: la evidencia ya no favorece una dinamica v25 globalmente biyectiva. Aparecen fibras many-to-one, anisotropia fuerte, operadores geometricos exactos, cadence modular, threshold phase-gated y una ley local t=d-9 muy robusta. Las relaciones F-122-F-149 deben leerse como propiedades del kernel v25 en dominios especificos, no como leyes fisicas externas.
+F-130 y F-137 son dos de las relaciones cuantitativas mas limpias: t=d-9 en 72/72 y recurrencia estratificada P=N/P=1 con clocks modulares.
+F-138 corrige la hipotesis historica de injectividad: el operador ejecutable tiene colisiones full-state. F-139 muestra que la compresion tambien aparece localmente.
+F-142 es una cota de implementacion: la rama de cristalizacion compilada no es alcanzable bajo los tipos/rangos auditados. No debe usarse para explicar otros fenomenos v25.
+F-144-F-145 reemplazan la lectura folklore de sreg=19658 por una mecanica precisa: cadence local + cruce de prov_total + fase.
+F-148-F-149 abren lineas nuevas pero no otra campaña generalista: regime transition y transduccion se vuelven proyectos especificos para la fisica nativa/ingenieria.
+PARTE VII | ESTADO DE CORRESPONDENCIAS EXTERNAS AL CIERRE V23.1
+Ninguna de las nuevas relaciones promueve por sí sola una equivalencia con gravedad, partículas, termodinámica macroscópica convencional, biología, conciencia, teleportación o cosmología. Bajo H_DEE, la termodinámica informacional nativa sí puede ser física fundamental; la similitud formal sigue separada de una Rosetta macroscópica demostrada.
+La no-inyectividad DEE demuestra pérdida de distinguibilidad en el mapa dinámico y puede sostener irreversibilidad termodinámica informacional nativa bajo H_DEE. Por sí sola no demuestra una ley macroscópica completa de calor, temperatura o producción de entropía térmica convencional.
+Tetra/XNOR son operadores geometricos internos. Solo una Rosetta independiente podria justificar correspondencias con coordinacion material, logica fisica u otras estructuras externas.
+Direction density funciona como parametro de orden interno en un aparato. Llamarlo fase/percolacion es analogia matematica hasta validar observables externos.
+La latencia d-9 y cadence 391/782 no autorizan conversion a velocidad/frecuencia fisica sin un mapeo voxel/tick -> longitud/tiempo.
+Criterio de promocion Rosetta 9.0
+1. Definir observable DEE y observable externo con unidades/procedimiento de medicion.
+2. Derivar una transformacion cuantitativa, no solo analogia nominal.
+3. Validar dominio y condiciones comparables.
+4. Emitir prediccion nueva no usada para construir el mapeo.
+5. Comparar contra mecanismos alternativos y validar holdout/experimento externo.
+CONSERVATIONCANDIDATES23X no se incorpora como formula nueva porque el modulo fallo antes de medir. F-114 permanece como el resultado historico disponible sobre invariantes simples, con su alcance original; cualquier actualizacion requiere una recuperacion puntual.
+PARTE VIII | RELACIONES POST-V23.1 Y TRANSICIÓN A FGIF-DEE
+Las relaciones F-150-F-160 documentan únicamente resultados posteriores al cierre V23.1 o formalizaciones explícitamente marcadas. V23.2 se mantiene como campaña parcial; S_Y_E 24X está completa. Las entradas formales F-159-F-160 no reciben estatus de ley empírica universal.
+ID
+Estatus
+Fórmula / relación
+Origen
+Significado y alcance
+F-150
+Empírica negativa delimitada
+Banco 18 trials: N={32,47,64} x {opposite_pair,sparse_directional,sparse_quiescent} x2. occupancy/state_sum/sreg_sum/semantic_hist/raw_xor constantes 0/18; dir_sum 6/18; clock_xor, mod391_xor y mod782_xor 12/18.
+V23.2 parcial CONSERVATIONRECOVERY232X
+Ninguno de los nueve candidatos simples es un invariante universal no trivial en el banco probado. No excluye invariantes compuestos/topológicos/orbitales.
+F-151
+Empírica negativa de aparato
+paired stress/no-stress: final_core_grid_hamming=0 y final_aperture_raw_equal=true en sem4 y sem1 accumulating; apertura ocupada desde t=1.
+V23.2 parcial NATIVECLOSEDLOOP232X
+No se demuestra regulación stress-dependent. Actuación/ocupación no equivale a closed-loop.
+F-152
+Empírica exacta de aparato
+Tras 8192 ticks de maduración: G=-17.9166666667; none, clock17_only y clock391_only conservan G y Hamming local=10 hasta t=4096.
+V23.2 parcial PLASTICITYREWRITE232X
+La depresión madura no se revierte por clock17/391 aislados.
+F-153
+Empírica exacta de aparato
+Recovery material: G(t0)=-7.7272727273; para t>=128, G=0, trained_peak=virgin_peak=0 y local_grid_hamming=0 hasta 4096; recovery+clock reproduce el mismo resultado.
+V23.2 parcial PLASTICITYREWRITE232X
+Coalescencia a un estado común; no recuperación del virgin original.
+F-154
+Empírica exacta del bridge
+6/6 instancias: el decoder por earliest route-specific effect selecciona el mínimo esperado; t específicos son permutaciones de {9,15,21,27}, coherentes con distancias {18,24,30,36} y t=d-9. Incluye 2 holdouts de orientación.
+V23.2 parcial TOYMODELBRIDGE232X
+Valida el encoding/decoding declarado; no demuestra solución autónoma de shortest path.
+F-155
+Empírica exacta en aparato
+N=96 clean: P_micro=24, P_meso=48, P_macro=96, P_combined=96. La misma cuádrupla aparece con extra_noise, uncoupled y symmetric_clock.
+S_Y_E 24X NESTED_PROPORTIONAL_HOMEOSTASIS
+Coexisten periodos divisores dentro de un mismo toro; P=N es preparation/projection-specific.
+F-156
+Empírica causal
+Eliminar una de 4 copias micro: P_micro 24->96; P_meso=48, P_macro=96, P_combined=96. Contra clean: 96 fases comparables, 0/96 exactamente iguales.
+S_Y_E 24X NESTED_PROPORTIONAL_HOMEOSTASIS
+Ruptura de simetría cambia periodo local; misma periodicidad macro no implica retorno/homeostasis.
+F-157
+Empírica causal de aparato
+directionless: P_micro=P_meso=P_macro=P_combined=1 y tail_not_extinct=false; symmetric_clock conserva 24/48/96.
+S_Y_E 24X NESTED_PROPORTIONAL_HOMEOSTASIS
+Direction es necesario para esta familia periódica; asimetría inicial de clock no lo es.
+F-158
+Empírica de aparato
+Gate S_Y_E: d=24 -> first center fill t=24; no persistence 32 ticks. no_input y direction_zero no llenan el centro; clock_zero/no_key/key_shift reproducen baseline central; no_sensor altera la trayectoria; noisy_input converge a la misma firma final.
+S_Y_E 24X COMPILADOR_NATIVO_LAZO_CERRADO
+Input+direction median la respuesta; clock17 y key7_SYE no. d-9 no es universal entre interfaces.
+F-159
+Formalización post-hoc / definición
+P_pi(X)=min{p>0 : pi(F_N^p(X))=pi(X)} para una proyección pi declarada.
+Síntesis FGIF-DEE a partir de V23.1 + S_Y_E
+Define periodo fundamental observable y evita confundir grid recurrence con full-state recurrence. Requiere validación prospectiva como ley de estabilizador.
+F-160
+Hipótesis formal prioritaria
+tau_response = L_eff - Delta_interface. Reinstanciación: Delta=9 en dominio F-130; gate S_Y_E: un punto d=24,t=24 sugiere Delta≈0 para esa interfaz.
+Síntesis FGIF-DEE post-cierre
+Objetivo de unificación causal. No es ley cerrada hasta barridos multi-distancia por clase de interfaz y holdouts.
+Auditoría de promoción
+F-150 cierra únicamente el banco de invariantes simples probado. No autoriza “DEE no conserva nada”.
+F-154 conserva la separación entre ley nativa t=d-9 y el encoding externo de coste->distancia.
+F-155-F-157 refinan recurrencia y direction; no prueban fractalidad, invarianza de escala ni homeostasis.
+F-158 impide universalizar el offset -9: una segunda arquitectura no lo reproduce.
+F-159-F-160 son lenguaje formal para la siguiente etapa; requieren tests discriminantes antes de promoción empírica adicional.
+ADDENDUM V10.0 — FÓRMULAS Y CORRESPONDENCIAS NP1→NP1.2
+Continuidad del registro F-001–F-160; nuevas entradas F-161–F-166
+Corte científico: 1 de septiembre de 2026
+Regla de trazabilidad — F-001–F-160 permanecen intactas. Las nuevas entradas no reescriben una fila histórica: documentan ampliaciones, falsaciones o restricciones de dominio. Una relación interna sigue sin implicar equivalencia física externa.
+PARTE IX | RELACIONES NP1–NP1.2
+ID
+Estatus
+Fórmula / relación
+Origen
+Significado y alcance
+F-161
+Empírica predictiva de dominio
+T_r ~ f_path(L_path); LOMO n=288: RMSE=1.05137, R²=0.59676. Path+microgeometry R²=0.49270; native_context=0.49816; interactions=0.49600.
+NP1.2-A Recovery / GROUPED_ROUTE_MODEL_COMPETITION
+En el dominio ampliado, path-only es el mejor modelo compacto ensayado. La mejora de microgeometría NP1.1 se conserva como específica de aquel dominio, no universal.
+F-162
+Cota negativa de modelo
+∀m∈M_test: R²_m[log(1+G_r)]<0; mejor observado path-only R²=−0.35295.
+NP1.2-A Recovery
+No existe ley compacta predictiva de transmisión integrada dentro de las clases de modelo probadas.
+F-163
+Cota negativa de modelo
+∀m∈M_test: R²_m[log(1+B_r)]<0; mejor observado path-only R²=−0.11735.
+NP1.2-A Recovery
+Backaction es causal pero no queda predicho por path/microgeometry/contexto codificado actuales.
+F-164
+Empírica de ingeniería finita
+OPEN_FAST: t=10, 6/6; DELAY_WITH_TRANSMISSION: t=12, 6/6; ATTENUATE_OR_BLOCK: 0/6 llegadas.
+NP1.2-A compiler holdouts
+Primitivas de routing validadas en holdouts separados. LOW_BACKACTION no es universal: 4/6 con backaction=0, máximo 142.
+F-165
+Criterio causal / falsación
+A→B→A′ observado ∧ do(B=0): A′_late=A′_full ∧ do(A=0): B_late=B_full ⇒ no mediación recíproca por A/B en el aparato probado.
+NP1.2-B endogenous discovery
+En E06/E02/E00 la secuencia temporal no es un handshake ni circuito recíproco causal.
+F-166
+Cierre de dominio
+strict_candidate_count=0; C00_native_xnor=0/5 holdouts; C10_near_overflow=0/5 holdouts.
+NP1.2-B final native closed-loop
+Autonomía minimal native recurrent loop no demostrada en esta arquitectura/dominio; no cierre universal de todo procesamiento DEE.
+PARTE X | CORRESPONDENCIAS ROSETTA Y ANALOGÍAS DESPUÉS DE NP1.2
+ID
+Nivel
+Objeto DEE
+Correspondencia candidata
+Dictamen
+Restricción
+C-NP12-01
+Hipótesis Rosetta prioritaria
+T_r y L_path/L_eff
+travel-time / métrica efectiva de propagación
+APTA SÓLO PARA CONGELACIÓN INTERNA PROSPECTIVA
+No usar datos externos para fit inicial; después exigir unidades, predicción y holdout externo.
+C-NP12-02
+Hipótesis suspendida
+G_r transmisión integrada
+conductancia / ganancia / impedancia
+NO PROMOVER
+Los modelos internos probados tienen R²<0; primero descubrir variables nativas suficientes.
+C-NP12-03
+Hipótesis suspendida
+B_r backaction
+impedancia de carga / reacción del aparato
+NO PROMOVER A EQUIVALENCIA
+El efecto existe internamente, pero no hay transformada cuantitativa estable.
+C-NP12-04
+Correspondencia interna de ingeniería
+OPEN_FAST / DELAY / BLOCK
+routing/gating programable
+VALIDADA FINITAMENTE
+No implica compilador universal ni solución autónoma de optimización.
+C-NP12-05
+Analogía falsada en dominio
+A→B→A′
+handshake / recurrent neural loop
+RECHAZADA COMO MECANISMO
+Ablar B no cambia A′ y ablar A no cambia B en los tres finalistas.
+C-NP12-06
+Analogía heurística
+procesamiento espacial distribuido
+cerebro / reservoir / field computation
+SÓLO LENGUAJE INTUITIVO
+No usar como fitness ni identidad biológica; el descriptor neutral es paisaje causal distribuido.
+Auditoría de promoción NP1.2
+F-161 no es una nueva “velocidad de la luz DEE”: es un resultado predictivo interno de dominio y requiere freeze prospectivo.
+F-162/F-163 son resultados negativos de modelado, no ausencia ontológica de ley.
+F-164 pertenece primero a ingeniería causal; sólo relaciones invariantes futuras podrían subir a ley física nativa general.
+F-165/F-166 impiden promover orden temporal a autonomía o handshake sin necesidad causal.
+Las correspondencias externas siguen en nivel hipotético salvo identidades matemáticas triviales ya registradas.
+Regla obligatoria para añadir F-167 en adelante
+BARRIDO TRANSVERSAL — Antes de registrar una nueva fórmula o diseñar el experimento que pueda generarla, revisar Volúmenes 1–3, FGIF, este registro completo, Manual/Enciclopedia, Expediente de Reproducibilidad, negativos e incidentes técnicos. Toda relación nueva debe indicar qué fórmula previa refina, restringe, contradice o deja intacta.
+Fin del Addendum V10.0.
+ADDENDUM V11.0 — FÓRMULAS/CORRESPONDENCIAS NP1.3
+Continuidad F-001–F-166; nuevas entradas F-167–F-173 | 1 de septiembre de 2026
+PARTE XI | RELACIONES NP1.3
+ID
+Estatus
+Fórmula / dato
+Significado / límite
+F-167
+prospectiva de dominio
+n=112; RMSE=MAE=0.40625; P(|e|≤1)=1 para el freeze NP1.2
+la familia path/latency pasa un nuevo dominio sin refit
+F-168
+exacta post-hoc / NO congelada
+112/112: T_first=L_path−2
+el −2 coincide con ROI radius=2; candidato previo a NP1.4: T_first=L_observable
+F-169
+empírica de accesibilidad
+N48 d3,d5:48/48; d7,d9:0/48; N56 d4:16/16; d8:0/16
+A debe modelarse aparte de T; depth6 y mecanismo material quedan abiertos
+F-170
+falsación de generalización
+ΔG_order=G_AB−G_BA=0 en 24/24 matched groups
+restringe F-076; no invalida plasticidad V19 independiente
+F-171
+estado persistente / confounded readout
+hash grid+clock stimulated != virgin en 24/24; later same-site response≈0
+cambio histórico real, pero supresión puede ser write idempotente
+F-172
+causal-front de dominio
+d={10,18,26} -> t_first={2,10,18} en ROI; H_final=4913=17^3
+tiempo es interpretable; no-aditividad final está saturada
+F-173
+dispersión de magnitud
+G_integrated≈88…1001 entre motivos accesibles con tiempo simple
+microgeometría contiene información de magnitud; motif ID no es una ley ni predictor permitido en holdout
+PARTE XII | CORRESPONDENCIAS Y LENGUAJE CONTROLADO
+Objeto DEE
+Analogía posible
+Nivel actual
+Regla
+Historia remota X→Y
+inmunidad cruzada / memoria sistémica
+heurística
+medir como inercia causal sistémica; exigir fresh-site + aged/sham + cirugía
+Interfaz material/precursor
+fricción informacional / sensor
+heurística
+medir backaction/acoplamiento material; sin conciencia ni energía SI
+Relajación stressed→aged
+olvido / homeostasis
+heurística
+llamar relajación hasta demostrar setpoint y restauración causal
+T=L_observable
+travel time / métrica
+Rosetta interna prioritaria
+congelar internamente antes de comparar con física externa
+Auditoría de promoción F-167–F-173
+F-168 queda explícitamente post-hoc hasta NP1.4; no convertir “−2” en constante.
+F-170 supersede la generalización de F-076, no borra el registro histórico V19.
+F-171 no autoriza una entrada “plasticidad adaptativa” nueva sin cerrar idempotencia.
+F-172 prohíbe usar Hamming saturado como prueba de atractor o suma no lineal.
+Cualquier F-174+ derivada de NP1.4 debe distinguir acceso, timing, magnitud e historia.
+ADDENDUM V12.0 — FÓRMULAS Y CORRESPONDENCIAS NP1.4 + v25.5
+Continuidad del registro F-001–F-173; nuevas entradas F-174–F-193 | 2 de septiembre de 2026
+Regla de continuidad
+Las secciones anteriores se preservan como registro histórico. Este addendum sustituye sólo el estado vigente para decisiones futuras; no borra positivos, negativos ni correcciones previas.
+PARTE XIII | RELACIONES NP1.4–v25.5
+ID
+Estatus
+Fórmula / relación
+Origen
+Significado y alcance
+F-174
+Empírica de dominio / refinamiento
+T_first = L_observable + δ(X,Γ,H); δ observado ∈ {0,1,2,19}, δ≥0. Entre 323 accesos: 298/323 δ=0, 9 δ=1, 14 δ=2, 2 δ=19; RMSE=1.56094.
+NP1.4-A
+L_observable es una cota inferior operacional y la igualdad domina, pero T_first=L_observable no es universal en el dominio. El residuo depende de contexto/microestado/historia todavía no identificado.
+F-175
+Negativa mecanística delimitada
+Regla “accesible iff fuente no solapa shell” → balanced accuracy=0.64197; cirugía matched source/sham/none: 12/12 accesibles con first=16, integrated=37, peak=2.
+NP1.4-A
+El solapamiento fuente-cáscara no es el interruptor simple de accesibilidad. La frontera importa, pero la variable suficiente sigue abierta.
+F-176
+Cota negativa de modelo
+Para G (transmisión integrada/pico), todos los modelos compactos ensayados con contexto, descriptores estáticos y static+microprobe obtienen R²<0 en holdout.
+NP1.4-A
+La magnitud no queda predicha por las coordenadas compactas probadas. G permanece como función contextual abierta.
+F-177
+Empírica causal / corrección
+Fresh-site + alternate-packet cierran el confound de idempotencia: existe supresión history-conditioned real; matched-sham se parece al historial “stress”.
+NP1.4-B
+La historia material modifica respuestas futuras, pero el efecto no es específico de “stress”; favorece exposición/estado histórico general.
+F-178
+Empírica causal distribuida
+Transplantes locales de raw pueden ser fuertemente suficientes mientras reversiones locales tienen baja necesidad; en NP1.4-C la necesidad de raw+clock no alcanzó 0.5 y la clausura de mediador único falló.
+NP1.4-B/C
+La representación histórica es distribuida/degenerada: múltiples soportes pueden seleccionar el mismo fenotipo y ningún mediador local único queda establecido.
+F-179
+Negativa de homeostasis
+Stressed no converge a aged-control en 0…512 ticks; recovery_fraction=0 en el protocolo y la recurrencia ciega observada es preparation-specific.
+NP1.4-B
+No hay retorno a setpoint/homeostasis en este aparato. Persistencia o periodicidad por sí solas no son regulación.
+F-180
+Empírica causal contextual
+2/48 contrastes selectivos cambian magnitud/backaction conservando acceso/timing.
+NP1.4-C
+A, T, G y B son observables causalmente separables al menos en contextos específicos; no forman un único escalar de “canal”.
+F-181
+Empírica exacta de branch / falsación de timeout
+Overflow observado a elapsed={1,391,19551,19925} según s_reg inicial/fase; ningún caso dispara por el mero elapsed=19658; control low-sreg no desborda.
+v25.5-A
+19658 es umbral de provenance/DEMUX condicionado por fase, no reloj absoluto de purga.
+F-182
+Empírica exacta + proyección ejecutable
+k=6, clock0=0: s_reg cambia en t={1,392,783,1174,…}, intervalo 391; k=7 balanceado permanece s_reg=0. Si el contexto k=6 permanece fijo desde s_reg=0, t* proyectado = 1+(19658−1)·391 = 7,685,888 ticks.
+v25.5-A
+Refina la aproximación histórica 19658·391=7,686,278: el primer incremento ocurre en t=1. La cifra 7,685,888 es una proyección derivada, no un evento end-to-end medido.
+F-183
+Negativa de lifetime universal
+raw-zero permanece raw-zero hasta t=194423; semantic4 aislado persiste hasta t=194423; normal/orphan aislados pueden desaparecer en t=1.
+v25.5-A
+194422 no es vida útil universal del vacío/voxel. El intento runtime de impactar un ORPHAN por DEMUX tuvo hit_count=0; la escritura state=194422 sigue siendo una propiedad de fuente auditada, no confirmada por ese subtest.
+F-184
+Negativa de operador sink
+empty, dense_normal, semantic4_shell, orphan_shell y mixed_core: 0/5 mecanismos cumplen strict_sink_candidate_all_packets; orphan_shell empata el control vacío.
+v25.5-A
+No se demuestra un /dev/null, garbage collector físico ni análogo de agujero negro en los mecanismos ensayados.
+F-185
+Negativa de especificidad de threshold-history
+Preprobe Y history vs low-sreg sham raw Hamming=0; DoD integrado near-threshold vs low-sreg sham=123, frente a history vs aged/no-X ≈28666.
+v25.5-A
+La historia remota es fuerte frente a no-exposición, pero estar cerca del threshold no es un carrier específico demostrado.
+F-186
+Empírica causal distribuida
+6 familias: reversion common100 necessity≈0.073…0.322, mientras transplant common100 sufficiency≈0.995…1.005; global reversion positive control=1.0 en 6/6.
+v25.5-B
+El soporte histórico es real y globalmente necesario, pero localmente degenerado: subconjuntos detectados son muy suficientes y poco necesarios.
+F-187
+Empírica temporal / mediación móvil
+pre_tick 6/10/14/18: common sites=45/195/1194/5906; necessity=0.0276/0.5488/0.1617/0.2932; sufficiency≈0.992/1.158/1/1.
+v25.5-B
+El soporte causal migra y se expande; aparece un cuello de botella transitorio alrededor de t=10 donde el soporte local supera 50% de necesidad.
+F-188
+Negativa de autonomía estricta
+2 holdouts × 3 épocas state-conditioned; strong_causal_epochs=0 en ambos. Reversion necessity≈−0.0127…0 y transplant sufficiency≈0…0.00436.
+v25.5-B
+Las action masks correlacionan con historia pero no median causalmente el loop. Autonomía mínima no demostrada en esta arquitectura; cerrar/pausar esta línea específica.
+F-189
+Empírica exacta en familia
+P_spatial = L_sym en 60/60 preparaciones direccionales: N={24,30,36,42}, tres ejes y múltiples divisores; packed/state/direction/semantic coinciden. Controles directionless → P=1/extinción.
+v25.5-C
+Generaliza F-137: P=N es el caso L_sym=N. El periodo corresponde al periodo fundamental de la simetría translacional preparada en esta familia.
+F-190
+Empírica exacta de escala nativa
+f_DEE=v_native/L_sym; con v_native=1 voxel/tick, κ=f·L_sym/v=1 en 60/60. Fit P=aL da a=1. Modelo P=(D/E)L=(26/12)L: RMSE=21.0146; P=L: RMSE=0.
+v25.5-C
+Apoya una ley frecuencia–escala f∝v/L en el aparato libre direccional. No valida el factor teórico E/D ni 20 Hz externos.
+F-191
+Empírica exacta de independencia
+N30,L=10, tres ejes y clock offsets {0,17,23,31,391,782}: P=10 y spatial traces idénticas.
+v25.5-C
+El periodo espacial de esta órbita no lo fija el offset inicial de clock; clock/fase y recurrencia espacial son capas distintas.
+F-192
+Empírica exacta multiescala
+N48: L={6,8,12,16} → P={6,8,12,16}, P_combined=lcm=48. N60: L={5,10,12,15} → P={5,10,12,15}, combined=60. Romper L=8 → P_lane=48, otras lanes intactas.
+v25.5-C
+Coexisten escalas periódicas y se componen por LCM; la ruptura causal de simetría redefine sólo la órbita afectada.
+F-193
+Empírica exacta de separación temporal
+En el mismo N30: lane P=6 y aparato k=6 conserva cambios s_reg en t={1,392,783}, intervalos 391; ambos trazados son idénticos a sus controles separados.
+v25.5-C
+Recurrencia espacial y cadence de provenance pueden coexistir independientemente. 391 no es una frecuencia espacial universal.
+PARTE XIV | CORRESPONDENCIAS Y ROSETTA DESPUÉS DE v25.5
+Objeto DEE
+Correspondencia formal posible
+Nivel actual
+Límite
+P=L_sym; f=v/L_sym
+Cinemática periódica / tiempo de tránsito de longitud L
+Exacta interna en familia
+No SI; no toda arquitectura DEE.
+P_combined=LCM(P_i)
+Composición de osciladores discretos
+Exacta matemática/interna
+No implica resonancia física externa.
+Cadence 391
+Reloj de acumulación / duty cycle discreto
+Exacta de branch
+No ritmo basal ni Hz.
+Threshold 19658
+Contador/umbral de acumulación
+Exacta de implementación
+No lifetime ni tiempo absoluto.
+Historia distribuida
+Memoria de estado / basin degenerado
+Analogía formal fuerte
+No memoria biológica.
+Support migration
+Carrier dinámico / causal bottleneck
+Mecanismo interno
+No “señal neural”.
+f_sistema=vE/(LD), 20 Hz
+Hipótesis teórica de escala/conectividad
+NO promovida
+El factor E/D falla en aparato C; falta Rosetta.
+Sink/GC
+Sistemas disipativos/absorbedores
+Negativo en screen
+No agujero negro.
+Autonomía
+Closed-loop causal
+Negativa en arquitectura probada
+No imposibilidad universal.
+Auditoría de promoción F-174–F-193
+F-174 refina F-168: L_observable es cota/predictor dominante, no igualdad universal.
+F-181/F-182 refinan F-144/F-145 y corrigen la aproximación histórica de tiempo profundo; no crean una nueva constante externa.
+F-183 restringe definitivamente la lectura de 194422 como lifetime; no contradice el literal source-audited en DEMUX.
+F-186/F-187 fortalecen memoria distribuida al añadir necessity/sufficiency y migración temporal.
+F-188 amplía el cierre negativo de autonomía sin universalizarlo.
+F-189 supersede la generalización P=N: en la familia ensayada P=L_sym y P=N es caso particular.
+F-190 es Rosetta interna de escala, no correspondencia SI. El factor E/D/20 Hz sigue como hipótesis.
+F-193 separa explícitamente recurrencia espacial y cadence 391; no volver a mezclarlas.
+ADDENDUM FÓRMULAS Y CORRESPONDENCIAS v13.0 — v27 POST A+B
+F-194 en adelante · relaciones nuevas, correcciones y fórmulas preregistradas
+Corte científico: 4 de septiembre de 2026
+Fórmulas y relaciones promovidas/actualizadas
+ID
+Estatus
+Fórmula / relación
+Origen
+Alcance
+F-194
+Empírica exacta en A1
+s_out=min(Σ_i s_i,19664); d_out=sgn(Σ_i d_i) en la rama SYM1 multifuentе ensayada
+325/325 pares; patrones 2/3/4/6 fuentes
+No aplicar cuando una rama anterior/distinta como XNOR8 determina la salida.
+F-195
+Empírica exacta en A1
+F(RX)=R F(X) para las transformaciones cúbicas ensayadas en los patrones A1
+48/48 por patrón; 84 trayectorias multitik exactas
+Dominio de los patrones/cargas ensayados; no convierte todo el kernel en isotrópico continuo.
+F-196
+Rama discreta observada
+k_active≥8 en los aparatos A1/A4 → branch XNOR8 con semantic=7, s_reg=1
+8/12/26 fuentes A1
+No mezclar con la expectativa del reductor de suma.
+F-197
+Parámetro canónico v27
+P_KERNEL=UMBRAL_FUSION=19665; cap=19664
+v27 decision + A2/A4
+Threshold/fase local; no tiempo físico absoluto.
+F-198
+Empírica métrica
+d∞(x,y)=max_i |Δx_i|; T_front=d∞−1 para shell26 por radio del emisor / T≈d∞ para fuente puntual dirigida
+B0/B1/B2
+El offset depende del soporte inicial del emisor; la norma L∞ es la estructura geométrica.
+F-199
+Preregistrada Parte C
+T_peak(k)=a+b k; v_group,step=1/b
+C7 pendiente
+Sólo si ≥3 distancias, slope>0, R²≥0.70, peak monotónico y sin pre-arrival.
+F-200
+Preregistrada Parte C
+T_centroid=Σ_t t A(t)/Σ_t A(t)
+C7 pendiente
+Descriptor temporal secundario; no sustituye T_peak para velocidad de grupo.
+F-201
+Preregistrada Parte C
+R_v=(1, v_face/v_axis, v_body/v_axis)
+C7 pendiente
+Comparar adimensionalmente con (1,1,1) y (1,√2,√3); también aceptar contextual/no-wave.
+Correcciones explícitas
+La bandera A4 `all_equal_sum_outputs_match_cap=false` no es evidencia contra SYM1: los casos k≥8 entraron a XNOR8. El dominio correcto de F-194 excluye esa rama.
+El subtest A4 llamado k6_accumulation no reproduce el aparato histórico de cadencia. No se agrega ninguna fórmula nueva desde ese trazado. Se conserva el anchor v27 ya revalidado: desde s_reg=19650, el primer drop/overflow del aparato histórico aparece en t=5475, con desplazamiento de 2737=7×391 respecto de v26.
+Los p distintos de ∞ observados en rayos restringidos/coarse-graining de B1/B2 no se registran como métricas físicas nuevas; carecen de identificabilidad angular estable.
+B4/B5 no generan fórmula de Fermat/Snell: no hubo endpoint en B4 y la barrera de B5 fue no diagnóstica.
+Correspondencia Rosetta actual
+La comparación prioritaria pasa de velocidad de primer arribo a una comparación adimensional de velocidad de grupo. Si C7 produce un modo propagante, la relación eje:diagonal de cara:diagonal espacial podrá compararse con las dos estructuras nulas preregistradas sin elegir escala de longitud o tiempo. Sólo después de esa adjudicación se justificará reabrir una interfaz tipo Fermat/Snell.
+CIERRE E1 + E2 + E3
+Actualizacion 14.0 | Registro matemático acumulativo F-001-F-232 y adjudicacion de relaciones por dominio.
+Los Volumenes 1, 2, 3, 4 y 5 conservan igual dignidad documental: cada uno fija evidencia en su corte, kernel y aparato. Esta edición conserva todos los antecedentes. La solidez de una afirmacion se determina por sus controles y alcance, no por la fecha, el nombre del volumen o la preferencia por una analogía. Las capacidades se describen junto con condiciones medibles, criterios de lectura y verificaciones pendientes.
+Base de este cierre: archivos ejecutados y manifiestos cotejados; para E1 se recibio el nucleo de análisis con todas las curvas JSON y un índice de4577 NPZ conservados en el ZIP original del autor. La auditoría de bytes distingue expresamente miembros disponibles y estados microscópicos indexados.
+1. Politica del registro
+Se conservan F-001-F-201 y sus versiones anteriores. Esta ampliación agrega31 entradas F-202-F-232. Cada entrada específica si es definicion de observador, hecho ejecutable, identidad algebraica, resultado empirico, estimación estadística o regla de ingenieria. Compartir una formula no iguala la naturaleza de los procesos que la usan. La evidencia matemática mantiene los parámetros y el soporte de cada relacion.
+Las entradas F-199/F-200/F-201 se conservan como preregistro C7. Su estado posterior es: T_peak/T_centroid son observables definidos; la estimación de velocidad de grupo necesita un paquete colectivo resuelto. C7 registro9/9 no_resolved_group_mode. Las trayectorias E no convierten automaticamente esas definiciones en una velocidad universal. F-194 se restringe a la rama SYM1; XNOR8 se trata por su rama correspondiente.
+2. Registro nuevo completo
+F-202 | Definicion ejecutable
+T_q = min{t muestreado: rho(t)>=q}
+q={0.1,0.5,0.9,0.95}; E1. Falta de cruce se registra censurada a4096.
+F-203 | Objetivo predictivo
+y_t = 1[t < T_0.5 <= t+128]
+Ventanas rich, t multiplo64, previas al cruce y con horizonte futuro completo.
+F-204 | Modelo estadístico congelado
+p_t = sigmoid(beta0 + sum_j beta_j (x_j-mu_j)/sigma_j)
+18 variables nativas; ridge2; entrenado en discovery, congelado antes de holdout. Coeficientes en la capsula.
+F-205 | Definicion de evaluacion
+Brier = media (p_i-y_i)^2
+495 ventanas de18 mundos; macro.0385318, nativo.0273110; escala probabilistica del predictor.
+F-206 | Estimación empirica
+AUC_macro=.865711; AUC_nativo=.966737
+Ranking sobre holdout. AUC expresa ordenamiento, diferente de accuracy.
+F-207 | Reanalisis post hoc
+AP_macro=.350435; AP_nativo=.647368
+Average precisión con empates agrupados;24 positivos/495. Bootstrap agrupado por mundo.
+F-208 | Resultado de intervención
+Delta T_0.5 in {0,8} en32 comparaciones
+28 ceros,4 retrasos; todos los retrasos en un discovery. Dominio 2% ocupado y etapa tardia.
+F-209 | Definicion descriptiva
+v=(rho,S/6,mean(s_reg)/CAP,f_dir,H_dir/log2(26),Var_b)
+Seis coordenadas usadas por EA3; densidad y actividad tienen observadores distintos.
+F-210 | Distancia de recuperación
+D(t)=mean_j |v_j(X_d(t))-v_j(X_c(t))|
+Control de igual edad. Cada componente se conserva; un promedio pequeno puede ocultar desviaciones.
+F-211 | Criterio preregistrado
+R_eps=min{t_i:D(t_i),D(t_i+1),D(t_i+2)<=eps}
+Tres muestras sucesivas; eps.002/.005/.01/.02. Si ya empieza dentro, clasificar tolerancia inicial.
+F-212 | Reanalisis de persistencia
+R_sostenido=min{t_i:forall j>=i,D(t_j)<=eps}
+Con al menos tres muestras restantes. Aeps.02 regresan23/25 daños densos inicialmente fuera.
+F-213 | Area de huella
+A_D = trapecios de D(t); Delta A_hist=A_segunda-A_naive
+53 positivas y7 negativas en60 condiciones. Recorrido finito de256 ticks por desafio.
+F-214 | Observador espacial
+M_b(X)=(medias_b ocupacion, medias_b s_reg/CAP, medias globales)
+Bloquesb2/4/8 y N divisible; clock se conserva en el estado aunque M no lo mida.
+F-215 | Identidad combinatoria
+M_b(P_b X)=M_b(X)
+P_b permuta conjuntamente raw+clock dentro de cada bloque. Preserva sumas y multiconjuntos por bloque.
+F-216 | Testigo empirico
+M_b(F^256 P_b X) != M_b(F^256 X)
+12/12 joint con diferencia microscopia efectiva; evidencia JSON y hashes. Rango medio .002197.. .017322.
+F-217 | Consecuencia lógica de F-215/216
+No existe G cerrado universal para ese M_b con M_b o F=G o M_b
+Si existiera, iterar G preservaria la igualdad inicial; F-216 aporta un contraejemplo. Dominio del observador declarado.
+F-218 | Definicion de contraste de acceso
+Delta Q = Q(P_b X)-Q(X)
+En D_sparse, sondas direction/state_direction: pico1; integral3/6/6 frente a0. Repertorio acotado.
+F-219 | Ley de aparato revalidada
+T_joint=d-9
+EB4 d24/30 ->15/21 ticks; ROI radio9, lectura relacional y cuatro controles de preparacion.
+F-220 | Definicion de firma
+R=(S_full-S_receiver, S_full-S_source)
+23 rasgos por S; concatenacion46. Firma de lectura, no identidad completa del microestado.
+F-221 | Separabilidad del lector
+d_min=min_(i!=j) ||(R_i-R_j)/sigma_train||
+d_min=0 por diag/antidiag. Cinco prototipos diferentes; semantica de seis etiquetas requiere otra lectura.
+F-222 | Descriptor morfologico
+theta(z)~a+bz; vueltas=Delta theta/(2pi)
+Ajuste del angulo derivado por secciones; ejePCA fiable y cortes periódicos controlados.
+F-223 | Descriptor de escala
+paso/radio=(2pi/|b|)/radio_medio
+Valor depende de extracción, ejes y secciones; contraste con nulos de la misma capa y soporte.
+F-224 | Contraste de restauración
+Delta D=D_plantilla-D_libre
+24/32 valores favorecen plantilla compatible. Comparaciones donor alternativo y barajado retienen32 pares.
+F-225 | Intervención contextual
+X_A --edicion direction--> X_B
+Dos holdouts alcanzan referenciaB exacta; clock17 preserva B al intentar el retorno. Protocolo completo registrado.
+F-226 | Soporte causal
+R_s = D(high_sreg_zero)/D(random_sreg_zero)
+R_s2.2..6.15 en cuatro casos; selección high por s_reg previo, misma cardinalidad.
+F-227 | Contabilidad de extracción
+G_c=extraccion_full(c)-extraccion_sin_fuente(c)
+Conteo de eventos/sitios en ciclos; inicio10/14/6 para bandaN32/48/64; renovacion trasflush0.
+F-228 | Relacion historica acotada
+T_central=(3/8)N-6; T_base=N-11
+CAUSALROUTER20X: exacta centralN80..144; ejemploN96 30vs85 ticks; pico cambia a7.5vs17.333.
+F-229 | Ingenieria transferida
+coste_ruta=cola_vecina+P(dosis_arista)
+P es tabla medida v25 congelada. DistributedLoad es simulacion Python; politica y kernel son capas diferentes.
+F-230 | Contabilidad de benchmark
+N_inyectados=N_entregados+N_descartados+N_en_cola
+Invariante de ensayo de paquetes2D/3D; medición simetrica de consultas a vecinos.
+F-231 | Criterio de diseño finito
+config*=argmin_{config en candidatos evaluados} L(config)
+Busqueda externa sobre v27 fijo. Se congela antes de perturbaciones reservadas; incluye coste de evaluaciones.
+F-232 | Contrato de aplicacion
+entrada -> codificador -> F_v27^T -> observador -> decision
+Cada flecha tiene versión y prueba de atribución. Costo total=codificar+evolución+leer+buscar+entrenar.
+3. Derivacion del testigo de observabilidad incompleta
+Sea X el estado operacional activo y F la evolución determinista del kernel con N y contexto fijados. M_b promedia ocupación y s_reg en bloques de ladob, junto con las medias globales. Una permutacion P_b que reordena conjuntamente raw/clock dentro de cada bloque deja iguales los multiconjuntos y por tanto las sumas y medias que componen M_b. La identidad F-215 es combinatoria y exacta para ese observador.
+Supongase una función determinista G definida solo sobre M_b(X), tal que M_b(F(X))=G(M_b(X)) para todos los estados del dominio. Por induccion, M_b(F^k(X))=G^k(M_b(X)). Dos estados con igual M_b inicial tendrian entonces igual M_b después de cualquierk. EA4 registra12 pares con igualdad inicial y desigualdad del mismo M_b a256 ticks. Cada par aporta un testigo que invalida el cierre supuesto en un dominio que lo incluya. La conclusión concreta es necesidad de información adicional para ese cierre predictivo.
+La afirmacion no exige una métrica externa ni convertir coincidencia visual en identidad. Se puede enriquecer el observador con correlaciones, direction, distribuciones o historia, y volver a probar suficiencia. Un observador enriquecido es una hipótesis nueva y debe reservar pares para prueba.
+4. Derivacion de los indicadores estadisticos
+El evento de predicción es una etiqueta binaria temporal: hay cruce0.5 en los siguientes128 ticks. El ajuste logistico estandariza con medias/escalas del discovery y penaliza coeficientes con ridge2, dejando el intercepto libre. Los18holdouts no ajustan parámetros. Brier promedia error cuadratico; AUC compara rankings de positivos y negativos, promediando empates. Average precisión integra incrementos de recall por grupos de probabilidades empatadas; una probabilidad constante obtiene la prevalencia y no un valor dependiente del orden arbitrario.
+Medida
+Macro
+Nativo ampliado
+AUC
+.8657112527
+.9667374381
+Brier
+.0385317806
+.0273110073
+Average precisión
+.3504349445
+.6473678534
+Variables
+3
+18
+Ventanas reservadas
+495 /24 positivas
+Las mismas495
+El bootstrap post hoc remuestrea18 mundos completos con reemplazo, manteniendo juntas sus ventanas. El intervalo95% sobre2000 réplicas se interpreta para esta coleccion; la dependencia entre ventanas no se transforma en independencia por aumentar su número.
+5. Correspondencias formales y analogicas
+Objeto medido
+Correspondencia util
+Condición
+M_b y P_b
+Coarse-graining, aliasing de estado y observabilidad
+Igualdad observada más trayectorias distintas bajo el mismo observador.
+D(t) y repertorio
+Resiliencia de regimen
+Estado inicial fuera, retorno y respuesta legible cuando se adjudique función.
+Firma R de EB4
+Transducción y transferencia de organización
+Identificar clases realmente separadas por R y necesidad de soporte.
+T_q y predictor
+Transitorio largo con precursor estadístico
+Evento, horizonte, particion y calibracion declarados.
+Plantilla compatible
+Restauración asistida o induccion de regimen
+Donors matched y referencia de igual edad.
+Theta(z)
+Giro de descriptor morfologico
+Campo, conectividad, eje y continuidad espacial explicitados.
+P(dosis)
+Memoria de inhibición en algoritmo
+Origen de la tabla y código host separados del kernel.
+6. Auditoría específica del registro
+Se verifico que el registro anterior llega aF-201; las nuevas clavesF-202..F-232 son unicas. Las estimaciones de AUC, Brier, tiempos y razones conservan sus números de muestra. Las constantes19665/19664 y391 mantienen el ámbito ejecutable heredado. Los nuevos umbrales de observación, tolerancias, ridge y presupuestos son decisiones de instrumento o ingenieria declaradas. Los resultados con valor0 se preservan en las tablas y en los primarios. El catálogo completo y el código de calculo se incluyen en el paquete y en la capsula del Volumen5.
+ADDENDUM 15.0 - F-233 A F-243 | CORTE A+B+C+D
+9 de septiembre de 2026. Se preserva F-001-F-232; las entradas nuevas no renumeran ni borran resultados historicos.
+ID
+Estatus
+Relacion
+Alcance
+F-233
+Teorema exacto de cierre
+Existe G con M o F = G o M si y solo si M(X)=M(Y) => M(F(X))=M(F(Y)).
+Matematico; dominio completo declarado del observador.
+F-234
+Corolario de horizonte
+Si M(X)=M(Y) pero M(F^h(X)) != M(F^h(Y)) para algun h>0, no existe cierre determinista de un paso G valido para ambos estados.
+Matematico; no depende de analogia fisica.
+F-235
+Contrajemplos prospectivos C
+64/64 pares holdout con M0 inicial igual presentan futuro M0 distinto; los 64 ya difieren a h=8.
+Empirico C; invalida M0, no todos los observadores.
+F-236
+Generalizacion de observadores C
+Holdout n=80: macro RMSE=.243135,R2=.694405; distribucional RMSE=.189241,R2=.814868; relacional RMSE=.204320,R2=.784190.
+Empirico; mas variables no garantiza mejor prediccion.
+F-237
+Contraste principal C
+Mejora de error cuadratico relacional vs macro por bootstrap de 8 mundos, 1000 replicas: cuantiles 2.5/50/97.5% = [.0006706,.016579,.045979].
+Estadistico; contraste preregistrado.
+F-238
+Limite eta->D
+Prediccion de magnitud de discrepancia: R2 distribucional=.02299; relacional=.13186.
+Resultado debil; NO promover como ley de heterogeneidad.
+F-239
+Gate de paquete D
+0/12 preparaciones discovery pasan todos los criterios de paquete; holdout no abierto; physical_Rosetta=not_evaluable.
+Negativo discriminante del aparato; no niega causalidad espacial.
+F-240
+Separacion de transferencia
+causal_transfer != same_microstate_transport != collective_packet. F-130/F-132 sostienen reinstanciacion mediada; D no resuelve paquete.
+Regla de adjudicacion que evita mezclar ontologias.
+F-241
+Forecast A parcial
+Holdout 288 ventanas/32 positivas. Macro AUC=.825439,Brier=.085193; native-temporal AUC=.793457,AP=.569241,Brier=.071067. Bootstrap por 10 mundos incluye 0.
+Empirico A2; lector estadistico externo, no cognicion DEE.
+F-242
+Susceptibilidad contextual A3 parcial
+El mismo direction_shuffle puede retrasar o adelantar T0.5 segun mundo/edad; sham=referencia en grupos completos recibidos.
+Empirico parcial; no convertir shuffle en causa escalar universal.
+F-243
+Jerarquia Rosetta native-first
+X --F--> X; elegir M por suficiencia interna; identificar clase/ley efectiva; despues R externo con unidades + prediccion holdout.
+Contrato metodologico; supersede la prioridad universal de group velocity sin borrar F-199-F-201.
+Adjudicacion Rosetta 15.0
+F-199/F-200/F-201 permanecen como definiciones validas de observables de pico/centroide/modo, pero dejan de ser la puerta prioritaria general. D confirma que exigir paquete colectivo puede ser un detector de un fenotipo ausente. Se conserva la posibilidad de reabrirlos solo si una futura dinamica nativa produce un modo colectivo antes de imponer su interpretacion.
+Las correspondencias macroscópicas convencionales siguen sujetas a observables definidos, unidades/procedimiento, transformación cuantitativa, dominio, predicción nueva y holdout externo. Bajo H_DEE, una estructura informacional puede ser físicamente fundamental sin esperar ese puente; ninguna entrada F-233-F-243 identifica por sí sola E, T, masa SI, relatividad o cuántica convencionales.
+ADDENDUM FÓRMULAS Y CORRESPONDENCIAS 16.0
+Registro F-244–F-254 · 9 de septiembre de 2026
+Auditoría primaria E/F
+E y F finalizaron con status completed, sin errores y con el kernel v27 congelado SHA-256 0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff. Los manifiestos se reauditaron byte a byte: E contiene 722 entradas verificadas y F 636, sin faltantes ni discrepancias de hash/tamaño. ZIP E SHA-256: 779943a34e3b40da2e2c295bdf8c800a7f7a25e7d7da88ccfb5ff0f811b8a8b8. ZIP F SHA-256: 90ae7a2f20c68376cb0fc430cbe68af78197b73d0389627440e22a0d02b22be0.
+Resultado E — observador y organización
+Resultado
+Valor
+Lectura
+M0 macro R² holdout
+0.1420
+Insuficiente como cierre reducido.
+M1 distribución R²
+0.1578
+Mejora pequeña; 24/24 fibras M1 iguales divergen.
+M2 relacional R²
+0.1754
+Mejor predictor del panel, sin superioridad estadística concluyente.
+M3 topología+historia R²
+0.0996
+Más variables no implican mejor generalización.
+M0/M1 fibras
+24/24 + 24/24
+Contraejemplos finitos de cierre en pares probados.
+eta→D holdout
+R²=0.73185
+Prometedor globalmente, pero no universal.
+eta→D clock-arrangement
+R²≈0.996
+Muy fuerte en esa familia.
+eta→D joint-reorganization
+R²≈-0.018
+No generaliza como ley escalar única.
+A4 quedó cerrado con 48 sondas. Clock aislado produjo efecto cero en 12/12; direction fue contextual (8/12 no-cero); s_reg y coupled fueron no-cero en 12/12 y, en este aparato, coupled reprodujo esencialmente la respuesta de s_reg. Esto separa contribuciones y evita convertir clock, direction o s_reg en magnitudes universales.
+Resultado F — transferencia e identidad
+El gate preregistrado de clasificación fue negativo y se conserva como negativo; no se reescribe retrospectivamente.
+Los controles causales fueron limpios: source removed, source direction zero y corridor cut dieron efecto 0 en 6/6 cada uno; off-path cut y source clock+17 conservaron el efecto baseline en 6/6.
+En 24/24 holdouts (12 baseline + 12 source-state-noise) se observó migración ordenada source→medio→receiver y la fuente quedó vacía antes de la lectura.
+Diagnóstico post-hoc: los 49 componentes no-clock del lector de B coincidieron exactamente con el prototipo correcto en 24/24; la discrepancia fue un desplazamiento común de los siete componentes de clock (+0.036458333333 en la normalización del instrumento).
+Esto no convierte el gate original en PASS. Congela una hipótesis nueva: la identidad transferida puede vivir en un cociente que elimina un offset común de clock pero conserva la estructura relativa de clock.
+Regla de analogía natural no rígida
+Cambio metodológicoEn sistemas naturales una entidad no deja de ser la misma porque cambie cada microdetalle. A partir de este corte, una analogía DEE↔naturaleza se evalúa por persistencia de régimen, equivalencia funcional/relacional, respuesta a perturbaciones, invariantes estadísticos, causalidad y generalización; la igualdad de hash, forma ideal o trayectoria exacta deja de ser requisito salvo que la pregunta lo exija.
+Nivel
+Qué exige
+Qué NO exige
+Correspondencia morfológica
+Familia de formas/organización comparable
+Figura exacta voxel a voxel
+Correspondencia funcional
+Mismo tipo de respuesta/rol bajo perturbaciones
+Mismo microestado
+Correspondencia dinámica
+Transiciones, basins, histéresis, susceptibilidad comparables
+Misma ecuación microscópica
+Correspondencia causal
+Intervenciones y mediadores equivalentes
+Portador clásico intacto
+Identidad externa fuerte
+Mapa cuantitativo, predicción externa y holdout
+Analogía narrativa solamente
+Registro F-244–F-254
+ID
+Estatus
+Relación / resultado
+Alcance
+F-244
+Empírico holdout
+R²(M0,M1,M2,M3)=(.1420,.1578,.1754,.0996)
+Predicción V6-E; no ley universal.
+F-245
+Contraejemplo de cierre
+24/24 fibras M0 y 24/24 M1 iguales divergen en futuro
+Rechaza cierre exacto de esos observadores en pares probados.
+F-246
+Empírico relacional
+Mismo inventario/distribución puede producir futuro distinto al reorganizar relaciones
+Organización > inventario para el dominio.
+F-247
+Predictivo contextual
+η→D: R²=.73185 global; ≈.996 clock-arrangement; ≈-.018 joint
+No promover η como escalar universal.
+F-248
+Causal transferencia
+source=0, direction=0 o corridor cut ⇒ efecto=0; off-path y clock+17 ⇒ baseline
+6/6 por control en V6-F.
+F-249
+Diagnóstico post-hoc
+49/49 componentes no-clock = prototipo correcto en 24/24 holdouts
+Genera hipótesis prospectiva; no cambia gate F.
+F-250
+Cociente candidato
+c_rel(i)=c(i)-c̄_ROI
+Invariante a offset común; V7-B debe confirmarlo.
+F-251
+Equivalencia operacional
+X~R Y si d(R(X),R(Y))≤ε bajo panel preregistrado
+Definición de identidad natural no rígida.
+F-252
+Definición matter-like
+régimen persistente + robusto + responsivo + generalizable
+Correspondencia interna, no identidad física externa.
+F-253
+Cadena causal candidata
+I → Γ_rel → basin/regimen → M(X)
+Objeto central de V7-B.
+F-254
+Regla de cierre final
+Consenso multi-actor A/B/C sobre holdout; sin refit posterior
+Evita experimentación infinita.
+Las entradas F-249/F-250 son explícitamente post-hoc/prospectivas: la evidencia que las motivó ya fue observada, por lo que sólo V7-B puede promover el cociente de clock a resultado confirmado.
+ADDENDUM 17.0 — F-255 A F-278 | CIERRE V7
+Regla epistemológica y principio anti-rigidez
+La disciplina de este cierre separa seis capas que pueden coexistir sin confundirse: (1) HECHO COMPUTACIONAL, exactamente ejecutado; (2) FÍSICA INTERNA DEE, significado operacional dentro del universo discreto; (3) ANALOGÍA FUNCIONAL/MORFOLÓGICA, semejanza de organización, causalidad, respuesta o invariantes; (4) HIPÓTESIS DE EMERGENCIA, explicación teórica derivada de los mecanismos internos; (5) MODELO H_DEE, razonamiento condicional que toma a DEE como arquitectura de la realidad; y (6) CORRESPONDENCIA EXTERNA, puente cuantitativo que debe sobrevivir datos independientes. Un resultado puede ser fuerte en una capa y seguir abierto en otra.
+La anti-rigidez no significa relajar controles ni aceptar cualquier parecido. Significa no exigir una identidad superficial que la pregunta no requiere: misma forma exacta, mismos voxeles, mismo hash, un único campo privilegiado o una traducción uno-a-uno con conceptos clásicos. Las equivalencias deben juzgarse por invariantes, relaciones causales, clases de respuesta, persistencia, escalamiento, topología, fase, historia y predicción. Los gates preregistrados no se reescriben después del holdout; cuando un gate falla, queda negativo para ese gate, pero no borra otros hechos medidos por el mismo experimento.
+Integridad primaria de V7 A/B/C
+Campaña
+Estado
+Manifest
+SHA ZIP
+SHA runner
+Lectura de cierre
+V7-A
+completed
+529/529
+2eac067a…797bd1
+d832facc…48a04
+C formal; 2 regímenes nativos
+V7-B V2
+completed
+823/823
+3dc54d48…59e2bb
+eb59caea…41a8bd
+C formal para cadena simple; transferencia 24/24
+V7-C
+completed
+59/59
+4daa08e5…1c4747
+6896ae58…8e76e9
+A: sustrato distribuido + mediación local
+Las tres campañas ejecutaron el mismo kernel v27.0.0: SHA-256 0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff; package 7e2991b1fc8a053ee44ead6e177b129855ae9265dea68505a8e545f0c3fdf8b4; wheel de referencia 69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939. Los manifests fueron re-verificados localmente en este cierre: A 529/529, B 823/823 y C 59/59, sin faltantes ni discrepancias de hash.
+ID
+Nombre
+Expresión/definición
+Estatus
+F-255
+Estado causal completo
+X_t = {grid_A, grid_B, clock_A, clock_B, tick_global}; cada raw codifica state, s_reg, direction y semantic.
+Exacto / kernel
+F-256
+Observación
+Y_t = M(X_t).
+Definición
+F-257
+Cierre exacto de observador
+M(X)=M(Y) ⇒ M(F(X))=M(F(Y)).
+Teorema/criterio de fibra
+F-258
+Dinámica efectiva
+M∘F ≈ G∘M en un dominio y tolerancia declarados.
+Definición de ley macroscópica
+F-259
+Equivalencia operacional
+X ~_R Y ⇔ respuestas/invariantes del panel R quedan dentro de tolerancia preregistrada.
+Definición
+F-260
+Materia DEE
+Materia_R = clase [X]_R persistente dentro de un basin/órbita/atractor/candado de fase.
+Física interna; definición vigente
+F-261
+Persistencia de régimen
+F^p(X) ∈ [X]_R para p o ventana temporal del dominio, sin corrección voxel-a-voxel externa.
+Criterio material interno
+F-262
+Robustez material
+Rob_R(D)=dist_R(F^h(D(X)), [X]_R); se mide aparte de existencia.
+Propiedad, no requisito ontológico
+F-263
+Vacío estratificado
+vac_occ: state=0; vac_raw: raw=0; vac_clock: clock=0/reset. Ninguna equivalencia entre las tres se supone.
+Definición operacional
+F-264
+Intervención same-inventory
+Inv(S)=Inv(S′), pero Rel(S)≠Rel(S′); si F^h difiere, la relación es causal.
+V7-C confirmado en dominio
+F-265
+Respuesta contextual
+ΔY = R(X, I, E, H); el signo/magnitud puede depender de basin, entorno e historia.
+E/V7-B/V7-C
+F-266
+Cociente relativo de clock
+c_i^rel = c_i − mean_ROI(c).
+V7-B transfer confirmado; no gauge universal
+F-267
+Tiempo histórico de aparato B
+t_hist = d − 9; t_read = d − 1 en la familia ensayada.
+Ley de aparato, no universal
+F-268
+Invariante de firma B
+D_k = sqrt(mean(((x_rel−p_k)/scale)^2)); holdout correcto 24/24 con D_true=0.
+V7-B V2 confirmado
+F-269
+Many-to-one de identidad
+X0≠X0′ y F^h(X0) ~_R F^h(X0′); source_state_noise conserva clase B.
+Confirmado en aparato
+F-270
+Causalidad local nativa
+No se admite efecto paired en sitios con d_native(source,site)>τ antes de τ; V7-C pre-cone=0.
+Holdout V7-C
+F-271
+Equivalencia topológica de timing
+d_native(A,B)=d_native(A′,B′) ⇒ tiempos comparables aunque |Δx| ingenuo difiera; observado direct/wrap.
+V7-C confirmado en dominio
+F-272
+Historia como estado efectivo
+χ_H = ||(Y_probe−Y_free)_history − (Y_probe−Y_free)_naive||.
+V7-B/C; contextual
+F-273
+Observador temporal
+M_t(X)=M(F^t(X)).
+Software B06; tiempo de readout como coordenada
+F-274
+Atribución dinámica
+Δ_dyn=S_full−S_frozen_episode.
+Designer V2; aporte de evolución episódica
+F-275
+Atribución representacional
+Δ_repr=S_frozen_episode−S_raw.
+Designer V2
+F-276
+Brecha externa
+Δ_ext=S_full−S_best_classical.
+Benchmark; no ontología
+F-277
+Rosetta adimensional
+Q_ext = T_R(Q_DEE; θ_cal), con θ_cal mínimo e independiente; validar en observable no usado.
+Contrato de correspondencia
+F-278
+Regla de falsación
+FAIL holdout ⇒ restringir/rechazar T_R en ese dominio; prohibido añadir parámetro ad hoc después del holdout.
+Stopping rule
+Notas de adjudicación de V7-A/B/C
+Las fórmulas F-260–F-262 separan explícitamente “existencia material DEE” de “robustez”. Esta corrección conceptual impide que un fallo de damage recovery sea usado como negación ontológica de un régimen persistente. El gate matter-like original de V7-A se conserva como negativo para su criterio compuesto.
+F-264, F-270 y F-271 se apoyan especialmente en V7-C: mismo inventario con otra geometría cambió respuesta en 2/2, todos los holdouts respetaron el cono y el timing direct/wrap siguió la distancia nativa en 4/4 comparaciones. F-266–F-269 resumen el bloque de transferencia V7-B V2, cuyo holdout fue 24/24.
+Evidencia científica recuperada de Plataforma, TRAMA, AURORA y Designer
+El documento auxiliar de software se integra por naturaleza científica, no comercial. Su contribución central es separar representación/preparación, evolución nativa y observador/readout. Platform B06 mostró que el mismo encoder puede mejorar a un tiempo intermedio y degradarse después; por ello M_t(X)=M(F^t(X)) y el instante de lectura es una coordenada experimental. Designer V2 introdujo el control emparejado full/frozen_episode para atribuir específicamente la contribución de kernel.step. TRAMA y AURORA muestran que riqueza de microestado, dinámica y utilidad para una etiqueta externa son variables distintas.
+Hallazgo recuperado
+Implicación para investigación fundamental
+B04 / transfer
+Direction + soporte/corredor pueden ser causalmente necesarios en un aparato.
+B05 / observabilidad
+Misma lectura macro inicial puede ocultar microestados con futuros distintos.
+B06 / tiempo de readout
+Más ticks no es mejora monotónica; observar es parte del experimento.
+B07 / preparación
+La preparación puede buscarse, pero debe congelarse antes del holdout.
+TRAMA
+Direction puede aportar mientras una historia/evolución elegida perjudica el objetivo externo.
+AURORA
+La representación puede contener señal aunque la evolución/readout reduzca alineación externa.
+Designer V2
+Representación y dinámica son ejes experimentalmente separables; no hay receta universal.
+Estas evidencias no convierten benchmarks externos en leyes físicas. Se conservan porque perfeccionan el método para interrogar DEE: preparar → observar en varios tiempos → intervenir una operación → usar controles matched → congelar → validar fuera de muestra.
+MODELO H_DEE — CORRESPONDENCIAS DIRECTAS DENTRO DE LA HIPÓTESIS
+Para desarrollo teórico se adopta explícitamente H_DEE: “la realidad posee la misma arquitectura fundamental que DEE”. Dentro de H_DEE, las correspondencias siguientes son definiciones/identificaciones del modelo y pueden usarse directamente para deducir consecuencias. Su estatus empírico externo se evalúa aparte mediante Rosetta. No es necesario repetir en cada párrafo la reserva externa mientras se permanezca dentro de H_DEE.
+Objeto DEE
+Correspondencia directa en H_DEE
+Precisión
+Sustrato / grados DEE
+Nivel ontológico subyacente de la realidad
+No se identifica a priori con partículas del Modelo Estándar.
+Relaciones + topología
+Espacio/estructura causal efectiva
+La distancia física emergente sería una función de accesibilidad relacional, no sólo coordenada.
+Orden de actualización
+Orden causal fundamental
+Clock local puede añadir fase/edad; no se identifica todo clock con tiempo SI.
+Basin / atractor / candado de fase persistente
+Materia
+Materia es estado organizado persistente del sustrato; no “un voxel”.
+Organización distribuida del sustrato
+Vacío/medio/campo basal
+Vacío macroscópico no equivale a ausencia de grados.
+Gradientes, interfaces y reorganización del medio
+Interacción / campo efectivo
+Una fuerza externa sería un patrón estable de modificación de transiciones/accesibilidad si Rosetta lo confirma.
+Clase [X]_R de microestados equivalentes
+Objeto/partícula efectiva
+Identidad macroscópica puede sobrevivir cambio de constituyentes microscópicos.
+Many-to-one + coarse-graining
+Degeneración macroscópica / información oculta
+Misma apariencia no fija necesariamente todo el futuro.
+Dependencia de historia
+Histéresis / memoria material
+El presente efectivo incluye preparación y trayectoria previa.
+Transferencia source→medio→receiver
+Propagación/reinstanciación de organización
+No presupone viaje del mismo portador microscópico.
+Cambio de basin/régimen
+Transición de fase
+La clasificación externa depende de hallar un observable Rosetta estable.
+Esta tabla permite desarrollar una “física desde DEE” sin forzar equivalencias clásicas prematuras. La restricción es estructural, no terminológica: una correspondencia externa será fuerte sólo si conserva relaciones/invariantes y predice nuevos datos bajo una transformación congelada.
+PROGRAMA POST-V7 — PIEDRA ROSETTA FINITA
+Con V7 cerrado, la prioridad cambia de descubrir indefinidamente propiedades internas a probar si leyes DEE congeladas explican relaciones observadas en la naturaleza. La primera etapa no necesita decidir qué voxel “es” electrón, masa o energía. Debe empezar por relaciones adimensionales, topología, tiempos relativos, exponentes, fases y respuesta a interfaces.
+Rosetta
+Pregunta congelada
+PASS fuerte
+FAIL / cierre
+R1 Causalidad / mínimo tiempo / interfaz
+¿Una ley DEE de propagación y costo de medio predice ruta/tiempo en una interfaz y su forma adimensional?
+Predice holdout externo o relación geométrica independiente sin refit.
+Se rechaza esa correspondencia; no se agrega constante ad hoc.
+R2 Materia / inercia
+Tomar materia DEE persistente y medir respuesta a perturbaciones idénticas. ¿Existe un invariante de resistencia al cambio?
+Un mismo mapeo predice respuestas en entidades/escala no usadas para calibrar.
+No llamar masa/inercia a ese observable; buscar otra clase sólo si hay discriminante previo.
+R3 Medio/campo
+¿La reorganización del sustrato produce una ley reproducible de susceptibilidad, desvío, bloqueo o caída con distancia nativa?
+Relación congelada reproduce un observable natural independiente.
+Correspondencia de campo rechazada en ese dominio.
+R4 Información/termodinámica
+¿La pérdida many-to-one tiene un costo/backaction nativo escalable?
+Relación adimensional sobreviva holdouts y luego una escala independiente.
+No renombrar directamente como calor o entropía macroscópicos. Bajo H_DEE, la dinámica informacional es física fundamental; derivar primero la relación adimensional y después la Rosetta hacia Q, T, E y S convencionales.
+Regla de validación Rosetta: descubrimiento interno → congelación de ecuación/dominio/falsadores → transformación DEE↔observable externo → calibración mínima e independiente → predicción nueva → holdout externo → comparación con nulls → falsación. Una correspondencia se promueve por predicción fuera de muestra, no por parecido narrativo.
+Regla de no infinitud. Cada puente tiene un número finito de holdouts y una condición de cierre. Si falla, se restringe o rechaza el puente. No se rediseña retrospectivamente hasta que “funcione”. Sólo se abre una variante nueva cuando exista una hipótesis distinta, motivada por evidencia interna previa y con falsador preregistrado.
+Autoridad de fuentes incorporadas en este cierre
+Fuente
+Uso
+DEE_V7_A_ATLAS_ESTADOS_EXISTENCIA_ENTORNO_FINAL_V2_RESULTADOS.zip
+Autoridad primaria V7-A; manifest 529/529.
+DEE_V7_B_ROSETTA_INFORMACION_GEOMETRIA_ENTORNO_FINAL_V2_RESULTADOS.zip
+Autoridad primaria V7-B V2; manifest 823/823.
+DEE_V7_C_SUSTRATO_DISTRIBUIDO_CAUSALIDAD_RELACIONAL_FINAL_V1_RESULTADOS.zip
+Autoridad primaria V7-C; manifest 59/59.
+DEE_V7B_REGISTRO_CIENTIFICO_REPRODUCIBLE_V1_0(1).docx
+Registro de una B anterior MATERIA_FINAL_V1; evidencia auxiliar/replicación, no sustituto del V2.
+por anexar a alguno de los documentos segun la naturaleza i actualizar.docx
+Recuperación científica de Plataforma/TRAMA/AURORA/Designer; se integra por mecanismo/metodología, no por marketing.
+Volúmenes 1–6 y documentos temáticos previos
+Autoridad histórica; sus datos no se reescriben por el cierre V7.
+SHA de los dos documentos auxiliares: software=7936622291c663003c2b42741b0ee63d60fb253b8c9a64fad2c47db58c01e399; registro B anterior=95d28f206bf71c03fb8df1957b1d9a06ac27c7dd099bbebb70c0be86bf28d1f1. Los hashes de los tres ZIP finales y runners se registran en la sección de integridad.

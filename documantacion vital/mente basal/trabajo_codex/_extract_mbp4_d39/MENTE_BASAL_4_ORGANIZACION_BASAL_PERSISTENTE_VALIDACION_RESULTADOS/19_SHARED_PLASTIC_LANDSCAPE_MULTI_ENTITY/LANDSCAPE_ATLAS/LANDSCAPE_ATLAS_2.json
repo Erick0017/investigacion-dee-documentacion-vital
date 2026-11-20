@@ -1,0 +1,973 @@
+{
+  "E_ATLAS": {
+    "horizons": [
+      1,
+      8
+    ],
+    "perturbations": [
+      {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      }
+    ],
+    "scope": "finite exhaustive Cartesian product listed here",
+    "states": [
+      0,
+      1,
+      2,
+      3,
+      6
+    ]
+  },
+  "causal_graph": {
+    "ablations": {
+      "NO_COUPLING": "no load/history update",
+      "ROUTE_CUT": "action does not return to recurrent policy"
+    },
+    "edges": [
+      [
+        "persistent_sensor_source",
+        "sensor_wave"
+      ],
+      [
+        "sensor_wave",
+        "mobile_policy"
+      ],
+      [
+        "mobile_policy",
+        "ACTION0"
+      ],
+      [
+        "ACTION0",
+        "normalizer_wave"
+      ],
+      [
+        "normalizer_wave",
+        "updated_mobile_policy"
+      ],
+      [
+        "updated_mobile_policy",
+        "mobile_policy"
+      ]
+    ],
+    "nodes": [
+      "persistent_sensor_source",
+      "sensor_wave",
+      "mobile_policy",
+      "ACTION0",
+      "normalizer_wave",
+      "updated_mobile_policy"
+    ]
+  },
+  "changes": {
+    "X0": {
+      "added_classes_vs_X0": [],
+      "coalesced": false,
+      "lost_classes_vs_X0": []
+    },
+    "X1": {
+      "added_classes_vs_X0": [
+        "d=[0, 0, 1];s=11007",
+        "d=[0, 0, 1];s=8007",
+        "d=[0, 0, 1];s=9007",
+        "d=[1, -1, 0];s=11007"
+      ],
+      "coalesced": false,
+      "lost_classes_vs_X0": [
+        "d=[0, 0, 1];s=1007",
+        "d=[0, 0, 1];s=2007",
+        "d=[0, 0, 1];s=4007",
+        "d=[1, -1, 0];s=4007"
+      ]
+    },
+    "X2": {
+      "added_classes_vs_X0": [
+        "d=[0, 0, 1];s=15007",
+        "d=[0, 0, 1];s=16007",
+        "d=[0, 0, 1];s=18007",
+        "d=[1, -1, 0];s=18007"
+      ],
+      "coalesced": false,
+      "lost_classes_vs_X0": [
+        "d=[0, 0, 1];s=1007",
+        "d=[0, 0, 1];s=2007",
+        "d=[0, 0, 1];s=4007",
+        "d=[1, -1, 0];s=4007"
+      ]
+    },
+    "X3": {
+      "added_classes_vs_X0": [
+        "d=[0, 0, 1];s=19664",
+        "d=[1, -1, 0];s=19664"
+      ],
+      "coalesced": true,
+      "lost_classes_vs_X0": [
+        "d=[0, 0, 1];s=1007",
+        "d=[0, 0, 1];s=2007",
+        "d=[0, 0, 1];s=4007",
+        "d=[1, -1, 0];s=4007"
+      ]
+    },
+    "X6": {
+      "added_classes_vs_X0": [
+        "d=[0, 0, 1];s=19664",
+        "d=[1, -1, 0];s=19664"
+      ],
+      "coalesced": true,
+      "lost_classes_vs_X0": [
+        "d=[0, 0, 1];s=1007",
+        "d=[0, 0, 1];s=2007",
+        "d=[0, 0, 1];s=4007",
+        "d=[1, -1, 0];s=4007"
+      ]
+    }
+  },
+  "domain_complete": true,
+  "rows": [
+    {
+      "completed_exposures": 0,
+      "horizons": {
+        "h1": {
+          "clock": 33,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1224983423676841985,
+          "s_reg": 1007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            10
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "71bb278ceaf10e4be171c69cfd3b8677ffa5c28774d3e73dee7bb9b24f91141f",
+          "occupied": 13,
+          "raw_sha256": "520002e07936d6a834b4956f2f4c3ed79a838a3bdbf127e5d43036d636fd47df",
+          "tick": 40
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      "response_class": "d=[0, 0, 1];s=1007",
+      "state": "X0"
+    },
+    {
+      "completed_exposures": 0,
+      "horizons": {
+        "h1": {
+          "clock": 33,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1224987718644137985,
+          "s_reg": 2007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            10
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "71bb278ceaf10e4be171c69cfd3b8677ffa5c28774d3e73dee7bb9b24f91141f",
+          "occupied": 13,
+          "raw_sha256": "4781c8e9e649730f09e1cef2701d8bfed440f7857f0072d9336d8592d530f4f0",
+          "tick": 40
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      "response_class": "d=[0, 0, 1];s=2007",
+      "state": "X0"
+    },
+    {
+      "completed_exposures": 0,
+      "horizons": {
+        "h1": {
+          "clock": 33,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1224996308578729985,
+          "s_reg": 4007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            10
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "71bb278ceaf10e4be171c69cfd3b8677ffa5c28774d3e73dee7bb9b24f91141f",
+          "occupied": 13,
+          "raw_sha256": "54281f7af8301f8680c5ee5e8e4f340fda7a0760ef06a1b3938e42cb885093e7",
+          "tick": 40
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      "response_class": "d=[0, 0, 1];s=4007",
+      "state": "X0"
+    },
+    {
+      "completed_exposures": 0,
+      "horizons": {
+        "h1": {
+          "clock": 33,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "raw": 1220774183928070145,
+          "s_reg": 4007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            10
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "bbc7ce66f0d74e658a491f687f109f6163cd884a7d7b36973983e01660323b9e",
+          "occupied": 13,
+          "raw_sha256": "14780e7b6c2dd56f1ca099029fe4e161fd0552edef5681d2998ac30ef6a0e8fb",
+          "tick": 40
+        }
+      },
+      "perturbation": {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      },
+      "response_class": "d=[1, -1, 0];s=4007",
+      "state": "X0"
+    },
+    {
+      "completed_exposures": 1,
+      "horizons": {
+        "h1": {
+          "clock": 35,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225013488447913985,
+          "s_reg": 8007,
+          "semantic": 1,
+          "site": [
+            12,
+            10,
+            11
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "949b9928b8c86272ff8010b02ae2e5e38084b441b1276d9f35c01e8d044ac914",
+          "occupied": 13,
+          "raw_sha256": "9d9966ed6fe5e17cc0faed37f81b6d190f67988e757b976e4421527a8bce0115",
+          "tick": 42
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      "response_class": "d=[0, 0, 1];s=8007",
+      "state": "X1"
+    },
+    {
+      "completed_exposures": 1,
+      "horizons": {
+        "h1": {
+          "clock": 35,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225017783415209985,
+          "s_reg": 9007,
+          "semantic": 1,
+          "site": [
+            12,
+            10,
+            11
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "949b9928b8c86272ff8010b02ae2e5e38084b441b1276d9f35c01e8d044ac914",
+          "occupied": 13,
+          "raw_sha256": "4cb0e3da9b17c11a6db3d90a65c39c1076d8bdef24703c5c47d4acb13af2c41d",
+          "tick": 42
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      "response_class": "d=[0, 0, 1];s=9007",
+      "state": "X1"
+    },
+    {
+      "completed_exposures": 1,
+      "horizons": {
+        "h1": {
+          "clock": 35,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225026373349801985,
+          "s_reg": 11007,
+          "semantic": 1,
+          "site": [
+            12,
+            10,
+            11
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "949b9928b8c86272ff8010b02ae2e5e38084b441b1276d9f35c01e8d044ac914",
+          "occupied": 13,
+          "raw_sha256": "e8a907074be25d54b87d03b561f5d3160a1ed73d8beded6861742c8a92327869",
+          "tick": 42
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      "response_class": "d=[0, 0, 1];s=11007",
+      "state": "X1"
+    },
+    {
+      "completed_exposures": 1,
+      "horizons": {
+        "h1": {
+          "clock": 35,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "raw": 1220804248699142145,
+          "s_reg": 11007,
+          "semantic": 1,
+          "site": [
+            12,
+            10,
+            11
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "b873ad574c42fc02260cc9097b2c2bd9893e70647c62b53f2435e98e5be0fb44",
+          "occupied": 13,
+          "raw_sha256": "d598c3e76ea9bd20b61502f7407ff26f788528f0fdeb856c35c24ff9f225b7f4",
+          "tick": 42
+        }
+      },
+      "perturbation": {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      },
+      "response_class": "d=[1, -1, 0];s=11007",
+      "state": "X1"
+    },
+    {
+      "completed_exposures": 2,
+      "horizons": {
+        "h1": {
+          "clock": 82,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225043553218985985,
+          "s_reg": 15007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            12
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "906ac718d0260197f71e70d5d9ea990b1c86de8801de586c897502643ecfffe2",
+          "occupied": 15,
+          "raw_sha256": "a312520b903d84a387a4dca3450b2e1ea8989b1360ba8949c018a2a7b8c74f37",
+          "tick": 89
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      "response_class": "d=[0, 0, 1];s=15007",
+      "state": "X2"
+    },
+    {
+      "completed_exposures": 2,
+      "horizons": {
+        "h1": {
+          "clock": 82,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225047848186281985,
+          "s_reg": 16007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            12
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "906ac718d0260197f71e70d5d9ea990b1c86de8801de586c897502643ecfffe2",
+          "occupied": 15,
+          "raw_sha256": "cd8ec76b0f63b7a8bd64e32ccfd0e8973116b24246c8ef0ec701774678024002",
+          "tick": 89
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      "response_class": "d=[0, 0, 1];s=16007",
+      "state": "X2"
+    },
+    {
+      "completed_exposures": 2,
+      "horizons": {
+        "h1": {
+          "clock": 82,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225056438120873985,
+          "s_reg": 18007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            12
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "906ac718d0260197f71e70d5d9ea990b1c86de8801de586c897502643ecfffe2",
+          "occupied": 15,
+          "raw_sha256": "f28599e92ef1ac8a35a1f32e97a16ea00a3141cf92e33bd48b75267a511f5084",
+          "tick": 89
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      "response_class": "d=[0, 0, 1];s=18007",
+      "state": "X2"
+    },
+    {
+      "completed_exposures": 2,
+      "horizons": {
+        "h1": {
+          "clock": 82,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "raw": 1220834313470214145,
+          "s_reg": 18007,
+          "semantic": 1,
+          "site": [
+            11,
+            10,
+            12
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "3fe329533171c9bf5b34563a4d95291ec999a70def98246f84d7b5878495e3bb",
+          "occupied": 15,
+          "raw_sha256": "96f627fed93a28859b8169cd736d8a88e1cf0dfa528e932e1cd2e8a4bce95f42",
+          "tick": 89
+        }
+      },
+      "perturbation": {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      },
+      "response_class": "d=[1, -1, 0];s=18007",
+      "state": "X2"
+    },
+    {
+      "completed_exposures": 3,
+      "horizons": {
+        "h1": {
+          "clock": 129,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            10,
+            10,
+            13
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "e184834cf796e0fb352a82b012eb728c549c614367984c6f15fb16db1689ef18",
+          "occupied": 13,
+          "raw_sha256": "b8edcba659eb047fba51a13e0759a1f10cfbd7de7678910a3d5c453d93025b97",
+          "tick": 136
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X3"
+    },
+    {
+      "completed_exposures": 3,
+      "horizons": {
+        "h1": {
+          "clock": 129,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            10,
+            10,
+            13
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "e184834cf796e0fb352a82b012eb728c549c614367984c6f15fb16db1689ef18",
+          "occupied": 13,
+          "raw_sha256": "b8edcba659eb047fba51a13e0759a1f10cfbd7de7678910a3d5c453d93025b97",
+          "tick": 136
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X3"
+    },
+    {
+      "completed_exposures": 3,
+      "horizons": {
+        "h1": {
+          "clock": 129,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            10,
+            10,
+            13
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "e184834cf796e0fb352a82b012eb728c549c614367984c6f15fb16db1689ef18",
+          "occupied": 13,
+          "raw_sha256": "b8edcba659eb047fba51a13e0759a1f10cfbd7de7678910a3d5c453d93025b97",
+          "tick": 136
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X3"
+    },
+    {
+      "completed_exposures": 3,
+      "horizons": {
+        "h1": {
+          "clock": 129,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "raw": 1220841430231023617,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            10,
+            10,
+            13
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "cd14bcec2e34e3daf95170774fb0354c6f2e940b88bdd0dc4677474257fb136a",
+          "occupied": 13,
+          "raw_sha256": "f73025e6aa951fb6936aec55c1c3362ba6f5095efe9108e0ecc825419ff0b948",
+          "tick": 136
+        }
+      },
+      "perturbation": {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      },
+      "response_class": "d=[1, -1, 0];s=19664",
+      "state": "X3"
+    },
+    {
+      "completed_exposures": 6,
+      "horizons": {
+        "h1": {
+          "clock": 270,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            7,
+            10,
+            16
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "458566f604481018fe1eea4ad113224d5e2a33c7f110a05aa606dd859dfa28a7",
+          "occupied": 15,
+          "raw_sha256": "ce9f199a4392e499b3066a2c922c9ce3d9c63ef11b3136d73b90485f183aa6f3",
+          "tick": 277
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 1000,
+        "name": "S1000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X6"
+    },
+    {
+      "completed_exposures": 6,
+      "horizons": {
+        "h1": {
+          "clock": 270,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            7,
+            10,
+            16
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "458566f604481018fe1eea4ad113224d5e2a33c7f110a05aa606dd859dfa28a7",
+          "occupied": 15,
+          "raw_sha256": "ce9f199a4392e499b3066a2c922c9ce3d9c63ef11b3136d73b90485f183aa6f3",
+          "tick": 277
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 2000,
+        "name": "S2000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X6"
+    },
+    {
+      "completed_exposures": 6,
+      "horizons": {
+        "h1": {
+          "clock": 270,
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": 1225063554881683457,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            7,
+            10,
+            16
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "458566f604481018fe1eea4ad113224d5e2a33c7f110a05aa606dd859dfa28a7",
+          "occupied": 15,
+          "raw_sha256": "ce9f199a4392e499b3066a2c922c9ce3d9c63ef11b3136d73b90485f183aa6f3",
+          "tick": 277
+        }
+      },
+      "perturbation": {
+        "direction": [
+          -1,
+          0,
+          1
+        ],
+        "load": 4000,
+        "name": "S4000"
+      },
+      "response_class": "d=[0, 0, 1];s=19664",
+      "state": "X6"
+    },
+    {
+      "completed_exposures": 6,
+      "horizons": {
+        "h1": {
+          "clock": 270,
+          "direction": [
+            1,
+            -1,
+            0
+          ],
+          "raw": 1220841430231023617,
+          "s_reg": 19664,
+          "semantic": 1,
+          "site": [
+            7,
+            10,
+            16
+          ],
+          "state": 1
+        },
+        "h8": {
+          "clock_sha256": "bb08bf6ca6947d0b2f6f9b1b554545739c748fb4c0fb74392d499a6b9f3f161a",
+          "occupied": 15,
+          "raw_sha256": "15baed9dd7811769fe9dda67e38e3716685231e536c54a875339a7265d47969e",
+          "tick": 277
+        }
+      },
+      "perturbation": {
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "load": 4000,
+        "name": "SHAM_ORTHOGONAL"
+      },
+      "response_class": "d=[1, -1, 0];s=19664",
+      "state": "X6"
+    }
+  ],
+  "schema": "mbp4.sp.landscape-atlas.v2",
+  "state_response_classes": {
+    "X0": [
+      "d=[0, 0, 1];s=1007",
+      "d=[0, 0, 1];s=2007",
+      "d=[0, 0, 1];s=4007",
+      "d=[1, -1, 0];s=4007"
+    ],
+    "X1": [
+      "d=[0, 0, 1];s=8007",
+      "d=[0, 0, 1];s=9007",
+      "d=[0, 0, 1];s=11007",
+      "d=[1, -1, 0];s=11007"
+    ],
+    "X2": [
+      "d=[0, 0, 1];s=15007",
+      "d=[0, 0, 1];s=16007",
+      "d=[0, 0, 1];s=18007",
+      "d=[1, -1, 0];s=18007"
+    ],
+    "X3": [
+      "d=[0, 0, 1];s=19664",
+      "d=[0, 0, 1];s=19664",
+      "d=[0, 0, 1];s=19664",
+      "d=[1, -1, 0];s=19664"
+    ],
+    "X6": [
+      "d=[0, 0, 1];s=19664",
+      "d=[0, 0, 1];s=19664",
+      "d=[0, 0, 1];s=19664",
+      "d=[1, -1, 0];s=19664"
+    ]
+  }
+}

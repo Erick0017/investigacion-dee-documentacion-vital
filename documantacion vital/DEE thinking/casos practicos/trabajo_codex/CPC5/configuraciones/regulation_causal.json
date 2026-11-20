@@ -1,0 +1,61 @@
+{
+  "schema": "CPC5.regulation.local_counterfactual.v1",
+  "frozen_utc": "2026-10-17T19:10:16.354871+00:00",
+  "parent": "resultados/network_regulation_adverse/REG_FLAT_LEARNED_PULSE/T292.deetsnap",
+  "parent_sha256": "06f20a7f2474cee4f819704cb8913ea907663ebc4b22d3345d59830fd485a643",
+  "fork_tick": 292,
+  "horizon": 437,
+  "question": "Does occupied-destination material precedence remove the learned zero-load pulse and approaching residual, and is the pulse causally needed for later access?",
+  "fork_cases": [
+    {
+      "id": "REG_CF_REFERENCE",
+      "mode": "intact",
+      "C_history": 1
+    },
+    {
+      "id": "REG_CF_REMOVE",
+      "mode": "remove_RAW_only",
+      "C_history": 1
+    },
+    {
+      "id": "REG_CF_SHAM",
+      "mode": "identical_RAW",
+      "C_history": 1
+    },
+    {
+      "id": "REG_CF_LOAD1",
+      "mode": "s_reg_0_to_1_only",
+      "C_history": 1
+    }
+  ],
+  "reserved_cases": [
+    {
+      "id": "REG_H_TRANSLATED_PAIRED",
+      "mode": "learned_pulse",
+      "A_history": 1,
+      "C_history": 1,
+      "translation": [
+        4,
+        -3,
+        2
+      ]
+    },
+    {
+      "id": "REG_H_TRANSLATED_UNPAIRED",
+      "mode": "learned_pulse_unpaired",
+      "A_history": 1,
+      "C_history": 1,
+      "translation": [
+        4,
+        -3,
+        2
+      ]
+    }
+  ],
+  "prediction_registered_before_forks": {
+    "reference_sham": "Full learned-pulse future retained",
+    "remove": "Removing the t292 zero-load occupied site allows the residual to enter it at293; later Flat function differs",
+    "load1": "One unit changes payload, not occupancy; physical branch and later function may remain",
+    "scope": "Predictions are evaluated only after evolution; failure is retained. Source and derivative are exact complete world forks."
+  }
+}

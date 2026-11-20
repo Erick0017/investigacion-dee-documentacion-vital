@@ -1,0 +1,83 @@
+{
+  "case": {
+    "id": "ORDER_NAME_BA_D01",
+    "history": "BA",
+    "horizon": 110,
+    "later_order_reads": [
+      69
+    ]
+  },
+  "geometry": {
+    "N": 67,
+    "center": [
+      33,
+      25,
+      33
+    ],
+    "A": [
+      32,
+      25,
+      33
+    ],
+    "B": [
+      34,
+      25,
+      33
+    ],
+    "name_hubs": {
+      "left": [
+        29,
+        25,
+        33
+      ],
+      "right": [
+        37,
+        25,
+        33
+      ]
+    },
+    "access_sites": {
+      "left": [
+        9,
+        45,
+        33
+      ],
+      "right": [
+        57,
+        45,
+        33
+      ]
+    },
+    "context_sites": {
+      "left": [
+        2,
+        52,
+        33
+      ],
+      "right": [
+        64,
+        52,
+        33
+      ]
+    },
+    "initial_sites": 10,
+    "interfaces": [
+      "event.A",
+      "event.B",
+      "order.read",
+      "name.left",
+      "query.left",
+      "context.left.minus",
+      "context.left.plus",
+      "name.right",
+      "query.right",
+      "context.right.minus",
+      "context.right.plus"
+    ],
+    "scope": "Prepared two-branch sensor geometry; relative order must be acquired from events; no host branch choice or stored response mapping"
+  },
+  "source_sha256": "7a0413f6a5d5e25515abaa95991c5264d184baa67f37ab6d1bd063180961efd5",
+  "claim_criterion": "Paired A/B histories must differ under the same passive/physical readout; naming effect must differ from unpaired/omitted names at a route absent without naming; contextual combinations preserve x and add z only if measured",
+  "decoder": "Return actual active semantic1 records above query load, retain direction vector and original fields; no label inferred from teaching logs",
+  "initial_guards": "A/B clocks260, semantic4 supports; no postT0 RAW/clock editing"
+}

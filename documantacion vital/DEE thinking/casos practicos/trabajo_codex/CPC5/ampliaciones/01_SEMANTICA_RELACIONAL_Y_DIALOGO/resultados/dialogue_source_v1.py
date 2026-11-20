@@ -1,0 +1,255 @@
+"""Finite native request/response route, with experience-dependent turn/content.
+
+The laboratory declares ports and current physical experiences.  Once requested,
+all inter-participant messages and turns are produced by v27 in one Runtime.
+Neither the session nor its renderer consults an expected-answer table.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import sys
+import time
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from common import ROOT, BASE, identity, put, sha, record, interface, receipt, digest, operational, until, local_context
+
+N = 67
+KEY = 'cpc5.extension.dialogue.v1'
+
+
+def move(q, d, count=1):
+    return tuple((q[i] + d[i] * count) % N for i in range(3))
+
+
+def geometry(case):
+    tr = case.get('translation', [0, 0, 0])
+    if len(tr) != 3 or any(type(v) is not int for v in tr):
+        raise ValueError('Three integer translations required')
+    translate = lambda q: move(q, tr)
+    # Successful full-history route is a physical reference, not a decoder.
+    stages = [
+        {'id': 'U2.memory', 'participant': 'U2', 'target': (30,20,8), 'time': 11,
+         'direction': (0,1,0), 'train': ((-1,0,0),(1,1,0)), 'role': 'response acquired from local experience'},
+        {'id': 'U2.turn1', 'participant': 'U2', 'target': (35,25,8), 'time': 16,
+         'direction': (-1,0,0), 'train': ((0,-1,0),(-1,1,0)), 'role': 'zero-load acquired routing support'},
+        {'id': 'U2.turn2', 'participant': 'U2', 'target': (35,30,8), 'time': 21,
+         'direction': (-1,-1,0), 'train': ((-1,0,0),(0,-1,0)), 'role': 'zero-load acquired routing support'},
+        {'id': 'U1.context', 'participant': 'U1', 'target': (30,30,8), 'time': 26,
+         'direction': (0,-1,0), 'train': ((-1,0,0),(1,-1,0)), 'role': 'acquired context for using returned answer'},
+    ]
+    sign2 = case.get('emitter_sign', 1)
+    sign1 = case.get('receiver_sign', -1)
+    if sign2 not in (-1,1) or sign1 not in (-1,1):
+        raise ValueError('Finite acquired directions +/-1 required')
+    stages[0]['direction'] = (0, sign2, 0)
+    stages[0]['train'] = ((-1,0,0),(1,sign2,0))
+    stages[3]['direction'] = (0, sign1, 0)
+    stages[3]['train'] = ((-1,0,0),(1,sign1,0))
+    for stage in stages:
+        # Opposite history changes only physical experience, not its input port.
+        # Hubs always use the common recipe reference so evaluation ports remain fixed.
+        reference = (0,1,0) if stage['id']=='U2.memory' else ((0,-1,0) if stage['id']=='U1.context' else stage['direction'])
+        stage['target'] = translate(stage['target'])
+        stage['hub'] = move(stage['target'], reference, -(stage['time']-3))
+    backups=[]
+    for stage,z in ((stages[0],40),(stages[3],52)):
+        item=dict(stage);item['id'] += '.backup';item['role']='independently experienced retained support'
+        item['hub'] = translate((40,15,z));item['target']=item['hub'];item['time']=70
+        backups.append(item)
+    banks = {'lower':translate((25,25,8)), 'upper':translate((25,35,8))}
+    return {'N':N, 'stages':stages, 'backups':backups, 'request_site':translate((25,20,8)),
+            'request_tick':6, 'request_direction':[1,0,0], 'banks':banks,
+            'participants': {'U1':{'functions':['request','context','use','retained backup'], 'component_ids':['U1.context','U1.context.backup']},
+                             'U2':{'functions':['local experience','response','return routing','retained backup'], 'component_ids':['U2.memory','U2.turn1','U2.turn2','U2.memory.backup']}},
+            'prepared_material_sites':0, 'translation':tr,
+            'scope':'Two finite communicating candidate compounds. Geometry and routing opportunities are designed; memory content and directional effects are acquired by submitted experiences. Not autonomous selection of interlocutor.'}
+
+
+def interfaces_for(spec):
+    ports=[]
+    for item in spec['stages']+spec['backups']:
+        # Both report directions are always declared; history chooses a current event.
+        if item['id'].startswith(('U2.memory','U1.context')):
+            pairs=[('cue',(-1,0,0)),('plus',(1,1,0)),('minus',(1,-1,0))]
+        else:
+            pairs=[('cue',item['train'][0]),('report',item['train'][1])]
+        for label,direction in pairs:
+            ports.append(interface(item['id']+'.'+label,move(item['hub'],direction,-3),direction))
+        if item in spec['backups']:
+            ports.append(interface(item['id']+'.query',move(item['hub'],(-1,0,0),-3),(-1,0,0)))
+    ports.append(interface('U1.request',spec['request_site'],(1,0,0)))
+    for label,target in spec['banks'].items():
+        ports.append(interface('environment.'+label,move(target,(1,0,0),-3),(1,0,0)))
+    return ports
+
+
+class DialogueSession:
+    """Physical state plus recipe/operative call receipts, never expected outputs."""
+    def __init__(self, world, spec, state):
+        self.world,self.spec,self.state=world,spec,state
+
+    @classmethod
+    def create(cls, case=None):
+        import dee_thinking as d
+        case=case or {};spec=geometry(case)
+        recipe=d.OrganizationRecipe.research(N,[],0)
+        recipe.interfaces=interfaces_for(spec);recipe.execution=d.TickOptions(d.Backend.LAZY,1)
+        world=d.OrganizationalWorld.create(recipe)
+        session=cls(world,spec,{'version':1,'tick':0,'geometry':spec,'calls':[],
+                    'scope':'Operative ports and input receipts only; no targets, learned answers, teaching map, or rollout oracle'})
+        session.commit();return session
+
+    def commit(self):
+        self.state['tick']=self.world.runtime.current_tick
+        self.world.runtime.set_snapshot_metadata(KEY,json.dumps(self.state,separators=(',',':')))
+
+    def submit(self, port, payload, tick, probe=False, origin='CURRENT_EXTERNAL_EVENT'):
+        if type(payload) is not int or not 0<=payload<=65535:raise ValueError('uint16 payload required')
+        if type(tick) is not int or not self.world.runtime.current_tick<=tick<=512:raise ValueError('Monotone finite tick required')
+        if port not in {p.name for p in self.world.interfaces}:raise ValueError('Undeclared port')
+        r=(self.world.probe if probe else self.world.submit)(port,payload,tick)
+        self.state['calls'].append({'id':r.id,'port':port,'payload':payload,'requested_tick':tick,
+                    'call_tick':self.world.runtime.current_tick,'operation':'probe' if probe else 'submit','origin':origin})
+        self.commit();return r.id
+
+    def experience(self, item, loads, tick=0, mode='paired'):
+        if mode not in ('paired','unpaired','omitted'):raise ValueError('paired/unpaired/omitted required')
+        if mode=='omitted':return []
+        label='plus' if item['direction'][1]>0 else 'minus'
+        if not item['id'].startswith(('U2.memory','U1.context')):label='report'
+        ids=[self.submit(item['id']+'.cue',loads[0],tick+(mode=='unpaired'),origin='OPAQUE_CUE_EXPERIENCE'),
+             self.submit(item['id']+'.'+label,loads[1],tick,origin='CURRENT_DIRECTIONAL_CONSEQUENCE')]
+        return ids
+
+    def run_until(self,tick):
+        until(self.world,tick);self.commit()
+
+    def save(self,path):
+        path=Path(path)
+        if path.exists():raise FileExistsError(path)
+        path.parent.mkdir(parents=True,exist_ok=True);self.commit();self.world.save_snapshot(str(path))
+        return {'file':path.name,'sha256':sha(path),'physical':digest(self.world),'operative':operational(self.world)}
+
+    @classmethod
+    def load(cls,path):
+        import dee_thinking as d
+        world=d.OrganizationalWorld.load_snapshot(str(path));state=json.loads(world.runtime.snapshot_metadata(KEY))
+        if state['version']!=1 or state['tick']!=world.runtime.current_tick or world.runtime.dimension!=N:raise ValueError('Snapshot identity mismatch')
+        spec=state['geometry'];actual={p.name:p.channel for p in world.interfaces};expected=interfaces_for(spec)
+        if set(actual)!={p.name for p in expected}:raise ValueError('Changed ports')
+        for p in expected:
+            a,b=actual[p.name],p.channel
+            if ((a.injection_site.x,a.injection_site.y,a.injection_site.z),(a.direction.dx,a.direction.dy,a.direction.dz),a.state,a.semantic)!=((b.injection_site.x,b.injection_site.y,b.injection_site.z),(b.direction.dx,b.direction.dy,b.direction.dz),b.state,b.semantic):raise ValueError('Changed port field')
+        for call in state['calls']:
+            r=world.runtime.receipt(call['id'])
+            if r is None or r.requested_tick!=call['requested_tick'] or list(r.channels)!=[call['port']]:raise ValueError('Lost operative receipt')
+        return cls(world,spec,state)
+
+
+def run_case(case,out):
+    import dee_thinking as d
+    out=Path(out);out.mkdir(parents=True,exist_ok=False);started=time.monotonic();engine=identity()
+    session=DialogueSession.create(case);spec=session.spec
+    modes=case.get('modes',{});loads=case.get('loads',{'U2.memory':[3,9],'U1.context':[5,11]})
+    put(out/'CONFIG.json',{'case':case,'geometry':spec,'source_sha256':sha(__file__),
+            'criterion':'Fixed physical fields and arrival windows; direction/content/history contrasts evaluated after trajectories. No expected value supplied to session.',
+            'resources':{'Runtime':1,'N':N,'basic_buffer_bytes':32*N**3,'components':6,'top_entities':2,'prepared_material_sites':0},
+            'horizon':70})
+    snapshots=[session.save(out/'INITIAL_T0.deetsnap')];trace=[];windows=[];messages=[];edits=[]
+    for item in spec['stages']+spec['backups']:
+        key=item['id'].removesuffix('.backup');pair=loads.get(key,[0,0])
+        session.experience(item,pair,mode=modes.get(key,'paired'))
+    if not case.get('omit_request',False):session.submit('U1.request',case.get('query',13),6,True,'HUMAN_INDUCED_PHYSICAL_REQUEST')
+    for label in spec['banks']:
+        session.submit('environment.'+label,case.get('resource',7),28,False,'EQUAL_TWO_BANK_ENVIRONMENTAL_OPPORTUNITY')
+    for item in spec['backups']:
+        session.submit(item['id']+'.query',case.get('late_query',5),67,True,'POST_COMMUNICATION_RETENTION_QUERY_WITHOUT_REPORT')
+    # All external events are fixed before advancing; message readouts never cause callbacks.
+    for tick in range(71):
+        session.run_until(tick)
+        if tick==13 and case.get('intervention'):
+            target=move(spec['stages'][0]['target'],(1,1,0),2)
+            before=record(session.world,target);main=digest(session.world);op=operational(session.world)
+            edit=d.ResearchStateEdit();edit.coordinate=d.Coordinate(*target);edit.label='Selective already-emitted U2 answer '+case['intervention']
+            raw=int(before['raw'])
+            if case['intervention']=='remove':raw=0
+            elif case['intervention']=='direction':raw=d.pack_record(before['state'],before['s_reg'],1,-1,0,before['semantic'])
+            elif case['intervention']!='sham':raise ValueError('remove/direction/sham only')
+            edit.raw=raw;priorraw=session.world.runtime.raw_copy();priorclock=session.world.runtime.clock_copy()
+            child=session.world.diagnostic_fork([edit],True)
+            if digest(session.world)!=main or operational(session.world)!=op:raise AssertionError('Parent changed by diagnostic')
+            count=sum(a!=b for a,b in zip(priorraw,child.runtime.raw_copy()))
+            if count!=int(raw!=int(before['raw'])) or child.runtime.clock_copy()!=priorclock:raise AssertionError('Undeclared edit')
+            session.world=child;session.commit()
+            edits.append({'tick':tick,'site':target,'before':before,'after':record(child,target),'RAW_sites_changed':count,
+                          'clock_sites_changed':0,'parent_physical_and_operative_unchanged':True,'mode':'DIAGNOSTIC_FORK','kind':case['intervention']})
+        if tick<=36 or tick in (66,67,69,70):
+            samples={p['id']:record(session.world, p['target'] if tick<=36 else p['hub']) for p in spec['stages']+spec['backups']}
+            samples.update({'bank.'+name:record(session.world,q) for name,q in spec['banks'].items()})
+            # Exact moving segment along the designed full-history route. Divergences remain measured.
+            for i,item in enumerate(spec['stages']):
+                if tick>=item['time']:
+                    direction=((1,1,0),(0,1,0),(-1,0,0),(-1,case.get('receiver_sign',-1),0))[i]
+                    samples[item['id']+'.outgoing']=record(session.world,move(item['target'],direction,tick-item['time']))
+            trace.append({'tick':tick,'samples':samples})
+        for item in spec['stages']:
+            if tick in (item['time']-1,item['time']):
+                windows.append({'stage':item['id'],'tick':tick,'phase':'pre' if tick<item['time'] else 'post',
+                                'target':item['target'],'center':record(session.world,item['target']),
+                                'Moore26_plus_center':local_context(session.world,item['target'])})
+            if tick==item['time']:
+                messages.append({'participant':item['participant'],'component':item['id'],'tick':tick,
+                                 'physical':record(session.world,item['target']),
+                                 'coverage':'All ticks 0..36 sampled along designed segments plus exact pre/post Moore27. Unique ancestry not assigned from load/proximity.'})
+        if tick in (10,13,25,26,31,36,66,70):snapshots.append(session.save(out/f'T{tick}.deetsnap'))
+        if tick in (3,11,16,21,26,31,36,70):put(out/'PROGRESS.json',{'tick':tick,'trace':trace,'messages':messages,'edits':edits})
+    result={'schema':'CPC5.extension.native_dialogue.v1','case':case,'identity':engine,'code_sha256':sha(__file__),
+            'geometry':spec,'modality':'DIAGNOSTIC_FORK' if edits else 'EXPERIENCE_PROTOCOL + NATIVE_EVOLUTION',
+            'inputs':session.state['calls'],'receipts':[receipt(session.world,c['id']) for c in session.state['calls']],
+            'trace':trace,'encounter_windows':windows,'messages':messages,'diagnostic_edits':edits,
+            'checkpoints':snapshots,'final_physics':digest(session.world),'final_operative':operational(session.world),
+            'resources':{'Runtime':1,'components':6,'top_entities':2,'N':N,'basic_buffer_bytes':32*N**3,
+                         'input_calls':len(session.state['calls']),'native_ticks':70},
+            'host_RAW_clock_writes_after_T0':[] if not edits else edits,
+            'elapsed_seconds':time.monotonic()-started,'status':'MEASURED',
+            'scope':'Human-induced request. Learned finite moving associations; prepared routing/roles and two equal bank opportunities. Backups acquired by additional experiences. No native autonomous questioning, arbitrary dictionary, or unlimited dialogue claim.'}
+    put(out/'MEASUREMENTS.json',result)
+    print(json.dumps({'case_id':case['id'],'seconds':result['elapsed_seconds'],
+                     'messages':[m['physical']['s_reg'] if m['physical']['active'] else None for m in messages],
+                     'banks_at31':next(t['samples'] for t in trace if t['tick']==31)}),flush=True)
+    return result
+
+
+def screen(config,out):
+    out=Path(out);out.mkdir(parents=True,exist_ok=True);index=[]
+    for case in config['cases']:
+        target=out/case['id'];path=target/'MEASUREMENTS.json'
+        if path.exists():
+            r=json.loads(path.read_text(encoding='utf-8'))
+            if r['case']!=case or r['code_sha256']!=sha(__file__):raise RuntimeError('Refuse changed-code case reuse')
+        else:r=run_case(case,target)
+        row={'id':case['id'],'file':str(path.relative_to(ROOT)),'sha256':sha(path),'elapsed_seconds':r['elapsed_seconds'],
+             'messages':[m['physical'] for m in r['messages']],
+             'banks_at31':{k:v for k,v in next(x for x in r['trace'] if x['tick']==31)['samples'].items() if k.startswith('bank.')},
+             'retention_at70':{k:v for k,v in r['trace'][-1]['samples'].items() if k.endswith('.backup')}}
+        index.append(row);put(out/'INDEX.json',{'configuration':config,'cases':index})
+    return index
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    p.add_argument('--continue-snapshot',type=Path);a=p.parse_args()
+    if a.continue_snapshot:
+        case=json.loads(a.config.read_text(encoding='utf-8'));session=DialogueSession.load(a.continue_snapshot)
+        out=a.out;out.mkdir(parents=True,exist_ok=False);before=digest(session.world);preop=operational(session.world)
+        for item in case['inputs']:session.submit(item['port'],item['payload'],item['tick'],True,'OTHER_PROCESS_NEW_QUERY')
+        session.run_until(case['until']);state=session.save(out/'CONTINUED.deetsnap')
+        put(out/'CONTINUATION.json',{'parent':str(a.continue_snapshot),'parent_sha256':sha(a.continue_snapshot),
+                 'before':before,'operative_before':preop,'after':state,'readouts':{p['id']:record(session.world,p['hub']) for p in session.spec['backups']},
+                 'inputs':session.state['calls'],'receipts':[receipt(session.world,c['id']) for c in session.state['calls']]})
+    else:screen(json.loads(a.config.read_text(encoding='utf-8')),a.out)
+
+
+if __name__=='__main__':main()

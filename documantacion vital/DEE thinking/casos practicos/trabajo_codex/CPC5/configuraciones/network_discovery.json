@@ -1,0 +1,22 @@
+{
+  "schema": "CPC5.network.screen.v1",
+  "frozen_before_execution": true,
+  "question": "Serial physical coupling versus independent simple routes under explicit resource accounting; learned moving relations, not renewable bodies",
+  "reference": "R0 exact CPC4 ABCD reference is executed separately by referencias",
+  "cases": [
+    {"id":"NET_R1_SERIAL4","architecture":"R1","top_level":1,"chains":[4],"query":13},
+    {"id":"NET_R2_SERIAL8_TWO_COMPOUNDS","architecture":"R2","top_level":2,"chains":[8],"query":13,"compound_partition":[4,4]},
+    {"id":"NET_R3_HOMOGENEOUS4","architecture":"R3","top_level":4,"chains":[1,1,1,1],"loads":[[3,9],[3,9],[3,9],[3,9]],"query":13},
+    {"id":"NET_R3_HOMOGENEOUS10","architecture":"R3","top_level":10,"chains":[1,1,1,1,1,1,1,1,1,1],"loads":[[3,9],[3,9],[3,9],[3,9],[3,9],[3,9],[3,9],[3,9],[3,9],[3,9]],"query":13},
+    {"id":"NET_R4_HETEROGENEOUS4","architecture":"R4","top_level":4,"chains":[1,1,1,1],"query":13},
+    {"id":"NET_R4_HETEROGENEOUS8","architecture":"R4","top_level":8,"chains":[1,1,1,1,1,1,1,1],"query":13},
+    {"id":"NET_R5_MIXED4PLUS4","architecture":"R5","top_level":5,"chains":[4,1,1,1,1],"query":13},
+    {"id":"NET_R1_MATCHED_HOMOGENEOUS4","architecture":"R1","top_level":1,"chains":[4],"loads":[[3,9],[3,9],[3,9],[3,9]],"query":13},
+    {"id":"NET_R2_NAIVE_SECOND","architecture":"R2","top_level":2,"chains":[8],"query":13,"omit_training":[4,5,6,7]},
+    {"id":"NET_R2_UNPAIRED_SECOND","architecture":"R2","top_level":2,"chains":[8],"query":13,"unpaired_training":[4,5,6,7]},
+    {"id":"NET_R2_LATE_CUT_BRIDGE","architecture":"R2","top_level":2,"chains":[8],"query":13,"late_cut_stage":4},
+    {"id":"NET_R1_NAIVE","architecture":"R1","top_level":1,"chains":[4],"query":13,"omit_training":[0,1,2,3]}
+  ],
+  "resource_limits":{"maximum_components":10,"N":67,"backend":"LAZY","native_threads":1,"horizon_max":51},
+  "classification_scope":"Architectural labels identify design hypotheses. A serial chain is genuinely coupled, but these finite mobile components are consumable and do not establish renewed memory by themselves."
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "CPC5.clean-reproduction-plan.v1",
+  "scope": "Technical replays, not additional independent scientific cases; generated trajectories are compared only afterward",
+  "checkpoints": [
+    "resultados/compound_D02/INITIAL_T0.deetsnap",
+    "resultados/compound_D02/ACQUIRED_K4_T204.deetsnap",
+    "resultados/compound_D02/MAIN_FINAL_T338.deetsnap"
+  ],
+  "commands": [
+    {
+      "id": "public_compound_demo",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/ejecutar.py", "demostracion", "--eventos", "{root}/configuraciones/demo_compuesto.json", "--salida", "{out}/compuesto"],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "demo_postrun_comparison",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/demo_checks.py", "verify", "--output", "{out}/compuesto", "--reference", "{root}/resultados/demo_compuesto_01/DEMO_RESULT.json"],
+      "timeout_seconds": 60
+    },
+    {
+      "id": "another_process_continuation",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/demo_checks.py", "continue", "--input", "{out}/compuesto/COMPUESTO_DESPUES_PANEL.deetsnap", "--output", "{out}/continuado"],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "principal_native_replay",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/compound.py", "--case", "{root}/configuraciones/compound_D02.json", "--output", "{out}/principal"],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "prior_SEM01_reference",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/references.py", "--case", "SEM01_A_future_UV", "--output", "{out}/referencia"],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "public_integrated_demo",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/ejecutar.py", "demostracion", "--eventos", "{root}/configuraciones/demo_integrado.json", "--salida", "{out}/integrado"],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "integrated_postrun_comparison",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/demo_checks.py", "verify", "--output", "{out}/integrado", "--reference", "{root}/resultados/demo_integrado_01/DEMO_RESULT.json"],
+      "timeout_seconds": 60
+    },
+    {
+      "id": "integrated_another_process_continuation",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/demo_checks.py", "continue", "--input", "{out}/integrado/INTEGRADO_DESPUES_PANEL.deetsnap", "--output", "{out}/integrado_continuado"],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "full_physical_operational_comparison",
+      "argv": ["{python}", "-I", "-X", "utf8", "{root}/src/clean_checks.py", "--generated", "{out}", "--baseline", "{root}", "--output", "{out}/PRIMARY_COMPARISONS.json"],
+      "timeout_seconds": 180
+    }
+  ],
+  "asserted_json_outputs": [
+    {
+      "path": "PRIMARY_COMPARISONS.json",
+      "field_equals": {"status": "VERIFIED", "comparisons_after_trajectories_only": true}
+    }
+  ],
+  "required_outputs": [
+    "compuesto/DEMO_RESULT.json",
+    "continuado/CONTINUATION.json",
+    "continuado/CONTINUED.deetsnap",
+    "principal/MEASUREMENTS.json",
+    "referencia/MEASUREMENTS.json",
+    "integrado/DEMO_RESULT.json",
+    "integrado_continuado/CONTINUATION.json",
+    "integrado_continuado/CONTINUED.deetsnap",
+    "PRIMARY_COMPARISONS.json"
+  ]
+}

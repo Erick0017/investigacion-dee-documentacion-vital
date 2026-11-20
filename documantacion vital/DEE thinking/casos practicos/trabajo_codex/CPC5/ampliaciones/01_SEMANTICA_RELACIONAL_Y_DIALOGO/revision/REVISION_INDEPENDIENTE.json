@@ -1,0 +1,107 @@
+{
+  "schema": "CPC5.extension.targeted-scientific-review.v1",
+  "reviewed_at_utc": "2026-10-17T21:49:00Z",
+  "role": "Revisión dirigida de coherencia entre interpretación, código y evidencia ya ejecutada; no nueva campaña ni validación universal",
+  "reviewer_independence": "Agente distinto del autor de la integración semántica/diálogo y del redactor principal. El mismo revisor implementó capacidad y arquitecturas seriales: esa parte es comprobación cruzada y no revisión externa independiente.",
+  "scientific_sources_and_results_changed": false,
+  "new_native_trajectories_for_this_review": 0,
+  "original_campaign_budget_preserved": {
+    "start_utc": "2026-10-17T20:59:04.4935182+00:00",
+    "deadline_utc": "2026-10-18T00:59:04.4935182+00:00"
+  },
+  "reviewed_snapshot": [
+    {"path":"revision/LECTURA_PROVISIONAL.md","sha256":"cf8b1797dbeddc9cca7ed283169a8e0b6e914467f329f4d351dd37d20b2f034c"},
+    {"path":"src/order_stream.py","sha256":"bd3cc55e5dc4b9e77004d52484d50a1bd8fa22d13e75719e765a8204ebc811c2"},
+    {"path":"src/ordered_composition.py","sha256":"043b672a250e1e4e3f4319765386d955971319aca78b7879754ffa4b9790fe8a"},
+    {"path":"src/dialogue.py","sha256":"475a1dfad61c88b9f5494f25afc06963e4bf99de7e90e1b5ba26e7f5005dad62"},
+    {"path":"src/network_dialogue.py","sha256":"3769ad5162edaa4401e43f8c386db26c4cfb4b60094281fc6080dbd611f2d406"},
+    {"path":"demostracion.py","sha256":"86dd4dedbfb24183eddbaa1de9606c755554a6ed8f9479fee4d370b585e6535b"},
+    {"path":"revision/NSM65_EVIDENCIAS.json","sha256":"47b5790764e89d062c6ab7ccc9439675aeb68220e14d88f5bada01b0caa6ea22"},
+    {"path":"resultados/capacity_RECALCULATION.json","sha256":"24e861b0c0a3c761e3ce168f22efbc0746f3440733e8863d3502ec1070aa80ba"},
+    {"path":"resultados/architectures_RECALCULATION.json","sha256":"6db3352b4b21be17529635349b9b6608a54a79e1da02329f63f416c499846cc3"},
+    {"path":"resultados/network_dialogue_screen/INDEX.json","sha256":"0e90da0bef35b5e44311bc3ca8193c9daa554cc862a9f8c6335c087498cc7a0a"},
+    {"path":"resultados/network_dialogue_confirmation/INDEX.json","sha256":"5b6bf4771cceb3246ea5a93bf759d6264464dbc5f9c8915b83fec375196fa278"}
+  ],
+  "assessment": "La lectura examinada distingue adecuadamente capacidad, acceso, orden preparado, historia adquirida y alcance lingüístico. No se encontró un cálculo de targets o una tabla de enseñanza que sustituyera las respuestas nativas en los participantes revisados. Los resultados nuevos de network_dialogue deben añadirse con los límites descritos a continuación; no convierten todos los pendientes multilaterales en capacidades completas.",
+  "findings": [
+    {
+      "id":"RV01_CAPACIDAD_NO_ES_NSM",
+      "kind":"ALCANCE_SOSTENIDO",
+      "observation":"K65 contiene65 correspondencias por planos y dos contenidos direccionales. Las32 antiguas se usan después de adquirir33 nuevas; una continuación con carga9 devuelve65 respuestas válidas hasta535.",
+      "evidence":["resultados/capacity_longitudinal/CAP_L65_32_THEN33/MEASUREMENTS.json","resultados/capacity_other_process_query/CONTINUATION.json"],
+      "interpretation":"Sostiene conservación y acceso a correspondencias físicamente separadas. No prueba65 clases semánticas,65 conceptos NSM ni65 bits independientes.",
+      "draft_consistency":"El borrador mantiene esta distinción y declara recursos/separación."
+    },
+    {
+      "id":"RV02_DOS_PROBLEMAS_DE_ORDEN",
+      "kind":"DISTINCION_NECESARIA",
+      "observation":"order_stream presenta los mismos acontecimientos A/B con orden distinto y conserva una diferencia relativa adquirida; una señal posterior accede a esa expresión. ordered_composition coloca encuentros AB/BA mediante geometrías diferentes y usa direcciones adquiridas en operaciones físicas no conmutativas.",
+      "evidence":["src/order_stream.py","src/ordered_composition.py","resultados/order_stream_discovery/STREAM_AB_D01/MEASUREMENTS.json","resultados/order_stream_discovery/STREAM_BA_D01/MEASUREMENTS.json","resultados/ordered_discovery/ORDERED_D01_AB/MEASUREMENTS.json","resultados/ordered_discovery/ORDERED_D02_BA/MEASUREMENTS.json"],
+      "interpretation":"Son dos mecanismos distintos. La segunda prueba acredita composición ordenada ejecutada, no adquisición del orden de la ruta ni inferencia general de ANTES/DESPUÉS.",
+      "draft_consistency":"La sección4 lo declara correctamente. BEFORE/AFTER remiten al mismo precursor bipolar y no deben sumarse como dos palabras adquiridas independientemente."
+    },
+    {
+      "id":"RV03_PERSISTENCIA_Y_ACCESO",
+      "kind":"CONTRAEJEMPLO_SOSTENIDO",
+      "observation":"El agregado serial conserva309, pero una nueva consulta aplicada de9 circula por otro recorrido. La inversión de12 contribuciones converge en RAW/clocks/tick, aunque el historial externo difiere.",
+      "evidence":["resultados/architectures_RECALCULATION.json","resultados/architectures_order_extension/PASSIVE_ACCESS_DIAGNOSIS.json"],
+      "interpretation":"La física final pierde ese orden y no garantiza acceso renovable a las12 contribuciones. La igualdad física no debe describirse como igualdad de todos los registros operativos del host.",
+      "draft_consistency":"El borrador distingue ambos niveles y no confunde persistencia material con disponibilidad funcional."
+    },
+    {
+      "id":"RV04_RESERVAS_Y_LECTORES",
+      "kind":"ALCANCE_SOSTENIDO",
+      "observation":"STREAM_RESERVED_FIXED_GAP3 expresa23/34; STREAM_RESERVED_ONSET9 expresa23/32. El acceso alternativo negativo produce25 en45 con dx opuesto entre AB/BA; positivo y nombre omitido no lo producen en esa ventana. Se conservan fallos de otros intervalos/lectores.",
+      "evidence":["resultados/order_access_extension/STREAM_RESERVED_FIXED_GAP3/MEASUREMENTS.json","resultados/order_access_extension/STREAM_RESERVED_ONSET9/MEASUREMENTS.json","resultados/order_access_extension/STREAM_ALTERNATE_AB_MINUS/MEASUREMENTS.json","resultados/order_access_extension/STREAM_ALTERNATE_BA_MINUS/MEASUREMENTS.json","resultados/order_access_extension/STREAM_ALTERNATE_AB_PLUS/MEASUREMENTS.json","resultados/order_access_extension/STREAM_ALTERNATE_NO_NAME/MEASUREMENTS.json"],
+      "interpretation":"Son resultados locales de acceso con fase e interfaces preparadas. Inicio9/fase251 es otra preparación calibrada, no ajuste autónomo del clock. La nueva sonda altera también la historia del portador.",
+      "draft_consistency":"El borrador preserva intentos adversos y separa exploración de reservas posteriores."
+    },
+    {
+      "id":"RV05_DIALOGO_FINITO",
+      "kind":"ALCANCE_SOSTENIDO",
+      "observation":"Una solicitud externa induce transporte nativo, respuesta dependiente de experiencia, retorno, combinación con contexto adquirido y contacto. La enseñanza N0 posterior cambia una trayectoria; lector61 y controles separan asociación de un retorno sin nombre que confundía al lector67.",
+      "evidence":["src/dialogue.py","resultados/dialogue_longitudinal/LONGITUDINAL_LOWER/MEASUREMENTS.json","configuraciones/dialogue_name_reader_discovery.json"],
+      "interpretation":"Acredita un protocolo físico finito, no conversación libre, selección autónoma de interlocutor ni optimización de utilidad. No hay ensayo independiente de situación nueva que emita un signo aprendido sin petición o pulso docente.",
+      "draft_consistency":"Las secciones6–8 mantienen esas limitaciones; N0 y NORD pertenecen a individuos distintos."
+    },
+    {
+      "id":"RV06_DOS_COMPARACIONES_A1_A4",
+      "kind":"ACTUALIZACION_DE_CONTEXTO_REQUERIDA",
+      "observation":"El cribado serial original mantiene12 componentes y aumenta brechas: latencias60/66/72/78. network_dialogue ejecuta1/2/3/4 bucles de ida/vuelta con6/12/18/24 componentes, dosis crecientes e historias locales diferentes.",
+      "evidence":["resultados/architectures_screen/INDEX.json","resultados/network_dialogue_screen/INDEX.json","src/network_dialogue.py"],
+      "interpretation":"No mezclar ambas familias bajo una única ventaja de arquitectura. En la segunda, más conversaciones útiles y cargas mayores no demuestran mejora con recursos iguales. A1self es una consulta inducida a sus componentes, no introspección autónoma.",
+      "draft_consistency":"El borrador anterior aún no incorpora los nuevos bucles3/4; añadir sus datos sin suprimir los límites de riqueza lingüística, retención longitudinal o regulación no ensayados en esas poblaciones."
+    },
+    {
+      "id":"RV07_IDENTIDAD_DISTRIBUIDA_EN_RED",
+      "kind":"PRECISION_DE_ATRIBUCION",
+      "observation":"network_dialogue asigna contexto/respaldo de Ui al buclei y respuesta/relays/respaldo al buclei-1. Las solicitudes y oportunidades son preparadas. El estado utilizado en un bucle no actualiza por una ruta interna adicional demostrada la otra parte etiquetada del mismo actor.",
+      "evidence":["src/network_dialogue.py","resultados/network_dialogue_confirmation/INDEX.json"],
+      "interpretation":"Describir participantes candidatos con roles distribuidos y conversaciones nativas, no afirmar unificación interna, aprendizaje multihop o política que enruta información entre bucles. La reserva de cambio de papeles enseña una nueva relación mediante entradas efectivas; no demuestra transferencia inmediata del conocimiento de contexto al papel de emisor.",
+      "causal_coverage":"Corte/omisión y sham enA2 localizan el mensaje del bucle0 y conservan la función del bucle1. A3/A4 registran encuentros y consecuencias, pero no deben heredar automáticamente todas las ablaciones ni la enseñanza lingüística deA2."
+    },
+    {
+      "id":"RV08_RED_DATOS_OBSERVADOS",
+      "kind":"DATOS_RECIENTES_VERIFICADOS_POR_LECTURA",
+      "observation":"A1 tiene1/1 bancos transformados conforme a referencia; A2,2/2; A3,3/3; A4,4/4. EnA2, retirar el mensaje ya emitido u omitir la memoria deU2 elimina la transformación del bucle0, conservando la del1. El sham mantiene ambas. La reserva de papeles produce58 en banco superior del bucle0 e inferior del1.",
+      "evidence":["resultados/network_dialogue_screen/INDEX.json","resultados/network_dialogue_confirmation/INDEX.json"],
+      "interpretation":"Los denominadores son bucles de un mundo por preparación, no réplicas estadísticas ni medidas de comprensión. La referencia aritmética se calcula después de la trayectoria y no alimenta al participante."
+    },
+    {
+      "id":"RV09_PROCEDENCIA_UI",
+      "kind":"ACLARACION_RESUELTA",
+      "observation":"La versión examinada de demostracion.py etiqueta observar como INSTRUMENTO, conserva native_products_origin=ENTE y declara delta como campo calculado para orden.",
+      "evidence":["demostracion.py","src/public_sessions.py"],
+      "interpretation":"Esto corrige la ambigüedad previa entre una medición externa de estado y una emisión producida por el participante. No cambia RAW ni la dinámica."
+    }
+  ],
+  "remaining_local_questions": [
+    "Enrutamiento o elección de interlocutor modificados por experiencia.",
+    "Actualización de una función de un actor causada por información recibida en su otra región/rol, más allá de los bucles preparados.",
+    "Consultas comunicativas repetidas con suministros y memoria reutilizables después de las fusiones y contactos.",
+    "Generalización semántica a referentes/participantes nuevos y adquisición diferenciada de expresiones españolas, no sólo señales opacas sobre funciones locales.",
+    "Emisión situación->signo y composición lingüística independiente de la estimulación docente o petición externa."
+  ],
+  "no_general_scientific_verdict": true,
+  "report_scope": "Revisar interpretación con estos datos. Esta revisión no sustituye integridad ZIP, reproducción limpia o auditoría externa posterior; los hashes identifican exactamente el corte leído y pueden diferir de revisiones documentales posteriores."
+}

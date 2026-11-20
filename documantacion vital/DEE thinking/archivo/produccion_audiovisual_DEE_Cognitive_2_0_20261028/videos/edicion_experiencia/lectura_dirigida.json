@@ -1,0 +1,392 @@
+{
+  "DEE_thinking_4_5_0_Libro_Blanco_y_Manual_Tecnico.docx": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0_Libro_Blanco_y_Manual_Tecnico.docx",
+    "sha256": "02f7de4cdbc5dd1a4763e0ff2dc9c59e02d1988a507a091e6335d7eafaec33e4",
+    "paragraphs": 2869,
+    "hits": [
+      {
+        "paragraph": 36,
+        "text": "La actualización convierte realizaciones experimentales en herramientas instaladas. Repertorios, revisiones y U0 integrado añaden acceso reutilizable a resultados de los CPC; las nueve familias heredadas siguen disponibles."
+      },
+      {
+        "paragraph": 42,
+        "text": "Repertorios, revisión M1/M2, U0, descriptores, lectura exacta y persistencia."
+      },
+      {
+        "paragraph": 128,
+        "text": "37. CompositionSession: aprender y encadenar transformaciones"
+      },
+      {
+        "paragraph": 172,
+        "text": "58. U0: un cuerpo nuevo con oportunidades de aprendizaje"
+      },
+      {
+        "paragraph": 176,
+        "text": "60. Predicción, comparación y pregunta física"
+      },
+      {
+        "paragraph": 400,
+        "text": "6 casos SIGNAL_​PREDICTION"
+      },
+      {
+        "paragraph": 454,
+        "text": "Perfiles relaciones/​composicion; caps. 36-37."
+      },
+      {
+        "paragraph": 793,
+        "text": "import dee_thinking as ds = d.create_session(\"continuidad\", initial_open=False,                     change_tick=80)print(s.sense())p = s.predict()assert p[\"emission_tick\"] == 37assert p[\"target_tick\"] == 67assert p[\"prediction_set\"] == [False]s.advance(30)print(s.observe())"
+      },
+      {
+        "paragraph": 800,
+        "text": "Sonda física de carga 0; emisión en 37."
+      },
+      {
+        "paragraph": 858,
+        "text": "37. CompositionSession: aprender y encadenar transformaciones"
+      },
+      {
+        "paragraph": 914,
+        "text": "CompositionSession"
+      },
+      {
+        "paragraph": 976,
+        "text": "SIGNAL_PREDICTION aporta seis preparaciones. Un mundo nativo de señal N35 y un cuerpo H0 N47 permanecen en runtimes distintos. Un sensor externo explícito lee actividad local en 32/33 y la codifica como experiencias A/B del cuerpo."
+      },
+      {
+        "paragraph": 1160,
+        "text": "Empiece por mundo_nativo y conserve la consulta pendiente. Compare después relaciones independientes y secuenciales. Use una sesión de comparación para observar expectativa y consecuencia; una sesión informativa para seguir una ruta; y los casos SIGNAL_PREDICTION para estudiar el alcance de observaciones parciales. Cada recorrido tiene su individuo y su pregunta."
+      },
+      {
+        "paragraph": 1188,
+        "text": "El cambio principal es de acceso al conocimiento experimental. Los constructores y las sesiones ya no necesitan importar código desde una carpeta de trabajo de CPC7. El repertorio, los protocolos de revisión y U0 integrado forman parte de la distribución instalada; los aparatos de lectura remota, ausencia y regulación conservan perfiles experimentales separados. La cobertura anterior de nueve familias sigue disponible."
+      },
+      {
+        "paragraph": 1202,
+        "text": "La continuidad de la biblioteca no fusiona todos sus aparatos en un mismo individuo. El repertorio N131 con 65 correspondencias, U0 N67 y el lector remoto N67 son realizaciones diferentes. Tenerlos bajo una API común facilita compararlos y combinarlos experimentalmente; una combinación nueva necesita su propia comprobación."
+      },
+      {
+        "paragraph": 1244,
+        "text": "U0 N67; preparación y calendario finitos."
+      },
+      {
+        "paragraph": 1253,
+        "text": "No se fusionan automáticamente con U0."
+      },
+      {
+        "paragraph": 1334,
+        "text": "M1 y M2 no sustituyen la experiencia ordinaria en todos los dominios. Añaden dosis, rutas y tiempos. En IntegratedSession sólo se publica la revisión M1 de L03 con la preparación correspondiente; ofrecer M2 en el repertorio no lo integra automáticamente en U0."
+      },
+      {
+        "paragraph": 1337,
+        "text": "58. U0: un cuerpo nuevo con oportunidades de aprendizaje"
+      },
+      {
+        "paragraph": 1338,
+        "text": "IntegratedSession crea el U0 consolidado de CPC7. La arquitectura contiene soportes, fuentes, rutas e interfaces; las dieciséis asociaciones objetivo se adquieren después mediante experiencias."
+      },
+      {
+        "paragraph": 1346,
+        "text": "Una pregunta física accede al contenido adquirido pertinente a la ruta."
+      },
+      {
+        "paragraph": 1357,
+        "text": "La pregunta se resuelve en la dinámica, pero el comparador y sus rutas están preparados. Ese hecho conserva la contribución del diseñador y permite estudiar la del aprendizaje. El usuario no debe convertir el nombre U0 en una prueba de iniciativa general o de que todas las funciones de la biblioteca comparten ese cuerpo."
+      },
+      {
+        "paragraph": 1359,
+        "text": "Fuentes: [P45-CPP prepare_integrated_u0]; [P45-PY]; [CPC7-INF]; [M45, cap. 47]."
+      },
+      {
+        "paragraph": 1364,
+        "text": "import jsonimport tempfilefrom pathlib import Pathfrom dee_thinking import IntegratedSessions = IntegratedSession.create(identifier=\"U0_LIBRO45\")s.experience_order(\"AB\")s.acquire_block(dict(zip(s.forms[:8], [1,-1,-1,1,1,1,-1,-1])), 0)s.run_until(5)prospective = s.observe()s.consequence(-1)s.action()s.teach_form()s.run_until(134)s.acquire_block(dict(zip(s.forms[8:], [-1,1,1,-1,-1,1,-1,1])), 134)name_read = s.query_form(139)first_panel = s.query(list(s.forms[2:]), 201)s.schedule_query(list(s.forms[2:]), 335)with tempfile.TemporaryDirectory() as tmp:    path = Path(tmp) / \"u0_pending.deetsnap.gz\"    proof = s.save_snapshot(path)    r = IntegratedSession.load_snapshot(path)    r.run_until(338)    retained = r.queries[-1][\"captured\"]    r.revise(\"L03\", +1, 402, method=\"double_teacher\")    revised = r.query(list(r.forms[2:]), 469)print(json.dumps({\"prospective\": prospective, \"sign\": name_read,    \"first_panel\": first_panel, \"retained\": retained,    \"revised\": revised, \"storage\": proof}, indent=2))"
+      },
+      {
+        "paragraph": 1381,
+        "text": "60. Predicción, comparación y pregunta física"
+      },
+      {
+        "paragraph": 1383,
+        "text": "Frontera U0"
+      },
+      {
+        "paragraph": 1409,
+        "text": "En U0, el producto de información participa primero en una interacción; la señal de enseñanza llega después. Esa secuencia permite separar uso funcional y nueva asociación."
+      },
+      {
+        "paragraph": 1480,
+        "text": "En el U0 publicado, la selección accede a dos bancos propios y el producto recibido participa en una nueva operación. La interacción está integrada en ese mundo. Los perfiles experimentales remotos y los experimentos de varios compuestos tienen otras geometrías: no se suman sus capacidades como si fueran una sola sesión."
+      },
+      {
+        "paragraph": 1514,
+        "text": "Los controles de lector ausente, fuente desacoplada y reporte coincidente separan funciones. La consola del U0 consolidado no cambia automáticamente a esta receta cuando falta un dato. Para usar esta función, el investigador crea explícitamente el perfil de ausencia o construye otra integración que pruebe."
+      },
+      {
+        "paragraph": 1519,
+        "text": "CPC5RegulationSession utiliza N67 y un horizonte T437. Las opciones de modo distinguen paired, unpaired y opposite. El modo selecciona un protocolo de experiencias; no declara automáticamente una capacidad. La dirección que se forma y su llegada se comprueban en los estados."
+      },
+      {
+        "paragraph": 1524,
+        "text": "Este perfil y las seis guardas fijas de U0 son mecanismos diferentes. La versión los distribuye separados para que el usuario pueda comprobar sus recursos, historia y efecto. Para combinar regulación adquirida con una nueva arquitectura hay que registrar otra realización y sus controles."
+      },
+      {
+        "paragraph": 1592,
+        "text": "Un perfil o un método incompatibles se rechazan. El constructor de repertorios conserva sus límites mecánicos y U0 revisa L03 mediante M1. Los lotes se validan en las operaciones nativas publicadas antes de someter sus entradas. Esta validación informática no garantiza que un destino físico esté vacío cuando llegue un evento; la admisión sigue documentándose con recibos."
+      },
+      {
+        "paragraph": 2064,
+        "text": "experiments/​SIGNAL_​PREDICTION/​RESULTS.json"
+      },
+      {
+        "paragraph": 2376,
+        "text": "Repertorio: revisión4N/consulta5N. U0: M1 sobre L03 en T402/T469. Dosis adicionales explícitas."
+      },
+      {
+        "paragraph": 2378,
+        "text": "C13. U0 continuo con acceso propio"
+      },
+      {
+        "paragraph": 2379,
+        "text": "Acceso: IntegratedSession; prepare_integrated_u0"
+      },
+      {
+        "paragraph": 2381,
+        "text": "Uso en este libro: capítulos 58-60. Evidencia y modalidad exactas: MATRIZ_CAPACIDADES_CPC.json, entrada C13."
+      },
+      {
+        "paragraph": 2385,
+        "text": "Uso en este libro: capítulos 60. Evidencia y modalidad exactas: MATRIZ_CAPACIDADES_CPC.json, entrada C14."
+      },
+      {
+        "paragraph": 2430,
+        "text": "persistence / preparation_for_world / prepare_integrated_u0"
+      },
+      {
+        "paragraph": 2496,
+        "text": "cls, *, center: Sequence[int]=(33, 25, 42), guard_mode: str='treatment', revision_interfaces: bool=True, body_source_load: int=0, backend: str | Backend='LAZY', threads: int=1, identifier: str='U0' -> IntegratedSession"
+      },
+      {
+        "paragraph": 2652,
+        "text": "U0"
+      },
+      {
+        "paragraph": 2675,
+        "text": "U0, forma y panel; consulta pendiente y revisión."
+      },
+      {
+        "paragraph": 2833,
+        "text": "55-59: repertorio, revisión y U0"
+      }
+    ]
+  },
+  "DEE_thinking_4_5_0_Maestro_Arquitectura_Reconstruccion.docx": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\DEE_thinking_4_5_0_Maestro_Arquitectura_Reconstruccion.docx",
+    "sha256": "8092eedf55c495a9729c4e9ce795fc7bb9135bcbfe60941ab050634b135194ec",
+    "paragraphs": 3072,
+    "hits": [
+      {
+        "paragraph": 105,
+        "text": "37. Persistencia de sesiones y validación de restauración"
+      },
+      {
+        "paragraph": 109,
+        "text": "39. SIGNAL_PREDICTION: observación y pronóstico"
+      },
+      {
+        "paragraph": 125,
+        "text": "47. U0 integrado: organización, historia y continuidad"
+      },
+      {
+        "paragraph": 228,
+        "text": "El bloque II añade otra contribución: en N47, el contacto ambiental produce un registro que se encuentra con un cue y participa después en dos consultas del mismo MAIN. El suplemento SIGNAL_PREDICTION enlaza dos runtimes mediante un sensor externo y registra una emisión anterior al detector objetivo. Las dos modalidades conservan su valor y su procedencia por separado. [4-EXP; 4-REV]"
+      },
+      {
+        "paragraph": 284,
+        "text": "El WHL contiene la extensión, facilitadores, tipado, semilla y avisos. Las aplicaciones y runners de fenómenos pertenecen al paquete acompañante. mundo_nativo prepara una receta de investigación mediante APIs públicas; las transiciones siguen siendo del motor instalado. SIGNAL_PREDICTION es un experimento de dos runtimes y sensor externo, no un séptimo perfil de create_session. [4-WHL; 4-APP; 4-SIGNAL]"
+      },
+      {
+        "paragraph": 719,
+        "text": "24 casos de BLOQUE II y 6 de SIGNAL_PREDICTION; aplicaciones y restauraciones contadas aparte."
+      },
+      {
+        "paragraph": 831,
+        "text": "prediction_limit"
+      },
+      {
+        "paragraph": 877,
+        "text": "CPC3 / interfaz4, pares (3,9) y (3,11): 13 -> 25 -> 39BLOQUE II, pares (3,18) y (3,24):       17 -> 38 -> 65Reserva de BLOQUE II, consulta 23:     23 -> 44 -> 71"
+      },
+      {
+        "paragraph": 912,
+        "text": "37. Persistencia de sesiones y validación de restauración"
+      },
+      {
+        "paragraph": 914,
+        "text": "37.1. Formatos cognitivo y de asociación"
+      },
+      {
+        "paragraph": 930,
+        "text": "La sesión cognitiva serializa primero configuración y estado de protocolo; después journal, muestras, predicciones y metadatos. pending_prediction debe referir a una predicción existente y corresponder a la etapa pending. Los cargadores validan los canales y la estructura ya guardada, sin reinstalar materia ausente. [4-COGCPP, L154-172]"
+      },
+      {
+        "paragraph": 932,
+        "text": "37.2. Formatos informativos"
+      },
+      {
+        "paragraph": 934,
+        "text": "37.3. Metadata de aplicación online"
+      },
+      {
+        "paragraph": 936,
+        "text": "37.4. Qué se compara al restaurar"
+      },
+      {
+        "paragraph": 983,
+        "text": "39. SIGNAL_PREDICTION: observación y pronóstico"
+      },
+      {
+        "paragraph": 1003,
+        "text": "El período 35 y el objetivo 67 pertenecen a la preparación y al protocolo del investigador. El horizonte 30 se fija desde la emisión 37. Lo adquirido es la distinción que modifica la memoria y la salida del cuerpo. El suplemento no utiliza la evaluación de la barrera propia de CognitiveSession como verdad de este mundo de señal. Cada evaluador conserva su entorno. [4-SIGNAL; 4-REV]"
+      },
+      {
+        "paragraph": 1086,
+        "text": "SEM01 aporta la correspondencia específica entre señal y consecuencia, su anticipación y utilización. CPC4 desarrolla comunicación entre regiones, contexto, regulación preparada e interferencias de lectura. CPC5 separa repertorio, composición y acceso, e incorpora conservación por bloques, orden y diálogo longitudinal. CPC6 integra comparación, selección de información, nueva memoria y acceso remoto. CPC7 ofrece un U0 con acceso propio y una revisión local que conserva otras trece relaciones. 4.5 selecciona realizaciones de esa genealogía para ofrecerlas como interfaces reutilizables. [45-MAT; CPC7; CPC6; CPC5]"
+      },
+      {
+        "paragraph": 1156,
+        "text": "Los identificadores publicados son repertoire.cpc5.v1 e integrated_u0.cpc7.v1. Son identidades de recetas finitas. Crear otra geometría con los parámetros permitidos genera una preparación investigable, no una demostración automática en todo ese rango. [45-CON]"
+      },
+      {
+        "paragraph": 1160,
+        "text": "prepare_repertoire / prepare_integrated_u0"
+      },
+      {
+        "paragraph": 1173,
+        "text": "El lector comprueba identidad, dimensión, perfil, nombres e índices, coordenadas, direcciones, referencias de canales y cadencia de revisión. Tiene un límite de 2 MiB y conteos acotados a 4,096 elementos por sección. U0 exige N67 y 16 formas; las referencias a canales deben existir. No se aceptan bytes sobrantes o duplicados silenciosos. [45-CP]"
+      },
+      {
+        "paragraph": 1203,
+        "text": "Repertorio y L03 de U0"
+      },
+      {
+        "paragraph": 1206,
+        "text": "Repertorio; no integrado en U0"
+      },
+      {
+        "paragraph": 1211,
+        "text": "Para el repertorio, la revisión publicada ocurre en 4N; el encuentro se observa en 4N+3 y el panel posterior en 5N+3. Para U0, L03 recibe la lección en T402, el contacto se produce en T405 y la consulta T469 se lee en T472. [45-CON; 45-CP]"
+      },
+      {
+        "paragraph": 1218,
+        "text": "47. U0 integrado: organización, historia y continuidad"
+      },
+      {
+        "paragraph": 1219,
+        "text": "prepare_integrated_u0 construye una receta N67. El centro por defecto es (33,25,42), body_source_load=0, guard_mode=treatment y revisión habilitada. La preparación con guardas y revisión tiene 21 objetos iniciales, 69 interfaces y 16 bancos opacos. Su dominio comprobado llega a T472. [45-CC; 45-CP; 45-MAT]"
+      },
+      {
+        "paragraph": 1231,
+        "text": "Pregunta física condicionada por discrepancia"
+      },
+      {
+        "paragraph": 1310,
+        "text": "Estos tres perfiles se distribuyen dentro del WHL como módulos opcionales Python sobre v27. Conservan sus aparatos y estados propios. Su publicación es EXPERIMENTAL_BOUNDED; no se fusionan silenciosamente con el constructor consolidado de U0. [45-CON; 45-MAT]"
+      },
+      {
+        "paragraph": 1317,
+        "text": "Las cinco pruebas instaladas y el portado de cinco casos distinguen coincidencia, fuente desacoplada, corte de solicitud y controles pertinentes. Discrepancia y ausencia conservan perfiles diferentes: sus fuentes y soportes no son los mismos de U0 con carga corporal cero. [45-ABS-DIFF; 45-PYTEST]"
+      },
+      {
+        "paragraph": 1319,
+        "text": "experimental_regulation conserva el aparato N67 de pulso direccional adquirido. Entradas de carga cero se emparejan en T0 y forman su producto en T3; la clase de encuentro regulador se observa alrededor de T292 y las consecuencias hasta T437. El contenido de la dirección depende de la historia; la geometría y el calendario son preparados. [45-REG]"
+      },
+      {
+        "paragraph": 1611,
+        "text": "seed_path, profile, origin, initial_open, change_tick, event_state, execution, journal_limit, prediction_limit."
+      },
+      {
+        "paragraph": 1612,
+        "text": "CognitivePrediction"
+      },
+      {
+        "paragraph": 1613,
+        "text": "id, emission_tick, target_tick, physical_output, prediction_set, receipt, evaluated, modality."
+      },
+      {
+        "paragraph": 1617,
+        "text": "tick, memory, physical_output, a, b, gate_a/b, prediction_set, profile, comparison_stage, forecast_domain, domain_status, comparison."
+      },
+      {
+        "paragraph": 1619,
+        "text": "kind, status, modality, detail, tick, readout, receipts, samples, evaluations, prediction, comparison."
+      },
+      {
+        "paragraph": 1634,
+        "text": "tick, profile, status, scope, modality; comparisons, policies, actions, information, later_responses, physical_outputs, receipts, current_prediction, delta, centers_available, supports_intact, journal_truncated."
+      },
+      {
+        "paragraph": 2182,
+        "text": "experiments/SIGNAL_PREDICTION/RESULTS.json; run_signal_prediction40.py; configuración y medidas."
+      },
+      {
+        "paragraph": 2429,
+        "text": "signal_prediction"
+      },
+      {
+        "paragraph": 2445,
+        "text": "Preparación U0: centro, guardas, fuente y ejecución."
+      },
+      {
+        "paragraph": 2447,
+        "text": "Fachada instalada del U0 N67."
+      },
+      {
+        "paragraph": 2468,
+        "text": "prepare_integrated_u0"
+      },
+      {
+        "paragraph": 2469,
+        "text": "Constructor de la receta integrated_u0.cpc7.v1."
+      },
+      {
+        "paragraph": 2523,
+        "text": "[[nodiscard]] NativePreparation prepare_integrated_u0(const IntegratedOptions& options={});"
+      },
+      {
+        "paragraph": 2610,
+        "text": "    def create(cls, *, center: Sequence[int] = (33, 25, 42), guard_mode: str = \"treatment\", revision_interfaces: bool = True, body_source_load: int = 0, backend: str | Backend = \"LAZY\", threads: int = 1, identifier: str = \"U0\") -> IntegratedSession: ..."
+      },
+      {
+        "paragraph": 2742,
+        "text": "U0"
+      },
+      {
+        "paragraph": 2759,
+        "text": "cpc7.update_methods.session.v1; cpc5.extension.capacity.v1; cpc6.u0.session.v1 con geometría CPC7 validada."
+      },
+      {
+        "paragraph": 2809,
+        "text": "C13. U0 continuo con acceso propio"
+      },
+      {
+        "paragraph": 2811,
+        "text": "API publicada: Native prepare_integrated_u0; IntegratedSession"
+      },
+      {
+        "paragraph": 2860,
+        "text": "Perfil experimental N67/T437. Experiencia emparejada en0, producto3, contacto292 y paneles431/437. [45-MAT]"
+      },
+      {
+        "paragraph": 2871,
+        "text": "Se conservan. Las geometrías y dominios complementarios no se sustituyen por U0."
+      },
+      {
+        "paragraph": 2898,
+        "text": "Se distribuyen como opciones acotadas; no se convierten en capacidades generales de U0."
+      },
+      {
+        "paragraph": 3056,
+        "text": "44-48: fábricas, descriptor, repertorio y U0."
+      }
+    ]
+  }
+}

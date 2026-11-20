@@ -1,0 +1,328 @@
+{
+  "N": 67,
+  "origin": [
+    8,
+    40,
+    50
+  ],
+  "initial_reference_payloads": {
+    "A": 0,
+    "B": 2
+  },
+  "delay_laps": 6,
+  "max_ticks_per_episode": 1300,
+  "dependencies_sha256": {
+    "pi03_credito_generico_R01_BORRADOR.py": "cc46721530303f2de5ff8c10c8b1ba6b4b8eb47f0faadedb19345d4a134debcb",
+    "pi07_regulacion_R01.py": "8e6ccfc2d9463c46d2312cc81108ba7e481c5cb31026f05c6d349409f8a09499",
+    "PROTOCOLO_PI07_R01.json": "1db513e8f38607ed9e41929fc49afada1be584875d6744e718ccdd9b628cb949",
+    "observador_global_PI05_R01.py": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "pi07_regulacion_R02.py": "4a8ee4f8d0b4aa738d76492b609d5fb36d8e1ad7d1d44f59c213e5351a56a133",
+    "PROTOCOLO_PI07_R02.json": "44ff1cc6a9f0634edcf56273b5956e39665c0dbb89f21e5bf36c1650b730b544"
+  },
+  "calendar": {
+    "reference_period": 391,
+    "reference_double_period": 782,
+    "planning_lead_ticks": 16,
+    "query_lead_before_efference": 7,
+    "efference_relative_query": 7,
+    "FI_start_relative_query": 136,
+    "FI_query_expected_relative_query_if_no_normalizer_wait": 192,
+    "FI_horizon_expected_relative_query_if_no_normalizer_wait": 334,
+    "result_deadline_relative_query": 407,
+    "generic_return_relative_query": 408,
+    "eligibility_collision_relative_query": 409,
+    "reference_contact_relative_query": 410,
+    "settled_relative_query": 412,
+    "require_actual_FI_calendar_and_effects_recorded": true,
+    "stop_before_unavailable_outcome_deadline": true
+  },
+  "physical_environment": {
+    "cue_birth_relative_query": -2,
+    "threat": {
+      "site": [
+        52,
+        48,
+        46
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "message_payload": null
+    },
+    "falsecue": {
+      "site": [
+        51,
+        48,
+        47
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "sink": [
+        55,
+        48,
+        47
+      ]
+    },
+    "none": {
+      "cue_inputs": 0
+    },
+    "pulse": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "tick_relative_query": 7
+    },
+    "legitimate_packet": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "tick_relative_query": 7,
+      "reader_site": [
+        54,
+        48,
+        56
+      ],
+      "reader_tick_relative_birth": 1,
+      "sink": [
+        56,
+        48,
+        56
+      ],
+      "payload_domain": [
+        5,
+        8,
+        11
+      ]
+    },
+    "message_cost": "When a legitimate packet and a selected pulse are scheduled at the same site/tick, Native admission resolves the conflict. Both terminal conflict receipts and actual delivery are retained; never infer delivery from the intended action.",
+    "action_mapping": {
+      "+1": "one fixed perpendicular -X pulse",
+      "0": "no pulse",
+      "-1": "no pulse",
+      "NULL": "no pulse; invalid selection"
+    },
+    "new_actuator_conditional_prediction": {
+      "sensor_S": "q-1",
+      "observed_threat_site_at_S": [
+        52,
+        48,
+        47
+      ],
+      "pulse_birth_q7": "S+8",
+      "uninterrupted_threat_site_at_birth": [
+        52,
+        48,
+        55
+      ],
+      "pulse_site_at_birth": [
+        53,
+        48,
+        56
+      ],
+      "conditional_contact_tick": "S+9=q+8",
+      "conditional_contact_site": [
+        52,
+        48,
+        56
+      ],
+      "conditional_local_result": {
+        "state": 1,
+        "semantic": 1,
+        "payload": 0,
+        "direction": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "scope": "Frozen directed-copy combination predicts diversion into a diagonal, not annihilation. Destination occupation/other incoming/context can alter it; actual Native interaction and fixed FI comparison decide."
+    }
+  },
+  "schema": "DEE.PI08.conditional_sensor_register_access.protocol.C.R02",
+  "status": "SEALED_BEFORE_C_NATIVE",
+  "campaign": "PROGRESION_INTEGRADA_08",
+  "preparation_ticks": 3,
+  "max_ticks_per_C_opportunity": 2099,
+  "total_C_ticks_bound": 12600,
+  "schedule": [
+    {
+      "stage": "conditional_information_flow",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 18,
+      "right": 5
+    },
+    {
+      "stage": "conditional_information_flow",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 13,
+      "right": 4
+    },
+    {
+      "stage": "conditional_information_flow",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 16,
+      "right": 7
+    },
+    {
+      "stage": "conditional_information_flow",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 19,
+      "right": 6
+    },
+    {
+      "stage": "conditional_information_flow",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 17,
+      "right": 4
+    },
+    {
+      "stage": "conditional_information_flow",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 20,
+      "right": 9
+    }
+  ],
+  "instrumentation": {
+    "episode_indices": [],
+    "viability_episode_indices": [],
+    "actor_receives_recording": false,
+    "global_enabled": false,
+    "scope": "No extra globalcapture by this prepared version; retain exactfixedobservations/requests. A later prospectiveversion would needremainingbudget andpassivityscope."
+  },
+  "technical_register_contract": {
+    "kind": "One explicit technical environment sensorregister, one pending sample",
+    "contents": "Rawexactobservation/site/tick and immutablebyteshash; no semanticanswer, action, target or policy",
+    "holds_until": "Conditionalreleaseq1+8, actualbitfixedtransport toNativequery2 atq2+3",
+    "not_Native_memory": true,
+    "not_a_new_world_measurement_at_release": true,
+    "no_query": "Release nothing; secondNativequery gets declaredNoQuerymaterial0. Auditorretainsrawsample but no extra information entersactor."
+  },
+  "first_query_contract": {
+    "input": "Actual STATE0..3 of one fixed previewRAWsample atS=q1-1, transported by the unchanged2bitidentitycodec; +X/+Z bothSTATE1. No direction, fixturelabel, goal, target, future or forceddatum2.",
+    "selection": "+1 schedules one fixed information-request Nativepulse;0/-1 no request;NULL remains invalid, no substitution.",
+    "efference": "Copy the actually selected request/no-request motor atq1+7. Keep questionScheduled/Applied/signature separately. Do not claim finaloutcomecredit to trace1.",
+    "question_request_site": [
+      33,
+      40,
+      30
+    ],
+    "question_request_direction": [
+      1,
+      0,
+      0
+    ],
+    "request_birth_relative_q1": 7,
+    "question_receipt_reader": [
+      34,
+      40,
+      30
+    ],
+    "read_relative_q1": 8,
+    "question_sink_prepared_P0": [
+      36,
+      40,
+      30
+    ],
+    "cost": "Actual extraNativeinput and time/opportunity; not consciouspain or an invented energycurrency.",
+    "information_scope": "Only STATE is supplied to Nativequery1; actualRawfullsample stays in the declared environmenttransducer register until a materialNativequeryrequest is admitted."
+  },
+  "preview_device_contract": {
+    "fixed_read_site": [
+      30,
+      40,
+      30
+    ],
+    "threat_preview_source": [
+      30,
+      40,
+      29
+    ],
+    "threat_preview_direction": [
+      0,
+      0,
+      1
+    ],
+    "neutral_preview_source": [
+      29,
+      40,
+      30
+    ],
+    "neutral_preview_direction": [
+      1,
+      0,
+      0
+    ],
+    "public_birth_relative_q1": -2,
+    "fixed_read_relative_q1": -1,
+    "prepared_emissions": "Preview and later actualthreat are two independent real Nativeemissions declared by the environment schedule; no moving, recreating or relabelling an existing particle.",
+    "physical_query_gate": "AtS=q1-1 the transducer takes exactlyone actualRawsample and stores it immutably for this pending episode. Query1 gets STATEonly. The extra directionbit is released from that register ONLY after ownAppliedrequestreceipt AND matching activeSEM1+X queryreader atq1+8.",
+    "codec": "Cached actualactiveSEM1+Z ->material1; cachedactualactiveSEM1+X ->material0; exactRAW0 ->material0(measuredabsence). Other/ambiguous signatures, including state0nonzeroRAW, are NULL/error, never filled with a fixtureexpectedbit.",
+    "no_query": "Second query gets explicit prepared material0 (no additionalinformation), not a fabricated observation or NULLreplacement.",
+    "preflight": "Require wholeRAW0 for all newports/preview sources/readers/sinkMoorehalo and no existinginterface namespace. Coordinates are proposed, NOT yet claimed safe. Refuse once ifoccupied; no clearing, resampling or moving the device after outcomes.",
+    "buffer_contract": {
+      "kind": "One explicit technical environment sensorregister, one pending sample",
+      "contents": "Rawexactobservation/site/tick and immutablebyteshash; no semanticanswer, action, target or policy",
+      "holds_until": "Conditionalreleaseq1+8, actualbitfixedtransport toNativequery2 atq2+3",
+      "not_Native_memory": true,
+      "not_a_new_world_measurement_at_release": true,
+      "no_query": "Release nothing; secondNativequery gets declaredNoQuerymaterial0. Auditorretainsrawsample but no extra information entersactor."
+    }
+  },
+  "criteria": [
+    "All6Nativefirstchoices, scheduled/applied materialrequests and ownreceipts",
+    "Actual extra bits vsNULL and provenance of every secondquerydatum",
+    "Native secondchoices and effercopy2, pulsescheduled/applied, FIq4/q6,msgactual64B",
+    "First/secondcalendars, contacts/refchanges, queryinputs/ticks/opportunitycosts",
+    "Whether asking changes acrossactualhistory; whether any usefulaction follows gatedinformation",
+    "No counterfactualproduct from offlineanswers; no valueofinformation or strategyacquisitionclaim without pairedcontrols"
+  ],
+  "limits": "Conditional access to a registered actualsensor detail, followed by Nativeuse, can be shown locally. It does not by itself demonstrate a new measurement of the originalworld atrelease, Nativehistoricalsensorstorage, an acquired askingstrategy, or causalvalueofinformation without matchedcontrols. No-query, partial, adverse or oscillating behavior remains a realresult.",
+  "source_policy": "Actual complete A prefix bydefault. A Bprefix is allowed only with the already prospectively sealed exact C readonlypermission and all Bmetadata retainedliteral; Root choosesoneactualsource andrecords genealogy before Native. No memorymerge.",
+  "scope": "Six actual two-stage opportunities; firstSTATEpartialcue, optionalmaterialrequest, registeredactualdirectionbit, secondNativeuse. Hostinitiates/serializes bothqueries; no learnedplan/sequence or controlledcausalvalueofinformationclaim.",
+  "prospective_Native_budget": "P0device3 +6*2099=12597 <=12600; actual normalizedq2 may shortenwindows, recordallticks. One newworld, no automaticrefill or alternativecoords.",
+  "stop_policy": "Unknownreceipt/transportuncertainty/safetyRAWsupport>3000/phaseconstraint ->preserve; no retry, reset or handfilledbit. Numeric/knownfunctionalerrors remain outcomes.",
+  "actual_source_parent": {
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI08_B_REAL_01",
+    "N": 67,
+    "T": 875451,
+    "manifest_sha256": "15179db03e175bae1f3e830f3ef5b691c69e2061c1703832ad47a25b105f2f7d",
+    "snapshot_sha256": "5bde7b6a1b4f518e512173f288de9a562ae873fd998a9e6511c6af2e588a2b19",
+    "inherits_B_metadata": true
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "format": "CPC3_NATIVE_LOOP_SESSION_v1",
+  "metadata": {
+    "origin": [
+      15,
+      15,
+      15
+    ],
+    "read_target": [
+      15,
+      16,
+      15
+    ],
+    "read_inlet": [
+      15,
+      18,
+      15
+    ],
+    "first_expected_emission_tick": 37,
+    "arrival_tick": 47,
+    "history": "BA",
+    "consequence": 1,
+    "context": 0,
+    "report": 23,
+    "query_enabled": true,
+    "consequence_enabled": true,
+    "selected_cut": null,
+    "distance": 10,
+    "hubs": {
+      "negative": [
+        5,
+        26,
+        15
+      ],
+      "positive": [
+        25,
+        26,
+        15
+      ]
+    },
+    "branches": {
+      "negative_-1": {
+        "source": "P",
+        "query": [
+          1,
+          30,
+          19
+        ],
+        "access": [
+          43,
+          30,
+          19
+        ],
+        "informative": true,
+        "source_load": 23
+      },
+      "negative_1": {
+        "source": "Q",
+        "query": [
+          9,
+          30,
+          19
+        ],
+        "access": [
+          14,
+          30,
+          19
+        ],
+        "informative": false,
+        "source_load": 5
+      },
+      "positive_-1": {
+        "source": "P",
+        "query": [
+          21,
+          30,
+          19
+        ],
+        "access": [
+          16,
+          30,
+          19
+        ],
+        "informative": true,
+        "source_load": 23
+      },
+      "positive_1": {
+        "source": "Q",
+        "query": [
+          29,
+          30,
+          19
+        ],
+        "access": [
+          34,
+          30,
+          19
+        ],
+        "informative": false,
+        "source_load": 5
+      }
+    },
+    "post_query": true,
+    "post_query_interfaces": {
+      "post_information.negative_-1": {
+        "target": [
+          35,
+          38,
+          19
+        ],
+        "tick": 61,
+        "read_tick": 64,
+        "payload": 7
+      },
+      "post_information.negative_1": {
+        "target": [
+          22,
+          38,
+          19
+        ],
+        "tick": 61,
+        "read_tick": 64,
+        "payload": 7
+      },
+      "post_information.positive_-1": {
+        "target": [
+          8,
+          38,
+          19
+        ],
+        "tick": 61,
+        "read_tick": 64,
+        "payload": 7
+      },
+      "post_information.positive_1": {
+        "target": [
+          42,
+          38,
+          19
+        ],
+        "tick": 61,
+        "read_tick": 64,
+        "payload": 7
+      }
+    },
+    "scope": "Native learned relational emission compared physically; finite information-access adapter",
+    "consequence_codec": "External actual observed explicit binary report, not computed forecast error"
+  },
+  "executed": [
+    [
+      32,
+      "sensor.B"
+    ],
+    [
+      33,
+      "sensor.A"
+    ],
+    [
+      34,
+      "read.offaxis"
+    ],
+    [
+      43,
+      "observed_consequence.negative"
+    ],
+    [
+      43,
+      "observed_consequence.positive"
+    ],
+    [
+      61,
+      "post_information.negative_-1"
+    ],
+    [
+      61,
+      "post_information.negative_1"
+    ],
+    [
+      61,
+      "post_information.positive_-1"
+    ],
+    [
+      61,
+      "post_information.positive_1"
+    ]
+  ],
+  "operations": [
+    {
+      "tick": 32,
+      "operation": "submit",
+      "interface": "sensor.B",
+      "value": 0,
+      "receipt_id": 1
+    },
+    {
+      "tick": 33,
+      "operation": "submit",
+      "interface": "sensor.A",
+      "value": 0,
+      "receipt_id": 2
+    },
+    {
+      "tick": 34,
+      "operation": "probe",
+      "interface": "read.offaxis",
+      "value": 7,
+      "receipt_id": 3
+    },
+    {
+      "tick": 43,
+      "operation": "submit",
+      "interface": "observed_consequence.negative",
+      "value": 17,
+      "receipt_id": 4
+    },
+    {
+      "tick": 43,
+      "operation": "submit",
+      "interface": "observed_consequence.positive",
+      "value": 17,
+      "receipt_id": 5
+    },
+    {
+      "tick": 61,
+      "operation": "probe",
+      "interface": "post_information.negative_-1",
+      "value": 7,
+      "receipt_id": 6
+    },
+    {
+      "tick": 61,
+      "operation": "probe",
+      "interface": "post_information.negative_1",
+      "value": 7,
+      "receipt_id": 7
+    },
+    {
+      "tick": 61,
+      "operation": "probe",
+      "interface": "post_information.positive_-1",
+      "value": 7,
+      "receipt_id": 8
+    },
+    {
+      "tick": 61,
+      "operation": "probe",
+      "interface": "post_information.positive_1",
+      "value": 7,
+      "receipt_id": 9
+    }
+  ],
+  "operational_forks": 0
+}

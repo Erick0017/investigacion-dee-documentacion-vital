@@ -1,0 +1,25 @@
+{
+  "schema": "DCS1.1.research_observer.contract.v1",
+  "id": "OBSERVADOR_CAUSAL_RETROSPECTIVO_01",
+  "system_version": "1.1.0",
+  "kind": "AUDITOR_TOOL_NOT_PARTICIPANT_CAPABILITY",
+  "implementation": "capacidades/observador_causal_retrospectivo_01.py",
+  "entrypoint": "gestionar.py inspeccionar-snapshot ARCHIVO [--comparar OTRO]",
+  "engine": "Frozen official thinking4.5/v27 unchanged. This parser does not import, instantiate or advance the engine.",
+  "input_domain": "Known DEETSNP1 version2, plain or losslessly gzip-compressed; complete saved Runtime/OrganizationalWorld state, not raw-only arrays",
+  "operation": "Read saved bytes and verify checksum. Decode exact uint64 RAW/clocks, channels, pending inputs, receipts, execution flags and saved owner metadata. Comparing returns measured differences, not a cognitive verdict.",
+  "no_mutation": "No Runtime restoration, life creation, tick, material input, snapshot edit, life pointer change or source write",
+  "information_boundaries": [
+    "Full file identity is distinct from physical field equality",
+    "Owner operation journals may retain teaching targets without making them native memory",
+    "Pending writes and owner protocol progress must be checked, not discarded as telemetry",
+    "Unrecognised metadata differences are exposed, never silently normalised away",
+    "state=0 does not justify ignoring other RAW fields",
+    "Detectable history contrasts do not demonstrate native retrieval or semantics"
+  ],
+  "read_only_scope": "Local saved files explicitly supplied by the user/investigator. No automatic feedback from atlas, targets or future branches to a participant.",
+  "evidence": "evidencia/campanas/AUDITORIA_RETROSPECTIVA_01",
+  "known_limits": "No inverse kernel, lineage reconstruction across gaps, new content decoder, automatic capability promotion or claim of file equivalence after ignoring metadata",
+  "native_skill_change": "NONE",
+  "default_life_change": "NONE"
+}

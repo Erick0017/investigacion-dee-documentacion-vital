@@ -1,0 +1,217 @@
+# PI11 Hábitat persistente adaptación sistémica y cierre de etapa
+
+Corte documental: 2026-11-11T21:19:04.194675-06:00
+
+## Síntesis científica
+
+PI11 continuó una copia completa del principal PI10 REAL2, N67/T947395, sin reconstruirlo ni reunir recuerdos de ramas distintas. La candidata atravesó dieciséis oportunidades en un hábitat que conservaba recursos, permisos de consulta, ocupación del puerto y un resultado anterior con caducidad. Los cambios ambientales se fijaron antes de evaluar, mediante tiempos irregulares y una segunda realización reservada. Su historia física modificó la referencia Q1 y decisiones posteriores bajo el mismo lector. Se observaron usos útiles después de cambios de referencia, aunque esto no demuestra comprensión general de las causas del entorno.
+
+La ampliación concreta fue que una salida física Q2 pasó a gobernar la continuación: ejecutar una comparación FI nueva o intentar reutilizar un permiso ambiental procedente de una comparación anterior. El anfitrión dejó de imponer siempre esa comparación. La correspondencia entre salida y acción fue diseñada; DEE no inventó esa interfaz. El anfitrión todavía inició y ordenó las oportunidades, proporcionó materiales y aplicó la ley ambiental. La muestra RAW liberada tenía nueve ticks de antigüedad. Tanto ese registro técnico como el certificado de reutilización pertenecen al puente y al entorno, no a la memoria aprendida del ente.
+
+En el bloque central, MAIN consiguió ocho entregas útiles y físicas de dieciséis, con diez comparaciones FI nuevas y dos reutilizaciones útiles. La referencia heredada, que siempre ejecutaba FI, consiguió nueve entregas con dieciséis comparaciones. Se cumplió el compromiso fijado previamente: un 37,5 % menos de operaciones FI a cambio de una entrega útil menos. No se ahorraron ticks globales: ambos brazos avanzaron 25.024. Tampoco se demostró ahorro energético. Una pérdida adicional de MAIN coincidió exactamente con un certificado caducado, aunque la ruta seleccionada y la observación eran iguales a las del control.
+
+El control con retornos independientes obtuvo también ocho entregas, utilizando nueve FI y tres reutilizaciones. Por tanto, no apareció una ventaja global exclusiva de la retroalimentación verdadera. En la reserva, MAIN y el heredado consiguieron dos de cuatro entregas; el desacoplado, una. MAIN ejecutó FI en las cuatro reservas: allí no se demostró ahorro ni reutilización. Las ramas comparten prefijo; ni esos casos ni una repetición determinista constituyen individuos independientes. El control adicional sin retorno punitivo no llegó a ejecutarse por un fallo técnico de identidad anterior a cualquier tick.
+
+En la misma candidata se utilizaron consecutivamente doce funciones heredadas, correctas hasta T975259, incluidas comparaciones de ambos signos y cero y el transporte real de 6+7→13 a 13−5→8. Después, dos oportunidades completas no produjeron recurso. Una tercera actuó sin entrega, pero quedó sin completar sus retornos cuando la guarda del anfitrión detuvo el avance en T979389: el soporte RAW global había superado el límite heredado. Se preservó ese futuro adverso, con los umbrales y el material originales. Esta continuidad no satisfizo los requisitos de incorporación.
+
+La adquisición central se reprodujo desde el prefijo completo: dieciséis oportunidades, incluidos sus errores, con igualdad binaria del prefijo causal Native. El principal PI10 quedó protegido y seleccionado; PI11 no se le atribuye como aprendizaje adquirido. Se conserva la candidata adversa y la receta experimental dentro de Cognitive con su alcance efectivo. El cierre separa control situado local, adquisición, reproducción y disponibilidad en el principal. Quedan sin demostrar una mejora sostenida después del panel, iniciativa endógena y planificación descubierta.
+
+Fuentes: MAIN, HEREDADO, YOKE, PANEL, AUTOPSIA, REPLAY, FRONTEND, HECHOS
+
+## Resultados por trayectoria
+
+| Brazo | Estado | Solicitadas | Cerradas | Usos atribuibles | Entregas físicas | FI ejecutadas | Reusos | Ticks Native |
+
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+
+| MAIN central16 | executed_closed | 16 | 16 | 8 | 8 | 10 | 2 | 25024 |
+
+| Referencia heredada | executed_closed | 16 | 16 | 9 | 9 | 16 | 0 | 25024 |
+
+| Retorno independiente | executed_closed | 16 | 16 | 8 | 8 | 9 | 3 | 25024 |
+
+| Reproducción técnica | executed_closed | 16 | 16 | 8 | 8 | 10 | 2 | 25024 |
+
+| Desarrollo previo | executed_closed | 3 | 3 | 3 | 3 | 3 | 0 | 4692 |
+
+| Control extra no ejecutado | blocked_before_Native | 16 | 0 | No ejecutado / no medido | No ejecutado / no medido | No ejecutado / no medido | No ejecutado / no medido | 0 |
+
+| Continuación tras panel | preserved_partial | 4 | 2 | 0 | 0 | 1 | 0 | 4130 |
+
+MAIN central16: 8/16 entregas,10 FI y 2 reusos;25.024 ticks; reserva2/4 con 4 FIy0 reusos. Fuentes: MAIN
+
+Referencia heredada: 9/16 entregas y 16 FI;25.024 ticks. Se fuerza la continuación preparada siempreFI, no se elige otra vida para mejorar MAIN. Fuentes: HEREDADO
+
+Retorno independiente: 8/16 entregas,9 FIy3 reusos; no superioridad global del retorno verdadero; reserva1/4. Fuentes: YOKE
+
+Reproducción técnica: Repite16 oportunidades ylos mismos8 errores del prefijo común. No es otro individuo ni una nueva reserva. Fuentes: REPLAY
+
+Desarrollo previo: Tres oportunidades Need de compatibilidad, no casos reservados; la candidata no hereda esas experiencias. Una entrada inválida se rechazó antes de la cola sin ticks. Fuentes: DEV
+
+Control extra no ejecutado: Fallo técnico de identidad/permiso antes de iniciar Native. Se concilió el mismo arranque y se priorizó el control desacoplado; no se inventaron dieciséis respuestas negativas. Fuentes: NONE
+
+Continuación tras panel: 4 solicitadas,3 admitidas y 3 actuaciones ambientales sin entrega;2 secuencias completas de 1852 y 1564 ticks, tercera incompleta714 ticks con efecto ambiental conocido, cuarta no ejecutada. La guarda HOST detuvoT979389 antesde ambos retornos. Fuentes: POST, AUTOPSIA
+
+## Atribución por función
+
+| Función | Contribución Native | Asistencia | Dominio | Límite |
+
+|---|---|---|---|---|
+
+| Selección de consultaQ1 | Referencia física cambia y condiciona elecciones posteriores | Calendario, entradas y oportunidades preparados | Tres pares locales y 16 casos del protocolo | Retorno desacoplado iguala el total; no comprensión causal general |
+
+| Continuar FI o reutilizar | SalidaQ2 gobierna renovación u omisión real | Mapa fijo, comparación 18 con 7 y certificado externos | 10 renovaciones/6 omisiones/2 reusos útiles MAINcentral | Interfaz diseñada; no nueva política aprendida desde cero ni ahorro en reserva |
+
+| Núcleo y encadenamiento | Respuestas materiales y entero13 real utilizado en otra operación | Operador ordena panel, codec y aritmética preparados, nuevo suministro explícito | 12 usos en la misma candidata hasta T975259 | No plan autogenerado; no panel en el futuro adverso ni nueva experiencia del principal |
+
+| Persistencia y reproducción | Misma evolución desde prefijo completo produce mismos estados/errores | Gestor clona y programa protocolo diagnóstico; fuentes preservadas | RP16 exacto,19 pasos,25024 ticks | Repetición técnica no organismo independiente ni recuperación autónoma |
+
+| Parada de seguridad | Expansión observada hasta 19161 sitiosRAW no0 | Guarda heredada del anfitrión detiene>3000 | Tercera post; experienciaNative incompleta | No muerte cognitiva demostrada ni autoprotección aprendida |
+
+## Organización y protocolo fijados antes de evaluar
+
+Se continuó la candidata MAIN01 desde el conjunto completo REAL2 T947395: mismo N67 y perfil fisica_directa, sin nueva anatomía, trasplante de bancos ni reinicio desdeT0. Se reutilizaron Q1, Q2, elegibilidad física y comparación FI. Q1 está centrado en(24,12,12) y Q2 en(8,40,50). Q2 conservó su diferencia heredada; no se enseñó un nuevo algoritmo de comparación.
+
+El entorno posee24 recursos comunes de 64 bytes,4 permisos de consulta con tope4 y reposición general cada4687 ticks, puerto ocupado233 ticks y certificado de 4200 ticks. Un recurso entregado cambia las posibilidades siguientes y devuelve un permiso según la ley fija. El payload procede del RAW observado real; fallar conserva el recurso. Esta contabilidad y estos archivos son ambientales, no energía ni metabolismo Native.
+
+Los acontecimientos exógenos se sellaron con semillas2026111101/1102 y reserva a partir del offset18000. Need/Bypass son etiquetas del auditor, no instrucciones al circuito. Una muestra RAW tomada q1−1 se libera q1+8 sólo después de la consulta física admitida. Consultas y retornos, incluido el pulso no punitivo cero, son intervenciones materiales; capturar sus datos no los vuelve observación pasiva.
+
+Se fijaron16 oportunidades centrales y tres criterios locales: renovaciones y omisiones observadas con almenos2 reusos útiles; entregas no inferiores al heredado menos2 y almenos25%menosFI; historiaQ1 utilizada posteriormente. La incorporación requería además núcleo crítico, uso útil posterior, reproducción y estado operativo completo. El compromiso central no sustituía esos requisitos finales.
+
+Fuentes: PROTOCOLO, REGISTRO, HECHOS
+
+## Resultados y costes sin sumar magnitudes incompatibles
+
+MAIN produjo 8/16 entregas físicas y atribuibles con 10 FI; el heredado9/16 con 16 FI y el desacoplado8/16 con 9 FI. MAIN solicitó12 consultas, el heredado12 y el desacoplado11. Los tres recorrieron25.024 ticks, sin NULL Q1/Q2 ni rechazo de entradas. Entradas únicas aplicadas:1980/1980,3036/3036 y 1803/1803 respectivamente; los alias no se suman como nuevos encuentros.
+
+La reducción MAIN de 6 FI (37,5%) cumple el criterio sellado y reduce1056 entradas respecto del heredado, pero cuesta una entrega. No prueba ahorro temporal global ni energético. La oportunidad10 deMAIN eligió la misma ruta y observación que el heredado, pero intentó reutilizar un certificado vencido294 ticks; el heredado lo renovó con una FI real y entregó recurso.
+
+La reserva contiene exactamente ordinales12–15: MAIN2/4, heredado2/4, desacoplado1/4. MAIN y heredado ejecutaron4 FI; no hubo reuso útil en ningún brazo reservado. Es transferencia local examinada, sin ganancia FI demostrada allí. No se agregan las reservas al total como nuevas observaciones.
+
+El retorno independiente tuvo ocho señales adversas, igual que el real, pero en posiciones prospectivas distintas. Cambió la trayectoria física y las selecciones; igualó el total útil y usó una FI menos. No se demuestra necesidad ni superioridad global exclusiva de la contingencia verdadera. Las dosis endógenas difieren por las actuaciones: no se afirma que todos los mundos recibieron el mismo futuro físico.
+
+Fuentes: MAIN, HEREDADO, YOKE, BALANCE
+
+## Historia física utilizada y observación abierta
+
+Los pares3→4,5→6 y 11→12 conservan STATE del preview, dirección, fase de consulta y modo ambiental comparables; cambia la referencia Q1, ésta persiste en el siguiente uso y la elección posterior cambia con utilidad. Son testigos locales de historia utilizada, no igualdad de todo el paisaje ni prueba de comprensión causal general. La ruta Native Q2 determina si continúa otra FI mediante una transducción preparada.
+
+Se conservaron los nueve cambiosQ1, incluido el episodio13: después de un retorno material no punitivo0, A−B pasó0→1. Las capturas sitúan el cambio entre969289 y 969291, sin captura969290; no identifican un único portador ni causa. No se convierte esa configuración en memoria recuperada, instinto o error del anfitrión por analogía.
+
+El observador reutiliza lecturas y muestreo previamente instrumentados; la representación sparse exportada es del auditor y no alimentó decisiones. Su verificación reconstruye bytes completos RAW/clocks de cinco cortes sin consultar Native. Los campos state0 conRAW no0 permanecieron240 en esos cortes: no se limpiaron ni se identificaron automáticamente como memoria. El índice lineal fue contrastado estáticamente con idx3 d del sourcev27, líneas139–141.
+
+Fuentes: HISTORIA, ABIERTA, BALANCE, ARRAYS
+
+## Núcleo conservado y pérdida de continuidad posterior
+
+El panel produjo 12/12 usos correctos entreT972419 yT975259 en la misma candidata: luma+,nara−,clasifica−,suma+,alfa−,comparaciones positiva/negativa/cero,6+7→13,uso real de 13 en 13−5→8,yalfa/luma posteriores. La asociación llamada suma es distinta del aparato aritmético preparado. El operador ordenó ese encadenamiento; no se atribuye un plan autogenerado.
+
+Se admitió un lote externo NUEVO de 8 ofertas FI para el panel; consumió3. Se conservaron los contadores heredados y no se alteraron RAW/clocks para insertar aprendizaje. La admisión0 t y el estado0 t son dos operaciones adicionales, no dos aciertos cognitivos. El panel prueba ese corte; no se trasladan sus12 aciertos al futuro adverso979389 ni al principal que no vivió PI11.
+
+El tramo posterior solicitó4 oportunidades fijas. Completó dos, ambas sin entrega: primero intentó reusar un certificado vencido; después produjo FI+ y renovó certificado, pero seleccionó ruta1 frenteabin0. La tercera actuación ya ocurrió enT979181, ruta0 frenteabin1, con certificado válido y sin entrega. Su resultado de transporte NULL no borra ese efecto conocido.
+
+La guarda heredada detuvo el avance enT979389 antes de admitir los retornos Q2 T979453 yQ1 T980235; la cuarta oportunidad no se ejecutó. Hay3 actuaciones ambientales,2 secuencias Native completas y 1 parcial de 714 ticks. Los11 recibosNative nuevos están aplicados, sin rechazos ni pendientes; la secuenciaPI11 queda PRESERVED_INCOMPLETE/uncertain=true. No se reenvió el ID ni se restauró un pasado.
+
+Fuentes: PANEL, POST, AUTOPSIA, SUMINISTRO
+
+## Autopsia del paro y alcance causal
+
+Soporte RAW no nulo/STATE activo/STATE0 conRAW: MAIN16=389/149/240; panel=390/150/240; post16=389/149/240; post17=423/183/240; paro=19161/18921/240. Los300763 clocks de cada corte coinciden con su tick. Las variantes documentales del mismo tick tienen iguales RAW/clocks aunque cambie el hash codificado.
+
+La causa técnica de parada está demostrada: HostSafetyStop por soporte RAW global>3000. Ese umbral del anfitrión no define una muerte, daño cognitivo ni pérdida física de todos los conocimientos. No se preservó la lista interna de cada muestra de seguridad, por lo que no se fecha el primer cruce exacto ni se atribuye la expansión a la consulta, al panel o al episodio13 como causa única.
+
+El entorno registró tick979373 mientras Native quedó979389: el desacuerdo y las etapas pendientes se preservaron, no se corrigieron para fingir cierre del episodio. El conjunto adverso sigue disponible localmente como evidencia y no es una continuación pública normal. El fracaso funcional posterior y la barrera de seguridad bloquean la adopción independientemente de los positivos centrales.
+
+Fuentes: AUTOPSIA, ARRAYS, POST
+
+## Reproducción real e incorporación efectiva al producto
+
+La receta pi11_habitat16_familia_desde_REAL2_R02 ejecutó en un destino diagnóstico nuevo19/19 pasos,16/16 oportunidades y 25.024 ticks hasta T972419. Cerró con propietario/colas coherentes. Igualó estrictamente N,T,RAW,clocks,fase,interfaces,agenda,recibos y prefijo causal binario, sin normalizar campos Native. Los16 testigos y los errores coincidieron; sólo se aceptaron diferencias documentales de identidad y pausas previstas antes del ensayo.
+
+La identidad diagnóstica readonlyR02 corrigió un arranque administrativo que bloqueaba roles noREAL, sin cambiar el actor, el entorno, el lector ni la historia Native. R01 quedó conservada y bloqueada con aviso, no rebautizada como previamente ejecutada. El intento NONE0 t no es un fracaso cognitivo ni una fuente de experiencias deMAIN.
+
+Se incorporaron en Cognitive el prefijo completo de 5192 archivos/406636014 bytes, la cápsulaR02 de 380 archivos/4023300 bytes, receta, guardas y evidencia estable. El anexo VERIFIED_EXACT_EXPERIMENTAL_NATIVE16_NOT_ADOPTED es visible mediante el mismo gestor. Ésta es una capacidad experimental reproducible del producto, no un aprendizaje PI11 adquirido por el principal.
+
+No se ejecutó IF, traslado, promoción ni uso público operativo pi11-usar: faltaba una fuente final utilizable. Los adaptadores preparados no se presentan como desplegados. La comprobación real del gestor de reproducción y pi10-estado fue0 t, exit0 y sin cambio del principal. Los siete archivos críticos seleccionados, incluido kernel/WHL/PYD y estados originales, conservaron sus hashes.
+
+Fuentes: REPLAY, RPRESULT, FRONTEND, HECHOS, PRESERVACION
+
+## Continuidad única, medios de uso y límites pendientes
+
+Continúa seleccionado ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_REAL2_01, perfil fisica_directa,N67/T947395,COMMITTED; su último uso material sigue siendo PI10. El padre físico histórico es D T922371; la preparación inmediata P02 y el padre registrado de importación remitenT922377. El snapshotcorriente es fd7372 b7 f2 adc9040866 fab8 adfaca0 d79 e0 bd18 e997 c0 abc0651 fe4 fa3 c23 dc. La candidataPI11 proviene de ese corte947395 y su futuro979389 se conserva separado.
+
+Stock del principal: PI10 quedan 4 de 18; FI8 PI09 quedan 2 de 8; FIPI07 queda 1 de 8; C2Cqueda1 de 32. No contiene el loteFI8 ni el hábitatPI11. Estos límites no se reinician. La candidata conserva el loteFI8 nuevo con 5 ofertas restantes, pero eso no la habilita a actuar después de la parada de seguridad.
+
+Desde la raíz del producto, comando comprobado sin acción: motor\python313\python.exe -I -B -X utf8 sistema\gestionar.py pi10-estado. Para verificar medios PI11 sin ejecutar: motor\python313\python.exe -I -B -X utf8 sistema\gestionar.py reproducibilidad verificar pi11_habitat16_familia_desde_REAL2_R02. La ejecución material real y sus argumentos completos están en HECHOS.commands_tested.public_reproduction; su IDy destino ya están usados. Otra reproducción requiere IDdiagnóstico nuevo de la familia y destino nuevo vacío; nunca el principal.
+
+El presupuesto único fue4 horas,180000 ticks nuevos,12 mundos y 14 GB lógicos, conJob512 MiB y un coordinadorNative. Se observaron111758 ticks y se cargaron conservadoramente147948, incluyendo bounds de fallos; seis mundos nuevos. El replay duró1592,8 segundos bajo1800 y alcanzó496910336 bytesde Job, bajo536870912. Todos los propietarios cerraron; no hay procesos investigando indefinidamente.
+
+Quedan localizados tres límites científicos: distinguir qué parte de la adaptación necesita contingencia real; mantener el uso útil al caducar permisos y cambiar fase/contexto; y localizar la expansión previa al paro sin limpiar el paisaje ni confundir soporte global con mente. No se demostró iniciativa endógena, regulación general, planificación descubierta ni una mejora sostenida adoptable. Se cierra PI11 con mecanismo experimental reproducible y un principal seguro, sin abrir PI12.
+
+Fuentes: HECHOS, FRONTEND, REGISTRO, FUENTES
+
+## Trayectoria acumulativa y cierre de etapa
+
+Trayectoria acumulativa PI01–PI10 y frontera al abrir PI11
+
+Este cierre reutiliza los expedientes finales y el índice histórico ya verificado. No supone once investigaciones nuevas ni convierte las ramas de control en experiencias del principal. La síntesis de PI01–PI09 procede de aquel índice y de las revisiones previas de sus agentes; para PI10 se inspeccionaron además el capítulo vigente del Manual y los pasajes decisivos del informe. El registro SINTESIS_ANTECEDENTES_PI11_R01.json conserva esa cobertura y sus localizadores. Los resultados PI11 cerrados se presentan en los apartados anteriores con sus fuentes y límites.
+
+PI01 convirtió la selección de acceso modificada por consecuencias en un avance utilizable: obtuvo 16 recursos en 18 oportunidades, frente a 12 sin valencia negativa y ninguno con actuación anulada. Conservó usos anteriores y continuación tras reapertura. Las oportunidades, la anatomía y la conversión de señales seguían preparadas. PI02 agregó una advertencia adquirida que intervino en protección y comparación útil. Sus seis productos de doce frente a cuatro en varios controles, y siete sin valencia, obligaron a distinguir el mecanismo local de una política general mejor que toda alternativa.
+
+PI03 preservó medios de reproducción e incorporó un enlace entre actuación, traza física y consecuencia demorada: una experiencia cambió una selección útil posterior. Su principal alcanzó T775355. PI04 añadió composición funcional C2C, utilizando un resultado realmente producido en una segunda interacción: 19 productos de veinte y ocho de ocho reservados. El retorno desacoplado produjo veinte y una regresión FIplus impidió promover esa candidata. El mecanismo y sus recetas se conservaron sin fingir que sus experiencias hubieran pasado al principal.
+
+PI05 delimitó interferencia material, protección preparada y recuperación asistida, contrastada con sham. Adoptó un sucesor completo en T824911 que reunió repertorio anterior y productos C2C; esa protección P0 no se denominó regulación aprendida. PI06 aportó instrumentos y conocimiento situado sobre interferencia y recuperación, sin demostrar un nuevo principal autorregulado. PI07 mostró revisión local dependiente de consecuencias con un actuador lateral, pero sus pérdidas de acceso e integración impidieron adoptar sus positivos como capacidad acumulada. Esos futuros adversos pertenecen a la evidencia, no desaparecen por los avances posteriores.
+
+PI08 adoptó A en T861426, con acceso FI retimado, suministros C2C transaccionales y reapertura. B y C conservaron otras exploraciones, sin trasladarlas a A. PI09 integró consulta selectiva Native: doce usos útiles con ocho consultas, frente a seis con contenido desacoplado. Un reajuste local produjo cinco de seis usos frente a tres sin retorno adverso y uno con retorno desacoplado. Se adoptó DISCOVERY en T922371, manteniendo límites de asistencia, banco compartido y aritmética parcial. Su última utilización material precedió el traslado; las comprobaciones de la ruta adoptada a cero ticks no se presentaron como nuevas experiencias.
+
+PI10 separó dos trazas: Q1 cambió por consecuencias y Q2 conservó su diferencia heredada. REAL2 obtuvo nueve usos atribuibles y diez entregas físicas de doce, frente a ocho y nueve sin retorno punitivo; en reserva fueron nueve de nueve frente a siete. El desacoplado produjo once y doce, también nueve de nueve reservados: no hubo superioridad exclusiva del retorno verdadero. El calendario desacoplado coincidió con fronteras del currículo. Un corte frente a sham, aplicado tras una primera elección ya formada, sí acreditó dependencia local de la traza para la actualización y un uso posterior.
+
+La adquisición PI10 se reprodujo desde el prefijo completo neutral, incluyendo NULL y errores, con igualdad binaria causal. Eso es reproducción determinista, no independencia experimental. El panel de doce usos heredados terminó en T943970: asociaciones, comparación positiva, negativa y cero, y transporte del entero real de 6+7→13 a 13−5→8. La señal denominada suma es distinta de esa aritmética preparada; cero temprano no equivale al NULL del lector antiguo. La adopción ocurrió en T945831 y un uso público posterior con guardado y reapertura alcanzó T947395, con catorce ofertas consumidas de dieciocho.
+
+Al abrir PI11, el producto dispone de una genealogía operativa y mecanismos locales adquiridos, preparados y asistidos claramente separados. El anfitrión todavía inicia y ordena la cadena de interacciones; el dato RAW técnico tiene nueve ticks de antigüedad. Ésa fue la frontera de partida de PI11; los apartados anteriores describen el hábitat y la transferencia de control realmente ejecutados. El cierre separa costes, controles y núcleo conservado; no atribuye al ente la secuencia elegida por el operador ni transforma resultados pendientes en logros.
+
+## Fuentes decisivas y cobertura
+
+Lectura dirigida PI10 y secciones vigentes; índicePI01–PI10 y trece afirmaciones históricas reutilizadas con cobertura explícita, sin otra lectura ciega de Thinking. Se recalcularon testigos cerrados, controles, reproducción y cinco arrays físicos completos. XML/CRC y preservación documental no implican revisión visual; ésta se registra aparte.
+
+PROTOCOLO: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\codigo\PROTOCOLO_PI11_EVALUACION_R01.json — adoption_criteria; events; assistance; sources_sha256; SHA-256 649ce851ea75489c417496e4ca541e6df7c075399081bda160cd871a61b937b1
+
+MAIN: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\RECALCULO_MAIN16_R01\RESUMEN_PI11.json — by_life: totals, reserved_totals, Native_inputs_unique, Q1_transitions; SHA-256 47494f9bebfee72411b22bab2f466d3839b1a00d039b033740ae14b536ee461e
+
+HEREDADO: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\RECALCULO_HEREDADO16_R01\RESUMEN_PI11.json — by_life: same sixteen opportunities; actual FI and resource effects; SHA-256 be35c85b634a411e8db3000872517d1debff6df99d6ffef7ea1f147a2af66d37
+
+YOKE: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\RECALCULO_YOKE16_R02\RESUMEN_PI11.json — by_life: independent presealed feedback; all sixteen outcomes; SHA-256 a0b418eeeb68ded8432e95138ca7bf5d6564a2176dd60b3b87058e2ee3b648d5
+
+BALANCE: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\BALANCE_CAUSAL_FINAL_PI11_R01.json — predeclared_central_gates; pairing; tradeoff; real_vs_yoked; history; SHA-256 a30f80bfe1bf218810078af826184a4f4d5729b43dbe6ac4f8562dbf894a1ac7
+
+PANEL: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\PI11_MAIN01_PANEL12_OWNER_R01.json — records: twelve expected/actual/correct; initial_tick972419/final_tick975259; SHA-256 87256cfaf4b48694ef11fd7f50d9979900d2cbcede05524faab54adc5319d7c6
+
+POST: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\PI11_MAIN01_POST4_OWNER_R01.json — STOPPED_PRESERVED; records0/1; initial_tick975259/final_tick979389; SHA-256 d127b90ae1bd5189ff99ef293d4e934463de7b131270af81828f427fa3e809bb
+
+AUTOPSIA: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\AUTOPSIA_CIERRE_PI11_R01.json — cuts; two_completed_post_episodes; failed_third; sources; limitations; SHA-256 448678cfe20352d7f932494c683b73bb4239b9b371db91977261bee50488551a
+
+ARRAYS: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\ARRAYS_AUTOPSIA_COMPACTOS_PI11_R01.json — five full lossless RAW/clocks arrays; exact source snapshot and array hashes; SHA-256 7de48ccf93ec8e2907ceb93f7692f3653be4ba04f7f1ccce6e5e152486c1f395
+
+REPLAY: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\COMPARACION_REPLAY_PUBLICO_PI11_R02_R01.json — Native_components_exact; binary_causal_prefix_equal; all16episode_witnesses; overall; SHA-256 1875a03956e28ec7f36e68dfbcc3cd04ef630ad5f6d91ac2d0d64c5fbac68dff
+
+RPRESULT: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\estados\REPLAYRP01\RESULTADO_REPRODUCCION.json — status COMPLETED; nineteen driver steps; coherent actual Native closure; SHA-256 9140190a35ec00acbae1cc07ea2fe941bda3e1136a34fad7c1bb6f36c601d9f2
+
+FRONTEND: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\VERIFICACION_FRONTEND_PUBLICO_CIERRE_PI11_R01.json — commands.RP_verificar and PI10_estado: zero ticks, exit0, actual_registered_verifications; SHA-256 9875aa1ce8c36b746e798867aa2a07eea497caac0b6ea6744bc9385863194494
+
+HECHOS: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\HECHOS_CIERRE_NATIVE_PI11_R01.json — selected; candidate; replay; panel12; post_reopening; adoption; queues; ledger; commands_tested; SHA-256 f5bbf33171ad14ba4225ab91fbf9fd8f19e58825a5420e26bbc77965710fcb4f
+
+HISTORIA: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\HECHO_HISTORIA_MAIN16_PI11_R01.json — all_rows; three strict local pairs; nine Q1 changes; nonfailure13; SHA-256 b94294bece1720fea884a7235b0410c64f7ba6f05a949fa01275bfe8ebfa61c3
+
+ABIERTA: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\OBSERVACION_ABIERTA_Q1_PI11_R01.json — interval969289..969291; complete source/capture locators and unresolved lineage; SHA-256 020b98fbd14a9977ac4b6e31744c6c0424a5f880320d6f54f6675f837ca2dddf
+
+FUENTES: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\fuentes\SINTESIS_ANTECEDENTES_PI11_R01.json — thirteen historical assertions; read/reused/report scopes and exact locators; SHA-256 5b8d5e7eb203e4acf8110fa2e035628604d4c14b73fe589ed34fb527739b6e96
+
+PRESERVACION: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\PRESERVACION_CRITICOS_FINAL_PI11_R01.json — seven selected files unchanged; official wheel/PYD/kernel and original lives; SHA-256 e45f031d0dcd45ac0fecf823da24cefc5182af69c346b723a0ffcea9c04d1fa6
+
+NONE: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\PI11_NONE01_16_OWNER_R01.json — zero Native ticks; bootstrap permission failure; no cognitive outcome; SHA-256 b9805783e86bfcec422b8fb47745745468deb06ee722d459ea5b186dde571444
+
+DEV: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\PI11_DEV01_OWNER_R01.json — three completed development opportunities and prequeue rejection without Native effects; SHA-256 19e1b78f7236e2288b23b4520a093c4041df391b77173099914c9a45b07bf8b3
+
+SUMINISTRO: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\control\DECISION_SUMINISTRO_FI8_PI11_R01.json — separate new eight-offer external lot; no old stock reset; SHA-256 75d27407114214f5d5631b9aaa9b859423f294eb6835152cee5e851e73e154cf
+
+REGISTRO: D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\archivo\analisis_transversal_cognitivo\PROGRESION_INTEGRADA_11\REGISTRO_CAMPANA.json — one unchanged four-hour budget; frozen protocol; prospective revisions and final phase; SHA-256 29172235091f49c687e72729cf0e35cb1faf253e706789660ee157a221ba3c9d

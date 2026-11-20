@@ -1,0 +1,16 @@
+{
+  "logical_call_id": "CALL_0bb53869569a4ef591634b5cc9ad2e31",
+  "rpc_id": 67,
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "522e9816-883b-4c8b-88cd-04de5607b901",
+    "datamodel_type": "Server",
+    "code": "local r06Value=(function()\nlocal h=game:GetService(\"HttpService\");local s=require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).status();assert(s.phase==\"BOUNDARY\" and s.S.nativeTick==1000571 and s.S.seq==68 and s.S.sessionId==\"R07_MAIN_adc933c82cc74fb0bb19\" and s.S.lifeId==\"ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_MAIN\");local b=workspace.RBX01.DEE_Body;local changes={};local saved=h:JSONDecode(([[!{\"DEE_Body/Left Arm\": false, \"DEE_Body/Left Leg\": false, \"DEE_Body/Right Arm\": false, \"DEE_Body/Right Leg\": false}]]):sub(2));for path,wanted in pairs(saved)do local name=path:match(\"^DEE_Body/(.+)$\");local p=b:FindFirstChild(name);assert(p and p:IsA(\"Part\") and p:GetAttribute(\"R07PreparedBody\")==true and type(wanted)==\"boolean\");changes[#changes+1]={path=path,before=p.CanCollide,after=wanted};p.CanCollide=wanted end;return {changed_fields=changes,Native_calls=0,actions=0,rewards=0,source_sha256=\"3c8420a1fcbebce4514030fb937d76d87e1686f8349a3dcf04922850a8a1a2a7\"}\nend)();return game:GetService(\"HttpService\"):JSONEncode(r06Value)"
+  },
+  "read_only": false,
+  "attempt": 1,
+  "utc": "2026-11-17T03:47:03.546109+00:00",
+  "session_id": "MCP_SESSION_568b1994219840beaa09aee4407cc72a",
+  "transport_epoch": 1,
+  "no_automatic_retry": true
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "128afc04-b4b9-4a87-994c-a7cd211e1d46",
+    "datamodel_type": "Server",
+    "code": "local function r06TypedValue()\nlocal p=game:GetService(\"ServerScriptService\").DEEConnector_R07;local e=game:GetService(\"EncodingService\");local out={};for _,n in ipairs({\"Main\",\"BackendBinding\",\"LiveAdapters_R07\",\"MotorPathfinding_R07\"})do local h=e:ComputeStringHash((p[n].Source:gsub(string.char(13)..string.char(10),string.char(10))),Enum.HashAlgorithm.Sha256);if #h==32 then h=(h:gsub(\".\",function(c)return string.format(\"%02x\",string.byte(c))end))end;out[n]=h:lower()end;return out\nend\nreturn game:GetService(\"HttpService\"):JSONEncode(r06TypedValue())"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"LiveAdapters_R07\":\"8a6079a8db196ab4d28192cb3e8625c2a5c12d152b3542c56e91868526111cf5\",\"MotorPathfinding_R07\":\"29638a34978e5ed6ec12df1f2af4c784789c34f7dbabcddb376b117417ed62d8\",\"BackendBinding\":\"92a38399c7f450f3f4be2e26fe8d21217447ea66846ca316e84c6da286defbb0\",\"Main\":\"2fc73ed47a34d4e1e5d00aaa44e30004275dafc6542954981f9e239508bc4468\"}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_8aa23be6d28748e4a04d94a99e671e4d",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_07835d1373a049a88410abd5187a3fb8",
+  "attempt": 1,
+  "elapsed_seconds": 0.22442859999137,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 19928
+}

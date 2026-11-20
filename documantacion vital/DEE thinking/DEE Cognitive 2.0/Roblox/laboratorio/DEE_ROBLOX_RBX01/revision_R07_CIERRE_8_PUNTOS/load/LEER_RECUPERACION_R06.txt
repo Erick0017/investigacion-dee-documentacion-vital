@@ -1,0 +1,70 @@
+RECUPERACIÓN TÉCNICA LOAD R06 — PREPARADA, NO EJECUTADA
+
+La etapa original CARGA3_R01 realizó tres Q1 Native reales (+356 ticks cada
+una) y cero episodios completos. El anfitrión omitió descontar el permiso
+consumido por ASK: entregó164 en Q2 cuando correspondía163. La guarda falló
+antes de h.submit_query; Q2 no emitió pulsos ni avanzó ticks. Los errores,
+snapshots, recibos, IDs e intents originales permanecen preservados.
+
+Estado observado: tres vidas T991543, phase AWAIT_ROUTE_SENSOR, cycles0,
+last_sequence56, pendingQ1 intacto, uncertainty técnicoTrue. Ledger10452
+consumidos; tres reservas3740 e intentsQ2. Este fallo de contrato del host no
+se informa como incapacidad de DEE. Tampoco acredita3x3 episodios realizados.
+
+Todo comando material exige revisión/autorización de Root. Desde la raíz R07:
+
+1. Revisar control/LEASE_R06_TX/PLAN.json y el freeze
+   control/CONGELADO_NATIVE_R07_LEASE_R06.json. La renovación administrativa
+   mantiene todos los intents/failure/uncertain/pending; sólo fechas y
+   testigosCODE_SCOPE cambian. Cuando Root lo autorice:
+
+   python -I -B native/migrar_lease_cerrada_v3_R06.py --apply-root-only --transaction control/LEASE_R06_TX
+
+2. Tras obtener CLOSED_LEASE_RENEWAL_COMPLETE, preparar SIN Native:
+
+   python -I -B load/recuperar_guardas_carga_R06.py --prepare-root-only --ledger control/LEDGER_V3.json --output control/RECUPERACION_LOAD_R06_TX
+
+   Revisar el PLAN nuevo ligado a los snapshots reales POST-lease y recibos
+   fallados inequívocos. No reutilizar un PLAN de una frontera anterior.
+
+3. Sólo después de revisión Root y RAM>=3.5GiB, aplicar la transacción0ticks:
+
+   python -I -B load/recuperar_guardas_carga_R06.py --apply-root-only --transaction control/RECUPERACION_LOAD_R06_TX
+
+   Cambia únicamente m.uncertain True->False. Preserva failure como historia,
+   phase, pending, recibos, seq, cycles, logchain, política y ancestros.
+   Archiva sólo los tres Q2 rechazados con0ticks; consumed10452 y reservas3740
+   permanecen. Registra FUERA de Native el costo164->163 de ASK ya ocurrido.
+   Esto es reparación técnica asistida, no aprendizaje ni autorreparación.
+
+4. Preflight de continuación, sin abrir propietarios:
+
+   python -I -B load/ejecutar_continuacion_carga3_v3_R06.py --stage 1 --load-root native --ledger control/LEDGER_V3.json --baseline-close-proof evidencia/MAIN_BLOQUE_01_CONTINUACION34_R01/RESULTADO.json --recovery-transaction control/RECUPERACION_LOAD_R06_TX
+
+5. Sólo tras la autorización material nueva, UNA ejecución en destino vacío:
+
+   python -I -B load/ejecutar_continuacion_carga3_v3_R06.py --execute-root-only --stage 1 --load-root native --ledger control/LEDGER_V3.json --baseline-close-proof evidencia/MAIN_BLOQUE_01_CONTINUACION34_R01/RESULTADO.json --recovery-transaction control/RECUPERACION_LOAD_R06_TX --output load/evidencia/CONTINUACION_CARGA3_R06
+
+   Primera fase: el Q2 corregido del MISMO episodio y sesión, con ID distinto
+   declarado *_stockR06. NUNCA repite Q1 ni modifica el payload del ID fallado.
+   Después pretende terminar los otros dos episodios de esas mismas vidas.
+   Las lecciones y cadena A/B son preparación externa declarada; las lecturas
+   y números deben ser Native reales. No existe movimiento Roblox en esta
+   carga focal. No se fusiona ningún resultado con Main.
+
+6. Sólo con los tres propietarios cerrados y sin intents pendientes:
+
+   python -I -B load/recalcular_concurrencia_v3.py --workers load/evidencia/CONTINUACION_CARGA3_R06/LOAD1 load/evidencia/CONTINUACION_CARGA3_R06/LOAD2 load/evidencia/CONTINUACION_CARGA3_R06/LOAD3 --output load/evidencia/CONTINUACION_CARGA3_R06/OVERLAP_MATERIAL_R06.json
+
+   El overlap corresponde a ventanas reales adapter.execute, incluyendo
+   anfitrión/checkpoint, no a instruccionesCPU simultáneas. El Q1 original ya
+   tiene su intervalo separado en CONCILIACION_PASIVA_R06.json:280.404993s
+   común a las tres vidas, frente891.278755s de vida de propietarios.
+
+Ventana prospectiva18h: MISMO inicio15:07UTC16nov; nuevas Q1 hasta08:00UTC17nov;
+cierre09:07UTC17nov. Caps160000ticks/6vidas,512MiB porJob,RAW10000,thread1,
+RAMmínima3.5GiB/floor1GiB. Fechas antiguas y fallos se conservan. Ante cualquier
+futuro ambiguo: preservar, cerrar coherentemente si es posible y NO reenviar.
+
+ESTA RECETA Y SUS FIXTURES ESTÁN PREPARADAS. No declaran una recuperación
+aplicada, ni un nuevo episodio, ni tres vidas con tres episodios completos.

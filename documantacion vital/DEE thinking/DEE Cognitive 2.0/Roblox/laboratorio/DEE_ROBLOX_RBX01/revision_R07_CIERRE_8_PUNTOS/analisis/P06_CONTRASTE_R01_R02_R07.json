@@ -1,0 +1,106 @@
+{
+  "schema": "DEE.R07.P06.DocumentaryContrast.R01",
+  "derived": true,
+  "derived_from_frozen_JSON_only": true,
+  "Native_calls": 0,
+  "DB_opened": false,
+  "sources": [
+    {
+      "source": "evidencia/P06_BENCHMARK_FULL_R01/RESULTADO_P06.json",
+      "bytes": 2673569,
+      "sha256": "f8ee9bb8bde853f729a66cb03a5f8a40a5519b34176eae76f4dab9d7dc10b452"
+    },
+    {
+      "source": "evidencia/P06_BENCHMARK_FULL_R02/RESULTADO_P06.json",
+      "bytes": 2713297,
+      "sha256": "e30bad69396c482ce2e2903f5774030e2e303c1c9b713fdf88c3e432ef15eb5e"
+    }
+  ],
+  "first_attempt": {
+    "failure": "ValueError: Opened RAW/clocks differ from stored closed record",
+    "passes": 0,
+    "Native_ticks": 0,
+    "operational_files_identical": true,
+    "exit_code": 2,
+    "scope": "Technical fingerprint-shape mismatch before timing passes; no cognitive inference",
+    "recorded_keys": [
+      "N",
+      "tick",
+      "RAW_sha256",
+      "clocks_sha256",
+      "sites",
+      "occupied",
+      "max_s_reg",
+      "basic_buffers_bytes"
+    ],
+    "opened_keys": [
+      "N",
+      "tick",
+      "RAW_sha256",
+      "clocks_sha256"
+    ],
+    "four_field_projection_equal": true
+  },
+  "closed_benchmark": {
+    "schema": "DEE.R07.P06.FullDependenciesBenchmark.R06",
+    "utc": "2026-11-16T21:44:50.402321+00:00",
+    "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_CTRL1",
+    "tick": 991187,
+    "failure": null,
+    "passes": [
+      {
+        "label": "BASE_1",
+        "wall_seconds": 85.79929729999276,
+        "cpu_seconds": 32.796875,
+        "payload_sha256": "b3f9fe1d47a30f9d981b8022376df128ff2f82181da2c31d14f9321bec444aea",
+        "source_metadata_pass": null
+      },
+      {
+        "label": "PROTO",
+        "wall_seconds": 67.02316750001046,
+        "cpu_seconds": 30.09375,
+        "payload_sha256": "b3f9fe1d47a30f9d981b8022376df128ff2f82181da2c31d14f9321bec444aea",
+        "source_metadata_pass": {
+          "stat_hits": 20,
+          "stat_misses": 8,
+          "resolve_hits": 23,
+          "resolve_misses": 6,
+          "fresh_rechecks": 13
+        }
+      },
+      {
+        "label": "BASE_2",
+        "wall_seconds": 83.22685799997998,
+        "cpu_seconds": 31.6875,
+        "payload_sha256": "b3f9fe1d47a30f9d981b8022376df128ff2f82181da2c31d14f9321bec444aea",
+        "source_metadata_pass": null
+      }
+    ],
+    "Native_ticks": 0,
+    "Native_requests_submitted": 0,
+    "payload_equal": true,
+    "physical_equal": true,
+    "metadata_equal": true,
+    "operational_files_identical": true,
+    "critical_files_identical": true,
+    "fraction_reduction": 0.19469304608343405,
+    "criterion_fraction": 0.2,
+    "criterion_met": false,
+    "prototype_installed_in_system": false,
+    "launcher": {
+      "pid": 6024,
+      "exit_code": 0,
+      "actual_job_resources": {
+        "peak_job_committed_bytes": 332402688,
+        "peak_process_committed_bytes": 325890048,
+        "job_memory_limit": 536870912,
+        "cpu_user_seconds": 186.8125,
+        "cpu_kernel_seconds": 109,
+        "job_total_processes": 2,
+        "job_active_processes": 0
+      },
+      "memory_limit": 536870912
+    }
+  },
+  "interpretation": "19.4693046% reduction against faster baseline is below precommitted20%; no deployment. File metadata optimization is an external instrumentation result, not acquired DEE cognition."
+}

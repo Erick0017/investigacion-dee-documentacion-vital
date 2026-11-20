@@ -1,0 +1,52 @@
+R06 E6 — un episodio Native real en el conector limpio
+
+PREPARADO, no ejecutado materialmente por el agente que creó los archivos.
+CTRL1 ya se preparó exclusivamente por filesystem: fuente completa DEV4 T953651,
+5217 miembros/408916567B, hashes de fuentes iguales antes/después,0Native/import0.
+Docente omitted. Native/CTRL1 no hereda adquisiciones posteriores de MAIN ni LOAD.
+
+ROOT, DESPUÉS DE LOS COMPARADORES Y SIN INTERFERIR LA CARGA
+1. Importar/verificar0 explícitamente la copia completa:
+python -I -B native/import0_integral_v2.py --product ../../.. --destination native/CTRL1 --native-cutoff-utc-epoch 1794802380
+2. Abrir realmente DEEConnector_NATIVE_LIMPIO_R01.rbxlx de este directorio en
+   Studio y pasar a Play. Contiene el mismo Main/BackendBinding exportado R01,
+   con hashes intactos; sólo añade LiveAdapters_R01 inyectado. No tiene autorun.
+3. Preflight (noSDK/Native):
+python -I -B prototipo/NATIVE_LIMPIO_R01/ejecutar_native_limpio.py --destination native/CTRL1 --ledger control/LEDGER_R06.json
+4. Una única ejecución nueva Root:
+python -I -B prototipo/NATIVE_LIMPIO_R01/ejecutar_native_limpio.py --execute-root-only --destination native/CTRL1 --ledger control/LEDGER_R06.json --studio-id <ID_REAL_DE_ESA_ESCENA> --output evidencia/NATIVE_CONECTOR_LIMPIO_R01
+
+El controller valida Sources reales de Main, Binding y LiveAdapter antes de abrir
+Native. Usa Session MCP persistente y configured_owner oficial, Job512MiB. Exige
+RAM libre medida>=1.5GiB. Último episodio03:10UTC/fin04:13UTC16nov; cuota global100k
+y máximo6vidas sin reset. Rechaza CTRL1 avanzado o con un journal R06 ya usado.
+
+QUÉ SUCEDE
+Observación local completa productos_v1, A/B ausentes, goalDelivery=true como meta
+preparada. Stock nuevo del entorno200. Native seq=seq del módulo+8 ancestral;
+observationId/session/actionId/previousActionId son los reales, no alias nuevos.
+Native Q1 decide ASK/SKIP/SAFE_WAIT. Sólo ASK consume1 y lee físicamente el panel
+local constante: ambos puertos libres, señal1. SKIP conserva señal−1. Q1 NULL
+produce SAFE_WAIT y retorno registrado, sin fabricar Q2 ni movimiento.
+Native Q2 decide EXIT_0(+6X), EXIT_1(−6X) o espera. El host NO fuerza EXIT_0.
+Cada acción pasa por deliverAction(sourceKind=DEE_NATIVE), ejecución, ACK exacto
+y confirmación. Recurso físico en+6/base0: contacto e inventario se comprueban
+por overlap real. Un episodio podría recoger; no se afirma entrega si no ocurre.
+Retorno genérico usa colisión/acción inválida reales; False no se llama premio.
+
+Después del retorno Native confirmado se actualiza el cursor Folder y se guarda
+y cierra el propietario. Sólo entonces se captura WORLD_MODULE_CHECKPOINT.json.
+La raíz Native completa, su cola/recibos/outbox/snapshot siguen en native/CTRL1.
+El checkpoint del módulo no sustituye esos componentes ni es un respaldo del motor.
+
+ATRIBUCIÓN Y LÍMITES
+Prueba de backend Native VIVO: no replay, no código que elija la ruta ni calculadora.
+Anatomía, meta, panel, transducción y oportunidad son preparados. No hay docente,
+aritmética nueva ni prueba de aprendizaje, planificación o agencia general aquí.
+Se conserva lo que ocurra: ACK aunque no haya recurso, espera/NULL, rechazos o
+fallos. Un fallo no autoriza repetir con otro ID ni resetear CTRL1. La prueba
+técnica MCP y el replay anteriores siguen separados y no se suman como Native.
+
+Fixtures: python -I -B prototipo/NATIVE_LIMPIO_R01/test_live_offline.py.
+Compilan sólo validadores puros extraídos del texto del actor para comprobar el
+ABI Q1/Q2 y la ausencia de campos-oráculo. No abren Native, Studio ni un modelo.

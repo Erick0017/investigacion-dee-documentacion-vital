@@ -1,0 +1,46 @@
+RECETA PREPARADA, NO RESULTADO MAIN+CTRL NI35/36 EJECUTADO
+
+El recálculo MAIN6 efectivamente realizado permanece en RECALCULO_MAIN6_R01.
+RECALCULO_CIERRE8_R07_R02.py conserva el cálculo original y admite fragmentos
+EVENTS del mismo bloque cerrado, conservando fuente/línea e ID real.
+RECALCULO_MAIN_CTRL_R07.py añade una vista pareada con denominadores separados.
+
+INPUTS: schema DEE.R07.recalculation.inputs.v1. parent_world es el PAR28 R06
+completo identificado; arms contiene MAIN LIVE_NATIVE/local_tag y CTRL
+LIVE_NATIVE/constant_tag2. En MAIN bloque1:
+  result=evidencia/MAIN_BLOQUE_01_CONTINUACION34_R01/RESULTADO.json
+  world=evidencia/MAIN_BLOQUE_01_CONTINUACION34_R01/WORLD_CHECKPOINT.json
+  event_fragments=[evidencia/MAIN_BLOQUE_01_R03/EVENTS.jsonl,
+                   evidencia/MAIN_BLOQUE_01_CONTINUACION34_R01/EVENTS.jsonl]
+Son rutas de fuente completas, no un pseudo-registro combinado ni otro ensayo.
+
+CTRL: añadir sólo las rutas exactas del RESULTADO/World/Events que Root confirme
+cerrados. No inventar directorios, finales ni ceros de oportunidades pendientes.
+MAIN35/36: añadir un segundo bloque sólo al existir RESULTADO owner_closed=true,
+World en BOUNDARY y Events cerrados; source_world será World34 anterior.
+No repetir los fragmentos MAIN29–34 dentro del segundo bloque.
+
+COMANDO LOCAL, desde R07 (INPUTS_REAL se construye con esas fuentes cerradas):
+python analisis/RECALCULO_MAIN_CTRL_R07.py --inputs INPUTS_REAL.json --source-root .. --output analisis/SALIDA_NUEVA
+
+COMANDO PORTABLE, desde una extracción:
+python analisis/RECALCULO_MAIN_CTRL_R07.py --inputs INPUTS_REAL.json --package-root . --output SALIDA_NUEVA
+
+El paquete debe contener los dos scripts de recálculo y todos los primarios,
+resueltos por CONTROL/MANIFIESTO_SHA256.json members[{source,archive,sha256}].
+No se permite depender de los originales D: al usar --package-root.
+El alias del PAR28 es ANTECEDENTES/R06_WORLD_PAR28.json; su source original
+debe conservarse en el manifiesto. Las rutas originales son procedencia.
+
+Con MAIN6/CTRL6: FULL6/6 y prefijo común6. Con MAIN8/CTRL6: FULL8/6 y comparación
+del prefijo común6/6, sin convertir dos episodios no ofrecidos a CTRL en fallos.
+La tabla autoritativa es COMPARACION_PAREADA_MAIN_CTRL_R07.csv.
+La tabla común R02 separada corresponde al grupo MAIN/referencias E5.
+
+Las cinco notas kind/utc de MAIN29–33 están verificadas en
+RECALCULO_MAIN6_R01/CONTRASTE_FILAS_KIND_UTC_R01.json: todos los campos
+científicos e IDs coinciden. No se descartan diferencias de otros campos.
+
+Este procedimiento sólo lee ficheros cerrados y escribe análisis nuevos.
+No ejecuta Native/MCP/Studio/modelos/SQLite ni certifica aprendizaje causal,
+admisiones, reapertura material o capacidades todavía no ejercitadas.

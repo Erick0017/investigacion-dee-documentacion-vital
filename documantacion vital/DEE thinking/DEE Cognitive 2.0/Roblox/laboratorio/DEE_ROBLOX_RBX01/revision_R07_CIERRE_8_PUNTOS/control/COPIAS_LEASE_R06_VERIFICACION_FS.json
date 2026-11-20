@@ -1,0 +1,164 @@
+{
+  "schema": "DEE.R07.LeaseR06.MechanicalCopies.FileOnly.R01",
+  "all_three_passed": true,
+  "files": [
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\mcp_persistente_v3_R05.py",
+      "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\mcp_persistente_v3_R06.py",
+      "source_bytes": 14126,
+      "destination_bytes": 14126,
+      "source_sha256": "611795ae8455f2feb2b8916f38f1b547bf457403c155b6d0cb60d941aa3ce2bd",
+      "destination_sha256": "611795ae8455f2feb2b8916f38f1b547bf457403c155b6d0cb60d941aa3ce2bd",
+      "expected_whitelist_transform_exact": true,
+      "AST_equal_after_only_allowed_literal_normalization": true,
+      "imports_AST_equal": true,
+      "compile_without_execution": true,
+      "CRLF_count_before": 178,
+      "CRLF_count_after": 178,
+      "historical_C02_reference_count_equal": true,
+      "unified_diff": []
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\world_comprimido_v3_R05.py",
+      "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\world_comprimido_v3_R06.py",
+      "source_bytes": 11202,
+      "destination_bytes": 11202,
+      "source_sha256": "407dd8967a40162458f06081ad90eb3a522a214728324a4a4e693a9a1f9d9d85",
+      "destination_sha256": "cdc3f45f7d2816eb07eab71774576df4d05206d1888af1a8cdefcbe44b8cd088",
+      "expected_whitelist_transform_exact": true,
+      "AST_equal_after_only_allowed_literal_normalization": true,
+      "imports_AST_equal": true,
+      "compile_without_execution": true,
+      "CRLF_count_before": 140,
+      "CRLF_count_after": 140,
+      "historical_C02_reference_count_equal": true,
+      "unified_diff": [
+        "--- world_comprimido_v3_R05.py",
+        "+++ world_comprimido_v3_R06.py",
+        "@@ -8,8 +8,8 @@",
+        " ROOT=Path(__file__).resolve().parents[1]",
+        " def load(path,name):",
+        "     spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);sys.modules[name]=m;spec.loader.exec_module(m);return m",
+        "-BASE=load(ROOT/'control/run_integrated_v3_R05.py','_r07_original_world_base_R05')",
+        "-CLIENT=load(ROOT/'control/mcp_persistente_v3_R05.py','_r06_persistent_world_client')",
+        "+BASE=load(ROOT/'control/run_integrated_v3_R06.py','_r07_original_world_base_R06')",
+        "+CLIENT=load(ROOT/'control/mcp_persistente_v3_R06.py','_r06_persistent_world_client')",
+        " COMP=load(ROOT/'control/transporte_comprimido_v3.py','_r06_compressed_world_bytes')",
+        " def compare_values(before,after):",
+        "     \"\"\"Full JSON values; tolerance ONLY for the declared geometric fields.\"\"\"",
+        "@@ -69,7 +69,7 @@",
+        "         remaining=min(43200,int(BASE.FINISH-time.time()))",
+        "         if remaining<=0:raise RuntimeError('R06 transport deadline expired; no new SDK session')",
+        "         self.session=CLIENT.Session(studio,expected_place,self.output/'MCP_PERSISTENTE',seconds=remaining).__enter__()",
+        "-        self.record('MCP_PERSISTENT_CONNECTED',source_sha256=hashlib.sha256((ROOT/'control/mcp_persistente_v3_R05.py').read_bytes()).hexdigest(),",
+        "+        self.record('MCP_PERSISTENT_CONNECTED',source_sha256=hashlib.sha256((ROOT/'control/mcp_persistente_v3_R06.py').read_bytes()).hexdigest(),",
+        "             compression_source_sha256=hashlib.sha256((ROOT/'control/transporte_comprimido_v3.py').read_bytes()).hexdigest(),",
+        "             sdk_pid=self.session.client.process.pid)",
+        "     def mcp(self,code,label,seconds=180):"
+      ]
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\run_integrated_v3_R05.py",
+      "destination": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\run_integrated_v3_R06.py",
+      "source_bytes": 12083,
+      "destination_bytes": 12083,
+      "source_sha256": "fb66cb4c8d9b037e3db121aa7f7b5cb470ec35ee371064deb4c66fe56d562c97",
+      "destination_sha256": "eafe42bd08135345249bb8739edab419d2eec047d08f3cc55903e2de16554de8",
+      "expected_whitelist_transform_exact": true,
+      "AST_equal_after_only_allowed_literal_normalization": true,
+      "imports_AST_equal": true,
+      "compile_without_execution": true,
+      "CRLF_count_before": 151,
+      "CRLF_count_after": 151,
+      "historical_C02_reference_count_equal": true,
+      "unified_diff": [
+        "--- run_integrated_v3_R05.py",
+        "+++ run_integrated_v3_R06.py",
+        "@@ -8,7 +8,7 @@",
+        " ROOT=Path(__file__).resolve().parents[1]",
+        " C02=ROOT.parent/'revision_R05_C02'",
+        " PRODUCT=ROOT.parents[2]",
+        "-FINISH=1794884820 # 2026-11-17T03:07:00Z; validated from protocol below.",
+        "+FINISH=1794906420 # 2026-11-17T09:07:00Z; validated from protocol below.",
+        " def need(ok,msg):",
+        "  if not ok:raise RuntimeError(msg)",
+        " def read(p):return json.loads(Path(p).read_text('utf-8-sig'))",
+        "@@ -68,7 +68,7 @@",
+        "   self.record('WORLD_CHECKPOINT_SAVED',path=str(path),sha256=sha(path),bytes=len(raw),boundary=state['boundary'])",
+        "   return state",
+        " def _world_class():",
+        "- return load(ROOT/'control/world_comprimido_v3_R05.py','_r07_world_transport').CompressedWorld",
+        "+ return load(ROOT/'control/world_comprimido_v3_R06.py','_r07_world_transport').CompressedWorld",
+        " ",
+        " class World:",
+        "  instances=[]",
+        "@@ -76,7 +76,7 @@",
+        "   instance=_world_class()(*args,**kwargs);cls.instances.append(instance);return instance",
+        " ",
+        " def _execute(a):",
+        "- protocol={'native_hard_finish_utc':'2026-11-17T03:07:00Z','deadline_new_episodes_utc':'2026-11-17T02:00:00Z'}",
+        "+ protocol={'native_hard_finish_utc':'2026-11-17T09:07:00Z','deadline_new_episodes_utc':'2026-11-17T08:00:00Z'}",
+        "  finish=datetime.datetime.fromisoformat(protocol['native_hard_finish_utc'].replace('Z','+00:00')).timestamp()",
+        "  new_cut=datetime.datetime.fromisoformat(protocol['deadline_new_episodes_utc'].replace('Z','+00:00')).timestamp()",
+        "  dest=a.destination.resolve(strict=True);output=a.output.resolve()",
+        "@@ -94,7 +94,7 @@",
+        "  identity={'life':life,'session':session,'participant':'LIVE_NATIVE'}",
+        "  world=World(a.studio_id,output,record,expected_place=a.expected_place)",
+        "  restored=world.initialize(state,identity,sha(a.world));record('RESTORED',result=restored,identity=identity)",
+        "- support=load(ROOT/'native/owner_support_v3_R05.py','_r07_support')",
+        "+ support=load(ROOT/'native/owner_support_v3_R06.py','_r07_support')",
+        "  adapters=load(ROOT/'native/adapter_v3.py','_r07_adapter')",
+        "  rows=[];record('PROTOCOL_STARTED',prospective_protocol=protocol,identity=identity,source_world=str(a.world),source_tick=state['native_tick'])",
+        "  with support.configured_owner(PRODUCT,dest,a.ledger,tag='R07_INTEGRAL',cutoff_epoch=finish,continuous=True)as owner:"
+      ]
+    }
+  ],
+  "allowed_changes": [
+    [
+      "1794880800",
+      "1794902400"
+    ],
+    [
+      "1794884820",
+      "1794906420"
+    ],
+    [
+      "2026-11-17T02:00:00Z",
+      "2026-11-17T08:00:00Z"
+    ],
+    [
+      "2026-11-17T03:07:00Z",
+      "2026-11-17T09:07:00Z"
+    ],
+    [
+      "mcp_persistente_v3_R05.py",
+      "mcp_persistente_v3_R06.py"
+    ],
+    [
+      "world_comprimido_v3_R05.py",
+      "world_comprimido_v3_R06.py"
+    ],
+    [
+      "run_integrated_v3_R05.py",
+      "run_integrated_v3_R06.py"
+    ],
+    [
+      "owner_support_v3_R05.py",
+      "owner_support_v3_R06.py"
+    ],
+    [
+      "_r07_original_world_base_R05",
+      "_r07_original_world_base_R06"
+    ]
+  ],
+  "executed_target_modules": false,
+  "Native_imports": 0,
+  "Native_calls": 0,
+  "DB_opened": false,
+  "MCP_calls": 0,
+  "model_calls": 0,
+  "lease_applied_by_this_tool": false,
+  "start_caps_policy_codec_reader_architecture_unchanged_by_AST": true,
+  "verified_utc": "2026-11-16T23:30:39.903Z",
+  "original_R05_hashes_before_after_identical": true
+}

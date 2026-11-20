@@ -1,0 +1,43 @@
+{
+  "schema": "DEE.R07.exclusive_CTRL6_handoff.R01",
+  "recorded_utc": "2026-11-16 21:01:39 UTC",
+  "from": "root",
+  "to": "c02_persistence",
+  "conditions": [
+    "Closed lease REV3 actually applied with zero ticks",
+    "P06 benchmark fully stopped; no automatic cache installation",
+    "RAM reserve>=3.5GiB,one writer,512MiB,oneNative thread",
+    "Explicit recipient acknowledgement before material execution"
+  ],
+  "allowed_material_scope": {
+    "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_CTRL1",
+    "source_tick": 991187,
+    "source": "native/CTRL1/WORLD_PADRE_PAR28.json",
+    "global_cases": [
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "sensor_arm": "constant_tag2",
+    "cache": "ORIGINAL",
+    "output": "evidencia/CTRL1_SEIS_R05"
+  },
+  "allowed_studio": {
+    "id": "522e9816-883b-4c8b-88cd-04de5607b901",
+    "file": "DEE_RBX01_R07_NATIVE.rbxlx",
+    "reason": "Saved Main34 pair already preserved; reset Play only for the independent paired control."
+  },
+  "forbidden": [
+    "NativeMain queries or ticks",
+    "Other lives or comparison arms",
+    "Route/reader/reward/policy adjustments",
+    "Replaying uncertain operations",
+    "Global principal,originals,Manual changes"
+  ],
+  "root_will_not_start_owners_or_use_Studio_until_explicit_return": true,
+  "deadline_new_utc": "2026-11-17T02:00:00Z",
+  "hard_finish_utc": "2026-11-17T03:07:00Z"
+}

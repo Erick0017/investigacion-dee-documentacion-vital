@@ -1,0 +1,72 @@
+{
+  "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_LOAD3",
+  "profile": "LOAD3",
+  "session_id": "FOCAL_LOAD3_e04ced0a59",
+  "original_Q1": {
+    "event": "COMPLETED",
+    "context": {
+      "session_id": "FOCAL_LOAD3_e04ced0a59",
+      "sequence": 57,
+      "observation_id": "obs_856a7ec5adca416c9c2360d965830013",
+      "operation_id": "LOAD3_S1_decision_4ce57decd43242ff",
+      "mode": "LIVE_NATIVE"
+    },
+    "kind": "decision",
+    "result": {
+      "action": "ASK_STATION",
+      "codec": "Q1 +1 -> paid ASK if actual question applies; -1/0 -> SKIP; NULL -> SAFE_WAIT",
+      "nativeTick": 991543,
+      "nativeTicks": 356,
+      "null": false,
+      "reader": "PI10 fixed central q+4",
+      "version": "DEE.RBX01.async_native.INTEGRAL.V3.R01",
+      "evidence": {
+        "native_request_id": "LOAD3_S1_decision_4ce57decd43242ff",
+        "native_phase_sha256": "786d531efb13b99c52c47bb315966e0529fd63a0a806f68261bc3b0f0c694145",
+        "full_evidence": "Official Native queue result and RBX07_NATIVE_INTEGRAL_V3/events.jsonl"
+      }
+    },
+    "elapsed_seconds": 282.10099320000154,
+    "utc": "2026-11-16T22:25:14.952605+00:00"
+  },
+  "failed_Q2_id": "LOAD3_S1_query_sensor_bf13e55d47944c93",
+  "failed_Q2_receipt_sha256": "c6b474deb103204cd507f79b6c2def91d43dce06f3bd4ba05e61de4c97b581dd",
+  "corrected_Q2_id": "LOAD3_S1_query_sensor_bf13e55d47944c93_stockR06",
+  "corrected_Q2_observation": {
+    "observationId": "obs_423e98ccdcd3401eb6865a8a152347a0",
+    "seq": 58,
+    "phase": "ROUTE_CHOICE",
+    "worldTimeMs": 100002,
+    "sampleTimeMs": 100002,
+    "previousActionId": null,
+    "sensors": {
+      "station": 2,
+      "stage": 2,
+      "contact": 2,
+      "inventoryKey": false,
+      "inventoryResource": false,
+      "queryAvailable": true,
+      "stationSignal": 1,
+      "permissionStock": 163,
+      "publicContactCode": 2,
+      "lastFailure": false,
+      "numberAPresent": true,
+      "codeBPresent": false,
+      "numberAVersion": 1,
+      "codeBCurrent": false,
+      "goalDelivery": true
+    }
+  },
+  "sequence": 58,
+  "completed_new": 0,
+  "permission_stock": 163,
+  "transaction": {
+    "from": 164,
+    "to": 163,
+    "cause": "Actual prior Native ASK omitted by host stock accounting",
+    "retrospective_timing_not_learning": true
+  },
+  "no_Q1_replay": true,
+  "first_new_phase": "query_sensor",
+  "Native_requests_by_environment_correction": 0
+}

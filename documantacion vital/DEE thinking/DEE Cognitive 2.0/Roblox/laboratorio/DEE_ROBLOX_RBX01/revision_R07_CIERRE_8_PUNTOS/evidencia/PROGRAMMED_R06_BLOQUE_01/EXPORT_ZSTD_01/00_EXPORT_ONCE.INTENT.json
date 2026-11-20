@@ -1,0 +1,16 @@
+{
+  "logical_call_id": "CALL_44439c9ba6b64e4b9d7296cd5be87274",
+  "rpc_id": 48,
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "522e9816-883b-4c8b-88cd-04de5607b901",
+    "datamodel_type": "Server",
+    "code": "local enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal raw=(function()\nlocal h=game:GetService(\"HttpService\");return h:JSONEncode(require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).checkpoint(\"R07_VERIFY_RESTORE_4f1d13866888\"))\nend)();assert(type(raw)==\"string\"and #raw>0 and #raw<5000000,\"RAW_BOUND\");assert(not ss:FindFirstChild(\"R07Zstd_EXPORT_7c2cdeeb5a284176\"),\"EXISTING_TRANSFER_PRESERVED\");local compressed=enc:CompressBuffer(buffer.fromstring(raw),Enum.CompressionAlgorithm.Zstd,3);assert(buffer.len(compressed)>0 and #raw<=buffer.len(compressed)*1024,\"RATIO_BOUND\");local encoded=buffer.tostring(enc:Base64Encode(compressed));local f=Instance.new(\"Folder\");f.Name=\"R07Zstd_EXPORT_7c2cdeeb5a284176\";f:SetAttribute(\"Schema\",\"DEE.R07.ZstdFrozenBytes.R01\");for i=1,#encoded,4664 do local v=Instance.new(\"StringValue\");v.Name=string.format(\"c%04d\",math.floor((i-1)/4664));v.Value=encoded:sub(i,i+4663);v.Parent=f end;f:SetAttribute(\"Complete\",true);f.Parent=ss;return{schema=\"DEE.R07.ZstdFrozenBytes.R01\",folder=f.Name,rawBytes=#raw,rawSha256=hash(raw),compressedBytes=buffer.len(compressed),compressedSha256=hash(buffer.tostring(compressed)),base64Chars=#encoded,chunkCount=math.ceil(#encoded/4664),algorithm=\"Zstd\",level=3}"
+  },
+  "read_only": false,
+  "attempt": 1,
+  "utc": "2026-11-16T23:20:40.743970+00:00",
+  "session_id": "MCP_SESSION_3ba24629baf349f094e74d93a8795b03",
+  "transport_epoch": 1,
+  "no_automatic_retry": true
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "128afc04-b4b9-4a87-994c-a7cd211e1d46",
+    "datamodel_type": "Server",
+    "code": "local function r06TypedValue()\nlocal p=game:GetService(\"ServerScriptService\").DEEConnector_R07;local API=require(p.Main);local a=API.lookupRuntime(\"R07_NATIVE_PILOT\",\"map_b\"):get(\"PILOT\");local H=game:GetService(\"HttpService\");a:bindSession(H:JSONDecode(\"{\\\"sessionId\\\":\\\"R07_NATIVE_PILOT_849dbde0dd1d4911a572\\\",\\\"lifeId\\\":\\\"ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_PILOT\\\",\\\"nativeTick\\\":991187}\"));return a:observe(\"QUERY_CHOICE\")\nend\nreturn game:GetService(\"HttpService\"):JSONEncode(r06TypedValue())"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 7,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"observationId\":\"obs_f26c0f24-d8f1-4dfe-887e-a3af21eb4402\",\"protocol\":\"DEE.RBX.Connector.R01\",\"worldTimeMs\":0,\"sessionId\":\"R07_NATIVE_PILOT_849dbde0dd1d4911a572\",\"sampleTimeMs\":0,\"sensors\":{\"numberAPresent\":true,\"stationSignal\":-1,\"lastFailure\":false,\"numberAVersion\":5,\"inventoryKey\":true,\"inventoryResource\":false,\"queryAvailable\":true,\"contact\":0,\"publicContactCode\":0,\"station\":0,\"permissionStock\":164,\"codeBCurrent\":false,\"codeBPresent\":false,\"stage\":1,\"goalDelivery\":true},\"phase\":\"QUERY_CHOICE\",\"namespace\":\"R07_NATIVE_PILOT/map_b/PILOT\",\"seq\":1,\"opportunity\":1}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_8aa23be6d28748e4a04d94a99e671e4d",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_9962e38ee1af4bc8be3b25e7ce53d77b",
+  "attempt": 1,
+  "elapsed_seconds": 0.5228800999757368,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 19928
+}

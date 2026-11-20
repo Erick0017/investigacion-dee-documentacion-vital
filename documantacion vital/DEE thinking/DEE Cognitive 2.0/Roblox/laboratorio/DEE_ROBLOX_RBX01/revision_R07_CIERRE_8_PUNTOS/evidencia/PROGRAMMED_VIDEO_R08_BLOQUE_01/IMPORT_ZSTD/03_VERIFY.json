@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "55088438-427a-4b14-b6d1-3af85bad9dca",
+    "datamodel_type": "Server",
+    "code": "local enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal f=assert(ss:FindFirstChild(\"R07Zstd_IMPORT_9aefbe35685e4421\"),\"COMPRESSED_FOLDER_REQUIRED\")\nassert(f:GetAttribute(\"Schema\")==\"DEE.R07.ZstdFrozenBytes.R01\" and f:GetAttribute(\"Complete\")==true,\"COMPRESSED_PACKET_INCOMPLETE\")\nlocal pieces={};for i=0,39-1 do local v=assert(f:FindFirstChild(string.format(\"c%04d\",i)));pieces[#pieces+1]=v.Value end\nlocal encoded=table.concat(pieces);assert(#encoded==178428,\"BASE64_LENGTH\")\nlocal compressed=enc:Base64Decode(buffer.fromstring(encoded));assert(buffer.len(compressed)==133821 and hash(buffer.tostring(compressed))==\"07996bce39aef3ba0131295762343b4531512e2d4197dbabbd20ed568c40b187\",\"COMPRESSED_INTEGRITY\")\nlocal size=enc:GetDecompressedBufferSize(compressed,Enum.CompressionAlgorithm.Zstd);assert(size==1395497 and size<5000000 and size<=133821*1024,\"DECOMPRESSION_BOUND\")\nlocal raw=buffer.tostring(enc:DecompressBuffer(compressed,Enum.CompressionAlgorithm.Zstd));assert(#raw==1395497 and hash(raw)==\"c29d6c8f36511a78a2ffbd649df6de6cf1aa3a9d9e4c71392d70ec383388458c\",\"RAW_INTEGRITY\")\nreturn{rawBytes=#raw,rawSha256=hash(raw),stageOnly=true,NativeTicks=0}"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 46,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"stageOnly\":true,\"rawSha256\":\"c29d6c8f36511a78a2ffbd649df6de6cf1aa3a9d9e4c71392d70ec383388458c\",\"rawBytes\":1395497,\"NativeTicks\":0}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_c6edf04ad81c4083a352314dc8c7c9a3",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_10e3ce494dff4e4e9f548b82bb9dc25b",
+  "attempt": 1,
+  "elapsed_seconds": 0.24170130002312362,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 7768
+}

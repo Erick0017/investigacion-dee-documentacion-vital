@@ -1,0 +1,11 @@
+Ejecutar desde revision_R07_CIERRE_8_PUNTOS. Todas son operaciones documentales; no Native/Studio/modelo.
+1) Privacidad incremental (Root revisa candidatos/binarios):
+python -I -B analisis/revisar_privacidad_incremental_R08.py --plan control/PLAN_FINAL_R07_PREPRIVACIDAD.json --output analisis/REVISION_PRIVACIDAD_FINAL_R07.json
+2) Freeze de bytes seleccionados:
+python -I -B control/expediente_compacto_v3_R04.py freeze --plan control/PLAN_FINAL_R07_PREPRIVACIDAD.json --output control/PLAN_FINAL_R07_CONGELADO.json
+3) Tras revisar prueba critica7889... y privacidad, Root crea una copia nueva PLAN_FINAL_R07_APROBADO.json con finalized:true; no altera fuentes.
+4) Build, unico ZIP nuevo:
+python -I -B control/expediente_compacto_v3_R04.py build --plan control/PLAN_FINAL_R07_APROBADO.json --output ../entrega/DEE_ROBLOX_CIERRE8_R07_2026_11_17_ANALISIS.zip
+5) Verify + extraccion NUEVA:
+python -I -B control/expediente_compacto_v3_R04.py verify --zip ../entrega/DEE_ROBLOX_CIERRE8_R07_2026_11_17_ANALISIS.zip --extract ../entrega/VERIFICACION_LIMPIA_CIERRE8_R07_2026_11_17
+Luego ejecutar alli las5recetas de00_LEER_PRIMERO.txt usando salidas nuevas. No reproduce Native. QA/privacidad final puede quedar externa con SHA; el ZIPincluyeplan cientifico+recetas+manifiesto completo. No sobrescribir archivos existentes.

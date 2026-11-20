@@ -1,0 +1,42 @@
+Cambio prospectivo de formato KV del comparador, 17 noviembre 2026 UTC
+
+Preparado, no ejecutado por este agente. Root conserva las inferencias y cierres.
+Servidor nuevo: comparadores/servidor_modelo_v3_R09.py
+SHA-256: 3170cb0ff42afe9908221c54a5fae3c009c0fd7d240fdbe81af97fc6fc6c6c6c
+Original R08 conservado. Log, stop, tmp, stdout y stderr R09 separados.
+
+Solicitud al proceso Ollama propio: OLLAMA_KV_CACHE_TYPE=q8_0 y
+OLLAMA_FLASH_ATTENTION=1. No se modificó el entorno global del usuario.
+Job 6 GiB, contexto8192, límites de llamadas160 y guardas RAM3.5/1 GiB intactos.
+No se cambiaron pesos/digest, prompts, cliente/backend R09, seed404271,
+temperatura0, cuatro hilos, mensajes, caché de decisiones ni historia pública.
+No se reinicia quota. Los episodios29 y30 reales permanecen en fase f16.
+
+La FAQ oficial describe un ahorro aproximado de la mitad de la caché KV con
+q8_0. No implica reducir a la mitad toda la memoria del proceso. La precisión
+puede alterar respuestas; no se presupone equivalencia binaria ni se llama
+adaptación aprendida al efecto del cambio técnico de formato.
+
+READY del servidor/version/tags sólo prueba disponibilidad, no aplicación KV.
+Root debe confirmar en el primer log de carga FlashAttention efectiva y tipos
+K/V q8_0. La versión0.24 comprueba modelo/backend y puede rechazar o no aplicar
+la configuración. Si hay incompatibilidad/fallback, preservar el error y parar
+la fase solicitada; no forzar soporte ni bajar guardas. Medir ahorro real.
+
+Continuación preparada: control/runner_comparador_v3_R12_REANUDAR30.py,
+misma historia CONVENTIONAL_AI_R09_HISTORIA_01 y SID R07_CONVENTIONAL_AI_R09_01.
+World cerrado30 SHA-256:
+2fda6fa8b8226a76aa6ea5a40093c8d1942cebe11f71449204cd8a0282d9b526
+Cursor31, secuencia60; nunca repetir29/30. Backend valida sus cuatro pins.
+Última admisión17:00 UTC, cierre18:00 UTC; no se renuevan aquí.
+R12 conserva comparador World completo original; sólo repone cuatro valores
+CanCollide guardados, si son la única diferencia, y exige estabilidad1s.
+
+Fuentes primarias consultadas mediante navegador, sin solicitudes al modelo:
+https://docs.ollama.com/faq#how-can-i-enable-flash-attention
+https://docs.ollama.com/faq#how-can-i-set-the-quantization-type-for-the-k-v-cache
+https://github.com/ollama/ollama/blob/v0.24.0/envconfig/config.go
+https://github.com/ollama/ollama/blob/v0.24.0/llm/server.go
+
+Preparación: AST del servidor válido; R12 siete pruebas puras PASS y --help exit0.
+Ejecuciones Native/MCP/modelo/servidor realizadas por este agente:0.

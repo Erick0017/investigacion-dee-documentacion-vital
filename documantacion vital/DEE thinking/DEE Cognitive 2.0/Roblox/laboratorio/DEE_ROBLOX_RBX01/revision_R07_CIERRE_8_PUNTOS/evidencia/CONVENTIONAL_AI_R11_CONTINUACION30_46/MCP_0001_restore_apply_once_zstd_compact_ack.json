@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "337e7aad-8473-4bd4-8401-4ae325619c43",
+    "datamodel_type": "Server",
+    "code": "local r06Value=(function()\nlocal r07Ack=(function()\nlocal enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal f=assert(ss:FindFirstChild(\"R07Zstd_IMPORT_3871ce7aa5084bb6\"),\"COMPRESSED_FOLDER_REQUIRED\")\nassert(f:GetAttribute(\"Schema\")==\"DEE.R07.ZstdFrozenBytes.R01\" and f:GetAttribute(\"Complete\")==true,\"COMPRESSED_PACKET_INCOMPLETE\")\nlocal pieces={};for i=0,43-1 do local v=assert(f:FindFirstChild(string.format(\"c%04d\",i)));pieces[#pieces+1]=v.Value end\nlocal encoded=table.concat(pieces);assert(#encoded==200420,\"BASE64_LENGTH\")\nlocal compressed=enc:Base64Decode(buffer.fromstring(encoded));assert(buffer.len(compressed)==150313 and hash(buffer.tostring(compressed))==\"3be6cb1b2fdae5b225720b858657d58e5a4c5585072182000c209fc693d5146a\",\"COMPRESSED_INTEGRITY\")\nlocal size=enc:GetDecompressedBufferSize(compressed,Enum.CompressionAlgorithm.Zstd);assert(size==1486889 and size<5000000 and size<=150313*1024,\"DECOMPRESSION_BOUND\")\nlocal raw=buffer.tostring(enc:DecompressBuffer(compressed,Enum.CompressionAlgorithm.Zstd));assert(#raw==1486889 and hash(raw)==\"178b341c42898b4106c9df508367c9a11a38529f25c32882428cd9b4b5534720\",\"RAW_INTEGRITY\")\nlocal h=game:GetService(\"HttpService\");local state=h:JSONDecode(raw);local expected=h:JSONDecode(\"{\\\"world_id\\\":\\\"RBX01_CIERRE8_R07\\\",\\\"scenario_sha256\\\":\\\"c2240b0026baafc0e94cbfa8838af0ef52a5fa4bb966dc32aa35f99b666f9883\\\",\\\"native_life_id\\\":\\\"R07_CONVENTIONAL_AI\\\",\\\"native_tick\\\":0,\\\"checkpoint_id\\\":\\\"R07_PAIR_R07_CONVENTIONAL_AI_R09_01_C29\\\",\\\"checkpoint_sha256\\\":\\\"13d52b575e0015a158d13c29751945976a8a5d3eb028542763f5008670d4221e\\\",\\\"owner_closed\\\":true,\\\"bridge_quiescent\\\":true}\");local identity=h:JSONDecode(\"{\\\"life\\\":\\\"R07_CONVENTIONAL_AI\\\",\\\"session\\\":\\\"R07_CONVENTIONAL_AI_R09_01\\\",\\\"participant\\\":\\\"CONVENTIONAL_AI\\\",\\\"diagnostic\\\":false}\");return require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).initialize(state,expected,identity)\nend)();return {restored={checkpoint_id=r07Ack.restored.checkpoint_id},S=r07Ack.S,phase=r07Ack.phase,original_events=r07Ack.original_events,current_events=r07Ack.current_events,new_Native_ticks=r07Ack.new_Native_ticks}\nend)();return game:GetService(\"HttpService\"):JSONEncode(r06Value)"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 51,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"restored\":{\"checkpoint_id\":\"R07_PAIR_R07_CONVENTIONAL_AI_R09_01_C29\"},\"S\":{\"numberA\":11,\"resourceUnits\":9,\"inventoryKey\":true,\"inventoryResource\":false,\"worldTime\":296.04709711298349,\"previousActionId\":\"R07_R07_CONVENTIONAL_AI_R09_01_29_QUERY_SENSOR\",\"observation\":\"ROUTE_CHOICE / zona 2 / panel 1\",\"round\":4,\"lifeId\":\"R07_CONVENTIONAL_AI\",\"sessionId\":\"R07_CONVENTIONAL_AI_R09_01\",\"permissionStock\":163,\"codeBPresent\":false,\"cycle\":29,\"functionCalls\":15,\"delivered\":3,\"codeRejected\":1,\"station\":3,\"nativeTick\":0,\"numberAPresent\":true,\"action\":\"EXIT_1\",\"lastFailure\":false,\"reason\":\"FRONTERA COMPLETA\",\"contact\":0,\"completedRouteOpportunities\":29,\"keyCount\":4,\"mode\":\"WAIT\",\"moves\":29,\"publicContactCode\":2,\"queries\":29,\"reserveActive\":false,\"stationSignal\":-1,\"phase\":2,\"numberAVersion\":5,\"tollSpent\":8,\"resourceCount\":3,\"roundOperands\":{\"aLeft\":8,\"aRight\":3,\"bRight\":2,\"variant\":\"RESERVE_B\"},\"consequence\":\"MOVED / consulta -0 / peaje -0\",\"functionNoResult\":1,\"seq\":58,\"motorContactCertain\":true,\"completedCycles\":29,\"collisions\":0,\"stage\":1,\"latency\":44.57584080000015},\"phase\":\"BOUNDARY\",\"new_Native_ticks\":0,\"original_events\":339,\"current_events\":342}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_e8fb3c3b88a140d3816412e80415937f",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_4ccf2e9d01a6453ea97fce5719acf795",
+  "attempt": 1,
+  "elapsed_seconds": 1.7426874000229873,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 12640
+}

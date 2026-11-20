@@ -1,0 +1,16 @@
+{
+  "logical_call_id": "CALL_dd7a96fbc5e9432aa6de07fa194197dc",
+  "rpc_id": 50,
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "337e7aad-8473-4bd4-8401-4ae325619c43",
+    "datamodel_type": "Server",
+    "code": "local enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal f=assert(ss:FindFirstChild(\"R07Zstd_IMPORT_3871ce7aa5084bb6\"),\"COMPRESSED_FOLDER_REQUIRED\")\nassert(f:GetAttribute(\"Schema\")==\"DEE.R07.ZstdFrozenBytes.R01\" and f:GetAttribute(\"Complete\")==true,\"COMPRESSED_PACKET_INCOMPLETE\")\nlocal pieces={};for i=0,43-1 do local v=assert(f:FindFirstChild(string.format(\"c%04d\",i)));pieces[#pieces+1]=v.Value end\nlocal encoded=table.concat(pieces);assert(#encoded==200420,\"BASE64_LENGTH\")\nlocal compressed=enc:Base64Decode(buffer.fromstring(encoded));assert(buffer.len(compressed)==150313 and hash(buffer.tostring(compressed))==\"3be6cb1b2fdae5b225720b858657d58e5a4c5585072182000c209fc693d5146a\",\"COMPRESSED_INTEGRITY\")\nlocal size=enc:GetDecompressedBufferSize(compressed,Enum.CompressionAlgorithm.Zstd);assert(size==1486889 and size<5000000 and size<=150313*1024,\"DECOMPRESSION_BOUND\")\nlocal raw=buffer.tostring(enc:DecompressBuffer(compressed,Enum.CompressionAlgorithm.Zstd));assert(#raw==1486889 and hash(raw)==\"178b341c42898b4106c9df508367c9a11a38529f25c32882428cd9b4b5534720\",\"RAW_INTEGRITY\")\nreturn{rawBytes=#raw,rawSha256=hash(raw),stageOnly=true,NativeTicks=0}"
+  },
+  "read_only": true,
+  "attempt": 1,
+  "utc": "2026-11-17T16:14:30.816578+00:00",
+  "session_id": "MCP_SESSION_e8fb3c3b88a140d3816412e80415937f",
+  "transport_epoch": 1,
+  "no_automatic_retry": true
+}

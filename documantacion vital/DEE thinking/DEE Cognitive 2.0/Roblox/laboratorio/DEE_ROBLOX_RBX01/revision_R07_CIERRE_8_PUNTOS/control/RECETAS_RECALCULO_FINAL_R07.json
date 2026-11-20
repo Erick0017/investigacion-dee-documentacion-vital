@@ -1,0 +1,58 @@
+{
+  "schema": "DEE.R07.final_portable_recipes.v1",
+  "scope": "Offline stdlib only; no Native/MCP/Studio/model/SQLite/network. Fresh output directories required.",
+  "commands": [
+    [
+      "analisis/RECALCULO_CIERRE8_R07_R02.py",
+      "--inputs",
+      "analisis/INPUTS_MODELO_DOS_PARTES_FINAL_DERIVADOS.json",
+      "--package-root",
+      ".",
+      "--output",
+      "RECALC_MODELO_NUEVO"
+    ],
+    [
+      "analisis/verificar_snapshot_modelo_final.py",
+      "--inputs",
+      "analisis/INPUTS_AUDITORIA_SNAPSHOT_MODELO_FINAL.json",
+      "--source-root",
+      ".",
+      "--package-root",
+      ".",
+      "--output",
+      "RECALC_SNAPSHOT_NUEVO"
+    ],
+    [
+      "analisis/RECALCULO_PROGRAM_TECNICO_CERRADO_R10_R02.py",
+      "--inputs",
+      "analisis/INPUTS_PROGRAM_TECNICO_CERRADO_R10_R02.json",
+      "--source-root",
+      ".",
+      "--package-root",
+      ".",
+      "--output",
+      "RECALC_PROGRAM_NUEVO"
+    ],
+    [
+      "analisis/RECALCULO_MAIN_CTRL_R07_R02.py",
+      "--inputs",
+      "analisis/INPUTS_P02_MAIN6_CTRL6_REUSO_R02.json",
+      "--package-root",
+      ".",
+      "--output",
+      "RECALC_P02_NUEVO"
+    ],
+    [
+      "analisis/RECALCULO_CONTINUACION_35_46_R07_R01.py",
+      "--inputs",
+      "analisis/INPUTS_CONTINUACION_35_46_R07_R01.json",
+      "--package-root",
+      ".",
+      "--output",
+      "RECALC_MAIN12_NUEVO"
+    ]
+  ],
+  "Native_reproduction": false,
+  "source_resolution": "Manifest.source aliases to archive files only. Full omitted local Worlds/Native states are never consulted by these five commands.",
+  "worlds": "Model29/30 and technicalProgram analytical derivatives are faithful exact fields, not restorable full Worlds. Old Program World retained."
+}

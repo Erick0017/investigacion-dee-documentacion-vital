@@ -1,0 +1,37 @@
+CARGA R07: UN LOTE DE TRES VIDAS, TRES EPISODIOS CADA UNA
+
+Preparado y probado sólo con cinco fixtures stdlib; todavía NO es un resultado Native.
+Root es el único ejecutor material. No ejecutar para repetir un lote ya comenzado.
+
+Raíces: native/LOAD1, native/LOAD2, native/LOAD3. Todas descienden del PAR28
+completo T991187/global28/seq56; conservan R06, con nueva oferta R07 de tres
+episodios. No son sujetos independientes por compartir el mismo prefijo.
+
+Antes: Root debe completar import0_v3.py en cada raíz y cerrar el bloque Main.
+No copiar/importar archivos, usar modelo ni renderizar durante el lote medido.
+Un único ledger global160000/6, owner512MiB, thread1, RAW10000 intactos.
+
+Preflight que no abre Native (ejemplo desde la raíz R07):
+python -I -B load/ejecutar_carga3_v3.py --stage 1 --load-root native --ledger control/LEDGER_V3.json --baseline-close-proof evidencia/MAIN_BLOQUE_01/RESULTADO.json
+
+Ejecución Root, UNA VEZ, en salida nueva:
+python -I -B load/ejecutar_carga3_v3.py --execute-root-only --stage 1 --load-root native --ledger control/LEDGER_V3.json --baseline-close-proof evidencia/MAIN_BLOQUE_01/RESULTADO.json --output load/evidencia/CARGA3_R01
+
+El supervisor sólo abre las tres vidas declaradas y manda GO cuando existen
+tres READY con PID/life diferentes. Inicio antes18:00UTC, GO antes19:00UTC,
+último episodio20:00UTC, cierre21:07UTC del16nov2026. No reduce límites ni mata
+owners por un retraso. Un fallo conserva pendientes y estados, sin reintento.
+
+Es una carga focal Native: selectores reales, lecciones observadas diferentes,
+operación A real, y B alimentada por el entero A realmente producido.
+La oferta de funciones y los sensores son preparación externa explícita.
+No cuenta movimiento Roblox, recursos nuevos, planificación ni NPC simultáneos.
+NULL se registra y retorna; una entrada numérica ausente no se sustituye por0.
+
+Después, sólo si los tres owners cerraron sin futuro ambiguo:
+python -I -B load/recalcular_concurrencia_v3.py --workers load/evidencia/CARGA3_R01/LOAD1 load/evidencia/CARGA3_R01/LOAD2 load/evidencia/CARGA3_R01/LOAD3 --output load/evidencia/CONCURRENCIA_RECALCULADA_R01.json
+
+El recálculo distingue vida de owner del intervalo de llamadas materiales:
+intersecta INTENT→COMPLETED de los tres adaptadores. No afirma simultaneidad
+de instrucciones CPU. La comparación de lecciones y resultados no fusiona vidas.
+No borrar controles ni repetir automáticamente por no haber obtenido tres éxitos.

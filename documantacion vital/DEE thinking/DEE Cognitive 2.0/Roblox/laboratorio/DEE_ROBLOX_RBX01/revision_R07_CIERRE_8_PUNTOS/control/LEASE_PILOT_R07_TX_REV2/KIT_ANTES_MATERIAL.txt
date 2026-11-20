@@ -1,0 +1,93 @@
+DEE CONNECTOR R07 — KIT PILOTO PREPARADO
+Corte de preparación: 16 de noviembre de 2026.
+Estado inicial: preparado; no validación externa. La ejecución material que haga
+Root deberá acreditarse con sus propios registros, sin convertir esta guía en
+una certificación anticipada.
+
+QUÉ SE REUTILIZA
+Main y BackendBinding conservan íntegros los Sources del conector R06 probado.
+Se conservan identificadores, namespace, envío JSON, ACK de acciones/herramientas,
+recibos, exclusión de escritor y captura de frontera. La entrega anterior y sus
+resultados adversos siguen en revision_R06_INTEGRAL_V2, sin modificar.
+
+QUÉ CAMBIA EN ESTE PILOTO
+El paquete exportable está en exportado/DEEConnector_R07.rbxmx.
+La escena separada es NATIVE_LIMPIO_R07/DEEConnector_PILOTO_OTRO_MAPA_R07.rbxlx.
+El inicio está en (20,3,20); los puertos fijos llegan a (-12,3,48) o (55,3,-12).
+Hay suelo continuo y obstáculos distintos del mapa de la misión principal.
+Se reutiliza MotorPathfinding_R07: Humanoid recorre waypoints al único destino
+elegido; no escoge otra estación ni calcula una ruta estratégica o numérica.
+Sólo al llegar se pone el dispositivo fijo en estado0/1 según el puerto elegido.
+Es una correspondencia preparada de actuador. No prueba descubrir ese dispositivo,
+adquirir una estrategia, obtener un recurso, dominar seis destinos o aprender un mapa.
+
+CONTINUIDAD Y DATOS
+El PILOT debe ser un clon completo e independiente del PAR28 Native N67 T991187,
+preparado/importado con las herramientas v3 y su Scope nuevo; no T0 ni RAW/clocks
+copiados parcialmente. Los prefijos comparten historia; no son individuos independientes.
+La nueva pequeña escena es un entorno preparado, no una restauración del mapa Main.
+Sus sensores preservan los hechos públicos del World fuente: stock164, key=true,
+A presente, B ausente, versiónA5. Esta versión proviene del JSON fuente comprobado.
+La escena pequeña no consulta, modifica ni promociona el principal de DEE.
+Los calendarios y el lector Native permanecen los del actor v3. Native seq se
+obtiene como seq local del conector +56. Los IDs/SID son nuevos y explícitos.
+Cada observación, acción, ACK y retorno conserva su correlación exacta.
+
+USO LOCAL POR ROOT
+1. Preparar e importar0 native/PILOT mediante preparador/importador oficiales v3.
+   Debe quedar T991187, causal_prefix_equal/physical_equal y0ticks nuevos.
+2. Abrir la escena PILOTO en Studio, Play, bajo la cuenta autorizada.
+3. Desde la raíz revision_R07_CIERRE_8_PUNTOS ejecutar primero sólo preflight:
+   python prototipo/NATIVE_LIMPIO_R07/ejecutar_piloto_R07_preparado_R02.py
+     --destination native/PILOT --ledger <LEDGER_GLOBAL_V3_REAL>
+   El preflight sólo lee integridad/identidad/importación/counters; no abre Native/SDK.
+4. Para UNA oportunidad nueva, añadir explícitamente:
+     --execute-root-only --studio-id <ID_REAL>
+     --expected-place DEEConnector_PILOTO_OTRO_MAPA_R07.rbxlx
+     --output evidencia/PILOTO_OTRO_MAPA_<ID_NUEVO>
+   El driver instala el adaptador preparado, abre un propietario v3, transmite
+   las decisiones reales, exige ACK exactos, devuelve consecuencias y guarda/cierra.
+   El Scope permite como máximo3; este driver fresco ejecuta únicamente1.
+5. Conservar RESULTADO_LIVE.json, EVENTS.jsonl, checkpoint World y servicio Native
+   cerrado. Un MP4 o el conector por sí solos no son respaldo del ente.
+
+GUARDAS Y FALLOS
+El driver R02 verifica Sources efectivos LF de Main, BackendBinding,
+LiveAdapters_R07 y MotorPathfinding_R07 antes de abrir Native. Rechaza PILOT
+avanzado, journal previo, IDs/directorios usados, importación incoherente,
+ledger con intent pendiente, fechas vencidas o RAM insuficiente. No reintenta.
+No se borran recibos/colas ni se reproduce una Q1 ya hecha para rescatar un vídeo.
+Si un fallo ocurre tras una decisión, conservar el punto exacto y conciliar
+recibos/cursor mediante revisión específica. Este kit NO ofrece un reanudador
+genérico probado de operaciones inciertas y no promete recuperación cognitiva.
+Último inicio de episodio:20:00UTC; cierre técnico:21:07UTC16nov2026.
+Estos límites pertenecen a este ensayo. Otra sesión requiere nuevo contrato
+prospectivo explícito; cambiar la fecha no es permiso implícito para actuar.
+La aplicación nara B queda fuera de este pequeño piloto por defecto. Un eventual
+diagnóstico deberá usar una copia y A11/bRight2 reales, declararse intervención
+del operador y no puntuar como misión libre de Main.
+
+ADAPTACIÓN POR OTRO DESARROLLADOR
+Importar el .rbxmx en ServerScriptService. Main admite MakeAdapters(model,cfg):
+body.execute(action), sensors.observe(phase), world.capture()/restore(saved).
+Ejemplo real preparado: fuentes/INSTALAR_PILOTO_R07_BASE.luau y el instalador
+sellado NATIVE_LIMPIO_R07/INSTALAR_PILOTO_R07.luau. Para otro mapa, cambiar sólo
+geometría/actuadores/sensores declarados, mantener límites/identidad/ACK, y declarar
+qué correspondencias prepara el anfitrión. Un nuevo mapa exige probar su motor;
+un XML legible no acredita locomoción. No conectar shell libre, credenciales ni red.
+Los módulos históricos MinimalAdapters/ExampleConfig conservados en el paquete
+no son el motor de este piloto; Main usa LiveAdapters_R07 mediante MakeAdapters.
+No se incluye aquí el kernel/WHL completo ni todos los estados. Requisitos Native
+grandes siguen en el almacén estable local identificado por el expediente.
+
+CINCO PREGUNTAS PARA UNA VALIDACIÓN FUTURA CON DESARROLLADORES
+1. ¿Pudo importar el paquete y localizar claramente el adaptador de su mapa?
+2. ¿La documentación permite distinguir elección Native, traducción y motor físico?
+3. ¿Puede vincular una observación, decisión, acción y ACK usando sus IDs sin el chat?
+4. ¿Puede distinguir una espera elegida, NULL, rechazo y fallo de Pathfinding?
+5. ¿Qué contrato, ejemplo o herramienta le faltaría para probarlo en su propio mapa
+   sin programar la estrategia del ente ni acceder a datos privados?
+
+No se contactó ni evaluó a desarrolladores externos. Respuestas: PENDIENTES.
+Pruebas offline y preparación del paquete se reportan separadas de cualquier
+ejecución real posterior de Root y de una futura validación externa.

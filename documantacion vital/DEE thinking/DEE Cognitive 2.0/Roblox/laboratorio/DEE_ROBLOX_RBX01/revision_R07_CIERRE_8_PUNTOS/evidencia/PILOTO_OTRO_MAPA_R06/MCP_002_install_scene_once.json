@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "128afc04-b4b9-4a87-994c-a7cd211e1d46",
+    "datamodel_type": "Server",
+    "code": "local function r06TypedValue()\n-- Apparatus preparation only. No owner, Native call, action or model is opened.\nlocal package=assert(game.ServerScriptService:FindFirstChild(\"DEEConnector_R07\"))\nlocal API=require(package.Main);local adapters=require(package.LiveAdapters_R07)\nassert(not workspace:FindFirstChild(\"DEE_PILOT_MAP_B_R07\"),\"R07_PILOT_EXISTING_SCENE_PRESERVED\")\nlocal world=Instance.new(\"Folder\");world.Name=\"DEE_PILOT_MAP_B_R07\";world.Parent=workspace\nlocal function part(name,pos,size,collide)\n local p=Instance.new(\"Part\");p.Name=name;p.Anchored=true;p.CanCollide=collide;p.CanQuery=true\n p.Position=pos;p.Size=size;p.Parent=world;return p\nend\nlocal points={[0]=Vector3.new(20,3,20),[1]=Vector3.new(-12,3,48),[2]=Vector3.new(55,3,-12)}\nlocal floor=part(\"SueloOtroMapa\",Vector3.new(20,-.5,20),Vector3.new(130,1,130),true)\nfloor.Color=Color3.fromRGB(45,55,70)\nlocal obstacles=Instance.new(\"Folder\");obstacles.Name=\"ObstaculosFijos\";obstacles.Parent=world\nfor i,row in ipairs({{34,3,4,8,6,12},{0,3,35,6,6,8}})do\n local p=part(\"Obstacle\"..i,Vector3.new(row[1],row[2],row[3]),Vector3.new(row[4],row[5],row[6]),true)\n p.Parent=obstacles;p.Color=Color3.fromRGB(105,115,130)\nend\nlocal panels={}\nfor code,p in pairs(points)do\n local panel=part(\"PanelLocal\"..code,p+Vector3.new(0,2,0),Vector3.new(3,1,1),false)\n panel:SetAttribute(\"Signal\",1);panel:SetAttribute(\"Price0\",0);panel:SetAttribute(\"Price1\",0)\n panel.Color=Color3.fromRGB(80,170,240);panels[code]=panel\n local marker=part(\"PuertoFijo\"..code,p-Vector3.new(0,2.8,0),Vector3.new(7,.2,7),false)\n marker.Color=Color3.fromRGB(80,205,190)\nend\nlocal device=part(\"DispositivoFijo\",Vector3.new(20,3,-28),Vector3.new(5,6,1),false)\ndevice:SetAttribute(\"ActuatorValue\",-1);device.Color=Color3.fromRGB(150,160,175)\nlocal actor=Instance.new(\"Model\");actor.Name=\"NativeAgent_PILOT\";actor.Parent=world\nlocal root=part(\"CoreInicial\",points[0],Vector3.new(2,2,1),false);root.Parent=actor;actor.PrimaryPart=root\nactor:SetAttribute(\"DEE_AgentId\",\"PILOT\");game:GetService(\"CollectionService\"):AddTag(actor,\"DEE_Agent\")\nlocal H=game:GetService(\"HttpService\")\nlocal inherited=H:JSONDecode(\"{\\\"permissionStock\\\":164,\\\"inventoryKey\\\":true,\\\"inventoryResource\\\":false,\\\"numberAPresent\\\":true,\\\"codeBPresent\\\":false,\\\"numberAVersion\\\":5,\\\"codeBCurrent\\\":false}\")\nlocal runtime=API.mount({ExperienceId=\"R07_NATIVE_PILOT\",SceneId=\"map_b\",ScenarioFingerprint=\"4af62518f7288b1b7bc97a575b690b53d502d518ed1c29a3424812856d0dcee4\",\n RegistryRoot=world,Agents={PILOT={Participant=\"DEE\",MaxOpportunities=3,MaxActions=6,AllowTechnicalTest=false}},\n MakeAdapters=function(model)return adapters.new(model,{worldRoot=world,panels=panels,device=device,\n  points=points,inherited=inherited,sourceEnvironment=\"48544f655382bdf97b4930200158e35371d878c29d17c1ce918077aa27cf6930\",\n  motor={WalkSpeed=16,AgentRadius=2,AgentHeight=5,AgentCanJump=false,WaypointSpacing=4,\n   ArrivalRadius=2,WaypointTimeout=8,MaxRecomputes=2,MaxWallSeconds=45}})end})\nruntime:scanTagged()\nreturn{installed=true,namespace=runtime:get(\"PILOT\").namespace,NativeBackendOpened=false,\n NativeTicks=0,newMap=true,initialPublicState=inherited,independentExternalValidation=false}\n\nend\nreturn game:GetService(\"HttpService\"):JSONEncode(r06TypedValue())"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 6,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"installed\":true,\"newMap\":true,\"independentExternalValidation\":false,\"initialPublicState\":{\"codeBPresent\":false,\"numberAPresent\":true,\"codeBCurrent\":false,\"numberAVersion\":5,\"inventoryKey\":true,\"inventoryResource\":false,\"permissionStock\":164},\"NativeBackendOpened\":false,\"namespace\":\"R07_NATIVE_PILOT/map_b/PILOT\",\"NativeTicks\":0}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_8aa23be6d28748e4a04d94a99e671e4d",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_5cd6e0ee3bba4325b09569b18d011ced",
+  "attempt": 1,
+  "elapsed_seconds": 0.09754050002084114,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 19928
+}

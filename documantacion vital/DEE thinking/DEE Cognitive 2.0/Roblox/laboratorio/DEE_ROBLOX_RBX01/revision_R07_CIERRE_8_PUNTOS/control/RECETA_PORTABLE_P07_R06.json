@@ -1,0 +1,31 @@
+{
+  "schema": "DEE.R07.P07.CapturedPortableRecipe.R06",
+  "verification": {
+    "script": "control/verificar_P07_capturado_portable_R06.py",
+    "argv": [
+      "--package-root",
+      ".",
+      "--output",
+      "P07_TESTIGOS_NUEVO.json"
+    ]
+  },
+  "resources": {
+    "recipe": "analisis/RECURSOS_P07_LOAD3_CERRADO_R06/REPETIR_PORTABLE.json",
+    "inputs": "The four delivered PRIMARIOS only; no ledger argument or original-drive access."
+  },
+  "overlap": {
+    "script": "load/recalcular_concurrencia_v3.py",
+    "argv": [
+      "--workers",
+      "load/evidencia/CARGA3_CONTINUACION_R06/LOAD1",
+      "load/evidencia/CARGA3_CONTINUACION_R06/LOAD2",
+      "load/evidencia/CARGA3_CONTINUACION_R06/LOAD3",
+      "--output",
+      "P07_OVERLAP_NUEVO.json"
+    ]
+  },
+  "historical_ledger": "Use the literal global_consumed/global_intents/lives.ledger_world in the delivered closed history. Original ledger path is provenance only and MUST NOT be opened.",
+  "local_audit_not_portable": "load/auditar_historia_cerrada_LOAD_R06.py uses immutable SQLite and original Native roots; preserved as code, not executed by this recipe.",
+  "final_clean_extraction_execution_pending": true,
+  "validated_science_and_resource_calculations_not_repeated": true
+}

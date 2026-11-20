@@ -1,0 +1,120 @@
+--- comparadores/cliente_modelo_v3_R05.py
++++ comparadores/cliente_modelo_v3_R06.py
+@@ -11,7 +11,7 @@
+ MANIFEST_SHA='a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72'
+ ENDPOINT='http://127.0.0.1:11435'
+ ROOT=Path(__file__).resolve().parent
+-STOP_NEW_CALLS=1794880800  #2026-11-17 02:00 UTC; prospective renewal before old cutoff
++STOP_NEW_CALLS=1794902400  #2026-11-17 08:00 UTC; prospective renewal before old cutoff
+ FORBIDDEN_KEYS={'seed','reserved_seed','hidden_state','private_map','optimal_action','expected_answer','target_answer','credentials','api_key','raw','clocks','snapshot'}
+ 
+ def canonical(x):return json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
+--- comparadores/servidor_modelo_v3_R05.py
++++ comparadores/servidor_modelo_v3_R06.py
+@@ -9,8 +9,8 @@
+ ROOT=Path(__file__).resolve().parent
+ PRODUCT=ROOT.parents[3]
+ EXE=Path('C:/Users/Erik/AppData/Local/Programs/Ollama/ollama.exe')
+-HARD_FINISH=1794884820  #2026-11-17 03:07 UTC, prospectively renewed R07 finish.
+-STOP_NEW_CALLS=1794880800  #2026-11-17 02:00 UTC; enforced by R07 R04 client.
++HARD_FINISH=1794906420  #2026-11-17 09:07 UTC, prospectively renewed R07 finish.
++STOP_NEW_CALLS=1794902400  #2026-11-17 08:00 UTC; enforced by R07 R04 client.
+ ENDPOINT='http://127.0.0.1:11435'
+ MEMORY_LIMIT=6*1024**3
+ 
+@@ -38,22 +38,22 @@
+     try:get_json('/api/version')
+     except OSError:pass
+     else:raise ValueError('Existing listener at dedicated endpoint; reconcile before new server')
+-    tmp=ROOT/'tmp_ollama_V3_R05';tmp.mkdir(exist_ok=True)
++    tmp=ROOT/'tmp_ollama_V3_R06';tmp.mkdir(exist_ok=True)
+     settings={'OLLAMA_MODELS':str(ROOT.parent.parent/'revision_R05_C02/comparadores/modelos'),'OLLAMA_HOST':'127.0.0.1:11435',
+       'OLLAMA_NO_CLOUD':'1','OLLAMA_NOPRUNE':'1','OLLAMA_NOHISTORY':'1',
+       'OLLAMA_NUM_PARALLEL':'1','OLLAMA_MAX_LOADED_MODELS':'1','OLLAMA_MAX_QUEUE':'4',
+       'OLLAMA_CONTEXT_LENGTH':'8192','OLLAMA_KEEP_ALIVE':'0','OLLAMA_LOAD_TIMEOUT':'3m',
+       'TEMP':str(tmp),'TMP':str(tmp),'NO_PROXY':'127.0.0.1,localhost'}
+     os.environ.update(settings)  # This owned process and its children only.
+-    log=ROOT/'SERVIDOR_MODELO_V3_R05.jsonl';stop=ROOT/'ollama_V3_R05.stop'
++    log=ROOT/'SERVIDOR_MODELO_V3_R06.jsonl';stop=ROOT/'ollama_V3_R06.stop'
+     if log.exists()or stop.exists():raise ValueError('Preserve prior lifecycle; do not auto-restart/reuse IDs')
+-    stdout=(ROOT/'ollama_isolated_V3_R05_stdout.log').open('x',encoding='utf8')
+-    stderr=(ROOT/'ollama_isolated_V3_R05_stderr.log').open('x',encoding='utf8')
++    stdout=(ROOT/'ollama_isolated_V3_R06_stdout.log').open('x',encoding='utf8')
++    stderr=(ROOT/'ollama_isolated_V3_R06_stderr.log').open('x',encoding='utf8')
+     process=job=None;last=0
+     try:
+         process,job,job_name=pc.spawn_owned([str(EXE),'serve'],cwd=ROOT,stdout=stdout,stderr=stderr,memory_limit=MEMORY_LIMIT)
+         note(log,'STARTED',pid=process.pid,endpoint=ENDPOINT,deadline_epoch=deadline,
+-             lifecycle_version='R07.CIERRE8.MODEL.V3.R05',stop_new_calls_epoch=STOP_NEW_CALLS,no_Native_imports=True,
++             lifecycle_version='R07.CIERRE8.MODEL.V3.R06',stop_new_calls_epoch=STOP_NEW_CALLS,no_Native_imports=True,
+              memory_limit_bytes=MEMORY_LIMIT,job=job_name,host_job_source=str(process_source),
+              host_job_source_sha256=digest(process_source),models=str(ROOT.parent.parent/'revision_R05_C02/comparadores/modelos'),
+              cloud_disabled=True,keys_copied=False,global_environment_changed=False)
+--- comparadores/backends_v3_R05.py
++++ comparadores/backends_v3_R06.py
+@@ -13,7 +13,7 @@
+ import re
+ import threading
+ 
+-from cliente_modelo_v3_R05 import LocalPolicy, MODEL, MANIFEST_SHA, canonical, utc
++from cliente_modelo_v3_R06 import LocalPolicy, MODEL, MANIFEST_SHA, canonical, utc
+ 
+ VERSION = 'DEE.RBX01.references.CIERRE8.V3.R01'
+ ROOT = Path(__file__).resolve().parents[1]
+@@ -157,7 +157,7 @@
+         self._policy = None
+         self._policy_factory = policy_factory
+         pins = {'backend_sha256': file_sha(__file__),
+-                'client_sha256': file_sha(Path(__file__).with_name('cliente_modelo_v3_R05.py')),
++                'client_sha256': file_sha(Path(__file__).with_name('cliente_modelo_v3_R06.py')),
+                 'public_rules_sha256': digest(PUBLIC_RULES),
+                 'model_manifest_sha256': MANIFEST_SHA}
+         try:
+--- control/runner_comparador_v3_R06_RAM.py
++++ control/runner_comparador_v3_R07_RAM.py
+@@ -16,11 +16,11 @@
+ ROOT=Path(__file__).resolve().parents[1]
+ sys.path.insert(0,str(ROOT/'control'))
+ sys.path.insert(0,str(ROOT/'comparadores'))
+-from world_comprimido_v3_R05 import CompressedWorld
+-from backends_v3_R05 import create_backend
+-
+-CUTOFF=1794880800  #2026-11-17 02:00 UTC; no new episode after this instant.
+-HARD_CLOSE=1794884820
++from world_comprimido_v3_R06 import CompressedWorld
++from backends_v3_R06 import create_backend
++
++CUTOFF=1794902400  #2026-11-17 08:00 UTC; no new episode after this instant.
++HARD_CLOSE=1794906420
+ STOP_FREE_BYTES=1024**3
+ MIN_START_FREE_BYTES=3758096384  # Prospective fixed 3.5GiB physical margin, both references.
+ 
+@@ -98,6 +98,16 @@
+         record('HOST_MEMORY_SAMPLE',**{k:v for k,v in value.items()if k!='utc'})
+         return value
+     initial_memory=memory_sample('INITIAL_PRECHECK',state['boundary']['next_opportunity'])
++    # Administrative admission only: wait finitely before opening World/policy.
++    wait_started=time.monotonic();wait_deadline=wait_started+120.0
++    while (initial_memory['available_physical_bytes']<a.min_start_free_bytes and
++           time.monotonic()<wait_deadline and time.time()<CUTOFF):
++        remaining=max(0.0,wait_deadline-time.monotonic())
++        record('HOST_START_RAM_WAIT',remaining_seconds=remaining,minimum_bytes=a.min_start_free_bytes,
++            available_physical_bytes=initial_memory['available_physical_bytes'],no_World_or_policy_opened=True)
++        time.sleep(min(5.0,remaining))
++        initial_memory=memory_sample('INITIAL_PRECHECK_WAIT',state['boundary']['next_opportunity'])
++    need(time.time()<CUTOFF,'Prospective cutoff during finite RAM admission; no World/policy opened')
+     if initial_memory['available_physical_bytes']<a.min_start_free_bytes:
+         rejected={'status':'PRESTART_RESOURCE_REJECTED_NO_WORLD_OR_POLICY_OPENED',
+             'minimum_start_free_bytes':a.min_start_free_bytes,'measurement':initial_memory,
+@@ -119,9 +129,9 @@
+                source_world=str(source),source_environment_native_tick=state['native_tick'],
+                Native_loaded=False,port_overrides=False,host_pathfinding_geometry_only=True,
+                prospective_cutoff_epoch=CUTOFF,source_code_sha256=sha(__file__),
+-               host_RAM_guard={'revision':'R06_RAM','initial_min_free_bytes':a.min_start_free_bytes,
++               host_RAM_guard={'revision':'R07_RAM','initial_min_free_bytes':a.min_start_free_bytes,
+                    'boundary_stop_below_bytes':STOP_FREE_BYTES,'policy_changed':False,
+-                   'daemon_stop_written':False})
++                   'start_RAM_wait_limit_seconds':120,'daemon_stop_written':False})
+         def invoke(kind,payload,obs,cycle):
+             op='R07_'+session+'_'+str(cycle).zfill(2)+'_'+kind.upper()
+             context={'session_id':session,'sequence':obs['seq'],'observation_id':obs['observationId'],

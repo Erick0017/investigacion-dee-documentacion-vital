@@ -1,0 +1,21 @@
+{
+  "schema": "DEE.R07.program_technical.portable_recipe.R10.v1",
+  "script": "analisis/RECALCULO_PROGRAM_TECNICO_CERRADO_R10_R02.py",
+  "inputs": "analisis/INPUTS_PROGRAM_TECNICO_CERRADO_R10_R02.json",
+  "dependency": "analisis/RECALCULO_CIERRE8_R07_R02.py",
+  "args": [
+    "--inputs",
+    "analisis/INPUTS_PROGRAM_TECNICO_CERRADO_R10_R02.json",
+    "--source-root",
+    "<EXTRACTED_ROOT>",
+    "--package-root",
+    "<EXTRACTED_ROOT>",
+    "--output",
+    "<FRESH_OUTPUT>"
+  ],
+  "extraction_helper": "analisis/extraer_world_program_tecnico_R10.py",
+  "extraction_helper_scope": "Optional local recreation requires exact closed full World c791... and its closed RESULTADO. Package passive recalculation requires only the delivered derivative; it does not open the original World or runtime roots.",
+  "proof": "analisis/PROGRAM_TECNICO_CERRADO_RECALCULO_R10_R02/VERIFICACION_PORTABLE_PROGRAM_TECH_R10.json",
+  "not_independent_replication": true,
+  "Native_reproduction": false
+}

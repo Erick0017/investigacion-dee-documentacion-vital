@@ -1,0 +1,87 @@
+DEEConnector R06 — LIVE cerrado y fresh driver R03 preparado
+
+RESULTADO REAL Y SUS FUENTES
+La ejecución completa correspondió a ejecutar_native_limpio_R02.py más
+continuar_pregunta_conector_R03.py, misma vida/sesión y oportunidad.
+Vida: ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V2_CTRL1.
+Padre: C02_DEV completo N67T953651. Final:N67T955215,1564ticks del episodio.
+Q1ASK CLEAN_DECISION_eaf518b09a3d4709bd ya formada a954007 no se recalculó.
+Q2EXIT0 Native movióX0→6, recogió1recurso,0entregas,2ACK; feedback yowner cerrados.
+Módulo: cursor2,episodio1. La continuación sola avanzó1208ticks:22Q2+1186retorno.
+
+Relativo a revision_R06_INTEGRAL_V2:
+evidencia/NATIVE_CONECTOR_CONTINUACION_R03/RESULTADO_CONTINUACION.json
+ SHA256 ded27b9f768ec0af7112d1cb35e914ab9065f85e9faeed994d29b72789abcd6b
+evidencia/NATIVE_CONECTOR_CONTINUACION_R03/WORLD_MODULE_CHECKPOINT.json
+ SHA256 5cafe10ca2c24c12ebb50fdc34def66373808d10d81b705533347768cbae9aea
+analisis/E6_CIERRE_COMPROBADO_R06.json contiene estado/efectos/límites deRoot.
+
+NEGATIVOS CONSERVADOS
+R01 ejecutar_native_limpio.py: guarda CRLFfrenteLF falló antes deNative,0ticks.
+El diagnóstico control/PRUEBA_SALTOS_LINEA_PROTO_R02.json mostró igualdad al
+normalizar sólo saltos delhash. Ningún SourceLua se cambió para coincidir.
+R02 ejecutar_native_limpio_R02.py: guardaLF válida, NativeQ1 completada954007,
+pero deliverAction recibió tablaLua: DEE_MESSAGE_BOUND y0accionesWorld admitidas.
+El resumerR03 comprobó la observación/World/ID original, entregó una vez elpaquete
+Q1comoSTRINGJSON y ejecutó sóloQ2/retorno nuevos, sin restaurar elpadre ni
+repetir una petición Native incierta. No es reparación cognitiva ni otroepisodio.
+
+NUEVO DRIVER, PREPARADO_NO_REPRODUCIDO_FULL
+Archivo: ejecutar_native_limpio_R03_preparado.py, R02con guardaLF y argumento
+rawJSONstring de deliverAction. R01/R02 y resumer exactos permanecen preservados.
+No cambióMain/BackendBinding, LiveAdapters_R01, .rbxmx o .rbxlx.
+El episodio material acreditado antes NO es una ejecución fresh completa deR03.
+
+Prueba segura offline desde raízR06:
+python -I -B prototipo/NATIVE_LIMPIO_R01/test_driver_R03_preparado_offline.py
+
+7fixtures AST/API/string/XML pasaron. Compilan sólo construcción dewire pura,
+MCPdoble inerte, guarda detick comoexpresión ylectura deXML/manifest. Comprueban
+STRINGJSON,IDs/ACK,0/NULL, acciónajena, LF/CRLF, tipadoarrays y953651/955215.
+No llaman preflight real, SDK, Native, Studio ni modelo. La prueba previa
+ test_live_offline.py mantiene5fixtures deABI, no un replay cognitivo.
+
+API Y SERIALIZACIÓN
+Main.Agent:deliverAction(raw) exige type(raw)=="string" y máximo65536bytes;
+luego hace JSONDecode interno. Correcto:
+ local raw=HttpService:JSONEncode(paqueteRealConIDs)
+ local ack=agent:deliverAction(raw)
+Incorrecto: agent:deliverAction(HttpService:JSONDecode(raw)).
+Otros métodos bindSession/completeFeedback/capture conservan contrato de tabla.
+Resultados MCP completos se JSONEncode dentro deRoblox: no adivinar arrays
+desde objetos numéricos. Los valores/campos salen del resultado Native real.
+
+Elpaquete contiene protocoloDEE.RBX.Connector.R01, namespace/sessionId,
+observationId/seq/actionId/operationId, action.name/nativeTick/null ysourceKind.
+Native seq=móduloseq+8delprefijo; observationId ypreviousActionId reales.
+sourceKind=DEE_NATIVE no autentica sólo elorigen: sus recibos/backend se contrastan.
+Un ID repetido sólo recupera recibo de mismos bytes; no se repite una ejecución
+desconocida cambiandoID. Un escritor porvida yregistroexacto deaceptación/ACK.
+
+ATRIBUCIÓN Y ENTORNO
+CTRL1hereda física completaDEV4, no adquisiciones posterioresMAIN/LOAD.
+La escena externa limpia es nueva:stock200,A/Bausentes, goalDelivery=true,
+panel1/bothfree, EXIT0+6X/EXIT1−6X yrecurso+6. No es WorldDEV restaurado.
+Q1/Q2 reales sinrutaEXIT0 forzada; cuerpo, sensores, meta y oportunidad preparados.
+No docente ni aritmética nueva; una acción útil no prueba aprendizaje, plan ni
+agencia general. Control técnico0Native yreplay anterior siguen separados.
+
+NO REEJECUTAR CONTRA LA RAÍZ ACTUAL
+CTRL1está955215 y cerró elepisodio. Freshpreflight exige953651/journal nousado y
+rechaza ese futuro avanzado. No restaurar953651, borrar colas/recibos, resetear
+contadores ni pasar otroID para simular una raíz nueva. El preflight por defecto
+es sólolectura sinSDK/Native, pero no se volvió a llamar sobreCTRL1enestecierre.
+
+La admisión03:10UTC16nov2026 ya venció. Fin duro04:13 sólo permite terminar ycerrar
+lo iniciado, no otroepisodio. Persisten guardas históricas100000ticksglobales,
+6vidas,512MiB/owner,RAMlibre medida1.5GiB, Sourcehash yestado coherente. Este
+archivo preparado no renueva sus fechas/Scope. Una reproducción material futura
+exige contrato/versionado prospectivo y una identidad/raíz diagnóstica nueva;
+los antiguos comandos --execute-root-only se conservan comohistoria, no permiso
+ni receta material actual. No se publica un rerun automático delresumer.
+
+Estados/snapshot/interfaces/agenda/progreso/SQLite/auxiliares/recibos/outbox y
+artefactos permanecen en native/CTRL1 con entorno/contratos. WORLD_MODULE_CHECKPOINT
+sólo guarda mundo/transporte, no estado Native completo. Tampoco .rbxmx, ZIP de
+análisis oRAW/clocks aislados. Nada deCTRL1se copia aMAIN.
+MAINcerró991187 y agotó24nuevasglobal5–28: noSTART29. Principal947395 protegido.

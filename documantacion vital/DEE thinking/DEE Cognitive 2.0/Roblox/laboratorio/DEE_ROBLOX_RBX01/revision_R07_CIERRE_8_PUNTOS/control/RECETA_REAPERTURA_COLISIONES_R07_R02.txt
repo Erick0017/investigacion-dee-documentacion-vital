@@ -1,0 +1,80 @@
+R07 R02 — REAPERTURA CON MÁSCARA DE COLISIONES CONSERVADA
+
+Estado de esta receta: HOOK FUTURO PREPARADO, NO INSTALADO en el API/Scene
+activo. ReponerColisionesTrasRig_R07.luau y su receta original se conservan
+intactos. R02 sólo prepara una integración futura con raíz e identidad explícitas.
+No se ejecutó ni se instaló este hook R02.
+
+La intervención equivalente se ejecutó realmente en el corte MAIN34 y pasó
+dos capturas completas, con un segundo entre ellas, antes de Native. Esa
+reparación ejecutada ya usaba la raíz explícita workspace.RBX01 y no estuvo
+afectada por la ambigüedad de ruta del hook futuro original.
+No se afirma que R02 haya probado una reapertura 46 ni cualquier otro mapa/rig.
+No es otra plataforma ni otro motor.
+
+PRUEBA MATERIAL ACOTADA EXISTENTE
+evidencia/MAIN_REAPERTURA_35_46_R06 conserva el primer intento detenido
+antes del propietario Native: la única diferencia fueron cuatro CanCollide
+false → true en DEE_Body/Left Arm, Left Leg, Right Arm y Right Leg.
+El serializador State.apply copia esas propiedades; la posterior preparación
+del rig/Humanoid puede reescribirlas. El orden de reconstrucción importa.
+
+evidencia/MAIN_RESTORE_FIX_R07 conserva export previo, intervención exacta,
+comparación posterior y comparación de estabilidad de 1 s. Se copiaron los
+cuatro Booleanos del checkpoint MAIN34 con SHA
+3c8420a1fcbebce4514030fb937d76d87e1686f8349a3dcf04922850a8a1a2a7.
+No se amplió la tolerancia 1e-5 ni se ignoraron colisiones. Native, acciones y
+recompensas = 0; VIDA y ledger quedaron byteidénticos. No se repitió initialize.
+El mundo estable con SHA
+a8b8b32ae4bc76bcd9fd98a5aeaa051854dbb7cdb5d453d505fc10e355182039
+se volvió a capturar y comparar al adoptarlo desde run_integrated_v3_R07_attach.py.
+
+ORDEN OBLIGATORIO PARA UNA FUTURA INTEGRACIÓN
+1. Propietario cerrado/drenado, sin solicitud ambigua. Mantener Native y World
+   del mismo corte, vida, sesión, secuencia, inventario, suministros y entorno.
+   Verificar hashes, dependencias, N/T/RAW/clocks y límites antes de intervenir.
+2. Restaurar el World completo y preparar el mismo rig. No iniciar oportunidades
+   ni abrir otro escritor. No restaurar un respaldo anterior sobre una vida nueva.
+3. El adaptador debe vincular worldRoot a la instancia raíz del World restaurado
+   y verificado del mismo corte. El hook no demuestra por sí mismo esa identidad
+   del checkpoint ni elige la raíz por nombre. Para el mapa R07, la raíz usada
+   en la reparación MAIN34 fue workspace.RBX01; bodyPath es DEE_Body, relativo
+   a esa raíz, y body es ese Model real dentro de ella.
+4. Integrar mundo/ReponerColisionesTrasRig_R07_R02.luau como hook del adaptador
+   DESPUÉS de preparar el rig, antes de ofrecerlo al motor. La firma es:
+   applySavedMask(worldRoot, body, snapshot.physical.parts, bodyPath).
+   El hook resuelve cada segmento desde worldRoot por un único hijo directo.
+   Rechaza hijos ausentes o con nombres duplicados, barras iniciales/finales,
+   barras dobles y segmentos "." o "..". Exige que la ruta resuelta sea exactamente
+   body. También resuelve desde worldRoot las cuatro rutas de miembros y exige
+   que sean hijos directos del body, Part y R07PreparedBody = true.
+   Antes de cualquier escritura exige un Booleano guardado por cada miembro,
+   sin duplicados, y R07PreparedBody = true en cada fila guardada. Sólo después
+   copia los cuatro CanCollide exactos; un false guardado permanece false.
+5. Conservar el diff y la procedencia externa. Capturar TODO el World y exigir
+   el comparador original completo y la misma tolerancia. Esperar 1 s sin acciones
+   ni Native y repetir captura/comparación. Cualquier otro diff o reversión del
+   Humanoid detiene la reapertura: no ampliar tolerancias ni buscar un acierto.
+6. Sólo después de la validación y autorización aplicables, adoptar el World
+   verificado sin repetir initialize. Verificar otra vez identidad, frontera,
+   próximo cursor, cola y límites antes del único propietario Native.
+
+La preparación del cuerpo, la restitución técnica y la cámara no son conducta
+aprendida. La única propiedad de una instancia que escribe el hook es CanCollide
+en los cuatro miembros validados. No mueve el cuerpo, no cambia poses, objetivos,
+sensores, parámetros de motor, decoder, recuerdos ni trazas Native. Tampoco
+garantiza conservar estados internos no capturados del motor físico Roblox.
+
+ALCANCE DE LOS COMANDOS ACTUALES
+control/reparar_colisiones_restore_R07.py está deliberadamente ligado a MAIN34;
+ya se ejecutó una vez con workspace.RBX01 explícito. No volverlo a ejecutar ni
+adaptarlo retroactivamente. R02 no cambia esa reparación ni sus evidencias.
+control/run_integrated_v3_R07_attach.py adopta ese mismo corte reparado y sólo
+ofrece 35..46. No es un comando genérico para 46 → 47 y no tiene --resume.
+El código R06 original/fallido y todos los primarios permanecen preservados.
+
+La lease R06 documentada admite Q1 nuevos sólo hasta el 17 nov 2026 a las
+08:00 UTC y exige cierre antes de las 09:07 UTC. RAM disponible 3.5 GiB,
+Job 512 MiB, hilo 1, RAW 10000, cuota 160000 y seis vidas siguen intactos.
+Guardar estados no garantiza uso indefinido. No existe una oportunidad 47
+implícita; requiere decisión prospectiva explícita.

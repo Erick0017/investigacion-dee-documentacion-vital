@@ -1,0 +1,59 @@
+DEEConnector R06 — módulo local de transporte, cuerpo e identidad
+
+ESTADO
+El archivo exportado/DEEConnector_R06.rbxmx contiene cuatro ModuleScripts.
+La construcción local verificó XML y igualdad exacta de las fuentes. La instalación
+real y una acción en Studio las ejecuta Root: este documento no las declara hechas.
+No incluye motor, estados de investigación, modelo, credenciales ni una política.
+
+INSTALACIÓN TÉCNICA LIMPIA
+1. En una escena Studio Play de prueba, ejecutar una sola vez y en orden los11
+   archivos exportado/instalacion_MCP/, desde el contexto Server de MCP.
+   Los bloques hex están limitados a3000 bytes originales. Un resultado desconocido
+   se concilia leyendo el bloque/paquete; no se reejecuta con otra identidad.
+2. Ejecutar exportado/INSTALAR_ESCENA_MINIMA.luau. Crea un actor etiquetado
+   DEE_Agent, configuración explícita y una observación. No abre ningún backend.
+3. Ejecutar exportado/PRUEBA_TECNICA_ACCION_Y_ACK_R02.luau. El operador técnico
+   pide EXIT_0: se esperan6 unidades en X, un solo movimiento al repetir el mismo
+   actionId, ACK y cursor de Folder1. Compara las12 componentes de pose, sin
+   depender del orden de claves de JSON. Está rotulado MCP_TECHNICAL_CONTROL.
+   Esta prueba valida el conector, no una decisión DEE ni aprendizaje Native.
+4. Para certificar el XML como importado, abrir/importar además el .rbxmx real en
+   una copia limpia y repetir con la misma fuente. Instalar por Sources es evidencia
+   técnica separada; no se presenta como una importación XML ya ejecutada.
+
+CONTRATO INYECTADO
+Main.mount recibe ExperienceId, SceneId, ScenarioFingerprint, RegistryRoot,
+Agents y MakeAdapters(model,config). Este último devuelve body/sensors/world.
+MinimalAdapters implementa un ejemplo con desplazamientos preparados±6 en X.
+Otro mapa debe proporcionar sus adaptadores y datos; no existe una dependencia
+oculta de workspace.RBX01, Gates, Pickups ni la GUI del escenario C02.
+Participant selecciona DEE/PROGRAMMED/AI mediante BackendBinding. El solver real
+permanece en su backend: el módulo no calcula respuestas ni llama a un modelo.
+
+CORRELACIÓN Y PERSISTENCIA
+bindSession → observe → deliverAction → confirmActionAck → [tool/ACK opcional]
+→ completeFeedback. QUERY_CHOICE puede continuar a ROUTE_CHOICE sin cerrar la
+oportunidad. Un SAFE_WAIT Q1 se cierra con su propio feedback. El Folder conserva
+State, ActionCursor, OpportunityCursor, Sequence y recibos por acción/herramienta.
+Los IDs repetidos sólo recuperan el recibo de los mismos bytes; una ejecución
+parcial queda preservada y bloquea repetir. No se completa NULL con una respuesta.
+
+capture sólo acepta frontera y prueba externa de backend cerrado/puente quieto.
+restore exige mundo/namespace/config coincidentes, destino fresco y hash externo.
+El snapshot del módulo es mundo/transporte: NO sustituye el servicio Native completo,
+SQLite/WAL coherentes, interfaces, agenda, outbox, artefactos y el par emparejado.
+Con mundo compartido por varias entidades hace falta barrera conjunta y un solo
+snapshot ambiental, no restauraciones individuales que sobrescriban al vecino.
+
+SEGURIDAD Y ALCANCE
+Servidor Studio local, sin HTTP desde Roblox, clientes remotos, shell ni secretos.
+No cambia CharacterAutoLoads ni expulsa jugadores. La configuración con capacidades
+técnicas se usa sólo para prueba; AllowTechnicalTest=false en un ensayo Native.
+El retiro de una etiqueta solicita cierre y conserva recibos. No mata al propietario.
+No promete compatibilidad publicada: localhost de un servidor publicado no es el PC.
+
+puente_protocol.py serializa una decisión REAL que aporte el caller. No autentica
+por sí solo su origen Native: esa prueba requiere su recibo/backend/ledger externo.
+Una instancia por vida y un escritor por mundo; DLL/WHL oficiales compartidos como
+archivos de lectura, no una memoria mezclada. La carga se prepara aparte en load/.

@@ -1,0 +1,169 @@
+{
+  "schema": "DEE.RBX.IntegralV3.LoadWorker.ContinuationR06",
+  "profile": "LOAD1",
+  "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_LOAD1",
+  "owner_pid": 3652,
+  "worker_pid": 18012,
+  "owner_open_epoch": 1794874498.8828351,
+  "owner_closed_epoch": 1794877203.42863,
+  "closed": true,
+  "failure": null,
+  "pending_global_intent": null,
+  "native_tick": 995879,
+  "results": [
+    {
+      "index": 1,
+      "q1": {
+        "name": "ASK_STATION",
+        "null": false,
+        "actionId": "LOAD1_S1_decision_606481db21704657",
+        "nativeTick": 991543
+      },
+      "original_Q1_reused": true,
+      "actual_final_action": {
+        "name": "EXIT_1",
+        "null": false,
+        "actionId": "LOAD1_S1_query_sensor_b8eb5c3777c94980_stockR06",
+        "nativeTick": 991565
+      },
+      "tool": {
+        "kind": "LESSON",
+        "items": [
+          {
+            "form": "luma",
+            "observedSign": 1
+          },
+          {
+            "form": "nara",
+            "observedSign": -1
+          }
+        ]
+      },
+      "public_tool_result": {
+        "capability_execution_admitted": false,
+        "formed": false,
+        "kind": "LESSON",
+        "memory_value": null,
+        "numeric_result": null,
+        "operation": null,
+        "reason": "NATIVE_PARTIAL_ADMISSION",
+        "updates": [
+          {
+            "form": "luma",
+            "observedSign": 1
+          },
+          {
+            "form": "nara",
+            "observedSign": -1
+          }
+        ]
+      },
+      "feedback_operation_id": "LOAD1_R06_E1_FEEDBACK",
+      "native_tick": 992751,
+      "Native_routes_observed_not_executed": true,
+      "resource_counted_as_new": 0,
+      "permission_stock": 163
+    },
+    {
+      "index": 2,
+      "q1": {
+        "name": "ASK_STATION",
+        "null": false,
+        "actionId": "LOAD1_R06_E2_DECISION",
+        "nativeTick": 993107
+      },
+      "original_Q1_reused": false,
+      "actual_final_action": {
+        "name": "EXIT_1",
+        "null": false,
+        "actionId": "LOAD1_R06_E2_QUERY_SENSOR",
+        "nativeTick": 993129
+      },
+      "tool": {
+        "kind": "CALCULATE",
+        "slot": "A",
+        "form": "luma",
+        "left": 6,
+        "right": 2
+      },
+      "public_tool_result": {
+        "capability_execution_admitted": true,
+        "form": "luma",
+        "formed": true,
+        "inputs": [
+          6,
+          2
+        ],
+        "kind": "CALCULATE",
+        "memory_value": 1,
+        "numeric_result": 8,
+        "operation": "suma",
+        "reason": "FORMED",
+        "slot": "A"
+      },
+      "feedback_operation_id": "LOAD1_R06_E2_FEEDBACK",
+      "native_tick": 994315,
+      "Native_routes_observed_not_executed": true,
+      "resource_counted_as_new": 0,
+      "permission_stock": 162
+    },
+    {
+      "index": 3,
+      "q1": {
+        "name": "ASK_STATION",
+        "null": false,
+        "actionId": "LOAD1_R06_E3_DECISION",
+        "nativeTick": 994671
+      },
+      "original_Q1_reused": false,
+      "actual_final_action": {
+        "name": "EXIT_1",
+        "null": false,
+        "actionId": "LOAD1_R06_E3_QUERY_SENSOR",
+        "nativeTick": 994693
+      },
+      "tool": {
+        "kind": "CALCULATE",
+        "slot": "B",
+        "form": "nara",
+        "left": 8,
+        "right": 1
+      },
+      "public_tool_result": {
+        "capability_execution_admitted": true,
+        "form": "nara",
+        "formed": true,
+        "inputs": [
+          8,
+          1
+        ],
+        "kind": "CALCULATE",
+        "memory_value": -1,
+        "numeric_result": 7,
+        "operation": "diferencia",
+        "reason": "FORMED",
+        "slot": "B"
+      },
+      "feedback_operation_id": "LOAD1_R06_E3_FEEDBACK",
+      "native_tick": 995879,
+      "Native_routes_observed_not_executed": true,
+      "resource_counted_as_new": 0,
+      "permission_stock": 161
+    }
+  ],
+  "state": {
+    "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_LOAD1",
+    "session_id": "FOCAL_LOAD1_1e00cad012",
+    "sequence": 62,
+    "permission_stock": 161,
+    "completed_new": 3,
+    "last_action_id": "LOAD1_R06_E3_QUERY_SENSOR",
+    "native_tick": 995879,
+    "world_time_ms": 100006,
+    "phase": "IDLE"
+  },
+  "original_Q1_not_replayed": true,
+  "continuation_new_ticks": 4336,
+  "whole_new_ticks_since_PAR28": 4692,
+  "scope": "Same three existing Native lives; host-assisted focal lesson/A/B sequence, no Roblox motion/resource, no merged memories or autonomous repair."
+}

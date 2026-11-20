@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "55088438-427a-4b14-b6d1-3af85bad9dca",
+    "datamodel_type": "Server",
+    "code": "local r06Value=(function()\nlocal r07Ack=(function()\nlocal enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal f=assert(ss:FindFirstChild(\"R07Zstd_IMPORT_319fe73b3eca4df2\"),\"COMPRESSED_FOLDER_REQUIRED\")\nassert(f:GetAttribute(\"Schema\")==\"DEE.R07.ZstdFrozenBytes.R01\" and f:GetAttribute(\"Complete\")==true,\"COMPRESSED_PACKET_INCOMPLETE\")\nlocal pieces={};for i=0,39-1 do local v=assert(f:FindFirstChild(string.format(\"c%04d\",i)));pieces[#pieces+1]=v.Value end\nlocal encoded=table.concat(pieces);assert(#encoded==178428,\"BASE64_LENGTH\")\nlocal compressed=enc:Base64Decode(buffer.fromstring(encoded));assert(buffer.len(compressed)==133821 and hash(buffer.tostring(compressed))==\"07996bce39aef3ba0131295762343b4531512e2d4197dbabbd20ed568c40b187\",\"COMPRESSED_INTEGRITY\")\nlocal size=enc:GetDecompressedBufferSize(compressed,Enum.CompressionAlgorithm.Zstd);assert(size==1395497 and size<5000000 and size<=133821*1024,\"DECOMPRESSION_BOUND\")\nlocal raw=buffer.tostring(enc:DecompressBuffer(compressed,Enum.CompressionAlgorithm.Zstd));assert(#raw==1395497 and hash(raw)==\"c29d6c8f36511a78a2ffbd649df6de6cf1aa3a9d9e4c71392d70ec383388458c\",\"RAW_INTEGRITY\")\nlocal h=game:GetService(\"HttpService\");local state=h:JSONDecode(raw);local expected=h:JSONDecode(\"{\\\"world_id\\\":\\\"RBX01_INTEGRAL_V2_R06\\\",\\\"scenario_sha256\\\":\\\"0a21455c746e20a1e01c47292a914929fc97db41158fcce05c80ad6dbcf0b849\\\",\\\"native_life_id\\\":\\\"ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V2_MAIN\\\",\\\"native_tick\\\":991187,\\\"checkpoint_id\\\":\\\"R06_PAIR_R06_MAIN_bb7e2b08e4ab445ca8bd_C28\\\",\\\"checkpoint_sha256\\\":\\\"48544f655382bdf97b4930200158e35371d878c29d17c1ce918077aa27cf6930\\\",\\\"owner_closed\\\":true,\\\"bridge_quiescent\\\":true}\");local identity=h:JSONDecode(\"{\\\"life\\\":\\\"R07_CONVENTIONAL_AI\\\",\\\"session\\\":\\\"R07_CONVENTIONAL_AI_R09_01\\\",\\\"participant\\\":\\\"CONVENTIONAL_AI\\\",\\\"diagnostic\\\":false}\");return require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).initialize(state,expected,identity)\nend)();return {restored={checkpoint_id=r07Ack.restored.checkpoint_id},S=r07Ack.S,phase=r07Ack.phase,original_events=r07Ack.original_events,current_events=r07Ack.current_events,new_Native_ticks=r07Ack.new_Native_ticks}\nend)();return game:GetService(\"HttpService\"):JSONEncode(r06Value)"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 47,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"restored\":{\"checkpoint_id\":\"R06_PAIR_R06_MAIN_bb7e2b08e4ab445ca8bd_C28\"},\"S\":{\"numberA\":11,\"resourceUnits\":9,\"inventoryKey\":true,\"inventoryResource\":false,\"worldTime\":283.75,\"previousActionId\":\"R06_R06_MAIN_bb7e2b08e4ab445ca8bd_28_QUERY_SENSOR\",\"observation\":\"ROUTE_CHOICE / zona 3 / panel 0\",\"round\":4,\"lifeId\":\"R07_CONVENTIONAL_AI\",\"sessionId\":\"R07_CONVENTIONAL_AI_R09_01\",\"permissionStock\":164,\"codeBPresent\":false,\"cycle\":28,\"functionCalls\":15,\"delivered\":3,\"codeRejected\":1,\"station\":2,\"nativeTick\":991187,\"numberAPresent\":true,\"action\":\"EXIT_1\",\"lastFailure\":false,\"reason\":\"FRONTERA COMPLETA\",\"contact\":0,\"completedRouteOpportunities\":28,\"mode\":\"WAIT\",\"keyCount\":4,\"publicContactCode\":3,\"queries\":28,\"reserveActive\":true,\"stationSignal\":-1,\"moves\":28,\"numberAVersion\":5,\"phase\":2,\"collisions\":0,\"roundOperands\":{\"aLeft\":8,\"aRight\":3,\"bRight\":2,\"variant\":\"RESERVE_B\"},\"consequence\":\"MOVED / consulta -0 / peaje -2\",\"resourceCount\":3,\"functionNoResult\":1,\"seq\":56,\"completedCycles\":28,\"tollSpent\":8,\"stage\":1,\"latency\":44.57584080000015},\"phase\":\"BOUNDARY\",\"new_Native_ticks\":0,\"original_events\":324,\"current_events\":328}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_2e7c6a56c25a4ccba763bbf5db26bd06",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_c27a206734104f90b8da04dc175be7c2",
+  "attempt": 1,
+  "elapsed_seconds": 0.8361423000169452,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 13672
+}

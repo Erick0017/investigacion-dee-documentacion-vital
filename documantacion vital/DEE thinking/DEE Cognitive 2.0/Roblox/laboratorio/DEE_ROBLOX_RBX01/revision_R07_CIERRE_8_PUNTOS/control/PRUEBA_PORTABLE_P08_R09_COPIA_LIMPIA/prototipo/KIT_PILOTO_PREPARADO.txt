@@ -1,0 +1,157 @@
+DEE CONNECTOR R07 — KIT PILOTO, COMPROBACIÓN LOCAL CERRADA
+Actualización: 17 de noviembre de 2026, UTC. Nombre compatible conservado.
+Estado: UN episodio Native real cerrado en el mapa B. Sin validación externa.
+La guía anterior literal se conserva en
+control/LEASE_PILOT_R07_TX_REV2/KIT_ANTES_MATERIAL.txt.
+
+RESULTADO REAL Y ALCANCE
+Vida diagnóstica: ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_PILOT.
+Padre completo PAR28 N67/T991187; final N67/T992751, +1564 ticks, 1 oportunidad.
+SID: R07_NATIVE_PILOT_849dbde0dd1d4911a572; secuencias Native57/58,
+cursor del módulo2 y completedOpportunities1. No hereda el futuro MAIN46.
+Native eligió ASK_STATION y después EXIT_1. Consulta real: stock164→163.
+El Humanoid fue de (20,3,20) a (54.060413,3,-10.539753), dentro del radio2
+del puerto1 (55,3,-12); recorrió15 waypoints,0 recomputaciones, sin colisión.
+El dispositivo preparado cambió de -1 a1 sólo tras la llegada. Movimiento real
+6.263409900013357 segundos. ACK externos conservan los IDs Native exactos;
+la etiqueta interna del motor R07_PILOT_TRANSPORT no es otro ID Native.
+El retorno fue admitido. No hubo recurso, entrega, enseñanza ni aritmética nueva.
+Esto prueba el acoplamiento local de un selector Native con otro mapa y cuerpo
+preparados. No prueba descubrir el dispositivo ni aprender una política general.
+Owner oficial12364 cerró exit0; supervisor5831 exit0; Play se detuvo después
+del checkpoint. No segundo episodio. Principal global y MAIN no modificados.
+
+Evidencia cerrada, relativa a revision_R07_CIERRE_8_PUNTOS:
+evidencia/PILOTO_OTRO_MAPA_R06/RESULTADO_LIVE.json
+  SHA-256: 58e7a31560aff23781a02fe4aa3d3b66a003209c4b813d26ef4b004aa2c34edc
+evidencia/PILOTO_OTRO_MAPA_R06/WORLD_MODULE_CHECKPOINT.json
+  SHA-256: 48d582eb60d656aa6105ae450d37801bc93589bb74de7bd54e8479b4af55252e
+evidencia/PILOTO_OTRO_MAPA_R06/EVENTS.jsonl y CONCILIACION_CIERRE_R07.json.
+Servicio completo local: native/PILOT/sistema; no es el contenido del .rbxmx.
+Snapshot cerrado T992751: SHA-256
+06ce07bd7b9632fe0acd263e24d84605474b9546f507268172fbeb3f941b69db.
+Ledger literal del cierre: evidencia/PILOTO_OTRO_MAPA_R06/LEDGER_AL_CIERRE.json,
+53176 ticks globales,0 intents; PILOT1564,1 ciclo,0 reserva.
+
+QUÉ SE REUTILIZA
+Main y BackendBinding conservan íntegros los Sources del conector R06 probado.
+Se conservan identificadores, namespace, envío JSON, ACK de acciones/herramientas,
+recibos, exclusión de escritor y captura de frontera. La entrega anterior y sus
+resultados adversos siguen en revision_R06_INTEGRAL_V2, sin modificar.
+
+QUÉ CAMBIA EN ESTE PILOTO
+El paquete exportable está en exportado/DEEConnector_R07.rbxmx.
+La escena separada es NATIVE_LIMPIO_R07/DEEConnector_PILOTO_OTRO_MAPA_R07.rbxlx.
+El inicio está en (20,3,20); los puertos fijos llegan a (-12,3,48) o (55,3,-12).
+Hay suelo continuo y obstáculos distintos del mapa de la misión principal.
+Se reutiliza MotorPathfinding_R07: Humanoid recorre waypoints al único destino
+elegido; no escoge otra estación ni calcula una ruta estratégica o numérica.
+Sólo al llegar se pone el dispositivo fijo en estado0/1 según el puerto elegido.
+Es una correspondencia preparada de actuador. No prueba descubrir ese dispositivo,
+adquirir una estrategia, obtener un recurso, dominar seis destinos o aprender un mapa.
+
+CONTINUIDAD Y DATOS
+El PILOT debe ser un clon completo e independiente del PAR28 Native N67 T991187,
+preparado/importado con las herramientas v3 y su Scope nuevo; no T0 ni RAW/clocks
+copiados parcialmente. Los prefijos comparten historia; no son individuos independientes.
+La nueva pequeña escena es un entorno preparado, no una restauración del mapa Main.
+Sus sensores preservan los hechos públicos del World fuente: stock164, key=true,
+A presente, B ausente, versiónA5. Esta versión proviene del JSON fuente comprobado.
+La escena pequeña no consulta, modifica ni promociona el principal de DEE.
+Los calendarios y el lector Native permanecen los del actor v3. Native seq se
+obtiene como seq local del conector +56. Los IDs/SID son nuevos y explícitos.
+Cada observación, acción, ACK y retorno conserva su correlación exacta.
+
+USO LOCAL: SECUENCIA EJECUTADA, NO ORDEN PARA REPETIRLA
+La raíz native/PILOT ya está avanzada. Este driver fresco la rechazará; eso es
+protección contra repetir el episodio, no una pérdida de acceso. No reiniciar
+contadores, restaurar a ciegas ni ejecutar otra Q1 para repetir esta demostración.
+Una repetición material exige otra copia completa, identidad/contrato y ventana
+prospectivos admitidos expresamente; este kit no los crea ni ofrece suministro
+indefinido. Los siguientes comandos documentan el único intento ejecutado.
+1. Preparar e importar0 native/PILOT mediante preparador/importador oficiales v3.
+   Debe quedar T991187, causal_prefix_equal/physical_equal y0ticks nuevos.
+2. Abrir la escena PILOTO en Studio, Play, bajo la cuenta autorizada.
+3. Desde la raíz revision_R07_CIERRE_8_PUNTOS ejecutar primero sólo preflight:
+   python -I -B prototipo/NATIVE_LIMPIO_R07/ejecutar_piloto_R07_preparado_R07.py
+     --destination native/PILOT --ledger control/LEDGER_V3.json
+   El preflight sólo lee integridad/identidad/importación/counters; no abre Native/SDK.
+4. Para UNA oportunidad nueva, añadir explícitamente:
+     --execute-root-only --studio-id <ID_REAL>
+     --expected-place PILOTO_R07.rbxlx
+     --output evidencia/PILOTO_OTRO_MAPA_R06
+     --session R07_NATIVE_PILOT_849dbde0dd1d4911a572
+   El driver instala el adaptador preparado, abre un propietario v3, transmite
+   las decisiones reales, exige ACK exactos, devuelve consecuencias y guarda/cierra.
+   El Scope permite como máximo3; este driver fresco ejecuta únicamente1.
+5. Conservar RESULTADO_LIVE.json, EVENTS.jsonl, checkpoint World y servicio Native
+   cerrado. Un MP4 o el conector por sí solos no son respaldo del ente.
+
+Se abrió mundo/PILOTO_R07.rbxlx, SHA-256: ef39c6bf193c2f26386384e564ffcb16ab2e93c29f7b8a9e071431781dbcfd92,
+MCP128afc04-b4b9-4a87-994c-a7cd211e1d46, cuenta11981994305, placeId/gameId0.
+No publicación. SDK Studio MCP oficial, motor Universev27/Thinking4.5 local
+compartido, Python313 oficial para el owner y Python stdlib para el orquestador.
+Owner512MiB/RAW10000/1thread; RAM libre mínima3.5GiB. La lectura preflight
+sin actuar pasó antes del episodio; la guarda final midió4813058048B libres.
+Renovación PILOT administrativa0ticks: control/LEASE_PILOT_R07_TX_REV2;
+snapshot/VIDA/SQLite literales antes/después, sin tocar los otros cinco roles.
+Owner/ledger específicos R07 rechazan cualquier vida distinta de PILOT.
+El paquete sigue dependiendo del servicio Native externo, sus estados completos,
+interfaces/agenda/recibos/artefactos y de un adaptador explícito para cada mapa.
+No es instalar un .rbxmx y disponer automáticamente de un cerebro en la nube.
+
+Costes observados, n=1 por fase, desde EVENTS y diario cerrado:
+Q1 116.437110s; Q2 76.638566s; retorno120.878700s, incluidos transportes/guardados.
+Primer evento SDK08:46:03.871191→último08:56:40.639602UTC:636.768411s.
+Owner total635.3084787s, distinto del movimiento físico6.2634099s.
+No son tiempos puros de cómputo cognitivo ni una comparación de eficiencia.
+La preparación previa incluyó permisos/apertura, renovación y recuperación de
+RAM; no se cronometró una instalación externa limpia ni se evaluaron usuarios.
+El visor sólo siguió la posición real: no entrega píxeles a Native. No se obtuvo
+vídeo del piloto por falta de ventana de captura identificable; los registros
+del episodio y la transformación real del dispositivo sí quedaron guardados.
+
+GUARDAS Y FALLOS
+El driver R07 verifica Sources efectivos LF de Main, BackendBinding,
+LiveAdapters_R07 y MotorPathfinding_R07 antes de abrir Native. Rechaza PILOT
+avanzado, journal previo, IDs/directorios usados, importación incoherente,
+ledger con intent pendiente, fechas vencidas o RAM insuficiente. No reintenta.
+No se borran recibos/colas ni se reproduce una Q1 ya hecha para rescatar un vídeo.
+Se comprobó guardado/cierre del piloto, no una reapertura material posterior
+ni recuperación autónoma. La capacidad de restaurar MAIN34 es otro expediente.
+Si un fallo ocurre tras una decisión, conservar el punto exacto y conciliar
+recibos/cursor mediante revisión específica. Este kit NO ofrece un reanudador
+genérico probado de operaciones inciertas y no promete recuperación cognitiva.
+Ventana PILOT prospectiva vigente: último inicio10:00UTC; cierre11:07UTC17nov2026.
+La ventana anterior08:00/09:07 venció sin admitir PILOT. Esa ausencia está en
+control/P08_NO_ADMITIDO_VENTANA_R06.json. Root renovó a08:14UTC antes de admitir
+la Q1 real08:48:53; no hubo aprobación retroactiva ni reinicio del reloj original.
+Estos límites pertenecen a este ensayo. Otra sesión requiere nuevo contrato
+prospectivo explícito; cambiar la fecha no es permiso implícito para actuar.
+La aplicación nara B queda fuera de este pequeño piloto por defecto. Un eventual
+diagnóstico deberá usar una copia y A11/bRight2 reales, declararse intervención
+del operador y no puntuar como misión libre de Main.
+
+ADAPTACIÓN POR OTRO DESARROLLADOR
+Importar el .rbxmx en ServerScriptService. Main admite MakeAdapters(model,cfg):
+body.execute(action), sensors.observe(phase), world.capture()/restore(saved).
+Ejemplo real preparado: fuentes/INSTALAR_PILOTO_R07_BASE.luau y el instalador
+sellado NATIVE_LIMPIO_R07/INSTALAR_PILOTO_R07.luau. Para otro mapa, cambiar sólo
+geometría/actuadores/sensores declarados, mantener límites/identidad/ACK, y declarar
+qué correspondencias prepara el anfitrión. Un nuevo mapa exige probar su motor;
+un XML legible no acredita locomoción. No conectar shell libre, credenciales ni red.
+Los módulos históricos MinimalAdapters/ExampleConfig conservados en el paquete
+no son el motor de este piloto; Main usa LiveAdapters_R07 mediante MakeAdapters.
+No se incluye aquí el kernel/WHL completo ni todos los estados. Requisitos Native
+grandes siguen en el almacén estable local identificado por el expediente.
+
+CINCO PREGUNTAS PARA UNA VALIDACIÓN FUTURA CON DESARROLLADORES
+1. Esfuerzo: ¿cuánto tiempo y qué cambios de integración necesitó en su mapa?
+2. Claridad: ¿la guía permite distinguir selección Native, traducción, ACK y motor?
+3. Utilidad: ¿qué tarea real de su proyecto permite utilizar este conector?
+4. Latencia tolerable: ¿qué espera máxima por decisión/retorno acepta y con qué uso?
+5. Problema de uso: ¿qué bloqueo, contrato confuso o fallo concreto impediría usarlo?
+
+No se contactó ni evaluó a desarrolladores externos. Respuestas: PENDIENTES.
+Pruebas offline, episodio Native local cerrado y validación externa inexistente
+son coberturas distintas. La ejecución local no responde esas cinco preguntas.

@@ -1,0 +1,17 @@
+{
+  "script": "analisis/RECURSOS_RECALCULO_R07.py",
+  "args": [
+    "--owner-journal",
+    "LOAD1={resource_primary_root}/PRIMARIOS/01_owner.jsonl",
+    "--owner-journal",
+    "LOAD2={resource_primary_root}/PRIMARIOS/02_owner.jsonl",
+    "--owner-journal",
+    "LOAD3={resource_primary_root}/PRIMARIOS/03_owner.jsonl",
+    "--load-stage",
+    "P07={resource_primary_root}/PRIMARIOS/04_host_memory.json",
+    "--output",
+    "{new_output}"
+  ],
+  "root_placeholder": "resource_primary_root is this delivered result directory, not any original source path",
+  "scope": "Recalculates the selected exact resource events/measurement projections; omitted unrelated science rows are outside this resource calculation."
+}

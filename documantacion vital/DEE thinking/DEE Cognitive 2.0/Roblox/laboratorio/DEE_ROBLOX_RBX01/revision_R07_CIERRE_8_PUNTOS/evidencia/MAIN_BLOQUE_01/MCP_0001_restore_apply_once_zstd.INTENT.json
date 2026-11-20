@@ -1,0 +1,16 @@
+{
+  "logical_call_id": "CALL_c178c6e6dd334b7fa70f80405fb3c436",
+  "rpc_id": 47,
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "522e9816-883b-4c8b-88cd-04de5607b901",
+    "datamodel_type": "Server",
+    "code": "local r06Value=(function()\nlocal enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal f=assert(ss:FindFirstChild(\"R07Zstd_IMPORT_1a5dc5de05504396\"),\"COMPRESSED_FOLDER_REQUIRED\")\nassert(f:GetAttribute(\"Schema\")==\"DEE.R07.ZstdFrozenBytes.R01\" and f:GetAttribute(\"Complete\")==true,\"COMPRESSED_PACKET_INCOMPLETE\")\nlocal pieces={};for i=0,39-1 do local v=assert(f:FindFirstChild(string.format(\"c%04d\",i)));pieces[#pieces+1]=v.Value end\nlocal encoded=table.concat(pieces);assert(#encoded==178428,\"BASE64_LENGTH\")\nlocal compressed=enc:Base64Decode(buffer.fromstring(encoded));assert(buffer.len(compressed)==133821 and hash(buffer.tostring(compressed))==\"07996bce39aef3ba0131295762343b4531512e2d4197dbabbd20ed568c40b187\",\"COMPRESSED_INTEGRITY\")\nlocal size=enc:GetDecompressedBufferSize(compressed,Enum.CompressionAlgorithm.Zstd);assert(size==1395497 and size<5000000 and size<=133821*1024,\"DECOMPRESSION_BOUND\")\nlocal raw=buffer.tostring(enc:DecompressBuffer(compressed,Enum.CompressionAlgorithm.Zstd));assert(#raw==1395497 and hash(raw)==\"c29d6c8f36511a78a2ffbd649df6de6cf1aa3a9d9e4c71392d70ec383388458c\",\"RAW_INTEGRITY\")\nlocal h=game:GetService(\"HttpService\");local state=h:JSONDecode(raw);local expected=h:JSONDecode(\"{\\\"world_id\\\":\\\"RBX01_INTEGRAL_V2_R06\\\",\\\"scenario_sha256\\\":\\\"0a21455c746e20a1e01c47292a914929fc97db41158fcce05c80ad6dbcf0b849\\\",\\\"native_life_id\\\":\\\"ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V2_MAIN\\\",\\\"native_tick\\\":991187,\\\"checkpoint_id\\\":\\\"R06_PAIR_R06_MAIN_bb7e2b08e4ab445ca8bd_C28\\\",\\\"checkpoint_sha256\\\":\\\"48544f655382bdf97b4930200158e35371d878c29d17c1ce918077aa27cf6930\\\",\\\"owner_closed\\\":true,\\\"bridge_quiescent\\\":true}\");local identity=h:JSONDecode(\"{\\\"life\\\":\\\"ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_MAIN\\\",\\\"session\\\":\\\"R07_MAIN_99897f214cc8439ab491\\\",\\\"participant\\\":\\\"LIVE_NATIVE\\\"}\");return require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).initialize(state,expected,identity)\nend)();return game:GetService(\"HttpService\"):JSONEncode(r06Value)"
+  },
+  "read_only": false,
+  "attempt": 1,
+  "utc": "2026-11-16T17:59:15.250303+00:00",
+  "session_id": "MCP_SESSION_211b4efecf73433ca0cfbae02156e2e1",
+  "transport_epoch": 1,
+  "no_automatic_retry": true
+}

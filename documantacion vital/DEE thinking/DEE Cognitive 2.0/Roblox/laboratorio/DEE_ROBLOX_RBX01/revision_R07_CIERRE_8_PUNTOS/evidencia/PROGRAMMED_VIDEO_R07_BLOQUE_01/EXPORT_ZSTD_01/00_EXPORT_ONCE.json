@@ -1,0 +1,32 @@
+{
+  "schema": "DEE.RBX01.official_MCP_operator_call.C02",
+  "status": "REPLIED",
+  "tool": "execute_luau",
+  "arguments": {
+    "studio_id": "55088438-427a-4b14-b6d1-3af85bad9dca",
+    "datamodel_type": "Server",
+    "code": "local enc=game:GetService(\"EncodingService\");local ss=game:GetService(\"ServerStorage\")\nlocal function hash(raw)local h=enc:ComputeStringHash(raw,Enum.HashAlgorithm.Sha256);if #h==32 then return(h:gsub('.',function(c)return string.format('%02x',string.byte(c))end))end;assert(#h==64 and not h:find('[^0-9a-fA-F]'),\"SHA_FORMAT\");return h:lower()end\nlocal raw=(function()\nlocal h=game:GetService(\"HttpService\");return h:JSONEncode(require(game:GetService(\"ServerScriptService\").RBX01Server.WorldAPI_R07).checkpoint(\"R07_VERIFY_RESTORE_5f746c5fd8ec\"))\nend)();assert(type(raw)==\"string\"and #raw>0 and #raw<5000000,\"RAW_BOUND\");assert(not ss:FindFirstChild(\"R07Zstd_EXPORT_8b4c7b14c1b74686\"),\"EXISTING_TRANSFER_PRESERVED\");local compressed=enc:CompressBuffer(buffer.fromstring(raw),Enum.CompressionAlgorithm.Zstd,3);assert(buffer.len(compressed)>0 and #raw<=buffer.len(compressed)*1024,\"RATIO_BOUND\");local encoded=buffer.tostring(enc:Base64Encode(compressed));local f=Instance.new(\"Folder\");f.Name=\"R07Zstd_EXPORT_8b4c7b14c1b74686\";f:SetAttribute(\"Schema\",\"DEE.R07.ZstdFrozenBytes.R01\");for i=1,#encoded,4664 do local v=Instance.new(\"StringValue\");v.Name=string.format(\"c%04d\",math.floor((i-1)/4664));v.Value=encoded:sub(i,i+4663);v.Parent=f end;f:SetAttribute(\"Complete\",true);f.Parent=ss;return{schema=\"DEE.R07.ZstdFrozenBytes.R01\",folder=f.Name,rawBytes=#raw,rawSha256=hash(raw),compressedBytes=buffer.len(compressed),compressedSha256=hash(buffer.tostring(compressed)),base64Chars=#encoded,chunkCount=math.ceil(#encoded/4664),algorithm=\"Zstd\",level=3}"
+  },
+  "reply": {
+    "jsonrpc": "2.0",
+    "id": 48,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"base64Chars\":182008,\"rawSha256\":\"f6fa830acf3f65b643f0edd1cd12e48150574c050aca62e7141b4605790f3fd1\",\"algorithm\":\"Zstd\",\"folder\":\"R07Zstd_EXPORT_8b4c7b14c1b74686\",\"compressedBytes\":136504,\"rawBytes\":1403150,\"chunkCount\":40,\"level\":3,\"schema\":\"DEE.R07.ZstdFrozenBytes.R01\",\"compressedSha256\":\"cc4f28db724a93c4ba323892cab57e6e6d4bb347c6fa2e0b588e7cc33341e55f\"}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "persistent_session": "MCP_SESSION_c90b8cbcc7cb4cef8d88f0913a010cdf",
+  "transport_epoch": 1,
+  "logical_call_id": "CALL_3194fdeba8534accba6ec0be56b65cd4",
+  "attempt": 1,
+  "elapsed_seconds": 1.0581311999994796,
+  "reconciled_late_reply": false,
+  "Native_imported_by_client": false,
+  "credentials_read": false,
+  "sdk_pid": 12540
+}

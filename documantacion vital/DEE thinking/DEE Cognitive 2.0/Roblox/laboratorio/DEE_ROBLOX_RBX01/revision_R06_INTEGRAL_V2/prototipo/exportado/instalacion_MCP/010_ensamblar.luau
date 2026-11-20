@@ -1,0 +1,9 @@
+local ss=game:GetService("ServerStorage");local f=assert(ss:FindFirstChild("DEE_Install_R06_V1"));assert(not f:GetAttribute("Assembled"),"INSTALL_ALREADY_ASSEMBLED")
+local parent=game:GetService("ServerScriptService");assert(not parent:FindFirstChild("DEEConnector_R06"),"PACKAGE_ALREADY_PRESENT")
+local model=Instance.new("Model");model.Name="DEEConnector_R06"
+local function decode(hex)return(hex:gsub("..",function(v)return string.char(tonumber(v,16))end))end
+do local chunks={};local c=f["Main"];assert(#c:GetChildren()==6,"CHUNK_COUNT");for i=0,5 do chunks[#chunks+1]=c[string.format("%04d",i)].Value end;local source=decode(table.concat(chunks));assert(#source==17598,"SOURCE_LENGTH");local m=Instance.new("ModuleScript");m.Name="Main";m.Source=source;m.Parent=model end
+do local chunks={};local c=f["BackendBinding"];assert(#c:GetChildren()==1,"CHUNK_COUNT");for i=0,0 do chunks[#chunks+1]=c[string.format("%04d",i)].Value end;local source=decode(table.concat(chunks));assert(#source==409,"SOURCE_LENGTH");local m=Instance.new("ModuleScript");m.Name="BackendBinding";m.Source=source;m.Parent=model end
+do local chunks={};local c=f["MinimalAdapters"];assert(#c:GetChildren()==1,"CHUNK_COUNT");for i=0,0 do chunks[#chunks+1]=c[string.format("%04d",i)].Value end;local source=decode(table.concat(chunks));assert(#source==2872,"SOURCE_LENGTH");local m=Instance.new("ModuleScript");m.Name="MinimalAdapters";m.Source=source;m.Parent=model end
+do local chunks={};local c=f["ExampleConfig"];assert(#c:GetChildren()==1,"CHUNK_COUNT");for i=0,0 do chunks[#chunks+1]=c[string.format("%04d",i)].Value end;local source=decode(table.concat(chunks));assert(#source==390,"SOURCE_LENGTH");local m=Instance.new("ModuleScript");m.Name="ExampleConfig";m.Source=source;m.Parent=model end
+model.Parent=parent;f:SetAttribute("Assembled",true);local api=require(model.Main);return{installed=true,schema=api.Schema,NativeTicks=0,backendStarted=false,XMLFileNotImportedByThisMethod=true}

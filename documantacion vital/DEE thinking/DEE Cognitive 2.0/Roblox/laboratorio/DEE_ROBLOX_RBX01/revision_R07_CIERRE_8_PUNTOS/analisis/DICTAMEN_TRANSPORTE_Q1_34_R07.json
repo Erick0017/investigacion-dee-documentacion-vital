@@ -1,0 +1,140 @@
+{
+  "schema": "DEE.R07.TransportIncident34.PassiveDiagnosis.R01",
+  "inspection_utc": "2026-11-16T20:28:25.252215+00:00",
+  "scope": "Preserved MCP client/tool logs and static source only. No Native, MCP, HTTP, model or application call.",
+  "actual_failure": {
+    "file": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\MCP_0030_action.json",
+    "sha256": "461b567e6b81b014b104da2ab973ad34de986c977cbded5b621dec8b1866f9c4",
+    "rpc_id": 116,
+    "logical_call_id": "CALL_8279ec788cb04e57ab1c43ea5f5d16f0",
+    "sdk_pid": 7652,
+    "session": "MCP_SESSION_d46053803cb846c4bf5915329f05886c",
+    "status": "TOOL_ERROR",
+    "jsonrpc_reply_received": true,
+    "isError": true,
+    "elapsed_seconds": 4.357948999997461,
+    "error_text": "Network action ExecuteLuau.runCode sent to DMN_ID_PLAYSERVER failed - Target is not reachable (ExecuteLuau.runCode, DMN_ID_PLAYSERVER). No OnInvoke handler responded for this action. Sender: DMN_ID_STANDALONE.",
+    "world_command_id": "WORLD_R07_MAIN_adc933c82cc74fb0bb19_34_Q1",
+    "Native_action_id": "R07_R07_MAIN_adc933c82cc74fb0bb19_34_DECISION",
+    "Native_tick_at_decision": 999363
+  },
+  "deadline_check": {
+    "opened_utc": "2026-11-16T18:10:21.324649+00:00",
+    "configured_seconds": 10598,
+    "tool_error_reply_utc": "2026-11-16T19:34:11.268917+00:00",
+    "wall_derived_elapsed_seconds": 5029.944268,
+    "wall_derived_remaining_seconds_approx": 5568.055732,
+    "bounded_call_timeout_seconds_from_World": 180,
+    "observed_reply_seconds": 4.357948999997461,
+    "session_expiry_not_observed": true,
+    "per_call_timeout_not_observed": true,
+    "note": "Remaining time is derived from UTC log stamps; actual cutoff uses monotonic time. The several-thousand-second margin rules out the configured deadline as this observed trigger."
+  },
+  "idle_comparison": {
+    "failed_call_idle_seconds": 283.320722,
+    "earlier_successful_idle_seconds": 445.145448,
+    "earlier_success_rpc_id": 114,
+    "earlier_success_status": "REPLIED",
+    "fixed_short_idle_threshold_supported": false,
+    "note": "An earlier longer idle interval ended in a successful reply. This does not rule out all connection faults; it fails to establish a specific idle/TTL cause."
+  },
+  "client_state": {
+    "last_close_utc": "2026-11-16T19:39:17.875353+00:00",
+    "unknown_original_request_at_close": null,
+    "stdio_transport_EOF_or_invalid_protocol_observed_for_this_call": false,
+    "raw_stderr_archive_available": false,
+    "stderr_limit": "MCPClient hashes/counts stderr in memory; Session does not persist those counters or raw stderr. No stderr contents are reconstructed."
+  },
+  "source_classification": {
+    "client_report_path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\mcp_persistente_v3.py",
+    "client_report_lines": [
+      82
+    ],
+    "decoder_path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\run_integrated_v3_R03.py",
+    "decoder_lines": [
+      25
+    ],
+    "problem": "The client preserved a known TOOL_ERROR response. Generic BASE.decode labeled every non-REPLIED status MCP unknown, conflating tool error with unknown transport receipt.",
+    "application_status": "Known tool error does not certify that the World action was not applied. Root separately reconciled the real World receipt/UUID without replay."
+  },
+  "Root_recovery_evidence": {
+    "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\RECONCILIACION34_ROOT_R01.json",
+    "sha256": "125ae3b016c8f132c13ff295d26c1f9e1bb8b29561759ffbba3f6cd4f71311f6",
+    "availability": "Full JSON read and preserved; the recovery itself was performed by Root, not by this diagnosis.",
+    "Root_reported_result": "Applied Q1; idempotent cache retrieval demonstrated zero World changes, no BEGIN/observe/Native Q1 replay."
+  },
+  "conclusions": [
+    "The observed fault is an explicit Roblox internal ExecuteLuau dispatch/OnInvoke error, received as JSON-RPC result116 with isError=true.",
+    "No evidence identifies expiration of the configured client session, the180-second call timeout, stdio EOF, a sandbox permission gate or a DEE engine failure as its cause.",
+    "The underlying reason why the PlayServer handler response failed remains undetermined by the preserved logs.",
+    "A fresh-client per-call replacement is not justified as a demonstrated TTL/idle fix. No such variant is prepared or activated."
+  ],
+  "future_minimal_correction_only": {
+    "status": "PROPOSAL_NOT_APPLIED",
+    "frozen_R03_sources_unchanged": true,
+    "change": "Version only the future decode/error message and structured classification. Preserve report.status, isError, exact text, raw reply SHA/path, RPC/logical-call/World/Native action IDs.",
+    "known_reply_vs_effect": "Distinguish known SDK reply/tool error from uncertain application effect. Stop with the same IDs; never infer NOT_APPLIED from No OnInvoke and never automatically replay.",
+    "no_change": [
+      "persistent or per-call transport policy",
+      "Native selection",
+      "reader/calendar",
+      "timing limits",
+      "physics",
+      "World state"
+    ]
+  },
+  "sources": [
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\MCP_0030_action.json",
+      "bytes": 1472,
+      "sha256": "461b567e6b81b014b104da2ab973ad34de986c977cbded5b621dec8b1866f9c4",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\MCP_0030_action.INTENT.json",
+      "bytes": 917,
+      "sha256": "d425f14e86b65dcf5add3760ddf5b97cd102c2a38b808716acdaac59a8772b34",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\MCP_PERSISTENTE\\SESSION.jsonl",
+      "bytes": 326802,
+      "sha256": "f05a60b1725f08eecdc76a143c40fb7890145c05a959aff5ae80a7d453a8e555",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\MCP_PERSISTENTE\\BOOTSTRAP_1.json",
+      "bytes": 119677,
+      "sha256": "f81df035c381cbb3acb7108ff3d572f5f26afaa2ef14f1d3320d29b0b4ec739d",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\mcp_persistente_v3.py",
+      "bytes": 14126,
+      "sha256": "458e217e3e4fc44202aa399b14489ff559ab167275c70663833a126b81acd19f",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\world_comprimido_v3_R03.py",
+      "bytes": 11194,
+      "sha256": "b834381a57356b8156776b2201356c48f84125bf091b078a5ea1eac4fada9b9a",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\run_integrated_v3_R03.py",
+      "bytes": 12079,
+      "sha256": "075ee8d936d52ecdd8fe6ad54c3f56ed43e4ad75c37e5ed307777a2081a9397f",
+      "read": "complete JSON/text for this diagnosis"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\evidencia\\MAIN_BLOQUE_01_R03\\RECONCILIACION34_ROOT_R01.json",
+      "bytes": 9432,
+      "sha256": "125ae3b016c8f132c13ff295d26c1f9e1bb8b29561759ffbba3f6cd4f71311f6",
+      "read": "complete JSON/text for this diagnosis"
+    }
+  ],
+  "Native_calls": 0,
+  "MCP_calls": 0,
+  "model_calls": 0,
+  "states_modified": false
+}

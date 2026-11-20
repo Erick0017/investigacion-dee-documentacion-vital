@@ -1,0 +1,75 @@
+{
+  "schema": "DEE.R07.R08.final_integration_pending.v1",
+  "utc": "2026-11-17T08:32:46.564Z",
+  "current_plan_unchanged": {
+    "path": "control/EXPEDIENTE_V3_PLAN_FINAL_TENTATIVO_R08.json",
+    "sha256": "24b06f6e9679913198a6f93522d412b8cfb5961b73ea3f597042a69b423faab9",
+    "members": 408,
+    "finalized": false
+  },
+  "static_rows_ready_to_add_to_final_plan": [
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\analisis\\revisar_privacidad_incremental_R08.py",
+      "archive": "analisis/revisar_privacidad_incremental_R08.py",
+      "role": "code",
+      "bytes": 7232,
+      "sha256": "0b2bb6810911ecdf9453ecc82a194d836bde541e73119bedc8f4e65ecdb9be3a"
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\pruebas\\privacy_incremental_R08_test.py",
+      "archive": "pruebas/privacy_incremental_R08_test.py",
+      "role": "code",
+      "bytes": 1613,
+      "sha256": "899f84d9bfd31c992cfa212975b342aa388c724b741f812450e6c54d27ef9a93"
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\pruebas\\TEST_PRIVACIDAD_INCREMENTAL_R08.json",
+      "archive": "pruebas/TEST_PRIVACIDAD_INCREMENTAL_R08.json",
+      "role": "verification",
+      "bytes": 833,
+      "sha256": "cf37d475bb1862a4ec81ce1fa37da811020aedf10d6c4ba60d003341c83dfd7b"
+    },
+    {
+      "source": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\verificar_criticos_cierre_R07.py",
+      "archive": "control/verificar_criticos_cierre_R07.py",
+      "role": "code",
+      "bytes": 2495,
+      "sha256": "5adfba7c68d01b89a8aea2b7b999faf4ae496b7554eb67ab0b61789bfb33d598"
+    }
+  ],
+  "mandatory_outputs_not_generated_by_this_agent": [
+    {
+      "archive": "control/CRITICOS_DESPUES_R07.json",
+      "producer": "control/verificar_criticos_cierre_R07.py",
+      "Root_only_final_execution": true,
+      "status": "PENDING_ROOT_FINAL"
+    },
+    {
+      "archive": "analisis/REVISION_PRIVACIDAD_INCREMENTAL_FINAL_R08.json",
+      "producer": "analisis/revisar_privacidad_incremental_R08.py",
+      "status": "PENDING_CLOSED_FINAL_SELECTION_AND_ROOT_REVIEW"
+    }
+  ],
+  "privacy_command_after_final_closed_selection": [
+    "D:/Descargas/ANACONDA MINICONDA/python.exe",
+    "-I",
+    "-B",
+    "analisis/revisar_privacidad_incremental_R08.py",
+    "--plan",
+    "<ACTUAL_FINAL_CLOSED_PLAN>",
+    "--output",
+    "analisis/REVISION_PRIVACIDAD_INCREMENTAL_FINAL_R08.json"
+  ],
+  "privacy_cache_default": {
+    "source": "analisis/REVISION_PRIVACIDAD_PLAN_R03.json",
+    "sha256": "1995ad8cec29cec7a324616457579cec11b33d618f06010fa55dd45d143763ca",
+    "members": 146,
+    "preserved": true
+  },
+  "incremental_scope": "Every selected byte stream is hashed and checked against the plan; only new/changed source+SHA+bytes receives structured/regex scanning. Same cached bytes are not rescanned. Candidate values are never emitted; cached and new visual limits remain explicit. Final selected-source stability is rechecked.",
+  "ordering": "Assemble final closed source selection before running review. Do not add nonexistent output rows to the input plan. Append generated review/critical proofs afterwards with actual hashes and explicitly document generated-proof scope; any later changed scientific/report/media bytes require another pinned-cache extension.",
+  "Native_MCP_Studio_model_SQLite_calls": 0,
+  "full_plan_review_executed": false,
+  "ZIP_created": false,
+  "final_freeze": false
+}

@@ -1,0 +1,166 @@
+DEEConnector R06 — módulo local de transporte, cuerpo e identidad
+
+ESTADO
+Actualización científica: además de la prueba técnica0Native descrita debajo,
+Root cerró un episodio Native REAL en la escena mínima. Véase
+../evidencia/NATIVE_CONECTOR_CONTINUACION_R03/RESULTADO_CONTINUACION.json y
+WORLD_MODULE_CHECKPOINT.json: CTRL1 T953651→955215, Q1ASK formada antes del
+corte03:10, Q2EXIT0 real, movimiento0→6,1recurso,2ACK y feedback/owner cerrado.
+La Q1 original no se repitió: después del rechazo World DEE_MESSAGE_BOUND se
+reparó sólo la cadena JSON de transporte. Los fallosR01(CRLF,0Native) yR02(Q1
+ya hecha/0accionesWorld) están preservados. Es prueba de conexión/actuación
+Native, sin enseñanza ni demostración de nueva agencia o aprendizaje general.
+El conector exportado22578B y sus cuatro Sources siguen intactos.
+
+El archivo exportado/DEEConnector_R06.rbxmx contiene cuatro ModuleScripts.
+La construcción local verificó XML y igualdad exacta de las fuentes. Root abrió
+realmente exportado/DEEConnector_ESCENA_MINIMA_R06.rbxlx con el Item .rbxmx
+embebido, instaló y ejecutó PRUEBA_TECNICA_ACCION_Y_ACK_R02.luau en Studio.
+La prueba real del15nov2026 22:33–22:34UTC produjo movimiento0→6, ACK, duplicado
+sin otro desplazamiento y cursor Folder1. Fuente íntegra:
+../evidencia/PROTO_TECNICO_LIMPIO_R01.json. Ejecutó0ticks Native: la acción la
+eligió el control técnico. No prueba aprendizaje, autonomía ni compatibilidad cloud.
+No incluye motor, estados de investigación, modelo, credenciales ni una política.
+
+ARCHIVOS Y DEPENDENCIAS
+DEEConnector_R06.rbxmx:22.578B,
+SHA25662676ea10a5d439a9c57a50a1a432530cf5145dde24ee4e308b065a732fe5834.
+Escena limpia .rbxlx:23.467B,
+SHA256f579ba241758bc8abafa822edc8b8d5cb0a52c4638602a013b356853aa3687bf.
+Los cuatro Sources exactos figuran en exportado/MANIFIESTO_PROTO_MODULO_R02.json.
+Roblox Studio local con acceso Server y su MCP oficial habilitado; el XML y sus
+ModuleScripts no necesitan Python, DEE ni una cuenta externa adicional para su
+lógica. El operador que ejecuta los Luau mediante MCP sí requiere el SDK oficial
+local ya conectado y el studio_id real. No se incluye ni se configura autenticación.
+La sesión Python persistente existente está en control/mcp_persistente_R06.py;
+usa el wrapper histórico R05 studio_mailbox_relay_C02_R07.py fijado por SHA.
+Es una dependencia del operador local, no una dependencia oculta del mapa exportado.
+
+INSTALACIÓN TÉCNICA LIMPIA
+1. Abrir exportado/DEEConnector_ESCENA_MINIMA_R06.rbxlx como copia de prueba y
+   pasar a Play. Contiene ServerScriptService.DEEConnector_R06 sin autorun ni
+   mundo C02. Es la ruta limpia realmente comprobada por Root. Para otro mapa,
+   importar el .rbxmx conservado y proporcionar los adaptadores propios.
+2. Ejecutar exportado/INSTALAR_ESCENA_MINIMA.luau. Crea un actor etiquetado
+   DEE_Agent, configuración explícita y una observación. No abre ningún backend.
+3. Ejecutar exportado/PRUEBA_TECNICA_ACCION_Y_ACK_R02.luau. El operador técnico
+   pide EXIT_0: se esperan6 unidades en X, un solo movimiento al repetir el mismo
+   actionId, ACK y cursor de Folder1. Compara las12 componentes de pose, sin
+   depender del orden de claves de JSON. Está rotulado MCP_TECHNICAL_CONTROL.
+   Esta prueba valida el conector, no una decisión DEE ni aprendizaje Native.
+4. Guardar el resultado y el checkpoint del módulo, cerrar la prueba. Un nuevo
+   ensayo técnico usa otra escena limpia; no se borra el cursor para simularlo.
+   Alternativa anterior de instalación por Sources: los11 archivos numerados en
+   exportado/instalacion_MCP/, una sola vez/en orden/Server, bloques hex≤3000B.
+   No se necesitan al abrir el XML ya exportado. Un resultado desconocido se
+   concilia leyendo el bloque/paquete; no se reejecuta con otra identidad.
+
+Los constructores locales conservados son construir_paquete.py (admite un
+--output-directory nuevo) y construir_escena_limpia.py (destino fijado por código,
+rehúsa sobrescribir el exportado existente). Sólo generan archivos; no abren
+Studio. Para utilizar el módulo no hay que regenerar sus exportados comprobados.
+Sus Sources no fueron modificados para escribir esta guía.
+
+CONTRATO INYECTADO
+Main.mount recibe ExperienceId, SceneId, ScenarioFingerprint, RegistryRoot,
+Agents y MakeAdapters(model,config). Este último devuelve body/sensors/world.
+MinimalAdapters implementa un ejemplo con desplazamientos preparados±6 en X.
+Otro mapa debe proporcionar sus adaptadores y datos; no existe una dependencia
+oculta de workspace.RBX01, Gates, Pickups ni la GUI del escenario C02.
+Participant selecciona DEE/PROGRAMMED/AI mediante BackendBinding. El solver real
+permanece en su backend: el módulo no calcula respuestas ni llama a un modelo.
+
+CORRELACIÓN Y PERSISTENCIA
+bindSession → observe → deliverAction → confirmActionAck → [tool/ACK opcional]
+→ completeFeedback. QUERY_CHOICE puede continuar a ROUTE_CHOICE sin cerrar la
+oportunidad. Un SAFE_WAIT Q1 se cierra con su propio feedback. El Folder conserva
+State, ActionCursor, OpportunityCursor, Sequence y recibos por acción/herramienta.
+Los IDs repetidos sólo recuperan el recibo de los mismos bytes; una ejecución
+parcial queda preservada y bloquea repetir. No se completa NULL con una respuesta.
+
+capture sólo acepta frontera y prueba externa de backend cerrado/puente quieto.
+restore exige mundo/namespace/config coincidentes, destino fresco y hash externo.
+El snapshot del módulo es mundo/transporte: NO sustituye el servicio Native completo,
+SQLite/WAL coherentes, interfaces, agenda, outbox, artefactos y el par emparejado.
+Con mundo compartido por varias entidades hace falta barrera conjunta y un solo
+snapshot ambiental, no restauraciones individuales que sobrescriban al vecino.
+
+SEGURIDAD Y ALCANCE
+Servidor Studio local, sin HTTP desde Roblox, clientes remotos, shell ni secretos.
+No cambia CharacterAutoLoads ni expulsa jugadores. La configuración con capacidades
+técnicas se usa sólo para prueba; AllowTechnicalTest=false en un ensayo Native.
+El retiro de una etiqueta solicita cierre y conserva recibos. No mata al propietario.
+No promete compatibilidad publicada: localhost de un servidor publicado no es el PC.
+
+puente_protocol.py serializa una decisión REAL que aporte el caller. No autentica
+por sí solo su origen Native: esa prueba requiere su recibo/backend/ledger externo.
+Una instancia por vida y un escritor por mundo; DLL/WHL oficiales compartidos como
+archivos de lectura, no una memoria mezclada. La carga se prepara aparte en load/.
+
+LIVE NATIVE — EPISODIO REAL CERRADO; FRESH DRIVER NUEVO PREPARADO
+La ejecución acreditada fue ejecutar_native_limpio_R02.py más la continuación
+continuar_pregunta_conector_R03.py en la misma vida/sesión/oportunidad. No fue
+una ejecución fresh end-to-end del nuevo ejecutar_native_limpio_R03_preparado.py.
+
+Fuentes: ../evidencia/NATIVE_CONECTOR_CONTINUACION_R03/{RESULTADO_CONTINUACION.json,
+WORLD_MODULE_CHECKPOINT.json}; ../analisis/E6_CIERRE_COMPROBADO_R06.json.
+CTRL1: padreDEV4T953651, finalN67T955215/1564ticks. Q1ASK original no recalculada;
+Q2EXIT0 Native, X0→6,1recurso,0entregas,2ACK y propietario cerrado. La continuación
+aportó1208ticks desde954007. Docente omitted, no aritmética nueva ni ruta forzada.
+Cuerpo/panel/meta/transducción y oportunidad preparados; no prueba aprendizaje
+ni agencia general. El mundo limpio nuevo stock200/A-Bausentes no es WorldDEV.
+
+Negativos preservados: driverR01 falló SourceCRLF/LF antes deNative(0ticks);
+R02 corrigió sólo el hashLF y formóQ1, pero deliverAction rechazó tablaLua:
+DEE_MESSAGE_BOUND/0accionesWorld. El resumerR03 reparó sólo rawJSONstring,
+entregó una vez el mismo paqueteQ1 y realizó sóloQ2/retorno Native nuevos.
+control/PRUEBA_SALTOS_LINEA_PROTO_R02.json documenta hashes sin modificar Sources.
+Reparación de transporte no es recuperación cognitiva ni un segundo episodio.
+
+CONTRATO EXACTO
+Agent:deliverAction(rawJSONString) exige STRING de máximo65536bytes ydecodifica
+internamente. Forma: local raw=HttpService:JSONEncode(paqueteRealConIDs);
+local ack=agent:deliverAction(raw). No pasar H:JSONDecode(raw) a deliverAction.
+Los otros métodos conservan su contrato de tabla. El paquete lleva salida real,
+namespace/session/seq/observation/actionId/operationId, nativeTick/null ysourceKind.
+Su origen Native necesita recibos/backend externos; no basta esa etiqueta.
+Los resultados MCP se JSONEncode completos dentro deRoblox para conservar arrays.
+
+PREPARADO, NO_REPRODUCIDO_FULL
+NATIVE_LIMPIO_R01/ejecutar_native_limpio_R03_preparado.py integra guardaLF deR02
+yrawJSONstring, sin cambiar Sources/Lua/exportados ni los límites. Pasó7fixtures
+AST/API/string/XML,0SDK/Native/modelo. La prueba material anterior R02+resumer
+no se presenta como reproducción completa de este nuevo freshdriver.
+
+Comprobación offline segura desde revision_R06_INTEGRAL_V2:
+python -I -B prototipo/NATIVE_LIMPIO_R01/test_driver_R03_preparado_offline.py
+La prueba antigua test_live_offline.py conserva5fixtures previos deABI.
+
+No repetir los comandos materiales históricos: CTRL1yaavanzó955215. La guarda
+fresh exige953651/journal no usado y rechaza la raíz actual. No restaurarla ni
+borrar recibos/colas para pasar. La admisión de episodios03:10UTC16nov ya venció;
+el fin duro04:13 sólo permite terminar/cerrar lo iniciado, no otro episodio.
+No se ejecutó nuevamente el preflight sobre la raíz usada en este cierre.
+Una reproducción futura requiere contrato/versión prospectiva eidentidad/raíz
+nuevas, preservación completa ycuotas explícitas; no fecha/reset implícitos.
+
+CONTINUIDAD Y CARGA CERRADAS
+MAIN experimentalN67T991187 desdeDEV4T953651,24nuevasglobal5–28; noSTART29.
+PAR28:11143miembros, manifiestoSHA256:
+c4638b02ea660f2e32d13c015637e817a28d471e96c3bee0284918f1d55cf2c2.
+FULL_FILES_HASHED_NOT_MATERIAL_REOPEN: preservado/hasheado, no otra reapertura
+funcional. La reapertura útil material comprobada corresponde aglobal10.
+PrincipalPI10_REAL2_01T947395, ACTIVO, Manual1.40, Thinking4.5.0 yv27 protegidos;
+no adopción global ni fusión deCTRL/LOAD/MEMPAIR conMAIN.
+
+Carga: etapa1 un propietario completa3episodios; etapa2 dos propietarios,
+3episodios cada uno y899.02043581s de vida deproceso común. Etapa3 abrió3runtimes
+pero0episodios/noGO porLAST_NEW_EPISODE_CUTOFF. Sus87.94888854s de coexistencia
+no prueban tres entes procesando tareas. Máximo funcional observado:2. LOAD1
+conservó su historial entre etapas; los clones no son réplicas independientes.
+
+Continuar requiere snapshot/clocks/interfaces/agenda/progreso, SQLite yauxiliares
+coherentes, recibos/outbox/artefactos, World emparejado, motor ycontratos vigentes.
+.rbxmx, checkpoint de módulo, ZIP de análisis o RAW/clocks aislados no sustituyen
+ese conjunto. Compartir binarios en lectura no comparte memoria. NoT0 ni reemplazar
+un futuro porPAR10. Para límites detallados, leer NATIVE_LIMPIO_R01/LEER_LIVE.txt.

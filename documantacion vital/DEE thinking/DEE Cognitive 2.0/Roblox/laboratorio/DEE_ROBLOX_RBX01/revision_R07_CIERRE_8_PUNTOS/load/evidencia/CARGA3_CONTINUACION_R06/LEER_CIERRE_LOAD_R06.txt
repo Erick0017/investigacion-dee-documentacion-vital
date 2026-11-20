@@ -1,0 +1,96 @@
+P07 — TRES VIDAS EXISTENTES, TRES EPISODIOS CERRADOS POR VIDA
+Corte observado: 17 de noviembre de 2026, 01:05 UTC aproximadamente.
+
+RESULTADO EFECTIVO
+El supervisor único terminó exit0: ALL_DECLARED_LIVES_CLOSED_AND_COMPLETE.
+LOAD1, LOAD2 y LOAD3 terminaron N67/T995879, cada una con 4692 ticks
+materiales nuevos desde el mismo prefijo PAR28/T991187. Las tres completaron
+tres episodios y cerraron sus propietarios oficiales exit0. No son réplicas
+independientes: comparten toda la historia anterior a PAR28.
+
+Se observó un solapamiento común de llamadas reales adapter.execute de
+2448.8191952705383 segundos. El solapamiento de vida de propietarios fue
+2687.8757181167603 segundos. Son medidas distintas; ninguna demuestra
+simultaneidad de instrucciones de CPU. El coste incluye anfitrión,
+persistencia y validaciones, además de la ejecución del motor.
+
+HISTORIAS REALMENTE RECIBIDAS Y RESULTADOS
+La secuencia externa ofreció LESSON(luma,nara), después CALCULATE A(6,2),
+después CALCULATE B(A_REAL,1). Esa secuencia, los sensores y los operandos
+fueron preparados. El recuerdo Native seleccionó SUMA/DIFERENCIA mediante
+el codec fijo +1/-1; los enteros fueron leídos del motor, no calculados como
+respuesta por el anfitrión. El resultado real de A se usó como entrada de B.
+
+LOAD1: signos ofrecidos luma+1/nara-1. Cuatro entradas de la lección fueron
+admitidas; las dos revisiones se rechazaron por soporte ocupado. Recuerdo
+real +1/-1: A=6+2=8; B=8-1=7.
+LOAD2: signos ofrecidos luma-1/nara+1. Las seis entradas de lección fueron
+admitidas. Recuerdo real -1/+1: A=6-2=4; B=4+1=5.
+LOAD3: signos ofrecidos luma+1/nara+1. Cinco entradas fueron admitidas;
+la revisión luma se rechazó por ocupación. Recuerdo real +1/+1:
+A=6+2=8; B=8+1=9.
+
+Los nueve Q1 reales fueron ASK y los nueve Q2 reales fueron EXIT_1.
+En esta carga focal las rutas se registraron, pero no se ejecutaron sobre
+Roblox: no hubo movimiento ni recurso Roblox contado. Cada vida consumió
+tres permisos ambientales: stock164 a161, incluido el ASK original.
+Se admitió materialConsequence=true en el primer retorno de LOAD1/LOAD3
+por la admisión parcial. Los otros siete retornos usaron false; false no
+equivale a un premio positivo. Los nueve retornos fueron aceptados.
+
+Los RAW finales son diferentes entre las tres vidas. Los hashes clocks
+finales son iguales. Esa diferencia física por sí sola no acredita memoria
+útil; aquí se informa por separado del recuerdo y de los enteros realmente
+producidos. Las firmas de entradas de función efectivas también difieren.
+
+INCIDENTE Y REPARACIÓN EXTERNA CONSERVADOS
+La primera tentativa CARGA3_R01 ejecutó un Q1 real por vida, pero su host
+olvidó descontar el permiso de ASK antes de Q2. Las tres Q2 se rechazaron
+antes del primer pulso Native: 0 ticks Q2, incertidumbre externa falsa.
+No se repitieron esos Q1. Los registros fallidos y sus payloads permanecen.
+
+La renovación de plazo R06 fue una transacción administrativa separada,
+sin ticks, sin cambiar política/lectores/física ni flags de fallo. Después,
+RECUPERACION_LOAD_R06_TX cambió únicamente el flag técnico uncertain a
+false tras probar el rechazo anterior a admisión; preservó failure,
+pending, secuencia, ciclos y recibos. Su ledger archivó los tres rechazos
+de 0 ticks sin liberar sus reservas. La corrección ambiental explícita
+164→163 corresponde al ASK ya ejecutado. Las Q2 corregidas recibieron
+IDs nuevos terminados en _stockR06; no se cambió un payload bajo un ID viejo.
+Esto es reparación asistida del controlador, no autorrecuperación aprendida.
+
+CONTINUIDAD Y AISLAMIENTO AL CORTE
+No hubo fusión con MAIN ni adopción global. Cada LOAD tiene vida, sesión,
+cola y raíz privadas. Los identificadores numéricos de pulsos heredados
+pueden coincidir entre vidas: su identidad está acotada por vida.
+Al recálculo: propietario running=false, quick_check=ok, sin queued,
+processing ni uncertain en ninguna cola; reservas LOAD0, ciclos3,
+ledger global23460 y sin intents. Ese total global sólo describe este corte;
+puede aumentar si el coordinador ejecuta después otra rama autorizada.
+
+FUENTES CERRADAS Y RECÁLCULOS
+RESULTADO_ETAPA.json
+  SHA256 73d47cb33df50056ab1d6c8a05382ee211eb5f785ec06ced0918ecc627123a15
+HISTORIA_REAL_CERRADA_R06.json (296708 bytes)
+  SHA256 d314048958e5cd598354e87322e606efb59ee95a7b14d63ed8fd68a9aa0d845f
+OVERLAP_MATERIAL_R06.json
+  SHA256 075c4241a7f4ce3464d88a8dbeb35d9a2bb416a00c78cee72c716a08a2bbdafd
+LOAD1/RESULTADO.json, LOAD2/RESULTADO.json, LOAD3/RESULTADO.json y sus FASES.
+La historia auditada localiza con SHA cada primario Native de función,
+cada snapshot completo verificado, VIDA, diario y cola cerrada. Los estados
+completos permanecen en native/LOAD1, native/LOAD2 y native/LOAD3.
+
+Desde la raíz revision_R07_CIERRE_8_PUNTOS, usando Python de anfitrión:
+python -I -B load/recalcular_concurrencia_v3.py --workers load/evidencia/CARGA3_CONTINUACION_R06/LOAD1 load/evidencia/CARGA3_CONTINUACION_R06/LOAD2 load/evidencia/CARGA3_CONTINUACION_R06/LOAD3 --output load/evidencia/CARGA3_CONTINUACION_R06/OVERLAP_NUEVO.json
+python -I -B load/auditar_historia_cerrada_LOAD_R06.py --stage-root load/evidencia/CARGA3_CONTINUACION_R06 --output load/evidencia/CARGA3_CONTINUACION_R06/HISTORIA_NUEVA.json
+Los destinos deben ser nuevos. El segundo modo sólo acepta propietarios
+cerrados y hace lecturas SQLite immutable; no ejecuta Native ni modifica
+colas, estados o ledger. No ejecutarlo mientras esas vidas estén activas.
+
+Recursos medidos: analisis/RECURSOS_P07_LOAD3_CERRADO_R06/.
+Seis runs cerrados (tres Q1 originales y tres continuaciones), 0issues.
+CPU de Job: suma de máximos por run3625.140625s, nunca suma de muestras.
+Su REPETIR_PORTABLE.json y PRIMARIOS permiten recalcular la selección
+pasivamente sin abrir el motor. No es una medida de energía ni CPU exclusiva
+del kernel. Los scripts originales/fallidos/guías preparadas se conservan:
+esta nota registra la ejecución efectiva posterior sin reescribirlos.

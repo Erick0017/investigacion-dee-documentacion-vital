@@ -1,0 +1,174 @@
+{
+  "schema": "DEE.INTEGRAL.V2.passive_resources.R01",
+  "created_utc": "2026-11-17T08:21:38.874237+00:00",
+  "status": "CLOSED_INPUTS_RECALCULATED",
+  "Native_SQLite_Studio_model_executions": 0,
+  "all_owner_runs_closed_clean": true,
+  "unclosed_inputs": [],
+  "owner_runs": [
+    {
+      "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_MAIN",
+      "run": "R07_INTEGRAL_7b4d5e82",
+      "pid": 3352,
+      "job": "Local\\DEE_DCS11_JOB_9c30cc39470047bd9285809f33f43c27",
+      "owner_started_record_present": true,
+      "closed_clean": true,
+      "owner_close_record_present": true,
+      "resource_samples": 2846,
+      "cpu_user_job_seconds_max": 2785.3125,
+      "cpu_kernel_job_seconds_max": 417.0625,
+      "cpu_job_seconds_total_maxima": 3202.375,
+      "cpu_samples_are_not_summed": true,
+      "final_post_exit_resource_sample_present": true,
+      "owner_lifetime_seconds_from_OWNER_CLOSED": 8797.099371499993,
+      "last_sample_elapsed_seconds": 8797.091009800002,
+      "memory_peaks_bytes": {
+        "peak_job_committed_bytes": 476839936,
+        "peak_process_committed_bytes": 470331392,
+        "working_set_bytes": 394313728,
+        "peak_working_set_bytes": 440520704,
+        "private_bytes": 441765888
+      },
+      "job_memory_limits_observed": [
+        536870912
+      ],
+      "estimated_start_utc_from_sample_utc_minus_elapsed": "2026-11-17T03:55:15.334144+00:00",
+      "estimated_end_utc": "2026-11-17T06:21:52.433516+00:00",
+      "UTC_interval_scope": "Estimate from wall UTC and monotonic elapsed; not an independently logged exact timestamp.",
+      "CPU_scope": "Whole owned Job including its child processes; not kernel-only CPU or host-global CPU.",
+      "counter_regressions": []
+    }
+  ],
+  "owner_journal_coverage": {
+    "excluded_rows": {},
+    "identical_event_aliases": 0
+  },
+  "phase_times": [
+    {
+      "participant": "LIVE_NATIVE",
+      "completed_phase_count": 42,
+      "phase_latency_samples": 42,
+      "phase_wall_seconds_sum": 8013.139160300081,
+      "phase_wall_seconds_max": 314.39600559999235,
+      "CPU_seconds": null,
+      "CPU_status": "Not instrumented by phase events; elapsed latency is not CPU.",
+      "scope": "Completed backend/Native call latency only; not owner lifetime, total experiment wall, energy or rendering FPS."
+    },
+    {
+      "participant": "PROGRAMMED",
+      "completed_phase_count": 0,
+      "phase_latency_samples": 0,
+      "phase_wall_seconds_sum": null,
+      "phase_wall_seconds_max": null,
+      "CPU_seconds": null,
+      "CPU_status": "Not instrumented by phase events; elapsed latency is not CPU.",
+      "scope": "Completed backend/Native call latency only; not owner lifetime, total experiment wall, energy or rendering FPS."
+    },
+    {
+      "participant": "CONVENTIONAL_AI",
+      "completed_phase_count": 0,
+      "phase_latency_samples": 0,
+      "phase_wall_seconds_sum": null,
+      "phase_wall_seconds_max": null,
+      "CPU_seconds": null,
+      "CPU_status": "Not instrumented by phase events; elapsed latency is not CPU.",
+      "scope": "Completed backend/Native call latency only; not owner lifetime, total experiment wall, energy or rendering FPS."
+    }
+  ],
+  "phase_aliases_deduplicated": 0,
+  "closed_owner_aggregate": {
+    "runs": 1,
+    "cpu_job_seconds_sum_of_run_maxima": 3202.375,
+    "sum_owner_lifetimes_seconds_not_elapsed_campaign": 8797.099371499993,
+    "maximum_single_owner_peak_job_committed_bytes": 476839936
+  },
+  "import0_separate": [],
+  "load_host_memory": [],
+  "model_separate": {
+    "recorded_response_calls": 0,
+    "failed_calls": 0,
+    "identical_aliases": 0,
+    "client_wall_seconds_sum": null,
+    "token_counts_reported": {
+      "prompt_eval_count": null,
+      "eval_count": null
+    },
+    "server_durations_reported_seconds": {
+      "total_duration": null,
+      "load_duration": null,
+      "prompt_eval_duration": null,
+      "eval_duration": null
+    },
+    "metric_coverage_response_count": {
+      "prompt_eval_count": 0,
+      "eval_count": 0,
+      "total_duration": 0,
+      "load_duration": 0,
+      "prompt_eval_duration": 0,
+      "eval_duration": 0
+    },
+    "service_jobs": [],
+    "scope": "API-reported durations/tokens are not CPU, cost, FPS, weight learning or equal preparation to DEE."
+  },
+  "issues": [],
+  "limits": [
+    "Only explicit inputs; no owner/queue/snapshot is queried.",
+    "R07_ run prefix is mandatory; inherited C02 samples are excluded, even if present in the same journal.",
+    "CPU cumulative maxima per unique Job/run are added once; samples are never added. Post-exit sample coverage is exposed.",
+    "Owner lifetime includes startup, waits and closing. Phase latency excludes some of those and must not be added to it.",
+    "Concurrent owner lifetimes overlap; their sum is not elapsed campaign time. Sum of RAM peaks is not measured simultaneous RAM.",
+    "Import0, filesystem copies, rendering and model service are separate host activities. Report any actual timestamped overlap as a confound; never infer overlap or cognitive interference from file names.",
+    "Import0 costs are separate0-new-tick host preparation. Their CPU is not added to Native owner or new experience.",
+    "References without Job CPU instrumentation retain CPU=null; phase/model latency is not a substitute.",
+    "Frames/render FPS, model tokens, API nanoseconds, wall latency, Job CPU and cognitive memory are different quantities.",
+    "No power meter, energy, monetary estimate, kernel-only CPU, theoretical capacity ceiling or scientific approval is inferred."
+  ],
+  "sources": [
+    {
+      "index": 1,
+      "category": "owner_journal",
+      "label": "MAIN35_46",
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\PRUEBA_PORTABLE_MAIN12_R08_COPIA_LIMPIA\\analisis\\RECURSOS_MAIN12_CERRADO_R08_R01\\PRIMARIOS\\01_owner.jsonl",
+      "bytes_read": 1748937,
+      "sha256_read_prefix": "e824dd71c1f3163bf1b431e423dba7080820b4d364c4050efea7bad993648e4a",
+      "source_bytes_before": 1748937,
+      "source_bytes_after": 1748937,
+      "changed_while_reading": false,
+      "unfinished_tail_excluded": false,
+      "scope": "Bytes stable during this read, not a claim that every writer is closed"
+    },
+    {
+      "index": 2,
+      "category": "phase_events",
+      "label": "LIVE_NATIVE",
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\DEE Cognitive 2.0\\laboratorio\\DEE_ROBLOX_RBX01\\revision_R07_CIERRE_8_PUNTOS\\control\\PRUEBA_PORTABLE_MAIN12_R08_COPIA_LIMPIA\\analisis\\RECURSOS_MAIN12_CERRADO_R08_R01\\PRIMARIOS\\02_phases.jsonl",
+      "bytes_read": 8311,
+      "sha256_read_prefix": "47a9b7024791d0c3da69346b4e77bf055927aa3a2be8cee734e425d3b6128d2d",
+      "source_bytes_before": 8311,
+      "source_bytes_after": 8311,
+      "changed_while_reading": false,
+      "unfinished_tail_excluded": false,
+      "scope": "Bytes stable during this read, not a claim that every writer is closed"
+    }
+  ],
+  "portable_primary_selection": [
+    {
+      "archive_relative": "PRIMARIOS/01_owner.jsonl",
+      "category": "owner",
+      "label": "MAIN35_46",
+      "bytes": 1748937,
+      "sha256": "e824dd71c1f3163bf1b431e423dba7080820b4d364c4050efea7bad993648e4a",
+      "source_index": 1,
+      "selection": "Complete relevant event rows; unrelated journal kinds/prefixes omitted"
+    },
+    {
+      "archive_relative": "PRIMARIOS/02_phases.jsonl",
+      "category": "phases",
+      "label": "LIVE_NATIVE",
+      "bytes": 8311,
+      "sha256": "47a9b7024791d0c3da69346b4e77bf055927aa3a2be8cee734e425d3b6128d2d",
+      "source_index": 2,
+      "selection": "DERIVED projection of exact measurement fields"
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "schema": "DEE.NativeCleanConnector.LiveResult.R01",
+  "status": "ONE_LIVE_EPISODE_CLOSED",
+  "basis": {
+    "life": "ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V3_PILOT",
+    "source_tick": 991187,
+    "scope_sha256": "e9119a3d94e8032cd86957c736fc51d7dc741d0d82ce447405da7cc1732acad6",
+    "source_manifest": "4e8b88ff5754e2a1f8623a7486c36a175e93d4a88c226c2786efc4284c9ad8af"
+  },
+  "session_id": "R07_NATIVE_PILOT_849dbde0dd1d4911a572",
+  "native_outputs": [
+    {
+      "kind": "decision",
+      "operation_id": "CLEAN_DECISION_251ecef8a64945d089",
+      "result": {
+        "action": "ASK_STATION",
+        "codec": "Q1 +1 -> paid ASK if actual question applies; -1/0 -> SKIP; NULL -> SAFE_WAIT",
+        "nativeTick": 991543,
+        "nativeTicks": 356,
+        "null": false,
+        "reader": "PI10 fixed central q+4",
+        "version": "DEE.RBX01.async_native.INTEGRAL.V3.R01",
+        "evidence": {
+          "native_request_id": "CLEAN_DECISION_251ecef8a64945d089",
+          "native_phase_sha256": "65171cf819b6f96f0e81a0136e30c95d12bac9a3c4e8d285e1257abc29bd9fc5",
+          "full_evidence": "Official Native queue result and RBX07_NATIVE_INTEGRAL_V3/events.jsonl"
+        }
+      }
+    },
+    {
+      "kind": "query_sensor",
+      "operation_id": "CLEAN_QUERY_SENSOR_6f91451e50524b97a7",
+      "result": {
+        "action": "EXIT_1",
+        "codec": "Q2 +1->EXIT_1; -1/0->EXIT_0; NULL->SAFE_WAIT",
+        "nativeTick": 991565,
+        "nativeTicks": 22,
+        "null": false,
+        "reader": "PI07 fixed central q+4",
+        "version": "DEE.RBX01.async_native.INTEGRAL.V3.R01",
+        "evidence": {
+          "native_request_id": "CLEAN_QUERY_SENSOR_6f91451e50524b97a7",
+          "native_phase_sha256": "848252976e78e958b77c122bdb24b339f1cbe0ea08ab3407dad872453cd64eb2",
+          "full_evidence": "Official Native queue result and RBX07_NATIVE_INTEGRAL_V3/events.jsonl"
+        }
+      }
+    },
+    {
+      "kind": "feedback",
+      "operation_id": "CLEAN_FEEDBACK_9e0e255a3dca40da82",
+      "result": {
+        "accepted": true,
+        "action": null,
+        "nativeTick": 992751,
+        "nativeTicks": 1186,
+        "null": false,
+        "version": "DEE.RBX01.async_native.INTEGRAL.V3.R01",
+        "evidence": {
+          "native_request_id": "CLEAN_FEEDBACK_9e0e255a3dca40da82",
+          "native_phase_sha256": "81adc523135f22c948e22b79036a5222da89f068280007ddcbb75e042484e50b",
+          "full_evidence": "Official Native queue result and RBX07_NATIVE_INTEGRAL_V3/events.jsonl"
+        }
+      }
+    }
+  ],
+  "body_acks": [
+    {
+      "observationId": "obs_f26c0f24-d8f1-4dfe-887e-a3af21eb4402",
+      "protocol": "DEE.RBX.Connector.R01",
+      "sessionId": "R07_NATIVE_PILOT_849dbde0dd1d4911a572",
+      "actionId": "CLEAN_DECISION_251ecef8a64945d089",
+      "operationId": "CLEAN_DECISION_251ecef8a64945d089",
+      "seq": 1,
+      "namespace": "R07_NATIVE_PILOT/map_b/PILOT",
+      "technicalControl": false,
+      "result": {
+        "worldTimeMs": 100,
+        "querySpent": 1,
+        "before": [
+          20,
+          3,
+          20,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "outcome": "PANEL_OBSERVED",
+        "deviceAfter": -1,
+        "collision": false,
+        "after": [
+          20,
+          3,
+          20,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "durationMs": 113,
+        "invalidAction": false,
+        "tollSpent": 0,
+        "preparedHumanoidPathfinding": true,
+        "preparedKinematicActuator": false,
+        "resourceDelivered": false,
+        "materialConsequence": false,
+        "deviceBefore": -1,
+        "resourceCollected": false,
+        "permissionSpent": 1
+      },
+      "executionStatus": "EXECUTED"
+    },
+    {
+      "observationId": "obs_3ddfb66a-7cce-4d1e-b8fa-cda922027f3a",
+      "protocol": "DEE.RBX.Connector.R01",
+      "sessionId": "R07_NATIVE_PILOT_849dbde0dd1d4911a572",
+      "actionId": "CLEAN_QUERY_SENSOR_6f91451e50524b97a7",
+      "operationId": "CLEAN_QUERY_SENSOR_6f91451e50524b97a7",
+      "seq": 2,
+      "namespace": "R07_NATIVE_PILOT/map_b/PILOT",
+      "technicalControl": false,
+      "result": {
+        "deviceActuation": {
+          "port": 1,
+          "prepared_fixed_actuator": true,
+          "semantic_choice_in_motor": false,
+          "value": 1,
+          "actualCanCollide": false
+        },
+        "querySpent": 0,
+        "before": [
+          20,
+          3,
+          20,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "outcome": "MOVED",
+        "deviceAfter": 1,
+        "collision": false,
+        "after": [
+          54.0604133605957,
+          2.999999761581421,
+          -10.539752960205078,
+          0.840911328792572,
+          1.7040083122310534e-08,
+          -0.541172981262207,
+          2.3849564101396936e-08,
+          1,
+          6.854638456843531e-08,
+          0.541172981262207,
+          -7.054817530161017e-08,
+          0.840911328792572
+        ],
+        "durationMs": 6263,
+        "invalidAction": false,
+        "motor": {
+          "no_alternate_goal": true,
+          "recomputes": 0,
+          "selectedDestination": [
+            55,
+            3,
+            -12
+          ],
+          "distance": 47.71247805624398,
+          "actionId": "R07_PILOT_TRANSPORT",
+          "reason": "SELECTED_TARGET_REACHED",
+          "wallSeconds": 6.263409900013357,
+          "waypoints": [
+            {
+              "attempt": 0,
+              "waypoint": 1,
+              "reached": true,
+              "position": [
+                20,
+                0,
+                20
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 2,
+              "reached": true,
+              "position": [
+                23.697296142578125,
+                0,
+                18.47356605529785
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 3,
+              "reached": true,
+              "position": [
+                27.39459228515625,
+                0,
+                16.947132110595703
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 4,
+              "reached": true,
+              "position": [
+                31.091888427734375,
+                0,
+                15.420699119567871
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 5,
+              "reached": true,
+              "position": [
+                34.7891845703125,
+                0,
+                13.894266128540039
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 6,
+              "reached": true,
+              "position": [
+                38.486480712890625,
+                0,
+                12.367833137512207
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 7,
+              "reached": true,
+              "position": [
+                39.62958908081055,
+                0,
+                11.895899772644043
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 8,
+              "reached": true,
+              "position": [
+                41.79349136352539,
+                0,
+                8.531746864318848
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 9,
+              "reached": true,
+              "position": [
+                43.957393646240234,
+                0,
+                5.1675944328308105
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 10,
+              "reached": true,
+              "position": [
+                46.12129592895508,
+                0,
+                1.8034420013427734
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 11,
+              "reached": true,
+              "position": [
+                48.28519821166992,
+                0,
+                -1.5607104301452637
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 12,
+              "reached": true,
+              "position": [
+                50.449100494384766,
+                0,
+                -4.924862861633301
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 13,
+              "reached": true,
+              "position": [
+                52.613006591796875,
+                0,
+                -8.28901481628418
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 14,
+              "reached": true,
+              "position": [
+                54.77690887451172,
+                0,
+                -11.653167724609375
+              ]
+            },
+            {
+              "attempt": 0,
+              "waypoint": 15,
+              "reached": true,
+              "position": [
+                55,
+                0,
+                -12
+              ]
+            }
+          ],
+          "status": "ARRIVED",
+          "finalPosition": [
+            54.0604133605957,
+            2.999999761581421,
+            -10.539752960205078
+          ]
+        },
+        "tollSpent": 0,
+        "preparedHumanoidPathfinding": true,
+        "resourceDelivered": false,
+        "preparedKinematicActuator": false,
+        "materialConsequence": false,
+        "worldTimeMs": 5962,
+        "deviceBefore": -1,
+        "resourceCollected": false,
+        "permissionSpent": 0
+      },
+      "executionStatus": "EXECUTED"
+    }
+  ],
+  "final_tick": 992751,
+  "new_native_ticks": 1564,
+  "last_confirmed_phase_tick": 992751,
+  "confirmed_phase_tick_delta": 1564,
+  "owner_closed": true,
+  "failure": null,
+  "module_checkpoint": "WORLD_MODULE_CHECKPOINT.json",
+  "scope": "ONE actual Native selector episode on PILOT drives unchanged exported connector and injected Humanoid body on another map; not replay, no new teacher, no new arithmetic, no host route override.",
+  "assistance": "Prepared absolute ports on a different map, public panel1/bothfree with fixed local tags, transduction, opportunities and goal flag; no expected route/number given to Native.",
+  "source_sequence_mapping": "Native seq=module seq+56; exact same observationId/session/actionId and actual previousActionId preserved.",
+  "host_memory_before": {
+    "total_bytes": 16852312064,
+    "available_bytes": 4813058048,
+    "load_percent": 71
+  },
+  "owner_job_limit_bytes": 536870912,
+  "principal_modified": false
+}

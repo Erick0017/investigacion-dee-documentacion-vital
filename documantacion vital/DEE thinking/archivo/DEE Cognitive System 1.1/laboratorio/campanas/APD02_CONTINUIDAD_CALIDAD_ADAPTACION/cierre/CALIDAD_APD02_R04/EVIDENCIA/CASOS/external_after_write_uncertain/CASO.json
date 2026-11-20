@@ -1,0 +1,87 @@
+{
+  "artifact_directory": ".",
+  "checks": {
+    "actual_unconfirmed_file_preserved": true,
+    "expected_category": true,
+    "literal_transport_has_no_requested_operator": true,
+    "no_corrective_or_retry_action": true,
+    "no_request_or_receipt_mutation": true,
+    "no_unconfirmed_effect_was_evaluated": true,
+    "only_selected_provider_once_or_unavailable": true,
+    "unknown_effect_not_hidden_as_failed": true
+  },
+  "committed": {
+    "artifact": null,
+    "delay_ticks": 0,
+    "effect_phase": "written",
+    "effect_phases": [
+      "planned",
+      "before_compute",
+      "computed",
+      "opened",
+      "written"
+    ],
+    "failure_class": "OSError",
+    "fixture_does_not_advance_DEE": true,
+    "no_dual_execution_or_fallback": true,
+    "possible_artifact": {
+      "effect_may_exist": true,
+      "no_confirmed_bytes_or_hash": true,
+      "relative_path": "external_after_write_uncertain.json"
+    },
+    "price": 1,
+    "provider_calls": {
+      "external": 1,
+      "native": 0
+    },
+    "provider_error": "Declared synthetic failure after possible real file effect; no retry or committed receipt",
+    "raw_provider_response": {
+      "procedure": "external",
+      "value": 11
+    },
+    "reported_value": 11,
+    "requires_explicit_reconciliation": true,
+    "selected_operation": "add",
+    "selected_procedure": "external",
+    "state": "uncertain",
+    "synthetic_fault": {
+      "fail_after_write": true
+    },
+    "task_id": "external_after_write_uncertain",
+    "used_value": 11
+  },
+  "entry": "literal",
+  "error": {
+    "class": "UncommittedActionError",
+    "detail": "Terminal effect required before resolving an evaluator-private literal reference"
+  },
+  "expected_category": "UNCOMMITTED_REJECTED",
+  "label": "external_after_write_uncertain",
+  "policy": {
+    "max_artifact_bytes": 4096,
+    "max_delay_ticks": 3,
+    "max_operand": 32,
+    "max_price": 2,
+    "resource_limits_required_for_success": true
+  },
+  "provider_calls": [
+    {
+      "operands": [
+        7,
+        4
+      ],
+      "operation": "add",
+      "procedure": "external"
+    }
+  ],
+  "report": null,
+  "request": {
+    "operands": [
+      7,
+      4
+    ],
+    "task_id": "external_after_write_uncertain",
+    "text": "suma"
+  },
+  "scope": "Synthetic purePython fixture; selected native callback is test data, not a claim of native DEE calculation."
+}

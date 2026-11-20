@@ -1,0 +1,15 @@
+{
+  "source_sha256": "b86a43f42ddd37567d48360bbd24236ac73d649f7e3242f88cf18c385628f0bc",
+  "started_utc": "2026-10-26T14:32:22.681458+00:00",
+  "native_ticks": 0,
+  "queries_only": "QueryInformationJobObject(handle QUERY0x4, class8)",
+  "why_separate_observer": "Frozen earlier scripts queried reserved class9.IoInfo. Their zeros are not measurements of zero work. No actor or frozen script is patched.",
+  "authority": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/jobapi2/nf-jobapi2-queryinformationjobobject",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_basic_and_io_accounting_information"
+  ],
+  "scope": "Native-owner Jobs plus their actual workers; excludes supervisor/client processes outside those Jobs. CPU/RAM total tree is recorded separately; nested counts are not added.",
+  "late_attachment": "Cumulative I/O is lifetime from OS Job creation, not just from observer attachment. Phase boundaries before attachment have no class8 sample.",
+  "no_new_decisional_information_to_participant": true
+}

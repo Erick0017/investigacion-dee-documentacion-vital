@@ -1,0 +1,13 @@
+# Addendum causal específico R04
+
+Tres bifurcaciones del mismo estado preparado sin semilla, T391960 SHA5e0dd9fa3983cc5fbed26969db74610010403dd7db005c86b941c383559b1f1f, conservaron/cortaron/desacoplaron espacialmente la traza de una acción ya formada. No se modificó MAIN ni sistema/.
+
+- {"action_before_cut": 0, "category": "FAILURE", "later": -1, "life": "APD02_R04_POSTFORMED_retain", "mode": "retain", "old6": [-1, -1, 1, -1, -1, 1], "quality": "RESOURCE_LIMIT", "refs_after": [4, 5], "sink_statuses": [], "snapshot": "estado/checkpoints/APD02_R04_POSTFORMED_retain.T395709.6735f745ed75.deetsnap.gz", "snapshot_sha256": "8a97e74e733d02e26acb20a68228b7949a98b097de74887d3606f0482fbf7b1f"}
+- {"action_before_cut": 0, "category": "FAILURE", "later": 0, "life": "APD02_R04_POSTFORMED_cut", "mode": "cut", "old6": [-1, -1, 1, -1, -1, 1], "quality": "RESOURCE_LIMIT", "refs_after": [5, 5], "sink_statuses": ["applied", "applied", "applied"], "snapshot": "estado/checkpoints/APD02_R04_POSTFORMED_cut.T395709.448a200e5e5b.deetsnap.gz", "snapshot_sha256": "0401c278a410ff70701e169f8db09fafa79ac84e2bcedb940c80c5c59388f100"}
+- {"action_before_cut": 0, "category": "FAILURE", "later": -1, "life": "APD02_R04_POSTFORMED_sham", "mode": "sham", "old6": [-1, -1, 1, -1, -1, 1], "quality": "RESOURCE_LIMIT", "refs_after": [4, 5], "sink_statuses": ["applied", "applied", "applied"], "snapshot": "estado/checkpoints/APD02_R04_POSTFORMED_sham.T395709.be7cc0bc3179.deetsnap.gz", "snapshot_sha256": "c505453e6fffe07bd606cda3d199933b204f5fa693c2cc7a5b87a67019f0b5a8"}
+
+La primera acción, efecto real de archivo y consecuencia externa se registran por separado; tres puntos de corte fijos cubren las tres trayectorias sin consultar el signo. Las entradas inactivas SEM4 son intervenciones físicas legales sobre RAW0 y no ediciones del campo. Un corte rechazado no acreditaría ablación. El sham conserva dosis. El primer uso posterior no recibe docencia, y seis consultas anteriores comprueban función no paralizada.
+
+El patrón R04 específico de dependencia de la traza se observó. No es válido atribuirle automáticamente al R04 todos los resultados del R03: este addendum conserva evidencia propia. La regla de selección, la anatomía, el calendario y el mapeo de0 material a externo siguen siendo P0; la dependencia de consecuencias es local, no autonomía o regulación general.
+
+Un caso stdlib verifica RAW/clocks/lectores, proveedor único, bytes reales y proyección de calidad desde esta exportación. Los mundos completos y futuros de cada rama quedan locales con hashes; este addendum no reemplaza el respaldo operativo. Los stages6eef… y18ef… anteriores permanecen inalterados.

@@ -1,0 +1,69 @@
+{
+  "artifact_directory": ".",
+  "checks": {
+    "expected_category": true,
+    "literal_transport_has_no_requested_operator": true,
+    "no_request_or_receipt_mutation": true,
+    "only_selected_provider_once_or_unavailable": true
+  },
+  "committed": {
+    "artifact": {
+      "bytes": 155,
+      "relative_path": "literal_unknown_after_effect.json",
+      "sha256": "25cce52d3bf84ce6e470b6d06fcfa189c1e5556153f068f384181c6c980c0d4f"
+    },
+    "delay_ticks": 0,
+    "fixture_does_not_advance_DEE": true,
+    "no_dual_execution_or_fallback": true,
+    "price": 1,
+    "provider_calls": {
+      "external": 0,
+      "native": 1
+    },
+    "raw_provider_response": {
+      "procedure": "native",
+      "value": 11
+    },
+    "reported_value": 11,
+    "selected_operation": "add",
+    "selected_procedure": "native",
+    "state": "committed",
+    "synthetic_fault": {},
+    "task_id": "literal_unknown_after_effect",
+    "used_value": 11
+  },
+  "entry": "literal",
+  "error": {
+    "class": "ValueError",
+    "detail": "Literal outside the fixed conventional evaluator domain; no inferred meaning or corrective answer"
+  },
+  "expected_category": "EVALUATOR_DOMAIN_REJECTED",
+  "label": "literal_unknown_after_effect",
+  "policy": {
+    "max_artifact_bytes": 4096,
+    "max_delay_ticks": 3,
+    "max_operand": 32,
+    "max_price": 2,
+    "resource_limits_required_for_success": true
+  },
+  "provider_calls": [
+    {
+      "operands": [
+        7,
+        4
+      ],
+      "operation": "add",
+      "procedure": "native"
+    }
+  ],
+  "report": null,
+  "request": {
+    "operands": [
+      7,
+      4
+    ],
+    "task_id": "literal_unknown_after_effect",
+    "text": "desconocida"
+  },
+  "scope": "Synthetic purePython fixture; selected native callback is test data, not a claim of native DEE calculation."
+}

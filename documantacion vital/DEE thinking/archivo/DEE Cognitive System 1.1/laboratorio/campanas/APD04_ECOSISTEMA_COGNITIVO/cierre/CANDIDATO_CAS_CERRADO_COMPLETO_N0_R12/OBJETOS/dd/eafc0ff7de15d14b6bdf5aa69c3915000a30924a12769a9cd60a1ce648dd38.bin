@@ -1,0 +1,53 @@
+{
+  "schema": "APD04.literal_driver.run.N0.explicit_fake.v1",
+  "driver_sha256": "1e9c84298ce7568b5c4e0ca967e9cab19ec57f818f2fcc35c36d55991dc6deb4",
+  "tests": [
+    "ordered fixed schedule",
+    "explicit existing-life reopen",
+    "paused fake owner",
+    "literal material",
+    "literal command parser",
+    "fixed IDs",
+    "checkpoint",
+    "passive status",
+    "save/stop",
+    "protected file hashes"
+  ],
+  "fake_calls": [
+    "open_existing_fake",
+    "start_paused_fake",
+    "reanudar_fake",
+    [
+      "one_submission_fake",
+      "N0_MATERIAL_NEVER_SUBMITTED_TO_DEE",
+      [
+        {
+          "modo": "EXPLICIT_FAKE_N0"
+        }
+      ],
+      "omit",
+      "closed"
+    ],
+    [
+      "one_submission_fake",
+      "N0_COMMAND_NEVER_SUBMITTED_TO_DEE",
+      [
+        {
+          "modo": "apd03-panel",
+          "nuevas": false,
+          "memorias": false
+        }
+      ],
+      "omit",
+      "closed"
+    ],
+    "guardar_fake",
+    "guardar_fake",
+    "detener_fake"
+  ],
+  "exit_code": 0,
+  "new_native_ticks": 0,
+  "new_owners": 0,
+  "real_causal_files_unchanged": true,
+  "no_scientific_claim": true
+}

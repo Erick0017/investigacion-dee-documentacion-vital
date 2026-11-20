@@ -1,0 +1,87 @@
+APD03 - Entrada sencilla candidata (instrumentación, no capacidad cognitiva)
+
+ESTADO: N0 verificado; ninguna prueba Native ni modificación de S/Full por este agente.
+
+Archivos:
+usar_dee.py
+probar_entrada_apd03_n0.py
+ENTRADA_SENCILLA_APD03_CANDIDATA.json
+USAR_DEE.bat (opcional para la raíz distribuida)
+PRUEBAS_ENTRADA_N0_R01.json (23 fixtures, un error Windows conservado)
+PRUEBAS_ENTRADA_N0_R02.json (23/23 tras corrección del bloqueo)
+PRUEBAS_ENTRADA_N0_R03.json (25/25, resolución de raíz original/distribuida)
+PRUEBAS_ENTRADA_N0_R04.json (25/25; gracia de cierre del Job propio)
+PRUEBAS_ENTRADA_N0_R05.json (29/29; callback propuesto rechazado antes de Native)
+PRUEBAS_ENTRADA_N0_R06.json (28/28; contrato único y cwd corto, sin callback)
+revisiones/N0_R01_CON_FALLO_WINDOWS/usar_dee.py conserva los bytes ejecutados.
+revisiones/N0_R02_OK/usar_dee.py conserva los bytes ejecutados.
+
+No se debe confundir esta prueba de mocks con importación nativa, cognición,
+independencia de Full o continuidad física. Falta ejecutar el protocolo Native
+cuando Root lo autorice y cerrar el corte final que abra el lanzador.
+
+Integración mínima propuesta, usando el actualizador existente:
+1. Copiar usar_dee.py a sistema/app/usar_dee.py del origen con preimagen si existe.
+2. Copiar/configurar sistema/contratos/ENTRADA_SENCILLA_APD03.json. Sólo cuando se
+   haya escogido el corte, fijar status=CLOSED_SELECTED_FOR_USE, alias, vida,
+   tick, snapshot SHA-256 y manifiesto emparejado postSTOP SHA-256 reales.
+3. Para S original, source_paired_export_manifest es relativa a la raíz original
+   y el programa se ejecuta con el CPython 3.13 ya instalado. No reinstala nada.
+4. El actualizador existente ya copia sistema/app y sistema/contratos al Full.
+   No es necesario sustituirlo ni añadir otro motor o almacén de snapshots.
+5. En arrancar.py, puede añadirse una única acción operativa usar que invoque
+   el intérprete incluido, -I -B -X utf8, sistema/app/usar_dee.py, --raiz ROOT,
+   y los argumentos restantes. El supervisor vuelve a delegar al mismo gestor.
+   Esta pequeña incorporación debe conservar la preimagen del lanzador.
+6. La configuración se lee únicamente desde sistema/contratos en ambos layouts.
+   No se crea otra copia en actualizaciones. El campo de manifiesto original es
+   documental en Full: allí el importador existente utiliza el alias y su bundle.
+7. ARRANCAR_CAMBIOS_PROPUESTOS.diff sólo propone cwd=PYTHON.parent en call y la
+   acción usar. No se ha aplicado a Full ni se intercepta launcher.call. El
+   importador emparejado y sus comprobaciones permanecen intactos.
+8. Si se elige USAR_DEE.bat en raíz, el actualizador deberá registrar ese único
+   miembro explícitamente. No dejar un archivo raíz fuera del manifiesto que
+   el siguiente cierre pueda retirar. No se ha aplicado ninguna alternativa.
+
+Uso previsto (no afirmar probado Native todavía):
+INICIAR.bat usar --nueva MI_APD03_01
+En la misma terminal:
+estado
+reanudar
+usar suma 18 7
+ensenar compara -1 --revision
+lenguaje compara 9 gamma
+guardar
+detener
+continuar
+reanudar
+resultado ID_EXISTENTE
+salir
+
+Para otra sesión:
+INICIAR.bat usar --vida MI_APD03_01
+No repetir --nueva. El protocolo conserva mundo, fuente de importación e ID
+material pendiente; el estado físico completo permanece en el gestor existente.
+
+Contrato de asistencia:
+- El supervisor selecciona procesos, no respuestas, contextos, memorias o rutas.
+- La docencia, el contexto y el orden de componer se reciben literalmente del
+  usuario; no se atribuyen a decisiones aprendidas.
+- evento ARCHIVO.json transporta situaciones literales del nuevo protocolo.
+  El contrato del gestor, no la interfaz, determina admisión y evolución.
+- No se consulta un evaluador ni telemetría histórica para responder.
+- Estado es el caché pasivo del propietario, con su antigüedad publicada.
+- Inicio siempre pausado; reanudar es explícito. Una aplicación abierta no
+  implica que su mundo esté evolucionando.
+- STOP pertenece sólo al proceso iniciado por la sesión. No se mata otro dueño.
+- Timeout guarda el mismo ID y hash; resultado sólo consulta. No hay retry
+  material, cambio de checkpoint favorable, creación T0 ni fallback.
+- Un resultado incierto bloquea nuevas entradas/reanudación. No incorpora una
+  reconciliación automática; conserva el problema y los recibos para examen.
+- Cada sesión impone el Job/recursos del adaptador ya existente.
+
+Integridad/futuro adverso:
+El fallo N0 R01 fue un PermissionError al intentar leer el byte bloqueado desde
+un segundo supervisor. La corrección sólo amplió el try/except y cerró ese
+descriptor; R02 comprueba bloqueo concurrente y liberación. No hubo mundo DEE,
+Native ni interpretación cognitiva afectada. Se preserva código exacto R01.

@@ -1,0 +1,112 @@
+{
+  "enabled_seconds": 0,
+  "events": [
+    {
+      "await_existing": "apd02g1_goal_next",
+      "id": "await_goal"
+    },
+    {
+      "id": "new_request_boundary",
+      "payload": {
+        "operacion": "sesion",
+        "situaciones": [
+          {
+            "modo": "apd02",
+            "operandos": [
+              0,
+              32
+            ],
+            "texto": "suma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "old6_no_feedback",
+      "payload": {
+        "operacion": "sesion",
+        "retorno": "omit",
+        "situaciones": [
+          {
+            "contexto": "alfa",
+            "modo": "memoria"
+          },
+          {
+            "contexto": "beta",
+            "modo": "memoria"
+          },
+          {
+            "contexto": "gamma",
+            "modo": "memoria"
+          },
+          {
+            "contexto": "delta",
+            "modo": "memoria"
+          },
+          {
+            "contexto": "epsilon",
+            "modo": "memoria"
+          },
+          {
+            "contexto": "zeta",
+            "modo": "memoria"
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_functions_no_feedback",
+      "payload": {
+        "operacion": "sesion",
+        "retorno": "omit",
+        "situaciones": [
+          {
+            "contexto": "gamma",
+            "modo": "apd02-lenguaje",
+            "texto": "compara",
+            "valor": 8
+          },
+          {
+            "contexto": "gamma",
+            "modo": "apd02-lenguaje",
+            "texto": "recuerda",
+            "valor": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "renewal_after_goal",
+      "payload": {
+        "operacion": "sesion",
+        "retorno": "omit",
+        "situaciones": [
+          {
+            "demora_periodos": 3,
+            "modo": "apd02-acumular",
+            "valor": 0
+          }
+        ]
+      }
+    }
+  ],
+  "expected_initial_pending": [
+    {
+      "id": "apd02g1_goal_next",
+      "payload": {
+        "operacion": "sesion",
+        "situaciones": [
+          {
+            "modo": "apd02-meta-paso",
+            "oportunidades": 3
+          }
+        ]
+      }
+    }
+  ],
+  "life": "APD02_MAIN",
+  "prefix": "apd02g2_",
+  "schema": "APD02.prospective_goal_pending_reopen.R01",
+  "scope": "The exact prior queued material request resumes once under a new owner PID. Raw/clocks/interfaces, public/private world facts and counters remain inherited. The following input is genuinely new; no task replay or substituted finished recipe.",
+  "snapshot_sha256": "6623df064dd0855ce409e46fa0b254d9edf6138ef1a92f0249e62236a33052ef"
+}

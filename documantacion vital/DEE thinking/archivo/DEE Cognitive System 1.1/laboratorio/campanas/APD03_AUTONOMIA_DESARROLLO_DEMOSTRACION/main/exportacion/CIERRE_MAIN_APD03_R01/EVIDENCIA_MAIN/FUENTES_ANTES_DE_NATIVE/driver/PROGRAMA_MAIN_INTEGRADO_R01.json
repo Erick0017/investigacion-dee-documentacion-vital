@@ -1,0 +1,72 @@
+{
+  "schema": "APD03.continuous_main_program.prospective.R01",
+  "status": "ROOT_REVIEW_REQUIRED_BEFORE_NATIVE",
+  "life": "APD03_MAIN",
+  "parent_life": "APD02_MAIN",
+  "parent_snapshot_sha256": "64359d48edd49f8a1f5616ceacd04c4479a27383877c23381e217a39f0cc05a9",
+  "initial_imported_snapshot_sha256": "8c60b4967cd313719dd60f4b0bc6514e4f72f1fdbbfd546090897c31e81dd307",
+  "initial_tick": 548407,
+  "evolving_window_minimum_seconds": 3600,
+  "heartbeat_maximum_seconds": 45,
+  "deadline_utc": "2026-10-26T21:07:58Z",
+  "queueing_wait_seconds": 0.25,
+  "transport_result_limit_seconds": 420,
+  "no_new_import_no_T0_no_AUX_memory_merge": true,
+  "prelude": [
+    {"id":"before_admission_old_panel","situations":[{"modo":"apd03-panel","nuevas":false,"memorias":true}],"feedback":"omit"},
+    {"id":"one_P0_admission","situations":[{"modo":"apd03-admitir","consecuencia":"local_useful"}],"feedback":"real"}
+  ],
+  "blocks": [
+    {"id":"B0_OWN_EXPERIENCE","at_seconds":0,"events":[
+      {"id":"experience_full","kind":"goal","text":"suma","operands":[8,5],"visible":true,"context":0,"opportunities":4,"feedback":"real"},
+      {"id":"reserve_full_1","kind":"goal","text":"diferencia","operands":[22,9],"visible":true,"context":1,"opportunities":4,"feedback":"real"}
+    ]},
+    {"id":"B1_NEW_FORMS_AND_INFORMATION","at_seconds":480,"events":[
+      {"id":"teach_luma","kind":"material","situations":[{"modo":"apd03-docencia","texto":"luma","senal":1,"revision":false}],"feedback":"real"},
+      {"id":"teach_nara","kind":"material","situations":[{"modo":"apd03-docencia","texto":"nara","senal":-1,"revision":false}],"feedback":"real"},
+      {"id":"first_luma","kind":"material","situations":[{"modo":"apd03-lenguaje","texto":"luma","valor":23,"contexto":"gamma"}],"feedback":"omit"},
+      {"id":"first_nara","kind":"material","situations":[{"modo":"apd03-lenguaje","texto":"nara","valor":23,"contexto":"gamma"}],"feedback":"omit"},
+      {"id":"reserve_hidden_1","kind":"goal","text":"suma","operands":[12,7],"visible":false,"context":1,"opportunities":4,"feedback":"real"}
+    ]},
+    {"id":"B2_RETENTION_NEW_CONTENT","at_seconds":1080,"events":[
+      {"id":"retention_panel_1","kind":"material","situations":[{"modo":"apd03-panel","nuevas":true,"memorias":true}],"feedback":"omit"},
+      {"id":"reserve_hidden_2","kind":"goal","text":"diferencia","operands":[28,13],"visible":false,"context":0,"opportunities":4,"feedback":"real"},
+      {"id":"renewed_plus1","kind":"material","situations":[{"modo":"apd02-acumular","valor":1,"demora_periodos":3}],"feedback":"omit"}
+    ]},
+    {"id":"B3_SHARED_SELECTOR_PERTURBATION","at_seconds":1740,"events":[
+      {"id":"quality_law_bad_native","kind":"material","situations":[{"modo":"apd02-ambiente","configuracion":{"precios":[1,1],"demora":[0,0],"disponibilidad":[true,true],"fallos":["wrong_value","none"],"presupuesto":2,"demora_maxima":8}}],"feedback":"real"},
+      {"id":"quality_sum","kind":"material","situations":[{"modo":"apd02","texto":"suma","operandos":[15,8]}],"feedback":"real"},
+      {"id":"quality_difference","kind":"material","situations":[{"modo":"apd02","texto":"diferencia","operandos":[30,12]}],"feedback":"real"},
+      {"id":"habitat_after_quality","kind":"goal","text":"agrega","operands":[10,11],"visible":true,"context":1,"opportunities":4,"feedback":"real"},
+      {"id":"availability_law","kind":"material","situations":[{"modo":"apd02-ambiente","configuracion":{"precios":[1,1],"demora":[0,0],"disponibilidad":[true,false],"fallos":["none","none"],"presupuesto":2,"demora_maxima":8}}],"feedback":"real"},
+      {"id":"availability_difference","kind":"material","situations":[{"modo":"apd02","texto":"resta","operandos":[25,9]}],"feedback":"real"}
+    ]},
+    {"id":"B4_INTERLEAVED_USE","at_seconds":2400,"events":[
+      {"id":"restore_common_law","kind":"material","situations":[{"modo":"apd02-ambiente","configuracion":{"precios":[1,1],"demora":[0,0],"disponibilidad":[true,true],"fallos":["none","none"],"presupuesto":2,"demora_maxima":8}}],"feedback":"real"},
+      {"id":"retained_nara","kind":"material","situations":[{"modo":"apd03-lenguaje","texto":"nara","valor":31,"contexto":"beta"}],"feedback":"omit"},
+      {"id":"retained_luma","kind":"material","situations":[{"modo":"apd03-lenguaje","texto":"luma","valor":11,"contexto":"epsilon"}],"feedback":"omit"},
+      {"id":"reserve_full_later","kind":"goal","text":"resta","operands":[31,12],"visible":true,"context":0,"opportunities":4,"feedback":"real"},
+      {"id":"assisted_composition_control","kind":"material","situations":[{"modo":"apd02-componer","formas":["agrega","resta"],"datos":[5,8,3]}],"feedback":"real"}
+    ]},
+    {"id":"B5_FINAL_NO_RETEACH","at_seconds":3180,"events":[
+      {"id":"final_hidden_no_feedback","kind":"goal","text":"total","operands":[14,15],"visible":false,"context":0,"opportunities":4,"feedback":"omit"},
+      {"id":"final_old_and_new_panel","kind":"material","situations":[{"modo":"apd03-panel","nuevas":true,"memorias":true}],"feedback":"omit"},
+      {"id":"renewed_zero_retention","kind":"material","situations":[{"modo":"apd02-acumular","valor":0,"demora_periodos":5}],"feedback":"omit"}
+    ]}
+  ],
+  "after_window": {
+    "goal":{"text":"suma","operands":[17,9],"visible":false,"context":1},
+    "first_opportunity_budget":1,
+    "queued_request_id":"apd03_main_exact_pending_step_01",
+    "queued_situations":[{"modo":"apd03-paso","oportunidades":3}],
+    "continuation_material":[{"modo":"apd03-panel","nuevas":true,"memorias":true}],
+    "protocol":"Pause only after >=3600 evolving seconds. Record the actual pending goal, enqueue this one ID while paused through the same Supervisor with a predeclared short transport wait. Save and STOP. Another actual UI process opens --vida, reanuda and reconciles this SAME ID without re-put; then a no-reteaching panel, save and STOP."
+  },
+  "scope": {
+    "prepared":"sensor flag, codecs, finite generic lexical slots, native arithmetic, action opportunities, file writer, post-action quality, UI/supervision/calendar",
+    "new_teaching":"luma+ chooses prepared current comparison, nara- chooses existing MA access at the operator-supplied context; neither is a mathematical alias",
+    "new_questions":"history-dependent current information choice; new associations without new anatomy; retention during shared-selector perturbation; bounded conditional QUERY/ACT sequence versus an operator-specified composition",
+    "not_claimed":"general R2, arbitrary context selection, native program invention, meta-learning by faster host, energy advantage, free Spanish, NSM65, other human/other computer",
+    "no_cognitive_repairs":"No patches, teacher recovery, favorable restoration, profile changes or codec edits during the reserved window. Functional negatives remain in the fixed program; only protocol uncertainty, host limits or source-freeze breach require controlled stop."
+  }
+}

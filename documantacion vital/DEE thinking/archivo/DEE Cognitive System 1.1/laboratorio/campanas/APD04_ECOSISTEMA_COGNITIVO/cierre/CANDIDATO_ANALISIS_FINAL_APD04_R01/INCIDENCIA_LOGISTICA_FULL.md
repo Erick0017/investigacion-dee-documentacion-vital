@@ -1,0 +1,9 @@
+# Incidencia logística y cierre del Full APD04
+
+La ejecución del actualizador iniciada a02:08 llegó a `Build.finish`: release20261027T020843Z y propietario escrito a02:21:51. Fue cancelada a02:24:58(exit1) después del cierre de la copia, antes de crear el ZIP. El Full anterior(355253621bytes) no fue alterado en ese intento. No hubo Native, evolución de vidas, cambio del kernel/WHL ni un fallo cognitivo.
+
+Se autorizó un parche exclusivamente logístico para reutilizar nueve fuentes4.5 ya verificadas en vez de recopiarlas en otra cápsula. Los tests N0 de reutilización, recuperación de un faltante y preservación de un archivo modificado están archivados en `laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/PARCHE_LOGISTICO_REUSO_4_5_R01`. Sus fuentes antes/después y resultados son exactos; no sustituyen ninguna física o adquisición.
+
+Se refrescó una sola fila de `ARCHIVOS_GESTIONADOS.json`: `actualizaciones/actualizar.py`,49194bytes/SHA bff7fb96e4bfa15ce9c7c87b0a0557d2c604ba7680199fb2fcf7b668e606a433 →50524bytes/SHA2b38a48154a6182c25d9d78f1fbc6fc8c11a58a0b66a7819548ff2dcf47e1b8c. El resto de campos parseados permaneció igual. El manifiesto pasó de911e0e287bc3095511ac7fad1066c306f5fc2fdc74307cbf05d180bfa9b8e2e3 a66df52f6aeb0b2e82d5992bd6a68fe64e6231987c14b65b9752be1f840c4ca1d. Esto no declara identidad de bytes de manifiestos distintos ni una reconstrucción de Source.
+
+Después `--solo-zip` terminó exit0: archivo Full exacto372769184bytes,33363miembros,SHA-25610b6eeaab8bfd62d7eedc89b3c96a82cce3ae137b1eccf85085ba8ac793a2d9b. Source663382…,semilla52a35b… y Wordc0c1d7… permanecieron intactos. El GO para prueba Native de ese archivo se dio a02:32 sobre una extracción nueva `_apd04_full_r02` en la misma computadora. Su ejecución y resultados deben leerse en el dossier Full posterior; este registro logístico no certifica por sí mismo adquisición, respuesta o continuación y no equivale a probar otra computadora.

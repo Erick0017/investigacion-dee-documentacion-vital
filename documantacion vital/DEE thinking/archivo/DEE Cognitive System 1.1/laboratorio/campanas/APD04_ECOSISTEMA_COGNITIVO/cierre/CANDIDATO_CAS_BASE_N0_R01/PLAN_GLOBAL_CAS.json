@@ -1,0 +1,63 @@
+{
+  "jobs": [
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/CIERRE_SENSOR_R04_N0_R04"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/CIERRE_SENSOR_R04_N0_R04/RECALCULO_CIERRE_R04_N0.json",
+      "expected_sha256": "97e9392cd63433ce4fcac9c6e7a36b4005cd93a48ae23c341b34a14eb64a715f",
+      "id": "R04_CERRADO",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/exportar_cierre_r04_n0_r04.py",
+      "script_sha256": "06cd3239dac280f522358a81f0889b8596edde97611df5fc603a23aa20bd5772",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_PREFIJO_WORK02_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/RESERVA60_PREFIJO_WORK02_N0_R01/RECALCULO_PREFIJO_RESERVA_N0.json",
+      "expected_sha256": "7e0f8667d61608a4905c65b46b05869f2ff51de6379386f110694beb146c6412",
+      "id": "RESERVA_PREFIJO02",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/exportar_reserva_prefijo_completado_n0_r01.py",
+      "script_sha256": "84a44dbf0838b1515c0a37dbd004ab64f530decbdd89e86ec988dd5e066bd215",
+      "timeout_seconds": 900
+    },
+    {
+      "args": [
+        "recalc",
+        "--evidence",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/PANEL_HEREDADO_RAW_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/PANEL_HEREDADO_RAW_N0_R01/RECALCULO_PANEL_HEREDADO.json",
+      "expected_sha256": "476302e6c43446052c76ba884401c0e8cb76863db24b1fdafa1ca0632c5199a8",
+      "id": "PANEL_HEREDADO",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/extraer_panel_heredado_apd04_n0_r01.py",
+      "script_sha256": "0551d59549caaef6a215eba4d598ebae54acddb91b1203c139f7d8cfcb791a16",
+      "timeout_seconds": 900
+    }
+  ],
+  "schema": "APD04.CAS.selected_archived_recalculations.N0.R01",
+  "scope": "Archived exact evidence only, no Native, no Full proof, no final reserve closure"
+}

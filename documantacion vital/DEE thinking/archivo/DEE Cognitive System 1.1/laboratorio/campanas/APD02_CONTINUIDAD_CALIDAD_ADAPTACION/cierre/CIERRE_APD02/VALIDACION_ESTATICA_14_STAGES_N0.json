@@ -1,0 +1,418 @@
+{
+  "ZIP_generated": false,
+  "actual_recalculations_rerun": 0,
+  "case_count": 15,
+  "exact_duplicate_bytes_avoided": 3164478,
+  "logical_bytes": 29269898,
+  "namespace_count": 14,
+  "native_ticks": 0,
+  "stages": [
+    {
+      "files": 69,
+      "manifest_sha256": "7f4c7ac5e4e8f56d86d2533dd5bfc48d47e24f1759c1573f0608215cb655d83f",
+      "namespace": "ACUMULADOR_LEXICO",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA/ACUMULADOR",
+            "--output",
+            "{output}"
+          ],
+          "base": "ACUMULADOR_LEXICO",
+          "case": "ACUMULADOR_LEXICO__recalcular_acumulador_r01_r02",
+          "global_invocation_normalizations": [
+            {
+              "appended_declared_output_flag": "--output",
+              "source_plan_unchanged": true,
+              "verified_from_script_AST": true
+            }
+          ],
+          "name_derived_from_script": true,
+          "reference": "REFERENCIAS/ACUMULADOR_R2.json",
+          "reference_bytes": 8825,
+          "reference_sha256": "7a970574fb3f6fea44e66265875e1374b9f7c683bb39b78693161a2f24bfc199",
+          "script": "CODIGO/recalcular_acumulador_r01_r02.py",
+          "timeout_seconds": 180
+        },
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA/LEXICO",
+            "--output",
+            "{output}"
+          ],
+          "base": "ACUMULADOR_LEXICO",
+          "case": "ACUMULADOR_LEXICO__recalcular_consulta_r02",
+          "global_invocation_normalizations": [
+            {
+              "appended_declared_output_flag": "--output",
+              "source_plan_unchanged": true,
+              "verified_from_script_AST": true
+            }
+          ],
+          "name_derived_from_script": true,
+          "reference": "REFERENCIAS/LEXICO_R02.json",
+          "reference_bytes": 15438,
+          "reference_sha256": "a01d0a7640db67276fca1411e4677f606214176a8202b1ddabd3f741b890a971",
+          "script": "CODIGO/recalcular_consulta_r02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/ACUMULADOR_Y_AUTOPSIA_LEXICA_R02"
+    },
+    {
+      "files": 78,
+      "manifest_sha256": "e58f12a0148b66c655d0b37dd624b7c1588e2df57200ce9a5df9981ee5d6f1d7",
+      "namespace": "CALIDAD_EVALUADOR",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--salida",
+            "{output}"
+          ],
+          "base": "CALIDAD_EVALUADOR",
+          "case": "CALIDAD_EVALUADOR__CALIDAD_POST_ACCION_PURA",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_RECALCULO_CALIDAD.json",
+          "reference_bytes": 19923,
+          "reference_sha256": "1db3cbe39e703eda74421e23e6aaddbd33976473e37b5cad1573f2a43675d471",
+          "script": "RECALCULO/recalcular_calidad_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/CALIDAD_APD02_R04"
+    },
+    {
+      "files": 52,
+      "manifest_sha256": "633e5fcd60eb28a69659b99bc721b16cd4d2eddfbb7a670f8ee46cc028b16c2f",
+      "namespace": "MAIN_CADENA",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--evaluador",
+            "FUENTES/capacidades/evaluador_calidad_apd02.py",
+            "--salida",
+            "{output}"
+          ],
+          "base": "MAIN_CADENA",
+          "case": "MAIN_CADENA__CADENA_MAIN_APD02_R01_RAW_CALIDAD_FIFO",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_CADENA_MAIN.json",
+          "reference_bytes": 538923,
+          "reference_sha256": "6076b1dcb41853835f7db79c6e8c0ab6ec2763048a31c5d91b2fb4c994e0e9b5",
+          "script": "RECALCULO/recalcular_cadena_main_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/MAIN_CADENA_APD02_R03"
+    },
+    {
+      "files": 46,
+      "manifest_sha256": "62381be5027153a38cc6896b5c510121843f2166fb2154ebed0e02c3d1d7afd6",
+      "namespace": "MAIN_RUTA_R03_ADVERSO",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--evaluador",
+            "FUENTES/capacidades/evaluador_calidad_apd02.py",
+            "--salida",
+            "{output}"
+          ],
+          "base": "MAIN_RUTA_R03_ADVERSO",
+          "case": "MAIN_RUTA_R03_ADVERSO__RUTA_ABAB_MAIN_R03_NEGATIVO",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_RUTA_ABAB.json",
+          "reference_bytes": 147052,
+          "reference_sha256": "35249bad11ba3904375e63581f73796689e0fc410e5ddc88796ea3e2c85b501a",
+          "script": "RECALCULO/recalcular_ruta_abab_main_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/MAIN_RUTA_ABAB_APD02_R03"
+    },
+    {
+      "files": 59,
+      "manifest_sha256": "026db0be0f6fef0db9d54d8813ec33bf91908e9223931c7cdf4c15ac39c2dba6",
+      "namespace": "MAIN_RUTA_R04",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--evaluador",
+            "FUENTES/capacidades/evaluador_calidad_apd02.py",
+            "--fuente-ruta",
+            "FUENTES/capacidades/ruta_adaptativa_apd02_04.py",
+            "--salida",
+            "{output}"
+          ],
+          "base": "MAIN_RUTA_R04",
+          "case": "MAIN_RUTA_R04__MAIN_RUTA04_ABAB_RAW_EFECTOS_CALIDAD",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_RUTA04_MAIN.json",
+          "reference_bytes": 496994,
+          "reference_sha256": "5a20ce5bb157e6eebedb7cedf75d22d7ff23da2c2c2acd25001a0ef70457dec3",
+          "script": "RECALCULO/recalcular_ruta04_main_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/MAIN_RUTA04_APD02_R01"
+    },
+    {
+      "files": 65,
+      "manifest_sha256": "c0e03f315249e487379ac5de167ae6c256c1e590204eb653a47432ce4c80c126",
+      "namespace": "MAIN_CALIDAD_COMPOSICION",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--evaluador",
+            "FUENTES/capacidades/evaluador_calidad_apd02.py",
+            "--fuente-ruta",
+            "FUENTES/capacidades/ruta_adaptativa_apd02_04.py",
+            "--salida",
+            "{output}"
+          ],
+          "base": "MAIN_CALIDAD_COMPOSICION",
+          "case": "MAIN_CALIDAD_COMPOSICION__MAIN_QUALITY_COMPOSITION_FIXED_RAW_REAL_FILES",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_CALIDAD_COMPOSICION_MAIN.json",
+          "reference_bytes": 311198,
+          "reference_sha256": "6a96958fcb341934b344e4d936a5428191e032dac6902851d17926106a69f7cd",
+          "script": "RECALCULO/recalcular_calidad_composicion_main_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/MAIN_CALIDAD_COMPOSICION_APD02_R03"
+    },
+    {
+      "files": 91,
+      "manifest_sha256": "f2b1d36af9074d3392b278ea6d6a0bea36f476ed90e038f9e40473cc84f0c869",
+      "namespace": "OBJETIVO_AUX",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA",
+            "--output",
+            "{output}"
+          ],
+          "base": "OBJETIVO_AUX",
+          "case": "OBJETIVO_AUX__recalcular_objetivo_r03",
+          "global_invocation_normalizations": [
+            {
+              "appended_declared_output_flag": "--output",
+              "source_plan_unchanged": true,
+              "verified_from_script_AST": true
+            }
+          ],
+          "name_derived_from_script": true,
+          "reference": "REFERENCIA_OBJETIVO_R03.json",
+          "reference_bytes": 17961,
+          "reference_sha256": "2015db31ca60f57218c8dd1edcf3355e2da3ce059edd0e595af14e54c517706c",
+          "script": "CODIGO/recalcular_objetivo_r03.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/OBJETIVO_ACLARACION_AUX_R03"
+    },
+    {
+      "files": 227,
+      "manifest_sha256": "6eefb3665ef09520600e4078d607adca84d6603dab91ad0ed82bfcc4810fe49e",
+      "namespace": "MECANISMO_AUX",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--salida",
+            "{output}"
+          ],
+          "base": "MECANISMO_AUX",
+          "case": "MECANISMO_AUX__MECANISMO_APD02_TODOS",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "RECALCULO/REFERENCIA.json",
+          "reference_bytes": 67368,
+          "reference_sha256": "ba412f36d845fd49ad2d0827293687bdd14823983fb416f7a3a501bae5f28c30",
+          "script": "RECALCULO/recalcular_mecanismo_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/mecanismo/CIERRE_MECANISMO_APD02_R01"
+    },
+    {
+      "files": 27,
+      "manifest_sha256": "18ef9f687cc2e8fa8b59a124969b8527c4afdc99b37624fc3a6171e34a02dceb",
+      "namespace": "REFERENCIAS_ANALITICAS",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--salida",
+            "{output}"
+          ],
+          "base": "REFERENCIAS_ANALITICAS",
+          "case": "REFERENCIAS_ANALITICAS__REFERENCIAS_EXTERNAS_ANALITICAS_R04",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA.json",
+          "reference_bytes": 101391,
+          "reference_sha256": "55a5a0583f10c884dd5a55cfe4f39c299a9a71f5b4d1181b02054459e1c142bb",
+          "script": "RECALCULO/comparar_politicas_r04_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/mecanismo/POLITICAS_R04_R3"
+    },
+    {
+      "files": 29,
+      "manifest_sha256": "08b3d7b66a41683b4a501cbd69cf4691d440e9c4ac2825169728e11873e196cc",
+      "namespace": "CORTE_R04",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidencia",
+            "EVIDENCIA",
+            "--salida",
+            "{output}"
+          ],
+          "base": "CORTE_R04",
+          "case": "CORTE_R04__CORTE_ESPECIFICO_R04",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA.json",
+          "reference_bytes": 5947,
+          "reference_sha256": "fab2d72dbe1aba5d2f8a4005fde28fe9c96fff8ccfabb6d92058113771e99d3e",
+          "script": "RECALCULO/recalcular_mecanismo_apd02.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/mecanismo/CIERRE_CORTE_R04_R01"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "b560f65fa2717894596f6c9f7efcc571b56faf81643fcacf2f7b986c71a1dce6",
+      "namespace": "LANZADOR_N0",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--lanzador",
+            "FUENTES/arrancar.py",
+            "--validador",
+            "FUENTES/protocolo_apd02.py",
+            "--salida",
+            "{output}"
+          ],
+          "base": "LANZADOR_N0",
+          "case": "LANZADOR_N0__LAUNCHER44_TYPED_TRANSPORT_MOCK_FIXTURES",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA_LANZADOR_N0.json",
+          "reference_bytes": 19277,
+          "reference_sha256": "cc909f12803b8972946a104ee73ffa89dbae1be4bcfc6aeac2c62a04d743e836",
+          "script": "RECALCULO/recalcular_lanzador_n0.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/LANZADOR_APD02_N0_R01"
+    },
+    {
+      "files": 107,
+      "manifest_sha256": "04280a21e43f01bf35c7543dce7b55275fdad79e3a3e620e15c8f5a256e835eb",
+      "namespace": "MAIN_OBJETIVO_PENDIENTE_REAPERTURA",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA",
+            "--output",
+            "{output}"
+          ],
+          "base": "MAIN_OBJETIVO_PENDIENTE_REAPERTURA",
+          "case": "MAIN_OBJETIVO_PENDIENTE_REAPERTURA__recalcular_main_objetivo_r01",
+          "global_invocation_normalizations": [
+            {
+              "appended_declared_output_flag": "--output",
+              "source_plan_unchanged": true,
+              "verified_from_script_AST": true
+            }
+          ],
+          "name_derived_from_script": true,
+          "reference": "REFERENCIA_MAIN_OBJETIVO_R02.json",
+          "reference_bytes": 18175,
+          "reference_sha256": "9bc0593f881e797b3c2d3b65a5ec64bcf0c3e24209eea0ae4c73fe04f0d80b7c",
+          "script": "RECALCULO/recalcular_main_objetivo_r01.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/cierre/MAIN_OBJETIVO_PENDIENTE_Y_REAPERTURA_R01"
+    },
+    {
+      "files": 31,
+      "manifest_sha256": "1b7d6a92c6bd7ba34028b457be6a813bf4e74c6655fcd7dfd5aa2d3ad9846186",
+      "namespace": "CONTEXTO_R01",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA",
+            "--output",
+            "{output}"
+          ],
+          "base": "CONTEXTO_R01",
+          "case": "CONTEXTO_R01__SENSIBILIDAD_CONTEXTO_NATIVO",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA.json",
+          "reference_bytes": 7489,
+          "reference_sha256": "3b431c7bde082b2d45bdc1c6842d2311fbf2cd29a5f7fe69fbb4fa73d9e86138",
+          "script": "RECALCULO/recalcular_contexto_r01.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/mecanismo/contexto/CIERRE_CONTEXTO_R01"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "091ffc7ce6e856ecc6044500662fa61c54cd6ce3bd5818b85341519f147b68e7",
+      "namespace": "ROI_CONTEXTO_N0",
+      "normalized_jobs": [
+        {
+          "args": [
+            "--evidence",
+            "EVIDENCIA",
+            "--output",
+            "{output}"
+          ],
+          "base": "ROI_CONTEXTO_N0",
+          "case": "ROI_CONTEXTO_N0__ROI_CONTEXTO_N0_CAMPOS_COMPLETOS",
+          "global_invocation_normalizations": [],
+          "name_derived_from_script": false,
+          "reference": "REFERENCIA.json",
+          "reference_bytes": 6145,
+          "reference_sha256": "2c4d05ae2f05b615d8fdf1b3717ba5760efea533024743baf2165e40d7e25639",
+          "script": "RECALCULO/recalcular_roi_contexto_n0.py",
+          "timeout_seconds": 180
+        }
+      ],
+      "source": "laboratorio/campanas/APD02_CONTINUIDAD_CALIDAD_ADAPTACION/mecanismo/contexto/CIERRE_ROI_CONTEXTO_N0_R01"
+    }
+  ],
+  "unique_bytes": 26105420,
+  "unique_objects": 637
+}

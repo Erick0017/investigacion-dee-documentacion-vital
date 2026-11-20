@@ -1,0 +1,9 @@
+# Retorno aparente que no dependía del contenido del receptor
+
+La preparación inicial de retorno restauró ambos paneles cuantitativos. Sin embargo, el control que retiró el contenido de B impidió el retorno de «menos» pero no el de «más». Por ello no se declara recuperación general de dos contenidos mediante B con esa preparación. Las señales finales y los aciertos del comparador no bastan para atribuir el mecanismo.
+
+Los registros incluyen productos direccionales de carga cero, también con state cero. No se excluyen por ser aparentemente vacíos. La revisión v2 añade interceptores nativos preparados sobre las trayectorias calculadas de productos de conductos sin comando; evita las rutas declaradas útiles y mantiene visibles los huecos de esa protección. No cambia el decoder para ocultar las salidas del control. Se probarán de nuevo contenido retirado, sham y ambos contenidos, conservando la receta original y su contraejemplo.
+
+Resultado de la revisión v2: no resolvió el contraejemplo de «más». Ambos controles `down_content_cut` y `down_content_cut_guard_sham` conservaron el panel cuantitativo 4/4 aun sin la contribución de B. En cambio, `up_content_cut` perdió las dos respuestas «menos», mantuvo las dos «más» y las funciones espaciales/contacto. No se promociona el retorno como recuperación general. Se conserva la dependencia selectiva demostrada para el contenido negativo y se distingue de la recuperación común del receptor en R14, cuyos cortes sí impidieron ambas recuperaciones.
+
+No se ensaya una tercera corrección del mismo conducto. La nueva trayectoria principal bifurca explícitamente el corte positivo `AA01_RETORNO15_up` y conserva en su genealogía la asistencia preparada y el dominio limitado del retorno. No se fusiona con el estado opuesto ni se trasplanta su memoria.

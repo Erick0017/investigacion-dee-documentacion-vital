@@ -1,0 +1,879 @@
+{
+  "schema": "DEE.APD03.interfaces_N0.R02",
+  "utc": "2026-10-26T13:27:57.679996+00:00",
+  "sources": [
+    {
+      "path": "comparadores_apd03.py",
+      "bytes": 26957,
+      "sha256": "17c8432724388f51432d56a72ba82ba11a2f170c19cb29a9b77bfc7c9fb6e0b4"
+    },
+    {
+      "path": "test_comparadores_apd03.py",
+      "bytes": 5147,
+      "sha256": "8a7d4f2d6b632731a987594c911917b8415c756089ace697452ceca210079718"
+    },
+    {
+      "path": "entorno_compartido_apd03_r01.py",
+      "bytes": 4969,
+      "sha256": "a0cdef9346bbc684d188800b2a018127a188340ddc036dd921735b7ce32cc79f"
+    },
+    {
+      "path": "test_entorno_compartido_apd03.py",
+      "bytes": 4678,
+      "sha256": "d1185e82e2da61375a1f900e1bb10741a957efe3e56abc97ad66a23f41739186"
+    },
+    {
+      "path": "lexico_generico_apd03_r01.py",
+      "bytes": 11095,
+      "sha256": "ff71b306562d80a1df4c5f8053de042ef17de279e04de3617ae4ccc0b7fd4e1c"
+    },
+    {
+      "path": "protocolo_curvas_lexico_apd03_r01.py",
+      "bytes": 5703,
+      "sha256": "92c66612e38b9c223bb02039e8b5a2176b3efd59b0b7ddf049ceef1fae9e5f4d"
+    },
+    {
+      "path": "vendor/evaluador_calidad_apd02.py",
+      "bytes": 15010,
+      "sha256": "f6012233a9833b763818d2641047e74bc4e48a41bf1ed51cf7c6b64996c48b11"
+    },
+    {
+      "path": "vendor/proveedores_prueba_apd02.py",
+      "bytes": 4978,
+      "sha256": "5778dfa6eafcd7f015f7071618e63f2e9a2d4d068994022ceffd19155e276559"
+    },
+    {
+      "path": "vendor/entorno_objetivo_apd02.py",
+      "bytes": 14929,
+      "sha256": "4961154395f149d90f85ef8cad4eb102786871698d9cffc01538f5de92adc9da"
+    },
+    {
+      "path": "CONTRATO_COMPARACION_R01.md",
+      "bytes": 3838,
+      "sha256": "60a7c091ef92ec47a10cb5a27498c303ef2c1af8aaca84b3974059dbdf1981ac"
+    }
+  ],
+  "tests": [
+    {
+      "file": "test_comparadores_apd03.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_binary_feedback_only (__main__.ContractTests.test_binary_feedback_only) ... ok\ntest_context_memory_is_separate (__main__.ContractTests.test_context_memory_is_separate) ... ok\ntest_fixed_queries_even_visible (__main__.ContractTests.test_fixed_queries_even_visible) ... ok\ntest_full_execution_and_portable_recalculation (__main__.ContractTests.test_full_execution_and_portable_recalculation) ... ok\ntest_public_projection_excludes_private (__main__.ContractTests.test_public_projection_excludes_private) ... ok\ntest_uncertain_effect_is_preserved_without_retry_or_return (__main__.ContractTests.test_uncertain_effect_is_preserved_without_retry_or_return) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.737s\n\nOK\n"
+    },
+    {
+      "file": "test_entorno_compartido_apd03.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_complete_operational_restore_retains_fact_and_counter (__main__.EnvironmentTests.test_complete_operational_restore_retains_fact_and_counter) ... ok\ntest_file_only_contrast_keeps_query_failure (__main__.EnvironmentTests.test_file_only_contrast_keeps_query_failure) ... ok\ntest_frozen_mode_cannot_restore_as_other_mode (__main__.EnvironmentTests.test_frozen_mode_cannot_restore_as_other_mode) ... ok\ntest_incomplete_act_calls_no_provider (__main__.EnvironmentTests.test_incomplete_act_calls_no_provider) ... ok\ntest_local_information_consequence_and_final_file_are_distinct (__main__.EnvironmentTests.test_local_information_consequence_and_final_file_are_distinct) ... ok\ntest_visible_redundant_query_is_not_new_information (__main__.EnvironmentTests.test_visible_redundant_query_is_not_new_information) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.055s\n\nOK\n"
+    }
+  ],
+  "wall_seconds": 1.6392302999738604,
+  "new_native_ticks": 0,
+  "native_modules_imported_in_this_process": false,
+  "geometry": {
+    "preparation_sites": 12,
+    "ports": 18,
+    "reader_sites": 32,
+    "static_duplicate_preparation_count": 0,
+    "static_overlap_old_readers": [],
+    "actual_RAW_not_observed": true
+  },
+  "prospective_curve_protocol": {
+    "schema": "DEE.APD03.generic_lexicon_curve.prospective.R01",
+    "module_sha256": "ff71b306562d80a1df4c5f8053de042ef17de279e04de3617ae4ccc0b7fd4e1c",
+    "prefix": "A complete APD02 parent copy after exactly one preparation of both empty generic slots; no taught A/B content.",
+    "arms": [
+      {
+        "history": "related",
+        "B_sign_auditor": -1,
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "paired"
+      },
+      {
+        "history": "opposite",
+        "B_sign_auditor": -1,
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "paired"
+      },
+      {
+        "history": "omitted",
+        "B_sign_auditor": -1,
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "omitted"
+      },
+      {
+        "history": "related",
+        "B_sign_auditor": 1,
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "paired"
+      },
+      {
+        "history": "opposite",
+        "B_sign_auditor": 1,
+        "A_sign_explicit_teacher": -1,
+        "A_teacher_mode": "paired"
+      },
+      {
+        "history": "omitted",
+        "B_sign_auditor": 1,
+        "A_sign_explicit_teacher": 1,
+        "A_teacher_mode": "omitted"
+      }
+    ],
+    "curriculum": [
+      "common old14 material panel before new teaching",
+      "A one paired/opposite/omitted explicit lesson, followed by2common-reader queries",
+      "B first common-reader query before B teaching (initial transfer, not meta-learning)",
+      "B three signed paired lessons, each followed by2common-reader queries; do not stop early or add lessons",
+      "B functional use with datum23/contextgamma via the same fixed sign transduction",
+      "A post-course common-reader query and final old14 material panel"
+    ],
+    "criterion": {
+      "consecutive_correct_material_queries": 2,
+      "max_B_lessons": 3,
+      "criterion_not_changed_after_results": true
+    },
+    "scope": "Six branches share a prefix, not six independent learners. A related/opposite sign can produce transfer or interference; an initial advantage alone does not demonstrate learning-to-learn.",
+    "dose_limit": "Omitted A teacher has fewer material inputs; cue count/age/query count are matched and actual admission/rejection must be reported. No claim of perfectly equal material dose.",
+    "no_anatomy_changes_after_prefix": true,
+    "new_ticks_authorized_by_this_file": false,
+    "geometry": {
+      "version": "APD03.generic_lexicon.R01.common32",
+      "N": 67,
+      "origin": [
+        47,
+        17,
+        47
+      ],
+      "new_slots": [
+        "luma",
+        "nara"
+      ],
+      "preparation_sites": [
+        {
+          "form": "luma",
+          "sign_arm": -1,
+          "site": [
+            45,
+            17,
+            46
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "luma",
+          "sign_arm": -1,
+          "site": [
+            45,
+            17,
+            45
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "luma",
+          "sign_arm": -1,
+          "site": [
+            42,
+            17,
+            44
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "luma",
+          "sign_arm": 1,
+          "site": [
+            45,
+            17,
+            48
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "luma",
+          "sign_arm": 1,
+          "site": [
+            45,
+            17,
+            49
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "luma",
+          "sign_arm": 1,
+          "site": [
+            42,
+            17,
+            50
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": -1,
+          "site": [
+            47,
+            15,
+            46
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": -1,
+          "site": [
+            47,
+            15,
+            45
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": -1,
+          "site": [
+            47,
+            12,
+            44
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": 1,
+          "site": [
+            47,
+            15,
+            48
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": 1,
+          "site": [
+            47,
+            15,
+            49
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        },
+        {
+          "form": "nara",
+          "sign_arm": 1,
+          "site": [
+            47,
+            12,
+            50
+          ],
+          "prepared_state": 0,
+          "prepared_semantic": 4,
+          "prepared_value": 0
+        }
+      ],
+      "new_ports": [
+        {
+          "form": "luma",
+          "role": "cue",
+          "site": [
+            47,
+            17,
+            47
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "form": "luma",
+          "role": "teacher",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            50
+          ],
+          "direction": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "form": "luma",
+          "role": "select",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            46
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "arrival_offset": 4
+        },
+        {
+          "form": "luma",
+          "role": "back",
+          "sign_arm": -1,
+          "site": [
+            41,
+            17,
+            45
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "arrival_offset": 5
+        },
+        {
+          "form": "luma",
+          "role": "restore",
+          "sign_arm": -1,
+          "site": [
+            46,
+            17,
+            44
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "arrival_offset": 6
+        },
+        {
+          "form": "luma",
+          "role": "teacher",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            44
+          ],
+          "direction": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "form": "luma",
+          "role": "select",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            48
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "arrival_offset": 4
+        },
+        {
+          "form": "luma",
+          "role": "back",
+          "sign_arm": 1,
+          "site": [
+            41,
+            17,
+            49
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "arrival_offset": 5
+        },
+        {
+          "form": "luma",
+          "role": "restore",
+          "sign_arm": 1,
+          "site": [
+            46,
+            17,
+            50
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "arrival_offset": 6
+        },
+        {
+          "form": "nara",
+          "role": "cue",
+          "site": [
+            47,
+            17,
+            47
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "form": "nara",
+          "role": "teacher",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            50
+          ],
+          "direction": [
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "form": "nara",
+          "role": "select",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            46
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "arrival_offset": 4
+        },
+        {
+          "form": "nara",
+          "role": "back",
+          "sign_arm": -1,
+          "site": [
+            47,
+            11,
+            45
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "arrival_offset": 5
+        },
+        {
+          "form": "nara",
+          "role": "restore",
+          "sign_arm": -1,
+          "site": [
+            47,
+            16,
+            44
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "arrival_offset": 6
+        },
+        {
+          "form": "nara",
+          "role": "teacher",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            44
+          ],
+          "direction": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "form": "nara",
+          "role": "select",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            48
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "arrival_offset": 4
+        },
+        {
+          "form": "nara",
+          "role": "back",
+          "sign_arm": 1,
+          "site": [
+            47,
+            11,
+            49
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ],
+          "arrival_offset": 5
+        },
+        {
+          "form": "nara",
+          "role": "restore",
+          "sign_arm": 1,
+          "site": [
+            47,
+            16,
+            50
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "arrival_offset": 6
+        }
+      ],
+      "common_reader": [
+        {
+          "form": "alfa",
+          "sign_arm": -1,
+          "site": [
+            37,
+            33,
+            32
+          ]
+        },
+        {
+          "form": "alfa",
+          "sign_arm": 1,
+          "site": [
+            37,
+            33,
+            34
+          ]
+        },
+        {
+          "form": "beta",
+          "sign_arm": -1,
+          "site": [
+            33,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "beta",
+          "sign_arm": 1,
+          "site": [
+            33,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "gamma",
+          "sign_arm": -1,
+          "site": [
+            37,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "gamma",
+          "sign_arm": 1,
+          "site": [
+            37,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "delta",
+          "sign_arm": -1,
+          "site": [
+            29,
+            37,
+            32
+          ]
+        },
+        {
+          "form": "delta",
+          "sign_arm": 1,
+          "site": [
+            29,
+            37,
+            34
+          ]
+        },
+        {
+          "form": "epsilon",
+          "sign_arm": -1,
+          "site": [
+            37,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "epsilon",
+          "sign_arm": 1,
+          "site": [
+            37,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "zeta",
+          "sign_arm": -1,
+          "site": [
+            29,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "zeta",
+          "sign_arm": 1,
+          "site": [
+            29,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "suma",
+          "sign_arm": -1,
+          "site": [
+            29,
+            33,
+            32
+          ]
+        },
+        {
+          "form": "suma",
+          "sign_arm": 1,
+          "site": [
+            29,
+            33,
+            34
+          ]
+        },
+        {
+          "form": "diferencia",
+          "sign_arm": -1,
+          "site": [
+            33,
+            29,
+            32
+          ]
+        },
+        {
+          "form": "diferencia",
+          "sign_arm": 1,
+          "site": [
+            33,
+            29,
+            34
+          ]
+        },
+        {
+          "form": "agrega",
+          "sign_arm": -1,
+          "site": [
+            43,
+            47,
+            46
+          ]
+        },
+        {
+          "form": "agrega",
+          "sign_arm": 1,
+          "site": [
+            43,
+            47,
+            48
+          ]
+        },
+        {
+          "form": "resta",
+          "sign_arm": -1,
+          "site": [
+            47,
+            43,
+            46
+          ]
+        },
+        {
+          "form": "resta",
+          "sign_arm": 1,
+          "site": [
+            47,
+            43,
+            48
+          ]
+        },
+        {
+          "form": "total",
+          "sign_arm": -1,
+          "site": [
+            51,
+            47,
+            46
+          ]
+        },
+        {
+          "form": "total",
+          "sign_arm": 1,
+          "site": [
+            51,
+            47,
+            48
+          ]
+        },
+        {
+          "form": "quita",
+          "sign_arm": -1,
+          "site": [
+            47,
+            51,
+            46
+          ]
+        },
+        {
+          "form": "quita",
+          "sign_arm": 1,
+          "site": [
+            47,
+            51,
+            48
+          ]
+        },
+        {
+          "form": "compara",
+          "sign_arm": -1,
+          "site": [
+            51,
+            17,
+            46
+          ]
+        },
+        {
+          "form": "compara",
+          "sign_arm": 1,
+          "site": [
+            51,
+            17,
+            48
+          ]
+        },
+        {
+          "form": "recuerda",
+          "sign_arm": -1,
+          "site": [
+            47,
+            21,
+            46
+          ]
+        },
+        {
+          "form": "recuerda",
+          "sign_arm": 1,
+          "site": [
+            47,
+            21,
+            48
+          ]
+        },
+        {
+          "form": "luma",
+          "sign_arm": -1,
+          "site": [
+            43,
+            17,
+            46
+          ]
+        },
+        {
+          "form": "luma",
+          "sign_arm": 1,
+          "site": [
+            43,
+            17,
+            48
+          ]
+        },
+        {
+          "form": "nara",
+          "sign_arm": -1,
+          "site": [
+            47,
+            13,
+            46
+          ]
+        },
+        {
+          "form": "nara",
+          "sign_arm": 1,
+          "site": [
+            47,
+            13,
+            48
+          ]
+        }
+      ],
+      "new_preparation_duplicate_count": 0,
+      "new_preparation_overlap_legacy_readers": [],
+      "physical_occupancy_not_checked": true,
+      "scope": "Design geometry only. Lack of static overlap does not establish dynamic isolation or vacancy."
+    }
+  },
+  "scope": "12 N0 fixtures, compile checks and pure integer geometry. No scientific comparison with E1, Native evolution, acquisition or physical vacancy claim.",
+  "energy": "NO MEDIDA",
+  "all_tests_exit_zero": true
+}

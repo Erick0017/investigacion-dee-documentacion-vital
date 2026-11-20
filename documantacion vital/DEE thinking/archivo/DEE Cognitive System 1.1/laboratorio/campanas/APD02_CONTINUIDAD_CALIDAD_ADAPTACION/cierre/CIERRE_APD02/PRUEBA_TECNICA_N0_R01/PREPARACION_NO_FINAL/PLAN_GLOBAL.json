@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "args": [
+        "--evidence",
+        "DATOS.json.gz",
+        "--output",
+        "{output}"
+      ],
+      "base": "FIX_A",
+      "case": "FIX_A__calcular",
+      "global_invocation_normalizations": [
+        {
+          "appended_declared_output_flag": "--output",
+          "source_plan_unchanged": true,
+          "verified_from_script_AST": true
+        }
+      ],
+      "name_derived_from_script": true,
+      "reference": "REFERENCIA.json",
+      "reference_bytes": 108,
+      "reference_sha256": "7ff99eb011852ec8e98f21d72f256ab01da5cfdb6d291ce716ae7442b53b257a",
+      "script": "CODIGO/calcular.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidence",
+        "DATOS.json.gz",
+        "--output",
+        "{output}"
+      ],
+      "base": "FIX_B",
+      "case": "FIX_B__EXPLICIT_OUTPUT",
+      "global_invocation_normalizations": [],
+      "name_derived_from_script": false,
+      "reference": "REFERENCIA.json",
+      "reference_bytes": 108,
+      "reference_sha256": "7ff99eb011852ec8e98f21d72f256ab01da5cfdb6d291ce716ae7442b53b257a",
+      "script": "CODIGO/calcular.py",
+      "timeout_seconds": 180
+    }
+  ],
+  "expected_case_count": 2,
+  "native_ticks": 0,
+  "pending_components": [
+    "REAL_APD02_CAMPAIGN_NOT_BUILT_BY_THIS_FIXTURE"
+  ],
+  "schema": "APD02.global_archived_recalculation_plan.v1",
+  "status": "PREPARACION_NO_FINAL"
+}

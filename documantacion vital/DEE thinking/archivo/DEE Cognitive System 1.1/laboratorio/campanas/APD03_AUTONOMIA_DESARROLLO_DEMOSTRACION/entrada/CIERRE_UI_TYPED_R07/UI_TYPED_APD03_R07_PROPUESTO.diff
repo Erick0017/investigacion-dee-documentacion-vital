@@ -1,0 +1,42 @@
+--- a/sistema/app/usar_dee.py
++++ b/sistema/app/usar_dee.py
+@@ -24,7 +24,7 @@
+ import time
+ import uuid
+ 
+-VERSION = "APD03.single_terminal.R02"
++VERSION = "APD03.single_terminal.R03.typed_contextual_candidate"
+ TERMINAL = {"completed", "failed_preserved", "uncertain", "rejected_invalid"}
+ ID_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,90}")
+ 
+@@ -441,8 +441,16 @@
+     composition = sub.add_parser("componer"); composition.add_argument("formas", nargs="+"); composition.add_argument("--datos", type=int, nargs="+", required=True)
+     goal = sub.add_parser("meta"); goal.add_argument("texto"); goal.add_argument("operandos", type=int, nargs=2); goal.add_argument("--oculto", action="store_true")
+     step = sub.add_parser("meta-paso"); step.add_argument("oportunidades", type=int, choices=(1, 2, 3, 4))
++    admit_new = sub.add_parser("admitir-apd03", help="Preparaci�n P0 expl�cita, nunca adquisici�n ni reseed autom�tico")
++    admit_new.add_argument("--consecuencia", choices=("local_useful", "file_only"), default="local_useful")
++    teach_new = sub.add_parser("ensenar-nueva"); teach_new.add_argument("texto", choices=("luma", "nara")); teach_new.add_argument("senal", type=int, choices=(-1, 1)); teach_new.add_argument("--revision", action="store_true")
++    language_new = sub.add_parser("lenguaje-nuevo"); language_new.add_argument("texto", choices=("luma", "nara")); language_new.add_argument("valor", type=int); language_new.add_argument("contexto", choices=("alfa", "beta", "gamma", "delta", "epsilon", "zeta"))
++    new_goal = sub.add_parser("objetivo"); new_goal.add_argument("texto"); new_goal.add_argument("operandos", type=int, nargs=2); new_goal.add_argument("--oculto", action="store_true"); new_goal.add_argument("--contexto-ambiente", type=int, choices=(0, 1), default=0)
++    new_step = sub.add_parser("paso"); new_step.add_argument("oportunidades", type=int, choices=(1, 2, 3, 4))
++    panel = sub.add_parser("panel", help="Panel MATERIAL; no equivale a la observaci�n pasiva estado")
++    panel.add_argument("--nuevas", action="store_true"); panel.add_argument("--memorias", action="store_true")
+     event = sub.add_parser("evento"); event.add_argument("archivo", type=Path, help="JSON literal escrito por el usuario, sin evaluaci�n ni selecci�n del supervisor")
+-    for item in (use, teach, language, accumulate, composition, goal, step, event):
++    for item in (use, teach, language, accumulate, composition, goal, step, admit_new, teach_new, language_new, new_goal, new_step, panel, event):
+         item.add_argument("--retorno", choices=("real", "omit"), default="real")
+         item.add_argument("--actuador", choices=("closed", "nulled"), default="closed")
+     return parser
+@@ -457,6 +465,12 @@
+     if a == "componer": return [{"modo": "apd02-componer", "formas": options.formas, "datos": options.datos}]
+     if a == "meta": return [{"modo": "apd02-meta-iniciar", "texto": options.texto, "operandos": options.operandos, "segundo_visible": not options.oculto}]
+     if a == "meta-paso": return [{"modo": "apd02-meta-paso", "oportunidades": options.oportunidades}]
++    if a == "admitir-apd03": return [{"modo": "apd03-admitir", "consecuencia": options.consecuencia}]
++    if a == "ensenar-nueva": return [{"modo": "apd03-docencia", "texto": options.texto, "senal": options.senal, "revision": options.revision}]
++    if a == "lenguaje-nuevo": return [{"modo": "apd03-lenguaje", "texto": options.texto, "valor": options.valor, "contexto": options.contexto}]
++    if a == "objetivo": return [{"modo": "apd03-tarea-iniciar", "texto": options.texto, "operandos": options.operandos, "segundo_visible": not options.oculto, "contexto_ambiente": options.contexto_ambiente}]
++    if a == "paso": return [{"modo": "apd03-paso", "oportunidades": options.oportunidades}]
++    if a == "panel": return [{"modo": "apd03-panel", "nuevas": options.nuevas, "memorias": options.memorias}]
+     if a == "evento":
+         value = read(options.archivo)
+         return value if isinstance(value, list) else [value]

@@ -1,0 +1,268 @@
+{
+  "schema": "DEE.collaboration.APD02.prospective_paired_operational.R01",
+  "status": "CANDIDATE_NOT_EXECUTED",
+  "alias": "ASISTENTE_CALIDAD",
+  "source_cut": "BIND_ONLY_AFTER_CLOSED_NO_MATERIAL_CHANGE",
+  "operations": [
+    {
+      "label": "paired_service_dispatch_only",
+      "argv": [
+        "asistente2",
+        "$LIFE",
+        "estado"
+      ]
+    }
+  ],
+  "continuation": [],
+  "service_protocol": {
+    "schema": "APD02.full.operational.R01",
+    "prefix": "apd02full_r01_",
+    "old_panel": [
+      {
+        "modo": "memoria",
+        "contexto": "alfa"
+      },
+      {
+        "modo": "memoria",
+        "contexto": "beta"
+      },
+      {
+        "modo": "memoria",
+        "contexto": "gamma"
+      },
+      {
+        "modo": "memoria",
+        "contexto": "delta"
+      },
+      {
+        "modo": "memoria",
+        "contexto": "epsilon"
+      },
+      {
+        "modo": "memoria",
+        "contexto": "zeta"
+      }
+    ],
+    "new_apd": [
+      {
+        "modo": "apd02",
+        "texto": "suma",
+        "operandos": [
+          18,
+          7
+        ]
+      },
+      {
+        "modo": "apd02",
+        "texto": "diferencia",
+        "operandos": [
+          27,
+          12
+        ]
+      }
+    ],
+    "new_functions": [
+      {
+        "modo": "apd02-lenguaje",
+        "texto": "compara",
+        "valor": 21,
+        "contexto": "gamma"
+      },
+      {
+        "modo": "apd02-lenguaje",
+        "texto": "recuerda",
+        "valor": 21,
+        "contexto": "beta"
+      }
+    ],
+    "declared_teaching": {
+      "modo": "memoria",
+      "operacion_memoria": "revisar",
+      "contexto": "beta",
+      "senal": -1
+    },
+    "required_actual_baseline_for_new_revision": 1,
+    "accumulator_before": {
+      "modo": "apd02-acumular",
+      "valor": 2,
+      "demora_periodos": 1
+    },
+    "queued_accumulator_after": {
+      "modo": "apd02-acumular",
+      "valor": 0,
+      "demora_periodos": 2
+    },
+    "new_raw": {
+      "modo": "crudos",
+      "componentes": [
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "composition": {
+      "modo": "apd02-componer",
+      "formas": [
+        "agrega",
+        "resta"
+      ],
+      "datos": [
+        4,
+        8,
+        3
+      ]
+    },
+    "goal_initialization": {
+      "modo": "apd02-meta-iniciar",
+      "texto": "suma",
+      "operandos": [
+        16,
+        5
+      ],
+      "segundo_visible": false
+    },
+    "goal_first": {
+      "modo": "apd02-meta-paso",
+      "oportunidades": 1
+    },
+    "goal_after_reload": {
+      "modo": "apd02-meta-paso",
+      "oportunidades": 3
+    },
+    "return_modes": {
+      "ordinary": "omit",
+      "goal": "real"
+    },
+    "owner_max_seconds": 900,
+    "control_wait_seconds": 180,
+    "material_wait_seconds": 240,
+    "resource_limit_bytes": 536870912,
+    "pending_rule": "First goal opportunity cannot complete hidden goal: QUERY only reveals actual raw operand; ACT with missing operand fails. Preserve exact reached progress/private environment and one queued accumulator ID across owner stop/reload. No replacement, dequeue edit, correct action or target is chosen.",
+    "attribution": "Explicit beta-minus teacher is fixed and never retargeted. A new acquisition is claimed only if actual baseline beta was plus and later RAW changes to minus; otherwise record the limitation. Other five contexts are compared without feedback. This extraction is a separate personal world, not further MAIN learning. Math/file/semantic/resource correctness and technical persistence are separate."
+  }
+}

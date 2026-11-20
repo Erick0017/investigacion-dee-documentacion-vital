@@ -1,0 +1,13 @@
+# ROI pasiva contextual — cero ticks
+
+Se cargaron de uno en uno cuatro snapshots completos ya alcanzados en el cribado, al mismo tick454893. No se llamó run/step/update. RAW/clocks antes y después de observar fueron idénticos. Se verificó el orden de coordenadas mediante la API oficial sobre TODOS los RAW no nulos: z es el eje rápido, luego y, luego x; se exportó además la ROI fija E+[-4..4]×[-3..4]×[-4..4],648sitios por mundo, incluyendo state0/RAW0.
+
+Los campos RAW completos (dispersos) y los clocks completos (RLE) se reconstruyen sin motor y reproducen sus SHAexactos. No son un snapshot operativo: no contienen todas las interfaces, colas, recibos, entorno o progreso y nunca deben usarse para restaurar una vida. Los snapshots completos originales permanecen en los localizadores y SHA de los primarios.
+
+Sensor lateral0 frente1: difieren tres RAW globales y ningún clock. [24,13,53] contiene el propio sensor0/1; [23,15,53] tiene el producto−X,+Y,s_reg5 sólo para0; [25,15,53] tiene el producto0,+Y,s_reg5 sólo para1. El lector3gates original sí daba una acción válida distinta. El anclaje posterior impidió recibir la actualización siguiente, como documenta el cribado; aquí no se repara ni se reenseña.
+
+Sensor superiorFI01: el bit1 NO produjo un portador alternativo oculto fuera de los seis gates al corte observado. Los RAW completos0/1 difieren sólo en [23,15,53]: bit0 tiene RAW1161647250359713793, dirección[-1,1,0],s_reg5; bit1tieneRAW0. Todos los demás RAW y todos los clocks son idénticos. Por tanto hubo supresión del producto de consulta en ese corte, no un éxito recuperado cambiando el lector. La ausencia sigue siendo una diferencia física distinguible por el auditor; no se transforma desde Python en una acción QUERY inteligente ni se declara convergencia de todos los estados causales o destrucción universal de información.
+
+El soporteSEM4 existente en E+(0,1,1) es un candidato a interceptar una salida con componente+Z inducida por el sensor superior, pero no hay registro suficiente de q3/q4 para demostrar esa colisión. No se atribuye una genealogía única ni se simula retrospectivamente un tramo nuevo. El resultado distingue un observador fijo que falla de una supuesta salida alternativa: no aparece tal salida en el campo RAW completo registrado, aunque la causa intermedia necesita otra resolución.
+
+Este addendum es una herramienta del auditor y una delimitación de interfaz, no una capacidad adquirida por MAIN. No modifica los lectores fijados, no añade una tercera familia, no ejecuta aprendizaje, acción ambiental ni calidad y no cambia las fuentes del servicio. El exceso anterior194.448s frente a180s sigue declarado en el stage de sensibilidad, sin reinterpretarlo como presupuesto cumplido.

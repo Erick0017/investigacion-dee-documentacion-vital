@@ -1,0 +1,5 @@
+# La segunda experiencia coincidió con retornos de la primera
+
+La revisión r1 sí adquirió una dirección de acceso en el soporte común y la utilizó con un contenido nuevo, pero no invirtió esa dirección después de invertir la utilidad ambiental. El calendario repetía la experiencia a +67: el pulso ambiental de la primera prueba y los productos de feedback no cualificado podían volver a sus encuentros y bloquear la experiencia siguiente. Esto es una hipótesis de mecanismos concretos que se contrasta con intervenciones, no «pensamientos residuales» ni falta global de espacio.
+
+La revisión r2 añade oportunidades SEM4 fijas para interceptar esas dos rutas identificadas, antes de su retorno. Se añaden en todas las ramas posibles, sin leer qué ruta tuvo éxito ni el contenido esperado. Incluye sham fuera de ruta. Es protección P0 preparada, no regulación adquirida; cualquier selección posterior se evalúa por separado y con sus costes. Las variantes r1, sus fallos y sus estados permanecen conservados.

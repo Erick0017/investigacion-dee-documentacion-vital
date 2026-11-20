@@ -1,0 +1,82 @@
+--- a/actualizaciones/arrancar.py
++++ b/actualizaciones/arrancar.py
+@@ -47,14 +47,14 @@
+ def call(args, capture=False):
+     command = [str(PYTHON), '-I', '-B', '-X', 'utf8', str(SYSTEM / 'gestionar.py'), *map(str, args)]
+     if capture:
+-        p = subprocess.run(command, cwd=ROOT, text=True, encoding='utf8', capture_output=True)
++        p = subprocess.run(command, cwd=PYTHON.parent, text=True, encoding='utf8', capture_output=True)
+         if p.returncode:
+             message = p.stderr or p.stdout
+             if 'DLL load failed' in message or 'MSVCP140' in message:
+                 message += '\nDependencia nativa: instale manualmente motor/VC_redist.x64.exe (Microsoft firmado) y vuelva a iniciar. No se sustituye el motor ni se crea otra vida.'
+             raise RuntimeError(message)
+         return json.loads(p.stdout)
+-    return subprocess.call(command, cwd=ROOT)
++    return subprocess.call(command, cwd=PYTHON.parent)
+ 
+ 
+ def catalog():
+@@ -495,15 +495,42 @@
+     (out / f'EJEMPLO_{number}.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf8')
+ 
+ 
++def service_usar(args):
++    """Una sola ruta UI para CLI/menú; identidad y modo siempre explícitos."""
++    parser=argparse.ArgumentParser(description='APD03: una terminal, una copia personal completa y un propietario.')
++    identity=parser.add_mutually_exclusive_group(required=True)
++    identity.add_argument('--nueva',metavar='IDENTIDAD_NUEVA')
++    identity.add_argument('--vida',metavar='IDENTIDAD_EXISTENTE')
++    parser.add_argument('--sin-iniciar',action='store_true')
++    parser.add_argument('--guion',type=Path)
++    options=parser.parse_args(args)
++    life=options.nueva or options.vida
++    if not __import__('re').fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,90}',life):
++        raise ValueError('Identidad personal explícita ASCII de1..91caracteres requerida; no se crea otra automáticamente.')
++    command=[str(PYTHON),'-I','-B','-X','utf8',str(SYSTEM/'app/usar_dee.py'),'--raiz',str(ROOT),
++        '--nueva'if options.nueva is not None else'--vida',life]
++    if options.sin_iniciar:command.append('--sin-iniciar')
++    if options.guion is not None:
++        path=options.guion if options.guion.is_absolute()else ROOT/options.guion
++        command+=['--guion',str(path.resolve())]
++    return subprocess.call(command,cwd=PYTHON.parent)
++
++
+ def menu():
+     print('DEE Cognitive System 1.1 — copia para colaboración. No es un chatbot.')
+-    print('Resultado de investigación vigente: APD02 / alias ASISTENTE_CALIDAD. Las vidas anteriores siguen disponibles; no se mezclan sus recuerdos.')
+-    print('1 Abrir/identificar copia NUEVA APD02 (sin iniciar) / 2 Catálogo / 3 Abrir otro alias / 4 Estado activo histórico / 5 Ejemplos / 6 Gestor / 7 Versión / 0 Salir')
++    print('Entrada recomendada APD03: corte cerrado seleccionado en el contrato. Las vidas y comandos APD02 anteriores siguen disponibles; no se mezclan sus recuerdos.')
++    print('1 Usar APD03 (nueva/continuar, una terminal) / 2 Catálogo / 3 Abrir otro alias / 4 Estado activo histórico / 5 Ejemplos / 6 Gestor / 7 Versión / 0 Salir')
+     while True:
+         option = input('Opción: ').strip()
+         try:
+             if option == '0': return 0
+-            if option == '1': research_apd02([])
++            if option == '1':
++                mode=input('Modalidad [nueva/continuar/cancelar]: ').strip().lower()
++                if mode=='cancelar':continue
++                if mode not in('nueva','continuar'):raise ValueError('Elija explícitamente nueva o continuar; no se importa ni elige una vida automáticamente.')
++                life=input('Identidad personal explícita: ').strip()
++                code=service_usar(['--nueva'if mode=='nueva'else'--vida',life])
++                if code:print('La UI terminó con código '+str(code)+'. Se conservan sus recibos y estado; no se reinicia ni reenvía automáticamente.')
+             elif option == '2': show_catalog()
+             elif option == '3':
+                 show_catalog()
+@@ -524,6 +551,7 @@
+     args = sys.argv[1:]
+     if not args: return menu()
+     if args[0] == 'catalogo': show_catalog(); return 0
++    if args[0] == 'usar': return service_usar(args[1:])
+     if args[0] == 'abrir' and len(args) == 3: open_copy(args[1], args[2]); return 0
+     if args[0] == 'ejemplo':
+         p = argparse.ArgumentParser(); p.add_argument('number', type=int); p.add_argument('--vida'); p.add_argument('--condiciones')
+@@ -538,7 +566,7 @@
+     if args[0] == 'asistente2': return service_asistente2(args[1:])
+     if args[0] == 'investigacion': return research_apd02(args[1:])
+     if args[0] == 'preparar': print('Dependencias locales y espacio personal preparados; no se creó ningún universo.'); return 0
+-    raise ValueError('Use investigacion [IDENTIDAD_NUEVA] (APD02 sin dueño automático), asistente2 ID ACCION, catalogo, abrir ALIAS ID, asistente ID ACCION (APD01 histórico), mente2 [ID] --situaciones JSON, mente [ID] --situaciones JSON (R9), evolucion ID --observaciones JSON, ente ID --mediciones=..., servicio-cf01 ID --mediciones=..., ejemplo 1..5, gestor COMANDO o preparar.')
++    raise ValueError('Use usar --nueva IDENTIDAD_NUEVA o usar --vida IDENTIDAD_EXISTENTE (APD03, una terminal); investigacion [IDENTIDAD_NUEVA] y asistente2 ID ACCION conservan APD02 histórico; catalogo, abrir ALIAS ID, asistente ID ACCION (APD01 histórico), mente2 [ID] --situaciones JSON, mente [ID] --situaciones JSON (R9), evolucion ID --observaciones JSON, ente ID --mediciones=..., servicio-cf01 ID --mediciones=..., ejemplo 1..5, gestor COMANDO o preparar.')
+ 
+ 
+ if __name__ == '__main__':

@@ -1,0 +1,683 @@
+{
+  "OS_resources_correction": {
+    "correction": {
+      "authority": [
+        "https://learn.microsoft.com/en-us/windows/win32/api/jobapi2/nf-jobapi2-queryinformationjobobject",
+        "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information",
+        "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_basic_and_io_accounting_information"
+      ],
+      "late_attachment": "Cumulative I/O is lifetime from OS Job creation, not just from observer attachment. Phase boundaries before attachment have no class8 sample.",
+      "native_ticks": 0,
+      "no_new_decisional_information_to_participant": true,
+      "queries_only": "QueryInformationJobObject(handle QUERY0x4, class8)",
+      "scope": "Native-owner Jobs plus their actual workers; excludes supervisor/client processes outside those Jobs. CPU/RAM total tree is recorded separately; nested counts are not added.",
+      "source_sha256": "b86a43f42ddd37567d48360bbd24236ac73d649f7e3242f88cf18c385628f0bc",
+      "started_utc": "2026-10-26T14:32:22.681458+00:00",
+      "why_separate_observer": "Frozen earlier scripts queried reserved class9.IoInfo. Their zeros are not measurements of zero work. No actor or frozen script is patched."
+    },
+    "correction_sha256": "e32cf33952db130a9411e92faff15d181feea1817da3b86a58d332c8e47af831",
+    "earlier_class9_IoInfo": "RESERVED / NO MEDIDO: earlier zero fields are not a zero-I/O result.",
+    "jobs": [
+      {
+        "first": {
+          "cpu_kernel_100ns": 391562500,
+          "cpu_user_100ns": 1318906250,
+          "io": {
+            "OtherOperationCount": 119987,
+            "OtherTransferCount": 2077916,
+            "ReadOperationCount": 5876044,
+            "ReadTransferCount": 25439044501,
+            "WriteOperationCount": 6741,
+            "WriteTransferCount": 719428385
+          },
+          "job_active_processes": 3,
+          "job_name": "Local\\DEE_DCS11_JOB_dd622dbf7a0b4ba6ad0c3fae11ea6b58",
+          "job_total_processes": 3,
+          "observer_elapsed_seconds": 0.01843239995650947,
+          "utc": "2026-10-26T14:32:22.700451+00:00"
+        },
+        "last": {
+          "cpu_kernel_100ns": 844531250,
+          "cpu_user_100ns": 2552187500,
+          "io": {
+            "OtherOperationCount": 262102,
+            "OtherTransferCount": 3728760,
+            "ReadOperationCount": 13993276,
+            "ReadTransferCount": 60104312444,
+            "WriteOperationCount": 15245,
+            "WriteTransferCount": 1446360827
+          },
+          "job_active_processes": 3,
+          "job_name": "Local\\DEE_DCS11_JOB_dd622dbf7a0b4ba6ad0c3fae11ea6b58",
+          "job_total_processes": 3,
+          "observer_elapsed_seconds": 360.5563974000979,
+          "utc": "2026-10-26T14:38:23.239845+00:00"
+        },
+        "samples": 37
+      }
+    ],
+    "native_owner_scope": "Not host energy or physical storage traffic; logical Windows transfer counts may include cached I/O.",
+    "nested_cpu_or_memory_not_added": true,
+    "phase_boundaries_before_attachment_not_measured": true,
+    "sample_source": {
+      "bytes": 17552,
+      "file": "MUESTRAS_CLASS8.jsonl",
+      "sha256": "fa061d2e30b64c9e9720b7ad3493dc9ed75f2c7803ef4e96345e1dff06a1e9b4"
+    }
+  },
+  "actual_artifact_count": 3,
+  "checks": 2161,
+  "complete_driver_result_present": false,
+  "counts": {
+    "ACT": 3,
+    "QUERY": 2,
+    "actual_files": 3,
+    "correct_actual_files": 3,
+    "material_requests": 12,
+    "new_facts": 1,
+    "opportunities": 5,
+    "sensor_applied": 10,
+    "sensor_requested": 10,
+    "useful_actions": 4,
+    "valid_actions": 5
+  },
+  "event_sources": [
+    {
+      "bytes": 1140,
+      "file": "EVENTOS/000_start_paused.json.gz",
+      "sha256": "4c29ac5aa6ca70e4179154c6ab3676d85363829b03edba855b0c6bd82592e4e2"
+    },
+    {
+      "bytes": 1390,
+      "file": "EVENTOS/001_control.json.gz",
+      "sha256": "59d6fd5995da5deb2cf45387b4876507ca37037fc8111f513a71cae4651b197b"
+    },
+    {
+      "bytes": 30874,
+      "file": "EVENTOS/002_material.json.gz",
+      "sha256": "9595d5d063625b1f90c8c5682aa8f15a185639910a1e0168b8d672761c60831d"
+    },
+    {
+      "bytes": 22926,
+      "file": "EVENTOS/003_material.json.gz",
+      "sha256": "7a58976201af2c54c76bb6469537ae8a478ec9211acf9c06d81ffab061ff8dc1"
+    },
+    {
+      "bytes": 1396,
+      "file": "EVENTOS/004_control.json.gz",
+      "sha256": "863513319625c7a3f39acd440be1347a12f606ec7be2d064774fc7e9afdaf66e"
+    },
+    {
+      "bytes": 1377,
+      "file": "EVENTOS/005_control.json.gz",
+      "sha256": "1da5ca563ab2826732b870bfad9ff2bbac0c1d9e1f9b61dad7d018a2b4fbed14"
+    },
+    {
+      "bytes": 1987,
+      "file": "EVENTOS/006_checkpoint.json.gz",
+      "sha256": "110d3f1121ad812a9c9ad738ba8071a140e4b9456cdfc993d590ac5e61553dfb"
+    },
+    {
+      "bytes": 1371,
+      "file": "EVENTOS/007_control.json.gz",
+      "sha256": "0b8df8032f29ecff9eb69f7019cdf97f674cc62dd22bb9edb42308720970eff6"
+    },
+    {
+      "bytes": 6732,
+      "file": "EVENTOS/008_material.json.gz",
+      "sha256": "00821d7017810383e3f3ddcf4c390e7055cfc1eee50d20290a7157238ae5eeaa"
+    },
+    {
+      "bytes": 45009,
+      "file": "EVENTOS/009_material.json.gz",
+      "sha256": "a4b920e2849c2853731e531b73a685cd833e3290b72977a65c5a1c92a0c49abd"
+    },
+    {
+      "bytes": 6748,
+      "file": "EVENTOS/010_material.json.gz",
+      "sha256": "7b3e2ea20ff6d5561d6f2d8a38b1df2249b50a6bc7f35ecd5b3b2cfc51c6be25"
+    },
+    {
+      "bytes": 34461,
+      "file": "EVENTOS/011_material.json.gz",
+      "sha256": "8ce03c526372d1625c19dee4a8c0c95239b657e61775164e6b03bb2a7c8c5f64"
+    },
+    {
+      "bytes": 1371,
+      "file": "EVENTOS/012_control.json.gz",
+      "sha256": "6ad2ccf537ea08c2a4b268ea1b4e155f5d8e587c430fa232f1602617aef3fb92"
+    },
+    {
+      "bytes": 2414,
+      "file": "EVENTOS/013_checkpoint.json.gz",
+      "sha256": "75801f210bebd397f596efee391efbb2d03ef124f109b2e9298c0cda5433a865"
+    },
+    {
+      "bytes": 7024,
+      "file": "EVENTOS/014_material.json.gz",
+      "sha256": "4c4b3caa99a199ead485cda5204d9d9d4c7be4b5a1ce95348313899d58a54cd8"
+    },
+    {
+      "bytes": 7023,
+      "file": "EVENTOS/015_material.json.gz",
+      "sha256": "5e2a9f0c07f747f0b287fca59d7e6f2bf6a2b3f4ede8cb1a67b980bfebee3a61"
+    },
+    {
+      "bytes": 12103,
+      "file": "EVENTOS/016_material.json.gz",
+      "sha256": "e0b82ee51de8a451c3c547292421091fceccc71cb54f31c7e88c8cc78223db15"
+    },
+    {
+      "bytes": 11856,
+      "file": "EVENTOS/017_material.json.gz",
+      "sha256": "9eb067811c2092a35408cccfa400a3f2c83975abda0fb5ed943483d1192e8408"
+    },
+    {
+      "bytes": 6764,
+      "file": "EVENTOS/018_material.json.gz",
+      "sha256": "0eff38571101ad3c495e698b25a8fe3be1035b70e095c4d00257cabd0b74f042"
+    },
+    {
+      "bytes": 44993,
+      "file": "EVENTOS/019_material.json.gz",
+      "sha256": "68c07e4e34b360646e8180a31f3e5ff16f6af75bc6fb7855c49314a0a1ddaf80"
+    },
+    {
+      "bytes": 1373,
+      "file": "EVENTOS/020_control.json.gz",
+      "sha256": "aaf05c9ebbdfd3fc95ddd07944956a8890b2d72a8ae52459f625025f3cea49b0"
+    },
+    {
+      "bytes": 3044,
+      "file": "EVENTOS/021_checkpoint.json.gz",
+      "sha256": "5cccc5ebb853b92eb72ce87fa2ddf48b604a8904c6443f1d56faae38b98af197"
+    }
+  ],
+  "events_available": 22,
+  "exact_RAW_observation_occurrences": 1939,
+  "issues": [],
+  "new_generic_lessons": [
+    {
+      "form": "luma",
+      "host_supplied_lesson_not_spontaneous": true,
+      "hub": {
+        "active": true,
+        "clock": "557242",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "raw": "1224979167364251649",
+        "s_reg": 16,
+        "semantic": 1,
+        "site": [
+          44,
+          7,
+          47
+        ],
+        "state": 1,
+        "tick": 557242
+      },
+      "input_tick": 557239,
+      "tag": "teach_luma",
+      "teacher_sign": 1
+    },
+    {
+      "form": "nara",
+      "host_supplied_lesson_not_spontaneous": true,
+      "hub": {
+        "active": true,
+        "clock": "557309",
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "raw": "2233785483895242753",
+        "s_reg": 16,
+        "semantic": 1,
+        "site": [
+          47,
+          4,
+          47
+        ],
+        "state": 1,
+        "tick": 557309
+      },
+      "input_tick": 557306,
+      "tag": "teach_nara",
+      "teacher_sign": -1
+    }
+  ],
+  "new_generic_uses": [
+    {
+      "form": "luma",
+      "interaction_kind": "native_current_selection",
+      "interaction_read_tick": 557394,
+      "operator_context": "gamma",
+      "public_datum": 23,
+      "response_sign": 1,
+      "scope": "Cue association selects a prepared native comparison or MA interaction; the operator still supplies opportunity/context.",
+      "tag": "first_luma",
+      "word_read_tick": 557377,
+      "word_sign": 1
+    },
+    {
+      "form": "nara",
+      "interaction_kind": "query",
+      "interaction_read_tick": 557511,
+      "operator_context": "gamma",
+      "public_datum": 23,
+      "response_sign": 1,
+      "scope": "Cue association selects a prepared native comparison or MA interaction; the operator still supplies opportunity/context.",
+      "tag": "first_nara",
+      "word_read_tick": 557444,
+      "word_sign": -1
+    }
+  ],
+  "opportunities": [
+    {
+      "action": "QUERY",
+      "actual_file": null,
+      "context": 0,
+      "feedback": "FAILURE",
+      "file_completed": false,
+      "native_numeric_values": [],
+      "new_fact": false,
+      "opportunity": 1,
+      "physical_action_sign": 0,
+      "query_tick": 550291,
+      "raw_missing_fact": 0,
+      "reference_s_reg": [
+        395,
+        395
+      ],
+      "return_mode": "real",
+      "second_visible_before": true,
+      "tag": "experience_full_offered",
+      "transport_id": "apd03main_r01_004_experience_full_offered",
+      "useful": false,
+      "word": "suma",
+      "word_input_tick": 549802,
+      "word_sign": 1
+    },
+    {
+      "action": "ACT",
+      "actual_file": {
+        "operands": [
+          8,
+          5
+        ],
+        "operation": "add",
+        "procedure": "native",
+        "schema": "DEE.APD02.calculation_artifact.v1",
+        "task_id": "apd03_goal_1_attempt2",
+        "value": 13
+      },
+      "context": 0,
+      "feedback": "SUCCESS",
+      "file_completed": true,
+      "native_numeric_values": [
+        13
+      ],
+      "new_fact": false,
+      "opportunity": 2,
+      "physical_action_sign": -1,
+      "query_tick": 551855,
+      "raw_missing_fact": 0,
+      "reference_s_reg": [
+        399,
+        400
+      ],
+      "return_mode": "real",
+      "second_visible_before": true,
+      "tag": "experience_full_offered",
+      "transport_id": "apd03main_r01_004_experience_full_offered",
+      "useful": true,
+      "word": "suma",
+      "word_input_tick": 551745,
+      "word_sign": 1
+    },
+    {
+      "action": "ACT",
+      "actual_file": {
+        "operands": [
+          22,
+          9
+        ],
+        "operation": "sub",
+        "procedure": "native",
+        "schema": "DEE.APD02.calculation_artifact.v1",
+        "task_id": "apd03_goal_2_attempt1",
+        "value": 13
+      },
+      "context": 1,
+      "feedback": "SUCCESS",
+      "file_completed": true,
+      "native_numeric_values": [
+        13
+      ],
+      "new_fact": false,
+      "opportunity": 1,
+      "physical_action_sign": -1,
+      "query_tick": 553419,
+      "raw_missing_fact": 0,
+      "reference_s_reg": [
+        403,
+        404
+      ],
+      "return_mode": "real",
+      "second_visible_before": true,
+      "tag": "reserve_full_1_offered",
+      "transport_id": "apd03main_r01_006_reserve_full_1_offered",
+      "useful": true,
+      "word": "diferencia",
+      "word_input_tick": 553353,
+      "word_sign": -1
+    },
+    {
+      "action": "QUERY",
+      "actual_file": null,
+      "context": 1,
+      "feedback": "SUCCESS",
+      "file_completed": false,
+      "native_numeric_values": [],
+      "new_fact": true,
+      "opportunity": 1,
+      "physical_action_sign": 1,
+      "query_tick": 558111,
+      "raw_missing_fact": 1,
+      "reference_s_reg": [
+        414,
+        415
+      ],
+      "return_mode": "real",
+      "second_visible_before": false,
+      "tag": "reserve_hidden_1_offered",
+      "transport_id": "apd03main_r01_012_reserve_hidden_1_offered",
+      "useful": true,
+      "word": "suma",
+      "word_input_tick": 557574,
+      "word_sign": 1
+    },
+    {
+      "action": "ACT",
+      "actual_file": {
+        "operands": [
+          12,
+          7
+        ],
+        "operation": "add",
+        "procedure": "native",
+        "schema": "DEE.APD02.calculation_artifact.v1",
+        "task_id": "apd03_goal_3_attempt2",
+        "value": 19
+      },
+      "context": 1,
+      "feedback": "SUCCESS",
+      "file_completed": true,
+      "native_numeric_values": [
+        19
+      ],
+      "new_fact": false,
+      "opportunity": 2,
+      "physical_action_sign": -1,
+      "query_tick": 559675,
+      "raw_missing_fact": 0,
+      "reference_s_reg": [
+        419,
+        420
+      ],
+      "return_mode": "real",
+      "second_visible_before": true,
+      "tag": "reserve_hidden_1_offered",
+      "transport_id": "apd03main_r01_012_reserve_hidden_1_offered",
+      "useful": true,
+      "word": "suma",
+      "word_input_tick": 559584,
+      "word_sign": 1
+    }
+  ],
+  "other_physical_uses": [
+    {
+      "after_tick": 549749,
+      "before_tick": 549746,
+      "kind": "explicit_APD03_P0_admission",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "one_P0_admission",
+      "transport_id": "apd03main_r01_002_one_P0_admission"
+    },
+    {
+      "after_tick": 549757,
+      "before_tick": 549757,
+      "kind": "explicit_APD03_environment_initialization",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "experience_full_init",
+      "transport_id": "apd03main_r01_003_experience_full_init"
+    },
+    {
+      "after_tick": 553284,
+      "before_tick": 553284,
+      "kind": "explicit_APD03_environment_initialization",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "reserve_full_1_init",
+      "transport_id": "apd03main_r01_005_reserve_full_1_init"
+    },
+    {
+      "after_tick": 557242,
+      "before_tick": 557194,
+      "kind": "explicit_generic_lesson",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "teach_luma",
+      "transport_id": "apd03main_r01_007_teach_luma"
+    },
+    {
+      "after_tick": 557309,
+      "before_tick": 557246,
+      "kind": "explicit_generic_lesson",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "teach_nara",
+      "transport_id": "apd03main_r01_008_teach_nara"
+    },
+    {
+      "after_tick": 557396,
+      "before_tick": 557312,
+      "kind": "APD03_generic_acquired_request",
+      "physical_readers": [
+        {
+          "kind": "APD03_common_lexical_query",
+          "read_tick": 557377,
+          "recorded_sign": 1,
+          "sign": 1
+        }
+      ],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "first_luma",
+      "transport_id": "apd03main_r01_009_first_luma"
+    },
+    {
+      "after_tick": 557514,
+      "before_tick": 557400,
+      "kind": "APD03_generic_acquired_request",
+      "physical_readers": [
+        {
+          "kind": "query",
+          "read_tick": 557511,
+          "recorded_sign": 1,
+          "sign": 1
+        },
+        {
+          "kind": "APD03_common_lexical_query",
+          "read_tick": 557444,
+          "recorded_sign": -1,
+          "sign": -1
+        }
+      ],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "first_nara",
+      "transport_id": "apd03main_r01_010_first_nara"
+    },
+    {
+      "after_tick": 557518,
+      "before_tick": 557518,
+      "kind": "explicit_APD03_environment_initialization",
+      "physical_readers": [],
+      "scope": "Literal use/teaching record, not automatically a new learned or correct semantic function.",
+      "tag": "reserve_hidden_1_init",
+      "transport_id": "apd03main_r01_011_reserve_hidden_1_init"
+    }
+  ],
+  "panels": [
+    {
+      "after_tick": 549742,
+      "before_tick": 548410,
+      "forms": [
+        {
+          "form": "alfa",
+          "physical_read_tick": 548466,
+          "sign": -1
+        },
+        {
+          "form": "beta",
+          "physical_read_tick": 548533,
+          "sign": 1
+        },
+        {
+          "form": "gamma",
+          "physical_read_tick": 548600,
+          "sign": 1
+        },
+        {
+          "form": "delta",
+          "physical_read_tick": 548667,
+          "sign": -1
+        },
+        {
+          "form": "epsilon",
+          "physical_read_tick": 548734,
+          "sign": -1
+        },
+        {
+          "form": "zeta",
+          "physical_read_tick": 548801,
+          "sign": 1
+        },
+        {
+          "form": "suma",
+          "physical_read_tick": 548868,
+          "sign": 1
+        },
+        {
+          "form": "diferencia",
+          "physical_read_tick": 548935,
+          "sign": -1
+        },
+        {
+          "form": "agrega",
+          "physical_read_tick": 549002,
+          "sign": 1
+        },
+        {
+          "form": "resta",
+          "physical_read_tick": 549069,
+          "sign": -1
+        },
+        {
+          "form": "total",
+          "physical_read_tick": 549136,
+          "sign": 1
+        },
+        {
+          "form": "quita",
+          "physical_read_tick": 549203,
+          "sign": -1
+        },
+        {
+          "form": "compara",
+          "physical_read_tick": 549270,
+          "sign": 1
+        },
+        {
+          "form": "recuerda",
+          "physical_read_tick": 549337,
+          "sign": -1
+        }
+      ],
+      "material_queries_not_passive": true,
+      "memories": [
+        {
+          "context": "alfa",
+          "physical_read_tick": 549404,
+          "sign": -1
+        },
+        {
+          "context": "beta",
+          "physical_read_tick": 549471,
+          "sign": 1
+        },
+        {
+          "context": "gamma",
+          "physical_read_tick": 549538,
+          "sign": 1
+        },
+        {
+          "context": "delta",
+          "physical_read_tick": 549605,
+          "sign": -1
+        },
+        {
+          "context": "epsilon",
+          "physical_read_tick": 549672,
+          "sign": -1
+        },
+        {
+          "context": "zeta",
+          "physical_read_tick": 549739,
+          "sign": 1
+        }
+      ],
+      "memories_equal_initial": {
+        "alfa": true,
+        "beta": true,
+        "delta": true,
+        "epsilon": true,
+        "gamma": true,
+        "zeta": true
+      },
+      "new_forms_equal_explicit_teaching": {},
+      "old_forms_equal_initial": {
+        "agrega": true,
+        "alfa": true,
+        "beta": true,
+        "compara": true,
+        "delta": true,
+        "diferencia": true,
+        "epsilon": true,
+        "gamma": true,
+        "quita": true,
+        "recuerda": true,
+        "resta": true,
+        "suma": true,
+        "total": true,
+        "zeta": true
+      },
+      "tag": "before_admission_old_panel",
+      "transport_id": "apd03main_r01_001_before_admission_old_panel"
+    }
+  ],
+  "schema": "APD03.Main.archived_stdlib_recalculation.R01",
+  "scope": "Archived bytes only, zero new ticks and no access to operational states. Counters are dependent uses within one trajectory, not independent learned individuals. This verifies raw transduction/decoding and post-action file facts, not a general P2/R2 or hidden process guarantee.",
+  "transport_terminal_statuses": {
+    "completed": 12
+  },
+  "unique_native_receipt_statuses": {
+    "applied": 817
+  },
+  "window": null
+}

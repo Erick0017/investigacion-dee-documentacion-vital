@@ -1,0 +1,3307 @@
+{
+  "external_effects_executed_by_this_recalculation": 0,
+  "issues": [],
+  "native_ticks": 0,
+  "schema": "APD02.R04.separate_analytical_references.v1",
+  "scope": "No Runtime, actor source change or host policy controlling E1. Laws and evaluation are auditor-side only. Prices are simulated environmental quantities, never electricity, CPU time, ticks, memory use or native thermodynamics. Controls omit/sham/desync are excluded from the task denominator.",
+  "sources": [
+    {
+      "bytes": 1655,
+      "file": "AUXILIAR/PROTOCOLO.json",
+      "sha256": "0ece106802e22495ea2147de09719fa2c49b3103f251aca76d3507fe5e582178"
+    },
+    {
+      "bytes": 5257,
+      "file": "AUXILIAR/OP0/RESULTADO_COMPLETO.json.gz",
+      "sha256": "a6fab625b4bdfc75760bf843d87df59867f7dbc3eb7ba0f225caea068e1ac901"
+    },
+    {
+      "bytes": 10858,
+      "file": "AUXILIAR/OP1/RESULTADO_COMPLETO.json.gz",
+      "sha256": "165027e3a719b94fe6ab1ccf57048658a7d0f15b713bf8a5c6c2f4360853f74f"
+    },
+    {
+      "bytes": 10941,
+      "file": "AUXILIAR/OP2/RESULTADO_COMPLETO.json.gz",
+      "sha256": "475408a06cd7a71e61825ac28d1a1a503ba565578d114db8aaa4dfe46fdcdd96"
+    },
+    {
+      "bytes": 5175,
+      "file": "AUXILIAR/OP3/RESULTADO_COMPLETO.json.gz",
+      "sha256": "c0c19484361f9a30fa7bd1fc02a2905213f45b217ac54701fff172291f602885"
+    },
+    {
+      "bytes": 5199,
+      "file": "AUXILIAR/OP4/RESULTADO_COMPLETO.json.gz",
+      "sha256": "4721748ae39ca7dfc209631dd70cfd88b1233b1e8ab70639c817cdc80e1f65e4"
+    },
+    {
+      "bytes": 5242,
+      "file": "AUXILIAR/OP5/RESULTADO_COMPLETO.json.gz",
+      "sha256": "a49f05848674ead461b533e63023bae9cd06e61cdc37a5403760aeef7bff7eb1"
+    },
+    {
+      "bytes": 10949,
+      "file": "AUXILIAR/OP6/RESULTADO_COMPLETO.json.gz",
+      "sha256": "a1411d371bc605222c4c93fc8fce3c08b15a2d12a06e8b51d1ccfeec6fc1b036"
+    },
+    {
+      "bytes": 5179,
+      "file": "AUXILIAR/OP7/RESULTADO_COMPLETO.json.gz",
+      "sha256": "14b5b75eb07ddfc8f05c936b4bc000a7b69abb6231e6a5b8b88678882f9de17e"
+    },
+    {
+      "bytes": 4289,
+      "file": "MAIN/PROTOCOLO.json",
+      "sha256": "4aaf8a33c54a3ebe77098070c070a27580e4b419abfc12427d6f5f93b22d29d0"
+    },
+    {
+      "bytes": 12649,
+      "file": "MAIN/RESUMEN.json",
+      "sha256": "f2bfcb71cf02e5d7613f6ff51998f855ec388bb3f3047ef0167571c5c07d2524"
+    },
+    {
+      "bytes": 364802,
+      "file": "MAIN/REGISTROS_VENTANA.json.gz",
+      "sha256": "39a7640a4a1e66b5c1186b3be4f7a0b201ed2aa6d672b06c641d0af0479740fe"
+    }
+  ],
+  "studies": {
+    "AUX": {
+      "assumptions": "Two available correct providers with no injected fault/delay for this cost-only comparison; unexecuted alternative correctness is conditional, not empirical. The private oracle violates participant information by definition.",
+      "external_analytical_references": [
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Constant route",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              },
+              {
+                "block": 2,
+                "cost": 15,
+                "failures_before_first_useful": 3,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": 3,
+                "first_useful_local_opportunity": null,
+                "opportunities": 3
+              },
+              {
+                "block": 3,
+                "cost": 1,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 1
+              },
+              {
+                "block": 4,
+                "cost": 10,
+                "failures_before_first_useful": 2,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": 2,
+                "first_useful_local_opportunity": null,
+                "opportunities": 2
+              }
+            ],
+            "next_after_failure_denominator": 4,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 4,
+                "previous_opportunity": 3,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 5,
+                "previous_opportunity": 4,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 6,
+                "previous_opportunity": 5,
+                "route": "native",
+                "same_block_as_failure": false,
+                "useful": true
+              },
+              {
+                "opportunity": 8,
+                "previous_opportunity": 7,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              }
+            ],
+            "not_useful": 5,
+            "requested": 8,
+            "responded": 8,
+            "total_modelled_price": 28,
+            "useful": 3,
+            "useful_next_after_failure": 1
+          },
+          "policy": "always_native",
+          "rows": [
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "OP0",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                5
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "OP1",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                7,
+                2
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "OP2",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                9,
+                4
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "OP3",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                6
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "OP4",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                14,
+                3
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "OP5",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                8,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "OP6",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                15,
+                7
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "OP7",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                21,
+                4
+              ],
+              "route": "native",
+              "useful": false
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Constant route",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 10,
+                "failures_before_first_useful": 2,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": 2,
+                "first_useful_local_opportunity": null,
+                "opportunities": 2
+              },
+              {
+                "block": 2,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              },
+              {
+                "block": 3,
+                "cost": 5,
+                "failures_before_first_useful": 1,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": 1,
+                "first_useful_local_opportunity": null,
+                "opportunities": 1
+              },
+              {
+                "block": 4,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              }
+            ],
+            "next_after_failure_denominator": 3,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 2,
+                "previous_opportunity": 1,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 3,
+                "previous_opportunity": 2,
+                "route": "external",
+                "same_block_as_failure": false,
+                "useful": true
+              },
+              {
+                "opportunity": 7,
+                "previous_opportunity": 6,
+                "route": "external",
+                "same_block_as_failure": false,
+                "useful": true
+              }
+            ],
+            "not_useful": 3,
+            "requested": 8,
+            "responded": 8,
+            "total_modelled_price": 20,
+            "useful": 5,
+            "useful_next_after_failure": 2
+          },
+          "policy": "always_external",
+          "rows": [
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "OP0",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                5
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "OP1",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                7,
+                2
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP2",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                9,
+                4
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP3",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP4",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                14,
+                3
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "OP5",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                8,
+                9
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "OP6",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                15,
+                7
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "OP7",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                21,
+                4
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Initial external; only its OWN post-action simulated binary category causes alternation; no current hidden law or learner outcome enters the policy",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 6,
+                "failures_before_first_useful": 1,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 2
+              },
+              {
+                "block": 2,
+                "cost": 7,
+                "failures_before_first_useful": 1,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 3
+              },
+              {
+                "block": 3,
+                "cost": 5,
+                "failures_before_first_useful": 1,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": 1,
+                "first_useful_local_opportunity": null,
+                "opportunities": 1
+              },
+              {
+                "block": 4,
+                "cost": 6,
+                "failures_before_first_useful": 1,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 2
+              }
+            ],
+            "next_after_failure_denominator": 4,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 2,
+                "previous_opportunity": 1,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": true
+              },
+              {
+                "opportunity": 4,
+                "previous_opportunity": 3,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": true
+              },
+              {
+                "opportunity": 7,
+                "previous_opportunity": 6,
+                "route": "native",
+                "same_block_as_failure": false,
+                "useful": false
+              },
+              {
+                "opportunity": 8,
+                "previous_opportunity": 7,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": true
+              }
+            ],
+            "not_useful": 4,
+            "requested": 8,
+            "responded": 8,
+            "total_modelled_price": 24,
+            "useful": 4,
+            "useful_next_after_failure": 3
+          },
+          "policy": "conventional_WSLS",
+          "rows": [
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "OP0",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                5
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "OP1",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                7,
+                2
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "OP2",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                9,
+                4
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP3",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP4",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                14,
+                3
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "OP5",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                8,
+                9
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "OP6",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                15,
+                7
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "OP7",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                21,
+                4
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "private current two-route prices; unattainable participant oracle",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              },
+              {
+                "block": 2,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              },
+              {
+                "block": 3,
+                "cost": 1,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 1
+              },
+              {
+                "block": 4,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              }
+            ],
+            "next_after_failure_denominator": 0,
+            "next_use_after_own_observed_failure": [],
+            "not_useful": 0,
+            "requested": 8,
+            "responded": 8,
+            "total_modelled_price": 8,
+            "useful": 8,
+            "useful_next_after_failure": 0
+          },
+          "policy": "private_oracle",
+          "rows": [
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "OP0",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                5
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "OP1",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                7,
+                2
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP2",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                9,
+                4
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP3",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "OP4",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                14,
+                3
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "OP5",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                8,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "OP6",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                15,
+                7
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "OP7",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                21,
+                4
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        }
+      ],
+      "frozen_laws": [
+        {
+          "block": 1,
+          "event_id": "OP0",
+          "opportunity": 1,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            3,
+            5
+          ]
+        },
+        {
+          "block": 1,
+          "event_id": "OP1",
+          "opportunity": 2,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            7,
+            2
+          ]
+        },
+        {
+          "block": 2,
+          "event_id": "OP2",
+          "opportunity": 3,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            9,
+            4
+          ]
+        },
+        {
+          "block": 2,
+          "event_id": "OP3",
+          "opportunity": 4,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            11,
+            6
+          ]
+        },
+        {
+          "block": 2,
+          "event_id": "OP4",
+          "opportunity": 5,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            14,
+            3
+          ]
+        },
+        {
+          "block": 3,
+          "event_id": "OP5",
+          "opportunity": 6,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            8,
+            9
+          ]
+        },
+        {
+          "block": 4,
+          "event_id": "OP6",
+          "opportunity": 7,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            15,
+            7
+          ]
+        },
+        {
+          "block": 4,
+          "event_id": "OP7",
+          "opportunity": 8,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            21,
+            4
+          ]
+        }
+      ],
+      "observed_learner": {
+        "kind": "Actual closed DEE observations, not a benchmark policy controlling it",
+        "metrics": {
+          "first_responses_by_block": [
+            {
+              "block": 1,
+              "cost": 6,
+              "failures_before_first_useful": 1,
+              "first_response_route": "external",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 2
+            },
+            {
+              "block": 2,
+              "cost": 7,
+              "failures_before_first_useful": 1,
+              "first_response_route": "native",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 3
+            },
+            {
+              "block": 3,
+              "cost": 5,
+              "failures_before_first_useful": 1,
+              "first_response_route": "external",
+              "first_response_useful": false,
+              "first_useful_censored_after": 1,
+              "first_useful_local_opportunity": null,
+              "opportunities": 1
+            },
+            {
+              "block": 4,
+              "cost": 6,
+              "failures_before_first_useful": 1,
+              "first_response_route": "native",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 2
+            }
+          ],
+          "next_after_failure_denominator": 4,
+          "next_use_after_own_observed_failure": [
+            {
+              "opportunity": 2,
+              "previous_opportunity": 1,
+              "route": "native",
+              "same_block_as_failure": true,
+              "useful": true
+            },
+            {
+              "opportunity": 4,
+              "previous_opportunity": 3,
+              "route": "external",
+              "same_block_as_failure": true,
+              "useful": true
+            },
+            {
+              "opportunity": 7,
+              "previous_opportunity": 6,
+              "route": "native",
+              "same_block_as_failure": false,
+              "useful": false
+            },
+            {
+              "opportunity": 8,
+              "previous_opportunity": 7,
+              "route": "external",
+              "same_block_as_failure": true,
+              "useful": true
+            }
+          ],
+          "not_useful": 4,
+          "requested": 8,
+          "responded": 8,
+          "total_modelled_price": 24,
+          "useful": 4,
+          "useful_next_after_failure": 3
+        },
+        "rows": [
+          {
+            "actual_effect_state": "committed",
+            "block": 1,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 392333,
+            "event_id": "OP0",
+            "modelled_price": 5,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 1,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              3,
+              5
+            ],
+            "route": "external",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 1,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 394095,
+            "event_id": "OP1",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 2,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              7,
+              2
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 2,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 395659,
+            "event_id": "OP2",
+            "modelled_price": 5,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 3,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              9,
+              4
+            ],
+            "route": "native",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 2,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 397025,
+            "event_id": "OP3",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 4,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              11,
+              6
+            ],
+            "route": "external",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 2,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 400153,
+            "event_id": "OP4",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 5,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              14,
+              3
+            ],
+            "route": "external",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 3,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 401717,
+            "event_id": "OP5",
+            "modelled_price": 5,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 6,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              8,
+              9
+            ],
+            "route": "external",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 4,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 403479,
+            "event_id": "OP6",
+            "modelled_price": 5,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 7,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              15,
+              7
+            ],
+            "route": "native",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 4,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 404845,
+            "event_id": "OP7",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 8,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              21,
+              4
+            ],
+            "route": "external",
+            "useful": true
+          }
+        ]
+      },
+      "observed_learner_status": "closed evidence included"
+    },
+    "MAIN": {
+      "assumptions": "Two available correct providers with no injected fault/delay for this cost-only comparison; unexecuted alternative correctness is conditional, not empirical. The private oracle violates participant information by definition.",
+      "external_analytical_references": [
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Constant route",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              },
+              {
+                "block": 2,
+                "cost": 10,
+                "failures_before_first_useful": 2,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": 2,
+                "first_useful_local_opportunity": null,
+                "opportunities": 2
+              },
+              {
+                "block": 3,
+                "cost": 4,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 4
+              },
+              {
+                "block": 4,
+                "cost": 15,
+                "failures_before_first_useful": 3,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": 3,
+                "first_useful_local_opportunity": null,
+                "opportunities": 3
+              }
+            ],
+            "next_after_failure_denominator": 4,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 5,
+                "previous_opportunity": 4,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 6,
+                "previous_opportunity": 5,
+                "route": "native",
+                "same_block_as_failure": false,
+                "useful": true
+              },
+              {
+                "opportunity": 11,
+                "previous_opportunity": 10,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 12,
+                "previous_opportunity": 11,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": false
+              }
+            ],
+            "not_useful": 5,
+            "requested": 12,
+            "responded": 12,
+            "total_modelled_price": 32,
+            "useful": 7,
+            "useful_next_after_failure": 1
+          },
+          "policy": "always_native",
+          "rows": [
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task01",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                8
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task02",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                23,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task03",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                6,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "task04",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                27,
+                12
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "task05",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                8,
+                8
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task06",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                29,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task07",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task08",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                28,
+                6
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task09",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 9,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                9,
+                10
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "task10",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 10,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                25,
+                5
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "task11",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 11,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                13,
+                6
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "task12",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 12,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                26,
+                10
+              ],
+              "route": "native",
+              "useful": false
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Constant route",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 15,
+                "failures_before_first_useful": 3,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": 3,
+                "first_useful_local_opportunity": null,
+                "opportunities": 3
+              },
+              {
+                "block": 2,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              },
+              {
+                "block": 3,
+                "cost": 20,
+                "failures_before_first_useful": 4,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": 4,
+                "first_useful_local_opportunity": null,
+                "opportunities": 4
+              },
+              {
+                "block": 4,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              }
+            ],
+            "next_after_failure_denominator": 7,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 2,
+                "previous_opportunity": 1,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 3,
+                "previous_opportunity": 2,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 4,
+                "previous_opportunity": 3,
+                "route": "external",
+                "same_block_as_failure": false,
+                "useful": true
+              },
+              {
+                "opportunity": 7,
+                "previous_opportunity": 6,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 8,
+                "previous_opportunity": 7,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 9,
+                "previous_opportunity": 8,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": false
+              },
+              {
+                "opportunity": 10,
+                "previous_opportunity": 9,
+                "route": "external",
+                "same_block_as_failure": false,
+                "useful": true
+              }
+            ],
+            "not_useful": 7,
+            "requested": 12,
+            "responded": 12,
+            "total_modelled_price": 40,
+            "useful": 5,
+            "useful_next_after_failure": 2
+          },
+          "policy": "always_external",
+          "rows": [
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "task01",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                8
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "task02",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                23,
+                7
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "task03",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                6,
+                9
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "task04",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                27,
+                12
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "task05",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                8,
+                8
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "task06",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                29,
+                9
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "task07",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                7
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "task08",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                28,
+                6
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "task09",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 9,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                9,
+                10
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task10",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 10,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                25,
+                5
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task11",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 11,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                13,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task12",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 12,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                26,
+                10
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "Initial external; only its OWN post-action simulated binary category causes alternation; no current hidden law or learner outcome enters the policy",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 7,
+                "failures_before_first_useful": 1,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 3
+              },
+              {
+                "block": 2,
+                "cost": 6,
+                "failures_before_first_useful": 1,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 2
+              },
+              {
+                "block": 3,
+                "cost": 8,
+                "failures_before_first_useful": 1,
+                "first_response_route": "external",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 4
+              },
+              {
+                "block": 4,
+                "cost": 7,
+                "failures_before_first_useful": 1,
+                "first_response_route": "native",
+                "first_response_useful": false,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 2,
+                "opportunities": 3
+              }
+            ],
+            "next_after_failure_denominator": 4,
+            "next_use_after_own_observed_failure": [
+              {
+                "opportunity": 2,
+                "previous_opportunity": 1,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": true
+              },
+              {
+                "opportunity": 5,
+                "previous_opportunity": 4,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": true
+              },
+              {
+                "opportunity": 7,
+                "previous_opportunity": 6,
+                "route": "native",
+                "same_block_as_failure": true,
+                "useful": true
+              },
+              {
+                "opportunity": 11,
+                "previous_opportunity": 10,
+                "route": "external",
+                "same_block_as_failure": true,
+                "useful": true
+              }
+            ],
+            "not_useful": 4,
+            "requested": 12,
+            "responded": 12,
+            "total_modelled_price": 28,
+            "useful": 8,
+            "useful_next_after_failure": 4
+          },
+          "policy": "conventional_WSLS",
+          "rows": [
+            {
+              "block": 1,
+              "category": "FAILURE",
+              "event_id": "task01",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                8
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task02",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                23,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task03",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                6,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "FAILURE",
+              "event_id": "task04",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                27,
+                12
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "task05",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                8,
+                8
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "FAILURE",
+              "event_id": "task06",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                29,
+                9
+              ],
+              "route": "external",
+              "useful": false
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task07",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task08",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                28,
+                6
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task09",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 9,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                9,
+                10
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "FAILURE",
+              "event_id": "task10",
+              "modelled_price": 5,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 10,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                25,
+                5
+              ],
+              "route": "native",
+              "useful": false
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task11",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 11,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                13,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task12",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 12,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                26,
+                10
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        },
+        {
+          "correctness_scope": "Correct-provider assumption of this cost-only counterfactual model, not new measured numeric executions or host CPU/ticks/RAM.",
+          "information": "private current two-route prices; unattainable participant oracle",
+          "kind": "analytical_counterfactual_external_policy_not_DEE_execution",
+          "metrics": {
+            "first_responses_by_block": [
+              {
+                "block": 1,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              },
+              {
+                "block": 2,
+                "cost": 2,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 2
+              },
+              {
+                "block": 3,
+                "cost": 4,
+                "failures_before_first_useful": 0,
+                "first_response_route": "native",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 4
+              },
+              {
+                "block": 4,
+                "cost": 3,
+                "failures_before_first_useful": 0,
+                "first_response_route": "external",
+                "first_response_useful": true,
+                "first_useful_censored_after": null,
+                "first_useful_local_opportunity": 1,
+                "opportunities": 3
+              }
+            ],
+            "next_after_failure_denominator": 0,
+            "next_use_after_own_observed_failure": [],
+            "not_useful": 0,
+            "requested": 12,
+            "responded": 12,
+            "total_modelled_price": 12,
+            "useful": 12,
+            "useful_next_after_failure": 0
+          },
+          "policy": "private_oracle",
+          "rows": [
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task01",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 1,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                3,
+                8
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task02",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 2,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                23,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 1,
+              "category": "SUCCESS",
+              "event_id": "task03",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 3,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                6,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "task04",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 4,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                27,
+                12
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 2,
+              "category": "SUCCESS",
+              "event_id": "task05",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 5,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                8,
+                8
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task06",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 6,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                29,
+                9
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task07",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 7,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "suma",
+              "public_operands": [
+                11,
+                7
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task08",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 8,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "diferencia",
+              "public_operands": [
+                28,
+                6
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 3,
+              "category": "SUCCESS",
+              "event_id": "task09",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 9,
+              "prices": [
+                1,
+                5
+              ],
+              "public_literal": "total",
+              "public_operands": [
+                9,
+                10
+              ],
+              "route": "native",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task10",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 10,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "resta",
+              "public_operands": [
+                25,
+                5
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task11",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 11,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "agrega",
+              "public_operands": [
+                13,
+                6
+              ],
+              "route": "external",
+              "useful": true
+            },
+            {
+              "block": 4,
+              "category": "SUCCESS",
+              "event_id": "task12",
+              "modelled_price": 1,
+              "numeric_correct_assumption_for_conditional_model": true,
+              "numeric_correct_observed": null,
+              "opportunity": 12,
+              "prices": [
+                5,
+                1
+              ],
+              "public_literal": "quita",
+              "public_operands": [
+                26,
+                10
+              ],
+              "route": "external",
+              "useful": true
+            }
+          ]
+        }
+      ],
+      "frozen_laws": [
+        {
+          "block": 1,
+          "event_id": "task01",
+          "opportunity": 1,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            3,
+            8
+          ]
+        },
+        {
+          "block": 1,
+          "event_id": "task02",
+          "opportunity": 2,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "diferencia",
+          "public_operands": [
+            23,
+            7
+          ]
+        },
+        {
+          "block": 1,
+          "event_id": "task03",
+          "opportunity": 3,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "total",
+          "public_operands": [
+            6,
+            9
+          ]
+        },
+        {
+          "block": 2,
+          "event_id": "task04",
+          "opportunity": 4,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "resta",
+          "public_operands": [
+            27,
+            12
+          ]
+        },
+        {
+          "block": 2,
+          "event_id": "task05",
+          "opportunity": 5,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "agrega",
+          "public_operands": [
+            8,
+            8
+          ]
+        },
+        {
+          "block": 3,
+          "event_id": "task06",
+          "opportunity": 6,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "quita",
+          "public_operands": [
+            29,
+            9
+          ]
+        },
+        {
+          "block": 3,
+          "event_id": "task07",
+          "opportunity": 7,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "suma",
+          "public_operands": [
+            11,
+            7
+          ]
+        },
+        {
+          "block": 3,
+          "event_id": "task08",
+          "opportunity": 8,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "diferencia",
+          "public_operands": [
+            28,
+            6
+          ]
+        },
+        {
+          "block": 3,
+          "event_id": "task09",
+          "opportunity": 9,
+          "prices": [
+            1,
+            5
+          ],
+          "public_literal": "total",
+          "public_operands": [
+            9,
+            10
+          ]
+        },
+        {
+          "block": 4,
+          "event_id": "task10",
+          "opportunity": 10,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "resta",
+          "public_operands": [
+            25,
+            5
+          ]
+        },
+        {
+          "block": 4,
+          "event_id": "task11",
+          "opportunity": 11,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "agrega",
+          "public_operands": [
+            13,
+            6
+          ]
+        },
+        {
+          "block": 4,
+          "event_id": "task12",
+          "opportunity": 12,
+          "prices": [
+            5,
+            1
+          ],
+          "public_literal": "quita",
+          "public_operands": [
+            26,
+            10
+          ]
+        }
+      ],
+      "observed_learner": {
+        "kind": "Actual closed DEE observations, not a benchmark policy controlling it",
+        "metrics": {
+          "first_responses_by_block": [
+            {
+              "block": 1,
+              "cost": 7,
+              "failures_before_first_useful": 1,
+              "first_response_route": "external",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 3
+            },
+            {
+              "block": 2,
+              "cost": 6,
+              "failures_before_first_useful": 1,
+              "first_response_route": "native",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 2
+            },
+            {
+              "block": 3,
+              "cost": 8,
+              "failures_before_first_useful": 1,
+              "first_response_route": "external",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 4
+            },
+            {
+              "block": 4,
+              "cost": 7,
+              "failures_before_first_useful": 1,
+              "first_response_route": "native",
+              "first_response_useful": false,
+              "first_useful_censored_after": null,
+              "first_useful_local_opportunity": 2,
+              "opportunities": 3
+            }
+          ],
+          "next_after_failure_denominator": 4,
+          "next_use_after_own_observed_failure": [
+            {
+              "opportunity": 2,
+              "previous_opportunity": 1,
+              "route": "native",
+              "same_block_as_failure": true,
+              "useful": true
+            },
+            {
+              "opportunity": 5,
+              "previous_opportunity": 4,
+              "route": "external",
+              "same_block_as_failure": true,
+              "useful": true
+            },
+            {
+              "opportunity": 7,
+              "previous_opportunity": 6,
+              "route": "native",
+              "same_block_as_failure": true,
+              "useful": true
+            },
+            {
+              "opportunity": 11,
+              "previous_opportunity": 10,
+              "route": "external",
+              "same_block_as_failure": true,
+              "useful": true
+            }
+          ],
+          "not_useful": 4,
+          "requested": 12,
+          "responded": 12,
+          "total_modelled_price": 28,
+          "useful": 8,
+          "useful_next_after_failure": 4
+        },
+        "rows": [
+          {
+            "actual_effect_state": "committed",
+            "block": 1,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 392333,
+            "event_id": "task01",
+            "modelled_price": 5,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 1,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              3,
+              8
+            ],
+            "route": "external",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 1,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 394095,
+            "event_id": "task02",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 2,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "diferencia",
+            "public_operands": [
+              23,
+              7
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 1,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 395659,
+            "event_id": "task03",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 3,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "total",
+            "public_operands": [
+              6,
+              9
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 2,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 397223,
+            "event_id": "task04",
+            "modelled_price": 5,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 4,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "resta",
+            "public_operands": [
+              27,
+              12
+            ],
+            "route": "native",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 2,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 398589,
+            "event_id": "task05",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 5,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "agrega",
+            "public_operands": [
+              8,
+              8
+            ],
+            "route": "external",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 3,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 400935,
+            "event_id": "task06",
+            "modelled_price": 5,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 6,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "quita",
+            "public_operands": [
+              29,
+              9
+            ],
+            "route": "external",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 3,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 402697,
+            "event_id": "task07",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 7,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "suma",
+            "public_operands": [
+              11,
+              7
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 3,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 404261,
+            "event_id": "task08",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 8,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "diferencia",
+            "public_operands": [
+              28,
+              6
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 3,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 405825,
+            "event_id": "task09",
+            "modelled_price": 1,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 9,
+            "prices": [
+              1,
+              5
+            ],
+            "public_literal": "total",
+            "public_operands": [
+              9,
+              10
+            ],
+            "route": "native",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 4,
+            "category": "FAILURE",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 408171,
+            "event_id": "task10",
+            "modelled_price": 5,
+            "native_emission": -1,
+            "neutral_0_is_material_external_not_plus_1": false,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "FAILURE",
+            "opportunity": 10,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "resta",
+            "public_operands": [
+              25,
+              5
+            ],
+            "route": "native",
+            "useful": false
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 4,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 409537,
+            "event_id": "task11",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 11,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "agrega",
+            "public_operands": [
+              13,
+              6
+            ],
+            "route": "external",
+            "useful": true
+          },
+          {
+            "actual_effect_state": "committed",
+            "block": 4,
+            "category": "SUCCESS",
+            "completed_valid_artifact_observed": true,
+            "effect_commit_tick": 411101,
+            "event_id": "task12",
+            "modelled_price": 1,
+            "native_emission": 0,
+            "neutral_0_is_material_external_not_plus_1": true,
+            "numeric_correct_observed": true,
+            "only_return_to_DEE": "SUCCESS",
+            "opportunity": 12,
+            "prices": [
+              5,
+              1
+            ],
+            "public_literal": "quita",
+            "public_operands": [
+              26,
+              10
+            ],
+            "route": "external",
+            "useful": true
+          }
+        ]
+      },
+      "observed_learner_status": "closed evidence included"
+    }
+  }
+}

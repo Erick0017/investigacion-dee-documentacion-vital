@@ -1,0 +1,233 @@
+{
+  "schema": "APD02.goal_environment.pure_fixture.R01",
+  "new_native_ticks": 0,
+  "engine_imported": false,
+  "cases": [
+    {
+      "case": "complete",
+      "input_action_signs": [
+        -1
+      ],
+      "effects": [
+        "VERIFIED_GOAL_FILE"
+      ],
+      "feedback": [
+        {
+          "category": "SUCCESS"
+        }
+      ],
+      "provider_calls": [
+        {
+          "op": "add",
+          "values": [
+            7,
+            4
+          ],
+          "test_fixture_only_not_native": true
+        }
+      ],
+      "progress": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": true,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [
+          "complete_attempt1.json"
+        ],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [
+        {
+          "relative_path": "complete_attempt1.json",
+          "bytes": 144,
+          "sha256": "bb9fc36f585aea97e7e67855508d78b9dca6cadf0c34f2b3149cfcd82a36f983"
+        }
+      ],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    },
+    {
+      "case": "missing_then_observed",
+      "input_action_signs": [
+        -1,
+        0,
+        -1
+      ],
+      "effects": [
+        "ACT_FAILED_MISSING_OBSERVATION",
+        "SECOND_OPERAND_OBSERVED",
+        "VERIFIED_GOAL_FILE"
+      ],
+      "feedback": [
+        {
+          "category": "FAILURE"
+        },
+        {
+          "category": "FAILURE"
+        },
+        {
+          "category": "SUCCESS"
+        }
+      ],
+      "provider_calls": [
+        {
+          "op": "add",
+          "values": [
+            7,
+            4
+          ],
+          "test_fixture_only_not_native": true
+        }
+      ],
+      "progress": {
+        "opportunities_used": 3,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": true,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [
+          "missing_then_observed_attempt3.json"
+        ],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [
+        {
+          "relative_path": "missing_then_observed_attempt3.json",
+          "bytes": 157,
+          "sha256": "d3806565c61f5c74d1d294c8507c2d8908712d3392663b7881f3870a2a0dfb0b"
+        }
+      ],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    },
+    {
+      "case": "no_emission",
+      "input_action_signs": [
+        null
+      ],
+      "effects": [
+        "NO_ACTION"
+      ],
+      "feedback": [
+        {
+          "category": "FAILURE"
+        }
+      ],
+      "provider_calls": [],
+      "progress": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": false,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    },
+    {
+      "case": "wrong_operation",
+      "input_action_signs": [
+        -1
+      ],
+      "effects": [
+        "ACT_TERMINAL_GOAL_NOT_VERIFIED"
+      ],
+      "feedback": [
+        {
+          "category": "FAILURE"
+        }
+      ],
+      "provider_calls": [
+        {
+          "op": "sub",
+          "values": [
+            7,
+            4
+          ],
+          "test_fixture_only_not_native": true
+        }
+      ],
+      "progress": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [
+          "wrong_operation_attempt1.json"
+        ],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [
+        {
+          "relative_path": "wrong_operation_attempt1.json",
+          "bytes": 150,
+          "sha256": "b33ed2a50dc37335ad6c7bb8c5b2b8f369c0f2f0b2c6ab2592c44f87de4a9dd7"
+        }
+      ],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    },
+    {
+      "case": "no_operator",
+      "input_action_signs": [
+        -1
+      ],
+      "effects": [
+        "ACT_FAILED_NO_OPERATION_EMISSION"
+      ],
+      "feedback": [
+        {
+          "category": "FAILURE"
+        }
+      ],
+      "provider_calls": [],
+      "progress": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    },
+    {
+      "case": "query_when_already_public",
+      "input_action_signs": [
+        1
+      ],
+      "effects": [
+        "SECOND_OPERAND_OBSERVED"
+      ],
+      "feedback": [
+        {
+          "category": "FAILURE"
+        }
+      ],
+      "provider_calls": [],
+      "progress": {
+        "opportunities_used": 1,
+        "max_opportunities": 4,
+        "second_observed": true,
+        "verified_file_goal_completed": false,
+        "uncertain_effect": null,
+        "filesystem_artifacts": [],
+        "not_a_plan_or_recommended_next_action": true
+      },
+      "file_receipts": [],
+      "scope": "Explicit synthetic unit fixtures, no Runtime/ticks or DEE action-selection test"
+    }
+  ],
+  "issues": [],
+  "sources": {
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\entorno_objetivo_aclaracion_r01.py": "f717172b59b05f93e323dcad3175efde92f5a4a14cd73cdb2c469d5ebdc608cb",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\aparato_objetivo_aclaracion_r01.py": "51744dff102d91314d40d27ccb9003edeb8183d59f4be2ee7d2082411a9bd244",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\objetivo_aclaracion\\probar_aparato_puro_r01.py": "66a04d6d663d9dbb205456e61cedfd7d8dabbbc2dac34e6a5f4c962c0f65dcbf",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\calidad\\evaluador_calidad_apd02.py": "f6012233a9833b763818d2641047e74bc4e48a41bf1ed51cf7c6b64996c48b11",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\laboratorio\\campanas\\APD02_CONTINUIDAD_CALIDAD_ADAPTACION\\calidad\\proveedores_prueba_apd02.py": "5778dfa6eafcd7f015f7071618e63f2e9a2d4d068994022ceffd19155e276559"
+  },
+  "no_native_or_learning_claim": true
+}

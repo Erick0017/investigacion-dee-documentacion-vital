@@ -1,0 +1,436 @@
+{
+  "cases": [
+    {
+      "args": [
+        "--primarios",
+        "PRIMARIOS",
+        "--artefactos",
+        "ARTEFACTOS",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__ROOT",
+      "reference": "REFERENCIAS/ROOT.json",
+      "reference_bytes": 126858,
+      "reference_sha256": "2b3be19359c390ed50403163c38ff3ddbd35826491029aa86c879b42a28dba46",
+      "script": "RECALCULO/recalcular_primarios_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R01",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R01",
+      "reference": "LENGUAJE/REFERENCIAS/R01.json",
+      "reference_bytes": 19553,
+      "reference_sha256": "51105b5b1235b464d77f4410d4602e718f4dfbf373180235366a408075ee5762",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r01.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "LENGUAJE/EVIDENCIA/R02",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R02",
+      "reference": "LENGUAJE/REFERENCIAS/R02.json",
+      "reference_bytes": 23468,
+      "reference_sha256": "484654b5e7fa37a51fd15fa030aa925442402021491b3e68e6c845d1113245df",
+      "script": "LENGUAJE/RECALCULO/recalcular_lexico_r02.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "FUNCION_LEXICA_R03",
+        "--auditor",
+        "RECALCULO/recalcular_primarios_apd.py",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R03_FUNCTION",
+      "reference": "REFERENCIAS/LEX_R03.json",
+      "reference_bytes": 10419,
+      "reference_sha256": "29c35b61866b3a6ab9cbe6d807dbcf3422b3784c5b089a77fccf204334523a27",
+      "script": "RECALCULO/recalcular_funcion_lexica_r03.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--primarios",
+        "CURRICULO_LEXICO_R04",
+        "--salida",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__LEX_R04_CURRICULUM",
+      "reference": "REFERENCIAS/LEX_R04.json",
+      "reference_bytes": 34554,
+      "reference_sha256": "3b256ce80a7f18cd9a337643af7aef05a246a09be34249cbcbcac4bac06c7b09",
+      "script": "RECALCULO/recalcular_lexico_r04.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--compacto",
+        "FUNCION_LEXICA_R03/PROTOCOLO_DEDUPLICADO.json",
+        "--base",
+        ".",
+        "--restaurar",
+        "{output}"
+      ],
+      "base": "APD_P01_P26",
+      "case": "APD_P01_P26__RESTAURAR_PROTOCOLO_R03_SIN_PERDIDA",
+      "reference": null,
+      "reference_bytes": 58311806,
+      "reference_sha256": "aca542d66aa19491257897ded758b6cf6ea5e57b2a19b9f5cc7db0f7ff2c480c",
+      "script": "RECALCULO/deduplicar_protocolo_r03.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/PERFIL_DELTA_R1",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__DESPLAZAMIENTO_ADQUIRIDO_CINCO_USOS",
+      "reference": "REFERENCIAS/DELTA.json",
+      "reference_bytes": 13343,
+      "reference_sha256": "79690a810c750aa142f4c5177bb848ae3de461148280466c4bdf923293f1b6ba",
+      "script": "RECALCULO/recalcular_perfil_delta_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__RETORNO_FASE_O2_REVERSO_Y_CAMPO_COMPLETO",
+      "reference": "REFERENCIAS/CONSECUENCIAS_Y_CAMPO.json",
+      "reference_bytes": 28221,
+      "reference_sha256": "f2d2a2e768602af95a306f509e87df91841ddeb76dce1dd3b6200c5ae6e74977",
+      "script": "RECALCULO/recalcular_consecuencias_y_campo_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--registro",
+        "EVIDENCIA/ANTECEDENTE_R17/REGISTROS_NUMERICOS_R17_PROYECCION.json.gz",
+        "--salida",
+        "{output}"
+      ],
+      "base": "MECANISMO",
+      "case": "MECANISMO__ANTECEDENTE_R17_DOCE_EMISIONES",
+      "reference": "REFERENCIAS/ANTECEDENTE_R17.json",
+      "reference_bytes": 9430,
+      "reference_sha256": "06b2a7670236dc31b94b304f93165c2fe4e0cd1b1fe5392e60766fc3ff8b5eae",
+      "script": "RECALCULO/recalcular_agregacion_previa.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "POLITICAS",
+      "case": "POLITICAS__POLITICAS_ANALITICAS_Y_LIMITES",
+      "reference": "REFERENCIAS/RESULTADO.json",
+      "reference_bytes": 113798,
+      "reference_sha256": "fd38f924b72307c8a281f04285c705a9d0a2cf07d8b1ec56f006de51cb09aec7",
+      "script": "RECALCULO/recalcular_referencias_politicas_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "REFERENCIAS_EJECUTADAS",
+      "case": "REFERENCIAS_EJECUTADAS__REFERENCIAS_HOST_REALMENTE_EJECUTADAS",
+      "reference": "REFERENCIAS/ACTOS_REFERENCIA.json",
+      "reference_bytes": 18791,
+      "reference_sha256": "19474df89ac68f09bf4d603ac4c8c8ae30655c1616d9d323eade84c02dcb419d",
+      "script": "RECALCULO/recalcular_referencias_ejecutadas_o2_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "REFERENCIAS_EJECUTADAS",
+      "case": "REFERENCIAS_EJECUTADAS__COMPARACION_REFERENCIAS_CON_LEARNER_EXISTENTE",
+      "reference": "REFERENCIAS/COMPARACION.json",
+      "reference_bytes": 9468,
+      "reference_sha256": "1bd0e2c0a6500123ac4eccb2b314eea4b035ff34f50d6343ed2e4aa55aec197e",
+      "script": "RECALCULO/comparar_referencias_ejecutadas_r1.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--system",
+        "DESPUES",
+        "--before",
+        "ANTES",
+        "--output",
+        "{output}"
+      ],
+      "base": "PERIMETRO_METADATA",
+      "case": "PERIMETRO_METADATA__DESCRIPTORES_SIN_CAMBIO_ALGORITMO_O_PERMISOS",
+      "reference": "REFERENCIA/VERIFICACION_METADATOS_PERIMETRO_N0.json",
+      "reference_bytes": 1487,
+      "reference_sha256": "adc37f2e4d225b12d2b425805b0c49a8b1ffc51c05afb18602ddf495f5c3b0ab",
+      "script": "RECALCULO/verificar_ajuste_metadatos_perimetro.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "COSTE_ACUMULADOR",
+      "case": "COSTE_ACUMULADOR__COSTE_REGISTRADO_ENSENANZA_Y_CINCO_USOS",
+      "reference": "REFERENCIAS/COSTE_ACUMULADOR.json",
+      "reference_bytes": 28426,
+      "reference_sha256": "b34be4329fc056a3a2023b3ab5481d37238b9e898d54d18639497d0b161a0ada",
+      "script": "RECALCULO/recalcular_coste_acumulador_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R01",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R01_recalcular_servicio_apd",
+      "reference": "EVIDENCIA/R01/RECALCULO_SERVICIO_APD.json",
+      "reference_bytes": 549770,
+      "reference_sha256": "bf363c917717e59c77e5b9643bb807ef4fa531dab26ff5fc5d73849a8a638251",
+      "script": "RECALCULO/R01/recalcular_servicio_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R01",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R01_recalcular_interrupcion_apd",
+      "reference": "EVIDENCIA/R01/RECALCULO_INTERRUPCION.json",
+      "reference_bytes": 2527,
+      "reference_sha256": "ee91c8f4b0835d7169d2aa081c41b34d15efbd866b6e51af6ca3c9d1268c55c4",
+      "script": "RECALCULO/R01/recalcular_interrupcion_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R01",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R01_resumir_funciones_apd_R03",
+      "reference": "EVIDENCIA/R01/PANELES_Y_FUNCIONES_R03_DENOMINADORES.json",
+      "reference_bytes": 78658,
+      "reference_sha256": "ef335825cb5464a58f0c9aef1be784ec10c6f43d8589cca027fb8ced271ca9ee",
+      "script": "RECALCULO/R01/resumir_funciones_apd_R03.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R02",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R02_recalcular_servicio_apd",
+      "reference": "EVIDENCIA/R02/RECALCULO_SERVICIO_APD.json",
+      "reference_bytes": 705491,
+      "reference_sha256": "54f8794cfe4fd497ba780c6fa3ce80de5ca1c2eac6dca0956a2076a55c6dfeca",
+      "script": "RECALCULO/R02/recalcular_servicio_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R02",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R02_recalcular_interrupcion_apd_r02",
+      "reference": "EVIDENCIA/R02/RECALCULO_INTERRUPCION.json",
+      "reference_bytes": 2790,
+      "reference_sha256": "0d6a5afa4a5abf215fe9039e0d0fea96bd599adbe6b679bc4cb5c84ae8be3a55",
+      "script": "RECALCULO/R02/recalcular_interrupcion_apd_r02.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R02",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R02_resumir_funciones_apd",
+      "reference": "EVIDENCIA/R02/PANELES_Y_FUNCIONES.json",
+      "reference_bytes": 92352,
+      "reference_sha256": "7ad2ef7b564d4dfb3d4d48e1d133875951f32b5a59bf5cd4116cbc3bc5b5db32",
+      "script": "RECALCULO/R02/resumir_funciones_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R03",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R03_recalcular_servicio_apd",
+      "reference": "EVIDENCIA/R03/RECALCULO_SERVICIO_APD.json",
+      "reference_bytes": 531755,
+      "reference_sha256": "83c91a999c9bebd08eddecadc287d4947af7cfd7473f183056573bc68714995a",
+      "script": "RECALCULO/R03/recalcular_servicio_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R03",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R03_recalcular_tiempo_apd",
+      "reference": "EVIDENCIA/R03/RECALCULO_TIEMPO_APD.json",
+      "reference_bytes": 7838,
+      "reference_sha256": "3480bdffcd822c518e2daa41a0049abe8bb47f7bf4c31bb9a683e8ec1907d94e",
+      "script": "RECALCULO/R03/recalcular_tiempo_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R03",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R03_resumir_funciones_apd",
+      "reference": "EVIDENCIA/R03/PANELES_Y_FUNCIONES.json",
+      "reference_bytes": 107993,
+      "reference_sha256": "09b4a7b80f166297c9caefa7796962439758b67dcf1d034b2c672034b7437196",
+      "script": "RECALCULO/R03/resumir_funciones_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R03",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R03_recalcular_piloto_apd",
+      "reference": "EVIDENCIA/R03/RECALCULO_PILOTO_APD.json",
+      "reference_bytes": 34881,
+      "reference_sha256": "7cdeee3988d45950764f63c20e5d25da210253840ffc65036b77667bcd1a0875",
+      "script": "RECALCULO/R03/recalcular_piloto_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R04",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R04_recalcular_servicio_apd",
+      "reference": "EVIDENCIA/R04/RECALCULO_SERVICIO_APD.json",
+      "reference_bytes": 142347,
+      "reference_sha256": "64296660f4a190b4a88e3f63cb180a13da59e1b4feafd2ed538369dc17a22fe0",
+      "script": "RECALCULO/R04/recalcular_servicio_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R04",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R04_recalcular_tiempo_apd_r04",
+      "reference": "EVIDENCIA/R04/RECALCULO_TIEMPO_APD.json",
+      "reference_bytes": 6012,
+      "reference_sha256": "f84313d1c88b98a0ccd9dcfb2afbfecf5df0fcb3637b0f67098321339ea301b9",
+      "script": "RECALCULO/R04/recalcular_tiempo_apd_r04.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA/R04",
+        "--salida",
+        "{output}"
+      ],
+      "base": "SERVICIO_APD01",
+      "case": "SERVICIO_APD01__R04_resumir_funciones_apd",
+      "reference": "EVIDENCIA/R04/PANELES_Y_FUNCIONES.json",
+      "reference_bytes": 51817,
+      "reference_sha256": "f76a084a5499195ecb2c6432e1ea4543faa1fc6b3a2eae16ab25d330838c4ef3",
+      "script": "RECALCULO/R04/resumir_funciones_apd.py",
+      "timeout_seconds": 180
+    },
+    {
+      "args": [
+        "--evidencia",
+        "EVIDENCIA",
+        "--salida",
+        "{output}"
+      ],
+      "base": "PRUEBA_PAQUETE_EXACTO",
+      "case": "PRUEBA_PAQUETE_EXACTO__EXACT_FULLZIP_APD",
+      "reference": "REFERENCIAS/ENTREGA_APD.json",
+      "reference_bytes": 139366,
+      "reference_sha256": "752655f55464d499f2f2bea740c28f93e5c7b83844988ddf93e96b1a57738bdc",
+      "script": "RECALCULO/recalcular_entrega_apd.py",
+      "timeout_seconds": 180
+    }
+  ],
+  "native_ticks": 0,
+  "pending_components": [],
+  "schema": "APD01.global_archived_recalculation_plan.v1",
+  "status": "CLOSED_APPROVED_FOR_ANALYSIS"
+}

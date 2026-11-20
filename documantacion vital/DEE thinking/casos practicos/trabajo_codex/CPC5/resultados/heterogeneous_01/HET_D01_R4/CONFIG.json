@@ -1,0 +1,183 @@
+{
+  "case": {
+    "id": "HET_D01_R4",
+    "architecture": "R4_HETEROGENEO",
+    "phase": "DISCOVERY",
+    "coupled": false,
+    "relative_histories": [
+      "AB",
+      "BA"
+    ],
+    "mobile_loads": [
+      [
+        3,
+        9
+      ],
+      [
+        3,
+        11
+      ]
+    ],
+    "query": 13
+  },
+  "geometry": {
+    "N": 67,
+    "cells": {
+      "m1": {
+        "A": [
+          14,
+          15,
+          45
+        ],
+        "B": [
+          16,
+          15,
+          45
+        ],
+        "comparator": [
+          15,
+          15,
+          45
+        ],
+        "reader": [
+          15,
+          14,
+          45
+        ],
+        "source": [
+          15,
+          13,
+          45
+        ]
+      },
+      "m2": {
+        "A": [
+          34,
+          35,
+          57
+        ],
+        "B": [
+          36,
+          35,
+          57
+        ],
+        "comparator": [
+          35,
+          35,
+          57
+        ],
+        "reader": [
+          35,
+          34,
+          57
+        ],
+        "source": [
+          35,
+          33,
+          57
+        ]
+      }
+    },
+    "mobile": {
+      "version": 1,
+      "recipe": "cpc5.mobile_native_graph.v1",
+      "N": 67,
+      "chains": [
+        1,
+        1
+      ],
+      "stages": [
+        {
+          "index": 0,
+          "group": 0,
+          "local": 0,
+          "hub": [
+            50,
+            15,
+            8
+          ],
+          "first_meeting": [
+            50,
+            23,
+            8
+          ],
+          "meeting_tick": 11,
+          "outgoing": [
+            -1,
+            1,
+            0
+          ],
+          "memory_direction": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "index": 1,
+          "group": 1,
+          "local": 0,
+          "hub": [
+            50,
+            15,
+            13
+          ],
+          "first_meeting": [
+            50,
+            23,
+            13
+          ],
+          "meeting_tick": 11,
+          "outgoing": [
+            -1,
+            1,
+            0
+          ],
+          "memory_direction": [
+            0,
+            1,
+            0
+          ]
+        }
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "top_entities": [
+        {
+          "id": "G0",
+          "components": [
+            0
+          ]
+        },
+        {
+          "id": "G1",
+          "components": [
+            1
+          ]
+        }
+      ],
+      "native_links": [],
+      "training_collision_tick": 3,
+      "query_meeting": 11,
+      "scope": "Finite moving learned relations and physical routes; labels do not create integration"
+    },
+    "initial_material_sites": 21,
+    "functional_components": 4,
+    "types": [
+      "relative",
+      "relative",
+      "mobile",
+      "mobile"
+    ],
+    "coupling": "two independent mobile components",
+    "dose_control_source": null,
+    "scope": "Coexistence and mobile-subgraph coupling, not mobile-to-relative integration"
+  },
+  "source_sha256": "6babfafa917dc0af19eb22c3916acef08130d5d5a46f47236e7cfd057bca1662",
+  "criterion": "Report actual relative deltas/availability, admission, physical mobile encounters and paired resource counts; no global architecture score",
+  "frozen_horizon": 520,
+  "initial_clock_preparation": "m1=260,m2=0; never reset afterT0"
+}

@@ -1,0 +1,2892 @@
+--- 4.0/bindings/dee_thinking_pybind.cpp
++++ 4.5/bindings/dee_thinking_pybind.cpp
+@@ -26,15 +26,16 @@
+ namespace v27 = dee::v27;
+ 
+ #ifndef DEE_THINKING_PYTHON_VERSION
+-#define DEE_THINKING_PYTHON_VERSION "4.0.0"
++#define DEE_THINKING_PYTHON_VERSION "4.5.0"
+ #endif
+ 
+ static_assert(PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION == 13,
+-              "DEE thinking 4.0.0 wheel contract requires CPython 3.13");
++              "DEE thinking 4.5.0 wheel contract requires CPython 3.13");
+ 
+ void bind_organizational(py::module_& m);
+ void register_cognitive(py::module_& m);
+ void register_informative(py::module_& m);
++void register_consolidated(py::module_& m);
+ 
+ namespace {
+ 
+@@ -928,12 +929,19 @@
+     bind_organizational(m);
+     register_cognitive(m);
+     register_informative(m);
++    register_consolidated(m);
+ 
+     m.def("build_info", []() {
+         py::dict info;
+         info["product"] = "dee_thinking";
+         info["product_version"] = DEE_THINKING_PYTHON_VERSION;
+         info["kernel_version"] = 27;
++        info["consolidated_api_version"] = 1;
++        info["cognitive_preparations_optional"] = true;
++        info["kernel_source_sha256"] = "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31";
++#if defined(_MSC_FULL_VER)
++        info["msvc_full_ver"] = _MSC_FULL_VER;
++#endif
+         info["kernel_modulus"] = v27::kKernelModulus;
+         info["reducer_cap"] = v27::kReducerCap;
+         info["native_module"] = true;
+--- 4.0/cmake/python/dee_thinking_python.cmake
++++ 4.5/cmake/python/dee_thinking_python.cmake
+@@ -7,7 +7,8 @@
+     "${PROJECT_SOURCE_DIR}/bindings/dee_thinking_pybind.cpp"
+     "${PROJECT_SOURCE_DIR}/bindings/organizational_pybind.cpp"
+     "${PROJECT_SOURCE_DIR}/bindings/cognitive_pybind.cpp"
+-    "${PROJECT_SOURCE_DIR}/bindings/informative_pybind.cpp")
++    "${PROJECT_SOURCE_DIR}/bindings/informative_pybind.cpp"
++    "${PROJECT_SOURCE_DIR}/bindings/consolidated_pybind.cpp")
+ target_link_libraries(dee_thinking_python PRIVATE DEE::thinking)
+ target_compile_features(dee_thinking_python PRIVATE cxx_std_20)
+ target_compile_definitions(dee_thinking_python PRIVATE
+--- 4.0/CMakeLists.txt
++++ 4.5/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.20)
+ 
+-project(dee_thinking VERSION 4.0.0 LANGUAGES CXX)
++project(dee_thinking VERSION 4.5.0 LANGUAGES CXX)
+ 
+ include(GNUInstallDirs)
+ 
+@@ -28,6 +28,7 @@
+     src/organization_recipes.cpp
+     src/cognitive.cpp
+     src/informative.cpp
++    src/consolidated.cpp
+ )
+ add_library(DEE::thinking ALIAS dee_thinking)
+ set_target_properties(dee_thinking PROPERTIES EXPORT_NAME thinking)
+@@ -112,6 +113,12 @@
+ if(DEE_THINKING_BUILD_TESTS)
+     include(CTest)
+     enable_testing()
++
++    add_executable(dee_consolidated_tests tests/consolidated_tests.cpp)
++    target_link_libraries(dee_consolidated_tests PRIVATE DEE::thinking)
++    add_test(NAME consolidated_4_5 COMMAND dee_consolidated_tests
++        "${CMAKE_CURRENT_BINARY_DIR}/consolidated-output")
++    set_tests_properties(consolidated_4_5 PROPERTIES TIMEOUT 1200)
+ 
+     add_executable(dee_organizational_tests tests/organizational_tests.cpp)
+     target_link_libraries(dee_organizational_tests PRIVATE DEE::thinking)
+--- 4.0/include/dee_thinking/version.hpp
++++ 4.5/include/dee_thinking/version.hpp
+@@ -5,7 +5,7 @@
+ namespace dee::thinking {
+ 
+ inline constexpr const char* kProductName = "DEE thinking";
+-inline constexpr const char* kProductVersion = "4.0.0";
++inline constexpr const char* kProductVersion = "4.5.0";
+ inline constexpr const char* kKernelVersion = "DEE v27";
+ inline constexpr std::uint32_t kSnapshotFormatCurrent = 2;
+ inline constexpr std::uint32_t kSnapshotFormatOldestReadable = 1;
+--- 4.0/PRODUCT_CONTRACT.json
++++ 4.5/PRODUCT_CONTRACT.json
+@@ -1,6 +1,10 @@
+ {
++  "schema": "DEE.thinking.product-contract.4.5.v1",
+   "product": "DEE thinking",
+-  "version": "3.5.0",
++  "version": "4.5.0",
++  "author": "Ivan Erick Tlaltecatl Morales",
++  "project": "DEE Universe / INVESTIGACION DEE",
++  "distribution": "PRIVATE_RECONSTRUCTIVE; no external publication authorized",
+   "kernel": "DEE v27 frozen",
+   "kernel_source_sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+   "platform": "Windows x64",
+@@ -12,478 +16,755 @@
+     "python_gil_released_during_advance": false,
+     "external_lab_dependency": false
+   },
+-  "new_public_contracts": {
+-    "basal": "bounded physical preset construction, attach without installation, advance, observe, fork, save and restore",
+-    "observation": "passive local state/write-gate descriptions; no hidden ablations",
+-    "genealogy": "bounded declared-site trace of observed changes; no universal provenance inference",
+-    "diagnostics": "explicitly authorized edits only on a complete deep Runtime fork with mutation ledger"
++  "direct_physics": {
++    "runtime_requires_cognitive_session": false,
++    "import_prepares_world": false,
++    "empty_runtime_injects_cognitive_material": false,
++    "cognitive_recipes_optional": true,
++    "passive_attach_edits_physics": false,
++    "automatic_cleanup_or_clock_repair": false,
++    "catalog_required_for_research": false,
++    "recipe_domains_are_kernel_limits": false
+   },
+-  "validated_domain": {
+-    "scope": "Inherited BasalWorld presets only; the new recipes have distinct domains in common_model and capabilities",
+-    "dimension": 47,
+-    "seed": "OBP_FRESH_VALIDATED_T32.deetsnap",
+-    "seed_sha256": "cd09a4d94f72e00d9a5163c8dfd1d62e1528f1d146e4cb44ae23d261b3da09e6",
+-    "t0_tick": 32,
+-    "origins": [
+-      [
+-        15,
+-        15,
+-        15
+-      ],
+-      [
+-        22,
+-        20,
+-        24
+-      ],
+-      [
+-        28,
+-        26,
+-        18
++  "inherited_4_0_contract": {
++    "status": "PRESERVED_CONTRACT; test coverage in VALIDATION_REPORT.json",
++    "source": "evidence/product40/PRODUCT_CONTRACT.json",
++    "content": {
++      "product": "DEE thinking",
++      "version": "4.0.0",
++      "kernel": "DEE v27 frozen",
++      "kernel_source_sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
++      "platform": "Windows x64",
++      "python": "CPython 3.13 cp313",
++      "cpp": "C++20",
++      "normal_execution": {
++        "engine": "v27 through DEE::thinking",
++        "single_mutable_writer_per_runtime": true,
++        "python_gil_released_during_advance": false,
++        "external_lab_dependency": false
++      },
++      "new_public_contracts": {
++        "basal": "bounded physical preset construction, attach without installation, advance, observe, fork, save and restore",
++        "observation": "passive local state/write-gate descriptions; no hidden ablations",
++        "genealogy": "bounded declared-site trace of observed changes; no universal provenance inference",
++        "diagnostics": "explicitly authorized edits only on a complete deep Runtime fork with mutation ledger"
++      },
++      "validated_domain": {
++        "scope": "Inherited BasalWorld presets only; the new recipes have distinct domains in common_model and capabilities",
++        "dimension": 47,
++        "seed": "OBP_FRESH_VALIDATED_T32.deetsnap",
++        "seed_sha256": "cd09a4d94f72e00d9a5163c8dfd1d62e1528f1d146e4cb44ae23d261b3da09e6",
++        "t0_tick": 32,
++        "origins": [
++          [
++            15,
++            15,
++            15
++          ],
++          [
++            22,
++            20,
++            24
++          ],
++          [
++            28,
++            26,
++            18
++          ]
++        ],
++        "presets": [
++          "relational_body",
++          "contextual_rewrite"
++        ],
++        "statement_outside_domain": "requires simulation; not validated"
++      },
++      "limits": [
++        "No claim of general intelligence, consciousness, biology or unlimited learning.",
++        "The contextual rewrite fixture does not establish necessity of the tested exterior action path.",
++        "A passive prestate observer does not resolve DEMUX provenance.",
++        "A physical snapshot does not recreate unrecorded tracker ancestry.",
++        "C++ ABI compatibility with 2.x is not promised."
++      ],
++      "snapshot_contract": {
++        "write": 2,
++        "read": [
++          1,
++          2
++        ],
++        "basal_view_metadata_schema": 1,
++        "integer_fields": "uint64 without float conversion",
++        "organizational_metadata_schema": 1,
++        "operational_state": [
++          "RAW",
++          "clock",
++          "tick",
++          "channels",
++          "pending inputs",
++          "receipts",
++          "recipe",
++          "shared views",
++          "interfaces",
++          "codecs",
++          "decoders",
++          "protocol cursor",
++          "captured readouts",
++          "optional bounded trace",
++          "diagnostic ledger"
++        ]
++      },
++      "primary_evidence": {
++        "archive": "CPC3_ENTE_COGNITIVO_CAUSAL_DEE_3_5_0_RESULTADOS.zip",
++        "sha256": "75ab357f41f6214c1798efbf69bd0708ab891038d30d770fdfe4a379208f793e",
++        "selected_members": "evidence/CPC3",
++        "selection_provenance": "PARENTS.json",
++        "inherited_multibranch_counts": "source experimental counts are provenance, not the number of tests run for 4.0"
++      },
++      "common_model": {
++        "owner": "OrganizationalWorld -> shared Runtime, single mutable writer",
++        "views": "OrganizationView retains owner; attach is inert; fork is deep",
++        "native_implementation": [
++          "source/src/organizational.cpp",
++          "source/src/organization_recipes.cpp"
++        ],
++        "Python": "dee_thinking._native; create_organization only chooses native recipes",
++        "physical_recipes": {
++          "mobile_pair": 34,
++          "competition": 34,
++          "predictive": 34,
++          "phase": 31,
++          "distributed": 127,
++          "cascade": 127,
++          "native_transfer": 127,
++          "relational": 47,
++          "contextual": 47,
++          "mobile_basal": 47,
++          "contingent": 47,
++          "information": 47
++        },
++        "research": "Explicit initial placements with Runtime's representable dimensions; no universal functional promise",
++        "modality_names": [
++          "NATIVE_EVOLUTION",
++          "EXPERIENCE_PROTOCOL",
++          "PASSIVE_OBSERVATION",
++          "PHYSICAL_PROBE",
++          "DIAGNOSTIC_FORK",
++          "ASSISTED_RECONSTRUCTION"
++        ]
++      },
++      "capabilities": [
++        {
++          "id": "F01",
++          "name": "Memoria histÃ³rica, relacional y latente",
++          "API": [
++            "OrganizationRecipe.mobile_pair",
++            "OrganizationRecipe.relational",
++            "OrganizationalWorld.start_mobile_sequence",
++            "OrganizationView.observe",
++            "OrganizationalWorld.probe"
++          ],
++          "operation": "native recipe + external experience/probe + passive panel",
++          "implementation": [
++            "organization_recipes.cpp",
++            "organizational.cpp"
++          ],
++          "experimental_sources": [
++            "P01/independent50",
++            "P01/sequential50",
++            "P01/inverted5",
++            "P05/latent_AB",
++            "P05/latent_BA",
++            "P05/latent_H0",
++            "P05/drift_latent_AB",
++            "P10/native_gap50"
++          ],
++          "domain": "N34 C6 fixed routes; N47 T32 A/B; 50 queries are not 50 memories",
++          "tests": [
++            "organizational_3_5",
++            "test_f01_f06_named_io_history_and_sequential_resume",
++            "test_f01_latent_memory_access_and_missing_center",
++            "replay_primary_cases"
++          ],
++          "example": "source/examples/organizational_public.py",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "EXPERIENCE_PROTOCOL",
++            "PASSIVE_OBSERVATION",
++            "PHYSICAL_PROBE"
++          ],
++          "technical_status": "IMPLEMENTED; measured coverage in validation/VALIDATION_REPORT.json"
++        },
++        {
++          "id": "F02",
++          "name": "Transferencia y reconstrucciÃ³n diferenciadas",
++          "API": [
++            "OrganizationRecipe.native_transfer",
++            "OrganizationalWorld.fork",
++            "OrganizationalWorld.assisted_reconstruction",
++            "ReconstructionSpec"
++          ],
++          "operation": "native zero relay; technical clone; explicitly assisted partial replacement",
++          "implementation": [
++            "organization_recipes.cpp",
++            "organizational.cpp"
++          ],
++          "experimental_sources": [
++            "P04/native_zero_relay",
++            "P04/native_zero_relay_other_history",
++            "P04/native_zero_relay_cut",
++            "P04/native_source_absent",
++            "P04/AB_delta_only",
++            "P04/AB_raw_pair",
++            "P04/AB_relation_context_phase"
++          ],
++          "domain": "N127 two-stage relay; specified regions/fields in independent diagnostic receivers; no complete body reinstantiation claim",
++          "tests": [
++            "organizational_3_5",
++            "test_f02_native_transfer_and_assisted_reconstruction",
++            "replay_primary_cases"
++          ],
++          "example": "source/examples/organizational_public.py; native_transfer available by same public factory",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "PHYSICAL_PROBE",
++            "DIAGNOSTIC_FORK",
++            "ASSISTED_RECONSTRUCTION"
++          ],
++          "technical_status": "IMPLEMENTED; historical ORGREINSTANTIATE source remains unrecovered"
++        },
++        {
++          "id": "F03",
++          "name": "ComposiciÃ³n, cascadas e integraciÃ³n",
++          "API": [
++            "OrganizationRecipe.cascade",
++            "OrganizationRecipe.distributed",
++            "OrganizationRecipe.mobile_basal",
++            "CompositionPlanner",
++            "OrganizationalWorld"
++          ],
++          "operation": "same-Runtime physical routes",
++          "implementation": [
++            "organization_recipes.cpp",
++            "composition.cpp"
++          ],
++          "experimental_sources": [
++            "P09/depth2_reference",
++            "P09/depth4",
++            "P09/depth8",
++            "P09/mobile_basal_full",
++            "P09/mobile_basal_late_cut",
++            "P06/distributed_HA",
++            "P13/retained_expression_mobile_basal_full"
++          ],
++          "domain": "N127 tested depths2/4/8, representable1..8; N47 mobile-to-basal bridge; overlaps rejected",
++          "tests": [
++            "test_f03_cascades_and_interfamily_bridge",
++            "compare_native_recipes",
++            "replay_primary_cases"
++          ],
++          "example": "source/examples/external_3_5/main.cpp bridge; source/examples/organizational_public.py",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "EXPERIENCE_PROTOCOL",
++            "PHYSICAL_PROBE",
++            "PASSIVE_OBSERVATION"
++          ],
++          "technical_status": "IMPLEMENTED"
++        },
++        {
++          "id": "F04",
++          "name": "Plasticidad contextual, fase y accesibilidad",
++          "API": [
++            "OrganizationRecipe.contextual",
++            "OrganizationRecipe.phase",
++            "inspect_write_gate",
++            "OrganizationalWorld.submit",
++            "OrganizationalWorld.probe"
++          ],
++          "operation": "passive gate inspection; physical context events and timed queries",
++          "implementation": [
++            "organization_recipes.cpp",
++            "observation.cpp"
++          ],
++          "experimental_sources": [
++            "P07/context_full_E",
++            "P07/context_cut_E",
++            "P07/external_E_offpath",
++            "P07/external_E_phase129",
++            "P13/access_phase_baseline",
++            "P14/ablation_wrapped_flux_cut"
++          ],
++          "domain": "N47 local clock/count conditions; N31 phase modes0/1/2 and specified toroidal routes, not universal signed/permuted invariance",
++          "tests": [
++            "test_f04_native_context_event_and_phase_access",
++            "test_transfer_bridge_toroidal_tracking_and_explicit_bounds",
++            "replay_primary_cases"
++          ],
++          "example": "create_organization('contextual') / create_organization('phase',mode=1)",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "PASSIVE_OBSERVATION",
++            "EXPERIENCE_PROTOCOL",
++            "PHYSICAL_PROBE"
++          ],
++          "technical_status": "IMPLEMENTED; P07 zero-load experience is external, not proven autonomous regulation"
++        },
++        {
++          "id": "F05",
++          "name": "ObservaciÃ³n multiescala, seguimiento y diagnÃ³stico",
++          "API": [
++            "PassiveTracker",
++            "TraceSession",
++            "MobileSegment",
++            "OrganizationView.observe",
++            "observe_encounter",
++            "diagnostic_fork",
++            "compare_site",
++            "compare_diagnostic_fork"
++          ],
++          "operation": "passive declared-site/ballistic observations; explicit complete diagnostic forks",
++          "implementation": [
++            "organizational.cpp",
++            "genealogy.cpp",
++            "observation.cpp",
++            "diagnostics.cpp"
++          ],
++          "experimental_sources": [
++            "P13/reread_observer_coverage",
++            "P14/route_phase_ablation",
++            "P04/native_zero_relay",
++            "P09/mobile_basal_full",
++            "P12/both_empty"
++          ],
++          "domain": "bounded samples1..65536, <=128 sites <=256 declared segments; correspondence stops on unresolved transformation; no universal provenance",
++          "tests": [
++            "test_f05_tracking_budget_export_and_encounter",
++            "test_transfer_bridge_toroidal_tracking_and_explicit_bounds",
++            "test_backends_passivity_fork_isolation"
++          ],
++          "example": "source/examples/organizational_public.py",
++          "modalities": [
++            "PASSIVE_OBSERVATION",
++            "DIAGNOSTIC_FORK"
++          ],
++          "technical_status": "IMPLEMENTED; ambiguity/coverage explicit"
++        },
++        {
++          "id": "F06",
++          "name": "TransducciÃ³n I/O declarada",
++          "API": [
++            "InputCodec",
++            "InterfaceSpec",
++            "OutputDecoder",
++            "submit",
++            "submit_symbol",
++            "probe",
++            "probe_symbol",
++            "observe",
++            "decode"
++          ],
++          "operation": "typed/ranged external encoding -> physical input receipts; measured decoding without evolution",
++          "implementation": [
++            "organizational.cpp",
++            "organizational_pybind.cpp"
++          ],
++          "experimental_sources": [
++            "P01/independent50",
++            "P01/inverted5",
++            "P11/P_hidden23"
++          ],
++          "domain": "integer0..65535, bool0/1, enum/fixed registered load-pattern with channel's state/direction/semantic; noninjectivity declared",
++          "tests": [
++            "test_f06_codecs_receipts_and_errors",
++            "test_f01_f06_named_io_history_and_sequential_resume",
++            "organizational_3_5"
++          ],
++          "example": "source/examples/organizational_public.py; source/examples/external_3_5/main.cpp",
++          "modalities": [
++            "EXPERIENCE_PROTOCOL",
++            "PHYSICAL_PROBE",
++            "PASSIVE_OBSERVATION"
++          ],
++          "technical_status": "IMPLEMENTED; meaning resides in external contract"
++        },
++        {
++          "id": "F07",
++          "name": "AcciÃ³n nativa y consecuencias",
++          "API": [
++            "ActionCoupling",
++            "OrganizationRecipe.contingent",
++            "OrganizationRecipe.information",
++            "OrganizationView.observe"
++          ],
++          "operation": "pre-T0 native paths and mediators; observation of produced consequences, no callback physics",
++          "implementation": [
++            "organization_recipes.cpp",
++            "basal.cpp",
++            "organizational.cpp"
++          ],
++          "experimental_sources": [
++            "P03/contingent_d5",
++            "P03/contingent_d5_cut",
++            "P03/independent_d5",
++            "P03/contingency_reversed",
++            "P11/P_hidden23",
++            "P11/P_hidden25",
++            "P11/Q_hidden23"
++          ],
++          "domain": "N47 T32 action_distance5; finite prepared contingencies and selective hidden-state encounters",
++          "tests": [
++            "test_f07_action_and_information_interfaces",
++            "replay_primary_cases"
++          ],
++          "example": "create_organization('contingent').advance(13)",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "PASSIVE_OBSERVATION",
++            "DIAGNOSTIC_FORK"
++          ],
++          "technical_status": "IMPLEMENTED; not learned communication/contingency by name"
++        },
++        {
++          "id": "F08",
++          "name": "Resiliencia, saturaciÃ³n y disponibilidad",
++          "API": [
++            "ResilienceObservation",
++            "OrganizationView.resilience",
++            "diagnostic_fork",
++            "run_h3"
++          ],
++          "operation": "separate support, centers, relationship, reader, caps; explicit one-shot damage; inherited H3 domain",
++          "implementation": [
++            "organizational.cpp",
++            "integrated_protocols.cpp"
++          ],
++          "experimental_sources": [
++            "P06/continued_distributed_HA",
++            "P06/continued_distributed_H0",
++            "P08/one_native_contact",
++            "P08/support_removed",
++            "P10/payload_boundary"
++          ],
++          "domain": "N127 distributed channel cap vs valid relative memory; N47 bounded damage; H3 only tested redundancy apparatus",
++          "tests": [
++            "test_f08_distributed_saturation_independent_availability",
++            "test_integrated_protocols",
++            "replay_primary_cases"
++          ],
++          "example": "create_organization('distributed').view('history').resilience()",
++          "modalities": [
++            "PASSIVE_OBSERVATION",
++            "DIAGNOSTIC_FORK",
++            "NATIVE_EVOLUTION"
++          ],
++          "technical_status": "IMPLEMENTED; no automatic repair or universal recovery"
++        },
++        {
++          "id": "F09",
++          "name": "Encuentros simultÃ¡neos e interferencia",
++          "API": [
++            "OrganizationRecipe.competition",
++            "observe_encounter",
++            "OrganizationalWorld.probe",
++            "Runtime.experience_batch"
++          ],
++          "operation": "native convergence and subsequent query; separate host admission conflicts",
++          "implementation": [
++            "organization_recipes.cpp",
++            "organizational.cpp",
++            "runtime.cpp"
++          ],
++          "experimental_sources": [
++            "P12/A_only",
++            "P12/B_only",
++            "P12/both_empty",
++            "P12/one_tick_miss",
++            "P12/opposing_directions",
++            "P12/material_destination",
++            "P12/protected_destination",
++            "P12/later_use_both_empty"
++          ],
++          "domain": "N34 declared simultaneous/delayed routes, protected/material destinations; contributor scope limited to direct candidates",
++          "tests": [
++            "test_f09_joint_product_reuse_and_pending_snapshot",
++            "test_f05_tracking_budget_export_and_encounter",
++            "replay_primary_cases"
++          ],
++          "example": "create_organization('competition')",
++          "modalities": [
++            "NATIVE_EVOLUTION",
++            "PHYSICAL_PROBE",
++            "PASSIVE_OBSERVATION",
++            "DIAGNOSTIC_FORK"
++          ],
++          "technical_status": "IMPLEMENTED; joint mobile product is not assumed complete basal body"
++        }
++      ],
++      "compatibility": {
++        "preserved": "Runtime, catalog, composition, H1-H4/F1-F2, BasalWorld, observer/diagnostic APIs; Runtime snapshots v1/v2",
++        "binding_change": "Runtime shared ownership for inert views; behavior regression-tested, C++ ABI not promised",
++        "new_snapshot": "Runtime v2 with namespaced OrganizationalWorld v1 metadata; older Runtime can read physical envelope but does not understand new recipe/protocol continuation",
++        "interface_hardening": "Unknown new recipe keys and unsupported configurations rejected; no narrowing of inherited APIs"
++      },
++      "resources": {
++        "raw_basic_buffers": "32*N^3 bytes, Lazy does not remove these buffers",
++        "trace_optional": true,
++        "no_python_full_state_each_tick_by_default": true,
++        "single_writer": true,
++        "GIL_policy": "retained from3.0"
++      },
++      "heritage": {
++        "version": "3.5.0",
++        "product_sha256": "4cae52462e39ebc0443c14b4f07fe0a944cf6e1acb28f92a3657c80da2bb81ac",
++        "wheel_sha256": "721d4ad1610d6efc7e7101b49b9d68c6925efdcf596361aca09aabd0e315bcaa",
++        "preserved_nine_families": true,
++        "source_changes": "native cognitive/informative layers, bindings, version metadata and tests; kernel untouched"
++      },
++      "cpc3_public_capabilities": [
++        {
++          "api": "CognitiveSession",
++          "profile": "continuity",
++          "N": 47,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "NATIVE_EVOLUTION",
++            "PASSIVE_OBSERVATION"
++          ],
++          "realization": "current MAIN, local A/B relation and renewed zero-load sensing; external barrier observation is coded, not a future/error answer",
++          "domain": "T32 seed, declared origins and phase slots; consumption and rejection remain observable"
++        },
++        {
++          "api": "CognitiveSession",
++          "profile": "comparison",
++          "N": 47,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "NATIVE_EVOLUTION"
++          ],
++          "realization": "signed physical expectation/consequence comparison at84",
++          "domain": "one singleton directional class episode, not a general scalar equality oracle"
++        },
++        {
++          "api": "NativeInformationSession",
++          "N": 47,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "NATIVE_EVOLUTION"
++          ],
++          "realization": "expectation, comparison, route, information, later native use",
++          "domain": "finite prepared routes/resources; keep separate from other MAIN instances"
++        },
++        {
++          "api": "FinitePolicySession",
++          "N": 67,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "NATIVE_EVOLUTION"
++          ],
++          "realization": "R14 finite keep/switch organization, received report and later action",
++          "domain": "one prepared finite revision; not arbitrary learned utility"
++        },
++        {
++          "api": "NativeAssociationSession",
++          "N": 34,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "PHYSICAL_PROBE"
++          ],
++          "realization": "online cue/teacher acquisition, common and sequential consuming queries",
++          "domain": "bounded additive relational family; form/word aliases external"
++        },
++        {
++          "api": "create_learnable_cascade / experience_composition / query_composition",
++          "N": 127,
++          "mode": [
++            "EXPERIENCE_PROTOCOL",
++            "NATIVE_EVOLUTION",
++            "PHYSICAL_PROBE"
++          ],
++          "realization": "empty coexisting native cascade, acquired relationships and physical routes",
++          "domain": "checked depths, timing, geometry; no output callbacks"
++        },
++        {
++          "api": "dee_thinking.cognition / dialogue",
++          "mode": [
++            "PASSIVE_OBSERVATION",
++            "EXPERIENCE_PROTOCOL"
++          ],
++          "realization": "Spanish grammar, lifecycle and fixed measurement renderer over native sessions",
++          "domain": "finite explicit grammar; unsupported questions never replaced by cached answers"
++        }
++      ],
++      "persistence_4": {
++        "cognitive": "versioned physical world plus full protocol, predictions, external barrier law, interface aliases and audit journal",
++        "informative": "world snapshot metadata with bounded chunked session data, queues and receipts",
++        "legacy": "Runtime v1/v2 and OrganizationalWorld3.5 physical continuation; CPC3 Python session metadata is not silently migrated",
++        "no_pickle": true,
++        "uint64_exact": true
++      },
++      "claims": {
++        "single_universal_main": false,
++        "language_model": false,
++        "host_future_or_expected_answer_used_for_native_output": false,
++        "external_environment": "explicit prepared barrier law; actual observed classes coded, evaluator never feeds errors back"
++      },
++      "release_status": "RELEASE_VERIFIED",
++      "validation_report": "VALIDATION_REPORT.json",
++      "block_II_executed": true,
++      "release_wheel_sha256": "17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623",
++      "new_science_scope": "EXPERIMENT_REPORT.md",
++      "application_native_world": {
++        "path": "app/mundo_nativo.py",
++        "mode": "prepared N47 native world plus physical probes, external names and passive presentation",
++        "horizon": 21,
++        "renewable": false
++      }
++    }
++  },
++  "new_contracts": {
++    "repertoire": {
++      "recipe_id": "repertoire.cpc5.v1",
++      "cpp_namespace": "dee::thinking::consolidated",
++      "python": "dee_thinking.RepertoireSession",
++      "factory": "prepare_repertoire",
++      "mechanical_domain": {
++        "N": [
++          31,
++          151
++        ],
++        "K": [
++          1,
++          65
++        ],
++        "plane_gap_min": 2,
++        "condition": "gap*K <= N"
++      },
++      "witnesses": "N31/K8, N67/K16, N131/K65; other combinations are research preparations",
++      "representation": "opaque acquired correspondences to two physical direction classes, not K NSM meanings",
++      "training": "fixed cue and current observed-consequence carriers; no map initially in participant",
++      "queries": "physical probes; consumes/modifies state; read window input_tick+3, finite tested cadences",
++      "absence": "missing/unapplied/occupied/outside-window/observed-zero are not a common negative value"
++    },
++    "revision": {
++      "methods": [
++        "double_teacher",
++        "symmetric_counterflow"
++      ],
++      "interface_preflight": "all declared batch interfaces/codecs validated before the first submission; physical occupancy/phase still produces normal receipts, never automatic clearing",
++      "modality": "EXTERNAL_DECLARED_PROTOCOL_WITH_NATIVE_TRANSFORMATION",
++      "resources": "M1 adds an additional current-consequence teacher; M2 adds two fixed counterflows before lesson",
++      "cadence": "repertoire revision at4N, next query5N; U0 L03 lesson402, next panel469..472",
++      "controls": "offpath_sham keeps doses; no adaptive utility-policy claim",
++      "offpath_scope": "repertoire z+10 sham validated for K2; populated K16/K65 can overlap another memory plane"
++    },
++    "integrated": {
++      "recipe_id": "integrated_u0.cpc7.v1",
++      "python": "dee_thinking.IntegratedSession",
++      "factory": "prepare_integrated_u0",
++      "N": 67,
++      "default_center": [
++        33,
++        25,
++        42
++      ],
++      "initial_source_load": 0,
++      "forms": 16,
++      "initial_learned_map": false,
++      "mechanism": "order experience -> comparison -> discrepancy-conditioned native request -> one own acquired bank -> action interaction -> later arbitrary-form association -> more acquisition -> L03 revision",
++      "horizon": 472,
++      "tested_backend": "LAZY",
++      "custom_geometries": "research preparation requiring new measurements",
++      "selection": "prepared comparison and paths; content/route usage depends on acquired state, not general learned question policy",
++      "guards": "six fixed physical interceptors; treatment/none/sham optional atT0; not learned attention",
++      "complements": "absence-driven V2 and CPC6 remote reader remain distinct experimental profiles unless independently validated",
++      "identity": "new T0 body; no trained historical snapshot is imported to claim new acquisition"
++    },
++    "observability": {
++      "api": [
++        "DirectionalReadout",
++        "read_directional_response",
++        "read_form_response"
++      ],
++      "passive": true,
++      "integers": "RAW/clock uint64 in native state, decimal strings in JSON observations",
++      "status": "Applied receipt required for a covered directional response; preserve receipt, reason and exact vector",
++      "scope": "local physical reading, not a unique particle genealogy or general semantic decoder"
++    },
++    "experimental_absence": {
++      "python": "dee_thinking.experimental_absence",
++      "status": "EXPERIMENTAL_BUNDLED",
++      "N": 67,
++      "initial_source_load": 7,
++      "initial_placements": 17,
++      "interfaces": 31,
++      "scope": "CPC7 absence V2, prepared opportunity/absence-mediated request; separate from discrepancy U0/source0",
++      "horizon": 35,
++      "read_boundaries": [
++        19,
++        24,
++        29
++      ],
++      "control": "match, unpaired source, request cut/sham, opposite-order reserve"
++    },
++    "experimental_remote_reader": {
++      "python": "dee_thinking.RemoteReaderSession",
++      "status": "EXPERIMENTAL_BUNDLED",
++      "N": 67,
++      "horizon": 170,
++      "read_boundaries": [
++        53,
++        90,
++        162
++      ],
++      "scope": "CPC6 word bus, first association, second acquisition, remote renewed access; not merged into CPC7U0",
++      "supply": "44 declared ticks with finite opportunities",
++      "admission": "physical pattern coverage and query admission reported independently",
++      "metadata_load_domain": "valid self-produced snapshots; bounded JSON/tick/channels checked, operational reads/requests/geometry less exhaustive than ConsolidatedSession; no general tampered-metadata robustness claim"
++    },
++    "experimental_acquired_regulation": {
++      "python": "dee_thinking.experimental_regulation.CPC5RegulationSession",
++      "status": "EXPERIMENTAL_BUNDLED",
++      "N": 67,
++      "horizon": 437,
++      "initial_conditions": "zero-load cue/report physically paired; learned directional product, no copied trained memory",
++      "scope": "CPC5 learned-pulse routing and finite useful occupancy/contact; no consequence-selected general regulation policy",
++      "controls": [
++        "unpaired",
++        "opposite",
++        "absent",
++        "translated reserve",
++        "diagnostic remove/sham where tested"
+       ]
+-    ],
+-    "presets": [
+-      "relational_body",
+-      "contextual_rewrite"
+-    ],
+-    "statement_outside_domain": "requires simulation; not validated"
++    },
++    "persistence": {
++      "native_runtime_formats": [
++        1,
++        2
++      ],
++      "organizational_snapshot": "inherited format and operational queue",
++      "native_string_path_encoding": "UTF-8 converted to native filesystem paths; ASCII C++4.0 consumers preserved, locale-encoded C++ paths must explicitly convert to UTF-8",
++      "metadata_key": "dee_thinking.consolidated.session.v1",
++      "compression": "optional bounded gzip; CRC, encoded/logical size and optional SHA-256",
++      "arbitrary_deserialization": false,
++      "migration": "explicit selected CPC legacy metadata adapters on copies; no automatic reinterpretation",
++      "restoration": "load native physical+operational snapshot; attach inert descriptor only; never rebuild or re-teach"
++    },
++    "language": {
++      "interface": "structured Spanish commands, not free conversation or LLM",
++      "NSM": "65-entry sourced evidence catalogue; registration is not acquisition",
++      "provenance": [
++        "ENTE",
++        "INSTRUMENTO",
++        "INTERPRETACION"
++      ]
++    }
+   },
+-  "limits": [
+-    "No claim of general intelligence, consciousness, biology or unlimited learning.",
+-    "The contextual rewrite fixture does not establish necessity of the tested exterior action path.",
+-    "A passive prestate observer does not resolve DEMUX provenance.",
+-    "A physical snapshot does not recreate unrecorded tracker ancestry.",
+-    "C++ ABI compatibility with 2.x is not promised."
+-  ],
+-  "snapshot_contract": {
+-    "write": 2,
+-    "read": [
+-      1,
+-      2
+-    ],
+-    "basal_view_metadata_schema": 1,
+-    "integer_fields": "uint64 without float conversion",
+-    "organizational_metadata_schema": 1,
+-    "operational_state": [
+-      "RAW",
+-      "clock",
+-      "tick",
+-      "channels",
+-      "pending inputs",
+-      "receipts",
+-      "recipe",
+-      "shared views",
+-      "interfaces",
+-      "codecs",
+-      "decoders",
+-      "protocol cursor",
+-      "captured readouts",
+-      "optional bounded trace",
+-      "diagnostic ledger"
+-    ]
++  "compatibility": {
++    "python_import": "dee_thinking",
++    "public_4_0_names": "preserved; API_DIFF.json compares installed exports",
++    "cpp_target": "DEE::thinking",
++    "cmake_find_package": "dee_thinking 4.5 CONFIG",
++    "source_compatibility": "tested declared 4.0 C++ domain; no universal binary ABI guarantee",
++    "microscopic_law": "kernel byte-identical; inherited transition sections, branch order, packing, clocks and constants unchanged. Four literal filesystem conversions in snapshot/trace I/O audited separately by exact reversal"
+   },
+-  "primary_evidence": {
+-    "archive": "evidence/DEE_thinking_3_0_0_FRONTERAS_COGNITIVAS_MULTIRRAMA_01_RESULTADOS.zip",
+-    "sha256": "f1f8b6b2f68517f003a21c2908adde49bf1194c7f5657b460563b91ad76f28f0",
+-    "completed_unique_records": 289,
+-    "inherited": 100,
+-    "extension": 189,
+-    "extension_physical": 185,
+-    "rereads": 3,
+-    "source_not_recovered": 1,
+-    "original_rejected_attempts_not_counted": 2,
+-    "count_is_not_capabilities_or_independent_replicates": true
+-  },
+-  "common_model": {
+-    "owner": "OrganizationalWorld -> shared Runtime, single mutable writer",
+-    "views": "OrganizationView retains owner; attach is inert; fork is deep",
+-    "native_implementation": [
+-      "source/src/organizational.cpp",
+-      "source/src/organization_recipes.cpp"
+-    ],
+-    "Python": "dee_thinking._native; create_organization only chooses native recipes",
+-    "physical_recipes": {
+-      "mobile_pair": 34,
+-      "competition": 34,
+-      "predictive": 34,
+-      "phase": 31,
+-      "distributed": 127,
+-      "cascade": 127,
+-      "native_transfer": 127,
+-      "relational": 47,
+-      "contextual": 47,
+-      "mobile_basal": 47,
+-      "contingent": 47,
+-      "information": 47
+-    },
+-    "research": "Explicit initial placements with Runtime's representable dimensions; no universal functional promise",
+-    "modality_names": [
+-      "NATIVE_EVOLUTION",
+-      "EXPERIENCE_PROTOCOL",
+-      "PASSIVE_OBSERVATION",
+-      "PHYSICAL_PROBE",
+-      "DIAGNOSTIC_FORK",
+-      "ASSISTED_RECONSTRUCTION"
+-    ]
+-  },
+-  "capabilities": [
+-    {
+-      "id": "F01",
+-      "name": "Memoria histórica, relacional y latente",
+-      "API": [
+-        "OrganizationRecipe.mobile_pair",
+-        "OrganizationRecipe.relational",
+-        "OrganizationalWorld.start_mobile_sequence",
+-        "OrganizationView.observe",
+-        "OrganizationalWorld.probe"
+-      ],
+-      "operation": "native recipe + external experience/probe + passive panel",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "organizational.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P01/independent50",
+-        "P01/sequential50",
+-        "P01/inverted5",
+-        "P05/latent_AB",
+-        "P05/latent_BA",
+-        "P05/latent_H0",
+-        "P05/drift_latent_AB",
+-        "P10/native_gap50"
+-      ],
+-      "domain": "N34 C6 fixed routes; N47 T32 A/B; 50 queries are not 50 memories",
+-      "tests": [
+-        "organizational_3_5",
+-        "test_f01_f06_named_io_history_and_sequential_resume",
+-        "test_f01_latent_memory_access_and_missing_center",
+-        "replay_primary_cases"
+-      ],
+-      "example": "source/examples/organizational_public.py",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "EXPERIENCE_PROTOCOL",
+-        "PASSIVE_OBSERVATION",
+-        "PHYSICAL_PROBE"
+-      ],
+-      "technical_status": "IMPLEMENTED; measured coverage in validation/VALIDATION_REPORT.json"
+-    },
+-    {
+-      "id": "F02",
+-      "name": "Transferencia y reconstrucción diferenciadas",
+-      "API": [
+-        "OrganizationRecipe.native_transfer",
+-        "OrganizationalWorld.fork",
+-        "OrganizationalWorld.assisted_reconstruction",
+-        "ReconstructionSpec"
+-      ],
+-      "operation": "native zero relay; technical clone; explicitly assisted partial replacement",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "organizational.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P04/native_zero_relay",
+-        "P04/native_zero_relay_other_history",
+-        "P04/native_zero_relay_cut",
+-        "P04/native_source_absent",
+-        "P04/AB_delta_only",
+-        "P04/AB_raw_pair",
+-        "P04/AB_relation_context_phase"
+-      ],
+-      "domain": "N127 two-stage relay; specified regions/fields in independent diagnostic receivers; no complete body reinstantiation claim",
+-      "tests": [
+-        "organizational_3_5",
+-        "test_f02_native_transfer_and_assisted_reconstruction",
+-        "replay_primary_cases"
+-      ],
+-      "example": "source/examples/organizational_public.py; native_transfer available by same public factory",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "PHYSICAL_PROBE",
+-        "DIAGNOSTIC_FORK",
+-        "ASSISTED_RECONSTRUCTION"
+-      ],
+-      "technical_status": "IMPLEMENTED; historical ORGREINSTANTIATE source remains unrecovered"
+-    },
+-    {
+-      "id": "F03",
+-      "name": "Composición, cascadas e integración",
+-      "API": [
+-        "OrganizationRecipe.cascade",
+-        "OrganizationRecipe.distributed",
+-        "OrganizationRecipe.mobile_basal",
+-        "CompositionPlanner",
+-        "OrganizationalWorld"
+-      ],
+-      "operation": "same-Runtime physical routes",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "composition.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P09/depth2_reference",
+-        "P09/depth4",
+-        "P09/depth8",
+-        "P09/mobile_basal_full",
+-        "P09/mobile_basal_late_cut",
+-        "P06/distributed_HA",
+-        "P13/retained_expression_mobile_basal_full"
+-      ],
+-      "domain": "N127 tested depths2/4/8, representable1..8; N47 mobile-to-basal bridge; overlaps rejected",
+-      "tests": [
+-        "test_f03_cascades_and_interfamily_bridge",
+-        "compare_native_recipes",
+-        "replay_primary_cases"
+-      ],
+-      "example": "source/examples/external_3_5/main.cpp bridge; source/examples/organizational_public.py",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "EXPERIENCE_PROTOCOL",
+-        "PHYSICAL_PROBE",
+-        "PASSIVE_OBSERVATION"
+-      ],
+-      "technical_status": "IMPLEMENTED"
+-    },
+-    {
+-      "id": "F04",
+-      "name": "Plasticidad contextual, fase y accesibilidad",
+-      "API": [
+-        "OrganizationRecipe.contextual",
+-        "OrganizationRecipe.phase",
+-        "inspect_write_gate",
+-        "OrganizationalWorld.submit",
+-        "OrganizationalWorld.probe"
+-      ],
+-      "operation": "passive gate inspection; physical context events and timed queries",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "observation.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P07/context_full_E",
+-        "P07/context_cut_E",
+-        "P07/external_E_offpath",
+-        "P07/external_E_phase129",
+-        "P13/access_phase_baseline",
+-        "P14/ablation_wrapped_flux_cut"
+-      ],
+-      "domain": "N47 local clock/count conditions; N31 phase modes0/1/2 and specified toroidal routes, not universal signed/permuted invariance",
+-      "tests": [
+-        "test_f04_native_context_event_and_phase_access",
+-        "test_transfer_bridge_toroidal_tracking_and_explicit_bounds",
+-        "replay_primary_cases"
+-      ],
+-      "example": "create_organization('contextual') / create_organization('phase',mode=1)",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "PASSIVE_OBSERVATION",
+-        "EXPERIENCE_PROTOCOL",
+-        "PHYSICAL_PROBE"
+-      ],
+-      "technical_status": "IMPLEMENTED; P07 zero-load experience is external, not proven autonomous regulation"
+-    },
+-    {
+-      "id": "F05",
+-      "name": "Observación multiescala, seguimiento y diagnóstico",
+-      "API": [
+-        "PassiveTracker",
+-        "TraceSession",
+-        "MobileSegment",
+-        "OrganizationView.observe",
+-        "observe_encounter",
+-        "diagnostic_fork",
+-        "compare_site",
+-        "compare_diagnostic_fork"
+-      ],
+-      "operation": "passive declared-site/ballistic observations; explicit complete diagnostic forks",
+-      "implementation": [
+-        "organizational.cpp",
+-        "genealogy.cpp",
+-        "observation.cpp",
+-        "diagnostics.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P13/reread_observer_coverage",
+-        "P14/route_phase_ablation",
+-        "P04/native_zero_relay",
+-        "P09/mobile_basal_full",
+-        "P12/both_empty"
+-      ],
+-      "domain": "bounded samples1..65536, <=128 sites <=256 declared segments; correspondence stops on unresolved transformation; no universal provenance",
+-      "tests": [
+-        "test_f05_tracking_budget_export_and_encounter",
+-        "test_transfer_bridge_toroidal_tracking_and_explicit_bounds",
+-        "test_backends_passivity_fork_isolation"
+-      ],
+-      "example": "source/examples/organizational_public.py",
+-      "modalities": [
+-        "PASSIVE_OBSERVATION",
+-        "DIAGNOSTIC_FORK"
+-      ],
+-      "technical_status": "IMPLEMENTED; ambiguity/coverage explicit"
+-    },
+-    {
+-      "id": "F06",
+-      "name": "Transducción I/O declarada",
+-      "API": [
+-        "InputCodec",
+-        "InterfaceSpec",
+-        "OutputDecoder",
+-        "submit",
+-        "submit_symbol",
+-        "probe",
+-        "probe_symbol",
+-        "observe",
+-        "decode"
+-      ],
+-      "operation": "typed/ranged external encoding -> physical input receipts; measured decoding without evolution",
+-      "implementation": [
+-        "organizational.cpp",
+-        "organizational_pybind.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P01/independent50",
+-        "P01/inverted5",
+-        "P11/P_hidden23"
+-      ],
+-      "domain": "integer0..65535, bool0/1, enum/fixed registered load-pattern with channel's state/direction/semantic; noninjectivity declared",
+-      "tests": [
+-        "test_f06_codecs_receipts_and_errors",
+-        "test_f01_f06_named_io_history_and_sequential_resume",
+-        "organizational_3_5"
+-      ],
+-      "example": "source/examples/organizational_public.py; source/examples/external_3_5/main.cpp",
+-      "modalities": [
+-        "EXPERIENCE_PROTOCOL",
+-        "PHYSICAL_PROBE",
+-        "PASSIVE_OBSERVATION"
+-      ],
+-      "technical_status": "IMPLEMENTED; meaning resides in external contract"
+-    },
+-    {
+-      "id": "F07",
+-      "name": "Acción nativa y consecuencias",
+-      "API": [
+-        "ActionCoupling",
+-        "OrganizationRecipe.contingent",
+-        "OrganizationRecipe.information",
+-        "OrganizationView.observe"
+-      ],
+-      "operation": "pre-T0 native paths and mediators; observation of produced consequences, no callback physics",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "basal.cpp",
+-        "organizational.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P03/contingent_d5",
+-        "P03/contingent_d5_cut",
+-        "P03/independent_d5",
+-        "P03/contingency_reversed",
+-        "P11/P_hidden23",
+-        "P11/P_hidden25",
+-        "P11/Q_hidden23"
+-      ],
+-      "domain": "N47 T32 action_distance5; finite prepared contingencies and selective hidden-state encounters",
+-      "tests": [
+-        "test_f07_action_and_information_interfaces",
+-        "replay_primary_cases"
+-      ],
+-      "example": "create_organization('contingent').advance(13)",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "PASSIVE_OBSERVATION",
+-        "DIAGNOSTIC_FORK"
+-      ],
+-      "technical_status": "IMPLEMENTED; not learned communication/contingency by name"
+-    },
+-    {
+-      "id": "F08",
+-      "name": "Resiliencia, saturación y disponibilidad",
+-      "API": [
+-        "ResilienceObservation",
+-        "OrganizationView.resilience",
+-        "diagnostic_fork",
+-        "run_h3"
+-      ],
+-      "operation": "separate support, centers, relationship, reader, caps; explicit one-shot damage; inherited H3 domain",
+-      "implementation": [
+-        "organizational.cpp",
+-        "integrated_protocols.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P06/continued_distributed_HA",
+-        "P06/continued_distributed_H0",
+-        "P08/one_native_contact",
+-        "P08/support_removed",
+-        "P10/payload_boundary"
+-      ],
+-      "domain": "N127 distributed channel cap vs valid relative memory; N47 bounded damage; H3 only tested redundancy apparatus",
+-      "tests": [
+-        "test_f08_distributed_saturation_independent_availability",
+-        "test_integrated_protocols",
+-        "replay_primary_cases"
+-      ],
+-      "example": "create_organization('distributed').view('history').resilience()",
+-      "modalities": [
+-        "PASSIVE_OBSERVATION",
+-        "DIAGNOSTIC_FORK",
+-        "NATIVE_EVOLUTION"
+-      ],
+-      "technical_status": "IMPLEMENTED; no automatic repair or universal recovery"
+-    },
+-    {
+-      "id": "F09",
+-      "name": "Encuentros simultáneos e interferencia",
+-      "API": [
+-        "OrganizationRecipe.competition",
+-        "observe_encounter",
+-        "OrganizationalWorld.probe",
+-        "Runtime.experience_batch"
+-      ],
+-      "operation": "native convergence and subsequent query; separate host admission conflicts",
+-      "implementation": [
+-        "organization_recipes.cpp",
+-        "organizational.cpp",
+-        "runtime.cpp"
+-      ],
+-      "experimental_sources": [
+-        "P12/A_only",
+-        "P12/B_only",
+-        "P12/both_empty",
+-        "P12/one_tick_miss",
+-        "P12/opposing_directions",
+-        "P12/material_destination",
+-        "P12/protected_destination",
+-        "P12/later_use_both_empty"
+-      ],
+-      "domain": "N34 declared simultaneous/delayed routes, protected/material destinations; contributor scope limited to direct candidates",
+-      "tests": [
+-        "test_f09_joint_product_reuse_and_pending_snapshot",
+-        "test_f05_tracking_budget_export_and_encounter",
+-        "replay_primary_cases"
+-      ],
+-      "example": "create_organization('competition')",
+-      "modalities": [
+-        "NATIVE_EVOLUTION",
+-        "PHYSICAL_PROBE",
+-        "PASSIVE_OBSERVATION",
+-        "DIAGNOSTIC_FORK"
+-      ],
+-      "technical_status": "IMPLEMENTED; joint mobile product is not assumed complete basal body"
+-    }
+-  ],
+-  "compatibility": {
+-    "preserved": "Runtime, catalog, composition, H1-H4/F1-F2, BasalWorld, observer/diagnostic APIs; Runtime snapshots v1/v2",
+-    "binding_change": "Runtime shared ownership for inert views; behavior regression-tested, C++ ABI not promised",
+-    "new_snapshot": "Runtime v2 with namespaced OrganizationalWorld v1 metadata; older Runtime can read physical envelope but does not understand new recipe/protocol continuation",
+-    "interface_hardening": "Unknown new recipe keys and unsupported configurations rejected; no narrowing of inherited APIs"
+-  },
+-  "resources": {
+-    "raw_basic_buffers": "32*N^3 bytes, Lazy does not remove these buffers",
+-    "trace_optional": true,
+-    "no_python_full_state_each_tick_by_default": true,
+-    "single_writer": true,
+-    "GIL_policy": "retained from3.0"
+-  }
+-}
++  "validation": "Declared contracts are checked by separate primary observations; RELEASE_VERIFIED is decided only by VALIDATION_REPORT.json and exact-ZIP external proof."
++}--- 4.0/pyproject.toml
++++ 4.5/pyproject.toml
+@@ -8,7 +8,7 @@
+ 
+ [project]
+ name = "dee-thinking"
+-version = "4.0.0"
++version = "4.5.0"
+ description = "Native DEE v27 organizational worlds, physical interfaces, recipes, observation, transfer, composition and integral persistence"
+ readme = "README.md"
+ requires-python = ">=3.13,<3.14"
+@@ -28,7 +28,7 @@
+ include-package-data = false
+ 
+ [tool.setuptools.package-data]
+-dee_thinking = ["py.typed", "THIRD_PARTY_NOTICES.md", "*.pyi", "data/*.deetsnap"]
++dee_thinking = ["py.typed", "THIRD_PARTY_NOTICES.md", "*.pyi", "data/*.deetsnap", "data/*.json"]
+ 
+ [tool.cibuildwheel]
+ build = "cp313-win_amd64"
+--- 4.0/python/dee_thinking/__init__.py
++++ 4.5/python/dee_thinking/__init__.py
+@@ -1,4 +1,4 @@
+-"""Python interface for the native DEE thinking 4.0.0 runtime.
++"""Python interface for the native DEE thinking 4.5.0 runtime.
+ 
+ The extension and the standalone C++ library are compiled from the same v27
+ kernel/runtime sources.  Importing this package never imports or delegates to
+@@ -117,5 +117,7 @@
+ 
+ from .cognition import create_session, load_session, Session
+ from .dialogue import ConversationSession, parse as parse_spanish
++from .consolidated import RepertoireSession, IntegratedSession, create_integrated_session
++from .remote_reader import RemoteReaderSession
+ 
+ __all__ = [name for name in globals() if not name.startswith("_")]
+--- 4.0/python/dee_thinking/__init__.pyi
++++ 4.5/python/dee_thinking/__init__.pyi
+@@ -30,3 +30,6 @@
+ # the additions introduced in 3.0.0 and 3.5.0 have precise declarations.
+ def create_organization(recipe: str = "mobile_pair", **parameters: Any) -> OrganizationalWorld: ...
+ def __getattr__(name: str) -> Any: ...
++
++from .consolidated import RepertoireSession as RepertoireSession, IntegratedSession as IntegratedSession, create_integrated_session as create_integrated_session
++from .remote_reader import RemoteReaderSession as RemoteReaderSession
+--- 4.0/python/dee_thinking/_native.pyi
++++ 4.5/python/dee_thinking/_native.pyi
+@@ -1,699 +1,706 @@
+-from enum import Enum
+-from typing import Any, Optional, Sequence
+-
+-__version__: str
+-KERNEL_MODULUS: int
+-REDUCER_CAP: int
+-
+-class Backend(Enum):
+-    DENSE_SEQUENTIAL: Backend
+-    DENSE_PARALLEL: Backend
+-    LAZY: Backend
+-
+-class TickOptions:
+-    backend: Backend
+-    threads: int
+-    def __init__(self, backend: Backend = ..., threads: int = 1) -> None: ...
+-
+-class Coordinate:
+-    x: int
+-    y: int
+-    z: int
+-    def __init__(self, x: int = 0, y: int = 0, z: int = 0) -> None: ...
+-
+-class Direction:
+-    dx: int
+-    dy: int
+-    dz: int
+-    def __init__(self, dx: int = 0, dy: int = 0, dz: int = 0) -> None: ...
+-
+-class Record:
+-    raw: int
+-    state: int
+-    s_reg: int
+-    dx: int
+-    dy: int
+-    dz: int
+-    semantic: int
+-    raw_present: bool
+-    occupied: bool
+-
+-class Observation:
+-    tick: int
+-    coordinate: Coordinate
+-    raw: int
+-    clock: int
+-    record: Record
+-
+-class Runtime:
+-    def __init__(self, dimension: int) -> None: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> Runtime: ...
+-    def save_snapshot(self, path: str) -> None: ...
+-    def fork(self) -> Runtime: ...
+-    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize_diagnostic_intervention: bool) -> Runtime: ...
+-    def advance(self, count: int = 1): ...
+-    def run_until(self, target_tick: int): ...
+-    def pause(self) -> None: ...
+-    def resume(self) -> None: ...
+-    def observe(self, coordinate: Coordinate) -> Observation: ...
+-    def raw_copy(self) -> list[int]: ...
+-    def clock_copy(self) -> list[int]: ...
+-    @property
+-    def current_tick(self) -> int: ...
+-    @property
+-    def dimension(self) -> int: ...
+-
+-class ResearchStateEdit:
+-    coordinate: Coordinate
+-    raw: Optional[int]
+-    clock: Optional[int]
+-    label: str
+-    def __init__(self) -> None: ...
+-
+-class BasalPreset(Enum):
+-    RELATIONAL_BODY: BasalPreset
+-    CONTEXTUAL_REWRITE: BasalPreset
+-class BasalHistory(Enum):
+-    AB: BasalHistory
+-    BA: BasalHistory
+-    H0: BasalHistory
+-    SIMULTANEOUS: BasalHistory
+-    SHAM: BasalHistory
+-class BasalControl(Enum):
+-    FULL: BasalControl
+-    NO_ACTION: BasalControl
+-    RETURN_CUT: BasalControl
+-    OFF_PATH: BasalControl
+-    PHASE_MISS: BasalControl
+-    BARE: BasalControl
+-    READ_CUT: BasalControl
+-    ACTION_CUT: BasalControl
+-class BasalDomainMode(Enum):
+-    VALIDATED: BasalDomainMode
+-    RESEARCH: BasalDomainMode
+-class BasalAvailability(Enum):
+-    AVAILABLE: BasalAvailability
+-    MISSING_A: BasalAvailability
+-    MISSING_B: BasalAvailability
+-    MISSING_COMPARATOR: BasalAvailability
+-
+-class BasalConfig:
+-    preset: BasalPreset
+-    history: BasalHistory
+-    control: BasalControl
+-    domain_mode: BasalDomainMode
+-    dimension: int
+-    origin: Coordinate
+-    action_distance: int
+-    execution: TickOptions
+-    seed_snapshot: str
+-    def __init__(self) -> None: ...
+-    @staticmethod
+-    def relational_reference(seed_snapshot: str) -> BasalConfig: ...
+-    @staticmethod
+-    def contextual_reference(seed_snapshot: str) -> BasalConfig: ...
+-
+-class BasalPorts:
+-    origin: Coordinate
+-    a: Coordinate
+-    b: Coordinate
+-    comparator: Coordinate
+-    reader_source: Coordinate
+-    event_sources: list[Coordinate]
+-    supports: list[Coordinate]
+-    environmental_sources: list[Coordinate]
+-    action_site: Optional[Coordinate]
+-    return_site: Optional[Coordinate]
+-    bend_site: Optional[Coordinate]
+-    bend2_site: Optional[Coordinate]
+-
+-class BasalObservation:
+-    absolute_tick: int
+-    relative_tick: int
+-    availability: BasalAvailability
+-    a: Optional[Observation]
+-    b: Optional[Observation]
+-    comparator: Optional[Observation]
+-    delta: Optional[int]
+-    axis_projection: Optional[int]
+-    supports: list[Observation]
+-
+-class BasalWorld:
+-    @staticmethod
+-    def create(config: BasalConfig) -> BasalWorld: ...
+-    @staticmethod
+-    def attach(runtime: Runtime, config: BasalConfig, ports: BasalPorts, t0_tick: int) -> BasalWorld: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> BasalWorld: ...
+-    @property
+-    def config(self) -> BasalConfig: ...
+-    @property
+-    def ports(self) -> BasalPorts: ...
+-    @property
+-    def t0_tick(self) -> int: ...
+-    @property
+-    def runtime(self) -> Runtime: ...
+-    def advance(self, count: int = 1): ...
+-    def observe(self) -> BasalObservation: ...
+-    def fork(self) -> BasalWorld: ...
+-    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize_diagnostic_intervention: bool) -> BasalWorld: ...
+-    def save_snapshot(self, path: str) -> None: ...
+-
+-class LocalSiteObservation:
+-    offset: Coordinate
+-    site: Coordinate
+-    raw: int
+-    clock: int
+-    record: Record
+-    raw_present: bool
+-    active_for_rule: bool
+-class WriteGateObservation:
+-    site: Coordinate
+-    absolute_tick: int
+-    local_clock: int
+-    center: Record
+-    center_available: bool
+-    n_active: int
+-    direction_sum: Direction
+-    tetra_pattern: Optional[int]
+-    hadron: bool
+-    rule_value: int
+-    survives_material_rule: bool
+-    semantic_protected: bool
+-    write_protected: bool
+-    k: int
+-    period: Optional[int]
+-    phase_remainder: Optional[int]
+-    ordinary_increment_condition: bool
+-    branch: str
+-    demux_status: str
+-    neighbors: list[LocalSiteObservation]
+-class SiteTransition:
+-    site: Coordinate
+-    tick_before: int
+-    tick_after: int
+-    raw_before: int
+-    raw_after: int
+-    clock_before: int
+-    clock_after: int
+-    changed_fields: list[str]
+-    classification: str
+-def inspect_write_gate(runtime: Runtime, site: Coordinate, include_neighbors: bool = True) -> WriteGateObservation: ...
+-def compare_site_transition(before: Runtime, after: Runtime, site: Coordinate) -> SiteTransition: ...
+-
+-class TrackedSite:
+-    id: str
+-    site: Coordinate
+-    def __init__(self) -> None: ...
+-class TraceFrame:
+-    tick: int
+-    observations: list[Observation]
+-class TraceTransition:
+-    tick_before: int
+-    tick_after: int
+-    ids: list[str]
+-    changes: list[SiteTransition]
+-    scope: str
+-class PassiveTracker:
+-    def __init__(self, sites: Sequence[TrackedSite], frame_budget: int = 4096) -> None: ...
+-    def capture(self, runtime: Runtime) -> TraceFrame: ...
+-    @property
+-    def frames(self) -> list[TraceFrame]: ...
+-    @property
+-    def transitions(self) -> list[TraceTransition]: ...
+-    @property
+-    def frame_budget(self) -> int: ...
+-    @property
+-    def capture_stopped(self) -> bool: ...
+-    def clear_trace(self) -> None: ...
+-
+-class AppliedDiagnosticEdit:
+-    site: Coordinate
+-    label: str
+-    raw_before: int
+-    raw_after: int
+-    clock_before: int
+-    clock_after: int
+-    raw_changed: bool
+-    clock_changed: bool
+-    touches_declared_support: bool
+-class DiagnosticComparison:
+-    parent_tick: int
+-    horizon: int
+-    edits: list[AppliedDiagnosticEdit]
+-    raw_different_sites: int
+-    clock_different_sites: int
+-    reference_observation: BasalObservation
+-    diagnostic_observation: BasalObservation
+-    parent_unchanged: bool
+-    modality: str
+-def compare_diagnostic_fork(parent: BasalWorld, edits: Sequence[ResearchStateEdit], horizon: int, authorize_diagnostic_intervention: bool) -> DiagnosticComparison: ...
+-
+-def build_info() -> dict[str, object]: ...
+-
+-# The native module retains the complete dynamic 2.2.0 surface.  This 3.5.0
+-# stub types every new contract while allowing type checkers to access legacy
+-# catalog/protocol symbols that are not yet exhaustively enumerated here.
+-def __getattr__(name: str) -> Any: ...
+-
+-class OperationModality(Enum):
+-    NATIVE_EVOLUTION: OperationModality
+-    EXPERIENCE_PROTOCOL: OperationModality
+-    PASSIVE_OBSERVATION: OperationModality
+-    PHYSICAL_PROBE: OperationModality
+-    DIAGNOSTIC_FORK: OperationModality
+-    ASSISTED_RECONSTRUCTION: OperationModality
+-class CodecType(Enum):
+-    BOUNDED_INTEGER: CodecType
+-    BOOLEAN: CodecType
+-    ENUMERATION: CodecType
+-    REGISTERED_PATTERN: CodecType
+-class InputCodec:
+-    version: str
+-    type: CodecType
+-    minimum: int
+-    maximum: int
+-    symbols: dict[str,int]
+-    @property
+-    def injective(self) -> bool: ...
+-    def __init__(self) -> None: ...
+-    def validate(self) -> None: ...
+-    def encode_integer(self, value: int) -> int: ...
+-    def encode_symbol(self, value: str) -> int: ...
+-class InterfaceSpec:
+-    name: str
+-    channel: ChannelSpec
+-    codec: InputCodec
+-    admission: str
+-    meaning_location: str
+-    def __init__(self) -> None: ...
+-class DecodedOutput:
+-    physical: Observation
+-    integer: Optional[int]
+-    symbols: list[str]
+-    available: bool
+-    ambiguous: bool
+-    ordinary_cap_reached: bool
+-    status: str
+-class OutputDecoder:
+-    version: str
+-    type: CodecType
+-    symbols: dict[str,int]
+-    def __init__(self) -> None: ...
+-    def decode(self, observation: Observation) -> DecodedOutput: ...
+-class InitialPlacement:
+-    site: Coordinate
+-    raw: int
+-    clock: int
+-    role: str
+-    def __init__(self) -> None: ...
+-class OrganizationSpec:
+-    id: str
+-    recipe_id: str
+-    ports: dict[str,Coordinate]
+-    supports: list[Coordinate]
+-    a: Optional[Coordinate]
+-    b: Optional[Coordinate]
+-    comparator: Optional[Coordinate]
+-    t0_tick: int
+-    def __init__(self) -> None: ...
+-class ActionCoupling:
+-    id: str
+-    sites: list[Coordinate]
+-    roles: list[str]
+-    observation_ticks: list[int]
+-    scope: str
+-    def __init__(self) -> None: ...
+-class OrganizationRecipe:
+-    id: str
+-    version: str
+-    dimension: int
+-    origin: Coordinate
+-    parameters: dict[str,int]
+-    options: dict[str,str]
+-    placements: list[InitialPlacement]
+-    interfaces: list[InterfaceSpec]
+-    organizations: list[OrganizationSpec]
+-    actions: list[ActionCoupling]
+-    execution: TickOptions
+-    t0_tick: int
+-    domain: str
+-    def __init__(self) -> None: ...
+-    @staticmethod
+-    def mobile_pair(translation: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def cascade(depth: int = 4, translation: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def native_transfer(translation: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def phase(mode: int = 0, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def distributed(history_mode: int = 1, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def relational(seed: str, history: BasalHistory = ..., keep_reader: bool = False, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def contextual(seed: str, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def mobile_basal(seed: str, history: BasalHistory = ..., origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def contingent(seed: str, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def information(seed: str, history: BasalHistory = ..., hidden: int = 23, origin: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def competition(translation: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def predictive(translation: Coordinate = ...) -> OrganizationRecipe: ...
+-    @staticmethod
+-    def research(dimension: int, placements: Sequence[InitialPlacement], tick: int = 0) -> OrganizationRecipe: ...
+-class FunctionalReadout:
+-    organization_id: str
+-    tick: int
+-    relative_tick: int
+-    observations: dict[str,Observation]
+-    delta: Optional[int]
+-    centers_available: bool
+-    reader_available: bool
+-    supports_intact: bool
+-    axis_projection: Optional[int]
+-    scope: str
+-class ResilienceObservation:
+-    functional: FunctionalReadout
+-    missing_supports: list[Coordinate]
+-    ordinary_cap_sites: list[str]
+-    representable_cap_sites: list[str]
+-    recovery_claim: str
+-class TraceSample:
+-    id: str
+-    tick: int
+-    observation: Observation
+-    relative_to_origin: Coordinate
+-    unwrapped: list[int]
+-    coverage: str
+-class MobileSegment:
+-    id: str
+-    birth_site: Coordinate
+-    direction: Direction
+-    birth_tick: int
+-    last_tick: int
+-    expected_load: Optional[int]
+-    expected_semantic: Optional[int]
+-    correspondence_stopped: bool
+-    def __init__(self) -> None: ...
+-class TraceSession:
+-    sample_budget: int
+-    sites: dict[str,Coordinate]
+-    segments: list[MobileSegment]
+-    samples: list[TraceSample]
+-    capture_stopped: bool
+-    def __init__(self) -> None: ...
+-    def capture(self, runtime: Runtime, origin: Coordinate = ...) -> None: ...
+-    def export_trace(self, path: str) -> None: ...
+-    @staticmethod
+-    def load_trace(path: str) -> TraceSession: ...
+-class EncounterObservation:
+-    tick_before: int
+-    tick_after: int
+-    destination: Coordinate
+-    before: Observation
+-    after: Observation
+-    direct_ballistic_contributors: list[Observation]
+-    destination_gate: WriteGateObservation
+-    branch: str
+-    attribution_scope: str
+-def observe_encounter(before: Runtime, after: Runtime, destination: Coordinate) -> EncounterObservation: ...
+-class DiagnosticEditReceipt:
+-    site: Coordinate
+-    label: str
+-    tick: int
+-    raw_before: int
+-    raw_after: int
+-    clock_before: int
+-    clock_after: int
+-    modality: OperationModality
+-class ReconstructionSpec:
+-    source_sites: list[Coordinate]
+-    destination_sites: list[Coordinate]
+-    copy_raw: bool
+-    copy_clocks: bool
+-    authorize_assisted_reconstruction: bool
+-    def __init__(self) -> None: ...
+-class QueryStep:
+-    input_tick: int
+-    read_tick: int
+-    input: int
+-    receipt_ids: list[int]
+-    targets: list[Coordinate]
+-    captured: list[Observation]
+-class QueryProtocol:
+-    id: str
+-    kind: str
+-    modality: OperationModality
+-    steps: list[QueryStep]
+-    next_capture: int
+-class OrganizationView:
+-    @property
+-    def spec(self) -> OrganizationSpec: ...
+-    @property
+-    def runtime(self) -> Runtime: ...
+-    def observe(self) -> FunctionalReadout: ...
+-    def resilience(self) -> ResilienceObservation: ...
+-class OrganizationalWorld:
+-    @staticmethod
+-    def create(recipe: OrganizationRecipe) -> OrganizationalWorld: ...
+-    @staticmethod
+-    def attach(runtime: Runtime, recipe: OrganizationRecipe, specs: Sequence[OrganizationSpec]) -> OrganizationalWorld: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> OrganizationalWorld: ...
+-    @property
+-    def runtime(self) -> Runtime: ...
+-    @property
+-    def recipe(self) -> OrganizationRecipe: ...
+-    @property
+-    def organization_ids(self) -> list[str]: ...
+-    @property
+-    def interfaces(self) -> list[InterfaceSpec]: ...
+-    @property
+-    def protocols(self) -> list[QueryProtocol]: ...
+-    @property
+-    def diagnostic_edits(self) -> list[DiagnosticEditReceipt]: ...
+-    @property
+-    def external_operations(self) -> list[str]: ...
+-    def view(self, id: str) -> OrganizationView: ...
+-    def declare_interface(self, spec: InterfaceSpec) -> None: ...
+-    def submit(self, name: str, value: int, at_tick: int) -> EventReceipt: ...
+-    def submit_symbol(self, name: str, value: str, at_tick: int) -> EventReceipt: ...
+-    def probe(self, name: str, value: int, at_tick: int) -> EventReceipt: ...
+-    def probe_symbol(self, name: str, value: str, at_tick: int) -> EventReceipt: ...
+-    def observe(self, organization: str, port: str) -> Observation: ...
+-    def decode(self, organization: str, port: str, decoder: OutputDecoder) -> DecodedOutput: ...
+-    def declare_decoder(self, name: str, decoder: OutputDecoder) -> None: ...
+-    def decoder(self, name: str) -> OutputDecoder: ...
+-    def advance(self, count: int = 1) -> TickInfo: ...
+-    def run_until(self, absolute_tick: int) -> TickInfo: ...
+-    def start_mobile_sequence(self, id: str, inputs: Sequence[int], first_tick: int = 6, interval: int = 5) -> None: ...
+-    def fork(self) -> OrganizationalWorld: ...
+-    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize: bool) -> OrganizationalWorld: ...
+-    def assisted_reconstruction(self, source: OrganizationalWorld, spec: ReconstructionSpec) -> OrganizationalWorld: ...
+-    def set_trace(self, trace: TraceSession) -> None: ...
+-    def trace(self) -> TraceSession: ...
+-    def capture_trace(self) -> None: ...
+-    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+-
+-# DEE4 public cognitive additions
+-
+-class CognitiveParameters:
+-    seed_path: str
+-    profile: str
+-    origin: Coordinate
+-    initial_open: bool
+-    change_tick: int | None
+-    event_state: int
+-    execution: TickOptions
+-    journal_limit: int
+-    prediction_limit: int
+-    def __init__(self) -> None: ...
+-
+-class CognitiveSession:
+-    @staticmethod
+-    def create(parameters: CognitiveParameters) -> CognitiveSession: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> CognitiveSession: ...
+-    @staticmethod
+-    def load_legacy_physical_snapshot(path: str) -> Runtime: ...
+-    @property
+-    def world(self) -> OrganizationalWorld: ...
+-    @property
+-    def tick(self) -> int: ...
+-    @property
+-    def preferred_horizon(self) -> int: ...
+-    @property
+-    def profile(self) -> str: ...
+-    @property
+-    def parameters(self) -> CognitiveParameters: ...
+-    @property
+-    def journal(self) -> list[dict]: ...
+-    @property
+-    def samples(self) -> list[dict]: ...
+-    @property
+-    def predictions(self) -> list[dict]: ...
+-    def observe(self) -> dict: ...
+-    def experience(self, symbol: str) -> dict: ...
+-    def sense(self) -> dict: ...
+-    def predict(self, horizon: int = 0) -> dict: ...
+-    def compare(self) -> dict: ...
+-    def advance(self, ticks: int = 1) -> dict: ...
+-    def run_until(self, absolute_tick: int) -> dict: ...
+-    def fork(self) -> CognitiveSession: ...
+-    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+-    def set_interface_metadata(self, key: str, value: str) -> None: ...
+-    def get_interface_metadata(self, key: str) -> str | None: ...
+-    @property
+-    def interface_metadata(self) -> dict[str, str]: ...
+-
+-class NativeAssociationParameters:
+-    translation: Coordinate
+-    execution: TickOptions
+-    def __init__(self) -> None: ...
+-
+-class NativeAssociationSession:
+-    @staticmethod
+-    def create(parameters: NativeAssociationParameters = ...) -> NativeAssociationSession: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> NativeAssociationSession: ...
+-    @property
+-    def world(self) -> OrganizationalWorld: ...
+-    @property
+-    def tick(self) -> int: ...
+-    def train(self, teachers: list[int], cue: int = 5, mode: str = 'paired') -> dict: ...
+-    def query(self, port: int, payload: int = 13) -> dict: ...
+-    def query_panel(self, payload: int = 13) -> dict: ...
+-    def observe(self) -> dict: ...
+-    def fork(self) -> NativeAssociationSession: ...
+-    def start_sequence(self, payloads: list[int], protocol_id: str = 'association_sequence', first_tick: int = 6) -> None: ...
+-    def advance(self, ticks: int = 1) -> None: ...
+-    def run_until(self, absolute_tick: int) -> None: ...
+-    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+-    def set_interface_metadata(self, key: str, value: str) -> None: ...
+-    def get_interface_metadata(self, key: str) -> str | None: ...
+-    @property
+-    def interface_metadata(self) -> dict[str, str]: ...
+-
+-def create_learnable_cascade(depth: int = 2, translation: Coordinate = ..., execution: TickOptions = ...) -> OrganizationalWorld: ...
+-def experience_composition(world: OrganizationalWorld, pairs: list[tuple[int, int]], omit: int | None = None) -> list[dict]: ...
+-def query_composition(world: OrganizationalWorld, payload: int) -> dict: ...
+-
+-
+-# Native informative sessions (4.0). Finite apparatus, explicit external sensor.
+-class SourceRole:
+-    P_INFORMATIVE: SourceRole
+-    Q_INFORMATIVE: SourceRole
+-
+-class FinitePolicyParameters:
+-    origin: Coordinate
+-    roles: SourceRole
+-    actual_class: int
+-    actual_enabled: bool
+-    execution: TickOptions
+-    def __init__(self) -> None: ...
+-
+-class NativeInformationParameters:
+-    seed_path: str
+-    origin: Coordinate
+-    history: BasalHistory
+-    context: int
+-    actual_class: int
+-    information_load: int
+-    query_enabled: bool
+-    actual_enabled: bool
+-    source_enabled: bool
+-    post_query: bool
+-    source_cut: str
+-    distance: int
+-    execution: TickOptions
+-    def __init__(self) -> None: ...
+-
+-class InformativeOperation:
+-    tick: int
+-    operation: str
+-    interface_name: str
+-    value: int
+-    receipt_id: int | None
+-    modality: OperationModality
+-
+-class PhysicalCandidate:
+-    port: str
+-    source: str
+-    presentation: str
+-    physical: Observation
+-    value: int | None
+-    def as_dict(self) -> dict[str, object]: ...
+-
+-class InformationReadout:
+-    tick: int
+-    profile: str
+-    status: str
+-    scope: str
+-    modality: OperationModality
+-    comparisons: list[PhysicalCandidate]
+-    policies: list[PhysicalCandidate]
+-    actions: list[PhysicalCandidate]
+-    information: list[PhysicalCandidate]
+-    later_responses: list[PhysicalCandidate]
+-    physical_outputs: dict[str, Observation]
+-    receipts: list[EventReceipt]
+-    current_prediction: int | None
+-    delta: int | None
+-    centers_available: bool
+-    supports_intact: bool
+-    journal_truncated: bool
+-    def as_dict(self) -> dict[str, object]: ...
+-
+-class FinitePolicySession:
+-    @staticmethod
+-    def create(parameters: FinitePolicyParameters = ...) -> FinitePolicySession: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> FinitePolicySession: ...
+-    tick: int
+-    world: OrganizationalWorld
+-    parameters: FinitePolicyParameters
+-    journal: list[InformativeOperation]
+-    interface_metadata: dict[str, str]
+-    def observe(self) -> InformationReadout: ...
+-    def advance(self, count: int = 1) -> InformationReadout: ...
+-    def run_until(self, absolute_tick: int) -> InformationReadout: ...
+-    def compare(self) -> InformationReadout: ...
+-    def source(self) -> InformationReadout: ...
+-    def sense(self) -> InformationReadout: ...
+-    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
+-    def process_boundary(self) -> None: ...
+-    def fork(self) -> FinitePolicySession: ...
+-    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> FinitePolicySession: ...
+-    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+-    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
+-    def get_interface_metadata(self, key: str) -> str | None: ...
+-
+-class NativeInformationSession:
+-    @staticmethod
+-    def create(parameters: NativeInformationParameters) -> NativeInformationSession: ...
+-    @staticmethod
+-    def load_snapshot(path: str) -> NativeInformationSession: ...
+-    tick: int
+-    world: OrganizationalWorld
+-    parameters: NativeInformationParameters
+-    journal: list[InformativeOperation]
+-    interface_metadata: dict[str, str]
+-    def observe(self) -> InformationReadout: ...
+-    def advance(self, count: int = 1) -> InformationReadout: ...
+-    def run_until(self, absolute_tick: int) -> InformationReadout: ...
+-    def compare(self) -> InformationReadout: ...
+-    def source(self) -> InformationReadout: ...
+-    def sense(self) -> InformationReadout: ...
+-    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
+-    def process_boundary(self) -> None: ...
+-    def fork(self) -> NativeInformationSession: ...
+-    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> NativeInformationSession: ...
+-    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
+-    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
+-    def get_interface_metadata(self, key: str) -> str | None: ...
+-
++from enum import Enum
++from typing import Any, Optional, Sequence
++from .consolidated_native import (RepertoireOptions as RepertoireOptions,
++    IntegratedOptions as IntegratedOptions, FormDescriptor as FormDescriptor,
++    NativePreparation as NativePreparation, DirectionalReadout as DirectionalReadout,
++    prepare_repertoire as prepare_repertoire, prepare_integrated_u0 as prepare_integrated_u0,
++    preparation_for_world as preparation_for_world, attach_preparation_descriptor as attach_preparation_descriptor,
++    experience_form as experience_form, query_form as query_form, revise_form as revise_form,
++    read_directional_response as read_directional_response, read_form_response as read_form_response)
++
++__version__: str
++KERNEL_MODULUS: int
++REDUCER_CAP: int
++
++class Backend(Enum):
++    DENSE_SEQUENTIAL: Backend
++    DENSE_PARALLEL: Backend
++    LAZY: Backend
++
++class TickOptions:
++    backend: Backend
++    threads: int
++    def __init__(self, backend: Backend = ..., threads: int = 1) -> None: ...
++
++class Coordinate:
++    x: int
++    y: int
++    z: int
++    def __init__(self, x: int = 0, y: int = 0, z: int = 0) -> None: ...
++
++class Direction:
++    dx: int
++    dy: int
++    dz: int
++    def __init__(self, dx: int = 0, dy: int = 0, dz: int = 0) -> None: ...
++
++class Record:
++    raw: int
++    state: int
++    s_reg: int
++    dx: int
++    dy: int
++    dz: int
++    semantic: int
++    raw_present: bool
++    occupied: bool
++
++class Observation:
++    tick: int
++    coordinate: Coordinate
++    raw: int
++    clock: int
++    record: Record
++
++class Runtime:
++    def __init__(self, dimension: int) -> None: ...
++    @staticmethod
++    def load_snapshot(path: str) -> Runtime: ...
++    def save_snapshot(self, path: str) -> None: ...
++    def fork(self) -> Runtime: ...
++    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize_diagnostic_intervention: bool) -> Runtime: ...
++    def advance(self, count: int = 1): ...
++    def run_until(self, target_tick: int): ...
++    def pause(self) -> None: ...
++    def resume(self) -> None: ...
++    def observe(self, coordinate: Coordinate) -> Observation: ...
++    def raw_copy(self) -> list[int]: ...
++    def clock_copy(self) -> list[int]: ...
++    @property
++    def current_tick(self) -> int: ...
++    @property
++    def dimension(self) -> int: ...
++
++class ResearchStateEdit:
++    coordinate: Coordinate
++    raw: Optional[int]
++    clock: Optional[int]
++    label: str
++    def __init__(self) -> None: ...
++
++class BasalPreset(Enum):
++    RELATIONAL_BODY: BasalPreset
++    CONTEXTUAL_REWRITE: BasalPreset
++class BasalHistory(Enum):
++    AB: BasalHistory
++    BA: BasalHistory
++    H0: BasalHistory
++    SIMULTANEOUS: BasalHistory
++    SHAM: BasalHistory
++class BasalControl(Enum):
++    FULL: BasalControl
++    NO_ACTION: BasalControl
++    RETURN_CUT: BasalControl
++    OFF_PATH: BasalControl
++    PHASE_MISS: BasalControl
++    BARE: BasalControl
++    READ_CUT: BasalControl
++    ACTION_CUT: BasalControl
++class BasalDomainMode(Enum):
++    VALIDATED: BasalDomainMode
++    RESEARCH: BasalDomainMode
++class BasalAvailability(Enum):
++    AVAILABLE: BasalAvailability
++    MISSING_A: BasalAvailability
++    MISSING_B: BasalAvailability
++    MISSING_COMPARATOR: BasalAvailability
++
++class BasalConfig:
++    preset: BasalPreset
++    history: BasalHistory
++    control: BasalControl
++    domain_mode: BasalDomainMode
++    dimension: int
++    origin: Coordinate
++    action_distance: int
++    execution: TickOptions
++    seed_snapshot: str
++    def __init__(self) -> None: ...
++    @staticmethod
++    def relational_reference(seed_snapshot: str) -> BasalConfig: ...
++    @staticmethod
++    def contextual_reference(seed_snapshot: str) -> BasalConfig: ...
++
++class BasalPorts:
++    origin: Coordinate
++    a: Coordinate
++    b: Coordinate
++    comparator: Coordinate
++    reader_source: Coordinate
++    event_sources: list[Coordinate]
++    supports: list[Coordinate]
++    environmental_sources: list[Coordinate]
++    action_site: Optional[Coordinate]
++    return_site: Optional[Coordinate]
++    bend_site: Optional[Coordinate]
++    bend2_site: Optional[Coordinate]
++
++class BasalObservation:
++    absolute_tick: int
++    relative_tick: int
++    availability: BasalAvailability
++    a: Optional[Observation]
++    b: Optional[Observation]
++    comparator: Optional[Observation]
++    delta: Optional[int]
++    axis_projection: Optional[int]
++    supports: list[Observation]
++
++class BasalWorld:
++    @staticmethod
++    def create(config: BasalConfig) -> BasalWorld: ...
++    @staticmethod
++    def attach(runtime: Runtime, config: BasalConfig, ports: BasalPorts, t0_tick: int) -> BasalWorld: ...
++    @staticmethod
++    def load_snapshot(path: str) -> BasalWorld: ...
++    @property
++    def config(self) -> BasalConfig: ...
++    @property
++    def ports(self) -> BasalPorts: ...
++    @property
++    def t0_tick(self) -> int: ...
++    @property
++    def runtime(self) -> Runtime: ...
++    def advance(self, count: int = 1): ...
++    def observe(self) -> BasalObservation: ...
++    def fork(self) -> BasalWorld: ...
++    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize_diagnostic_intervention: bool) -> BasalWorld: ...
++    def save_snapshot(self, path: str) -> None: ...
++
++class LocalSiteObservation:
++    offset: Coordinate
++    site: Coordinate
++    raw: int
++    clock: int
++    record: Record
++    raw_present: bool
++    active_for_rule: bool
++class WriteGateObservation:
++    site: Coordinate
++    absolute_tick: int
++    local_clock: int
++    center: Record
++    center_available: bool
++    n_active: int
++    direction_sum: Direction
++    tetra_pattern: Optional[int]
++    hadron: bool
++    rule_value: int
++    survives_material_rule: bool
++    semantic_protected: bool
++    write_protected: bool
++    k: int
++    period: Optional[int]
++    phase_remainder: Optional[int]
++    ordinary_increment_condition: bool
++    branch: str
++    demux_status: str
++    neighbors: list[LocalSiteObservation]
++class SiteTransition:
++    site: Coordinate
++    tick_before: int
++    tick_after: int
++    raw_before: int
++    raw_after: int
++    clock_before: int
++    clock_after: int
++    changed_fields: list[str]
++    classification: str
++def inspect_write_gate(runtime: Runtime, site: Coordinate, include_neighbors: bool = True) -> WriteGateObservation: ...
++def compare_site_transition(before: Runtime, after: Runtime, site: Coordinate) -> SiteTransition: ...
++
++class TrackedSite:
++    id: str
++    site: Coordinate
++    def __init__(self) -> None: ...
++class TraceFrame:
++    tick: int
++    observations: list[Observation]
++class TraceTransition:
++    tick_before: int
++    tick_after: int
++    ids: list[str]
++    changes: list[SiteTransition]
++    scope: str
++class PassiveTracker:
++    def __init__(self, sites: Sequence[TrackedSite], frame_budget: int = 4096) -> None: ...
++    def capture(self, runtime: Runtime) -> TraceFrame: ...
++    @property
++    def frames(self) -> list[TraceFrame]: ...
++    @property
++    def transitions(self) -> list[TraceTransition]: ...
++    @property
++    def frame_budget(self) -> int: ...
++    @property
++    def capture_stopped(self) -> bool: ...
++    def clear_trace(self) -> None: ...
++
++class AppliedDiagnosticEdit:
++    site: Coordinate
++    label: str
++    raw_before: int
++    raw_after: int
++    clock_before: int
++    clock_after: int
++    raw_changed: bool
++    clock_changed: bool
++    touches_declared_support: bool
++class DiagnosticComparison:
++    parent_tick: int
++    horizon: int
++    edits: list[AppliedDiagnosticEdit]
++    raw_different_sites: int
++    clock_different_sites: int
++    reference_observation: BasalObservation
++    diagnostic_observation: BasalObservation
++    parent_unchanged: bool
++    modality: str
++def compare_diagnostic_fork(parent: BasalWorld, edits: Sequence[ResearchStateEdit], horizon: int, authorize_diagnostic_intervention: bool) -> DiagnosticComparison: ...
++
++def build_info() -> dict[str, object]: ...
++
++# The native module retains the complete dynamic 2.2.0 surface.  This 3.5.0
++# stub types every new contract while allowing type checkers to access legacy
++# catalog/protocol symbols that are not yet exhaustively enumerated here.
++def __getattr__(name: str) -> Any: ...
++
++class OperationModality(Enum):
++    NATIVE_EVOLUTION: OperationModality
++    EXPERIENCE_PROTOCOL: OperationModality
++    PASSIVE_OBSERVATION: OperationModality
++    PHYSICAL_PROBE: OperationModality
++    DIAGNOSTIC_FORK: OperationModality
++    ASSISTED_RECONSTRUCTION: OperationModality
++class CodecType(Enum):
++    BOUNDED_INTEGER: CodecType
++    BOOLEAN: CodecType
++    ENUMERATION: CodecType
++    REGISTERED_PATTERN: CodecType
++class InputCodec:
++    version: str
++    type: CodecType
++    minimum: int
++    maximum: int
++    symbols: dict[str,int]
++    @property
++    def injective(self) -> bool: ...
++    def __init__(self) -> None: ...
++    def validate(self) -> None: ...
++    def encode_integer(self, value: int) -> int: ...
++    def encode_symbol(self, value: str) -> int: ...
++class InterfaceSpec:
++    name: str
++    channel: ChannelSpec
++    codec: InputCodec
++    admission: str
++    meaning_location: str
++    def __init__(self) -> None: ...
++class DecodedOutput:
++    physical: Observation
++    integer: Optional[int]
++    symbols: list[str]
++    available: bool
++    ambiguous: bool
++    ordinary_cap_reached: bool
++    status: str
++class OutputDecoder:
++    version: str
++    type: CodecType
++    symbols: dict[str,int]
++    def __init__(self) -> None: ...
++    def decode(self, observation: Observation) -> DecodedOutput: ...
++class InitialPlacement:
++    site: Coordinate
++    raw: int
++    clock: int
++    role: str
++    def __init__(self) -> None: ...
++class OrganizationSpec:
++    id: str
++    recipe_id: str
++    ports: dict[str,Coordinate]
++    supports: list[Coordinate]
++    a: Optional[Coordinate]
++    b: Optional[Coordinate]
++    comparator: Optional[Coordinate]
++    t0_tick: int
++    def __init__(self) -> None: ...
++class ActionCoupling:
++    id: str
++    sites: list[Coordinate]
++    roles: list[str]
++    observation_ticks: list[int]
++    scope: str
++    def __init__(self) -> None: ...
++class OrganizationRecipe:
++    id: str
++    version: str
++    dimension: int
++    origin: Coordinate
++    parameters: dict[str,int]
++    options: dict[str,str]
++    placements: list[InitialPlacement]
++    interfaces: list[InterfaceSpec]
++    organizations: list[OrganizationSpec]
++    actions: list[ActionCoupling]
++    execution: TickOptions
++    t0_tick: int
++    domain: str
++    def __init__(self) -> None: ...
++    @staticmethod
++    def mobile_pair(translation: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def cascade(depth: int = 4, translation: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def native_transfer(translation: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def phase(mode: int = 0, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def distributed(history_mode: int = 1, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def relational(seed: str, history: BasalHistory = ..., keep_reader: bool = False, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def contextual(seed: str, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def mobile_basal(seed: str, history: BasalHistory = ..., origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def contingent(seed: str, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def information(seed: str, history: BasalHistory = ..., hidden: int = 23, origin: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def competition(translation: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def predictive(translation: Coordinate = ...) -> OrganizationRecipe: ...
++    @staticmethod
++    def research(dimension: int, placements: Sequence[InitialPlacement], tick: int = 0) -> OrganizationRecipe: ...
++class FunctionalReadout:
++    organization_id: str
++    tick: int
++    relative_tick: int
++    observations: dict[str,Observation]
++    delta: Optional[int]
++    centers_available: bool
++    reader_available: bool
++    supports_intact: bool
++    axis_projection: Optional[int]
++    scope: str
++class ResilienceObservation:
++    functional: FunctionalReadout
++    missing_supports: list[Coordinate]
++    ordinary_cap_sites: list[str]
++    representable_cap_sites: list[str]
++    recovery_claim: str
++class TraceSample:
++    id: str
++    tick: int
++    observation: Observation
++    relative_to_origin: Coordinate
++    unwrapped: list[int]
++    coverage: str
++class MobileSegment:
++    id: str
++    birth_site: Coordinate
++    direction: Direction
++    birth_tick: int
++    last_tick: int
++    expected_load: Optional[int]
++    expected_semantic: Optional[int]
++    correspondence_stopped: bool
++    def __init__(self) -> None: ...
++class TraceSession:
++    sample_budget: int
++    sites: dict[str,Coordinate]
++    segments: list[MobileSegment]
++    samples: list[TraceSample]
++    capture_stopped: bool
++    def __init__(self) -> None: ...
++    def capture(self, runtime: Runtime, origin: Coordinate = ...) -> None: ...
++    def export_trace(self, path: str) -> None: ...
++    @staticmethod
++    def load_trace(path: str) -> TraceSession: ...
++class EncounterObservation:
++    tick_before: int
++    tick_after: int
++    destination: Coordinate
++    before: Observation
++    after: Observation
++    direct_ballistic_contributors: list[Observation]
++    destination_gate: WriteGateObservation
++    branch: str
++    attribution_scope: str
++def observe_encounter(before: Runtime, after: Runtime, destination: Coordinate) -> EncounterObservation: ...
++class DiagnosticEditReceipt:
++    site: Coordinate
++    label: str
++    tick: int
++    raw_before: int
++    raw_after: int
++    clock_before: int
++    clock_after: int
++    modality: OperationModality
++class ReconstructionSpec:
++    source_sites: list[Coordinate]
++    destination_sites: list[Coordinate]
++    copy_raw: bool
++    copy_clocks: bool
++    authorize_assisted_reconstruction: bool
++    def __init__(self) -> None: ...
++class QueryStep:
++    input_tick: int
++    read_tick: int
++    input: int
++    receipt_ids: list[int]
++    targets: list[Coordinate]
++    captured: list[Observation]
++class QueryProtocol:
++    id: str
++    kind: str
++    modality: OperationModality
++    steps: list[QueryStep]
++    next_capture: int
++class OrganizationView:
++    @property
++    def spec(self) -> OrganizationSpec: ...
++    @property
++    def runtime(self) -> Runtime: ...
++    def observe(self) -> FunctionalReadout: ...
++    def resilience(self) -> ResilienceObservation: ...
++class OrganizationalWorld:
++    @staticmethod
++    def create(recipe: OrganizationRecipe) -> OrganizationalWorld: ...
++    @staticmethod
++    def attach(runtime: Runtime, recipe: OrganizationRecipe, specs: Sequence[OrganizationSpec]) -> OrganizationalWorld: ...
++    @staticmethod
++    def load_snapshot(path: str) -> OrganizationalWorld: ...
++    @property
++    def runtime(self) -> Runtime: ...
++    @property
++    def recipe(self) -> OrganizationRecipe: ...
++    @property
++    def organization_ids(self) -> list[str]: ...
++    @property
++    def interfaces(self) -> list[InterfaceSpec]: ...
++    @property
++    def protocols(self) -> list[QueryProtocol]: ...
++    @property
++    def diagnostic_edits(self) -> list[DiagnosticEditReceipt]: ...
++    @property
++    def external_operations(self) -> list[str]: ...
++    def view(self, id: str) -> OrganizationView: ...
++    def declare_interface(self, spec: InterfaceSpec) -> None: ...
++    def submit(self, name: str, value: int, at_tick: int) -> EventReceipt: ...
++    def submit_symbol(self, name: str, value: str, at_tick: int) -> EventReceipt: ...
++    def probe(self, name: str, value: int, at_tick: int) -> EventReceipt: ...
++    def probe_symbol(self, name: str, value: str, at_tick: int) -> EventReceipt: ...
++    def observe(self, organization: str, port: str) -> Observation: ...
++    def decode(self, organization: str, port: str, decoder: OutputDecoder) -> DecodedOutput: ...
++    def declare_decoder(self, name: str, decoder: OutputDecoder) -> None: ...
++    def decoder(self, name: str) -> OutputDecoder: ...
++    def advance(self, count: int = 1) -> TickInfo: ...
++    def run_until(self, absolute_tick: int) -> TickInfo: ...
++    def start_mobile_sequence(self, id: str, inputs: Sequence[int], first_tick: int = 6, interval: int = 5) -> None: ...
++    def fork(self) -> OrganizationalWorld: ...
++    def diagnostic_fork(self, edits: Sequence[ResearchStateEdit], authorize: bool) -> OrganizationalWorld: ...
++    def assisted_reconstruction(self, source: OrganizationalWorld, spec: ReconstructionSpec) -> OrganizationalWorld: ...
++    def set_trace(self, trace: TraceSession) -> None: ...
++    def trace(self) -> TraceSession: ...
++    def capture_trace(self) -> None: ...
++    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
++
++# DEE4 public cognitive additions
++
++class CognitiveParameters:
++    seed_path: str
++    profile: str
++    origin: Coordinate
++    initial_open: bool
++    change_tick: int | None
++    event_state: int
++    execution: TickOptions
++    journal_limit: int
++    prediction_limit: int
++    def __init__(self) -> None: ...
++
++class CognitiveSession:
++    @staticmethod
++    def create(parameters: CognitiveParameters) -> CognitiveSession: ...
++    @staticmethod
++    def load_snapshot(path: str) -> CognitiveSession: ...
++    @staticmethod
++    def load_legacy_physical_snapshot(path: str) -> Runtime: ...
++    @property
++    def world(self) -> OrganizationalWorld: ...
++    @property
++    def tick(self) -> int: ...
++    @property
++    def preferred_horizon(self) -> int: ...
++    @property
++    def profile(self) -> str: ...
++    @property
++    def parameters(self) -> CognitiveParameters: ...
++    @property
++    def journal(self) -> list[dict]: ...
++    @property
++    def samples(self) -> list[dict]: ...
++    @property
++    def predictions(self) -> list[dict]: ...
++    def observe(self) -> dict: ...
++    def experience(self, symbol: str) -> dict: ...
++    def sense(self) -> dict: ...
++    def predict(self, horizon: int = 0) -> dict: ...
++    def compare(self) -> dict: ...
++    def advance(self, ticks: int = 1) -> dict: ...
++    def run_until(self, absolute_tick: int) -> dict: ...
++    def fork(self) -> CognitiveSession: ...
++    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
++    def set_interface_metadata(self, key: str, value: str) -> None: ...
++    def get_interface_metadata(self, key: str) -> str | None: ...
++    @property
++    def interface_metadata(self) -> dict[str, str]: ...
++
++class NativeAssociationParameters:
++    translation: Coordinate
++    execution: TickOptions
++    def __init__(self) -> None: ...
++
++class NativeAssociationSession:
++    @staticmethod
++    def create(parameters: NativeAssociationParameters = ...) -> NativeAssociationSession: ...
++    @staticmethod
++    def load_snapshot(path: str) -> NativeAssociationSession: ...
++    @property
++    def world(self) -> OrganizationalWorld: ...
++    @property
++    def tick(self) -> int: ...
++    def train(self, teachers: list[int], cue: int = 5, mode: str = 'paired') -> dict: ...
++    def query(self, port: int, payload: int = 13) -> dict: ...
++    def query_panel(self, payload: int = 13) -> dict: ...
++    def observe(self) -> dict: ...
++    def fork(self) -> NativeAssociationSession: ...
++    def start_sequence(self, payloads: list[int], protocol_id: str = 'association_sequence', first_tick: int = 6) -> None: ...
++    def advance(self, ticks: int = 1) -> None: ...
++    def run_until(self, absolute_tick: int) -> None: ...
++    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
++    def set_interface_metadata(self, key: str, value: str) -> None: ...
++    def get_interface_metadata(self, key: str) -> str | None: ...
++    @property
++    def interface_metadata(self) -> dict[str, str]: ...
++
++def create_learnable_cascade(depth: int = 2, translation: Coordinate = ..., execution: TickOptions = ...) -> OrganizationalWorld: ...
++def experience_composition(world: OrganizationalWorld, pairs: list[tuple[int, int]], omit: int | None = None) -> list[dict]: ...
++def query_composition(world: OrganizationalWorld, payload: int) -> dict: ...
++
++
++# Native informative sessions (4.0). Finite apparatus, explicit external sensor.
++class SourceRole:
++    P_INFORMATIVE: SourceRole
++    Q_INFORMATIVE: SourceRole
++
++class FinitePolicyParameters:
++    origin: Coordinate
++    roles: SourceRole
++    actual_class: int
++    actual_enabled: bool
++    execution: TickOptions
++    def __init__(self) -> None: ...
++
++class NativeInformationParameters:
++    seed_path: str
++    origin: Coordinate
++    history: BasalHistory
++    context: int
++    actual_class: int
++    information_load: int
++    query_enabled: bool
++    actual_enabled: bool
++    source_enabled: bool
++    post_query: bool
++    source_cut: str
++    distance: int
++    execution: TickOptions
++    def __init__(self) -> None: ...
++
++class InformativeOperation:
++    tick: int
++    operation: str
++    interface_name: str
++    value: int
++    receipt_id: int | None
++    modality: OperationModality
++
++class PhysicalCandidate:
++    port: str
++    source: str
++    presentation: str
++    physical: Observation
++    value: int | None
++    def as_dict(self) -> dict[str, object]: ...
++
++class InformationReadout:
++    tick: int
++    profile: str
++    status: str
++    scope: str
++    modality: OperationModality
++    comparisons: list[PhysicalCandidate]
++    policies: list[PhysicalCandidate]
++    actions: list[PhysicalCandidate]
++    information: list[PhysicalCandidate]
++    later_responses: list[PhysicalCandidate]
++    physical_outputs: dict[str, Observation]
++    receipts: list[EventReceipt]
++    current_prediction: int | None
++    delta: int | None
++    centers_available: bool
++    supports_intact: bool
++    journal_truncated: bool
++    def as_dict(self) -> dict[str, object]: ...
++
++class FinitePolicySession:
++    @staticmethod
++    def create(parameters: FinitePolicyParameters = ...) -> FinitePolicySession: ...
++    @staticmethod
++    def load_snapshot(path: str) -> FinitePolicySession: ...
++    tick: int
++    world: OrganizationalWorld
++    parameters: FinitePolicyParameters
++    journal: list[InformativeOperation]
++    interface_metadata: dict[str, str]
++    def observe(self) -> InformationReadout: ...
++    def advance(self, count: int = 1) -> InformationReadout: ...
++    def run_until(self, absolute_tick: int) -> InformationReadout: ...
++    def compare(self) -> InformationReadout: ...
++    def source(self) -> InformationReadout: ...
++    def sense(self) -> InformationReadout: ...
++    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
++    def process_boundary(self) -> None: ...
++    def fork(self) -> FinitePolicySession: ...
++    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> FinitePolicySession: ...
++    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
++    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
++    def get_interface_metadata(self, key: str) -> str | None: ...
++
++class NativeInformationSession:
++    @staticmethod
++    def create(parameters: NativeInformationParameters) -> NativeInformationSession: ...
++    @staticmethod
++    def load_snapshot(path: str) -> NativeInformationSession: ...
++    tick: int
++    world: OrganizationalWorld
++    parameters: NativeInformationParameters
++    journal: list[InformativeOperation]
++    interface_metadata: dict[str, str]
++    def observe(self) -> InformationReadout: ...
++    def advance(self, count: int = 1) -> InformationReadout: ...
++    def run_until(self, absolute_tick: int) -> InformationReadout: ...
++    def compare(self) -> InformationReadout: ...
++    def source(self) -> InformationReadout: ...
++    def sense(self) -> InformationReadout: ...
++    def submit_actual(self, actual_class: int) -> list[EventReceipt]: ...
++    def process_boundary(self) -> None: ...
++    def fork(self) -> NativeInformationSession: ...
++    def diagnostic_fork(self, edits: list[ResearchStateEdit], authorize: bool) -> NativeInformationSession: ...
++    def save_snapshot(self, path: str, include_trace: bool = True) -> None: ...
++    def set_interface_metadata(self, key: str | dict[str, str], value: str = ...) -> None: ...
++    def get_interface_metadata(self, key: str) -> str | None: ...
++
+--- 4.0/README.md
++++ 4.5/README.md
+@@ -1,11 +1,21 @@
+-# DEE thinking 3.5.0
++# DEE thinking 4.5.0 — private source distribution
+ 
+-This source copy preserves v27 and the inherited 3.0 APIs. New physical recipe,
+-world, view, I/O, trace and operational-persistence code lives in
+-`include/dee_thinking/organizational.hpp`, `src/organizational.cpp`,
+-`src/organization_recipes.cpp` and `bindings/organizational_pybind.cpp`.
+-Use `tools/build_3_5.ps1`; the final wheel is version3.5.0.
+-See delivery `docs/API_AND_SCOPE.md` and `docs/BUILD_AND_MIGRATION.md`.
++DEE v27 remains byte-identical. The 4.0 Runtime, C++ target `DEE::thinking`,
++catalogue, protocols, nine functional families and session interfaces remain.
++New optional bounded preparations and readout are implemented in
++`include/dee_thinking/consolidated.hpp`, `src/consolidated.cpp` and their
++bindings; Python sessions are in `python/dee_thinking/consolidated.py`.
++They prepare and evolve real native worlds, not cached research answers.
++
++For this delivery use `../tools/build45.ps1` (wheel, cpp and consumer stages),
++`../LEEME.md`, `../PRODUCT_CONTRACT.json` and `../VALIDATION_REPORT.json`.
++Build with C++20 and CPython3.13 x64; install the supplied cp313-win_amd64 wheel
++without a source checkout. No other platform or binary ABI is certified.
++Direct Runtime use does not require or install a cognitive recipe.
++The NSM catalogue records evidence states; it is not 65 acquired meanings.
++
++The material below is inherited reference documentation, not new4.5 results.
++Historical build scripts keep their identity and are not the4.5 release path.
+ 
+ ## Inherited 3.0 reference below (provenance, not an install dependency)
+ 
+--- 4.0/setup.py
++++ 4.5/setup.py
+@@ -61,7 +61,7 @@
+         if native_build_root:
+             build_temp = Path(native_build_root).resolve()
+         else:
+-            build_temp = Path(tempfile.gettempdir()) / "dt40-wheel-cp313"
++            build_temp = Path(tempfile.gettempdir()) / "dt45-wheel-cp313"
+         build_temp.mkdir(parents=True, exist_ok=True)
+         extdir.mkdir(parents=True, exist_ok=True)
+ 
+--- 4.0/src/organizational.cpp
++++ 4.5/src/organizational.cpp
+@@ -245,8 +245,8 @@
+         const auto k=static_cast<std::int64_t>(steps);add(s.id,q,{s.birth_site.x+s.direction.dx*k,s.birth_site.y+s.direction.dy*k,s.birth_site.z+s.direction.dz*k},match?"OBSERVED_DECLARED_BALLISTIC_SEGMENT_NOT_UNIQUE_ANCESTRY":"TRANSFORMATION_OR_ABSENCE_UNRESOLVED_CORRESPONDENCE_STOPPED");s.last_tick=r.current_tick();if(!match)s.correspondence_stopped=true;
+     }
+ }
+-void TraceSession::export_trace(const std::string& path) const{Writer w;w.u64(0x3533545241434531ULL);write_trace(w,*this);w.u64(checksum(w.bytes));std::ofstream f(path,std::ios::binary|std::ios::trunc);if(!f)throw std::runtime_error("trace export open failed");f.write(reinterpret_cast<const char*>(w.bytes.data()),static_cast<std::streamsize>(w.bytes.size()));f.close();if(!f)throw std::runtime_error("trace export failed");}
+-TraceSession TraceSession::load_trace(const std::string& path){std::ifstream f(path,std::ios::binary|std::ios::ate);if(!f)throw std::runtime_error("trace open failed");auto size=f.tellg();ensure(size>=16&&size<=static_cast<std::streamoff>(max_bytes),"trace file size invalid");f.seekg(0);std::vector<std::uint8_t>b(static_cast<std::size_t>(size));f.read(reinterpret_cast<char*>(b.data()),size);ensure(static_cast<bool>(f),"trace read failed");Reader r{b};ensure(r.u64()==0x3533545241434531ULL,"trace schema invalid");auto t=read_trace(r);auto checkpos=r.pos;auto check=r.u64();ensure(r.pos==b.size(),"trace trailing bytes");b.resize(checkpos);ensure(checksum(b)==check,"trace checksum invalid");return t;}
++void TraceSession::export_trace(const std::string& path) const{Writer w;w.u64(0x3533545241434531ULL);write_trace(w,*this);w.u64(checksum(w.bytes));std::ofstream f(std::filesystem::u8path(path),std::ios::binary|std::ios::trunc);if(!f)throw std::runtime_error("trace export open failed");f.write(reinterpret_cast<const char*>(w.bytes.data()),static_cast<std::streamsize>(w.bytes.size()));f.close();if(!f)throw std::runtime_error("trace export failed");}
++TraceSession TraceSession::load_trace(const std::string& path){std::ifstream f(std::filesystem::u8path(path),std::ios::binary|std::ios::ate);if(!f)throw std::runtime_error("trace open failed");auto size=f.tellg();ensure(size>=16&&size<=static_cast<std::streamoff>(max_bytes),"trace file size invalid");f.seekg(0);std::vector<std::uint8_t>b(static_cast<std::size_t>(size));f.read(reinterpret_cast<char*>(b.data()),size);ensure(static_cast<bool>(f),"trace read failed");Reader r{b};ensure(r.u64()==0x3533545241434531ULL,"trace schema invalid");auto t=read_trace(r);auto checkpos=r.pos;auto check=r.u64();ensure(r.pos==b.size(),"trace trailing bytes");b.resize(checkpos);ensure(checksum(b)==check,"trace checksum invalid");return t;}
+ EncounterObservation observe_encounter(const Runtime& before,const Runtime& after,Coordinate q){
+     ensure(before.dimension()==after.dimension()&&after.current_tick()==before.current_tick()+1,"encounter requires adjacent same-dimension states");EncounterObservation e;e.tick_before=before.current_tick();e.tick_after=after.current_tick();e.destination=q;e.before=before.observe(q);e.after=after.observe(q);e.destination_gate=observation::inspect_write_gate(before,q,false);auto n=before.dimension();
+     for(int dx=-1;dx<=1;++dx)for(int dy=-1;dy<=1;++dy)for(int dz=-1;dz<=1;++dz){if(dx==0&&dy==0&&dz==0)continue;Coordinate p{v27::wrap_coordinate(q.x+dx,n),v27::wrap_coordinate(q.y+dy,n),v27::wrap_coordinate(q.z+dz,n)};auto o=before.observe(p);if(o.raw!=0&&o.record.state<=1&&o.record.dx==-dx&&o.record.dy==-dy&&o.record.dz==-dz)e.direct_ballistic_contributors.push_back(o);}
+--- 4.0/src/runtime.cpp
++++ 4.5/src/runtime.cpp
+@@ -662,11 +662,11 @@
+     }
+     const auto checksum = fnv1a64(out.data.data(), out.data.size());
+     out.u64(checksum);
+-    write_snapshot_atomically(path, out.data);
++    write_snapshot_atomically(std::filesystem::u8path(path), out.data);
+ }
+ 
+ Runtime Runtime::load_snapshot(const std::string& path) {
+-    std::ifstream stream(path, std::ios::binary | std::ios::ate);
++    std::ifstream stream(std::filesystem::u8path(path), std::ios::binary | std::ios::ate);
+     if (!stream) throw std::runtime_error("cannot open snapshot");
+     const auto end = stream.tellg();
+     if (end < 0 || static_cast<std::uint64_t>(end) > kMaxSnapshotBytes) {
+--- 4.0/tests/organizational_tests.cpp
++++ 4.5/tests/organizational_tests.cpp
+@@ -11,7 +11,7 @@
+ void learn(OrganizationalWorld& w,int second=11){for(int j=0;j<2;++j){w.submit("l"+std::to_string(j)+".cue",5,0);w.submit("l"+std::to_string(j)+".teacher",j?second:7,0);}w.run_until(6);}
+ int main(int argc,char** argv){
+     Suite s("organizational_3_5");if(argc<3)return 2;const std::string seed=argv[1];const auto dir=std::filesystem::path(argv[2]);std::filesystem::create_directories(dir);
+-    DEE_CHECK_EQ(s,std::string(kProductVersion),std::string("4.0.0"));
++    DEE_CHECK_EQ(s,std::string(kProductVersion),std::string("4.5.0"));
+     auto mobile=OrganizationalWorld::create(OrganizationRecipe::mobile_pair());learn(mobile);
+     auto independent=mobile.fork();independent.probe("q0.query",13,6);independent.probe("q1.query",13,6);independent.run_until(11);
+     DEE_CHECK_EQ(s,independent.observe("q0","response").record.s_reg,25);DEE_CHECK_EQ(s,independent.observe("q1","response").record.s_reg,29);
+--- 4.0/tests/python/test_cognition_facilitators.py
++++ 4.5/tests/python/test_cognition_facilitators.py
+@@ -19,7 +19,7 @@
+ 
+ class CognitionFacilitators(unittest.TestCase):
+     def test_real_version(self):
+-        self.assertEqual(dee.__version__, "4.0.0")
++        self.assertEqual(dee.__version__, "4.5.0")
+         self.assertEqual(dee.kernel_identity()["kernel_version"], 27)
+ 
+     def test_grammar_is_not_open_language(self):
+--- 4.0/tests/python/test_wheel_api.py
++++ 4.5/tests/python/test_wheel_api.py
+@@ -11,7 +11,7 @@
+ 
+ class WheelApiTests(unittest.TestCase):
+     def test_native_identity_and_platform(self) -> None:
+-        self.assertEqual(dt.__version__, "4.0.0")
++        self.assertEqual(dt.__version__, "4.5.0")
+         self.assertEqual(dt.KERNEL_MODULUS, 19665)
+         self.assertEqual(dt.REDUCER_CAP, 19664)
+         info = dt.build_info()

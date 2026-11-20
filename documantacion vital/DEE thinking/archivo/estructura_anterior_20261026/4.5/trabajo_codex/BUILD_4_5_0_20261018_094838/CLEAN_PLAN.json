@@ -1,0 +1,87 @@
+{
+  "schema": "DEE45.clean-plan.v1",
+  "scope": "Exact extracted ZIP; public APIs evolve new trajectories. Comparisons run only after baseline and separate-process continuation. Independent C++ consumers link the extracted install_cpp.",
+  "commands": [
+    {
+      "id": "public_installed_smoke",
+      "argv": ["{python}", "-I", "-B", "{root}/tools/smoke_installed45.py", "--output", "{out}/smoke"],
+      "timeout_seconds": 600
+    },
+    {
+      "id": "independent_cpp_consumers",
+      "argv": ["{python}", "-I", "-B", "{root}/tools/consume_cpp45.py", "--root", "{root}", "--output", "{out}/cpp"],
+      "timeout_seconds": 900
+    },
+    {
+      "id": "unicode_snapshot_paths",
+      "argv": ["{python}", "-I", "-B", "{root}/tools/unicode_snapshot45.py", "--output", "{out}/unicode/UNICODE_REPORT.json"],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "real_spanish_launcher",
+      "argv": ["{python}", "-I", "-B", "{root}/tools/check_launcher45.py", "--root", "{root}", "--output", "{out}/launcher"],
+      "timeout_seconds": 420
+    }
+  ],
+  "required_outputs": [
+    "smoke/INITIAL.json",
+    "smoke/pending.deetsnap.gz",
+    "smoke/child/CONTINUATION.json",
+    "smoke/SMOKE_REPORT.json",
+    "cpp/CPP_CONSUMER_REPORT.json",
+    "cpp/EXECUTE.stdout.log",
+    "cpp/EXECUTE_LEGACY40.stdout.log",
+    "cpp/legacy40.deetsnap",
+    "unicode/UNICODE_REPORT.json",
+    "launcher/LAUNCHER_REPORT.json",
+    "launcher/TRANSCRIPCION.json",
+    "launcher/vida_continuada.deetsnap.gz"
+  ],
+  "assertions": [
+    {
+      "path": "smoke/SMOKE_REPORT.json",
+      "equals": {
+        "/status": "VERIFIED",
+        "/separate_process_continuation": true,
+        "/comparison_after_trajectories_only": true,
+        "/control_unavailable_preserved": true,
+        "/physical_and_operational_comparisons/physics": true,
+        "/physical_and_operational_comparisons/operative_stable": true
+      }
+    },
+    {
+      "path": "cpp/CPP_CONSUMER_REPORT.json",
+      "equals": {
+        "/status": "VERIFIED",
+        "/primary_stdout/new_native_repertoire": true,
+        "/primary_stdout/pending_snapshot_continuation": true,
+        "/primary_stdout/legacy_native_composition": true,
+        "/legacy40_source_byte_exact": true,
+        "/legacy40_source_sha256": "6da09a24dbdf6fbb3b6736196e9eb3354295c8ea2d330491890446cde5987550",
+        "/legacy40_execution/exit_code": 0
+      }
+    },
+    {
+      "path": "unicode/UNICODE_REPORT.json",
+      "equals": {
+        "/version": "4.5.0",
+        "/cases/0/case": "runtime_unicode",
+        "/cases/0/status": "PASS",
+        "/cases/1/case": "session_gzip_unicode",
+        "/cases/1/status": "PASS",
+        "/cases/2/case": "trace_unicode",
+        "/cases/2/status": "PASS"
+      }
+    },
+    {
+      "path": "launcher/LAUNCHER_REPORT.json",
+      "equals": {
+        "/status": "VERIFIED",
+        "/real_powershell_launcher": true,
+        "/offline_owned_environment": true,
+        "/restored_without_repreparation": true,
+        "/comparison_after_trajectory_only": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "C:\Users\Erik\AppData\Local\Temp\dt35-extracted-20261009-v1\package\source\tools\validate_cross_language_3_5.py", line 39, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--consumer',required=True);p.add_argument('--output',required=True);main(p.parse_args())
+                                                                                                                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Erik\AppData\Local\Temp\dt35-extracted-20261009-v1\package\source\tools\validate_cross_language_3_5.py", line 23, in main
+    command('create',mid)
+    ~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Erik\AppData\Local\Temp\dt35-extracted-20261009-v1\package\source\tools\validate_cross_language_3_5.py", line 22, in command
+    r=subprocess.run([cpp,*map(str,args)],text=True,capture_output=True);calls.append({"argv":[cpp,*map(str,args)],"exit_code":r.returncode,"stdout":r.stdout,"stderr":r.stderr});assert r.returncode==0,r.stderr
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado

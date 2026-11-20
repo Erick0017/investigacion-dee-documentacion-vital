@@ -1,0 +1,91 @@
+{
+  "schema": "DEE45.technical_differential_summary.v1",
+  "candidate": "final6",
+  "status": "PASS",
+  "failures": [],
+  "proofs": {
+    "NEUTRAL_DIFF_final6.json": {
+      "sha256": "6bcd03bb04cef6fcb12e910e2a1523f1a749509c380c5e04f75a339e768e1e6c",
+      "status": "PASS",
+      "count": 48
+    },
+    "BASELINE_BACKEND_EQUIVALENCE.json": {
+      "sha256": "9691556523f0ff1645c0876dc60733841c16d924e83792ae218f493e0ba1c032",
+      "status": "PASS",
+      "count": 32
+    },
+    "FINAL6_BACKEND_EQUIVALENCE.json": {
+      "sha256": "5b029a9b316967d290a2117381f30ee627d864f81b15c530d65ccf70cb81ce89",
+      "status": "PASS",
+      "count": 32
+    },
+    "CPC_PORT_DIFF_final6.json": {
+      "sha256": "fa1e608dd15fafe9f1c7f9a7edb8d8a549e5a7fcd743d69331e130df4d1b2220",
+      "status": "PASS",
+      "count": 10
+    },
+    "API_DIFF_final6.json": {
+      "sha256": "a5de037c888b822450b1d2ccf315e74fb7a90c2a6a836525e7c37122a965b273",
+      "status": "PASS",
+      "count": null
+    },
+    "FINITE_REVISION_DIFF_final6.json": {
+      "sha256": "afe7373d1c961a4bf35f3a04ee2c897fd686d4af726a557968ed735d5672bd39",
+      "status": "PASS",
+      "count": 6
+    },
+    "EXPERIMENTAL_REGULATION_DIFF_final6.json": {
+      "sha256": "e8f59a6f2cf909c169f373b4049124e9df821842c9f50b1fa28c49caba5f2fae",
+      "status": "PASS",
+      "count": 4
+    }
+  },
+  "summary_instrument_repair": {
+    "original_report": "TECHNICAL_DIFFERENTIAL_SUMMARY_candidate1_instrument_attempt1.json",
+    "original_source": "tools/base_validada/validation_summary_v1.py",
+    "cause": "API surface inventory has name_surface_preserved, not a status field; the first summary incorrectly treated the missing status as failure. Corrected parser now requires the explicit boolean. No primary test or trajectory changed."
+  },
+  "cross_process_proofs": {
+    "new_recipe_on_40_CHECK.json": {
+      "sha256": "db6b1eacba055afb26a720dedf0243e8675d4265083823c591c4582b3dea8317",
+      "status": "PASS"
+    },
+    "new_runtime_on_40_CHECK.json": {
+      "sha256": "b808359bc08e18bb564cdc135459dca7def832e967d2d015dab4735ce3b98759",
+      "status": "PASS"
+    },
+    "old_recipe_on_45_CHECK.json": {
+      "sha256": "bd58bcd3a62fdc9ea37418f249f473ebfa17dbf7b6b8ac32d11f301e4d72ef3d",
+      "status": "PASS"
+    },
+    "old_runtime_on_45_CHECK.json": {
+      "sha256": "31ea3e4dc064d56767c3b752b0f7fde7e933b93b6e37faf83ad96ef86b5c8572",
+      "status": "PASS"
+    }
+  },
+  "counts_are_not_independent_scientific_replicas": true,
+  "instrumental_incidents": [
+    {
+      "kind": "native_post_trajectory_timeout",
+      "cases": 2,
+      "original_results": "differential_4_0/INDEX.json",
+      "directed_completion": "differential_4_0/INDEX_COMPLETED.json",
+      "new_preparations": 0
+    },
+    {
+      "kind": "Windows_atomic_JSON_replace_AccessDenied",
+      "cases": 1,
+      "original_result": "cpc_ports_4_0/K65_PAIRED_Q9.PROCESS.json",
+      "directed_completion": "cpc_ports_4_0/K65_PAIRED_Q9/RESULT_RECOVERED.json",
+      "new_preparations": 0,
+      "instrumentation_change": "tools/INSTRUMENTATION_CHANGES.json"
+    }
+  ],
+  "preserved_adverse_functional_results": [
+    "K65_NO_EVENT: queries rejected by occupation, not physical numeric zero",
+    "K65_UNPAIRED: late valid responses occur; not a uniformly negative control",
+    "Revision offpath controls: first relation may be outside the fixed decoder while second relation remains usable"
+  ],
+  "documental_exclusions": "Only inert versioned OrganizationalWorld/consolidated descriptor envelopes are normalized in port/snapshot comparisons. RAW, clocks, tick, input payloads, queues, receipts, channels and physical readouts are not normalized away.",
+  "scope": "Finite installed-software equivalence and compatibility. These counts do not establish new NSM meanings, autonomous regulation or universal functional performance."
+}

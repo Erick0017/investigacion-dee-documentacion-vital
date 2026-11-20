@@ -1,0 +1,120 @@
+{
+  "case": "L03/action_cut_open_replay",
+  "source_member": "BRANCHES/L03/action_cut_open_replay/MEASUREMENTS.json",
+  "science_sha256": "f1f8b6b2f68517f003a21c2908adde49bf1194c7f5657b460563b91ad76f28f0",
+  "adapter_sha256": "905918d7bcbee17cbb757a92e2081296c67bb955aa48336d9377030fdb2a2a5a",
+  "version": "3.0.0",
+  "native_binary_sha256": "333da509e19a9f31793df3a9d7fbc3c3809c1c8f69cd62a6b6423e3bb2a79a83",
+  "fixture_only_not_runtime_dependency": true,
+  "previous_attempts": [
+    {
+      "case": "L03/action_cut_open_replay",
+      "source_member": "BRANCHES/L03/action_cut_open_replay/MEASUREMENTS.json",
+      "science_sha256": "f1f8b6b2f68517f003a21c2908adde49bf1194c7f5657b460563b91ad76f28f0",
+      "adapter_sha256": "b5c487f188c0cf1b286b6ea9913e20d08c74e90865c280048b6d14b6486e01fe",
+      "version": "3.0.0",
+      "native_binary_sha256": "333da509e19a9f31793df3a9d7fbc3c3809c1c8f69cd62a6b6423e3bb2a79a83",
+      "fixture_only_not_runtime_dependency": true,
+      "status": "FAIL",
+      "error": "\"There is no item named 'CHECKPOINTS\\\\\\\\L03\\\\\\\\contingent_intact\\\\\\\\T13.deetsnap' in the archive\"",
+      "traceback": "Traceback (most recent call last):\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\replay_primary_cases.py\", line 223, in run\n    result = late_replay(ctx, fixtures, spec, obs, handlers, apparatus) if spec[\"kind\"] == \"late_contingency_replay\" else handlers.HANDLERS[spec[\"kind\"]](ctx, spec[\"spec\"])\n             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\replay_primary_cases.py\", line 157, in late_replay\n    full = fixtures.runtime(s[\"reference_t13\"], s[\"reference_sha256\"])\n  File \"D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\replay_primary_cases.py\", line 59, in runtime\n    b = self.z.read(member)\n  File \"D:\\Descargas\\ANACONDA MINICONDA\\Lib\\zipfile\\__init__.py\", line 1615, in read\n    with self.open(name, \"r\", pwd) as fp:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"D:\\Descargas\\ANACONDA MINICONDA\\Lib\\zipfile\\__init__.py\", line 1652, in open\n    zinfo = self.getinfo(name)\n  File \"D:\\Descargas\\ANACONDA MINICONDA\\Lib\\zipfile\\__init__.py\", line 1580, in getinfo\n    raise KeyError(\n        'There is no item named %r in the archive' % name)\nKeyError: \"There is no item named 'CHECKPOINTS\\\\\\\\L03\\\\\\\\contingent_intact\\\\\\\\T13.deetsnap' in the archive\"\n",
+      "comparisons": [],
+      "seconds": 0.003833099966868758
+    }
+  ],
+  "status": "PASS",
+  "comparisons": [
+    {
+      "label": "AFTER_NATIVE_ACTION",
+      "member": "CHECKPOINTS/L03/action_cut_open_replay/AFTER_NATIVE_ACTION.deetsnap",
+      "source_snapshot_sha256": "8f09341e2fa1bd6d48ced41246d3771b9e0af443edef37e28e2945b04d3a371c",
+      "reference": {
+        "tick": 40,
+        "dimension": 47,
+        "raw_sha256": "74b7fc05b56c7a1994c746da30ab3985699af21a3be5e59646e297090101c50a",
+        "clock_sha256": "d017256858e176e49790eed7a5f1b0bf94cc092bb0b2cd8afe7e4bf217d579de"
+      },
+      "reconstructed": {
+        "tick": 40,
+        "dimension": 47,
+        "raw_sha256": "74b7fc05b56c7a1994c746da30ab3985699af21a3be5e59646e297090101c50a",
+        "clock_sha256": "d017256858e176e49790eed7a5f1b0bf94cc092bb0b2cd8afe7e4bf217d579de"
+      },
+      "physical_equal": true,
+      "receipts_equal": true,
+      "channel_names_equal": true,
+      "pause_equal": true,
+      "protocol_phase_equal": true
+    },
+    {
+      "label": "PRE_ENV_REPLAY",
+      "member": "CHECKPOINTS/L03/action_cut_open_replay/PRE_ENV_REPLAY.deetsnap",
+      "source_snapshot_sha256": "585be85944d3b189fedde2a25a244749eda46fd732fcf7d451ff522745c0d6e1",
+      "reference": {
+        "tick": 45,
+        "dimension": 47,
+        "raw_sha256": "d5c11d8103fe00a12f3a95f1013ca43c0f0e45c31749b24abfb1f71a0a03a185",
+        "clock_sha256": "3cf7e8f08d5ea5ac44ffccb78648d95913e07119d6daa56ecf4b42448e6e3634"
+      },
+      "reconstructed": {
+        "tick": 45,
+        "dimension": 47,
+        "raw_sha256": "d5c11d8103fe00a12f3a95f1013ca43c0f0e45c31749b24abfb1f71a0a03a185",
+        "clock_sha256": "3cf7e8f08d5ea5ac44ffccb78648d95913e07119d6daa56ecf4b42448e6e3634"
+      },
+      "physical_equal": true,
+      "receipts_equal": true,
+      "channel_names_equal": true,
+      "pause_equal": true,
+      "protocol_phase_equal": true
+    },
+    {
+      "label": "POST_ENV_REPLAY",
+      "member": "CHECKPOINTS/L03/action_cut_open_replay/POST_ENV_REPLAY.deetsnap",
+      "source_snapshot_sha256": "ccd0719ce9c2557f550b44843b214868473a4ee1aa4161eeefdae5132f35ed0a",
+      "reference": {
+        "tick": 45,
+        "dimension": 47,
+        "raw_sha256": "8bc67a2b9011bcc864d0bb411a7c5be4b82d2319688c1d1049439aa90901043a",
+        "clock_sha256": "3cf7e8f08d5ea5ac44ffccb78648d95913e07119d6daa56ecf4b42448e6e3634"
+      },
+      "reconstructed": {
+        "tick": 45,
+        "dimension": 47,
+        "raw_sha256": "8bc67a2b9011bcc864d0bb411a7c5be4b82d2319688c1d1049439aa90901043a",
+        "clock_sha256": "3cf7e8f08d5ea5ac44ffccb78648d95913e07119d6daa56ecf4b42448e6e3634"
+      },
+      "physical_equal": true,
+      "receipts_equal": true,
+      "channel_names_equal": true,
+      "pause_equal": true,
+      "protocol_phase_equal": true
+    },
+    {
+      "label": "FINAL",
+      "member": "CHECKPOINTS/L03/action_cut_open_replay/FINAL.deetsnap",
+      "source_snapshot_sha256": "0ad2e81c6c6602b5dcfb92bd2f859a84d5b06c14f2addfbc463fe4d866d6d87d",
+      "reference": {
+        "tick": 202,
+        "dimension": 47,
+        "raw_sha256": "19b08a4b557b8fff62469a6b42e0182eeaa225acb6824bd02862d14814c4cedf",
+        "clock_sha256": "eae2d1e9d2af27d54f0c3aafa15d261a44c4ae91d82a51494274c2a34efe4cef"
+      },
+      "reconstructed": {
+        "tick": 202,
+        "dimension": 47,
+        "raw_sha256": "19b08a4b557b8fff62469a6b42e0182eeaa225acb6824bd02862d14814c4cedf",
+        "clock_sha256": "eae2d1e9d2af27d54f0c3aafa15d261a44c4ae91d82a51494274c2a34efe4cef"
+      },
+      "physical_equal": true,
+      "receipts_equal": true,
+      "channel_names_equal": true,
+      "pause_equal": true,
+      "protocol_phase_equal": true
+    }
+  ],
+  "panel_equal": true,
+  "execution_type": "PHYSICAL_REPLAY",
+  "ticks_evolved": 162,
+  "seconds": 18.924044699873775
+}

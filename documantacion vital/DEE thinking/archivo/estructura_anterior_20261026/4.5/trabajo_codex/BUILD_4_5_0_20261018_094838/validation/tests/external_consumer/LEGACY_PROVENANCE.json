@@ -1,0 +1,13 @@
+{
+  "schema": "DEE.external-consumer-source-compatibility.v1",
+  "source": "source/examples/independent_consumer.cpp",
+  "copy": "validation/tests/external_consumer/legacy40_consumer.cpp",
+  "sha256_source_and_copy": "6da09a24dbdf6fbb3b6736196e9eb3354295c8ea2d330491890446cde5987550",
+  "copy_byte_exact": true,
+  "purpose": "Compile the unchanged inherited 4.0 consumer against the installed 4.5 CMake package and DEE::thinking target; no C++ binary ABI compatibility is claimed.",
+  "target": "legacy40_consumer",
+  "argv": ["NEW_SNAPSHOT_FILE.deetsnap"],
+  "new_consumer_target": "dee45_external_consumer",
+  "new_consumer_argv": ["NEW_OUTPUT_DIRECTORY"],
+  "compiler": "Use the single compiler/toolchain selected by the parent build; this provenance does not itself assert a successful build or execution."
+}

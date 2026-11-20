@@ -1,0 +1,89 @@
+{
+  "commands": [
+    {
+      "name": "extracted_clean_venv",
+      "command": [
+        "D:\\Descargas\\ANACONDA MINICONDA\\python.exe",
+        "-I",
+        "-m",
+        "venv",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\venv"
+      ],
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009",
+      "kind": "other",
+      "timeout_seconds": 1200,
+      "required": true
+    },
+    {
+      "name": "extracted_noneditable_install",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\venv\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\wheel\\dee_thinking-3.5.0-cp313-cp313-win_amd64.whl"
+      ],
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009",
+      "kind": "wheel_smoke",
+      "timeout_seconds": 1200,
+      "required": true
+    },
+    {
+      "name": "extracted_public_API_outside_source",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\source\\tools\\check_installed_3_5.py",
+        "--wheel",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\wheel\\dee_thinking-3.5.0-cp313-cp313-win_amd64.whl",
+        "--example",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\public_example.py",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\publication_checks\\installed_public"
+      ],
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009",
+      "kind": "wheel_smoke",
+      "timeout_seconds": 1200,
+      "required": true
+    },
+    {
+      "name": "extracted_external_cpp",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\source\\tools\\build_external_3_5.py",
+        "--install",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\install",
+        "--build-root",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\consumer",
+        "--source",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\source\\examples\\external_3_5"
+      ],
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009",
+      "kind": "consumer",
+      "timeout_seconds": 1200,
+      "required": true
+    },
+    {
+      "name": "extracted_cpp_python_continuation",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\package\\source\\tools\\validate_cross_language_3_5.py",
+        "--consumer",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009\\consumer\\dee_public_consumer.exe",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\publication_checks\\cross_language"
+      ],
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-release-extracted-20261009",
+      "kind": "cross_language",
+      "timeout_seconds": 1200,
+      "required": true
+    }
+  ]
+}

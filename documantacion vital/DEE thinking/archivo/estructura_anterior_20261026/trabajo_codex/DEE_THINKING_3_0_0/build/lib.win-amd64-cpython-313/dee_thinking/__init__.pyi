@@ -1,0 +1,29 @@
+from ._native import *
+from ._native import __version__, build_info
+from typing import Any
+
+RuntimeConfig = TickOptions
+
+def kernel_identity() -> dict[str, object]: ...
+def reference_seed_path() -> str: ...
+def create_relational_world(
+    history: BasalHistory = BasalHistory.AB,
+    *,
+    origin: tuple[int, int, int] = (15, 15, 15),
+    control: BasalControl = BasalControl.FULL,
+    domain_mode: BasalDomainMode = BasalDomainMode.VALIDATED,
+    backend: Backend = Backend.LAZY,
+    threads: int = 1,
+) -> BasalWorld: ...
+def create_contextual_world(
+    *,
+    origin: tuple[int, int, int] = (15, 15, 15),
+    control: BasalControl = BasalControl.FULL,
+    domain_mode: BasalDomainMode = BasalDomainMode.VALIDATED,
+    backend: Backend = Backend.LAZY,
+    threads: int = 1,
+) -> BasalWorld: ...
+
+# See ``_native.pyi``: legacy 2.2.0 names remain available dynamically while
+# the additions introduced in 3.0.0 have precise declarations above.
+def __getattr__(name: str) -> Any: ...

@@ -1,0 +1,281 @@
+{
+  "schema": "DEE45.preserved-job-failures.v1",
+  "jobs": [
+    {
+      "job": "baseline_cpc_ports_400",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "51d53dc96c77cf4ad41588c05894a5cc4a4e5998f9d238a0ab78a6f1deed9c4b",
+      "cause": "Windows atomic report replace was denied after the physical trajectory; original process result retained.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/baseline_K65_Q9_recovery/COMMAND.json",
+          "sha256": "30a2c95e45222632d777e9c8bcf41afa02057ce5851b2d5ac1127febd8301a41"
+        },
+        {
+          "path": "validation/cpc_ports_4_0/INDEX_COMPLETED.json",
+          "sha256": "4f17da1d4bb22110548f009e4c5617626043ef52dd1009ec0196a26ba6fd53e2"
+        },
+        {
+          "path": "validation/CPC_PORT_DIFF_final6.json",
+          "sha256": "fa1e608dd15fafe9f1c7f9a7edb8d8a549e5a7fcd743d69331e130df4d1b2220"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "baseline_neutral_400",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "7b6d0716db7f330c0aed2b6ba434761a7ea47101f92d7908fea60fc94ca5b24f",
+      "cause": "Two native long-run cases exceeded their child-task window after writing checkpoints; no new preparation used for directed continuation.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/baseline_dense127_continue/COMMAND.json",
+          "sha256": "b8bb825d7d26320da7631ddb6a1de25b004a56602673dd7b9bbb28540a3e00ff"
+        },
+        {
+          "path": "jobs/baseline_parallel127_continue/COMMAND.json",
+          "sha256": "1b044c96f0822b6cd7fbdaf4759b4171f214e7f0b9879a4531862074da85d526"
+        },
+        {
+          "path": "validation/differential_4_0/INDEX_COMPLETED.json",
+          "sha256": "84cbd1b90b16ae7fc1841b57518a6fcb9cf3cc494198abc0b2d987c39d48cd47"
+        },
+        {
+          "path": "validation/NEUTRAL_DIFF_final6.json",
+          "sha256": "6bcd03bb04cef6fcb12e910e2a1523f1a749509c380c5e04f75a339e768e1e6c"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "consolidated_cpp_build_tests",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "afaf20303533cff8183a26cb16097e2007e040f63394d8411ddd8912db73c0a5",
+      "cause": "Three inherited CTest cases exceeded the initial 180-second test limit; original 20 passes and 3 timeouts retained.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/cpp_final_affected_tests/COMMAND.json",
+          "sha256": "02d24d8277a4d929734837c9658206d93c652706899f3e463aae17de89ae0232"
+        },
+        {
+          "path": "validation/CPP_VERSION_ASSERTION_REPAIR.json",
+          "sha256": "e9820e72b93e9b3881bf0cd2ad86c1ef36b9389f02e9f3b68b6dc58ad65e199e"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "cpp_directed_timeout_recovery_and_trace",
+      "status": "COMPLETED",
+      "exit_code": 8,
+      "ledger_sha256": "65ff11bd8e511891dde6bd9cd7b7a2f936d805724ec1915897ed966299e739f9",
+      "cause": "Directed completion exposed one stale expected product-version literal; physical assertions were not changed.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/cpp_final_affected_tests/COMMAND.json",
+          "sha256": "02d24d8277a4d929734837c9658206d93c652706899f3e463aae17de89ae0232"
+        },
+        {
+          "path": "validation/CPP_VERSION_ASSERTION_REPAIR.json",
+          "sha256": "e9820e72b93e9b3881bf0cd2ad86c1ef36b9389f02e9f3b68b6dc58ad65e199e"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "early_wheel_toolchain",
+      "status": "COMPLETED",
+      "exit_code": 4294770688,
+      "ledger_sha256": "40103aa8ebb2492f126bb84aed57ae52e8e44db6b26d19eb6419868f9f45d84d",
+      "cause": "The initial relative -File path did not resolve from the build invocation directory.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/early_wheel_authorized/COMMAND.json",
+          "sha256": "0a0d2f2bf31231ae129d158f29caf94292b300d43c5a2e9c600d908c20f078b7"
+        },
+        {
+          "path": "jobs/final_contract_wheel_candidate6/COMMAND.json",
+          "sha256": "fec48059cf755be5044f2622c9f7efe69d8548b940615b41aacc378869a25d90"
+        },
+        {
+          "path": "validation/WHEEL_INSPECTION_FINAL.json",
+          "sha256": "cce2e92ac7ba6124922742abeefca3b79756ee263484aaf48a23a8ae42d0efe0"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "early_wheel_toolchain_absolute",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "9ddfd891f712b6a6f6e82d72ab14aa7dba2e43debe1f24a7d3be997df0c1fa1b",
+      "cause": "Windows PowerShell rejected script execution under the default process policy; no global policy was changed.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/early_wheel_authorized/COMMAND.json",
+          "sha256": "0a0d2f2bf31231ae129d158f29caf94292b300d43c5a2e9c600d908c20f078b7"
+        },
+        {
+          "path": "jobs/final_contract_wheel_candidate6/COMMAND.json",
+          "sha256": "fec48059cf755be5044f2622c9f7efe69d8548b940615b41aacc378869a25d90"
+        },
+        {
+          "path": "validation/WHEEL_INSPECTION_FINAL.json",
+          "sha256": "cce2e92ac7ba6124922742abeefca3b79756ee263484aaf48a23a8ae42d0efe0"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "launcher_preflight01",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "362df36f3c247eff6d547eb1cb5d6301ec24dd48a539e7f3baa8a1a1bd02d571",
+      "cause": "Packaging metadata parser incorrectly required LF rather than accepting Windows CRLF in standard wheel headers.",
+      "resolution_evidence": [
+        {
+          "path": "validation/PACKAGING_UNIT_TESTS_CRLF.json",
+          "sha256": "e7e1b765c04ff3bc7a032ebd0131329d5e859714ce8ead58dd536635eebc8b7b"
+        },
+        {
+          "path": "validation/launcher_preflight05_short/LAUNCHER_REPORT.json",
+          "sha256": "737decb8f655e7da9068a84cc78b888a509b3f8aade25006272fd7775c428d17"
+        },
+        {
+          "path": "validation/clean_preliminary/launcher/LAUNCHER_REPORT.json",
+          "sha256": "30b81385d03968959b908a78cb6a1f113ae4595c0a480cda7621fd6267815286"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "launcher_preflight02",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "4eeab30493b82334234b53635c37e10eae65fcf331f675c08203d4fada9b9e87",
+      "cause": "Get-FileHash was unavailable in the invoked Windows PowerShell; the launcher now uses the same SHA256 via a .NET stream.",
+      "resolution_evidence": [
+        {
+          "path": "validation/launcher_preflight05_short/LAUNCHER_REPORT.json",
+          "sha256": "737decb8f655e7da9068a84cc78b888a509b3f8aade25006272fd7775c428d17"
+        },
+        {
+          "path": "validation/clean_preliminary/launcher/LAUNCHER_REPORT.json",
+          "sha256": "30b81385d03968959b908a78cb6a1f113ae4595c0a480cda7621fd6267815286"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "launcher_preflight03",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "c4395360c8c70358ae12912b8620029d89df119c4f74989887547f8079a29b45",
+      "cause": "The deeply nested development fixture installed successfully but its native module could not be loaded at that path length.",
+      "resolution_evidence": [
+        {
+          "path": "validation/launcher_preflight05_short/LAUNCHER_REPORT.json",
+          "sha256": "737decb8f655e7da9068a84cc78b888a509b3f8aade25006272fd7775c428d17"
+        },
+        {
+          "path": "validation/clean_preliminary/launcher/LAUNCHER_REPORT.json",
+          "sha256": "30b81385d03968959b908a78cb6a1f113ae4595c0a480cda7621fd6267815286"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "launcher_preflight04",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "fe78091f989a2168c5aa46dd37e2a15018ecddb08a3b7798fc88b460ad7447bd",
+      "cause": "The same launcher still failed in a 251-character native-module path. The nominal 260-character guard is not a universal guarantee.",
+      "resolution_evidence": [
+        {
+          "path": "validation/launcher_preflight04/SOURCE_LAUNCHER.ps1",
+          "sha256": "ea1dfa0b331ae3733b17161536c1a46c49cc7a1ab525e4a42bad555137739a8a"
+        },
+        {
+          "path": "validation/launcher_preflight05_short/SOURCE_LAUNCHER.ps1",
+          "sha256": "ea1dfa0b331ae3733b17161536c1a46c49cc7a1ab525e4a42bad555137739a8a"
+        },
+        {
+          "path": "validation/launcher_preflight05_short/LAUNCHER_REPORT.json",
+          "sha256": "737decb8f655e7da9068a84cc78b888a509b3f8aade25006272fd7775c428d17"
+        },
+        {
+          "path": "validation/clean_preliminary/launcher/LAUNCHER_REPORT.json",
+          "sha256": "30b81385d03968959b908a78cb6a1f113ae4595c0a480cda7621fd6267815286"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "legacy_actual_cpc7_candidate2_01",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "b7f991bad49ecbb26fc4494e54d0e4fc49da220d21da55f8567f65a6a5c56a16",
+      "cause": "The audit caller requested a nonexistent protocol_state attribute; the actual legacy physical snapshot was preserved.",
+      "resolution_evidence": [
+        {
+          "path": "jobs/legacy_actual_cpc7_final6_01/COMMAND.json",
+          "sha256": "05a5624a23b516e40ce632b0207d51493bca21b6c355099b38cdc2ab34ea1ea0"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "smoke_candidate1",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "27eb3e31a5bdf040849d8409bb7bed3129083500246a25695a6094df21a43c4e",
+      "cause": "A descriptor-only initial_state_available flag legitimately differs between create and inert load. Full original descriptors and physical comparisons remain in both primaries.",
+      "resolution_evidence": [
+        {
+          "path": "validation/smoke_candidate1_02/SMOKE_REPORT.json",
+          "sha256": "7e231bc06828a67480e9bf1e33252bfdf761da559ad15edd66d709d79ca7e63a"
+        },
+        {
+          "path": "validation/clean_preliminary/smoke/SMOKE_REPORT.json",
+          "sha256": "69b3fdd1e1c3a7ded821bc120eb4579313579ea01471f77411f572c3cf0537d1"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    },
+    {
+      "job": "unicode_paths_candidate2",
+      "status": "COMPLETED",
+      "exit_code": 1,
+      "ledger_sha256": "0689c7facaa31e316f5c4dd55b500686dc5ce41361e54ce2b64a972fb71e8052",
+      "cause": "Unicode paths exposed native locale-dependent file I/O; the first diagnostic print also failed in cp1252. Native UTF8 conversions and trace paths were subsequently tested.",
+      "resolution_evidence": [
+        {
+          "path": "validation/clean_preliminary/unicode/UNICODE_REPORT.json",
+          "sha256": "0835bddec746836362f2c96ad7af473ec1eacd16dcad6a835830525fd5f9dbc6"
+        },
+        {
+          "path": "jobs/native_unicode_io_repair/COMMAND.json",
+          "sha256": "ad331cba2b20fca577003047d9d297f780110e67f1ba371fa9b3ce864060a535"
+        }
+      ],
+      "functional_status": "FAILED_OR_INCOMPLETE_ORIGINAL_RETAINED_NOT_PASS",
+      "closure_scope": "Original worker completed process.wait and OwnedJob finally-close; the failure is never relabelled as a functional pass."
+    }
+  ],
+  "scope": "Explicit historical nonzero exits and their later technical evidence; not scientific samples or participant response data."
+}

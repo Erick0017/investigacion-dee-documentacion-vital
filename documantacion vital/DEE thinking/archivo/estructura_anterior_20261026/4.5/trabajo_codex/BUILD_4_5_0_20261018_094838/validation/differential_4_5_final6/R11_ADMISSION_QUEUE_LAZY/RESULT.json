@@ -1,0 +1,1750 @@
+{
+  "schema": "DEE45.neutral_differential.case.v1",
+  "case_id": "R11_ADMISSION_QUEUE",
+  "backend": "LAZY",
+  "library": "4.5.0",
+  "status": "PASS",
+  "engine": {
+    "library": "4.5.0",
+    "python": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\.venv45_6\\Scripts\\python.exe",
+    "prefix": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\.venv45_6",
+    "package": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\.venv45_6\\Lib\\site-packages\\dee_thinking\\__init__.py",
+    "native": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\4.5\\trabajo_codex\\BUILD_4_5_0_20261018_094838\\.venv45_6\\Lib\\site-packages\\dee_thinking\\_native.cp313-win_amd64.pyd",
+    "native_sha256": "17f827341530f66816ec146af085b00a5f7b3d34d645bcd407f1279e8ac6c50d",
+    "build_info": {
+      "product": "dee_thinking",
+      "product_version": "4.5.0",
+      "kernel_version": 27,
+      "consolidated_api_version": 1,
+      "cognitive_preparations_optional": true,
+      "kernel_source_sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+      "msvc_full_ver": 195035729,
+      "kernel_modulus": 19665,
+      "reducer_cap": 19664,
+      "native_module": true,
+      "delegates_to_dee_universe_v27": false,
+      "gil_released_during_runtime_evolution": false,
+      "python_tag": "cp313",
+      "abi_tag": "cp313",
+      "platform_tag": "win_amd64"
+    },
+    "kernel_modulus": 19665,
+    "reducer_cap": 19664,
+    "cognitive_session_factories_called": 0,
+    "historical_lab_imports": []
+  },
+  "config_sha256": "74a867fa40c8d598ba0b16f13e2cc930952b3ae21ab1ef1633f098b727a03d1f",
+  "source_sha256": "2c5a4e7a498499d634db4855ed7bca26c451f95bde356b136675a3edcf1633f4",
+  "frames": [
+    {
+      "tick": "0",
+      "raw": {
+        "path": "T0.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "649d80d145fcdb0dd242031d8262e6957e7ffa7536d69fdf2a0a7d1798b46aa1",
+        "sha256_compressed": "19db4c2d90f9fa1c7073d11273bfc873ef767ac15a6ba695328ec08ad3457dbc"
+      },
+      "clock": {
+        "path": "T0.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "f95b6986f7137f0d49cd831a0045a68a3fc9ff854140bce2a53e85ca25e9652b",
+        "sha256_compressed": "1d8f2b44d732aa801a39f745df7f78f0be6c87adc6ddf6f62f0d6973fbf9b31b"
+      },
+      "operative": {
+        "tick": "0",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "scheduled",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "0",
+          "raw": "4611686022722361300",
+          "clock": "123",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "1",
+      "raw": {
+        "path": "T1.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "649d80d145fcdb0dd242031d8262e6957e7ffa7536d69fdf2a0a7d1798b46aa1",
+        "sha256_compressed": "da745dedfb07f4736f38e1fbe4c2685f9ca53abbcdd174469c8b9681a1f73aa5"
+      },
+      "clock": {
+        "path": "T1.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "66f789d6dde5c976c87fd132740def3c14d2612ab81b6dd5127670acba7cfe96",
+        "sha256_compressed": "7b110eaf72faaa9ba8b291b708f76c73061ebbdc015830aeda206bbe88430c5e"
+      },
+      "operative": {
+        "tick": "1",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "scheduled",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "1",
+          "raw": "4611686022722361300",
+          "clock": "124",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "2",
+      "raw": {
+        "path": "T2.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "2499ad37bb6d05372dbf65033b594d69f7c37ca1f3bf115736cad4b3280c0175",
+        "sha256_compressed": "1403643a1841841b39056bd29c66f430164ee37f86979f754592f1197d86624c"
+      },
+      "clock": {
+        "path": "T2.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "fc28723ca5d33d7409cfb771c9e711e8a5cd99c8e582c8c1c467728192a2a56a",
+        "sha256_compressed": "3d55a485e64b1e47941f84788f46f7b77d7778ab3016c7a573942e603a2dadea"
+      },
+      "operative": {
+        "tick": "2",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "3",
+            "effective_tick": null,
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "2",
+          "raw": "4611686022722361300",
+          "clock": "125",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "3",
+      "raw": {
+        "path": "T3.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "8717b429a585b12feb4fbc77310835cbe550001f6ce209b6f5e0e5ba661b5956",
+        "sha256_compressed": "09ffedddaf37cad355b4f58ffea20550f2fd5da4fdf5a49cb6be2913f658d029"
+      },
+      "clock": {
+        "path": "T3.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "ccbcd4189a206bb56b07a547fb229f5f4cc7f502c8cb083e112309e97fd7d41b",
+        "sha256_compressed": "aac9ad7b5a7447163b36492679a1b47cbf8bfecdf0603586198b555fa2fe77e0"
+      },
+      "operative": {
+        "tick": "3",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "3",
+            "effective_tick": null,
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "3",
+          "raw": "4611686022722361300",
+          "clock": "126",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "4",
+      "raw": {
+        "path": "T4.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "79232e388797f631e3e282ba59b5162834e1d8aaf34253dd638c75a41bc056bf",
+        "sha256_compressed": "e0e72d32e91b1a1c6e305b7e2de766e7f73b44564bff49585343b17fbd6045cc"
+      },
+      "clock": {
+        "path": "T4.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "7169b120923781fd1344fbaec5f218905e0fd50e5b384bf6af2574bb7d3cdc0a",
+        "sha256_compressed": "07dbcd5a25046f5406f1b95dfc892d38dbb294518e5267251dc5057fe7ad7fde"
+      },
+      "operative": {
+        "tick": "4",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "3",
+            "effective_tick": "3",
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "4",
+          "raw": "4611686022722361300",
+          "clock": "127",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "6",
+      "raw": {
+        "path": "T6.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "787ee0b4bbb2331928799a20df16853882a3f2f726c1c92819f7913c8ce4fa82",
+        "sha256_compressed": "ed4a20edff55c271c8ed081f6eb12d1656d25cc7663fc4dfb34eaabddde0c57d"
+      },
+      "clock": {
+        "path": "T6.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "5efc8cf7ccd4f9aba79fe98ebf076889d3db0c649cd6ac9285f2bb5a5b941894",
+        "sha256_compressed": "995317cdf9a0e6847bf9cb93931efc301ab5e212c29e1379709a12cda61dd989"
+      },
+      "operative": {
+        "tick": "6",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "7",
+            "effective_tick": null,
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "scheduled",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "3",
+            "effective_tick": "3",
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "6",
+          "raw": "4611686022722361300",
+          "clock": "129",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "8",
+      "raw": {
+        "path": "T8.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "71d14b7f6442abb8e9b014f3d1dc4fdfd9f8bd85c78ad1f6b2b3a40d254e920d",
+        "sha256_compressed": "54d06da775a189f355e4a4e382954f262777ed105b849907052806813cf69b70"
+      },
+      "clock": {
+        "path": "T8.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "5e48d1a5c17585b405b9fe38b69697b331aed2b6503dac6fc87f547c880591b4",
+        "sha256_compressed": "6f797a7ba1f15f9d02cf96bd1a18e9d5b40fc00e89f7d4324b21c69ed6c1ba47"
+      },
+      "operative": {
+        "tick": "8",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "7",
+            "effective_tick": "7",
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "rejected_occupied",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": "target register is not RAW-empty at application boundary"
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "3",
+            "effective_tick": "3",
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "8",
+          "raw": "4611686022722361300",
+          "clock": "131",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    },
+    {
+      "tick": "12",
+      "raw": {
+        "path": "T12.raw.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "114831e8c080441bd2ce1803a3462a39230de926d34dbb67e4b4026eea41e22a",
+        "sha256_compressed": "91d9604c95affa6c1acbf8a0710b71e69d2771222be54b09d933f82f7f06018e"
+      },
+      "clock": {
+        "path": "T12.clock.u64.gz",
+        "encoding": "gzip(little-endian uint64)",
+        "elements": 1331,
+        "bytes": 10648,
+        "sha256_uncompressed": "60ae389b567ff04d62b4d92476c500149683da6c7dc1086987e9e0fccb248119",
+        "sha256_compressed": "ccd0eb47ed5202319cc8f4da469f098bb6393edbfb6c66ed0d2539a0440a872e"
+      },
+      "operative": {
+        "tick": "12",
+        "dimension": 11,
+        "paused": false,
+        "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+        "channels": [
+          "future",
+          "occupied",
+          "only.probe",
+          "other",
+          "shared.a",
+          "shared.b"
+        ],
+        "receipts": [
+          {
+            "id": "1",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "2",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "shared.b"
+            ],
+            "reason": "simultaneous events target the same register"
+          },
+          {
+            "id": "3",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "7",
+            "effective_tick": "7",
+            "channels": [
+              "future"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "4",
+            "kind": "probe",
+            "status": "applied",
+            "requested_tick": "1",
+            "effective_tick": "1",
+            "channels": [
+              "only.probe"
+            ],
+            "reason": ""
+          },
+          {
+            "id": "5",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "only.probe"
+            ],
+            "reason": "channel disallows requested event kind: only.probe"
+          },
+          {
+            "id": "6",
+            "kind": "experience",
+            "status": "rejected_invalid",
+            "requested_tick": "0",
+            "effective_tick": null,
+            "channels": [
+              "missing"
+            ],
+            "reason": "unknown channel: missing"
+          },
+          {
+            "id": "7",
+            "kind": "experience",
+            "status": "rejected_conflict",
+            "requested_tick": "2",
+            "effective_tick": null,
+            "channels": [
+              "shared.a",
+              "shared.b"
+            ],
+            "reason": "batch writes the same register more than once"
+          },
+          {
+            "id": "8",
+            "kind": "experience",
+            "status": "rejected_late",
+            "requested_tick": "1",
+            "effective_tick": null,
+            "channels": [
+              "shared.a"
+            ],
+            "reason": "requested boundary precedes current tick"
+          },
+          {
+            "id": "9",
+            "kind": "experience",
+            "status": "rejected_occupied",
+            "requested_tick": "6",
+            "effective_tick": null,
+            "channels": [
+              "occupied",
+              "other"
+            ],
+            "reason": "target register is not RAW-empty at application boundary"
+          },
+          {
+            "id": "10",
+            "kind": "experience",
+            "status": "applied",
+            "requested_tick": "3",
+            "effective_tick": "3",
+            "channels": [
+              "other"
+            ],
+            "reason": ""
+          }
+        ],
+        "snapshot_metadata": {
+          "neutral.uint64": "9223372036854775815"
+        }
+      },
+      "observations": [
+        {
+          "site": [
+            5,
+            5,
+            5
+          ],
+          "tick": "12",
+          "raw": "4611686022722361300",
+          "clock": "135",
+          "state": 6100,
+          "s_reg": 1,
+          "direction": [
+            0,
+            0,
+            0
+          ],
+          "semantic": 4,
+          "raw_present": true,
+          "occupied": true
+        }
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "experience",
+        "port": "shared.a",
+        "at": 0,
+        "payload": 11
+      },
+      "receipt_at_request": {
+        "id": "1",
+        "kind": "experience",
+        "status": "scheduled",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "shared.a"
+        ],
+        "reason": ""
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "experience",
+        "port": "shared.b",
+        "at": 0,
+        "payload": 17
+      },
+      "receipt_at_request": {
+        "id": "2",
+        "kind": "experience",
+        "status": "scheduled",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "shared.b"
+        ],
+        "reason": ""
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "experience",
+        "port": "future",
+        "at": 7,
+        "payload": 19
+      },
+      "receipt_at_request": {
+        "id": "3",
+        "kind": "experience",
+        "status": "scheduled",
+        "requested_tick": "7",
+        "effective_tick": null,
+        "channels": [
+          "future"
+        ],
+        "reason": ""
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "probe",
+        "port": "only.probe",
+        "at": 1,
+        "payload": 8
+      },
+      "receipt_at_request": {
+        "id": "4",
+        "kind": "probe",
+        "status": "scheduled",
+        "requested_tick": "1",
+        "effective_tick": null,
+        "channels": [
+          "only.probe"
+        ],
+        "reason": ""
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "experience",
+        "port": "only.probe",
+        "at": 2,
+        "payload": 8
+      },
+      "receipt_at_request": {
+        "id": "5",
+        "kind": "experience",
+        "status": "rejected_invalid",
+        "requested_tick": "2",
+        "effective_tick": null,
+        "channels": [
+          "only.probe"
+        ],
+        "reason": "channel disallows requested event kind: only.probe"
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "experience",
+        "port": "missing",
+        "at": 0,
+        "payload": 5
+      },
+      "receipt_at_request": {
+        "id": "6",
+        "kind": "experience",
+        "status": "rejected_invalid",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "missing"
+        ],
+        "reason": "unknown channel: missing"
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 0,
+        "kind": "batch",
+        "at": 2,
+        "inputs": [
+          [
+            "shared.a",
+            3
+          ],
+          [
+            "shared.b",
+            4
+          ]
+        ]
+      },
+      "receipt_at_request": {
+        "id": "7",
+        "kind": "experience",
+        "status": "rejected_conflict",
+        "requested_tick": "2",
+        "effective_tick": null,
+        "channels": [
+          "shared.a",
+          "shared.b"
+        ],
+        "reason": "batch writes the same register more than once"
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 2,
+        "kind": "experience",
+        "port": "shared.a",
+        "at": 1,
+        "payload": 7
+      },
+      "receipt_at_request": {
+        "id": "8",
+        "kind": "experience",
+        "status": "rejected_late",
+        "requested_tick": "1",
+        "effective_tick": null,
+        "channels": [
+          "shared.a"
+        ],
+        "reason": "requested boundary precedes current tick"
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 2,
+        "kind": "batch",
+        "at": 6,
+        "inputs": [
+          [
+            "occupied",
+            5
+          ],
+          [
+            "other",
+            6
+          ]
+        ]
+      },
+      "receipt_at_request": {
+        "id": "9",
+        "kind": "experience",
+        "status": "scheduled",
+        "requested_tick": "6",
+        "effective_tick": null,
+        "channels": [
+          "occupied",
+          "other"
+        ],
+        "reason": ""
+      }
+    },
+    {
+      "spec": {
+        "call_tick": 2,
+        "kind": "experience",
+        "port": "other",
+        "at": 3,
+        "payload": 0
+      },
+      "receipt_at_request": {
+        "id": "10",
+        "kind": "experience",
+        "status": "scheduled",
+        "requested_tick": "3",
+        "effective_tick": null,
+        "channels": [
+          "other"
+        ],
+        "reason": ""
+      }
+    }
+  ],
+  "snapshot": {
+    "path": "PENDING.deetsnap",
+    "sha256": "0bcec494c4770a3565a7cf043409f1c57bba9f11f2f02d07511adc218b8703fb",
+    "tick": "3",
+    "kind": "runtime"
+  },
+  "final": {
+    "tick": "12",
+    "raw": "114831e8c080441bd2ce1803a3462a39230de926d34dbb67e4b4026eea41e22a",
+    "clock": "60ae389b567ff04d62b4d92476c500149683da6c7dc1086987e9e0fccb248119"
+  },
+  "final_operative": {
+    "tick": "12",
+    "dimension": 11,
+    "paused": false,
+    "protocol_phase": "neutral_differential/R11_ADMISSION_QUEUE",
+    "channels": [
+      "future",
+      "occupied",
+      "only.probe",
+      "other",
+      "shared.a",
+      "shared.b"
+    ],
+    "receipts": [
+      {
+        "id": "1",
+        "kind": "experience",
+        "status": "rejected_conflict",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "shared.a"
+        ],
+        "reason": "simultaneous events target the same register"
+      },
+      {
+        "id": "2",
+        "kind": "experience",
+        "status": "rejected_conflict",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "shared.b"
+        ],
+        "reason": "simultaneous events target the same register"
+      },
+      {
+        "id": "3",
+        "kind": "experience",
+        "status": "applied",
+        "requested_tick": "7",
+        "effective_tick": "7",
+        "channels": [
+          "future"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "4",
+        "kind": "probe",
+        "status": "applied",
+        "requested_tick": "1",
+        "effective_tick": "1",
+        "channels": [
+          "only.probe"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "5",
+        "kind": "experience",
+        "status": "rejected_invalid",
+        "requested_tick": "2",
+        "effective_tick": null,
+        "channels": [
+          "only.probe"
+        ],
+        "reason": "channel disallows requested event kind: only.probe"
+      },
+      {
+        "id": "6",
+        "kind": "experience",
+        "status": "rejected_invalid",
+        "requested_tick": "0",
+        "effective_tick": null,
+        "channels": [
+          "missing"
+        ],
+        "reason": "unknown channel: missing"
+      },
+      {
+        "id": "7",
+        "kind": "experience",
+        "status": "rejected_conflict",
+        "requested_tick": "2",
+        "effective_tick": null,
+        "channels": [
+          "shared.a",
+          "shared.b"
+        ],
+        "reason": "batch writes the same register more than once"
+      },
+      {
+        "id": "8",
+        "kind": "experience",
+        "status": "rejected_late",
+        "requested_tick": "1",
+        "effective_tick": null,
+        "channels": [
+          "shared.a"
+        ],
+        "reason": "requested boundary precedes current tick"
+      },
+      {
+        "id": "9",
+        "kind": "experience",
+        "status": "rejected_occupied",
+        "requested_tick": "6",
+        "effective_tick": null,
+        "channels": [
+          "occupied",
+          "other"
+        ],
+        "reason": "target register is not RAW-empty at application boundary"
+      },
+      {
+        "id": "10",
+        "kind": "experience",
+        "status": "applied",
+        "requested_tick": "3",
+        "effective_tick": "3",
+        "channels": [
+          "other"
+        ],
+        "reason": ""
+      }
+    ],
+    "snapshot_metadata": {
+      "neutral.uint64": "9223372036854775815"
+    }
+  },
+  "technical": {
+    "passive": [
+      {
+        "tick": "0",
+        "unchanged": true
+      },
+      {
+        "tick": "1",
+        "unchanged": true
+      },
+      {
+        "tick": "2",
+        "unchanged": true
+      },
+      {
+        "tick": "3",
+        "unchanged": true
+      },
+      {
+        "tick": "4",
+        "unchanged": true
+      },
+      {
+        "tick": "6",
+        "unchanged": true
+      },
+      {
+        "tick": "8",
+        "unchanged": true
+      },
+      {
+        "tick": "12",
+        "unchanged": true
+      }
+    ],
+    "fork_parent_unchanged": true,
+    "pending_snapshot_continuation_RAW_clock_tick_equal": true,
+    "pending_snapshot_operative_equal": true
+  },
+  "elapsed_seconds": 0.5972030999837443
+}

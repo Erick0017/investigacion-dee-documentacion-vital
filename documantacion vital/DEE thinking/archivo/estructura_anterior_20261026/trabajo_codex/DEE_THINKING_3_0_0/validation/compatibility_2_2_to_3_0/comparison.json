@@ -1,0 +1,57 @@
+{
+  "all_checks_passed": true,
+  "checks": {
+    "channel_protocol_raw_clock_exact": true,
+    "kernel_constants_equal": true,
+    "same_snapshot_bytes_loaded": true,
+    "snapshot_after_32_ticks_raw_clock_exact": true,
+    "snapshot_start_raw_clock_exact": true,
+    "versions_are_2_2_0_and_3_0_0": true
+  },
+  "details": {
+    "legacy_channel_protocol": {
+      "clock_length_equal": true,
+      "clock_sha256_equal": true,
+      "raw_length_equal": true,
+      "raw_sha256_equal": true,
+      "tick_equal": true
+    },
+    "legacy_snapshot_seed_after_32_ticks": {
+      "clock_length_equal": true,
+      "clock_sha256_equal": true,
+      "raw_length_equal": true,
+      "raw_sha256_equal": true,
+      "tick_equal": true
+    },
+    "legacy_snapshot_seed_start": {
+      "clock_length_equal": true,
+      "clock_sha256_equal": true,
+      "raw_length_equal": true,
+      "raw_sha256_equal": true,
+      "tick_equal": true
+    }
+  },
+  "limitations": [
+    "This is a bounded regression, not a universal equivalence proof.",
+    "The comparison does not exercise new 3.0-only basal APIs.",
+    "Snapshot container bytes after execution are not compared because version metadata may differ; full RAW and clock uint64 arrays are compared by length and SHA-256."
+  ],
+  "schema": "dee_thinking.compatibility_comparison.v1",
+  "scope": "Bounded 2.2.0-to-3.0.0 behavioral comparison: one inherited channel protocol and one identical legacy snapshot seed, Lazy backend, one thread.",
+  "v22_result": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_0_0\\validation\\compatibility_2_2_to_3_0\\result_2_2_0.json",
+  "v30_result": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_0_0\\validation\\compatibility_2_2_to_3_0\\result_3_0_0.json",
+  "versions": {
+    "v22": "2.2.0",
+    "v30": "3.0.0"
+  },
+  "wheel_provenance": {
+    "v22": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\dee_thinking-2.2.0-cp313-cp313-win_amd64.whl",
+      "sha256": "39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6"
+    },
+    "v30": {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_0_0\\dist\\dee_thinking-3.0.0-cp313-cp313-win_amd64.whl",
+      "sha256": "9aa3a69bf1d542308912dbeee0b7c89199dafe295ce09533a2a394c8bc83c6db"
+    }
+  }
+}

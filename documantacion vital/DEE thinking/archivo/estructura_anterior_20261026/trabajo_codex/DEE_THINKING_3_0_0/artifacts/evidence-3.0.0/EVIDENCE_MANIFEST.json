@@ -1,0 +1,56 @@
+{
+  "schema": "dee-thinking-3.0.0-evidence-manifest-v1",
+  "product": "DEE thinking",
+  "product_version": "3.0.0",
+  "purpose": "Bind the release to the verified 2.2.0 baseline, frozen v27 kernel, frozen 294-member MBP4 package, and its 15 extracted regression fixtures.",
+  "inputs": {
+    "dee_thinking_2_2_0_source_zip": {
+      "name": "DEE_thinking_ENTREGA_02_DEFINITIVA_RESULTADOS.zip",
+      "sha256": "ce088e902888e5ce0f61296d405b14b8acccc183cd73fcbd0fe7bc4eb8ce7cc3",
+      "size_bytes": 5143093,
+      "verified_locally": true
+    },
+    "dee_thinking_2_2_0_wheel": {
+      "name": "dee_thinking-2.2.0-cp313-cp313-win_amd64.whl",
+      "sha256": "39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6",
+      "size_bytes": 465442,
+      "verified_locally": true
+    },
+    "mbp4_archive": {
+      "name": "MENTE_BASAL_4_ORGANIZACION_BASAL_PERSISTENTE_VALIDACION_RESULTADOS.zip",
+      "sha256": "4d20d893d04486de047c66ce76c9f7dad067158941b553025bd946b7dc6ce086",
+      "size_bytes": 2387096,
+      "member_count": 294,
+      "verified_locally": true
+    },
+    "kernel_v27_source": {
+      "name": "src/kernel_v27.cpp",
+      "sha256": "fbd8190381ed76085f404e6578ff15fe185ab66cd48c67300d2abad61ddc7e31",
+      "size_bytes": 31596,
+      "kernel_version": 27,
+      "status": "frozen-byte-exact"
+    },
+    "t32_seed": {
+      "name": "OBP_FRESH_VALIDATED_T32.deetsnap",
+      "sha256": "cd09a4d94f72e00d9a5163c8dfd1d62e1528f1d146e4cb44ae23d261b3da09e6",
+      "size_bytes": 1661342,
+      "status": "identified-fresh-basal-seed"
+    }
+  },
+  "fixture_manifest": {
+    "path": "source/fixtures/mbp4/regressions/MANIFEST.json",
+    "sha256": "4df9d330a07b53f2fb406bf06df3de5a61da527fb42bc33e90372d1cc7365532",
+    "fixture_count": 15,
+    "checkpoint_count": 10,
+    "telemetry_count": 5,
+    "coverage_ids": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+    "all_sizes_match": true,
+    "all_sha256_match": true
+  },
+  "packaging_policy": {
+    "historical_archives_nested": false,
+    "primary_fixtures_delivered_under_source": true,
+    "normal_runtime_reads_regression_oracles": false,
+    "tests_may_read_regression_oracles": true
+  }
+}

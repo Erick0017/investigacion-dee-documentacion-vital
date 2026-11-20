@@ -1,0 +1,83 @@
+{
+  "commands": [
+    {
+      "name": "wheel_smoke_external",
+      "kind": "wheel_smoke",
+      "cwd": "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external",
+      "command": [
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30venv/Scripts/python.exe",
+        "-I",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0/validation/scripts/wheel_smoke.py"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "name": "python_unittest_external",
+      "kind": "unittest",
+      "cwd": "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external",
+      "command": [
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30venv/Scripts/python.exe",
+        "-I",
+        "-m",
+        "unittest",
+        "discover",
+        "-v",
+        "-s",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0/tests/python"
+      ],
+      "timeout_seconds": 1800
+    },
+    {
+      "name": "basal_cross_language_bidirectional",
+      "kind": "cross_language",
+      "cwd": "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external",
+      "command": [
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30venv/Scripts/python.exe",
+        "-I",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0/tests/python/basal_cross_language_driver.py",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30full/bin/dee_basal_checkpoint_bridge.exe",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0/fixtures/mbp4/OBP_FRESH_VALIDATED_T32.deetsnap",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external/cross_language"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "name": "installed_cpp_consumers_external",
+      "kind": "consumer",
+      "cwd": "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external",
+      "command": [
+        "C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0/validation/scripts/run_installed_consumers.ps1",
+        "-CMake",
+        "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe",
+        "-Ninja",
+        "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
+        "-Cxx",
+        "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe",
+        "-VsDevCmd",
+        "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/VsDevCmd.bat",
+        "-InstallRoot",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30install",
+        "-SourceRoot",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/documantacion vital/DEE thinking/trabajo_codex/DEE_THINKING_3_0_0",
+        "-BuildRoot",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30validation_consumers"
+      ],
+      "timeout_seconds": 600
+    },
+    {
+      "name": "backend_benchmark_exactness",
+      "kind": "benchmark",
+      "cwd": "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external",
+      "command": [
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30full/bin/dee_backend_benchmark.exe",
+        "D:/GENESIS AI/GENESIS 5.0/simulador de universo ab-initio/dee_libreria/VERSION_27/tests/b30external/benchmark/backend_benchmark.json"
+      ],
+      "timeout_seconds": 300
+    }
+  ]
+}

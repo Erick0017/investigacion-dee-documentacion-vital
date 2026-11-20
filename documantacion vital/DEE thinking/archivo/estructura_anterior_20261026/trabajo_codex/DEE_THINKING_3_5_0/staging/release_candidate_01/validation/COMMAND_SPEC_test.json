@@ -1,0 +1,488 @@
+{
+  "commands": [
+    {
+      "name": "clean_installed_public_API",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\check_installed_3_5.py",
+        "--wheel",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\wheel\\dee_thinking-3.5.0-cp313-cp313-win_amd64.whl",
+        "--example",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\examples\\organizational_public.py",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\clean_install"
+      ],
+      "kind": "wheel_smoke",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "python_full_suite",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python",
+        "-v"
+      ],
+      "kind": "unittest",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "native_recipe_comparison",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\compare_native_recipes.py",
+        "--science",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\DEE_thinking_3_0_0_FRONTERAS_COGNITIVAS_MULTIRRAMA_01_RESULTADOS.zip",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\NATIVE_RECIPE_COMPARISON_FINAL.json"
+      ],
+      "kind": "unittest",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "organizational_cpp_python",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\validate_cross_language_3_5.py",
+        "--consumer",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009\\cpp_consumer\\dee_public_consumer.exe",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_3_5"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "basal_cpp_python",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\basal_cross_language_driver.py",
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_basal_checkpoint_bridge.exe",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\fixtures\\mbp4\\OBP_FRESH_VALIDATED_T32.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_basal"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "runtime_cpp_produce",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_cross_language_bridge.exe",
+        "produce",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\cpp_before.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\cpp_after.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "runtime_cpp_consume",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\cross_language_bridge.py",
+        "consume",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\cpp_before.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\cpp_after.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "runtime_python_produce",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\cross_language_bridge.py",
+        "produce",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\python_before.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\python_after.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "runtime_python_consume",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_cross_language_bridge.exe",
+        "consume",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\python_before.deetsnap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_runtime\\python_after.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_h1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-h1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_h1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-h1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_h1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-h1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_h1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-h1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_h2-separated",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-h2-separated",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h2-separated.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_h2-separated",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-h2-separated",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h2-separated.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_h2-separated",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-h2-separated",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h2-separated.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_h2-separated",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-h2-separated",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h2-separated.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_h2-overlap",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-h2-overlap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h2-overlap.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_h2-overlap",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-h2-overlap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h2-overlap.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_h2-overlap",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-h2-overlap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h2-overlap.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_h2-overlap",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-h2-overlap",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h2-overlap.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_h3",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-h3",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h3.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_h3",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-h3",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_h3.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_h3",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-h3",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h3.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_h3",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-h3",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_h3.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_f1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-f1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_f1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_f1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-f1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_f1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_f1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-f1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_f1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_f1",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-f1",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_f1.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_save_f2",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "save-f2",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_f2.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_cpp_resume_f2",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "resume-f2",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\cpp_f2.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_save_f2",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tests\\python\\protocol_checkpoint_bridge.py",
+        "save-f2",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_f2.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "protocol_python_resume_f2",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-final-20261009\\native\\bin\\dee_protocol_checkpoint_bridge.exe",
+        "resume-f2",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\cross_language_protocols\\python_f2.deetsnap"
+      ],
+      "kind": "cross_language",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    },
+    {
+      "name": "measured_reference_cost",
+      "command": [
+        "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-qualified-20261009\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\source\\tools\\measure_cost_3_5.py",
+        "--output",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\trabajo_codex\\DEE_THINKING_3_5_0\\validation\\REFERENCE_COST.json"
+      ],
+      "kind": "benchmark",
+      "cwd": "C:\\Users\\Erik\\AppData\\Local\\Temp\\dt35-public-20261009",
+      "timeout_seconds": 7200,
+      "required": true
+    }
+  ]
+}

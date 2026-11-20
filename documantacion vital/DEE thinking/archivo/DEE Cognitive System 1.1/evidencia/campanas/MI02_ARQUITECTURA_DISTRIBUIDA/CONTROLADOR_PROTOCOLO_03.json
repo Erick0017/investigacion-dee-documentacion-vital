@@ -1,0 +1,50 @@
+{
+  "cases": [
+    [
+      40,
+      "intact",
+      "intact"
+    ],
+    [
+      41,
+      "intact",
+      "omit_return"
+    ],
+    [
+      42,
+      "cut_action",
+      "intact"
+    ],
+    [
+      43,
+      "cut_return",
+      "intact"
+    ],
+    [
+      44,
+      "sham_cut",
+      "intact"
+    ]
+  ],
+  "availability": [
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "revision": "R3 changes physical return paths and absorber positions. New T0 lives. No repair of R2.",
+  "geometry_hypothesis": "A shared intermediate return at[0,0,2] has enough permanent neighbours to persist and alter both memories. Route first outside the memory region, then approach only the relevant scalar field. Both inactive return ghosts point at fixed SEM4, not into memories. This is a testable engineering hypothesis, not an E1 discovery.",
+  "utility": "Action state1sem1(x,-1,-1);x>=0left,x<0right. A true null direction is not mapped to a useful wait. Current availability chosen before observing action.",
+  "checks": "Compare memories, native neighbour counts and actual source admission as well as later utility; no external native-state update.",
+  "scope": "Phase-dependent plasticity candidate; repeated fixed source-port law, not autonomous resource replenishment."
+}

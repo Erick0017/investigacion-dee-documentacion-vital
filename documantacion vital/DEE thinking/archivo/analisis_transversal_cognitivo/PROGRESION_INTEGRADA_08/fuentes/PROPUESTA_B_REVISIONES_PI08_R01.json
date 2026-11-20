@@ -1,0 +1,215 @@
+{
+  "schema": "DEE.PI08.B.nonperiodic_reversal.proposal.R01",
+  "status": "DRAFT_PENDING_ACTUAL_A_ADOPTION_AND_BODY_REVIEW",
+  "created_utc": "2026-11-10T20:33:42.668294+00:00",
+  "new_Native_ticks": 0,
+  "material_execution_authorized_by_this_draft": false,
+  "evaluated_opportunities": 12,
+  "prepared_total_offers": 14,
+  "blocks": [
+    {
+      "label": "T1",
+      "length": 3,
+      "range": [
+        0,
+        2
+      ]
+    },
+    {
+      "label": "F1",
+      "length": 4,
+      "range": [
+        3,
+        6
+      ]
+    },
+    {
+      "label": "T2",
+      "length": 2,
+      "range": [
+        7,
+        8
+      ]
+    },
+    {
+      "label": "F2",
+      "length": 3,
+      "range": [
+        9,
+        11
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "ordinal_relative_B": 0,
+      "global_ordinal_if_A_ends12": 12,
+      "block": "T1",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 18,
+      "right": 5
+    },
+    {
+      "ordinal_relative_B": 1,
+      "global_ordinal_if_A_ends12": 13,
+      "block": "T1",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 13,
+      "right": 4
+    },
+    {
+      "ordinal_relative_B": 2,
+      "global_ordinal_if_A_ends12": 14,
+      "block": "T1",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 16,
+      "right": 7
+    },
+    {
+      "ordinal_relative_B": 3,
+      "global_ordinal_if_A_ends12": 15,
+      "block": "F1",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 19,
+      "right": 6
+    },
+    {
+      "ordinal_relative_B": 4,
+      "global_ordinal_if_A_ends12": 16,
+      "block": "F1",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 12,
+      "right": 3
+    },
+    {
+      "ordinal_relative_B": 5,
+      "global_ordinal_if_A_ends12": 17,
+      "block": "F1",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 17,
+      "right": 8
+    },
+    {
+      "ordinal_relative_B": 6,
+      "global_ordinal_if_A_ends12": 18,
+      "block": "F1",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 15,
+      "right": 4
+    },
+    {
+      "ordinal_relative_B": 7,
+      "global_ordinal_if_A_ends12": 19,
+      "block": "T2",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 20,
+      "right": 9
+    },
+    {
+      "ordinal_relative_B": 8,
+      "global_ordinal_if_A_ends12": 20,
+      "block": "T2",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 5
+    },
+    {
+      "ordinal_relative_B": 9,
+      "global_ordinal_if_A_ends12": 21,
+      "block": "F2",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 18,
+      "right": 7
+    },
+    {
+      "ordinal_relative_B": 10,
+      "global_ordinal_if_A_ends12": 22,
+      "block": "F2",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 11,
+      "right": 2
+    },
+    {
+      "ordinal_relative_B": 11,
+      "global_ordinal_if_A_ends12": 23,
+      "block": "F2",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 16,
+      "right": 5
+    },
+    {
+      "ordinal_relative_B": 12,
+      "global_ordinal_if_A_ends12": 24,
+      "block": "future_unscored",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 17,
+      "right": 6
+    },
+    {
+      "ordinal_relative_B": 13,
+      "global_ordinal_if_A_ends12": 25,
+      "block": "future_unscored",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 19,
+      "right": 8
+    }
+  ],
+  "arms": [
+    "real",
+    "constant_nonfailure",
+    "external_contextual_WSLS"
+  ],
+  "reference_policy_initial": {
+    "0": -1,
+    "1": -1
+  },
+  "reference_update": "Only after an actually failed completed opportunity, reverse action for the actually visited physical context; no target, block or future read.",
+  "reference_initialization_scope": "Prepared baseline on a separate control; does not install that table in Native candidate. If finalA condition does not warrant this declared source, revise before any BNative and preserve this draft.",
+  "information_to_actor": "Actual sensorSTATE only, not block/cue/expected action. T andfalsecuecanbothsupply1; immediate perfect discrimination is not required.",
+  "calendar": {
+    "delay_laps": 6,
+    "N": 67,
+    "query_lead": 7,
+    "planning_lead_ticks": 16,
+    "fixed_read_relative_q": 4,
+    "hold_relative_q": 6,
+    "actuation_relative_q": 7,
+    "FI_start_relative_q": 136,
+    "generic_return_relative_q": 408,
+    "end_relative_q": 412,
+    "per_episode_limit": 1300,
+    "maximum_all_three_arms_ticks": 46800,
+    "pure_successive_reference_ticks_per_arm": 9384,
+    "before_execution": "Compute the calendar for exactly12 executed cases from actualA clocks; record q/age and actual admissions. Requested waits do not by themselves establish a changed normalized phase."
+  },
+  "causal_criteria": {
+    "all_denominators_retained": 12,
+    "revision_both_directions_requires_actual_sensor1_before_after": true,
+    "constant_return_cannot_encode_change": true,
+    "actual_reference_utility_only_after_material_execution": true,
+    "NoFail_not_exact_payload_isodose": true,
+    "A_main_remains_adopted_if_B_negative": true
+  },
+  "do_not_claim": [
+    "A new Native mechanism absent fromPI03/PI07",
+    "Superior general intelligence",
+    "Utility of unexecuted baselines",
+    "Globalphase independence",
+    "Perfect prediction at an informationally identical first reversal case"
+  ],
+  "potential_limitation": "Only two threatopportunities in T2. If physicalsensor1 exposure is insufficient there, report the gap rather than adding favorable cases posthoc. Flexible revision can be locally supported by another actual transition, but no universal fourblock success claim."
+}

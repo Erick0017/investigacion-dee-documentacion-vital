@@ -1,0 +1,72 @@
+{
+  "schema": "dee.v27.processes02.passive_degree_continuation.v1",
+  "kernel_sha256": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+  "parent_process01_sha256": "a47423f8712ac9734e88de03db3c4c92906447b224741e76ac47b293337a41d1",
+  "prior_process02_sha256": "0ab3a0ceec6bc4f8eefcf0dcb10d053b0049629a727ed9cacf582ce2f2336cc9",
+  "world": {
+    "N": 39,
+    "origin": [19, 6, 19],
+    "host_stop_tick": 4,
+    "horizon": 512,
+    "threads": 1
+  },
+  "branches": {
+    "H0_FULL": ["H0", null],
+    "HA_FULL": ["HA", null],
+    "HB_FULL": ["HB", null],
+    "HB_OMIT_P2": ["HB", "P2"]
+  },
+  "configurations": {
+    "MAIN_S0": [[0, 1, 2], [1, 1, 1]],
+    "FRESH_V1": [[1, 0, 2], [1, -1, 1]],
+    "FRESH_V2": [[2, 1, 0], [-1, 1, 1]]
+  },
+  "component": {
+    "mechanism": "CORE10_C10H03_SHARED_INTERFACE",
+    "source_seed": 113000,
+    "canonical_center_A": [37, 0, 38],
+    "canonical_axis": 0,
+    "selected_scaffold_positions": 12,
+    "generated_centers": 2,
+    "placement_rule": "unique MAIN_S0 coordinate maximizing minimum toroidal Moore distance from all parent t0 occupied sites",
+    "main_minimum_toroidal_moore_distance": 19,
+    "record_semantic": 4,
+    "record_direction": [0, 0, 0],
+    "source_runner_sha256": "6b52faf7503d39e1e281983ab371463db1e67fc89b41cbcd4b97ce112ffb3772",
+    "source_result_sha256": "7d89eed97bfdd3ffb21a9a74829219e4d31a9eec805b0b8ef2d5f1ffbcf8e679"
+  },
+  "frozen_measurements": {
+    "component_response": "first post-HOST tick where any of the 14 component coordinates differs in raw from its HOST_STOP state",
+    "new_external_consequence": "first post-HOST tick where augmented-vs-parent RAW difference extends outside the HOST_STOP difference mask",
+    "parent_nonperturbation": "parent and augmented tau50/tau99 comparison plus equality outside the initial difference footprint before external consequence",
+    "transition_thresholds": {
+      "tau50_occupied": 29660,
+      "tau99_occupied": 58726
+    },
+    "diagnostic_clone": "remove both pre-existing component centers in a clone, tick once, measure native restoration; clones never feed main worlds",
+    "free_future_horizons": [0, 32, 64]
+  },
+  "snapshot_ticks": [0, 96, 112, 121, 127, 128, 391, 420, 442, 450, 458, 480, 512],
+  "source_reuse": [
+    {
+      "item": "Processes02 parent apparatus",
+      "path": "EXPEDIENTE_EXPERIMENTOS_DEE/procesos/PROCESOS_02/04_NATIVE_CONTINUATION/RUNNERS/process02_common.py",
+      "sha256": "2506723880138bec5957f0dca817adb4e0d692d0d2f2fd4ca49d2277cf5192c6"
+    },
+    {
+      "item": "Processes02 prior primary telemetry",
+      "path": "EXPEDIENTE_EXPERIMENTOS_DEE/procesos/PROCESOS_02/04_NATIVE_CONTINUATION/RESULTS/NATIVE_CONTINUATION_MAIN_S0_TO_782.json",
+      "sha256": "355b5d6a04492475aaf6c28354dbd665164f8f69dbdda0887329782f77850537"
+    },
+    {
+      "item": "CORE10 shared-interface apparatus",
+      "path": "zips de experimentos ndocumentados manuales/DEE_V27_CORE10_NATIVE_COUPLED_SYSTEMS_MULTISCALE_ECOLOGY_WORK/RUNNERS/core10_apparatus.py",
+      "sha256": "6b52faf7503d39e1e281983ab371463db1e67fc89b41cbcd4b97ce112ffb3772"
+    },
+    {
+      "item": "CORE10 C10H03 primary result",
+      "path": "zips de experimentos ndocumentados manuales/DEE_V27_CORE10_NATIVE_COUPLED_SYSTEMS_MULTISCALE_ECOLOGY_WORK/RESULTS/C10H03_joint_interface_homeostasis.json",
+      "sha256": "7d89eed97bfdd3ffb21a9a74829219e4d31a9eec805b0b8ef2d5f1ffbcf8e679"
+    }
+  ]
+}

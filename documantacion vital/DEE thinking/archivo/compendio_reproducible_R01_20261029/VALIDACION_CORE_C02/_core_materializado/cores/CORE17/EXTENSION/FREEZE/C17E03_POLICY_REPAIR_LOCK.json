@@ -1,0 +1,55 @@
+{
+  "apparatus": {
+    "discovery_sha256": "8b1ab11ef446a17f7297b7f4205f846d1c87bebc5ed8288f7bf305da1438a4aa",
+    "runner_sha256": "4049a7f9dd846e6a65fb86bc2a08a0c09964fa9cc3285dd99e5d126c5e055af8"
+  },
+  "canaries": [
+    {
+      "expected": "all fail",
+      "id": "C17E-CAN-001",
+      "mode": "backup_direction_reset",
+      "prerequisite": "learned direction coordinate"
+    },
+    {
+      "expected": "all fail",
+      "id": "C17E-CAN-002",
+      "mode": "path_cut",
+      "prerequisite": "intact carrier path"
+    },
+    {
+      "expected": "all pass",
+      "id": "C17E-CAN-003",
+      "mode": "offpath_cut",
+      "prerequisite": "spatially specific path"
+    }
+  ],
+  "challenge_generation": "separate post-freeze OS entropy; seed and complete geometry preserved",
+  "claim": "A causally intact redundant learned direction-state can carrier-reconstruct a damaged receiver policy and restore its fresh functional response.",
+  "claim_id": "C17E-CLAIM-001",
+  "content_sha256": "89b2b407dcab12d660f10c587d45da53e3a4ec03f65f6ca55dc6a98ab093313f",
+  "falsifier": "any treatment/offpath failure or any causal-negative success",
+  "fresh_worlds": 12,
+  "kernel": {
+    "observed": {
+      "kernel": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+      "package": "7e2991b1fc8a053ee44ead6e177b129855ae9265dea68505a8e545f0c3fdf8b4",
+      "wheel": "69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939"
+    },
+    "pass": true,
+    "stage": "CORE17E_POLICY_REPAIR_FREEZE",
+    "utc": "2026-09-19T07:59:37Z"
+  },
+  "metric": "query direction equals frame-transformed ACTION1",
+  "prediction": {
+    "backup_direction_reset": "0/12 functional",
+    "backup_untrained": "0/12 functional",
+    "no_backup": "0/12 functional",
+    "offpath_cut": "12/12 functional",
+    "path_cut": "0/12 functional",
+    "treatment": "12/12 functional",
+    "wrong_receiver": "0/12 functional"
+  },
+  "representation": "semantic-1 learned state; policy coordinate is direction; s_reg is nuisance-tested but retained by kernel",
+  "schema": "dee.v27.core17.extension.policy_repair.freeze.v1",
+  "scope_guard": "Carrier-mediated redundant reconstruction; not autonomous local regeneration, nonlocal transfer, or restoration from occupancy alone."
+}

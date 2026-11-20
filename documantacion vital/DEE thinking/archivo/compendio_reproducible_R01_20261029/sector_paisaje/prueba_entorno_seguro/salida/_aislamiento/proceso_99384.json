@@ -1,0 +1,75 @@
+{
+  "schema": "DEE.recursive_python_io_audit.v1",
+  "pid": 99384,
+  "parent_pid": 99380,
+  "python": "C:\\Users\\Erik\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "isolated": true,
+  "dont_write_bytecode": true,
+  "original_args": [
+    "-c",
+    "\nimport sys,json,subprocess\nfrom pathlib import Path\nforbidden,out,p313=sys.argv[1:4]\nblocked=False\ntry:Path(forbidden).read_text()\nexcept PermissionError:blocked=True\ngrandcode=\"import sys,json;from pathlib import Path;ok=False\\ntry:Path(sys.argv[1]).read_text()\\nexcept PermissionError:ok=True\\nprint(json.dumps({'grandchild_blocked':ok,'isolated':sys.flags.isolated,'bytecode':sys.dont_write_bytecode}))\"\ngrand=subprocess.run([p313,'-I','-B','-c',grandcode,forbidden],capture_output=True,text=True,check=True)\nPath(out,'child.txt').write_text('permitted child write')\nprint(json.dumps({'child_blocked':blocked,'isolated':sys.flags.isolated,'bytecode':sys.dont_write_bytecode,'grandchild':json.loads(grand.stdout)}))\n",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\archivo_historico_fuera_del_paquete.txt",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\entorno313\\Scripts\\python.exe"
+  ],
+  "package": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\paquete",
+  "output": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida",
+  "temporary_directory": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida\\_aislamiento\\tmp\\99384_cn08eruh",
+  "read_roots": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\paquete",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida\\_aislamiento\\tmp",
+    "C:\\Users\\Erik\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+    "C:\\Users\\Erik\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python"
+  ],
+  "write_roots": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida\\_aislamiento\\tmp"
+  ],
+  "read_files": [],
+  "blocked": [
+    {
+      "event": "open",
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\archivo_historico_fuera_del_paquete.txt",
+      "write": false,
+      "reason": "outside_declared_roots"
+    }
+  ],
+  "children": [
+    {
+      "original_argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\entorno313\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-c",
+        "import sys,json;from pathlib import Path;ok=False\ntry:Path(sys.argv[1]).read_text()\nexcept PermissionError:ok=True\nprint(json.dumps({'grandchild_blocked':ok,'isolated':sys.flags.isolated,'bytecode':sys.dont_write_bytecode}))",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\archivo_historico_fuera_del_paquete.txt"
+      ],
+      "wrapped_argv": [
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\entorno313\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\paquete\\codigo_comun\\entorno_seguro.py",
+        "--child",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\salida\\_aislamiento\\CONTEXTO.json",
+        "--",
+        "-c",
+        "import sys,json;from pathlib import Path;ok=False\ntry:Path(sys.argv[1]).read_text()\nexcept PermissionError:ok=True\nprint(json.dumps({'grandchild_blocked':ok,'isolated':sys.flags.isolated,'bytecode':sys.dont_write_bytecode}))",
+        "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\compendio_reproducible_R01_20261029\\sector_paisaje\\prueba_entorno_seguro\\archivo_historico_fuera_del_paquete.txt"
+      ],
+      "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests",
+      "creationflags": 0,
+      "executable_override": null
+    }
+  ],
+  "audit_events": 14,
+  "seconds": 0.29600000008940697,
+  "error": null,
+  "coverage": "CPython audit events and subprocess.Popen recursion; script, -c and -m. stdin/stdout/stderr, cwd, Windows creationflags/startupinfo/job ownership are preserved.",
+  "limitations": [
+    "Not an operating-system sandbox. Direct C/C++ file I/O and Windows DLL loading are outside CPython audit coverage.",
+    "File descriptor reads use descriptors opened before or under this policy; the hook cannot infer an inherited descriptor origin.",
+    "stat/exists metadata lookups are not content reads and do not all emit CPython audit events."
+  ]
+}

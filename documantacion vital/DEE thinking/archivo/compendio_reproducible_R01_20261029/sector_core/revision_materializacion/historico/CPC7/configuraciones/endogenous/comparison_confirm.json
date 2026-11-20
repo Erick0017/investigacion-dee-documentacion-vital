@@ -1,0 +1,18 @@
+{
+  "schema":"CPC7.native_need.confirmation.v1",
+  "frozen_before_controls_and_reserves":true,
+  "discovery_used":["NEED_D01_CURRENT_MATCH","NEED_D02_CURRENT_MISMATCH"],
+  "criterion":"Question at19 must be native semantic1 active horizontal +/-X. Source response24 adds +/-Y; all fixed followup probes29 test native use. No six-class categorical inference is built into the participant.",
+  "cases":[
+    {"id":"NEED_C01_NEGATIVE_CURRENT_INFORMATION","history":"AB","actual":-1,"source_value":-1,"phase":"CONTROL","auditor_condition":"explicit negative current report, not timeout or missing source"},
+    {"id":"NEED_C02_SOURCE_NONE","history":"AB","actual":-1,"source_value":1,"source_mode":"none","phase":"CONTROL","auditor_condition":"request opportunity present; no current source experience"},
+    {"id":"NEED_C03_SOURCE_UNPAIRED","history":"AB","actual":-1,"source_value":1,"source_mode":"unpaired","phase":"CONTROL","auditor_condition":"same source exposure dose; acquisition timing displaced"},
+    {"id":"NEED_C04_NO_CURRENT_ACTUAL","history":"AB","actual_omitted":true,"source_value":1,"phase":"CONTROL","auditor_condition":"current actual information incomplete; singleton comparator domain absent"},
+    {"id":"NEED_C05_NO_EXPECTATION_HISTORY","history":"NONE","actual":-1,"source_value":1,"phase":"CONTROL","auditor_condition":"no acquired singleton expectation; silence must not be called sufficient"},
+    {"id":"NEED_C06_READER_OMITTED","history":"AB","reader_omitted":true,"actual":-1,"source_value":1,"phase":"CONTROL","auditor_condition":"A/B experience retained; reader input absent"},
+    {"id":"NEED_C07_FORMED_QUESTION_CUT","history":"AB","actual":-1,"source_value":1,"late_question_edit":"cut","phase":"DIAGNOSTIC","auditor_condition":"one formed native request removed at20; parent MAIN never modified"},
+    {"id":"NEED_C08_FORMED_QUESTION_SHAM","history":"AB","actual":-1,"source_value":1,"late_question_edit":"sham","phase":"DIAGNOSTIC","auditor_condition":"same RAW rewritten only in diagnostic clone; unchanged future is a technical control"},
+    {"id":"NEED_H01_OPPOSITE_HISTORY_NEW_LOCATION","history":"BA","actual":1,"source_value":-1,"center":[33,25,42],"phase":"RESERVED"},
+    {"id":"NEED_H02_MATCH_NEW_LOCATION","history":"BA","actual":-1,"source_value":1,"center":[30,26,42],"phase":"RESERVED"}
+  ]
+}

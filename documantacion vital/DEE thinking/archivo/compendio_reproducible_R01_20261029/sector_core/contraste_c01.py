@@ -1,0 +1,9 @@
+from pathlib import Path
+import argparse,hashlib,json,sys,time
+p=argparse.ArgumentParser();p.add_argument('--materialized',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--worker',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
+import importlib.util
+spec=importlib.util.spec_from_file_location('core_comparison_only',a.worker);audit=importlib.util.module_from_spec(spec);spec.loader.exec_module(audit)
+source=a.materialized/'historico/CPC3/genealogia/CP01_C08';sys.path.insert(0,str(source/'src'));import fronts
+cfg=json.loads((source/'casos/EXPERIMENT_CONFIG.json').read_bytes())['C01'];wall=time.monotonic();cpu=time.process_time();actual=fronts.C01(a.out,cfg);seconds=time.monotonic()-wall;cpu_seconds=time.process_time()-cpu
+reference=source/'casos/C01/RESULTADOS.json';expected=json.loads(reference.read_bytes());diff=audit.compare_data(actual['measurements'],expected['measurements']);sd=audit.compare_data([x['state'] for x in actual['checkpoints']],[x['state'] for x in expected['checkpoints']]);result={'status':'PASS' if not diff and not sd else 'FAIL','mode':'TECHNICAL_HOST_AUDITOR_CONTRAST_NOT_C03','seconds':seconds,'CPU_seconds':cpu_seconds,'function_differences':diff,'full_checkpoint_RAW_clocks_differences':sd,'full_physical_equal':not sd,'reference_sha256':hashlib.sha256(reference.read_bytes()).hexdigest(),'source_sha256':hashlib.sha256(Path(fronts.__file__).read_bytes()).hexdigest(),'configuration':cfg,'backend_change':False,'scope':'Exact originalC01 inputs and code; only the outer host auditor differs. Not a new scientific acquisition or a new independent sample.'};(a.out/'CONTRASTE_C01.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8');print(json.dumps({k:result[k] for k in ('status','seconds','CPU_seconds','full_physical_equal')}),flush=True)
+if result['status']!='PASS':raise SystemExit(1)

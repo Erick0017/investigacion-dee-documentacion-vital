@@ -1,0 +1,81 @@
+{
+  "all_pass": true,
+  "content_sha256": "619b740eacd4dece29b2d83b0e0f941f96e6458407cd0767998d23cd92a4778c",
+  "created_utc": "2026-09-19T01:00:39Z",
+  "declarations": [
+    {
+      "claim": "C17R02",
+      "expected": "zero changed centers",
+      "intervention": "equal-clock and off-gate controls",
+      "prerequisite": "clock difference and on-period branch"
+    },
+    {
+      "claim": "C17R04",
+      "expected": "transmission versus blocking",
+      "intervention": "k5 versus k6",
+      "prerequisite": "ordered semantic4 guard boundary"
+    },
+    {
+      "claim": "C17R05",
+      "expected": "not naive overwrite",
+      "intervention": "occupied destination with incoming carrier",
+      "prerequisite": "incumbent branch priority"
+    },
+    {
+      "claim": "C17R01",
+      "expected": "only corridor cut destroys function",
+      "intervention": "corridor cut versus offpath cut",
+      "prerequisite": "causal route and prepared receiver"
+    }
+  ],
+  "extension_entries": [
+    {
+      "claim": "C17E-CLAIM-001",
+      "id": "C17E-CAN-001",
+      "pass": true,
+      "prerequisite": "learned direction",
+      "result": "0/12 after direction reset"
+    },
+    {
+      "claim": "C17E-CLAIM-001",
+      "id": "C17E-CAN-002",
+      "pass": true,
+      "prerequisite": "intact route",
+      "result": "0/12 after on-path cut"
+    },
+    {
+      "claim": "C17E-CLAIM-001",
+      "id": "C17E-CAN-003",
+      "pass": true,
+      "prerequisite": "spatial specificity",
+      "result": "12/12 after off-path cut"
+    },
+    {
+      "claim": "C17E-CLAIM-002",
+      "id": "C17E-CAN-004",
+      "pass": true,
+      "prerequisite": "direction retained",
+      "result": true
+    },
+    {
+      "claim": "C17E-CLAIM-002",
+      "id": "C17E-CAN-005",
+      "pass": true,
+      "prerequisite": "semantic4 full raw retained",
+      "result": true
+    }
+  ],
+  "results": {
+    "incumbent_branch": {
+      "naive_incoming": 1153203026828197889,
+      "observed": 0,
+      "pass": true
+    },
+    "transfer_path": {
+      "corridor_cut_functional": false,
+      "offpath_cut_functional": true,
+      "pass": true
+    }
+  },
+  "schema": "dee.v27.core17.canary_registry.v2_definitive"
+}

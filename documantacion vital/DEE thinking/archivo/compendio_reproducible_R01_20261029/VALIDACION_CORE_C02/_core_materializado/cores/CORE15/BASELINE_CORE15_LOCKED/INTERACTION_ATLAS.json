@@ -1,0 +1,2246 @@
+{
+  "interactions": [
+    {
+      "canaries": null,
+      "event": "Cada clock local satisface c_i(t)=c_i(0)+t módulo 2^64; F_DEE es un skew-product con base clock autónoma.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X01",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "La igualdad ordinaria requiere no cruzar wrap o desenvolver el clock."
+    },
+    {
+      "canaries": null,
+      "event": "Sin wrap, el período universal mínimo causalmente activo de la proyección raw es L_raw=304980; 1094573220 también es período, pero no mínimo.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X02",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No es simetría del estado completo ni acción global al cruzar uint64."
+    },
+    {
+      "canaries": null,
+      "event": "El raw de salida a un tick depende a lo sumo de raws a distancia Chebyshev toroidal 3, la cota es alcanzable y por composición r_infinity(t)<=3t.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X03",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "El aparato histórico V7-C operó en un régimen que no excitó el camino overflow de radio 3."
+    },
+    {
+      "canaries": null,
+      "event": "Las traslaciones toroidales son simetrías exactas; dense y lazy implementan el mismo mapa y el raw/clock no depende de n_hilos positivo.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X04",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Supone buffers válidos y ejecución dentro del contrato binario."
+    },
+    {
+      "canaries": null,
+      "event": "La rama de cristalización por gradiente es inalcanzable: grad_mag<=983025 frente al requisito 18996390.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X05",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "La constante 966 está compilada, pero no constituye un mecanismo ejecutable en el dominio raw válido."
+    },
+    {
+      "canaries": null,
+      "event": "Para cada sitio no observer, E6 caracteriza la salida base de actualizar_voxel antes de aplicar_demux; un delta overflow entrante puede reactivar una base con state=0 o reescribir ",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X06",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No es una caracterización incondicional de supervivencia/nacimiento final de F_DEE: la etapa DEMUX posterior puede modificar la salida base."
+    },
+    {
+      "canaries": null,
+      "event": "F_DEE no es inyectiva: singletons normales sin dirección con state 1 y 2 y clocks iguales tienen la misma imagen.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X07",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "La no-inyectividad global no elimina sectores inyectivos o permutacionales."
+    },
+    {
+      "canaries": null,
+      "event": "Todo raw semantic=4 queda fijado, no se crean nuevos semantic=4 y Q_f=sum_i 1[sem_i=4]f(raw_i) es una familia no trivial de invariantes aditivos de rango 0.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X08",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Son invariantes nativos programados; no se identifican automáticamente con carga, masa o energía física."
+    },
+    {
+      "canaries": null,
+      "event": "Para N>=5 un singleton normal direccional se traslada exactamente por d cada tick; transporta s_reg y d, y su raw tiene período N.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X09",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Sector exacto restringido; no demuestra que todo objeto, basin o materia DEE sea balístico."
+    },
+    {
+      "canaries": null,
+      "event": "Para N>=5, singletons normales state=1 con dirección Moore común no nula, cargas arbitrarias y separación Chebyshev toroidal por pares >=3 se trasladan rígidamente; F_raw es una pe",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X10",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "La separación >=3 excluye vecindad, XNOR y colisión y se conserva por traslación. La reversibilidad/Koopman son sectoriales; F_DEE global sigue no inyectiva."
+    },
+    {
+      "canaries": null,
+      "event": "Para un blanco raw exactamente cero con XNOR falso y k>1 entradas Moore, el reducer produce antes de aplicar_demux state=1, semantic=1, s_reg=min(sum s_j,19664) y d_out=sign(sum d_",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X11",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Un delta overflow entrante puede aumentar después s_reg. Los 1300 pares aislados T8 satisfacen el dominio: XNOR falso y sin overflow entrante."
+    },
+    {
+      "canaries": null,
+      "event": "Para N>=5, un único semantic=4 con dirección Moore no nula permanece fijo y, incluso con state=0, emite para 1<=t<N el tren balístico de paridad alternante descrito en E12.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X12",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "El dominio exige d en {-1,0,1}^3\\{0} y 1<=t<N, antes del cierre toroidal. Dirección cero y direcciones codificables fuera de Moore no emiten en el aparato aislado."
+    },
+    {
+      "canaries": null,
+      "event": "El toro totalmente ocupado con state=3, dirección cero, semantic preservable y s_reg arbitrario es raw-fijo.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X13",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No se ha probado estabilidad frente a huecos o perturbaciones."
+    },
+    {
+      "canaries": null,
+      "event": "Para predecir (raw'_y,clock'_y) basta raw en B3(y) y clocks en B1(y); occupancy no es causalmente suficiente.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:X15",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Es suficiencia de un tick para el kernel, no minimalidad ontológica ni observabilidad física."
+    },
+    {
+      "canaries": null,
+      "event": "T8 ejecutó 1872 trayectorias, 50544 ticks primarios, 2704 cocientes Fourier, 624 variantes de motor, 12 casos de dos cuerpos y 1300 colisiones con cero mismatches.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:C02",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Confirma el panel congelado; la universalidad procede además de las pruebas estáticas X09-X11."
+    },
+    {
+      "canaries": null,
+      "event": "T9 ejecutó 936 casos factoriales, 208 comparaciones de motor, 18 controles de dirección cero y 12782 ticks con cero mismatches.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:C03",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Confirma el aparato aislado congelado; no atribuye capacidad de medición al semantic observer."
+    },
+    {
+      "canaries": null,
+      "event": "v25.5-C/F-189 registró 60/60 preparaciones direccionales y 2226 pasos con shift_hamming=0 y translation_exact_fraction=1; P=L_sym para packed/state/direction/semantic y s_reg tuvo ",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE01:L05",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Antecedente sectorial en una familia preparada: no es ley universal de F_DEE, teoría física externa ni sustituto del teorema v27 T8."
+    },
+    {
+      "canaries": null,
+      "event": "Every local clock advances by one at every tick",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "HISTORY:DOCUMENTARY:T2",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "P_KERNEL and UMBRAL_FUSION equal 19665 and cap equals 19664",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "HISTORY:DOCUMENTARY:CONST-P",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "KERNEL_IDENTITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Para N>=3, el estado completo X=(raw,clock) define un mapa determinista sincrono, many-to-one y traslacionalmente equivariante sobre el toro.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R001",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No implica reversibilidad ni fisica externa."
+    },
+    {
+      "canaries": null,
+      "event": "Para O,H fijados, X/ker(W_H^+) es el cociente predictivo exacto mas grueso.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R002",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No existe un minimo independiente de observable, horizonte y dominio."
+    },
+    {
+      "canaries": null,
+      "event": "El cociente de cinco campos no es global: semantic=5 activo separa fibras con igual (q,d,s,a,p) cuando se activa la rama XNOR densa.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R004",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "D_* admite orphan activo sparse; para la extension densa se requiere marca orphan-activa o semantic completo."
+    },
+    {
+      "canaries": null,
+      "event": "Una propuesta existe exactamente por la congruencia modular fuente+d=target; en D_* equivale a d Moore no nula.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R005",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No dice que el target alcance la rama de routing."
+    },
+    {
+      "canaries": null,
+      "event": "Un raw normal state=0 con direccion Moore no nula es una fuente causal efimera.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R006",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No es occupancy viva ni fuente persistente."
+    },
+    {
+      "canaries": null,
+      "event": "Occupancy no es estado causal suficiente: vacio, router latente y observer state-zero pueden compartir occupancy cero y divergir.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R007",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Descarta occupancy, no toda representacion coarse-grained."
+    },
+    {
+      "canaries": null,
+      "event": "Un singleton normal se traslada q(t)=q0+t d, conserva d,s y tiene periodo raw N.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R008",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Clock completo no tiene periodo N; no identifica particula fisica."
+    },
+    {
+      "canaries": null,
+      "event": "K_free es una permutacion, compone como semigrupo y posee modos Fourier de adveccion por capa d.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R009",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Modo colectivo sectorial, no onda fisica universal."
+    },
+    {
+      "canaries": null,
+      "event": "Semantic observer fija su raw y con d no nula actua como fuente persistente de un tren alternante pre-wrap.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R010",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Observer es frontera/fuente, no aparato de medicion."
+    },
+    {
+      "canaries": null,
+      "event": "Una oclusion inicial de la boca del observer causa retraso unitario coherente, paridad opuesta y crecimiento Hamming lineal.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R011",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Prediccion inversa condicional a la clase de historias probada."
+    },
+    {
+      "canaries": null,
+      "event": "El reducer simultaneo usa u=sign(sum d_j), S=min(sum s_j,19664); es conmutativo, no lineal y many-to-one.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R012",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "s no pondera direccion; no es momentum fisico."
+    },
+    {
+      "canaries": null,
+      "event": "La composicion binaria de direcciones ya comprimidas por sign no es asociativa.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R013",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "F completo si compone; falla el monoide atemporal reducido."
+    },
+    {
+      "canaries": null,
+      "event": "En colision binaria, cada salida no nula tiene 12 pares-preimagen y la salida cero 13.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R014",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Inversion correcta es conjuntista."
+    },
+    {
+      "canaries": null,
+      "event": "H10.2 paso: q,d,s,a,p tienen testigos requeridos y los nuisances congelados colapsan en el panel.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R017",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Minimalidad conjunta/sectorial, no global."
+    },
+    {
+      "canaries": null,
+      "event": "H10.3 paso 1872/1872 checks de composicion K_free.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R018",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No implica superposicion en colisiones guardadas."
+    },
+    {
+      "canaries": null,
+      "event": "T11 confirmo mayoria coordenada de cinco fuentes y ocho fibras inversas de siete subconjuntos.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R019",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Aridad impar evita d_out=0; caveat de secuencias de perfiles documentado."
+    },
+    {
+      "canaries": null,
+      "event": "T12 probo prospectivamente la reparacion estado-evento G_dagger/J_dagger en aridades nuevas.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R020",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No repara retrospectivamente T10 ni demuestra cierre global."
+    },
+    {
+      "canaries": null,
+      "event": "Separar estado predictivo canonico y evento transitorio preserva S en J_dagger aunque d_out=0 y cierra el futuro en D_*.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R021",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No hay identidad fisica asignada al evento."
+    },
+    {
+      "canaries": null,
+      "event": "clock_i(t)=clock_i(0)+t mod 2^64 y sus diferencias son invariantes modulares.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R022",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "La igualdad entera ordinaria requiere no-wrap."
+    },
+    {
+      "canaries": null,
+      "event": "El periodo causal raw minimo comun sin wrap es 304980, no 1094573220.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R023",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No es periodo del full-state ni tiempo SI."
+    },
+    {
+      "canaries": null,
+      "event": "La dependencia raw satisface r_Cheb(t)<=min(3t,diam_infty(T_N)); la velocidad 3 por tick es aguda cuando el diametro toroidal permite distancia 3.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R024",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "En toros pequenos satura el diametro; no es automaticamente cono de luz fisico."
+    },
+    {
+      "canaries": null,
+      "event": "F_DEE no es inyectiva para N>=3.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R025",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No todo raw aislado colapsa."
+    },
+    {
+      "canaries": null,
+      "event": "Raws semantic=4 son fijos punto a punto y generan una familia de invariantes aditivos de rango cero.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R026",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No implica energia global."
+    },
+    {
+      "canaries": null,
+      "event": "Todo embedding lineal euclideo directo de D26 tiene ratio de velocidades al menos sqrt(3).",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R028",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Teorema estatico condicionado al embedding; no es ley de F_DEE ni cubre geometria emergente."
+    },
+    {
+      "canaries": null,
+      "event": "19665/19664,782,966 y 194422 descienden de una misma cadena constitutiva y no son predicciones independientes.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R040",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Implementacion no demuestra naturalidad externa."
+    },
+    {
+      "canaries": null,
+      "event": "El threshold 966 tiene sensibilidad runtime cero en v27 porque el cociente maximo alcanzable es 49.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R041",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Prueba codigo muerto, no relacion con alpha."
+    },
+    {
+      "canaries": null,
+      "event": "Bajo H_DEE falta un mapa independiente de preparacion/medicion y una geometria/escala coarse-grained que haga predicciones cruzadas nuevas.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE02:R045",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MULTISCALE_HIERARCHY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Esa identidad no puede deducirse interrogando solo F_DEE."
+    },
+    {
+      "canaries": null,
+      "event": "Q0=(raw,clock) is the exact microscopic Markov state.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C001",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Imports sealed v27 result; no claim that raw is physically observable."
+    },
+    {
+      "canaries": null,
+      "event": "Q1=(Z,G_dagger,J_dagger) closes only in certified sparse D_* and separates predictive state from instantaneous event.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C002",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "T10 original formulation remains FAIL; no extension beyond D_*."
+    },
+    {
+      "canaries": null,
+      "event": "Same raw+clock inventory with different spatial organization changes response in the V7-C apparatus.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C003",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Finite apparatus result; does not identify the minimal descriptor."
+    },
+    {
+      "canaries": null,
+      "event": "A compact Q2 predictive level exists for the frozen MSH02 natural-preparation/raw/horizon domain.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C005",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MULTISCALE_HIERARCHY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Predictive and compressed within the frozen domain; not a global causal closure or physical identification."
+    },
+    {
+      "canaries": null,
+      "event": "q_N separates dense versus all non-dense outcomes in MSH01.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C014",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Binary endpoint changed after opening; MSH02 later tested a separately frozen asymmetric endpoint."
+    },
+    {
+      "canaries": null,
+      "event": "After deleting state at t=N while retaining the routing complement, the t=N+1 positive mask equals the exact union of encoded routing destinations in all eight MSD06 contexts.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C019",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Exact for tested bit fields and contexts; not a theorem for arbitrary raw configurations or physical preparability."
+    },
+    {
+      "canaries": null,
+      "event": "The current parsimonious tested Q2 candidate is phase-dependent positive support P plus routing complement R plus destination geometry and collision multiplicity; its minimality is",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C022",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Phase-dependent finite-panel model; individual R fields were not all separately ablated; P is not identified with matter and R is not identified with momentum."
+    },
+    {
+      "canaries": null,
+      "event": "The unchanged integer q_N rule predicts dense raw-fixation by4N versus sparse minimal exact raw period N by16N on the declared unopened natural preparations, including a separate p",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C024",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Raw finite horizons and declared natural family only; q_N remains an order parameter, not sole carrier, matter or energy."
+    },
+    {
+      "canaries": null,
+      "event": "The prospectively defined no-crossing-by-N cohort preserves the frozen q_N prediction before macroscopic dense crossing.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE03:MSC-C025",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Prospective row-level subset inside the same frozen preparation family; not an asymptotic or universal result."
+    },
+    {
+      "canaries": null,
+      "event": "Q0=(raw,clock) is the exact Markov state of F_DEE v27.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-I001",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The frozen MSH02 q_N rule predicts dense raw fixation by 4N versus sparse minimal raw period N by 16N in 60/60 declared worlds, including 22/22 pre-crossing rows.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-I003",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "For every non-observer target with state=0 that has at least one Moore-neighbor directional record pointing exactly to it, F_DEE makes the target positive at the next tick; earlier",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-E001",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The temporal coarse-grained interface bar_kappa=mean_{floor(N/4)..floor(N/2)} B6/P predicts the eventual dense basin and adds information beyond same-window support and arm identit",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-H003",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "When no s_reg overflow deposit occurs, the exact next positive-support mask is the disjoint priority union of local survivors S, crystallization births C, XNOR births X, and routed",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-E002",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The confirmed Q2 gate selects a scale-coarse N/8 flow in z=(q,kappa/6): sparse worlds are approximately identity, while dense worlds follow a frozen triangular polynomial with six ",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-H006",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MULTISCALE_HIERARCHY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "In the zero-overflow sector the support count has the exact reproduction balance q_(t+1)=q_t A_t with A_t=(S+R+C+X)/P, equivalently Delta q=(R+C+X-D)/N^3 and D=P-S.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-E003",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Whenever P remains positive, DEE support reproduction factors compose exactly across temporal scale: A_t^(h)=P(t+h)/P(t)=product from j=0 to h-1 of A_(t+j), and Gamma_t^(h)=log A_t",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-E004",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The sign of Gamma=log[P(N/2)/P(N/4)] predicts the 6N dense basin across untouched nested and compact preparation families.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-H008",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MULTISCALE_HIERARCHY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The active-interface conjunction bar_kappa<=5.60 and mean(routed_positive/P)>=0.50 predicts the 6N dense basin across untouched nested and compact preparation families.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE04:C04-H009",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "X=(raw,clock) is the complete microscopic Markov state.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:INH_Q0_MARKOV",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "This does not make every decoded raw field a physical observable."
+    },
+    {
+      "canaries": null,
+      "event": "For a blank isolated destination fiber, d_out=sign(sum_j d_j) componentwise and s_out=min(sum_j s_j,19664).",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:INH_COLLISION_REDUCER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Guards, semantic sources and occupied targets add branches outside this formula."
+    },
+    {
+      "canaries": null,
+      "event": "Z[y]=(incoming multiplicity, integer direction-vector sum, s_reg sum) is sufficient to reconstruct the complete next raw array in the frozen latent-router, semantic1, state0, blank",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH03_DESTINATION_FIBER_CLOSURE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "GENERAL_DYNAMICS",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Not a clock predictor, multi-step global closure or replacement for Q0."
+    },
+    {
+      "canaries": null,
+      "event": "A routed probe plus downstream output port operationally detects coincidence with a target process and decodes eight transverse direction classes.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH01_INTERNAL_OBSERVER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Consumptive detector; neither consciousness nor quantum measurement nor nondemolition readout."
+    },
+    {
+      "canaries": null,
+      "event": "The response of one detector can become the measured process of the next detector under the same frozen reducer.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH02_RECURSIVE_OBSERVER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Finite composability, not an infinite hierarchy or spontaneous scale law."
+    },
+    {
+      "canaries": null,
+      "event": "A detector bank defines an internal ordinal measurement m_B(A) that maps relative arrival offset to the unique collision channel.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH05_DELAY_MEASUREMENT_SCALE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Kernel update index, not calibrated physical time."
+    },
+    {
+      "canaries": null,
+      "event": "A one-tick local mouth obstruction can disappear while leaving a distributed phase change whose hub record equals a persistent-source ablation over the certified horizon.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH04_DISTRIBUTED_PHASE_MEMORY",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No adaptive repair, learning, homeostasis or biological identity."
+    },
+    {
+      "canaries": null,
+      "event": "For the frozen toroidal source-hub family, even N predicts first departure from ablation-equivalence at N+L, while odd N preserves equivalence through 3N+L.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRH06_TOROIDAL_PHASE_PARITY",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "The even timing follows the return path and phase; indefinite odd-N persistence is not claimed."
+    },
+    {
+      "canaries": null,
+      "event": "Below saturation, s_reg is additive across an isolated blank destination fiber; at the cap, the exact fiber loss is sum_j s_j-19664.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRD03_SREG_BALANCE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Global worlds include sources, guards and branches that create or remove s_reg; this is not physical energy conservation."
+    },
+    {
+      "canaries": null,
+      "event": "The binary direction-pair collision map is many-to-one and loses 3.5896 bits of input identity under the stated uniform unordered-pair census.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:NRD03_COLLISION_INFORMATION_LOSS",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "Logical coarse irreversibility, not thermodynamic entropy production."
+    },
+    {
+      "canaries": null,
+      "event": "The same low-complexity map sends two routed streams, path-delay differences, destination-fiber coincidence and output channel to an ideal delay-line/coincidence place-code process",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE05:RSH01_PROCESS_ROSETTA",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "No physical-unit calibration, biological distribution, external subject or novel external prediction."
+    },
+    {
+      "canaries": null,
+      "event": "Q0=(raw,clock) is the complete microscopic Markov state.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:INH_Q0",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "CLOCK_PHASE",
+      "participants": [
+        "clock",
+        "phase/history"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "phase/history",
+      "pre_state": "clock",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Basin organization is prospectively predictable in the certified multiscale preparations.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:INH_Q2",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MULTISCALE_HIERARCHY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Productive histories and active interfaces define a bounded predictive class, not a global autonomous state.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:INH_Q3",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_INTERACTION",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Proposal graphs, destination fibers, guards, phase/history, observers and measurements jointly explain multiple CORE05 phenomena.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:INH_RELATIONAL_ARCHITECTURE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "An ordinary paired cue+teacher collision writes a routed memory lineage that persistently and context-specifically changes a later cue response; the result generalized prospectivel",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_ASSOCIATIVE_LEARNING",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "The collision-written memory acts as a frozen reducer operator on direction classes absent from training and can be replaced or reacquired through ordinary reset and paired experie",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_CLASS_GENERALIZATION_REVERSAL",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "With the pre-frozen code x->B-x, label y->y, query n->n and readout s_reg-B, ordinary examples write delta=y-x and the learner applies n->n+delta to unseen values; SUCCESSOR is the",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_NATIVE_TRANSLATION_ARITHMETIC",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Two independently learned translation memories compose sequentially as n->n+d1+d2 in either tested causal order in the nonsaturating domain.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_COMPOSITIONAL_TRANSLATION_LEARNING",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "A DEE graph ruler/carrier clock measures speed one for free carriers; a semantic-4 source clock has period two; moving consumptive observers measure ||u-w||_infinity and therefore ",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_INTERNAL_KINEMATICS",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_MEASUREMENT",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Operational DEE organizations exhibit sector-specific persistence, directed transport, capped nonlinear composition, coarse consumptive detection and stable-interface occlusion; no",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_DEE_MATTER_OPERATIONAL_MECHANICS",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "For free normal carriers, operational transported identity is the moving support plus (direction,s_reg,semantic); arbitrary tested initial state is normalized to state=1 at the fir",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_FREE_CARRIER_IDENTITY_QUOTIENT",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "PROPAGATION_CAUSALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Matched mixed-direction normal-carrier ensembles exhibit monotone support and total-s_reg loss, finite-horizon relaxation to constant coarse windows and stronger contraction at hig",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_DISSIPATIVE_ENSEMBLE_RELAXATION",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "THERMODYNAMICS_RESOURCE",
+      "participants": [
+        "resource_state",
+        "future_capacity"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "future_capacity",
+      "pre_state": "resource_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "Destination fibers, the local reducer and transported history jointly explain associative memory, learned translation/composition, material collision, consumptive observation, Bell",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE06:C06_UNIFIED_NATIVE_MECHANISM",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "NOT_RECORDED"
+    },
+    {
+      "canaries": null,
+      "event": "A collision-written learned integer-translation response repertoire can be continuously transferred through a zero-load relay and recovered at a remote receiver on unseen queries.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE07:C7_FUNCTIONAL_LEARNING_TRANSFER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING_TRANSFER_MATTER",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "continuous causal carrier transfer; not instantaneous transfer, material teleportation or external physical identity"
+    },
+    {
+      "canaries": null,
+      "event": "Collision-separated destination fibers preserve independent learned translation repertoires, while shared-fiber memories reduce to one summed carrier and lose separate identity under the fixed decoder.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE07:C7_DESTINATION_FIBER_CAPACITY",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING_RESOURCE_THERMODYNAMICS",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "K=40 is a lower bound, not maximum; source/preoccupied/special-semantic branches outside theorem"
+    },
+    {
+      "canaries": null,
+      "event": "A learned normal-carrier lineage can be monotonically reprogrammed by an ordinary positive-load interaction and retain its updated response repertoire after redirection; state and clock are nuisance in this apparatus.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE07:C7_REPROGRAMMABLE_FUNCTIONAL_MATTER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "MATTER_LEARNING_REPAIR",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "lineage/functional quotient only; monotonic additive reprogramming; not autonomous adaptation, strict microidentity or physical matter"
+    },
+    {
+      "canaries": null,
+      "event": "A preconfigured DEE apparatus can route sensing through learned memory and action interactions back to the sensing location without Python decisions, but source-free reducer accounting makes it one-pass rather than reusable.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE07:C7_ONE_PASS_INTERNAL_FEEDBACK",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER_PROCESSING_RESOURCE",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "preconfigured one-pass circuit, not agency or homeostasis; semantic-source regeneration outside claim"
+    },
+    {
+      "canaries": null,
+      "event": "A label-blind 64-bit encoder plus DEE teacher-port destination-fiber memory causally generalizes to unseen ten-class digits under 10/64 zero-pixel damage.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE07:EXTRA02_CAUSAL_MULTICLASS",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "LEARNING_COMPUTATION",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "explicit categorical histogram/reducer; 81.11% trails kNN 86.67% and logistic 83.06%; engineering result, not H_DEE evidence"
+    },
+    {
+      "canaries": null,
+      "event": "The crystallization vacuum branch is unreachable under the v27 s_reg cap",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_CRYSTALLIZATION_UNREACHABLE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "KERNEL_THEORY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "implementation-specific; future kernel change can invalidate"
+    },
+    {
+      "canaries": null,
+      "event": "Z_update exactly predicts guarded void-destination raw",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_GUARDED_DESTINATION_OBSERVER",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "OBSERVER",
+      "participants": [
+        "interaction",
+        "detector_record"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "detector_record",
+      "pre_state": "interaction",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "minimal only within the declared aggregate coordinate-deletion family and one-destination task; not a global quotient of F_DEE"
+    },
+    {
+      "canaries": null,
+      "event": "Persistent cubic scaffold regenerates exact center across repeated damage",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_REPEATED_SCAFFOLD_REGENERATION",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "REPAIR_AUTONOMY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "R2,R5-fixed,R6 and R7 only for this immutable XNOR scaffold; not learned repair, general morphogenesis, biological homeostasis or resource conservation"
+    },
+    {
+      "canaries": null,
+      "event": "Finite trained redundancy recovers learned response on unseen queries",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_TRAINED_REDUNDANCY_RECOVERY",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "REPAIR_LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "R5 functional learned-memory recovery by finite pre-trained redundancy; explicitly not R6 damage detection, R7 repeated learned-memory regeneration, or reconstruction from the damaged carrier"
+    },
+    {
+      "canaries": null,
+      "event": "Boundary place-delay code closes collision-free area-indexed ray family",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_BOUNDARY_FINITE_LAW",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "DIMENSIONALITY",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "restricted area-indexed ballistic family only; the time-bearing code is Theta(N^2 log N), not a demonstrated O(N^2)-bit code for arbitrary volumetric state"
+    },
+    {
+      "canaries": null,
+      "event": "Finite trained redundancy recovers learned response on explicitly disjoint queries",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "CORE08:C8_TRAINED_REDUNDANCY_RECOVERY_H06",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "REPAIR_LEARNING",
+      "participants": [
+        "training_event",
+        "learned_state"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "learned_state",
+      "pre_state": "training_event",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "R5 by finite independently trained redundancy; not R6 learned damage detection or R7 learned-memory regeneration"
+    },
+    {
+      "canaries": null,
+      "event": "C9H02 ADAPTIVE POLICY A6",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C9H02_ADAPTIVE_POLICY_A6",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "adaptive",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "frozen archived apparatus"
+    },
+    {
+      "canaries": null,
+      "event": "C10H01 BIDIRECTIONAL CAUSAL POLICY EXCHANGE",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C10H01_BIDIRECTIONAL_CAUSAL_POLICY_EXCHANGE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "bidirectional",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "frozen archived apparatus"
+    },
+    {
+      "canaries": null,
+      "event": "C10H02 LEARNED POLICY FUNCTIONAL REINSTANTIATION",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C10H02_LEARNED_POLICY_FUNCTIONAL_REINSTANTIATION",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "learned",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "frozen archived apparatus"
+    },
+    {
+      "canaries": null,
+      "event": "C10H03 JOINT INTERFACE HOMEOSTASIS",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C10H03_JOINT_INTERFACE_HOMEOSTASIS",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "joint",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "frozen archived apparatus"
+    },
+    {
+      "canaries": null,
+      "event": "C10H05 FUNCTIONAL OBSERVER AND INTERIOR BOUNDARY COUNTEREXAMPLE",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C10H05_FUNCTIONAL_OBSERVER_AND_INTERIOR_BOUNDARY_COUNTEREXAMPLE",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "functional",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "frozen archived apparatus"
+    },
+    {
+      "canaries": null,
+      "event": "A source-supported semantic-4 process emits a non-dispersive period-two train whose detector phase is arrival parity; a t0 mouth obstruction shifts that parity by one tick while an off-path sham does not.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C12C01",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "For equal convergent period-two paths, relative phase changes the detector record: coherent arrivals reduce to s_reg=a+b; the one-tick-shifted B lineage is excluded by prior target occupancy, leaving A-only records. This is phase-sensitive but not a spatial interference-fringe law.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C12C02",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "With zero-direction semantic-4 records at the eight corners, a present center is retained iff k>=6, while an absent center is created iff k=8, in the tested local sector.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C12C03",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "The k>=6 semantic-4 guard produces an organization-specific sustained capture interface for a period-two train; k=5, semantic-1 equal inventory, and spatially shuffled semantic-4 controls transmit.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C12C04",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "No Theta_DEE candidate or zeroth-law screen was earned within three causally distinct ensemble classes.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C12C05",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "M_EVENT_CAUSAL is the smallest tested observer with greatest cross-core convergence",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C13C01",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "frozen shared observer predicts route/phase/interface holdout",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C13C02",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "same observer predicts singleton resolving relation",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C13C03",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "unclassified",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "bounded to archived claim"
+    },
+    {
+      "canaries": null,
+      "event": "Paired collision writes a history-bearing routed lineage that causally changes a later fresh query; history shuffle, reset and mediator ablation abolish the response.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C14R01",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "structured_memory/capture",
+      "participants": [
+        "memory",
+        "response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "response",
+      "pre_state": "memory",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "associative lineage apparatus; fresh N41-57/frames/delays"
+    },
+    {
+      "canaries": null,
+      "event": "A fixed eight-corner scaffold restores repeated center deletion in one tick; missing-corner controls fail.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C14R02",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "matter_loading",
+      "participants": [
+        "persistent_organization",
+        "matter_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "matter_response",
+      "pre_state": "persistent_organization",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "semantic4 scaffold; single-site deletion; four fresh worlds"
+    },
+    {
+      "canaries": null,
+      "event": "Mixed sparse ensembles contract monotonically to a finite plateau while aligned controls translate exactly.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C14R03",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "relaxation",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "semantic1 normal ensemble N20/23/26 and tested fills/horizon"
+    },
+    {
+      "canaries": null,
+      "event": "Bidirectional exchange, corridor-mediated destructive functional reinstantiation and shared-interface joint recovery form three connected controlled arrows.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C14R04",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "coupling/conversion",
+      "participants": [
+        "system_A",
+        "system_B"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "system_B",
+      "pre_state": "system_A",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "compatible lanes/receivers/scaffolds, fresh N33-39"
+    },
+    {
+      "canaries": null,
+      "event": "After complete marked-lineage removal, EMPTY and k6-GUARD raw buffers equal matched controls but both clock buffers retain an exact persistent trace.",
+      "hidden_state_consequences": "not fully determined by historical claim",
+      "history_effect": "source-specific",
+      "interaction_id": "C14R05",
+      "mediator": "source apparatus native mediator",
+      "observable_consequences": "environment",
+      "participants": [
+        "native_state",
+        "native_response"
+      ],
+      "persistence": "claim-specific",
+      "post_state": "native_response",
+      "pre_state": "native_state",
+      "relaxation": "claim-specific",
+      "reliability": "HOLDOUT_CONFIRMED",
+      "scope": "matched-age EMPTY/GUARD, fresh N47/49/55, removal/wait protocol"
+    }
+  ]
+}

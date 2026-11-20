@@ -1,0 +1,261 @@
+{
+  "campaign_premise": "P0_FIXED",
+  "canonical_persistent_state": [
+    {
+      "component": "grid_raw_A",
+      "kernel_read": true,
+      "kernel_write": true,
+      "persistent": true,
+      "storage": "uint64[N^3] canonical current grid",
+      "subfields": [
+        {
+          "bits": "0..31",
+          "causal_role": "existence/rule payload; state>0 defines exists",
+          "name": "state",
+          "type": "uint32"
+        },
+        {
+          "bits": "32..47",
+          "causal_role": "local register used by gradients, fusion threshold and reducer composition; not pre-named energy",
+          "executed_cap": 19664,
+          "name": "s_reg",
+          "type": "uint16"
+        },
+        {
+          "bits": "48..51",
+          "causal_role": "destination proposal/routed transport and response anchoring",
+          "name": "direction_x",
+          "type": "signed nibble [-8,7]"
+        },
+        {
+          "bits": "52..55",
+          "causal_role": "destination proposal/routed transport and response anchoring",
+          "name": "direction_y",
+          "type": "signed nibble [-8,7]"
+        },
+        {
+          "bits": "56..59",
+          "causal_role": "destination proposal/routed transport and response anchoring",
+          "name": "direction_z",
+          "type": "signed nibble [-8,7]"
+        },
+        {
+          "bits": "60..63",
+          "causal_role": "rule-family selector; semantic 4 is exact raw-fixed observer/guard state",
+          "name": "semantic",
+          "type": "uint4"
+        }
+      ]
+    },
+    {
+      "component": "clock_A",
+      "kernel_read": true,
+      "kernel_write": true,
+      "persistent": true,
+      "storage": "uint64[N^3] canonical local clocks",
+      "subfields": [
+        {
+          "causal_role": "increments mod 2^64 and gates reachable matter updates with active periods 195/260/391/782",
+          "name": "local_clock",
+          "type": "uint64"
+        }
+      ]
+    },
+    {
+      "component": "toroidal_coordinate_and_N",
+      "kernel_read": true,
+      "kernel_write": false,
+      "persistent": true,
+      "storage": "array position plus integer N",
+      "subfields": [
+        {
+          "name": "coordinate",
+          "type": "Z_N^3"
+        },
+        {
+          "name": "N",
+          "type": "integer >=4 in wrapper"
+        }
+      ]
+    }
+  ],
+  "causal_dependency_radius": {
+    "clock_direct_read_radius": 0,
+    "raw_one_tick_Chebyshev_upper_bound": 3,
+    "witness_saturates": 3
+  },
+  "clock_law": "c_i(t)=c_i(0)+t mod 2^64; raw-causal reachable period L=304980 before wrap",
+  "created_utc": "2026-09-18T02:58:30Z",
+  "critical_distinction": "Phase, history, lineage, basin, coupling and functional identity are real causal/relational information but are not extra hidden arrays in the v27 binary.",
+  "exact_symmetries_and_breaks": {
+    "full_cubic_Oh": "FALSE_GLOBALLY_DUE_TO_DEMUX_TIES",
+    "toroidal_translation": "EXACT"
+  },
+  "formal_boundaries": {
+    "crystallization_branch": "UNREACHABLE",
+    "demux_edge_min": "UNUSED",
+    "kernel_many_to_one": "PROVEN"
+  },
+  "implementation_buffers_not_independent_state": [
+    {
+      "component": "grid_raw_B",
+      "independent_state": false,
+      "role": "double-buffer target, copied back to A every tick"
+    },
+    {
+      "component": "clock_B",
+      "independent_state": false,
+      "role": "double-buffer target, copied back to A every tick"
+    },
+    {
+      "component": "wrapper_tick_global",
+      "independent_state": false,
+      "role": "Python bookkeeping only; not read by binary kernel"
+    },
+    {
+      "component": "thread_count",
+      "independent_state": false,
+      "role": "execution partition; valid runs agree across tested thread counts"
+    }
+  ],
+  "kernel_identity": {
+    "kernel": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+    "package": "7e2991b1fc8a053ee44ead6e177b129855ae9265dea68505a8e545f0c3fdf8b4",
+    "wheel": "69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939"
+  },
+  "reference_state": "X_t = (grid_raw_A, clock_A, N/toroidal coordinate relation)",
+  "schema": "DEE_V27_FULL_STATE_SCHEMA_V1",
+  "source_provenance": {
+    "binary_api_audit_path": "DEE_CODEX_NATIVE_DISCOVERY_AND_CLOSURE_V1_WORK\\ANALYSIS\\binary_api\\AUDIT_REPORT.md",
+    "binary_api_audit_sha256": "fc07f99f3652434140d232fbb1850f9172ccb89573b79a67e745c79a0f30a566",
+    "cpp_path": "DEE_CODEX_NATIVE_DISCOVERY_AND_CLOSURE_V1_WORK\\ANALYSIS\\binary_api\\wheel_extracted\\dee_universe_v27\\dee_kernel_v27.cpp",
+    "cpp_sha256": "44a80f7863d78f596099ddf7d41c9947fa8513503f65067097f1f3b05a8207ab",
+    "restored_claim_graph_sha256": "9b2c45d7d61d37684ae446537ce03965808503a1abed5d4d03b27e00cc520281",
+    "wrapper_path": "DEE_CODEX_NATIVE_DISCOVERY_AND_CLOSURE_V1_WORK\\ANALYSIS\\binary_api\\wheel_extracted\\dee_universe_v27\\dee_universe_v27.py",
+    "wrapper_sha256": "d777704de34f2df70b259d4f36a12d6a4b7355620517ad1d9537c53c4a5b8454"
+  },
+  "validated_derived_or_trajectory_information": [
+    {
+      "basis": "clock residues, period-two trains, oscillator histories",
+      "component": "phase",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "relational/derived"
+    },
+    {
+      "basis": "prior full states, persistent raw/clock traces, trained configurations",
+      "component": "history",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "trajectory relation"
+    },
+    {
+      "basis": "state-transition ancestry reconstructed by apparatus",
+      "component": "lineage",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "causal provenance relation"
+    },
+    {
+      "basis": "toroidal adjacency, local interface configuration, reachable routes",
+      "component": "topology/accessibility",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "relational"
+    },
+    {
+      "basis": "longitudinal state behavior",
+      "component": "basin/regime",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "trajectory equivalence class"
+    },
+    {
+      "basis": "joint response and shared interface/history",
+      "component": "coupling_state",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "multi-system relation"
+    },
+    {
+      "basis": "preserved behavior despite microstate replacement",
+      "component": "functional_state",
+      "not_a_separate_kernel_field": true,
+      "ontological_status": "intervention-response equivalence class"
+    }
+  ],
+  "within_tick_transient_causal_variables": [
+    {
+      "causal_role": "26-neighbor local input",
+      "component": "Moore_neighborhood",
+      "derived_from": [
+        "grid_raw_A",
+        "coordinate",
+        "N"
+      ]
+    },
+    {
+      "causal_role": "matter rule and clock gate",
+      "component": "n_active",
+      "derived_from": [
+        "Moore_neighborhood"
+      ]
+    },
+    {
+      "causal_role": "write protection and symmetric reducer",
+      "component": "direction_sum",
+      "derived_from": [
+        "Moore_neighborhood.direction"
+      ]
+    },
+    {
+      "causal_role": "direction response; crystallization branch is formally unreachable",
+      "component": "s_reg_gradient",
+      "derived_from": [
+        "Moore_neighborhood.s_reg",
+        "offsets"
+      ]
+    },
+    {
+      "causal_role": "selects strong-tension matter rule",
+      "component": "tetrahedral_signature",
+      "derived_from": [
+        "Moore_neighborhood.occupancy"
+      ]
+    },
+    {
+      "causal_role": "semantic-7 birth",
+      "component": "XNOR_pair_signature",
+      "derived_from": [
+        "Moore_neighborhood.occupancy"
+      ]
+    },
+    {
+      "causal_role": "empty-destination symmetric reducer",
+      "component": "incoming_destination_sources",
+      "derived_from": [
+        "neighbor direction",
+        "target coordinate"
+      ]
+    },
+    {
+      "causal_role": "one source copies raw fields; multiple sources sum capped s_reg and sign-compose direction",
+      "component": "incoming_reducer",
+      "derived_from": [
+        "incoming_destination_sources"
+      ]
+    },
+    {
+      "causal_role": "post-update additive destination modification; atomic transient reset each tick",
+      "component": "delta_demux",
+      "derived_from": [
+        "fusion-eligible emitters",
+        "candidate accessibility",
+        "tie order"
+      ]
+    },
+    {
+      "causal_role": "routed causal equivalence used by one-step closure",
+      "component": "proposal/destination fibers",
+      "derived_from": [
+        "coordinate",
+        "direction",
+        "N"
+      ]
+    }
+  ]
+}

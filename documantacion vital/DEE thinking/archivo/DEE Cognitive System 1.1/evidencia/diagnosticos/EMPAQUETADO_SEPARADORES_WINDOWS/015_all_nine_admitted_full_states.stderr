@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dcs11_final3_20261020\combinado\DEE_COGNITIVE_SYSTEM_1_1\laboratorio\campanas\CONSOLIDACION_1_1\herramientas\verificar_vidas_admitidas.py", line 11, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dcs11_final3_20261020\combinado\DEE_COGNITIVE_SYSTEM_1_1\laboratorio\campanas\CONSOLIDACION_1_1\herramientas\verificar_vidas_admitidas.py", line 7, in main
+    rec,actor=s.load(item['life_id']);actual=physical(actor.world);rows.append({'life_id':rec['life_id'],'profile':rec['profile'],'snapshot_sha256':rec.get('snapshot_sha256',(rec.get('parent')or{}).get('encoded_sha256')),'physical':actual,'matches_declared_physical':all(actual[k]==item['physical'][k]for k in('N','tick','RAW_sha256','clocks_sha256')),'interfaces':len(actor.world.interfaces),'receipts':len(actor.world.runtime.receipts),'paused':bool(actor.world.runtime.paused),'no_evolution':True});del actor;gc.collect()
+              ~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dcs11_final3_20261020\combinado\DEE_COGNITIVE_SYSTEM_1_1\sistema\app\lives.py", line 89, in load
+    a=load_adapter(rec['profile'],self.snapshot(rec))
+                                  ~~~~~~~~~~~~~^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_dcs11_final3_20261020\combinado\DEE_COGNITIVE_SYSTEM_1_1\sistema\app\lives.py", line 79, in snapshot
+    p=(self.root/record['snapshot']).resolve(strict=True)
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\pathlib\_local.py", line 670, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen ntpath>", line 694, in realpath
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado: 'D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dcs11_final3_20261020\\combinado\\DEE_COGNITIVE_SYSTEM_1_1\\sistema\\estado\\checkpoints\\importado_E1_CPC9_1907.deetsnap.gz'

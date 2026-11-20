@@ -1,0 +1,30 @@
+{
+  "schema": "DCS1.1.packaging.path_separator.correction.v1",
+  "cause": "Two historical import records use Windows backslashes. The member selector compared them to POSIX ZIP paths without normalization and excluded their valid full snapshots.",
+  "correction": "Normalize only the selector path before matching. Do not change the snapshot, metadata, physicalstate or loaders.",
+  "states": [
+    {
+      "life": "E1_CPC9_884",
+      "recorded_path": "estado\\checkpoints\\importado_E1_CPC9_884.deetsnap.gz",
+      "normalized_path": "estado/checkpoints/importado_E1_CPC9_884.deetsnap.gz",
+      "source_exists": true,
+      "source_sha256": "2e28f995579317b37e4e58f272bb70368b8c87bef09d4384f79f616c477d151a",
+      "absent_in_old_zip": true
+    },
+    {
+      "life": "E1_CPC9_1907",
+      "recorded_path": "estado\\checkpoints\\importado_E1_CPC9_1907.deetsnap.gz",
+      "normalized_path": "estado/checkpoints/importado_E1_CPC9_1907.deetsnap.gz",
+      "source_exists": true,
+      "source_sha256": "f2a7a5ab80c112f8f5e770910ca79f40b2a2f4836f31cae44dceccb1bd56c341",
+      "absent_in_old_zip": true
+    }
+  ],
+  "originals_readback": "evidencia/verificaciones/NUEVE_ESTADOS_ORIGINALES_VALIDOS.json",
+  "additional_instrument_incident": "The first passive readback emitted a resource-logging atexit error because its --out was a JSONfile while the generic job helper inferred a directory. Actual physical results were saved. The readback now passes its resource-output filename explicitly.",
+  "system_code_changed": false,
+  "physical_experiences_repeated": false,
+  "incomplete_system_preserved": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\entregas\\candidatos\\CANDIDATO_02\\DEE_COGNITIVE_SYSTEM_1_1_SISTEMA.zip",
+  "prior_audit_preserved": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\casos practicos\\trabajo_codex\\DEE Cognitive System 1.1\\entregas\\candidatos\\AUDITORIA_02\\DEE_COGNITIVE_SYSTEM_1_1_AUDITORIA_ESENCIAL.zip",
+  "source_stderr_captured": true
+}

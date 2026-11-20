@@ -1,0 +1,96 @@
+{
+  "INSTRUMENTO": {
+    "status": "EVENT_SCRIPT_PARTIAL_FAILURE",
+    "failed_line": 3,
+    "committed_commands": 2,
+    "no_rollback_or_life_recreation": true
+  },
+  "events": [
+    {
+      "line": 1,
+      "result": {
+        "schema": "DCS1.1.life.v1",
+        "life_id": "PARCIAL",
+        "world_id": "PARCIAL",
+        "profile": "fisica_directa",
+        "branch": "NEW_PREPARATION_T0",
+        "parent": null,
+        "created_utc": "2026-10-20T03:21:15.543131+00:00",
+        "parameters": {
+          "N": 11
+        },
+        "knowledge": "No objective associations are imported; acquisition requires later experience.",
+        "memberships": [
+          {
+            "id": "PARCIAL",
+            "role": "Whole runtime, not a duplicate per internal region"
+          }
+        ],
+        "software_version": "1.1.0",
+        "updated_utc": "2026-10-20T03:21:15.551293+00:00",
+        "operations": [
+          {
+            "kind": "CREATE_T0",
+            "parameters": {
+              "N": 11
+            }
+          }
+        ],
+        "snapshot": "estado/checkpoints/PARCIAL.T0.cf2a2e61fd4e.deetsnap.gz",
+        "snapshot_sha256": "d510400d8d07c31e72362a2e3ae4a7cf1c40788c4a2ed02516c18346d6c95bb6",
+        "storage": {
+          "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dcs11_final2_20261020\\PERFILES_C\\pruebas\\Sistema limpio Ñ\\estado\\checkpoints\\PARCIAL.T0.cf2a2e61fd4e.deetsnap.gz",
+          "encoding": "gzip",
+          "decoded_sha256": "db56555fd15cf8c366df631fd31151c1b902f5ccb0675f1ea1fa0297fcfe6421",
+          "decoded_bytes": 22384,
+          "encoded_sha256": "d510400d8d07c31e72362a2e3ae4a7cf1c40788c4a2ed02516c18346d6c95bb6",
+          "encoded_bytes": 551,
+          "gzip_crc_verified": true,
+          "scope": "NATIVE_OPERATIONAL_SNAPSHOT_STORAGE"
+        },
+        "physical": {
+          "N": 11,
+          "tick": 0,
+          "RAW_sha256": "e7b20af1b8baf65af5baf387fcd78b3316f29e9c3767973bb17902d3718193e2",
+          "clocks_sha256": "e7b20af1b8baf65af5baf387fcd78b3316f29e9c3767973bb17902d3718193e2",
+          "sites": 1331,
+          "occupied": 0,
+          "max_s_reg": 0,
+          "basic_buffers_bytes": 42592
+        },
+        "interfaces": 0,
+        "protocols": 0,
+        "availability": "CONTINUABLE_WITH_DECLARED_PROTOCOL"
+      }
+    },
+    {
+      "line": 2,
+      "result": {
+        "INSTRUMENTO": {
+          "life_id": "PARCIAL",
+          "profile": "fisica_directa",
+          "operation": "ADVANCE",
+          "tick": 5,
+          "snapshot_sha256": "75ff7aa7bc20e6d35e894eef306344386f7da4167a671d2a66eef97a0ec5dccc"
+        },
+        "result": {
+          "tick": 5
+        },
+        "physical": {
+          "N": 11,
+          "tick": 5,
+          "RAW_sha256": "e7b20af1b8baf65af5baf387fcd78b3316f29e9c3767973bb17902d3718193e2",
+          "clocks_sha256": "00c56f76339894c01a384507f8e2aa1d48de15e67d5999b889304d26068867e2",
+          "sites": 1331,
+          "occupied": 0,
+          "max_s_reg": 0,
+          "basic_buffers_bytes": 42592
+        }
+      }
+    }
+  ],
+  "error": {
+    "type": "MutationRecordedError",
+    "detail": "ValueError: Cannot rewind a life; use an explicit fork from the required checkpoint; failed attempt saved at tick 5 snapshot 19884c46c14a9272967215a8b2433b6782b816d4ec91e259f0d1855250bfe6e7"
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "schema": "DCS1.1.external_verifier.race.reconciliation.v1",
+  "incident": "Profiles controller began at03:20:48UTC while prepare completed at03:20:51UTC. Their report writers overlapped. The profile summary retained six of eight prepare checks; two summary checks and some per-command timing rows were overwritten. All native stdout/stderr and complete checkpoints survived.",
+  "scientific_effect": "No sharedRuntime between phases; separate life copies. The overlapping summary is not accepted as its own proof. Functional assertions are recomputed from exact native command outputs. No outcome, decoder or trajectory was changed.",
+  "concurrency_limit": "Two-native-worker goal was supervised by owned jobs; global concurrency is not certified for this brief controller transition. Per-job4GiB limits and actual task outputs remain recorded. Do not infer native cognitive effects from host scheduling.",
+  "correction": "Exclusive per-output verifier lock and prerequisite prepare-completed check. No rerun of completed experiments.",
+  "missing_metadata": "Overwritten per-command host-duration rows are marked unavailable, not reconstructed as invented precise times. Native ticks, receipts, RAW/clocks and source logs remain exact.",
+  "recomputed_pending_check": {
+    "passed": true,
+    "detail": {
+      "initial_loaded_physical": {
+        "N": 67,
+        "tick": 3221,
+        "RAW_sha256": "a489fa30dc3e0a8792b87d1c0511427f7e9db2792a325ddd0509e158d7d093a0",
+        "clocks_sha256": "f112a38f3f1ce68c4cf0816595f76f04162f4924e0e4880ced6fe29912a0f52d",
+        "sites": 300763,
+        "occupied": 280,
+        "max_s_reg": 1149,
+        "basic_buffers_bytes": 9624416
+      },
+      "scheduled_receipt": {
+        "id": 1617,
+        "status": "scheduled",
+        "channels": [
+          "TM.quantity.reader"
+        ],
+        "requested_tick": 3287,
+        "effective_tick": null,
+        "kind": "probe",
+        "reason": ""
+      },
+      "later_native_response": {
+        "tick": 3288,
+        "site": [
+          8,
+          52,
+          10
+        ],
+        "raw": "1153203009648328705",
+        "clock": "3288",
+        "state": 1,
+        "s_reg": 7,
+        "semantic": 1,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "active": true
+      },
+      "proof": "Recalculated from intact command stdout; not a new execution"
+    }
+  },
+  "files": [
+    {
+      "name": "000_create_isolated_environment.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466396841165000
+    },
+    {
+      "name": "000_create_isolated_environment.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466396833149800
+    },
+    {
+      "name": "001_empty_before_install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466413562073700
+    },
+    {
+      "name": "001_empty_before_install.stdout",
+      "bytes": 139,
+      "sha256": "7898cc4e72b69f1a4e3bcf8ed841e89f5faf3f5c3449849b9567bd56def20695",
+      "mtime_ns": 1792466413704524600
+    },
+    {
+      "name": "002_offline_install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466413732133200
+    },
+    {
+      "name": "002_offline_install.stdout",
+      "bytes": 314,
+      "sha256": "21d2983502b350a5a3fc331c69cdaee3f2eca9f3fbe6a6ed9271b05cec7eb71d",
+      "mtime_ns": 1792466417408848500
+    },
+    {
+      "name": "003_cli_version.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466417530443600
+    },
+    {
+      "name": "003_cli_version.stdout",
+      "bytes": 1649,
+      "sha256": "b1a6fb397a901f650090a904b4662797f09e50836dfe4d6fba6a1359c392f741",
+      "mtime_ns": 1792466418125437700
+    },
+    {
+      "name": "004_cli_default.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466418182711700
+    },
+    {
+      "name": "004_cli_default.stdout",
+      "bytes": 1392,
+      "sha256": "6034f5ea4ccc29c1b80c12d37f08e468a79f0116c3706885ddc9c7143494a4ea",
+      "mtime_ns": 1792466419700714400
+    },
+    {
+      "name": "005_powershell_entrypoint.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466419753849000
+    },
+    {
+      "name": "005_powershell_entrypoint.stdout",
+      "bytes": 1392,
+      "sha256": "6034f5ea4ccc29c1b80c12d37f08e468a79f0116c3706885ddc9c7143494a4ea",
+      "mtime_ns": 1792466422147145700
+    },
+    {
+      "name": "006_cli_eventos.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466422248694900
+    },
+    {
+      "name": "006_cli_eventos.stdout",
+      "bytes": 29653,
+      "sha256": "355aec809b56a2f2f2144cbd0727217d80f79c964ca3a7bba6e2bb6068a6ec90",
+      "mtime_ns": 1792466435228732400
+    },
+    {
+      "name": "007_cli_estado.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466435304271800
+    },
+    {
+      "name": "007_cli_estado.stdout",
+      "bytes": 1604,
+      "sha256": "442487446b6a180c3a37b88fddc037455aaf5186a5d30a6077e4ffa7b87b7011",
+      "mtime_ns": 1792466436809441900
+    },
+    {
+      "name": "008_cli_default.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466436869460300
+    },
+    {
+      "name": "008_cli_default.stdout",
+      "bytes": 1392,
+      "sha256": "6034f5ea4ccc29c1b80c12d37f08e468a79f0116c3706885ddc9c7143494a4ea",
+      "mtime_ns": 1792466438380616100
+    },
+    {
+      "name": "009_cli_entrada.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466438444479500
+    },
+    {
+      "name": "009_cli_entrada.stdout",
+      "bytes": 799,
+      "sha256": "7be33fab9d12122da8a1bbf2c9d0a195f40516936bf7d8246df903da09cedb31",
+      "mtime_ns": 1792466440540629900
+    },
+    {
+      "name": "010_cli_guardar.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466440591084700
+    },
+    {
+      "name": "010_cli_guardar.stdout",
+      "bytes": 624,
+      "sha256": "19fa078a359bf18d1c7a72fddee09c5d3c24d3bf35e4554849c9a0b7c229c508",
+      "mtime_ns": 1792466442738939200
+    },
+    {
+      "name": "011_cli_restaurar.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466442782745000
+    },
+    {
+      "name": "011_cli_restaurar.stdout",
+      "bytes": 1604,
+      "sha256": "81a5ff1b4ffc694dc79df908ee939d10826cbdb80c14cce0f506ac3d680c07fc",
+      "mtime_ns": 1792466444321263300
+    },
+    {
+      "name": "012_cli_continuar.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466444490943600
+    },
+    {
+      "name": "012_cli_continuar.stdout",
+      "bytes": 612,
+      "sha256": "d80db184c2f862e06c1987c4d252ed46326f55714a5155caaec1e79e19e5097a",
+      "mtime_ns": 1792466449214035500
+    },
+    {
+      "name": "012_profiles_release_C.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466448245988400
+    },
+    {
+      "name": "012_profiles_release_C.stdout",
+      "bytes": 1382,
+      "sha256": "7f5f77018442e70c2895ce2e78c461baa80691480940341e5a330e86b15c23c3",
+      "mtime_ns": 1792466595728739800
+    },
+    {
+      "name": "013_cli_observar-componente.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1792466449294567100
+    },
+    {
+      "name": "013_cli_observar-componente.stdout",
+      "bytes": 550,
+      "sha256": "31c4a91d3f25f182ce231e41ed4e5b04ff86aef3b74431d47f2603bb89e5813d",
+      "mtime_ns": 1792466451182483400
+    }
+  ],
+  "original_summary_sha256": "34705319ee2ca9fc12b8eb83a5e3a7b7ba640fa5b80bc5128a8383aaa7ce3381"
+}

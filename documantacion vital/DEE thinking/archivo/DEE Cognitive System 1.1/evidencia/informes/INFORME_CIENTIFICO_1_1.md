@@ -1,0 +1,49 @@
+# Consolidación1.1: resultados y límites
+
+## Hechos computacionales y continuidad
+
+El instrumento oficial fue instalado aisladamente en CPython3.13x64. Se recuperaron snapshots completos deE1T884/T1907/T2493, no sólo arraysRAW/clocks. T2493bloqueado permanece como evidencia y no se eligió por ser el último. E1_11_ESTABLE es una rama deT1907, con consulta nuevaT1948. E1_SOCIAL_11 continúa esa rama hastaT3154; el ejemplo reservado continúa una copia hastaT3221. Otra vida reconstruida desdeT0 reproduce exactamente RAW/clocks/tick deT884, sin confundirse con continuidad importada.
+
+Se ejecutaron34familias de recuperación, cada una con su contrato y controles. Dieciséis filas históricas documentales aún requieren reproducción específica. Las filas comparten mecanismos: no son un conteo de conceptos ni se atribuyen en bloque aE1. La verificación desde el ZIP exacto se consigna externamente, sin autorreferencia del contenedor.
+
+## Deterioro: causalidad acotada
+
+En el cuerpo integrado N67, K65 reproduce57/65,53/65,4/65y después0hastaT2822. La historia desacoplada tampoco protege: el mundo termina densamente ocupado. Igual númeroN67sin el cuerpo anterior conserva65/65durante diez barridos, con65sitios ocupados. Mantener fuentes antiguas en un mundo vacío tampoco produce el colapso; quitar sólo su mantenimiento del cuerpo antiguo no lo resuelve. Por tanto, no se infiere un límite universal de65 ni “demasiados pensamientos”.
+
+Desde el mismo padreT2822sin consultas, una primera lectura tardía consigue61/65. Las consultas repetidas se deterioran. El control sin sonda hastaT3560mantiene326sitios ocupados frente a aproximadamente297mil con sondas. Una sonda no es observación inocua: contribuye causalmente a la expansión en ese contexto. El sham fuera de ruta puede retornar por el toro y no es aislamiento garantizado.
+
+La reconstrucción microscópica coincide con54estadosRAW/clocks históricos. Registra16testigos locales de supervivencia de la fuente junto con recepción en un destino vacío, sin entrada externa próxima. También registra16nacimientosSEM7compatibles con la ramaXNOR; el primero es2291→2292. La ocupación supera600antes, enT2281. Estos mecanismos locales no identifican una causa única de toda la expansión. No se equiparan ocupación, s_reg, energía eléctrica ni muerte del ente.
+
+## Aprendizaje, comunicación y uso
+
+Desde el mismo estadoT1948 se adquirieron ocho correspondencias nuevas. Mensajes v27 producidos porA enseñan aB y su retorno aC; todos compartenRuntime. El primer uso es7/8. Omitir experiencia, asociaciónB o asociaciónC da0/8; cortar ida o retorno da0/8 ysham conserva7/8. En copias diagnósticas, cortar selectivamente una ocupación antigua en el destinoS00 recupera8/8; la copia no devuelve su solución aMAIN.
+
+La fuente cambia físicamente después de las consultas. El lector de los portadores transformados conserva4/8durante once rondas posteriores y nuevas interacciones comunes. Sin esas consultas quedan seis firmasYpasivas, lo que no prueba seis conocimientos utilizables. Se mantienen por separado esos resultados y la pérdida de acceso.
+
+Una adición física11revisa la referencia67→78; el control fuera de ruta queda67. Objetos posteriores50+5,73+5y82+5producen comparaciones menor, igual y mayor. El valor0direccional activo en igualdad no se confunde con silencio. El comparador anteriorR36/O16sigue+X. No se demuestra cardinalidad general ni preservación íntegra de18lectores antiguos.
+
+## Repertorios y actualización
+
+En una vidaN131nueva se adquirieron32formas y luego33. Tres consultas con una ventana común sólo accedían a33. En esa misma vida, sin enseñar otra vez, ventanas separadas recuperan32+33en dos rondas. El fallo era de acceso bajo ese protocolo, no evidencia suficiente de borrado.
+
+La nueva receta privada1.1revisaL01con docentes reales enT917. EnT1051/1054aparecen L01revisada y64no modificadas. El sham de igual dosis produce pérdida enL01yL06: su desplazamiento coincide con otro soporte. Esta limitación del control se documenta, no se transforma enPASSglobal.
+
+La alternativaN67independiente conserva65direcciones durante diez barridos y una reserva de carga9. U0oficial conserva14asociaciones consultables enT539, después de revisarL03. Son otras vidas, no el repertorio semántico deE1.
+
+## Diversidad, consulta y regulación
+
+La repetición desdeT0confirma la historia de orden/contacto y su composición en el aparato finitoCPC9. El orden opuesto cambia emisiones tempranas pero llega densamente ocupado aT884; señales desacopladas también. El control de contacto fuera de ruta permanece distinto y sin ese colapso. No se presenta un resultado técnico completado como un éxito funcional de toda variante.
+
+La oportunidad de consulta, el destinatario y las fases siguen preparados. Hay preguntas condicionadas históricas, no política general aprendida de qué observar o a quién preguntar. Se conservanR0/R1en sus dominios. No se demostróR2seleccionada por consecuencias. YO/TÚfuncional, NOgeneral y productividad lingüística permanecen abiertos.
+
+## NSM65 e interpretación
+
+El catálogo oficial conserva65entradas con preguntas individuales y estado porvida. El máximo episódico histórico deE1era60E0,4E2(TWO,BEFORE,TOUCH,LIKE_AS)y1E3(MORE), todos operacionales y limitados. Esta campaña no acredita otra primitiva nueva ni eleva65correspondencias a65significados. Máximo histórico, función actual y adquisición de otra vida son columnas diferentes. La matriz no sustituye los primarios.
+
+## Información, recursos y límites
+
+Los decoders son fijos y leen campos actuales. No hayLLM, copia de respuestas entreRuntime ni tabla de targets en la decisión. Los auditores posteriores no alimentan al ente. Los controles intervenidos son copias identificadas. Las analogías cognitivas se limitan a funciones observadas, sin conciencia o comprensión humana general.
+
+Se declararon21600segundos, dos trabajadores nativos como máximo,4GiBporJob y cierre dentro del plazo original. Parte inicial deR1carece de RAMrealporproceso; ese hueco no se rellena con la memoria del lanzador. Las medidas posteriores usanJobObjects y recursos reales. 32*N^3es memoria básica de buffers, noRAMtotalni electricidad.
+
+La carpeta completa retiene evidencia profunda. Los ZIPoperativos excluyen cachés regenerables, venvs, toolchain y snapshots densos redundantes. El índice de exclusiones conserva tamaños y hashes; la ausencia en el paquete no equivale a borrado del original. La auditoría no duplica motor ni convierte material privado en publicable.

@@ -1,0 +1,18 @@
+Exception in thread Thread-80 (_readerthread):
+Traceback (most recent call last):
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Descargas\ANACONDA MINICONDA\Lib\subprocess.py", line 1615, in _readerthread
+    buffer.append(fh.read())
+                  ~~~~~~~^^
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd1 in position 628: invalid continuation byte
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\DEE Cognitive System 1.1\sistema\pruebas_minimas\probar_sistema.py", line 73, in <module>
+    forbidden=OUT/'TARGET_AUDITOR_SOLO.txt';forbidden.write_text('not participant memory',encoding='ascii');rr=subprocess.run([sys.executable,'-I','-B','-c',script,str(ROOT),str(forbidden)],capture_output=True,text=True,encoding='utf8',timeout=30);check('normal_guard_denies_external_auditor_file',rr.returncode!=0 and'PermissionError'in rr.stderr,rr.stderr[-500:])
+                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: argument of type 'NoneType' is not iterable

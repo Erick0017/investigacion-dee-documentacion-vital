@@ -1,0 +1,31 @@
+{
+  "status": "INSTRUMENTALLY_INVALID",
+  "cause": "The canonical ZIP name was moved from candidate01 to candidate02 while the byte-comparison utility was running. Its initial diff therefore compared candidate02 against itself. Native-state regeneration counts were unaffected; the mislabeled zero diff is not accepted as evidence.",
+  "original_unaccepted_result": {
+    "schema": "DCS1.1.partial_failure.correction.v1",
+    "reason": "A callback could admit a native input before failing on another argument; the former manager did not persist that partial attempt. The new manager saves FAILED_* with the reached state and queue, then raises an explicit error. No decoder/physicalkernel change.",
+    "changes": [
+      {
+        "file": "sistema/app/lives.py",
+        "candidate01_sha256": "c48fd5ac769517526b655c51c6452ed169ca8f38d9fa75f98ddac634d8f3724b",
+        "candidate02_sha256": "c48fd5ac769517526b655c51c6452ed169ca8f38d9fa75f98ddac634d8f3724b",
+        "diff": ""
+      },
+      {
+        "file": "sistema/gestionar.py",
+        "candidate01_sha256": "e0d8238e72ba641b88db693d266f917ce1b79901b67d101f8a5af5a6afd862b5",
+        "candidate02_sha256": "e0d8238e72ba641b88db693d266f917ce1b79901b67d101f8a5af5a6afd862b5",
+        "diff": ""
+      },
+      {
+        "file": "sistema/pruebas_minimas/probar_sistema.py",
+        "candidate01_sha256": "4fa2d25b236d779a75e9b4394b76ba9a50297069d14de19c9badf0e2a318c49b",
+        "candidate02_sha256": "4fa2d25b236d779a75e9b4394b76ba9a50297069d14de19c9badf0e2a318c49b",
+        "diff": ""
+      }
+    ],
+    "affected_tests": "Full common-interface profile release including admitted-input-then-invalid-form, pendingqueue, reload and later native response.",
+    "unaffected": "Core source store, motor, inheritedworkers and their physics. Verified payload hash-equivalence, not a gratuitous full scientific rerun."
+  },
+  "native_experiments_repeated": 0
+}

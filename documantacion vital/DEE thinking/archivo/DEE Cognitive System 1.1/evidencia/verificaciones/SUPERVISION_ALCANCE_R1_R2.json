@@ -1,0 +1,12 @@
+{
+  "schema":"DCS1.1.resource_scope.correction.v1",
+  "finding":"The initial supervisor queried the Windowsvenv waiting launcher. Values around4MB are not the actual Python/native-workerRAM and must not be reported as such.",
+  "initial_fields_preserved":"HERENCIA_01/REGRESION_HEREDADA.json and INTERFERENCIA_R1/PROCESOS.json retain their exact measured launcher working sets. Missing real worker peaks remain unavailable, not estimated.",
+  "initial_K65_cases_without_actual_worker_peak":["K65_R1_BASE","K65_R1_NO_EVENT","K65_R1_UNPAIRED"],
+  "repair":"Owned WindowsJobObject per current scientific worker, explicit4GiB process/job limits, actual worker PID, committed job memory, real working set and CPU account. A later outer job encloses launcher plus descendants and validates inheritance before creating nativeRuntime.",
+  "physics_affected":false,
+  "decoder_or_curriculum_affected":false,
+  "technical_repair_number":1,
+  "evidence":"RECURSOS_DEL_TRABAJADOR.json in completed later workers; PRUEBA_RECURSOS_PROCESO_REAL.json for direct adapter verification",
+  "limits":"Earlier completed results retain resource-coverage gaps. New normal management commands do not claim a fresh six-hour scientific budget or measured energy."
+}

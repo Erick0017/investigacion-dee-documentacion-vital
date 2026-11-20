@@ -1,0 +1,60 @@
+{
+  "schema": "CPC4.observer_prospective_reserve.v1",
+  "classification": "NEW_OBSERVER_RESERVES_NOT_IN_THE_33_CASE_CONFIGURATION",
+  "freeze_rule": "This file is written before either of these two preparations is executed. Existing SEM01/CPC4 reserves remain retrospective observer analysis.",
+  "instrument": "DEE thinking4.0.0, v27 frozen",
+  "representation": "cpc4.dual_directional_channel.v2_z_receiver",
+  "normalization": {
+    "N": 67,
+    "position": "Integer absolute torus coordinates plus port-relative modular displacements; no ordinary Euclidean distance across wrapping",
+    "distance": "Chebyshev torus: max_j min((x_j-y_j)%67,(y_j-x_j)%67)",
+    "time": "Exact integer Runtime ticks and local clocks; elapsed_contact_to_query67 is prepared context",
+    "raw": "Exact uint64 integer; never converted to float",
+    "nodes": "All sampled RAW!=0 records, including inactive and semantic5; active separately state>0 and semantic!=5",
+    "spatial_scales": [1,2,4,8],
+    "graph": "Undirected spatial1-skeleton plus separately labelled direction-compatible rays and temporal proposals; graph cycle rank is not persistent homology"
+  },
+  "frozen_features": ["state","semantic","s_reg","direction.dx","direction.dy","direction.dz","clock","active","port_relative_site","elapsed_ticks","toroidal_distance_to_cost_meeting","four_step_directional_ray_reaches_cost_meeting"],
+  "classifier": {
+    "kind": "FROZEN_GEOMETRIC_PREDICATE_NOT_FITTED_TO_RESERVES",
+    "native_action_candidate": "At common response, active and current_site+4*direction modulo67 equals the declared bank cost_meeting",
+    "important_context": "Both banks require acquired dz=+1. A later query supplies dy but not dz; deleting dy may be compensated, deleting dz is not compensated in this panel.",
+    "function_prediction": "If the matching threatened world has its action candidate then primary1 optional0; absent candidate then primary0 optional1. The other benign world gives primary1 optional1 when no action candidate.",
+    "scope": "Conditional free-route physical bank in this frozen apparatus; not a universal cognitive-state classifier"
+  },
+  "cases": [
+    {
+      "id": "OBSERVER_NEW_PLUS",
+      "kind": "native",
+      "A_history": 1,
+      "B_policy": 1,
+      "receiver_basis": "z",
+      "translation": [19,4,12],
+      "snapshot_policy": "central",
+      "predicted_A_emission": {"tick":70,"site":[61,24,24],"s_reg":21,"direction":[-1,1,0]},
+      "predicted_B_contact": {"role":"Bplus","tick":82,"site":[49,36,24],"s_reg":37,"direction":[-1,1,1]},
+      "predicted_common_response": {"role":"Bplus","tick":149,"site":[49,36,24],"s_reg":42,"direction":[-1,1,1]},
+      "predicted_action_candidates": {"plus":true,"minus":false},
+      "predicted_profiles": {"plus":[1,0],"minus":[1,1]},
+      "predicted_utility": 5
+    },
+    {
+      "id": "OBSERVER_NEW_MINUS_WRONG_Z",
+      "kind": "native",
+      "A_history": -1,
+      "B_policy": -1,
+      "receiver_basis": "z",
+      "translation": [3,17,21],
+      "snapshot_policy": "central",
+      "predicted_A_emission": {"tick":70,"site":[45,37,33],"s_reg":21,"direction":[-1,-1,0]},
+      "predicted_B_contact": {"role":"Bminus","tick":88,"site":[27,19,33],"s_reg":37,"direction":[-1,-1,-1]},
+      "predicted_common_response": {"role":"Bminus","tick":155,"site":[27,19,33],"s_reg":42,"direction":[-1,-1,-1]},
+      "predicted_action_candidates": {"plus":false,"minus":false},
+      "predicted_profiles": {"plus":[1,1],"minus":[0,1]},
+      "predicted_utility": 4
+    }
+  ],
+  "reserved_labels": "Used only by the external prospective evaluator, not passed to native inputs, decoder or action policy",
+  "refit_after_reserves": false,
+  "persistent_homology": "NOT_EXECUTED_NETWORK_PERMISSION; installation request aborted after permissions wait, not a missing-Windows-wheel conclusion"
+}

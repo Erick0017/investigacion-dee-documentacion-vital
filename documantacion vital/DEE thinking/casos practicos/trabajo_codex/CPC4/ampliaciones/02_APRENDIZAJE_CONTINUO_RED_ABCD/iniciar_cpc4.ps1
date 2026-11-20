@@ -1,0 +1,45 @@
+param([string]$Eventos = '', [string]$Salida = 'sesion_usuario', [string]$Python = '')
+$ErrorActionPreference = 'Stop'
+Set-StrictMode -Version Latest
+$wheelPath = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..\runtime\dee_thinking-4.0.0-cp313-cp313-win_amd64.whl'))
+if (-not (Test-Path -LiteralPath $wheelPath)) { throw 'Falta el WHL congelado en CPC4/runtime. Extraiga el ZIP completo.' }
+$cpc4HashAlgorithm = [System.Security.Cryptography.SHA256]::Create()
+$cpc4WheelStream = [System.IO.File]::OpenRead($wheelPath)
+try {
+    $wheelHash = [System.BitConverter]::ToString($cpc4HashAlgorithm.ComputeHash($cpc4WheelStream)).Replace('-','').ToLowerInvariant()
+} finally {
+    $cpc4WheelStream.Dispose()
+    $cpc4HashAlgorithm.Dispose()
+}
+if ($wheelHash -ne '17c07745b9687d8686d132f055c39c149da1dde807e7246a67d457fe69df5623') { throw 'Identidad del WHL diferente; no se instalará silenciosamente.' }
+$venvDir = Join-Path $PSScriptRoot '.venv'
+$pythonPath = Join-Path $venvDir 'Scripts\python.exe'
+if (-not (Test-Path -LiteralPath $pythonPath)) {
+    if ($Python -ne '') {
+        & $Python -I -c "import sys,struct; assert sys.version_info[:2]==(3,13) and struct.calcsize('P')==8, 'Se requiere CPython3.13 x64'"
+        if ($LASTEXITCODE -ne 0) { throw 'El intérprete indicado con -Python no es compatible.' }
+        & $Python -I -m venv $venvDir
+    } else {
+    $launcherCommand = Get-Command py -ErrorAction SilentlyContinue
+    if ($null -ne $launcherCommand) {
+        & $launcherCommand.Source -3.13 -m venv $venvDir
+    } else {
+        $basePython = (Get-Command python -ErrorAction Stop).Source
+        & $basePython -c "import sys,struct; assert sys.version_info[:2]==(3,13) and struct.calcsize('P')==8, 'Se requiere CPython3.13 x64'"
+        if ($LASTEXITCODE -ne 0) { throw 'Intérprete no compatible. Indique -Python RUTA_AL_CPYTHON_3_13_X64.' }
+        & $basePython -m venv $venvDir
+    }
+    }
+    if ($LASTEXITCODE -ne 0) { throw 'No se pudo crear el entorno local.' }
+}
+& $pythonPath -I -c "import importlib.util,sys; sys.exit(0 if importlib.util.find_spec('dee_thinking') is not None else 1)"
+if ($LASTEXITCODE -ne 0) {
+    & $pythonPath -I -m pip install --no-index --no-deps --disable-pip-version-check --force-reinstall $wheelPath
+    if ($LASTEXITCODE -ne 0) { throw 'No se pudo instalar el WHL oficial. No se utilizará otro motor.' }
+}
+& $pythonPath -I -c "import dee_thinking as d,hashlib,sys; assert d.__version__=='4.0.0' and d.kernel_identity()['kernel_version']==27; assert hashlib.sha256(open(d._native.__file__,'rb').read()).hexdigest()=='20d7c764dbc22d1f110ba255f92073b4f64c744c91f6980335a4e08dd61fe066'; print('Motor:',d.__version__,'kernel v27; módulo:',d.__file__)"
+if ($LASTEXITCODE -ne 0) { throw 'Identidad del motor no verificada.' }
+$demoArguments = @('-I','-B',(Join-Path $PSScriptRoot 'demostracion.py'),'--salida',[System.IO.Path]::GetFullPath($Salida))
+if ($Eventos -ne '') { $demoArguments += @('--eventos',[System.IO.Path]::GetFullPath($Eventos)) }
+& $pythonPath @demoArguments
+exit $LASTEXITCODE

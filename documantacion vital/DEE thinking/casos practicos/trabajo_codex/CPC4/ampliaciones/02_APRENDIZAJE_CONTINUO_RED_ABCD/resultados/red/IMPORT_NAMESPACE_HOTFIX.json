@@ -1,0 +1,26 @@
+{
+  "classification": "TECHNICAL_IMPORT_ADAPTATION_NO_PHYSICS_CHANGE",
+  "prior_behavior": "Importing extension src.continuidad.common before red.session could occupy the namespace src and make the inherited from src.common import fail. Isolated original workers imported red first and completed normally.",
+  "correction": "Use a private relative red.common_helpers import and do not insert the inherited CPC4 root into global sys.path. The helper file is a byte-exact copy of the inherited CPC4 src/common.py, not a modified kernel or library.",
+  "source_before": {
+    "path": "resultados/red/SOURCE_REVISIONS/V2_BEFORE_COMMON_NAMESPACE_FIX/recipe.py",
+    "sha256": "d969ebb310638dc715bb3ef311b6281cd3d5cce094a7b56b4405aa20974f593a"
+  },
+  "source_after": {
+    "path": "src/red/recipe.py",
+    "sha256": "c259a52809bf303e67b97c76978763c016ec2768f044620f69caaaa4d81697a4"
+  },
+  "private_helper": {
+    "path": "src/red/common_helpers.py",
+    "sha256": "cba98d71498941b949e749dcda587357b421740ecf0ccc414f44c751820c2aeb",
+    "unused_inherited_parent_constant": "The copied helper's old PARENT_SHA constant is not consulted by identity() or by any network response. The extension's actual parent identity belongs to the root campaign manifest."
+  },
+  "verification": {
+    "command_scope": "CPython isolated import only: src.continuidad.common followed by red.session and red.session_v3",
+    "imports_succeeded": true,
+    "native_advance_calls": 0,
+    "scientific_cases_repeated": 0
+  },
+  "execution_provenance": "All V2 discovery, sixteen confirmation cases and the 431->1431 V2 curriculum completed before this import-only adaptation. Their frozen executed source copies remain in their own evidence folders. V3 uses the private helper from its initial source.",
+  "compatibility_boundary": "No RAW, clocks, channels, trajectories, decoders, prepared geometry, resource laws or native response functions were changed by this hotfix."
+}

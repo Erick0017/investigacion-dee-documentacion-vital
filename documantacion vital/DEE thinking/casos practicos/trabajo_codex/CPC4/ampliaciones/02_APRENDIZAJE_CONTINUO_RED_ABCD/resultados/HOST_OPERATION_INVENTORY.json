@@ -1,0 +1,3821 @@
+{
+  "schema": "CPC4.A02.HOST_OPERATION_INVENTORY.v1",
+  "scope": "AST audit of exact new source; not a guarantee against arbitrary native I/O",
+  "separation": "Expected results and post-hoc metrics belong to auditor/tests; participant paths must not read measured result tables.",
+  "modules": [
+    {
+      "path": "demostracion.py",
+      "sha256": "7e14ec45e966e303c24b2c89a7d73962ca70d2de4ddafeae360118fe9ce69f86",
+      "calls": [
+        {
+          "line": 65,
+          "scope": "main.request",
+          "call": "loads",
+          "source": "json.loads(line)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 71,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.eventos.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 72,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "ejecutar.py",
+      "sha256": "c3deadb77beb5b95a03e4c5544da4949ea75d5585c2d9e427d72f4727d0cb7ca",
+      "calls": [
+        {
+          "line": 13,
+          "scope": "controlled",
+          "call": "open",
+          "source": "(out/'stdout.log').open('w',encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "controlled",
+          "call": "open",
+          "source": "(out/'stderr.log').open('w',encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 27,
+          "scope": "verify",
+          "call": "loads",
+          "source": "json.loads((ROOT/'MANIFEST.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 27,
+          "scope": "verify",
+          "call": "read_text",
+          "source": "(ROOT/'MANIFEST.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 31,
+          "scope": "verify",
+          "call": "read_text",
+          "source": "(ROOT/'HASHES.sha256').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 35,
+          "scope": "verify",
+          "call": "loads",
+          "source": "json.loads((PARENT/'MANIFEST.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 35,
+          "scope": "verify",
+          "call": "read_text",
+          "source": "(PARENT/'MANIFEST.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 40,
+          "scope": "verify",
+          "call": "read_text",
+          "source": "additions.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 54,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT/'REANUDACION.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/assemble_cut.py",
+      "sha256": "7991a56dc04b2949055344194c7e60fb86c05cecd8766eb96f9a25b7c86c2e9f",
+      "calls": [
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 85,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(trace_path.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 85,
+          "scope": "main",
+          "call": "read_text",
+          "source": "trace_path.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 86,
+          "scope": "main",
+          "call": "open",
+          "source": "(ROOT/'MENSAJES.jsonl').open('w',encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 94,
+          "scope": "main",
+          "call": "open",
+          "source": "(ROOT/'DIALOGOS.jsonl').open('w',encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 96,
+          "scope": "main",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 97,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(line)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/__init__.py",
+      "sha256": "8b0d675e0088e963b22120f6b221bc6cd8e785f92f77ae4821922ea84b895a34",
+      "calls": []
+    },
+    {
+      "path": "src/auditor/analyze_snapshots.py",
+      "sha256": "e1d1dfd1d94557a21fcc2c381b56795c4523f2227d5e5364b0e25c97f81fa9e6",
+      "calls": [
+        {
+          "line": 9,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 21,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 25,
+          "scope": "main",
+          "call": "diagnostic_fork",
+          "source": "world.diagnostic_fork([edit],True)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 31,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "world.runtime.save_snapshot(str(parent_path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 31,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "child.save_snapshot(str(child_path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 39,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(base/'BEFORE_D_SOCIAL.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 40,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(base/'AFTER_D_SOCIAL.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 55,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "(attempted/'lazy_FINAL_RUNTIME.deetsnap').read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 57,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "(attempted/name).read_bytes()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/close_reviews.py",
+      "sha256": "55ecdc8995a80a9ef17d3460eee524a0ccc5daded624e72b87bded2242871f10",
+      "calls": [
+        {
+          "line": 11,
+          "scope": "load",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "load",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 12,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "p.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "interaction_review",
+          "call": "load",
+          "source": "load(source / 'RUN_SUMMARY.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "interaction_review",
+          "call": "load",
+          "source": "load(source / (history + '__UPSTREAM_E') / 'MEASUREMENTS.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 25,
+          "scope": "interaction_review",
+          "call": "load",
+          "source": "load(source / (history + '__OMITTED_E') / 'MEASUREMENTS.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 28,
+          "scope": "interaction_review",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source / (history + '__UPSTREAM_E') / 'T521.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 78,
+          "scope": "language_review",
+          "call": "load",
+          "source": "load(root / 'EXPERIMENT_CONFIG.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 84,
+          "scope": "language_review",
+          "call": "load",
+          "source": "load(p)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/global_coverage.py",
+      "sha256": "3ba0da1f8944dbf12b819d404f494957f1f88b242779788b491c1484f45a5b1a",
+      "calls": [
+        {
+          "line": 15,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "read",
+          "call": "read_text",
+          "source": "path.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 16,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "path.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 92,
+          "scope": "run",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 117,
+          "scope": "run",
+          "call": "read",
+          "source": "read(network_summary)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 118,
+          "scope": "run",
+          "call": "read",
+          "source": "read(owner_index_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 119,
+          "scope": "run",
+          "call": "read",
+          "source": "read(closure_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 142,
+          "scope": "run",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 149,
+          "scope": "run",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/index_final.py",
+      "sha256": "9cee22cd7352951212c08f5a289322c197b3fd76d97d4ac30f14bac482d460c1",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "main.load",
+          "call": "loads",
+          "source": "json.loads((OUT / p).read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 10,
+          "scope": "main.load",
+          "call": "read_text",
+          "source": "(OUT / p).read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "(OUT / x).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "main",
+          "call": "load",
+          "source": "load('V3_MESSAGE_RECONSTRUCTION/MESSAGE_RECONSTRUCTION.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 25,
+          "scope": "main",
+          "call": "load",
+          "source": "load('LANGUAGE_CONTINUITY_REVIEW.json')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/message_branches.py",
+      "sha256": "190e7041f0246b159eb09ee342215fc003cdcb3b2938fd3a15920041bb51ed0c",
+      "calls": [
+        {
+          "line": 11,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(SOURCE.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "main",
+          "call": "read_text",
+          "source": "SOURCE.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "KERNEL.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((ROOT / 'resultados/red/confirmacion03/FULL_U/MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT / 'resultados/red/confirmacion03/FULL_U/MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 56,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "SOURCE.read_bytes()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/native_preemption_pilot.py",
+      "sha256": "3a0ff694f760edbd221b2191093c71152d6e592c9eb29c8b1701229d09c1bd6e",
+      "calls": [
+        {
+          "line": 33,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 71,
+          "scope": "prepare",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 118,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(old_folder / 'T0.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 119,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(old_folder / 'T403.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 123,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(folder / 'T0.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 126,
+          "scope": "main",
+          "call": "submit",
+          "source": "w.submit(f'm{j}.{label}', 3, start + i)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 129,
+          "scope": "main",
+          "call": "probe",
+          "source": "w.probe('m2.read', 7, tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 133,
+          "scope": "main",
+          "call": "submit",
+          "source": "w.submit('upstream.B', 3, 517)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 142,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(folder / f'T{tick}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/passive.py",
+      "sha256": "5bbc3cd7ed9afac4fd12cf77337e01534e7585be42e194f9c182ac3a686f0b7d",
+      "calls": []
+    },
+    {
+      "path": "src/auditor/reconstruct_messages.py",
+      "sha256": "c3d046bec53d0ff944f6e35bd98cf55ad40828594d3d0c4b6e29a6ade37c6440",
+      "calls": [
+        {
+          "line": 16,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "p.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 17,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 17,
+          "scope": "read",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 56,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source / 'T70.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 97,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source / f'T{tick}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/reference_brief.py",
+      "sha256": "2beb03932a52a296790ec0fa66fe39fb62d8a44ef838e60ff7f457f3219d971b",
+      "calls": [
+        {
+          "line": 9,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(p).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 16,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 16,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(expected))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 21,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((folder/'MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 21,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(folder/'MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "world.save_snapshot(str(out/'REPLAY_T149.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/regulation_reference.py",
+      "sha256": "06be066edd2b1ecbd22562839ecf15773f2d2ac5345bf24b284928859caca21e",
+      "calls": [
+        {
+          "line": 15,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 34,
+          "scope": "main",
+          "call": "create",
+          "source": "d.FinitePolicySession.create(p)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "session.save_snapshot(str(folder/'T0.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 44,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "session.save_snapshot(str(folder/'T2_SESSION.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 48,
+          "scope": "main",
+          "call": "diagnostic_fork",
+          "source": "session.diagnostic_fork([edit],True)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 53,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "session.save_snapshot(str(folder/f'T{tick}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 65,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "child.save_snapshot(str(folder/'T14.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/review_closed_red.py",
+      "sha256": "c290f6931d6364a082be37bad8502b2bb4a13eccef74352beb95c7224cc19ebd",
+      "calls": [
+        {
+          "line": 9,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 9,
+          "scope": "read",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 10,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "p.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "main",
+          "call": "read",
+          "source": "read(red / 'RED_SOURCE_FREEZE.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "read",
+          "source": "read(red / 'NETWORK_INDEX.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 21,
+          "scope": "main",
+          "call": "read",
+          "source": "read(red / 'fixed_counterflow01/EXPERIMENT_CONFIG.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "main",
+          "call": "read",
+          "source": "read(p)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 30,
+          "scope": "main",
+          "call": "read",
+          "source": "read(continued_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 43,
+          "scope": "main",
+          "call": "read",
+          "source": "read(restore_path)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/review_regulation.py",
+      "sha256": "d870d48dc81f2c88e7790bf3f174fa034df454489b4156ad2b0ba0928be706f1",
+      "calls": [
+        {
+          "line": 11,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(Path(p).read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "read",
+          "call": "read_text",
+          "source": "Path(p).read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 12,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(p).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "main",
+          "call": "read",
+          "source": "read(p)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 34,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(snapshot))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 57,
+          "scope": "main",
+          "call": "read",
+          "source": "read(p)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/review_report.py",
+      "sha256": "e91638cc146bf17a5e05e237d5d07b36ca4b918a84fe23b7d59888212119a575",
+      "calls": [
+        {
+          "line": 12,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "(ROOT / name).read_bytes()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/review_v3.py",
+      "sha256": "e22db5de1347359685c78fa237c180d2f9f26dacfb83c585afc9f5ef54e138ee",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "read",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "p.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "main",
+          "call": "read",
+          "source": "read(config_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 25,
+          "scope": "main",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 40,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(directory / 'T416.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 41,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(directory / 'T417.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/source_review.py",
+      "sha256": "3a9d886ebe590c667e4a00e26cda924a48b3a201dc8e408280167a21e62255f4",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 33,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "path.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 34,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "copy.read_bytes()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/summarize.py",
+      "sha256": "3e739c98e013c6976113dd6c3061b488d305e3017a5b39051cbe17be40ebccbc",
+      "calls": [
+        {
+          "line": 8,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(Path(path).read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 8,
+          "scope": "read",
+          "call": "read_text",
+          "source": "Path(path).read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 9,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "inherited_protocol_difference",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(replay))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 20,
+          "scope": "inherited_protocol_difference",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(reference))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 33,
+          "scope": "main",
+          "call": "read",
+          "source": "read(OUT/'SOURCE_REVIEW.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 33,
+          "scope": "main",
+          "call": "read",
+          "source": "read(OUT/'R14_PUBLIC_COMPONENT/RUN_SUMMARY.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 36,
+          "scope": "main",
+          "call": "read",
+          "source": "read(p)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "read",
+          "source": "read(OUT/'NONTRIVIAL_FORK_ISOLATION.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "read",
+          "source": "read(OUT/'D_SOCIAL_CONTEXT93_94.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 45,
+          "scope": "main",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 67,
+          "scope": "main",
+          "call": "read",
+          "source": "read(full_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 67,
+          "scope": "main",
+          "call": "read",
+          "source": "read(control_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 93,
+          "scope": "main",
+          "call": "read",
+          "source": "read(OUT/'INHERITED_REFERENCE148_149/MEASUREMENTS.json')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/susceptibility_pilot.py",
+      "sha256": "1b7370be6b3a316c38a33754fdbd2a8618a60e6c0e00d50977ce094c6ae85dc7",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(p).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 74,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 75,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((path.parent/'MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(path.parent/'MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 81,
+          "scope": "main",
+          "call": "fork",
+          "source": "parent.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 85,
+          "scope": "main",
+          "call": "submit",
+          "source": "w.submit('m1.B',3,522)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 91,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(folder/f'T{tick}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/susceptibility_sham.py",
+      "sha256": "eec133d1815cc1aff45c4be5502b98d1b1dd8996c60c135bb12be524de645477",
+      "calls": [
+        {
+          "line": 8,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(p).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((out/'RUN_SUMMARY.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(out/'RUN_SUMMARY.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 16,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((source.parent/'MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 16,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(source.parent/'MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 25,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 25,
+          "scope": "main",
+          "call": "fork",
+          "source": "parent.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 28,
+          "scope": "main",
+          "call": "submit",
+          "source": "w.submit('m2.B',3,522)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 34,
+          "scope": "main",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(folder/f'T{tick}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((out/'BA_AB__OMITTED_E/MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(out/'BA_AB__OMITTED_E/MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((out/'BA_AB__COMMON_E_B522/MEASUREMENTS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(out/'BA_AB__COMMON_E_B522/MEASUREMENTS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/auditor/technical.py",
+      "sha256": "769d606d8dfa0305d7d720fd6070e3db697cc84e94100dc21477ea359ed6d84e",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "Path(path).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "runtime_snapshot",
+          "call": "save_snapshot",
+          "source": "world.runtime.save_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 27,
+          "scope": "run",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(source))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 37,
+          "scope": "run",
+          "call": "fork",
+          "source": "world.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 39,
+          "scope": "run",
+          "call": "save_snapshot",
+          "source": "fork.save_snapshot(str(mid))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 40,
+          "scope": "run",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(mid))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 45,
+          "scope": "run",
+          "call": "fork",
+          "source": "loaded.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 70,
+          "scope": "run",
+          "call": "diagnostic_fork",
+          "source": "loaded.diagnostic_fork([edit],True)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 102,
+          "scope": "",
+          "call": "loads",
+          "source": "json.loads(args.recipe.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 102,
+          "scope": "",
+          "call": "read_text",
+          "source": "args.recipe.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/campaign.py",
+      "sha256": "7ceca7dc0905ff035a968d2824d95f02a82f1e95bfa02af6574763522960fd08",
+      "calls": [
+        {
+          "line": 16,
+          "scope": "sha",
+          "call": "open",
+          "source": "Path(path).open('rb')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 17,
+          "scope": "sha",
+          "call": "read",
+          "source": "f.read(1048576)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 27,
+          "scope": "append",
+          "call": "open",
+          "source": "p.open('a',encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 55,
+          "scope": "parent_inventory",
+          "call": "open",
+          "source": "z.open(i)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 56,
+          "scope": "parent_inventory",
+          "call": "read",
+          "source": "f.read(1048576)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/check_clean_demos.py",
+      "sha256": "7216cc27788827ebaab714ab2eb23f3f4e26bbe939f31dfc290ebb3df27fd49e",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "state",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/clean_reproduction.py",
+      "sha256": "9bd6638ad3ebfc85a1d67d1fa4dfda0b33a400f05a623047c4e399291cad485b",
+      "calls": [
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((previous/'MANIFEST.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(previous/'MANIFEST.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 27,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(z.read(section+'MANIFEST.json'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 27,
+          "scope": "main",
+          "call": "read",
+          "source": "z.read(section+'MANIFEST.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((ROOT/'jobs/publication_candidate01/stdout.log').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT/'jobs/publication_candidate01/stdout.log').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((work/'evidence/native/CLEAN_REPRODUCTION.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(work/'evidence/native/CLEAN_REPRODUCTION.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((ROOT/'jobs'/name/'job.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT/'jobs'/name/'job.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 72,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((work/'evidence/native/CLEAN_REPRODUCTION.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 72,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(work/'evidence/native/CLEAN_REPRODUCTION.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(x)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(work/'evidence/CONTINUAR_V3_02/DIALOGOS.jsonl').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/clean_worker.py",
+      "sha256": "b5971a9512512229fe8b5d4424a57e6e82ccaf2dd12ef82c02149175660f2ad3",
+      "calls": [
+        {
+          "line": 26,
+          "scope": "operative",
+          "call": "fork",
+          "source": "w.runtime.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 31,
+          "scope": "operative",
+          "call": "save_snapshot",
+          "source": "q.save_snapshot(str(snap))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 55,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(case_path.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 55,
+          "scope": "main",
+          "call": "read_text",
+          "source": "case_path.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 57,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 60,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.output/'GENERATED_T161.deetsnap')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 70,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.output/'GENERATED_T85.deetsnap')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 74,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(ROOT/'resultados/red/confirmacion03/FULL_U/T431.deetsnap')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 82,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(candidates[0]))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 83,
+          "scope": "main",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(post_candidates[0]))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/continuidad/__init__.py",
+      "sha256": "b2a98e3dfa716c9db03eb17b1fd9e6ec205c07be9c3905a752393730661bfed1",
+      "calls": []
+    },
+    {
+      "path": "src/continuidad/common.py",
+      "sha256": "43b614eb724d0c29221f48c9438b11471a7fe2d0c38c2bf28c66057d8a9278d2",
+      "calls": [
+        {
+          "line": 17,
+          "scope": "sha",
+          "call": "open",
+          "source": "Path(path).open(\"rb\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "sha",
+          "call": "read",
+          "source": "f.read(1048576)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 46,
+          "scope": "load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 50,
+          "scope": "load",
+          "call": "loads",
+          "source": "json.loads(raw)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/continuidad/renewed_access.py",
+      "sha256": "023c5c514da50c9b5f5f0898e283fba9ac5e12e19561fcc9c5b713d1629c3cf4",
+      "calls": [
+        {
+          "line": 34,
+          "scope": "run_case",
+          "call": "probe",
+          "source": "world.probe(\"lex.\"+form+\".signal\",5,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 35,
+          "scope": "run_case",
+          "call": "probe",
+          "source": "world.probe(\"lex.\"+form+\".outcome.\"+suffix,5,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 52,
+          "scope": "run_case",
+          "call": "save_snapshot",
+          "source": "world.save_snapshot(str(out/(\"SAME_MAIN_READ\"+str(world.runtime.current_tick)+\".deetsnap\")))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 67,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text())",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 67,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 70,
+          "scope": "main",
+          "call": "load",
+          "source": "load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text())",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 98,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(target.read_text())",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 98,
+          "scope": "main",
+          "call": "read_text",
+          "source": "target.read_text()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/continuidad/run_temporal.py",
+      "sha256": "4a4620022430f6ae69147a0669ba634c68561ee3360306fc200f29fb30b657e6",
+      "calls": [
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "main",
+          "call": "load",
+          "source": "load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 28,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 28,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 51,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(target.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 51,
+          "scope": "main",
+          "call": "read_text",
+          "source": "target.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/continuidad/summarize.py",
+      "sha256": "159cbce7b44bd4edb1e7c918d4373a69d550d128b444c0eb9666d4ffe8c0e06c",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "summarize",
+          "call": "loads",
+          "source": "json.loads((root / family / \"EXPERIMENT_CONFIG.json\").read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 10,
+          "scope": "summarize",
+          "call": "read_text",
+          "source": "(root / family / \"EXPERIMENT_CONFIG.json\").read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "summarize",
+          "call": "loads",
+          "source": "json.loads(file.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "summarize",
+          "call": "read_text",
+          "source": "file.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/continuidad/temporal_access.py",
+      "sha256": "454ca53556e1d0170a0974a7178d865cd5cf04643375afaefd6c338c33b85dd0",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "run",
+          "call": "save_snapshot",
+          "source": "world.save_snapshot(str(output/\"SAME_GENEALOGY235.deetsnap\"))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 24,
+          "scope": "run",
+          "call": "probe",
+          "source": "world.probe(\"lex.\"+form+\".signal\",5,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 25,
+          "scope": "run",
+          "call": "probe",
+          "source": "world.probe(\"lex.\"+form+\".outcome.\"+suffix,5,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 37,
+          "scope": "run",
+          "call": "save_snapshot",
+          "source": "world.save_snapshot(str(output/(\"CURRENT_READ\"+str(world.runtime.current_tick)+\".deetsnap\")))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/dual_sustained.py",
+      "sha256": "09cea517373d55809883b7265566aa2c34fc30c9c4415689df4d1a78c1dd2bd9",
+      "calls": [
+        {
+          "line": 34,
+          "scope": "prepare",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 49,
+          "scope": "run",
+          "call": "submit",
+          "source": "w.submit(f'm{j}.{label}',3,start+i)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 51,
+          "scope": "run",
+          "call": "probe",
+          "source": "w.probe('m2.read',7,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 55,
+          "scope": "run",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(out/f'T{t}.deetsnap'))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 65,
+          "scope": "",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 65,
+          "scope": "",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/information_audit.py",
+      "sha256": "ce411672de85f58aed0023d9ea97e7434b42dd3ef4e2926bd7c8a3e1e2986090",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "scan",
+          "call": "read_text",
+          "source": "path.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 21,
+          "scope": "scan",
+          "call": "read_text",
+          "source": "path.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/interactive_worker.py",
+      "sha256": "efdfae7e9b0c95258f5859c7ca6de5a197de720c19f9324ceeff17931ccd9bb2",
+      "calls": [
+        {
+          "line": 56,
+          "scope": "Application.command",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 72,
+          "scope": "Application.command",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 80,
+          "scope": "Application.command",
+          "call": "load",
+          "source": "Regulated.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 83,
+          "scope": "Application.command",
+          "call": "load",
+          "source": "NetworkSession.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 86,
+          "scope": "Application.command",
+          "call": "load",
+          "source": "V2.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 104,
+          "scope": "Application.command",
+          "call": "loads",
+          "source": "json.loads(directional)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 118,
+          "scope": "Application.command",
+          "call": "load",
+          "source": "GroundedSession.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 213,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(line)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/__init__.py",
+      "sha256": "cdac0e5574579fd85991ba0a49207c4778db379dd5c69b3c82f10308a0825ad9",
+      "calls": []
+    },
+    {
+      "path": "src/lenguaje/continuous_worker.py",
+      "sha256": "c84c35cb49d3782a27f0dc256c98c6255a20700f3c155a5d23da4c773e99691f",
+      "calls": [
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(Path(a.case).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 13,
+          "scope": "main",
+          "call": "read_text",
+          "source": "Path(a.case).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(conditions, tuple(case[\"translation\"]))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/direction_worker.py",
+      "sha256": "b924ca268b040abc54c18916555fae3a6c82ee5726f69a1ecbfd85963feed11a",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(Path(a.case).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "Path(a.case).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/directions.py",
+      "sha256": "f561f0ccedc5896e11ad8772522897fdfda1786b3a213bd28bdb831790f04a57",
+      "calls": [
+        {
+          "line": 54,
+          "scope": "run",
+          "call": "submit",
+          "source": "network.world.submit(port, payload, tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 68,
+          "scope": "run",
+          "call": "submit",
+          "source": "network.world.submit(f\"lex.{lane}.report.{suffix}\", 11, tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 72,
+          "scope": "run",
+          "call": "submit",
+          "source": "network.world.submit(f\"lex.{order[slot]}.signal\", 5, at)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 84,
+          "scope": "run",
+          "call": "probe",
+          "source": "network.world.probe(f\"lex.{order[slot]}.signal\", 5, tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 96,
+          "scope": "run",
+          "call": "probe",
+          "source": "network.world.probe(f\"lex.{slot}.signal\", 5, tick)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/discover.py",
+      "sha256": "80fd13436669305f0d796954e31a06652ef488538a8898c40f12c0bbd9172c88",
+      "calls": [
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 51,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((destination / \"MEASUREMENTS.json\").read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 51,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(destination / \"MEASUREMENTS.json\").read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/final_index.py",
+      "sha256": "9af4a53618d7eb9c7ec11b3fdee396d38382060b369f78ced2d78bee046ce9d5",
+      "calls": [
+        {
+          "line": 11,
+          "scope": "load",
+          "call": "loads",
+          "source": "json.loads(Path(path).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "load",
+          "call": "read_text",
+          "source": "Path(path).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "case_row",
+          "call": "load",
+          "source": "load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 66,
+          "scope": "run",
+          "call": "load",
+          "source": "load(configfile)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "run",
+          "call": "load",
+          "source": "load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 80,
+          "scope": "run",
+          "call": "load",
+          "source": "load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 83,
+          "scope": "run",
+          "call": "load",
+          "source": "load(evolved)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/final_review.py",
+      "sha256": "72c520137083835191d6e5b8c8a0bba501254877ee5c3b505d3017c58f5c92cb",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "run",
+          "call": "read_bytes",
+          "source": "path.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "run",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 16,
+          "scope": "run",
+          "call": "read_text",
+          "source": "worker.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads(proof.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "run",
+          "call": "read_text",
+          "source": "proof.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads(config.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "run",
+          "call": "read_text",
+          "source": "config.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/protocol.py",
+      "sha256": "4944889fbd0937e471588227c68f4aa6bf0aa03f6b18e0f52db69c868e641f4d",
+      "calls": [
+        {
+          "line": 31,
+          "scope": "sha",
+          "call": "open",
+          "source": "Path(path).open(\"rb\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 32,
+          "scope": "sha",
+          "call": "read",
+          "source": "stream.read(1048576)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/review_regulated.py",
+      "sha256": "c1030961f236b1a60da8c01eb5a8b4302d27622ef3a7f5913d73691f71061ca7",
+      "calls": [
+        {
+          "line": 12,
+          "scope": "run",
+          "call": "read_text",
+          "source": "worker.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads(line)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "run",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads(review_path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "run",
+          "call": "read_text",
+          "source": "review_path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/run_continuous.py",
+      "sha256": "22c99b0fd67f49e578e628974cfe85deb8756a8e403d69e242f0c3fe123e46d9",
+      "calls": [
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/run_directions.py",
+      "sha256": "6fe9c9204326b6d7627f4cd758a391523d5d91645cf89fbd345d81ab8f567f50",
+      "calls": [
+        {
+          "line": 45,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 45,
+          "scope": "main",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(file.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "read_text",
+          "source": "file.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/session.py",
+      "sha256": "f58f85cc360337b88f954b71edfd31e519a26b197ae5aeaea7612fd3a390de5e",
+      "calls": [
+        {
+          "line": 67,
+          "scope": "GroundedSession.teach_next",
+          "call": "submit",
+          "source": "self.world.submit(channel, load, tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 136,
+          "scope": "GroundedSession.load",
+          "call": "load",
+          "source": "NetworkSession.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 138,
+          "scope": "GroundedSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/session_safe.py",
+      "sha256": "83e7c0d231b3928bfe0c087a47a1e756acb5b58b68f4097351ecd6da6426ec2b",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "GroundedSession.load",
+          "call": "load",
+          "source": "super().load(path)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/summarize.py",
+      "sha256": "b332943789f095a7b71aaab774f6b620f60881f975c0b89eea1c9d9f74c59c2a",
+      "calls": [
+        {
+          "line": 15,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads((ROOT/relative).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "read",
+          "call": "read_text",
+          "source": "(ROOT/relative).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "run",
+          "call": "read",
+          "source": "read(\"resultados/lenguaje/continuous02/EXPERIMENT_CONFIG.json\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 21,
+          "scope": "run",
+          "call": "read",
+          "source": "read(\"resultados/lenguaje/direction03/EXPERIMENT_CONFIG.json\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "run",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "run",
+          "call": "loads",
+          "source": "json.loads((PARENT/\"NSM65_CATALOGO.json\").read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "run",
+          "call": "read_text",
+          "source": "(PARENT/\"NSM65_CATALOGO.json\").read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/ui_review.py",
+      "sha256": "36ecad35b727fe20417a507de920d140aea7de41119c44fb11fb061c40cdbc9f",
+      "calls": [
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "load",
+          "source": "GroundedSession.load(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(path)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/validate.py",
+      "sha256": "4f1c7511fdabfc6321d03471fddb1b08662f39c55c2840c3b34ffe37900458c1",
+      "calls": [
+        {
+          "line": 22,
+          "scope": "child",
+          "call": "load",
+          "source": "GroundedSession.load(reference/\"AFTER_NEW_EXPERIENCE1.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 32,
+          "scope": "child",
+          "call": "load",
+          "source": "GroundedSession.load(output/\"RESTORED_AFTER_FIRST_READ1501.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 34,
+          "scope": "child",
+          "call": "load",
+          "source": "NetworkSession.load(reference/\"MAIN_FINAL1529.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 41,
+          "scope": "child",
+          "call": "load",
+          "source": "GroundedSession.load(reference/\"AFTER_NEW_EXPERIENCE2.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 45,
+          "scope": "child",
+          "call": "load",
+          "source": "GroundedSession.load(output/\"DIAGNOSTIC_PAUSED.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 47,
+          "scope": "child",
+          "call": "load",
+          "source": "NetworkSession.load(reference/\"AFTER_NEW_EXPERIENCE2.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 48,
+          "scope": "child",
+          "call": "loads",
+          "source": "json.loads(candidate.world.runtime.snapshot_metadata(KEY))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 50,
+          "scope": "child",
+          "call": "load",
+          "source": "GroundedSession.load(p)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 68,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(filename.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 68,
+          "scope": "main",
+          "call": "read_text",
+          "source": "filename.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/validate_loader.py",
+      "sha256": "1788dbd88fe92e32aa7e469c706b9c92ef545065fc7070fb8b5c71a37cb138ea",
+      "calls": [
+        {
+          "line": 28,
+          "scope": "main",
+          "call": "load",
+          "source": "Safe.load(ref/name)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 29,
+          "scope": "main",
+          "call": "load",
+          "source": "Prior.load(ref/\"AFTER_NEW_EXPERIENCE2.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 30,
+          "scope": "main",
+          "call": "submit",
+          "source": "candidate.world.submit(\"lex.L1.report.plus\",11,1498)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 33,
+          "scope": "main",
+          "call": "load",
+          "source": "Prior.load(output/\"DIAGNOSTIC_EXTRA_FUTURE_TEACHER.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 35,
+          "scope": "main",
+          "call": "load",
+          "source": "Safe.load(output/\"DIAGNOSTIC_EXTRA_FUTURE_TEACHER.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 37,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(ref/\"AFTER_NEW_EXPERIENCE2.deetsnap\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(candidate.world.runtime.snapshot_metadata(KEY))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 40,
+          "scope": "main",
+          "call": "load",
+          "source": "Safe.load(output/\"DIAGNOSTIC_BAD_MODE.deetsnap\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/lenguaje/worker.py",
+      "sha256": "9816e277ebc0e0d94f4c63e28eb971be94236e0165dd01823a6effa6ff614478",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(Path(args.case).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "Path(args.case).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(args.parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(case.get(\"network\", {\"roles\": True}), tuple(case.get(\"translation\", [0, 0, 0])))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/package_append.py",
+      "sha256": "5be12e37d3e51f2354144bf06c64abdee5013b2746317e5014d22bacc03edad4",
+      "calls": [
+        {
+          "line": 54,
+          "scope": "build",
+          "call": "open",
+          "source": "old.open(i)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 54,
+          "scope": "build",
+          "call": "open",
+          "source": "new.open(i,'w',force_zip64=True)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 63,
+          "scope": "verify",
+          "call": "loads",
+          "source": "json.loads((ROOT/'PARENT_MEMBERS.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 63,
+          "scope": "verify",
+          "call": "read_text",
+          "source": "(ROOT/'PARENT_MEMBERS.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 72,
+          "scope": "verify",
+          "call": "open",
+          "source": "z.open(name)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 73,
+          "scope": "verify",
+          "call": "read",
+          "source": "f.read(1048576)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read(SECTION+'HASHES.sha256')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 78,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read(SECTION+name)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 79,
+          "scope": "verify",
+          "call": "loads",
+          "source": "json.loads(z.read(SECTION+'MANIFEST.json'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 79,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read(SECTION+'MANIFEST.json')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 81,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read(SECTION+row['path'])",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 82,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read('CPC4/HASHES_AMPLIACION_02.sha256')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 85,
+          "scope": "verify",
+          "call": "read",
+          "source": "z.read('CPC4/'+name)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 105,
+          "scope": "publish",
+          "call": "loads",
+          "source": "json.loads((ROOT/'BUDGET.json').read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 105,
+          "scope": "publish",
+          "call": "read_text",
+          "source": "(ROOT/'BUDGET.json').read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/__init__.py",
+      "sha256": "fc19f580142a359f07e673bd1e92757e42c8b6c9510b916e62709fd280af4020",
+      "calls": []
+    },
+    {
+      "path": "src/red/analyze_results.py",
+      "sha256": "7fa6f840570d435e5f1874be294700bc269731872e8a7f282c03d872703728ba",
+      "calls": [
+        {
+          "line": 11,
+          "scope": "read",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 11,
+          "scope": "read",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 12,
+          "scope": "sha",
+          "call": "read_bytes",
+          "source": "path.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 35,
+          "scope": "main",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 54,
+          "scope": "main",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 66,
+          "scope": "main",
+          "call": "read",
+          "source": "read(fixed_continuation_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 66,
+          "scope": "main",
+          "call": "read",
+          "source": "read(fixed_continuation_path.parent/\"RESTORE_CHECK.json\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 102,
+          "scope": "main",
+          "call": "read",
+          "source": "read(calibration_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 116,
+          "scope": "main",
+          "call": "read",
+          "source": "read(path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 128,
+          "scope": "main",
+          "call": "read",
+          "source": "read(residual_path)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 141,
+          "scope": "main",
+          "call": "read",
+          "source": "read(folder/group/\"EXPERIMENT_CONFIG.json\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/common_helpers.py",
+      "sha256": "cba98d71498941b949e749dcda587357b421740ecf0ccc414f44c751820c2aeb",
+      "calls": [
+        {
+          "line": 17,
+          "scope": "sha",
+          "call": "open",
+          "source": "Path(path).open('rb')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "sha",
+          "call": "read",
+          "source": "stream.read(1048576)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 30,
+          "scope": "append",
+          "call": "open",
+          "source": "path.open('a', encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 83,
+          "scope": "create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 97,
+          "scope": "identity",
+          "call": "read_bytes",
+          "source": "actual.read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 97,
+          "scope": "identity",
+          "call": "read",
+          "source": "z.read(name)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/confirm_v3.py",
+      "sha256": "351d2a4a680d601e0ab9e786b7e05f2987c244581dce7c1ff8f1f11d6c38dd89",
+      "calls": [
+        {
+          "line": 24,
+          "scope": "freeze",
+          "call": "loads",
+          "source": "json.loads(target.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "freeze",
+          "call": "read_text",
+          "source": "target.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 37,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 52,
+          "scope": "main",
+          "call": "submit",
+          "source": "pool.submit(launch,c)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/curriculum.py",
+      "sha256": "d8de4cafb113603c6fe69f97964ba89caf21424dd220c10f2e59802fc929133f",
+      "calls": [
+        {
+          "line": 30,
+          "scope": "present_epoch",
+          "call": "submit",
+          "source": "session.world.submit(item[\"channel\"],item[\"load\"],at)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 36,
+          "scope": "present_epoch",
+          "call": "loads",
+          "source": "json.loads(prior)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 54,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 62,
+          "scope": "run",
+          "call": "load",
+          "source": "NetworkSession.load(parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 92,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(cpath.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 92,
+          "scope": "main",
+          "call": "read_text",
+          "source": "cpath.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/curriculum_v3.py",
+      "sha256": "361f258b5cad387de2ebbfd4ab5dca76d86b1e0c6f7d105fd72716f04009e7eb",
+      "calls": [
+        {
+          "line": 30,
+          "scope": "present_epoch",
+          "call": "submit",
+          "source": "session.world.submit(item[\"channel\"],item[\"load\"],at)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 36,
+          "scope": "present_epoch",
+          "call": "loads",
+          "source": "json.loads(prior)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 54,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 62,
+          "scope": "run",
+          "call": "load",
+          "source": "NetworkSession.load(parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 105,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(cpath.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 105,
+          "scope": "main",
+          "call": "read_text",
+          "source": "cpath.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/dual_experiment.py",
+      "sha256": "cb44aed93636f0e3c178920b419b5513c5b1fb7192db59b6a6b6169363c5cdfe",
+      "calls": [
+        {
+          "line": 22,
+          "scope": "freeze",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "freeze",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 40,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 49,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(selection.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 49,
+          "scope": "main",
+          "call": "read_text",
+          "source": "selection.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/dual_habitat.py",
+      "sha256": "d594c8c8c6f031889ad8d1912b8ce73867af92a0eceadb775da25a2a9abd1198",
+      "calls": [
+        {
+          "line": 37,
+          "scope": "calibration",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(rec)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 38,
+          "scope": "calibration",
+          "call": "save_snapshot",
+          "source": "parent.save_snapshot(str(output/\"EMPTY_PREPARED_T416.deetsnap\"))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 43,
+          "scope": "calibration",
+          "call": "fork",
+          "source": "parent.fork()",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 45,
+          "scope": "calibration",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 48,
+          "scope": "calibration",
+          "call": "submit",
+          "source": "world.submit(\"instrument.action_\"+name+\"_out\",94,418)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 74,
+          "scope": "run_network",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 97,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 97,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/dual_session.py",
+      "sha256": "5beaa006c2a292d48e94ffffc3b65159810c621acc83790361c95b41e1aef3a6",
+      "calls": [
+        {
+          "line": 130,
+          "scope": "NetworkSession.create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(rec)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 133,
+          "scope": "NetworkSession.create",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 146,
+          "scope": "NetworkSession.load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 149,
+          "scope": "NetworkSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 197,
+          "scope": "NetworkSession.save",
+          "call": "save_snapshot",
+          "source": "self.world.save_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/freeze_and_run.py",
+      "sha256": "d2cfa67d213541730aada6240b48645c82489472d7253346156951a9f781437f",
+      "calls": [
+        {
+          "line": 32,
+          "scope": "freeze",
+          "call": "loads",
+          "source": "json.loads(config_path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 32,
+          "scope": "freeze",
+          "call": "read_text",
+          "source": "config_path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 40,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 66,
+          "scope": "main",
+          "call": "submit",
+          "source": "executor.submit(launch,c)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/recipe.py",
+      "sha256": "c259a52809bf303e67b97c76978763c016ec2768f044620f69caaaa4d81697a4",
+      "calls": [
+        {
+          "line": 83,
+          "scope": "prepare",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 107,
+          "scope": "edit_actual",
+          "call": "diagnostic_fork",
+          "source": "world.diagnostic_fork([edit],True)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 124,
+          "scope": "run.submit",
+          "call": "submit",
+          "source": "world.submit(name,load,tick)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 128,
+          "scope": "run.snap",
+          "call": "save_snapshot",
+          "source": "world.save_snapshot(str(output/(name+\".deetsnap\")))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 131,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(\"instrument.sham\",13,0,\"same_uninformative_inventory\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 137,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(name+\".signal\",5,tick+(1 if case.get(name+\"_unpaired\") else 0),name+\"_acquisition_signal\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 138,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(name+\".report.\"+(\"plus\" if signs[name]==1 else \"minus\"),11,tick,name+\"_external_actual_report\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 141,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(name+\".query\",5,tick,name+\"_fixed_physical_query\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 160,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(\"world.resource\",3,228,\"fixed_resource\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 161,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(\"world.supply\",7,234,\"fixed_supply\")",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 163,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(\"world.\"+case.get(\"event\",\"U\"),11,229,\"external_future_event_independent_of_output\")",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/recipe_v3.py",
+      "sha256": "4837b0e705dd56a3522dd4234349f2e518fab67c680e8ecf14e87ad66a36be43",
+      "calls": [
+        {
+          "line": 91,
+          "scope": "edit_actual",
+          "call": "diagnostic_fork",
+          "source": "world.diagnostic_fork([edit],True)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/regulated_curriculum.py",
+      "sha256": "f2b45bc1ba03395566587cb8f16af571408358e54a4c701f4ff5cf1691062a2a",
+      "calls": [
+        {
+          "line": 23,
+          "scope": "continue_session",
+          "call": "submit",
+          "source": "session.world.submit(entry[\"channel\"],entry[\"load\"],entry[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 57,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 60,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.output/\"T937.deetsnap\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/regulated_experiment.py",
+      "sha256": "b5a8b865489755b4cb95f90e2f2337515e956faf517aae6f5ebcf8020c13f6d9",
+      "calls": [
+        {
+          "line": 35,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 42,
+          "scope": "main",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/regulated_habitat.py",
+      "sha256": "dd6b74803145fecb6b87f25d8ad0d12bd6a687d9124bba42f64ed897927332bd",
+      "calls": [
+        {
+          "line": 13,
+          "scope": "run",
+          "call": "create",
+          "source": "NetworkSession.create(case,tr)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 34,
+          "scope": "",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 34,
+          "scope": "",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/regulated_session.py",
+      "sha256": "55c89e692fe6165c88146d5cea6171b5cfebd6899df79d60a94d6fe012ce265a",
+      "calls": [
+        {
+          "line": 50,
+          "scope": "NetworkSession.create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 52,
+          "scope": "NetworkSession.create",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 65,
+          "scope": "NetworkSession.load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 67,
+          "scope": "NetworkSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/residual_diagnostic.py",
+      "sha256": "9d575dc0df992009ab8526c69e9c93ff11ffd2e4f78d3566ffd461e526ca4f45",
+      "calls": [
+        {
+          "line": 48,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(a.parent)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 58,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(json.dumps(session.state))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 75,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(canonical)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/run_network.py",
+      "sha256": "eaaabc3c41c8df7e99d90b0616cb4c588143c6febc49a21ea171cb35f96276cb",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/run_roles.py",
+      "sha256": "20f1f3c60e9d4f67720f29e0e365038b290216dc1ac5621328f6da8b89fc6317",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/run_roles_v3.py",
+      "sha256": "ee2198d1ac7809511b9574f689b2b415c9ff00838e7d43f031783a53324fdcf9",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/run_selective.py",
+      "sha256": "13ad2c3f3527f194b9c486a7eaadd47c4afe2fc307cf37ad184e4b41cc71ce66",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "main",
+          "call": "create",
+          "source": "NetworkSession.create(case,translation)",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/run_v3_discovery.py",
+      "sha256": "01c71136a113cbcdb39a86b1c08a24a6f4dd92859e4cbf6df8904685655a6540",
+      "calls": [
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((folder/(name+\".json\")).read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 18,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(folder/(name+\".json\")).read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 23,
+          "scope": "main",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/selective_experiment.py",
+      "sha256": "9342c28f616d0124534feb3e70d1e6b3e3f98460f507fdc275e06bccd3df71d1",
+      "calls": [
+        {
+          "line": 20,
+          "scope": "freeze",
+          "call": "loads",
+          "source": "json.loads(target.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 20,
+          "scope": "freeze",
+          "call": "read_text",
+          "source": "target.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 35,
+          "scope": "freeze",
+          "call": "read_bytes",
+          "source": "Path(__file__).with_name(name).read_bytes()",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 49,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(path.read_text(encoding=\"utf-8\"))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 49,
+          "scope": "main",
+          "call": "read_text",
+          "source": "path.read_text(encoding=\"utf-8\")",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/red/selective_session.py",
+      "sha256": "010fe740d3ddb6fafecb05b332c5b6163b58d9f29695eb573f65b15fe74af037",
+      "calls": [
+        {
+          "line": 103,
+          "scope": "NetworkSession.create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(rec)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 106,
+          "scope": "NetworkSession.create",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 119,
+          "scope": "NetworkSession.load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 122,
+          "scope": "NetworkSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 168,
+          "scope": "NetworkSession.save",
+          "call": "save_snapshot",
+          "source": "self.world.save_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/session.py",
+      "sha256": "9f53f9d7ae2e21cf86aa0b9ee2f63e1c1f3f6f666675d45b4de813171d3561ed",
+      "calls": [
+        {
+          "line": 99,
+          "scope": "NetworkSession.create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(rec)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 102,
+          "scope": "NetworkSession.create",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 115,
+          "scope": "NetworkSession.load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 118,
+          "scope": "NetworkSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 160,
+          "scope": "NetworkSession.save",
+          "call": "save_snapshot",
+          "source": "self.world.save_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/red/session_v3.py",
+      "sha256": "8b964ae25336a0d0c6624e16b096aaa8e8986c83b1068ae03ad902ddcfb8776a",
+      "calls": [
+        {
+          "line": 101,
+          "scope": "NetworkSession.create",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(rec)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 104,
+          "scope": "NetworkSession.create",
+          "call": "submit",
+          "source": "world.submit(item[\"channel\"],item[\"load\"],item[\"tick\"])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 117,
+          "scope": "NetworkSession.load",
+          "call": "load_snapshot",
+          "source": "d.OrganizationalWorld.load_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 120,
+          "scope": "NetworkSession.load",
+          "call": "loads",
+          "source": "json.loads(text)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 166,
+          "scope": "NetworkSession.save",
+          "call": "save_snapshot",
+          "source": "self.world.save_snapshot(str(path))",
+          "role": "potential physical/operational operation"
+        }
+      ]
+    },
+    {
+      "path": "src/reproduce_temporal.py",
+      "sha256": "629aae15b77f412fe47eab670e433a819736e8258881b651b78fd907b70430df",
+      "calls": [
+        {
+          "line": 10,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 10,
+          "scope": "main",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 17,
+          "scope": "main",
+          "call": "load",
+          "source": "load(parent)",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/run_sustained_batch.py",
+      "sha256": "e569bd383278631562ae501266954ee5aede4ccb3fd37b879f9e1aca1b5270ed",
+      "calls": [
+        {
+          "line": 8,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(config.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 8,
+          "scope": "main",
+          "call": "read_text",
+          "source": "config.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(cp.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 15,
+          "scope": "main",
+          "call": "read_text",
+          "source": "cp.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(measurement.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 19,
+          "scope": "main",
+          "call": "read_text",
+          "source": "measurement.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(measurement.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 26,
+          "scope": "main",
+          "call": "read_text",
+          "source": "measurement.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/seal_evidence.py",
+      "sha256": "9dca6bf1af74d87199c6cda800ecc128fd58736e460f61a88b942e8a29585c4f",
+      "calls": [
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((ROOT/'PROVENANCE.json').read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 14,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT/'PROVENANCE.json').read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(p.read_text(encoding='utf-8'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 22,
+          "scope": "main",
+          "call": "read_text",
+          "source": "p.read_text(encoding='utf-8')",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads((ROOT/'BUDGET.json').read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 24,
+          "scope": "main",
+          "call": "read_text",
+          "source": "(ROOT/'BUDGET.json').read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/supervision.py",
+      "sha256": "26752ca0ba4abedcdf2437ae1cb737c89fc493222161415ebaf90271974b739e",
+      "calls": [
+        {
+          "line": 17,
+          "scope": "remaining",
+          "call": "loads",
+          "source": "json.loads(budget_path(root).read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 17,
+          "scope": "remaining",
+          "call": "read_text",
+          "source": "budget_path(root).read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/sustained_regulation.py",
+      "sha256": "f40fa9c1bb03c8b6f4c39ffff62e09ed7cf846b4494c42ad6256705e301f994e",
+      "calls": [
+        {
+          "line": 46,
+          "scope": "prepare",
+          "call": "create",
+          "source": "d.OrganizationalWorld.create(recipe)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 65,
+          "scope": "run.submit",
+          "call": "submit",
+          "source": "w.submit('event.'+name,case.get('event_load',0),t)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 68,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(name,i)",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 69,
+          "scope": "run",
+          "call": "submit",
+          "source": "submit(event['site'],event['tick'])",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 77,
+          "scope": "run",
+          "call": "save_snapshot",
+          "source": "w.save_snapshot(str(out/('T'+str(t)+'.deetsnap')))",
+          "role": "potential physical/operational operation"
+        },
+        {
+          "line": 89,
+          "scope": "",
+          "call": "loads",
+          "source": "json.loads(a.case.read_text(encoding='utf-8-sig'))",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 89,
+          "scope": "",
+          "call": "read_text",
+          "source": "a.case.read_text(encoding='utf-8-sig')",
+          "role": "possible data read, review context"
+        }
+      ]
+    },
+    {
+      "path": "src/test_public_ui.py",
+      "sha256": "f31a5e3bc83b50100fcac7f844bed69527dbc474fe70374357ad19c871f6328e",
+      "calls": [
+        {
+          "line": 38,
+          "scope": "main",
+          "call": "load",
+          "source": "NetworkSession.load(source)",
+          "role": "possible data read, review context"
+        },
+        {
+          "line": 39,
+          "scope": "main",
+          "call": "loads",
+          "source": "json.loads(candidate.world.runtime.snapshot_metadata(KEY))",
+          "role": "possible data read, review context"
+        }
+      ]
+    }
+  ]
+}

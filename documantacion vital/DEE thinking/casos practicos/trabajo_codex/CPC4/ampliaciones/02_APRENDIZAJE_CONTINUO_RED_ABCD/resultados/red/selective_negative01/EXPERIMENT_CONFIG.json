@@ -1,0 +1,123 @@
+{
+  "frozen_utc": "2026-10-17T05:54:29.711955+00:00",
+  "case_count_limit": 6,
+  "architecture_family": 1,
+  "type": "NEW_CONTEXT_EXTENSION_NOT_OLD_RESULT_CORRECTION",
+  "cases": [
+    {
+      "id": "FULL",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "D_LATE_CUT",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "diagnostic_control": "D_LATE_REMOVE"
+    },
+    {
+      "id": "A_OPPOSITE_CONTEXT",
+      "roles": true,
+      "A_history": -1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "C_OPPOSITE_ALTERNATIVE_B",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": 1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "SHAM_MESSAGE_DUMMY",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "diagnostic_control": "SHAM_REMOVE"
+    },
+    {
+      "id": "RESERVED_NEW_TRANSLATION",
+      "roles": true,
+      "A_history": 1,
+      "B_history": 1,
+      "C_history": -1,
+      "D_history": 1,
+      "event": "U",
+      "translation": [
+        13,
+        27,
+        41
+      ]
+    }
+  ],
+  "source_sha256": {
+    "recipe_v3.py": "4837b0e705dd56a3522dd4234349f2e518fab67c680e8ecf14e87ad66a36be43",
+    "selective_session.py": "010fe740d3ddb6fafecb05b332c5b6163b58d9f29695eb573f65b15fe74af037",
+    "run_selective.py": "13ad2c3f3527f194b9c486a7eaadd47c4afe2fc307cf37ad184e4b41cc71ce66",
+    "common_helpers.py": "cba98d71498941b949e749dcda587357b421740ecf0ccc414f44c751820c2aeb",
+    "selective_experiment.py": "9342c28f616d0124534feb3e70d1e6b3e3f98460f507fdc275e06bccd3df71d1"
+  },
+  "physical_change": "At T0 add B.query_negative(0,0,-1); later B query414 uses it. The prepared bank action is(-1,+1,-1), resource(1,0,+1), supply+y.",
+  "question": "Does a common physical negative-z query reveal a distinction between a D-derived stored B89xy and the alternative retained B37xyz under a correspondingly physical bank?",
+  "evaluation_only_prediction": {
+    "D_derived": [
+      94,
+      [
+        -1,
+        1,
+        -1
+      ]
+    ],
+    "retained_B_alternative": [
+      42,
+      [
+        -1,
+        1,
+        0
+      ]
+    ]
+  },
+  "execution_policy": "Run FULL discovery first. If its measured physical output does not fit the proposed reader/bank path, preserve the boundary and execute no further variants. No alternative search in this extension.",
+  "interpretation_boundary": "The reader and bank context are externally requested/prepared. This is not native autonomous selection of attention, a learned optimal routing policy, or a retrospective change to V3 utility criteria."
+}

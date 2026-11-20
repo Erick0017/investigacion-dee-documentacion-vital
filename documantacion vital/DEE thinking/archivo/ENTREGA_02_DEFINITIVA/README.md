@@ -1,0 +1,93 @@
+# DEE thinking 2.2.0 — Entrega 02 definitiva
+
+Biblioteca C++20 y extensión nativa CPython que ejecutan el mismo kernel DEE
+v27 congelado. La versión del producto es 2.2.0; la identidad física del kernel
+sigue siendo v27, con `P_KERNEL=19665` y cap reductor 19664.
+
+Esta entrega integra los contratos acotados H1, H2, H3, H4, F1 y F2. F3 se
+conserva únicamente como evidencia negativa del aparato ensayado: no existe una
+API pública de replicación o *fan-out*.
+
+## Construcción
+
+En PowerShell, con Visual Studio C++ y CPython 3.13 x64 disponibles:
+
+```powershell
+.\tools\build_definitive.ps1 `
+  -Configuration Release `
+  -PythonExecutable 'C:\ruta\a\python.exe'
+```
+
+El script configura un único grafo CMake, construye la biblioteca, ejecuta
+CTest, instala el paquete CMake, compila un consumidor separado mediante
+`find_package` y construye el wheel desde las mismas fuentes nativas. Las
+dependencias de build del wheel son setuptools 81.x, wheel 0.48.x, pybind11
+3.1.x y el módulo `build`; no son dependencias Python de ejecución.
+
+Un consumidor C++ instalado enlaza así:
+
+```cmake
+find_package(dee_thinking 2.2 CONFIG REQUIRED)
+target_link_libraries(mi_programa PRIVATE DEE::thinking)
+```
+
+Los headers principales son `runtime.hpp`, `organization_catalog.hpp`,
+`composition.hpp`, `integrated_protocols.hpp` y `kernel_v27.hpp`.
+
+## Capacidades integradas
+
+| ID | Modalidad | Dominio publicado |
+|---|---|---|
+| `delay_position_bank.core05.nrh05.v1` (H1) | nativa post-HOST_STOP | banco calibrado N=59, labels −5..5 y sector no saturado |
+| `destination_repertoires.core07.c7h02.v1` (H2) | acoplada | K=3 y K=7 verificados; K>7 no prometido por este build |
+| `trained_redundancy_repair.core17.v1` (H3) | diagnóstica/acoplada | dos geometrías N=31, copia redundante entrenada y daño opt-in |
+| `accessibility.history_conditioned_finite_response.v1` (H4) | diagnóstica | contraste finito pareado; no es un planificador universal |
+| `reusable_lineage_revision.c7h03.v1` (F1) | nativa tras preparación | N=127, dos revisiones externas preparadas y tres consultas transformativas |
+| `environmental_demux_return.v1` (F2) | nativa tras preparación | N=127, fase 353, seis soportes y delta DEMUX fijo +1 |
+
+H3 nunca daña durante `advance`, `observe` o `restore`; el usuario debe
+autorizar la intervención diagnóstica. H4 sólo calcula contrastes sobre
+lecturas declaradas y no modifica el mundo. F1 no se presenta como
+autoenseñanza y F2 no se presenta como teacher arbitrario ni sostenibilidad
+indefinida.
+
+## Estado persistente y ejecución
+
+`Runtime` conserva RAW y clock completos, tick, canales, colas, recibos,
+opciones de backend, fase protocolar y metadatos inertes. Los snapshots v2 son
+autocontenidos para composición; el lector de Runtime conserva compatibilidad
+v1 sin inventar metadatos ausentes. H1/H2/H3/F1/F2 ofrecen checkpoints
+versionados de su fase de protocolo.
+
+`DenseSequential`, `DenseParallel` y `Lazy` son agendas técnicas de la misma
+transición. El binding mantiene el GIL durante una operación sobre un Runtime,
+evitando accesos Python concurrentes incompatibles; los workers internos de
+`DenseParallel` siguen siendo nativos. No se promete CPython free-threaded,
+subintérpretes ni ABI estable.
+
+`observe` es pasivo. `probe`, las experiencias y el daño diagnóstico son
+intervenciones explícitas. Los forks son trayectorias separadas y nunca se
+reincorporan como recursos físicos.
+
+## Python
+
+El import es `dee_thinking`. El wheel final soporta CPython 3.13, ABI cp313 y
+Windows amd64. No importa ni delega ejecución en `dee_universe_v27`; este último
+se utiliza sólo como referencia externa en fixtures históricos.
+
+La API Python expone Runtime, catálogo, composición, experiencias/recibos,
+advance/run_until, observe/probe, pausa/reanudación, snapshots, forks,
+backends/hilos y los seis protocolos integrados. RAW y clock cruzan la frontera
+como enteros sin pasar por `float`.
+
+## Documentación y evidencia
+
+- `docs/DEFINITIVE_INTEGRATION_REPORT.md`: procedencia y estado del freeze.
+- `docs/CAPABILITY_CONTRACTS.md`: contratos y límites H1–H4/F1/F2.
+- `docs/ARCHITECTURE_AND_BUILD.md`: arquitectura, build y formatos.
+- `docs/TEST_MATRIX_DEFINITIVE.md`: matriz ejecutada y resultados.
+- `evidence/laboratory_final/`: evidencia primaria representativa de F1/F2/F3.
+
+Autor: Ivan Erick Tlaltecatl Morales. Esta entrega no inventa ni modifica la
+licencia o titularidad del proyecto; los avisos de herramientas de terceros
+están en `THIRD_PARTY_NOTICES.md`.

@@ -1,0 +1,25 @@
+{
+  "schema":"DEE20.fixed_operator_http_itinerary.v1",
+  "life_id":"DEE20_DEMO_01",
+  "scope":"Same demonstration, same life after saved owner/HTTP closure; no import, rewind or new teaching.",
+  "steps":[
+    {"id":"b00_session","kind":"session","deadline_seconds":30},
+    {"id":"b01_reopen_view","kind":"presentation","payload":{"focus":"top","label":"Reapertura en otro proceso: la identidad y el estado guardado deciden la continuidad."},"hold_seconds":4},
+    {"id":"b02_reopen","kind":"action","payload":{"action":"abrir"},"hold_seconds":5},
+    {"id":"b03_reopened_status","kind":"observe"},
+    {"id":"b04_reopened_frame","kind":"observe","path":"/api/frame"},
+    {"id":"b05_resume","kind":"action","payload":{"action":"vivir"}},
+    {"id":"b06_log","kind":"action","payload":{"action":"grabar"}},
+    {"id":"b07_view","kind":"presentation","payload":{"focus":"events","sections":[],"label":"Después de reabrir: uso de luma y clasifica SIN volver a enseñar sus contenidos."}},
+    {"id":"b08_old","kind":"action","payload":{"action":"ejecutar","value":{"id":"dee20_demo_luma_reabierta_01","texto":"palabra luma"}},"hold_seconds":5},
+    {"id":"b09_revision","kind":"action","payload":{"action":"ejecutar","value":{"id":"dee20_demo_clasifica_reabierta_01","texto":"palabra clasifica"}},"hold_seconds":5},
+    {"id":"b10_pause","kind":"action","payload":{"action":"pausar"}},
+    {"id":"b11_logclose","kind":"action","payload":{"action":"grabar"}},
+    {"id":"b12_save","kind":"action","payload":{"action":"guardar"}},
+    {"id":"b13_stop","kind":"action","payload":{"action":"detener"}},
+    {"id":"b14_export","kind":"action","payload":{"action":"exportar"}},
+    {"id":"b15_final_view","kind":"presentation","payload":{"focus":"top","label":"Fin del recorrido íntegro. Esta copia guardada será la entrada diaria; los originales no cambiaron."},"hold_seconds":5},
+    {"id":"b16_final_status","kind":"observe"},
+    {"id":"b17_final_frame","kind":"observe","path":"/api/frame"}
+  ]
+}

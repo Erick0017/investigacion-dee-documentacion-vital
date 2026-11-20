@@ -1,0 +1,55 @@
+{
+  "campaign_id": "DEE_THINKING_ENTREGA_02_FINAL_FOCUSED_LAB_20261004",
+  "scope": "LABORATORY_ONLY_NOT_STABLE_CATALOG",
+  "author": "Ivan Erick Tlaltecatl Morales",
+  "kernel": "DEE v27 frozen",
+  "dimension": 127,
+  "host_stop": "all carriers admitted at boundary t0; thereafter kernel evolution and passive observation only",
+  "backends": {
+    "exploration": {"backend": "lazy", "threads": 4},
+    "confirmation": {"backend": "dense_parallel", "threads": 4}
+  },
+  "f1": {
+    "question": "Can one mobile C7H03 lineage receive two supplied revisions, retain them, and use them in later common queries without rebuilding the memory?",
+    "ticks": {
+      "training": 5,
+      "native_initial_update": 12,
+      "queries": [34, 46, 58],
+      "revisions": [38, 50]
+    },
+    "common_query_loads": [7, 5, 3],
+    "arms": [
+      {"id": "REV_11_13", "on_path_revisions": [11, 13], "off_path_shams": [0, 0]},
+      {"id": "REV_13_11", "on_path_revisions": [13, 11], "off_path_shams": [0, 0]},
+      {"id": "FIRST_ONLY_11", "on_path_revisions": [11, 0], "off_path_shams": [0, 13]},
+      {"id": "SECOND_ONLY_13", "on_path_revisions": [0, 13], "off_path_shams": [11, 0]},
+      {"id": "SHAM_11_13", "on_path_revisions": [0, 0], "off_path_shams": [11, 13]},
+      {"id": "NO_TRAINED_RELATION", "on_path_revisions": [11, 13], "teacher_routed_off_path": true}
+    ]
+  },
+  "f2": {
+    "question": "Can a lineage response modify a prepared environment, update an independent carrier through DEMUX, and influence two later encounters?",
+    "environment_site": [73, 90, 63],
+    "demux_target": [72, 89, 62],
+    "return_site": [72, 89, 66],
+    "first_use_site": [76, 89, 70],
+    "redirect_site": [80, 93, 74],
+    "second_use_site": [80, 97, 78],
+    "ticks": {"environment_collision": 38, "demux_update": 39, "return": 43, "use1": 47, "redirect": 51, "use2": 55},
+    "prepared_support": "six semantic=4 zero-load records; common to all arms",
+    "arms": [
+      {"id": "ENV_INTACT", "response": true, "marker_load": 17, "bias_load": 15515, "query": "demux_target"},
+      {"id": "ENV_RESPONSE_CUT", "response": false, "marker_load": 17, "bias_load": 15515, "query": "demux_target"},
+      {"id": "ENV_NO_QUERY", "response": true, "marker_load": 17, "bias_load": 15515, "query": "absent"},
+      {"id": "ENV_QUERY_SHAM", "response": true, "marker_load": 17, "bias_load": 15515, "query": "off_path"},
+      {"id": "ENV_SUBTHRESHOLD", "response": true, "marker_load": 17, "bias_load": 15514, "query": "demux_target"},
+      {"id": "ENV_CONTENT_19", "response": true, "marker_load": 19, "bias_load": 15515, "query": "demux_target"}
+    ]
+  },
+  "final_execution": {
+    "completed_backend_cases": 16,
+    "partial_scientific_cases": 0,
+    "runner_elapsed_ms": 473339
+  }
+}
+

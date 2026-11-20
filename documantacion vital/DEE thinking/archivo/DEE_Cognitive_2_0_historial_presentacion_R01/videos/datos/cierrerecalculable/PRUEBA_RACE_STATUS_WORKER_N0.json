@@ -1,0 +1,54 @@
+{
+  "schema": "DEE20.directed_status_worker_thread_race.N0.v1",
+  "app_sha256_observed": "477250330f98a2a438f940fb7a4d402f0083b8c80c83eaa0a519036563defc3b",
+  "real_app_changed": false,
+  "no_http_no_native": true,
+  "cases": [
+    {
+      "variant": "R01_unlocked_live_job_reference",
+      "pending_in_old_snapshot": {
+        "id": "same_transport",
+        "payload_sha256": "same_payload"
+      },
+      "job_at_status_return": "completed",
+      "job_after_worker_finished_before_HTTP_JSON": "completed",
+      "old_snapshot_mixed_pending_with_completed": true,
+      "fresh_snapshot_pending": null,
+      "fresh_job_status": "completed",
+      "mock_physical_calls": 1,
+      "native_ticks": 0,
+      "HTTP_requests": 0
+    },
+    {
+      "variant": "lock_only_live_job_reference",
+      "pending_in_old_snapshot": {
+        "id": "same_transport",
+        "payload_sha256": "same_payload"
+      },
+      "job_at_status_return": "processing",
+      "job_after_worker_finished_before_HTTP_JSON": "completed",
+      "old_snapshot_mixed_pending_with_completed": true,
+      "fresh_snapshot_pending": null,
+      "fresh_job_status": "completed",
+      "mock_physical_calls": 1,
+      "native_ticks": 0,
+      "HTTP_requests": 0
+    },
+    {
+      "variant": "lock_and_top_level_job_snapshot",
+      "pending_in_old_snapshot": {
+        "id": "same_transport",
+        "payload_sha256": "same_payload"
+      },
+      "job_at_status_return": "processing",
+      "job_after_worker_finished_before_HTTP_JSON": "processing",
+      "old_snapshot_mixed_pending_with_completed": false,
+      "fresh_snapshot_pending": null,
+      "fresh_job_status": "completed",
+      "mock_physical_calls": 1,
+      "native_ticks": 0,
+      "HTTP_requests": 0
+    }
+  ],
+  "scope": "GUI transport publication and stable status snapshot only; not a Native answer or memory change."
+}

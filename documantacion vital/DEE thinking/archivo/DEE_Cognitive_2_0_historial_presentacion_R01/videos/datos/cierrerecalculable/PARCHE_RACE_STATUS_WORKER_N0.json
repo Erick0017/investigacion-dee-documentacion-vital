@@ -1,0 +1,14 @@
+{
+  "file": "aplicacion/GENESIS/genesis.py",
+  "original_sha256": "477250330f98a2a438f940fb7a4d402f0083b8c80c83eaa0a519036563defc3b",
+  "changes": [
+    {
+      "old": "                result = self.perform(action, value)\n                self.jobs[ident].update(status='completed', result=result, finished_utc=now())\n                self.event('interface_operation_result', interface_action=action, result=result)\n            except Exception as error:\n                self.jobs[ident].update(status='error', error={'type': type(error).__name__, 'detail': str(error)}, finished_utc=now())\n                self.event('interface_operation_error', interface_action=action, error=self.jobs[ident]['error'])\n",
+      "new": "                result = self.perform(action, value)\n                # Publish completion and its event under the same RLock used by\n                # status(); no Native processing or request is repeated here.\n                with self.mutex:\n                    self.jobs[ident].update(status='completed', result=result, finished_utc=now())\n                    self.event('interface_operation_result', interface_action=action, result=result)\n            except Exception as error:\n                with self.mutex:\n                    self.jobs[ident].update(status='error', error={'type': type(error).__name__, 'detail': str(error)}, finished_utc=now())\n                    self.event('interface_operation_error', interface_action=action, error=self.jobs[ident]['error'])\n"
+    },
+    {
+      "old": "'jobs': list(self.jobs.values())[-20:],",
+      "new": "'jobs': [dict(row) for row in list(self.jobs.values())[-20:]],"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "dee-thinking-e2-laboratory-config-v1",
+  "scope": "LABORATORY_ONLY_DO_NOT_EXPORT_TO_STABLE_CATALOG",
+  "kernel": "DEE Universe v27 frozen through dee_thinking",
+  "execution": {
+    "primary_backend": "Lazy",
+    "primary_threads": 4,
+    "confirmation_backend": "DenseSequential",
+    "confirmation_threads": 1
+  },
+  "families": [
+    {
+      "id": "native_update_route",
+      "modality": "NATIVA",
+      "dimension": 17,
+      "ticks": 6,
+      "loads": [20, 17],
+      "update_site": [4, 4, 4],
+      "junction_site": [6, 6, 4],
+      "variants": ["NO_SELECTOR", "CANCEL_Y", "ADD_Z", "BOTH_SELECTORS"],
+      "host_writes_after_t0": false
+    },
+    {
+      "id": "c6_later_query_reuse",
+      "modality": "ACOPLADA",
+      "dimension": 34,
+      "first_query_tick": 6,
+      "second_query_tick": 40,
+      "final_tick": 46,
+      "variants": [
+        "TRAINED_ABSENT_SECOND",
+        "TRAINED_LOAD13",
+        "TRAINED_ZERO_LOAD",
+        "CUE_ONLY_LOAD13"
+      ],
+      "note": "The second input is an explicit host-coupled laboratory event on the already-evolved world; it is not autonomous return and is not a stable catalog claim."
+    }
+  ]
+}

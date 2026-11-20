@@ -1,0 +1,219 @@
+{
+  "format": "DTRV2701 little-endian: header + initial RAW/clock + expected RAW/clock",
+  "oracle": {
+    "wheel_sha256": "69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939",
+    "package_sha256": "7e2991b1fc8a053ee44ead6e177b129855ae9265dea68505a8e545f0c3fdf8b4",
+    "binary_sha256": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+    "wheel_path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\dist\\dee_universe_v27-27.0.0-cp313-cp313-win_amd64.whl",
+    "binary_path": "D:\\Descargas\\ANACONDA MINICONDA\\Lib\\site-packages\\dee_universe_v27\\dee_kernel_v27.cp313-win_amd64.pyd"
+  },
+  "generator": "generate_whl_fixtures.py",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:58) [MSC v.1929 64 bit (AMD64)]",
+  "numpy": "2.2.6",
+  "cases": [
+    {
+      "name": "empty_three_ticks",
+      "file": "empty_three_ticks.dtr",
+      "sha256": "4dd3d1fa7871b3dc38d97681242084af0a5910614af2bc09f4ed3f8013f310ce",
+      "n": 5,
+      "ticks": 3,
+      "purpose": "empty lattice and uniform clock progression",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "transport_toroidal_wrap",
+      "file": "transport_toroidal_wrap.dtr",
+      "sha256": "e51ee4efdb2542d3f4fe52a7a99dbf18fe322f89f5e8039588a5d8b88a756056",
+      "n": 7,
+      "ticks": 3,
+      "purpose": "directional transport across x wrap",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "state_zero_raw_nonzero",
+      "file": "state_zero_raw_nonzero.dtr",
+      "sha256": "a3d93eb45312e378cb7e3b385d6fffdbb58318e2f2a508d8a18cabf085580c69",
+      "n": 7,
+      "ticks": 2,
+      "purpose": "RAW-present record with state zero",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "semantic4_modular_clock",
+      "file": "semantic4_modular_clock.dtr",
+      "sha256": "2aed3460e568e94b54274588486906729cf596cb36b6e49d04e796545c62f669",
+      "n": 7,
+      "ticks": 3,
+      "purpose": "observer semantic and uint64 clock wrap",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "occupied_destination",
+      "file": "occupied_destination.dtr",
+      "sha256": "678c49c649b9845bc37ce044e0b59173aa0a3baf076e03a91f0d372aabc3fb60",
+      "n": 7,
+      "ticks": 1,
+      "purpose": "occupied versus empty destination branch",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "simultaneous_xnor_eight",
+      "file": "simultaneous_xnor_eight.dtr",
+      "sha256": "7739916c0594059943b0b8e711e1b44c9557fc356c4ee985237baa43e205c95e",
+      "n": 9,
+      "ticks": 1,
+      "purpose": "eight simultaneous corner proposals",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 1
+        }
+      ]
+    },
+    {
+      "name": "simultaneous_non_xnor",
+      "file": "simultaneous_non_xnor.dtr",
+      "sha256": "2efc24abd2f2be7fdec1a10779530818585eafba7a9e7b7b8a9539f3b0e01694",
+      "n": 9,
+      "ticks": 1,
+      "purpose": "eight simultaneous non-XNOR proposals",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "staged_directional_composition",
+      "file": "staged_directional_composition.dtr",
+      "sha256": "35401f2e27914e65ef25ebc4d418d8d67b3999e9214109de1190db57c4b67ee8",
+      "n": 11,
+      "ticks": 2,
+      "purpose": "two-proposal reduction followed by a later third proposal",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "nonuniform_clocks_direction_edges",
+      "file": "nonuniform_clocks_direction_edges.dtr",
+      "sha256": "407027f3d876d29e0b1d9334c8c754f1bf601cb68f594fcb75215e70d51ddad5",
+      "n": 6,
+      "ticks": 2,
+      "purpose": "signed direction boundaries and clocks",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        },
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "reachable_demux_overflow",
+      "file": "reachable_demux_overflow.dtr",
+      "sha256": "3820e441357bebadcb8059afc3614b23933936f8331235012ca7725b87f692a6",
+      "n": 7,
+      "ticks": 1,
+      "purpose": "historical overflow attempt; survival guard yields zero overflow",
+      "tick_stats": [
+        {
+          "overflows": 0,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "demux_overflow_six_neighbors",
+      "file": "demux_overflow_six_neighbors.dtr",
+      "sha256": "52ae450f2fd13f5344bee3e66e78a011246cc1dec651cce9a4afd36c406b4a97",
+      "n": 7,
+      "ticks": 1,
+      "purpose": "reachable material overflow with one postpass DEMUX delta",
+      "tick_stats": [
+        {
+          "overflows": 1,
+          "genesis": 0
+        }
+      ]
+    },
+    {
+      "name": "demux_atomic_shared_target",
+      "file": "demux_atomic_shared_target.dtr",
+      "sha256": "4f76d7a68c74edf32613c7571d34effde3fcd1a4de9bb42abf51d4a51abe2e32",
+      "n": 7,
+      "ticks": 1,
+      "purpose": "two x-slab overflows atomically accumulate on one born target",
+      "tick_stats": [
+        {
+          "overflows": 2,
+          "genesis": 0
+        }
+      ]
+    }
+  ]
+}

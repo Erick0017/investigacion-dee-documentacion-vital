@@ -1,0 +1,84 @@
+{
+  "schema": "dee-thinking-definitive-validation-v1",
+  "product_version": "2.2.0",
+  "status": "VERIFIED",
+  "checks": {
+    "native_ctest": "PASS",
+    "installed_consumer": "PASS",
+    "wheel_clean_install": "PASS",
+    "python_api": "PASS",
+    "cross_language_persistence": "PASS",
+    "clean_extract_rebuild": "PASS"
+  },
+  "evidence": {
+    "native_ctest": {
+      "build_label": "post-h2-overlap-wrapper-fix",
+      "configuration": "Release",
+      "tests_passed": 17,
+      "tests_total": 17,
+      "elapsed_seconds": 820.79
+    },
+    "installed_consumer": {
+      "find_package_install_tree": true,
+      "organizations": 2,
+      "later_input": true,
+      "self_contained_restore": true,
+      "restore_backend_future_exact": true,
+      "core05_phase_memory_v1": true,
+      "core05_restore_exact": true,
+      "h1_installed_api": true,
+      "h1_checkpoint_exact": true,
+      "integrated_protocol_registry_size": 6
+    },
+    "wheel": {
+      "filename": "dee_thinking-2.2.0-cp313-cp313-win_amd64.whl",
+      "size_bytes": 465442,
+      "sha256_before_final_zip_freeze": "39e6bc7cb8a6be74bfe105ae9e284eff4d3a4cc213780f410a048d3fd75301c6",
+      "clean_install": "non-editable, --no-index, --no-deps",
+      "imported_from_site_packages": true,
+      "native_module": true,
+      "delegates_to_dee_universe_v27": false,
+      "old_kernel_module_loaded": false,
+      "python_tests_passed": 11,
+      "python_tests_total": 11,
+      "post_fix_elapsed_seconds": 29.457,
+      "directed_coverage": "H1 delays -5..5; H2 K7 budgets; F2 six environment_load/overflow/admission arms"
+    },
+    "cross_language_persistence": {
+      "generic_cpp_to_python": "RAW+clock+receipts exact at tick 6",
+      "generic_python_to_cpp": "RAW+clock+receipts exact at tick 6",
+      "h1_cpp_to_python_and_python_to_cpp": "RAW+clock exact; selected hub and functional scalars exact",
+      "h2_separated_cpp_to_python_and_python_to_cpp": "RAW+clock exact; channel metadata exact",
+      "h2_overlap_cpp_to_python_and_python_to_cpp": "RAW+clock exact; merge metadata exact after t14 capture fix",
+      "h3_cpp_to_python_and_python_to_cpp": "RAW+clock exact; reconstructed and fresh function",
+      "f1_cpp_to_python_and_python_to_cpp": "RAW+clock exact; 4149,4165,4181",
+      "f2_cpp_to_python_and_python_to_cpp": "RAW+clock exact; 24,55,62,62,67"
+    },
+    "wrapper_regression": {
+      "status": "PASS",
+      "finding": "H2-overlap checkpoint stopped at t16 had exact RAW/clock but did not preserve merge metadata captured at t14",
+      "correction_scope": "wrapper metadata capture only; kernel and physical trajectory unchanged",
+      "post_fix": "cpp_resume_h2_overlap exact_state=true merge=true; complete native, wheel and cross-language panels repeated"
+    },
+    "clean_extract_rebuild": {
+      "status": "PASS",
+      "candidate_extract": "tests/x22f",
+      "targets_built": 49,
+      "directed_ctest_passed": 8,
+      "directed_ctest_total": 8,
+      "directed_ctest_elapsed_seconds": 9.78,
+      "directed_ctest": [
+        "kernel_whl_differential",
+        "runtime_contract",
+        "execution_backends",
+        "composition_snapshot_restore",
+        "core05_phase_memory",
+        "cross_process_persistence",
+        "examples_smoke",
+        "integrated_protocols_e2e"
+      ],
+      "clean_install_consumer": "PASS; H1/checkpoint exact and protocol registry size 6",
+      "wheel_rebuild": "PASS at tests/xwheel22f/dee_thinking-2.2.0-cp313-cp313-win_amd64.whl"
+    }
+  }
+}

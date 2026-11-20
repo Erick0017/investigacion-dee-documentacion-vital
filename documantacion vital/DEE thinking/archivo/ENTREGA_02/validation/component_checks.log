@@ -1,0 +1,54 @@
+=== kernel_whl_differential ===
+MATCH demux_atomic_shared_target.dtr
+MATCH demux_overflow_six_neighbors.dtr
+MATCH empty_three_ticks.dtr
+MATCH nonuniform_clocks_direction_edges.dtr
+MATCH occupied_destination.dtr
+MATCH reachable_demux_overflow.dtr
+MATCH semantic4_modular_clock.dtr
+MATCH simultaneous_non_xnor.dtr
+MATCH simultaneous_xnor_eight.dtr
+MATCH staged_directional_composition.dtr
+MATCH state_zero_raw_nonzero.dtr
+MATCH transport_toroidal_wrap.dtr
+WHL_DIFFERENTIAL_CASES=12 ALL_EXACT=true
+EXIT_CODE=0
+=== runtime_contract ===
+runtime_tests: 89 checks, 0 failures
+EXIT_CODE=0
+=== integration_persistence ===
+integration_persistence_tests: 53 checks, 0 failures
+EXIT_CODE=0
+=== execution_backends ===
+BACKENDS_EXACT demux_atomic_shared_target.dtr configurations=7 repeats=3
+BACKENDS_EXACT demux_overflow_six_neighbors.dtr configurations=7 repeats=3
+BACKENDS_EXACT empty_three_ticks.dtr configurations=7 repeats=3
+BACKENDS_EXACT nonuniform_clocks_direction_edges.dtr configurations=7 repeats=3
+BACKENDS_EXACT occupied_destination.dtr configurations=7 repeats=3
+BACKENDS_EXACT reachable_demux_overflow.dtr configurations=7 repeats=3
+BACKENDS_EXACT semantic4_modular_clock.dtr configurations=7 repeats=3
+BACKENDS_EXACT simultaneous_non_xnor.dtr configurations=7 repeats=3
+BACKENDS_EXACT simultaneous_xnor_eight.dtr configurations=7 repeats=3
+BACKENDS_EXACT staged_directional_composition.dtr configurations=7 repeats=3
+BACKENDS_EXACT state_zero_raw_nonzero.dtr configurations=7 repeats=3
+BACKENDS_EXACT transport_toroidal_wrap.dtr configurations=7 repeats=3
+SOURCE_V27_SHA256=44a80f7863d78f596099ddf7d41c9947fa8513503f65067097f1f3b05a8207ab
+backend_equivalence: 8826 checks, 0 failures
+EXIT_CODE=0
+=== composition_catalog ===
+composition_catalog_tests: 91 checks, 0 failures
+EXIT_CODE=0
+=== composition_snapshot_restore ===
+composition_snapshot_tests: 22 checks, 0 failures
+EXIT_CODE=0
+=== in_tree_consumer ===
+DEE thinking Entrega 02 installed consumer
+organizations=2 connections=1 single_runtime=true
+later_input_tick=6 response_s_reg=25
+snapshot_version=2
+restored_future_exact=true control_distinct=true
+EXIT_CODE=0
+=== integrated_release_ctest ===
+13/13 targets passed in clean Release build
+JUNIT=validation/ctest.junit.xml
+EXIT_CODE=0

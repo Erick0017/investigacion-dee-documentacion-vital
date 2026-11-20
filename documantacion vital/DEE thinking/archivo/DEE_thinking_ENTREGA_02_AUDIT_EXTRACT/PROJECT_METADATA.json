@@ -1,0 +1,82 @@
+{
+  "product": "DEE thinking",
+  "delivery": "ENTREGA 02 DE 03",
+  "project": "DEE Universe",
+  "author": "Ivan Erick Tlaltecatl Morales",
+  "native_api_version": "2.0.0",
+  "kernel": {
+    "identity": "DEE Universe Kernel v27.0-PKCANON (v26-SYM1 fork; canonical P_KERNEL=19665)",
+    "canonical_source_sha256": "44a80f7863d78f596099ddf7d41c9947fa8513503f65067097f1f3b05a8207ab",
+    "official_wheel_sha256": "69297e6f06761c8b2f65d24a3fd7a2f16a3f67595a7f9660739ab65f47abc939",
+    "official_binary_sha256": "0b17ba32037935a255b0f2182a52137bceab424f7e09126b761076b63e42c6ff",
+    "official_package_sha256": "7e2991b1fc8a053ee44ead6e177b129855ae9265dea68505a8e545f0c3fdf8b4",
+    "effective_p_kernel": 19665,
+    "demux_cap": 19664
+  },
+  "temporal_contract": {
+    "state_t": "state after t kernel transitions",
+    "event_t": "applied at boundary t immediately before transition t to t+1",
+    "observe": "passive; does not apply events or advance",
+    "advance_zero": "no state change and no event application",
+    "run_until": "stops at target boundary before applying target-boundary events"
+  },
+  "composition_contract": {
+    "self_contained_snapshot_version": 2,
+    "runtime_readable_snapshot_versions": [1, 2],
+    "legacy_v1_scope": "Runtime only; no composition recipe exists",
+    "restore_validation": [
+      "catalog schema",
+      "recipe schema",
+      "constructor version",
+      "dimension",
+      "manifest",
+      "channel names"
+    ],
+    "public_organization_facets": [
+      "initial_footprint",
+      "functional_relation",
+      "read_region",
+      "required_context",
+      "context_horizon",
+      "channel_contracts",
+      "resource_budget"
+    ],
+    "controls": {
+      "composition_a": ["no_update", "no_learning"],
+      "composition_b": ["cut", "parallel_path_sham"],
+      "c6h01": "separate later-query composition"
+    }
+  },
+  "validation_state": {
+    "ctest_targets_configured": 13,
+    "archived_integrated_run_targets": 12,
+    "archived_integrated_run_status": "12/12 passed before composition_snapshot_restore was added",
+    "requires_regeneration": true
+  },
+  "benchmark_contract": {
+    "kernel_rows": 63,
+    "separate_runtime_fields": [
+      "event_schedule_ns",
+      "event_boundary_advance_wall_ns",
+      "event_boundary_kernel_reported_ns",
+      "event_application_and_runtime_overhead_estimate_ns",
+      "snapshot_restore_ns",
+      "end_to_end_total_ns"
+    ],
+    "archived_json_requires_regeneration": true
+  },
+  "explicit_pending": [
+    "temporal_phase_memory.core05.pending",
+    "full integrated 13-target validation",
+    "regenerated extended benchmark artifact"
+  ],
+  "build_target": {
+    "os": "Windows 10 x64",
+    "compiler": "Microsoft Visual C++ 19.50.35729 (Visual Studio Community 2026 18.5.0)",
+    "standard": "C++20",
+    "configuration": "Release",
+    "cmake": "4.2.3-msvc3",
+    "ninja": "1.12.1",
+    "python_runtime_dependency": false
+  }
+}

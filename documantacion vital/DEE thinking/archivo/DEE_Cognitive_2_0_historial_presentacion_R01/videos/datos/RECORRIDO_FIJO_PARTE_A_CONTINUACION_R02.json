@@ -1,0 +1,301 @@
+{
+  "schema": "DEE20.fixed_operator_http_itinerary.v1",
+  "life_id": "DEE20_DEMO_01",
+  "scope": "Fixed unexecuted a23..a48 tail after recorded instrument pause; no prior ID repeated, no Native parameter changed.",
+  "original_plan_sha256": "fc207475c0ec2b9ea5d5ded780c0ab76071587c7cddbf4a36d0572010b025a04",
+  "previous_instrument_error_preserved_in_same_uncut_video": true,
+  "steps": [
+    {
+      "id": "r02_session",
+      "kind": "session",
+      "deadline_seconds": 30
+    },
+    {
+      "id": "r02_status_readonly",
+      "kind": "observe",
+      "path": "/api/status"
+    },
+    {
+      "id": "r02_coordinate_view_config",
+      "kind": "presentation",
+      "path": "/api/view",
+      "payload": {
+        "coordinate": [
+          15,
+          17,
+          15
+        ],
+        "enabled": true,
+        "interval_seconds": 15,
+        "max_points": 12000,
+        "universe": "raw_nonzero"
+      }
+    },
+    {
+      "id": "r02_coordinate_explanation",
+      "kind": "presentation",
+      "payload": {
+        "focus": "cell",
+        "coordinate": [
+          15,
+          17,
+          15
+        ],
+        "field": "s_reg",
+        "label": "Sitio incluido en captura pasiva, no sonda. Continúa la misma vida y la misma grabación; no se repite la revisión."
+      },
+      "hold_seconds": 18
+    },
+    {
+      "id": "a23_old_luma",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_luma_post_01",
+          "texto": "palabra luma"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a24_old_nara",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_nara_post_01",
+          "texto": "palabra nara"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a25_sequences_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "events",
+        "sections": [],
+        "label": "Combinación 1: orden indicado por el operador; la salida real de la primera operación alimenta la segunda."
+      },
+      "hold_seconds": 3
+    },
+    {
+      "id": "a26_composition",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_componer_01",
+          "texto": "componer suma diferencia --datos 4 5 2"
+        }
+      },
+      "hold_seconds": 7
+    },
+    {
+      "id": "a27_goal_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "events",
+        "label": "Combinación 2: una tarea con dato privado del entorno. No se entrega la estrategia correcta al ente."
+      },
+      "hold_seconds": 3
+    },
+    {
+      "id": "a28_goal",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_objetivo_01",
+          "texto": "objetivo suma 8 6 --oculto --contexto-ambiente 1"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a29_goal_opportunities",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_paso_01",
+          "texto": "paso 2"
+        }
+      },
+      "hold_seconds": 7
+    },
+    {
+      "id": "a30_versions_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "command",
+        "sections": [
+          "versions"
+        ],
+        "label": "Vigencia: sensores preparados P0 y caché ambiental. No se atribuye memoria externa a DEE."
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a31_version_state",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_vigencia_estado_01",
+          "texto": "vigencia estado"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a32_version_opportunities",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_vigencia_vivir_01",
+          "texto": "vigencia vivir 2"
+        }
+      },
+      "hold_seconds": 7
+    },
+    {
+      "id": "a33_pause",
+      "kind": "action",
+      "payload": {
+        "action": "pausar"
+      },
+      "hold_seconds": 5
+    },
+    {
+      "id": "a34_paused_frame",
+      "kind": "observe",
+      "path": "/api/frame"
+    },
+    {
+      "id": "a35_rest_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "world",
+        "yaw": 0.3,
+        "pitch": -0.25,
+        "zoom": 1.4,
+        "field": "clock",
+        "sections": [
+          "continuity"
+        ],
+        "label": "Pausa: no avanzan ticks. Después: 67 ticks explícitos sin tarea nueva, sin limpieza ni recuperación prometida."
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a36_resume_rest",
+      "kind": "action",
+      "payload": {
+        "action": "vivir"
+      }
+    },
+    {
+      "id": "a37_rest",
+      "kind": "action",
+      "payload": {
+        "action": "reposo",
+        "value": {
+          "ticks": 67
+        }
+      },
+      "hold_seconds": 5
+    },
+    {
+      "id": "a38_retention_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "events",
+        "sections": [],
+        "label": "Comprobación posterior a usos combinados y reposo: una asociación anterior y la revisada."
+      }
+    },
+    {
+      "id": "a39_rest_luma",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_luma_postreposo_01",
+          "texto": "palabra luma"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a40_rest_revision",
+      "kind": "action",
+      "payload": {
+        "action": "ejecutar",
+        "value": {
+          "id": "dee20_demo_clasifica_postreposo_01",
+          "texto": "palabra clasifica"
+        }
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a41_pause_save",
+      "kind": "action",
+      "payload": {
+        "action": "pausar"
+      }
+    },
+    {
+      "id": "a42_close_jsonl",
+      "kind": "action",
+      "payload": {
+        "action": "grabar"
+      }
+    },
+    {
+      "id": "a43_export_context",
+      "kind": "action",
+      "payload": {
+        "action": "exportar"
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a44_save",
+      "kind": "action",
+      "payload": {
+        "action": "guardar"
+      }
+    },
+    {
+      "id": "a45_stop",
+      "kind": "action",
+      "payload": {
+        "action": "detener"
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a46_closure_view",
+      "kind": "presentation",
+      "payload": {
+        "focus": "top",
+        "sections": [],
+        "label": "Estado guardado y propietario detenido. Se cerrará HTTP y se abrirá la MISMA vida, no otra importación."
+      },
+      "hold_seconds": 4
+    },
+    {
+      "id": "a47_final_status",
+      "kind": "observe"
+    },
+    {
+      "id": "a48_shutdown",
+      "kind": "shutdown",
+      "hold_seconds": 5
+    }
+  ]
+}

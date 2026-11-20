@@ -1,0 +1,77 @@
+{
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_FINAL_CIENCIA_PORTABLE_N0_R10",
+  "base_manifest_sha256": "ac5ca3a0c976f7f2c3cdb157c399afe42a4fef74edf3d3453bbf4aee3b310cb2",
+  "components": [
+    {
+      "id": "CLOSED_EXACT_FULL",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "e7780b66b9f3cc2fc0e16baa486c73a8a0c61ae7a72c34b6d810bd620b3f1c64",
+      "source": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/FULL_EXACTO_EVIDENCIA_PORTABLE_N0_R01"
+    },
+    {
+      "id": "APPLIED_LOGISTICS_PATCH",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "0c46a377e048e9cd56e4da140e81f1af58a92b260f41c506fe23ba096dacd4c6",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/PARCHE_LOGISTICO_REUSO_4_5_R01"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 755,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "60c4e9805d3d9a2fc4e892c90e0294c9c93e0142968ec6fc0fae650a0dc64270",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_full_portable_archivado_apd04_n0_r12.py"
+    },
+    {
+      "bytes": 485,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "24f2381fb1502d08cb9ffc0695be69769977f8375d52a8663ce3f2a6ad9a004e",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/REFERENCIA_FULL_PORTABLE_ARCHIVADO_N0_R12.json"
+    },
+    {
+      "bytes": 1979,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "99b94eca9fa1e3ee952ec087a861f3942e2ec273fd562434c186422adf7cb60f",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/INCIDENCIA_LOGISTICA_FULL_APD04_N0_R01.md"
+    },
+    {
+      "bytes": 671,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "93e7b22d4d50afeb8e918dd5d455098923601a19465d1b542be459d4e867ca5f",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/PARCHE_LOGISTICO_REUSO_4_5_R01/REFRESH_UNA_FILA_APLICADO.json"
+    },
+    {
+      "bytes": 3474,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "2d2eee9013c163133fdf1d2448a46e6258621a7231e2a64329ec405b379964ef",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/PARCHE_LOGISTICO_REUSO_4_5_R01/refrescar_una_fila_manifiesto_n0_r01.py"
+    },
+    {
+      "bytes": 1181,
+      "id": "CLOSED_FULL_LOGISTICS_AND_RECALC",
+      "sha256": "088e7ee74e3d6f217b3f13f059aa3bb514034800dd97fa90fbe9f75100d25f47",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/distribucion/LIMITE_ABSOLUTO_CIERRE_FULL_R01.json"
+    }
+  ],
+  "jobs": [
+    {
+      "args": [
+        "--dossier",
+        {
+          "input": "evidencia/campanas/APD04_ECOSISTEMA_COGNITIVO/FULL_EXACTO_EVIDENCIA_PORTABLE_N0_R01"
+        },
+        "--out",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/REFERENCIA_FULL_PORTABLE_ARCHIVADO_N0_R12.json",
+      "id": "EXACT_FULL_ARCHIVED_PRIMARY_RECALC",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_full_portable_archivado_apd04_n0_r12.py",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    "Only final Root analysis approval and sealing remain; actual Full and all Native jobs are already closed, not globally successful by that fact."
+  ]
+}

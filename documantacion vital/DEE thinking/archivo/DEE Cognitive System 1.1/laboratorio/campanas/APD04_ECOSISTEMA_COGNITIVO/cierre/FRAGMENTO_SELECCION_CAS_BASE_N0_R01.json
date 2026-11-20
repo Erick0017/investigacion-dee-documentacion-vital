@@ -1,0 +1,53 @@
+{
+  "schema": "APD04.final_analysis_selection.CAS_fragment.N0.R01",
+  "status": "BASE_ONLY_APPEND_TO_ROOT_APPROVED_FINAL_SELECTION_NOT_FINAL_SEAL",
+  "components": [
+    {
+      "id": "CAS_BASE_ARCHIVED",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_BASE_N0_R01",
+      "destination": "EVIDENCIA_CAS_BASE",
+      "manifest": "MANIFIESTO_CAS.json",
+      "manifest_sha256": "1e356771788adc92ba838d56673c35867a31fd70aee6fccbe30935b2de74e688"
+    }
+  ],
+  "files": [
+    {
+      "id": "CAS_RECALC_IN_PROCESS",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/recalcular_cas_en_proceso_apd04_n0_r01.py",
+      "destination": "RECALCULO/recalcular_CAS_BASE.py",
+      "kind": "Portable archived calculator, no subprocess or Native",
+      "sha256": "e4f7ab3bc1b21a48e004f369d56bde3f5882853f0db04e9a722073150899fde9"
+    },
+    {
+      "id": "CAS_REFERENCE",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/REFERENCIA_CAS_PORTABLE_N0_R01.json",
+      "destination": "RECALCULO/REFERENCIA_CAS_BASE.json",
+      "kind": "Byte-exact selected calculation reference for base only",
+      "sha256": "5f1c7144b5dd28883a4f0d116adc2523e69552822ac16d9a9a82d6ce4062bf96"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "CAS_BASE_844_PATHS_AND_THREE_CLIS",
+      "base": ".",
+      "script": "RECALCULO/recalcular_CAS_BASE.py",
+      "args": [
+        "--package",
+        {
+          "input": "EVIDENCIA_CAS_BASE"
+        },
+        "--out",
+        "{output}"
+      ],
+      "expected": "RECALCULO/REFERENCIA_CAS_BASE.json",
+      "comparison": "bytes",
+      "timeout_seconds": 900
+    }
+  ],
+  "limits": [
+    "All 844 selected source paths and bytes are restored, but this base does not contain later R03/reserve/manual/Full closure.",
+    "The three actual inner CLIs are R04 adverse closure, two-opportunity reserve prefix and ancestral panel; do not imply that other contracts were revalidated.",
+    "No engine/full snapshots/WHL included, no Native ticks, no changes to archived components.",
+    "This fragment does not authorize assembly, sealing, Word editing, Full execution or promotion."
+  ]
+}

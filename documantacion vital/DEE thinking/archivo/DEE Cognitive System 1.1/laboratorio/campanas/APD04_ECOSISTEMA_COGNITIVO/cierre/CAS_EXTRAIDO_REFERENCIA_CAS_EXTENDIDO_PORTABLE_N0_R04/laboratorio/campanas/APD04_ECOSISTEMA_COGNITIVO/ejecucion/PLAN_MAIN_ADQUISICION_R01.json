@@ -1,0 +1,170 @@
+{
+  "schema": "APD04.literal_supervisor_schedule.v1",
+  "status": "CLOSED_FOR_EXECUTION",
+  "life": "APD04_MAIN",
+  "world_id": "APD04_MAIN",
+  "initial_snapshot_sha256": "332f84dac432f82ef9f1bf2313f0fdf3b708e81973c713d6626b2dcbc7156afa",
+  "initial_tick": 624608,
+  "deadline_utc": "2026-10-27T03:30:51+00:00",
+  "duration_seconds": 300,
+  "closing_reserve_seconds": 180,
+  "heartbeat_seconds": 30,
+  "freeze_source_paths": [
+    "sistema/app/protocolo_apd04.py",
+    "sistema/app/cola_local.py",
+    "sistema/app/servicio_persistente.py",
+    "sistema/capacidades/mente_unificada_01.py",
+    "sistema/capacidades/ecosistema_apd04.py",
+    "sistema/capacidades/acciones_nativas_apd04.py",
+    "sistema/capacidades/lexico_compartido_apd04.py",
+    "sistema/capacidades/sensor_componentes_apd04.py",
+    "sistema/capacidades/sensor_balanceado_apd04.py"
+  ],
+  "events": [
+    {
+      "at_seconds": 0,
+      "kind": "material",
+      "request_id": "apd04main_lesson_r01_clasifica",
+      "situations": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "clasifica",
+          "senal": 1
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 5,
+      "kind": "material",
+      "request_id": "apd04main_lesson_r01_equilibra",
+      "situations": [
+        {
+          "modo": "apd04-docencia",
+          "texto": "equilibra",
+          "senal": -1
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 10,
+      "kind": "material",
+      "request_id": "apd04main_first_r01_clasifica",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        }
+      ],
+      "feedback": "omit"
+    },
+    {
+      "at_seconds": 15,
+      "kind": "material",
+      "request_id": "apd04main_first_r01_equilibra",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "equilibra"
+        }
+      ],
+      "feedback": "omit"
+    },
+    {
+      "at_seconds": 20,
+      "kind": "material",
+      "request_id": "apd04main_classify_r01_context",
+      "situations": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "clasifica"
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 30,
+      "kind": "material",
+      "request_id": "apd04main_classify_r01_four",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "independent_balanced"
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 120,
+      "kind": "material",
+      "request_id": "apd04main_balance_r01_context",
+      "situations": [
+        {
+          "modo": "apd04-cambio",
+          "etiqueta_objetivo": 1,
+          "palabra": "equilibra",
+          "cargas": [
+            3,
+            7
+          ]
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 130,
+      "kind": "material",
+      "request_id": "apd04main_balance_r01_four",
+      "situations": [
+        {
+          "modo": "apd04-vivir",
+          "oportunidades": 4,
+          "lexico": true,
+          "sensor": "independent_balanced"
+        }
+      ],
+      "feedback": "real"
+    },
+    {
+      "at_seconds": 230,
+      "kind": "material",
+      "request_id": "apd04main_old_panel_r01",
+      "situations": [
+        {
+          "modo": "apd03-panel",
+          "nuevas": true,
+          "memorias": true
+        }
+      ],
+      "feedback": "omit"
+    },
+    {
+      "at_seconds": 270,
+      "kind": "material",
+      "request_id": "apd04main_retained_r01_clasifica",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "clasifica"
+        }
+      ],
+      "feedback": "omit"
+    },
+    {
+      "at_seconds": 280,
+      "kind": "material",
+      "request_id": "apd04main_retained_r01_equilibra",
+      "situations": [
+        {
+          "modo": "apd04-palabra",
+          "texto": "equilibra"
+        }
+      ],
+      "feedback": "omit"
+    }
+  ]
+}

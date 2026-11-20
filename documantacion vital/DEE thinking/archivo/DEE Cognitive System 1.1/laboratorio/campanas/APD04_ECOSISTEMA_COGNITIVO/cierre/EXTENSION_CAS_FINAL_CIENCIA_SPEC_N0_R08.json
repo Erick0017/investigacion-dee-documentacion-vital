@@ -1,0 +1,47 @@
+{
+  "base": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/CANDIDATO_CAS_EXTENDIDO_BORRADOR_N0_R06",
+  "base_manifest_sha256": "f5aa118d82a6dc0f9db8dbabe6d8cad87c5e4073c54635353a9496f099bbce68",
+  "components": [
+    {
+      "id": "EARLY_RESERVE_FINAL_R08",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "13162984aab77c09a879eeb44b6bbc33149eac52288872cc4dfeaef214df5f31",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_RESERVA_TEMPRANA_CERRADA_N0_R08"
+    },
+    {
+      "id": "FINAL_SOURCE_WORD_CAPTURE",
+      "manifest": "MANIFIESTO.json",
+      "manifest_sha256": "9b60cc3240516d09600708f4fc4fe670591d509aa422e2bab07ca3d4d8cbd4dd",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/cierre/FUENTES_CIERRE_SOURCE_Y_WORD_N0_R01"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 2214,
+      "id": "EARLY_RESERVE_PORTABLE_QA",
+      "sha256": "436ff82c13c98e281c2fc1af4f96eaf376457e4317b5cc0541043f563e66456d",
+      "source": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/VERIFICACION_RESERVA_TEMPRANA_PORTABLE_N0_R08.json"
+    }
+  ],
+  "jobs": [
+    {
+      "args": [
+        "--recalc",
+        {
+          "input": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_RESERVA_TEMPRANA_CERRADA_N0_R08"
+        },
+        "--output",
+        "{output}"
+      ],
+      "base": ".",
+      "comparison": "bytes",
+      "expected": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_RESERVA_TEMPRANA_CERRADA_N0_R08/RECALCULO_CIENTIFICO.json",
+      "id": "EARLY_RESERVE_FINAL_R08",
+      "script": "laboratorio/campanas/APD04_ECOSISTEMA_COGNITIVO/controles_diseno/EVIDENCIA_RESERVA_TEMPRANA_CERRADA_N0_R08/recalcular_vistas_y_reserva_r03_n0_r08.py",
+      "timeout_seconds": 900
+    }
+  ],
+  "pending_not_included": [
+    "Exact Full archive proof; final Root analysis approval. Source/Word actual closed bytes are included, with visual validation unavailable."
+  ]
+}

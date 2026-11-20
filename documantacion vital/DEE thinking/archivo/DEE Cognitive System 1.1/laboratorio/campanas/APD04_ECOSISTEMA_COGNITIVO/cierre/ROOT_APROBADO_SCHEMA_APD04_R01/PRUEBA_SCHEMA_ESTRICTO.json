@@ -1,0 +1,71 @@
+{
+  "actual_schema_sha256": "cd03cc9117e79d138145ba3b740d6460585571d7636f527b2a081f8348b20b86",
+  "all_used_schema_constructs_validated": true,
+  "approval_changed": false,
+  "enum_normalizations_preserving_original_labels": [],
+  "negative_fixtures": [
+    {
+      "reason": "$/attempts/0/role enum INVENTED_ROLE",
+      "rejected": true,
+      "test": "unknown_role"
+    },
+    {
+      "reason": "$/attempts/0/status enum PASS_COGNITION",
+      "rejected": true,
+      "test": "unknown_status"
+    },
+    {
+      "reason": "$/lives/0/tick wrong type; wanted ['integer']",
+      "rejected": true,
+      "test": "boolean_is_not_integer"
+    },
+    {
+      "reason": "$/files/0/sha256 pattern",
+      "rejected": true,
+      "test": "bad_hash"
+    },
+    {
+      "reason": "$ missing required {'claims'}",
+      "rejected": true,
+      "test": "missing_field"
+    },
+    {
+      "reason": "$/jobs/0/comparison enum trust",
+      "rejected": true,
+      "test": "bad_job_comparison"
+    },
+    {
+      "reason": "$/lives minItems",
+      "rejected": true,
+      "test": "empty_required_array"
+    },
+    {
+      "reason": "Unsafe relative path ../outside",
+      "rejected": true,
+      "test": "unsafe_job_input"
+    },
+    {
+      "reason": "$/jobs/0/args/4 oneOf matched 0",
+      "rejected": true,
+      "test": "oneof_extra_key"
+    },
+    {
+      "reason": "Unresolved source ID in LEARNED_TWO",
+      "rejected": true,
+      "test": "unknown_source_ID"
+    },
+    {
+      "reason": "Master expected result not exported: CLOSED_CAS_RECALCULATE",
+      "rejected": true,
+      "test": "missing_exported_expected"
+    }
+  ],
+  "new_Native_ticks": 0,
+  "not_universal_JSONSchema_implementation": true,
+  "schema": "APD04.strict_actual_schema_validation.N0.R01",
+  "scientific_counts_changed": false,
+  "selection_after_sha256": "8a5d8cf16dbd48dd15ec87057a1535dace1e209fbe3d1774a13d0b6bd3cf6a7c",
+  "selection_before_sha256": "8a5d8cf16dbd48dd15ec87057a1535dace1e209fbe3d1774a13d0b6bd3cf6a7c",
+  "source_IDs_and_master_jobs_resolved": true,
+  "source_selection_unchanged": true
+}

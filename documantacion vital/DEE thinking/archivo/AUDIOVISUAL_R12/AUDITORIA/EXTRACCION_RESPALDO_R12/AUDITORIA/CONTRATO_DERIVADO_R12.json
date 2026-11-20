@@ -1,0 +1,235 @@
+{
+  "schema": "DEE.R12.LOCAL_DERIVED.contract_consistency.v1",
+  "created_utc": "2026-10-31T22:55:13.981339+00:00",
+  "tool_origin": "New local checker of explicit DOCX derivative; NOT original R12 validar_paquete.py",
+  "checks": [
+    {
+      "check": "explicitly_a_derivative_NOT_original_JSON",
+      "ok": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "check": "14_scene_ids",
+      "ok": true,
+      "expected": "S01..S14",
+      "actual": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "check": "42_unique_literal_shot_ids",
+      "ok": true,
+      "expected": 42,
+      "actual": [
+        42,
+        42
+      ]
+    },
+    {
+      "check": "fixed390s_scenes_no_gaps",
+      "ok": true,
+      "expected": "0..390, contiguous",
+      "actual": [
+        [
+          0,
+          24
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          48,
+          74
+        ],
+        [
+          74,
+          106
+        ],
+        [
+          106,
+          138
+        ],
+        [
+          138,
+          168
+        ],
+        [
+          168,
+          196
+        ],
+        [
+          196,
+          228
+        ],
+        [
+          228,
+          256
+        ],
+        [
+          256,
+          282
+        ],
+        [
+          282,
+          310
+        ],
+        [
+          310,
+          334
+        ],
+        [
+          334,
+          360
+        ],
+        [
+          360,
+          390
+        ]
+      ]
+    },
+    {
+      "check": "42_nominal_shots_match_parent_intervals",
+      "ok": true,
+      "expected": true,
+      "actual": "three contiguous shots per scene"
+    },
+    {
+      "check": "literal815_words",
+      "ok": true,
+      "expected": 815,
+      "actual": 815
+    },
+    {
+      "check": "all42_literal_SHA_values",
+      "ok": true,
+      "expected": true,
+      "actual": 42
+    },
+    {
+      "check": "all14_scene_literal_concatenations_SHA",
+      "ok": true,
+      "expected": true,
+      "actual": 14
+    },
+    {
+      "check": "master_TXT_literal_and_SHA",
+      "ok": false,
+      "expected": "b545b521e74b22aa62a503428c01b3ae39a4428b36648fb3f3b1ddb2b8871147",
+      "actual": "c52c192eb7142e6fff55f9f868c38a66e9dc55ef4d0dc83a74f796e158da6b27"
+    },
+    {
+      "check": "three_literal_phases_per_shot",
+      "ok": true,
+      "expected": true,
+      "actual": 42
+    },
+    {
+      "check": "K0_K1_K2_K3_required_not_fabricated",
+      "ok": true,
+      "expected": "four required bindings, not empirical verification",
+      "actual": 42
+    },
+    {
+      "check": "42_actual_voice_rows_unique",
+      "ok": true,
+      "expected": 42,
+      "actual": 42
+    },
+    {
+      "check": "actual_voice_anchor_literal_matches",
+      "ok": true,
+      "expected": true,
+      "actual": 42
+    },
+    {
+      "check": "actual_schedule_all_fit_no_violations",
+      "ok": true,
+      "expected": true,
+      "actual": [
+        true,
+        []
+      ]
+    },
+    {
+      "check": "actual_internal_adjustments_at_most2s",
+      "ok": true,
+      "expected": "<=2",
+      "actual": 1.18
+    },
+    {
+      "check": "actual_schedule_preserves_scene_boundaries",
+      "ok": true,
+      "expected": true,
+      "actual": 14
+    },
+    {
+      "check": "actual11700_frame_schedule_contiguous",
+      "ok": true,
+      "expected": 11700,
+      "actual": 11700
+    },
+    {
+      "check": "supplied_DOCX_byte_SHA",
+      "ok": true,
+      "expected": "c76928ca5f2f6b162c51933c966e810fc0de448945a9d9a301e8949a0c6b9a63",
+      "actual": "c76928ca5f2f6b162c51933c966e810fc0de448945a9d9a301e8949a0c6b9a63"
+    },
+    {
+      "check": "all42_literal_anchors_equal_supplied_DOCX",
+      "ok": true,
+      "expected": true,
+      "actual": 42
+    }
+  ],
+  "failed_checks": [
+    {
+      "check": "master_TXT_literal_and_SHA",
+      "ok": false,
+      "expected": "b545b521e74b22aa62a503428c01b3ae39a4428b36648fb3f3b1ddb2b8871147",
+      "actual": "c52c192eb7142e6fff55f9f868c38a66e9dc55ef4d0dc83a74f796e158da6b27"
+    }
+  ],
+  "derived_document_consistency": "FAIL",
+  "original_R12_package_validation": "NO EVALUADO: original ESPECIFICACION_R12.json/package/validator not recovered",
+  "DOCX_comparison": "BYTE_AND_LITERAL_COMPARISON_PERFORMED",
+  "scientific_evidence": "NO EVALUADO by this tool",
+  "keyframe_factual_bindings": "NO EVALUADO by this tool; required bindings are not automatically satisfied",
+  "video_perception": "NO EVALUADO",
+  "voice_listening": "NO EVALUADO",
+  "audience_comprehension": "NO EVALUADO",
+  "inputs": [
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_R12\\guion_fuente\\SHOTLIST_R12_DERIVADO_DEL_DOCX.json",
+      "bytes": 82218,
+      "sha256": "caaff828b3e349f9dd3b949f3d06b4e684d7d4fd6996843af436b334a4ef3feb"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_R12\\audio\\TIEMPOS_ANCLAS_R12.json",
+      "bytes": 30399,
+      "sha256": "52e55b1309533295a9b3332ef32e134d9a86884cd38d12e81591a4c84f495b83"
+    },
+    {
+      "path": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_R12\\guion_fuente\\LOCUCION_R12_LITERAL.txt",
+      "bytes": 5978,
+      "sha256": "c52c192eb7142e6fff55f9f868c38a66e9dc55ef4d0dc83a74f796e158da6b27"
+    }
+  ],
+  "script_sha256": "1bbee8e804a4b3328c522cd6ee086d560ef37a6ebe09c05dd27cedfea7734866",
+  "new_Native_ticks": 0,
+  "rendered_frames": 0
+}

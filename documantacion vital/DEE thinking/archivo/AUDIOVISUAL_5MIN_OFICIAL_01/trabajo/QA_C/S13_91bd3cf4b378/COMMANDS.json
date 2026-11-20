@@ -1,0 +1,37 @@
+{
+  "ffprobe": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\video_publico_definitivo\\herramientas\\ffprobe.exe",
+    "-v",
+    "error",
+    "-show_streams",
+    "-show_format",
+    "-of",
+    "json",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\clips\\S13.mp4"
+  ],
+  "ffmpeg": [
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\_dee20_trabajo\\presentacion_clara\\herramientas\\ffmpeg.exe",
+    "-v",
+    "error",
+    "-nostdin",
+    "-threads",
+    "1",
+    "-filter_complex_threads",
+    "1",
+    "-i",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\clips\\S13.mp4",
+    "-filter_complex",
+    "[0:v]select=eq(n\\,12)+eq(n\\,52)+eq(n\\,117)+eq(n\\,140)+eq(n\\,186)+eq(n\\,206)+eq(n\\,249)+eq(n\\,267)+eq(n\\,309)+eq(n\\,382)+eq(n\\,480)+eq(n\\,534),split=2[native][small];[small]scale=360:-2:flags=lanczos[mobile]",
+    "-map",
+    "[native]",
+    "-vsync",
+    "0",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\QA_C\\S13_91bd3cf4b378\\1080_%03d.png",
+    "-map",
+    "[mobile]",
+    "-vsync",
+    "0",
+    "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo\\QA_C\\S13_91bd3cf4b378\\360_%03d.png"
+  ],
+  "cwd": "D:\\GENESIS AI\\GENESIS 5.0\\simulador de universo ab-initio\\dee_libreria\\VERSION_27\\tests\\documantacion vital\\DEE thinking\\archivo\\AUDIOVISUAL_5MIN_OFICIAL_01\\trabajo"
+}

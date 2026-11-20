@@ -1,0 +1,12 @@
+{
+  "schema": "mbp3.observer-lock.v1",
+  "frozen_before_main": true,
+  "identity": "relational toroidal trajectory plus expected load/direction, followed by global scan only on mismatch",
+  "queries": {
+    "Q_PREV_XY": {"offsets":[6,12],"loads":[7,5],"directions":[[0,1,0],[0,-1,0]]},
+    "Q_HOLDOUT_XZ": {"offsets":[6,12],"loads":[4,6],"directions":[[0,0,1],[0,0,-1]]},
+    "Q_SEPARATE_FIBER": {"offsets":[6,12],"loads":[3,2],"directions":[[0,1,0],[0,-1,0]]}
+  },
+  "query_policy": "diagnostic forks only; no state returns to MAIN",
+  "passive_main_observer": true
+}

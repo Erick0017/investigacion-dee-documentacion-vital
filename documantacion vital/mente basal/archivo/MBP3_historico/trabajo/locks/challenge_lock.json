@@ -1,0 +1,20 @@
+{
+  "schema": "mbp3.challenge-lock.v1",
+  "frozen_before_main": true,
+  "main_history": "P1 then P2 then P3 then P4 then P5; C1 then C2 then C3 then C4",
+  "controls": [
+    "same P1/P2 inventory in reverse temporal order",
+    "P1 omitted",
+    "P4 mediator omitted",
+    "P1 z-displaced sham"
+  ],
+  "main_expected_boundaries": {
+    "r32": {"load":20,"direction":[1,0,1]},
+    "r96": {"load":25,"direction":[1,0,0]},
+    "r160": {"load":31,"direction":[1,1,0]},
+    "r190": {"load":32,"direction":[0,0,1]},
+    "r222": {"load":34,"direction":[1,0,0]},
+    "r240_companion": {"load":27,"direction":[1,0,0]}
+  },
+  "promotion_rule": "different hashes or state alone are not functional learning"
+}

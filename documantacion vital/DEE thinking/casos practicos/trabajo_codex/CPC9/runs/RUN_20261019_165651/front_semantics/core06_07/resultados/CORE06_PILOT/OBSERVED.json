@@ -1,0 +1,174 @@
+{
+  "transfer": [
+    {
+      "mode": "trained",
+      "query_direction": [
+        1,
+        0,
+        0
+      ],
+      "query_sreg": 103,
+      "expected_trained_direction": [
+        1,
+        1,
+        0
+      ],
+      "expected_trained_sreg": 115,
+      "target": [
+        20,
+        32,
+        20
+      ],
+      "port_empty": true,
+      "record": {
+        "state": 1,
+        "sreg": 115,
+        "d": [
+          1,
+          1,
+          0
+        ],
+        "semantic": 1
+      },
+      "trained_exact": true,
+      "neutral_exact": false
+    },
+    {
+      "mode": "untrained",
+      "query_direction": [
+        1,
+        0,
+        0
+      ],
+      "query_sreg": 103,
+      "expected_trained_direction": [
+        1,
+        1,
+        0
+      ],
+      "expected_trained_sreg": 115,
+      "target": [
+        20,
+        32,
+        20
+      ],
+      "port_empty": true,
+      "record": {
+        "state": 1,
+        "sreg": 103,
+        "d": [
+          1,
+          0,
+          0
+        ],
+        "semantic": 1
+      },
+      "trained_exact": false,
+      "neutral_exact": true
+    },
+    {
+      "mode": "matched_exposure",
+      "query_direction": [
+        1,
+        0,
+        0
+      ],
+      "query_sreg": 103,
+      "expected_trained_direction": [
+        1,
+        1,
+        0
+      ],
+      "expected_trained_sreg": 115,
+      "target": [
+        20,
+        32,
+        20
+      ],
+      "port_empty": true,
+      "record": {
+        "state": 1,
+        "sreg": 103,
+        "d": [
+          1,
+          0,
+          0
+        ],
+        "semantic": 1
+      },
+      "trained_exact": false,
+      "neutral_exact": true
+    }
+  ],
+  "extinction": [
+    {
+      "mode": "cue_only",
+      "ports_empty": true,
+      "records": {
+        "extinction_event": {
+          "state": 1,
+          "sreg": 25,
+          "d": [
+            1,
+            1,
+            0
+          ],
+          "semantic": 1
+        },
+        "old_channel": {
+          "state": 1,
+          "sreg": 17,
+          "d": [
+            1,
+            0,
+            0
+          ],
+          "semantic": 1
+        }
+      },
+      "old_channel_extinguished": true,
+      "old_channel_retained": false
+    }
+  ],
+  "reversal_and_reacquisition": [
+    {
+      "variant": "full",
+      "teacher_kind": "C",
+      "ports_empty": true,
+      "records": {
+        "reset_event": {
+          "state": 1,
+          "sreg": 25,
+          "d": [
+            1,
+            0,
+            0
+          ],
+          "semantic": 1
+        },
+        "retrain_event": {
+          "state": 1,
+          "sreg": 12,
+          "d": [
+            0,
+            0,
+            1
+          ],
+          "semantic": 1
+        },
+        "new_channel": {
+          "state": 1,
+          "sreg": 23,
+          "d": [
+            1,
+            0,
+            1
+          ],
+          "semantic": 1
+        }
+      },
+      "learned": true,
+      "neutral": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "CPC9.action_trace.confirmatory_pilot.v1",
+  "frozen_before_native_execution": true,
+  "scope": "Externally commanded native action, retained local material trace and matched common consequence. No agency or YO/TU promotion.",
+  "hypothesis": "The same admitted action carrier emits an outbound product and leaves a stationary source trace through distinct v27 update branches. Local later readers distinguish source action from identical common feedback.",
+  "criteria": {
+    "source_trace_tick": 1,
+    "common_feedback_tick": 11,
+    "first_reader_tick": 16,
+    "second_reader_tick": 31,
+    "trace": "Acting source active normal with command load and zero direction; other source empty.",
+    "common_feedback": "Common C active normal, same load and zero direction in A/B role pair.",
+    "readers": "All reader ports identical c7/+X. Owning actor reader active c7/+Z, nonowner active c7/zero, common reader active c7/+Z. First and second evaluated separately."
+  },
+  "ticks": [0,1,2,4,5,9,10,11,15,16,17,30,31,32],
+  "cases": [
+    {"case_id":"AT_P01_A", "actor":"A"},
+    {"case_id":"AT_P02_B", "actor":"B"},
+    {"case_id":"AT_C01_NO_ACTION", "actor":"A", "omit":true},
+    {"case_id":"AT_C02_OFF_SUPPORT", "actor":"A", "options":{"trace_support":"off_path"}},
+    {"case_id":"AT_H01_NEW_DOSE_A", "actor":"A", "options":{"command_load":17,"translation":[3,7,11]}},
+    {"case_id":"AT_H02_NEW_DOSE_B", "actor":"B", "options":{"command_load":17,"translation":[3,7,11]}}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema":"CPC9.action_trace.confirmatory.v2",
+  "frozen_before_native_execution":true,
+  "scope":"Native retained action-origin trace under matched common consequence, externally initiated. V2 corrects X-asymmetric supports, not the frozen reader decoder.",
+  "criteria":{
+    "T1":"Actor source active c11/zero and neighboring emitted c11/+X or -X, other source empty.",
+    "T11":"Common feedback C same full RAW/clocks in A/B histories, active command load/zero direction.",
+    "T16_and_T31":"All c7 readers remain active; acting source reader +Z, nonacting source zero, common C reader +Z. No raw-to-label decisions feed the world."
+  },
+  "ticks":[0,1,2,4,5,9,10,11,15,16,17,30,31,32],
+  "cases":[
+    {"case_id":"AV2_P01_A","actor":"A"},
+    {"case_id":"AV2_P02_B","actor":"B"},
+    {"case_id":"AV2_C01_NO_ACTION","actor":"A","omit":true},
+    {"case_id":"AV2_C02_OFF_SUPPORT","actor":"A","options":{"trace_support":"off_path"}},
+    {"case_id":"AV2_H01_NEW_DOSE_A","actor":"A","options":{"command_load":23,"translation":[4,11,-8]}},
+    {"case_id":"AV2_H02_NEW_DOSE_B","actor":"B","options":{"command_load":23,"translation":[4,11,-8]}}
+  ]
+}

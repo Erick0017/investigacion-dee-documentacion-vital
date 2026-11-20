@@ -1,0 +1,21 @@
+{
+  "cases": [
+    "RF_P01_PLUS",
+    "RF_P02_MINUS",
+    "RF_C01_OFFPATH_PLUS",
+    "RF_C02_OFFPATH_MINUS",
+    "RF_C03_NO_R",
+    "RF_C04_NO_O",
+    "RF_C05_EQUAL",
+    "RF_H01_NEW_PLUS",
+    "RF_H02_NEW_MINUS"
+  ],
+  "criteria": {
+    "operands": "T71 active R=reference+5 and O=object+5, both +Y, before any readout.",
+    "content": "T72 active c7 direction(sign(R-O),0,0).",
+    "arrival": "T74 active c7 at center+2*sign(R-O)X with same outward direction.",
+    "operator": "T75 same site active c7, direction(-sign(R-O),0,0). Counterload and supports are prepared, not learned.",
+    "negative_controls": "Offpath identical counterload should not reverse; omitted R/O need not yield valid acquired content. Equality is active zero, not absent content.",
+    "continuity": "T139/T206 comparisons evaluated separately; failed retention is preserved, not hidden by first operator output."
+  }
+}

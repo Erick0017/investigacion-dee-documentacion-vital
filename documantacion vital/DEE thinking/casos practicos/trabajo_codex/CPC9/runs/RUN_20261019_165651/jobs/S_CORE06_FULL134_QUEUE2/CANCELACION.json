@@ -1,0 +1,56 @@
+{
+  "schema": "CPC9.owned-supervisor.disposition.v1",
+  "job_name": "S_CORE06_FULL134_QUEUE2",
+  "owner": "/root/cpc9_semantics",
+  "status": "CANCELLED_WHILE_WAITING_BEFORE_NATIVE_WORKER_LAUNCH",
+  "start_record": "START.json",
+  "start_record_sha256": "1440324c497563fd08133f02894ded359d3b527cbd831564edb5253851ca3912",
+  "start_utc": "2026-10-19T19:10:47.273255+00:00",
+  "last_start_status": "WAITING_FOR_NATIVE_SLOT",
+  "last_recorded_slot_wait_seconds": 15.01419540005736,
+  "command_provenance": {
+    "launcher": "tools/supervisor.py",
+    "launcher_arguments": ["--name", "S_CORE06_FULL134_QUEUE2", "--timeout", "1200", "--memory-mib", "256"],
+    "interpreter_and_native_worker_argv": "Exact absolute interpreter and intended worker argv are retained verbatim in START.json; they describe the intended command, not a launched native worker.",
+    "unified_exec_session_id": 99529
+  },
+  "cancellation": {
+    "reason": "Give priority to Root MAIN diagnostic wave, following the Core coordinator request.",
+    "method": "Owner called write_stdin on unified exec session99529 with U+0003 (Ctrl-C).",
+    "tool_result": {"exit_code": 1, "wall_time_seconds": 0.0512952, "output": ""},
+    "utc_exact_not_recorded": true,
+    "utc_bounds": {"after": "2026-10-19T19:10:47.273255+00:00", "before": "2026-10-19T19:11:25Z"},
+    "pid_not_recorded": true,
+    "native_worker_pid": null,
+    "kill_command_used": false,
+    "other_jobs_touched": false
+  },
+  "native_worker_launched": false,
+  "Runtime_created": false,
+  "scientific_preparations": 0,
+  "scientific_continuations": 0,
+  "evidence_before_this_disposition": {
+    "directory_files": ["START.json"],
+    "no_pid_in_start_record": true,
+    "no_COMMAND_or_stdout_or_stderr_files": true,
+    "supervisor_source_order": "tools/supervisor.py opens stdout.log and stderr.log before subprocess.Popen; thus their absence confirms the native-worker launch boundary was not reached.",
+    "contemporaneous_worklog": "front_semantics/core06_07/REGISTRO_CORRECCIONES.json",
+    "contemporaneous_worklog_sha256": "e6c755afb08d5ae51e761d29b073939dd0175a585491e0a1a03926863e6a4943"
+  },
+  "closure_recheck_2026_10_19": {
+    "owned_exec_session": "A new empty write_stdin check returned Unknown process id99529: the owned session had already exited and is not an active waiter.",
+    "native_child_for_this_job": "None was launched; no process termination was needed at closure.",
+    "OS_inventory_attempt": "Get-CimInstance Win32_Process returned Access denied. Its empty pipeline was NOT interpreted as proof of zero processes; closure relies on the actual owned-exec exit receipt and supervisor launch-boundary evidence.",
+    "scope": "Disposition of this exact owned queue attempt, not a claim of OS-wide process absence. No PID or kill operation is invented."
+  },
+  "completed_replacement": {
+    "job_name": "S_CORE06_FULL134_PRIORITY_RELEASED",
+    "status": "COMPLETED_EXIT_0_OWNED_WORKER_WAITED_AND_JOB_CLOSED",
+    "finished_utc": "2026-10-19T19:24:43.290028+00:00",
+    "physical_cases": 134,
+    "recovery": "front_semantics/core06_07/resultados/CORE06_FULL134/RECOVERY.json",
+    "recovery_sha256": "57fb4b2c5ade20edd4731f95619023e07111fc5710c5ae9cc48d703d7ae191dc",
+    "replacement_not_modified": true
+  },
+  "start_record_preserved_unmodified": true
+}

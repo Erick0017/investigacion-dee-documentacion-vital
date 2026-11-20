@@ -1,0 +1,21 @@
+{
+  "cases": [
+    "RR_P01_PLUS",
+    "RR_P02_MINUS",
+    "RR_C01_OFFPATH_PLUS",
+    "RR_C02_OFFPATH_MINUS",
+    "RR_C03_NO_R",
+    "RR_C04_NO_O",
+    "RR_C05_EQUAL",
+    "RR_H01_NEW_PLUS",
+    "RR_H02_NEW_MINUS"
+  ],
+  "criteria": {
+    "operands": "T71 active R=reference+5/O=object+5, both +Y.",
+    "content": "T72 active normal c7 at originalcenter with direction(sign(R-O),0,0).",
+    "arrival": "T81 active normal c7 at center+9*sign(R-O)X, outward direction unchanged.",
+    "operator": "T82 same material site active c7 with opposite X direction, before a new host input can supply a solved answer.",
+    "offpath": "Same support and counter21 resources with counters shifted+10Y should not reverse. No-output is not treated as logicalNOT.",
+    "continuity": "Later original R/O and center outputs T138/139/T205/206 assessed separately, failures retained."
+  }
+}

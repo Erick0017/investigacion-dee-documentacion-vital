@@ -1,0 +1,25 @@
+{
+  "schema":"CPC9.content_reflection.v1",
+  "frozen_before_native_execution":true,
+  "scope":"Prepared active direction-contrariety operator applied to native output from two acquired quantities. No semantic NO claim.",
+  "criteria":{
+    "operands":"T71 active R=reference+5 and O=object+5, both +Y, before any readout.",
+    "content":"T72 active c7 direction(sign(R-O),0,0).",
+    "arrival":"T74 active c7 at center+2*sign(R-O)X with same outward direction.",
+    "operator":"T75 same site active c7, direction(-sign(R-O),0,0). Counterload and supports are prepared, not learned.",
+    "negative_controls":"Offpath identical counterload should not reverse; omitted R/O need not yield valid acquired content. Equality is active zero, not absent content.",
+    "continuity":"T139/T206 comparisons evaluated separately; failed retention is preserved, not hidden by first operator output."
+  },
+  "ticks":[0,5,71,72,73,74,75,76,77,110,113,138,139,140,141,142,177,180,205,206,207],
+  "cases":[
+    {"case_id":"RF_P01_PLUS","reference":31,"object":11},
+    {"case_id":"RF_P02_MINUS","reference":11,"object":31},
+    {"case_id":"RF_C01_OFFPATH_PLUS","reference":31,"object":11,"options":{"reflectors":"off_path"}},
+    {"case_id":"RF_C02_OFFPATH_MINUS","reference":11,"object":31,"options":{"reflectors":"off_path"}},
+    {"case_id":"RF_C03_NO_R","reference":31,"object":11,"omit":"R"},
+    {"case_id":"RF_C04_NO_O","reference":31,"object":11,"omit":"O"},
+    {"case_id":"RF_C05_EQUAL","reference":17,"object":17},
+    {"case_id":"RF_H01_NEW_PLUS","reference":29,"object":17},
+    {"case_id":"RF_H02_NEW_MINUS","reference":17,"object":29}
+  ]
+}

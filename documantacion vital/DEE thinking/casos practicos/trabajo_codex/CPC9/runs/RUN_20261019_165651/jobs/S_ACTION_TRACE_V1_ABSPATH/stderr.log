@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC9\runs\RUN_20261019_165651\front_semantics\run_action_trace.py", line 33, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC9\runs\RUN_20261019_165651\front_semantics\run_action_trace.py", line 26, in main
+    if tick in (1,11,16,32):s.save(out/(case['case_id']+'_'+str(tick)+'.snapshot'))
+                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\casos practicos\trabajo_codex\CPC9\runs\RUN_20261019_165651\front_semantics\src\integracion\quantity_core.py", line 74, in save
+    self.world.runtime.set_snapshot_metadata(KEY,encode_metadata({'geometry':self.geometry,'state':self.state,'tick':self.tick,'channels':sorted(self.world.runtime.channel_names)}));return save_world_snapshot(self.world,path,compress=True)
+                                                                                                                                                                                             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\_cpc9_runtime_20261019_165651\Lib\site-packages\dee_thinking\persistence.py", line 175, in save_world_snapshot
+    raise ValueError("Compressed snapshots use an explicit .gz suffix")
+ValueError: Compressed snapshots use an explicit .gz suffix

@@ -1,0 +1,651 @@
+{
+  "schema": "DEE.PI07.regulation.protocol.R03",
+  "version": "PI07.regulation.R03",
+  "status": "SEALED_FOR_VIABILITY_AND_CONDITIONAL_EVALUATION",
+  "evaluation_authorized_by_this_version": false,
+  "campaign": "PROGRESION_INTEGRADA_07",
+  "N": 67,
+  "origin": [
+    8,
+    40,
+    50
+  ],
+  "initial_reference_payloads": {
+    "A": 0,
+    "B": 2
+  },
+  "delay_laps": 6,
+  "max_ticks_per_episode": 1300,
+  "dependencies_sha256": {
+    "pi03_credito_generico_R01_BORRADOR.py": "cc46721530303f2de5ff8c10c8b1ba6b4b8eb47f0faadedb19345d4a134debcb",
+    "pi07_regulacion_R01.py": "8e6ccfc2d9463c46d2312cc81108ba7e481c5cb31026f05c6d349409f8a09499",
+    "PROTOCOLO_PI07_R01.json": "1db513e8f38607ed9e41929fc49afada1be584875d6744e718ccdd9b628cb949",
+    "observador_global_PI05_R01.py": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "pi07_regulacion_R02.py": "4a8ee4f8d0b4aa738d76492b609d5fb36d8e1ad7d1d44f59c213e5351a56a133",
+    "PROTOCOLO_PI07_R02.json": "44ff1cc6a9f0634edcf56273b5956e39665c0dbb89f21e5bf36c1650b730b544"
+  },
+  "source_main": {
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_MAIN_01",
+    "N": 67,
+    "T": 824911,
+    "snapshot_sha256": "af74c8f47e43ed3b2395a338a23a6cbd42f105ec2cff4daac15b7a4d45e90832"
+  },
+  "preparation": {
+    "scope": "One versioned P0 perpendicular actuator/message inlet, not Native anatomy discovery. Preserve actual inherited TC banks, references, clocks, R01preparation, all28R02experiences and all historical supports.",
+    "new_sink": {
+      "site": [
+        56,
+        48,
+        56
+      ],
+      "state": 0,
+      "semantic": 4,
+      "payload": 0,
+      "direction": [
+        0,
+        0,
+        0
+      ],
+      "legal_birth_only": true
+    },
+    "new_sink_arrival_relative_start": 2,
+    "new_sink_settled_relative_start": 3,
+    "require_new_sink_RAW_zero": true,
+    "no_bank_births_or_writes": true,
+    "old_actuator51_and_sinks_retained": true,
+    "no_per_failure_guard_or_repair": true
+  },
+  "observer": {
+    "kind": "Fixed passive snapshot sensor plus material Native query; query is an intervention.",
+    "sensor_site": [
+      52,
+      48,
+      47
+    ],
+    "sensor_tick_relative_query": -1,
+    "sensor_codec": "Identity of actual state low two bits, including 0; never fixture cue, action target or future.",
+    "datum_relative_query": 3,
+    "selector_read_relative_query": 4,
+    "hold_until_relative_query": 6,
+    "selector_signature": "Active SEM1, y=+1, x in {-1,0,+1}, z in {0,-1}; otherwise NULL.",
+    "zero_action": "No pulse, canonical -1 efference, fixed before evaluation.",
+    "NULL_action": "No pulse, no fabricated binary efference; record invalid selection and continue the finite registered schedule unless transport, safety or budget is uncertain."
+  },
+  "physical_environment": {
+    "cue_birth_relative_query": -2,
+    "threat": {
+      "site": [
+        52,
+        48,
+        46
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "message_payload": null
+    },
+    "falsecue": {
+      "site": [
+        51,
+        48,
+        47
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "sink": [
+        55,
+        48,
+        47
+      ]
+    },
+    "none": {
+      "cue_inputs": 0
+    },
+    "pulse": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "tick_relative_query": 7
+    },
+    "legitimate_packet": {
+      "site": [
+        53,
+        48,
+        56
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "tick_relative_query": 7,
+      "reader_site": [
+        54,
+        48,
+        56
+      ],
+      "reader_tick_relative_birth": 1,
+      "sink": [
+        56,
+        48,
+        56
+      ],
+      "payload_domain": [
+        5,
+        8,
+        11
+      ]
+    },
+    "message_cost": "When a legitimate packet and a selected pulse are scheduled at the same site/tick, Native admission resolves the conflict. Both terminal conflict receipts and actual delivery are retained; never infer delivery from the intended action.",
+    "action_mapping": {
+      "+1": "one fixed perpendicular -X pulse",
+      "0": "no pulse",
+      "-1": "no pulse",
+      "NULL": "no pulse; invalid selection"
+    },
+    "new_actuator_conditional_prediction": {
+      "sensor_S": "q-1",
+      "observed_threat_site_at_S": [
+        52,
+        48,
+        47
+      ],
+      "pulse_birth_q7": "S+8",
+      "uninterrupted_threat_site_at_birth": [
+        52,
+        48,
+        55
+      ],
+      "pulse_site_at_birth": [
+        53,
+        48,
+        56
+      ],
+      "conditional_contact_tick": "S+9=q+8",
+      "conditional_contact_site": [
+        52,
+        48,
+        56
+      ],
+      "conditional_local_result": {
+        "state": 1,
+        "semantic": 1,
+        "payload": 0,
+        "direction": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "scope": "Frozen directed-copy combination predicts diversion into a diagonal, not annihilation. Destination occupation/other incoming/context can alter it; actual Native interaction and fixed FI comparison decide."
+    }
+  },
+  "calendar": {
+    "reference_period": 391,
+    "reference_double_period": 782,
+    "planning_lead_ticks": 16,
+    "query_lead_before_efference": 7,
+    "efference_relative_query": 7,
+    "FI_start_relative_query": 136,
+    "FI_query_expected_relative_query_if_no_normalizer_wait": 192,
+    "FI_horizon_expected_relative_query_if_no_normalizer_wait": 334,
+    "result_deadline_relative_query": 407,
+    "generic_return_relative_query": 408,
+    "eligibility_collision_relative_query": 409,
+    "reference_contact_relative_query": 410,
+    "settled_relative_query": 412,
+    "require_actual_FI_calendar_and_effects_recorded": true,
+    "stop_before_unavailable_outcome_deadline": true
+  },
+  "feedback": {
+    "arm": "external_per_life",
+    "predicate": "failed = (actual fixed physical FI choice != +1) OR (a scheduled legitimate Native packet was not physically delivered as its actual public payload).",
+    "correct_action_predicate_forbidden": true,
+    "generic_API": "submit_generic_outcome(world, failed=bool, injection_tick=fixed, prefix=fixed); no selected action or bank argument",
+    "efference": "A fixed copy of the actual Native binary selector output, with zero canonicalized to -1; not a host choice of a credit recipient.",
+    "resolved_conflict_is_scientific_outcome": true,
+    "pending_unknown_or_ambiguous_receipts_stop": true,
+    "NULL_is_not_zero_or_intelligent_waiting": true,
+    "configuration": "One external control configuration is fixed and hashed at R03administrative admission, separately from its recorded legal sink preparation. Only the outcome dispatch reads it. Sensor and actor never receive arm, replay bits, source plan, target or expected action."
+  },
+  "viability": {
+    "scope": "Two matched source clones, each first forced threat and second forced falsecue/message. First opportunity has the same full source, second has potentially divergent prior history after the different forced effect. No learned-selection claim.",
+    "world_force_actions": [
+      "pulso",
+      "nada"
+    ],
+    "schedule": [
+      {
+        "stage": "viability",
+        "cue": "threat",
+        "message_payload": null,
+        "left": 14,
+        "right": 3
+      },
+      {
+        "stage": "viability",
+        "cue": "falsecue",
+        "message_payload": 5,
+        "left": 14,
+        "right": 3
+      }
+    ],
+    "record_global_indices": [
+      0
+    ],
+    "fixed_order_decided_before_R03_Native": true,
+    "superseded_unexecuted_order": "Earlier conversational falsecue-first ordering was replaced prospectively by Root with threat-first, before any R03 Native response.",
+    "gates": [
+      "Actual same-source threat sensor state1 must exist; an admitted requested cue alone is insufficient.",
+      "Fixed pulse must have its own admission receipt, the observed local interaction or equivalent declared causal evidence, and actual FI effect compared with the no-pulse source.",
+      "Actual useful message delivery versus actual same-inlet conflict cost; no Python chooses which packet loses.",
+      "All direct receipts/queries/deadline/reference phases retained; no response, reader or seed retuning."
+    ],
+    "evaluation_gate": "A separate immutable per-life authorization JSON+SHA must reference both actual closed R03 calibration proofs and this exact protocol hash. It is external host permission/provenance, never actor input or Native policy. A failed or inconclusive calibration does not authorize evaluated use."
+  },
+  "schedule": [
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 20,
+      "right": 7
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 17,
+      "right": 4
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 19,
+      "right": 6
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 12,
+      "right": 5
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 16,
+      "right": 7
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 18,
+      "right": 5
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "post_reopen",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 20,
+      "right": 9
+    },
+    {
+      "stage": "post_reopen",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 16,
+      "right": 8
+    },
+    {
+      "stage": "future_supply",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 18,
+      "right": 4
+    },
+    {
+      "stage": "future_supply",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 19,
+      "right": 5
+    }
+  ],
+  "evaluation_plan_status": "PROSPECTIVE_R03_FIXED_BEFORE_ANY_R03_NATIVE; EVALUATION_CONDITIONAL_ON_EXTERNAL_CLOSED_CALIBRATION_AUTHORIZATION",
+  "claims": {
+    "prepared": [
+      "perpendicular actuator(53,48,56)-X/message+Xsameinlet/sink(56,48,56)",
+      "opportunities/sensors/Native function sequence/return timing",
+      "calibration force and external control config"
+    ],
+    "inherited": [
+      "actual current TC A/B history after28R02opportunities",
+      "same original N67/Universev27/Thinking4.5",
+      "oldQ/PI05guards/C2C/legacy repertoire"
+    ],
+    "not_yet_demonstrated": [
+      "newtool mechanical protection",
+      "useful selected protection inR03",
+      "readjustment to changed utility",
+      "reserve or postreopen success",
+      "new acquisition beyond inherited policy",
+      "observer universality",
+      "adoption or general agency"
+    ]
+  },
+  "sealed_utc": "2026-11-10T15:32:07.088800+00:00",
+  "source_prefix": {
+    "kind": "complete_same_candidate_after_all28_R02_opportunities",
+    "required_R02_ordinal": 28,
+    "required_source_life_id": "ECI02_PI03_REPRO_PI04_PI05_PI07_CAND_01",
+    "predicted_tick_not_yet_observed": 846517,
+    "actual_manifest_required_before_execution": true,
+    "no_old_principal_restore": true,
+    "no_bank_or_history_reset": true
+  },
+  "instrumentation": {
+    "episode_indices": [
+      1,
+      4,
+      8,
+      10,
+      14
+    ],
+    "viability_episode_indices": [
+      0
+    ],
+    "codec_sha256": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "maximum_frames_per_recorded_episode": 31,
+    "anchor_relative_query": [
+      -3,
+      144,
+      412
+    ],
+    "centres_relative_query": [
+      -1,
+      4,
+      8,
+      72,
+      144,
+      408,
+      410
+    ],
+    "neighbour_tick_offsets": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "scope": "Same31fixed reads and lossless codec; only3compression anchors. Global recording remains external and is not assumed universally passive."
+  },
+  "controls": {
+    "horizon": 12,
+    "yoke_roll": 5,
+    "roll_direction": "source_plus_5",
+    "formula": "values[i]=source_failed[(i+5)%12]",
+    "source_index_for_recipient": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "fixed_before_R03_feedback": true,
+    "return_control_is_not_actor_input": true,
+    "same_prefix": "Same complete post28R02 organization, before any R03 acquisition; same declared new inlet/sink preparation in each arm.",
+    "none": "One constant generic nonfailure at every registered return, not an omitted return.",
+    "yoked": "Exactly the12actual realR03source booleans under the fixed+5map; no search for a favorable permutation and no source solution fed to the actor.",
+    "link_controls": {
+      "prefix": "actual full R03post4before reserve_A",
+      "opportunity_indices": [
+        4,
+        5
+      ],
+      "sensor": "Replace identity datum by one material zero datum, preserving requested input count but changing physical content; not observer removal.",
+      "actuator": "Preserve actual Native selection and efference; omit selected physical pulse only. One material dose difference is intentional.",
+      "inference": "Each cut tests the specific information/actuator link within this protocol, not universal independence or perfect isodose semantics."
+    }
+  },
+  "criteria": {
+    "primary_observables": {
+      "per_opportunity": [
+        "actual identity datum and its physical sensor record",
+        "early Native signature, exact zero or NULL",
+        "fixed action requested and admitted separately",
+        "actual FI physical q+4 and q+6 values",
+        "own legitimate message receipt and actual delivery value/hash",
+        "generic actual_failed and returned_failed separately",
+        "reference A/B values/clocks before and after the registered contact",
+        "actual calendars, requested/admitted/rejected doses and resource costs"
+      ],
+      "separate_denominators": [
+        "FI correct / all FI opportunities",
+        "legitimate packets delivered / scheduled legitimate packets",
+        "Native valid selections / all selection opportunities",
+        "complete opportunities satisfying BOTH actual FI correctness and any required actual packet delivery / all opportunities",
+        "pulse requests admitted / pulse requests scheduled",
+        "terminal receipts by exact status / unique direct requests"
+      ],
+      "not_a_common_currency": "The conjunction complete_opportunity is a registered joint requirement, not a numerical exchange rate between an FI result and a lost message. Report both component counts as well."
+    },
+    "initial_transfer": {
+      "development_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reserve_indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "minimum": "At least3/4complete reserve_A opportunities, including at least one valid Native-selected admitted pulse with correct actual FI and at least one valid no-pulse actual packet delivery.",
+      "attribution": "Banks are inherited from realR02experience. If constant-nonfailure also succeeds initially, describe reuse of earlier acquired selection plus a P0 tool improvement, not new acquisition from scratch inR03. Compare actual current data/selection and increments rather than fixture labels."
+    },
+    "changed_contingency": {
+      "development_indices": [
+        8,
+        9
+      ],
+      "reserve_indices": [
+        10,
+        11
+      ],
+      "minimum": "An actual selected pulse first causes a legitimate Native message conflict cost in same observed state1, followed by a valid no-pulse with actual message delivery in a later state1. Both reserved opportunities10/11 must be complete(2/2).",
+      "limit": "If no state1or no pulse cost actually occurs, report useful behavior but do not assert demonstrated readjustment. A scheduled falsecue is not guaranteed physically present after cumulative history."
+    },
+    "restoration_and_reopen": {
+      "development_indices": [
+        12,
+        13
+      ],
+      "post_reopen_indices": [
+        14,
+        15
+      ],
+      "minimum": "After coherent save/close/reopen, two actual uses: admitted selected protection with correct FI on14and no-pulse actual packet delivery on15. No teaching in between.",
+      "scope": "Restoration may reacquire an earlier relation; only final-relation retention is tested. Future offers16/17remain untested."
+    },
+    "matched_controls": {
+      "none_and_yoked_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "no_automatic_true_contingency_advantage": true,
+      "inference": "Report performance and actual failure/returned failure mismatch, including preparatory alignment. A tie or better yoked result blocks a claim of a unique performance advantage from true contingency; keep the narrower physical history effect only if causally shown.",
+      "source_phase_dose": "Record actual calendars and admitted/rejected conditional doses. Same age does not make distinct causal histories equal."
+    },
+    "conservation_and_adoption": {
+      "requirements": [
+        "Representative historical12-use panel at a precisely stated cut, including complete vulnerable positive/negative/zero FI contracts.",
+        "Old and new uses interleaved in the same candidate genealogy, without re-teaching old tests to mask regression.",
+        "Complete coherent save/reopen and at least the two final new uses at their reported cut.",
+        "A preserved exact code/protocol/unlearned full prefix and at least one real acquisition or decisive replay executed by Root from an isolated fresh destination.",
+        "All source principal selection/CAS proofs unchanged until actual promotion; promote only the complete accepted successor, never selected RAW fragments or control memories.",
+        "Preserve old R02ordinal28and all old experiences; record new local R03ordinal separately and cumulative opportunity index28+local. Do not promote merely because a relocated P0tool works in a forced test."
+      ],
+      "material_regression_blocks_promotion": true,
+      "partial_result_allowed": "If a new function works but a conservation or explanatory gate fails, preserve the principal and the experimental mechanisms/evidence with their actual limits. Do not assert learning was incorporated merely because documentation or recipes were updated.",
+      "current_status": "No PI07 capability has been adopted; R03calibration and evaluated use remain pending."
+    }
+  },
+  "evaluation_authorization": "EXTERNAL_PER_LIFE_AFTER_CLOSED_R03_CALIBRATION",
+  "evaluated_opportunity_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "future_supply_indices": [
+    16,
+    17
+  ],
+  "real_maximum_opportunities": 18,
+  "environment_supply": "Exactly18public prepared offers:16planned material uses and2unevaluated future offers. No reset, unlimited supply or learned opportunity initiation.",
+  "prior_closed_viability": {
+    "summary": "control/RECALCULO_VIABILIDAD_PI07_R01.json",
+    "sha256": "2189ca28e3613280ab23cc42cc5b2836a51138bea76768bf973c0f5abd8958d9",
+    "checks_passed": 69,
+    "checks_total": 69,
+    "actual_original_Native_ticks": 1956,
+    "new_Native_ticks_in_recalculation": 0,
+    "four_cases_same_complete_prefix": true,
+    "forced_not_learning": true,
+    "delta_AminusB_initial": -2,
+    "delta_AminusB_after": {
+      "THREAT_PULSE": -2,
+      "THREAT_NONE": -1,
+      "MSG_PULSE": -3,
+      "MSG_NONE": -2
+    },
+    "actual_message_cost": "Both same-boundary packet/pulse requests rejected_conflict, no packet delivery; no-pulse message admitted and actual5delivered64B.",
+    "scope": "R01tool51only. These forced checks do NOT close the new R03perpendicular-tool gate."
+  },
+  "hardware_revision_before_any_R03_Native": {
+    "previous_proposal_sha256": "b490e18d0a1df8d432edd584a1bd63829c8de55ba7f503188284d52f287effde",
+    "previous_proposal_file": "codigo/revisiones/PROTOCOLO_PI07_R03_PROPUESTA57_NO_EJECUTADA.json",
+    "previous_proposal_executed": false,
+    "final_Root_decision": "Perpendicular -X inlet off the old +Z line, derived before R03responses; actuator57/61discussions were engineering proposals, not Native positive results."
+  },
+  "editorial_revision_before_any_R03_Native": {
+    "at_utc": "2026-11-10T15:34:30.913722+00:00",
+    "prior_sha256": "77c4d8704ad36b0cb2f00618541d3988d7600fdca1299fcc30276d2456ccf593",
+    "scope": "Corrected a copied R02start prose reference to the actual R03admission; no geometry, Native logic, data, schedule, criteria or authorization change.",
+    "prior_literal": "codigo/revisiones/PROTOCOLO_PI07_R03_ANTES_ERRATA_R02_START.json"
+  }
+}

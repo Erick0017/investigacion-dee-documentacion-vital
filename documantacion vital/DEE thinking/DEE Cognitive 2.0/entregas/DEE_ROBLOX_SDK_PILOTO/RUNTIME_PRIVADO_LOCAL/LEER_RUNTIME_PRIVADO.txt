@@ -1,0 +1,159 @@
+DEE Roblox SDK 0.1.0 — runtime privado local
+
+Este directorio contiene el servicio Native real, sus dependencias y el prefijo
+completo necesario. No se incluye en el ZIP público del KIT. Mantenerlo junto
+a sus subdirectorios al reubicarlo. El runtime normal usa HTTP local y no
+requiere Codex ni MCP; esos instrumentos pueden usarse para la validación.
+
+Base física: PAR28 experimental, N67/T991187, vida ancestral
+ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_RBX01_INTEGRAL_V2_MAIN.
+No es el principal global PI10 T947395. NEW crea una identidad distinta desde
+ese prefijo físico completo, conserva su historia y no crea un mundo T0.
+El PILOT histórico avanzado no se usa como base nueva.
+
+La identidad pública es SDK_DEMO_<16HEX MAYUSCULAS>. La vida física conserva
+el prefijo ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_ seguido de esa identidad.
+CONTINUE conserva ambas identidades, sessionId, cursor, memoria y consumo.
+El perfil de demostración de esta versión admite tres episodios acumulados
+por vida, seis vidas locales como máximo. No es continuación ilimitada.
+Crear otra vida NEW no incorpora las experiencias posteriores de una anterior.
+
+Requisitos: Windows x64, Python oficial privado incluido, Thinking4.5.0/v27,
+un escritor por vida, un hilo, Job Native512MiB, RAWsupport máximo10000.
+Se exigen3.5GiB libres antes de abrir y1GiB antes de admitir cada fase.
+No se modifican las leyes del motor, el lector, el calendario ni el decoder.
+No se instala la optimización experimental P06 ni un LLM externo.
+
+Ejecutar desde este directorio, usando el Python privado:
+
+  .\dependencias\producto\motor\python313\python.exe -I -B backend\sdk_cli.py requisitos
+
+El resultado informa rutas efectivas. NativePackageInsidePrivateRuntime debe
+ser true. No hay fallback operativo al laboratorio; rutas históricas D: de los
+registros son procedencia. Conservar una sola copia de binarios para todas las
+vidas locales. Los DLL del sistema y Roblox Studio son requisitos externos.
+
+Sólo para una instalación nueva sin estos archivos (jamás reiniciarlos):
+
+  <PY> -I -B backend\sdk_cli.py crear-token-privado
+  <PY> -I -B backend\sdk_cli.py crear-ledger-nuevo
+
+La clave local sólo se escribe en configuracion/CONEXION_PRIVADA.json. No se
+imprime y nunca debe copiarse al KIT público, vídeo, informe o snapshotAgent.
+
+Nueva instancia (preparación FS, sin Native):
+
+  <PY> -I -B backend\preparacion\preparar_instancia_par28_sdk.py --instance-id <ID> --prepare --execute-root-only
+
+Se rechazan destinos existentes, IDs ajenos, ACTIVO y caminos enlazados.
+El prefijo permanece compartido e inmutable. La importación oficial posterior
+crea el estado completo de una sola vida. Su hash de contexto está en
+estado_demo/instancias/<ID>/PREPARACION_PAR28_SDK.json.
+
+Importación administrativa UNA VEZ por NEW, con plazo UTC futuro suficiente:
+
+  <PY> -I -B backend\preparacion\importar_instancia_sdk.py --instance <ID> --context-sha256 <SHA> --deadline-utc-epoch <UTC_FINITO> --execute-root-only
+
+En la validación de este encargo añadir --validation-campaign. Se verifican
+N/T, RAW, clocks y prefijo causal; no avanza ticks. El proceso se protege con
+Job512MiB antes de cargar Native. Cualquier marcador de incompleto impide
+abrir el propietario: no borrar marcadores ni repetir una operación ambigua.
+
+Inicio real (la consola queda atendiendo el servicio local):
+
+  <PY> -I -B backend\iniciar_sesion.py start --instance <ID> --minutes 120 --cycles 1 --execute-real-native
+
+Para ESTA validación añadir --validation-campaign. Su ventana adicional es
+17Nov2026 23:03:43UTC →18Nov05:03:43UTC; no nuevas admisiones después04:03:43.
+Esos topes no son ley del producto. Una sesión futura genera fechas UTC reales,
+finita45..360min, con margen de cierre, y conserva los contadores acumulados.
+La campaña limita40k ticks y tres episodios SDK; la contabilidad histórica no
+se reinicia al renovar una sesión. Cada vida de este perfil sigue limitada a3.
+
+El inicio prepara una transacción administrativa0ticks ligada a hashes.
+La API oficial Store puede cambiar únicamente SDK.LEASE y sus campos
+administrativos SYSTEM_KEY(operation_count+1, previous_checkpoint_sha256),
+VIDA.updated_utc y el append exacto de la operación. Se conservan backups y
+diff. RAW/clocks/N/T/IDs/genealogía/actor/recibos/agenda/counters no cambian.
+Una transacción parcial conserva el marcador y bloquea Native.
+
+Conexión a Studio: el KIT incluye HttpLoop. La configuración privada va en
+ServerStorage.DEE_SDK_PrivateConnection, fuera del módulo público y de capture.
+Puede generarse el .rbxmx privado mediante:
+
+  <PY> -I -B backend\crear_inyeccion_privada.py --instance <ID>
+
+Importarlo por un mecanismo oficial de Studio permitido, o incorporarlo a una
+escena PRIVADA local por XML antes de abrirla. No eludir un rechazo de permisos.
+No guardar/publicar el token en la escena pública. HTTP sólo127.0.0.1:8896.
+
+Observación→POST Native con operationId duradero→202→GET del MISMO ID→acción
+real→ACK exacto→consecuencia. No rePOST automático si el resultado es incierto.
+El SDK envía secuencias locales. El servidor añade el offset heredado56 una
+sola vez y conserva la observación original. Nil de previousActionId inicial
+se representa como None, nunca como un identificador inventado.
+
+Guardar/cerrar: tras RunCycles1, HttpLoop pide /v1/session/close; sólo al cerrar
+el propietario oficial recibe backendProof. Entonces capturaAgent/Body/World
+y envía /v1/checkpoint. Se crea SDK_PAIR.json y el servicio termina. El cierre
+no se cuenta como autopreservación aprendida. El checkpoint JSON pequeño no
+es un respaldo ejecutable independiente del NativeRoot completo conservado.
+
+Uso posterior, misma instancia y sesión, sin repetir prepare ni import0:
+
+  <PY> -I -B backend\iniciar_sesion.py continue --instance <ID> --minutes 120 --cycles 1 --execute-real-native
+
+En validación añadir --validation-campaign. Se exige pareja real cerrada,
+snapshot/VIDA/DB/cursor/IDs concordantes. Se renueva sólo el lease administrativo
+con registro anterior→nuevo; se restaura el snapshotAgent literal. No se
+reenseña, no se vuelve al prefijo base y no se repite la primera decisión.
+K4 sólo estará demostrado hasta el alcance material que figure en VALIDACION.
+
+Estado sin abrir Native:
+
+  <PY> -I -B backend\sdk_cli.py estado --instance <ID>
+
+Si hay fallo, conservar Runtime completo, IDs, colas, intentos, recibos y
+marcadores. No generar una vida sustituta como si fuera retención de la misma.
+El operador debe conciliar el ID existente antes de cualquier reanudación.
+No se promete recuperación automática ni recrear soportes perdidos.
+
+Mantener localmente todo estado_demo/instancias/<ID>/sistema, no sólo snapshot:
+incluye SQLite, outbox, interfaces/agendas, progreso, artefactos y contratos.
+El prefijo original completo está conservado en estado_demo/prefijos.
+SDK_PAIR enlaza el sistema actual con el estadoAgent; tras avanzar no se
+presenta como rollback independiente congelado. Un respaldo externo completo
+del Runtime cerrado es una operación distinta de aprendizaje o autorreparación.
+
+Las pruebas sin motor verifican contratos y persistencia técnica sintética;
+no prueban capacidad DEE. La validación material de K1–K5 se informa por
+separado. Un movimiento real prueba el circuito local bajo el aparato preparado,
+sin demostrar planificación general, adquisición nueva ni evaluación externa.
+
+CORTE REAL DE ESTA ENTREGA — VALIDACION LOCAL PARCIAL
+
+Instancia SDK_DEMO_82379FB770E94794; vida física
+ECI02_PI03_REPRO_PI04_PI05_PI07_PI10_SDK_DEMO_82379FB770E94794.
+Su Native terminó cerrado en N67/T992751, padre PAR28 T991187. Q1 ASK_STATION,
+Q2 EXIT_1 y el retorno original se ejecutaron una vez cada uno. El cuerpo llegó
+al puerto elegido y cambió el dispositivo. El retorno se completó mediante
+RECUPERAR_SOLO_FEEDBACK_R05 después de un rechazo de RAM previo a su admisión.
+No se repitieron decisiones ni movimiento, no se cambió el ID del retorno.
+
+IMPORTANTE: este caso NO tiene SDK_PAIR. INSTANCE.json conserva el frontend
+parcial T991565/seq2/nextPhase feedback; su fila HTTP UNCERTAIN se conserva.
+No usar start/continue normales sobre este caso ni editar sus campos para
+forzar la apertura. El guard de pareja debe rechazarlo. Native sí está cerrado
+y sus datos completos están en estado_demo/instancias/<ID>/sistema.
+La captura literal forense Body/World está en
+../VALIDACION/PARTIAL_FORENSIC_NORMAL_VM_01.json. Esa captura no es un checkpoint
+SDK certificado. Los comandos generales anteriores son procedimientos preparados;
+K4 (cierre emparejado + reapertura + nuevo uso) no fue validado en esta entrega.
+
+Comprobante cerrado: configuracion/COMPROBANTE_NATIVE_CERRADO_R05.json.
+El prefijo PAR28 completo se conserva para NEW con identidad nueva explícita;
+no sustituye a este futuro alcanzado. El ZIP público no incluye este Runtime.
+Mantener RAM disponible para Studio y Native simultáneamente: se observaron
+rechazos reales por debajo de3.5GiB al abrir y1GiB al admitir. No bajar guardas.
+El núcleo, lector y calendario conservan su implementación; no se declara
+recuperación automática, autonomía general ni evaluación externa.

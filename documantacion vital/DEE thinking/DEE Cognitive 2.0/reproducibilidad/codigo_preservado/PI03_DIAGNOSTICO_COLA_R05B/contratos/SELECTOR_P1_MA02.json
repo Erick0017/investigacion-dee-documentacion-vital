@@ -1,0 +1,22 @@
+{
+  "id": "SELECTOR_P1_MA02",
+  "version": "1.0",
+  "availability": "REVALIDADA_E_INCORPORADA",
+  "integration": "PERFIL_COMPLEMENTARIO_FINITO_NO_MAIN",
+  "implementation": "capacidades/selector_p1_ma02.py",
+  "profile": "fisica_directa",
+  "lives": ["MA02_SELECTOR_P1_H1", "MA02_SELECTOR_P1_H0"],
+  "origin": "MENTE_ACUMULATIVA_R02/mecanismo_repetible; nueva preparación N67, sin trasplante de memorias",
+  "preparation": "Marco XNOR de siete soportes SEM4 activos, ancla fija escalar1 y soportes locales; dos columnas aprendidas mediante experiencias. H1 conserva la huella de un contacto genérico anterior; H0 carece de ese contacto. La anatomía y el protocolo son P0, no aprendidos.",
+  "knowledge": "Dos contenidos ±Z adquiridos mediante encuentros; la huella histórica modifica el gradiente local y selecciona físicamente X o Y ante la misma consulta genérica. El lector no consulta la huella, el nombre de vida ni los contenidos esperados.",
+  "domain": {"N": 67, "complete_ready_tick": 129, "queued_query_tick": 197, "fixed_read_tick": 205, "end_tick": 212, "uses_per_admitted_life": 1},
+  "interfaces": "Consulta genérica dirección+Z, carga0; recursos genéricos7 para ambas rutas y ambos signos; ya están encolados en el estado operativo completo. No se selecciona banco desde Python.",
+  "reader": "Panel fijo de cuatro sitios E+4v±Z, v=X o Y; acepta una única emisión SEM1, state>0, dirección pura±Z. Ninguna coincidencia, ambigüedad o rechazo se rellena con una respuesta.",
+  "assistance": "Operador inicia el uso y eligió la preparación; v27 realiza huella, gradiente, selección y encuentro con el contenido. La interpretación textual y el panel son instrumentos externos.",
+  "causal_controls": ["Contenido adquirido opuesto con la misma huella: se conserva selección Y y cambia signo de salida", "Ausencia de consulta: sin emisión válida", "Corte selectivo de contenido: selecciónY permanece pero desaparece respuesta; sham conserva", "Corte de D en T133: cambia aX/+; sham conservaY/-", "Corte anterior de D en T129: renacimiento130, negativo que impide atribuir memoria exclusivamente aD", "Reserva temporal +67 con ambas historias"],
+  "state_effects": "Uso material transforma soportes y activa persistentemente el selector. Consultar no es una observación inocua. Debe bifurcarse una copia para preservar el corte listo de referencia.",
+  "limits": ["Primer uso finito; no es servicio repetible ni estabilidad ilimitada", "No demuestra P2/R2 ni política útil aprendida por consecuencias", "Los ciclos R02-R04 produjeron una primera acción y tres abstenciones posteriores; se conservan como negativos", "No acredita lenguaje, NSM65, iniciativa autónoma general ni conocimiento heredado de E1", "H1 y H0 son historias contrastadas, no recuerdos fusionables"],
+  "entrypoints": {"state": "state(adapter)", "first_use": "use(adapter, detailed=True)", "admit": "admit(adapter), sólo sobre snapshot completo certificado"},
+  "evidence": "evidencia/campanas/MENTE_ACUMULATIVA_R02/mecanismo_repetible; MA02_P1_* y MA02_P1_OPERATION_*",
+  "continuity": "Snapshot completo compatible y cargador fisica_directa; repetir use se rechaza expresamente sin recrear, reenseñar ni rebobinar la vida. Pasado T212 sólo continuación física general, fuera de la capacidad finita certificada."
+}

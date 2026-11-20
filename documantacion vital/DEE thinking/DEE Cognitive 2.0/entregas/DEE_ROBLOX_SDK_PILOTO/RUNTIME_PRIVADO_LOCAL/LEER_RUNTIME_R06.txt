@@ -1,0 +1,86 @@
+RUNTIME PRIVADO LOCAL — core R06 / SDK 0.1.1
+
+Estado al congelar: código y fixtures sin Native. La validación material de K1,
+K3 y K4 corresponde a Root. No se declara todavía un ciclo ordinario ni una
+reapertura exitosa de esta revisión. El episodio técnico R05/T992751, sus fallos,
+sus 1564 ticks, sus recibos y su ledger anterior quedan intactos.
+
+Esta continuación usa una instancia NEW, ID SDK_DEMO_<16HEXUPPER>, desde el
+prefijo PAR28 completo N67/T991187 y secuencia ancestral56. No es T0 y no usa la
+vida SDK avanzada anterior. Los contadores de la nueva rama son propios y no
+eliminan la genealogía ni los contadores físicos heredados.
+
+Ejecutar desde RUNTIME_PRIVADO_LOCAL. PY es la ruta completa, entre comillas, de
+dependencias/producto/motor/python313/python.exe. No usar Python del laboratorio.
+Todos los comandos start/continue requieren autorización material de Root.
+
+1. Requisitos (sin Native):
+   PY -I -B backend/r06/sdk_cli.py requisitos
+   PY -I -B backend/r06/sdk_cli.py crear-ledger-nuevo
+El segundo crea EXCLUSIVAMENTE estado_demo/LEDGER_SDK_R06.json si no existe.
+Nunca borra ni reemplaza LEDGER_SDK.json. El token privado existente puede usarse
+o Root puede generar uno en una copia nueva; no se imprime ni se exporta al KIT.
+
+2. Preparación FS NEW (sin importación Native):
+   PY -I -B backend/r06/preparacion/preparar_instancia_par28_sdk.py --instance-id ID --prepare --execute-root-only
+El ID debe ser nuevo y su destino no debe existir. Guardar el SHA indicado en
+PREPARACION_PAR28_SDK.json/context_sha256. No repetir un prepare fallido.
+
+3. Importación oficial cerrada, una vez, con plazo UTC futuro explícito:
+   PY -I -B backend/r06/preparacion/importar_instancia_sdk.py --instance ID --context-sha256 SHA --deadline-utc-epoch EPOCH --validation-campaign --execute-root-only
+No abre owner material ni avanza ticks. Conserva el sistema completo, cola,
+artefactos, identidad y genealogía mediante la API oficial. Root debe verificar
+el resultado de importación y SDK_READY antes de iniciar servicio.
+
+4. Primer ciclo normal (lease administrativa cerrada0ticks, después servicio):
+   PY -I -B backend/r06/iniciar_sesion.py start --instance ID --minutes 180 --cycles 1 --validation-campaign --execute-real-native
+El servicio usa127.0.0.1:8896, Bearer privado, GET handshake/status y POST202/GET
+poll por ID durable. El script de servidor Roblox del KIT0.1.1 ejecuta el ciclo.
+Nativeelige contenido/acción con el mismo actor0.1.0/lector/calendario/decoder;
+el host no elige una acción sustituta. El KIT puede ejecutarse en Run oficial
+sin PlayerClient si Root valida esa modalidad en su copia local de escena.
+
+5. Guardar/cerrar ordinariamente:
+El KIT hace ACK real, feedback real, completeFeedback, POSTclose y espera el
+backendProof cerrado. Sólo entonces Agent.capture y POSTcheckpoint crean
+SDK_PAIR.json. La pareja conserva Agent+World completos y ancla el Native local
+completo; no es un respaldo ejecutable independiente. Un fallo parcial no se
+convierte en BOUNDARY ni se sella como pareja.
+
+6. Continuar después del primer SDK_PAIR real y HTTP cerrado:
+   PY -I -B backend/r06/iniciar_sesion.py continue --instance ID --minutes 180 --cycles 1 --validation-campaign --execute-real-native
+Conservar ID, vida, SID, NativeRAW/clocks, memoria, contadores y recibos. El lease
+0ticks cambia únicamente metadatos administrativos autorizados y conserva el
+World literal de la pareja. Antes de renovar, publicar y abrir owner se verifican
+SHA/cursor completo de la pareja; antes de observe el KIT debe restaurar y
+comparar Agent/World/motor/paneles/bindings/collide/pose. El segundo ciclo usa
+localSequence3/4 (Native59/60), no repite local1/2.
+En continue se requiere además POSTautenticado /v1/restoration-proof antes del
+primer observe/decision. Guarda8campos completos y diff; el backend los compara
+independientemente con SDK_PAIR. Sólo closeRequested=false es transición; tol
+1e-5 sólo pose/cframe/c0/c1/transform de body/world, nunca state/receipts/bindings.
+ACK RECORDED durable desbloquea la primera decision; una discrepancia conserva
+evidencia y bloquea material. pairSha256 esSHA delSDK_PAIRactualpostlease;
+checkpointSha256 esSHA delsnapshotAgent/Worldliteral, son dos anclas distintas.
+
+Inyección privadaR06 (sóloFS, nunca publica/tokenenstdout):
+   PY -I -B backend/r06/crear_inyeccion_privada.py --instance ID
+Genera INYECCION_LOCAL_R06_ID.rbxmx conFolderDEE_SDK_PrivateConnection_R06.
+La escena pública0.1.1 usa paqueteDEEConnector_R06. SiRoot necesita escenaXML
+privada por restriccionesLoadLocalAsset, integra esos datos sólo en su copia.
+
+RAM: mínimo3.5GiB antes de abrir owner, mínimo1GiB antes de cada adapter.execute.
+PENDING_RESOURCE es espera preadmisión, máximo900s y acotada por la ventana.
+Cliente sólo GET del ID original; nunca rePOST ni política de sustitución.
+Si vence antes de execute: FAILED_KNOWN/RESOURCE_WAIT_EXPIRED; no hay NativeINTENT.
+Desde que actual.execute entra, los errores conservan UNCERTAIN/no replay.
+Las guardas no se rebajan. NativeOwner512MiB,1hilo,RAW10000 y cacheoriginal.
+
+La campañaR06 empieza18Nov2026 13:37:40UTC; último nuevo20:37:40UTC y cierre
+21:37:40UTC, sin reiniciar el reloj. Hasta40000ticks nuevos/cap3campaña; plan
+core1+1. Las ventanas de producto --minutes son finitas y de UTC actual, pero en
+esta validación se recortan a la campaña. No es una licencia ni continuación
+indefinida. Funciones asistidas adicionales quedan fuera de este core congelado.
+
+No abrir el principal global/ACTIVO; no modificar Manual1.40, códigoKernel ni
+ramas históricas. Las rutas históricas son procedencia, no fallback operativo.

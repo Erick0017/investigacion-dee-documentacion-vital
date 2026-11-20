@@ -1,0 +1,104 @@
+{
+  "id": "EO01_ENTE_OPERATIVO",
+  "version": "operational.bounded.R9.external3",
+  "system_version": "1.1.0",
+  "engine": "DEE thinking4.5.0 / Universev27 sin cambios",
+  "implementation": [
+    "capacidades/ente_operativo_01.py",
+    "capacidades/ente_operativo_01_core.py"
+  ],
+  "availability": "EJECUTABLE_ACOTADA_CON_VIDA_REAL_CONTINUABLE",
+  "architecture": {
+    "profile": "fisica_directa",
+    "identity": "MI02.unified.r9",
+    "N": 26,
+    "A": [
+      6,
+      14,
+      14
+    ],
+    "B": [
+      19,
+      14,
+      14
+    ],
+    "lineage": "Bifurcación completa de CF01_MAIN T67723; no reconstrucción T0 ni renombrado del E1 histórico.",
+    "current_life": "EO01_MAIN",
+    "current_tick": 121681,
+    "previous_selectable_cut": "EO01_CORTE_R02 T95093"
+  },
+  "inputs": {
+    "public": "1..32 pares crudos enteros0..64 por llamada de servicio.",
+    "private_B": "Escalar opcional0..255 en crítico+13; sólo llega materialmente a B.",
+    "reference": "Calibración ambiental−64..64, no inyectada; cambio requiere reset externo explícito.",
+    "FIFO": "1..64 trabajos crudos;1..32 intentos por llamada. El entorno repite el pendiente hasta su terminación efectiva, sin iniciativa nativa de reintentar."
+  },
+  "readers": {
+    "A": "Mismos sitios en crítico−16 y−15; última salida única, hold máximo1tick; conflicto al cierre produce neutral fijo.",
+    "B": "Válvula opcional: ambos buses en crítico+30, state positivo, SEM1, s_reg exactamente5 y dirección horizontal±x; un solo paquete válido.",
+    "calendar": "Crítico391+782k, calendario fijado antes de emitir, sin búsqueda posterior de fase favorable."
+  },
+  "consequences": "Se omiten todas las entradas antiguas j0. Doce suministros genéricos se programan iguales entre brazos. El contacto y la postura del actuador realmente ejecutado producen sólo después el pulso táctil. R02 corrigió la ventana de la postura0; ± no cambiaron.",
+  "prepared": [
+    "Soportes, geometría, sesgo, rutas, fuentes y oportunidades R9.",
+    "Dos muestras motoras/hold1tick y transducción fija: instrumentación P0.",
+    "Fixture externo de puertas y, opcionalmente, válvula B de paso unitario con oportunidad no acumulable por solicitud privada; expira aunque no se admita el dato o no haya actuación."
+  ],
+  "acquired": "Experiencias con contacto externo real modifican relaciones propias por v27 y cambian actuaciones posteriores. No se escriben RAW/clocks ni se calcula una corrección de memoria desde el anfitrión.",
+  "current_knowledge": {
+    "own": [
+      304,
+      296
+    ],
+    "context": [
+      7,
+      5
+    ],
+    "B_private": [
+      61,
+      19
+    ],
+    "current_external_reference": 12,
+    "interpretation": "Comparación relativa utilizable en el dominio; no comprensión lingüística de doce ni memoria simultánea de calibraciones9/6/10.",
+    "pending_inputs": 0,
+    "FIFO_pending": 0,
+    "fixture_valve_enabled": false,
+    "metadata_note": "service.revision1 es un registro histórico; la revisión del código es3 y cada episodio conserva el hash de sus fuentes."
+  },
+  "evidence": {
+    "main": "69 oportunidades,69 salidas válidas,47 útiles,22 incorrectas;998/998 entradas aplicadas. No es puntuación global de inteligencia.",
+    "original_reserves": "5/8,6/8,5/8; izquierda fija5/8 en cada una. Sólo la segunda alcanzó el umbral6/8.",
+    "social_reserves": "4/6 en tres secuencias; seis movimientos de B, doce actuaciones útiles de A; asistencia ambiental explícita.",
+    "FIFO": "6/6 trabajos en8intentos,5 al primer intento; control sin retorno0/6 en12intentos sobre el primer trabajo pendiente.",
+    "continuation": "Guardado T120117 y nuevo proceso con dos entradas nuevas2/2 útiles hastaT121681.",
+    "microscopic_controls": "Actuador anulado después de emitir, retorno omitido/desacoplado, corte y sham; misma primera acción y usos comunes posteriores."
+  },
+  "direct_social_limit": "B vuelve a emitir mensajes de historia privada y éstos llegan, pero el contexto ocupado7/5 no demostró actualización persistente ni una nueva actuación útil.",
+  "shared_world_application": "El paquete material de B puede mover una válvula externa fija. Esa actuación cambia contactos futuros de A; A aprende de sus propias consecuencias. No es reparación del receptor ni comunicación cerrada puramente v27.",
+  "limits": [
+    "Preparación y suministro no acreditan renovación autónoma.",
+    "x0 es izquierda por defecto y petición material; no elección exclusiva aprendida entre actuar y consultar.",
+    "Referencia actual mutable: nuevas experiencias pueden perjudicar usos anteriores.",
+    "Silencio/conflicto no se sustituye por una respuesta inteligente; admisión ocupada puede rechazar entradas.",
+    "No control general, lenguaje nuevo,65 significados, R2 general ni control aprendido de Pendulum.",
+    "Un reset crea otro fixture externo; vuelva a declarar la válvula opcional si desea instalarla. Nunca reinicia DEE."
+  ],
+  "operations": [
+    "ente-estado",
+    "ente-servicio",
+    "ente-tarea",
+    "ente-social (pulso periférico, no garantía de acceso a B)",
+    "ente-continuar",
+    "bifurcar",
+    "guardar",
+    "exportar"
+  ],
+  "commands": [
+    "bifurcar EO01_MAIN MI_ENTE",
+    "ente-servicio --vida MI_ENTE --mediciones=23:35,11:24",
+    "guardar --vida MI_ENTE",
+    "ente-tarea --vida MI_ENTE --trabajos=3:15,4:17 --pasos8 --referencia-entorno12 --reiniciar-entorno"
+  ],
+  "promotion": "Opción operativa acotada; no reemplaza al predeterminado E1_SOCIAL_11 ni fusiona capacidades de controles.",
+  "evidence_locator": "evidencia/campanas/ENTE_DEE_OPERATIVO_01; CONTINUIDAD_ENTE_DEE_OPERATIVO_01.json; laboratorio/campanas/ENTE_DEE_OPERATIVO_01/cierre"
+}

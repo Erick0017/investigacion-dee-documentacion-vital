@@ -1,0 +1,697 @@
+{
+  "schema": "DEE.PI07.regulation.protocol.R02",
+  "version": "PI07.regulation.R02",
+  "status": "SEALED_FOR_EVALUATION",
+  "evaluation_authorized_by_this_version": true,
+  "campaign": "PROGRESION_INTEGRADA_07",
+  "N": 67,
+  "origin": [
+    8,
+    40,
+    50
+  ],
+  "initial_reference_payloads": {
+    "A": 0,
+    "B": 2
+  },
+  "delay_laps": 6,
+  "max_ticks_per_episode": 1300,
+  "dependencies_sha256": {
+    "pi03_credito_generico_R01_BORRADOR.py": "cc46721530303f2de5ff8c10c8b1ba6b4b8eb47f0faadedb19345d4a134debcb",
+    "pi07_regulacion_R01.py": "8e6ccfc2d9463c46d2312cc81108ba7e481c5cb31026f05c6d349409f8a09499",
+    "PROTOCOLO_PI07_R01.json": "1db513e8f38607ed9e41929fc49afada1be584875d6744e718ccdd9b628cb949",
+    "observador_global_PI05_R01.py": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6"
+  },
+  "source_main": {
+    "life_id": "ECI02_PI03_REPRO_PI04_PI05_MAIN_01",
+    "N": 67,
+    "T": 824911,
+    "snapshot_sha256": "af74c8f47e43ed3b2395a338a23a6cbd42f105ec2cff4daac15b7a4d45e90832"
+  },
+  "preparation": {
+    "scope": "Prepared unlearned physical circuit in the same inherited organization; neither copied memories nor an acquired initial policy.",
+    "legal_interfaces_only": true,
+    "require_full_geometry_RAW_zero": true,
+    "forbid_RAW_or_clock_edits": true,
+    "preserve_inherited_guards_and_banks": true,
+    "reference_A_offset": [
+      -1,
+      -1,
+      0
+    ],
+    "reference_B_offset": [
+      1,
+      -1,
+      0
+    ],
+    "datum_offset": [
+      -1,
+      0,
+      1
+    ],
+    "stop_offsets": [
+      [
+        -3,
+        3,
+        0
+      ],
+      [
+        -3,
+        3,
+        -3
+      ],
+      [
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        3,
+        -3
+      ],
+      [
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        3,
+        -3
+      ]
+    ],
+    "stops": "State0 SEM4, declared preparation; no per-failure support installation."
+  },
+  "observer": {
+    "kind": "Fixed passive snapshot sensor plus material Native query; query is an intervention.",
+    "sensor_site": [
+      52,
+      48,
+      47
+    ],
+    "sensor_tick_relative_query": -1,
+    "sensor_codec": "Identity of actual state low two bits, including 0; never fixture cue, action target or future.",
+    "datum_relative_query": 3,
+    "selector_read_relative_query": 4,
+    "hold_until_relative_query": 6,
+    "selector_signature": "Active SEM1, y=+1, x in {-1,0,+1}, z in {0,-1}; otherwise NULL.",
+    "zero_action": "No pulse, canonical -1 efference, fixed before evaluation.",
+    "NULL_action": "No pulse, no fabricated binary efference; record invalid selection and continue the finite registered schedule unless transport, safety or budget is uncertain."
+  },
+  "physical_environment": {
+    "cue_birth_relative_query": -2,
+    "threat": {
+      "site": [
+        52,
+        48,
+        46
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "message_payload": null
+    },
+    "falsecue": {
+      "site": [
+        51,
+        48,
+        47
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "sink": [
+        55,
+        48,
+        47
+      ]
+    },
+    "none": {
+      "cue_inputs": 0
+    },
+    "pulse": {
+      "site": [
+        52,
+        48,
+        51
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "state": 1,
+      "semantic": 1,
+      "payload": 0,
+      "tick_relative_query": 7
+    },
+    "legitimate_packet": {
+      "site": [
+        52,
+        48,
+        51
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "state": 1,
+      "semantic": 1,
+      "tick_relative_query": 7,
+      "reader_site": [
+        53,
+        48,
+        51
+      ],
+      "reader_tick_relative_birth": 1,
+      "sink": [
+        55,
+        48,
+        51
+      ],
+      "payload_domain": [
+        5,
+        8,
+        11
+      ]
+    },
+    "message_cost": "When a legitimate packet and a selected pulse are scheduled at the same site/tick, Native admission resolves the conflict. Both terminal conflict receipts and actual delivery are retained; never infer delivery from the intended action.",
+    "action_mapping": {
+      "+1": "one fixed -Z pulse",
+      "0": "no pulse",
+      "-1": "no pulse",
+      "NULL": "no pulse; invalid selection"
+    }
+  },
+  "calendar": {
+    "reference_period": 391,
+    "reference_double_period": 782,
+    "planning_lead_ticks": 16,
+    "query_lead_before_efference": 7,
+    "efference_relative_query": 7,
+    "FI_start_relative_query": 136,
+    "FI_query_expected_relative_query_if_no_normalizer_wait": 192,
+    "FI_horizon_expected_relative_query_if_no_normalizer_wait": 334,
+    "result_deadline_relative_query": 407,
+    "generic_return_relative_query": 408,
+    "eligibility_collision_relative_query": 409,
+    "reference_contact_relative_query": 410,
+    "settled_relative_query": 412,
+    "require_actual_FI_calendar_and_effects_recorded": true,
+    "stop_before_unavailable_outcome_deadline": true
+  },
+  "feedback": {
+    "arm": "external_per_life",
+    "predicate": "failed = (actual fixed physical FI choice != +1) OR (a scheduled legitimate Native packet was not physically delivered as its actual public payload).",
+    "correct_action_predicate_forbidden": true,
+    "generic_API": "submit_generic_outcome(world, failed=bool, injection_tick=fixed, prefix=fixed); no selected action or bank argument",
+    "efference": "A fixed copy of the actual Native binary selector output, with zero canonicalized to -1; not a host choice of a credit recipient.",
+    "resolved_conflict_is_scientific_outcome": true,
+    "pending_unknown_or_ambiguous_receipts_stop": true,
+    "NULL_is_not_zero_or_intelligent_waiting": true,
+    "configuration": "One external control configuration is fixed and hashed at the zero-tick R02 start; only the outcome dispatch reads it. Sensor and actor never receive arm, replay bits, source plan, target or expected action."
+  },
+  "viability": {
+    "forced_action_allowed_only_on_life_id_containing": "VIAB",
+    "forced_actions": [
+      "pulso",
+      "nada"
+    ],
+    "cases": [
+      {
+        "id": "VIAB_THREAT_PULSE",
+        "cue": "threat",
+        "message_payload": null,
+        "left": 14,
+        "right": 3,
+        "forced_action": "pulso"
+      },
+      {
+        "id": "VIAB_THREAT_NONE",
+        "cue": "threat",
+        "message_payload": null,
+        "left": 14,
+        "right": 3,
+        "forced_action": "nada"
+      },
+      {
+        "id": "VIAB_MSG_PULSE",
+        "cue": "falsecue",
+        "message_payload": 5,
+        "left": 14,
+        "right": 3,
+        "forced_action": "pulso"
+      },
+      {
+        "id": "VIAB_MSG_NONE",
+        "cue": "falsecue",
+        "message_payload": 5,
+        "left": 14,
+        "right": 3,
+        "forced_action": "nada"
+      }
+    ],
+    "questions": [
+      "Does the fixed pulse change threatened FI at the registered readers?",
+      "Does actual message conflict produce a real useful-packet cost in the innocuous cue condition?",
+      "Does the sensor carry equal identity state1 for threat and falsecue without reporting their meaning?",
+      "Do the fixed efference and generic return alter physical reference increments in the stipulated direction without late requests?"
+    ],
+    "evaluation_gate": "Closed by the four matched forced cases and69passivechecks; this does not itself demonstrate acquisition or reserve success."
+  },
+  "schedule": [
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "acquisition",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 13,
+      "right": 2
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 18,
+      "right": 7
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 9,
+      "right": 4
+    },
+    {
+      "stage": "reserve_A",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 16,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "falsecue",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "changed_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 11,
+      "right": 6
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "falsecue",
+      "message_payload": 11,
+      "left": 17,
+      "right": 8
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "falsecue",
+      "message_payload": 8,
+      "left": 12,
+      "right": 3
+    },
+    {
+      "stage": "reserve_B",
+      "cue": "none",
+      "message_payload": 11,
+      "left": 19,
+      "right": 9
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "restore_contingency",
+      "cue": "none",
+      "message_payload": 5,
+      "left": 14,
+      "right": 3
+    },
+    {
+      "stage": "post_reopen",
+      "cue": "threat",
+      "message_payload": null,
+      "left": 15,
+      "right": 4
+    },
+    {
+      "stage": "post_reopen",
+      "cue": "none",
+      "message_payload": 8,
+      "left": 18,
+      "right": 6
+    }
+  ],
+  "evaluation_plan_status": "PROSPECTIVE_EVALUATION_SEALED_AFTER_FOUR_FORCED_CALIBRATIONS_BEFORE_ANY_ACQUIRED_OR_RESERVED_PI07_RESPONSE",
+  "claims": {
+    "prepared": [
+      "new circuit geometry and initial bias",
+      "environmental opportunities and packet law",
+      "sensor and pulse codec",
+      "FI scheduling and generic consequence timing"
+    ],
+    "not_yet_demonstrated": [
+      "contextual acquisition",
+      "selective protection and abstention by Native selection",
+      "adaptation to changed contingency",
+      "retention",
+      "advantage over matched history controls",
+      "incorporation into the principal",
+      "general agency or self-repair"
+    ]
+  },
+  "sealed_utc": "2026-11-10T14:49:02.481945+00:00",
+  "source_prefix": {
+    "alias": "PI07_PREADQUISICION_TC_T824914",
+    "tick": 824914,
+    "manifest_sha256": "5db0faf4a5cea0fb80da8822a5c122175cb3ac34a8734beb59d726768f1b8477",
+    "snapshot_sha256": "066f494afab9af3afbe88dc64e14642491ae4ee7c9d1c36f1e85a7fb8488ee00",
+    "full_operational_prefix_required": true
+  },
+  "instrumentation": {
+    "episode_indices": [
+      0,
+      1,
+      3,
+      7,
+      11,
+      27
+    ],
+    "codec_sha256": "d60d58301fd29ae0aabf577adc2d6f82392ed42f1d691890d095873cdf80f8d6",
+    "maximum_frames_per_recorded_episode": 31,
+    "global_is_not_assumed_passive_until_matched_replay": true,
+    "capture_index_is_external_not_Native_metadata": true
+  },
+  "controls": {
+    "horizon": 12,
+    "yoke_roll": 5,
+    "roll_direction": "source_plus_5",
+    "formula": "values[i]=source_failed[(i+5)%12]",
+    "source_index_for_recipient": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "plan_schema": "DEE.PI07.yoked_return.roll5.v1",
+    "plan_keys": [
+      "schema",
+      "roll",
+      "roll_direction",
+      "source_failed",
+      "values",
+      "source_evidence_sha256"
+    ],
+    "strict_derangement": true,
+    "fixed_before_acquisition_responses": true,
+    "equal_return_type_dose_and_phase_required": true,
+    "return_control_is_not_actor_input": true,
+    "reversal_control_from_acquired_prefix": {
+      "status": "PREPARED_REQUIRES_ROOT_RESOURCE_DECISION_BEFORE_EXECUTION",
+      "initial_ordinal": 12,
+      "operations": 8,
+      "arm": "none",
+      "purpose": "Separate later same-state1 readjustment from age, phase and repeated query. If absent do not claim this comparison was executed."
+    },
+    "actuator_link_cut": "Prepared separate diagnostic condition after actual selection; no material dose equivalence is claimed.",
+    "sensor_link_cut": "Material datum0 replaces the measured identity scalar; retain exposure difference and no claim of passive observer removal."
+  },
+  "closed_viability": {
+    "summary": "control/RECALCULO_VIABILIDAD_PI07_R01.json",
+    "sha256": "2189ca28e3613280ab23cc42cc5b2836a51138bea76768bf973c0f5abd8958d9",
+    "checks_passed": 69,
+    "checks_total": 69,
+    "actual_original_Native_ticks": 1956,
+    "new_Native_ticks_in_recalculation": 0,
+    "four_cases_same_complete_prefix": true,
+    "forced_not_learning": true,
+    "delta_AminusB_initial": -2,
+    "delta_AminusB_after": {
+      "THREAT_PULSE": -2,
+      "THREAT_NONE": -1,
+      "MSG_PULSE": -3,
+      "MSG_NONE": -2
+    },
+    "actual_message_cost": "Both same-boundary packet/pulse requests rejected_conflict, no packet delivery; no-pulse message admitted and actual5delivered64B.",
+    "scope": "One phase and prepared mechanics; not a universal observation or action guarantee."
+  },
+  "criteria": {
+    "primary_observables": {
+      "per_opportunity": [
+        "actual identity datum and its physical sensor record",
+        "early Native signature, exact zero or NULL",
+        "fixed action requested and admitted separately",
+        "actual FI physical q+4 and q+6 values",
+        "own legitimate message receipt and actual delivery value/hash",
+        "generic actual_failed and returned_failed separately",
+        "reference A/B values/clocks before and after the registered contact",
+        "actual calendars, requested/admitted/rejected doses and resource costs"
+      ],
+      "separate_denominators": [
+        "FI correct / all FI opportunities",
+        "legitimate packets delivered / scheduled legitimate packets",
+        "Native valid selections / all selection opportunities",
+        "complete opportunities satisfying BOTH actual FI correctness and any required actual packet delivery / all opportunities",
+        "pulse requests admitted / pulse requests scheduled",
+        "terminal receipts by exact status / unique direct requests"
+      ],
+      "not_a_common_currency": "The conjunction complete_opportunity is a registered joint requirement, not a numerical exchange rate between an FI result and a lost message. Report both component counts as well."
+    },
+    "acquisition_and_reserve_A": {
+      "acquisition_ordinals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reserve_ordinals": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "minimum_functional_progress": "At least3/4 complete reserved opportunities, with at least one threatened FI preserved by an admitted selected pulse and at least one legitimate packet delivered after a valid Native no-pulse selection.",
+      "history_test": "Compare the same reserved four opportunities with a constant-nonfailure history from the same P0. At least one additional complete reserved opportunity and a difference in actual bank increments/selection support a useful local history contribution. If the control ties, report the useful behavior but keep the acquisition explanation unresolved.",
+      "simple_references": "Fixed pulse and fixed no-pulse are external references evaluated against the same environmental opportunities; neither chooses the Native actor's action. Each has opposite physical costs. Do not compute an unrun causal outcome merely by labeling an action correct; use the calibrated domain and mark its conditional/reference status."
+    },
+    "changed_contingency_and_reserve_B": {
+      "change_ordinals": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "reserve_ordinals": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "same_information_changed_utility": "The observed state1 should recur in the new harmless +X setting, but a pulse now destroys an actually scheduled legitimate message by Native conflict. Report actual state rather than assume equality from the fixture label.",
+      "minimum_local_readjustment": "After at least one actual conflict cost on a valid selected pulse, a later same-state1 opportunity forms a valid Native no-pulse and delivers the legitimate message. At least3/4 complete reserve_B opportunities are required for the proposed functional advance.",
+      "paired_history_control": "Preserve a full acquired prefix after ordinal11. An eight-opportunity constant-nonfailure continuation covers ordinals12..19, with exactly the same new environment and clock schedule. It tests whether repeated age/query/exposure alone explains the readjustment. It is not a new independent organism.",
+      "claim_limit": "A blockwise reliability change with one bit does not prove arbitrary contextual inversion, a model of the hidden environment, habituation, fear, pain, planning or general agency."
+    },
+    "contingency_restoration_and_retention": {
+      "restore_ordinals": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "post_reopen_ordinals": [
+        26,
+        27
+      ],
+      "minimum": "The final threatened opportunity after actual coherent save/reopen must have a valid selected admitted pulse and correct fixed FI result; the final packet opportunity must have a valid no-pulse and actual message delivery. Do not re-teach between save and those two uses.",
+      "separate_reacquisition": "Failures during the deliberately restored relation may reacquire the earlier local policy; call that re-adaptation, not intact retention across contradictory contingencies. The post-reopen test only covers the final learned relation and its actual horizon."
+    },
+    "yoked_control": {
+      "opportunities": 12,
+      "source_index_for_recipient": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "fixed_formula": "source_index=(recipient_index+5)%12",
+      "fixed_before_source_feedback": true,
+      "same_boolean_counts": true,
+      "same_registered_return_phase": true,
+      "analysis_required": [
+        "exact source-to-recipient map and hashes",
+        "all current-outcome versus returned-outcome mismatches",
+        "alignment with current context and next context, including preparatory signals",
+        "same q/seed/FI/return/settle calendars and exact dose differences"
+      ],
+      "acceptance_interpretation": "A tie or advantage of yoked feedback blocks a claim that true current act/effect contingency uniquely caused the performance advantage. It does not erase a physically controlled local change of selection by generic history. Preserve that narrower conclusion and the adverse comparison."
+    },
+    "actuator_dependency": {
+      "prefix": "one full acquired prefix with a matched threatened opportunity",
+      "intervention": "Same actual sensor, Native query, selected motor and efference; omit only the selected physical actuator in an explicitly labeled diagnostic copy.",
+      "required": "The actual FI effect differs from the intact matched use in the direction established during viability. A programmed no-action statement alone is not a material control.",
+      "dose_limit": "One omitted material input makes it a link-dependence control, not a perfectly isodose sham."
+    },
+    "conservation_and_adoption": {
+      "requirements": [
+        "Representative historical12-use panel at a precisely stated cut, including complete vulnerable positive/negative/zero FI contracts.",
+        "Old and new uses interleaved in the same candidate genealogy, without re-teaching old tests to mask regression.",
+        "Complete coherent save/reopen and at least the two final new uses at their reported cut.",
+        "A preserved exact code/protocol/unlearned full prefix and at least one real acquisition or decisive replay executed by Root from an isolated fresh destination.",
+        "All source principal selection/CAS proofs unchanged until actual promotion; promote only the complete accepted successor, never selected RAW fragments or control memories."
+      ],
+      "material_regression_blocks_promotion": true,
+      "partial_result_allowed": "If a new function works but a conservation or explanatory gate fails, preserve the principal and the experimental mechanisms/evidence with their actual limits. Do not assert learning was incorporated merely because documentation or recipes were updated.",
+      "current_status": "No PI07 acquired capability or successor has been adopted."
+    }
+  }
+}

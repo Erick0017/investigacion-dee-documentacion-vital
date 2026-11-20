@@ -1,0 +1,13 @@
+{
+  "id": "MI02_RECURSO_FASE",
+  "version": "operational.P0.bounded.1",
+  "implementation": "capacidades/recurso_fase_mi02.py",
+  "availability": "RECUPERACION_ASISTIDA_REVALIDADA_EN_CONTEXTO_RESERVADO",
+  "profile": "MI02.unified.r6",
+  "operation": "Dos paquetes simetricos1000 por los sensores fijos, avance19ticks. Sin palabra, referencia original, signo correcto, reinicio o edicion de campos.",
+  "content": "En FASE33 la referencia174/162 mantuvo exactamente sus RAW durante el pulso y recupero un contacto util. Ninguno o sham con aporte igual fuera de ruta no lo recuperaron.",
+  "reserve": "En RESERVA38, tras ruido nominal y seis oportunidades bloqueadas, tratamiento5/6 contactos utiles frente a0/6 en ninguno y0/6 sham. No se cambio el contenido historico para suministrar la respuesta.",
+  "selection": "El operador inicia el procedimiento. No es iniciativa del ente, R2, reparacion universal ni garantia para cualquier fase/contexto.",
+  "command": "mi02-recurso-fase --vida UNA_BIFURCACION --modo treatment",
+  "evidence": ["FASE33_late_treatment.json", "FASE33_USO_late_treatment.json", "FASE33_USO_late_none.json", "FASE33_USO_late_sham.json", "RESERVA38_treatment_USE.json", "RESERVA38_none_USE.json", "RESERVA38_sham_USE.json"]
+}

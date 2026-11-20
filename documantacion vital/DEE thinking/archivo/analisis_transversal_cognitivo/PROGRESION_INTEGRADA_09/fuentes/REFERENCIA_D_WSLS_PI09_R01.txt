@@ -1,0 +1,45 @@
+REFERENCIA MATERIAL WSLS — PREPARADA; NO EJECUTADA
+
+Módulo: codigo/pi09_referencia_contextual_D_WSLS_R01.py
+Protocolo: codigo/PROTOCOLO_PI09_D_WSLS_R01.json
+Identidad única: ECI02_PI03_REPRO_PI04_PI05_PI07_PI09_D_WSLS_01
+Máximo: 6 oportunidades, 13.063 ticks incluida la guarda inicial.
+
+No es la política candidata. Consulta1 sigue siendo Native. La referencia
+externa fija sólo el segundo motor según el bit que realmente se liberó:
+bit0→neutral y bit1→pulso al inicio. Tras una consecuencia física fallida,
+cambia el motor de ese contexto; tras éxito, lo conserva. No usa el tipo de
+señal nominal, respuesta deseada ni información oculta cuando no se consultó.
+El lector y motor Native se conservan en el primario, separados del motor
+efectivamente impuesto. La copia eferente lleva este último motor. El retorno
+real de la segunda acción sigue siendo Native, con los mismos bancos.
+
+D_R02, su protocolo y sus actores quedan literales. Sólo se adapta en una
+copia privada la asignación `forced` que ya existía para calibración; el resto
+del AST de la segunda etapa permanece idéntico. Esta comparación es una regla
+host ejecutable materialmente, no una capacidad WSLS atribuida al ente.
+
+No hay sello ni autorización de ejecución creados por esta preparación.
+Root debe revisar el presupuesto prospectivo para el slot16 y comprobar el
+ledger real +13.063 +reserva de cierre13.000 ≤220.000, además de tiempo/bytes.
+La copia debe partir del mismo prefijo completo PRE-D de Discovery que Real,
+con RAW0 estricto en52/48/48. No clonar un mundo que ya recibió la guarda D.
+El sello independiente esperado es SELLO_PI09_D_WSLS_R01.json, schema
+DEE.PI09.D.material_context_WSLS.source_seal.R01, con life_id exacto,
+protocol_sha256, same_D_source_prefix idéntico al selloD2,
+D_source_seal_sha256, Root_optional_execution_authorized:true,
+minimum_prospective_world_slot:16, closure_ticks_reserved:13000 y
+files_sha256 de este módulo, protocolo, D_R02 y dependencias literales.
+
+Modos públicos exactos, sin acción/objetivo/contexto suministrado:
+{"modo":"eci01-pi09-d-wsls-preparar"}
+{"modo":"eci01-pi09-d-wsls-episodio"}
+{"modo":"eci01-pi09-d-wsls-estado"}
+
+Requiere hook y transporte de lectura heredada para esta identidad exacta.
+No se ha instalado ninguno. No usar el supervisor D2 sin una revisión explícita
+que reconozca estos tres modos y preserve sus cotas. Nunca seleccionar/ACTIVO.
+Si la guarda no queda admitted/ready, preservar el fallo y no emitir episodios.
+Si se interrumpe entre acción y actualización WSLS, pending_action bloquea la
+continuación; no volver a decidir, reinyectar ni corregir bancos automáticamente.
+No hay puntuación contrafactual ni resultado material de esta referencia.

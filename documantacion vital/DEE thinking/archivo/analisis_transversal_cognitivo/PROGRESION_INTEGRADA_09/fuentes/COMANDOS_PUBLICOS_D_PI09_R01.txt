@@ -1,0 +1,59 @@
+PI09: comandos públicos existentes, revisados estáticamente
+
+Alcance: usar sólo después de que Discovery D sea realmente COMMITTED y
+seleccionada. Esta ficha no ejecuta ninguna operación ni afirma prueba
+material posterior a COMMITTED. La prueba Source útil, la equivalencia Native
+del traslado y la reapertura seleccionada0 son evidencias separadas.
+
+PowerShell: variables comunes
+
+$C = 'D:\GENESIS AI\GENESIS 5.0\simulador de universo ab-initio\dee_libreria\VERSION_27\tests\documantacion vital\DEE thinking\DEE Cognitive 2.0'
+$PY = "$C\motor\python313\python.exe"
+$G = "$C\sistema\gestionar.py"
+$D = 'ECI02_PI03_REPRO_PI04_PI05_PI07_PI09_DISCOVERY_01'
+
+Abrir la interfaz mantenida de la continuación existente:
+
+& $PY -I -B -X utf8 "$C\aplicacion\inicio.py" --sistema --vida $D
+
+La GUI usa propietario_genesis.py/GenesisNativeWorld. Su gramática permite,
+por ejemplo, acceso balance L R; no tiene un atajo textual D_EP. Para D_EP
+se usa el gestor estructurado siguiente. No iniciar otro propietario cuando
+la GUI ya tenga uno. No usar --nueva ni reimportar el pasado.
+
+Alternativa sin GUI: Terminal1, único propietario en pausa:
+
+& $PY -I -B -X utf8 $G mente-unificada-iniciar --vida $D --backend mente_unificada --eci01 --pausado --intervalo 60 --guardar-cada 3600 --max-segundos 1800
+
+Terminal2, una oferta futura existente; sufijos/IDs nuevos en cada uso:
+
+& $PY -I -B -X utf8 $G mente-unificada-pedir --vida $D --id D_USO_20261112A --situaciones '[{"modo":"eci01-pi09-d-episodio"}]' --retorno real --actuador closed --esperar 0
+& $PY -I -B -X utf8 $G mente-unificada-reanudar --vida $D --id D_REANUDAR_20261112A --esperar 30
+& $PY -I -B -X utf8 $G mente-unificada-resultado --vida $D --id D_USO_20261112A
+
+Si sigue queued/processing, leer resultado con el MISMO ID. No volver a pedir
+la tarea y no borrar la cola. Conservar literalmente failed_preserved o
+uncertain. Sólo tras cierre terminal coherente:
+
+& $PY -I -B -X utf8 $G mente-unificada-pausar --vida $D --id D_PAUSAR_20261112A --esperar 30
+& $PY -I -B -X utf8 $G mente-unificada-guardar --vida $D --id D_GUARDAR_20261112A --esperar 30
+& $PY -I -B -X utf8 $G mente-unificada-detener --vida $D --id D_DETENER_20261112A --esperar 30
+
+Tras confirmar cierre del propietario, la reapertura usa otra vez el comando
+iniciar de Terminal1 con la misma identidad; no consume otra oferta por sí
+sola. mente-unificada-estado lee el estado publicado:
+
+& $PY -I -B -X utf8 $G mente-unificada-estado --vida $D --esperar 30
+
+Para emitir una STATE D completa en el propietario existente se usa la misma
+secuencia pedir/reanudar/resultado/pausar con literal
+[{"modo":"eci01-pi09-d-estado"}] y --retorno omit, IDs nuevos.
+
+Validación de esta ficha: parser gestionar.py inspeccionado, comandos extraídos
+del cliente público real ya utilizado en reaperturas; comillas JSON probadas
+sólo contra json.loads de Python stdlib en esta shell. No se ejecutaron D_EP,
+gestor ni Native al preparar esta ficha.
+
+Importante: app/usar_dee.py directo mantiene un owner_argv sin --eci01. Esta
+ficha usa la GUI Génesis o el gestor explícito --eci01, sin atribuir a aquella
+terminal una compatibilidad D_EP no comprobada.
